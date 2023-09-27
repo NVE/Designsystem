@@ -16,7 +16,7 @@
   "Neutrals": {
     "Background": {
       "Primary-Contrast": {
-        "value": "{grey.050}",
+        "value": "{varsom_blue.000}",
         "type": "color"
       },
       "Primary": {
@@ -24,25 +24,21 @@
         "type": "color"
       },
       "Secondary": {
-        "value": "{varsom_blue.000}",
+        "value": "{varsom_blue.050}",
         "type": "color"
       },
       "Canvas": {
-        "value": "{grey.050}",
+        "value": "{varsom_blue.000}",
         "type": "color"
       }
     },
     "Foreground": {
       "Primary": {
-        "value": "{varsom_blue.850}",
-        "type": "color"
-      },
-      "Mute": {
-        "value": "{grey.800}",
+        "value": "{varsom_blue.999}",
         "type": "color"
       },
       "Subtle": {
-        "value": "{grey.600}",
+        "value": "{varsom_blue.500}",
         "type": "color"
       }
     },
