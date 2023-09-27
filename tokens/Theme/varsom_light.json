@@ -128,7 +128,7 @@
     "Secondary": {
       "Background": {
         "Default": {
-          "value": "{varsom_blue.000}",
+          "value": "{varsom_blue.050}",
           "type": "color"
         },
         "Hover": {
