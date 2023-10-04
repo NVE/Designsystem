@@ -71,7 +71,7 @@
       "type": "color"
     },
     "200": {
-      "value": "#cfd1d4",
+      "value": "#c9cbcf",
       "type": "color"
     },
     "300": {
@@ -183,7 +183,6 @@
     "050": {
       "value": "#ffd8de",
       "type": "color"
-    }
   },
   "yellow": {
     "100": {
@@ -545,11 +544,11 @@
       "type": "color"
     },
     "999": {
-      "value": "#001c29",
+      "value": "#00131c",
       "type": "color"
     },
     "000": {
-      "value": "#DFF1F9",
+      "value": "#eff8fc",
       "type": "color"
     },
     "050": {

@@ -16,11 +16,11 @@
   "Neutrals": {
     "Background": {
       "Primary-Contrast": {
-        "value": "{grey.950}",
+        "value": "{grey.850}",
         "type": "color"
       },
       "Primary": {
-        "value": "{grey.850}",
+        "value": "{grey.950}",
         "type": "color"
       },
       "Secondary": {
@@ -28,17 +28,13 @@
         "type": "color"
       },
       "Canvas": {
-        "value": "{grey.950}",
+        "value": "{grey.850}",
         "type": "color"
       }
     },
     "Foreground": {
       "Primary": {
         "value": "{grey.000}",
-        "type": "color"
-      },
-      "Mute": {
-        "value": "{grey.150}",
         "type": "color"
       },
       "Subtle": {
