@@ -157,15 +157,6 @@
       "type": "spacing"
     }
   },
-  "button-primary-default": {
-    "value": {
-      "fill": "{Interactive.Primary.Background.defualt}",
-      "typography": "{Label.medium}",
-      "fontFamilies": "{fontFamilies.source-sans-pro}",
-      "fontWeights": "{fontWeight.semibold}"
-    },
-    "type": "composition"
-  },
   "fontSize": {
     "0": {
       "value": "14",
@@ -1022,16 +1013,5 @@
       "type": "dropShadow"
     },
     "type": "boxShadow"
-  },
-  "secondary-button-default": {
-    "value": {
-      "fill": "{Interactive.Secondary.Background.default}",
-      "borderRadius": "{borderRadius.medium}",
-      "horizontalPadding": "12px",
-      "height": "{Sizing.x-large}",
-      "itemSpacing": "48px",
-      "typography": "{Label.medium}"
-    },
-    "type": "composition"
   }
 }
