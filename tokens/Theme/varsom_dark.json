@@ -20,7 +20,7 @@
         "type": "color"
       },
       "Primary": {
-        "value": "{varsom_blue.999}",
+        "value": "{varsom_blue.900}",
         "type": "color"
       },
       "Secondary": {
@@ -28,7 +28,7 @@
         "type": "color"
       },
       "Canvas": {
-        "value": "{varsom_blue.950}",
+        "value": "{grey.950}",
         "type": "color"
       }
     },
@@ -37,8 +37,12 @@
         "value": "{grey.000}",
         "type": "color"
       },
+      "Mute": {
+        "value": "{grey.150}",
+        "type": "color"
+      },
       "Subtle": {
-        "value": "{varsom_blue.100}",
+        "value": "{varsom_blue.000}",
         "type": "color"
       }
     },

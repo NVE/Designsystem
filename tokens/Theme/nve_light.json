@@ -37,6 +37,10 @@
         "value": "{grey.950}",
         "type": "color"
       },
+      "Mute": {
+        "value": "{grey.800}",
+        "type": "color"
+      },
       "Subtle": {
         "value": "{grey.600}",
         "type": "color"

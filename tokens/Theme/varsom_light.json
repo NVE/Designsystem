@@ -16,7 +16,7 @@
   "Neutrals": {
     "Background": {
       "Primary-Contrast": {
-        "value": "{varsom_blue.000}",
+        "value": "{grey.050}",
         "type": "color"
       },
       "Primary": {
@@ -24,21 +24,25 @@
         "type": "color"
       },
       "Secondary": {
-        "value": "{varsom_blue.050}",
+        "value": "{varsom_blue.000}",
         "type": "color"
       },
       "Canvas": {
-        "value": "{varsom_blue.000}",
+        "value": "{grey.050}",
         "type": "color"
       }
     },
     "Foreground": {
       "Primary": {
-        "value": "{varsom_blue.999}",
+        "value": "{varsom_blue.850}",
+        "type": "color"
+      },
+      "Mute": {
+        "value": "{grey.800}",
         "type": "color"
       },
       "Subtle": {
-        "value": "{varsom_blue.500}",
+        "value": "{grey.600}",
         "type": "color"
       }
     },
@@ -128,7 +132,7 @@
     "Secondary": {
       "Background": {
         "Default": {
-          "value": "{varsom_blue.050}",
+          "value": "{varsom_blue.000}",
           "type": "color"
         },
         "Hover": {
