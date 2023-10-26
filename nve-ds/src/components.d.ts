@@ -7,10 +7,14 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface NveButton {
-        "action": Function;
-        "handleClick": () => Promise<void>;
-        "text": string;
-        "variant": 'default' | 'outlined';
+        "disabled": string;
+        "label": string;
+        "leadingIcon": string;
+        "loading": boolean;
+        "showLabel": boolean;
+        "size": "large" | "medium" | "small" | "x-small";
+        "trailingIcon": string;
+        "type": "primary" | "secondary" | "outlined" | "ghost";
     }
 }
 declare global {
@@ -26,9 +30,14 @@ declare global {
 }
 declare namespace LocalJSX {
     interface NveButton {
-        "action"?: Function;
-        "text"?: string;
-        "variant"?: 'default' | 'outlined';
+        "disabled"?: string;
+        "label"?: string;
+        "leadingIcon"?: string;
+        "loading"?: boolean;
+        "showLabel"?: boolean;
+        "size"?: "large" | "medium" | "small" | "x-small";
+        "trailingIcon"?: string;
+        "type"?: "primary" | "secondary" | "outlined" | "ghost";
     }
     interface IntrinsicElements {
         "nve-button": NveButton;

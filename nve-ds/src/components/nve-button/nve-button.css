@@ -1,0 +1,117 @@
+
+
+.nve-button::part(base){
+    font-style: normal;
+    font-weight: 600;
+    font-family: var(--font-families-source-sans-pro);
+    display: flex;
+      justify-content: center;
+      /* Horizontal centering */
+      align-items: center;
+}
+
+.disabled {
+  opacity: var(--disabled);
+}
+
+.ghost::part(base) {
+  border-radius: var(--border-radius-small, 4px);
+  border: none;
+}
+
+.nve-button::part(base):focus{
+  --sl-focus-ring: none; 
+}
+
+.ghost::part(base):hover {
+  color: var(--interactive-secondary-foreground-default);
+  background: var(--interactive-ghost-background-hover);
+  border: none;
+}
+
+.ghost::part(base):focus{
+  border: 2px solid var(--interactive-ghost-border-focus);
+}
+
+
+.primary::part(base) {
+  border-radius: var(--border-radius-small, 4px);
+  background: var(--interactive-primary-background-default);
+  color: var(--interactive-primary-foreground-default);
+  border: none;
+}
+  
+.primary::part(base):hover {
+  background: var(--interactive-primary-background-hover);
+  color: var(--interactive-primary-foreground-default);
+  border: none;
+}
+
+.primary::part(base):focus{
+  border: 2px solid var(--interactive-primary-foreground-border-focus);
+  background: var(--interactive-primary-background-default);
+}
+
+.primary::part(base):disabled{
+  opacity: var(--interactive-ghost-foreground-disabled);
+  background: var(--interactive-primary-background-disabed);
+}
+
+.primary::part(base):focus-visible{
+  border: 2px solid var(--interactive-primary-foreground-border-focus);
+}
+
+
+.secondary::part(base) {
+  border-radius: var(--border-radius-small, 4px);
+  background: var(--interactive-secondary-background-default);
+  color: var(--interactive-secondary-foreground-default);
+  border: none;
+}
+
+.secondary::part(base):hover {
+  background: var(--interactive-secondary-background-hover);
+  color: var(--interactive-secondary-foreground-default);
+  border: none;
+}
+
+.secondary::part(base):focus{
+  border: 2px solid var(--interactive-secondary-border-focus);
+  background: var(--interactive-secondary-background-default);
+}
+
+
+.outlined::part(base) {
+  border-radius: var(--border-radius-small, 4px);
+  border: 1px solid var(--interactive-outlined-border-default);
+  color: var(--interactive-secondary-foreground-default);
+}
+
+.outlined::part(base):hover{
+  border: 1px solid var(--interactive-outlined-border-hover);
+  background: var(--interactive-primary-foreground-default);
+  color: var(--interactive-secondary-foreground-default);
+}
+
+.outlined::part(base):focus{
+  border: 2px solid var(--interactive-primary-foreground-default);
+}
+
+  .spinner {
+      border: 4px solid var(--interactive-primary-foreground-default);
+      border-top: 4px solid var(--interactive-secondary-foreground-default);
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      animation: spin 2s linear infinite;
+    }
+  
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+  
+      100% {
+        transform: rotate(360deg);
+      }
+    }
