@@ -6,7 +6,7 @@ module.exports = {
         buildPath: "./build/",
         files: [
             {
-            destination: "tokens.css",
+            destination: "tokens2.css",
             format: "css/variables"
             },
         ],

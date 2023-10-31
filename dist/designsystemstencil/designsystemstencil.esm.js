@@ -1,0 +1,2 @@
+import{p as o,b as t}from"./p-fdc1a688.js";export{s as setNonce}from"./p-fdc1a688.js";const r=()=>{const s=import.meta.url;const t={};if(s!==""){t.resourcesUrl=new URL(".",s).href}return o(t)};r().then((s=>t([],s)));
+//# sourceMappingURL=designsystemstencil.esm.js.map
