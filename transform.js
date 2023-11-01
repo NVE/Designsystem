@@ -73,7 +73,7 @@ const myStyleDictionary = StyleDictionary.extend({
   platforms: {
     css: {
       transformGroup: "css",
-      buildPath: "dist/css/",
+      buildPath: "build/css/",
       transforms: [
         "attribute/cti",
         "name/cti/kebab",
@@ -101,7 +101,7 @@ const myStyleDictionary = StyleDictionary.extend({
     },
     darkcss: {
       transformGroup: "css",
-      buildPath: "dist/css/",
+      buildPath: "build/css/",
       transforms: [
         "attribute/cti",
         "name/cti/kebab",

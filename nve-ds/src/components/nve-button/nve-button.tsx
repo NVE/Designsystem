@@ -3,7 +3,10 @@ import { Component, Prop, h } from '@stencil/core';
  <script type="module"
       src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/shoelace-autoloader.js"></script>
 
-import './../../global/global.css';
+import './../../../../build/css/nve.css';
+import './../../../../build/css/nve_dark.css';
+import './../../../../build/css/varsom.css';
+import './../../../../build/css/varsom_dark.css';
 
 @Component({
   tag: 'nve-button',

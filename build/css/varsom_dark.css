@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 31 Oct 2023 08:12:42 GMT
+ * Generated on Tue, 31 Oct 2023 20:30:45 GMT
  */
 
 :root.darkmode {
@@ -66,39 +66,39 @@
   --interactive-ghost-foreground-disabled: var(--grey-500);
   --interactive-ghost-foreground-hover: var(--grey-000);
   --interactive-ghost-foreground-default: var(--grey-000);
-  --interactive-ghost-background-hover: var(--grey-600);
-  --interactive-outlined-border-disabled: var(--grey-500);
+  --interactive-ghost-background-hover: var(--varsom-blue-500);
+  --interactive-outlined-border-disabled: var(--varsom-blue-800);
   --interactive-outlined-border-focus: var(--blue-600);
-  --interactive-outlined-border-hover: var(--grey-200);
-  --interactive-outlined-border-default: var(--grey-050);
-  --interactive-outlined-foreground-disabled: var(--grey-500);
+  --interactive-outlined-border-hover: var(--varsom-blue-200);
+  --interactive-outlined-border-default: var(--varsom-blue-100);
+  --interactive-outlined-foreground-disabled: var(--varsom-blue-850);
   --interactive-outlined-foreground-hover: var(--grey-000);
   --interactive-outlined-foreground-default: var(--grey-000);
   --interactive-secondary-border-focus: var(--blue-500);
-  --interactive-secondary-foreground-disabled: var(--grey-000);
-  --interactive-secondary-foreground-hover: var(--grey-000);
-  --interactive-secondary-foreground-default: var(--grey-000);
-  --interactive-secondary-background-disabled: var(--grey-600);
-  --interactive-secondary-background-hover: var(--grey-500);
-  --interactive-secondary-background-default: var(--grey-600);
+  --interactive-secondary-foreground-disabled: var(--varsom-blue-850);
+  --interactive-secondary-foreground-hover: var(--varsom-blue-850);
+  --interactive-secondary-foreground-default: var(--varsom-blue-850);
+  --interactive-secondary-background-disabled: var(--varsom-blue-600);
+  --interactive-secondary-background-hover: var(--varsom-blue-000);
+  --interactive-secondary-background-default: var(--varsom-blue-100);
   --interactive-primary-foreground-border-focus: var(--blue-500);
-  --interactive-primary-foreground-disabled: var(--grey-950);
-  --interactive-primary-foreground-hover: var(--grey-800);
-  --interactive-primary-foreground-default: var(--grey-950);
+  --interactive-primary-foreground-disabled: var(--varsom-blue-800);
+  --interactive-primary-foreground-hover: var(--varsom-blue-500);
+  --interactive-primary-foreground-default: var(--varsom-blue-800);
   --interactive-primary-background-disabled: var(--grey-000);
-  --interactive-primary-background-hover: var(--grey-050);
+  --interactive-primary-background-hover: var(--varsom-blue-000);
   --interactive-primary-background-default: var(--grey-000);
-  --neutrals-border-disabled: var(--grey-500);
-  --neutrals-border-subtle: var(--grey-800);
-  --neutrals-border-mute: var(--grey-600);
-  --neutrals-border-default: var(--grey-500);
-  --neutrals-foreground-subtle: var(--grey-150);
+  --neutrals-border-disabled: var(--grey-150);
+  --neutrals-border-subtle: var(--varsom-blue-500);
+  --neutrals-border-mute: var(--grey-500);
+  --neutrals-border-default: var(--grey-150);
+  --neutrals-foreground-subtle: var(--varsom-blue-100);
   --neutrals-foreground-primary: var(--grey-000);
-  --neutrals-background-canvas: var(--grey-850);
-  --neutrals-background-secondary: var(--grey-800);
-  --neutrals-background-primary: var(--grey-950);
-  --neutrals-background-primary-contrast: var(--grey-850);
-  --brand-deep: var(--nve-brand-700);
-  --brand-light: var(--nve-brand-500);
-  --brand-primary: var(--nve-brand-300);
+  --neutrals-background-canvas: var(--varsom-blue-950);
+  --neutrals-background-secondary: var(--varsom-blue-800);
+  --neutrals-background-primary: var(--varsom-blue-999);
+  --neutrals-background-primary-contrast: var(--grey-950);
+  --brand-deep: var(--varsom-brand-600);
+  --brand-light: var(--varsom-brand-100);
+  --brand-primary: var(--varsom-brand-500);
 }
