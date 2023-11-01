@@ -3,8 +3,6 @@ import { Component, Prop, h } from '@stencil/core';
  <script type="module"
       src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/shoelace-autoloader.js"></script>
 
-import './../../global/global.css';
-
 @Component({
   tag: 'nve-button',
   styleUrl: 'nve-button.css',
@@ -65,4 +63,6 @@ export class NveButton {
     
     </div>;
   }
+
+
 }

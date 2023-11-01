@@ -1,6 +1,6 @@
 {
-  "name": "nve-ds",
-  "version": "0.0.1",
+  "name": "nve-designsystem",
+  "version": "0.0.3",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -25,13 +25,15 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "copy-files": "cpy \"./../build/css/*\" dist/css/"
   },
   "dependencies": {
     "@babel/plugin-transform-class-properties": "^7.22.5",
     "@babel/plugin-transform-nullish-coalescing-operator": "^7.22.11",
     "@babel/plugin-transform-optional-chaining": "^7.23.0",
-    "@stencil/core": "^4.0.0"
+    "@stencil/core": "^4.0.0",
+    "cpy-cli": "^5.0.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.5.1",
