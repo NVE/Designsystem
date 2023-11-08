@@ -34,4 +34,4 @@ For å publisere Storybook på Chromatic, kjør "npm run build; npm run build-st
 
 ### **npm**
 
-For å publisere på npm, må man oppdatere versjonsnr. i package.json og package-lock.json. Deretter kjør kommando "npm publish --access public". Dette krever at man er innlogget på npm.
+For å publisere på npm, må man oppdatere versjonsnr. i package.json og package-lock.json. Deretter kjør kommando "npm publish --access public" fra mappen nve-ds. Dette krever at man er innlogget på npm. For at CSS-variabler skal være tilgjengelig i npm-pakken, må css-filer kopieres. Dette gjøres ved å kjøre kommando "npm run copy-files" fra mappen nve-ds.
