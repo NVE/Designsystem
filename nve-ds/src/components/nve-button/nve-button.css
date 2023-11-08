@@ -1,3 +1,10 @@
+ :host {
+  --sl-input-height-large: 13rem;
+  --sl-input-height-medium: 13rem;
+  --sl-input-height-small: 13rem;
+ 
+}
+
 .nve-button::part(base){
     font-style: normal;
     font-weight: 600;
@@ -7,6 +14,7 @@
       /* Horizontal centering */
       align-items: center;
 }
+
 
 .disabled {
   opacity: var(--disabled);
@@ -31,6 +39,10 @@
   border: 2px solid var(--interactive-ghost-border-focus);
 }
 
+.large {
+  width: 40rem;
+  height: 40rem !important;
+}
 
 .primary::part(base) {
   border-radius: var(--border-radius-small, 4px);

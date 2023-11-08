@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Element, Prop, h } from '@stencil/core';
 
  <script type="module"
       src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/shoelace-autoloader.js"></script>
@@ -10,7 +10,7 @@ import { Component, Prop, h } from '@stencil/core';
 })
 export class NveButton {
 
-
+@Element() element: HTMLElement;
     @Prop() type: "primary" | "secondary" | "outlined" | "ghost" = "primary";
   @Prop() size: "large" | "medium" | "small" | "x-small" = "medium";
   @Prop() showLabel: boolean;
@@ -20,6 +20,20 @@ export class NveButton {
   @Prop() disabled: string;
   @Prop() loading: boolean;
 
+  setSize(){
+    if (this.size === "x-small"){
+    return "medium";
+    }
+      else {
+        return this.size;
+      }
+  }
+  
+
+  componentDidRender(){
+    if (this.size === "x-small")
+    this.element.style.setProperty('--sl-input-height-medium', '50rem');
+  }
 
   render() {
 
@@ -28,7 +42,7 @@ export class NveButton {
     return <div>
       
      <sl-button class={className}
-     size={this.size}
+     size={this.setSize()}
 
      >
       

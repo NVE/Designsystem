@@ -1,4 +1,12 @@
+:root {
+    --sl-input-height-large: 13rem;
+    --sl-input-height-medium: 13rem;
+    --sl-input-height-small: 13rem;
+    --sl-input-height-large: 13rem;
+}
+
 @import './../../../build/css/varsom_dark.css';
 @import './../../../build/css/varsom.css';
 @import './../../../build/css/nve.css';
 @import './../../../build/css/nve_dark.css';
+
