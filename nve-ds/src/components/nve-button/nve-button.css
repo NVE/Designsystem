@@ -1,7 +1,7 @@
  :host {
-  --sl-input-height-large: 13rem;
-  --sl-input-height-medium: 13rem;
-  --sl-input-height-small: 13rem;
+  --sl-input-height-large: 3rem;
+  --sl-input-height-medium: 3rem;
+  --sl-input-height-small: 2.5rem;
  
 }
 
@@ -15,6 +15,9 @@
       align-items: center;
 }
 
+.x-small {
+  padding: 15rem;
+}
 
 .disabled {
   opacity: var(--disabled);

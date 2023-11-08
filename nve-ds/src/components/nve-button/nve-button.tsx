@@ -32,7 +32,8 @@ export class NveButton {
 
   componentDidRender(){
     if (this.size === "x-small")
-    this.element.style.setProperty('--sl-input-height-medium', '50rem');
+    this.element.style.setProperty('--sl-input-height-medium', '2.25rem');
+  //TODO: change more properties...
   }
 
   render() {
