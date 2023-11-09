@@ -1,11 +1,12 @@
 const StyleDictionary = require('style-dictionary-utils');
-
+const fixZeroes = require('./customtransforms/fixZeroes.js');
 const { fileHeader, formattedVariables } = StyleDictionary.formatHelpers;
 const fontFamilies = require('./customtransforms/fontFamilies.js');
 const fontWeights = require('./customtransforms/fontWeights.js');
 const boxShadow = require('./customtransforms/boxShadow.js')
 const fontSizes = require('./customtransforms/fontSizes.js');
 
+StyleDictionary.registerTransform(fixZeroes);
 StyleDictionary.registerTransform(fontFamilies);
 StyleDictionary.registerTransform(fontWeights);
 StyleDictionary.registerTransform(boxShadow);
@@ -68,6 +69,7 @@ const myStyleDictionary = StyleDictionary.extend({
       transforms: [
         "attribute/cti",
         "name/cti/kebab",      
+        "fixZeroes",
         "font/css",
         "fontsizes/px",
         "fontFamilies/css",
@@ -94,7 +96,8 @@ const myStyleDictionary = StyleDictionary.extend({
       buildPath: "build/css/",
       transforms: [
         "attribute/cti",
-        "name/cti/kebab",        
+        "name/cti/kebab",
+        "fixZeroes",        
         "font/css",
         "fontsizes/px",
         "fontFamilies/css",
