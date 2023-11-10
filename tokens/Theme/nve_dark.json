@@ -309,7 +309,7 @@
       },
       "Emphasized": {
         "Info": {
-          "value": "{blue.500}",
+          "value": "{blue.700}",
           "type": "color"
         },
         "Error": {
