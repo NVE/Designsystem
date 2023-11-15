@@ -1,5 +1,5 @@
 {
-  "name": "designsystemstencil-loader",
+  "name": "designsystem-loader",
   "private": true,
   "typings": "./index.d.ts",
   "module": "./index.js",

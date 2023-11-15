@@ -7,14 +7,15 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface NveButton {
-        "disabled": string;
+        "disabled": boolean;
         "label": string;
-        "leadingIcon": string;
+        "leadingIcon"?: string;
         "loading": boolean;
         "showLabel": boolean;
-        "size": "large" | "medium" | "small" | "x-small";
-        "trailingIcon": string;
-        "type": "primary" | "secondary" | "outlined" | "ghost";
+        "size": 'large' | 'medium' | 'small' | 'x-small';
+        "trailingIcon"?: string;
+        "type": 'primary' | 'secondary' | 'outlined' | 'ghost';
+        "variant": 'nve' | 'varsom';
     }
 }
 declare global {
@@ -30,14 +31,15 @@ declare global {
 }
 declare namespace LocalJSX {
     interface NveButton {
-        "disabled"?: string;
+        "disabled"?: boolean;
         "label"?: string;
         "leadingIcon"?: string;
         "loading"?: boolean;
         "showLabel"?: boolean;
-        "size"?: "large" | "medium" | "small" | "x-small";
+        "size"?: 'large' | 'medium' | 'small' | 'x-small';
         "trailingIcon"?: string;
-        "type"?: "primary" | "secondary" | "outlined" | "ghost";
+        "type"?: 'primary' | 'secondary' | 'outlined' | 'ghost';
+        "variant"?: 'nve' | 'varsom';
     }
     interface IntrinsicElements {
         "nve-button": NveButton;

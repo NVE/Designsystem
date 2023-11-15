@@ -3,7 +3,7 @@ const fixZeroes = require('./customtransforms/fixZeroes.js');
 const { fileHeader, formattedVariables } = StyleDictionary.formatHelpers;
 const fontFamilies = require('./customtransforms/fontFamilies.js');
 const fontWeights = require('./customtransforms/fontWeights.js');
-const boxShadow = require('./customtransforms/boxShadow.js')
+const boxShadow = require('./customtransforms/boxShadow.js');
 const fontSizes = require('./customtransforms/fontSizes.js');
 
 StyleDictionary.registerTransform(fixZeroes);
@@ -12,13 +12,13 @@ StyleDictionary.registerTransform(fontWeights);
 StyleDictionary.registerTransform(boxShadow);
 StyleDictionary.registerTransform(fontSizes);
 
-const lightModeFile = "tokens/Theme/nve_light.json";
-const darkModeFile = "tokens/Theme/nve_dark.json";
-const lightModeVarsomFile = "tokens/Theme/varsom_light.json";
-const darkModeVarsomFile = "tokens/Theme/varsom_dark.json";
-const isDark = process.argv?.[2] === "dark";
-const isVarsom = process.argv?.[2] === "varsom";
-const isVarsomDark = process.argv?.[2] === "varsom_dark";
+const lightModeFile = 'tokens/Theme/nve_light.json';
+const darkModeFile = 'tokens/Theme/nve_dark.json';
+const lightModeVarsomFile = 'tokens/Theme/varsom_light.json';
+const darkModeVarsomFile = 'tokens/Theme/varsom_dark.json';
+const isDark = process.argv?.[2] === 'dark';
+const isVarsom = process.argv?.[2] === 'varsom';
+const isVarsomDark = process.argv?.[2] === 'varsom_dark';
 
 const tokenfilter = (token) => {
   if (isDark) {
@@ -31,31 +31,32 @@ const tokenfilter = (token) => {
 
 let sources = [
   lightModeFile,
-  "tokens/public/device/base.json",
-  "tokens/*.json",
+  'tokens/public/device/base.json',
+  'tokens/*.json',
 ];
-let destination = "nve.css";
+let destination = 'nve.css';
 
 if (isDark) {
   sources[0] = darkModeFile;
-  destination = "nve_dark.css";
+  destination = 'nve_dark.css';
 } else if (isVarsom) {
   sources[0] = lightModeVarsomFile;
-  destination = "varsom.css";
+  destination = 'varsom.css';
 } else if (isVarsomDark) {
   sources[0] = darkModeVarsomFile;
-  destination = "varsom_dark.css";
+  destination = 'varsom_dark.css';
 }
 
 StyleDictionary.registerFormat({
-  name: "css/variables-themed",
+  name: 'css/variables-themed',
   formatter: function ({ dictionary, file, options }) {
     const { outputReferences, theme } = options;
     return (
       fileHeader({ file }) +
-      `:root.${theme} {\n` +
-      formattedVariables({ format: "css", dictionary, outputReferences }) +
-      "\n}\n"
+      `:root, :host, 
+      .${isVarsom ? 'varsom' : 'nve'}-${theme} {\n` +
+      formattedVariables({ format: 'css', dictionary, outputReferences }) +
+      '\n}\n'
     );
   },
 });
@@ -64,57 +65,58 @@ const myStyleDictionary = StyleDictionary.extend({
   source: sources,
   platforms: {
     css: {
-      transformGroup: "css",
-      buildPath: "build/css/",
+      transformGroup: 'css',
+      buildPath: 'build/css/',
       transforms: [
-        "attribute/cti",
-        "name/cti/kebab",      
-        "fixZeroes",
-        "font/css",
-        "fontsizes/px",
-        "fontFamilies/css",
-        "fontFamily/css",
-        "fontWeight/number",
-        "fontWeights/number",
-        "boxshadow/css",
-        "shadow/css",
+        'attribute/cti',
+        'name/cti/kebab',
+        'fixZeroes',
+        'font/css',
+        'fontsizes/px',
+        'fontFamilies/css',
+        'fontFamily/css',
+        'fontWeight/number',
+        'fontWeights/number',
+        'boxshadow/css',
+        'shadow/css',
       ],
       files: [
         {
           filter: tokenfilter,
           destination: destination,
-          format: "css/variables",
+          format: 'css/variables-themed',
           options: {
             outputReferences: true,
+            theme: 'light',
           },
-          selector: ".test",
+          selector: '.test',
         },
       ],
     },
     darkcss: {
-      transformGroup: "css",
-      buildPath: "build/css/",
+      transformGroup: 'css',
+      buildPath: 'build/css/',
       transforms: [
-        "attribute/cti",
-        "name/cti/kebab",
-        "fixZeroes",        
-        "font/css",
-        "fontsizes/px",
-        "fontFamilies/css",
-        "fontFamily/css",
-        "fontWeight/number",
-        "fontWeights/number",
-        "boxshadow/css",
-        "shadow/css",
+        'attribute/cti',
+        'name/cti/kebab',
+        'fixZeroes',
+        'font/css',
+        'fontsizes/px',
+        'fontFamilies/css',
+        'fontFamily/css',
+        'fontWeight/number',
+        'fontWeights/number',
+        'boxshadow/css',
+        'shadow/css',
       ],
       files: [
         {
           filter: tokenfilter,
           destination: destination,
-          format: "css/variables-themed",
+          format: 'css/variables-themed',
           options: {
             outputReferences: true,
-            theme: "darkmode",
+            theme: 'dark',
           },
         },
       ],
@@ -122,7 +124,7 @@ const myStyleDictionary = StyleDictionary.extend({
   },
 });
 if (isDark || isVarsomDark) {
-  myStyleDictionary.buildPlatform("darkcss");
+  myStyleDictionary.buildPlatform('darkcss');
 } else {
-  myStyleDictionary.buildPlatform("css");
+  myStyleDictionary.buildPlatform('css');
 }

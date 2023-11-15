@@ -1,9 +1,10 @@
 /**
  * Do not edit directly
- * Generated on Wed, 01 Nov 2023 11:47:59 GMT
+ * Generated on Tue, 14 Nov 2023 13:14:05 GMT
  */
 
-:root.darkmode {
+:root, :host, 
+      .nve-dark {
   --dangerlevel-foreground-subtle-level5: var(--grey-950);
   --dangerlevel-foreground-subtle-level4: var(--grey-950);
   --dangerlevel-foreground-subtle-level3: var(--grey-950);

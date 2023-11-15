@@ -1,45 +1,106 @@
- :host {
+:host {
   --sl-input-height-large: 3rem;
   --sl-input-height-medium: 3rem;
   --sl-input-height-small: 2.5rem;
- 
 }
 
-.nve-button::part(base){
-    font-style: normal;
-    font-weight: 600;
-    font-family: var(--font-families-source-sans-pro);
-    display: flex;
-      justify-content: center;
-      /* Horizontal centering */
-      align-items: center;
+/* since sl-button uses slots gap property wont work in nve-button casue it will set gap on invisible content as well */
+.margin-right {
+  margin-right: var(--spacing-x-small, 8px);
+}
+.margin-left {
+  margin-left: var(--spacing-x-small, 8px);
 }
 
 .x-small {
   padding: 15rem;
 }
 
-.disabled {
-  opacity: var(--disabled);
+.nve-button {
+  --_background: none;
+  --_background-hover: none;
+  --_border-focus: var(--interactive-primary-foreground-border-focus)
+  --_color: var(--interactive-primary-foreground-default);
+
+  &::part(label) {
+    padding: 0;
+    margin: 0;
+  }
+
+  &::part(base) {
+    /* usikker på hovrdan vi skal implementere fonts fra tokens. ser ut at tolkning ikke gikk helt bra heller */
+    font-style: normal;
+    padding-inline-start: 0;
+    padding: 14px 18px;
+    font: var(--label-medium);
+    display: flex;
+    justify-content: center;
+    /* Horizontal centering */
+    align-items: center;
+    border-radius: var(--border-radius-small, 4px);
+    background: var(--_background);
+    color: var(--_color);
+    border: none;
+  }
+
+  &::part(base):hover {
+    background: var(--_background-hover);
+  }
+
+  &::part(base):focus-visible,
+  &::part(base):focus {
+    --sl-focus-ring: none;
+    outline: 2px solid var(--_border-focus);
+    outline-offset: -2px;
+  }
 }
 
-.ghost::part(base) {
-  border-radius: var(--border-radius-small, 4px);
-  border: none;
+.primary {
+    --_background: var(--interactive-primary-background-default);
+    --_color: var(--interactive-primary-foreground-default);
+    --_background-hover: var(--interactive-primary-background-hover);
+    --_border-focus: var(--interactive-primary-foreground-border-focus);
+    &.disabled::part(base) {
+      color: var(--interactive-primary-foreground-disabled);
+      background: var(--interactive-primary-background-disabled);
+    }
 }
 
-.nve-button::part(base):focus{
-  --sl-focus-ring: none; 
+.secondary {
+  --_background: var(--interactive-secondary-background-default);
+  --_color: var(--interactive-secondary-foreground-default);
+  --_background-hover: var(--interactive-secondary-background-hover);
+  --_border-focus: var(--interactive-secondary-border-focus);
+  &.disabled::part(base) {
+    color: var(--interactive-secondary-foreground-disabled);
+    background: var(--interactive-secondary-background-disabled);
+  }
 }
 
-.ghost::part(base):hover {
-  color: var(--interactive-secondary-foreground-default);
-  background: var(--interactive-ghost-background-hover);
-  border: none;
+.ghost {
+  --_color: var(--interactive-ghost-foreground-default);
+  --_background-hover: var(--interactive-ghost-background-hover);
+  --_border-focus: var(--interactive-ghost-border-focus);
+  &.disabled::part(base) {
+    color: var(--interactive-ghost-foreground-disabled);
+    opacity: 0.36;
+  }
 }
 
-.ghost::part(base):focus{
-  border: 2px solid var(--interactive-ghost-border-focus);
+.outlined {
+  --_color: var(--interactive-outlined-foreground-default);
+  --_border-focus: var(--interactive-outlined-border-focus);
+  &::part(base) {
+    border: 1px solid var(--interactive-outlined-border-default, #43A9D5);
+  }
+  &::part(base):hover {
+    border: 1px solid var(--interactive-outlined-border-hover);
+  }
+  &.disabled::part(base) {
+    color: var(--interactive-outlined-foreground-disabled);
+    border: 1px solid var(--interactive-outlined-border-disabled);
+    opacity: 0.36;
+  }
 }
 
 .large {
@@ -47,84 +108,21 @@
   height: 40rem !important;
 }
 
-.primary::part(base) {
-  border-radius: var(--border-radius-small, 4px);
-  background: var(--interactive-primary-background-default);
-  color: var(--interactive-primary-foreground-default);
-  border: none;
-}
-  
-.primary::part(base):hover {
-  background: var(--interactive-primary-background-hover);
-  color: var(--interactive-primary-foreground-default);
-  border: none;
+.spinner {
+  border: 4px solid var(--interactive-primary-foreground-default);
+  border-top: 4px solid var(--interactive-secondary-foreground-default);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 2s linear infinite;
 }
 
-.primary::part(base):focus{
-  border: 2px solid var(--interactive-primary-foreground-border-focus);
-  background: var(--interactive-primary-background-default);
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
-
-.primary::part(base):disabled{
-  opacity: var(--interactive-ghost-foreground-disabled);
-  background: var(--interactive-primary-background-disabed);
-}
-
-.primary::part(base):focus-visible{
-  border: 2px solid var(--interactive-primary-foreground-border-focus);
-}
-
-
-.secondary::part(base) {
-  border-radius: var(--border-radius-small, 4px);
-  background: var(--interactive-secondary-background-default);
-  color: var(--interactive-secondary-foreground-default);
-  border: none;
-}
-
-.secondary::part(base):hover {
-  background: var(--interactive-secondary-background-hover);
-  color: var(--interactive-secondary-foreground-default);
-  border: none;
-}
-
-.secondary::part(base):focus{
-  border: 2px solid var(--interactive-secondary-border-focus);
-  background: var(--interactive-secondary-background-default);
-}
-
-
-.outlined::part(base) {
-  border-radius: var(--border-radius-small, 4px);
-  border: 1px solid var(--interactive-outlined-border-default);
-  color: var(--interactive-secondary-foreground-default);
-}
-
-.outlined::part(base):hover{
-  border: 1px solid var(--interactive-outlined-border-hover);
-  background: var(--interactive-primary-foreground-default);
-  color: var(--interactive-secondary-foreground-default);
-}
-
-.outlined::part(base):focus{
-  border: 2px solid var(--interactive-primary-foreground-default);
-}
-
-  .spinner {
-      border: 4px solid var(--interactive-primary-foreground-default);
-      border-top: 4px solid var(--interactive-secondary-foreground-default);
-      border-radius: 50%;
-      width: 25px;
-      height: 25px;
-      animation: spin 2s linear infinite;
-    }
-  
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-  
-      100% {
-        transform: rotate(360deg);
-      }
-    }
