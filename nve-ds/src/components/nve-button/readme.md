@@ -9,14 +9,15 @@
 
 | Property       | Attribute       | Description | Type                                                | Default     |
 | -------------- | --------------- | ----------- | --------------------------------------------------- | ----------- |
-| `disabled`     | `disabled`      |             | `string`                                            | `undefined` |
+| `disabled`     | `disabled`      |             | `boolean`                                           | `false`     |
 | `label`        | `label`         |             | `string`                                            | `undefined` |
 | `leadingIcon`  | `leading-icon`  |             | `string`                                            | `undefined` |
-| `loading`      | `loading`       |             | `boolean`                                           | `undefined` |
-| `showLabel`    | `show-label`    |             | `boolean`                                           | `undefined` |
-| `size`         | `size`          |             | `"large" \| "medium" \| "small" \| "x-small"`       | `"medium"`  |
+| `loading`      | `loading`       |             | `boolean`                                           | `false`     |
+| `showLabel`    | `show-label`    |             | `boolean`                                           | `true`      |
+| `size`         | `size`          |             | `"large" \| "medium" \| "small" \| "x-small"`       | `'medium'`  |
 | `trailingIcon` | `trailing-icon` |             | `string`                                            | `undefined` |
-| `type`         | `type`          |             | `"ghost" \| "outlined" \| "primary" \| "secondary"` | `"primary"` |
+| `type`         | `type`          |             | `"ghost" \| "outlined" \| "primary" \| "secondary"` | `'primary'` |
+| `variant`      | `variant`       |             | `"nve" \| "varsom"`                                 | `'nve'`     |
 
 
 ----------------------------------------------
