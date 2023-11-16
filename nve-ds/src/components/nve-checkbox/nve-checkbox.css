@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.checkbox::part(base) {
+  font: 400 14px/110% Source Sans Pro;
+}
+
+.checkbox::part(control) {
+  border: solid 2px #00131c;
+}
+
+.checkbox::part(control--checked),
+.checkbox::part(control--indeterminate) {
+  background-color: #00131c;
+}

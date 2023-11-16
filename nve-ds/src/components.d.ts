@@ -16,6 +16,11 @@ export namespace Components {
         "trailingIcon": string;
         "type": "primary" | "secondary" | "outlined" | "ghost";
     }
+    interface NveCheckbox {
+        "checked": boolean;
+        "indeterminate": boolean;
+        "label": string;
+    }
 }
 declare global {
     interface HTMLNveButtonElement extends Components.NveButton, HTMLStencilElement {
@@ -24,8 +29,15 @@ declare global {
         prototype: HTMLNveButtonElement;
         new (): HTMLNveButtonElement;
     };
+    interface HTMLNveCheckboxElement extends Components.NveCheckbox, HTMLStencilElement {
+    }
+    var HTMLNveCheckboxElement: {
+        prototype: HTMLNveCheckboxElement;
+        new (): HTMLNveCheckboxElement;
+    };
     interface HTMLElementTagNameMap {
         "nve-button": HTMLNveButtonElement;
+        "nve-checkbox": HTMLNveCheckboxElement;
     }
 }
 declare namespace LocalJSX {
@@ -39,8 +51,14 @@ declare namespace LocalJSX {
         "trailingIcon"?: string;
         "type"?: "primary" | "secondary" | "outlined" | "ghost";
     }
+    interface NveCheckbox {
+        "checked"?: boolean;
+        "indeterminate"?: boolean;
+        "label"?: string;
+    }
     interface IntrinsicElements {
         "nve-button": NveButton;
+        "nve-checkbox": NveCheckbox;
     }
 }
 export { LocalJSX as JSX };
@@ -48,6 +66,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "nve-button": LocalJSX.NveButton & JSXBase.HTMLAttributes<HTMLNveButtonElement>;
+            "nve-checkbox": LocalJSX.NveCheckbox & JSXBase.HTMLAttributes<HTMLNveCheckboxElement>;
         }
     }
 }
