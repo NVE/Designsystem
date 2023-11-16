@@ -16,7 +16,8 @@ export class NveCheckbox {
   render() {
     return (
       <div>
-        <sl-checkbox indeterminate={this.indeterminate} className="checkbox" checked={this.checked}>
+        {/** chekcbox is the same for both nve and varsom styling therefore we use nve-light here without possibility to choose from */}
+        <sl-checkbox indeterminate={this.indeterminate} className="checkbox nve-light" checked={this.checked}>
           {this.label}
         </sl-checkbox>
       </div>
