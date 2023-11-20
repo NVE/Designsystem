@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Lit + TS</title>
+
+    <link id="theme-link" rel="stylesheet" href="./src/varsom.css" />
+    <script type="module" src="/src/nve-button.ts"></script>
+    <script type="module" src="/src/nve-spinner.ts"></script>
+  </head>
+  <body>
+    <table>
+      <hr />
+      <th>Primary</th>
+      <th>Secondary</th>
+      <th>Outlined</th>
+      <th>Ghost</th>
+      <hr />
+      <tr>
+        <td>
+          <nve-button size="medium" variant="primary"
+            >I'm a NVE-butotn</nve-button
+          >
+        </td>
+        <td>
+          <nve-button size="medium" variant="default"
+            >I'm a NVE-butotn</nve-button
+          >
+        </td>
+        <td>
+          <nve-button size="medium" variant="neutral" outline
+            >I'm a NVE-butotn</nve-button
+          >
+        </td>
+        <td>
+          <nve-button size="medium" variant="neutral"
+            >I'm a NVE-butotn</nve-button
+          >
+        </td>
+      </tr>
+      <tr>
+        <th>Primary</th>
+        <th>Secondary</th>
+        <th>Outlined</th>
+        <th>Ghost</th>
+      </tr>
+
+      <tr>
+        <td>
+          <nve-button size="large" variant="primary"
+            >I'm a NVE-butotn</nve-button
+          >
+        </td>
+        <td>
+          <nve-button size="large" variant="default"
+            >I'm a NVE-butotn</nve-button
+          >
+        </td>
+        <td>
+          <nve-button size="large" variant="neutral" outline
+            >I'm a NVE-butotn</nve-button
+          >
+        </td>
+        <td>
+          <nve-button size="large" variant="neutral"
+            >I'm a NVE-butotn</nve-button
+          >
+        </td>
+      </tr>
+      <tr>
+        <th>Primary</th>
+        <th>Secondary</th>
+        <th>Outlined</th>
+        <th>Ghost</th>
+        <td>
+          <nve-button size="small" variant="primary"
+            >I'm a NVE-butotn</nve-button
+          >
+        </td>
+        <td>
+          <nve-button size="small" variant="default"
+            >I'm a NVE-butotn</nve-button
+          >
+        </td>
+        <td>
+          <nve-button size="small" variant="neutral" outline
+            >I'm a NVE-butotn</nve-button
+          >
+        </td>
+        <td>
+          <nve-button size="small" variant="neutral"
+            >I'm a NVE-butotn</nve-button
+          >
+        </td>
+      </tr>
+    </table>
+    <nve-button variant="neutral" outline> im a butotn </nve-button>
+    <nve-button variant="neutral" outline>
+      im a butotn
+      <span slot="suffix"><nve-spinner></nve-spinner></span>
+    </nve-button>
+  </body>
+</html>
