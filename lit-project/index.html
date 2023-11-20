@@ -13,12 +13,14 @@
   <body>
     <table>
       <hr />
+      <th>Variant</th>
       <th>Primary</th>
       <th>Secondary</th>
       <th>Outlined</th>
       <th>Ghost</th>
       <hr />
       <tr>
+        <td>medium</td>
         <td>
           <nve-button size="medium" variant="primary"
             >I'm a NVE-butotn</nve-button
@@ -41,13 +43,7 @@
         </td>
       </tr>
       <tr>
-        <th>Primary</th>
-        <th>Secondary</th>
-        <th>Outlined</th>
-        <th>Ghost</th>
-      </tr>
-
-      <tr>
+        <td>large</td>
         <td>
           <nve-button size="large" variant="primary"
             >I'm a NVE-butotn</nve-button
@@ -70,10 +66,7 @@
         </td>
       </tr>
       <tr>
-        <th>Primary</th>
-        <th>Secondary</th>
-        <th>Outlined</th>
-        <th>Ghost</th>
+        <td>small</td>
         <td>
           <nve-button size="small" variant="primary"
             >I'm a NVE-butotn</nve-button
@@ -95,11 +88,23 @@
           >
         </td>
       </tr>
-    </table>
-    <nve-button variant="neutral" outline> im a butotn </nve-button>
-    <nve-button variant="neutral" outline>
-      im a butotn
-      <span slot="suffix"><nve-spinner></nve-spinner></span>
-    </nve-button>
-  </body>
+    <tr>
+      <td>neutral</td>
+      <td><nve-button variant="neutral" outline> im a butotn</nve-button></td>
+    </tr>
+    <tr>
+      <td>loading</td>
+      <td><nve-button variant="neutral" outline loading> im a butotn</nve-button></td>
+    </tr>
+    <tr>
+      <td>loading width slot</td>
+      <td>
+        <nve-button variant="neutral" outline>
+          im a butotn
+          <span slot="suffix"><nve-spinner></nve-spinner></span>
+        </nve-button>
+      </td>
+    </tr>
+  </table>
+</body>
 </html>
