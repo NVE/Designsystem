@@ -88,23 +88,28 @@
           >
         </td>
       </tr>
-    <tr>
-      <td>neutral</td>
-      <td><nve-button variant="neutral" outline> im a butotn</nve-button></td>
-    </tr>
-    <tr>
-      <td>loading</td>
-      <td><nve-button variant="neutral" outline loading> im a butotn</nve-button></td>
-    </tr>
-    <tr>
-      <td>loading width slot</td>
-      <td>
-        <nve-button variant="neutral" outline>
-          im a butotn
-          <span slot="suffix"><nve-spinner></nve-spinner></span>
-        </nve-button>
-      </td>
-    </tr>
-  </table>
-</body>
+      <tr>
+        <td>neutral</td>
+        <td><nve-button variant="neutral" outline> im a butotn</nve-button></td>
+      </tr>
+      <tr>
+        <td>loading</td>
+        <td>
+          <nve-button variant="neutral" outline loading>
+            im a butotn</nve-button
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>loading width slot</td>
+        <td>
+          <nve-button variant="neutral" outline>
+            im a butotn
+            <!-- Hvis vi vil ha både label og spinner kan vi ikke bruke loading property på knappen og span med suffix må renders kondisjonelt -->
+            <span slot="suffix"><nve-spinner></nve-spinner></span>
+          </nve-button>
+        </td>
+      </tr>
+    </table>
+  </body>
 </html>

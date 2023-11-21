@@ -15,6 +15,11 @@ export class NveButton extends SlButton {
     super();
   }
 
+  /**
+   * sl default = nve secondary
+   *
+   *
+   */
   static styles = [
     SlButton.styles, // Import Shoelace styles after your custom styles
     css`
@@ -25,10 +30,23 @@ export class NveButton extends SlButton {
         display: flex;
         align-items: center;
       }
+      .button--standard.button--primary:hover:not(.button--disabled) {
+        background: var(--interactive-primary-background-hover);
+        color: var(--interactive-primary-foreground-default);
+      }
       /* må endre font farge her fordi shoelace bruker samme farge på fonten som på neutral/secondary knapps bakgrunn */
       .button--standard.button--primary {
         color: var(--sl-color-grey-50);
       }
+      .button--standard.button--default {
+        border-color: var(--interactive-secondary-background-default);
+      }
+      .button--standard.button--default:hover:not(.button--disabled) {
+        border-color: var(--interactive-secondary-background-hover);
+        background: var(--interactive-secondary-background-hover);
+        color: var(--sl-color-neutral-700);
+      }
+
       .button--outline.button--neutral,
       .button--standard.button--neutral {
         color: var(--sl-color-neutral-700);
@@ -39,16 +57,20 @@ export class NveButton extends SlButton {
       .button--outline.button--neutral {
         border-color: var(--interactive-outlined-border-default);
       }
+      .button--standard.button--neutral:hover:not(.button--disabled) {
+        background-color: var(--interactive-ghost-background-hover);
+        color: var(--sl-color-neutral-700);
+      }
+
+      .button--outline.button--neutral:hover:not(.button--disabled),
+      .button--outline.button--neutral.button--checked:not(.button--disabled) {
+        border-color: var(--interactive-outlined-border-hover);
+        color: var(--sl-color-neutral-700);
+      }
     `,
   ];
 
   @property() theme: 'nve' | 'varsom' = 'varsom';
-
-  /**
-   * Copy for the read the docs hint.
-   */
-  @property()
-  docsHint = 'Click on the Vite and Lit logos to learn more';
 
   // dette tror jeg vi kunne sette globalt et sted
   setTheme(theme: string) {

@@ -220,6 +220,11 @@ body {
   --font-families-source-sans-pro: 'Source Sans Pro';
   --font-weights-source-sans-pro-zero: 600;
   --interactive-outlined-border-default: var(--varsom-blue-200);
+  --interactive-ghost-background-hover: var(--varsom-blue-000);
+  --interactive-outlined-border-hover: var(--varsom-blue-850);
+  --interactive-primary-foreground-default: var(--grey-000);
+  --interactive-primary-foreground-hover: var(--grey-000);
+  --interactive-secondary-background-hover: var(--varsom-blue-100);
   --interactive-primary-background-default: var(--varsom-blue-850);
   --interactive-primary-background-hover: var(--varsom-blue-500);
   --interactive-primary-foreground-border-focus: var(--blue-500);
