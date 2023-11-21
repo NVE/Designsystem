@@ -9,12 +9,21 @@ export default {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
+      options: ['x-small', 'small', 'medium', 'large'],
     },
     type: {
       control: { type: 'select' },
       options: ['primary', 'secondary', 'ghost', 'outlined'],
-    }
+    },
+    variant: {
+      control: {type: 'select'},
+      options: ['default', 'primary', 'success', 'neutral' ,'warning', 'danger', 'text']
+    },
+    target: {
+      control: {type: 'select'},
+      options: ['_blank', '_parent', '_self', '_top']
+    },
+    
   },
 };
 
@@ -27,9 +36,22 @@ export const Primary = {
     trailingIcon: "edit",
     leadingIcon: "preview",
     disabled: "",
-    showLabel: true,
-    loading: false
-
+    loading: false,
+    caret:false,
+    outline:false,
+    pill:false,
+    circle:false,
+    name,
+    value: "value",
+    href: "",
+    rel:"",
+    download:"",
+    form:"",
+    formAction:"",  
+    formEnctype: "application/x-www-form-urlencoded",
+    formMethod:"post",
+    formNoValidate:false,
+    formTarget:"_blank"
   },
 };
 
