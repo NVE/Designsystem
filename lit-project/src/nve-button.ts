@@ -54,8 +54,11 @@ export class NveButton extends SlButton {
       .button--standard.button--neutral {
         border: none;
       }
-      .button--outline.button--neutral {
+
+      .button--outline.button--neutral,
+      .button--outline.button--neutral:active:not(.button--disabled) {
         border-color: var(--interactive-outlined-border-default);
+        background-color: transparent;
       }
       .button--standard.button--neutral:hover:not(.button--disabled) {
         background-color: var(--interactive-ghost-background-hover);
