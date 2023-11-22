@@ -15,11 +15,11 @@ export class NveIcon extends LitElement {
   static styles = css`
     :host {
       /* Apply Material Icons font-family to the Shadow DOM */
-      font-family: 'Material Icons';
+      font-family: 'Material Symbols Outlined';
     }
   `;
   render() {
-    return html` <span class="material-icons">${this.name}</span> `;
+    return html` <span class="material-symbols-outlined">${this.name}</span> `;
   }
 }
 declare global {
