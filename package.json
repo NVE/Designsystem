@@ -1,31 +1,14 @@
 {
-  "name": "designsystemstencil",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.js",
-  "es2015": "dist/esm/index.mjs",
-  "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/components.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/designsystemstencil/designsystemstencil.esm.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ionic-team/stencil-component-starter.git"
-  },
-  "files": [
-    "dist/",
-    "loader/"
-  ],
+  "name": "my-lit-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "build": "stencil build --docs",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "build:light": "node transform.js light",
     "build:dark": "node transform.js dark",
     "build:varsom_light": "node transform.js varsom",
@@ -33,26 +16,19 @@
     "tokenbuild": "npm run build:light && npm run build:dark && npm run build:varsom_light && npm run build:varsom_dark"
   },
   "dependencies": {
-    "@stencil/core": "^3.0.0",
-    "@storybook/html": "^6.5.16",
-    "style-dictionary-utils": "^2.0.1"
+    "@shoelace-style/shoelace": "^2.11.2",
+    "lit": "^3.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.0",
-    "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-essentials": "^6.5.16",
-    "@storybook/addon-links": "^6.5.16",
-    "@storybook/builder-webpack4": "^6.5.16",
-    "@storybook/manager-webpack4": "^6.5.16",
-    "@storybook/web-components": "^6.5.16",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.11",
-    "babel-loader": "^8.3.0",
-    "jest": "^27.5.1",
-    "jest-cli": "^27.5.1",
-    "lit-html": "^2.6.1",
-    "puppeteer": "^19.5.2",
-    "style-dictionary": "^3.9.0"
-  },
-  "license": "MIT"
+    "@storybook/addon-essentials": "^7.5.3",
+    "@storybook/addon-links": "^7.5.3",
+    "@storybook/blocks": "^7.5.3",
+    "@storybook/web-components": "^7.5.3",
+    "@storybook/web-components-vite": "^7.5.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.5.3",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0"
+  }
 }
