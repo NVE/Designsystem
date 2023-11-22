@@ -1,9 +1,11 @@
 /**
  * Do not edit directly
- * Generated on Wed, 22 Nov 2023 14:25:31 GMT
+ * Generated on Tue, 14 Nov 2023 13:14:05 GMT
  */
 
-:root.darkmode {
+:root,
+:host,
+.nve-dark {
   --dangerlevel-foreground-subtle-level5: var(--grey-950);
   --dangerlevel-foreground-subtle-level4: var(--grey-950);
   --dangerlevel-foreground-subtle-level3: var(--grey-950);
@@ -34,14 +36,14 @@
   --dangerlevel-background-mute-level3: var(--orange-150);
   --dangerlevel-background-mute-level2: var(--yellow-200);
   --dangerlevel-background-mute-level1: var(--green-150);
-  --feedback-foreground-emphasized-success: var(--grey-000);
-  --feedback-foreground-emphasized-warning: var(--grey-950);
-  --feedback-foreground-emphasized-error: var(--grey-000);
-  --feedback-foreground-emphasized-info: var(--grey-000);
-  --feedback-foreground-subtle-success: var(--grey-000);
-  --feedback-foreground-subtle-warning: var(--grey-000);
-  --feedback-foreground-subtle-error: var(--grey-000);
-  --feedback-foreground-subtle-info: var(--grey-000);
+  --feedback-foreground-emphasized-success: var(--green-100);
+  --feedback-foreground-emphasized-warning: var(--yellow-100);
+  --feedback-foreground-emphasized-error: var(--red-000);
+  --feedback-foreground-emphasized-info: var(--blue-000);
+  --feedback-foreground-subtle-success: var(--grey-150);
+  --feedback-foreground-subtle-warning: var(--grey-150);
+  --feedback-foreground-subtle-error: var(--grey-150);
+  --feedback-foreground-subtle-info: var(--grey-150);
   --feedback-foreground-default-success: var(--grey-000);
   --feedback-foreground-default-warning: var(--grey-000);
   --feedback-foreground-default-error: var(--grey-000);
@@ -49,53 +51,53 @@
   --feedback-background-emphasized-success: var(--green-800);
   --feedback-background-emphasized-warning: var(--yellow-500);
   --feedback-background-emphasized-error: var(--red-700);
-  --feedback-background-emphasized-info: var(--blue-700);
-  --feedback-background-subtle-success: var(--green-999);
-  --feedback-background-subtle-warning: var(--yellow-999);
-  --feedback-background-subtle-error: var(--red-999);
-  --feedback-background-subtle-info: var(--blue-999);
-  --feedback-background-default-success: var(--green-950);
-  --feedback-background-default-warning: var(--yellow-950);
-  --feedback-background-default-error: var(--red-950);
+  --feedback-background-emphasized-info: var(--blue-500);
+  --feedback-background-subtle-success: var(--green-800);
+  --feedback-background-subtle-warning: var(--yellow-900);
+  --feedback-background-subtle-error: var(--red-900);
+  --feedback-background-subtle-info: var(--blue-900);
+  --feedback-background-default-success: var(--green-999);
+  --feedback-background-default-warning: var(--yellow-999);
+  --feedback-background-default-error: var(--red-999);
   --feedback-background-default-info: var(--blue-950);
-  --interactive-links-visited: var(--grey-200);
+  --interactive-links-visited: var(--grey-500);
   --interactive-links-focus: var(--blue-500);
-  --interactive-links-hover: var(--grey-000);
+  --interactive-links-hover: var(--blue-700);
   --interactive-links-default: var(--blue-400);
   --interactive-ghost-border-focus: var(--blue-500);
-  --interactive-ghost-foreground-disabled: var(--grey-000);
+  --interactive-ghost-foreground-disabled: var(--grey-500);
   --interactive-ghost-foreground-hover: var(--grey-000);
   --interactive-ghost-foreground-default: var(--grey-000);
-  --interactive-ghost-background-hover: var(--grey-700);
-  --interactive-outlined-border-disabled: var(--grey-600);
-  --interactive-outlined-border-focus: var(--blue-500);
-  --interactive-outlined-border-hover: var(--grey-000);
-  --interactive-outlined-border-default: var(--grey-600);
-  --interactive-outlined-foreground-disabled: var(--grey-000);
+  --interactive-ghost-background-hover: var(--grey-600);
+  --interactive-outlined-border-disabled: var(--grey-500);
+  --interactive-outlined-border-focus: var(--blue-600);
+  --interactive-outlined-border-hover: var(--grey-200);
+  --interactive-outlined-border-default: var(--grey-050);
+  --interactive-outlined-foreground-disabled: var(--grey-500);
   --interactive-outlined-foreground-hover: var(--grey-000);
   --interactive-outlined-foreground-default: var(--grey-000);
   --interactive-secondary-border-focus: var(--blue-500);
   --interactive-secondary-foreground-disabled: var(--grey-000);
   --interactive-secondary-foreground-hover: var(--grey-000);
   --interactive-secondary-foreground-default: var(--grey-000);
-  --interactive-secondary-background-disabled: var(--grey-700);
-  --interactive-secondary-background-hover: var(--grey-600);
-  --interactive-secondary-background-default: var(--grey-700);
+  --interactive-secondary-background-disabled: var(--grey-600);
+  --interactive-secondary-background-hover: var(--grey-500);
+  --interactive-secondary-background-default: var(--grey-600);
   --interactive-primary-foreground-border-focus: var(--blue-500);
   --interactive-primary-foreground-disabled: var(--grey-950);
-  --interactive-primary-foreground-hover: var(--grey-950);
+  --interactive-primary-foreground-hover: var(--grey-800);
   --interactive-primary-foreground-default: var(--grey-950);
   --interactive-primary-background-disabled: var(--grey-000);
-  --interactive-primary-background-hover: var(--grey-150);
+  --interactive-primary-background-hover: var(--grey-050);
   --interactive-primary-background-default: var(--grey-000);
   --neutrals-border-disabled: var(--grey-500);
   --neutrals-border-subtle: var(--grey-800);
-  --neutrals-border-mute: var(--grey-950);
+  --neutrals-border-mute: var(--grey-600);
   --neutrals-border-default: var(--grey-500);
-  --neutrals-foreground-subtle: var(--grey-200);
+  --neutrals-foreground-subtle: var(--grey-150);
   --neutrals-foreground-primary: var(--grey-000);
   --neutrals-background-canvas: var(--grey-850);
-  --neutrals-background-secondary: var(--grey-700);
+  --neutrals-background-secondary: var(--grey-800);
   --neutrals-background-primary: var(--grey-950);
   --neutrals-background-primary-contrast: var(--grey-850);
   --brand-deep: var(--nve-brand-700);
