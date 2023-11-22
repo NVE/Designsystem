@@ -1,7 +1,6 @@
 {
-  "name": "my-lit-project",
-  "private": true,
-  "version": "0.0.0",
+  "name": "nve-designsystem",
+  "version": "0.0.4",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,7 +12,8 @@
     "build:dark": "node transform.js dark",
     "build:varsom_light": "node transform.js varsom",
     "build:varsom_dark": "node transform.js varsom_dark",
-    "tokenbuild": "npm run build:light && npm run build:dark && npm run build:varsom_light && npm run build:varsom_dark"
+    "tokenbuild": "npm run build:light && npm run build:dark && npm run build:varsom_light && npm run build:varsom_dark",
+    "copy-files": "cpy \"./build/css/*\" dist/css/"
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.11.2",
