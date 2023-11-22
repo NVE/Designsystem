@@ -7,14 +7,30 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface NveButton {
+        "caret": boolean;
+        "circle": boolean;
         "disabled": string;
+        "download": string | undefined;
+        "form": string;
+        "formAction": string;
+        "formEnctype": 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain';
+        "formMethod": 'post' | 'get';
+        "formNoValidate": boolean;
+        "formTarget": '_self' | '_blank' | '_parent' | '_top';
+        "href": string;
         "label": string;
         "leadingIcon": string;
         "loading": boolean;
-        "showLabel": boolean;
+        "name": string;
+        "outline": boolean;
+        "pill": boolean;
+        "rel": string;
         "size": "large" | "medium" | "small" | "x-small";
+        "target": '_blank' | '_parent' | '_self' | '_top';
         "trailingIcon": string;
         "type": "primary" | "secondary" | "outlined" | "ghost";
+        "value": string;
+        "variant": 'default' | 'primary' | 'success' | 'neutral' | 'warning' | 'danger' | 'text';
     }
 }
 declare global {
@@ -30,14 +46,30 @@ declare global {
 }
 declare namespace LocalJSX {
     interface NveButton {
+        "caret"?: boolean;
+        "circle"?: boolean;
         "disabled"?: string;
+        "download"?: string | undefined;
+        "form"?: string;
+        "formAction"?: string;
+        "formEnctype"?: 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain';
+        "formMethod"?: 'post' | 'get';
+        "formNoValidate"?: boolean;
+        "formTarget"?: '_self' | '_blank' | '_parent' | '_top';
+        "href"?: string;
         "label"?: string;
         "leadingIcon"?: string;
         "loading"?: boolean;
-        "showLabel"?: boolean;
+        "name"?: string;
+        "outline"?: boolean;
+        "pill"?: boolean;
+        "rel"?: string;
         "size"?: "large" | "medium" | "small" | "x-small";
+        "target"?: '_blank' | '_parent' | '_self' | '_top';
         "trailingIcon"?: string;
         "type"?: "primary" | "secondary" | "outlined" | "ghost";
+        "value"?: string;
+        "variant"?: 'default' | 'primary' | 'success' | 'neutral' | 'warning' | 'danger' | 'text';
     }
     interface IntrinsicElements {
         "nve-button": NveButton;

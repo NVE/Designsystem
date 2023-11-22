@@ -8,12 +8,21 @@ export default {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
+      options: ['x-small', 'small', 'medium', 'large'],
     },
     type: {
       control: { type: 'select' },
       options: ['primary', 'secondary', 'ghost', 'outlined'],
     },
+    variant: {
+      control: {type: 'select'},
+      options: ['default', 'primary', 'success', 'neutral' ,'warning', 'danger', 'text']
+    },
+    target: {
+      control: {type: 'select'},
+      options: ['_blank', '_parent', '_self', '_top']
+    },
+    
   },
 };
 
@@ -21,12 +30,26 @@ export default {
 export const Primary = {
   args: {
     label: 'Button',
-    size: 'large',
-    type: 'primary',
-    trailingIcon: 'edit',
-    leadingIcon: 'preview',
-    disabled: false,
-    showLabel: true,
+    size: "large",
+    type: "primary",
+    trailingIcon: "edit",
+    leadingIcon: "preview",
+    disabled: "",
     loading: false,
+    caret:false,
+    outline:false,
+    pill:false,
+    circle:false,
+    name,
+    value: "value",
+    href: "",
+    rel:"",
+    download:"",
+    form:"",
+    formAction:"",  
+    formEnctype: "application/x-www-form-urlencoded",
+    formMethod:"post",
+    formNoValidate:false,
+    formTarget:"_blank"
   },
 };

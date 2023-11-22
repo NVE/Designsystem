@@ -5,7 +5,7 @@
       "type": "color"
     },
     "Light": {
-      "value": "{varsom_brand.100}",
+      "value": "{varsom_brand.000}",
       "type": "color"
     },
     "Deep": {
@@ -16,7 +16,7 @@
   "Neutrals": {
     "Background": {
       "Primary-Contrast": {
-        "value": "{grey.950}",
+        "value": "{varsom_blue.950}",
         "type": "color"
       },
       "Primary": {
@@ -44,29 +44,21 @@
     },
     "Border": {
       "Default": {
-        "value": "{grey.150}",
-        "type": "color"
-      },
-      "Mute": {
         "value": "{grey.500}",
         "type": "color"
       },
+      "Mute": {
+        "value": "{varsom_blue.999}",
+        "type": "color"
+      },
       "Subtle": {
-        "value": "{varsom_blue.500}",
+        "value": "{varsom_blue.800}",
         "type": "color"
       },
       "Disabled": {
-        "value": "{grey.150}",
+        "value": "{grey.500}",
         "type": "color",
-        "$extensions": {
-          "studio.tokens": {
-            "modify": {
-              "type": "alpha",
-              "value": "0.38",
-              "space": "lch"
-            }
-          }
-        }
+        "$extensions": {}
       }
     }
   },
@@ -74,48 +66,32 @@
     "Primary": {
       "Background": {
         "Default": {
-          "value": "{grey.000}",
-          "type": "color"
-        },
-        "Hover": {
           "value": "{varsom_blue.000}",
           "type": "color"
         },
+        "Hover": {
+          "value": "{varsom_blue.050}",
+          "type": "color"
+        },
         "Disabled": {
-          "value": "{grey.000}",
+          "value": "{varsom_blue.000}",
           "type": "color",
-          "$extensions": {
-            "studio.tokens": {
-              "modify": {
-                "type": "alpha",
-                "value": "0.38",
-                "space": "lch"
-              }
-            }
-          }
+          "$extensions": {}
         }
       },
       "Foreground": {
         "Default": {
-          "value": "{varsom_blue.800}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.500}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.800}",
+          "value": "{varsom_blue.999}",
           "type": "color",
-          "$extensions": {
-            "studio.tokens": {
-              "modify": {
-                "type": "alpha",
-                "value": "0.38",
-                "space": "lch"
-              }
-            }
-          }
+          "$extensions": {}
         },
         "Border": {
           "Focus": {
@@ -128,39 +104,31 @@
     "Secondary": {
       "Background": {
         "Default": {
-          "value": "{varsom_blue.100}",
+          "value": "{varsom_blue.800}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.000}",
+          "value": "{varsom_blue.600}",
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.600}",
+          "value": "{varsom_blue.800}",
           "type": "color"
         }
       },
       "Foreground": {
         "Default": {
-          "value": "{varsom_blue.850}",
+          "value": "{grey.000}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.850}",
+          "value": "{grey.000}",
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.850}",
+          "value": "{grey.000}",
           "type": "color",
-          "$extensions": {
-            "studio.tokens": {
-              "modify": {
-                "type": "alpha",
-                "value": "0.38",
-                "space": "lch"
-              }
-            }
-          }
+          "$extensions": {}
         }
       },
       "Border": {
@@ -181,51 +149,35 @@
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.850}",
+          "value": "{grey.000}",
           "type": "color",
-          "$extensions": {
-            "studio.tokens": {
-              "modify": {
-                "type": "alpha",
-                "value": "0.38",
-                "space": "lch"
-              }
-            }
-          }
+          "$extensions": {}
         }
       },
       "Border": {
         "Default": {
-          "value": "{varsom_blue.100}",
+          "value": "{varsom_blue.500}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.200}",
+          "value": "{grey.000}",
           "type": "color"
         },
         "Focus": {
-          "value": "{blue.600}",
+          "value": "{blue.500}",
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.800}",
+          "value": "{varsom_blue.100}",
           "type": "color",
-          "$extensions": {
-            "studio.tokens": {
-              "modify": {
-                "type": "alpha",
-                "value": "0.38",
-                "space": "lch"
-              }
-            }
-          }
+          "$extensions": {}
         }
       }
     },
     "Ghost": {
       "Background": {
         "Hover": {
-          "value": "{varsom_blue.500}",
+          "value": "{varsom_blue.800}",
           "type": "color"
         }
       },
@@ -239,17 +191,9 @@
           "type": "color"
         },
         "Disabled": {
-          "value": "{grey.500}",
+          "value": "{grey.000}",
           "type": "color",
-          "$extensions": {
-            "studio.tokens": {
-              "modify": {
-                "type": "alpha",
-                "value": "0.38",
-                "space": "lch"
-              }
-            }
-          }
+          "$extensions": {}
         }
       },
       "Border": {
@@ -265,7 +209,7 @@
         "type": "color"
       },
       "Hover": {
-        "value": "{blue.700}",
+        "value": "{grey.000}",
         "type": "color"
       },
       "Focus": {
@@ -286,6 +230,24 @@
           "type": "color"
         },
         "Error": {
+          "value": "{red.950}",
+          "type": "color"
+        },
+        "Warning": {
+          "value": "{yellow.950}",
+          "type": "color"
+        },
+        "Success": {
+          "value": "{green.950}",
+          "type": "color"
+        }
+      },
+      "Subtle": {
+        "Info": {
+          "value": "{blue.999}",
+          "type": "color"
+        },
+        "Error": {
           "value": "{red.999}",
           "type": "color"
         },
@@ -295,24 +257,6 @@
         },
         "Success": {
           "value": "{green.999}",
-          "type": "color"
-        }
-      },
-      "Subtle": {
-        "Info": {
-          "value": "{blue.900}",
-          "type": "color"
-        },
-        "Error": {
-          "value": "{red.900}",
-          "type": "color"
-        },
-        "Warning": {
-          "value": "{yellow.900}",
-          "type": "color"
-        },
-        "Success": {
-          "value": "{green.800}",
           "type": "color"
         }
       },
@@ -356,37 +300,37 @@
       },
       "Subtle": {
         "Info": {
-          "value": "{grey.150}",
+          "value": "{grey.000}",
           "type": "color"
         },
         "Error": {
-          "value": "{grey.150}",
+          "value": "{grey.000}",
           "type": "color"
         },
         "Warning": {
-          "value": "{grey.150}",
+          "value": "{grey.000}",
           "type": "color"
         },
         "Success": {
-          "value": "{grey.150}",
+          "value": "{grey.000}",
           "type": "color"
         }
       },
       "Emphasized": {
         "Info": {
-          "value": "{blue.000}",
+          "value": "{grey.000}",
           "type": "color"
         },
         "Error": {
-          "value": "{red.000}",
+          "value": "{grey.000}",
           "type": "color"
         },
         "Warning": {
-          "value": "{yellow.100}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Success": {
-          "value": "{green.100}",
+          "value": "{grey.000}",
           "type": "color"
         }
       }
@@ -464,19 +408,19 @@
     "Foreground": {
       "Default": {
         "Level1": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Level2": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Level3": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Level4": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Level5": {
@@ -486,45 +430,45 @@
       },
       "Mute": {
         "Level1": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Level2": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Level3": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Level4": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Level5": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         }
       },
       "Subtle": {
         "Level1": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Level2": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Level3": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Level4": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         },
         "Level5": {
-          "value": "{grey.950}",
+          "value": "{varsom_blue.999}",
           "type": "color"
         }
       }

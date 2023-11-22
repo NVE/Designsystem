@@ -8,8 +8,8 @@
     "public/device/mobile",
     "public/device/mobile_sm",
     "Theme/nve_light",
-    "Theme/varsom_light",
     "Theme/nve_dark",
+    "Theme/varsom_light",
     "Theme/varsom_dark"
   ]
 }
