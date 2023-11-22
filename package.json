@@ -1,7 +1,7 @@
 {
   "name": "nve-designsystem",
   "version": "0.0.4",
-  "type": "module",
+  
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -17,7 +17,8 @@
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.11.2",
-    "lit": "^3.0.2"
+    "lit": "^3.0.2",
+    "style-dictionary-utils": "^2.0.4"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.5.3",
