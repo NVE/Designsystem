@@ -5,7 +5,7 @@ import { NveButton } from './NveButton';
 export default {
   title: 'NveButton', // Title for the component in Storybook
   component: 'nve-button',
-  render: (args) => NveButton(args),
+  render: (args: { theme: string; variant: string; size: string; disabled: boolean; loading: boolean; outline: boolean; }) => NveButton(args),
   argTypes: {
     size: {
       control: { type: 'select' },

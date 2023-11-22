@@ -1,6 +1,6 @@
-import { SlIcon } from '@shoelace-style/shoelace';
+//import { SlIcon } from '@shoelace-style/shoelace';
 import { customElement, property } from 'lit/decorators.js';
-import { registerIconLibrary } from '@shoelace-style/shoelace';
+//import { registerIconLibrary } from '@shoelace-style/shoelace';
 import { css, html, LitElement } from 'lit';
 
 /**
