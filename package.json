@@ -1,7 +1,6 @@
 {
   "name": "nve-designsystem",
   "version": "0.0.4",
-  
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -17,6 +16,7 @@
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.11.2",
+    "cpy-cli": "^5.0.0",
     "lit": "^3.0.2",
     "style-dictionary-utils": "^2.0.4"
   },
