@@ -6,7 +6,7 @@ Dette repository inneholder Figma-tokens og komponentbibliotek basert på Shoela
 
 For å bygge css basert på tokens fra Figma, kjør følgende kommando: "npm run tokenbuild." <br>
 
-### **Import av komponenter i Vue (MÅ TESTES MED LIT)**
+### **Import av komponenter i Vue**
 
 1. npm i nve-designsystem
 2. I vite.config: Under defineConfig, Legg inn compilerOptions: { isCustomElement: (tag) => tag.includes('nve-') }
@@ -22,7 +22,7 @@ loading\> Tekst på knapp
 \</nve-button\> <br>
 Trailing-icon og leading-icon tar imot ikonnavn fra Material Design Symbols.
 
-### **Storybook (MÅ OPPDATERES)**
+### **Storybook**
 
 Komponentene kan ses i Storybook med ulike parametere: https://main--65322c4ee3062d1c117bb2d5.chromatic.com/ <br>
 For å kjøre Storybook lokalt, kjør "npm run build; npm run storybook;" <br>
