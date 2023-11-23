@@ -17,6 +17,10 @@ export class NveIcon extends LitElement {
       /* Apply Material Icons font-family to the Shadow DOM */
       font-family: 'Material Symbols Outlined';
     }
+    /* we need it to center the icon */
+    :is(span) {
+      display: flex;
+    }
   `;
   render() {
     return html` <span class="material-symbols-outlined">${this.name}</span> `;

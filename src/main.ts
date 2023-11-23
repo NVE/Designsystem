@@ -1,5 +1,6 @@
 // main.ts (or main.js if using JavaScript)
 import { html, render } from 'lit';
+import './styles/global.css';
 const app = html`<table>
   <hr />
   <th>Variant</th>
