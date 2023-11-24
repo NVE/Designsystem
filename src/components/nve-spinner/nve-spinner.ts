@@ -1,6 +1,5 @@
 import { customElement } from 'lit/decorators.js';
 import { SlSpinner } from '@shoelace-style/shoelace';
-import './varsom.css';
 import { css } from 'lit';
 
 @customElement('nve-spinner')

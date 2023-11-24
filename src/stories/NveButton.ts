@@ -1,14 +1,12 @@
 import { html } from 'lit';
 
 export const NveButton = ({
-  theme,
   variant,
   size,
   disabled,
   loading,
   outline,
 }: {
-  theme: string;
   variant: string;
   size: string;
   disabled: boolean;
@@ -18,7 +16,6 @@ export const NveButton = ({
   if (loading)
     return html`
       <nve-button
-        theme=${theme}
         variant=${variant}
         size=${size}
         .disabled=${disabled}
@@ -30,7 +27,6 @@ export const NveButton = ({
     `;
   return html`
     <nve-button
-      theme=${theme}
       variant=${variant}
       size=${size}
       .disabled=${disabled}
