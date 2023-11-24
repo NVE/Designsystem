@@ -5,11 +5,13 @@ const fontFamilies = require('./customtransforms/fontFamilies.js');
 const fontWeights = require('./customtransforms/fontWeights.js');
 const boxShadow = require('./customtransforms/boxShadow.js')
 const fontSizes = require('./customtransforms/fontSizes.js');
+const fixZeroes = require('./customtransforms/fixZeroes.js');
 
 StyleDictionary.registerTransform(fontFamilies);
 StyleDictionary.registerTransform(fontWeights);
 StyleDictionary.registerTransform(boxShadow);
 StyleDictionary.registerTransform(fontSizes);
+StyleDictionary.registerTransform(fixZeroes);
 
 const lightModeFile = "tokens/Theme/nve_light.json";
 const darkModeFile = "tokens/Theme/nve_dark.json";
@@ -68,6 +70,7 @@ const myStyleDictionary = StyleDictionary.extend({
       transforms: [
         "attribute/cti",
         "name/cti/kebab",      
+        "fixZeroes",
         "font/css",
         "fontsizes/px",
         "fontFamilies/css",
@@ -94,7 +97,8 @@ const myStyleDictionary = StyleDictionary.extend({
       buildPath: "build/css/",
       transforms: [
         "attribute/cti",
-        "name/cti/kebab",        
+        "name/cti/kebab",   
+        "fixZeroes",     
         "font/css",
         "fontsizes/px",
         "fontFamilies/css",
@@ -102,6 +106,7 @@ const myStyleDictionary = StyleDictionary.extend({
         "fontWeight/number",
         "fontWeights/number",
         "boxshadow/css",
+        
         "shadow/css",
       ],
       files: [
