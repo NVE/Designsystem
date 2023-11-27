@@ -5,10 +5,6 @@ Dette repository inneholder css generert fra Figma-tokens og komponentbibliotek 
 
 ## Skal du bruke NVE designsystem? Denne seksjonen er for deg.
 
-### **Bygge css**
-
-For å bygge css filer som inneholder verdier basert på tokens fra Figma, kjør følgende kommando: "npm run tokenbuild." <br>
-
 ### **Oppsett i Vue**
 
 1. Install pakke med `npm i nve-designsystem`.
@@ -59,18 +55,21 @@ Komponentene kan ses og testes i Storybook med ulike parametere og varianter: ht
 
 ## Skal du utvikle NVE designsystem? Denne seksjonen er for deg.
 
+### **Bygge css**
+
+For å bygge css filer som inneholder verdier basert på tokens fra Figma, kjør følgende kommando: "npm run tokenbuild." <br>
+
 ### **npm**
 
 For å publisere på npm, må man oppdatere versjonsnr. i package.json og package-lock.json. Deretter kjør kommando `npm publish --access public`. Dette krever at man er innlogget på npm. For at CSS-variabler skal være tilgjengelig i npm-pakken, må css-filer kopieres. Dette gjøres ved å kjøre kommando `npm run copy-files`.
 
-### **kjøremiljø**
+### **Kjøremiljø**
 
 Prosjekt importerer shoelace npm pakke. Kjør `npm run dev` for utvikling.
 For å teste en komponent i main.ts må man huske å legge til script tag med komponenten i index.html fila som f.eks. <script type="module" src="/src/nve-button.ts"></script>
 
-### storybook
+### Storybook
 
 For å kjøre Storybook lokalt, kjør `npm run storybook`
 
-<br>
 For å publisere Storybook på Chromatic, kjør `npm run build; npm run build-storybook`. Deretter må det kjøres en kommando med project token fra Chromatic: `npx chromatic --project-token=\<project-token\>`
