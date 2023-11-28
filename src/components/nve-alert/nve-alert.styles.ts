@@ -31,12 +31,12 @@ export default css`
   }
 }
 .alert__message::after {
-  content: var(--dynamic-content-text);
+  content: var(nve-alert-text);
   font: var(--body-medium-default);
   
 }
 .alert__message::before{
-  content: var(--dynamic-content-title);
+  content: var(--nve-alert-title);
   font: var(--header-small);
   font-weight: 600;
   white-space: nowrap;

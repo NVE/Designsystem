@@ -17,10 +17,10 @@ export class NveAlert extends SlAlert {
   ];
   updated(changedProperties: any) {
     if (changedProperties.has('title')) {
-      this.style.setProperty('--dynamic-content-title',`"${this.title}"`);
+      this.style.setProperty('--nve-alert-title',`"${this.title}"`);
     }
     if (changedProperties.has('text')) {
-      this.style.setProperty('--dynamic-content-text',`"${this.text}"`);
+      this.style.setProperty('--nve-alert-text',`"${this.text}"`);
     }
   }
 }
