@@ -2,3 +2,7 @@
 /node_modules
 .eslintrc.js
 /vite.config.ts
+/tokens
+/www
+/build
+/loader

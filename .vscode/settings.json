@@ -7,19 +7,23 @@
     "source.fixAll": true,
     "source.organizeImports": false
   },
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSaveMode": "file"
-  },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSaveMode": "file"
   },
-  "[scss]": {
+  "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSaveMode": "file"
   },
   "[ts]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSaveMode": "file"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSaveMode": "file"
+  },
+  "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSaveMode": "file"
   }
