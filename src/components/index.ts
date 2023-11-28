@@ -1,9 +1,11 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 export * from './nve-alert/nve-alert';
 export * from './nve-button/nve-button';
-export * from './nve-label/nve-label';
+export * from './nve-checkbox-group/nve-checkbox-group';
+export * from './nve-checkbox/nve-checkbox';
 export * from './nve-icon/nve-icon';
 export * from './nve-input/nve-input';
+export * from './nve-label/nve-label';
 export * from './nve-radio/nve-radio.component';
 export * from './nve-radio-button/nve-radio-button.component';
 export * from './nve-radio-group/nve-radio-group.component';
