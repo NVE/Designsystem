@@ -14,14 +14,15 @@ export default {
     closable: boolean;
     open: boolean;
     showIcon: boolean;
-    iconName: string;
   }) => NveAlert(args),
   argTypes: {
     text: { control: { type: 'text' }},
     title: { control: {type: 'text'}},
-    variant: { table: { disable: true }},
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'warning', 'success', 'danger', 'neutral'],
+    },
     open: { table: { disable: true }},
-    iconName: { table: { disable: true }}
   },
 };
 
@@ -34,63 +35,9 @@ export const Primary = {
     emphasized: false,
     closable: true,
     showIcon: true,
-    iconName: 'info',
     open: true
   },
 };
 
-export const Warning = {
-  args: {
-    variant: 'warning',
-    text: 'this is some example text',
-    title: 'Advarsel',
-    leftStroke: false,
-    emphasized: false,
-    closable: true,
-    showIcon: true,
-    iconName: 'warning',
-    open: true
-  },
-};
 
-export const Success = {
-  args: {
-    variant: 'success',
-    text: 'this is some example text',
-    title: 'Success',
-    leftStroke: false,
-    emphasized: false,
-    closable: true,
-    showIcon: true,
-    iconName: 'check_circle',
-    open: true
-  },
-};
 
-export const Danger = {
-  args: {
-    variant: 'danger',
-    text: 'this is some example text',
-    title: 'Feil',
-    leftStroke: true, 
-    emphasized: false,
-    closable: true,
-    showIcon: true,
-    iconName: 'error',
-    open: true
-  },
-};
-
-export const Neutral = {
-    args: {
-      variant: 'neutral',
-      text: 'this is some example text',
-      title: 'Tittel',
-      leftStroke: false,
-      emphasized: false,
-      closable: true,
-      showIcon: true,
-      iconName: 'help',
-      open: true
-    },
-  };

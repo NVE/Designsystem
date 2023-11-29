@@ -9,7 +9,6 @@ export const NveAlert = ({
   closable,
   open,
   showIcon,
-  iconName 
 }: {
   variant: string;
   text: string;
@@ -19,8 +18,30 @@ export const NveAlert = ({
   closable: boolean;
   open: boolean;
   showIcon: boolean;
-  iconName: string;
 }) => {
+
+  let iconName; 
+  
+  switch(variant) {
+    case 'primary':
+      iconName = 'info';
+      break;
+    case 'danger':
+      iconName = 'error';
+      break;
+    case 'success':
+      iconName = 'check_circle';
+      break;
+    case 'warning':
+      iconName = 'warning';
+      break;
+    case 'neutral':
+      iconName = 'help';
+      break;
+    default:
+      iconName = 'help';
+  }
+
   return html`
     <nve-alert
       variant=${variant}

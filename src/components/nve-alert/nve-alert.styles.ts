@@ -31,10 +31,10 @@ export default css`
   }
 }
 .alert__message::after {
-  content: var(nve-alert-text);
+  content: var(--nve-alert-text);
   font: var(--body-medium-default);
-  
 }
+
 .alert__message::before{
   content: var(--nve-alert-title);
   font: var(--header-small);

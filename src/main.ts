@@ -1,6 +1,5 @@
 // test-applikasjon for komponentbiblioteket
 import { render } from 'lit';
-import './styles/imports.css';
 import '../build/css/varsom.css';
 import './styles/global.css';
 import './styles/testsite.css';
