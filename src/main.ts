@@ -86,5 +86,15 @@ const app = html`<table>
       </nve-button>
     </td>
   </tr>
+  <tr>
+  <td>dropdown</td>
+  <td><nve-dropdown>
+  <sl-button slot="trigger" caret>Dropdown</sl-button>
+  <sl-menu>
+    <sl-menu-item>Dropdown Item 1</sl-menu-item>
+  </sl-menu>
+</nve-dropdown>
+</td>
+</tr>
 </table> `;
 render(app, document.getElementById('app')!); // Render the Lit app in the specified container
