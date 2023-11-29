@@ -72,7 +72,7 @@ export const Danger = {
     variant: 'danger',
     text: 'this is some example text',
     title: 'Feil',
-    leftStroke: false,
+    leftStroke: true, 
     emphasized: false,
     closable: true,
     showIcon: true,
