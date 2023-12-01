@@ -10,23 +10,70 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
     <link rel="stylesheet" href="./build/css/varsom.css" />
-    <script
-      type="module"
-      src="/src/components/nve-button/nve-button.ts"
-    ></script>
-    <script
-      type="module"
-      src="/src/components/nve-spinner/nve-spinner.ts"
-    ></script>
+    <script type="module" src="/src/components/nve-button/nve-button.ts"></script>
+    <script type="module" src="/src/components/nve-spinner/nve-spinner.ts"></script>
     <script type="module" src="/src/components/nve-icon/nve-icon.ts"></script>
+    <script type="module" src="/src/components/nve-radio/nve-radio.ts"></script>
+    <script type="module" src="/src/components/nve-radio-group/nve-radio-group.ts"></script>
+    <style>
+      .demo table {
+        border-collapse: separate;
+        border-spacing: 0;
+        position: relative;
+        /* For the pseudo-element */
+      }
+
+      .demo th,
+      .demo td {
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .demo td:not(:first-child) {
+        border-bottom: 1px dashed black;
+        border-right: 1px dashed black;
+      }
+
+      .demo tr:first-child td:first-child {
+        width: 150px;
+      }
+
+      /* første og siste rad */
+      .demo tr:first-child td:not(:first-child) {
+        border-top: none;
+      }
+
+      .demo tr:last-child td:not(:first-child) {
+        border-bottom: none;
+      }
+
+      /* ta bort siste høyre */
+      .demo td:last-child {
+        border-right: none;
+      }
+
+      /* gruppe-ramme */
+      .demo tbody:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 11.4rem;
+        right: 0;
+        bottom: 0;
+        border: 1px dashed black;
+        border-radius: 10px;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .demo tbody {
+        position: relative;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
-    <nve-button
-    trailing-icon
-    ></nve-button>
     <!-- This div serves as a container for your Lit app -->
-
     <!-- Import your Vite-generated JS entry point -->
     <script type="module" src="/src/main.ts"></script>
   </body>
