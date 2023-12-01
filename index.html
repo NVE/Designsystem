@@ -10,24 +10,24 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
     <link rel="stylesheet" href="./build/css/varsom.css" />
-    <script
-      type="module"
-      src="/src/components/nve-button/nve-button.ts"
-    ></script>
-    <script
-      type="module"
-      src="/src/components/nve-spinner/nve-spinner.ts"
-    ></script>
+    <script type="module" src="/src/components/nve-button/nve-button.ts"></script>
+    <script type="module" src="/src/components/nve-spinner/nve-spinner.ts"></script>
     <script type="module" src="/src/components/nve-icon/nve-icon.ts"></script>
+    <script type="module" src="/src/components/nve-danger-lvl/nve-danger-lvl.ts"></script>
   </head>
   <body>
     <div id="app"></div>
-    <nve-button
-    trailing-icon
-    ></nve-button>
+    <nve-button trailing-icon></nve-button>
     <!-- This div serves as a container for your Lit app -->
-
+    <nve-danger-lvl active showIcon level="3" size="medium"></nve-danger-lvl>
     <!-- Import your Vite-generated JS entry point -->
+    <script>
+      const nveDangerLvl = document.querySelector('nve-danger-lvl');
+
+      nveDangerLvl.addEventListener('nve-click', function (event) {
+        console.log(event.detail.active);
+      });
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
