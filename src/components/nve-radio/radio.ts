@@ -2,45 +2,7 @@ import { html } from 'lit';
 const table = html`
     <hr />
     <h3>Radio</h3>
-    <table class="demo">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Default</th>
-                <th>Disabled</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Unchecked</td>
-                <td>
-                    <nve-radio-group value="">
-                        <nve-radio value="1"></nve-radio>
-                    </nve-radio-group>
-                </td>
-                <td>
-                    <nve-radio-group value="">
-                        <nve-radio value="1" disabled></nve-radio>
-                    </nve-radio-group>
-                </td>
-            </tr>
-            <tr>
-                <td>Checked</td>
-                <td>
-                    <nve-radio-group value="1">
-                        <nve-radio value="1"></nve-radio>
-                    </nve-radio-group>
-                </td>
-                <td>
-                    <nve-radio-group value="1">
-                        <nve-radio value="1" disabled></nve-radio>
-                    </nve-radio-group>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>Radio with label</h3>
+    <p>Radios should _not_ be used without label.</p><p>Click here and press tab to see focus.</p>
     <table class="demo">
         <thead>
             <tr>
@@ -53,21 +15,21 @@ const table = html`
             <tr>
                 <td>Default</td>
                 <td>
-                    <nve-radio-group value="">
+                    <nve-radio-group value="0">
                         <nve-radio value="1">Unchecked</nve-radio>
                     </nve-radio-group>
                 </td>
                 <td>
                     <nve-radio-group value="1">
-                        <nve-radio value="1">Checked</nve-radio>
+                        <nve-radio value="1">Checked The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet.."</nve-radio>
                     </nve-radio-group>
                 </td>
             </tr>
             <tr>
                 <td>Disabled</td>
                 <td>
-                    <nve-radio-group value="">
-                        <nve-radio value="1" disabled>Unchecked</nve-radio>
+                    <nve-radio-group value="0">
+                        <nve-radio value="1" disabled>Unchecked The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet.."</nve-radio>
                     </nve-radio-group>
                 </td>
                 <td>
@@ -75,7 +37,52 @@ const table = html`
                         <nve-radio value="1" disabled>Checked</nve-radio>
                     </nve-radio-group>
                 </td>
-            </tr>            
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Radio-group</h3>
+    <table class="demo">
+        <thead>
+            <tr>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>
+                    <nve-radio-group horizontal value="1" label="Horizontal">
+                        <nve-radio value="1">Value</nve-radio>
+                        <nve-radio value="2">Value</nve-radio>
+                        <nve-radio value="3">Value</nve-radio>
+                        <nve-radio value="4">Value</nve-radio>
+                    </nve-radio-group>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <nve-radio-group size="small" vertical value="2" label="Vertical">
+                        <nve-radio value="1">Value The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet.."</nve-radio>
+                        <nve-radio value="2">Value The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet.."</nve-radio>
+                        <nve-radio value="3">Value</nve-radio>
+                        <nve-radio value="4">Value</nve-radio>
+                    </nve-radio-group>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <nve-radio-group vertical value="3">
+                        <slot name="label">Vertical with slotted label"</slot>
+                        <nve-radio value="1">Value</nve-radio>
+                        <nve-radio value="2">Value The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet.."</nve-radio>
+                        <nve-radio value="3">Value</nve-radio>
+                        <nve-radio value="4">Value</nve-radio>
+                    </nve-radio-group>
+                </td>
+            </tr>
         </tbody>
     </table>
 `;

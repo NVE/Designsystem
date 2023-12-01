@@ -1,21 +1,26 @@
-import { css } from 'lit';
+import { css } from "lit";
 
 export default css`
+    /* Vis hover effekt på hele sammensatte komponenten */
     :host(:hover),
-    :host(:hover)::part(label),
     :host(:hover)::part(control),
+    :host(:hover)::part(label),
     :host(:hover)::part(base) {
-        border-color: var(--interactive-primary-foreground-hover);
-        color: var(--interactive-primary-foreground-hover);
-        background-color: var(--interactive-primary-background-hover);
-        /* background-color: var(--neutrals-background-primary); */
+        color: var(--neutrals-foreground-subtle);
     }
 
-    :host(:focus) {        
-        border: 2px solid var(--interactive-primary-foreground-border-focus, #008ffb);
+    /* Sett "ring" og fjern default blå bakgrunn fra shoelace */
+    :host(:hover)::part(control) {
+        border: solid var(--sl-input-border-width) var(--neutrals-foreground-subtle);
+        background-color: var(--neutrals-background-primary);
     }
 
-    /* Overstyr farge på "prikken" i kontrollen */
+    /* overstyr opacity på disabled */
+    .radio--disabled {
+        opacity: 0.38;
+    }
+
+    /* Overstyr styling på control, label og radio */
     .radio__control {
         color: var(--neutrals-foreground-primary);
         border: solid var(--sl-input-border-width) var(--neutrals-foreground-primary);
@@ -23,7 +28,7 @@ export default css`
 
     .radio__label {
         display: inline-flex;
-        margin-inline-start: unset;
+        margin-inline-start: unset; /* 0.5rem; ta bort margin */
     }
 
     .radio {
@@ -34,11 +39,7 @@ export default css`
 
         display: inline-flex;
         align-items: center;
-        gap: var(--spacing-x-small, 0.5rem);
-    }
-
-    .radio--disabled {
-        opacity: 0.38;
+        gap: var(--spacing-x-small, 0.5rem); /* sett gap */
     }
 
     .radio--checked .radio__control {

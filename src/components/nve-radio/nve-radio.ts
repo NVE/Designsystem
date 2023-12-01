@@ -1,13 +1,6 @@
 import { customElement } from "lit/decorators.js";
-import { SlRadio, SlRadioButton } from "@shoelace-style/shoelace";
+import { SlRadio } from "@shoelace-style/shoelace";
 import styles from "./nve-radio.styles";
-
-@customElement("nve-radio-button")
-export class NveRadioButton extends SlRadioButton {
-    constructor() {
-        super();
-    }
-}
 
 @customElement("nve-radio")
 export class NveRadio extends SlRadio {
@@ -20,7 +13,5 @@ export class NveRadio extends SlRadio {
 declare global {
     interface HTMLElementTagNameMap {
         "nve-radio": NveRadio;
-        "nve-radio-button": NveRadioButton;
     }
 }
-
