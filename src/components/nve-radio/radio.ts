@@ -75,7 +75,7 @@ const table = html`
                 <td></td>
                 <td>
                     <nve-radio-group vertical value="3">
-                        <slot name="label">Vertical with slotted label"</slot>
+                        <slot name="label"><span style="font-family:consolas;">Vertical with <b>slotted</b> label</span></slot>
                         <nve-radio value="1">Value</nve-radio>
                         <nve-radio value="2">Value The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet.."</nve-radio>
                         <nve-radio value="3">Value</nve-radio>

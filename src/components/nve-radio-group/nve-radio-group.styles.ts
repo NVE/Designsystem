@@ -15,6 +15,7 @@ export default css`
     :host::part(form-control-label) {
         display: flex;
         color: var(--neutrals-foreground-primary);
+        font: var(--label-x-small-light);
         margin-bottom: unset;
         text-align: left;
     }
@@ -28,5 +29,5 @@ export default css`
     }
     :host([vertical])::part(form-control-input) {
         flex-direction: column;
-    }
+    }    
 `;
