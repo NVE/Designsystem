@@ -3,12 +3,14 @@ import { SlDropdown, SlSelectEvent } from '@shoelace-style/shoelace';
 import { NveMenu } from '../nve-menu';
 import { getTabbableBoundary } from '../../utils/tabbable';
 import { NveButton } from '../nve-button/nve-button';
+import styles from './nve-dropdown.styles'
 
 @customElement('nve-dropdown')
 export class NveDropdown extends SlDropdown {
   constructor() {
     super();
   }
+  static styles = [styles];
 
   getMenu() {
     return this.panel.assignedElements({ flatten: true }).find(el => el.tagName.toLowerCase() === 'nve-menu') as
@@ -42,12 +44,10 @@ export class NveDropdown extends SlDropdown {
 
     // Hide the dropdown when a menu item is selected
     if (!this.stayOpenOnSelect && target.tagName.toLowerCase() === 'nve-menu') {
-      this.hide();
+      //this.hide();
       this.focusOnTrigger();
     }
   };
-
-
   
 }
 

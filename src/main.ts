@@ -18,9 +18,7 @@ const app = html`<table>
       <nve-button size="medium" variant="default">I'm a NVE-butotn</nve-button>
     </td>
     <td>
-      <nve-button size="medium" variant="neutral" outline
-        >I'm a NVE-butotn</nve-button
-      >
+      <nve-button size="medium" variant="neutral" outline>I'm a NVE-butotn</nve-button>
     </td>
     <td>
       <nve-button size="medium" variant="neutral">I'm a NVE-butotn</nve-button>
@@ -35,9 +33,7 @@ const app = html`<table>
       <nve-button size="large" variant="default">I'm a NVE-butotn</nve-button>
     </td>
     <td>
-      <nve-button size="large" variant="neutral" outline
-        >I'm a NVE-butotn</nve-button
-      >
+      <nve-button size="large" variant="neutral" outline>I'm a NVE-butotn</nve-button>
     </td>
     <td>
       <nve-button size="large" variant="neutral">I'm a NVE-butotn</nve-button>
@@ -52,9 +48,7 @@ const app = html`<table>
       <nve-button size="small" variant="default">I'm a NVE-butotn</nve-button>
     </td>
     <td>
-      <nve-button size="small" variant="neutral" outline
-        >I'm a NVE-butotn</nve-button
-      >
+      <nve-button size="small" variant="neutral" outline>I'm a NVE-butotn</nve-button>
     </td>
     <td>
       <nve-button size="small" variant="neutral">I'm a NVE-butotn</nve-button>
@@ -62,7 +56,9 @@ const app = html`<table>
   </tr>
   <tr>
     <td>neutral</td>
-    <td><nve-button variant="neutral" outline> im a butotn</nve-button></td>
+    <td>
+      <nve-button variant="neutral" outline> im a butotn</nve-button>
+    </td>
   </tr>
   <tr>
     <td>loading</td>
@@ -76,25 +72,20 @@ const app = html`<table>
       <nve-button variant="neutral" outline>
         im a butotn
         <!-- Hvis vi vil ha både label og spinner kan vi ikke bruke loading property på knappen og span med suffix må renders kondisjonelt -->
-        <span slot="suffix"><nve-spinner></nve-spinner></span>
+        <span slot="suffix">
+          <nve-spinner></nve-spinner>
+        </span>
       </nve-button>
     </td>
     <td>
       <nve-button variant="neutral" outline>
         im a butotn
-        <span slot="prefix"> <nve-icon name="search"></nve-icon></span>
+        <span slot="prefix">
+          <nve-icon name="search"></nve-icon>
+        </span>
       </nve-button>
     </td>
   </tr>
-  <tr>
-  <td>dropdown</td>
-  <td><nve-dropdown>
-  <sl-button slot="trigger" caret>Dropdown</sl-button>
-  <sl-menu>
-    <sl-menu-item>Dropdown Item 1</sl-menu-item>
-  </sl-menu>
-</nve-dropdown>
-</td>
-</tr>
-</table> `;
+
+</table>`;
 render(app, document.getElementById('app')!); // Render the Lit app in the specified container
