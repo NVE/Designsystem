@@ -15,24 +15,12 @@ export const NveButton = ({
 }) => {
   if (loading)
     return html`
-      <nve-button
-        variant=${variant}
-        size=${size}
-        .disabled=${disabled}
-        .outline=${outline}
-      >
-        Button
+      <nve-button variant=${variant} size=${size} .disabled=${disabled} .outline=${outline}>
+        Button to test
         <span slot="suffix"><nve-spinner></nve-spinner></span>
       </nve-button>
     `;
   return html`
-    <nve-button
-      variant=${variant}
-      size=${size}
-      .disabled=${disabled}
-      .outline=${outline}
-    >
-      Button
-    </nve-button>
+    <nve-button variant=${variant} size=${size} .disabled=${disabled} .outline=${outline}> Button </nve-button>
   `;
 };

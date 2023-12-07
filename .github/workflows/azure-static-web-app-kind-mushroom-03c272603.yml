@@ -11,6 +11,7 @@ on:
 
 jobs:
   # Run when a pull request is created or updated
+  # test comment
   build_and_deploy_pull_request:
     if: github.event_name == 'pull_request' && github.event.action != 'closed'
     runs-on: ubuntu-latest
