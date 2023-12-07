@@ -16,6 +16,11 @@ export class NveIcon extends LitElement {
     :host {
       /* Apply Material Icons font-family to the Shadow DOM */
       font-family: 'Material Symbols Outlined';
+   
+    }
+    :host([name="expand_more"]) {
+      transform: var(--icon-rotation, none);
+      transition: transform 0.3s ease;
     }
     /* we need it to center the icon */
     :is(span) {

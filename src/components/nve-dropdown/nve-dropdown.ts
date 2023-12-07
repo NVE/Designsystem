@@ -1,16 +1,22 @@
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { SlDropdown, SlSelectEvent } from '@shoelace-style/shoelace';
 import { NveMenu } from '../nve-menu';
 import { getTabbableBoundary } from '../../utils/tabbable';
 import { NveButton } from '../nve-button/nve-button';
 import styles from './nve-dropdown.styles'
+import { css } from 'lit';
 
 @customElement('nve-dropdown')
 export class NveDropdown extends SlDropdown {
+  @property({ type: Boolean, reflect: true }) open: boolean = false;
   constructor() {
     super();
   }
-  static styles = [styles];
+  static styles = css`
+  :host(.open) {
+    --icon-rotation: rotate(-180deg);
+  }
+`;
 
   getMenu() {
     return this.panel.assignedElements({ flatten: true }).find(el => el.tagName.toLowerCase() === 'nve-menu') as
@@ -48,6 +54,17 @@ export class NveDropdown extends SlDropdown {
       this.focusOnTrigger();
     }
   };
+ 
+  updated(changedProperties: any) {
+    super.updated(changedProperties);
+    if (changedProperties.has('open')) {
+      if (this.open) {
+        this.classList.add('open');
+      } else {
+        this.classList.remove('open');
+      }
+    }
+  }
   
 }
 
