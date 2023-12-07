@@ -50,7 +50,7 @@
 }
 
 /*
-focus ring color to be the same all over the application.
+focus ring color is the same all over the application.
 we use only border-radius-small size on all shoelace border radius tokens. (--sl-border-radius-large and --sl-border-radius-x-large are 
 not actively used in any of the sl components, therefore they are not reassigned here).
 input fonts and spacing isn't assigned yet since we use it a bit differently in ds (gaps on spacing instead of padding)
