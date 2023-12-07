@@ -3,7 +3,7 @@
  * Generated on Thu, 07 Dec 2023 09:14:05 GMT
  */
 
-:root.darkmode {
+ :root.darkmode {
   --dangerlevel-foreground-subtle-level5: var(--grey-950);
   --dangerlevel-foreground-subtle-level4: var(--grey-950);
   --dangerlevel-foreground-subtle-level3: var(--grey-950);

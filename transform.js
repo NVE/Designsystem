@@ -1,11 +1,12 @@
-const StyleDictionary = require('style-dictionary-utils');
+import StyleDictionary from 'style-dictionary-utils';
+import fontFamilies from './customtransformsandformats/fontFamilies.js';
+import fontWeights from './customtransformsandformats/fontWeights.js';
+import boxShadow from './customtransformsandformats/boxShadow.js';
+import fontSizes from './customtransformsandformats/fontSizes.js';
+import fixZeroes from './customtransformsandformats/fixZeroes.js';
+import typographyClasses from './customtransformsandformats/typographyClasses.js';
 
 const { fileHeader, formattedVariables } = StyleDictionary.formatHelpers;
-const fontFamilies = require('./customtransforms/fontFamilies.js');
-const fontWeights = require('./customtransforms/fontWeights.js');
-const boxShadow = require('./customtransforms/boxShadow.js');
-const fontSizes = require('./customtransforms/fontSizes.js');
-const fixZeroes = require('./customtransforms/fixZeroes.js');
 
 StyleDictionary.registerTransform(fontFamilies);
 StyleDictionary.registerTransform(fontWeights);
@@ -57,62 +58,18 @@ StyleDictionary.registerFormat({
   },
 });
 
-StyleDictionary.registerFormat({
-  name: 'custom-css',
-  formatter: function (dictionary) {
-    let cssOutput = '';
-    // Label, Detailtext, body, header, subheading ingress
-    // Iterate over each category in the dictionary
-    for (const category in dictionary.properties) {
-      // Iterate over each token within the category
-      if (category === 'Body') {
-        const a = dictionary.properties[category];
-        dictionary.properties[category].forEach((token) => {
-          const d = token;
-          const className = `${category.toLowerCase()}-${token.name}`;
-
-          cssOutput += `.${className} {\n`;
-
-          // Extract values from the token
-          const {
-            fontFamily,
-            fontWeight,
-            lineHeight,
-            fontSize,
-            letterSpacing,
-            paragraphSpacing,
-            paragraphIndent,
-            textCase,
-            textDecoration,
-          } = token.value;
-
-          // Generating CSS properties based on the token values
-          cssOutput += `  font: var(--font-weights-${fontWeight}) var(--font-size-${fontSize})/var(--line-heights-${lineHeight}) var(--font-families-${fontFamily});\n`;
-          cssOutput += `  letter-spacing: var(--letter-spacing-${letterSpacing});\n`;
-          cssOutput += `  paragraph-spacing: var(--paragraph-spacing-${paragraphSpacing});\n`;
-          cssOutput += `  paragraph-indent: var(--paragraph-indent-${paragraphIndent});\n`;
-          cssOutput += `  text-case: var(--text-case-${textCase});\n`;
-          cssOutput += `  text-decoration: var(--text-decoration-${textDecoration});\n`;
-
-          cssOutput += `}\n\n`;
-        });
-      }
-    }
-
-    return cssOutput;
-  },
-});
+StyleDictionary.registerFormat(typographyClasses);
 
 const myStyleDictionary = StyleDictionary.extend({
   source: sources,
   platforms: {
-    typographyClass: {
+    typographyClasses: {
       transformGroup: 'css',
       buildPath: 'build/css/',
       files: [
         {
-          destination: 'typography-v2.css',
-          format: 'custom-css',
+          destination: 'typography.css',
+          format: 'typography-classes',
         },
       ],
     },
@@ -158,7 +115,6 @@ const myStyleDictionary = StyleDictionary.extend({
         'fontWeight/number',
         'fontWeights/number',
         'boxshadow/css',
-
         'shadow/css',
       ],
       files: [
@@ -180,4 +136,4 @@ if (isDark || isVarsomDark) {
 } else {
   myStyleDictionary.buildPlatform('css');
 }
-myStyleDictionary.buildPlatform('typographyClass');
+myStyleDictionary.buildPlatform('typographyClasses');

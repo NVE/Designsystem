@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     name: "fontsizes/px",
     type: "value",
     transitive: true,

@@ -1,4 +1,4 @@
-const fontWeights = {
+export const fontWeightsOptions = {
     thin: 100,
     hairline: 100,
     "extra-light": 200,
@@ -27,7 +27,7 @@ const fontWeights = {
     ultrablack: 950
 }
 
-module.exports = {
+export default {
     //den fra style-dictionary-utils har "fontWeight", men det er brukt "fontWeights"
     name: "fontWeights/number",
     type: "value",
@@ -40,7 +40,7 @@ module.exports = {
     },
     transformer: (token) => {
         // check if value exists in matrix
-        const fromMatrix = fontWeights[token.value.toLowerCase()]
+        const fromMatrix = fontWeightsOptions[token.value.toLowerCase()]
         if (fromMatrix !== undefined) return fromMatrix
         // test if value is quoted int
         const valueAsInt = parseInt(token.value.toLowerCase())

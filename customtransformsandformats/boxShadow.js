@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     name: 'boxshadow/css',
     type: 'value',
     transitive: true,

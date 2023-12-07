@@ -1,7 +1,7 @@
 
 const hasSpaceInName = (string) => /\s/g.test(string);
 
-module.exports = {
+export default {
     //den fra style-dictionary-utils har "fontFamily", men det er brukt "fontFamilies"
     name: "fontFamilies/css",
     type: "value",
