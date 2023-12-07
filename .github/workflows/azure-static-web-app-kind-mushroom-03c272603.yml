@@ -3,11 +3,11 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
-      - task/avn-253/create-test-app-on-pr
+      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
-      - task/avn-253/create-test-app-on-pr
+      - main
 
 jobs:
   # Run when a pull request is created or updated
