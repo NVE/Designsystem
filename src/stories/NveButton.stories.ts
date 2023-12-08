@@ -1,27 +1,43 @@
 import '../components/nve-button/nve-button';
 import '../components/nve-spinner/nve-spinner';
 import { NveButton } from './NveButton';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { NveButtonProps } from './NveButton';
 
-export default {
-  title: 'NveButton', // Title for the component in Storybook
-  component: 'nve-button',
-  render: (args: {
-    variant: string;
-    size: string;
-    disabled: boolean;
-    loading: boolean;
-    outline: boolean;
-  }) => NveButton(args),
+const meta = {
+  title: 'Nve/Test/NveButton',
+  tags: ['autodocs'],
+  render: (args) => NveButton(args),
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
+      options: ['x-small', 'small', 'medium', 'large'],
     },
-    variant: { table: { disable: true } },
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'default', 'neutral', 'large'],
+    },
+   
   },
-};
+  parameters: {
+    docs: {
+      description: {
+        component: `<div>
+        <p>Her kan man legge til informasjon om hvordan komponenten brukes.
+        </div>`
 
-export const Primary = {
+        
+      }
+    }
+  }
+  
+} satisfies Meta<NveButtonProps>;
+
+export default meta;
+type Story = StoryObj<NveButtonProps>;
+
+
+export const Primary: Story = {
   args: {
     variant: 'primary',
     size: 'medium',
@@ -30,7 +46,7 @@ export const Primary = {
   },
 };
 
-export const Secondary = {
+export const Secondary: Story = {
   args: {
     variant: 'default',
     size: 'medium',
@@ -39,7 +55,7 @@ export const Secondary = {
   },
 };
 
-export const Outlined = {
+export const Outlined: Story = {
   args: {
     variant: 'neutral',
     size: 'medium',
@@ -49,7 +65,7 @@ export const Outlined = {
   },
 };
 
-export const Ghost = {
+export const Ghost: Story = {
   args: {
     variant: 'neutral',
     size: 'medium',

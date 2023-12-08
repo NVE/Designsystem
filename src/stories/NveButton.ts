@@ -1,5 +1,15 @@
 import { html } from 'lit';
 
+export interface NveButtonProps {
+  
+   variant: 'primary' | 'neutral' | 'default',
+    size: 'medium' | 'large' | 'small' | 'x-small',
+    disabled: boolean,
+    loading: boolean,
+    outline: boolean
+  
+}
+
 export const NveButton = ({
   variant,
   size,
