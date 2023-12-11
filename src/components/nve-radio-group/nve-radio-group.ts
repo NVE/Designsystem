@@ -14,8 +14,7 @@ import styles from "./nve-radio-group.styles";
  *
  * @dependency NveRadioButton, NveRadio
  *
- * @property {boolean} horizontal = true - Om radio-gruppen skal rendres horisontalt
- * @property {boolean} vertical          - Om radio-gruppen skal rendres vertikalt
+ * @property {string} orientation = horizontal eller vertical - Om radio-gruppen skal rendres horisontalt
  *
  * @slot - The default slot where `<nve-radio>` or `<nve-radio-button>` elements are placed.
  * @slot label - The radio group's label. Required for proper accessibility. Alternatively, you can use the `label` attribute.
@@ -28,8 +27,7 @@ export class NveRadioGroup extends SlRadioGroup {
     constructor() {
         super();
     }
-    @property({ type: Boolean, reflect: true }) horizontal = true;
-    @property({ type: Boolean, reflect: true }) vertical = false;
+    @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
 
     static styles = [SlRadioGroup.styles, styles];
 

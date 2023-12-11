@@ -52,7 +52,7 @@ const table = html`
             <tr>
                 <td></td>
                 <td>
-                    <nve-radio-group horizontal value="1" label="Horizontal">
+                    <nve-radio-group orientation="horizontal" value="1" label="Horizontal">
                         <nve-radio value="1">Value</nve-radio>
                         <nve-radio value="2">Value</nve-radio>
                         <nve-radio value="3">Value</nve-radio>
@@ -63,7 +63,7 @@ const table = html`
             <tr>
                 <td></td>
                 <td>
-                    <nve-radio-group size="small" vertical value="2" label="Vertical">
+                    <nve-radio-group size="small" orientation="vertical" value="2" label="Vertical">
                         <nve-radio value="1">Value The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet.."</nve-radio>
                         <nve-radio value="2">Value The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet.."</nve-radio>
                         <nve-radio value="3">Value</nve-radio>
@@ -74,7 +74,7 @@ const table = html`
             <tr>
                 <td></td>
                 <td>
-                    <nve-radio-group vertical value="3">
+                    <nve-radio-group orientation="vertical" value="3">
                         <slot name="label"><span style="font-family:consolas;">Vertical with <b>slotted</b> label</span></slot>
                         <nve-radio value="1">Value</nve-radio>
                         <nve-radio value="2">Value The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet.."</nve-radio>

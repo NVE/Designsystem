@@ -20,13 +20,16 @@ export default css`
         text-align: left;
     }
 
+    :host([orientation='vertical'])::part(form-control),
     :host([vertical])::part(form-control) {
         align-items: flex-start;
     }
 
+    :host([orientation='horizontal'])::part(form-control-input),
     :host([horizontal])::part(form-control-input) {
         flex-direction: row;
     }
+    :host([orientation='vertical'])::part(form-control-input),
     :host([vertical])::part(form-control-input) {
         flex-direction: column;
     }    
