@@ -72,10 +72,60 @@ De fleste komponentene bygger på [Shoelace](https://shoelace.style/), men er ti
 
 ### **Kjøremiljø**
 
-Kjør `npm run dev` for å vise test-applikasjonen.
-Lag en testside for komponenten din, `nve-komponentnavn-demo.ts`, og inkluder denne i `main.ts`. Sida bør vise de forskjellige variantene av komponenten.
+Prosjektet importerer Shoelace sin npm-pakke. Kjør `npm run dev` for utvikling.
+For å teste en komponent i main.ts må man huske å legge til script tag med komponenten i index.html fila som f.eks. <script type="module" src="/src/nve-button.ts"></script>
 
-### Storybook
+### **Styling**
+
+Når vi styler utvidet shoelace komponenter kan vi enten overskrive shoelace css klasser, eller bruke shadowDOMen parts.
+Der hvor det er mulig gjerne bruk parts, fordi koden blir mer lesbar og forståelig.
+Det ser bedre ut
+
+```css
+::part(control) {
+  color: red;
+}
+```
+
+enn dette
+
+```css
+.checkbox checkbox--medium checkbox__control {
+  color: red;
+}
+```
+
+Hvis det ikke er mulig å style med ::part, bruk css klasser.
+
+### **Typografi**
+
+Det finnes tokene som tilsvarer font styling i figma skissene. Font style i figma skissene kan man finne ved å klikke på en tekst på en komponent. I dev mode i figma får man `Typography` seksjon som viser css propertiene, men det som vi er interresert i er en kommentar over de propertiene som f.eks. `/* Label/small */`. Det er navnet som token transformer bruker til font styling: --label-small. Man setter font styling på en komponent via `font`property altså:
+
+```css
+.button-label {
+  font: var(--label-small);
+}
+```
+
+### **Mapping av shoelace tokene**
+
+Vi kan ikke tolke alle shoelace tokene fordi
+styling er ikke 1:1 og det skjer veldig ofte at shoelace tokene skaper en konflikt med hvordan vi skal style våre komponenter.
+Det finnes en del shoelace tokene som vi klarte å mappe, og de kan man finne i global.css filen. Man trenger ikke å style
+
+- fokus state på alle komponentene fordi de settes nå globalt.
+- høyde på input felter, knapper, select
+- border radius på alle komponentene (med mindre det ikke er satt border radius på en shoelace komponent mens det finnes i design system)
+- bakgrunn, font farge, font størrelse, ikon farge, ramme i input, select og textarea i både varianter (filled, not filled)
+
+Man kan veldig gjerne foreslå flere shoelace tokene som kan mappes videre.
+
+### **Test appen for designere når man lager en PR**
+
+Prosjektet importerer Shoelace sin npm-pakke. Kjør `npm run dev` for utvikling.
+For å teste en komponent i main.ts må man huske å legge til script tag med komponenten i index.html fila som f.eks. <script type="module" src="/src/nve-button.ts"></script>
+
+### **Storybook**
 
 For å kjøre Storybook lokalt, kjør `npm run storybook`
 
