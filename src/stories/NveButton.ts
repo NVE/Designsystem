@@ -28,8 +28,8 @@ export const NveButton = ({
       <nve-button
         variant=${variant}
         size=${size}
-        .disabled=${disabled}
-        .outline=${outline}
+        ?disabled=${disabled}
+        ?outline=${outline}
       >
         Button
         <span slot="suffix"><nve-spinner></nve-spinner></span>
@@ -39,8 +39,8 @@ export const NveButton = ({
     <nve-button
       variant=${variant}
       size=${size}
-      .disabled=${disabled}
-      .outline=${outline}
+      ?disabled=${disabled}
+      ?outline=${outline}
     >
       Button
     </nve-button>

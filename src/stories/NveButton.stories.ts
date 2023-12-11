@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import type { NveButtonProps } from './NveButton';
 
 const meta = {
-  title: 'Nve/Test/NveButton',
+  title: 'Nve/NveButton',
   tags: ['autodocs'],
   render: (args) => NveButton(args),
   argTypes: {
@@ -16,14 +16,15 @@ const meta = {
     variant: {
       control: { type: 'select' },
       options: ['primary', 'default', 'neutral', 'large'],
-    },
+    }
    
   },
   parameters: {
     docs: {
       description: {
         component: `<div>
-        <p>Her kan man legge til informasjon om hvordan komponenten brukes.
+        <p>Knappeelementer brukes for å gi en enkel og tilgjengelig opplevelse for brukerne. 
+        Et knappeelement skal brukes når en handling utføres av brukeren.
         </div>`
 
         
@@ -43,8 +44,10 @@ export const Primary: Story = {
     size: 'medium',
     disabled: false,
     loading: false,
+    outline: false
   },
 };
+
 
 export const Secondary: Story = {
   args: {
@@ -52,6 +55,7 @@ export const Secondary: Story = {
     size: 'medium',
     disabled: false,
     loading: false,
+    outline: false
   },
 };
 
@@ -71,5 +75,6 @@ export const Ghost: Story = {
     size: 'medium',
     disabled: false,
     loading: false,
+    outline: false
   },
 };
