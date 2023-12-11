@@ -1,2 +1,54 @@
-@import '@shoelace-style/shoelace/dist/themes/light.css';
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+:root {
+  --sl-focus-ring-color: var(--interactive-links-focus);
+  --sl-focus-ring-style: solid;
+  --sl-focus-ring-width: 2px;
+  --sl-focus-ring-offset: -1px;
+  --sl-border-radius-medium: var(--border-radius-small);
+  --sl-border-radius-small: var(--border-radius-small);
+  --sl-input-height-small: var(--sizing-small);
+  --sl-input-height-medium: var(--sizing-medium);
+  --sl-input-height-large: var(--sizing-large);
+
+  --sl-input-background-color: var(--neutrals-background-primary, #fff);
+  --sl-input-background-color-focus: var(--neutrals-background-primary, #fff);
+  --sl-input-background-color-hover: var(--neutrals-background-primary, #fff);
+  --sl-input-background-color-disabled: var(--neutrals-background-primary, #fff);
+  --sl-input-color: var(--neutrals-foreground-primary, #00131c);
+  --sl-input-color-focus: var(--neutrals-foreground-primary, #00131c);
+  --sl-input-color-hover: var(--neutrals-foreground-primary, #00131c);
+  --sl-input-color-disabled: var(--interactive-secondary-foreground-disabled, #00131c);
+  --sl-input-icon-color: var(--neutrals-foreground-primary, #00131c);
+  --sl-input-icon-color-hover: var(--neutrals-foreground-primary, #00131c);
+  --sl-input-icon-color-focus: var(--neutrals-foreground-primary, #00131c);
+  --sl-input-placeholder-color: var(--sl-color-neutral-500);
+  --sl-input-placeholder-color-disabled: var(--interactive-secondary-foreground-disabled, #00131c);
+  --sl-input-focus-ring-color: var(--interactive-links-focus);
+  --sl-input-border-color: var(--neutrals-border-default, #878c94);
+  --sl-input-border-color-focus: var(--interactive-links-focus);
+  --sl-input-border-color-hover: var(--neutrals-border-subtle, #c8eaf9);
+  --sl-input-border-color-disabled: var(--neutrals-border-disabled, #878c94);
+  --sl-input-focus-ring-offset: -1px;
+
+  --sl-input-filled-background-color: var(--neutrals-background-primary-contrast, #eff8fc);
+  --sl-input-filled-background-color-hover: var(--neutrals-background-primary-contrast, #eff8fc);
+  --sl-input-filled-background-color-focus: var(--neutrals-background-primary-contrast, #eff8fc);
+  --sl-input-filled-background-color-disabled: var(--neutrals-background-primary-contrast, #eff8fc);
+  --sl-input-filled-color: var(--neutrals-foreground-primary, #00131c);
+  --sl-input-filled-color-hover: var(--neutrals-foreground-primary, #00131c);
+  --sl-input-filled-color-focus: var(--neutrals-foreground-primary, #00131c);
+  --sl-input-filled-color-disabled: var(--interactive-secondary-foreground-disabled, #00131c);
+
+  --sl-input-font-family: var(--sl-font-sans);
+  --sl-input-font-weight: var(--sl-font-weight-normal);
+  --sl-input-font-size-small: var(--sl-font-size-small);
+  --sl-input-font-size-medium: var(--sl-font-size-medium);
+  --sl-input-font-size-large: var(--sl-font-size-large);
+  --sl-input-letter-spacing: var(--sl-letter-spacing-normal);
+}
+
+/*
+focus ring color is the same all over the application.
+we use only border-radius-small size on all shoelace border radius tokens. (--sl-border-radius-large and --sl-border-radius-x-large are 
+not actively used in any of the sl components, therefore they are not reassigned here).
+input fonts and spacing isn't assigned yet since we use it a bit differently in ds (gaps on spacing instead of padding)
+*/
