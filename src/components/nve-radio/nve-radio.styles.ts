@@ -11,7 +11,7 @@ export default css`
 
     /* Sett "ring" og fjern default blå bakgrunn fra shoelace */
     :host(:hover)::part(control) {
-        border: solid var(--sl-input-border-width) var(--neutrals-foreground-subtle);
+        border: solid var(--border-width-default) var(--neutrals-foreground-subtle);
         background-color: var(--neutrals-background-primary);
     }
 
@@ -23,7 +23,7 @@ export default css`
     /* Overstyr styling på control, label og radio */
     .radio__control {
         color: var(--neutrals-foreground-primary);
-        border: solid var(--sl-input-border-width) var(--neutrals-foreground-primary);
+        border: solid var(--border-width-default) var(--neutrals-foreground-primary);
     }
 
     .radio__label {
