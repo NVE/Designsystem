@@ -1,8 +1,7 @@
 node_modules
 .DS_Store
 
-# visual studio
-.vs
-
-# Local History for Visual Studio Code
-.history/
+# ignore Visual Studio local folder
+.vs/
+# ignore dist - (npm build output)
+dist/

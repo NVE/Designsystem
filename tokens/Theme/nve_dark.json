@@ -57,8 +57,7 @@
       },
       "Disabled": {
         "value": "{grey.500}",
-        "type": "color",
-        "$extensions": {}
+        "type": "color"
       }
     }
   },
@@ -75,8 +74,7 @@
         },
         "Disabled": {
           "value": "{grey.000}",
-          "type": "color",
-          "$extensions": {}
+          "type": "color"
         }
       },
       "Foreground": {
@@ -90,8 +88,7 @@
         },
         "Disabled": {
           "value": "{grey.950}",
-          "type": "color",
-          "$extensions": {}
+          "type": "color"
         },
         "Border": {
           "Focus": {
@@ -113,8 +110,7 @@
         },
         "Disabled": {
           "value": "{grey.700}",
-          "type": "color",
-          "$extensions": {}
+          "type": "color"
         }
       },
       "Foreground": {
@@ -128,8 +124,7 @@
         },
         "Disabled": {
           "value": "{grey.000}",
-          "type": "color",
-          "$extensions": {}
+          "type": "color"
         }
       },
       "Border": {
@@ -191,8 +186,7 @@
         },
         "Disabled": {
           "value": "{grey.000}",
-          "type": "color",
-          "$extensions": {}
+          "type": "color"
         }
       },
       "Border": {

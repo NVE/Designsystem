@@ -9,9 +9,9 @@ Dette repository inneholder css generert fra Figma-tokens og komponentbibliotek 
 
 1. Install pakke med `npm i nve-designsystem`.
 
-2. I vite.config file (lagre en ny fila hvis den ikke eksisterer i root mappe) legg inn isCustomElement som skal si til Vue at det er en customElement, og droppe component resolution [(les mer her)](https://vuejs.org/guide/extras/web-components.html)
+2. I vite.config (lagre en ny fil hvis den ikke eksisterer i rot-mappe), legg inn isCustomElement som forteller Vue at det er en customElement, og dropp component resolution [(les mer her)](https://vuejs.org/guide/extras/web-components.html).
 
-```
+```js
 export default defineConfig({
   plugins: [
     vue({
@@ -23,21 +23,27 @@ export default defineConfig({
     }),
 ```
 
-3. Import styles fra global.css i enten main.ts eller index.html.
+3. Importer stiler fra global.css i enten main.ts eller index.html:
 
 ```
 import 'nve-designsystem/src/styles/global.css';
 ```
 
-4. I tillegg trenger du å importere en .css fil med nve variabler. Filene finnes i `nve-designsystem/build/css/` mappe. Man kan bestemme selv hvilken tema man vil bruke og hvordan implementere eventuelt switch mellom lys og mørk tema. Eksempel på varsom tema import i main.ts fila:
+4. I tillegg trenger du å importere en .css-fil for farge-tema i main.ts. Filene finnes i `nve-designsystem/build/css/` mappe. For NVE-tema, bruk: 
 
+```ts
+import 'nve-designsystem/build/css/nve.css';
 ```
+For Varsom-tema, bruk:
+```ts
 import 'nve-designsystem/build/css/varsom.css';
 ```
+Du har også mulighet til å velge enten lyst eller mørkt tema. Lyst er standard.
+
 
 ### **Eksempel på bruk av komponent**
 
-```
+```html
 <template>
    <nve-button variant="primary" size="small" @click="send">Button</nve-button>
 <template>
@@ -47,7 +53,7 @@ import { NveButton } from 'nve-designsystem/src/components/nve-button/nve-button
 </script>
 ```
 
-Husk å alltid bruke både opening og closing tag individuelt, (`<nve-button />` skal ikke fungere).
+Husk å alltid bruke både opening og closing tag individuelt, (`<nve-button />` fungerer ikke).
 
 ### **Storybook**
 
@@ -65,7 +71,7 @@ For å publisere på npm, må man oppdatere versjonsnr. i package.json og packag
 
 ### **Kjøremiljø**
 
-Prosjekt importerer shoelace npm pakke. Kjør `npm run dev` for utvikling.
+Prosjektet importerer Shoelace sin npm-pakke. Kjør `npm run dev` for utvikling.
 For å teste en komponent i main.ts må man huske å legge til script tag med komponenten i index.html fila som f.eks. <script type="module" src="/src/nve-button.ts"></script>
 
 ### Storybook

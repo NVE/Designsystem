@@ -928,29 +928,45 @@
     }
   },
   "Sizing": {
-    "xx-small": {
-      "value": "0.5rem",
-      "type": "sizing"
+    "2x-small": {
+      "value": "1.5rem",
+      "type": "sizing",
+      "description": "24px"
     },
     "x-small": {
-      "value": "1rem",
-      "type": "sizing"
+      "value": "2rem",
+      "type": "sizing",
+      "description": "32px"
     },
     "small": {
-      "value": "1.5rem",
-      "type": "sizing"
+      "value": "2.5rem",
+      "type": "sizing",
+      "description": "40px"
     },
     "medium": {
-      "value": "2.5rem",
-      "type": "sizing"
+      "value": "3rem",
+      "type": "sizing",
+      "description": "48px"
     },
     "large": {
       "value": "3.5rem",
-      "type": "sizing"
+      "type": "sizing",
+      "description": "56px"
     },
     "x-large": {
       "value": "4rem",
-      "type": "sizing"
+      "type": "sizing",
+      "description": "64px"
+    },
+    "3x-small": {
+      "value": "1rem",
+      "type": "sizing",
+      "description": "16px"
+    },
+    "4x-small": {
+      "value": "0.5rem",
+      "type": "sizing",
+      "description": "8px"
     }
   },
   "borderRadius": {
