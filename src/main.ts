@@ -1,6 +1,8 @@
 // main.ts (or main.js if using JavaScript)
 import { html, render } from 'lit';
+import './styles/imports.css';
 import './styles/global.css';
+
 const app = html`<table>
   <hr />
   <th>Variant</th>
@@ -18,9 +20,7 @@ const app = html`<table>
       <nve-button size="medium" variant="default">I'm a NVE-butotn</nve-button>
     </td>
     <td>
-      <nve-button size="medium" variant="neutral" outline
-        >I'm a NVE-butotn</nve-button
-      >
+      <nve-button size="medium" variant="neutral" outline>I'm a NVE-butotn</nve-button>
     </td>
     <td>
       <nve-button size="medium" variant="neutral">I'm a NVE-butotn</nve-button>
@@ -35,9 +35,7 @@ const app = html`<table>
       <nve-button size="large" variant="default">I'm a NVE-butotn</nve-button>
     </td>
     <td>
-      <nve-button size="large" variant="neutral" outline
-        >I'm a NVE-butotn</nve-button
-      >
+      <nve-button size="large" variant="neutral" outline>I'm a NVE-butotn</nve-button>
     </td>
     <td>
       <nve-button size="large" variant="neutral">I'm a NVE-butotn</nve-button>
@@ -52,9 +50,7 @@ const app = html`<table>
       <nve-button size="small" variant="default">I'm a NVE-butotn</nve-button>
     </td>
     <td>
-      <nve-button size="small" variant="neutral" outline
-        >I'm a NVE-butotn</nve-button
-      >
+      <nve-button size="small" variant="neutral" outline>I'm a NVE-butotn</nve-button>
     </td>
     <td>
       <nve-button size="small" variant="neutral">I'm a NVE-butotn</nve-button>
