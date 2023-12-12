@@ -33,7 +33,7 @@ export default defineConfig({
 import 'nve-designsystem/src/styles/global.css';
 ```
 
-4. I tillegg trenger du å importere en .css-fil for farge-tema i main.ts. Filene finnes i `nve-designsystem/build/css/` mappe. For NVE-tema, bruk:
+4. I tillegg trenger du å importere en .css-fil for farge-tema i main.ts. Filene finnes i mappa `nve-designsystem/build/css/`. For NVE-tema, bruk:
 
 ```ts
 import 'nve-designsystem/build/css/nve.css';
@@ -55,8 +55,8 @@ Du har også mulighet til å velge enten lyst eller mørkt tema. Lyst er standar
   <template>
     <script setup lang="ts">
       import { NveButton } from 'nve-designsystem/src/components/nve-button/nve-button';
-    </script></template
-  ></template
+    </script>
+  </template></template
 >
 ```
 
@@ -77,9 +77,9 @@ For å teste en komponent i main.ts må man huske å legge til script tag med ko
 
 ### **Styling**
 
-Når vi styler utvidet shoelace komponenter kan vi enten overskrive shoelace css klasser, eller bruke shadowDOMen parts.
-Der hvor det er mulig gjerne bruk parts, fordi koden blir mer lesbar og forståelig.
-Det ser bedre ut
+Når vi styler shoelace-komponenter kan vi enten overskrive Shoelace sine css-klasser eller bruke parts i shadow-DOM.
+Bruk helst parts fordi koden blir lettere å lese.
+Dette:
 
 ```css
 ::part(control) {
@@ -87,7 +87,7 @@ Det ser bedre ut
 }
 ```
 
-enn dette
+ser bedre ut enn dette:
 
 ```css
 .checkbox checkbox--medium checkbox__control {
@@ -95,11 +95,26 @@ enn dette
 }
 ```
 
-Hvis det ikke er mulig å style med ::part, bruk css klasser.
+Hvis det ikke er mulig å style med ::part, bruk css-klasser.
 
 ### **Typografi**
 
-Det finnes tokene som tilsvarer font styling i figma skissene. Font style i figma skissene kan man finne ved å klikke på en tekst på en komponent. I dev mode i figma får man `Typography` seksjon som viser css propertiene, men det som vi er interresert i er en kommentar over de propertiene som f.eks. `/* Label/small */`. Det er navnet som token transformer bruker til font styling: --label-small. Man setter font styling på en komponent via `font`property altså:
+Det finnes tokens for typografi i Figma.
+Sett Figma i utviklermodus og klikk på en tekst.
+I typografi-seksjonen til høyre ser vi css'en som er generert. Vi skal ikke bruke selve css'en, men <b>kommentaren</b> over css'en gir et hint om navnet på tokenet. Eksempel i Figma:
+
+```css
+color: var(--neutrals-foreground-mute, #3c3f44);
+
+/* Label/small */
+font-family: Source Sans Pro;
+font-size: 1rem;
+font-style: normal;
+font-weight: 600;
+line-height: 110%; /* 1.1rem */
+```
+
+Kommentaren `/* Label/small */` betyr at vi skal bruke css-variabelen `--label-small`, f.eks. slik:
 
 ```css
 .button-label {
@@ -107,23 +122,24 @@ Det finnes tokene som tilsvarer font styling i figma skissene. Font style i figm
 }
 ```
 
-### **Mapping av shoelace tokene**
+### **Mapping av shoelace tokes til NVE-tokens**
 
-Vi kan ikke tolke alle shoelace tokene fordi
-styling er ikke 1:1 og det skjer veldig ofte at shoelace tokene skaper en konflikt med hvordan vi skal style våre komponenter.
-Det finnes en del shoelace tokene som vi klarte å mappe, og de kan man finne i global.css filen. Man trenger ikke å style
+Det hadde vært fint om vi kunne sette en NVE-verdi for alle Shoelace-tokens. Men dette går ikke fordi strukturen i Shoelace og NVE Designsystem er forskjellig.
+Vi har satt NVE-verdier for en del Shoelace-tokens, og disse ligger i global.css.
+Foreslå gjerne flere Shoelace-tokens som kan mappes på denne måten.
 
-- fokus state på alle komponentene fordi de settes nå globalt.
-- høyde på input felter, knapper, select
-- border radius på alle komponentene (med mindre det ikke er satt border radius på en shoelace komponent mens det finnes i design system)
-- bakgrunn, font farge, font størrelse, ikon farge, ramme i input, select og textarea i både varianter (filled, not filled)
+Vi trenger ikke å style:
 
-Man kan veldig gjerne foreslå flere shoelace tokene som kan mappes videre.
+- fokus-tilstand på alle komponenter. Dette settes globalt
+- høyde på input-felter, knapper og select
+- border-radius på alle komponenter (med mindre border radius mangler på en Shoelace-komponent, men designsystemet spesifiserer border-radius)
+- bakgrunn, font-farge, font-størrelse, ikon-farge, ramme i input, select og textarea i både variantene filled og not filled
 
-### **Test appen for designere når man lager en PR**
+### **Test-app for designere når man lager en PR**
 
-Prosjektet importerer Shoelace sin npm-pakke. Kjør `npm run dev` for utvikling.
-For å teste en komponent i main.ts må man huske å legge til script tag med komponenten i index.html fila som f.eks. <script type="module" src="/src/nve-button.ts"></script>
+Pull requests på komponenter skal godkjennes av designere. Derfor har vi satt opp en azure static app med Storybook. Denne bygges og kjøres når man lager en PR.
+
+Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'er kan det være at appen ikke bygges. De skal slettes automatisk når en PR lukkes, men det er ikke alltid dette virker. I slike tilfeller må vi slette appene manuelt i Azure-portalen. Appene ligger i denne ressursgruppa: TEST-Designsystemet-RG.
 
 ### **Storybook**
 
