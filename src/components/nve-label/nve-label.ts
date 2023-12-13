@@ -44,7 +44,7 @@ export class NveLabel extends LitElement {
       tooltipContent = this.hasSlotController.get('tooltip');
     }
     if (tooltipContent) {
-      return html`<nve-tooltip>
+      return html`<nve-tooltip placement="top">
         <div slot="content">${tooltipContent}</div>
         <nve-icon class="nve-info-icon" name="Info"></nve-icon>
       </nve-tooltip>`;
