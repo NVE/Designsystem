@@ -52,12 +52,10 @@ Du har også mulighet til å velge enten lyst eller mørkt tema. Lyst er standar
 ```html
 <template>
   <nve-button variant="primary" size="small" @click="send">Button</nve-button>
-  <template>
-    <script setup lang="ts">
-      import { NveButton } from 'nve-designsystem/src/components/nve-button/nve-button';
-    </script>
-  </template></template
->
+</template>
+<script setup lang="ts">
+  import { NveButton } from 'nve-designsystem/src/components/nve-button/nve-button';
+</script>
 ```
 
 Husk å alltid bruke både opening og closing tag individuelt, (`<nve-button />` fungerer ikke).
