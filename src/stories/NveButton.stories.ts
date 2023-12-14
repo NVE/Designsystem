@@ -26,8 +26,6 @@ const meta = {
         <p>Knappeelementer brukes for å gi en enkel og tilgjengelig opplevelse for brukerne. 
         Et knappeelement skal brukes når en handling utføres av brukeren.
         </div>`
-
-        
       }
     }
   }
