@@ -37,8 +37,12 @@ export default css`
   :host::part(close-button) {
     padding-inline-end: unset;
     margin-left: var(--spacing-medium, 1rem);
-    height: 24px;
     stroke: var(--neutrals-foreground-primary);
+    transition: background-color 0.3s ease;
+  }
+  :host::part(close-button):hover {
+    background: var(--grey-200);
+    border-radius: 50%;
   }
 
   :host::part(message)::after {
@@ -77,6 +81,15 @@ export default css`
     }
     .alert__close-button {
       stroke: var(--interactive-primary-foreground-default) !important;
+    }
+  }
+  :host([emphasized][variant='warning']) .alert {
+    color: var(--feedback-foreground-default-warning);
+    .alert__icon {
+      color: var(--feedback-foreground-default-warning) !important;
+    }
+    .alert__close-button {
+      stroke: var(--feedback-foreground-default-warning) !important;
     }
   }
   :host([emphasized]) .alert--primary {
