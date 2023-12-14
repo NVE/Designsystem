@@ -11,13 +11,13 @@ const meta = {
   argTypes: {
     size: {
       control: { type: 'select' },
-      options: ['x-small', 'small', 'medium', 'large'],
+      options: ['small', 'medium', 'large'],
     },
     variant: {
       control: { type: 'select' },
-      options: ['primary', 'default', 'neutral', 'large'],
-    }
-   
+      options: ['primary', 'default', 'neutral'],
+    },
+    outline: { control: 'boolean', if: { arg: 'variant', eq: 'neutral' } }
   },
   parameters: {
     docs: {

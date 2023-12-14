@@ -3,7 +3,7 @@ import { html } from 'lit';
 export interface NveButtonProps {
   
    variant: 'primary' | 'neutral' | 'default',
-    size: 'medium' | 'large' | 'small' | 'x-small',
+    size: 'medium' | 'large' | 'small',
     disabled: boolean,
     loading: boolean,
     outline: boolean
