@@ -2,12 +2,29 @@ import { css } from 'lit';
 
 export default css`
   .button {
-    font: var(--label-medium);
     width: fit-content;
-  }
-  .button__label {
-    display: flex;
     align-items: center;
+    gap: var(--spacing-x-small, 0.5rem);
+    padding: var(--spacing-medium, 1rem) var(--spacing-large, 1.5rem);
+  }
+  :host::part(spinner) {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  :host::part(label) {
+    font: var(--label-medium);
+    padding: 0;
+  }
+
+  .button--small {
+    height: var(--sl-input-height-small);
+  }
+  .button--large {
+    height: var(--sl-input-height-large);
+  }
+  .button--medium {
+    height: var(--sl-input-height-medium);
   }
 
   /* PRIMARY */
@@ -61,5 +78,12 @@ export default css`
     border-color: var(--interactive-outlined-border-hover);
     color: var(--interactive-outlined-foreground-default);
     background-color: transparent;
+  }
+
+  .button--loading .button__prefix,
+  .button--loading .button__label,
+  .button--loading .button__suffix,
+  .button--loading .button__caret {
+    visibility: unset;
   }
 `;

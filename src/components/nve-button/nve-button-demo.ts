@@ -1,89 +1,162 @@
 import { html } from 'lit';
 
-/**
- * Demonstrasjon av nve-input
- */
-const table = html`
-    <hr/>
-    <h3 id="nve-button">nve-button</h3>
-    <table class="demo">
+export default html`
+  <hr />
+  <h3 id="nve-button">nve-button</h3>
+  <table class="demo">
     <thead>
-    <th>Variant</th>
-  <th>Primary</th>
-  <th>Secondary</th>
-  <th>Outlined</th>
-  <th>Ghost</th>
-</thead>
-  <tr>
-    <td>medium</td>
-    <td>
-      <nve-button size="medium" variant="primary" disabled="">I'm a NVE-butotn</nve-button>
-    </td>
-    <td>
-      <nve-button size="medium" variant="default">I'm a NVE-butotn</nve-button>
-    </td>
-    <td>
-      <nve-button size="medium" variant="neutral" outline>I'm a NVE-butotn</nve-button>
-    </td>
-    <td>
-      <nve-button size="medium" variant="neutral">I'm a NVE-butotn</nve-button>
-    </td>
-  </tr>
-  <tr>
-    <td>large</td>
-    <td>
-      <nve-button size="large" variant="primary">I'm a NVE-butotn</nve-button>
-    </td>
-    <td>
-      <nve-button size="large" variant="default">I'm a NVE-butotn</nve-button>
-    </td>
-    <td>
-      <nve-button size="large" variant="neutral" outline>I'm a NVE-butotn</nve-button>
-    </td>
-    <td>
-      <nve-button size="large" variant="neutral">I'm a NVE-butotn</nve-button>
-    </td>
-  </tr>
-  <tr>
-    <td>small</td>
-    <td>
-      <nve-button size="small" variant="primary">I'm a NVE-butotn</nve-button>
-    </td>
-    <td>
-      <nve-button size="small" variant="default">I'm a NVE-butotn</nve-button>
-    </td>
-    <td>
-      <nve-button size="small" variant="neutral" outline>I'm a NVE-butotn</nve-button>
-    </td>
-    <td>
-      <nve-button size="small" variant="neutral">I'm a NVE-butotn</nve-button>
-    </td>
-  </tr>
-  <tr>
-    <td>neutral</td>
-    <td colspan="4"><nve-button variant="neutral" outline> im a butotn</nve-button></td>
-  </tr>
-  <tr>
-    <td>loading</td>
-    <td colspan="4">
-      <nve-button colspan="4" variant="neutral" outline loading> im a butotn</nve-button>
-    </td>
-  </tr>
-  <tr>
-    <td>loading with slot</td>
-    <td colspan="4">
-      <nve-button variant="neutral" outline>
-        im a butotn
-        <!-- Hvis vi vil ha både label og spinner kan vi ikke bruke loading property på knappen og span med suffix må renders kondisjonelt -->
-        <span slot="suffix"><nve-spinner></nve-spinner></span>
-      </nve-button>
-      <nve-button variant="neutral" outline>
-        im a butotn
-        <span slot="prefix"> <nve-icon name="search"></nve-icon></span>
-        <span slot="suffix"><nve-spinner></nve-spinner></span>
-      </nve-button>
-    </td>
-  </tr>
-</table> `;
-
-export default table;
+      <tr>
+        <th></th>
+        <th>Default</th>
+        <th>Disabled</th>
+        <th>Loading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Primary Medium</td>
+        <td>
+          <nve-button circle size="medium" variant="primary">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button disabled size="medium" variant="primary">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button loading size="medium" variant="primary">I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Primary Small</td>
+        <td>
+          <nve-button size="small" variant="primary">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button disabled size="small" variant="primary">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button loading size="small" variant="primary">I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Primary Large</td>
+        <td>
+          <nve-button size="large" variant="primary">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button disabled size="large" variant="primary">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button loading size="large" variant="primary">I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Secondary Medium</td>
+        <td>
+          <nve-button size="medium" variant="default">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button disabled size="medium" variant="default">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button loading size="medium" variant="default">I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Secondary Small</td>
+        <td>
+          <nve-button size="small" variant="default">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button disabled size="small" variant="default">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button loading size="small" variant="default">I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Secondary Large</td>
+        <td>
+          <nve-button size="large" variant="default">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button disabled size="large" variant="default">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button loading size="large" variant="default">I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Outlined Medium</td>
+        <td>
+          <nve-button size="medium" variant="neutral" outline>I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button disabled size="medium" variant="neutral" outline>I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button loading size="medium" variant="neutral" outline>I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Outlined Small</td>
+        <td>
+          <nve-button size="small" variant="neutral" outline>I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button disabled size="small" variant="neutral" outline>I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button loading size="small" variant="neutral" outline>I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Outlined Large</td>
+        <td>
+          <nve-button size="large" variant="neutral" outline>I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button disabled size="large" variant="neutral" outline>I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button loading size="large" variant="neutral" outline>I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Ghost Medium</td>
+        <td>
+          <nve-button size="medium" variant="neutral">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button disabled size="medium" variant="neutral">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button loading size="medium" variant="neutral">I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Ghost Small</td>
+        <td>
+          <nve-button size="small" variant="neutral">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button disabled size="small" variant="neutral">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button loading size="small" variant="neutral">I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Ghost Large</td>
+        <td>
+          <nve-button size="large" variant="neutral">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button disabled size="large" variant="neutral">I'm an NVE-button</nve-button>
+        </td>
+        <td>
+          <nve-button loading size="large" variant="neutral">I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+`;
