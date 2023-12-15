@@ -33,7 +33,7 @@ export default defineConfig({
 import 'nve-designsystem/src/styles/global.css';
 ```
 
-4. I tillegg trenger du å importere en .css-fil for farge-tema i main.ts. Filene finnes i `nve-designsystem/build/css/` mappe. For NVE-tema, bruk:
+4. I tillegg trenger du å importere en .css-fil for farge-tema i main.ts. Filene finnes i mappa `nve-designsystem/build/css/`. For NVE-tema, bruk:
 
 ```ts
 import 'nve-designsystem/build/css/nve.css';
@@ -52,12 +52,10 @@ Du har også mulighet til å velge enten lyst eller mørkt tema. Lyst er standar
 ```html
 <template>
   <nve-button variant="primary" size="small" @click="send">Button</nve-button>
-  <template>
-    <script setup lang="ts">
-      import { NveButton } from 'nve-designsystem/src/components/nve-button/nve-button';
-    </script></template
-  ></template
->
+</template>
+<script setup lang="ts">
+  import { NveButton } from 'nve-designsystem/src/components/nve-button/nve-button';
+</script>
 ```
 
 Husk å alltid bruke både opening og closing tag individuelt, (`<nve-button />` fungerer ikke).
@@ -72,10 +70,76 @@ De fleste komponentene bygger på [Shoelace](https://shoelace.style/), men er ti
 
 ### **Kjøremiljø**
 
-Kjør `npm run dev` for å vise test-applikasjonen.
-Lag en testside for komponenten din, `nve-komponentnavn-demo.ts`, og inkluder denne i `main.ts`. Sida bør vise de forskjellige variantene av komponenten.
+Prosjektet importerer Shoelace sin npm-pakke. Kjør `npm run dev` for utvikling.
+For å teste en komponent i main.ts må man huske å legge til script tag med komponenten i index.html fila som f.eks. <script type="module" src="/src/nve-button.ts"></script>
 
-### Storybook
+### **Styling**
+
+Når vi styler shoelace-komponenter kan vi enten overskrive Shoelace sine css-klasser eller bruke parts i shadow-DOM.
+Bruk helst parts fordi koden blir lettere å lese.
+Dette:
+
+```css
+::part(control) {
+  color: red;
+}
+```
+
+ser bedre ut enn dette:
+
+```css
+.checkbox checkbox--medium checkbox__control {
+  color: red;
+}
+```
+
+Hvis det ikke er mulig å style med ::part, bruk css-klasser.
+
+### **Typografi**
+
+Det finnes tokens for typografi i Figma.
+Sett Figma i utviklermodus og klikk på en tekst.
+I typografi-seksjonen til høyre ser vi css'en som er generert. Vi skal ikke bruke selve css'en, men <b>kommentaren</b> over css'en gir et hint om navnet på tokenet. Eksempel i Figma:
+
+```css
+color: var(--neutrals-foreground-mute, #3c3f44);
+
+/* Label/small */
+font-family: Source Sans Pro;
+font-size: 1rem;
+font-style: normal;
+font-weight: 600;
+line-height: 110%; /* 1.1rem */
+```
+
+Kommentaren `/* Label/small */` betyr at vi skal bruke css-variabelen `--label-small`, f.eks. slik:
+
+```css
+.button-label {
+  font: var(--label-small);
+}
+```
+
+### **Mapping av shoelace tokes til NVE-tokens**
+
+Det hadde vært fint om vi kunne sette en NVE-verdi for alle Shoelace-tokens. Men dette går ikke fordi strukturen i Shoelace og NVE Designsystem er forskjellig.
+Vi har satt NVE-verdier for en del Shoelace-tokens, og disse ligger i global.css.
+Foreslå gjerne flere Shoelace-tokens som kan mappes på denne måten.
+
+Vi trenger ikke å style:
+
+- fokus-tilstand på alle komponenter. Dette settes globalt
+- høyde på input-felter, knapper og select
+- border-radius på alle komponenter (med mindre border radius mangler på en Shoelace-komponent, men designsystemet spesifiserer border-radius)
+- bakgrunn, font-farge, font-størrelse, ikon-farge, ramme i input, select og textarea i både variantene filled og not filled
+
+### **Test-app for designere når man lager en PR**
+
+Pull requests på komponenter skal godkjennes av designere. Derfor har vi satt opp en azure static app med Storybook. Denne bygges og kjøres når man lager en PR.
+
+Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'er kan det være at appen ikke bygges. De skal slettes automatisk når en PR lukkes, men det er ikke alltid dette virker. I slike tilfeller må vi slette appene manuelt i Azure-portalen. Appene ligger i denne ressursgruppa: TEST-Designsystemet-RG.
+
+### **Storybook**
 
 For å kjøre Storybook lokalt, kjør `npm run storybook`
 
