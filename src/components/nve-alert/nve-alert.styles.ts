@@ -36,13 +36,14 @@ export default css`
 
   :host::part(close-button) {
     padding-inline-end: unset;
+  }
+
+  sl-icon-button::part(base) {
     margin-left: var(--spacing-medium, 1rem);
+    padding: var(--spacing-xx-small);
+    border-radius: 50%;
     stroke: var(--neutrals-foreground-primary);
     transition: background-color 0.3s ease;
-  }
-  :host::part(close-button):hover {
-    background: var(--grey-200);
-    border-radius: 50%;
   }
 
   :host::part(message)::after {
@@ -55,21 +56,39 @@ export default css`
     font: var(--header-small);
     white-space: nowrap;
   }
+
+  /*variants */
   .alert--primary {
     background-color: var(--feedback-background-default-info);
+    & sl-icon-button::part(base):hover {
+      background: var(--feedback-background-subtle-info);
+    }
   }
   .alert--danger {
     background-color: var(--feedback-background-default-error);
+    & sl-icon-button::part(base):hover {
+      background: var(--feedback-background-subtle-error);
+    }
   }
   .alert--success {
-    background-color: var(--feedback-background-subtle-success);
+    background-color: var(--feedback-background-default-success);
+    & sl-icon-button::part(base):hover {
+      background: var(--feedback-background-subtle-success);
+    }
   }
+
   .alert--neutral {
     background-color: var(--neutrals-foreground-subtle);
     color: var(--interactive-primary-foreground-default);
+    & sl-icon-button::part(base):hover {
+      background: var(--varsom-blue-200);
+    }
   }
   .alert--warning {
     background-color: var(--feedback-background-default-warning);
+    & sl-icon-button::part(base):hover {
+      background: var(--feedback-background-subtle-warning);
+    }
   }
 
   /* emphasized */
@@ -79,7 +98,7 @@ export default css`
     .alert__icon {
       color: var(--interactive-primary-foreground-default) !important;
     }
-    .alert__close-button {
+    & sl-icon-button::part(base) {
       stroke: var(--interactive-primary-foreground-default) !important;
     }
   }
@@ -88,7 +107,7 @@ export default css`
     .alert__icon {
       color: var(--feedback-foreground-default-warning) !important;
     }
-    .alert__close-button {
+    & sl-icon-button::part(base) {
       stroke: var(--feedback-foreground-default-warning) !important;
     }
   }
