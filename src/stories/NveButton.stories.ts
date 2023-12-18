@@ -23,13 +23,14 @@ const meta = {
     docs: {
       description: {
         component: `<div>
+        <a href="https://github.com/doc/nve-button.md">API-dokumentasjon</a>
         <p>Knappeelementer brukes for å gi en enkel og tilgjengelig opplevelse for brukerne. 
         Et knappeelement skal brukes når en handling utføres av brukeren.
         </div>`
       }
     }
   }
-  
+
 } satisfies Meta<NveButtonProps>;
 
 export default meta;
