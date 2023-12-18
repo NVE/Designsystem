@@ -35,11 +35,31 @@ export class NveRadioGroup extends SlRadioGroup {
 
     /* overvåker og setter disabled på under-radio-elementer når disabled endres */
     @watch('disabled')
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     handlePropChange(oldValue: any, newValue: any): boolean {
         const radios = this.getAllRadios();
-        radios.forEach((radio: any) => (radio.disabled = newValue));
-        return newValue !== oldValue;
-    };
+        const changed = newValue !== oldValue;
+
+        if (!changed) return false;
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        radios.forEach((radio: any) => {
+            if (radio.was_disabled === undefined) {
+                radio.was_disabled = radio.disabled;
+            }
+            else {
+                if (oldValue === true) {
+                    // enabled
+                    radio.disabled = radio.was_disabled;
+                } else {
+                    // disabled
+                    radio.was_disabled = radio.disabled;
+                    radio.disabled = true;
+                }
+            }
+        });
+        return true;
+    }
 
     static styles = [SlRadioGroup.styles, styles];
 
@@ -85,6 +105,7 @@ export class NveRadioGroup extends SlRadioGroup {
 
         await Promise.all(
             // Sync the checked state and size
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             radios.map(async (radio: { updateComplete: any; checked: boolean; value: any; size: any; }) => {
                 await radio.updateComplete;
                 // @ts-expect-error - this is shadowed by outer container
@@ -98,6 +119,7 @@ export class NveRadioGroup extends SlRadioGroup {
         // @ts-expect-error - this is shadowed by outer container
         this.hasButtonGroup = radios.some((radio) => radio.tagName.toLowerCase() === "sl-radio-button" || radio.tagName.toLowerCase() === "nve-radio-button");
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         if (!radios.some((radio: { checked: any; }) => radio.checked)) {
             // @ts-expect-error - this is shadowed by outer container
             if (this.hasButtonGroup) {

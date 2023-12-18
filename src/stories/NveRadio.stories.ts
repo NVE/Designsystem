@@ -29,6 +29,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<NveRadioGroupProps>;
 
+// eslint-disable-next-line storybook/prefer-pascal-case
 export const standard: Story = {
     args: {
         label: 'Radio-gruppe',
