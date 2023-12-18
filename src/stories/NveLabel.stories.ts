@@ -46,7 +46,7 @@ export const light: Story = {
   },
 };
 
-export const medVerktøyHint: Story = {
+export const medVerktoyHint: Story = {
   args: {
     value: 'Svev over meg',
     size: 'small',
