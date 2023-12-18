@@ -233,6 +233,11 @@
         "Success": {
           "value": "{green.150}",
           "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.150}",
+          "type": "color",
+          "description": "For neutral messages"
         }
       },
       "Subtle": {
@@ -251,6 +256,10 @@
         "Success": {
           "value": "{green.100}",
           "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.050}",
+          "type": "color"
         }
       },
       "Emphasized": {
@@ -268,6 +277,10 @@
         },
         "Success": {
           "value": "{green.800}",
+          "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.800}",
           "type": "color"
         }
       }
@@ -289,6 +302,10 @@
         "Success": {
           "value": "{grey.950}",
           "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.950}",
+          "type": "color"
         }
       },
       "Subtle": {
@@ -307,6 +324,10 @@
         "Success": {
           "value": "{grey.950}",
           "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.950}",
+          "type": "color"
         }
       },
       "Emphasized": {
@@ -323,6 +344,10 @@
           "type": "color"
         },
         "Success": {
+          "value": "{grey.000}",
+          "type": "color"
+        },
+        "Neutral": {
           "value": "{grey.000}",
           "type": "color"
         }

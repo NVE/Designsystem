@@ -242,6 +242,10 @@
         "Success": {
           "value": "{green.150}",
           "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.150}",
+          "type": "color"
         }
       },
       "Subtle": {
@@ -260,6 +264,10 @@
         "Success": {
           "value": "{green.100}",
           "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.050}",
+          "type": "color"
         }
       },
       "Emphasized": {
@@ -277,6 +285,10 @@
         },
         "Success": {
           "value": "{green.800}",
+          "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.800}",
           "type": "color"
         }
       }
@@ -298,6 +310,10 @@
         "Success": {
           "value": "{varsom_blue.999}",
           "type": "color"
+        },
+        "Neutral": {
+          "value": "{varsom_blue.999}",
+          "type": "color"
         }
       },
       "Subtle": {
@@ -316,6 +332,10 @@
         "Success": {
           "value": "{varsom_blue.999}",
           "type": "color"
+        },
+        "Neutral": {
+          "value": "{varsom_blue.999}",
+          "type": "color"
         }
       },
       "Emphasized": {
@@ -332,6 +352,10 @@
           "type": "color"
         },
         "Success": {
+          "value": "{grey.000}",
+          "type": "color"
+        },
+        "Neutral": {
           "value": "{grey.000}",
           "type": "color"
         }

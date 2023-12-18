@@ -1,45 +1,64 @@
 import '../components/nve-button/nve-button';
 import '../components/nve-spinner/nve-spinner';
 import { NveButton } from './NveButton';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import type { NveButtonProps } from './NveButton';
 
-export default {
-  title: 'NveButton', // Title for the component in Storybook
-  component: 'nve-button',
-  render: (args: {
-    variant: string;
-    size: string;
-    disabled: boolean;
-    loading: boolean;
-    outline: boolean;
-  }) => NveButton(args),
+const meta = {
+  title: 'Nve/NveButton',
+  tags: ['autodocs'],
+  render: (args) => NveButton(args),
   argTypes: {
     size: {
       control: { type: 'select' },
       options: ['small', 'medium', 'large'],
     },
-    variant: { table: { disable: true } },
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'default', 'neutral'],
+    },
+    outline: { control: 'boolean', if: { arg: 'variant', eq: 'neutral' } }
   },
-};
+  parameters: {
+    docs: {
+      description: {
+        component: `<div>
+        <a href="https://github.com/doc/nve-button.md">API-dokumentasjon</a>
+        <p>Knappeelementer brukes for å gi en enkel og tilgjengelig opplevelse for brukerne. 
+        Et knappeelement skal brukes når en handling utføres av brukeren.
+        </div>`
+      }
+    }
+  }
 
-export const Primary = {
+} satisfies Meta<NveButtonProps>;
+
+export default meta;
+type Story = StoryObj<NveButtonProps>;
+
+
+export const Primary: Story = {
   args: {
     variant: 'primary',
     size: 'medium',
     disabled: false,
     loading: false,
+    outline: false
   },
 };
 
-export const Secondary = {
+
+export const Secondary: Story = {
   args: {
     variant: 'default',
     size: 'medium',
     disabled: false,
     loading: false,
+    outline: false
   },
 };
 
-export const Outlined = {
+export const Outlined: Story = {
   args: {
     variant: 'neutral',
     size: 'medium',
@@ -49,11 +68,12 @@ export const Outlined = {
   },
 };
 
-export const Ghost = {
+export const Ghost: Story = {
   args: {
     variant: 'neutral',
     size: 'medium',
     disabled: false,
     loading: false,
+    outline: false
   },
 };

@@ -21,11 +21,11 @@ export class NveIcon extends LitElement {
   
     /* we need it to center the icon */
     :is(span) {
-      display: flex;
+      display: inline-flex;
     }
   `;
   render() {
-    return html` <span class="material-symbols-outlined">${this.name}</span> `;
+    return html`<span class="material-symbols-outlined">${this.name}</span>`;
   }
 }
 declare global {

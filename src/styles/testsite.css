@@ -2,53 +2,53 @@
 
 /* sett class="demo" på table for å få stiplete linjer rundt tabell*/
 .demo table {
-    border-collapse: separate;
-    border-spacing: 0;
-    position: relative;
-  }
-  
-  .demo th,
-  .demo td {
-    padding: 1rem;
-  }
-  
-  .demo td:not(:first-child) {
-    border-bottom: 1px dashed black;
-    border-right: 1px dashed black;
-  }
-  
-  .demo tr:first-child td:first-child {
-    width: 150px;
-  }
-  
-  /* første og siste rad */
-  .demo tr:first-child td:not(:first-child) {
-    border-top: none;
-  }
-  
-  .demo tr:last-child td:not(:first-child) {
-    border-bottom: none;
-  }
-  
-  /* ta bort siste høyre */
-  .demo td:last-child {
-    border-right: none;
-  }
-  
-  /* gruppe-ramme */
-  .demo tbody:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 11.4rem;
-    right: 0;
-    bottom: 0;
-    border: 1px dashed black;
-    border-radius: 10px;
-    pointer-events: none;
-    z-index: -1;
-  }
-  
-  .demo tbody {
-    position: relative;
-  }
+  border-collapse: separate;
+  border-spacing: 0;
+  position: relative;
+}
+
+.demo th,
+.demo td {
+  padding: 1rem;
+}
+
+.demo td:not(:first-child) {
+  border-bottom: 1px dashed black;
+  border-right: 1px dashed black;
+}
+
+.demo tr:first-child td:first-child {
+  width: 150px;
+}
+
+/* første og siste rad */
+.demo tr:first-child td:not(:first-child) {
+  border-top: none;
+}
+
+.demo tr:last-child td:not(:first-child) {
+  border-bottom: none;
+}
+
+/* ta bort siste høyre */
+.demo td:last-child {
+  border-right: none;
+}
+
+/* gruppe-ramme */
+.demo tbody:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 11.4rem;
+  right: 0;
+  bottom: 0;
+  border: 1px dashed black;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.demo tbody {
+  position: relative;
+}

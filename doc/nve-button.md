@@ -1,6 +1,6 @@
 # nve-button
 
-En Shoelace-knapp i NVE-forkledning
+En Shoelace-knapp i NVE-forkledning.
 Se https://shoelace.style/components/button
 
 TODO: Beskriv hvilke properties / attributter og varianter vi ikke skal bruke
