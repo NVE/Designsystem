@@ -1,0 +1,36 @@
+import { Story, Meta, Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
+
+<Meta isTemplate />
+
+<Title />
+
+# Default implementation
+
+<div style={{ display: 'flex' }}>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Primary" height="50px">
+      {() => <Primary />}
+    </Story>
+  </span>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Secondary" height="50px">
+      {() => <Primary />}
+    </Story>
+  </span>
+</div>
+
+<Primary />
+
+## Inputs
+
+The component accepts the following inputs (props):
+
+<Controls />
+
+---
+
+## Additional variations
+
+Listed below are additional variations of the component.
+
+<Stories />
