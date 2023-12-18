@@ -12,7 +12,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: '<h2><nve-input> | NveInput</h2><a href="https://github.com/doc/nve-input.md">API-dokumentasjon</a>',
+        component: '<h2><nve-input> | NveInput</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-input.md">API-dokumentasjon</a>',
       }
     }
   }

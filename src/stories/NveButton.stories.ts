@@ -23,7 +23,7 @@ const meta = {
     docs: {
       description: {
         component: `<div>
-        <a href="https://github.com/doc/nve-button.md">API-dokumentasjon</a>
+        <a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-button.md">API-dokumentasjon</a>
         <p>Knappeelementer brukes for å gi en enkel og tilgjengelig opplevelse for brukerne. 
         Et knappeelement skal brukes når en handling utføres av brukeren.
         </div>`
