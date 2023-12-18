@@ -14,8 +14,8 @@ export default css`
 
     :host::part(form-control-label) {
         display: flex;
-        color: var(--neutrals-foreground-primary);
-        font: var(--label-x-small-light);
+        color: var(--neutrals-foreground-mute);
+        font: var(--label-small-light);
         margin-bottom: unset;
         text-align: left;
     }

@@ -14,7 +14,7 @@ export default css`
         border: solid var(--border-width-strong) var(--neutrals-foreground-subtle);
         background-color: var(--neutrals-background-primary);
     }
-
+    
     /* overstyr opacity på disabled */
     .radio--disabled {
         opacity: 0.38;
@@ -37,8 +37,7 @@ export default css`
         color: var(--neutrals-foreground-primary);
         background-color: var(--neutrals-background-primary);
 
-        display: inline-flex;
-        align-items: center;
+        display: flex;
         gap: var(--spacing-x-small, 0.5rem); /* sett gap */
     }
 
