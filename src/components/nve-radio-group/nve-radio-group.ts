@@ -16,8 +16,7 @@ import styles from "./nve-radio-group.styles";
  *
  * @property {string} orientation = horizontal eller vertical - Om radio-gruppen skal rendres horisontalt
  *
- * @slot - The default slot where `<nve-radio>` or `<nve-radio-button>` elements are placed.
- * @slot label - The radio group's label. Required for proper accessibility. Alternatively, you can use the `label` attribute.
+ * @slot Standard slot hvor `<nve-radio>` ellet `<nve-radio-button>` plasseres
  *
  * @example <nve-radio-group horizontal value="1"><nve-radio value="1">Value 1 (checked)</nve-radio></nve-radio-group>
  * @example <nve-radio-group vertical value="1"><nve-radio value="1">Value 1 (checked)</nve-radio></nve-radio-group>
