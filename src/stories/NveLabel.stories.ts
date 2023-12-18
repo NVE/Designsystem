@@ -19,7 +19,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: '<h2><nve-label> | NveLabel</h2><a href="https://github.com/doc/nve-label.md">API-dokumentasjon</a>',
+        component: '<h2><nve-label> | NveLabel</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-label.md">API-dokumentasjon</a>',
       }
     }
   }
