@@ -20,7 +20,7 @@ const meta = {
     parameters: {
         docs: {
             description: {
-                component: '<h2><nve-radio-group> | NveRadioGroup</h2><a href="https://github.com/doc/nve-radio-group.md">API-dokumentasjon</a>',
+                component: '<h2><nve-radio-group> | NveRadioGroup</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-radio-group.md">API-dokumentasjon</a>',
             }
         }
     }
