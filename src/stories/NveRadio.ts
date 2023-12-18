@@ -15,7 +15,6 @@ export const NveRadioGroup = (props: NveRadioGroupProps) => {
         .label=${props.label}
         .required=${props.required}
         value="none" >
-            <slot name="label">ASDF</slot>
             <nve-radio value="1">Value 1</nve-radio>
             <nve-radio value=-1>Value -1</nve-radio>
             <nve-radio disabled=disabled value=-1>Value -1 (disabled)</nve-radio>
