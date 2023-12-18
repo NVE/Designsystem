@@ -278,6 +278,10 @@
         "Success": {
           "value": "{green.800}",
           "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.800}",
+          "type": "color"
         }
       }
     },
