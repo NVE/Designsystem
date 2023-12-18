@@ -7,8 +7,8 @@ const varsomCSSPath = process.env.NODE_ENV === 'production' ? '/assets/varsom.cs
 // we have to add another styling files after they will be in use
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx|mdx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-docs'],
   framework: {
     name: '@storybook/web-components-vite',
     options: {},
@@ -22,6 +22,7 @@ const config: StorybookConfig = {
 `,
   docs: {
     autodocs: 'tag',
+
   },
 };
 export default config;

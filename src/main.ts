@@ -14,7 +14,7 @@ const app = html`<table>
   <tr>
     <td>medium</td>
     <td>
-      <nve-button size="medium" variant="primary">I'm a NVE-butotn</nve-button>
+      <nve-button size="medium" variant="primary" disabled="">I'm a NVE-butotn</nve-button>
     </td>
     <td>
       <nve-button size="medium" variant="default">I'm a NVE-butotn</nve-button>
