@@ -16,7 +16,7 @@ export default html`
       <tr>
         <td>Primary Medium</td>
         <td>
-          <nve-button circle size="medium" variant="primary">I'm an NVE-button</nve-button>
+          <nve-button size="medium" variant="primary">I'm an NVE-button</nve-button>
         </td>
         <td>
           <nve-button disabled size="medium" variant="primary">I'm an NVE-button</nve-button>
@@ -155,6 +155,24 @@ export default html`
         </td>
         <td>
           <nve-button loading size="large" variant="neutral">I'm an NVE-button</nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Button with prefix icon</td>
+        <td>
+          <nve-button size="large" variant="primary"
+            >I'm an NVE-button
+            <nve-icon name="warning" slot="prefix"></nve-icon>
+          </nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Button with suffix icon</td>
+        <td>
+          <nve-button loading size="small" variant="primary"
+            >I'm an NVE-button
+            <nve-icon name="warning" slot="suffix"></nve-icon>
+          </nve-button>
         </td>
       </tr>
     </tbody>

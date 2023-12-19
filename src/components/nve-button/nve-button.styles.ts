@@ -1,20 +1,40 @@
 import { css } from 'lit';
 
 export default css`
+  /* kan ikke bruke gap fordi den lager rom mellom slots selv om de er tomme */
+  /* derfor setter margin på ::part(label) og substraherer margin verdi i horizontal padding i selve .button klassen  */
   .button {
     width: fit-content;
     align-items: center;
-    gap: var(--spacing-x-small, 0.5rem);
-    padding: var(--spacing-medium, 1rem) var(--spacing-large, 1.5rem);
+    padding: var(--spacing-medium, 1rem) calc(var(--spacing-large, 1.5rem) - var(--spacing-x-small, 0.5rem));
   }
   :host::part(spinner) {
     position: relative;
     top: 0;
     left: 0;
+    margin-left: var(--spacing-x-small, 0.5rem);
   }
+
   :host::part(label) {
-    font: var(--label-medium);
-    padding: 0;
+    margin: 0 var(--spacing-x-small, 0.5rem);
+  }
+
+  .button--has-label.button--large .button__label,
+  .button--has-label.button--small .button__label,
+  .button--has-label.button--medium .button__label {
+    padding: unset;
+  }
+
+  .button--has-prefix.button--small,
+  .button--has-prefix.button--medium,
+  .button--has-prefix.button--large {
+    padding-inline-start: var(--spacing-large);
+  }
+
+  .button--has-suffix.button--small,
+  .button--has-suffix.button--medium,
+  .button--has-suffix.button--large {
+    padding-inline-end: var(--spacing-large);
   }
 
   .button--small {

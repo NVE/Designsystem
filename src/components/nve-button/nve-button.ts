@@ -1,4 +1,4 @@
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { SlButton } from '@shoelace-style/shoelace';
 import styles from './nve-button.styles';
 
@@ -18,7 +18,7 @@ export class NveButton extends SlButton {
   constructor() {
     super();
   }
-
+  @property() hasSuffix = 'false';
   static styles = [SlButton.styles, styles];
 }
 
