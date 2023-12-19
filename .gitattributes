@@ -3,4 +3,4 @@
 
 # Generert API-dokumentasjon har kun <LF> som linjeskift, også i Windows.
 # Dette gjør at git tror alle filer er endret hver gang vi genererer dokumentasjon
-doc/*.md text eol=lf
+doc/nve*.md text eol=lf
