@@ -1,7 +1,7 @@
 import { css } from 'lit';
 
 export default css`
-  /* Vis hover effekt på hele sammensatte komponenten */
+  /* Vis hover effekt på control-delen */
   :host(:hover)::part(control) {
     color: var(--neutrals-foreground-subtle);
   }
