@@ -33,13 +33,13 @@ export class NveLabel extends LitElement {
   /**
    * Denne teksten blir vist som et verktøyhint hvis man svever over info-ikonet
    */
-  @property({ reflect: true }) tooltip = '';
+  @property({ reflect: true }) tooltip?: string = undefined;
 
   static styles = [styles];
 
   private renderInfoIconWithTooltip() {
-    let tooltipContent: ChildNode | string | null = this.tooltip;
-    if (!tooltipContent.length) {
+    let tooltipContent: ChildNode | string | undefined | null = this.tooltip;
+    if (!tooltipContent?.length) {
       // tooltip-property er ikke satt, vi prøver å se om vi har tooltip i slot i stedet
       tooltipContent = this.hasSlotController.get('tooltip');
     }
