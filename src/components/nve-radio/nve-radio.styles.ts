@@ -1,49 +1,54 @@
-import { css } from "lit";
+import { css } from 'lit';
 
 export default css`
-    /* Vis hover effekt på hele sammensatte komponenten */
-    :host(:hover),
-    :host(:hover)::part(control),
-    :host(:hover)::part(label),
-    :host(:hover)::part(base) {
-        color: var(--neutrals-foreground-subtle);
-    }
+  /* Vis hover effekt på hele sammensatte komponenten */
+  :host(:hover),
+  :host(:hover)::part(control),
+  :host(:hover)::part(label),
+  :host(:hover)::part(base) {
+    color: var(--neutrals-foreground-subtle);
+  }
 
-    /* Sett "ring" og fjern default blå bakgrunn fra shoelace */
-    :host(:hover)::part(control) {
-        border: solid var(--border-width-strong) var(--neutrals-foreground-subtle);
-        background-color: var(--neutrals-background-primary);
-    }
-    
-    /* overstyr opacity på disabled */
-    .radio--disabled {
-        opacity: 0.38;
-    }
+  /* Sett "ring" og fjern default blå bakgrunn fra shoelace */
+  :host(:hover)::part(control) {
+    border: solid var(--border-width-strong) var(--neutrals-foreground-subtle);
+    background-color: var(--neutrals-background-primary);
+  }
 
-    /* Overstyr styling på control, label og radio */
-    .radio__control {
-        color: var(--neutrals-foreground-primary);
-        border: solid var(--border-width-strong) var(--neutrals-foreground-primary);
-    }
+  /* overstyr opacity på disabled */
+  .radio--disabled {
+    opacity: 0.38;
+  }
 
-    .radio__label {
-        display: inline-flex;
-        margin-inline-start: unset; /* 0.5rem; ta bort margin */
-    }
+  /* Overstyr styling på control, label og radio */
+  .radio__control {
+    color: var(--neutrals-foreground-primary);
+    border: solid var(--border-width-strong) var(--neutrals-foreground-primary);
+  }
 
-    .radio {
-        font: var(--label-x-small-light);
+  .radio__label {
+    display: inline-flex;
+    margin-inline-start: unset; /* 0.5rem; ta bort margin */
+  }
 
-        color: var(--neutrals-foreground-primary);
-        background-color: var(--neutrals-background-primary);
+  .radio {
+    font: var(--label-x-small-light);
 
-        display: flex;
-        gap: var(--spacing-x-small, 0.5rem); /* sett gap */
-    }
+    color: var(--neutrals-foreground-primary);
+    background-color: var(--neutrals-background-primary);
 
-    .radio--checked .radio__control {
-        color: var(--neutrals-foreground-primary);
-        border-color: var(--neutrals-foreground-primary);
-        background-color: var(--neutrals-background-primary);
-    }
+    display: flex;
+    gap: var(--spacing-x-small, 0.5rem); /* sett gap */
+  }
+
+  .radio--checked .radio__control {
+    color: var(--neutrals-foreground-primary);
+    border-color: var(--neutrals-foreground-primary);
+    background-color: var(--neutrals-background-primary);
+  }
+
+  /* overstyr størrelse på check-elementet */
+  sl-icon::part(checked-icon) {
+    transform: scale(1.75);
+  }
 `;
