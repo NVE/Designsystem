@@ -54,7 +54,7 @@ const table = html`
     <td>Kommenter (custom slot)</td>
     <nve-dialog icon="info" label="Kommenter" class="dialog-width4" style="--width: 30vw;">
           <slot part="body">
-            <p>Textarea er ikke laget ennå</p>
+            <p>Nve-Textarea er ikke laget ennå</p>
             <textarea placeholder="Skriv inn din kommentar her..."></textarea>
           </slot>
           <nve-button slot="footer" variant="primary">Send</nve-button>
@@ -62,6 +62,18 @@ const table = html`
     </nve-dialog>
         <td>
         <nve-button onclick="document.querySelector('.dialog-width4').setAttribute('open', 'true')" class="open-dialog" variant="primary">Open Dialog</nve-button>
+      </td>
+    </tr>
+
+    <tr>
+    <td>Disable background</td>
+    <nve-dialog disableBackground label="I denne kan du ikke trykke utenfor for å lukke" class="dialog-width5" style="--width: 30vw;">
+          Tilfeldig tekst. 
+          <nve-button slot="footer" variant="primary">Slett</nve-button>
+          <nve-button class="close" slot="footer" variant="neutral">Avbryt</nve-button>
+    </nve-dialog>
+        <td>
+        <nve-button onclick="document.querySelector('.dialog-width5').setAttribute('open', 'true')" class="open-dialog" variant="primary">Open Dialog</nve-button>
       </td>
     </tr>
   </tbody>
