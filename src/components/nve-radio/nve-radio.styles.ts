@@ -2,10 +2,7 @@ import { css } from 'lit';
 
 export default css`
   /* Vis hover effekt på hele sammensatte komponenten */
-  :host(:hover),
-  :host(:hover)::part(control),
-  :host(:hover)::part(label),
-  :host(:hover)::part(base) {
+  :host(:hover)::part(control) {
     color: var(--neutrals-foreground-subtle);
   }
 
