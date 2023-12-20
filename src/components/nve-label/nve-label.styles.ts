@@ -4,6 +4,10 @@ import { css } from 'lit';
  * Stiler til nve-label
  */
 export const styles = css`
+  :host {
+    color: var(--neutrals-foreground-primary);
+  }
+
   /* light-varianter for de forskjellige størrelsene */
   :host([light]),
   :host([size='x-small']) {
