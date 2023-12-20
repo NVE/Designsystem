@@ -6,9 +6,9 @@ import '../nve-icon/nve-icon';
 import '../nve-tooltip/nve-tooltip';
 
 /**
- * Ledetekst med valgfritt info-ikon
+ * Ledetekst med valgfritt verktøy-hint (og tilhørende info-ikon)
  *
- * @slot label - teksten som skal vises. Eller du kan bruke label-attributtet
+ * @slot (default) - teksten som skal vises. Eller du kan bruke value-attributtet
  * @slot tooltip - innhold i denne blir vist som en tooltip hvis man svever over info-ikonet
  *
  * TODO: Skal være litt mer plass mellom tekst og info-ikon
@@ -54,11 +54,30 @@ export class NveLabel extends LitElement {
     return html``; // tooltip er ikke spesifisert, så vi viser ikke denne delen
   }
 
-  render() {
-    return html`
+  private renderValueProperty() {
+    if (this.value.length) {
+      return html`
       <label part="form-control-label" class="form-control__label" aria-hidden="false">
         <slot name="label">${this.value}</slot>
-      </label>
+      </label>`
+    }
+    return html``; // value-property er ikke satt, så vi viser ikke denne delen
+  }
+
+  private renderSlottedContent() {
+    if (!this.value.length) {
+      return html`
+      <label part="form-control-label" class="form-control__label" aria-hidden="false">
+        <slot>${this.value}</slot>
+      </label>`
+    }
+    return html``; // det er ikke innhold i slot, så vi viser ikke denne delen
+  }
+
+  render() {
+    return html`
+      ${this.renderValueProperty()}
+      ${this.renderSlottedContent()}
       ${this.renderInfoIconWithTooltip()}
     `;
   }
