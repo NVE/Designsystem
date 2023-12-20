@@ -173,7 +173,8 @@ For å kjøre Storybook lokalt, kjør `npm run storybook`
 Det skal opprettes en story for hver nye komponent som lages. Story opprettes på følgende måte: <br>
 
 <ul>
-<li>Opprett en fil i mappen stories med filnavn "NavnPåKomponent.stories.ts." F.eks. NveButton.stories.ts.</li>
+<li>Opprett en mappe for komponenten i mappen stories</li>
+<li>Opprett en fil med filnavn "NavnPåKomponent.stories.ts." F.eks. NveButton.stories.ts.</li>
 <li>Se på eksisterende stories-filer og bruk samme oppsett </li>
 <li>Storbyook lager toggle-buttons for boolean verdier. For dropdown-meny må man selv definere alternativene </li>
 <li>Komponent-filen, f.eks. NavnPåKomponent.ts må eksportere props. Se eksisterende filer for eksempel (export interface NavnPåKomponentProps)</li>
