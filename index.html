@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,70 +10,13 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
     <link rel="stylesheet" href="./build/css/varsom.css" />
-    <script type="module" src="/src/components/nve-button/nve-button.ts"></script>
-    <script type="module" src="/src/components/nve-spinner/nve-spinner.ts"></script>
-    <script type="module" src="/src/components/nve-dropdown/nve-dropdown.ts"></script>
-    <script type="module" src="/src/components/nve-menu.ts"></script>
-    <script type="module" src="/src/components/nve-menu-item.ts"></script>
-    <script type="module" src="/src/components/nve-icon/nve-icon.ts"></script>
-    <script type="module" src="/src/components/nve-dropdown/nve-dropdown.ts"></script>
+    <!-- Legg til / endre til modulene du vil teste her -->
+    <script type="module" src="/src/components/index.ts"></script>
   </head>
   <body>
     <div id="app"></div>
-    <nve-button trailing-icon></nve-button>
     <!-- This div serves as a container for your Lit app -->
-
     <!-- Import your Vite-generated JS entry point -->
-    <nve-dropdown>
-      <nve-button variant="primary" slot="trigger">
-        <nve-icon name="expand_more" slot="suffix"></nve-icon>
-        Dropdown</nve-button>
-      <nve-menu>
-        <nve-menu-item subtext="Ekstratekst">Tekst 1</nve-menu-item>
-        <nve-menu-item dividerTop>Tekst 2</nve-menu-item>
-        <nve-menu-item dividerBottom>Tekst 3</nve-menu-item>
-        <nve-menu-item level2>Tekst 4</nve-menu-item>
-        <nve-menu-item category>Category</nve-menu-item>
-        <nve-menu-item type="checkbox" checked>Checkbox</nve-menu-item>
-        <nve-menu-item disabled>Disabled</nve-menu-item>
-        <nve-menu-item> Submenu
-        <nve-menu slot="submenu">
-          <nve-menu-item >Tekst 2</nve-menu-item>
-          <nve-menu-item >Tekst 3</nve-menu-item>
-          <nve-menu-item >Tekst 4</nve-menu-item>
-        </nve-menu>
-      </nve-menu-item>
-        <sl-divider></sl-divider>
-        <nve-menu-item>
-          Prefix
-          <nve-icon slot="prefix" name="info"></sl-icon>
-        </nve-menu-item>
-        <nve-menu-item>
-          Suffix Icon
-          <nve-icon slot="suffix" name="info"></sl-icon>
-        </nve-menu-item>
-      </nve-menu>
-    </nve-dropdown>
-    <sl-dropdown>
-      <sl-button slot="trigger" caret>Dropdown</sl-button>
-      <sl-menu>
-        <sl-menu-item>Dropdown Item 1</sl-menu-item>
-        <sl-menu-item>Dropdown Item 2</sl-menu-item>
-        <sl-menu-item>Dropdown Item 3</sl-menu-item>
-        <sl-divider></sl-divider>
-        <sl-menu-item type="checkbox" checked>Checkbox</sl-menu-item>
-        <sl-menu-item disabled>Disabled</sl-menu-item>
-        <sl-divider></sl-divider>
-        <sl-menu-item>
-          Prefix
-          <sl-icon slot="prefix" name="gift"></sl-icon>
-        </sl-menu-item>
-        <sl-menu-item>
-          Suffix Icon
-          <sl-icon slot="suffix" name="heart"></sl-icon>
-        </sl-menu-item>
-      </sl-menu>
-    </sl-dropdown>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

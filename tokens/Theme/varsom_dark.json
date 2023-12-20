@@ -57,8 +57,7 @@
       },
       "Disabled": {
         "value": "{grey.500}",
-        "type": "color",
-        "$extensions": {}
+        "type": "color"
       }
     }
   },
@@ -75,8 +74,7 @@
         },
         "Disabled": {
           "value": "{varsom_blue.000}",
-          "type": "color",
-          "$extensions": {}
+          "type": "color"
         }
       },
       "Foreground": {
@@ -90,8 +88,7 @@
         },
         "Disabled": {
           "value": "{varsom_blue.999}",
-          "type": "color",
-          "$extensions": {}
+          "type": "color"
         },
         "Border": {
           "Focus": {
@@ -127,8 +124,7 @@
         },
         "Disabled": {
           "value": "{grey.000}",
-          "type": "color",
-          "$extensions": {}
+          "type": "color"
         }
       },
       "Border": {
@@ -150,8 +146,7 @@
         },
         "Disabled": {
           "value": "{grey.000}",
-          "type": "color",
-          "$extensions": {}
+          "type": "color"
         }
       },
       "Border": {
@@ -169,8 +164,7 @@
         },
         "Disabled": {
           "value": "{varsom_blue.100}",
-          "type": "color",
-          "$extensions": {}
+          "type": "color"
         }
       }
     },
@@ -192,8 +186,7 @@
         },
         "Disabled": {
           "value": "{grey.000}",
-          "type": "color",
-          "$extensions": {}
+          "type": "color"
         }
       },
       "Border": {
@@ -240,6 +233,10 @@
         "Success": {
           "value": "{green.950}",
           "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.800}",
+          "type": "color"
         }
       },
       "Subtle": {
@@ -258,6 +255,10 @@
         "Success": {
           "value": "{green.999}",
           "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.850}",
+          "type": "color"
         }
       },
       "Emphasized": {
@@ -275,6 +276,10 @@
         },
         "Success": {
           "value": "{green.800}",
+          "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.150}",
           "type": "color"
         }
       }
@@ -296,6 +301,10 @@
         "Success": {
           "value": "{grey.000}",
           "type": "color"
+        },
+        "Neutral": {
+          "value": "{grey.000}",
+          "type": "color"
         }
       },
       "Subtle": {
@@ -312,6 +321,10 @@
           "type": "color"
         },
         "Success": {
+          "value": "{grey.000}",
+          "type": "color"
+        },
+        "Neutral": {
           "value": "{grey.000}",
           "type": "color"
         }
@@ -331,6 +344,10 @@
         },
         "Success": {
           "value": "{grey.000}",
+          "type": "color"
+        },
+        "Neutral": {
+          "value": "{varsom_blue.999}",
           "type": "color"
         }
       }

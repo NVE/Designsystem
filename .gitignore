@@ -1,2 +1,7 @@
 node_modules
 .DS_Store
+
+# ignore Visual Studio local folder
+.vs/
+# ignore dist - (npm build output)
+dist/
