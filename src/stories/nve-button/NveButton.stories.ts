@@ -1,5 +1,5 @@
-import '../components/nve-button/nve-button';
-import '../components/nve-spinner/nve-spinner';
+import '../../components/nve-button/nve-button';
+import '../../components/nve-spinner/nve-spinner';
 import { NveButton } from './NveButton';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { NveButtonProps } from './NveButton';
