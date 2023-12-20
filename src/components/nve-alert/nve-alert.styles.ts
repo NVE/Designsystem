@@ -113,15 +113,31 @@ export default css`
   }
   :host([emphasized]) .alert--primary {
     background-color: var(--feedback-background-emphasized-info);
+    & sl-icon-button::part(base):hover {
+      background: var(--feedback-background-subtle-info);
+      stroke: var(--feedback-background-emphasized-info) !important;
+    }
   }
   :host([emphasized]) .alert--danger {
     background-color: var(--feedback-background-emphasized-error);
+    & sl-icon-button::part(base):hover {
+      background: var(--feedback-background-subtle-error);
+      stroke: var(--feedback-background-emphasized-error) !important;
+    }
   }
   :host([emphasized]) .alert--success {
     background-color: var(--feedback-background-emphasized-success);
+    & sl-icon-button::part(base):hover {
+      background: var(--feedback-background-subtle-success);
+      stroke: var(--feedback-background-emphasized-success) !important;
+    }
   }
   :host([emphasized]) .alert--neutral {
     background-color: var(--neutrals-foreground-primary);
+    & sl-icon-button::part(base):hover {
+      background: var(--feedback-background-subtle-neutral, #f7f7f8);
+      stroke: var(--neutrals-foreground-primary) !important;
+    }
   }
   :host([emphasized]) .alert--warning {
     background-color: var(--feedback-background-emphasized-warning);
