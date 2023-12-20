@@ -1,5 +1,6 @@
 import { html, LitElement } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
+import '../nve-label/nve-label';
 import styles from './nve-checkbox-group.styles';
 
 @customElement('nve-checkbox-group')
@@ -7,34 +8,66 @@ import styles from './nve-checkbox-group.styles';
  * Representerer en tilpasset sjekboksgruppekomponent.
  * Denne komponenten burde brukes kun med <nve-checkbox> komponent. isValid property endrer fargene på alle
  * <nve-checkbox> komponenter som er wrappet i <nve-checkbox-group>
+ * @slot default - innholder alle nve-checkbox komponenter for global style styring og validering
  * */
 export class NveCheckboxGroup extends LitElement {
   constructor() {
     super();
   }
 
-  @property({ type: Boolean }) isValid = true;
+  /**
+   * Bestemmer om sjekkboksgruppe er valid. Hvis ikke alle sjekkbokser i gruppe blir markert som feil
+   */
+  @property({ type: Boolean, reflect: true }) invalid = false;
+  /**
+   * Disable eller enable gruppa
+   */
+  @property({ type: Boolean, reflect: true }) disabled = false;
+  /**
+   * Viser label til en gruppe
+   */
   @property() label?: string;
+  /**
+   * Viser i ikone og tooltip tekst ved siden av label. Skal ikke fungere uten label
+   */
   @property() tooltip?: string;
+  /**
+   * Om gruppen skal rendres horisontalt eller vertikalt
+   */
   @property() orientation: 'horizontal' | 'vertical' = 'vertical';
+  /**
+   * Viser feil melding under gruppen
+   */
   @property() errorMessage?: string;
   @query('slot') slot: any;
 
   static styles = [styles];
 
   updated(changedProperties: any) {
-    if (changedProperties.has('isValid') && this.isValid !== undefined) {
+    const assignedElements: Element[] = this.slot.assignedElements({ flatten: true });
+    const nveCheckboxes: Element[] = assignedElements.filter((element) => element.localName === 'nve-checkbox');
+    if (changedProperties.has('invalid') && this.invalid !== undefined) {
       // retrieves all elements assigned to the default slot
-      const assignedElements: Element[] = this.slot.assignedElements({ flatten: true });
-      const nveCheckboxes: Element[] = assignedElements.filter((element) => element.localName === 'nve-checkbox');
 
-      if (this.isValid) {
+      if (this.invalid) {
         nveCheckboxes.forEach((ch) => {
-          ch.setAttribute('isValid', 'false');
+          ch.setAttribute('invalid', '');
         });
       } else {
         nveCheckboxes.forEach((ch) => {
-          ch.setAttribute('isValid', 'true');
+          ch.removeAttribute('invalid');
+        });
+      }
+    }
+
+    if (changedProperties.has('disabled')) {
+      if (this.disabled) {
+        nveCheckboxes.forEach((ch) => {
+          ch.setAttribute('disabled', '');
+        });
+      } else {
+        nveCheckboxes.forEach((ch) => {
+          ch.removeAttribute('disabled');
         });
       }
     }
@@ -43,11 +76,13 @@ export class NveCheckboxGroup extends LitElement {
   render() {
     return html`
       <div class="checkbox-group">
-        <div class="checkbox-group__label">
-          <nve-label value=${this.label} size="small" tooltip=${this.tooltip}></nve-label>
-        </div>
+        ${this.label
+          ? html`<div class="checkbox-group__label">
+              <nve-label value=${this.label} size="small" tooltip=${this.tooltip!}></nve-label>
+            </div>`
+          : null}
         <slot class="checkbox-group__checkboxes"></slot>
-        ${!this.isValid ? html`<span class="checkbox-group__error-message">${this.errorMessage || null}</span>` : null}
+        ${this.invalid ? html`<span class="checkbox-group__error-message">${this.errorMessage || null}</span>` : null}
       </div>
     `;
   }

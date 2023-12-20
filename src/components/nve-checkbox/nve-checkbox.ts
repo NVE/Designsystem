@@ -15,7 +15,7 @@ export class NveCheckbox extends SlCheckbox {
   }
 
   /** Checks if input is valid */
-  @property({ type: Boolean }) isValid = true;
+  @property({ type: Boolean, reflect: true }) invalid = false;
   static styles = [SlCheckbox.styles, styles];
 }
 

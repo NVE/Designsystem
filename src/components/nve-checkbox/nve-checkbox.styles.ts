@@ -1,6 +1,14 @@
 import { css } from 'lit';
 
 export default css`
+  .error {
+    border-color: var(--feedback-background-emphasized-error) !important;
+  }
+  .error-hover {
+    &:hover {
+    }
+  }
+
   :host::part(control),
   :host([disabled]:hover)::part(control) {
     border: var(--border-width-strong) solid var(--neutrals-foreground-primary);
@@ -18,16 +26,27 @@ export default css`
     border-color: var(--neutrals-foreground-primary);
   }
 
-  :host([isValid='false'])::part(control) {
+  :host([invalid])::part(control),
+  :host([disabled][invalid]:hover)::part(control) {
     border-color: var(--feedback-background-emphasized-error);
   }
-  :host([isValid='false'])::part(control control--checked),
-  :host([isValid='false'])::part(control control--indeterminate) {
+  :host([invalid])::part(control control--checked),
+  :host([invalid])::part(control control--indeterminate),
+  :host([disabled][invalid]:hover)::part(control control--checked),
+  :host([disabled][invalid]:hover)::part(control control--indeterminate) {
     background: var(--feedback-background-emphasized-error);
   }
 
   :host(:hover)::part(control) {
     border-color: var(--neutrals-foreground-subtle, #006b99);
+  }
+
+  sl-icon::part(checked-icon svg) {
+    color: var(--grey-000);
+  }
+
+  sl-icon::part(checked-icon svg) > * {
+    stroke: blue;
   }
 
   :host(:hover)::part(control control--checked),

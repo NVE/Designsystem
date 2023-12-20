@@ -13,6 +13,12 @@ export default css`
     gap: var(--spacing-x-small);
   }
 
+  /* shoelace legger til styling når hele gruppa er disabled, så må overskrive den her */
+  :host([disabled]) {
+    opacity: 1 !important;
+    cursor: unset !important;
+  }
+
   .checkbox-group__checkboxes {
     display: flex;
     gap: var(--spacing-small);

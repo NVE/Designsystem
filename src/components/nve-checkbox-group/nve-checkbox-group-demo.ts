@@ -16,24 +16,24 @@ export default html`
       <tr>
         <td>Horizontal</td>
         <td>
-          <nve-checkbox-group orientation="horizontal">
-            <nve-checkbox checked>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
+          <nve-checkbox-group disabled orientation="horizontal">
+            <nve-checkbox checked>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
         <td>
           <nve-checkbox-group label="Label" orientation="horizontal">
-            <nve-checkbox checked>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
+            <nve-checkbox checked>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
         <td>
           <nve-checkbox-group label="Label" tooltip="Help text" orientation="horizontal">
-            <nve-checkbox checked>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
+            <nve-checkbox checked>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
       </tr>
@@ -41,23 +41,23 @@ export default html`
         <td>Vertical</td>
         <td>
           <nve-checkbox-group orientation="vertical">
-            <nve-checkbox checked>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
+            <nve-checkbox checked>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
         <td>
           <nve-checkbox-group label="Label" orientation="vertical">
-            <nve-checkbox checked>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
+            <nve-checkbox checked>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
         <td>
           <nve-checkbox-group label="Label" tooltip="Help text" orientation="vertical">
-            <nve-checkbox checked>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
+            <nve-checkbox checked>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
       </tr>
@@ -65,16 +65,16 @@ export default html`
         <td>Horizontal error</td>
         <td>
           <nve-checkbox-group isValid="false" orientation="horizontal" errorMessage="Error message">
-            <nve-checkbox checked>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
+            <nve-checkbox checked>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
         <td>
           <nve-checkbox-group isValid="false" label="Label" orientation="horizontal" errorMessage="Error message">
-            <nve-checkbox checked>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
+            <nve-checkbox checked>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
         <td>
@@ -85,9 +85,9 @@ export default html`
             orientation="horizontal"
             errorMessage="Error message"
           >
-            <nve-checkbox checked>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
+            <nve-checkbox checked>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
       </tr>
@@ -95,16 +95,16 @@ export default html`
         <td>Vertical error</td>
         <td>
           <nve-checkbox-group isValid="false" orientation="vertical" errorMessage="Error message">
-            <nve-checkbox checked>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
+            <nve-checkbox checked>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
         <td>
           <nve-checkbox-group isValid="false" label="Label" orientation="vertical" errorMessage="Error message">
-            <nve-checkbox checked>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
+            <nve-checkbox checked>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
         <td>
@@ -115,9 +115,9 @@ export default html`
             orientation="vertical"
             errorMessage="Error message"
           >
-            <nve-checkbox checked>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
-            <nve-checkbox>check me</nve-checkbox>
+            <nve-checkbox checked>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
+            <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
       </tr>
