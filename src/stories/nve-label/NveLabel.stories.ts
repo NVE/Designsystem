@@ -1,6 +1,6 @@
-import '../components/nve-icon/nve-icon';
-import '../components/nve-tooltip/nve-tooltip';
-import '../components/nve-label/nve-label';
+import '../../components/nve-icon/nve-icon';
+import '../../components/nve-tooltip/nve-tooltip';
+import '../../components/nve-label/nve-label';
 import { StoryObj } from '@storybook/web-components';
 import type { NveLabelProps } from './NveLabel';
 import { NveLabel } from './NveLabel';

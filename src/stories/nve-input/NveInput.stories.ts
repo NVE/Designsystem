@@ -1,5 +1,5 @@
-import '../components/nve-input/nve-input';
-import '../components/nve-label/nve-label';
+import '../../components/nve-input/nve-input';
+import '../../components/nve-label/nve-label';
 import { StoryObj } from '@storybook/web-components';
 import { NveInput } from './NveInput';
 import type { NveInputProps } from './NveInput';
