@@ -56,28 +56,25 @@ export class NveLabel extends LitElement {
 
   private renderValueProperty() {
     if (this.value.length) {
+      // Vis value-property
+      // For å vise label i slot INNI tooltip-slot, må label-slot ha et navn
       return html`
       <label part="form-control-label" class="form-control__label" aria-hidden="false">
-        <slot name="label">${this.value}</slot>
+        <slot name="sillyRandomName">${this.value}</slot>
+      </label>`
+    } else {
+      // Vis evt. slot-innhold i stedet
+      return html`
+      <label part="form-control-label" class="form-control__label" aria-hidden="false">
+        <slot></slot>
       </label>`
     }
-    return html``; // value-property er ikke satt, så vi viser ikke denne delen
   }
 
-  private renderSlottedContent() {
-    if (!this.value.length) {
-      return html`
-      <label part="form-control-label" class="form-control__label" aria-hidden="false">
-        <slot>${this.value}</slot>
-      </label>`
-    }
-    return html``; // det er ikke innhold i slot, så vi viser ikke denne delen
-  }
 
   render() {
     return html`
       ${this.renderValueProperty()}
-      ${this.renderSlottedContent()}
       ${this.renderInfoIconWithTooltip()}
     `;
   }
