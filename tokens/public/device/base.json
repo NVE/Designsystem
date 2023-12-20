@@ -981,6 +981,14 @@
     "large": {
       "value": "6px",
       "type": "borderRadius"
+    },
+    "circle": {
+      "value": "50%",
+      "type": "borderRadius"
+    },
+    "pill": {
+      "value": "9999px",
+      "type": "borderRadius"
     }
   },
   "borderWidth": {
