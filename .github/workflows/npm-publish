@@ -1,21 +1,29 @@
 name: Publish Package to npmjs
-push:
+
+on:
+  push:
     branches:
       - main
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
-      - run: npm run build
-      # - run: npm run tokenbuild trenger vi denne her?
-      - run: npm publish
+
+      - name: Build and Publish
+        run: |
+          npm ci
+          npm run build
+          npm version patch -m "Bump version to %s [skip ci]"
+          git push --follow-tags
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
