@@ -2,6 +2,8 @@ import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
 import { styles } from './nve-label.styles';
 import { HasSlotController } from '../../utils/slot';
+import '../nve-icon/nve-icon';
+import '../nve-tooltip/nve-tooltip';
 
 /**
  * Ledetekst med valgfritt info-ikon
