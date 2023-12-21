@@ -26,7 +26,7 @@ jobs:
           npm i
           npm run build
           git reset --hard
-          npm version patch -m "Bump version to %s [skip ci]"
+          npm version patch -m "Bump version to %s [skip ci]" --force
           git push --follow-tags
           npm publish
         env:
