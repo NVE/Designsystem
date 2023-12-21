@@ -17,6 +17,7 @@ export default css`
 
   :host::part(label) {
     margin: 0 var(--spacing-x-small, 0.5rem);
+    font: var(--label-medium);
   }
 
   .button--has-label.button--large .button__label,
