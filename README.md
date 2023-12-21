@@ -159,7 +159,6 @@ For å bygge css filer som inneholder verdier basert på tokens fra Figma, kjør
 ### **npm**
 
 For å publisere på npm, må man oppdatere versjonsnr. i package.json og package-lock.json. Deretter kjør kommando `npm publish --access public`. Dette krever at man er innlogget på npm. For at CSS-variabler skal være tilgjengelig i npm-pakken, må css-filer kopieres. Dette gjøres ved å kjøre kommando `npm run copy-files`.
-<<<<<<< HEAD
 
 ### **Kjøremiljø**
 
@@ -173,7 +172,8 @@ For å kjøre Storybook lokalt, kjør `npm run storybook`
 Det skal opprettes en story for hver nye komponent som lages. Story opprettes på følgende måte: <br>
 
 <ul>
-<li>Opprett en fil i mappen stories med filnavn "NavnPåKomponent.stories.ts." F.eks. NveButton.stories.ts.</li>
+<li>Opprett en mappe for komponenten i mappen stories</li>
+<li>Opprett en fil med filnavn "NavnPåKomponent.stories.ts." F.eks. NveButton.stories.ts.</li>
 <li>Se på eksisterende stories-filer og bruk samme oppsett </li>
 <li>Storbyook lager toggle-buttons for boolean verdier. For dropdown-meny må man selv definere alternativene </li>
 <li>Komponent-filen, f.eks. NavnPåKomponent.ts må eksportere props. Se eksisterende filer for eksempel (export interface NavnPåKomponentProps)</li>

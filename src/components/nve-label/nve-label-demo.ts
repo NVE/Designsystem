@@ -73,6 +73,19 @@ const table = html`
           </nve-label>
         </td>
       </tr>
+      <tr>
+        <td>Innhold i slot</td>
+        <td>
+          <nve-label>
+            Ledetekst i <i>HTML</i>
+          </nve-label>
+        </td>
+        <td>
+          <nve-label light>
+            Ledetekst i <i>HTML</i>
+          </nve-label>
+        </td>
+      </tr>
     </tbody>
   </table>
 `;
