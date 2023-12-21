@@ -1,0 +1,6 @@
+# Bytt ut <CR><LF> i alle tekstfiler i Windows med kun <LF> før de pushes (såkalt "LF normalization")
+* text=auto eof=lf
+
+# Generert API-dokumentasjon har kun <LF> som linjeskift, også i Windows.
+# Dette gjør at git tror alle filer er endret hver gang vi genererer dokumentasjon
+doc/nve*.md text eol=lf
