@@ -9,6 +9,5 @@ import buttonDemo from './components/nve-button/nve-button-demo';
 import tooltipDemo from './components/nve-tooltip/nve-tooltip-demo';
 import labelDemo from './components/nve-label/nve-label-demo';
 import inputDemo from './components/nve-input/nve-input-demo';
-import radioDemo from './components/nve-radio/radio-demo';
 
-render([buttonDemo, radioDemo, tooltipDemo, labelDemo, inputDemo], document.getElementById('app')!); // Render the Lit app in the specified container
+render([buttonDemo, tooltipDemo, labelDemo, inputDemo], document.getElementById('app')!); // Render the Lit app in the specified container
