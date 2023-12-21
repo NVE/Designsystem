@@ -9,18 +9,18 @@ export class NveAlert extends SlAlert {
   }
   @property() title: string = '';
   @property() text: string = '';
-  @property({ type: Boolean, reflect: true }) emphasized: boolean = false; 
-  @property({ type: Boolean, reflect: true }) leftStroke: boolean = false; 
+  @property({ type: Boolean, reflect: true }) emphasized: boolean = false;
+  @property({ type: Boolean, reflect: true }) leftStroke: boolean = false;
   static styles = [
-    SlAlert.styles, //we have to have this otherwise closable is not working
-    styles
+    SlAlert.styles, // we have to have this otherwise closable is not working
+    styles,
   ];
   updated(changedProperties: any) {
     if (changedProperties.has('title')) {
-      this.style.setProperty('--nve-alert-title',`"${this.title}"`);
+      this.style.setProperty('--nve-alert-title', `"${this.title}"`);
     }
     if (changedProperties.has('text')) {
-      this.style.setProperty('--nve-alert-text',`"${this.text}"`);
+      this.style.setProperty('--nve-alert-text', `"${this.text}"`);
     }
   }
 }
