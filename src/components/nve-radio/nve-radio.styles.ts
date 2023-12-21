@@ -26,15 +26,21 @@ export default css`
   .radio__label {
     display: inline-flex;
     margin-inline-start: unset; /* 0.5rem; ta bort margin */
+    line-height: var(--toggle-size);
+  }
+
+  .radio--small .radio__label,
+  .radio--medium .radio__label {
+    font: var(--label-x-small-light);
+    line-height: var(--toggle-size);
+    gap: var(--spacing-x-small, 0.5rem); /* sett gap */
   }
 
   .radio {
+    display: flex;
     font: var(--label-x-small-light);
-
     color: var(--neutrals-foreground-primary);
     background-color: var(--neutrals-background-primary);
-
-    display: flex;
     gap: var(--spacing-x-small, 0.5rem); /* sett gap */
   }
 

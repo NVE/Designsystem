@@ -11,9 +11,11 @@ export default css`
     --sl-input-spacing-medium: var(--spacing-x-small);
     --sl-input-spacing-large: var(--spacing-x-small);
 
-    --sl-input-required-content: '*Obligatorisk';
-    --sl-input-required-content-offset: -2px;
+    --sl-input-required-content: '*obligatorisk';
+    --sl-input-required-content-offset: 0.25rem;
     --sl-input-required-content-color: var(--brand-deep);
+
+    gap: var(--spacing-xx-small, 0.25rem);
   }
 
   :host::part(form-control),
