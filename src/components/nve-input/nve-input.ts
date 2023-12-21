@@ -20,7 +20,7 @@ export class NveInput extends SlInput {
   /**
    * Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard.
    */
-  @property({ reflect: true }) requiredLabel = '*Obligatorisk';
+  @property() requiredLabel = '*Obligatorisk';
 
   constructor() {
     super();
