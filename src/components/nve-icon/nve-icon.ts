@@ -1,4 +1,3 @@
-import { customElement, property } from 'lit/decorators.js';
 import { css, html, LitElement } from 'lit';
 
 /**
@@ -6,13 +5,21 @@ import { css, html, LitElement } from 'lit';
  * Vi bruker ikoner fra Material Symbols.
  * @see https://fonts.google.com/icons
  */
-@customElement('nve-icon')
 export class NveIcon extends LitElement {
+
+  declare name: string;
+  static properties = {
+    name: { type: String }
+  }
+
+  constructor() {
+    super();
+    this.name = '';
+  }
 
   /**
    * Navnet på ikonet i Material Symbols-biblioteket
    */
-  @property() name = '';
   static styles = css`
     :host {
       /* Apply Material Icons font-family to the Shadow DOM */
@@ -28,6 +35,8 @@ export class NveIcon extends LitElement {
     return html`<span class="material-symbols-outlined">${this.name}</span>`;
   }
 }
+
+customElements.define('nve-icon', NveIcon);
 declare global {
   interface HTMLElementTagNameMap {
     'nve-icon': NveIcon;
