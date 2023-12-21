@@ -23,11 +23,11 @@ jobs:
 
       - name: Build and Publish
         run: |
-          git reset --hard
           npm i
           npm run build
           npm version patch -m "Bump version to %s [skip ci]"
           git push --follow-tags
+          git reset --hard
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
