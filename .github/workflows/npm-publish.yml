@@ -4,11 +4,9 @@ on:
   push:
     branches:
       - main
-      paths:
+    paths:
       - 'src/**'
       - 'build/**'
-      paths-ignore:
-      - 'src/stories'
   workflow_dispatch:
 
 jobs:
