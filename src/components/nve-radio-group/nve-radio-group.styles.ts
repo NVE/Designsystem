@@ -1,6 +1,21 @@
 import { css } from 'lit';
 
 export default css`
+  :host {
+    /* Overstyring av shoelace-token-verdier */
+
+    --sl-input-border-width: var(--border-width-default);
+
+    --sl-spacing-3x-small: var(--spacing-xx-small);
+    --sl-input-spacing-small: var(--spacing-x-small);
+    --sl-input-spacing-medium: var(--spacing-x-small);
+    --sl-input-spacing-large: var(--spacing-x-small);
+
+    --sl-input-required-content: '*Obligatorisk';
+    --sl-input-required-content-offset: -2px;
+    --sl-input-required-content-color: var(--brand-deep);
+  }
+
   :host::part(form-control),
   :host::part(form-control-input) {
     display: flex;
