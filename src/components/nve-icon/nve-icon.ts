@@ -1,4 +1,4 @@
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
 import { css, html, LitElement } from 'lit';
 
 /**
@@ -8,10 +8,11 @@ import { css, html, LitElement } from 'lit';
  */
 @customElement('nve-icon')
 export class NveIcon extends LitElement {
+  static properties = { name: { type: String } };
   /**
    * Navnet på ikonet i Material Symbols-biblioteket
    */
-  @property() name = '';
+  name = '';
   static styles = css`
     :host {
       /* Apply Material Icons font-family to the Shadow DOM */
