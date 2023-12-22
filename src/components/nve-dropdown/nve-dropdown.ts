@@ -1,22 +1,20 @@
-import { customElement, property } from 'lit/decorators.js';
 import { SlDropdown, SlSelectEvent } from '@shoelace-style/shoelace';
-import { NveMenu } from '../nve-menu';
+import { customElement } from 'lit/decorators.js';
 import { getTabbableBoundary } from '../../utils/tabbable';
 import { NveButton } from '../nve-button/nve-button';
-import styles from './nve-dropdown.styles'
-import { css } from 'lit';
-
+import { NveMenu } from '../nve-menu/nve-menu';
+import styles from './nve-dropdown.styles';
+/**
+ * En Shoelace-dropdown i NVE-forkledning.
+ * Se https://shoelace.style/components/dropdown
+ */
 @customElement('nve-dropdown')
 export class NveDropdown extends SlDropdown {
-  @property({ type: Boolean, reflect: true }) open: boolean = false;
+  
   constructor() {
     super();
   }
-  static styles = css`
-  :host(.open) {
-    --icon-rotation: rotate(-180deg);
-  }
-`;
+  static styles = [SlDropdown.styles, styles];
 
   getMenu() {
     return this.panel.assignedElements({ flatten: true }).find(el => el.tagName.toLowerCase() === 'nve-menu') as
@@ -55,16 +53,6 @@ export class NveDropdown extends SlDropdown {
     }
   };
  
-  updated(changedProperties: any) {
-    super.updated(changedProperties);
-    if (changedProperties.has('open')) {
-      if (this.open) {
-        this.classList.add('open');
-      } else {
-        this.classList.remove('open');
-      }
-    }
-  }
   
 }
 

@@ -1,25 +1,17 @@
-import { customElement } from 'lit/decorators.js';
 import { SlMenu } from '@shoelace-style/shoelace';
-import { css } from 'lit';
-
+import { customElement } from 'lit/decorators.js';
+import styles from '../nve-menu/nve-menu-styles';
+/*
+* En sl-menu i NVE-forkledning.
+* Mer info: https://shoelace.style/components/menu
+*
+*/
 @customElement('nve-menu')
 export class NveMenu extends SlMenu {
   constructor() {
     super();
   }
-  static get styles() {
-    return [
-      super.styles,
-      css`
-      :host{
-        padding: 0px;
-        margin-top: 4px;
-      }
-      `
-    ];
-  }
-
-
+  static styles = [SlMenu.styles, styles];
 }
 
 declare global {

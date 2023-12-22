@@ -1,4 +1,6 @@
 //
+//Denne filen blir brukt i dropdown komponentet en metoden updateAccessibleTrigger 
+
 // This doesn't technically check visibility, it checks if the element has been rendered and can maybe possibly be tabbed
 // to. This is a workaround for shadow roots not having an `offsetParent`.
 //
