@@ -1048,5 +1048,9 @@
       "type": "dropShadow"
     },
     "type": "boxShadow"
+  },
+  "disabled": {
+    "value": "38%",
+    "type": "opacity"
   }
 }
