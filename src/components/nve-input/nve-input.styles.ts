@@ -15,14 +15,13 @@ export default css`
     --sl-input-required-content-offset: -2px;
     --sl-input-required-content-color: var(--brand-deep);
   }
-
-  .input {
+  :host::part(input) {
     font: var(--body-small);
     border-radius: var(--border-radius-small);
   }
 
   .input--filled {
-    border: 1px solid var(--neutrals-background-secondary);
+    border: var(--border-width-default) solid var(--neutrals-background-secondary);
   }
 
   /* Justering av skriftstørrelse og hjørner for andre størrelser av tekstfeltet */
@@ -45,18 +44,13 @@ export default css`
     box-shadow: unset; 
   }
 
-  /* Riktige farger når skrivebeskyttet */
-  :host([readonly]) .input {
-    border: none;
+  /* Annen bakgrunnsfarge og ingen ramme når skrivebeskyttet */
+  :host([readonly])::part(base) {
+    border-color: var(--neutrals-background-secondary);
     background: var(--neutrals-background-secondary);
-  }
-  :host([readonly]) {
-    border-color: var(--interactive-secondary-background-default);
-    background: var(--neutrals-background-secondary);
-    color: var(--interactive-secondary-foreground-default);
   }
 
-  /** Gir rød ramme ved valideringsfeil  */
+  /* Gir rød ramme ved valideringsfeil  */
   :host([data-invalid])::part(base),
   :host([data-user-invalid])::part(base) {
     border-color: var(--feedback-background-emphasized-error);
@@ -64,10 +58,6 @@ export default css`
   :host([data-invalid])::part(input),
   :host([data-user-invalid])::part(input) {
     color: var(--feedback-background-emphasized-error);
-  }
-
-  :host([required-label])::part(form-control-label) {
-
   }
 
   /* Formaterer "*Obligatorisk" over input-felt og til høyre riktig når required er satt */

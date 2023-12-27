@@ -4,12 +4,12 @@ Ledetekst med valgfritt info-ikon
 
 ## Properties
 
-| Property  | Attribute | Type                                          | Default | Description                                      |
-|-----------|-----------|-----------------------------------------------|---------|--------------------------------------------------|
-| `light`   | `light`   | `boolean`                                     | false   | Sett denne hvis du vil ha litt lettere skriftvekt |
-| `size`    | `size`    | `"small" \| "medium" \| "large" \| "x-small"` | "small" | Størrelse                                        |
-| `tooltip` | `tooltip` | `string`                                      | ""      | Denne teksten blir vist som et verktøyhint hvis man svever over info-ikonet |
-| `value`   | `value`   | `string`                                      | ""      | Teksten som skal vises                           |
+| Property  | Attribute | Type                                          | Default     | Description                                      |
+|-----------|-----------|-----------------------------------------------|-------------|--------------------------------------------------|
+| `light`   | `light`   | `boolean`                                     | false       | Sett denne hvis du vil ha litt lettere skriftvekt |
+| `size`    | `size`    | `"small" \| "medium" \| "large" \| "x-small"` | "small"     | Størrelse                                        |
+| `tooltip` | `tooltip` | `string \| undefined`                         | "undefined" | Denne teksten blir vist som et verktøyhint hvis man svever over info-ikonet |
+| `value`   | `value`   | `string`                                      | ""          | Teksten som skal vises                           |
 
 ## Slots
 
