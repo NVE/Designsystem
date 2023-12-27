@@ -21,7 +21,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<NveInputProps>;
 
-export const standard: Story = {
+export const Primary: Story = {
   args: {
     filled: false,
     label: 'Ledetekst',
@@ -31,7 +31,7 @@ export const standard: Story = {
   },
 };
 
-export const filled: Story = {
+export const One: Story = {
   args: {
     filled: true,
     label: 'Ledetekst',
@@ -39,7 +39,27 @@ export const filled: Story = {
   },
 };
 
-export const obligatorisk: Story = {
+export const Two: Story = {
+  args: {
+    filled: true,
+    label: 'Ledetekst',
+    value: '',
+    required: false,
+    requiredLabel: '*Obligatorisk',
+  },
+};
+
+export const Three: Story = {
+  args: {
+    filled: true,
+    label: 'Ledetekst',
+    value: '',
+    required: true,
+    requiredLabel: '*Obligatorisk felt',
+  },
+};
+
+export const Four: Story = {
   args: {
     filled: true,
     label: 'Ledetekst',

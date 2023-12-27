@@ -55,7 +55,7 @@ export const Secondary: Story = {
   },
 };
 
-export const Outlined: Story = {
+export const Three: Story = {
   args: {
     variant: 'neutral',
     size: 'medium',
@@ -65,7 +65,7 @@ export const Outlined: Story = {
   },
 };
 
-export const Ghost: Story = {
+export const Four: Story = {
   args: {
     variant: 'neutral',
     size: 'medium',
