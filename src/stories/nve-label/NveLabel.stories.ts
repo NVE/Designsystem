@@ -5,7 +5,6 @@ import { StoryObj } from '@storybook/web-components';
 import type { NveLabelProps } from './NveLabel';
 import { NveLabel } from './NveLabel';
 
-
 const meta = {
   title: 'Nve/NveLabel',
   tags: ['autodocs'],
@@ -38,6 +37,7 @@ export const Primary: Story = {
 };
 
 export const One: Story = {
+  
   args: {
     value: 'Ledetekst',
     size: 'small',
