@@ -14,66 +14,73 @@ const table = html`
     
   <tbody>
     <tr>
-    <td>Basic</td>
-    <nve-dialog label="Dialog tittel" class="dialog-width" style="--width: 30vw;">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-          <nve-button slot="footer" variant="primary">Lukk</nve-button>
-         
-    </nve-dialog>
-        <td>
-        <nve-button onclick="document.querySelector('.dialog-width').setAttribute('open', 'true')" class="open-dialog" variant="primary">Open Dialog</nve-button>
+      <td>Basic</td>
+      <nve-dialog label="Dialog tittel" class="dialog-width">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        <div slot="footer">
+          <nve-button variant="primary" onclick="document.querySelector('.dialog-width').hide()">Lukk</nve-button>
+        </div>
+      </nve-dialog>
+      <td>
+        <nve-button onclick="document.querySelector('.dialog-width').show()" class="open-dialog" variant="primary">Open Dialog</nve-button>
       </td>
     </tr>
 
     <tr>
-    <td>Slett</td>
-    <nve-dialog icon="warning" label="Vil du slette dette påbegynte skjemaet?" class="dialog-width2" style="--width: 30vw;">
-          Du kan ikke angre dette etter du har slettet skjemaet. 
-          <nve-button slot="footer" variant="primary">Slett</nve-button>
-          <nve-button class="close" slot="footer" variant="neutral">Avbryt</nve-button>
-    </nve-dialog>
-        <td>
-        <nve-button onclick="document.querySelector('.dialog-width2').setAttribute('open', 'true')" class="open-dialog" variant="primary">Open Dialog</nve-button>
+      <td>Slett</td>
+      <nve-dialog icon="warning" label="Vil du slette dette påbegynte skjemaet?" class="dialog-width2">
+        Du kan ikke angre dette etter du har slettet skjemaet. 
+        <div slot="footer">
+          <nve-button variant="primary" onclick="document.querySelector('.dialog-width2').hide()">Slett</nve-button>
+          <nve-button class="close" variant="neutral" onclick="document.querySelector('.dialog-width2').hide()">Avbryt</nve-button>
+        </div>
+      </nve-dialog>
+      <td>
+        <nve-button onclick="document.querySelector('.dialog-width2').show()" class="open-dialog" variant="primary">Open Dialog</nve-button>
       </td>
     </tr>
 
     <tr>
-    <td>Informasjonskapsler (cookies)</td>
-    <nve-dialog icon="cookie" label="Informasjonskapsler (cookies)" class="dialog-width3" style="--width: 30vw;">
-          Noregs vassdrags- og energidirektorat (NVE) er underlagt Olje- og energidepartementet og har ansvar for å forvalte vass- og energiressursane til landet. NVE varetek også dei statlege forvaltingsoppgåvene innanfor skredførebygging. 
-          <nve-button slot="footer" variant="primary">Godta alle</nve-button>
-          <nve-button class="close" slot="footer">Kun nødvendige</nve-button>
-          <nve-button slot="footer" variant="neutral">Mine valg</nve-button>
-    </nve-dialog>
-        <td>
-        <nve-button onclick="document.querySelector('.dialog-width3').setAttribute('open', 'true')" class="open-dialog" variant="primary">Open Dialog</nve-button>
+      <td>Informasjonskapsler (cookies)</td>
+      <nve-dialog icon="cookie" label="Informasjonskapsler (cookies)" class="dialog-width3">
+        Noregs vassdrags- og energidirektorat (NVE) er underlagt Olje- og energidepartementet og har ansvar for å forvalte vass- og energiressursane til landet. NVE varetek også dei statlege forvaltingsoppgåvene innanfor skredførebygging.
+        <div slot="footer">
+          <nve-button variant="primary" onclick="document.querySelector('.dialog-width3').hide()">Godta alle</nve-button>
+          <nve-button class="close" onclick="document.querySelector('.dialog-width3').hide()">Kun nødvendige</nve-button>
+          <nve-button variant="neutral" onclick="document.querySelector('.dialog-width3').hide()">Mine valg</nve-button>
+        </div>
+      </nve-dialog>
+      <td>
+        <nve-button onclick="document.querySelector('.dialog-width3').show()" class="open-dialog" variant="primary">Open Dialog</nve-button>
       </td>
     </tr>
 
     <tr>
-    <td>Kommenter (custom slot)</td>
-    <nve-dialog icon="info" label="Kommenter" class="dialog-width4" style="--width: 30vw;">
-          <slot part="body">
-            <p>Nve-Textarea er ikke laget ennå</p>
-            <textarea placeholder="Skriv inn din kommentar her..."></textarea>
-          </slot>
-          <nve-button slot="footer" variant="primary">Send</nve-button>
-          <nve-button slot="footer" variant="neutral">Avbryt</nve-button>
-    </nve-dialog>
-        <td>
-        <nve-button onclick="document.querySelector('.dialog-width4').setAttribute('open', 'true')" class="open-dialog" variant="primary">Open Dialog</nve-button>
+      <td>Kommenter (custom slot)</td>
+      <nve-dialog icon="info" label="Kommenter" class="dialog-width4">
+          <p>Nve-Textarea er ikke laget ennå</p>
+          <textarea placeholder="Skriv inn din kommentar her..."></textarea>
+        <div slot="footer">
+          <nve-button variant="primary" onclick="document.querySelector('.dialog-width4').hide()">Send</nve-button>
+          <nve-button variant="neutral" onclick="document.querySelector('.dialog-width4').hide()">Avbryt</nve-button>
+        </div>
+      </nve-dialog>
+      <td>
+        <nve-button onclick="document.querySelector('.dialog-width4').show()" class="open-dialog" variant="primary">Open Dialog</nve-button>
       </td>
     </tr>
 
     <tr>
-    <td>Disable background</td>
-    <nve-dialog disableBackground label="I denne kan du ikke trykke utenfor for å lukke" class="dialog-width5" style="--width: 30vw;">
-          Tilfeldig tekst. 
-          <nve-button slot="footer" variant="primary">Slett</nve-button>
-          <nve-button class="close" slot="footer" variant="neutral">Avbryt</nve-button>
-    </nve-dialog>
-        <td>
-        <nve-button onclick="document.querySelector('.dialog-width5').setAttribute('open', 'true')" class="open-dialog" variant="primary">Open Dialog</nve-button>
+      <td>Disable background</td>
+      <nve-dialog disableBackground label="I denne kan du ikke trykke utenfor for å lukke" class="dialog-width5" style="--width: 30vw;">
+        Tilfeldig tekst. 
+        <div slot="footer">
+          <nve-button variant="primary" onclick="document.querySelector('.dialog-width5').hide()">Slett</nve-button>
+          <nve-button class="close" variant="neutral" onclick="document.querySelector('.dialog-width5').hide()">Avbryt</nve-button>
+        </div>
+      </nve-dialog>
+      <td>
+        <nve-button onclick="document.querySelector('.dialog-width5').show()" class="open-dialog" variant="primary">Open Dialog</nve-button>
       </td>
     </tr>
   </tbody>

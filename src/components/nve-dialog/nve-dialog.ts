@@ -1,6 +1,5 @@
-import { customElement, property } from 'lit/decorators.js';
 import { SlDialog } from '@shoelace-style/shoelace';
-import { css, html } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-dialog-styles';
 /**
  * En sl-dialog i NVE-forkledning.
@@ -16,7 +15,7 @@ import styles from './nve-dialog-styles';
  */
 @customElement('nve-dialog')
 export class NveDialog extends SlDialog {
-    /**
+  /**
    * Ikonet som skal vises
    */
   @property({ type: String, reflect: true }) icon = '';
@@ -29,7 +28,10 @@ export class NveDialog extends SlDialog {
     super();
   }
 
-
+  /**
+   * 
+   * Stjålet fra shoelace eksempel. Hindrer at man lukker dialogen ved å trykke utenfor
+   */
   handleRequestClose(event: any) {
     if (this.disableBackground && event.detail.source === 'overlay') {
       event.preventDefault();
@@ -45,10 +47,18 @@ export class NveDialog extends SlDialog {
     
     
   }
+  /**
+   * Oppdaterer ikonet som vises i dialogens tittel.
+   * Metoden søker først etter tittel-elementet i komponentens skygge-DOM. 
+   * Hvis tittel-elementet finnes og `icon`-egenskapen er satt, oppdateres 
+   * tittel-elementets stil for å inkludere det angitte ikonet. 
+   * Hvis `icon`-egenskapen ikke er satt, settes ikoninnholdet til 'none' 
+   * for å unngå å skape unødvendig mellomrom i layouten.
+   */
   updateIcon() {
     const titleElement = this.shadowRoot?.querySelector('.dialog__title');
     if (titleElement instanceof HTMLElement) { 
-      const iconContent = this.icon ? `"${this.icon}"` : 'none'; //contentet blir satt til none så det ikke lager mellomrom
+      const iconContent = this.icon ? `"${this.icon}"` : 'none'; 
       titleElement.style.setProperty('--title-icon', iconContent);
     }
   }
