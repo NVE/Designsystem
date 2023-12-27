@@ -1,0 +1,69 @@
+import { Story, Meta, Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
+
+<Meta isTemplate />
+
+<Title />
+<Description />
+<br />
+<br />
+## Varianter
+
+<div style={{ display: 'flex' }}>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Standard">{() => <Primary />}</Story>
+  </span>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Default">{() => <Primary />}</Story>
+  </span>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Outlined">{() => <Primary />}</Story>
+  </span>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Ghost">{() => <Primary />}</Story>
+  </span>
+</div>
+
+## Størrelser
+
+<div style={{ display: 'flex' }}>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Small">{() => <Primary />}</Story>
+  </span>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Medium">{() => <Primary />}</Story>
+  </span>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Large">{() => <Primary />}</Story>
+  </span>
+</div>
+
+## Disabled
+
+<div style={{ display: 'flex' }}>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Disabledone">{() => <Primary />}</Story>
+  </span>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Disabledtwo">{() => <Primary />}</Story>
+  </span>
+</div>
+
+## Loading
+
+<div style={{ display: 'flex' }}>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Loadingone">{() => <Primary />}</Story>
+  </span>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Loadingtwo">{() => <Primary />}</Story>
+  </span>
+</div>
+
+## Parametere/Props
+
+Her kan du se hvilke parametere (props) komponenten kan ta imot og se endringer i kode
+
+<Primary />
+<Controls />
+
+## <Stories />

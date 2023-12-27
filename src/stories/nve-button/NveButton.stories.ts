@@ -3,6 +3,7 @@ import '../../components/nve-spinner/nve-spinner.component';
 import { NveButton } from './NveButton';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { NveButtonProps } from './NveButton';
+import NveButtonDoc from './NveButtonDoc.mdx';
 
 const meta = {
   title: 'Nve/NveButton',
@@ -21,6 +22,7 @@ const meta = {
   },
   parameters: {
     docs: {
+      page: NveButtonDoc,
       description: {
         component: `<div>
         <a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-button.md">API-dokumentasjon</a>
@@ -45,7 +47,17 @@ export const Primary: Story = {
   },
 };
 
-export const Secondary: Story = {
+export const Standard: Story = {
+  args: {
+    variant: 'primary',
+    size: 'medium',
+    disabled: false,
+    loading: false,
+    outline: false,
+  },
+};
+
+export const Default: Story = {
   args: {
     variant: 'default',
     size: 'medium',
@@ -55,7 +67,7 @@ export const Secondary: Story = {
   },
 };
 
-export const Three: Story = {
+export const Outlined: Story = {
   args: {
     variant: 'neutral',
     size: 'medium',
@@ -65,12 +77,82 @@ export const Three: Story = {
   },
 };
 
-export const Four: Story = {
+export const Ghost: Story = {
   args: {
     variant: 'neutral',
     size: 'medium',
     disabled: false,
     loading: false,
     outline: false,
+  },
+};
+
+export const Small: Story = {
+  args: {
+    variant: 'default',
+    size: 'small',
+    disabled: false,
+    loading: false,
+    outline: false,
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    variant: 'default',
+    size: 'medium',
+    disabled: false,
+    loading: false,
+    outline: false,
+  },
+};
+
+export const Large: Story = {
+  args: {
+    variant: 'default',
+    size: 'large',
+    disabled: false,
+    loading: false,
+    outline: false,
+  },
+};
+
+export const Disabledone: Story = {
+  args: {
+    variant: 'primary',
+    size: 'medium',
+    disabled: true,
+    loading: false,
+    outline: false,
+  },
+};
+
+export const Disabledtwo: Story = {
+  args: {
+    variant: 'neutral',
+    size: 'medium',
+    disabled: true,
+    loading: false,
+    outline: false,
+  },
+};
+
+export const Loadingone: Story = {
+  args: {
+    variant: 'default',
+    size: 'medium',
+    disabled: true,
+    loading: true,
+    outline: false,
+  },
+};
+
+export const Loadingtwo: Story = {
+  args: {
+    variant: 'neutral',
+    size: 'medium',
+    disabled: true,
+    loading: true,
+    outline: true,
   },
 };

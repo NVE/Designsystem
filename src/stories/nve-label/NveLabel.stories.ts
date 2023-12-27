@@ -38,6 +38,7 @@ export const Primary: Story = {
 };
 
 export const One: Story = {
+  
   args: {
     value: 'Ledetekst',
     size: 'small',
