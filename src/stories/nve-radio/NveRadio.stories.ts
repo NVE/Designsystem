@@ -1,4 +1,6 @@
-import '../../components';
+import '../../components/nve-radio-group/nve-radio-group.component';
+import '../../components/nve-radio-button/nve-radio-button.component';
+import '../../components/nve-radio/nve-radio.component';
 import { StoryObj } from '@storybook/web-components';
 import type { NveRadioGroupProps } from './NveRadio';
 import { NveRadioGroup } from './NveRadio';

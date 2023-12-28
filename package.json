@@ -1,6 +1,10 @@
 {
   "name": "nve-designsystem",
   "version": "0.1.11",
+  "main": "./nve-designsystem.umd.cjs",
+  "module": "./nve-designsystem.js",
+  "type": "module",
+  "types": "index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "node scripts/build.js",
