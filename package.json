@@ -3,7 +3,7 @@
   "version": "0.1.11",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "node scripts/build.js",
     "preview": "vite preview",
     "lint": "eslint \"**/*.{js,ts}\"",
     "doc": "npx web-component-analyzer analyze src/components/**/*.ts --format markdown --outDir doc",
@@ -14,12 +14,12 @@
     "build:varsom_light": "node transform.js varsom",
     "build:varsom_dark": "node transform.js varsom_dark",
     "tokenbuild": "npm run build:light && npm run build:dark && npm run build:varsom_light && npm run build:varsom_dark",
-    "copy-files": "cpy \"./build/css/*\" dist/css/",
     "copy-files-storybook": "cpy \"./build/css/*\" \"./src/styles/*\" storybook-static/assets"
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.11.2",
     "chromatic": "^10.1.0",
+    "cpy": "^11.0.0",
     "cpy-cli": "^5.0.0",
     "lit": "^3.0.2",
     "style-dictionary-utils": "^2.0.4"
@@ -44,6 +44,7 @@
     "storybook": "^7.6.4",
     "typescript": "^5.2.2",
     "vite": "^5.0.0",
+    "vite-plugin-dts": "^3.7.0",
     "web-component-analyzer": "^2.0.0"
   },
   "overrides": {

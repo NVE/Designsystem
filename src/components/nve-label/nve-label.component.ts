@@ -15,7 +15,7 @@ import '../nve-tooltip/nve-tooltip';
  * TODO: Hvis du angir både value og innhold i slot, er det value som vises. Det bør være motsatt.
  */
 @customElement('nve-label')
-export class NveLabel extends LitElement {
+export default class NveLabel extends LitElement {
   private readonly hasSlotController = new HasSlotController(this, 'tooltip');
 
   /**
@@ -59,25 +59,19 @@ export class NveLabel extends LitElement {
     if (this.value.length) {
       // Vis value-property
       // For å vise label i slot INNI tooltip-slot, må label-slot ha et navn
-      return html`
-      <label part="form-control-label" class="form-control__label" aria-hidden="false">
+      return html` <label part="form-control-label" class="form-control__label" aria-hidden="false">
         <slot name="label">${this.value}</slot>
-      </label>`
+      </label>`;
     } else {
       // Vis evt. slot-innhold i stedet
-      return html`
-      <label part="form-control-label" class="form-control__label" aria-hidden="false">
+      return html` <label part="form-control-label" class="form-control__label" aria-hidden="false">
         <slot></slot>
-      </label>`
+      </label>`;
     }
   }
 
-
   render() {
-    return html`
-      ${this.renderValueProperty()}
-      ${this.renderInfoIconWithTooltip()}
-    `;
+    return html` ${this.renderValueProperty()} ${this.renderInfoIconWithTooltip()} `;
   }
 }
 

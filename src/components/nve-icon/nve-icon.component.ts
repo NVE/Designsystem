@@ -7,7 +7,7 @@ import { customElement, property } from 'lit/decorators.js';
  * @see https://fonts.google.com/icons
  */
 @customElement('nve-icon')
-export class NveIcon extends LitElement {
+export default class NveIcon extends LitElement {
   /**
    * Navnet på ikonet i Material Symbols-biblioteket
    */

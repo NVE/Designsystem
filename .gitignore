@@ -5,3 +5,4 @@ node_modules
 .vs/
 # ignore dist - (npm build output)
 dist/
+*.tgz

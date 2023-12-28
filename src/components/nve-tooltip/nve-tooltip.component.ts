@@ -6,7 +6,7 @@ import '../nve-icon/nve-icon';
  * En sl-tooltip i NVE-uniform. TODO: Denne har ingen NVE-styling ennå.
  */
 @customElement('nve-tooltip')
-export class NveTooltip extends SlTooltip {
+export default class NveTooltip extends SlTooltip {
   constructor() {
     super();
   }

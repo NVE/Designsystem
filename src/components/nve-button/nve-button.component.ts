@@ -14,7 +14,7 @@ import styles from './nve-button.styles';
  * - pill
  */
 @customElement('nve-button')
-export class NveButton extends SlButton {
+export default class NveButton extends SlButton {
   constructor() {
     super();
   }

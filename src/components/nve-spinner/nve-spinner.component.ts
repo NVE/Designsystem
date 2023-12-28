@@ -7,7 +7,7 @@ import { css } from 'lit';
  * Se https://shoelace.style/components/spinner
  */
 @customElement('nve-spinner')
-export class NveSpinner extends SlSpinner {
+export default class NveSpinner extends SlSpinner {
   constructor() {
     super();
   }

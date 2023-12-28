@@ -9,7 +9,7 @@ import styles from './nve-radio.styles';
  * @extends SlRadio
  *
  */
-export class NveRadio extends SlRadio {
+export default class NveRadio extends SlRadio {
   constructor() {
     super();
   }
