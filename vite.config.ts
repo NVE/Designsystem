@@ -16,15 +16,5 @@ export default defineConfig({
       fileName: 'nve-designsystem',
       formats: ['es', 'umd'],
     },
-    rollupOptions: {
-      external: ['lit', 'lit/decorators.js', '@shoelace-style/shoelace'],
-      output: {
-        globals: {
-          lit: 'lit',
-          'lit/decorators.js': 'lit/decorators.js',
-          '@shoelace-style/shoelace': '@shoelace-style/shoelace',
-        },
-      },
-    },
   },
 });

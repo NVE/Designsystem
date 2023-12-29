@@ -21,22 +21,22 @@ export default class NveLabel extends LitElement {
   /**
    * Teksten som skal vises
    */
-  @property() value = '';
+  @property({ reflect: true }) value = '';
 
   /**
    * Størrelse
    */
-  @property() size: 'x-small' | 'small' | 'medium' | 'large' = 'small';
+  @property({ reflect: true }) size: 'x-small' | 'small' | 'medium' | 'large' = 'small';
 
   /**
    * Sett denne hvis du vil ha litt lettere skriftvekt
    */
-  @property({ type: Boolean }) light = false;
+  @property({ type: Boolean, reflect: true }) light = false;
 
   /**
    * Denne teksten blir vist som et verktøyhint hvis man svever over info-ikonet
    */
-  @property() tooltip?: string = undefined;
+  @property({ reflect: true }) tooltip?: string = undefined;
 
   static styles = [styles];
 
