@@ -11,3 +11,5 @@ export * from './nve-radio-button/nve-radio-button.component';
 export * from './nve-radio-group/nve-radio-group.component';
 export * from './nve-spinner/nve-spinner';
 export * from './nve-tooltip/nve-tooltip';
+
+import '../utils/systemLibraryCustomization';
