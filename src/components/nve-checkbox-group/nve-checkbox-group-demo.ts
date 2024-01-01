@@ -64,14 +64,14 @@ export default html`
       <tr>
         <td>Horizontal error</td>
         <td>
-          <nve-checkbox-group isValid="false" orientation="horizontal" errorMessage="Error message">
+          <nve-checkbox-group invalid orientation="horizontal" errorMessage="Error message">
             <nve-checkbox checked>Value</nve-checkbox>
             <nve-checkbox>Value</nve-checkbox>
             <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
         <td>
-          <nve-checkbox-group isValid="false" label="Label" orientation="horizontal" errorMessage="Error message">
+          <nve-checkbox-group invalid label="Label" orientation="horizontal" errorMessage="Error message">
             <nve-checkbox checked>Value</nve-checkbox>
             <nve-checkbox>Value</nve-checkbox>
             <nve-checkbox>Value</nve-checkbox>
@@ -79,7 +79,7 @@ export default html`
         </td>
         <td>
           <nve-checkbox-group
-            isValid="false"
+            invalid
             label="Label"
             tooltip="Help text"
             orientation="horizontal"
@@ -94,14 +94,14 @@ export default html`
       <tr>
         <td>Vertical error</td>
         <td>
-          <nve-checkbox-group isValid="false" orientation="vertical" errorMessage="Error message">
+          <nve-checkbox-group invalid orientation="vertical" errorMessage="Error message">
             <nve-checkbox checked>Value</nve-checkbox>
             <nve-checkbox>Value</nve-checkbox>
             <nve-checkbox>Value</nve-checkbox>
           </nve-checkbox-group>
         </td>
         <td>
-          <nve-checkbox-group isValid="false" label="Label" orientation="vertical" errorMessage="Error message">
+          <nve-checkbox-group invalid label="Label" orientation="vertical" errorMessage="Error message">
             <nve-checkbox checked>Value</nve-checkbox>
             <nve-checkbox>Value</nve-checkbox>
             <nve-checkbox>Value</nve-checkbox>
@@ -109,7 +109,7 @@ export default html`
         </td>
         <td>
           <nve-checkbox-group
-            isValid="false"
+            invalid
             label="Label"
             tooltip="Help text"
             orientation="vertical"

@@ -40,13 +40,13 @@ export default html`
       <tr>
         <td>Error</td>
         <td>
-          <nve-checkbox isValid="false">Value</nve-checkbox>
+          <nve-checkbox invalid>Value</nve-checkbox>
         </td>
         <td>
-          <nve-checkbox isValid="false" checked>Value</nve-checkbox>
+          <nve-checkbox invalid checked>Value</nve-checkbox>
         </td>
         <td>
-          <nve-checkbox isValid="false" indeterminate>Value</nve-checkbox>
+          <nve-checkbox invalid indeterminate>Value</nve-checkbox>
         </td>
       </tr>
     </tbody>
