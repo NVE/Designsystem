@@ -1,3 +1,6 @@
+@import '@shoelace-style/shoelace/dist/themes/light.css';
+@import url('https://fonts.cdnfonts.com/css/source-sans-pro');
+
 :root {
   --sl-focus-ring-color: var(--interactive-links-focus);
   --sl-focus-ring-style: solid;
