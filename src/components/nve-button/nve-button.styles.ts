@@ -9,6 +9,7 @@ export default css`
     padding: var(--spacing-medium, 1rem) calc(var(--spacing-large, 1.5rem) - var(--spacing-x-small, 0.5rem));
   }
   :host::part(spinner) {
+    --track-color: none;
     position: relative;
     top: 0;
     left: 0;
