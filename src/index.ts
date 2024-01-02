@@ -10,5 +10,3 @@ export { default as NveRadioButton } from './components/nve-radio-button/nve-rad
 export { default as NveRadioGroup } from './components/nve-radio-group/nve-radio-group.component';
 export { default as NveSpinner } from './components/nve-spinner/nve-spinner.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
-
-import './styles/global.css';
