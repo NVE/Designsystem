@@ -1,6 +1,8 @@
 import { StoryObj } from '@storybook/web-components';
 import '../components/nve-button/nve-button';
+import '../components/nve-divider/nve-divider';
 import '../components/nve-dropdown/nve-dropdown';
+import '../components/nve-icon/nve-icon';
 import '../components/nve-menu-item/nve-menu-item';
 import '../components/nve-menu/nve-menu';
 import { NveDropdown } from './NveDropdown';
