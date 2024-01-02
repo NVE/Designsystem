@@ -1,4 +1,6 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
+import './styles/global.css';
+
 export { default as NveButton } from './components/nve-button/nve-button.component';
 export { default as NveIcon } from './components/nve-icon/nve-icon.component';
 export { default as NveInput } from './components/nve-input/nve-input.component';
