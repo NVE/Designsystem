@@ -19,7 +19,7 @@ await nextTask('Copy css variables files', () => {
   return cpy('./build/css/**/*', 'dist/css/', { concurrency: 100 });
 });
 await nextTask('Copy global.css file', () => {
-  return cpy('src/styles/style.css', 'dist/css/', { concurrency: 100, flat: true });
+  return cpy('src/styles/global.css', 'dist/css/', { concurrency: 100, flat: true });
 });
 await nextTask('Copy components files', () => {
   return cpy('src/components/**/*', 'dist/components/', { concurrency: 100 });
