@@ -1,5 +1,5 @@
-import '../components/nve-alert/nve-alert';
-import '../components/nve-icon/nve-icon';
+import '../../components/nve-alert/nve-alert.component';
+import '../../components/nve-icon/nve-icon.component';
 import { NveAlert } from './NveAlert';
 
 export default {
@@ -16,13 +16,13 @@ export default {
     showIcon: boolean;
   }) => NveAlert(args),
   argTypes: {
-    text: { control: { type: 'text' }},
-    title: { control: {type: 'text'}},
+    text: { control: { type: 'text' } },
+    title: { control: { type: 'text' } },
     variant: {
       control: { type: 'select' },
       options: ['primary', 'warning', 'success', 'danger', 'neutral'],
     },
-    open: { table: { disable: true }},
+    open: { table: { disable: true } },
   },
 };
 
@@ -35,9 +35,6 @@ export const Primary = {
     emphasized: false,
     closable: true,
     showIcon: true,
-    open: true
+    open: true,
   },
 };
-
-
-
