@@ -11,8 +11,9 @@ import checkboxDemo from './components/nve-checkbox/nve-checkbox-demo';
 import inputDemo from './components/nve-input/nve-input-demo';
 import labelDemo from './components/nve-label/nve-label-demo';
 import tooltipDemo from './components/nve-tooltip/nve-tooltip-demo';
+import radioDemo from './components/nve-radio/nve-radio-demo';
 
 render(
-  [buttonDemo, tooltipDemo, labelDemo, inputDemo, checkboxDemo, checkboxGroupDemo],
+  [buttonDemo, tooltipDemo, labelDemo, inputDemo, checkboxDemo, checkboxGroupDemo, radioDemo],
   document.getElementById('app')!
 ); // Render the Lit app in the specified container
