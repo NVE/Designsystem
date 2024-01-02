@@ -1,3 +1,8 @@
+// vi bruker material ikoner istedenfor shoelace sine bootsrap ikoner der hvor 'system' ikoner brukes i shoelace komponenter
+// shoelace anbefaler at man oppdaterer alle system ikoner hvis man vil ha sine egne, for å unngå konflikter, eller at
+// noen ikoner mangles fordi registerIconLibrary overtar alle shoelace sine system ikoner.
+// https://shoelace.style/components/icon#customizing-the-system-library
+// dette scriptet kalles i index.ts
 import { registerIconLibrary } from '@shoelace-style/shoelace/dist/utilities/icon-library.js';
 
 interface Icons {
