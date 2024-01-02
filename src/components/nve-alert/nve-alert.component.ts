@@ -3,7 +3,7 @@ import styles from './nve-alert.styles';
 import { customElement, property } from 'lit/decorators.js';
 
 @customElement('nve-alert')
-export class NveAlert extends SlAlert {
+export default class NveAlert extends SlAlert {
   constructor() {
     super();
   }
