@@ -2,7 +2,6 @@
 import { render } from 'lit';
 import '../build/css/varsom.css';
 import './styles/testsite.css';
-import './styles/imports.css';
 import './styles/global.css';
 
 /* Importer demo-side for hver komponent du vil vise her og sett det i render-funksjonen */
