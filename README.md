@@ -30,13 +30,7 @@ export default defineConfig({
 });
 ```
 
-3. Importer stiler fra global.css i enten main.ts eller index.html:
-
-```
-import 'nve-designsystem/dist/css/global.css';
-```
-
-4. I tillegg trenger du å importere en .css-fil for farge-tema i main.ts. Filene finnes i mappa `nve-designsystem/build/css/`. For NVE-tema, bruk:
+3. I tillegg trenger du å importere en .css-fil for farge-tema i main.ts. Filene finnes i mappa `nve-designsystem/build/css/`. For NVE-tema, bruk:
 
 ```ts
 import 'nve-designsystem/dist/css/nve.css';
@@ -80,9 +74,9 @@ For å teste en komponent i main.ts må man huske å legge til script tag med ko
 
 Ved å lage en ny komponent opprett en mappe under src/components med komponent navn. Fil som inneholder selve komponent burde ha
 
-- .component.ts suffiks på fil sin inneholder selve komponent
-- .styles.ts på filer med styling
-- .demo.ts på filer som skal demonstrere komponent (til utviklere)
+- .component.ts suffiks på fil sin inneholder selve komponent f.eks. /components/nve-component/nve-component.component
+- .styles.ts på filer med styling f.eks. /components/nve-component/nve-component.styles.ts
+- .demo.ts på filer som skal demonstrere komponent (til utviklere) f.eks. /components/nve-component/nve-component.demo.ts
 
 ### **Komponent eksport**
 
@@ -182,17 +176,11 @@ For å teste en komponent i main.ts må man huske å legge til script tag med ko
 
 Før man pusher til main er det lurt å teste pakke lokalt. Med `npm pack` kan man teste hvordan pakken oppfører seg akkurat på samme måte som etter publisering. For å lage en nve-designsystem pakke lokalt:
 
-1. Kjør `npm run build` i designsystem prosjektet
+1. Kjør `npm run build`
 2. Kjør `npm pack`. En .tgz fil med pakken navn og versjon burde dukke opp i root mappe
 3. Åpen et annet prosjekt hvor du kan teste nve-designsystem pakken
-4. Etter åpning at et annet prosjekt, legg til `"dependencies": "file/"` + eksakt path til pakken filen du har opprettet i steg 2 f.eks:
-
-```js
-"dependencies": "file:/users/ds-user/repos/nve-design-system/Designsystem/nve-designsystem-0.1.7.tgz"
-```
-
-5. Kjør `npm  i` for å installere designsystem pakken
-6. Import komponent i prosjektet og sjekk om alt fungerer som det burde
+4. Kjør `npm  i` + kopiert .tgz fil full pathen
+5. Importer komponent i prosjektet og sjekk om alt fungerer som det burde
 
 ### Storybook
 

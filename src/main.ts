@@ -7,6 +7,7 @@ import './styles/testsite.css';
 import dialogDemo from './components/nve-dialog/nve-dialog-demo';
 import dropdownDemo from './components/nve-dropdown/nve-dropdown-demo';
 import menuItemDemo from './components/nve-menu-item/nve-menu-item-demo';
+import alertDemo from './components/nve-alert/nve-alert-demo';
 import buttonDemo from './components/nve-button/nve-button.demo';
 import checkboxGroupDemo from './components/nve-checkbox-group/nve-checkbox-group.demo';
 import checkboxDemo from './components/nve-checkbox/nve-checkbox.demo';
@@ -17,6 +18,7 @@ import radioDemo from './components/nve-radio/nve-radio.demo';
 
 render(
   [
+    alertDemo,
     buttonDemo,
     radioDemo,
     tooltipDemo,

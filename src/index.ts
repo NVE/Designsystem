@@ -1,7 +1,10 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 import './styles/global.css';
 
+export { default as NveAlert } from './components/nve-alert/nve-alert.component';
 export { default as NveButton } from './components/nve-button/nve-button.component';
+export { default as NveChekbox } from './components/nve-checkbox/nve-checkbox.component';
+export { default as NveChekboxGroup } from './components/nve-checkbox-group/nve-checkbox-group.component';
 export { default as NveIcon } from './components/nve-icon/nve-icon.component';
 export { default as NveInput } from './components/nve-input/nve-input.component';
 export { default as NveLabel } from './components/nve-label/nve-label.component';

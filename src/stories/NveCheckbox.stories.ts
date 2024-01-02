@@ -1,4 +1,4 @@
-import '../components/nve-checkbox/nve-checkbox';
+import '../components/nve-checkbox/nve-checkbox.component';
 import { StoryObj } from '@storybook/web-components';
 import { NveCheckbox, NveCheckboxProps } from './NveCheckbox';
 
