@@ -24,8 +24,8 @@ export const NveDropdown = () => {
       <nve-menu-item dividerTop>Divider top</nve-menu-item>
       <nve-menu-item disabled>Disabled</nve-menu-item>
       <nve-menu-item dividerBottom>Divider bottom</nve-menu-item>
+      <nve-menu-item ><nve-icon slot="prefix" name="info"></nve-icon>Ikon</nve-menu-item>
     </nve-menu>
   </nve-dropdown>
- 
     `;
 };
