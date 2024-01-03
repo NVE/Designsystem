@@ -8,7 +8,6 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('nve-icon')
 export class NveIcon extends LitElement {
-
   /**
    * Navnet på ikonet i Material Symbols-biblioteket
    */
@@ -24,10 +23,12 @@ export class NveIcon extends LitElement {
       transform: var(--icon-rotation, none);
       transition: transform 0.3s ease;
     }
-  
+
     /* we need it to center the icon */
     :is(span) {
       display: inline-flex;
+      line-height: 24px;
+      font-weight: var(--font-weight-regular);
     }
   `;
   render() {
