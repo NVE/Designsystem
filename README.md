@@ -174,13 +174,15 @@ For å teste en komponent i main.ts må man huske å legge til script tag med ko
 
 ### **Test pakke lokalt**
 
-Før man pusher til main er det lurt å teste pakke lokalt. Med `npm pack` kan man teste hvordan pakken oppfører seg akkurat på samme måte som etter publisering. For å lage en nve-designsystem pakke lokalt:
+Før man pusher til main er det lurt å teste pakke lokalt. Med `npm run pack` kan man teste hvordan pakken oppfører seg akkurat på samme måte som etter publisering. For å teste en nve-designsystem pakke lokalt:
 
 1. Kjør `npm run build`
-2. Kjør `npm pack`. En .tgz fil med pakken navn og versjon burde dukke opp i root mappe
+2. Kjør `npm run pack`. En .tgz fil med pakken navn og versjon burde dukke opp i dist mappe
 3. Åpen et annet prosjekt hvor du kan teste nve-designsystem pakken
-4. Kjør `npm  i` + kopiert .tgz fil full pathen
+4. Kjør `npm  i` <nve-designsystem-x.y.z.tgz med full sti>`
 5. Importer komponent i prosjektet og sjekk om alt fungerer som det burde
+
+NB! Vi lager pakken i dist mappe fordi det er enklere å strukturere hvordan pakken skal se ut når man laster den ned. Vi prøvde med `exports` og `files` i package.json men det ga oss ikke result vi var fornøyd med.
 
 ### Storybook
 
