@@ -12,7 +12,6 @@ import menuItemDemo from './components/nve-menu-item/nve-menu-item-demo';
 import radioDemo from "./components/nve-radio/nve-radio-demo";
 import tooltipDemo from './components/nve-tooltip/nve-tooltip-demo';
 import './styles/global.css';
-import './styles/imports.css';
 import './styles/testsite.css';
 
 

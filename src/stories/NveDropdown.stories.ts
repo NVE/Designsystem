@@ -17,7 +17,11 @@ const meta = {
     docs: {
       description: {
         component: '<h2><nve-dropdown> | NveDropdown</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-dropdown.md">API-dokumentasjon</a>',
-      }
+      },
+      story: {
+        inline: false,
+        iframeHeight: 550,
+      },
     }
   }
 };
