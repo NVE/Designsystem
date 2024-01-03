@@ -78,6 +78,12 @@ Ved å lage en ny komponent opprett en mappe under src/components med komponent 
 - .styles.ts på filer med styling f.eks. /components/nve-component/nve-component.styles.ts
 - .demo.ts på filer som skal demonstrere komponent (til utviklere) f.eks. /components/nve-component/nve-component.demo.ts
 
+### **Hvordan vi bygger komponenter**
+Vi setter reflect: true på alle properties i komponenter (se eksempel under) for å kunne se properties som oppdateres i DOMen. Gjelder reaktive applikasjoner.
+```js
+@property({ reflect: true }) title: string = '';
+```
+
 ### **Komponent eksport**
 
 Komponenter skal eksponeres i src/index.ts fila med
