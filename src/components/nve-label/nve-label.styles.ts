@@ -6,38 +6,35 @@ import { css } from 'lit';
 export const styles = css`
   :host {
     color: var(--neutrals-foreground-primary);
-  }
-
-  /* light-varianter for de forskjellige størrelsene */
-  :host([light]),
-  :host([size='x-small']) {
-    font: var(--label-x-small-light);
-  }
-  :host([light]),
-  :host([size='small']) {
-    font: var(--label-small-light);
-  }
-  :host([light]),
-  :host([size='medium']) {
-    font: var(--label-medium-light);
-  }
-  :host([light]),
-  :host([size='large']) {
-    font: var(--label-large-light);
-  }
-
-  /* størrelser men uten "light" */
-  :host([size='x-small']) {
-    font: var(--label-x-small);
-  }
-  :host([size='small']) {
     font: var(--label-small);
   }
-  :host([size='medium']) {
-    font: var(--label-medium);
+
+    /* skriftstørrelser */
+    :host([size='x-small']) {
+      font: var(--label-x-small);
+    }
+    :host([size='medium']) {
+      font: var(--label-medium);
+    }
+    :host([size='large']) {
+      font: var(--label-large);
+    }
+  
+  
+  /* light-variant i standard størrelse */
+  :host([light]) {
+    font: var(--label-small-light);
   }
-  :host([size='large']) {
-    font: var(--label-large);
+
+  /* light-varianter for de andre størrelsene */
+  :host([light][size='x-small']) {
+    font: var(--label-x-small-light);
+  }
+  :host([light][size='medium']) {
+    font: var(--label-medium-light);
+  }
+  :host([light][size='large']) {
+    font: var(--label-large-light);
   }
 
   .nve-info-icon {
