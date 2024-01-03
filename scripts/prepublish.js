@@ -11,7 +11,7 @@ const execPromise = util.promisify(exec);
 const command = process.argv[2];
 
 //check if .tgz files exist and delete
-if (command !== 'pack' || command !== 'publish') {
+if (command !== 'pack' && command !== 'publish') {
   console.log(`${chalk.red('✘')} Wrong npm command. Use 'pack' or 'publish'`);
   process.exit(1);
 }
