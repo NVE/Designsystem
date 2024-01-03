@@ -13,7 +13,9 @@ const table = html`
     <nve-menu>
       <nve-menu-item >Tekst</nve-menu-item>
       <nve-menu-item subtext='Dette er en undertekst'>Tekstrrrrrrrrrr</nve-menu-item>
-      <nve-menu-item type="checkbox" checked>Tekst</nve-menu-item>
+      <nve-menu-item> 
+            <nve-checkbox >Tekst</nve-checkbox>
+      </nve-menu-item>
       <nve-divider></nve-divider>
       <nve-menu-item>Tekst</nve-menu-item>
     </nve-menu>

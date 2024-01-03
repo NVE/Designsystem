@@ -9,7 +9,9 @@ export const NveDropdown = () => {
     <nve-menu>
       <nve-menu-item >Normal tekst</nve-menu-item>
       <nve-menu-item subtext='Dette er en undertekst'>Tekst</nve-menu-item>
-      <nve-menu-item type="checkbox" checked>Checkbox</nve-menu-item>
+      <nve-menu-item> 
+            <nve-checkbox>Checkbox</nve-checkbox>
+      </nve-menu-item>
       <nve-divider></nve-divider>
       <nve-menu-item>Normal tekst</nve-menu-item>
       <nve-menu-item indent>Undertittel</nve-menu-item>
