@@ -1,5 +1,5 @@
-import { customElement, property } from 'lit/decorators.js';
 import { html, LitElement } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
 import { styles } from './nve-label.styles';
 import { HasSlotController } from '../../utils/slot';
 import '../nve-icon/nve-icon';

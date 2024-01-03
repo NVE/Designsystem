@@ -1,5 +1,8 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
+export * from './nve-alert/nve-alert';
 export * from './nve-button/nve-button';
+export * from './nve-checkbox-group/nve-checkbox-group';
+export * from './nve-checkbox/nve-checkbox';
 export * from './nve-dialog/nve-dialog';
 export * from './nve-icon/nve-icon';
 export * from './nve-input/nve-input';

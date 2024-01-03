@@ -6,10 +6,13 @@ on:
       - main
     paths:
       - 'src/**'
+      - 'stories/**'
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
+    paths:
+      - 'src/**'
 
 jobs:
   # Run when a pull request is created or updated
@@ -37,7 +40,7 @@ jobs:
           close_pull_request_job:
 
   close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    if: (github.event_name == 'pull_request' && github.event.action == 'closed') || (github.event.pull_request.merged == false && github.event.pull_request.merged_by == null)
     runs-on: ubuntu-latest
     name: Close Pull Request Job
     steps:
