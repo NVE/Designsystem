@@ -97,8 +97,7 @@ export default css`
     border-radius: var(--borderRadius-none, 0rem);
   }
   :host(:focus-visible) .menu-item{
-    border-radius: var(--borderRadius-none, 0rem);
-    border: var(--border-width-strong, 2px) solid var(--Interactive-Primary-Foreground-Border-Focus, #008FFB);
+    box-shadow: inset 0 0 0 var(--border-width-strong, 2px) var(--Interactive-Primary-Foreground-Border-Focus, #008ffb); 
     opacity: var(--borderWidth-default, 1);
     color: var(--interactive-outlined-foreground-default);
     background-color: transparent;
