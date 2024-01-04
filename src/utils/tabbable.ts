@@ -97,19 +97,25 @@ function isTakingUpSpace(elem: HTMLElement): boolean {
         const slotChildrenOutsideRootElement = (slotElement: HTMLSlotElement) =>
           (slotElement.getRootNode({ composed: true }) as ShadowRoot | null)?.host !== root;
   
-        if (el instanceof HTMLSlotElement && slotChildrenOutsideRootElement(el)) {
-          el.assignedElements({ flatten: true }).forEach((assignedEl: HTMLElement) => {
-            walk(assignedEl);
-          });
+          if (el instanceof HTMLSlotElement && slotChildrenOutsideRootElement(el)) {
+            el.assignedElements({ flatten: true }).forEach((assignedEl: Element) => {
+              if (assignedEl instanceof HTMLElement) {
+                walk(assignedEl);
+              }
+            });
+          }
+    
+          if (el.shadowRoot !== null && el.shadowRoot.mode === 'open') {
+            walk(el.shadowRoot);
+          }
         }
-  
-        if (el.shadowRoot !== null && el.shadowRoot.mode === 'open') {
-          walk(el.shadowRoot);
-        }
+    
+        [...el.children].forEach((e: Element) => {
+          if (e instanceof HTMLElement) {
+            walk(e);
+          }
+        });
       }
-  
-      [...el.children].forEach((e: HTMLElement) => walk(e));
-    }
   
     // Collect all elements including the root
     walk(root);
