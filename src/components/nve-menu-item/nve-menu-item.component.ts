@@ -1,6 +1,6 @@
 import { SlMenuItem } from '@shoelace-style/shoelace';
 import { customElement, property } from 'lit/decorators.js';
-import styles from './nve-menu-item-styles';
+import styles from './nve-menu-item.styles';
 /**
  * En sl-menu-item i NVE-forkledning.
  * Mer info: https://shoelace.style/components/menu-item
@@ -8,7 +8,7 @@ import styles from './nve-menu-item-styles';
  */
 @customElement('nve-menu-item')
 export class NveMenuItem extends SlMenuItem {
-    /**
+  /**
    * Tekst som vises som subtext(undertekst).
    */
   @property({ type: String, reflect: true }) subtext: string = '';
@@ -44,7 +44,6 @@ export class NveMenuItem extends SlMenuItem {
   }
 
   static styles = [SlMenuItem.styles, styles];
-
 }
 
 declare global {

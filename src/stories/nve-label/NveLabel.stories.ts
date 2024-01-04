@@ -1,10 +1,9 @@
-import '../../components/nve-icon/nve-icon';
-import '../../components/nve-tooltip/nve-tooltip';
-import '../../components/nve-label/nve-label';
+import '../../components/nve-icon/nve-icon.component';
+import '../../components/nve-tooltip/nve-tooltip.component';
+import '../../components/nve-label/nve-label.component';
 import { StoryObj } from '@storybook/web-components';
 import type { NveLabelProps } from './NveLabel';
 import { NveLabel } from './NveLabel';
-
 
 const meta = {
   title: 'Nve/NveLabel',
@@ -14,15 +13,16 @@ const meta = {
     size: {
       control: { type: 'select' },
       options: ['x-small', 'small', 'medium', 'large'],
-    }
+    },
   },
   parameters: {
     docs: {
       description: {
-        component: '<h2><nve-label> | NveLabel</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-label.md">API-dokumentasjon</a>',
-      }
-    }
-  }
+        component:
+          '<h2><nve-label> | NveLabel</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-label.md">API-dokumentasjon</a>',
+      },
+    },
+  },
 };
 
 export default meta;

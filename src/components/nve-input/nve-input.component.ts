@@ -15,8 +15,7 @@ import styles from './nve-input.styles';
  * TODO: Vise valideringsfeil med rød tekst under tekstfeltet
  */
 @customElement('nve-input')
-export class NveInput extends SlInput {
-
+export default class NveInput extends SlInput {
   /**
    * Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard.
    */

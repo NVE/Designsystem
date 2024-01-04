@@ -2,8 +2,8 @@ import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { styles } from './nve-label.styles';
 import { HasSlotController } from '../../utils/slot';
-import '../nve-icon/nve-icon';
-import '../nve-tooltip/nve-tooltip';
+import '../nve-icon/nve-icon.component';
+import '../nve-tooltip/nve-tooltip.component';
 
 /**
  * Ledetekst med valgfritt verktøy-hint (og tilhørende info-ikon)
@@ -15,28 +15,28 @@ import '../nve-tooltip/nve-tooltip';
  * TODO: Hvis du angir både value og innhold i slot, er det value som vises. Det bør være motsatt.
  */
 @customElement('nve-label')
-export class NveLabel extends LitElement {
+export default class NveLabel extends LitElement {
   private readonly hasSlotController = new HasSlotController(this, 'tooltip');
 
   /**
    * Teksten som skal vises
    */
-  @property() value = '';
+  @property({ reflect: true }) value = '';
 
   /**
    * Størrelse
    */
-  @property() size: 'x-small' | 'small' | 'medium' | 'large' = 'small';
+  @property({ reflect: true }) size: 'x-small' | 'small' | 'medium' | 'large' = 'small';
 
   /**
    * Sett denne hvis du vil ha litt lettere skriftvekt
    */
-  @property({ type: Boolean }) light = false;
+  @property({ type: Boolean, reflect: true }) light = false;
 
   /**
    * Denne teksten blir vist som et verktøyhint hvis man svever over info-ikonet
    */
-  @property() tooltip?: string = undefined;
+  @property({ reflect: true }) tooltip?: string = undefined;
 
   static styles = [styles];
 
@@ -59,25 +59,19 @@ export class NveLabel extends LitElement {
     if (this.value.length) {
       // Vis value-property
       // For å vise label i slot INNI tooltip-slot, må label-slot ha et navn
-      return html`
-      <label part="form-control-label" class="form-control__label" aria-hidden="false">
+      return html` <label part="form-control-label" class="form-control__label" aria-hidden="false">
         <slot name="label">${this.value}</slot>
-      </label>`
+      </label>`;
     } else {
       // Vis evt. slot-innhold i stedet
-      return html`
-      <label part="form-control-label" class="form-control__label" aria-hidden="false">
+      return html` <label part="form-control-label" class="form-control__label" aria-hidden="false">
         <slot></slot>
-      </label>`
+      </label>`;
     }
   }
 
-
   render() {
-    return html`
-      ${this.renderValueProperty()}
-      ${this.renderInfoIconWithTooltip()}
-    `;
+    return html` ${this.renderValueProperty()} ${this.renderInfoIconWithTooltip()} `;
   }
 }
 

@@ -1,31 +1,30 @@
 import { SlDropdown, SlSelectEvent } from '@shoelace-style/shoelace';
 import { customElement } from 'lit/decorators.js';
 import { getTabbableBoundary } from '../../utils/tabbable';
-import { NveButton } from '../nve-button/nve-button';
-import { NveMenu } from '../nve-menu/nve-menu';
+import NveButton from '../nve-button/nve-button.component';
+import { NveMenu } from '../nve-menu/nve-menu.component';
 import styles from './nve-dropdown.styles';
 /**
  * En Shoelace-dropdown i NVE-forkledning.
  * Se https://shoelace.style/components/dropdown
  */
 @customElement('nve-dropdown')
-  // @ts-expect-error - overskriving av private metoder i sl-dropdown
-export class NveDropdown extends SlDropdown {
-  
+// @ts-expect-error - overskriving av private metoder i sl-dropdown
+export default class NveDropdown extends SlDropdown {
   constructor() {
     super();
   }
   static styles = [SlDropdown.styles, styles];
 
   getMenu() {
-    return this.panel.assignedElements({ flatten: true }).find(el => el.tagName.toLowerCase() === 'nve-menu') as
+    return this.panel.assignedElements({ flatten: true }).find((el) => el.tagName.toLowerCase() === 'nve-menu') as
       | NveMenu
       | undefined;
   }
 
   updateAccessibleTrigger() {
     const assignedElements = this.trigger.assignedElements({ flatten: true }) as HTMLElement[];
-    const accessibleTrigger = assignedElements.find(el => getTabbableBoundary(el).start);
+    const accessibleTrigger = assignedElements.find((el) => getTabbableBoundary(el).start);
     let target: HTMLElement;
 
     if (accessibleTrigger) {
@@ -43,7 +42,7 @@ export class NveDropdown extends SlDropdown {
       target.setAttribute('aria-expanded', this.open ? 'true' : 'false');
     }
   }
-   // @ts-expect-error - overskriving av private metoder i sl-dropdown
+  // @ts-expect-error - overskriving av private metoder i sl-dropdown
   private handlePanelSelect = (event: SlSelectEvent) => {
     const target = event.target as HTMLElement;
 
@@ -53,8 +52,6 @@ export class NveDropdown extends SlDropdown {
       this.focusOnTrigger();
     }
   };
- 
-  
 }
 
 declare global {

@@ -7,11 +7,11 @@ import { customElement, property } from 'lit/decorators.js';
  * @see https://fonts.google.com/icons
  */
 @customElement('nve-icon')
-export class NveIcon extends LitElement {
+export default class NveIcon extends LitElement {
   /**
    * Navnet på ikonet i Material Symbols-biblioteket
    */
-  @property() name = '';
+  @property({ reflect: true }) name = '';
   static styles = css`
     :host {
       /* Apply Material Icons font-family to the Shadow DOM */

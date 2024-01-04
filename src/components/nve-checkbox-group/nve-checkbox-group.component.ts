@@ -1,6 +1,6 @@
 import { html, LitElement } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import '../nve-label/nve-label';
+import '../nve-label/nve-label.component';
 import styles from './nve-checkbox-group.styles';
 
 @customElement('nve-checkbox-group')
@@ -10,7 +10,7 @@ import styles from './nve-checkbox-group.styles';
  * <nve-checkbox> komponenter som er wrappet i <nve-checkbox-group>
  * @slot default - innholder alle nve-checkbox komponenter for global style styring og validering
  * */
-export class NveCheckboxGroup extends LitElement {
+export default class NveCheckboxGroup extends LitElement {
   constructor() {
     super();
   }

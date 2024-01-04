@@ -9,7 +9,7 @@ import styles from './nve-checkbox.styles';
  * foreløpig finnes ikke noe hove
  */
 @customElement('nve-checkbox')
-export class NveCheckbox extends SlCheckbox {
+export default class NveCheckbox extends SlCheckbox {
   constructor() {
     super();
   }

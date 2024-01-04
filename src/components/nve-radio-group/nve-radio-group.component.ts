@@ -1,7 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import { SlRadio, SlRadioGroup, SlRadioButton } from '@shoelace-style/shoelace';
-import { NveRadioButton } from '../nve-radio-button/nve-radio-button.component';
-import { NveRadio } from '../nve-radio/nve-radio.component';
+import NveRadioButton from '../nve-radio-button/nve-radio-button.component';
+import NveRadio from '../nve-radio/nve-radio.component';
 import styles from './nve-radio-group.styles';
 import { watch } from '../../utils/watch';
 
@@ -25,7 +25,7 @@ import { watch } from '../../utils/watch';
  *
  */
 // @ts-expect-error -next-line - overskriving av private metoder i sl-radio-group
-export class NveRadioGroup extends SlRadioGroup {
+export default class NveRadioGroup extends SlRadioGroup {
   constructor() {
     super();
   }

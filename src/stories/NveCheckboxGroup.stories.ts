@@ -1,5 +1,5 @@
-import '../components/nve-checkbox-group/nve-checkbox-group';
-import '../components/nve-checkbox/nve-checkbox';
+import '../components/nve-checkbox-group/nve-checkbox-group.component';
+import '../components/nve-checkbox/nve-checkbox.component';
 import { StoryObj } from '@storybook/web-components';
 import { NveCheckboxGroup, NveCheckboxGroupProps } from './NveCheckboxGroup';
 
