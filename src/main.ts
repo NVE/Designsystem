@@ -4,9 +4,9 @@ import '../build/css/varsom.css';
 import './styles/global.css';
 import './styles/testsite.css';
 /* Importer demo-side for hver komponent du vil vise her og sett det i render-funksjonen */
-import dialogDemo from './components/nve-dialog/nve-dialog-demo';
-import dropdownDemo from './components/nve-dropdown/nve-dropdown-demo';
-import menuItemDemo from './components/nve-menu-item/nve-menu-item-demo';
+import dialogDemo from './components/nve-dialog/nve-dialog.demo';
+import dropdownDemo from './components/nve-dropdown/nve-dropdown.demo';
+import menuItemDemo from './components/nve-menu-item/nve-menu-item.demo';
 import alertDemo from './components/nve-alert/nve-alert.demo';
 import buttonDemo from './components/nve-button/nve-button.demo';
 import checkboxGroupDemo from './components/nve-checkbox-group/nve-checkbox-group.demo';
