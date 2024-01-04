@@ -1,6 +1,6 @@
 import { SlTooltip } from '@shoelace-style/shoelace';
 import { customElement } from 'lit/decorators.js';
-import '../nve-icon/nve-icon.component.ts';
+import '../nve-icon/nve-icon.component';
 
 /**
  * En sl-tooltip i NVE-uniform. TODO: Denne har ingen NVE-styling ennå.

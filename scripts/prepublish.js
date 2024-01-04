@@ -27,7 +27,6 @@ fs.readdir('./dist', (err, files) => {
 
   if (tgzFiles.length > 0) {
     console.log(`${chalk.green('✔')} Files with .tgz extension found and deleted`);
-    tgxFiles.forEach((file) => console.log(file));
   }
 });
 

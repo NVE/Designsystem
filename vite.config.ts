@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     cssInjectedByJsPlugin(),
     dts({
-      include: ['src/index.ts'],
+      include: ['src/index.ts', 'src/components/**/*.component.ts'],
     }),
   ],
   build: {
