@@ -1,5 +1,5 @@
-import { customElement, property } from 'lit/decorators.js';
 import { css, html, LitElement } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
 
 /**
  * Et ikon.
@@ -16,6 +16,12 @@ export class NveIcon extends LitElement {
     :host {
       /* Apply Material Icons font-family to the Shadow DOM */
       font-family: 'Material Symbols Outlined';
+   
+    }
+    /* Brukes i dropdown. Eneste måten å override shadow dom for å rotere expand_more ikonet når menyen åpner */
+    :host([name="expand_more"]) {
+      transform: var(--icon-rotation, none);
+      transition: transform 0.3s ease;
     }
 
     /* we need it to center the icon */
