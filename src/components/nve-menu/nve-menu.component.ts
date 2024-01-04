@@ -1,11 +1,11 @@
 import { SlMenu } from '@shoelace-style/shoelace';
 import { customElement } from 'lit/decorators.js';
-import styles from '../nve-menu/nve-menu-styles';
+import styles from '../nve-menu/nve-menu.styles';
 /*
-* En sl-menu i NVE-forkledning.
-* Mer info: https://shoelace.style/components/menu
-*
-*/
+ * En sl-menu i NVE-forkledning.
+ * Mer info: https://shoelace.style/components/menu
+ *
+ */
 @customElement('nve-menu')
 export class NveMenu extends SlMenu {
   constructor() {
