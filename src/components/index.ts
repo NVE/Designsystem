@@ -3,6 +3,7 @@ export * from './nve-alert/nve-alert';
 export * from './nve-button/nve-button';
 export * from './nve-checkbox-group/nve-checkbox-group';
 export * from './nve-checkbox/nve-checkbox';
+export * from './nve-dialog/nve-dialog';
 export * from './nve-divider/nve-divider';
 export * from './nve-dropdown/nve-dropdown';
 export * from './nve-icon/nve-icon';

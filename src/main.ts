@@ -5,6 +5,7 @@ import '../build/css/varsom.css';
 import buttonDemo from './components/nve-button/nve-button-demo';
 import checkboxGroupDemo from './components/nve-checkbox-group/nve-checkbox-group-demo';
 import checkboxDemo from './components/nve-checkbox/nve-checkbox-demo';
+import dialogDemo from './components/nve-dialog/nve-dialog-demo';
 import dropdownDemo from './components/nve-dropdown/nve-dropdown-demo';
 import inputDemo from './components/nve-input/nve-input-demo';
 import labelDemo from './components/nve-label/nve-label-demo';
@@ -15,4 +16,4 @@ import './styles/global.css';
 import './styles/testsite.css';
 
 
-render([buttonDemo, radioDemo, tooltipDemo, labelDemo, inputDemo, dropdownDemo, menuItemDemo, checkboxDemo, checkboxGroupDemo], document.getElementById('app')!); // Render the Lit app in the specified container
+render([buttonDemo, radioDemo, tooltipDemo, labelDemo, inputDemo, dropdownDemo, menuItemDemo, checkboxDemo, checkboxGroupDemo, dialogDemo], document.getElementById('app')!); // Render the Lit app in the specified container
