@@ -9,6 +9,7 @@ import styles from './nve-dropdown.styles';
  * Se https://shoelace.style/components/dropdown
  */
 @customElement('nve-dropdown')
+  // @ts-expect-error - overskriving av private metoder i sl-dropdown
 export class NveDropdown extends SlDropdown {
   
   constructor() {
@@ -42,7 +43,7 @@ export class NveDropdown extends SlDropdown {
       target.setAttribute('aria-expanded', this.open ? 'true' : 'false');
     }
   }
-  
+   // @ts-expect-error - overskriving av private metoder i sl-dropdown
   private handlePanelSelect = (event: SlSelectEvent) => {
     const target = event.target as HTMLElement;
 
