@@ -162,7 +162,7 @@ Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'e
 
 - Vi dokumenterer på norsk
 - Alle komponenter dokumenteres med JsDoc-tags i koden. Alt som er tilgjengelig for de som bruker komponentene skal dokumenteres, dvs. alle public klasser, interfaces, properties/attributter, metoder, events, slots, css-parts og css-properties. [Her er noen tips.](https://github.com/runem/web-component-analyzer#-how-to-document-your-components-using-jsdoc)
-  Vi bruker [Web Component Analyzer](https://github.com/runem/web-component-analyze) til å generere API-dokumentasjon.
+  Vi bruker [Web Component Analyzer](https://github.com/runem/web-component-analyzer) til å generere API-dokumentasjon.
 - Generer .MD-filer med `npm run doc` og sjekk inn de genererte filene sammen med koden. Om du har laget nye komponenter, legg dem til i [denne lista](./doc/components.md).
 
 ### **Bygge css**
