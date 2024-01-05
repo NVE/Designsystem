@@ -1,4 +1,17 @@
-import { Story, Meta, Title, Subtitle, Description, Primary, Controls, Stories } from '@storybook/blocks';
+import {
+  Canvas,
+  Story,
+  Meta,
+  Title,
+  Subtitle,
+  Description,
+  Source,
+  Primary,
+  Controls,
+  Stories,
+} from '@storybook/blocks';
+
+import * as ButtonStories from './NveButton.stories';
 
 <Meta isTemplate />
 
@@ -8,18 +21,22 @@ import { Story, Meta, Title, Subtitle, Description, Primary, Controls, Stories }
 <br />
 ## Varianter
 
+{' '}
+
+{' '}
+
 <div style={{ display: 'flex' }}>
   <span style={{ margin: '1rem' }}>
-    <Story name="Standard">{() => <Primary />}</Story>
+    <Canvas of={ButtonStories.Standard} />
   </span>
   <span style={{ margin: '1rem' }}>
-    <Story name="Default">{() => <Primary />}</Story>
+    <Canvas of={ButtonStories.Default} />
   </span>
   <span style={{ margin: '1rem' }}>
-    <Story name="Outlined">{() => <Primary />}</Story>
+    <Canvas of={ButtonStories.Outlined} />
   </span>
   <span style={{ margin: '1rem' }}>
-    <Story name="Ghost">{() => <Primary />}</Story>
+    <Canvas of={ButtonStories.Ghost} />
   </span>
 </div>
 
