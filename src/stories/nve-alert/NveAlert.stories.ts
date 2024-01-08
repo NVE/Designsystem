@@ -5,6 +5,7 @@ import NveAlertDoc from './NveAlertDoc.mdx';
 
 export default {
   title: 'Nve/NveAlert', // Title for the component in Storybook
+  tags: ['autodocs'],
   component: 'nve-alert',
   render: (args: {
     variant: string;
@@ -41,6 +42,71 @@ export const Primary = {
   args: {
     variant: 'primary',
     text: 'this is some example text',
+    title: 'Info tittel',
+    leftStroke: false,
+    emphasized: false,
+    closable: true,
+    showIcon: true,
+    open: true,
+  },
+};
+
+export const Prime = {
+  args: {
+    variant: 'primary',
+    text: 'Primary',
+    title: 'Info tittel',
+    leftStroke: false,
+    emphasized: false,
+    closable: true,
+    showIcon: true,
+    open: true,
+  },
+};
+
+export const Success = {
+  args: {
+    variant: 'success',
+    text: 'Success',
+    title: 'Info tittel',
+    leftStroke: false,
+    emphasized: false,
+    closable: true,
+    showIcon: true,
+    open: true,
+  },
+};
+
+export const Danger = {
+  args: {
+    variant: 'danger',
+    text: 'Danger',
+    title: 'Info tittel',
+    leftStroke: false,
+    emphasized: false,
+    closable: true,
+    showIcon: true,
+    open: true,
+  },
+};
+
+export const Warning = {
+  args: {
+    variant: 'warning',
+    text: 'Warning',
+    title: 'Info tittel',
+    leftStroke: false,
+    emphasized: false,
+    closable: true,
+    showIcon: true,
+    open: true,
+  },
+};
+
+export const Neutral = {
+  args: {
+    variant: 'neutral',
+    text: 'Neutral',
     title: 'Info tittel',
     leftStroke: false,
     emphasized: false,
