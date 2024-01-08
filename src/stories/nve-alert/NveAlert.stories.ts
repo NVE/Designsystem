@@ -54,8 +54,8 @@ export const Primary = {
 export const Prime = {
   args: {
     variant: 'primary',
-    text: 'Primary',
-    title: 'Info tittel',
+    text: 'text',
+    title: 'Primary',
     leftStroke: false,
     emphasized: false,
     closable: true,
@@ -67,8 +67,8 @@ export const Prime = {
 export const Success = {
   args: {
     variant: 'success',
-    text: 'Success',
-    title: 'Info tittel',
+    text: 'text',
+    title: 'Success',
     leftStroke: false,
     emphasized: false,
     closable: true,
@@ -80,8 +80,8 @@ export const Success = {
 export const Danger = {
   args: {
     variant: 'danger',
-    text: 'Danger',
-    title: 'Info tittel',
+    text: 'text',
+    title: 'Danger',
     leftStroke: false,
     emphasized: false,
     closable: true,
@@ -93,8 +93,8 @@ export const Danger = {
 export const Warning = {
   args: {
     variant: 'warning',
-    text: 'Warning',
-    title: 'Info tittel',
+    text: 'text',
+    title: 'Warning',
     leftStroke: false,
     emphasized: false,
     closable: true,
@@ -106,11 +106,89 @@ export const Warning = {
 export const Neutral = {
   args: {
     variant: 'neutral',
-    text: 'Neutral',
-    title: 'Info tittel',
+    text: 'text',
+    title: 'Neutral',
     leftStroke: false,
     emphasized: false,
     closable: true,
+    showIcon: true,
+    open: true,
+  },
+};
+
+export const Leftstrokeone = {
+  args: {
+    variant: 'danger',
+    text: 'text',
+    title: 'Left stroke',
+    leftStroke: true,
+    emphasized: false,
+    closable: true,
+    showIcon: true,
+    open: true,
+  },
+};
+
+export const Leftstroketwo = {
+  args: {
+    variant: 'warning',
+    text: 'text',
+    title: 'Left stroke',
+    leftStroke: true,
+    emphasized: false,
+    closable: true,
+    showIcon: true,
+    open: true,
+  },
+};
+
+export const Emphasizedone = {
+  args: {
+    variant: 'neutral',
+    text: 'text',
+    title: 'Emphasized',
+    leftStroke: false,
+    emphasized: true,
+    closable: true,
+    showIcon: true,
+    open: true,
+  },
+};
+
+export const Emphasizedtwo = {
+  args: {
+    variant: 'success',
+    text: 'text',
+    title: 'Emphasized',
+    leftStroke: false,
+    emphasized: true,
+    closable: true,
+    showIcon: true,
+    open: true,
+  },
+};
+
+export const Closable = {
+  args: {
+    variant: 'success',
+    text: 'text',
+    title: 'Closable',
+    leftStroke: false,
+    emphasized: true,
+    closable: true,
+    showIcon: true,
+    open: true,
+  },
+};
+
+export const Notclosable = {
+  args: {
+    variant: 'danger',
+    text: 'text',
+    title: 'Not closable',
+    leftStroke: false,
+    emphasized: true,
+    closable: false,
     showIcon: true,
     open: true,
   },
