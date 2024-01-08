@@ -30,6 +30,9 @@ export const Primary: Story = {
     value: 'Tekst',
     required: false,
     requiredLabel: '*Obligatorisk',
+    type: 'text',
+    tooltip: false,
+    icon: false
   },
 };
 
