@@ -1,3 +1,5 @@
+import './nve-alert.css';
+
 import {
   Canvas,
   Story,
@@ -25,24 +27,24 @@ import * as NveAlertStories from './NveAlert.stories';
 
 {' '}
 
-<div style={{ display: 'flex' }}>
-  <span style={{ margin: '1rem' }}>
+<div class="flex">
+  <span>
     <Canvas of={NveAlertStories.Prime} />
   </span>
-  <span style={{ margin: '1rem' }}>
+  <span>
     <Canvas of={NveAlertStories.Success} />
   </span>
 </div>
-<div style={{ display: 'flex' }}>
-  <span style={{ margin: '1rem' }}>
+<div class="flex">
+  <span>
     <Canvas of={NveAlertStories.Warning} />
   </span>
-  <span style={{ margin: '1rem' }}>
+  <span>
     <Canvas of={NveAlertStories.Neutral} />
   </span>
 </div>
-<div style={{ display: 'flex' }}>
-  <span style={{ margin: '1rem' }}>
+<div class="flex">
+  <span>
     <Canvas of={NveAlertStories.Danger} />
   </span>
 </div>
