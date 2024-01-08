@@ -13,7 +13,7 @@ import {
   Stories,
 } from '@storybook/blocks';
 
-import * as NveButtonStories from './NveButton.stories';
+import * as NveInputStories from './NveInput.stories';
 
 <Meta isTemplate />
 
@@ -21,60 +21,65 @@ import * as NveButtonStories from './NveButton.stories';
 <Description />
 <br />
 <br />
-## Varianter
-
-{' '}
-
-{' '}
-
-<div class="container">
-  <span class="elem">
-    <Canvas of={NveButtonStories.Standard} />
-  </span>
-  <span class="elem">
-    <Canvas of={NveButtonStories.Default} />
-  </span>
-  <span class="elem">
-    <Canvas of={NveButtonStories.Outlined} />
-  </span>
-  <span class="elem">
-    <Canvas of={NveButtonStories.Ghost} />
-  </span>
-</div>
 
 ## Størrelser
 
 <div class="container">
   <span class="elem">
-    <Canvas of={NveButtonStories.Small} />
+    <Canvas of={NveInputStories.Small} />
   </span>
   <span class="elem">
-    <Canvas of={NveButtonStories.Medium} />
+    <Canvas of={NveInputStories.Medium} />
   </span>
   <span class="elem">
-    <Canvas of={NveButtonStories.Large} />
-  </span>
-</div>
-
-## Disabled
-
-<div class="container">
-  <span class="elem">
-    <Canvas of={NveButtonStories.Disabledone} />
-  </span>
-  <span class="elem">
-    <Canvas of={NveButtonStories.Disabledtwo} />
+    <Canvas of={NveInputStories.Large} />
   </span>
 </div>
 
-## Loading
+## Filled
 
 <div class="container">
   <span class="elem">
-    <Canvas of={NveButtonStories.Loadingone} />
+    <Canvas of={NveInputStories.Filledone} />
   </span>
   <span class="elem">
-    <Canvas of={NveButtonStories.Loadingtwo} />
+    <Canvas of={NveInputStories.Filledtwo} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveInputStories.Filledthree} />
+  </span>
+</div>
+
+## Aktiv/Deaktivert
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveInputStories.Enabled} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveInputStories.Disabled} />
+  </span>
+</div>
+
+## Obligatorisk/valideringsfeil
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveInputStories.Mandatory} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveInputStories.Invalid} />
+  </span>
+</div>
+
+## Dato
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveInputStories.Date} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveInputStories.Datetime} />
   </span>
 </div>
 
@@ -82,7 +87,9 @@ import * as NveButtonStories from './NveButton.stories';
 
 Her kan du se hvilke parametere (props) komponenten kan ta imot og se endringer i kode
 
-<Primary />
+<div class="container">
+  <Primary />
+</div>
 <Controls />
 
 ## <Stories />
