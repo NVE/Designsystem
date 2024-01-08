@@ -11,11 +11,21 @@ export interface NveInputProps {
   type: string,
   min: string,
   max: string,
+  tooltip: boolean,
+  icon: boolean
 
 }
 
-export const NveInput = (props: NveInputProps) => {
-  return html`
+export const NveInput = (props: NveInputProps) => { 
+  return props.type === 'password' ? html`
+   <nve-input
+        label=${props.label}
+        value=${props.value}
+        password-toggle
+        size=${props.size}
+        type=${props.type}          
+      >` :
+ html`
       <nve-input
         ?filled=${props.filled}
         label=${props.label}
@@ -27,9 +37,11 @@ export const NveInput = (props: NveInputProps) => {
         min=${props.min}
         max=${props.max}
         type=${props.type}  
+        
       >
-    <nve-icon slot="suffix" name="lock"></nve-icon>
-      <nve-label value="Svev over ikonet" slot="label" tooltip="Hjelpetekst"></nve-label>
+      
+      ${props.tooltip ? html`<nve-label value="Svev over ikonet" slot="label" tooltip="Hjelpetekst"></nve-label>` : ''}
+      ${props.icon ? html`<nve-icon slot="suffix" name="lock"></nve-icon>` : ''}
       </nve-input>
     `;
 };

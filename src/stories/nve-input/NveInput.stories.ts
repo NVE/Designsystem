@@ -135,13 +135,9 @@ export const Invalid: Story = {
 export const Icon: Story = {
   args: {
     label: 'Ledetekst',
-    value: '41',
     size: 'medium',
-    type: 'number',
-    min: '42',
-    max: '43',
-    requiredLabel: 'Ugyldig verdi'
-    
+    value: 'Input med ikon',
+    icon: true    
   },
 };
 
@@ -150,7 +146,7 @@ export const Tooltip: Story = {
     label: 'Ledetekst',
     value: '41',
     size: 'medium',
-  
+    tooltip: true
   },
 };
 
@@ -166,6 +162,14 @@ export const Datetime: Story = {
   },
 };
 
+export const Password: Story = {
+  args: {
+    label: 'Ledetekst',
+    value: 'hemmelig',
+    size: 'medium',
+    type: 'password'
+  },
+};
 
 
 
