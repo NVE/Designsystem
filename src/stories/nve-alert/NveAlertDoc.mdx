@@ -28,24 +28,61 @@ import * as NveAlertStories from './NveAlert.stories';
 {' '}
 
 <div class="container">
-  <span>
+  <span class="elem">
     <Canvas of={NveAlertStories.Prime} />
   </span>
-  <span>
+  <span class="elem">
     <Canvas of={NveAlertStories.Success} />
   </span>
 </div>
 <div class="container">
-  <span>
+  <span class="elem">
     <Canvas of={NveAlertStories.Warning} />
   </span>
-  <span>
+  <span class="elem">
     <Canvas of={NveAlertStories.Neutral} />
   </span>
 </div>
 <div class="container">
-  <span>
+  <span class="elem">
     <Canvas of={NveAlertStories.Danger} />
+  </span>
+</div>
+
+## Left stroke
+
+{' '}
+
+{' '}
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveAlertStories.Leftstrokeone} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveAlertStories.Leftstroketwo} />
+  </span>
+</div>
+
+## Emphasized
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveAlertStories.Emphasizedone} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveAlertStories.Emphasizedtwo} />
+  </span>
+</div>
+
+## Closable
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveAlertStories.Closable} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveAlertStories.Notclosable} />
   </span>
 </div>
 
@@ -53,7 +90,9 @@ import * as NveAlertStories from './NveAlert.stories';
 
 Her kan du se hvilke parametere (props) komponenten kan ta imot og se endringer i kode
 
-<Primary />
+<div class="container">
+  <Primary />
+</div>
 <Controls />
 
 ## <Stories />
