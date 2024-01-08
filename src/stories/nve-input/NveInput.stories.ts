@@ -3,6 +3,7 @@ import '../../components/nve-label/nve-label.component';
 import { StoryObj } from '@storybook/web-components';
 import { NveInput } from './NveInput';
 import type { NveInputProps } from './NveInput';
+import NveInputDoc from './NveInputDoc.mdx';
 
 const meta = {
   title: 'Nve/NveInput',
@@ -10,6 +11,7 @@ const meta = {
   render: (args: NveInputProps) => NveInput(args),
   parameters: {
     docs: {
+      page: NveInputDoc,
       description: {
         component:
           '<h2><nve-input> | NveInput</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-input.md">API-dokumentasjon</a>',
@@ -31,40 +33,139 @@ export const Primary: Story = {
   },
 };
 
-export const One: Story = {
+export const Small: Story = {
   args: {
-    filled: true,
+    filled: false,
     label: 'Ledetekst',
-    value: 'Tekst',
+    value: 'Small input text',
+    size: 'small',
   },
 };
 
-export const Two: Story = {
+export const Medium: Story = {
   args: {
-    filled: true,
+    filled: false,
     label: 'Ledetekst',
-    value: '',
-    required: false,
-    requiredLabel: '*Obligatorisk',
+    value: 'Medium input text',
+    size: 'medium',
   },
 };
 
-export const Three: Story = {
+export const Large: Story = {
+  args: {
+    filled: false,
+    label: 'Ledetekst',
+    value: 'Large input text',
+    size: 'large',
+  },
+};
+
+export const Filledone: Story = {
   args: {
     filled: true,
     label: 'Ledetekst',
-    value: '',
+    value: 'Filled input text',
+    size: 'small',
+  },
+};
+
+
+export const Filledtwo: Story = {
+  args: {
+    filled: true,
+    label: 'Ledetekst',
+    value: 'Filled input text',
+    size: 'medium',
+  },
+};
+
+export const Filledthree: Story = {
+  args: {
+    filled: true,
+    label: 'Ledetekst',
+    value: 'Filled input text',
+    size: 'large',
+  },
+};
+
+export const Enabled: Story = {
+  args: {
+    filled: false,
+    label: 'Ledetekst',
+    value: 'Aktivert',
+    size: 'medium',
+    
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    filled: true,
+    label: 'Ledetekst',
+    value: 'Deaktivert',
+    size: 'medium',
+    disabled: true,
+  },
+};
+
+
+export const Mandatory: Story = {
+  args: {
+    label: 'Ledetekst',
+    value: 'Obligatorisk',
+    size: 'medium',
     required: true,
-    requiredLabel: '*Obligatorisk felt',
+    requiredLabel: "Obligatorisk"
   },
 };
 
-export const Four: Story = {
+export const Invalid: Story = {
   args: {
-    filled: true,
     label: 'Ledetekst',
-    value: '',
-    required: true,
-    requiredLabel: '*Obligatorisk',
+    value: '41',
+    size: 'medium',
+    type: 'number',
+    min: '42',
+    max: '43',
+    requiredLabel: 'Ugyldig verdi'
+    
   },
 };
+
+export const Icon: Story = {
+  args: {
+    label: 'Ledetekst',
+    value: '41',
+    size: 'medium',
+    type: 'number',
+    min: '42',
+    max: '43',
+    requiredLabel: 'Ugyldig verdi'
+    
+  },
+};
+
+export const Tooltip: Story = {
+  args: {
+    label: 'Ledetekst',
+    value: '41',
+    size: 'medium',
+  
+  },
+};
+
+export const Date: Story = {
+  args: {
+    type: 'date'
+  },
+};
+
+export const Datetime: Story = {
+  args: {
+    type: 'datetime-local'
+  },
+};
+
+
+
+

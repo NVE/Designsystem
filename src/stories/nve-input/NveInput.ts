@@ -5,7 +5,13 @@ export interface NveInputProps {
   label: string;
   value: string,
   required: boolean,
-  requiredLabel: string
+  requiredLabel: string,
+  size: string,
+  disabled: boolean,
+  type: string,
+  min: string,
+  max: string,
+
 }
 
 export const NveInput = (props: NveInputProps) => {
@@ -16,6 +22,11 @@ export const NveInput = (props: NveInputProps) => {
         value=${props.value}
         ?required=${props.required}
         requiredLabel=${props.requiredLabel}
+        size=${props.size}
+        ?disabled=${props.disabled}
+        min=${props.min}
+        max=${props.max}
+        type=${props.type}
       >
       </nve-input>
     `;
