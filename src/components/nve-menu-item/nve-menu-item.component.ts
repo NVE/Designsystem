@@ -7,7 +7,7 @@ import styles from './nve-menu-item.styles';
  *
  */
 @customElement('nve-menu-item')
-export class NveMenuItem extends SlMenuItem {
+export default class NveMenuItem extends SlMenuItem {
   /**
    * Tekst som vises som subtext(undertekst).
    */

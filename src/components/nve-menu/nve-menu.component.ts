@@ -7,7 +7,7 @@ import styles from '../nve-menu/nve-menu.styles';
  *
  */
 @customElement('nve-menu')
-export class NveMenu extends SlMenu {
+export default class NveMenu extends SlMenu {
   constructor() {
     super();
   }
