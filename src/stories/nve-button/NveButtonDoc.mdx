@@ -1,3 +1,5 @@
+import './nve-button.css';
+
 import {
   Canvas,
   Story,
@@ -25,53 +27,53 @@ import * as NveButtonStories from './NveButton.stories';
 
 {' '}
 
-<div style={{ display: 'flex' }}>
-  <span style={{ margin: '1rem' }}>
+<div class="container">
+  <span>
     <Canvas of={NveButtonStories.Standard} />
   </span>
-  <span style={{ margin: '1rem' }}>
+  <span>
     <Canvas of={NveButtonStories.Default} />
   </span>
-  <span style={{ margin: '1rem' }}>
+  <span>
     <Canvas of={NveButtonStories.Outlined} />
   </span>
-  <span style={{ margin: '1rem' }}>
+  <span>
     <Canvas of={NveButtonStories.Ghost} />
   </span>
 </div>
 
 ## Størrelser
 
-<div style={{ display: 'flex' }}>
-  <span style={{ margin: '1rem' }}>
+<div class="container">
+  <span>
     <Canvas of={NveButtonStories.Small} />
   </span>
-  <span style={{ margin: '1rem' }}>
+  <span>
     <Canvas of={NveButtonStories.Medium} />
   </span>
-  <span style={{ margin: '1rem' }}>
+  <span>
     <Canvas of={NveButtonStories.Large} />
   </span>
 </div>
 
 ## Disabled
 
-<div style={{ display: 'flex' }}>
-  <span style={{ margin: '1rem' }}>
+<div class="container">
+  <span>
     <Canvas of={NveButtonStories.Disabledone} />
   </span>
-  <span style={{ margin: '1rem' }}>
+  <span>
     <Canvas of={NveButtonStories.Disabledtwo} />
   </span>
 </div>
 
 ## Loading
 
-<div style={{ display: 'flex' }}>
-  <span style={{ margin: '1rem' }}>
+<div class="container">
+  <span>
     <Canvas of={NveButtonStories.Loadingone} />
   </span>
-  <span style={{ margin: '1rem' }}>
+  <span>
     <Canvas of={NveButtonStories.Loadingtwo} />
   </span>
 </div>
