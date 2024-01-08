@@ -26,8 +26,10 @@ export const NveInput = (props: NveInputProps) => {
         ?disabled=${props.disabled}
         min=${props.min}
         max=${props.max}
-        type=${props.type}
+        type=${props.type}  
       >
+    <nve-icon slot="suffix" name="lock"></nve-icon>
+      <nve-label value="Svev over ikonet" slot="label" tooltip="Hjelpetekst"></nve-label>
       </nve-input>
     `;
 };
