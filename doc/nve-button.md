@@ -3,7 +3,12 @@
 En Shoelace-knapp i NVE-forkledning.
 Se https://shoelace.style/components/button
 
-TODO: Beskriv hvilke properties / attributter og varianter vi ikke skal bruke
+For å lage en lenke knapp legg til href på nve-button og den skal automatisk bli gjort om til <a>
+
+Vi skal ikke bruke properties:
+- circle
+- caret
+- pill
 
 ## Properties
 
@@ -45,11 +50,11 @@ TODO: Beskriv hvilke properties / attributter og varianter vi ikke skal bruke
 | `step`              |           | `number \| "any" \| undefined`                   |                                                  |
 | `target`            |           | `"_self" \| "_blank" \| "_parent" \| "_top"`     | Tells the browser where to open the link. Only used when `href` is present. |
 | `title`             |           | `string`                                         |                                                  |
-| `type`              |           | `"button" \| "submit" \| "reset"`                | The type of button. Note that the default value is `button` instead of `submit`, which is opposite of how native<br />`<button>` elements behave. When the type is `submit`, the button will submit the surrounding form. |
+| `type`              |           | `"reset" \| "submit" \| "button"`                | The type of button. Note that the default value is `button` instead of `submit`, which is opposite of how native<br />`<button>` elements behave. When the type is `submit`, the button will submit the surrounding form. |
 | `validationMessage` | readonly  | `string`                                         | Gets the validation message                      |
 | `validity`          | readonly  | `ValidityState`                                  | Gets the validity state object                   |
 | `value`             |           | `string`                                         | The value of the button, submitted as a pair with the button's name as part of the form data, but only when this<br />button is the submitter. This attribute is ignored when `href` is present. |
-| `variant`           |           | `"default" \| "primary" \| "success" \| "neutral" \| "warning" \| "danger" \| "text"` | The button's theme variant.                      |
+| `variant`           |           | `"primary" \| "success" \| "neutral" \| "warning" \| "danger" \| "default" \| "text"` | The button's theme variant.                      |
 
 ## Methods
 
@@ -58,7 +63,7 @@ TODO: Beskriv hvilke properties / attributter og varianter vi ikke skal bruke
 | `blur`                 | `(): void`                                       | Removes focus from the button.                   |
 | `checkValidity`        | `(): boolean`                                    | Checks for validity but does not show a validation message. Returns `true` when valid and `false` when invalid. |
 | `click`                | `(): void`                                       | Simulates a click on the button.                 |
-| `emit`                 | `{ <T extends "submit" \| "reset" \| "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| ... 112 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...` | Emits a custom event with more convenient defaults. |
+| `emit`                 | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
 | `focus`                | `(options?: FocusOptions \| undefined): void`    | Sets focus on the button.                        |
 | `getForm`              | `(): HTMLFormElement \| null`                    | Gets the associated form, if one exists.         |
 | `handleDisabledChange` | `(): void`                                       |                                                  |

@@ -1,0 +1,41 @@
+import {
+  Canvas,
+  Story,
+  Meta,
+  Title,
+  Subtitle,
+  Description,
+  Source,
+  Primary,
+  Controls,
+  Stories,
+} from '@storybook/blocks';
+
+import * as NveAlertStories from './NveAlert.stories';
+
+<Meta isTemplate />
+
+<Title />
+<Description />
+<br />
+<br />
+## Varianter
+
+{' '}
+
+{' '}
+
+<div style={{ display: 'flex' }}>
+  <span style={{ margin: '1rem' }}>
+    <Canvas of={NveAlertStories.Standard} />
+  </span>
+</div>
+
+## Parametere/Props
+
+Her kan du se hvilke parametere (props) komponenten kan ta imot og se endringer i kode
+
+<Primary />
+<Controls />
+
+## <Stories />
