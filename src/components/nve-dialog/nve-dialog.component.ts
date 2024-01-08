@@ -7,20 +7,20 @@ import styles from './nve-dialog-styles';
  *
  * Vil du ha ikon foran tittelen kan du angi navnet på ikonet som attributt "icon".
  * Skal det ikke være mulig å trykke utenfor for å lukke dialogen, sett på disableDialog attributt
- * 
+ *
  * @slot label - teksten som skal vises i overskriften. Eller du kan bruke label-attributtet
  * @slot body - hovedinnholdet
  * @slot footer - feltet i bunden hvor knappene er plassert
  *
  */
 @customElement('nve-dialog')
-export class NveDialog extends SlDialog {
+export default class NveDialog extends SlDialog {
   /**
    * Ikonet som skal vises
    */
   @property({ type: String, reflect: true }) icon = '';
   /**
-   * Hvis disableBacground er true, kan man ikke trykke utenfor dialogen for å lukke den. 
+   * Hvis disableBacground er true, kan man ikke trykke utenfor dialogen for å lukke den.
    */
   @property({ type: Boolean, reflect: true }) disableBackground = false;
 
@@ -29,7 +29,7 @@ export class NveDialog extends SlDialog {
   }
 
   /**
-   * 
+   *
    * Stjålet fra shoelace eksempel. Hindrer at man lukker dialogen ved å trykke utenfor
    */
   handleRequestClose(event: any) {
@@ -37,37 +37,31 @@ export class NveDialog extends SlDialog {
       event.preventDefault();
     }
   }
-  
+
   updated(changedProperties: any) {
     super.updated(changedProperties);
-    if(changedProperties.has('disableBackground')){
+    if (changedProperties.has('disableBackground')) {
       this.addEventListener('sl-request-close', this.handleRequestClose);
     }
     this.updateIcon();
-    
-    
   }
   /**
    * Oppdaterer ikonet som vises i dialogens tittel.
-   * Metoden søker først etter tittel-elementet i komponentens skygge-DOM. 
-   * Hvis tittel-elementet finnes og `icon`-egenskapen er satt, oppdateres 
-   * tittel-elementets stil for å inkludere det angitte ikonet. 
-   * Hvis `icon`-egenskapen ikke er satt, settes ikoninnholdet til 'none' 
+   * Metoden søker først etter tittel-elementet i komponentens skygge-DOM.
+   * Hvis tittel-elementet finnes og `icon`-egenskapen er satt, oppdateres
+   * tittel-elementets stil for å inkludere det angitte ikonet.
+   * Hvis `icon`-egenskapen ikke er satt, settes ikoninnholdet til 'none'
    * for å unngå å skape unødvendig mellomrom i layouten.
    */
   updateIcon() {
     const titleElement = this.shadowRoot?.querySelector('.dialog__title');
-    if (titleElement instanceof HTMLElement) { 
-      const iconContent = this.icon ? `"${this.icon}"` : 'none'; 
+    if (titleElement instanceof HTMLElement) {
+      const iconContent = this.icon ? `"${this.icon}"` : 'none';
       titleElement.style.setProperty('--title-icon', iconContent);
     }
   }
 
-  static styles = [
-    SlDialog.styles,
-    styles
-  ];
-  
+  static styles = [SlDialog.styles, styles];
 }
 
 declare global {
