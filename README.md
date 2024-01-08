@@ -20,29 +20,26 @@ export default defineConfig({
   plugins: [
     vue({
       template: {
+        transformAssetUrls,
         compilerOptions: {
           isCustomElement: (tag) => tag.includes('nve-'),
         },
       },
     }),
+  ],
+});
 ```
 
-3. Importer stiler fra global.css i enten main.ts eller index.html:
-
-```
-import 'nve-designsystem/src/styles/global.css';
-```
-
-4. I tillegg trenger du å importere en .css-fil for farge-tema i main.ts. Filene finnes i mappa `nve-designsystem/build/css/`. For NVE-tema, bruk:
+3. I tillegg trenger du å importere en .css-fil for farge-tema i main.ts. Filene finnes i mappa `nve-designsystem/build/css/`. For NVE-tema, bruk:
 
 ```ts
-import 'nve-designsystem/build/css/nve.css';
+import 'nve-designsystem/dist/css/nve.css';
 ```
 
 For Varsom-tema, bruk:
 
 ```ts
-import 'nve-designsystem/build/css/varsom.css';
+import 'nve-designsystem/dist/css/varsom.css';
 ```
 
 Du har også mulighet til å velge enten lyst eller mørkt tema. Lyst er standard.
@@ -54,7 +51,7 @@ Du har også mulighet til å velge enten lyst eller mørkt tema. Lyst er standar
   <nve-button variant="primary" size="small" @click="send">Button</nve-button>
 </template>
 <script setup lang="ts">
-  import { NveButton } from 'nve-designsystem/src/components/nve-button/nve-button';
+  import { NveButton } from 'nve-designsystem';
 </script>
 ```
 
@@ -72,6 +69,28 @@ De fleste komponentene bygger på [Shoelace](https://shoelace.style/), men er ti
 
 Prosjektet importerer Shoelace sin npm-pakke. Kjør `npm run dev` for utvikling.
 For å teste en komponent i main.ts må man huske å legge til script tag med komponenten i index.html fila som f.eks. <script type="module" src="/src/nve-button.ts"></script>
+
+### **Mappe struktur**
+
+Ved å lage en ny komponent opprett en mappe under src/components med komponent navn. Fil som inneholder selve komponent burde ha
+
+- .component.ts suffiks på fil sin inneholder selve komponent f.eks. /components/nve-component/nve-component.component
+- .styles.ts på filer med styling f.eks. /components/nve-component/nve-component.styles.ts
+- .demo.ts på filer som skal demonstrere komponent (til utviklere) f.eks. /components/nve-component/nve-component.demo.ts
+
+### **Hvordan vi bygger komponenter**
+Vi setter reflect: true på alle properties i komponenter (se eksempel under) for å kunne se properties som oppdateres i DOMen. Gjelder reaktive applikasjoner.
+```js
+@property({ reflect: true }) title: string = '';
+```
+
+### **Komponent eksport**
+
+Komponenter skal eksponeres i src/index.ts fila med
+
+```js
+export { default as NveComponent } from './components/nve-component/nve-component.component';
+```
 
 ### **Styling**
 
@@ -139,17 +158,11 @@ Pull requests på komponenter skal godkjennes av designere. Derfor har vi satt o
 
 Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'er kan det være at appen ikke bygges. De skal slettes automatisk når en PR lukkes, men det er ikke alltid dette virker. I slike tilfeller må vi slette appene manuelt i Azure-portalen. Appene ligger i denne ressursgruppa: TEST-Designsystemet-RG.
 
-### **Storybook**
-
-For å kjøre Storybook lokalt, kjør `npm run storybook`
-
-For å publisere Storybook på Chromatic, kjør `npm run build; npm run build-storybook`. Deretter må det kjøres en kommando med project token fra Chromatic: `npx chromatic --project-token=\<project-token\>`
-
 ### Dokumentasjon
 
 - Vi dokumenterer på norsk
 - Alle komponenter dokumenteres med JsDoc-tags i koden. Alt som er tilgjengelig for de som bruker komponentene skal dokumenteres, dvs. alle public klasser, interfaces, properties/attributter, metoder, events, slots, css-parts og css-properties. [Her er noen tips.](https://github.com/runem/web-component-analyzer#-how-to-document-your-components-using-jsdoc)
-  Vi bruker [Web Component Analyzer](https://github.com/runem/web-component-analyze) til å generere API-dokumentasjon.
+  Vi bruker [Web Component Analyzer](https://github.com/runem/web-component-analyzer) til å generere API-dokumentasjon.
 - Generer .MD-filer med `npm run doc` og sjekk inn de genererte filene sammen med koden. Om du har laget nye komponenter, legg dem til i [denne lista](./doc/components.md).
 
 ### **Bygge css**
@@ -164,6 +177,18 @@ For å publisere på npm, må man oppdatere versjonsnr. i package.json og packag
 
 Prosjektet importerer Shoelace sin npm-pakke. Kjør `npm run dev` for utvikling.
 For å teste en komponent i main.ts må man huske å legge til script tag med komponenten i index.html fila som f.eks. <script type="module" src="/src/nve-button.ts"></script>
+
+### **Test pakke lokalt**
+
+Før man pusher til main er det lurt å teste pakke lokalt. Med `npm run pack` kan man teste hvordan pakken oppfører seg akkurat på samme måte som etter publisering. For å teste en nve-designsystem pakke lokalt:
+
+1. Kjør `npm run build`
+2. Kjør `npm run pack`. En .tgz fil med pakken navn og versjon burde dukke opp i dist mappe
+3. Åpen et annet prosjekt hvor du kan teste nve-designsystem pakken
+4. Kjør `npm  i` <nve-designsystem-x.y.z.tgz med full sti>`
+5. Importer komponent i prosjektet og sjekk om alt fungerer som det burde
+
+NB! Vi lager pakken i dist mappe fordi det er enklere å strukturere hvordan pakken skal se ut når man laster den ned. Vi prøvde med `exports` og `files` i package.json men det ga oss ikke result vi var fornøyd med.
 
 ### Storybook
 

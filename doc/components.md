@@ -3,6 +3,8 @@
 Komponenter i alfabetisk rekkefølge:
 
 - [nve-button](./nve-button.md)
+- [nve-checkbox](./nve-checkbox.md)
+- [nve-checkbox-group](./nve-checkbox-group.md)
 - [nve-icon](./nve-icon.md)
 - [nve-input](./nve-input.md)
 - [nve-label](./nve-label.md)

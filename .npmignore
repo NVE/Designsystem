@@ -1,0 +1,2 @@
+# denne fila eksisterer foreløpig for å ta over .gitignore prinsiper på å ignorere dist mappe. Ellers blir dist ikke tatt
+# i publisering av pakken.

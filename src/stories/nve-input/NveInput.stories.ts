@@ -1,9 +1,8 @@
-import '../../components/nve-input/nve-input';
-import '../../components/nve-label/nve-label';
+import '../../components/nve-input/nve-input.component';
+import '../../components/nve-label/nve-label.component';
 import { StoryObj } from '@storybook/web-components';
 import { NveInput } from './NveInput';
 import type { NveInputProps } from './NveInput';
-
 
 const meta = {
   title: 'Nve/NveInput',
@@ -12,10 +11,11 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: '<h2><nve-input> | NveInput</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-input.md">API-dokumentasjon</a>',
-      }
-    }
-  }
+        component:
+          '<h2><nve-input> | NveInput</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-input.md">API-dokumentasjon</a>',
+      },
+    },
+  },
 };
 
 export default meta;

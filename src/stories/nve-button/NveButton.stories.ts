@@ -1,5 +1,5 @@
-import '../../components/nve-button/nve-button';
-import '../../components/nve-spinner/nve-spinner';
+import '../../components/nve-button/nve-button.component';
+import '../../components/nve-spinner/nve-spinner.component';
 import { NveButton } from './NveButton';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import type { NveButtonProps } from './NveButton';
@@ -18,7 +18,7 @@ const meta = {
       control: { type: 'select' },
       options: ['primary', 'default', 'neutral'],
     },
-    outline: { control: 'boolean', if: { arg: 'variant', eq: 'neutral' } }
+    outline: { control: 'boolean', if: { arg: 'variant', eq: 'neutral' } },
   },
   parameters: {
     docs: {
@@ -28,11 +28,10 @@ const meta = {
         <a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-button.md">API-dokumentasjon</a>
         <p>Knappeelementer brukes for å gi en enkel og tilgjengelig opplevelse for brukerne. 
         Et knappeelement skal brukes når en handling utføres av brukeren.
-        </div>`
-      }
-    }
-  }
-
+        </div>`,
+      },
+    },
+  },
 } satisfies Meta<NveButtonProps>;
 
 export default meta;
@@ -44,7 +43,7 @@ export const Primary: Story = {
     size: 'medium',
     disabled: false,
     loading: false,
-    outline: false
+    outline: false,
   },
 };
 
@@ -66,7 +65,7 @@ export const Default: Story = {
     size: 'medium',
     disabled: false,
     loading: false,
-    outline: false
+    outline: false,
   },
 };
 
@@ -86,7 +85,7 @@ export const Ghost: Story = {
     size: 'medium',
     disabled: false,
     loading: false,
-    outline: false
+    outline: false,
   },
 };
 
