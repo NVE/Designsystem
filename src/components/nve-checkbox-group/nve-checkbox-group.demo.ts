@@ -123,4 +123,18 @@ export default html`
       </tr>
     </tbody>
   </table>
+  <form>
+    <nve-checkbox-group
+      isvalid="false"
+      label="Label"
+      tooltip="Help text"
+      orientation="vertical"
+      errorMessage="Error message"
+    >
+      <nve-checkbox checked>Value</nve-checkbox>
+      <nve-checkbox>Value</nve-checkbox>
+      <nve-checkbox>Value</nve-checkbox>
+    </nve-checkbox-group>
+    <nve-button style="margin-top:10px" type="submit" variant="primary" size="small">Submit</nve-button>
+  </form>
 `;

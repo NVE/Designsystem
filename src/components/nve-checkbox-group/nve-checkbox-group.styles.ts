@@ -1,10 +1,15 @@
 import { css } from 'lit';
 
 export default css`
+  fieldset {
+    border: none;
+    padding: unset;
+    margin: unset;
+  }
+
   .checkbox-group {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-x-small);
   }
 
   .checkbox-group__label {
