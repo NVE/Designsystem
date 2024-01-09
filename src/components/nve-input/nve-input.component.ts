@@ -29,9 +29,11 @@ export default class NveInput extends SlInput {
    */
   @property({ reflect: true }) errorMessage?: string;
   /**
-   * Reactive property som brukes for å signere at komponent ikke er valid. Brukes som alternativ til constraint validation
+   * Reactive property som brukes for å signere at komponent ikke er valid. Brukes som alternativ til constraint validation. Står som
+   * string her fordi DOM returnerer alltid properties som string. Vi vil at både isvalid=false og isvalid=true vises i DOMen
+   * når man bruker dette alternativet
    */
-  @property({ type: String, reflect: true }) isvalid?: string;
+  @property({ type: String, reflect: true }) isvalid?: 'true' | 'false';
   /**
    * Hjelpe variabler for å unngå å kjøre makeInvalid hver gang man klikker på submit knapp hvis felte er invalid allerede
    */
