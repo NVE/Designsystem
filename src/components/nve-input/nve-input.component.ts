@@ -7,11 +7,16 @@ import styles from './nve-input.styles';
  * Mer info: https://shoelace.style/components/input
  *
  * Vil du ha info-ikon med hjelpetekst etter ledeteksten, putt en nve-label i label-slot.
- *
+ * Du trenger ikke å sette 'required' property for å vise requiredLabel hvis du velger å validere med invalid property
+ * Da må du sikre å ha med requiredLabel property, og at den har noe verdi
+ * Du trenger ikke å sette requiredLabel property hvis du velger constraint validering og bruker required property. Den
+ * vises *Obligatorisk som default og kan justeres med requiredLabel.
  * Disse attributtene skal ikke brukes:
  * - pill
  *
  * TODO: Vise valideringsfeil med rød tekst under tekstfeltet
+ * TODO: Felte blir breddere når feil ikone vises. Alt på grunn av at det dukker opp i en slot. Hvis Vi bestemmer oss
+ * å ha en fast verdi på sloten, kan det kanksje påvirke andre elementer som skal vises i sloten.
  */
 @customElement('nve-input')
 export default class NveInput extends SlInput {
