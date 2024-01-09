@@ -11,7 +11,6 @@ import styles from './nve-input.styles';
  * Disse attributtene skal ikke brukes:
  * - pill
  *
- * TODO: Utropstegn-ikon ved valideringsfeil
  * TODO: Vise valideringsfeil med rød tekst under tekstfeltet
  */
 @customElement('nve-input')
