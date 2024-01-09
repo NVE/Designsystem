@@ -28,7 +28,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<NveLabelProps>;
 
-export const standard: Story = {
+export const Primary: Story = {
   args: {
     value: 'Ledetekst',
     size: 'small',
@@ -37,7 +37,8 @@ export const standard: Story = {
   },
 };
 
-export const light: Story = {
+export const One: Story = {
+  
   args: {
     value: 'Ledetekst',
     size: 'small',
@@ -46,11 +47,29 @@ export const light: Story = {
   },
 };
 
-export const medVerktoyHint: Story = {
+export const Two: Story = {
   args: {
     value: 'Svev over meg',
     size: 'small',
     light: true,
+    tooltip: 'verktøyhint',
+  },
+};
+
+export const Three: Story = {
+  args: {
+    value: 'Svev over meg',
+    size: 'medium',
+    light: false,
+    tooltip: 'hint',
+  },
+};
+
+export const Four: Story = {
+  args: {
+    value: 'Hover me',
+    size: 'small',
+    light: false,
     tooltip: 'verktøyhint',
   },
 };

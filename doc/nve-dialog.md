@@ -26,12 +26,12 @@ Skal det ikke være mulig å trykke utenfor for å lukke dialogen, sett på disa
 
 | Method               | Type                                             | Description                                      |
 |----------------------|--------------------------------------------------|--------------------------------------------------|
-| `emit`               | `{ <T extends "submit" \| "reset" \| "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| ... 112 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...` | Emits a custom event with more convenient defaults. |
+| `emit`               | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
 | `handleOpenChange`   | `(): Promise<void>`                              |                                                  |
-| `handleRequestClose` | `(event: any): void`                             |                                                  |
+| `handleRequestClose` | `(event: any): void`                             | <br />Stjålet fra shoelace eksempel. Hindrer at man lukker dialogen ved å trykke utenfor |
 | `hide`               | `(): Promise<void>`                              | Hides the dialog                                 |
 | `show`               | `(): Promise<void>`                              | Shows the dialog.                                |
-| `updateIcon`         | `(): void`                                       |                                                  |
+| `updateIcon`         | `(): void`                                       | Oppdaterer ikonet som vises i dialogens tittel.<br />Metoden søker først etter tittel-elementet i komponentens skygge-DOM. <br />Hvis tittel-elementet finnes og `icon`-egenskapen er satt, oppdateres <br />tittel-elementets stil for å inkludere det angitte ikonet. <br />Hvis `icon`-egenskapen ikke er satt, settes ikoninnholdet til 'none' <br />for å unngå å skape unødvendig mellomrom i layouten. |
 
 ## Events
 

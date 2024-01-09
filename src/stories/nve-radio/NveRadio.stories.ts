@@ -36,7 +36,47 @@ export default meta;
 type Story = StoryObj<NveRadioGroupProps>;
 
 // eslint-disable-next-line storybook/prefer-pascal-case
-export const standard: Story = {
+export const Primary: Story = {
+  args: {
+    label: 'Radio-gruppe',
+    orientation: 'vertical',
+    disabled: false,
+    required: true,
+    size: 'medium',
+  },
+};
+
+export const One: Story = {
+  args: {
+    label: 'Radio group',
+    orientation: 'horizontal',
+    disabled: false,
+    required: true,
+    size: 'medium',
+  },
+};
+
+export const Two: Story = {
+  args: {
+    label: 'Radio-gruppe',
+    orientation: 'vertical',
+    disabled: true,
+    required: false,
+    size: 'medium',
+  },
+};
+
+export const Three: Story = {
+  args: {
+    label: 'Radio-gruppe',
+    orientation: 'vertical',
+    disabled: false,
+    required: true,
+    size: 'small',
+  },
+};
+
+export const Four: Story = {
   args: {
     label: 'Radio-gruppe',
     orientation: 'vertical',

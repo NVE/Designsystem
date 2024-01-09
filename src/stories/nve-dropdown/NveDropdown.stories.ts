@@ -1,11 +1,11 @@
 import { StoryObj } from '@storybook/web-components';
-import '../components/nve-button/nve-button.component';
-import '../components/nve-checkbox/nve-checkbox.component';
-import '../components/nve-divider/nve-divider.component';
-import '../components/nve-dropdown/nve-dropdown.component';
-import '../components/nve-icon/nve-icon.component';
-import '../components/nve-menu-item/nve-menu-item.component';
-import '../components/nve-menu/nve-menu.component';
+import '../../components/nve-button/nve-button.component';
+import '../../components/nve-checkbox/nve-checkbox.component';
+import '../../components/nve-divider/nve-divider.component';
+import '../../components/nve-dropdown/nve-dropdown.component';
+import '../../components/nve-icon/nve-icon.component';
+import '../../components/nve-menu-item/nve-menu-item.component';
+import '../../components/nve-menu/nve-menu.component';
 import { NveDropdown } from './NveDropdown';
 
 const meta = {

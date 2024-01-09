@@ -19,7 +19,7 @@
 | Method                 | Type                                             | Description                                      |
 |------------------------|--------------------------------------------------|--------------------------------------------------|
 | `blur`                 | `(): void`                                       | Removes focus from the radio button.             |
-| `emit`                 | `{ <T extends "submit" \| "reset" \| "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| ... 112 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...` | Emits a custom event with more convenient defaults. |
+| `emit`                 | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
 | `focus`                | `(options?: FocusOptions \| undefined): void`    | Sets focus on the radio button.                  |
 | `handleDisabledChange` | `(): void`                                       |                                                  |
 

@@ -67,7 +67,7 @@ TODO: Vise valideringsfeil med rød tekst under tekstfeltet
 |------------------------|--------------------------------------------------|--------------------------------------------------|
 | `blur`                 | `(): void`                                       | Removes focus from the input.                    |
 | `checkValidity`        | `(): boolean`                                    | Checks for validity but does not show a validation message. Returns `true` when valid and `false` when invalid. |
-| `emit`                 | `{ <T extends "submit" \| "reset" \| "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| ... 112 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...` | Emits a custom event with more convenient defaults. |
+| `emit`                 | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
 | `focus`                | `(options?: FocusOptions \| undefined): void`    | Sets focus on the input.                         |
 | `getForm`              | `(): HTMLFormElement \| null`                    | Gets the associated form, if one exists.         |
 | `handleDisabledChange` | `(): void`                                       |                                                  |

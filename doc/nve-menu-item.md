@@ -25,7 +25,7 @@ Mer info: https://shoelace.style/components/menu-item
 
 | Method                 | Type                                             | Description                                      |
 |------------------------|--------------------------------------------------|--------------------------------------------------|
-| `emit`                 | `{ <T extends "submit" \| "reset" \| "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| ... 112 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...` | Emits a custom event with more convenient defaults. |
+| `emit`                 | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
 | `getTextLabel`         | `(): string`                                     | Returns a text label based on the contents of the menu item's default slot. |
 | `handleCheckedChange`  | `(): void`                                       |                                                  |
 | `handleDisabledChange` | `(): void`                                       |                                                  |

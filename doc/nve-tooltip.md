@@ -24,7 +24,7 @@ En sl-tooltip i NVE-uniform. TODO: Denne har ingen NVE-styling ennå.
 
 | Method                 | Type                                             | Description                                      |
 |------------------------|--------------------------------------------------|--------------------------------------------------|
-| `emit`                 | `{ <T extends "submit" \| "reset" \| "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| ... 112 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...` | Emits a custom event with more convenient defaults. |
+| `emit`                 | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
 | `handleDisabledChange` | `(): void`                                       |                                                  |
 | `handleOpenChange`     | `(): Promise<void>`                              |                                                  |
 | `handleOptionsChange`  | `(): Promise<void>`                              |                                                  |
