@@ -11,6 +11,7 @@ export default css`
     --sl-input-spacing-medium: var(--spacing-x-small);
     --sl-input-spacing-large: var(--spacing-x-small);
 
+    /** den burde vises alltid når requiredlabel er ikke tom. ikke kun når required prop er med  */
     --sl-input-required-content: '*Obligatorisk';
     --sl-input-required-content-offset: -2px;
     --sl-input-required-content-color: var(--brand-deep);
@@ -18,6 +19,20 @@ export default css`
   :host::part(input) {
     font: var(--body-small);
     border-radius: var(--border-radius-small);
+  }
+
+  :host::after {
+    content: var(--nve-input-error-message);
+    font: var(--detailtext-caption);
+    color: var(--feedback-background-emphasized-error);
+  }
+
+  :host([required]) .form-control--has-label .form-control__label::after,
+  :host([requiredLabel])::part(form-control-label)::after {
+    content: var(--sl-input-required-content);
+    margin-top: var(--spacing-xx-small);
+    font: var(--label-x-small-light);
+    color: var(--feedback-background-emphasized-error);
   }
 
   .input--filled {
@@ -35,13 +50,14 @@ export default css`
 
   .form-control label {
     font: var(--label-medium);
+    align-items: center;
   }
 
   /* Riktig fokus-markering også i filled-modus */
-  .input--standard.input--focused:not(.input--disabled) { 
-    outline: var(--sl-focus-ring); 
-    outline-offset: var(--sl-focus-ring-offset); 
-    box-shadow: unset; 
+  .input--standard.input--focused:not(.input--disabled) {
+    outline: var(--sl-focus-ring);
+    outline-offset: var(--sl-focus-ring-offset);
+    box-shadow: unset;
   }
 
   /* Annen bakgrunnsfarge og ingen ramme når skrivebeskyttet */
@@ -50,14 +66,10 @@ export default css`
     background: var(--neutrals-background-secondary);
   }
 
+  /**fikse til kun user-invalid */
   /* Gir rød ramme ved valideringsfeil  */
-  :host([data-invalid])::part(base),
   :host([data-user-invalid])::part(base) {
     border-color: var(--feedback-background-emphasized-error);
-  }
-  :host([data-invalid])::part(input),
-  :host([data-user-invalid])::part(input) {
-    color: var(--feedback-background-emphasized-error);
   }
 
   /* Formaterer "*Obligatorisk" over input-felt og til høyre riktig når required er satt */
@@ -65,10 +77,6 @@ export default css`
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin-inline-start: unset;
-  }
-  ::after {
-    font-weight: var(--font-weight-regular);
     margin-inline-start: unset;
   }
 `;

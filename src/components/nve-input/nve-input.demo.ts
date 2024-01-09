@@ -157,6 +157,18 @@ const table = html`
       </tr>
     </tbody>
   </table>
+  <h3 id="nve-inpu-validering">nve-input validering</h3>
+  <form>
+    <nve-input
+      errorMessage="Kan ikke være tom"
+      filled
+      required
+      requiredLabel="*Required"
+      label="Label"
+      value=""
+    ></nve-input>
+    <nve-button style="margin-top: 10px" variant="primary" type="submit" size="small">Submit</nve-button>
+  </form>
 `;
 
 export default table;

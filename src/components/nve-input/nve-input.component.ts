@@ -1,4 +1,4 @@
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { SlInput } from '@shoelace-style/shoelace';
 import styles from './nve-input.styles';
 
@@ -20,16 +20,99 @@ export default class NveInput extends SlInput {
    * Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard.
    */
   @property() requiredLabel = '*Obligatorisk';
+  /**
+   * Feil melding som vises under input feltet
+   */
+  @property({ reflect: true }) errorMessage?: string;
+  /**
+   * Reactive property som brukes for å signere at komponent ikke er valid. Brukes som alternativ til constraint validation
+   */
+  @property({ type: String, reflect: true }) isvalid?: string;
+  /**
+   * Hjelpe variabler for å unngå å kjøre makeInvalid hver gang man klikker på submit knapp hvis felte er invalid allerede
+   */
+  @state() isvalidState = true;
+
+  static styles = [SlInput.styles, styles];
 
   constructor() {
     super();
   }
 
-  static styles = [SlInput.styles, styles];
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('sl-invalid', (e) => {
+      // vi vil ikke at nettleseren viser feil meldingen til oss
+      e.preventDefault();
 
-  updated(changedProperties: Map<string, unknown>) {
-    if (changedProperties.has('requiredLabel')) {
+      // sikre at den kjører kun en gang hvis isvalidstate er usant
+      if (this.isvalidState) {
+        this.makeInvalid();
+      }
+    });
+  }
+
+  firstUpdated(): void {
+    if (this.requiredLabel) {
       this.style.setProperty('--sl-input-required-content', `"${this.requiredLabel}"`);
+    }
+  }
+
+  updated(changedProperties: any): void {
+    if (changedProperties.has('isvalid')) {
+      if (!this.isvalid) {
+        this.setCustomValidity(`${this.errorMessage}` || 'Error');
+      } else {
+        this.setCustomValidity('');
+        this.resetValidation();
+      }
+    }
+    if (this.hasAttribute('data-user-invalid')) {
+      this.makeInvalid();
+    } else {
+      this.resetValidation();
+    }
+  }
+
+  private makeInvalid() {
+    if (!this.isvalidState) return;
+    this.addErrorIcon();
+    this.addErrorMessage();
+    this.isvalidState = false;
+  }
+
+  //TODO kjør den kun en gang kanskje?
+  private resetValidation() {
+    console.log(this.isvalid);
+    this.removeErrorIcon();
+    this.isvalidState = true;
+    //fjern den og bare vis meldingen når invalid er på plass
+    this.style.setProperty('--nve-input-error-message', '');
+  }
+
+  private addErrorMessage() {
+    if (this.hasAttribute('data-user-invalid')) {
+      this.style.setProperty('--nve-input-error-message', `"${this.errorMessage}"`);
+    }
+  }
+
+  private addErrorIcon() {
+    const nveInput = this;
+    const nveIcon = document.createElement('nve-icon');
+    nveIcon.setAttribute('name', 'error');
+    nveIcon.setAttribute('slot', 'suffix');
+    // ikone farge
+    const variableValue = getComputedStyle(document.documentElement).getPropertyValue(
+      '--feedback-background-emphasized-error'
+    );
+    nveIcon.style.color = variableValue.trim();
+    nveInput.appendChild(nveIcon);
+  }
+  private removeErrorIcon() {
+    const nveInput = this;
+    const nveIcon = nveInput.querySelector('[slot="suffix"]');
+    if (nveIcon) {
+      nveIcon.remove();
     }
   }
 }
