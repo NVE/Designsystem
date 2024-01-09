@@ -1,4 +1,4 @@
-import { customElement, property } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
 import { SlCheckbox } from '@shoelace-style/shoelace';
 import styles from './nve-checkbox.styles';
 
@@ -14,9 +14,19 @@ export default class NveCheckbox extends SlCheckbox {
     super();
   }
 
-  /** Checks if input is valid */
-  @property({ type: Boolean, reflect: true }) invalid = false;
   static styles = [SlCheckbox.styles, styles];
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('sl-invalid', (e) => {
+      // vi vil ikke at nettleseren viser feil meldingen til oss
+      e.preventDefault();
+    });
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('sl-invalid', () => {});
+  }
 }
 
 declare global {
