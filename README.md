@@ -171,7 +171,7 @@ For å bygge css filer som inneholder verdier basert på tokens fra Figma, kjør
 
 ### **npm**
 
-For å publisere på npm, må man oppdatere versjonsnr. i package.json og package-lock.json. Deretter kjør kommando `npm publish --access public`. Dette krever at man er innlogget på npm. For at CSS-variabler skal være tilgjengelig i npm-pakken, må css-filer kopieres. Dette gjøres ved å kjøre kommando `npm run copy-files`.
+Publisering til npm skjer ved hjelp av Github actions. Når man pusher til main branch, starter det en workflow som oppdaterer versjonsnummer og publiserer npm-pakke. Workflow er spesifisert i filen .github/workflows/npm-publish.yml.
 
 ### **Kjøremiljø**
 
