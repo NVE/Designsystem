@@ -24,6 +24,11 @@ export default css`
     flex-direction: column;
     gap: var(--spacing-x-small, 0.5rem);
   }
+  :host([data-user-invalid])::after {
+    content: var(--radio-group-error-message);
+    font: var(--detailtext-caption);
+    color: var(--feedback-background-emphasized-error);
+  }
 
   :host::part(form-control-input) {
     align-items: flex-start;
