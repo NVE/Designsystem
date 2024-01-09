@@ -1,6 +1,6 @@
 # nve-label
 
-Ledetekst med valgfritt info-ikon
+Ledetekst med valgfritt verktøy-hint (og tilhørende info-ikon)
 
 ## Properties
 
@@ -13,7 +13,7 @@ Ledetekst med valgfritt info-ikon
 
 ## Slots
 
-| Name      | Description                                      |
-|-----------|--------------------------------------------------|
-| `label`   | teksten som skal vises. Eller du kan bruke label-attributtet |
-| `tooltip` | innhold i denne blir vist som en tooltip hvis man svever over info-ikonet<br /><br />TODO: Skal være litt mer plass mellom tekst og info-ikon |
+| Name        | Description                                      |
+|-------------|--------------------------------------------------|
+| `(default)` | teksten som skal vises. Eller du kan bruke value-attributtet |
+| `tooltip`   | innhold i denne blir vist som en tooltip hvis man svever over info-ikonet<br /><br />TODO: Skal være litt mer plass mellom tekst og info-ikon<br />TODO: Hvis du angir både value og innhold i slot, er det value som vises. Det bør være motsatt. |

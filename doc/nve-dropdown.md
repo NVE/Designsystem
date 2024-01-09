@@ -26,9 +26,9 @@ Se https://shoelace.style/components/dropdown
 | Method                    | Type                                             | Description                                      |
 |---------------------------|--------------------------------------------------|--------------------------------------------------|
 | `addOpenListeners`        | `(): void`                                       |                                                  |
-| `emit`                    | `{ <T extends "submit" \| "reset" \| "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| ... 112 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...` | Emits a custom event with more convenient defaults. |
+| `emit`                    | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
 | `focusOnTrigger`          | `(): void`                                       |                                                  |
-| `getMenu`                 | `(): NveMenu \| undefined`                       |                                                  |
+| `getMenu`                 | `(): any`                                        |                                                  |
 | `handleOpenChange`        | `(): Promise<void>`                              |                                                  |
 | `handleTriggerClick`      | `(): void`                                       |                                                  |
 | `handleTriggerKeyDown`    | `(event: KeyboardEvent): Promise<void>`          |                                                  |

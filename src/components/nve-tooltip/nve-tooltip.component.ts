@@ -3,7 +3,10 @@ import { customElement } from 'lit/decorators.js';
 import '../nve-icon/nve-icon.component';
 
 /**
- * En sl-tooltip i NVE-uniform. TODO: Denne har ingen NVE-styling ennå.
+ * En sl-tooltip i NVE-uniform.
+ * Mer info: https://shoelace.style/components/tooltip
+ * 
+ * TODO: Denne har ingen NVE-styling ennå.
  */
 @customElement('nve-tooltip')
 export default class NveTooltip extends SlTooltip {
