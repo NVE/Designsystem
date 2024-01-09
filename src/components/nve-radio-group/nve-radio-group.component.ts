@@ -1,9 +1,11 @@
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import { SlRadio, SlRadioGroup, SlRadioButton } from '@shoelace-style/shoelace';
 import NveRadioButton from '../nve-radio-button/nve-radio-button.component';
 import NveRadio from '../nve-radio/nve-radio.component';
 import styles from './nve-radio-group.styles';
 import { watch } from '../../utils/watch';
+import toggleBooleanAttrOnListOfNodes from '../../utils/updateInvalidProperty';
+import { PropertyValueMap } from 'lit';
 
 @customElement('nve-radio-group')
 /**
@@ -29,11 +31,74 @@ export default class NveRadioGroup extends SlRadioGroup {
   constructor() {
     super();
   }
+  /**
+   * Om radio knapper burde vises horisontalt eller vertikalt
+   */
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
+  /**
+   * Disable alle radio knapper i gruppen
+   */
   @property({ type: Boolean, reflect: true }) disabled = false;
+  /**
+   * Feil melding som vises under input feltet. Vi har ikke tilgang til SlRadioGroup errorMessage så må overskrive med vår egen
+   */
+  @property({ reflect: true }) errorMessage?: string;
+  /**
+   * Reactive property som brukes for å signere at komponent ikke er valid. Brukes som alternativ til constraint validation. Står som
+   * string her fordi DOM returnerer alltid properties som string. Vi vil at både isvalid=false og isvalid=true vises i DOMen
+   * når man bruker dette alternativet
+   */
+  @property({ type: String, reflect: true }) isvalid?: 'true' | 'false';
+  /**
+   * errorMessage fra SlRadioGroup overskriver NveRadioGroup errorMessage når sl-input trigges, derfor må vi lagre den i staten på firstUpdate()
+   */
+  @state() errormsg = '';
 
   /* overvåker og setter disabled på under-radio-elementer når disabled endres */
   @watch('disabled')
+  connectedCallback() {
+    super.connectedCallback();
+    this.errormsg = this.errorMessage || '';
+    this.addEventListener('sl-invalid', (e) => {
+      // vi vil ikke at nettleseren viser feil meldingen til oss
+      e.preventDefault();
+      this.makeInvalid();
+    });
+    this.addEventListener('sl-change', this.resetValidation.bind(this));
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('sl-invalid', this.makeInvalid);
+    this.removeEventListener('sl-change', this.resetValidation);
+  }
+
+  protected updated(changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
+    if (changedProperties.has('isvalid')) {
+      if (!this.isvalid) {
+        this.makeInvalid();
+      } else {
+        this.resetValidation();
+      }
+    }
+  }
+
+  private makeInvalid() {
+    const nveRadios = this.getAllRadios();
+    // bruker 'invalid' property her som er ikke en tilgjengelig property i nve-radio. Den skal settes automatisk, derfor man trenger ikke å få tilgang til det
+    toggleBooleanAttrOnListOfNodes(nveRadios, true, 'invalid');
+    this.setCustomValidity(`${this.errormsg}`);
+    this.style.setProperty('--radio-group-error-message', `"${this.errormsg}"`);
+  }
+
+  private resetValidation() {
+    const nveRadios = this.getAllRadios();
+    // bruker 'invalid' property her som er ikke en tilgjengelig property i nve-radio. Den skal settes automatisk, derfor man trenger ikke å få tilgang til det
+    toggleBooleanAttrOnListOfNodes(nveRadios, false, 'invalid');
+    this.setCustomValidity('');
+    this.style.removeProperty('--radio-group-error-message');
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handlePropChange(oldValue: any, newValue: any): boolean {
     const radios = this.getAllRadios();
