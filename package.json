@@ -6,6 +6,7 @@
   "type": "module",
   "types": "index.d.ts",
   "scripts": {
+    "add-component": "node scripts/createNewComponent.js",
     "dev": "vite",
     "pack": "node scripts/prepublish.js pack",
     "publish": "node scripts/prepublish.js publish",

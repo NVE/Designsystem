@@ -63,6 +63,8 @@ Komponentene kan ses og testes i Storybook med ulike parametere og varianter: ht
 
 ## Skal du utvikle NVE designsystem? Denne seksjonen er for deg.
 
+VIKTIG! Alle komponenters navn skal starte med `nve-`!
+
 De fleste komponentene bygger på [Shoelace](https://shoelace.style/), men er tilpasset NVE Designsystem. Etterhvert vil de fleste Shoelace-komponenter få sin NVE-variant, men vi kommer også til å lage komponenter som ikke baseres på Shoelace. Vi anbefaler at du laster ned [kildekoden til Shoelace](https://github.com/shoelace-style/shoelace) og setter deg inn i [Lit](https://lit.dev/), som vi bruker som rammeverk.
 
 ### **Kjøremiljø**
@@ -70,16 +72,20 @@ De fleste komponentene bygger på [Shoelace](https://shoelace.style/), men er ti
 Prosjektet importerer Shoelace sin npm-pakke. Kjør `npm run dev` for utvikling.
 For å teste en komponent i main.ts må man huske å legge til script tag med komponenten i index.html fila som f.eks. <script type="module" src="/src/nve-button.ts"></script>
 
-### **Mappe struktur**
+### **Oppretting av en ny komponent og mappe struktur**
 
-Ved å lage en ny komponent opprett en mappe under src/components med komponent navn. Fil som inneholder selve komponent burde ha
+Du kan opprette en ny komponent ved å kjøre `npm run add-component ${navn på komponent. Må starte med nve- som f.eks nve-tag}`. Den oppretter riktig mappe struktur for deg.
+
+Hvis du velger en manuelt måte opprett en mappe under src/components med komponent navn. Fil som inneholder selve komponent burde ha
 
 - .component.ts suffiks på fil sin inneholder selve komponent f.eks. /components/nve-component/nve-component.component
 - .styles.ts på filer med styling f.eks. /components/nve-component/nve-component.styles.ts
 - .demo.ts på filer som skal demonstrere komponent (til utviklere) f.eks. /components/nve-component/nve-component.demo.ts
 
 ### **Hvordan vi bygger komponenter**
+
 Vi setter reflect: true på alle properties i komponenter (se eksempel under) for å kunne se properties som oppdateres i DOMen. Gjelder reaktive applikasjoner.
+
 ```js
 @property({ reflect: true }) title: string = '';
 ```
