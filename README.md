@@ -81,6 +81,46 @@ Komponenter som kan valideres med både constraint validation og `isvalid` prope
 NB! Det anbefales og bruke en av alternativene, men det er selvfølgelig mulig å blande.
 NB! Constraint validation kjøres kun på submit event så det er viktig at den står innen `<form>` som emitter `submit` event
 
+Eksempel på bruk av `isvalid` property i Vue appen:
+
+```html
+<template>
+  <form @submit.prevent="submit">
+    <nve-input
+      :isvalid="validation.isValid"
+      :errorMessage="validation.errorMessage"
+      :value="validation.inputValue"
+      @input="validation.inputValue = $event.target.value"
+    ></nve-input>
+    <nve-button type="submit">submit</nve-button>
+  </form>
+</template>
+
+<script>
+  const validation = reactive({
+    inputValue: '',
+    isValid: true,
+    errorMessage: '',
+  });
+  const submit = () => {
+    validateInput();
+  };
+
+  const validateInput = () => {
+    if (!validation.inputValue) {
+      validation.isValid = false;
+      validation.errorMessage = 'Input is required.';
+    } else if (validation.inputValue.length < 20) {
+      validation.isValid = false;
+      validation.errorMessage = 'Input should be more than 20 characters.';
+    } else {
+      validation.isValid = true;
+      validation.errorMessage = '';
+    }
+  };
+</script>
+```
+
 ## Skal du utvikle NVE designsystem? Denne seksjonen er for deg.
 
 De fleste komponentene bygger på [Shoelace](https://shoelace.style/), men er tilpasset NVE Designsystem. Etterhvert vil de fleste Shoelace-komponenter få sin NVE-variant, men vi kommer også til å lage komponenter som ikke baseres på Shoelace. Vi anbefaler at du laster ned [kildekoden til Shoelace](https://github.com/shoelace-style/shoelace) og setter deg inn i [Lit](https://lit.dev/), som vi bruker som rammeverk.
