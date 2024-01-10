@@ -63,22 +63,23 @@ Komponentene kan ses og testes i Storybook med ulike parametere og varianter: ht
 
 ### **Validering av komponentene**
 
-Noen komponenter brukt i formen tilbyr validering. Shoelace tilbyr kun [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation) (kortsagt du lar nettleseren validere for deg basert på hvilke attributer som blir med) validering på noen av sine komponenter. Constraint validation fungerer i enkle validering scenario hvor i mer avansert tilfeller det kan være litt ufordrende. Derfor har vi også laget `isvalid` attribute som tar kun boolske verdier, hvor utviklere bestemmer selv hva som er gyldig eller ikke og kun sende boolske verdi til en komponent for å få 'invalid' style på en komponent. Viktig å nevne er at constraint validation viser kun den første feilen den møter på submit. Så hvis det er flere feil, de skal vises etter den første ble fikse (f.eks. både input 1 og input 2 er feil, men feil i input 2 vises ikke hvis input 1 feil ikke er rettet opp).
-I validering med isvalid attribute, styling endrer seg ikke på blur, eller onchange automatisk (i motsatt til constraint validering) så det er utvikler som må sørge at riktig boolske verdi sendes i forskjellige scenario.
+Noen komponenter brukt i formen tilbyr validering. Shoelace tilbyr kun [constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation) (kortsagt du lar nettleseren validere for deg basert på hvilke attributer som blir med) validering på noen av sine komponenter. Constraint validation fungerer i enkle validering scenario hvor i mer avansert tilfeller det kan være litt ufordrende. Derfor har vi laget `isvalid` property i tillegg som tar kun boolske verdier, hvor utviklere bestemmer selv hva som er gyldig eller ikke, og kun sender boolske verdi til en komponent for å få 'invalid' style på en komponent. Viktig å nevne er at constraint validation viser kun den første feilen den møter på submit. Så hvis det er flere feil, de skal vises etter den første ble fikset (f.eks. både input 1 og input 2 er feil, men feil i input 2 vises ikke hvis input 1 feil ikke er rettet opp).
+I validering med isvalid property, styling endrer seg ikke på blur, eller onchange automatisk (i motsatt til constraint validering) så det er utvikler som må sørge at riktige validering metoder sendes i forskjellige scenario (onblur, onchange, onclick osv).
 
-I både constraint validation og validering med 'isvalid' må man huske om å bruke `errorMessage` attribute så at bruker får en
+I både constraint validation og validering med 'isvalid' må man huske om å bruke `errorMessage` property så at bruker får en
 riktig beskjed på hva som feiler. Samtidig hvis man bruker flere attributer med constraint validation (altså f.eks. både required og pattern) kan man ha kun en errorMessage med mindre man justerer det selv (man kan f.eks. ta i bruk [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) og sender en riktig errorMessage basert på hva slags feil man fikk som valueMissing eller patternMismatch osv.).
 
-Hvis noen av komponenter feiler, emiter de `sl-invalid` event som kan lytes på hvis man trenger å legge til noe funksjonalitet.
+Hvis noen av komponenter feiler, emiter de `sl-invalid` event som kan lytes på hvis man trenger å legge til noe funksjonalitet i tillegg.
 Ifølge shoelace dokumentasjon formen også burde emite `sl-invalid` hvis noen av feltene feiler, men det er ikke veldig pålitelig (testet i vue appen), så det er kanskje bedre å basere seg på `sl-invalid` på enkelte komponenter.
 
-Komponenter som kan valideres med både constraint validation og `isvalid` attribute per i dag er:
+Komponenter som kan valideres med både constraint validation og `isvalid` property per i dag er:
 
 - nve-input
 - nve-radio-group som bruker kun required attribute fra constratin validation (enkelte radio knapper valideres ikke, må være innen nve-radio-group)
 - nve-checkbox-group som bruker kun required attribute fra constratin validation (enkelte sjekkbokser valideres ikke må være innen nve-checkbox-group)
 
-Det anbefales og bruke en av alternativene, men det er selvfølgelig mulig å blande. Blanding ble ikke testet grundig da.
+NB! Det anbefales og bruke en av alternativene, men det er selvfølgelig mulig å blande.
+NB! Constraint validation kjøres kun på submit event så det er viktig at den står innen `<form>` som emitter `submit` event
 
 ## Skal du utvikle NVE designsystem? Denne seksjonen er for deg.
 
@@ -174,8 +175,8 @@ property istedenfor. Den tar kun boolske verdier selv om den er definert som str
 @property({ type: String, reflect: true }) isvalid?: string;
 ```
 
-Grunnen til det er at alle attributer i DOMen er av type string. Lit tilbyr typekasting med `type: Boolean` men den brukes kun når property skal vises (true) i DOMen eller ikke (false).
-På 'isvalid' var det viktig for oss at kun `true` og `false` vises derfor valgte vi å bruke `type: String`. Kan være at det finnes en bedre måte å gjøre det på, men det har vi ikke utforsket enda. `isvalid` skal gi utviklere akkurat det samme UX og UI opplevelse som constraint validation derfor vi må sikre at den emiter `sl-invalid`event og at alt komponent stylinga endres på samme måte.
+Grunnen til det er at alle attributer/properties i DOMen er av type string. Lit tilbyr type kasting med `type: Boolean` men den brukes kun når property skal vises (true) i DOMen eller ikke (false).
+På 'isvalid' var det viktig for oss at kun `true` og `false` vises derfor valgte vi å bruke `type: String`. Kan være at det finnes en bedre måte å gjøre det på, men det har vi ikke utforsket enda. `isvalid` skal gi utviklere akkurat det samme UX og UI opplevelse som constraint validation derfor vi må sikre at den emiter `sl-invalid` (som deretter setter data-user-invalid i DOMen) event og at alt komponent stylinga endres på samme måte.
 Komponenter som har validering på plass per i dag er:
 
 - nve-input
