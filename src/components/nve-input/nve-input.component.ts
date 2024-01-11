@@ -51,12 +51,14 @@ export default class NveInput extends SlInput {
   }
 
   firstUpdated() {
+    super.firstUpdated();
     if (this.requiredLabel) {
       this.style.setProperty('--sl-input-required-content', `"${this.requiredLabel}"`);
     }
   }
 
-  updated() {
+  updated(changedProperties: any) {
+    super.updated(changedProperties);
     const hasDataUserInvalidAttr = this.hasAttribute('data-user-invalid');
     if (hasDataUserInvalidAttr && !this.alreadyInvalid) {
       this.makeInvalid();
