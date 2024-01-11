@@ -8,7 +8,7 @@ import { PropertyValueMap } from 'lit';
  */
 @customElement('nve-option')
 
-export class NveOption extends SlOption {
+export default class NveOption extends SlOption {
 
   constructor() {
     super();
