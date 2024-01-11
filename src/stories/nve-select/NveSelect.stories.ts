@@ -31,11 +31,8 @@ const meta = {
                 component: `<div>
                 <a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-select.md">API-dokumentasjon</a>
                 </div>`,
-            },
-            story: {
-                inline: false,
-                iframeHeight: 300,
-              },
+            }
+           
         },
     },
 } satisfies Meta<NveSelectProps>;

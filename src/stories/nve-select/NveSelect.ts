@@ -50,10 +50,10 @@ export const NveSelect = (props: NveSelectProps) => {
             update-complete=${props.updateComplete}
         >
                 <nve-label value="Label" slot="label" ></nve-label>
-                <nve-option value="option-1">Option 1</nve-option>
-                <nve-option value="option-2">Option 2</nve-option>
-                <nve-option value="option-3">Option 3</nve-option>
-                <nve-option disabled value="option-4">Option 4 <nve-icon slot="suffix" name="lock"></nve-icon></nve-option>
+                <nve-option ?filled=${props.filled} value="option-1">Option 1</nve-option>
+                <nve-option ?filled=${props.filled} value="option-2">Option 2</nve-option>
+                <nve-option ?filled=${props.filled} value="option-3">Option 3</nve-option>
+                <nve-option ?filled=${props.filled} disabled value="option-4">Option 4 <nve-icon slot="suffix" name="lock"></nve-icon></nve-option>
         </nve-select>
     `;
 };

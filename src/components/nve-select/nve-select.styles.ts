@@ -32,11 +32,11 @@ export default css`
 }
 /* Må overskrive top for å få mellomrom */
 .select[data-current-placement^="top"]::part(popup) {
-    top: -146.2px; 
+    top: -144.2px; 
 }
 /* Må overskrive bottom for å få mellomrom */
 .select[data-current-placement^="bottom"]::part(popup) {
-    top: 53px; 
+    top: 45px; 
 }
 
 /* filled*/
