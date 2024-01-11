@@ -44,25 +44,27 @@ export default class NveRadioGroup extends SlRadioGroup {
    */
   @property({ reflect: true }) errorMessage?: string;
   /**
-   * Reactive property som brukes for å signere at komponent ikke er valid. Brukes som alternativ til constraint validation. Står som
-   * string her fordi DOM returnerer alltid properties som string. Vi vil at både isvalid=false og isvalid=true vises i DOMen
-   * når man bruker dette alternativet
+   * Hjelpe variabler som sjekker om radio gruppe er allerede invalid
    */
-  @property({ type: String, reflect: true }) isvalid?: 'true' | 'false';
+  @state() private alreadyInvalid = false;
   /**
-   * errorMessage fra SlRadioGroup overskriver NveRadioGroup errorMessage når sl-input trigges, derfor må vi lagre den i staten på firstUpdate()
+   * kan ikke få taket i errorMessage som er satt på SlRadioGroup her, og vi trenger den for å vise feilmelding under radio gruppe.
+   * samtidig errorMessage fra SlRadioGroup (som er tom, som deretter gir oss default nettleseren sin melding)
+   *  overskriver NveRadioGroup errorMessage prop når sl-input trigges, derfor må vi lagre den i staten når komponenten renderes første gang.
    */
-  @state() errormsg = '';
+  @state() private errorMessageCopy = '';
 
   /* overvåker og setter disabled på under-radio-elementer når disabled endres */
   @watch('disabled')
   connectedCallback() {
     super.connectedCallback();
-    this.errormsg = this.errorMessage || '';
+    this.errorMessageCopy = this.errorMessage || '';
     this.addEventListener('sl-invalid', (e) => {
       // vi vil ikke at nettleseren viser feil meldingen til oss
       e.preventDefault();
-      this.makeInvalid();
+      if (!this.alreadyInvalid) {
+        this.makeInvalid();
+      }
     });
     this.addEventListener('sl-change', this.resetValidation.bind(this));
   }
@@ -73,13 +75,12 @@ export default class NveRadioGroup extends SlRadioGroup {
     this.removeEventListener('sl-change', this.resetValidation);
   }
 
-  protected updated(changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void {
-    if (changedProperties.has('isvalid')) {
-      if (!this.isvalid) {
-        this.makeInvalid();
-      } else {
-        this.resetValidation();
-      }
+  updated(): void {
+    if (this.hasAttribute('data-user-invalid') && !this.alreadyInvalid) {
+      this.makeInvalid();
+    }
+    if (!this.hasAttribute('data-user-invalid')) {
+      this.resetValidation();
     }
   }
 
@@ -87,8 +88,11 @@ export default class NveRadioGroup extends SlRadioGroup {
     const nveRadios = this.getAllRadios();
     // bruker 'invalid' property her som er ikke en tilgjengelig property i nve-radio. Den skal settes automatisk, derfor man trenger ikke å få tilgang til det
     toggleBooleanAttrOnListOfNodes(nveRadios, true, 'invalid');
-    this.setCustomValidity(`${this.errormsg}`);
-    this.style.setProperty('--radio-group-error-message', `"${this.errormsg}"`);
+    if (!this.errorMessageCopy) {
+      this.errorMessageCopy = this.validationMessage;
+    }
+    this.setCustomValidity(`${this.errorMessageCopy}`);
+    this.style.setProperty('--radio-group-error-message', `"${this.errorMessageCopy}"`);
   }
 
   private resetValidation() {
