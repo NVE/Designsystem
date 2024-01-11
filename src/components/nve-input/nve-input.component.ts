@@ -45,17 +45,23 @@ export default class NveInput extends SlInput {
     });
   }
 
-  firstUpdated(): void {
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('sl-invalid', this.makeInvalid);
+  }
+
+  firstUpdated() {
     if (this.requiredLabel) {
       this.style.setProperty('--sl-input-required-content', `"${this.requiredLabel}"`);
     }
   }
 
-  updated(): void {
-    if (this.hasAttribute('data-user-invalid') && !this.alreadyInvalid) {
+  updated() {
+    const hasDataUserInvalidAttr = this.hasAttribute('data-user-invalid');
+    if (hasDataUserInvalidAttr && !this.alreadyInvalid) {
       this.makeInvalid();
     }
-    if (!this.hasAttribute('data-user-invalid')) {
+    if (!hasDataUserInvalidAttr) {
       this.resetValidation();
     }
   }
@@ -68,7 +74,6 @@ export default class NveInput extends SlInput {
 
   private resetValidation() {
     this.hideErrorIcon();
-    //fjern den og bare vis meldingen når invalid er på plass
     this.style.setProperty('--nve-input-error-message', '');
     this.alreadyInvalid = false;
   }

@@ -66,7 +66,6 @@ export default css`
     background: var(--neutrals-background-secondary);
   }
 
-  /**fikse til kun user-invalid */
   /* Gir rød ramme ved valideringsfeil  */
   :host([data-user-invalid])::part(base) {
     border-color: var(--feedback-background-emphasized-error);
