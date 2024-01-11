@@ -3,6 +3,7 @@ import { css } from 'lit';
 export default css`
   :host::part(base) {
     border-radius: 3.125rem;
+    white-space: nowrap;
     text-align: center;
     font: var(--label-small);
     padding: 0.375rem 0.4375rem;

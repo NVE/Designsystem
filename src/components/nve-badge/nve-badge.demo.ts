@@ -31,7 +31,7 @@ export default html` <hr />
         <td><nve-badge variant="success" size="large">Ferdig</nve-badge></td>
       </tr>
       <tr>
-        <td>Error/Danger</td>
+        <td>Danger</td>
         <td><nve-badge variant="danger" size="small">Fjernet</nve-badge></td>
         <td><nve-badge variant="danger">Fjernet</nve-badge></td>
         <td><nve-badge variant="danger" size="large">Fjernet</nve-badge></td>
@@ -61,7 +61,7 @@ export default html` <hr />
         <td><nve-badge low variant="success" size="large">Ferdig</nve-badge></td>
       </tr>
       <tr>
-        <td>Low Error/Danger</td>
+        <td>Low Danger</td>
         <td><nve-badge low variant="danger" size="small">Fjernet</nve-badge></td>
         <td><nve-badge low variant="danger">Fjernet</nve-badge></td>
         <td><nve-badge low variant="danger" size="large">Fjernet</nve-badge></td>
