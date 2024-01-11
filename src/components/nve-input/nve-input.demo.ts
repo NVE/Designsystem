@@ -97,15 +97,6 @@ const table = html`
         </td>
       </tr>
       <tr>
-        <td>Valideringsfeil</td>
-        <td>
-          <nve-input type="number" value="41" min="42" max="42"></nve-input>
-        </td>
-        <td>
-          <nve-input filled type="number" value="41" min="42" max="42"></nve-input>
-        </td>
-      </tr>
-      <tr>
         <td>Passord</td>
         <td><nve-input type="password" password-toggle="true" value="hemmelig"></nve-input></td>
         <td><nve-input filled type="password" password-toggle="true" value="hemmelig"></nve-input></td>
