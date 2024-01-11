@@ -7,14 +7,9 @@ import styles from './nve-input.styles';
  * Mer info: https://shoelace.style/components/input
  *
  * Vil du ha info-ikon med hjelpetekst etter ledeteksten, putt en nve-label i label-slot.
- * Du trenger ikke å sette 'required' property for å vise requiredLabel hvis du velger å validere med invalid property
- * Da må du sikre å ha med requiredLabel property, og at den har noe verdi
- * Du trenger ikke å sette requiredLabel property hvis du velger constraint validering og bruker required property. Den
- * vises *Obligatorisk som default og kan justeres med requiredLabel.
  * Disse attributtene skal ikke brukes:
  * - pill
  *
- * TODO: Vise valideringsfeil med rød tekst under tekstfeltet
  * TODO: Felte blir breddere når feil ikone vises. Alt på grunn av at det dukker opp i en slot. Hvis Vi bestemmer oss
  * å ha en fast verdi på sloten, kan det kanksje påvirke andre elementer som skal vises i sloten.
  */
@@ -25,19 +20,13 @@ export default class NveInput extends SlInput {
    */
   @property() requiredLabel = '*Obligatorisk';
   /**
-   * Feil melding som vises under input feltet
+   * Brukes til enkel constraint validation til å overskrive default nettleseren melding
    */
   @property({ reflect: true }) errorMessage?: string;
   /**
-   * Reactive property som brukes for å signere at komponent ikke er valid. Brukes som alternativ til constraint validation. Står som
-   * string her fordi DOM returnerer alltid properties som string. Vi vil at både isvalid=false og isvalid=true vises i DOMen
-   * når man bruker dette alternativet
+   * Hjelpe variabler som sjekker om input feltet er allerede invalid
    */
-  @property({ type: String, reflect: true }) isvalid?: 'true' | 'false';
-  /**
-   * Hjelpe variabler for å unngå å kjøre makeInvalid hver gang man klikker på submit knapp hvis felte er invalid allerede
-   */
-  @state() isvalidState = true;
+  @state() protected alreadyInvalid = false;
 
   static styles = [SlInput.styles, styles];
 
@@ -50,9 +39,7 @@ export default class NveInput extends SlInput {
     this.addEventListener('sl-invalid', (e) => {
       // vi vil ikke at nettleseren viser feil meldingen til oss
       e.preventDefault();
-
-      // sikre at den kjører kun en gang hvis isvalidstate er usant
-      if (this.isvalidState) {
+      if (!this.alreadyInvalid) {
         this.makeInvalid();
       }
     });
@@ -64,45 +51,36 @@ export default class NveInput extends SlInput {
     }
   }
 
-  updated(changedProperties: any): void {
-    if (changedProperties.has('isvalid')) {
-      if (!this.isvalid) {
-        this.setCustomValidity(`${this.errorMessage}` || 'Error');
-      } else {
-        this.setCustomValidity('');
-        this.resetValidation();
-      }
-    }
-    if (this.hasAttribute('data-user-invalid')) {
+  updated(): void {
+    if (this.hasAttribute('data-user-invalid') && !this.alreadyInvalid) {
       this.makeInvalid();
-    } else {
+    }
+    if (!this.hasAttribute('data-user-invalid')) {
       this.resetValidation();
     }
   }
 
   private makeInvalid() {
-    if (!this.isvalidState) return;
-    this.addErrorIcon();
-    this.addErrorMessage();
-    this.isvalidState = false;
+    this.showErrorIcon();
+    this.showErrorMessage();
+    this.alreadyInvalid = true;
   }
 
-  //TODO kjør den kun en gang kanskje?
   private resetValidation() {
-    console.log(this.isvalid);
-    this.removeErrorIcon();
-    this.isvalidState = true;
+    this.hideErrorIcon();
     //fjern den og bare vis meldingen når invalid er på plass
     this.style.setProperty('--nve-input-error-message', '');
+    this.alreadyInvalid = false;
   }
 
-  private addErrorMessage() {
-    if (this.hasAttribute('data-user-invalid')) {
-      this.style.setProperty('--nve-input-error-message', `"${this.errorMessage}"`);
+  private showErrorMessage() {
+    if (!this.errorMessage) {
+      this.errorMessage = this.validationMessage;
     }
+    this.style.setProperty('--nve-input-error-message', `"${this.errorMessage}"`);
   }
 
-  private addErrorIcon() {
+  private showErrorIcon() {
     const nveInput = this;
     const nveIcon = document.createElement('nve-icon');
     nveIcon.setAttribute('name', 'error');
@@ -114,7 +92,7 @@ export default class NveInput extends SlInput {
     nveIcon.style.color = variableValue.trim();
     nveInput.appendChild(nveIcon);
   }
-  private removeErrorIcon() {
+  private hideErrorIcon() {
     const nveInput = this;
     const nveIcon = nveInput.querySelector('[slot="suffix"]');
     if (nveIcon) {

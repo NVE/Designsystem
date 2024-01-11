@@ -3,6 +3,25 @@ import { html } from 'lit';
 /**
  * Demonstrasjon av nve-input
  */
+
+/**
+ * Metoden for å teste custom validering
+ * @param e event
+ * @returns
+ */
+const validateInputFieldDemo = (e: any) => {
+  e.preventDefault();
+  const inputElement = document.getElementById('demoInputVal') as HTMLInputElement;
+  const inputElementValue = inputElement.value;
+  if (!inputElement) return;
+  const valid = inputElementValue == '42';
+
+  if (!valid) {
+    inputElement.setCustomValidity('Feil svar');
+  } else {
+    inputElement.setCustomValidity('');
+  }
+};
 const table = html`
   <hr />
   <h3 id="nve-input">nve-input</h3>
@@ -157,13 +176,17 @@ const table = html`
       </tr>
     </tbody>
   </table>
-  <h3 id="nve-inpu-validering">nve-input validering</h3>
-  <form>
+  <h3 id="nve-inpu-validering">nve-input constraint validering</h3>
+  <form style="max-width: 300px" onsubmit="event.preventDefault();">
+    <nve-input required errorMessage="Kan ikke være tom" label="Label" value=""></nve-input>
+    <nve-button style="margin-top: 10px" variant="primary" type="submit" size="small">Submit</nve-button>
+  </form>
+  <h3 id="nve-inpu-validering">nve-input custom validering (med blur)</h3>
+  <form @submit="${(e: any) => validateInputFieldDemo(e)}" id="demoFormCustomVal" style="max-width: 300px">
     <nve-input
-      errorMessage="Kan ikke være tom"
-      filled
-      required
-      requiredLabel="*Required"
+      @sl-blur="${validateInputFieldDemo}"
+      help-text="Må være 42"
+      id="demoInputVal"
       label="Label"
       value=""
     ></nve-input>
