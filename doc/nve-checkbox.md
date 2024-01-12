@@ -16,7 +16,7 @@ foreløpig finnes ikke noe hove
 | `getForm`           |           |           | `() => HTMLFormElement \| null`         |         |                                                  |
 | `indeterminate`     |           |           | `boolean`                               |         | Draws the checkbox in an indeterminate state. This is usually applied to checkboxes that represents a "select<br />all/none" behavior when associated checkboxes have a mix of checked and unchecked states. |
 | `input`             |           |           | `HTMLInputElement`                      |         |                                                  |
-| `isValid`           | `isValid` |           | `boolean`                               | true    | Checks if input is valid                         |
+| `invalid`           | `invalid` |           | `boolean`                               | false   | Checks if input is valid                         |
 | `lang`              |           |           | `string`                                |         |                                                  |
 | `max`               |           |           | `string \| number \| Date \| undefined` |         |                                                  |
 | `maxlength`         |           |           | `number \| undefined`                   |         |                                                  |
@@ -41,7 +41,7 @@ foreløpig finnes ikke noe hove
 | `blur`                 | `(): void`                                       | Removes focus from the checkbox.                 |
 | `checkValidity`        | `(): boolean`                                    | Checks for validity but does not show a validation message. Returns `true` when valid and `false` when invalid. |
 | `click`                | `(): void`                                       | Simulates a click on the checkbox.               |
-| `emit`                 | `{ <T extends "submit" \| "reset" \| "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| ... 112 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...` | Emits a custom event with more convenient defaults. |
+| `emit`                 | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
 | `focus`                | `(options?: FocusOptions \| undefined): void`    | Sets focus on the checkbox.                      |
 | `getForm`              | `(): HTMLFormElement \| null`                    | Gets the associated form, if one exists.         |
 | `handleDisabledChange` | `(): void`                                       |                                                  |
