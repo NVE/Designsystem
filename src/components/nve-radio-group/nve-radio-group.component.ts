@@ -28,6 +28,8 @@ import { PropertyValueMap } from 'lit';
  */
 // @ts-expect-error -next-line - overskriving av private metoder i sl-radio-group
 export default class NveRadioGroup extends SlRadioGroup {
+  static styles = [SlRadioGroup.styles, styles];
+
   constructor() {
     super();
   }
@@ -44,13 +46,13 @@ export default class NveRadioGroup extends SlRadioGroup {
    */
   @property({ reflect: true }) errorMessage?: string;
   /**
-   * Hjelpe variabler som sjekker om radio gruppe er allerede invalid
+   * Hjelpe variabel som sjekker om radio gruppe er allerede invalid
    */
   @state() private alreadyInvalid = false;
   /**
-   * kan ikke få taket i errorMessage som er satt på SlRadioGroup her, og vi trenger den for å vise feilmelding under radio gruppe.
-   * samtidig errorMessage fra SlRadioGroup (som er tom, som deretter gir oss default nettleseren sin melding)
-   *  overskriver NveRadioGroup errorMessage prop når sl-input trigges, derfor må vi lagre den i staten når komponenten renderes første gang.
+   * Ikke mulig å få taket i errorMessage til superklassen (SlRadioGroup), og den trengs for å vise feilmelding under radio gruppe.
+   * Samtidig errorMessage fra SlRadioGroup (som er tom, som deretter gir oss default nettleseren sin melding)
+   * overskriver NveRadioGroup errorMessage prop når sl-input trigges, derfor må vi lagre den i staten når komponenten renderes første gang.
    */
   @state() private errorMessageCopy = '';
 
@@ -75,32 +77,15 @@ export default class NveRadioGroup extends SlRadioGroup {
     this.removeEventListener('sl-change', this.resetValidation);
   }
 
-  updated(): void {
-    if (this.hasAttribute('data-user-invalid') && !this.alreadyInvalid) {
+  updated(changedProperties: any): void {
+    super.updated(changedProperties);
+    const hasDataUserInvalidAttr = this.hasAttribute('data-user-invalid');
+    if (hasDataUserInvalidAttr && !this.alreadyInvalid) {
       this.makeInvalid();
     }
-    if (!this.hasAttribute('data-user-invalid')) {
+    if (!hasDataUserInvalidAttr) {
       this.resetValidation();
     }
-  }
-
-  private makeInvalid() {
-    const nveRadios = this.getAllRadios();
-    // bruker 'invalid' property her som er ikke en tilgjengelig property i nve-radio. Den skal settes automatisk, derfor man trenger ikke å få tilgang til det
-    toggleBooleanAttrOnListOfNodes(nveRadios, true, 'invalid');
-    if (!this.errorMessageCopy) {
-      this.errorMessageCopy = this.validationMessage;
-    }
-    this.setCustomValidity(`${this.errorMessageCopy}`);
-    this.style.setProperty('--radio-group-error-message', `"${this.errorMessageCopy}"`);
-  }
-
-  private resetValidation() {
-    const nveRadios = this.getAllRadios();
-    // bruker 'invalid' property her som er ikke en tilgjengelig property i nve-radio. Den skal settes automatisk, derfor man trenger ikke å få tilgang til det
-    toggleBooleanAttrOnListOfNodes(nveRadios, false, 'invalid');
-    this.setCustomValidity('');
-    this.style.removeProperty('--radio-group-error-message');
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -128,7 +113,25 @@ export default class NveRadioGroup extends SlRadioGroup {
     return true;
   }
 
-  static styles = [SlRadioGroup.styles, styles];
+  private makeInvalid() {
+    console.log(this.validationMessage);
+    const nveRadios = this.getAllRadios();
+    // toggler 'invalid' attribute på alle radio komponenter for å få riktig style
+    toggleBooleanAttrOnListOfNodes(nveRadios, true, 'invalid');
+    if (!this.errorMessageCopy) {
+      this.errorMessageCopy = this.validationMessage;
+    }
+    this.setCustomValidity(`${this.errorMessageCopy}`);
+    this.style.setProperty('--radio-group-error-message', `"${this.errorMessageCopy}"`);
+  }
+
+  private resetValidation() {
+    const nveRadios = this.getAllRadios();
+    // toggler 'invalid' attribute på alle radio komponenter for å få riktig style
+    toggleBooleanAttrOnListOfNodes(nveRadios, false, 'invalid');
+    this.setCustomValidity('');
+    this.style.removeProperty('--radio-group-error-message');
+  }
 
   /* Overskriver private metoder i sl-radio-group for å kunne bruke nve-radio og nve-radio-button elementer inne i <nve-radio-group></nve-radio-group>*/
   private getAllRadios = function () {

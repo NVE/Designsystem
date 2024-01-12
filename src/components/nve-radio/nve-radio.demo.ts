@@ -1,4 +1,24 @@
 import { html } from 'lit';
+
+/**
+ * Metoden for å teste custom validering
+ * @param e event
+ * @returns
+ */
+const validateRGdDemo = (e: any) => {
+  e.preventDefault();
+  const rgElement = document.getElementById('customValidation') as HTMLInputElement;
+  const rgElementValue = rgElement.value;
+  if (!rgElement) return;
+  const valid = rgElementValue == '3';
+
+  if (!valid) {
+    rgElement.setCustomValidity('Feil svar. Må velge Value 3');
+  } else {
+    rgElement.setCustomValidity('');
+  }
+};
+
 const table = html`
   <hr />
   <h3>Radio</h3>
@@ -109,17 +129,30 @@ const table = html`
   </table>
   <hr />
   <h3>nve-radio-group validering</h3>
-  <form>
+  <form onsubmit="event.preventDefault();">
     <nve-radio-group errorMessage="Kan ikke stå tom" required size="small" orientation="horizontal">
       <label slot="label">
-        <span style="font-family:consolas;">Horizontal, required (small) with <b>slotted</b> label</span>
+        <span>Validering</span>
       </label>
-      <nve-radio value="1">Value</nve-radio>
-      <nve-radio value="2">Value The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet.."</nve-radio>
-      <nve-radio value="3">Value</nve-radio>
-      <nve-radio value="4">Value</nve-radio>
+      <nve-radio value="1">Value 1</nve-radio>
+      <nve-radio value="2">Value 2</nve-radio>
+      <nve-radio value="3">Value 3</nve-radio>
+      <nve-radio value="4">Value 4</nve-radio>
     </nve-radio-group>
-    <nve-button style="margin-top: 10px" variant="primary" size="small" type="submit">submit</nve-button>
+    <nve-button style="margin-top: 10px" variant="primary" size="small" type="submit">Submit</nve-button>
+  </form>
+  <h3>nve-radio-group custom validering</h3>
+  <form @submit="${(e: any) => validateRGdDemo(e)}">
+    <nve-radio-group id="customValidation" size="small" orientation="horizontal">
+      <label slot="label">
+        <span>Custom validering</span>
+      </label>
+      <nve-radio value="1">Value 1</nve-radio>
+      <nve-radio value="2">Value 2</nve-radio>
+      <nve-radio value="3">Value 3</nve-radio>
+      <nve-radio value="4">Value 4</nve-radio>
+    </nve-radio-group>
+    <nve-button style="margin-top: 10px" variant="primary" size="small" type="submit">Submit</nve-button>
   </form>
 `;
 
