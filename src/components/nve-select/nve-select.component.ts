@@ -2,7 +2,6 @@ import { SlSelect } from '@shoelace-style/shoelace';
 import { customElement } from 'lit/decorators.js';
 import styles from './nve-select.styles';
 import NveOption from '../nve-option/nve-option.component';
-import { PropertyValueMap } from 'lit';
 
 /**
  * En Shoelace-select i NVE-forkledning.
@@ -22,7 +21,7 @@ export default class NveSelect extends SlSelect {
     popup?.setAttribute('distance', '3');
   }
 
-  //Lagt til nve-option
+  // @ts-expect-error - overskriving av private metoder i sl-select
   private handleOptionClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
     const option = target.closest('nve-option');
@@ -71,7 +70,7 @@ export default class NveSelect extends SlSelect {
   private getAllOptions() {
     return [...this.querySelectorAll<NveOption>('nve-option')];
   }
-  //Lagt til nve-option
+  // @ts-expect-error - overskriving av private metoder i sl-select
   private getFirstOption() {
     return this.querySelector<NveOption>('nve-option');
   }
