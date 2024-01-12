@@ -1,6 +1,7 @@
 import { html } from 'lit';
 
-export default html` <hr />
+export default html`
+  <hr />
   <h3 id="nve-badge">nve-badge</h3>
   <table class="demo">
     <thead>
@@ -73,4 +74,6 @@ export default html` <hr />
         <td><nve-badge low variant="warning" size="large">Feil</nve-badge></td>
       </tr>
     </tbody>
-  </table>`;
+  </table>
+  <nve-button>buttion <nve-badge>badge</nve-badge></nve-button>
+`;

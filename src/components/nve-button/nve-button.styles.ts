@@ -8,6 +8,15 @@ export default css`
     align-items: center;
     padding: var(--spacing-medium, 1rem) calc(var(--spacing-large, 1.5rem) - var(--spacing-x-small, 0.5rem));
   }
+
+  .button ::slotted(nve-badge) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    translate: 50% -50%;
+    pointer-events: none;
+  }
+
   :host::part(spinner) {
     --track-color: none;
     position: relative;
