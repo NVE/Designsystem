@@ -2,6 +2,7 @@ import { SlSelect } from '@shoelace-style/shoelace';
 import { customElement } from 'lit/decorators.js';
 import styles from './nve-select.styles';
 import NveOption from '../nve-option/nve-option.component';
+import { PropertyValueMap } from 'lit';
 
 /**
  * En Shoelace-select i NVE-forkledning.
@@ -10,11 +11,16 @@ import NveOption from '../nve-option/nve-option.component';
 @customElement('nve-select')
 // @ts-expect-error -next-line - overskriving av private metoder i sl-select
 export default class NveSelect extends SlSelect {
-
   constructor() {
     super();
   }
   static styles = [SlSelect.styles, styles];
+
+  protected firstUpdated(changedProperties: any) {
+    super.firstUpdated(changedProperties);
+    const popup = this.shadowRoot?.querySelector('sl-popup');
+    popup?.setAttribute('distance', '3');
+  }
 
   //Lagt til nve-option
   private handleOptionClick(event: MouseEvent) {
@@ -53,10 +59,10 @@ export default class NveSelect extends SlSelect {
     const values: string[] = [];
 
     if (customElements.get('nve-option')) {
-      allOptions.forEach(option => values.push(option.value));
+      allOptions.forEach((option) => values.push(option.value));
 
       // @ts-expect-error - overskriving av private metoder for å sette selected
-      this.setSelectedOptions(allOptions.filter(el => value.includes(el.value)));
+      this.setSelectedOptions(allOptions.filter((el) => value.includes(el.value)));
     } else {
       customElements.whenDefined('nve-option').then(() => this.handleDefaultSlotChange());
     }
@@ -69,7 +75,6 @@ export default class NveSelect extends SlSelect {
   private getFirstOption() {
     return this.querySelector<NveOption>('nve-option');
   }
-
 }
 
 declare global {
