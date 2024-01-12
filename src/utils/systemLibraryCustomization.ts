@@ -16,10 +16,9 @@ const icons: Icons = {
     </svg>
   `,
   check: `
-    <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="0.5" width="18" height="18" rx="4" fill="#00131C"/>
-        <path d="M7.9063 12.6562L4.73755 9.46875L5.67505 8.53125L7.9063 10.7437L13.3251 5.34375L14.2626 6.3L7.9063 12.6562Z" fill="white"/>
-    </svg
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M9.5501 18L3.8501 12.3L5.2751 10.875L9.5501 15.15L18.7251 5.97501L20.1501 7.40001L9.5501 18Z" fill="white"/>
+  </svg>
   `,
   'chevron-down': `
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
