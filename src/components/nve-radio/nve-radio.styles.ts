@@ -12,7 +12,7 @@ export default css`
     background-color: var(--neutrals-background-primary);
   }
 
-  :host([invalid])::part(control) {
+  :host([data-invalid])::part(control) {
     color: var(--feedback-background-emphasized-error);
     border-color: var(--feedback-background-emphasized-error);
   }

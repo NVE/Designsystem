@@ -117,7 +117,7 @@ export default class NveRadioGroup extends SlRadioGroup {
     console.log(this.validationMessage);
     const nveRadios = this.getAllRadios();
     // toggler 'invalid' attribute på alle radio komponenter for å få riktig style
-    toggleBooleanAttrOnListOfNodes(nveRadios, true, 'invalid');
+    toggleBooleanAttrOnListOfNodes(nveRadios, true, 'data-invalid');
     if (!this.errorMessageCopy) {
       this.errorMessageCopy = this.validationMessage;
     }
@@ -128,7 +128,7 @@ export default class NveRadioGroup extends SlRadioGroup {
   private resetValidation() {
     const nveRadios = this.getAllRadios();
     // toggler 'invalid' attribute på alle radio komponenter for å få riktig style
-    toggleBooleanAttrOnListOfNodes(nveRadios, false, 'invalid');
+    toggleBooleanAttrOnListOfNodes(nveRadios, false, 'data-invalid');
     this.setCustomValidity('');
     this.style.removeProperty('--radio-group-error-message');
   }
