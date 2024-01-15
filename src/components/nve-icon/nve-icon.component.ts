@@ -1,4 +1,4 @@
-import { css, html, LitElement } from 'lit';
+import { css, html, LitElement, PropertyValueMap } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 /**
@@ -16,10 +16,9 @@ export default class NveIcon extends LitElement {
     :host {
       /* Apply Material Icons font-family to the Shadow DOM */
       font-family: 'Material Symbols Outlined';
-   
     }
     /* Brukes i dropdown. Eneste måten å override shadow dom for å rotere expand_more ikonet når menyen åpner */
-    :host([name="expand_more"]) {
+    :host([name='expand_more']) {
       transform: var(--icon-rotation, none);
       transition: transform 0.3s ease;
     }
@@ -31,6 +30,9 @@ export default class NveIcon extends LitElement {
       font-weight: var(--font-weight-regular);
     }
   `;
+
+  protected firstUpdated() {}
+
   render() {
     return html`<span class="material-symbols-outlined">${this.name}</span>`;
   }
