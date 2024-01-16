@@ -3,34 +3,37 @@ import { Story, Meta, Title, Subtitle, Description, Primary, Controls, Stories }
 <Meta isTemplate />
 
 <Title />
-
-# Default implementation
+<Description />
+<br />
+<br />
+## Eksempler
 
 <div style={{ display: 'flex' }}>
   <span style={{ margin: '1rem' }}>
-    <Story name="Primary" height="50px">
-      {() => <Primary />}
-    </Story>
+    <Story name="One">{() => <Primary />}</Story>
   </span>
   <span style={{ margin: '1rem' }}>
-    <Story name="Secondary" height="50px">
-      {() => <Primary />}
-    </Story>
+    <Story name="Two">{() => <Primary />}</Story>
+  </span>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Three">{() => <Primary />}</Story>
+  </span>
+  <span style={{ margin: '1rem' }}>
+    <Story name="Four">{() => <Primary />}</Story>
   </span>
 </div>
 
+## Parametere/Props
+
+Her kan du se hvilke parametere (props) komponenten kan ta imot og se endringer i kode
+
 <Primary />
-
-## Inputs
-
-The component accepts the following inputs (props):
-
 <Controls />
 
 ---
 
-## Additional variations
+## Varianter
 
-Listed below are additional variations of the component.
+Nedenfor finner du flere varianter av komponenten med kodeeksempler
 
 <Stories />

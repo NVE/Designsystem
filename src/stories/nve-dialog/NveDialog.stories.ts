@@ -1,8 +1,8 @@
 import { StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
-import '../components/nve-button/nve-button.component';
-import '../components/nve-dialog/nve-dialog.component';
-import '../components/nve-icon/nve-icon.component';
+import '../../components/nve-button/nve-button.component';
+import '../../components/nve-dialog/nve-dialog.component';
+import '../../components/nve-icon/nve-icon.component';
 import { NveDialog, NveDialogProps } from './NveDialog';
 
 const meta = {
