@@ -40,7 +40,7 @@ jobs:
           close_pull_request_job:
 
   close_pull_request_job:
-    if: (github.event_name == 'pull_request' && github.event.action == 'closed') || (github.event.pull_request.merged == false && github.event.pull_request.merged_by == null)
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     name: Close Pull Request Job
     steps:
