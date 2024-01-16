@@ -73,7 +73,12 @@ export default html`
         <td><nve-badge low variant="warning">Feil</nve-badge></td>
         <td><nve-badge low variant="warning" size="large">Feil</nve-badge></td>
       </tr>
+      <tr>
+        <td>Badge inn i knappen</td>
+        <td>
+          <nve-button>Button <nve-badge>Badge</nve-badge></nve-button>
+        </td>
+      </tr>
     </tbody>
   </table>
-  <nve-button>buttion <nve-badge>badge</nve-badge></nve-button>
 `;

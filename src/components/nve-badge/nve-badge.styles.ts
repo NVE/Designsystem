@@ -26,7 +26,7 @@ export default css`
   }
 
   :host([variant='neutral'])::part(base) {
-    background: var(--neutrals-foreground-primary, #0d0d0e);
+    background: var(--neutrals-foreground-subtle, #60656c);
   }
 
   :host([variant='success'])::part(base) {

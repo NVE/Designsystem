@@ -9,6 +9,11 @@ if (!componentName) {
   process.exit(1);
 }
 
+if (!componentName.startsWith('nve-')) {
+  console.error(`${chalk.red('✘')} Component name must start with nve-`);
+  process.exit(1);
+}
+
 const folderName = componentName.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
 
 const createFolder = () => {
@@ -37,6 +42,10 @@ const createComponentFile = () => {
       constructor() {
         super();
       }
+
+      //VIKTIG! Husk at du må importere komponent i index.ts 
+      // For å vise en demonstrasjon av en komponent når vi starter appen lokalt import den i main.ts 
+
     }
     
     declare global {
