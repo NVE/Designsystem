@@ -5,7 +5,7 @@ import NveRadio from '../nve-radio/nve-radio.component';
 import styles from './nve-radio-group.styles';
 import { watch } from '../../utils/watch';
 import toggleBooleanAttrOnListOfNodes from '../../utils/updateInvalidProperty';
-import { PropertyValueMap } from 'lit';
+import { PropertyValues } from 'lit';
 
 @customElement('nve-radio-group')
 /**
@@ -34,17 +34,21 @@ export default class NveRadioGroup extends SlRadioGroup {
     super();
   }
   /**
-   * Om radio knapper burde vises horisontalt eller vertikalt
+   * Om radio knapper skal vises horisontalt eller vertikalt
    */
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
   /**
-   * Disable alle radio knapper i gruppen
+   * Deaktivere alle radio knapper i gruppen
    */
   @property({ type: Boolean, reflect: true }) disabled = false;
   /**
-   * Feil melding som vises under input feltet. Vi har ikke tilgang til SlRadioGroup errorMessage så må overskrive med vår egen
+   * Feil melding som vises under radiogruppe. Vi har ikke tilgang til SlRadioGroup errorMessage så må overskrive med vår egen
    */
   @property({ reflect: true }) errorMessage?: string;
+  /**
+   * Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard.
+   */
+  @property() requiredLabel = '*Obligatorisk';
   /**
    * Hjelpe variabel som sjekker om radio gruppe er allerede invalid
    */
@@ -77,8 +81,11 @@ export default class NveRadioGroup extends SlRadioGroup {
     this.removeEventListener('sl-change', this.resetValidation);
   }
 
-  updated(changedProperties: any): void {
+  updated(changedProperties: PropertyValues<this>): void {
     super.updated(changedProperties);
+    if (changedProperties.has('requiredLabel')) {
+      this.style.setProperty('--sl-input-required-content', `"${this.requiredLabel}"`);
+    }
     const hasDataUserInvalidAttr = this.hasAttribute('data-user-invalid');
     if (hasDataUserInvalidAttr && !this.alreadyInvalid) {
       this.makeInvalid();
@@ -114,14 +121,13 @@ export default class NveRadioGroup extends SlRadioGroup {
   }
 
   private makeInvalid() {
-    console.log(this.validationMessage);
     const nveRadios = this.getAllRadios();
     // toggler 'invalid' attribute på alle radio komponenter for å få riktig style
     toggleBooleanAttrOnListOfNodes(nveRadios, true, 'data-invalid');
     if (!this.errorMessageCopy) {
       this.errorMessageCopy = this.validationMessage;
     }
-    this.setCustomValidity(`${this.errorMessageCopy}`);
+    this.setCustomValidity(this.errorMessageCopy);
     this.style.setProperty('--radio-group-error-message', `"${this.errorMessageCopy}"`);
   }
 

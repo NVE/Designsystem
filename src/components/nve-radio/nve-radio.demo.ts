@@ -7,15 +7,15 @@ import { html } from 'lit';
  */
 const validateRGdDemo = (e: any) => {
   e.preventDefault();
-  const rgElement = document.getElementById('customValidation') as HTMLInputElement;
-  const rgElementValue = rgElement.value;
-  if (!rgElement) return;
-  const valid = rgElementValue == '3';
+  const radioGroupElement = document.getElementById('customValidation') as HTMLInputElement;
+  const radioGroupElementValue = radioGroupElement.value;
+  if (!radioGroupElement) return;
+  const valid = radioGroupElementValue == '3';
 
   if (!valid) {
-    rgElement.setCustomValidity('Feil svar. Må velge Value 3');
+    radioGroupElement.setCustomValidity('Feil svar. Må velge Value 3');
   } else {
-    rgElement.setCustomValidity('');
+    radioGroupElement.setCustomValidity('');
   }
 };
 
@@ -114,7 +114,7 @@ const table = html`
       <tr>
         <td></td>
         <td>
-          <nve-radio-group required size="small" orientation="horizontal">
+          <nve-radio-group required requiredLabel="*Required" size="small" orientation="horizontal">
             <label slot="label">
               <span style="font-family:consolas;">Horizontal, required (small) with <b>slotted</b> label</span>
             </label>
@@ -128,7 +128,7 @@ const table = html`
     </tbody>
   </table>
   <hr />
-  <h3>nve-radio-group validering</h3>
+  <h3>nve-radio-group constraint validering</h3>
   <form onsubmit="event.preventDefault();">
     <nve-radio-group errorMessage="Kan ikke stå tom" required size="small" orientation="horizontal">
       <label slot="label">

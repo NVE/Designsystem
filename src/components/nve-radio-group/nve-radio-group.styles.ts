@@ -11,7 +11,7 @@ export default css`
     --sl-input-spacing-medium: var(--spacing-x-small);
     --sl-input-spacing-large: var(--spacing-x-small);
 
-    --sl-input-required-content: '*obligatorisk';
+    --sl-input-required-content: '';
     --sl-input-required-content-offset: 0.25rem;
     --sl-input-required-content-color: var(--brand-deep);
 
@@ -40,6 +40,10 @@ export default css`
     font: var(--label-small-light);
     margin-bottom: unset;
     text-align: left;
+  }
+
+  :host::part(form-control-label)::after {
+    align-self: flex-end;
   }
 
   :host([orientation='vertical'])::part(form-control),
