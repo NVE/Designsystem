@@ -22,7 +22,7 @@ export default css`
   :host::part(form-control-input) {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-x-small, 0.5rem);
+    gap: var(--spacing-small);
   }
 
   :host::part(form-control-input) {
