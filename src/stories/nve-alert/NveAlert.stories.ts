@@ -193,3 +193,66 @@ export const Notclosable = {
     open: true,
   },
 };
+
+export const Withicon = {
+  args: {
+    variant: 'success',
+    text: 'text',
+    title: 'Med ikon',
+    leftStroke: false,
+    emphasized: false,
+    closable: false,
+    showIcon: true,
+    open: true,
+  },
+};
+
+export const Withouticon = {
+  args: {
+    variant: 'success',
+    title: 'Uten ikon',
+    text: 'text',
+    leftStroke: false,
+    emphasized: false,
+    closable: false,
+    showIcon: false,
+    open: true,
+  },
+};
+
+export const Withtitle = {
+  args: {
+    variant: 'primary',
+    title: 'Kun tittel',
+    leftStroke: false,
+    emphasized: false,
+    closable: false,
+    showIcon: false,
+    open: true,
+  },
+};
+
+export const Withtext = {
+  args: {
+    variant: 'primary',
+    text: 'kun tekst',
+    leftStroke: false,
+    emphasized: false,
+    closable: false,
+    showIcon: false,
+    open: true,
+  },
+};
+
+export const Withbothtitleandtext = {
+  args: {
+    variant: 'primary',
+    title: 'Tittel',
+    text: 'og tekst',
+    leftStroke: false,
+    emphasized: false,
+    closable: false,
+    showIcon: false,
+    open: true,
+  },
+};
