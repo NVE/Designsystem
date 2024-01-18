@@ -144,7 +144,7 @@ export const Leftstroketwo = {
 
 export const Emphasizedone = {
   args: {
-    variant: 'neutral',
+    variant: 'warning',
     text: 'text',
     title: 'Emphasized',
     leftStroke: false,
@@ -157,7 +157,7 @@ export const Emphasizedone = {
 
 export const Emphasizedtwo = {
   args: {
-    variant: 'neutral',
+    variant: 'warning',
     text: 'text',
     title: 'Ikke emphasized',
     leftStroke: false,
