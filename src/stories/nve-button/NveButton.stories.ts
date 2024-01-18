@@ -44,6 +44,7 @@ export const Primary: Story = {
     disabled: false,
     loading: false,
     outline: false,
+    navn: "Nve button"
   },
 };
 
@@ -53,7 +54,8 @@ export const Standard: Story = {
     size: 'medium',
     disabled: false,
     loading: false,
-    outline: false
+    outline: false,
+    navn: "primary"
   },
 };
 
@@ -66,6 +68,7 @@ export const Default: Story = {
     disabled: false,
     loading: false,
     outline: false,
+    navn: "default"
   },
 };
 
@@ -76,6 +79,7 @@ export const Outlined: Story = {
     disabled: false,
     loading: false,
     outline: true,
+    navn: "neutral"
   },
 };
 
@@ -85,6 +89,7 @@ export const Ghost: Story = {
     size: 'medium',
     disabled: false,
     loading: false,
+    navn: "ghost",
     outline: false,
   },
 };
@@ -95,7 +100,8 @@ export const Small: Story = {
     size: 'small',
     disabled: false,
     loading: false,
-    outline: false
+    outline: false,
+    navn: "small"
   },
 };
 
@@ -105,7 +111,8 @@ export const Medium: Story = {
     size: 'medium',
     disabled: false,
     loading: false,
-    outline: false
+    outline: false,
+    navn: "medium"
   },
 };
 
@@ -115,7 +122,8 @@ export const Large: Story = {
     size: 'large',
     disabled: false,
     loading: false,
-    outline: false
+    outline: false,
+    navn: "large"
   },
 };
 
@@ -125,7 +133,8 @@ export const Disabledone: Story = {
     size: 'medium',
     disabled: true,
     loading: false,
-    outline: false
+    outline: false,
+    navn: "disabled"
   },
 };
 
@@ -135,7 +144,8 @@ export const Disabledtwo: Story = {
     size: 'medium',
     disabled: true,
     loading: false,
-    outline: false
+    outline: false,
+    navn: "disabled"
   },
 };
 
@@ -145,7 +155,8 @@ export const Enabledone: Story = {
     size: 'medium',
     disabled: false,
     loading: false,
-    outline: false
+    outline: false,
+    navn: "enabled"
   },
 };
 
@@ -155,7 +166,8 @@ export const Enabledtwo: Story = {
     size: 'medium',
     disabled: false,
     loading: false,
-    outline: false
+    outline: false,
+    navn: "enabled"
   },
 };
 
@@ -165,7 +177,8 @@ export const Loadingone: Story = {
     size: 'medium',
     disabled: true,
     loading: true,
-    outline: false
+    outline: false,
+    navn: "loading"
   },
 };
 
@@ -175,7 +188,8 @@ export const Loadingtwo: Story = {
     size: 'medium',
     disabled: true,
     loading: true,
-    outline: true
+    outline: true,
+    navn: "loading"
   },
 };
 
