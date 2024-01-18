@@ -25,8 +25,10 @@ export const NveInput = (props: NveInputProps) => {
         value=${props.value}
         password-toggle
         size=${props.size}
+        ?required=${props.required}
         type=${props.type}
         help-text=${props.helpText}          
+        requiredLabel=${props.required ? props.requiredLabel : " "}
         ?readonly=${props.readonly}
       >` :
  html`
@@ -35,7 +37,7 @@ export const NveInput = (props: NveInputProps) => {
         label=${props.label}
         value=${props.value}
         ?required=${props.required}
-        requiredLabel=${props.requiredLabel ? props.requiredLabel : "Obligatorisk"} 
+        requiredLabel=${props.required ? props.requiredLabel : " "}
         size=${props.size}
         ?disabled=${props.disabled}
         min=${props.min}

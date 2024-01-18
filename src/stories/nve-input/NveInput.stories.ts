@@ -29,7 +29,6 @@ export const Primary: Story = {
     label: 'Ledetekst',
     value: 'Tekst',
     required: false,
-    requiredLabel: '*Obligatorisk',
     type: 'text',
     tooltip: false,
     icon: false
