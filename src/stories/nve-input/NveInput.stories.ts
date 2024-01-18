@@ -135,7 +135,6 @@ export const Mandatory: Story = {
     value: 'Obligatorisk',
     size: 'medium',
     required: true,
-    requiredLabel: "Obligatorisk"
   },
 };
 
