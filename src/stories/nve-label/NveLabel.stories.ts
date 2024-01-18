@@ -4,7 +4,6 @@ import '../../components/nve-label/nve-label.component';
 import { StoryObj } from '@storybook/web-components';
 import type { NveLabelProps } from './NveLabel';
 import { NveLabel } from './NveLabel';
-import NveLabelDoc from './NveLabelDoc.mdx';
 
 const meta = {
   title: 'Nve/NveLabel',
