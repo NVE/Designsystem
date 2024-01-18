@@ -10,6 +10,7 @@ import toggleBooleanAttrOnListOfNodes from '../../utils/updateInvalidProperty';
  * Denne komponenten burde brukes kun med <nve-checkbox> komponent.
  * Man kan ta i bruk selectedValues som inneholder value-attributet fra alle aktive sjekkbokser inn i sjekkboksgruppen. Den
  * oppdaterer seg automatisk når mån klikker på sjekkbokser.
+ * Valideres både med constraint validation (kun required støttes per i dag), og custom validering. Custom validering prioriteres når man submitter formen.
  * <nve-checkbox> komponenter som er wrappet i <nve-checkbox-group>
  * @slot default - innholder alle nve-checkbox komponenter for global style styring og validering
  * */
@@ -37,6 +38,8 @@ export default class NveCheckboxGroup extends LitElement {
   @query('slot') slot: any;
   /** Bestemmer om feilmelding skal vises når validering feiler  */
   @state() protected showErrorMessage = false;
+  /** State på custom validering. Den trengs for å kunne kjøre både constaraint- og custom validering samtidig. */
+  @state() protected isCustomValidationError = false;
 
   static styles = [styles];
 
@@ -88,11 +91,14 @@ export default class NveCheckboxGroup extends LitElement {
     } else {
       this.resetValidation();
     }
+    this.isCustomValidationError = !isValid;
     this.toggleValidationAttributes(isValid);
   }
 
   private handleSubmit(e: SubmitEvent) {
     e.preventDefault();
+    // custom validering er prioritert. Hvis den feiler constraint validering via checkValidity kjører ikke.
+    if (this.isCustomValidationError) return;
     this.checkValidity();
   }
 
