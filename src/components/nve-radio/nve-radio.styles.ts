@@ -12,6 +12,16 @@ export default css`
     background-color: var(--neutrals-background-primary);
   }
 
+  :host([data-invalid])::part(control) {
+    color: var(--feedback-background-emphasized-error);
+    border-color: var(--feedback-background-emphasized-error);
+  }
+
+  /* overstyr opacity på disabled */
+  .radio--disabled {
+    opacity: 0.38;
+  }
+
   /* overstyr opacity på disabled */
   .radio--disabled {
     opacity: 0.38;
