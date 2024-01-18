@@ -144,11 +144,11 @@ export const Invalid: Story = {
     value: '41',
     size: 'medium',
     type: 'number',
-    min: '42',
-    max: '43',
+    min: '1',
+    max: '10',
     required: true,
-    requiredLabel: 'Ugyldig verdi',
-    helpText: "Skriv inn tall mellom 42 og 43"
+    requiredLabel: 'Mandatory field',
+    helpText: "Enter number between 1 and 10"
   },
 };
 
