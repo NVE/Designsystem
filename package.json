@@ -1,6 +1,6 @@
 {
   "name": "nve-designsystem",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "main": "./nve-designsystem.umd.cjs",
   "module": "./nve-designsystem.js",
   "type": "module",
