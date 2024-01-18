@@ -157,11 +157,11 @@ export const Emphasizedone = {
 
 export const Emphasizedtwo = {
   args: {
-    variant: 'success',
+    variant: 'neutral',
     text: 'text',
-    title: 'Emphasized',
+    title: 'Ikke emphasized',
     leftStroke: false,
-    emphasized: true,
+    emphasized: false,
     closable: true,
     showIcon: true,
     open: true,
