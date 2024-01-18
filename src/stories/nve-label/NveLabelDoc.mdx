@@ -1,0 +1,59 @@
+import './../css/stories.css';
+
+import { Canvas, Story, Meta, Title, Subtitle, Description, Source, Primary, Controls } from '@storybook/blocks';
+
+import * as NveLabelStories from './NveLabel.stories';
+
+<Meta isTemplate />
+
+<Title />
+<Description />
+<br />
+<br />
+
+## Størrelser
+
+Bruk property "size" for å endre størrelse på label
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveLabelStories.Xsmall} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveLabelStories.Small} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveLabelStories.Medium} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveLabelStories.Large} />
+  </span>
+</div>
+
+## Light versjon
+
+Bruk property "light" for å endre utseende
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveLabelStories.Light} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveLabelStories.Standard} />
+  </span>
+</div>
+
+## Tooltip
+
+Bruk property "tooltip" for å legge til tooltip
+
+<div style={{ width: '20rem' }}>
+  <Canvas of={NveLabelStories.Tooltip} />
+</div>
+
+## Parametere/Props
+
+Her kan du se hvilke parametere (props) komponenten kan ta imot og se endringer i kode
+
+<Primary />
+<Controls />

@@ -4,7 +4,7 @@ export interface NveLabelProps {
   value: string,
   size: 'x-small' | 'small' | 'medium' | 'large';
   light: boolean,
-  tooltip: string,
+  tooltip: string
 }
 
 export const NveLabel = (props: NveLabelProps) => {
@@ -16,6 +16,7 @@ export const NveLabel = (props: NveLabelProps) => {
         ?light=${props.light}
         tooltip=${props.tooltip}
       >
+      ${props.tooltip ? html`<div slot="tooltip">Hjelpetekst i <strong>HTML</strong></div>` : ''}
       </nve-label>
     `;
 };

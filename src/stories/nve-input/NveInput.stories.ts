@@ -29,7 +29,6 @@ export const Primary: Story = {
     label: 'Ledetekst',
     value: 'Tekst',
     required: false,
-    requiredLabel: '*Obligatorisk',
     type: 'text',
     tooltip: false,
     icon: false
@@ -40,7 +39,7 @@ export const Small: Story = {
   args: {
     filled: false,
     label: 'Ledetekst',
-    value: 'Small input text',
+    value: 'Small input-felt',
     size: 'small',
   },
 };
@@ -49,7 +48,7 @@ export const Medium: Story = {
   args: {
     filled: false,
     label: 'Ledetekst',
-    value: 'Medium input text',
+    value: 'Medium input-felt',
     size: 'medium',
   },
 };
@@ -58,7 +57,7 @@ export const Large: Story = {
   args: {
     filled: false,
     label: 'Ledetekst',
-    value: 'Large input text',
+    value: 'Large input-felt',
     size: 'large',
   },
 };
@@ -91,6 +90,24 @@ export const Filledthree: Story = {
   },
 };
 
+export const Locked: Story = {
+  args: {
+    label: 'Ledetekst',
+    value: 'Standard',
+    size: 'large',
+  },
+};
+
+export const Unlocked: Story = {
+  args: {
+    label: 'Ledetekst',
+    value: 'Skrivebeskyttet',
+    size: 'large',
+    readonly: true
+  },
+};
+
+
 export const Enabled: Story = {
   args: {
     filled: false,
@@ -118,7 +135,6 @@ export const Mandatory: Story = {
     value: 'Obligatorisk',
     size: 'medium',
     required: true,
-    requiredLabel: "Obligatorisk"
   },
 };
 
@@ -128,10 +144,11 @@ export const Invalid: Story = {
     value: '41',
     size: 'medium',
     type: 'number',
-    min: '42',
-    max: '43',
-    requiredLabel: 'Ugyldig verdi'
-    
+    min: '1',
+    max: '10',
+    required: true,
+    requiredLabel: 'Mandatory field',
+    helpText: "Enter number between 1 and 10"
   },
 };
 

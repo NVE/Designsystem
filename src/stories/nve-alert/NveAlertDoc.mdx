@@ -1,17 +1,6 @@
 import './nve-alert.css';
 
-import {
-  Canvas,
-  Story,
-  Meta,
-  Title,
-  Subtitle,
-  Description,
-  Source,
-  Primary,
-  Controls,
-  Stories,
-} from '@storybook/blocks';
+import { Canvas, Story, Meta, Title, Subtitle, Description, Source, Primary, Controls } from '@storybook/blocks';
 
 import * as NveAlertStories from './NveAlert.stories';
 
@@ -23,6 +12,7 @@ import * as NveAlertStories from './NveAlert.stories';
 <br />
 ## Varianter
 
+Bruk property "variant" for å velge variant
 {' '}
 
 {' '}
@@ -51,6 +41,7 @@ import * as NveAlertStories from './NveAlert.stories';
 
 ## Left stroke
 
+Bruk property "leftstroke" for å legge til stroke på venstre side
 {' '}
 
 {' '}
@@ -66,6 +57,8 @@ import * as NveAlertStories from './NveAlert.stories';
 
 ## Emphasized
 
+Bruk property "emphasized" for å få ekstra synlighet
+
 <div class="container">
   <span class="elem">
     <Canvas of={NveAlertStories.Emphasizedone} />
@@ -77,12 +70,43 @@ import * as NveAlertStories from './NveAlert.stories';
 
 ## Closable
 
+Bruk property "closeable" for å legge til et kryss for å fjerne knappen
+
 <div class="container">
   <span class="elem">
     <Canvas of={NveAlertStories.Closable} />
   </span>
   <span class="elem">
     <Canvas of={NveAlertStories.Notclosable} />
+  </span>
+</div>
+
+## Ikoner
+
+Legg til ikon ved å sette inn en slot med \<nve-icon\> (se kode nedenfor)
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveAlertStories.Withicon} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveAlertStories.Withouticon} />
+  </span>
+</div>
+
+## Tittel og tekst
+
+Bruk properties "title" og "tekst" for å legge til tittel og tekst
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveAlertStories.Withtitle} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveAlertStories.Withbothtitleandtext} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveAlertStories.Withtext} />
   </span>
 </div>
 
@@ -94,5 +118,3 @@ Her kan du se hvilke parametere (props) komponenten kan ta imot og se endringer 
   <Primary />
 </div>
 <Controls />
-
-## <Stories />

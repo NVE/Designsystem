@@ -1,17 +1,6 @@
 import './../css/stories.css';
 
-import {
-  Canvas,
-  Story,
-  Meta,
-  Title,
-  Subtitle,
-  Description,
-  Source,
-  Primary,
-  Controls,
-  Stories,
-} from '@storybook/blocks';
+import { Canvas, Story, Meta, Title, Subtitle, Description, Source, Primary, Controls } from '@storybook/blocks';
 
 import * as NveInputStories from './NveInput.stories';
 
@@ -23,6 +12,8 @@ import * as NveInputStories from './NveInput.stories';
 <br />
 
 ## Størrelser
+
+Bruk property "size" for å endre størrelse på input-feltet
 
 <div class="container">
   <span class="elem">
@@ -38,6 +29,8 @@ import * as NveInputStories from './NveInput.stories';
 
 ## Filled
 
+Bruk property "filled" for å fylle input-felt med farge
+
 <div class="container">
   <span class="elem">
     <Canvas of={NveInputStories.Filledone} />
@@ -50,7 +43,22 @@ import * as NveInputStories from './NveInput.stories';
   </span>
 </div>
 
+## Skrivebeskyttet
+
+Bruk property "readonly" for å gjøre feltet Skrivebeskyttet
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveInputStories.Unlocked} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveInputStories.Locked} />
+  </span>
+</div>
+
 ## Aktiv/Deaktivert
+
+Bruk property "disabled" for å disable input-feltet
 
 <div class="container">
   <span class="elem">
@@ -63,6 +71,9 @@ import * as NveInputStories from './NveInput.stories';
 
 ## Obligatorisk/valideringsfeil
 
+Bruk properties "required" og "required-label" og velg tillatte verdier f.eks med properties "min" og "max".
+Se flere eksempler <a href='https://shoelace.style/getting-started/form-controls#constraint-validation'>her</a>. Legg inn hjelpetekst med property "help-text"
+
 <div class="container">
   <span class="elem">
     <Canvas of={NveInputStories.Mandatory} />
@@ -73,6 +84,8 @@ import * as NveInputStories from './NveInput.stories';
 </div>
 
 ## Dato
+
+Sett property type="date" eller type="datetime-local" for å vise datofelt med eller uten klokkeslett
 
 <div class="container">
   <span class="elem">
@@ -85,6 +98,8 @@ import * as NveInputStories from './NveInput.stories';
 
 ## Ikon og tooltip
 
+Legg inn slot for å legge til ikoner og tooltip (se kode nedenfor)
+
 <div class="container">
   <span class="elem">
     <Canvas of={NveInputStories.Icon} />
@@ -95,6 +110,8 @@ import * as NveInputStories from './NveInput.stories';
 </div>
 
 ## Passord
+
+Sett property type="password" for å skjule inntasting
 
 <div class="container">
   <span class="elem">
@@ -110,5 +127,3 @@ Her kan du se hvilke parametere (props) komponenten kan ta imot og se endringer 
   <Primary />
 </div>
 <Controls />
-
-## <Stories />

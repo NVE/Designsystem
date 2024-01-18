@@ -44,6 +44,7 @@ export const Primary: Story = {
     disabled: false,
     loading: false,
     outline: false,
+    navn: "Nve button"
   },
 };
 
@@ -54,8 +55,11 @@ export const Standard: Story = {
     disabled: false,
     loading: false,
     outline: false,
+    navn: "primary"
   },
 };
+
+
 
 export const Default: Story = {
   args: {
@@ -64,6 +68,7 @@ export const Default: Story = {
     disabled: false,
     loading: false,
     outline: false,
+    navn: "default"
   },
 };
 
@@ -74,6 +79,7 @@ export const Outlined: Story = {
     disabled: false,
     loading: false,
     outline: true,
+    navn: "neutral"
   },
 };
 
@@ -83,6 +89,7 @@ export const Ghost: Story = {
     size: 'medium',
     disabled: false,
     loading: false,
+    navn: "ghost",
     outline: false,
   },
 };
@@ -94,6 +101,7 @@ export const Small: Story = {
     disabled: false,
     loading: false,
     outline: false,
+    navn: "small"
   },
 };
 
@@ -104,6 +112,7 @@ export const Medium: Story = {
     disabled: false,
     loading: false,
     outline: false,
+    navn: "medium"
   },
 };
 
@@ -114,6 +123,7 @@ export const Large: Story = {
     disabled: false,
     loading: false,
     outline: false,
+    navn: "large"
   },
 };
 
@@ -124,6 +134,7 @@ export const Disabledone: Story = {
     disabled: true,
     loading: false,
     outline: false,
+    navn: "disabled"
   },
 };
 
@@ -134,6 +145,29 @@ export const Disabledtwo: Story = {
     disabled: true,
     loading: false,
     outline: false,
+    navn: "disabled"
+  },
+};
+
+export const Enabledone: Story = {
+  args: {
+    variant: 'primary',
+    size: 'medium',
+    disabled: false,
+    loading: false,
+    outline: false,
+    navn: "enabled"
+  },
+};
+
+export const Enabledtwo: Story = {
+  args: {
+    variant: 'neutral',
+    size: 'medium',
+    disabled: false,
+    loading: false,
+    outline: false,
+    navn: "enabled"
   },
 };
 
@@ -144,6 +178,7 @@ export const Loadingone: Story = {
     disabled: true,
     loading: true,
     outline: false,
+    navn: "loading"
   },
 };
 
@@ -154,5 +189,7 @@ export const Loadingtwo: Story = {
     disabled: true,
     loading: true,
     outline: true,
+    navn: "loading"
   },
 };
+

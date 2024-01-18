@@ -4,6 +4,7 @@ import '../../components/nve-label/nve-label.component';
 import { StoryObj } from '@storybook/web-components';
 import type { NveLabelProps } from './NveLabel';
 import { NveLabel } from './NveLabel';
+import NveLabelDoc from './NveLabelDoc.mdx';
 
 const meta = {
   title: 'Nve/NveLabel',
@@ -17,6 +18,7 @@ const meta = {
   },
   parameters: {
     docs: {
+      page: NveLabelDoc,
       description: {
         component:
           '<h2><nve-label> | NveLabel</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-label.md">API-dokumentasjon</a>',
@@ -30,46 +32,68 @@ type Story = StoryObj<NveLabelProps>;
 
 export const Primary: Story = {
   args: {
-    value: 'Ledetekst',
-    size: 'small',
+    value: 'En helt vanlig ledetekst',
+    size: 'medium',
     light: false,
     tooltip: '',
   },
 };
 
-export const One: Story = {
+export const Xsmall: Story = {
   
   args: {
-    value: 'Ledetekst',
+    value: 'XS',
     size: 'small',
-    light: true,
-    tooltip: '',
   },
 };
 
-export const Two: Story = {
+export const Small: Story = {
+  
   args: {
-    value: 'Svev over meg',
+    value: 'Small',
     size: 'small',
-    light: true,
-    tooltip: 'verktøyhint',
   },
 };
 
-export const Three: Story = {
+export const Medium: Story = {
+  
+  args: {
+    value: 'Medium',
+    size: 'medium',
+  },
+};
+
+export const Large: Story = {
+  
+  args: {
+    value: 'Large',
+    size: 'large',
+  },
+};
+
+export const Light: Story = {
+  
+  args: {
+    value: 'Light',
+    size: 'large',
+    light: true
+  },
+};
+export const Tooltip: Story = {
+  
   args: {
     value: 'Svev over meg',
     size: 'medium',
-    light: false,
-    tooltip: 'hint',
+    tooltip: 'Tooltip text'
   },
 };
 
-export const Four: Story = {
+export const Standard: Story = {
+  
   args: {
-    value: 'Hover me',
-    size: 'small',
-    light: false,
-    tooltip: 'verktøyhint',
+    value: 'Standard',
+    size: 'large',
   },
 };
+
+

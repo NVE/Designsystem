@@ -6,6 +6,7 @@ export interface NveButtonProps {
   disabled: boolean;
   loading: boolean;
   outline: boolean;
+  navn: string;
 }
 
 export const NveButton = ({
@@ -14,7 +15,9 @@ export const NveButton = ({
   disabled,
   loading,
   outline,
+  navn,
 }: {
+  navn: string
   variant: string;
   size: string;
   disabled: boolean;
@@ -23,7 +26,7 @@ export const NveButton = ({
 }) => {
   return html`
     <nve-button variant=${variant} ?loading=${loading} size=${size} ?disabled=${disabled} ?outline=${outline}>
-      Button
+      ${navn}
     </nve-button>
   `;
 };

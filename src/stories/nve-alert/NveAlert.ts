@@ -47,10 +47,10 @@ export const NveAlert = ({
       variant=${variant}
       text=${text}
       title=${title}
-      .leftStroke=${leftStroke}
-      .emphasized=${emphasized}
-      .closable=${closable}
-      .open=${open}
+      ?leftStroke=${leftStroke}
+      ?emphasized=${emphasized}
+      ?closable=${closable}
+      ?open=${open}
     >
     ${showIcon ? html`<nve-icon slot="icon" name=${iconName}></nve-icon>`: null}
     </nve-alert>

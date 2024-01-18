@@ -5,6 +5,7 @@ export interface NveCheckboxProps {
   checked: boolean;
   indeterminate: boolean;
   invalid: boolean;
+  value: string;
 }
 
 export const NveCheckbox = (props: NveCheckboxProps) => {
@@ -14,7 +15,7 @@ export const NveCheckbox = (props: NveCheckboxProps) => {
       ?checked=${props.checked}
       ?indeterminate=${props.indeterminate}
       ?invalid=${props.invalid}
-      >Value</nve-checkbox
+      >${props.value}</nve-checkbox
     >
   `;
 };

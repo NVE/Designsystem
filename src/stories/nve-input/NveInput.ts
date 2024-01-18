@@ -2,7 +2,8 @@ import { html } from 'lit';
 
 export interface NveInputProps {
   filled: boolean,
-  label: string;
+  label: string,
+  readonly: boolean,
   value: string,
   required: boolean,
   requiredLabel: string,
@@ -12,7 +13,8 @@ export interface NveInputProps {
   min: string,
   max: string,
   tooltip: boolean,
-  icon: boolean
+  icon: boolean,
+  helpText: string
 
 }
 
@@ -23,7 +25,11 @@ export const NveInput = (props: NveInputProps) => {
         value=${props.value}
         password-toggle
         size=${props.size}
-        type=${props.type}          
+        ?required=${props.required}
+        type=${props.type}
+        help-text=${props.helpText}          
+        requiredLabel=${props.required ? props.requiredLabel : " "}
+        ?readonly=${props.readonly}
       >` :
  html`
       <nve-input
@@ -31,13 +37,14 @@ export const NveInput = (props: NveInputProps) => {
         label=${props.label}
         value=${props.value}
         ?required=${props.required}
-        requiredLabel=${props.requiredLabel}
+        requiredLabel=${props.required ? props.requiredLabel : " "}
         size=${props.size}
         ?disabled=${props.disabled}
         min=${props.min}
         max=${props.max}
         type=${props.type}  
-        
+        help-text=${props.helpText}
+        ?readonly=${props.readonly}
       >
       
       ${props.tooltip ? html`<nve-label value="Svev over ikonet" slot="label" tooltip="Hjelpetekst"></nve-label>` : ''}
