@@ -130,8 +130,9 @@ export const Invalid: Story = {
     type: 'number',
     min: '42',
     max: '43',
-    requiredLabel: 'Ugyldig verdi'
-    
+    required: true,
+    requiredLabel: 'Ugyldig verdi',
+    helpText: "Skriv inn tall mellom 42 og 43"
   },
 };
 
