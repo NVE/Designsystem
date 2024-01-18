@@ -1,12 +1,8 @@
 import { html } from 'lit';
 
-/**
- * Metoden for å teste custom validering
- * @param e event
- * @returns
- */
-const validateRadioGroupDemo = (e: any) => {
-  e.preventDefault();
+/**  Metoden for å teste custom validering */
+const validateRadioGroupDemo = (event: any) => {
+  event.preventDefault();
   const radioGroupElement = document.getElementById('customValidation') as HTMLInputElement;
   const radioGroupElementValue = radioGroupElement.value;
   if (!radioGroupElement) return;
