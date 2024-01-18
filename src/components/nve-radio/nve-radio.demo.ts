@@ -5,7 +5,7 @@ import { html } from 'lit';
  * @param e event
  * @returns
  */
-const validateRGdDemo = (e: any) => {
+const validateRadioGroupDemo = (e: any) => {
   e.preventDefault();
   const radioGroupElement = document.getElementById('customValidation') as HTMLInputElement;
   const radioGroupElementValue = radioGroupElement.value;
@@ -142,8 +142,8 @@ const table = html`
     <nve-button style="margin-top: 10px" variant="primary" size="small" type="submit">Submit</nve-button>
   </form>
   <h3>nve-radio-group custom validering</h3>
-  <form @submit="${(e: any) => validateRGdDemo(e)}">
-    <nve-radio-group id="customValidation" size="small" orientation="horizontal">
+  <form @submit="${(e: any) => validateRadioGroupDemo(e)}">
+    <nve-radio-group required id="customValidation" size="small" orientation="horizontal">
       <label slot="label">
         <span>Custom validering</span>
       </label>
