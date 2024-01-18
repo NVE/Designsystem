@@ -73,3 +73,21 @@ export const Large: Story = {
     tooltip: '',
   },
 };
+
+export const Three: Story = {
+  args: {
+    value: 'Svev over meg',
+    size: 'medium',
+    light: false,
+    tooltip: 'hint',
+  },
+};
+
+export const Four: Story = {
+  args: {
+    value: 'Hover me',
+    size: 'small',
+    light: false,
+    tooltip: 'verktøyhint',
+  },
+};

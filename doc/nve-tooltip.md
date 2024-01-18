@@ -1,6 +1,9 @@
 # nve-tooltip
 
-En sl-tooltip i NVE-uniform. TODO: Denne har ingen NVE-styling ennå.
+En sl-tooltip i NVE-uniform.
+Mer info: https://shoelace.style/components/tooltip
+
+TODO: Denne har ingen NVE-styling ennå.
 
 ## Properties
 

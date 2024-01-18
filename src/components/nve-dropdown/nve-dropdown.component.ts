@@ -2,7 +2,7 @@ import { SlDropdown, SlSelectEvent } from '@shoelace-style/shoelace';
 import { customElement } from 'lit/decorators.js';
 import { getTabbableBoundary } from '../../utils/tabbable';
 import NveButton from '../nve-button/nve-button.component';
-import { NveMenu } from '../nve-menu/nve-menu.component';
+import NveMenu from '../nve-menu/nve-menu.component';
 import styles from './nve-dropdown.styles';
 /**
  * En Shoelace-dropdown i NVE-forkledning.

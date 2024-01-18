@@ -2,14 +2,22 @@ import { SlAlert } from '@shoelace-style/shoelace';
 import styles from './nve-alert.styles';
 import { customElement, property } from 'lit/decorators.js';
 
+/**
+ * En Shoelace-alert med Nve styling
+ * Se https://shoelace.style/components/alert
+ */
 @customElement('nve-alert')
 export default class NveAlert extends SlAlert {
   constructor() {
     super();
   }
+  /** Tykk tekst, vises helt til venstre */
   @property({ reflect: true }) title: string = '';
+  /** Tynnere beskrivelse tekst */
   @property({ reflect: true }) text: string = '';
+  /** Bestemmer sterkere bakgrunnsfarge */
   @property({ type: Boolean, reflect: true }) emphasized: boolean = false;
+  /** Ramme linje til venstre  */
   @property({ type: Boolean, reflect: true }) leftStroke: boolean = false;
 
   static styles = [
@@ -18,6 +26,7 @@ export default class NveAlert extends SlAlert {
   ];
 
   updated(changedProperties: any) {
+    super.updated(changedProperties);
     if (changedProperties.has('title')) {
       this.style.setProperty('--nve-alert-title', `"${this.title}"`);
     }
