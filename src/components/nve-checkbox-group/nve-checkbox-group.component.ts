@@ -97,8 +97,6 @@ export default class NveCheckboxGroup extends LitElement {
 
   private handleSubmit(e: SubmitEvent) {
     e.preventDefault();
-    // custom validering er prioritert. Hvis den feiler constraint validering via checkValidity kjører ikke.
-    if (this.isCustomValidationError) return;
     this.checkValidity();
   }
 
@@ -125,6 +123,8 @@ export default class NveCheckboxGroup extends LitElement {
   /** Sjekker validity basert på constraint validation. Man kan legge til flere properties. */
   private checkValidity() {
     if (!this.required) return;
+    // custom validering er prioritert. Hvis den feiler constraint validering via checkValidity kjører ikke.
+    if (this.isCustomValidationError) return;
     let isValid = true;
     if (this.required) {
       isValid = this.checkIfRequiredValid();
