@@ -4,6 +4,7 @@ import '../../components/nve-label/nve-label.component';
 import { StoryObj } from '@storybook/web-components';
 import type { NveLabelProps } from './NveLabel';
 import { NveLabel } from './NveLabel';
+import NveLabelDoc from './NveLabelDoc.mdx';
 
 const meta = {
   title: 'Nve/NveLabel',
@@ -30,46 +31,45 @@ type Story = StoryObj<NveLabelProps>;
 
 export const Primary: Story = {
   args: {
-    value: 'Ledetekst',
-    size: 'small',
+    value: 'En helt vanlig ledetekst',
+    size: 'medium',
     light: false,
     tooltip: '',
   },
 };
 
-export const One: Story = {
+export const Xsmall: Story = {
   
   args: {
     value: 'Ledetekst',
     size: 'small',
-    light: true,
     tooltip: '',
   },
 };
 
-export const Two: Story = {
+export const Small: Story = {
+  
   args: {
-    value: 'Svev over meg',
+    value: 'Ledetekst',
     size: 'small',
-    light: true,
-    tooltip: 'verktøyhint',
+    tooltip: '',
   },
 };
 
-export const Three: Story = {
+export const Medium: Story = {
+  
   args: {
-    value: 'Svev over meg',
-    size: 'medium',
-    light: false,
-    tooltip: 'hint',
+    value: 'Ledetekst',
+    size: 'small',
+    tooltip: '',
   },
 };
 
-export const Four: Story = {
+export const Large: Story = {
+  
   args: {
-    value: 'Hover me',
+    value: 'Ledetekst',
     size: 'small',
-    light: false,
-    tooltip: 'verktøyhint',
+    tooltip: '',
   },
 };

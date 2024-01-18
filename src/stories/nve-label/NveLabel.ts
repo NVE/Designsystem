@@ -16,6 +16,7 @@ export const NveLabel = (props: NveLabelProps) => {
         ?light=${props.light}
         tooltip=${props.tooltip}
       >
+      ${props.tooltip ? html`<div slot="tooltip">Hjelpetekst i <strong>HTML</strong></div>` : ''}
       </nve-label>
     `;
 };
