@@ -4,7 +4,7 @@ export interface NveLabelProps {
   value: string,
   size: 'x-small' | 'small' | 'medium' | 'large';
   light: boolean,
-  tooltip: string,
+  tooltip: string
 }
 
 export const NveLabel = (props: NveLabelProps) => {
