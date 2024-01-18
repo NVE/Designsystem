@@ -12,6 +12,7 @@ import * as NveButtonStories from './NveButton.stories';
 <br />
 ## Varianter
 
+Bruk property "variant" for å velge variant på knappen
 {' '}
 
 {' '}
@@ -33,6 +34,8 @@ import * as NveButtonStories from './NveButton.stories';
 
 ## Størrelser
 
+Bruk property "size" for å endre størrelse på knappen
+
 <div class="container">
   <span class="elem">
     <Canvas of={NveButtonStories.Small} />
@@ -47,16 +50,26 @@ import * as NveButtonStories from './NveButton.stories';
 
 ## Disabled
 
+Bruk property "disabled" for å disable knappen
+
 <div class="container">
   <span class="elem">
     <Canvas of={NveButtonStories.Disabledone} />
   </span>
   <span class="elem">
+    <Canvas of={NveButtonStories.Enabledone} />
+  </span>
+  <span class="elem">
     <Canvas of={NveButtonStories.Disabledtwo} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveButtonStories.Enabledtwo} />
   </span>
 </div>
 
 ## Loading
+
+Bruk property "loading" for å legge til loading-ikon
 
 <div class="container">
   <span class="elem">

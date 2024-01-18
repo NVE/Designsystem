@@ -139,6 +139,26 @@ export const Disabledtwo: Story = {
   },
 };
 
+export const Enabledone: Story = {
+  args: {
+    variant: 'primary',
+    size: 'medium',
+    disabled: false,
+    loading: false,
+    outline: false
+  },
+};
+
+export const Enabledtwo: Story = {
+  args: {
+    variant: 'neutral',
+    size: 'medium',
+    disabled: false,
+    loading: false,
+    outline: false
+  },
+};
+
 export const Loadingone: Story = {
   args: {
     variant: 'default',
