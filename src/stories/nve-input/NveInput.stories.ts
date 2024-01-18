@@ -40,7 +40,7 @@ export const Small: Story = {
   args: {
     filled: false,
     label: 'Ledetekst',
-    value: 'Small input text',
+    value: 'Small input-felt',
     size: 'small',
   },
 };
@@ -49,7 +49,7 @@ export const Medium: Story = {
   args: {
     filled: false,
     label: 'Ledetekst',
-    value: 'Medium input text',
+    value: 'Medium input-felt',
     size: 'medium',
   },
 };
@@ -58,7 +58,7 @@ export const Large: Story = {
   args: {
     filled: false,
     label: 'Ledetekst',
-    value: 'Large input text',
+    value: 'Large input-felt',
     size: 'large',
   },
 };
@@ -90,6 +90,24 @@ export const Filledthree: Story = {
     size: 'large',
   },
 };
+
+export const Locked: Story = {
+  args: {
+    label: 'Ledetekst',
+    value: 'Standard',
+    size: 'large',
+  },
+};
+
+export const Unlocked: Story = {
+  args: {
+    label: 'Ledetekst',
+    value: 'Skrivebeskyttet',
+    size: 'large',
+    readonly: true
+  },
+};
+
 
 export const Enabled: Story = {
   args: {

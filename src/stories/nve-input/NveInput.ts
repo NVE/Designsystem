@@ -2,7 +2,8 @@ import { html } from 'lit';
 
 export interface NveInputProps {
   filled: boolean,
-  label: string;
+  label: string,
+  readonly: boolean,
   value: string,
   required: boolean,
   requiredLabel: string,
@@ -26,6 +27,7 @@ export const NveInput = (props: NveInputProps) => {
         size=${props.size}
         type=${props.type}
         help-text=${props.helpText}          
+        ?readonly=${props.readonly}
       >` :
  html`
       <nve-input
@@ -40,6 +42,7 @@ export const NveInput = (props: NveInputProps) => {
         max=${props.max}
         type=${props.type}  
         help-text=${props.helpText}
+        ?readonly=${props.readonly}
       >
       
       ${props.tooltip ? html`<nve-label value="Svev over ikonet" slot="label" tooltip="Hjelpetekst"></nve-label>` : ''}
