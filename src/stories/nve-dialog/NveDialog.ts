@@ -4,6 +4,7 @@ export interface NveDialogProps {
 
   label: string;
   icon: string,
+  variant: string
 
 }
 
