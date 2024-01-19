@@ -26,14 +26,14 @@ export default css`
     border-color: var(--neutrals-foreground-primary);
   }
 
-  :host([invalid])::part(control),
-  :host([disabled][invalid]:hover)::part(control) {
+  :host([data-invalid])::part(control),
+  :host([disabled][data-user-invalid]:hover)::part(control) {
     border-color: var(--feedback-background-emphasized-error);
   }
-  :host([invalid])::part(control control--checked),
-  :host([invalid])::part(control control--indeterminate),
-  :host([disabled][invalid]:hover)::part(control control--checked),
-  :host([disabled][invalid]:hover)::part(control control--indeterminate) {
+  :host([data-invalid])::part(control control--checked),
+  :host([data-user-invalid])::part(control control--indeterminate),
+  :host([disabled][data-user-invalid]:hover)::part(control control--checked),
+  :host([disabled][data-user-invalid]:hover)::part(control control--indeterminate) {
     background: var(--feedback-background-emphasized-error);
   }
 

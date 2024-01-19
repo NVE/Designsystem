@@ -37,18 +37,6 @@ export default html`
           <nve-checkbox disabled indeterminate>Value</nve-checkbox>
         </td>
       </tr>
-      <tr>
-        <td>Error</td>
-        <td>
-          <nve-checkbox invalid>Value</nve-checkbox>
-        </td>
-        <td>
-          <nve-checkbox invalid checked>Value</nve-checkbox>
-        </td>
-        <td>
-          <nve-checkbox invalid indeterminate>Value</nve-checkbox>
-        </td>
-      </tr>
     </tbody>
   </table>
 `;

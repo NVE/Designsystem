@@ -1,16 +1,11 @@
-// Oppdatere bolske properites på liste av nodes av samme type
+/** Oppdatere bolske properites på en list av samme type nodes f.eks i sjekkboksen setter man disabled i sjekkboksgruppen
+ * denne funksjonen toggler disabled på alle sjekkbokser som er barn til sjekkboksgruppen */
 export default function toggleBooleanAttrOnListOfNodes<T extends Element>(
-  componentsToUpdate: Array<T>,
-  property: boolean,
-  propertyString: string
+  componentsToUpdate: T[],
+  isProperty: boolean,
+  propertyName: string
 ) {
-  if (property) {
-    componentsToUpdate.forEach((ch) => {
-      ch.toggleAttribute(propertyString, true);
-    });
-  } else {
-    componentsToUpdate.forEach((ch) => {
-      ch.toggleAttribute(propertyString, false);
-    });
-  }
+  componentsToUpdate.forEach((ch) => {
+    ch.toggleAttribute(propertyName, isProperty);
+  });
 }
