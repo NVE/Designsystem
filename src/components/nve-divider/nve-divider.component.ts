@@ -7,7 +7,7 @@ import { customElement } from 'lit/decorators.js';
  * Se https://shoelace.style/components/divider
  */
 @customElement('nve-divider')
-export class NveDivider extends SlDivider {
+export default class NveDivider extends SlDivider {
   constructor() {
     super();
   }
@@ -15,12 +15,10 @@ export class NveDivider extends SlDivider {
     SlDivider.styles,
     css`
       :host {
-        --color: var(--neutrals-border-subtle);
-        --width:  var(--border-width-strong, 2px);
-        --spacing:  var(--spacing-xx-small, 0.25rem);
-
+        --color: var(--neutrals-border-default);
+        --width: var(--border-width-default, 1px);
+        --spacing: var(--spacing-xx-small, 0.25rem);
       }
-      
     `,
   ];
 }
