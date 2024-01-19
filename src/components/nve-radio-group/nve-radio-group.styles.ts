@@ -42,12 +42,17 @@ export default css`
     text-align: left;
   }
 
-  :host::part(form-control-label)::after {
+  :host([required]) .form-control--has-label .form-control__label::after,
+  :host([requiredLabel])::part(form-control-label)::after {
     align-self: flex-end;
+    font: var(--label-x-small-light);
+    color: var(--feedback-background-emphasized-error);
   }
 
   :host([orientation='vertical'])::part(form-control),
   :host([vertical])::part(form-control) {
+    font: var(--label-x-small-light);
+    color: var(--feedback-background-emphasized-error);
     align-items: flex-start;
   }
 

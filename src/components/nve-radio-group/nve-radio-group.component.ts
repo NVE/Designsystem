@@ -84,7 +84,8 @@ export default class NveRadioGroup extends SlRadioGroup {
   updated(changedProperties: PropertyValues<this>): void {
     super.updated(changedProperties);
     if (changedProperties.has('requiredLabel')) {
-      this.style.setProperty('--sl-input-required-content', `${this.requiredLabel}`);
+      //`"${this.requiredLabel}"` er en rar syntaksen men hvis vi ikke bruker fnytter html skjønner ikke at requiredLabel er en verdi
+      this.style.setProperty('--sl-input-required-content', `"${this.requiredLabel}"`);
     }
     const hasDataUserInvalidAttr = this.hasAttribute('data-user-invalid');
     if (hasDataUserInvalidAttr && !this.alreadyInvalid) {
@@ -128,7 +129,7 @@ export default class NveRadioGroup extends SlRadioGroup {
       this.errorMessageCopy = this.validationMessage;
     }
     this.setCustomValidity(this.errorMessageCopy);
-    this.style.setProperty('--radio-group-error-message', `${this.errorMessageCopy}`);
+    this.style.setProperty('--radio-group-error-message', `"${this.errorMessageCopy}"`);
   }
 
   private resetValidation() {

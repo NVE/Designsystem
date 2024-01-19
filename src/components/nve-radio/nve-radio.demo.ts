@@ -126,10 +126,16 @@ const table = html`
   <hr />
   <h3>nve-radio-group constraint validering</h3>
   <form onsubmit="event.preventDefault();">
-    <nve-radio-group errorMessage="Kan ikke stå tom" required size="small" orientation="horizontal">
-      <label slot="label">
+    <nve-radio-group
+      style="width:fit-content"
+      errorMessage="Kan ikke stå tom"
+      required
+      size="small"
+      orientation="horizontal"
+    >
+      <nve-label slot="label">
         <span>Validering</span>
-      </label>
+      </nve-label>
       <nve-radio value="1">Value 1</nve-radio>
       <nve-radio value="2">Value 2</nve-radio>
       <nve-radio value="3">Value 3</nve-radio>
@@ -139,10 +145,10 @@ const table = html`
   </form>
   <h3>nve-radio-group custom validering</h3>
   <form @submit="${(e: any) => validateRadioGroupDemo(e)}">
-    <nve-radio-group required id="customValidation" size="small" orientation="horizontal">
-      <label slot="label">
+    <nve-radio-group style="width:fit-content" required id="customValidation" size="small" orientation="horizontal">
+      <nve-label slot="label">
         <span>Custom validering</span>
-      </label>
+      </nve-label>
       <nve-radio value="1">Value 1</nve-radio>
       <nve-radio value="2">Value 2</nve-radio>
       <nve-radio value="3">Value 3</nve-radio>
