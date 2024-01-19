@@ -5,6 +5,7 @@ import { html } from 'lit';
  */
 const table = html`
   <hr />
+  <nve-divider></nve-divider>
   <h3 id="nve-alert">nve-alert</h3>
   <table class="demo">
     <thead>
