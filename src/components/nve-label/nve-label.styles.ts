@@ -7,20 +7,22 @@ export const styles = css`
   :host {
     color: var(--neutrals-foreground-primary);
     font: var(--label-small);
+    width: 100%;
+    display: flex;
+    align-items: center;
   }
 
-    /* skriftstørrelser */
-    :host([size='x-small']) {
-      font: var(--label-x-small);
-    }
-    :host([size='medium']) {
-      font: var(--label-medium);
-    }
-    :host([size='large']) {
-      font: var(--label-large);
-    }
-  
-  
+  /* skriftstørrelser */
+  :host([size='x-small']) {
+    font: var(--label-x-small);
+  }
+  :host([size='medium']) {
+    font: var(--label-medium);
+  }
+  :host([size='large']) {
+    font: var(--label-large);
+  }
+
   /* light-variant i standard størrelse */
   :host([light]) {
     font: var(--label-small-light);

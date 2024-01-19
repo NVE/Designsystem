@@ -1,16 +1,33 @@
 import { css } from 'lit';
 
 export default css`
+  :host {
+    --sl-checkbox-required-content: '*Obligatorisk';
+  }
+
+  fieldset {
+    border: none;
+    padding: unset;
+    margin: unset;
+    gap: var(--spacing-x-small);
+  }
+
   .checkbox-group {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-x-small);
   }
 
   .checkbox-group__label {
     font: var(--label-small);
     display: flex;
     gap: var(--spacing-x-small);
+  }
+
+  :host([required]) nve-label::after {
+    content: var(--sl-checkbox-required-content);
+    font: var(--label-x-small-light);
+    margin-left: auto;
+    color: var(--feedback-background-emphasized-error);
   }
 
   /* shoelace legger til styling når hele gruppa er disabled, så må overskrive den her */

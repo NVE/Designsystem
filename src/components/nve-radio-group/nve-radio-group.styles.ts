@@ -11,7 +11,7 @@ export default css`
     --sl-input-spacing-medium: var(--spacing-x-small);
     --sl-input-spacing-large: var(--spacing-x-small);
 
-    --sl-input-required-content: '*obligatorisk';
+    --sl-input-required-content: '';
     --sl-input-required-content-offset: 0.25rem;
     --sl-input-required-content-color: var(--brand-deep);
 
@@ -23,6 +23,11 @@ export default css`
     display: flex;
     flex-direction: column;
     gap: var(--spacing-small);
+  }
+  :host([data-user-invalid])::after {
+    content: var(--radio-group-error-message);
+    font: var(--detailtext-caption);
+    color: var(--feedback-background-emphasized-error);
   }
 
   :host::part(form-control-input) {
@@ -37,8 +42,17 @@ export default css`
     text-align: left;
   }
 
+  :host([required]) .form-control--has-label .form-control__label::after,
+  :host([requiredLabel])::part(form-control-label)::after {
+    align-self: flex-end;
+    font: var(--label-x-small-light);
+    color: var(--feedback-background-emphasized-error);
+  }
+
   :host([orientation='vertical'])::part(form-control),
   :host([vertical])::part(form-control) {
+    font: var(--label-x-small-light);
+    color: var(--feedback-background-emphasized-error);
     align-items: flex-start;
   }
 

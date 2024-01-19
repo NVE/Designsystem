@@ -1,6 +1,6 @@
 import '../../components/nve-checkbox-group/nve-checkbox-group.component';
 import '../../components/nve-checkbox/nve-checkbox.component';
-import { StoryObj } from '@storybook/web-components';
+import { Meta, StoryObj } from '@storybook/web-components';
 import { NveCheckboxGroup, NveCheckboxGroupProps } from './NveCheckboxGroup';
 import NveCheckboxGroupDoc from './NveCheckboxGroupDoc.mdx';
 
@@ -18,12 +18,15 @@ const meta = {
     docs: {
       page: NveCheckboxGroupDoc,
       description: {
-        component:
-          '<h2><nve-checkbox-group> | NveCheckboxGroup</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-checkbox.md">API-dokumentasjon</a>',
+        component: `<div>
+          <a href="<a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-checkbox-group.md">API-dokumentasjon</a>
+          <p>Sjekkboksgruppe lar brukere velge flere skjekkbokser fra en gruppe av alternativer. Den organiserer vanligvis relaterte sjekkbokser sammen og gir en praktisk måte for brukere å foreta flere valg innenfor en spesifikk kategori eller sett med alternativer.
+          De valgte skjekkbokser i gruppen representerer samlet sett brukerens valg blant de tilgjengelige alternativene.
+          </div>`,
       },
     },
   },
-};
+} satisfies Meta<NveCheckboxGroupProps>;
 
 export default meta;
 type Story = StoryObj<NveCheckboxGroupProps>;
@@ -31,11 +34,12 @@ type Story = StoryObj<NveCheckboxGroupProps>;
 export const Primary: Story = {
   args: {
     disabled: false,
-    invalid: false,
     orientation: 'horizontal',
     label: 'Label',
     tooltip: 'Help text',
     errorMessage: 'Error message',
+    required: false,
+    requiredLabel: '',
   },
 };
 
