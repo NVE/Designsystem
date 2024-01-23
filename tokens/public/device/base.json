@@ -1053,8 +1053,5 @@
     "value": "38%",
     "type": "opacity"
   },
-
-    ],
-    "type": "boxShadow"
-  }
+  "type": "boxShadow"
 }
