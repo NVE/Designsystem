@@ -51,9 +51,10 @@
       "Body.compact.xsmall-underline-compact": "S:2feec4a365a2513de14b5f6e5edc0874866e392d,",
       "Body.large": "S:ea5a2656b80a9c08c7f86213659f03db2a339761,",
       "none": "S:e66489b526032e1eeca3b48198cc8c56f5323663,",
-      "soft": "S:07b8e5af2446c8fb81c704a5175b1efb71b83dc7,",
-      "hard": "S:7de161c5f184b527f21a11b497f99f1a4dbf5ca9,",
-      "header": "S:6491e1944b4062e74baa8a43ba36eeb1b1c63857,"
+      "header": "S:6491e1944b4062e74baa8a43ba36eeb1b1c63857,",
+      "dropdown": "S:6348ae0de192a9228b2a7374e149fe55c2bbf3c8,",
+      "soft": "S:3dd2ad37591f1c841e3ea67a7d414d728326963f,",
+      "hard": "S:32497d10b263e0b5f649e6997c6c4255bfd0abd9,"
     },
     "selectedTokenSets": {
       "private": "source",
