@@ -1019,10 +1019,10 @@
   "soft": {
     "value": {
       "x": "0",
-      "y": "2",
-      "blur": "8",
-      "spread": "0",
-      "color": "rgba(96,101,108,0.15)",
+      "y": "1",
+      "blur": "24",
+      "spread": "-2",
+      "color": "rgba(96,101,108,0.10)",
       "type": "dropShadow"
     },
     "type": "boxShadow"
@@ -1030,10 +1030,10 @@
   "hard": {
     "value": {
       "x": "0",
-      "y": "2",
-      "blur": "10",
-      "spread": "0",
-      "color": "rgba(96,101,108,0.30)",
+      "y": "1",
+      "blur": "20",
+      "spread": "-2",
+      "color": "rgba(96,101,108,0.20)",
       "type": "dropShadow"
     },
     "type": "boxShadow"
