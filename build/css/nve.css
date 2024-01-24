@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 24 Jan 2024 14:04:35 GMT
+ * Generated on Wed, 24 Jan 2024 15:22:42 GMT
  */
 
 :root {
@@ -161,8 +161,8 @@
   --sizing-small: 2.5rem; /* 40px */
   --sizing-x-small: 2rem; /* 32px */
   --sizing-2x-small: 1.5rem; /* 24px */
-  --font-weight-semibold: SemiBold;
-  --font-weight-regular: Regular;
+  --font-weight-semibold: 600;
+  --font-weight-regular: 400;
   --font-size-3xlarge: 4rem; /* 64 px */
   --font-size-2xlarge: 3rem; /* 48 px */
   --font-size-xlarge: 2.5rem; /* 40 px */
