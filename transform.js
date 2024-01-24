@@ -3,11 +3,11 @@ const require = createRequire(import.meta.url);
 const StyleDictionary = require('style-dictionary-utils');
 
 const { fileHeader, formattedVariables } = StyleDictionary.formatHelpers;
-import { fontFamilies } from './customtransforms/fontFamilies.js';
-import { fontWeight } from './customtransforms/fontWeights.js';
+import fontFamilies from './customtransforms/fontFamilies.js';
+import fontWeight from './customtransforms/fontWeights.js';
 import boxShadow from './customtransforms/boxShadow.js';
-import { fontSizes } from './customtransforms/fontSizes.js';
-import { fixZeroes } from './customtransforms/fixZeroes.js';
+import fontSizes from './customtransforms/fontSizes.js';
+import fixZeroes from './customtransforms/fixZeroes.js';
 
 StyleDictionary.registerTransform(fontFamilies);
 StyleDictionary.registerTransform(fontWeight);
@@ -74,7 +74,7 @@ const myStyleDictionary = StyleDictionary.extend({
         'fontFamilies/css',
         'fontFamily/css',
         'fontWeight/number',
-        //'fontWeights/number',
+        'fontWeights/number',
         'boxshadow/css',
         'shadow/css',
       ],
@@ -102,7 +102,7 @@ const myStyleDictionary = StyleDictionary.extend({
         'fontFamilies/css',
         'fontFamily/css',
         'fontWeight/number',
-        //'fontWeights/number',
+        'fontWeights/number',
         'boxshadow/css',
 
         'shadow/css',

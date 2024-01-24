@@ -1,4 +1,4 @@
-export const fontSizes = {
+export default {
   name: 'fontsizes/px',
   type: 'value',
   transitive: true,

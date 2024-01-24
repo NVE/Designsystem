@@ -27,7 +27,7 @@ const fontWeights = {
   ultrablack: 950,
 };
 
-export const fontWeight = {
+export default {
   //den fra style-dictionary-utils har "fontWeight", men det er brukt "fontWeights"
   name: 'fontWeights/number',
   type: 'value',

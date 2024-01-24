@@ -1,6 +1,7 @@
 // test-applikasjon for komponentbiblioteket
 import { render } from 'lit';
 import '../build/css/varsom.css';
+import './styles/testsite.css';
 /* Importer demo-side for hver komponent du vil vise her og sett det i render-funksjonen */
 import dialogDemo from './components/nve-dialog/nve-dialog.demo';
 import dropdownDemo from './components/nve-dropdown/nve-dropdown.demo';
