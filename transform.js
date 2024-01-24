@@ -1,4 +1,6 @@
-import StyleDictionary from 'style-dictionary-utils';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const StyleDictionary = require('style-dictionary-utils');
 
 const { fileHeader, formattedVariables } = StyleDictionary.formatHelpers;
 import { fontFamilies } from './customtransforms/fontFamilies.js';
