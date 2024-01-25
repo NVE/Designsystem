@@ -44,5 +44,6 @@ export const styles = css`
     align-items: center;
     vertical-align: bottom;
     cursor: pointer;
+    margin-left: var(--spacing-xx-small);
   }
 `;
