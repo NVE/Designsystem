@@ -40,6 +40,10 @@
       "Subtle": {
         "value": "{grey.600}",
         "type": "color"
+      },
+      "Colored": {
+        "value": "{nve_brand.500}",
+        "type": "color"
       }
     },
     "Border": {
