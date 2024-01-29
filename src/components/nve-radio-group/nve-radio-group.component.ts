@@ -134,6 +134,7 @@ export default class NveRadioGroup extends SlRadioGroup {
 
   private resetValidation() {
     const nveRadios = this.getAllRadios();
+    this.errorMessageCopy = '';
     // toggler 'invalid' attribute på alle radio komponenter for å få riktig style
     toggleBooleanAttrOnListOfNodes(nveRadios, false, 'data-invalid');
     this.setCustomValidity('');
