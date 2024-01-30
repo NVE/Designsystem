@@ -1,19 +1,22 @@
 # NVE Designsystem
 
-Dette repository inneholder css generert fra Figma-tokens og komponentbibliotek basert på Shoelace [( Shoelace dokumentasjon)](https://shoelace.style/).
-[Lenke til npm-pakke.](https://www.npmjs.com/package/nve-designsystem)
+Dette er komponentbiblioteket til [NVE Designystem](https://nve.frontify.com/).
 
-## Skal du bruke NVE designsystem? Denne seksjonen er for deg.
+Repositoryet inneholder css generert fra Figma-tokens i Designsystemet. De fleste komponentene er basert på [Shoelace](https://shoelace.style/). Her finner du [pakka i npm](https://www.npmjs.com/package/nve-designsystem).
 
-### Api-dokumentasjon
+## Skal du bruke NVE designsystem?<br> Denne seksjonen er for deg.
 
-[Her er dokumentasjon på hver komponent](./doc/components.md)
+### Api-dokumentasjon + Storybook
 
-### **Oppsett i Vue**
+Du finner ren API-dokumentasjon på hver komponent [her](./doc/components.md).
+
+Komponentene kan ses og testes i [Storybook](https://main--65322c4ee3062d1c117bb2d5.chromatic.com/).
+
+### Bruk av designsystemet i Vue 3
 
 1. Install pakke med `npm i nve-designsystem`.
 
-2. I vite.config (lagre en ny fil hvis den ikke eksisterer i rot-mappe), legg inn isCustomElement som forteller Vue at det er en customElement, og dropp component resolution [(les mer her)](https://vuejs.org/guide/extras/web-components.html).
+2. I vite.config (lag en ny fil hvis den ikke eksisterer i rot-mappa), legg inn `isCustomElement` som forteller Vue at det er en custom element, og dropp component resolution. [Les mer her](https://vuejs.org/guide/extras/web-components.html).
 
 ```js
 export default defineConfig({
@@ -30,21 +33,21 @@ export default defineConfig({
 });
 ```
 
-3. I tillegg trenger du å importere en .css-fil for farge-tema i main.ts. Filene finnes i mappa `nve-designsystem/build/css/`. For NVE-tema, bruk:
+3. I tillegg trenger du å importere <em>en</em> .css-fil for farge-tema i main.ts. Filene finnes i mappa `nve-designsystem/build/css/`. For NVE-tema, bruk:
 
 ```ts
-import 'nve-designsystem/dist/css/nve.css';
+import 'nve-designsystem/css/nve.css';
 ```
 
 For Varsom-tema, bruk:
 
 ```ts
-import 'nve-designsystem/dist/css/varsom.css';
+import 'nve-designsystem/css/varsom.css';
 ```
 
-Du har også mulighet til å velge enten lyst eller mørkt tema. Lyst er standard.
+Det finnes også varianter av disse to filene med mørkt tema.
 
-### **Eksempel på bruk av komponent**
+### Eksempel på bruk av komponent
 
 ```html
 <template>
@@ -57,32 +60,39 @@ Du har også mulighet til å velge enten lyst eller mørkt tema. Lyst er standar
 
 Husk å alltid bruke både opening og closing tag individuelt, (`<nve-button />` fungerer ikke).
 
-### **Storybook**
+## Skal du utvikle NVE designsystem?<br> Denne seksjonen er for deg.
 
-Komponentene kan ses og testes i Storybook med ulike parametere og varianter: https://main--65322c4ee3062d1c117bb2d5.chromatic.com/
+De fleste komponentene bygger på [Shoelace](https://shoelace.style/), men er tilpasset NVE Designsystem. Etterhvert vil de fleste Shoelace-komponenter få sin NVE-variant, men vi kommer også til å lage komponenter som ikke er basert på Shoelace. Vi anbefaler at du laster ned [kildekoden til Shoelace](https://github.com/shoelace-style/shoelace) og setter deg inn i [Lit](https://lit.dev/), som vi bruker som rammeverk.
 
-## Skal du utvikle NVE designsystem? Denne seksjonen er for deg.
+### Kjøremiljø
 
-VIKTIG! Alle komponenters navn skal starte med `nve-`!
+Kjør `npm install` og `npm run dev` for å starte test-applikasjonen.
 
-De fleste komponentene bygger på [Shoelace](https://shoelace.style/), men er tilpasset NVE Designsystem. Etterhvert vil de fleste Shoelace-komponenter få sin NVE-variant, men vi kommer også til å lage komponenter som ikke baseres på Shoelace. Vi anbefaler at du laster ned [kildekoden til Shoelace](https://github.com/shoelace-style/shoelace) og setter deg inn i [Lit](https://lit.dev/), som vi bruker som rammeverk.
+### Pull requests
 
-### **Kjøremiljø**
+Ikke push endringer direkte i `main`. Lag en pull request.
 
-Prosjektet importerer Shoelace sin npm-pakke. Kjør `npm run dev` for utvikling.
-For å teste en komponent i main.ts må man huske å legge til script tag med komponenten i index.html fila som f.eks. <script type="module" src="/src/nve-button.ts"></script>
+### Oppretting av en ny komponent og mappestruktur
 
-### **Oppretting av en ny komponent og mappe struktur**
+<em>Alle komponenters navn skal starte med `nve-`. Bruk det samme navnet som komponenten får i html. Kun små bokstaver og bindestrek er tillatt i navnet.</em>
 
-Du kan opprette en ny komponent ved å kjøre `npm run add-component ${navn på komponent. Må starte med nve- som f.eks nve-tag}`. Den oppretter riktig mappe struktur for deg.
+Vi skiller API + funksjonalitet, styling og demo-kode i hver sine filer.
 
-Hvis du velger en manuelt måte opprett en mappe under src/components med komponent navn. Fil som inneholder selve komponent burde ha
+Du kan lage skall til en ny komponent ved å kjøre `npm run add-component {navn på komponent}`. Scriptet oppretter riktige filer for deg.
 
-- .component.ts suffiks på fil sin inneholder selve komponent f.eks. /components/nve-component/nve-component.component
-- .styles.ts på filer med styling f.eks. /components/nve-component/nve-component.styles.ts
-- .demo.ts på filer som skal demonstrere komponent (til utviklere) f.eks. /components/nve-component/nve-component.demo.ts
+Du kan også lage filene manuelt. Lag en mappe under `src/components`. Navnet på mappa skal være samme som komponent-navnet. Eksempel:
 
-### **Hvordan vi bygger komponenter**
+| Filnavn                            | Beskrivelse           |
+| ---------------------------------- | --------------------- |
+| nve-button                         | Mappe for komponenten |
+| nve-button/nve-button.component.ts | Selve komponenten     |
+| nve-button/nve-button.styles.ts    | Styling               |
+| nve-button/nve-button.demo.ts      | Test/demo-kode        |
+
+Når man jobber med styling av komponenter, er det lettere å teste forskjellige eksempler på bruk av kompoenten på en enkel html-side enn å jobbe i Storybook.
+For å kjøre .demo.ts-fila du har laget, inkluder den i `main.ts`.
+
+### Properties
 
 Vi setter reflect: true på alle properties i komponenter (se eksempel under) for å kunne se properties som oppdateres i DOMen. Gjelder reaktive applikasjoner.
 
@@ -90,15 +100,22 @@ Vi setter reflect: true på alle properties i komponenter (se eksempel under) fo
 @property({ reflect: true }) title: string = '';
 ```
 
-### **Komponent eksport**
+### Eksport
 
-Komponenter skal eksponeres i src/index.ts fila med
+Komponenter skal eksponeres i src/index.ts fila på denne måten:
 
 ```js
 export { default as NveComponent } from './components/nve-component/nve-component.component';
 ```
 
-### **Styling**
+### Hvordan tolke design i Figma
+
+Skissene i Figma er et forslag til design, ikke en spesifikasjon. Vi må passe på at:
+
+- Designet ikke går for mye på tvers av slik komponenten er laget i Shoelace. Hvis du ser at du må endre render()-metoden for få til ønsket design, ta opp med designeren om hen heller kan justere designet
+- API'et til komponenten blir ryddig. Navn på properties må følge god praksis for web-komponenter, og ikke alle properties er nødvendig å implementere. F.eks. trenger vi ikke en showHelpText-property. Det holder med en helpText-property med blank som standard-verdi. Da viser du heltText hvis den finnes.
+
+### Styling
 
 Når vi styler shoelace-komponenter kan vi enten overskrive Shoelace sine css-klasser eller bruke parts i shadow-DOM.
 Bruk helst parts fordi koden blir lettere å lese.
@@ -120,7 +137,7 @@ ser bedre ut enn dette:
 
 Hvis det ikke er mulig å style med ::part, bruk css-klasser.
 
-### **Typografi**
+### Typografi
 
 Det finnes tokens for typografi i Figma.
 Sett Figma i utviklermodus og klikk på en tekst.
@@ -145,46 +162,33 @@ Kommentaren `/* Label/small */` betyr at vi skal bruke css-variabelen `--label-s
 }
 ```
 
-### **Mapping av shoelace tokes til NVE-tokens**
+### Mapping av shoelace tokes til NVE-tokens
 
 Det hadde vært fint om vi kunne sette en NVE-verdi for alle Shoelace-tokens. Men dette går ikke fordi strukturen i Shoelace og NVE Designsystem er forskjellig.
 Vi har satt NVE-verdier for en del Shoelace-tokens, og disse ligger i global.css.
 Foreslå gjerne flere Shoelace-tokens som kan mappes på denne måten.
 
-Vi trenger ikke å style:
+Vi trenger <em>ikke</em> å style:
 
 - fokus-tilstand på alle komponenter. Dette settes globalt
 - høyde på input-felter, knapper og select
 - border-radius på alle komponenter (med mindre border radius mangler på en Shoelace-komponent, men designsystemet spesifiserer border-radius)
 - bakgrunn, font-farge, font-størrelse, ikon-farge, ramme i input, select og textarea i både variantene filled og not filled
 
-### **Test-app for designere når man lager en PR**
-
-Pull requests på komponenter skal godkjennes av designere. Derfor har vi satt opp en azure static app med Storybook. Denne bygges og kjøres når man lager en PR.
-
-Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'er kan det være at appen ikke bygges. De skal slettes automatisk når en PR lukkes, men det er ikke alltid dette virker. I slike tilfeller må vi slette appene manuelt i Azure-portalen. Appene ligger i denne ressursgruppa: TEST-Designsystemet-RG.
-
 ### Dokumentasjon
 
 - Vi dokumenterer på norsk
 - Alle komponenter dokumenteres med JsDoc-tags i koden. Alt som er tilgjengelig for de som bruker komponentene skal dokumenteres, dvs. alle public klasser, interfaces, properties/attributter, metoder, events, slots, css-parts og css-properties. [Her er noen tips.](https://github.com/runem/web-component-analyzer#-how-to-document-your-components-using-jsdoc)
   Vi bruker [Web Component Analyzer](https://github.com/runem/web-component-analyzer) til å generere API-dokumentasjon.
+- Skriv litt øverst i `.component.ts`-fila om hva komponenten skal brukes til og link til API-dok til Shoelace, om komponenten bygger på. en Shoelace-komponent. Om det er Shoelace-properties som ikke skal brukes fordi dette ikke passer med designsystemet, må du dokumentere det
 - Generer .MD-filer med `npm run doc` og sjekk inn de genererte filene sammen med koden. Om du har laget nye komponenter, legg dem til i [denne lista](./doc/components.md).
+- Alle komponenter skal dokumenteres også i Storybook og i demo-appen som kjøres av main.ts
 
-### **Bygge css**
+### Publisering til npm
 
-For å bygge css filer som inneholder verdier basert på tokens fra Figma, kjør følgende kommando: "npm run tokenbuild." <br>
+Publisering til npm skjer ved hjelp av Github actions. Når man pusher til `main` (ved å fullføre en pull request), starter det en jobb som oppdaterer versjonsnummer og publiserer npm-pakke. Jobben er spesifisert i filen .github/workflows/npm-publish.yml.
 
-### **npm**
-
-Publisering til npm skjer ved hjelp av Github actions. Når man pusher til main branch, starter det en workflow som oppdaterer versjonsnummer og publiserer npm-pakke. Workflow er spesifisert i filen .github/workflows/npm-publish.yml.
-
-### **Kjøremiljø**
-
-Prosjektet importerer Shoelace sin npm-pakke. Kjør `npm run dev` for utvikling.
-For å teste en komponent i main.ts må man huske å legge til script tag med komponenten i index.html fila som f.eks. <script type="module" src="/src/nve-button.ts"></script>
-
-### **Test pakke lokalt**
+### Test pakke lokalt
 
 Før man pusher til main er det lurt å teste pakke lokalt. Med `npm run pack` kan man teste hvordan pakken oppfører seg akkurat på samme måte som etter publisering. For å teste en nve-designsystem pakke lokalt:
 
@@ -209,7 +213,21 @@ Det skal opprettes en story for hver nye komponent som lages. Story opprettes p�
 <li>Storbyook lager toggle-buttons for boolean verdier. For dropdown-meny må man selv definere alternativene </li>
 <li>Komponent-filen, f.eks. NavnPåKomponent.ts må eksportere props. Se eksisterende filer for eksempel (export interface NavnPåKomponentProps)</li>
 <li>Minimum et eksempel på komponent må opprettes og eksporteres i stories-filen, f.eks. "export const Primary..." for Primary-vaiant av NveButton</li>
+<li>Det må være en story med navn Primary. Det er denne storyen som vises der man kan endre på props og se oppdatert visning</li>
 <li>Informasjon om komponenten (fra Figma og ev. ekstra info) kan legges inn i stories-files under parameters -> docs --> description -->  component</li>
 </ul>
 
-For å publisere Storybook på Chromatic, kjør `npm run build; npm run build-storybook`. Deretter må det kjøres en kommando med project token fra Chromatic: `npx chromatic --project-token=\<project-token\>`
+Det er satt opp en workflow for å publisere Storybook på Chromatic. Workflowen ligger under .github/workflows og kjøres automatisk ved push til main.
+
+For å publisere Storybook manuelt, kjør `npm run build; npm run build-storybook`. Deretter må det kjøres en kommando med project token fra Chromatic: `npx chromatic --project-token=\<project-token\>` Project token er registrert som en secret på Github.
+
+### Test-app for pull requests
+
+Pull requests på komponenter skal også godkjennes av designere. Derfor har vi satt opp en azure static app med Storybook. Denne bygges og kjøres når man lager en PR.
+
+Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'er kan det være at appen ikke bygges. De skal slettes automatisk når en PR lukkes, men det er ikke alltid dette virker. I slike tilfeller må vi slette appene manuelt i Azure-portalen. Appene ligger i denne ressursgruppa: TEST-Designsystemet-RG.
+
+### Bygge globale css-filer
+
+Når vi har nye design-tokens eller endringer i tokens må vi generere globale css-filer på nytt.
+Kjør følgende kommando: `npm run tokenbuild`.
