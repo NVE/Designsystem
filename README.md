@@ -61,6 +61,120 @@ Husk å alltid bruke både opening og closing tag individuelt, (`<nve-button />`
 
 Komponentene kan ses og testes i Storybook med ulike parametere og varianter: https://main--65322c4ee3062d1c117bb2d5.chromatic.com/
 
+### **Validering av input-data**
+
+HUSK! at for å få komponent validert må den stå innen `<form>` fordi validering kjører når `submit` event trigges!
+
+Shoelace tilpasset sine komponenter til å bruke constraint validerign. De gir også mulighet til å bruke en custom validering.
+Vi tenkte å bruke samme strategi. Gjerne les mer [her](https://shoelace.style/getting-started/form-controls#constraint-validation) for å se hvordan Shoelace gjør det.
+Komponenter som tilbyr validering:
+
+- <b>nve-input</b>
+- <b>nve-radio-group</b> støtter kun `required` attribute fra constratin validation (enkelte radio knapper valideres ikke, må være innen nve-radio-group), resten må gjennom custom validering (les videre)
+- <b>nve-checkbox-group</b> støtter kun `required` attribute fra constratin validation, resten må gjennom vustom validering (les videre)
+
+Det finnes to måter å validere som støttes:
+
+- <b>[Constraint Validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)</b> kortsagt nettleseren validerer formen selv basert på hvilke attributer som blir med på komponenten. Det er en enkel måte å validere, hvis input feltene ikke krever avansert validering.<br> Viktig å nevne er at når constraint validation brukes, man må ha `errorMessage` property ellers så får man default validering melding. Vil du ha flere validerings
+  attributer (required, pattern, min ,max) må du huske at det er kun en `errorMessage` som skal vises. Hvis du vil tilpasse
+  feilmeldinger til attribute som feilet må du gjøre det selv - sjekk [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState). <br>Constraint validation kaster feil på den
+  første ugyldig feltet den møter. Altså resten av feiler (hvis det finnes) på andre feltene skal ikke vises, med mindre man trykker på submit knapp igjen. Det kan eventulet fikses manuelt hvis man ønsker det.
+
+- <b>Custom validering</b> Alle nevnte komponenter kan valideres på en custom måte med setCustomValidity() metoden. Det anbefales til å bruke hvis du vil dekke krav som constraint validation ikke tilbyr.
+  <br>Hvordan man gjør det kan du finne i `demo` filer av øverst nevnte komponenter. Her er et eksempel på hvordan man kan bruke input validering i Vue appen:
+
+```html
+<template>
+  <!-- .prevent for å hoppe over nettleserens standardoppførsel på submit -->
+  <form @submit.prevent="validate">
+    <nve-input
+      ref="inputComponent"
+      :value="myInputValue"
+      @input="myInputValue = $event.target.value"
+      label="Bruker navn"
+      help-test="Må ha minst en spesiell tegn og stor bokstav"
+      @sl-blur="validate"
+    >
+    </nve-input>
+    <nve-input
+      ref="inputComponent2"
+      :value="myInputValue2"
+      @input="myInputValue2 = $event.target.value"
+      label="Svaret på livet, universet og alt"
+      @sl-blur="validate"
+    >
+    </nve-input>
+    <nve-button type="submit">Submit</nve-button>
+  </form>
+</template>
+<script>
+  const inputComponent = ref<HTMLInputElement| null>();
+  const inputComponent2 = ref<HTMLInputElement| null>();
+  const inputValue = ref('');
+  const inputValue2 = ref('');
+
+  const validate = () => {
+    const inputElement = inputComponent.value;
+    const inputElement2 = inputComponent2.value;
+    if (!inputElement || !inputElement2) return;
+
+    if (!inputValue.value) {
+      inputElement.setCustomValidity('Kan ikke være tom');
+    } else if (inputValue.value == 42) {
+      inputElement.setCustomValidity('Må være mer enn 42');
+    } else {
+      inputElement.setCustomValidity('');
+    }
+    const uppercaseRegex = /[A-Z]/;
+    const specialCharRegex = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/;
+    if (!uppercaseRegex.test(inputValue2.value)) {
+      inputElement2.setCustomValidity('Må ha minst en stor bokstav');
+    }
+    if (!specialCharRegex.test(inputValue2.value)) {
+      inputElement2.setCustomValidity('Må ha minst en spesiell tegn');
+    } else {
+      inputElement2.setCustomValidity('');
+    }
+  };
+</script>
+```
+
+En annen eksempel på hvordan å validere sjekkboks grupper i Vue appen:
+
+```html
+<template>
+  <form @submit.prevent="validate">
+    <nve-checkbox-group :selectedValues="checked" ref="chGrComponent" size="small" label="Label">
+      <nve-checkbox v-for="item in arr" :key="item" :value="item">{{ item }}</nve-checkbox>
+    </nve-checkbox-group>
+    <nve-button type="submit">Sjekk svaret</nve-button>
+  </form>
+</template>
+
+<script>
+  const chGrComponent = ref<HTMLInputElement| null>();
+  const arr = reactive(['1', '2']);
+  const checked = reactive([]);
+
+  const validate = () => {
+    if (chGrComponent.value) {
+      if (!checked.length) {
+        chGrComponent.value.setCustomValidity('Må velge minst en');
+      } else if (!checked.includes('1')) {
+        chGrComponent.value.setCustomValidity('Du må velge 1');
+      } else {
+        chGrComponent.value.setCustomValidity('');
+      }
+    }
+  };
+</script>
+```
+
+Hvis noen av komponenter feiler, emiter de `sl-invalid` event som kan lytes på hvis man trenger å legge til noe ekstra funksjonalitet.
+Ifølge shoelace dokumentasjon formen også burde emite `sl-invalid` hvis noen av feltene feiler, men det er ikke veldig pålitelig (testet i Vue appen) og man burde teste det grundig.
+
+NB! Det anbefales og bruke en av alternativene. Blanding ikke støttes per i dag og en uforventet oppførsel kan oppstå.
+
 ## Skal du utvikle NVE designsystem? Denne seksjonen er for deg.
 
 VIKTIG! Alle komponenters navn skal starte med `nve-`!
@@ -144,6 +258,32 @@ Kommentaren `/* Label/small */` betyr at vi skal bruke css-variabelen `--label-s
   font: var(--label-small);
 }
 ```
+
+### **Validering av input-data**
+
+Shoelace støtter både [constraint](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation) og custom validering. Les gjerne shoelace dokumentasjon på [form validering](https://shoelace.style/getting-started/form-controls).
+
+De fleste shoelace komponenter baserer seg på data-invalid og data-user-invalid property. Så langt brukte vi data-user-invalid (vises når bruker har tatt på input feltet ikke med en gang som data-invalid) på input feltene som indikator at staten burde endres på alle input feltene. I grupper baserer vi oss på data-invalid property fordi alle elementer i en gruppe skal ha ugyldig state, selv om kun en ble tatt på. Sjekkboks gruppe eksisterer ikke i shoelace, derfor komponenten tilpasses til det som shoelace gjør (fake setCustomValidity metode på gruppe element for enklere validering, og toggle av data-valid, data-invalid attributer).
+
+Det er viktig at vi støtter både constraint og custom validering og viser feil på samme måte. Du kan se hvordan det er gjort i eksisterende komponenter som input, radio-group, checkbox-group, og at styling fungerer lik i begge deler.
+
+Lager du en ny komponent som shoelace ikke tilbyr som skal valideres, husk å emite sl-invalid for å være konsekvent.
+
+Komponenter som har validering på plass per i dag er:
+
+- nve-input
+- nve-radio-group (vi validerer ikke enkelte radio knapper)
+- nve-checkbox-group (vi validerer ikke enkelte checkboxer, men shoelace lar deg gjøre det med `required` property)
+
+Komponenter som ikke eksisterer enda men som vil sikkert trenge validering er:
+
+- textarea
+- select
+
+Komponenter som kanskje trenger validering er:
+
+- range
+- switch
 
 ### **Mapping av shoelace tokes til NVE-tokens**
 
