@@ -213,10 +213,13 @@ Det skal opprettes en story for hver nye komponent som lages. Story opprettes p�
 <li>Storbyook lager toggle-buttons for boolean verdier. For dropdown-meny må man selv definere alternativene </li>
 <li>Komponent-filen, f.eks. NavnPåKomponent.ts må eksportere props. Se eksisterende filer for eksempel (export interface NavnPåKomponentProps)</li>
 <li>Minimum et eksempel på komponent må opprettes og eksporteres i stories-filen, f.eks. "export const Primary..." for Primary-vaiant av NveButton</li>
+<li>Det må være en story med navn Primary. Det er denne storyen som vises der man kan endre på props og se oppdatert visning</li>
 <li>Informasjon om komponenten (fra Figma og ev. ekstra info) kan legges inn i stories-files under parameters -> docs --> description -->  component</li>
 </ul>
 
-For å publisere Storybook på Chromatic, kjør `npm run build; npm run build-storybook`. Deretter må det kjøres en kommando med project token fra Chromatic: `npx chromatic --project-token=\<project-token\>`
+Det er satt opp en workflow for å publisere Storybook på Chromatic. Workflowen ligger under .github/workflows og kjøres automatisk ved push til main.
+
+For å publisere Storybook manuelt, kjør `npm run build; npm run build-storybook`. Deretter må det kjøres en kommando med project token fra Chromatic: `npx chromatic --project-token=\<project-token\>` Project token er registrert som en secret på Github.
 
 ### Test-app for pull requests
 
