@@ -36,13 +36,13 @@ export default defineConfig({
 3. I tillegg trenger du å importere <em>en</em> .css-fil for farge-tema i main.ts. Filene finnes i mappa `nve-designsystem/build/css/`. For NVE-tema, bruk:
 
 ```ts
-import 'nve-designsystem/dist/css/nve.css';
+import 'nve-designsystem/css/nve.css';
 ```
 
 For Varsom-tema, bruk:
 
 ```ts
-import 'nve-designsystem/dist/css/varsom.css';
+import 'nve-designsystem/css/varsom.css';
 ```
 
 Det finnes også varianter av disse to filene med mørkt tema.
