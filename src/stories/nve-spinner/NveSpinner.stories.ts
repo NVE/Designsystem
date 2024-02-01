@@ -1,5 +1,5 @@
 import '../../components/nve-spinner/nve-spinner.component';
-import NveSpinnerDoc from './NvespinnerDoc.mdx';
+import NveSpinnerDoc from './NveSpinnerDoc.mdx';
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { NveSpinner, NveSpinnerProps } from './NveSpinner';
 
