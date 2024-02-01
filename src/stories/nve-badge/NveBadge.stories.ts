@@ -141,3 +141,12 @@ export const Lowdanger: Story = {
     name: "danger"
   },
 };
+
+export const Inbutton: Story = {
+  args: {
+    variant: 'warning',
+    size: 'small',
+    name: "badge",
+    button: true
+  },
+};
