@@ -154,7 +154,7 @@ export const Lowdanger: Story = {
 export const Lowneutral: Story = {
   args: {
     variant: 'neutral',
-    size: 'small',
+    size: 'large',
     low: true,
     name: "neutral",
   },
