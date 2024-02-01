@@ -1,11 +1,11 @@
 import { html } from 'lit';
 import '../../components/nve-button/nve-button.component';
 
-export interface NvespinnerProps {
+export interface NveSpinnerProps {
   button: boolean
 }
 
-export const Nvespinner = ({
+export const NveSpinner = ({
   button
 }: {button: boolean
   

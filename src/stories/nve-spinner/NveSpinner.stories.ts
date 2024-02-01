@@ -1,15 +1,15 @@
 import '../../components/nve-spinner/nve-spinner.component';
-import NvespinnerDoc from './NvespinnerDoc.mdx';
+import NveSpinnerDoc from './NvespinnerDoc.mdx';
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { Nvespinner, NvespinnerProps } from './NveSpinner';
+import { NveSpinner, NveSpinnerProps } from './NveSpinner';
 
 const meta = {
-  title: 'Nve/Nvespinner',
+  title: 'Nve/NveSpinner',
   tags: ['autodocs'],
-  render: (args) => Nvespinner(args),
+  render: (args) => NveSpinner(args),
   parameters: {
     docs: {
-      page: NvespinnerDoc,
+      page: NveSpinnerDoc,
       description: {
         component: `<div>
         <a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-spinner.md">API-dokumentasjon</a>
@@ -18,10 +18,10 @@ const meta = {
       },
     },
   },
-} satisfies Meta<NvespinnerProps>;
+} satisfies Meta<NveSpinnerProps>;
 
 export default meta;
-type Story = StoryObj<NvespinnerProps>;
+type Story = StoryObj<NveSpinnerProps>;
 
 export const Example: Story = {
   args: {
