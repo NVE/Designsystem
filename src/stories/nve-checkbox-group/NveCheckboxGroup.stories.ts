@@ -74,13 +74,6 @@ export const Disabled: Story = {
   },
 };
 
-export const Error: Story = {
-  args: {
-    orientation: 'horizontal',
-    label: 'Error',
-    errorMessage: "Error message"
-  },
-};
 
 export const Required: Story = {
   args: {

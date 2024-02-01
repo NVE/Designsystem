@@ -15,6 +15,6 @@ export const NveSpinner = ({
 if (!button) {
     return html`<nve-spinner></nve-spinner>`;
 }else{
-  return html`<nve-button variant="primary">Nve-button<nve-spinner></nve-spinner></nve-button>`;
+  return html`<nve-button variant="primary" loading>Nve-button</nve-button>`;
 };
 };
