@@ -14,7 +14,7 @@ import checkboxDemo from './components/nve-checkbox/nve-checkbox.demo';
 import inputDemo from './components/nve-input/nve-input.demo';
 import labelDemo from './components/nve-label/nve-label.demo';
 import tooltipDemo from './components/nve-tooltip/nve-tooltip.demo';
-import radioDemo from './components/nve-radio/nve-radio.demo';
+import radioGroupDemo from './components/nve-radio-group/nve-radio-group.demo';
 import selectDemo from './components/nve-select/nve-select-demo';
 
 render(
@@ -22,7 +22,7 @@ render(
     alertDemo,
     badgeDemo,
     buttonDemo,
-    radioDemo,
+    radioGroupDemo,
     tooltipDemo,
     labelDemo,
     inputDemo,
