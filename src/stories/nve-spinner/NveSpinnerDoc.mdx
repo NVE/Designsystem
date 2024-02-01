@@ -1,0 +1,34 @@
+import './../css/stories.css';
+
+import { Canvas, Story, Meta, Title, Subtitle, Description, Source, Primary, Stories } from '@storybook/blocks';
+
+import * as NvespinnerStories from './Nvespinner.stories';
+
+<Meta isTemplate />
+
+<Title />
+<Description />
+<br />
+<br />
+
+## Standard
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NvespinnerStories.Standard} />
+  </span>
+</div>
+
+## I knapp
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NvespinnerStories.Button} />
+  </span>
+</div>
+
+## Parametere/Props
+
+Her kan du se hvilke parametere (props) komponenten kan ta imot og se endringer i kode
+
+<Primary />
