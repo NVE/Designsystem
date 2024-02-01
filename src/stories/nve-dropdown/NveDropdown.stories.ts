@@ -16,7 +16,10 @@ const meta = {
     docs: {
       description: {
         component:
-          '<h2><nve-dropdown> | NveDropdown</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-dropdown.md">API-dokumentasjon</a>',
+          `<h2><nve-dropdown> | NveDropdown</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-dropdown.md">API-dokumentasjon</a> 
+          Denne komponenten bygges opp av andre komponenter og deres properties. Trykk på "show code" for å se hvordan komponenten kan bygges opp. 
+          Dropdown inneholder en nve-menu-komponent og hvert element er en nve-menu-item-komponent. Innenfor nve-menu-item kan man bruke flere komponenter, 
+          f.eks. nve-checkbox`,
       },
       story: {
         inline: false,

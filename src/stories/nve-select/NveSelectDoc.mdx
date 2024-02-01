@@ -1,0 +1,68 @@
+import './../css/stories.css';
+
+import { Canvas, Story, Meta, Title, Subtitle, Description, Source, Primary, Controls } from '@storybook/blocks';
+
+import * as NveSelectStories from './NveSelect.stories';
+
+<Meta isTemplate />
+
+<Title />
+<Description />
+<br />
+<br />
+
+## Størrelse
+
+Bruk property "size" for å bestemme størrelse på komponenten
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveSelectStories.Small} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveSelectStories.Medium} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveSelectStories.Large} />
+  </span>
+</div>
+
+## Disabled
+
+Bruk property "disabled" for å disable komponenten. Bruk property "disabled" på nve-option-komponenten for å disable valg (se option 7)
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveSelectStories.Enabled} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveSelectStories.Disabled} />
+  </span>
+</div>
+
+## Filled
+
+Bruk property "filled" for å fylle komponenten med bakgrunnsfarge
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveSelectStories.Unfilled} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveSelectStories.Filled} />
+  </span>
+</div>
+
+## Hjelpetekst og tooltip
+
+Bruk property "help-text" for å legge til hj|elpetekst. Bruk property "tooltip" på nve-label-komponenten for å legge
+til tooltip
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveSelectStories.Helptext} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveSelectStories.Tooltip} />
+  </span>
+</div>

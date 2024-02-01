@@ -14,6 +14,7 @@ export interface NveSelectProps {
   filled: boolean;
   pill: boolean;
   label: string;
+  tooltip: string;
   placement: 'top' | 'bottom';
   helpText: string;
   form: string;
@@ -35,18 +36,22 @@ export const NveSelect = (props: NveSelectProps) => {
       ?disabled=${props.disabled}
       ?clearable=${props.clearable}
       ?open=${props.open}
+      ?multiple=${props.multiple}
       ?filled=${props.filled}
       label=${props.label}
       placement=${props.placement}
       help-text=${props.helpText}
       ?required=${props.required}
     >
-      <nve-label value="Label" slot="label"></nve-label>
+      <nve-label value=${props.label} tooltip=${props.tooltip} slot="label"></nve-label>
       <nve-option ?filled=${props.filled} value="option-1">Option 1</nve-option>
       <nve-option ?filled=${props.filled} value="option-2">Option 2</nve-option>
       <nve-option ?filled=${props.filled} value="option-3">Option 3</nve-option>
-      <nve-option ?filled=${props.filled} disabled value="option-4"
-        >Option 4 <nve-icon slot="suffix" name="lock"></nve-icon
+      <nve-option ?filled=${props.filled} value="option-4">Option 4</nve-option>
+      <nve-option ?filled=${props.filled} value="option-5">Option 5</nve-option>
+      <nve-option ?filled=${props.filled} value="option-6">Option 6</nve-option>
+      <nve-option ?filled=${props.filled} disabled value="option-7"
+        >Option 7 <nve-icon slot="suffix" name="lock"></nve-icon
       ></nve-option>
     </nve-select>
   `;

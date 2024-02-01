@@ -17,7 +17,6 @@ const meta = {
   parameters: {
     docs: {
       page: NveCheckboxGroupDoc,
-
       description: {
         component: `<div>
           <a href="<a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-checkbox-group.md">API-dokumentasjon</a>
@@ -32,7 +31,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<NveCheckboxGroupProps>;
 
-export const standard: Story = {
+export const Primary: Story = {
   args: {
     disabled: false,
     orientation: 'horizontal',
@@ -43,3 +42,45 @@ export const standard: Story = {
     requiredLabel: '',
   },
 };
+
+export const Horizontal: Story = {
+  args: {
+    orientation: 'horizontal',
+    label: 'Horisontal',
+
+  },
+};
+
+export const Vertical: Story = {
+  args: {
+    orientation: 'vertical',
+    label: 'Vertikal',
+  },
+};
+
+export const Tooltip: Story = {
+  args: {
+    orientation: 'horizontal',
+    label: 'Med tooltip',
+    tooltip: "Hjelpetekst"
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    orientation: 'horizontal',
+    label: 'Disabled',
+    disabled: true
+  },
+};
+
+
+export const Required: Story = {
+  args: {
+    orientation: 'horizontal',
+    label: 'Required',
+    required: true,
+    requiredLabel: '*Required field'
+  },
+};
+

@@ -39,6 +39,7 @@ export const Example: Story = {
   args: {
     variant: 'primary',
     size: 'medium',
+    name: "badge",
     low: false,
   },
 };
@@ -47,6 +48,7 @@ export const Primary: Story = {
     variant: 'primary',
     size: 'medium',
     low: false,
+    name: "primary"
   },
 };
 
@@ -55,6 +57,7 @@ export const Neutral: Story = {
     variant: 'neutral',
     size: 'medium',
     low: false,
+    name: "neutral"
   },
 };
 
@@ -63,6 +66,7 @@ export const Warning: Story = {
     variant: 'warning',
     size: 'medium',
     low: false,
+    name: "warning"
   },
 };
 
@@ -71,6 +75,7 @@ export const Success: Story = {
     variant: 'success',
     size: 'medium',
     low: false,
+    name: "success"
   },
 };
 
@@ -79,5 +84,89 @@ export const Danger: Story = {
     variant: 'danger',
     size: 'medium',
     low: false,
+    name: "danger"
   },
 };
+
+export const Small: Story = {
+  args: {
+    variant: 'success',
+    size: 'small',
+    low: false,
+    name: "small badge"
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    variant: 'success',
+    size: 'medium',
+    low: false,
+    name: "medium badge"
+  },
+};
+
+export const Large: Story = {
+  args: {
+    variant: 'success',
+    size: 'large',
+    low: false,
+    name: "large badge"
+  },
+};
+
+export const Lowwarning: Story = {
+  args: {
+    variant: 'warning',
+    size: 'large',
+    low: true,
+    name: "warning"
+  },
+};
+
+export const Lowsuccess: Story = {
+  args: {
+    variant: 'success',
+    size: 'large',
+    low: true,
+    name: "success"
+  },
+};
+
+export const Lowprimary: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    low: true,
+    name: "primary"
+  },
+};
+
+export const Lowdanger: Story = {
+  args: {
+    variant: 'danger',
+    size: 'large',
+    low: true,
+    name: "danger"
+  },
+};
+
+export const Lowneutral: Story = {
+  args: {
+    variant: 'neutral',
+    size: 'large',
+    low: true,
+    name: "neutral",
+  },
+};
+
+export const Inbutton: Story = {
+  args: {
+    variant: 'warning',
+    size: 'small',
+    name: "badge",
+    button: true
+  },
+};
+
+

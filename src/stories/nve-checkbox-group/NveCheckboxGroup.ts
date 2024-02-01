@@ -27,7 +27,7 @@ export const NveCheckboxGroup = (props: NveCheckboxGroupProps) => {
         <nve-checkbox>Value</nve-checkbox>
         <nve-checkbox>Value</nve-checkbox>
       </nve-checkbox-group>
-      <nve-button style="margin-top: 10px" size="small" variant="primary" type="submit">Submit</nve-button>
+      
     </form>
   `;
 };
