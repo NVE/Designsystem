@@ -47,6 +47,7 @@ export const Horizontal: Story = {
   args: {
     orientation: 'horizontal',
     label: 'Horisontal',
+
   },
 };
 
@@ -78,6 +79,15 @@ export const Error: Story = {
     orientation: 'horizontal',
     label: 'Error',
     errorMessage: "Error message"
+  },
+};
+
+export const Required: Story = {
+  args: {
+    orientation: 'horizontal',
+    label: 'Required',
+    required: true,
+    requiredLabel: '*Required field'
   },
 };
 
