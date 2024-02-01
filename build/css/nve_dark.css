@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 07 Dec 2023 09:14:05 GMT
+ * Generated on Wed, 24 Jan 2024 15:22:42 GMT
  */
 
 :root.darkmode {
@@ -34,26 +34,32 @@
   --dangerlevel-background-mute-level3: var(--orange-150);
   --dangerlevel-background-mute-level2: var(--yellow-200);
   --dangerlevel-background-mute-level1: var(--green-150);
+  --feedback-foreground-emphasized-neutral: var(--grey-950);
   --feedback-foreground-emphasized-success: var(--grey-000);
   --feedback-foreground-emphasized-warning: var(--grey-950);
   --feedback-foreground-emphasized-error: var(--grey-000);
   --feedback-foreground-emphasized-info: var(--grey-000);
+  --feedback-foreground-subtle-neutral: var(--grey-000);
   --feedback-foreground-subtle-success: var(--grey-000);
   --feedback-foreground-subtle-warning: var(--grey-000);
   --feedback-foreground-subtle-error: var(--grey-000);
   --feedback-foreground-subtle-info: var(--grey-000);
+  --feedback-foreground-default-neutral: var(--grey-000);
   --feedback-foreground-default-success: var(--grey-000);
   --feedback-foreground-default-warning: var(--grey-000);
   --feedback-foreground-default-error: var(--grey-000);
   --feedback-foreground-default-info: var(--grey-000);
+  --feedback-background-emphasized-neutral: var(--grey-150);
   --feedback-background-emphasized-success: var(--green-800);
   --feedback-background-emphasized-warning: var(--yellow-500);
   --feedback-background-emphasized-error: var(--red-700);
   --feedback-background-emphasized-info: var(--blue-700);
+  --feedback-background-subtle-neutral: var(--grey-850);
   --feedback-background-subtle-success: var(--green-999);
   --feedback-background-subtle-warning: var(--yellow-999);
   --feedback-background-subtle-error: var(--red-999);
   --feedback-background-subtle-info: var(--blue-999);
+  --feedback-background-default-neutral: var(--grey-800);
   --feedback-background-default-success: var(--green-950);
   --feedback-background-default-warning: var(--yellow-950);
   --feedback-background-default-error: var(--red-950);

@@ -1,10 +1,9 @@
 /**
  * Do not edit directly
- * Generated on Thu, 07 Dec 2023 09:14:04 GMT
+ * Generated on Wed, 24 Jan 2024 15:22:42 GMT
  */
 
 :root {
-  --disabled: 38%;
   --varsom-blue-050: #c8eaf9;
   --varsom-blue-000: #eff8fc;
   --varsom-blue-999: #00131c;
@@ -140,13 +139,17 @@
   --nve-brand-200: #f71439;
   --nve-brand-150: #ff153b;
   --nve-brand-100: #ff2b4e;
+  --dropdown: 0px 54px 15px 0px rgba(0,0,0,0.00), 0px 35px 14px 0px rgba(0,0,0,0.00), 0px 19px 12px 0px rgba(0,0,0,0.02), 0px 9px 9px 0px rgba(0,0,0,0.03), 0px 2px 5px 0px rgba(0,0,0,0.03);
+  --disabled: 38%;
   --header: 0px 4px 032px 0px rgba(0,0,0,0.02);
-  --hard: 0px 2px 10px 0px rgba(96,101,108,0.30);
-  --soft: 0px 2px 8px 0px rgba(96,101,108,0.15);
+  --hard: -45px 80px 26px 0px rgba(0,0,0,0.00), -29px 51px 23px 0px rgba(0,0,0,0.01), -16px 29px 20px 0px rgba(0,0,0,0.02), -7px 13px 15px 0px rgba(0,0,0,0.03), -2px 3px 8px 0px rgba(0,0,0,0.04);
+  --soft: -59px 104px 33px 0px rgba(0,0,0,0.00), -38px 67px 31px 0px rgba(0,0,0,0.00), -21px 37px 26px 0px rgba(0,0,0,0.01), -9px 17px 19px 0px rgba(0,0,0,0.02), -2px 4px 11px 0px rgba(0,0,0,0.03);
   --none: 0px 0px 0px 0px rgba(0,0,0,0);
   --border-width-strong: 2px;
   --border-width-default: 1px;
   --border-width-none: 0px;
+  --border-radius-pill: 9999px;
+  --border-radius-circle: 50%;
   --border-radius-large: 6px;
   --border-radius-small: 4px;
   --border-radius-none: 0px;
@@ -158,29 +161,17 @@
   --sizing-small: 2.5rem; /* 40px */
   --sizing-x-small: 2rem; /* 32px */
   --sizing-2x-small: 1.5rem; /* 24px */
-  --font-weights-source-sans-pro-2: 600;
-  --font-weights-source-sans-pro-1: 400;
-  --font-weights-source-sans-pro-zero: 600;
   --font-weight-semibold: 600;
   --font-weight-regular: 400;
-  --font-size-3xlarge: 4rem;
-  --font-size-2xlarge: 3rem;
-  --font-size-xlarge: 2.5rem;
-  --font-size-large: 2rem;
-  --font-size-medium: 1.5rem;
-  --font-size-small: 1.25rem;
-  --font-size-xsmall: 1.125rem;
-  --font-size-2xsmall: 1rem;
-  --font-size-3xsmall: 0.875rem;
-  --font-size-8: 64px;
-  --font-size-7: 48px;
-  --font-size-6: 40px;
-  --font-size-5: 32px;
-  --font-size-4: 24px;
-  --font-size-3: 20px;
-  --font-size-2: 18px;
-  --font-size-1: 16px;
-  --font-size-zero: 14px;
+  --font-size-3xlarge: 4rem; /* 64 px */
+  --font-size-2xlarge: 3rem; /* 48 px */
+  --font-size-xlarge: 2.5rem; /* 40 px */
+  --font-size-large: 2rem; /* 32 px */
+  --font-size-medium: 1.5rem; /* 24 px */
+  --font-size-small: 1.25rem; /* 20 px */
+  --font-size-xsmall: 1.125rem; /* 18 px */
+  --font-size-2xsmall: 1rem; /* 16 px */
+  --font-size-3xsmall: 0.875rem; /* 14 px */
   --spacing-grid-gutter: 3.5rem;
   --spacing-grid-gap: 5rem;
   --spacing-grid-margin: 4rem;
@@ -216,53 +207,53 @@
   --line-heights-1: 120%;
   --line-heights-zero: 115%;
   --font-families-source-sans-pro: 'Source Sans Pro';
-  --label-x-small-light: var(--font-weights-source-sans-pro-1) var(--font-size-zero)/var(--line-heights-6) var(--font-families-source-sans-pro);
-  --label-x-small: var(--font-weights-source-sans-pro-zero) var(--font-size-zero)/var(--line-heights-6) var(--font-families-source-sans-pro);
-  --label-small-light: var(--font-weights-source-sans-pro-1) var(--font-size-1)/var(--line-heights-6) var(--font-families-source-sans-pro);
-  --label-small: var(--font-weights-source-sans-pro-zero) var(--font-size-1)/var(--line-heights-6) var(--font-families-source-sans-pro);
-  --label-medium-light: var(--font-weights-source-sans-pro-1) var(--font-size-2)/var(--line-heights-6) var(--font-families-source-sans-pro);
-  --label-medium: var(--font-weights-source-sans-pro-zero) var(--font-size-2)/var(--line-heights-6) var(--font-families-source-sans-pro);
-  --label-large-light: var(--font-weights-source-sans-pro-1) var(--font-size-3)/var(--line-heights-6) var(--font-families-source-sans-pro);
-  --label-large: var(--font-weights-source-sans-pro-zero) var(--font-size-3)/var(--line-heights-6) var(--font-families-source-sans-pro);
-  --detailtext-caps-small: var(--font-weights-source-sans-pro-zero) var(--font-size-1)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --detailtext-caps-large: var(--font-weights-source-sans-pro-zero) var(--font-size-3)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --detailtext-caption: var(--font-weights-source-sans-pro-1) var(--font-size-zero)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --body-compact-xsmall-underline-compact: var(--font-weights-source-sans-pro-1) var(--font-size-zero)/var(--line-heights-1) var(--font-families-source-sans-pro);
-  --body-compact-xsmall-compact: var(--font-weights-source-sans-pro-1) var(--font-size-zero)/var(--line-heights-1) var(--font-families-source-sans-pro);
-  --body-compact-small-underline-compact: var(--font-weights-source-sans-pro-1) var(--font-size-1)/var(--line-heights-1) var(--font-families-source-sans-pro);
-  --body-compact-small-compact: var(--font-weights-source-sans-pro-1) var(--font-size-1)/var(--line-heights-1) var(--font-families-source-sans-pro);
-  --body-compact-medium-underline-compact: var(--font-weights-source-sans-pro-1) var(--font-size-2)/var(--line-heights-1) var(--font-families-source-sans-pro);
-  --body-compact-medium-compact: var(--font-weights-source-sans-pro-1) var(--font-size-2)/var(--line-heights-1) var(--font-families-source-sans-pro);
-  --body-compact-large-underline-compact: var(--font-weights-source-sans-pro-1) var(--font-size-3)/var(--line-heights-1) var(--font-families-source-sans-pro);
-  --body-compact-large-compact: var(--font-weights-source-sans-pro-1) var(--font-size-3)/var(--line-heights-1) var(--font-families-source-sans-pro);
-  --body-xsmall-underline: var(--font-weights-source-sans-pro-1) var(--font-size-zero)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --body-xsmall: var(--font-weights-source-sans-pro-1) var(--font-size-zero)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --body-small-underline: var(--font-weights-source-sans-pro-1) var(--font-size-1)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --body-small: var(--font-weights-source-sans-pro-1) var(--font-size-1)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --body-medium-underline: var(--font-weights-source-sans-pro-1) var(--font-size-2)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --body-medium-default: var(--font-weights-source-sans-pro-1) var(--font-size-2)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --body-large-underline: var(--font-weights-source-sans-pro-1) var(--font-size-3)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --body-large: var(--font-weights-source-sans-pro-1) var(--font-size-3)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --ingress-xsmall-semibold: var(--font-weights-source-sans-pro-2) var(--font-size-1)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --ingress-xsmall-regular: var(--font-weights-source-sans-pro-1) var(--font-size-1)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --ingress-medium-semibold: var(--font-weights-source-sans-pro-zero) var(--font-size-3)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --ingress-medium-regular: var(--font-weights-source-sans-pro-1) var(--font-size-3)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --ingress-small-semibold: var(--font-weights-source-sans-pro-zero) var(--font-size-2)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --ingress-small-regular: var(--font-weights-source-sans-pro-1) var(--font-size-2)/var(--line-heights-5) var(--font-families-source-sans-pro);
-  --ingress-large-semibold: var(--font-weights-source-sans-pro-zero) var(--font-size-4)/var(--line-heights-4) var(--font-families-source-sans-pro);
-  --ingress-large-regular-default: var(--font-weights-source-sans-pro-1) var(--font-size-4)/var(--line-heights-4) var(--font-families-source-sans-pro);
-  --subheading-x-small: var(--font-weights-source-sans-pro-1) var(--font-size-3)/var(--line-heights-4) var(--font-families-source-sans-pro);
-  --subheading-medium: var(--font-weights-source-sans-pro-1) var(--font-size-5)/var(--line-heights-2) var(--font-families-source-sans-pro);
-  --subheading-2x-large: var(--font-weights-source-sans-pro-1) var(--font-size-8)/var(--line-heights-zero) var(--font-families-source-sans-pro);
-  --subheading-small: var(--font-weights-source-sans-pro-1) var(--font-size-4)/var(--line-heights-3) var(--font-families-source-sans-pro);
-  --subheading-large: var(--font-weights-source-sans-pro-1) var(--font-size-6)/var(--line-heights-1) var(--font-families-source-sans-pro);
-  --subheading-x-large: var(--font-weights-source-sans-pro-1) var(--font-size-7)/var(--line-heights-zero) var(--font-families-source-sans-pro);
-  --header-x-small: var(--font-weights-source-sans-pro-zero) var(--font-size-3)/var(--line-heights-4) var(--font-families-source-sans-pro);
-  --header-small: var(--font-weights-source-sans-pro-zero) var(--font-size-4)/var(--line-heights-3) var(--font-families-source-sans-pro);
-  --header-medium: var(--font-weights-source-sans-pro-zero) var(--font-size-5)/var(--line-heights-2) var(--font-families-source-sans-pro);
-  --header-large-default: var(--font-weights-source-sans-pro-zero) var(--font-size-6)/var(--line-heights-1) var(--font-families-source-sans-pro);
-  --header-x-large: var(--font-weights-source-sans-pro-zero) var(--font-size-7)/var(--line-heights-zero) var(--font-families-source-sans-pro);
-  --header-2x-large: var(--font-weights-source-sans-pro-zero) var(--font-size-8)/var(--line-heights-zero) var(--font-families-source-sans-pro);
+  --label-x-small-light: var(--font-weight-regular) var(--font-size-3xsmall)/var(--line-heights-6) var(--font-families-source-sans-pro);
+  --label-x-small: var(--font-weight-semibold) var(--font-size-3xsmall)/var(--line-heights-6) var(--font-families-source-sans-pro);
+  --label-small-light: var(--font-weight-regular) var(--font-size-2xsmall)/var(--line-heights-6) var(--font-families-source-sans-pro);
+  --label-small: var(--font-weight-semibold) var(--font-size-2xsmall)/var(--line-heights-6) var(--font-families-source-sans-pro);
+  --label-medium-light: var(--font-weight-regular) var(--font-size-xsmall)/var(--line-heights-6) var(--font-families-source-sans-pro);
+  --label-medium: var(--font-weight-semibold) var(--font-size-xsmall)/var(--line-heights-6) var(--font-families-source-sans-pro);
+  --label-large-light: var(--font-weight-regular) var(--font-size-small)/var(--line-heights-6) var(--font-families-source-sans-pro);
+  --label-large: var(--font-weight-semibold) var(--font-size-small)/var(--line-heights-6) var(--font-families-source-sans-pro);
+  --detailtext-caps-small: var(--font-weight-semibold) var(--font-size-2xsmall)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --detailtext-caps-large: var(--font-weight-semibold) var(--font-size-small)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --detailtext-caption: var(--font-weight-regular) var(--font-size-3xsmall)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --body-compact-xsmall-underline-compact: var(--font-weight-regular) var(--font-size-3xsmall)/var(--line-heights-1) var(--font-families-source-sans-pro);
+  --body-compact-xsmall-compact: var(--font-weight-regular) var(--font-size-3xsmall)/var(--line-heights-1) var(--font-families-source-sans-pro);
+  --body-compact-small-underline-compact: var(--font-weight-regular) var(--font-size-2xsmall)/var(--line-heights-1) var(--font-families-source-sans-pro);
+  --body-compact-small-compact: var(--font-weight-regular) var(--font-size-2xsmall)/var(--line-heights-1) var(--font-families-source-sans-pro);
+  --body-compact-medium-underline-compact: var(--font-weight-regular) var(--font-size-xsmall)/var(--line-heights-1) var(--font-families-source-sans-pro);
+  --body-compact-medium-compact: var(--font-weight-regular) var(--font-size-xsmall)/var(--line-heights-1) var(--font-families-source-sans-pro);
+  --body-compact-large-underline-compact: var(--font-weight-regular) var(--font-size-small)/var(--line-heights-1) var(--font-families-source-sans-pro);
+  --body-compact-large-compact: var(--font-weight-regular) var(--font-size-small)/var(--line-heights-1) var(--font-families-source-sans-pro);
+  --body-xsmall-underline: var(--font-weight-regular) var(--font-size-3xsmall)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --body-xsmall: var(--font-weight-regular) var(--font-size-3xsmall)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --body-small-underline: var(--font-weight-regular) var(--font-size-2xsmall)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --body-small: var(--font-weight-regular) var(--font-size-2xsmall)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --body-medium-underline: var(--font-weight-regular) var(--font-size-xsmall)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --body-medium: var(--font-weight-regular) var(--font-size-xsmall)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --body-large-underline: var(--font-weight-regular) var(--font-size-small)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --body-large: var(--font-weight-regular) var(--font-size-small)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --ingress-xsmall-semibold: var(--font-weight-semibold) var(--font-size-2xsmall)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --ingress-xsmall-regular: var(--font-weight-regular) var(--font-size-2xsmall)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --ingress-medium-semibold: var(--font-weight-semibold) var(--font-size-small)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --ingress-medium-regular: var(--font-weight-regular) var(--font-size-small)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --ingress-small-semibold: var(--font-weight-semibold) var(--font-size-xsmall)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --ingress-small-regular: var(--font-weight-regular) var(--font-size-xsmall)/var(--line-heights-5) var(--font-families-source-sans-pro);
+  --ingress-large-semibold: var(--font-weight-semibold) var(--font-size-medium)/var(--line-heights-4) var(--font-families-source-sans-pro);
+  --ingress-large-regular: var(--font-weight-regular) var(--font-size-medium)/var(--line-heights-4) var(--font-families-source-sans-pro);
+  --subheading-x-small: var(--font-weight-regular) var(--font-size-small)/var(--line-heights-4) var(--font-families-source-sans-pro);
+  --subheading-medium: var(--font-weight-regular) var(--font-size-large)/var(--line-heights-2) var(--font-families-source-sans-pro);
+  --subheading-2x-large: var(--font-weight-regular) var(--font-size-3xlarge)/var(--line-heights-zero) var(--font-families-source-sans-pro);
+  --subheading-small: var(--font-weight-regular) var(--font-size-medium)/var(--line-heights-3) var(--font-families-source-sans-pro);
+  --subheading-large: var(--font-weight-regular) var(--font-size-xlarge)/var(--line-heights-1) var(--font-families-source-sans-pro);
+  --subheading-x-large: var(--font-weight-regular) var(--font-size-2xlarge)/var(--line-heights-zero) var(--font-families-source-sans-pro);
+  --header-x-small: var(--font-weight-semibold) var(--font-size-small)/var(--line-heights-4) var(--font-families-source-sans-pro);
+  --header-small: var(--font-weight-semibold) var(--font-size-medium)/var(--line-heights-3) var(--font-families-source-sans-pro);
+  --header-medium: var(--font-weight-semibold) var(--font-size-large)/var(--line-heights-2) var(--font-families-source-sans-pro);
+  --header-large: var(--font-weight-semibold) var(--font-size-xlarge)/var(--line-heights-1) var(--font-families-source-sans-pro);
+  --header-x-large: var(--font-weight-semibold) var(--font-size-2xlarge)/var(--line-heights-zero) var(--font-families-source-sans-pro);
+  --header-2x-large: var(--font-weight-semibold) var(--font-size-3xlarge)/var(--line-heights-zero) var(--font-families-source-sans-pro);
   --dangerlevel-foreground-subtle-level5: var(--grey-950);
   --dangerlevel-foreground-subtle-level4: var(--grey-950);
   --dangerlevel-foreground-subtle-level3: var(--grey-950);
@@ -293,26 +284,32 @@
   --dangerlevel-background-mute-level3: var(--orange-150);
   --dangerlevel-background-mute-level2: var(--yellow-200);
   --dangerlevel-background-mute-level1: var(--green-150);
+  --feedback-foreground-emphasized-neutral: var(--grey-000);
   --feedback-foreground-emphasized-success: var(--grey-000);
   --feedback-foreground-emphasized-warning: var(--grey-950);
   --feedback-foreground-emphasized-error: var(--grey-000);
   --feedback-foreground-emphasized-info: var(--grey-000);
+  --feedback-foreground-subtle-neutral: var(--grey-950);
   --feedback-foreground-subtle-success: var(--grey-950);
   --feedback-foreground-subtle-warning: var(--grey-950);
   --feedback-foreground-subtle-error: var(--grey-950);
   --feedback-foreground-subtle-info: var(--grey-950);
+  --feedback-foreground-default-neutral: var(--grey-950);
   --feedback-foreground-default-success: var(--grey-950);
   --feedback-foreground-default-warning: var(--grey-950);
   --feedback-foreground-default-error: var(--grey-950);
   --feedback-foreground-default-info: var(--grey-950);
+  --feedback-background-emphasized-neutral: var(--grey-800);
   --feedback-background-emphasized-success: var(--green-800);
   --feedback-background-emphasized-warning: var(--yellow-500);
   --feedback-background-emphasized-error: var(--red-700);
   --feedback-background-emphasized-info: var(--blue-700);
+  --feedback-background-subtle-neutral: var(--grey-050);
   --feedback-background-subtle-success: var(--green-100);
   --feedback-background-subtle-warning: var(--yellow-100);
   --feedback-background-subtle-error: var(--red-000);
   --feedback-background-subtle-info: var(--blue-000);
+  --feedback-background-default-neutral: var(--grey-150); /* For neutral messages */
   --feedback-background-default-success: var(--green-150);
   --feedback-background-default-warning: var(--yellow-200);
   --feedback-background-default-error: var(--red-050);

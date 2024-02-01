@@ -2,6 +2,7 @@
 import './styles/global.css';
 
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
+export { default as NveBadge } from './components/nve-badge/nve-badge.component';
 export { default as NveButton } from './components/nve-button/nve-button.component';
 export { default as NveCheckbox } from './components/nve-checkbox/nve-checkbox.component';
 export { default as NveCheckboxGroup } from './components/nve-checkbox-group/nve-checkbox-group.component';

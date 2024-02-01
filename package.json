@@ -1,11 +1,12 @@
 {
   "name": "nve-designsystem",
-  "version": "0.1.26",
+  "version": "0.1.31",
   "main": "./nve-designsystem.umd.cjs",
   "module": "./nve-designsystem.js",
   "type": "module",
   "types": "index.d.ts",
   "scripts": {
+    "add-component": "node scripts/createNewComponent.js",
     "dev": "vite",
     "pack": "node scripts/prepublish.js pack",
     "publish": "node scripts/prepublish.js publish",
@@ -49,7 +50,7 @@
     "storybook": "^7.6.4",
     "style-dictionary-utils": "^2.0.4",
     "typescript": "^5.2.2",
-    "vite": "^5.0.0",
+    "vite": "^5.0.12",
     "vite-plugin-css-injected-by-js": "^3.3.1",
     "vite-plugin-dts": "^3.7.0",
     "web-component-analyzer": "^2.0.0"
