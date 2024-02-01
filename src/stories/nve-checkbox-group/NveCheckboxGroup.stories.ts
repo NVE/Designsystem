@@ -77,7 +77,6 @@ export const Error: Story = {
   args: {
     orientation: 'horizontal',
     label: 'Error',
-    invalid: true,
     errorMessage: "Error message"
   },
 };
