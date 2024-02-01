@@ -23,11 +23,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<NveSpinnerProps>;
 
-export const Example: Story = {
-  args: {
-    
-  },
-};
 
 export const Standard: Story = {
   args: {

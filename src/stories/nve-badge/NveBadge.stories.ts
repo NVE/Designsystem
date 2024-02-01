@@ -117,7 +117,7 @@ export const Large: Story = {
 
 export const Lowwarning: Story = {
   args: {
-    variant: 'success',
+    variant: 'warning',
     size: 'large',
     low: true,
     name: "warning"
@@ -133,12 +133,30 @@ export const Lowsuccess: Story = {
   },
 };
 
+export const Lowprimary: Story = {
+  args: {
+    variant: 'primary',
+    size: 'large',
+    low: true,
+    name: "primary"
+  },
+};
+
 export const Lowdanger: Story = {
   args: {
     variant: 'danger',
     size: 'large',
     low: true,
     name: "danger"
+  },
+};
+
+export const Lowneutral: Story = {
+  args: {
+    variant: 'neutral',
+    size: 'small',
+    low: true,
+    name: "neutral",
   },
 };
 
@@ -150,3 +168,5 @@ export const Inbutton: Story = {
     button: true
   },
 };
+
+
