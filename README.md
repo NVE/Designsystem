@@ -212,8 +212,8 @@ Det skal opprettes en story for hver nye komponent som lages. Story opprettes p�
 <li>Se på eksisterende stories-filer og bruk samme oppsett </li>
 <li>Storbyook lager toggle-buttons for boolean verdier. For dropdown-meny må man selv definere alternativene </li>
 <li>Komponent-filen, f.eks. NavnPåKomponent.ts må eksportere props. Se eksisterende filer for eksempel (export interface NavnPåKomponentProps)</li>
-<li>Minimum et eksempel på komponent må opprettes og eksporteres i stories-filen, f.eks. "export const Primary..." for Primary-vaiant av NveButton</li>
-<li>Det må være en story med navn Primary. Det er denne storyen som vises der man kan endre på props og se oppdatert visning</li>
+<li>Story opprettes og eksporteres i stories-filen, f.eks. "export const Primary..." for Primary-vaiant av NveButton</li>
+<li>Den første storyen er den som endres der man kan endre på props og se oppdatert visning. Den første storyen bør hete Example og bør ikke vises andre steder </li>
 <li>Informasjon om komponenten (fra Figma og ev. ekstra info) kan legges inn i stories-files under parameters -> docs --> description -->  component</li>
 </ul>
 
