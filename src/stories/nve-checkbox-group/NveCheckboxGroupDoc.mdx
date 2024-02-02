@@ -55,6 +55,33 @@ Hvis ikke "requiredlabel" er satt vises teksten "\*obligatorisk".
   </span>
 </div>
 
+## Validering
+
+Validering krever javascript. For eksemepel under er det brukt følgende javascript: <br /><br />
+const checkedValues: string\[\] = \[\];
+
+const validateCheckboxGroupDemo = (e: any) => \{
+e.preventDefault();
+
+const chgrElement = document.getElementById('checkboxGroup') as HTMLInputElement; <br />
+if (!chgrElement) <br />return; <br />
+if (!checkedValues.includes('3')) \{<br />
+chgrElement.setCustomValidity('Feil svar, må inneholde 3');<br />
+\} else \{<br />
+chgrElement.setCustomValidity('');<br />
+\}
+\};
+
+Form-elementet skal se slik ut: \<form @submit="$\{(e: any) => validateCheckboxGroupDemo(e)\}"\> Det vises ikke riktig i Stobyook.
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveCheckboxGroupStories.Validation} />
+  </span>
+</div>
+
+Property "validation" skal ikke brukes. Den er lagt til som property for å få Storybook til å vise valideringen.
+
 ## Parametere/Props
 
 Her kan du se hvilke parametere (props) komponenten kan ta imot og se endringer i kode
