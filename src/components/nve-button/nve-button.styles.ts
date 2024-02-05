@@ -25,6 +25,14 @@ export default css`
     margin-left: var(--spacing-x-small, 0.5rem);
   }
 
+  :host ::slotted(nve-icon) {
+    font-size: 24px;
+  }
+
+  :host([size='small']) ::slotted(nve-icon) {
+    font-size: 20px;
+  }
+
   :host::part(label) {
     margin: 0 var(--spacing-x-small, 0.5rem);
     font: var(--label-medium);
