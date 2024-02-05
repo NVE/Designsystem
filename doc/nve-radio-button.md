@@ -1,5 +1,8 @@
 # nve-radio-button
 
+En sl-radio-button med NVE design.
+Se https://shoelace.style/components/radio-button
+
 ## Properties
 
 | Property      | Type                             | Description                                      |

@@ -4,6 +4,7 @@ import styles from './nve-radio.styles';
 
 /**
  * En sl-radio med NVE design.
+ * Se https://shoelace.style/components/radio
  *
  * @extends SlRadio
  *

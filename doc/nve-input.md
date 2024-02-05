@@ -4,12 +4,11 @@ En sl-input i NVE-forkledning.
 Mer info: https://shoelace.style/components/input
 
 Vil du ha info-ikon med hjelpetekst etter ledeteksten, putt en nve-label i label-slot.
-
 Disse attributtene skal ikke brukes:
 - pill
 
-TODO: Utropstegn-ikon ved valideringsfeil
-TODO: Vise valideringsfeil med rød tekst under tekstfeltet
+TODO: Felte blir breddere når feil ikone vises. Alt på grunn av at det dukker opp i en slot. Hvis Vi bestemmer oss
+å ha en fast verdi på sloten, kan det kanksje påvirke andre elementer som skal vises i sloten.
 
 ## Properties
 
@@ -26,6 +25,7 @@ TODO: Vise valideringsfeil med rød tekst under tekstfeltet
 | `dir`               |                 |           | `string`                                         |                 |                                                  |
 | `disabled`          |                 |           | `boolean`                                        |                 | Disables the input.                              |
 | `enterkeyhint`      |                 |           | `"enter" \| "done" \| "go" \| "next" \| "previous" \| "search" \| "send"` |                 | Used to customize the label or icon of the Enter key on virtual keyboards. |
+| `errorMessage`      | `errorMessage`  |           | `string \| undefined`                            |                 | Brukes til enkel constraint validation til å overskrive default nettleseren melding |
 | `filled`            |                 |           | `boolean`                                        |                 | Draws a filled input.                            |
 | `form`              |                 |           | `string`                                         |                 | By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you<br />to place the form control outside of a form and associate it with the form that has this `id`. The form must be in<br />the same document or shadow root for this to work. |
 | `getForm`           |                 |           | `() => HTMLFormElement \| null`                  |                 |                                                  |

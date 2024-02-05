@@ -1,5 +1,8 @@
 # nve-alert
 
+En Shoelace-alert med Nve styling
+Se https://shoelace.style/components/alert
+
 ## Properties
 
 | Property     | Attribute    | Type                                             | Default | Description                                      |
@@ -8,12 +11,12 @@
 | `closable`   |              | `boolean`                                        |         | Enables a close button that allows the user to dismiss the alert. |
 | `dir`        |              | `string`                                         |         |                                                  |
 | `duration`   |              | `number`                                         |         | The length of time, in milliseconds, the alert will show before closing itself. If the user interacts with<br />the alert before it closes (e.g. moves the mouse over it), the timer will restart. Defaults to `Infinity`, meaning<br />the alert will not close on its own. |
-| `emphasized` | `emphasized` | `boolean`                                        | false   |                                                  |
+| `emphasized` | `emphasized` | `boolean`                                        | false   | Bestemmer sterkere bakgrunnsfarge                |
 | `lang`       |              | `string`                                         |         |                                                  |
-| `leftStroke` | `leftStroke` | `boolean`                                        | false   |                                                  |
+| `leftStroke` | `leftStroke` | `boolean`                                        | false   | Ramme linje til venstre                          |
 | `open`       |              | `boolean`                                        |         | Indicates whether or not the alert is open. You can toggle this attribute to show and hide the alert, or you can<br />use the `show()` and `hide()` methods and this attribute will reflect the alert's open state. |
-| `text`       | `text`       | `string`                                         | ""      |                                                  |
-| `title`      | `title`      | `string`                                         | ""      |                                                  |
+| `text`       | `text`       | `string`                                         | ""      | Tynnere beskrivelse tekst                        |
+| `title`      | `title`      | `string`                                         | ""      | Tykk tekst, vises helt til venstre               |
 | `variant`    |              | `"primary" \| "success" \| "neutral" \| "warning" \| "danger"` |         | The alert's theme variant.                       |
 
 ## Methods

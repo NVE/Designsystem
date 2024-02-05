@@ -3,6 +3,7 @@ import { SlRadioButton } from '@shoelace-style/shoelace';
 
 /**
  * En sl-radio-button med NVE design.
+ * Se https://shoelace.style/components/radio-button
  */
 @customElement('nve-radio-button')
 export default class NveRadioButton extends SlRadioButton {

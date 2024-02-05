@@ -28,7 +28,7 @@ Se https://shoelace.style/components/dropdown
 | `addOpenListeners`        | `(): void`                                       |                                                  |
 | `emit`                    | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
 | `focusOnTrigger`          | `(): void`                                       |                                                  |
-| `getMenu`                 | `(): any`                                        |                                                  |
+| `getMenu`                 | `(): NveMenu \| undefined`                       |                                                  |
 | `handleOpenChange`        | `(): Promise<void>`                              |                                                  |
 | `handleTriggerClick`      | `(): void`                                       |                                                  |
 | `handleTriggerKeyDown`    | `(event: KeyboardEvent): Promise<void>`          |                                                  |
