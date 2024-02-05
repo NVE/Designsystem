@@ -14,6 +14,7 @@ export { default as NveInput } from './components/nve-input/nve-input.component'
 export { default as NveLabel } from './components/nve-label/nve-label.component';
 export { default as NveMenu } from './components/nve-menu/nve-menu.component';
 export { default as NveMenuItem } from './components/nve-menu-item/nve-menu-item.component';
+export { default as NvePopup } from './components/nve-popup/nve-popup.component';
 export { default as NveRadio } from './components/nve-radio/nve-radio.component';
 export { default as NveRadioButton } from './components/nve-radio-button/nve-radio-button.component';
 export { default as NveRadioGroup } from './components/nve-radio-group/nve-radio-group.component';
