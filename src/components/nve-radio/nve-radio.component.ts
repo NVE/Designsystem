@@ -2,13 +2,14 @@ import { customElement } from 'lit/decorators.js';
 import { SlRadio } from '@shoelace-style/shoelace';
 import styles from './nve-radio.styles';
 
-@customElement('nve-radio')
 /**
- * Representerer en tilpasset radio-komponent som utvider SlRadio-klassen og styler den i nve-drakt.
+ * En sl-radio med NVE design.
+ * Se https://shoelace.style/components/radio
  *
  * @extends SlRadio
  *
  */
+@customElement('nve-radio')
 export default class NveRadio extends SlRadio {
   constructor() {
     super();

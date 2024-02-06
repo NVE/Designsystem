@@ -7,9 +7,9 @@ import { watch } from '../../utils/watch';
 import toggleBooleanAttrOnListOfNodes from '../../utils/updateInvalidProperty';
 import { PropertyValues } from 'lit';
 
-@customElement('nve-radio-group')
 /**
- * Representerer en tilpasset radiogruppekomponent som utvider SlRadioGroup-klassen.
+ * En sl-radio-group i NVE-forkledning.
+ * Se https://shoelace.style/components/radio-group
  * Denne komponenten tillater bruk av nve-radio og nve-radio-button elementer inne i <nve-radio-group></nve-radio-group>
  * ved å overstyre noen private metoder i SlRadioGroup.
  *
@@ -26,6 +26,7 @@ import { PropertyValues } from 'lit';
  * @example <nve-radio-group vertical value="1"><nve-radio value="1">Value 1 (checked)</nve-radio></nve-radio-group>
  *
  */
+@customElement('nve-radio-group')
 // @ts-expect-error -next-line - overskriving av private metoder i sl-radio-group
 export default class NveRadioGroup extends SlRadioGroup {
   static styles = [SlRadioGroup.styles, styles];

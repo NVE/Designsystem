@@ -1,38 +1,40 @@
 # nve-checkbox
 
-foreløpig finnes ikke noe hove
+En sl-checkbox.
+Mer info: https://shoelace.style/components/checkbox
+Kan brukes akkurat som en vanlig sl-checkbox komponent.
+Vi burde ikke justere størrelsen på den siden det finnes bare en 'size' alternativ i design systemet.
 
 ## Properties
 
-| Property            | Attribute | Modifiers | Type                                    | Default | Description                                      |
-|---------------------|-----------|-----------|-----------------------------------------|---------|--------------------------------------------------|
-| `checkValidity`     |           |           | `() => boolean`                         |         |                                                  |
-| `checked`           |           |           | `boolean`                               |         | Draws the checkbox in a checked state.           |
-| `defaultChecked`    |           |           | `boolean`                               |         | The default value of the form control. Primarily used for resetting the form control. |
-| `defaultValue`      |           |           | `unknown`                               |         |                                                  |
-| `dir`               |           |           | `string`                                |         |                                                  |
-| `disabled`          |           |           | `boolean`                               |         | Disables the checkbox.                           |
-| `form`              |           |           | `string`                                |         | By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you<br />to place the form control outside of a form and associate it with the form that has this `id`. The form must be in<br />the same document or shadow root for this to work. |
-| `getForm`           |           |           | `() => HTMLFormElement \| null`         |         |                                                  |
-| `indeterminate`     |           |           | `boolean`                               |         | Draws the checkbox in an indeterminate state. This is usually applied to checkboxes that represents a "select<br />all/none" behavior when associated checkboxes have a mix of checked and unchecked states. |
-| `input`             |           |           | `HTMLInputElement`                      |         |                                                  |
-| `invalid`           | `invalid` |           | `boolean`                               | false   | Checks if input is valid                         |
-| `lang`              |           |           | `string`                                |         |                                                  |
-| `max`               |           |           | `string \| number \| Date \| undefined` |         |                                                  |
-| `maxlength`         |           |           | `number \| undefined`                   |         |                                                  |
-| `min`               |           |           | `string \| number \| Date \| undefined` |         |                                                  |
-| `minlength`         |           |           | `number \| undefined`                   |         |                                                  |
-| `name`              |           |           | `string`                                |         | The name of the checkbox, submitted as a name/value pair with form data. |
-| `pattern`           |           |           | `string \| undefined`                   |         |                                                  |
-| `reportValidity`    |           |           | `() => boolean`                         |         |                                                  |
-| `required`          |           |           | `boolean`                               |         | Makes the checkbox a required field.             |
-| `setCustomValidity` |           |           | `(message: string) => void`             |         |                                                  |
-| `size`              |           |           | `"small" \| "medium" \| "large"`        |         | The checkbox's size.                             |
-| `step`              |           |           | `number \| "any" \| undefined`          |         |                                                  |
-| `title`             |           |           | `string`                                |         |                                                  |
-| `validationMessage` |           | readonly  | `string`                                |         | Gets the validation message                      |
-| `validity`          |           | readonly  | `ValidityState`                         |         | Gets the validity state object                   |
-| `value`             |           |           | `string`                                |         | The current value of the checkbox, submitted as a name/value pair with form data. |
+| Property            | Modifiers | Type                                    | Description                                      |
+|---------------------|-----------|-----------------------------------------|--------------------------------------------------|
+| `checkValidity`     |           | `() => boolean`                         |                                                  |
+| `checked`           |           | `boolean`                               | Draws the checkbox in a checked state.           |
+| `defaultChecked`    |           | `boolean`                               | The default value of the form control. Primarily used for resetting the form control. |
+| `defaultValue`      |           | `unknown`                               |                                                  |
+| `dir`               |           | `string`                                |                                                  |
+| `disabled`          |           | `boolean`                               | Disables the checkbox.                           |
+| `form`              |           | `string`                                | By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you<br />to place the form control outside of a form and associate it with the form that has this `id`. The form must be in<br />the same document or shadow root for this to work. |
+| `getForm`           |           | `() => HTMLFormElement \| null`         |                                                  |
+| `indeterminate`     |           | `boolean`                               | Draws the checkbox in an indeterminate state. This is usually applied to checkboxes that represents a "select<br />all/none" behavior when associated checkboxes have a mix of checked and unchecked states. |
+| `input`             |           | `HTMLInputElement`                      |                                                  |
+| `lang`              |           | `string`                                |                                                  |
+| `max`               |           | `string \| number \| Date \| undefined` |                                                  |
+| `maxlength`         |           | `number \| undefined`                   |                                                  |
+| `min`               |           | `string \| number \| Date \| undefined` |                                                  |
+| `minlength`         |           | `number \| undefined`                   |                                                  |
+| `name`              |           | `string`                                | The name of the checkbox, submitted as a name/value pair with form data. |
+| `pattern`           |           | `string \| undefined`                   |                                                  |
+| `reportValidity`    |           | `() => boolean`                         |                                                  |
+| `required`          |           | `boolean`                               | Makes the checkbox a required field.             |
+| `setCustomValidity` |           | `(message: string) => void`             |                                                  |
+| `size`              |           | `"small" \| "medium" \| "large"`        | The checkbox's size.                             |
+| `step`              |           | `number \| "any" \| undefined`          |                                                  |
+| `title`             |           | `string`                                |                                                  |
+| `validationMessage` | readonly  | `string`                                | Gets the validation message                      |
+| `validity`          | readonly  | `ValidityState`                         | Gets the validity state object                   |
+| `value`             |           | `string`                                | The current value of the checkbox, submitted as a name/value pair with form data. |
 
 ## Methods
 

@@ -1,5 +1,8 @@
 # nve-badge
 
+En sl-badge med Nve utvidelse.
+Mer info: https://shoelace.style/components/badge
+Kan også brukes med knappen som i Shoelace
 Importerer ingen styles fra shoelace derfor pill og pulse property skal ikke fungere.
 
 ## Properties

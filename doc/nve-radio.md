@@ -1,5 +1,8 @@
 # nve-radio
 
+En sl-radio med NVE design.
+Se https://shoelace.style/components/radio
+
 ## Properties
 
 | Property   | Type                             | Description                                      |
