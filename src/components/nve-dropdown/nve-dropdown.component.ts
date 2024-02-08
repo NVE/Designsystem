@@ -1,4 +1,4 @@
-import { SlDropdown, SlSelectEvent } from '@shoelace-style/shoelace';
+import SlDropdown from '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js';
 import { customElement } from 'lit/decorators.js';
 import { getTabbableBoundary } from '../../utils/tabbable';
 import NveButton from '../nve-button/nve-button.component';
@@ -43,7 +43,7 @@ export default class NveDropdown extends SlDropdown {
     }
   }
   // @ts-expect-error - overskriving av private metoder i sl-dropdown
-  private handlePanelSelect = (event: SlSelectEvent) => {
+  private handlePanelSelect = (event: any) => {
     const target = event.target as HTMLElement;
 
     // Hide the dropdown when a menu item is selected

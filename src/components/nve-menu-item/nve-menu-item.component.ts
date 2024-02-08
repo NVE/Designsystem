@@ -1,4 +1,4 @@
-import { SlMenuItem } from '@shoelace-style/shoelace';
+import SlMenuItem from '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-menu-item.styles';
 /**

@@ -33,12 +33,15 @@ const createComponentFile = () => {
     .map((n) => n.charAt(0).toUpperCase() + n.slice(1))
     .join('');
   const content = `
-    import { html, LitElement } from 'lit';
+    import { LitElement } from 'lit';
     import { customElement } from 'lit/decorators.js';
     import styles from './${componentName}.styles';
 
     @customElement('${componentName}')
     export default class ${className} extends LitElement {
+
+      static styles = [styles];
+
       constructor() {
         super();
       }

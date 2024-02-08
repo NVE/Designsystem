@@ -1,5 +1,5 @@
 import { customElement } from 'lit/decorators.js';
-import { SlSpinner } from '@shoelace-style/shoelace';
+import SlSpinner from '@shoelace-style/shoelace/dist/components/spinner/spinner.js';
 import { css } from 'lit';
 
 /**

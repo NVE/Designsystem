@@ -1,5 +1,5 @@
 import { customElement } from 'lit/decorators.js';
-import { SlRadioButton } from '@shoelace-style/shoelace';
+import SlRadioButton from '@shoelace-style/shoelace/dist/components/radio-button/radio-button.js';
 
 /**
  * En sl-radio-button med NVE design.

@@ -1,5 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
-import { SlButton } from '@shoelace-style/shoelace';
+import SlButton from '@shoelace-style/shoelace/dist/components/button/button.js';
 import styles from './nve-button.styles';
 
 /**

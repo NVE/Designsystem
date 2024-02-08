@@ -1,5 +1,7 @@
 import { customElement, property, state } from 'lit/decorators.js';
-import { SlRadio, SlRadioGroup, SlRadioButton } from '@shoelace-style/shoelace';
+import SlRadio from '@shoelace-style/shoelace/dist/components/radio/radio.js';
+import SlRadioButton from '@shoelace-style/shoelace/dist/components/radio-button/radio-button.js';
+import SlRadioGroup from '@shoelace-style/shoelace/dist/components/radio-group/radio-group.js';
 import NveRadioButton from '../nve-radio-button/nve-radio-button.component';
 import NveRadio from '../nve-radio/nve-radio.component';
 import styles from './nve-radio-group.styles';

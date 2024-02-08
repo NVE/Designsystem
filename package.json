@@ -1,10 +1,16 @@
 {
   "name": "nve-designsystem",
   "version": "0.1.43",
-  "main": "./nve-designsystem.umd.cjs",
-  "module": "./nve-designsystem.js",
+  "exports": {
+    ".": {
+      "import": "./nve-designsystem.js",
+      "types": "./nve-designsystem.d.ts"
+    },
+    "./components/*": "./components/*",
+    "./css/*": "./css/*"
+  },
   "type": "module",
-  "types": "index.d.ts",
+  "types": "nve-designsystem.d.ts",
   "scripts": {
     "add-component": "node scripts/createNewComponent.js",
     "dev": "vite",
@@ -44,6 +50,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-lit": "^1.10.1",
     "eslint-plugin-storybook": "^0.6.15",
+    "glob": "^10.3.10",
     "prettier": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -51,7 +58,6 @@
     "style-dictionary-utils": "^2.0.4",
     "typescript": "^5.2.2",
     "vite": "^5.0.12",
-    "vite-plugin-css-injected-by-js": "^3.3.1",
     "vite-plugin-dts": "^3.7.0",
     "web-component-analyzer": "^2.0.0"
   },

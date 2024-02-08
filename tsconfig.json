@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "ES2020",
     "declaration": true,
-    "emitDeclarationOnly": true,
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
     "module": "ESNext",
@@ -11,16 +10,17 @@
     "forceConsistentCasingInFileNames": true,
 
     /* Bundler mode */
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noEmit": true,
 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "outDir": "dist"
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
 }

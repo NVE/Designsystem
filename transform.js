@@ -47,12 +47,13 @@ if (isDark) {
 }
 
 StyleDictionary.registerFormat({
-  name: 'css/variables-themed',
+  name: 'css/variables',
   formatter: function ({ dictionary, file, options }) {
     const { outputReferences, theme } = options;
     return (
       fileHeader({ file }) +
-      `:root.${theme} {\n` +
+      `@import './global.css'; \n` +
+      `:root${theme ? '.' + theme : ''} {\n` +
       formattedVariables({ format: 'css', dictionary, outputReferences }) +
       '\n}\n'
     );
@@ -64,7 +65,7 @@ const myStyleDictionary = StyleDictionary.extend({
   platforms: {
     css: {
       transformGroup: 'css',
-      buildPath: 'build/css/',
+      buildPath: 'public/css/',
       transforms: [
         'attribute/cti',
         'name/cti/kebab',
@@ -92,7 +93,7 @@ const myStyleDictionary = StyleDictionary.extend({
     },
     darkcss: {
       transformGroup: 'css',
-      buildPath: 'build/css/',
+      buildPath: 'public/css/',
       transforms: [
         'attribute/cti',
         'name/cti/kebab',
@@ -111,7 +112,7 @@ const myStyleDictionary = StyleDictionary.extend({
         {
           filter: tokenfilter,
           destination: destination,
-          format: 'css/variables-themed',
+          format: 'css/variables',
           options: {
             outputReferences: true,
             theme: 'darkmode',

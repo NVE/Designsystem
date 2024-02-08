@@ -1,5 +1,5 @@
 import { customElement, property, state } from 'lit/decorators.js';
-import { SlInput } from '@shoelace-style/shoelace';
+import SlInput from '@shoelace-style/shoelace/dist/components/input/input.js';
 import styles from './nve-input.styles';
 
 /**
