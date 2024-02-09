@@ -5,6 +5,7 @@ import '../../components/nve-divider/nve-divider.component';
 import '../../components/nve-dropdown/nve-dropdown.component';
 import '../../components/nve-icon/nve-icon.component';
 import '../../components/nve-menu-item/nve-menu-item.component';
+import '../../components/nve-label/nve-label.component';
 import '../../components/nve-menu/nve-menu.component';
 import { NveDropdown } from './NveDropdown';
 
@@ -15,8 +16,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component:
-          `<h2><nve-dropdown> | NveDropdown</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-dropdown.md">API-dokumentasjon</a> 
+        component: `<h2><nve-dropdown> | NveDropdown</h2><a href="https://github.com/NVE/Designsystem/tree/main/doc/nve-dropdown.md">API-dokumentasjon</a> 
           Denne komponenten bygges opp av andre komponenter og deres properties. Trykk på "show code" for å se hvordan komponenten kan bygges opp. 
           Dropdown inneholder en nve-menu-komponent og hvert element er en nve-menu-item-komponent. Innenfor nve-menu-item kan man bruke flere komponenter, 
           f.eks. nve-checkbox`,

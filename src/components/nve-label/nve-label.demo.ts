@@ -74,16 +74,38 @@ const table = html`
         </td>
       </tr>
       <tr>
-        <td>Innhold i slot</td>
+        <td>Med info-ikon på venstre siden</td>
         <td>
-          <nve-label>
-            Ledetekst i <i>HTML</i>
+          <nve-label value="Svev over ikonet" iconLeft>
+            <div slot="tooltip">Hjelpetekst i <strong>HTML</strong></div>
           </nve-label>
         </td>
         <td>
-          <nve-label light>
-            Ledetekst i <i>HTML</i>
+          <nve-label light value="Svev over ikonet" iconLeft>
+            <div slot="tooltip">Hjelpetekst i <strong>HTML</strong></div>
           </nve-label>
+        </td>
+      </tr>
+      <tr>
+        <td>Med svart info-ikon</td>
+        <td>
+          <nve-label value="Svev over ikonet" iconColor="black">
+            <div slot="tooltip">Hjelpetekst i <strong>HTML</strong></div>
+          </nve-label>
+        </td>
+        <td>
+          <nve-label light value="Svev over ikonet" iconColor="black">
+            <div slot="tooltip">Hjelpetekst i <strong>HTML</strong></div>
+          </nve-label>
+        </td>
+      </tr>
+      <tr>
+        <td>Innhold i slot</td>
+        <td>
+          <nve-label> Ledetekst i <i>HTML</i> </nve-label>
+        </td>
+        <td>
+          <nve-label light> Ledetekst i <i>HTML</i> </nve-label>
         </td>
       </tr>
     </tbody>

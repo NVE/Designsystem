@@ -15,6 +15,10 @@ const meta = {
       control: { type: 'select' },
       options: ['x-small', 'small', 'medium', 'large'],
     },
+    iconColor: {
+      control: { type: 'select' },
+      options: ['black', 'default'],
+    },
   },
   parameters: {
     docs: {
@@ -36,11 +40,12 @@ export const Primary: Story = {
     size: 'medium',
     light: false,
     tooltip: '',
+    iconLeft: false,
+    iconColor: 'default',
   },
 };
 
 export const Xsmall: Story = {
-  
   args: {
     value: 'XS',
     size: 'small',
@@ -48,7 +53,6 @@ export const Xsmall: Story = {
 };
 
 export const Small: Story = {
-  
   args: {
     value: 'Small',
     size: 'small',
@@ -56,7 +60,6 @@ export const Small: Story = {
 };
 
 export const Medium: Story = {
-  
   args: {
     value: 'Medium',
     size: 'medium',
@@ -64,7 +67,6 @@ export const Medium: Story = {
 };
 
 export const Large: Story = {
-  
   args: {
     value: 'Large',
     size: 'large',
@@ -72,28 +74,41 @@ export const Large: Story = {
 };
 
 export const Light: Story = {
-  
   args: {
     value: 'Light',
     size: 'large',
-    light: true
+    light: true,
   },
 };
 export const Tooltip: Story = {
-  
   args: {
     value: 'Svev over meg',
     size: 'medium',
-    tooltip: 'Tooltip text'
+    tooltip: 'Tooltip text',
   },
 };
 
 export const Standard: Story = {
-  
   args: {
     value: 'Standard',
     size: 'large',
   },
 };
 
+export const IconPositionLeft: Story = {
+  args: {
+    value: 'Svev over meg',
+    size: 'large',
+    tooltip: 'Tooltip text',
+    iconLeft: true,
+  },
+};
 
+export const IconColorBlack: Story = {
+  args: {
+    value: 'Svev over meg',
+    size: 'large',
+    tooltip: 'Tooltip text',
+    iconColor: 'black',
+  },
+};

@@ -24,10 +24,6 @@ export default class NveMenuItem extends SlMenuItem {
    * Gjør at teksten blir indent og mindre dominant farge
    */
   @property({ type: Boolean, reflect: true }) indent: boolean = false;
-  /**
-   * Gjør at teksten vises som en unclickable kategori
-   */
-  @property({ type: Boolean, reflect: true }) category: boolean = false;
 
   constructor() {
     super();
