@@ -26,9 +26,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      name: 'NveDesignsystem',
-      fileName: 'nve-designsystem',
+      entry: resolve(__dirname, 'src/nve-designsystem.ts'),
       formats: ['es'],
     },
     rollupOptions: {
@@ -38,7 +36,7 @@ export default defineConfig({
             ignore: excludedPaths,
           })
           .map((file) => [
-            // from lib/components/button/button.tsx => components/button/button
+            // from src/components/button/button.tsx => components/button/button
             relative('src', file.slice(0, file.length - extname(file).length)),
             fileURLToPath(new URL(file, import.meta.url)),
           ])
