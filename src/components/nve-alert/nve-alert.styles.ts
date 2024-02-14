@@ -48,12 +48,12 @@ export default css`
 
   :host::part(message)::after {
     content: var(--nve-alert-text);
-    font: var(--body-medium-default);
+    font: var(--body-medium);
   }
 
   :host::part(message)::before {
     content: var(--nve-alert-title);
-    font: var(--header-small);
+    font: var(--label-large));
     white-space: nowrap;
   }
 
