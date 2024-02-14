@@ -13,17 +13,13 @@
 
     @customElement('nve-search')
     export default class NveSearch extends SlInput {
-
-      static styles = [SlInput.styles, styles];
-
       constructor() {
         super();
       }
+    
 
-      //VIKTIG! Husk at du må importere komponent i index.ts 
-      // For å vise en demonstrasjon av en komponent når vi starter appen lokalt import den i main.ts 
-
-    }
+    static styles = [SlInput.styles, styles];
+  }
     
     declare global {
       interface HTMLElementTagNameMap {

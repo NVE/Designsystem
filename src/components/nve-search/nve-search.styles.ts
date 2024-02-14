@@ -19,7 +19,7 @@ export default css`
   :host::part(input) {
     font: var(--body-small);
     border-radius: var(--border-radius-small);
-    padding: var(--spacing-medium) var(--spacing-xx-small);
+    padding: var(--spacing-medium) var(--spacing-x-small);
   }
 
   :host::after {
@@ -38,6 +38,14 @@ export default css`
 
   .input--filled {
     border: var(--border-width-default) solid var(--neutrals-background-secondary);
+  }
+
+  .input--standard {
+  border-color: white;
+  }
+
+  .input--standard:hover {
+    border-color: var(--neutrals-border-subtle);
   }
 
   /* Justering av skriftstørrelse og hjørner for andre størrelser av tekstfeltet */
@@ -81,5 +89,25 @@ export default css`
     width: 100%;
     justify-content: space-between;
     margin-inline-start: unset;
+  }
+
+  /*variants */
+  /* grey */
+  :host([variant='grey'])::part(base) {
+    background-color: var(--neutrals-background-canvas);
+  }
+
+  :host([variant='grey']) :hover {
+    border-color: var(--neutrals-border-default);
+  }
+
+  /* grey-outlined */
+  :host([variant='grey-outlined'])::part(base) {
+    background-color: var(--neutrals-background-canvas);
+    border-color: var(--neutrals-border-subtle); 
+  }
+
+  :host([variant='grey-outlined']) :hover {
+    border-color: var(--neutrals-border-default) !important;
   }
 `;

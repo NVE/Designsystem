@@ -11,22 +11,45 @@ const table = html`
 <thead>
       <tr>
         <th></th>
-        <th>Compact</th>
-        <th>Expand</th>
+        <th>default</th>
+        <th>grey</th>
+        <th>grey-outlined</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Medium</td>
+      <td>Med ikon:</td>
         <td>
-          <nve-search filled placeholder="Søk">
-          <nve-icon name="search" slot="prefix"></nve-icon>
+          <nve-search placeholder="Søk">
+            <nve-icon name="search" slot="prefix"></nve-icon>
           </nve-search>
         </td>
         <td>
-          <nve-search placeholder="Søk"></nve-search>
+          <nve-search placeholder="Søk" variant="grey">
+            <nve-icon name="search" slot="prefix"></nve-icon>
+          </nve-search>
+        </td>
+        <td>
+          <nve-search placeholder="Søk" variant="grey-outlined">
+            <nve-icon name="search" slot="prefix"></nve-icon>
+          </nve-search>
         </td>
       </tr>
-      </tbody>
+      <tr>
+        <td>Uten ikon:</td>
+        <td>
+          <nve-search placeholder="Søk">
+          </nve-search>
+       </td>
+       <td>
+          <nve-search placeholder="Søk" variant="grey">
+          </nve-search>
+        </td>
+        <td>
+          <nve-search placeholder="Søk" variant="grey-outlined">
+          </nve-search>
+        </td>
+      </tr>
+    </tbody>
 </table>`
   export default table;
