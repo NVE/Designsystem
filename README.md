@@ -23,7 +23,6 @@ export default defineConfig({
   plugins: [
     vue({
       template: {
-        transformAssetUrls,
         compilerOptions: {
           isCustomElement: (tag) => tag.includes('nve-'),
         },
@@ -46,6 +45,19 @@ import 'nve-designsystem/css/varsom.css';
 ```
 
 Det finnes også varianter av disse to filene med mørkt tema.
+
+4. Siden vi tvinger shoelace til å bruke våre egne `system` ikoner vi må overskrive shoelace registry med våre egne ikoner.
+   Det fungerer ikke når man gjør det i nve-designsystemet repo (enda) så forhåpentligvis det er en foreløpig løsning.
+   I main.ts eller App.vue skriv
+
+```js
+import { icons, registerIconLibrary } from 'nve-designsystem/registerIcons/systemLibraryCustomization';
+registerIconLibrary('system', {
+  resolver: (name) => {
+    return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
+  },
+});
+```
 
 ### Eksempel på bruk av komponent
 

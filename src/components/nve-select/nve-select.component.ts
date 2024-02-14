@@ -41,9 +41,7 @@ export default class NveSelect extends SlSelect {
       if (this.value !== oldValue) {
         this.updateComplete.then(() => {
           console.log(this);
-          // @ts-expect-error - overskriving av private metoder for å emitte event
           this.emit('sl-input');
-          // @ts-expect-error - overskriving av private metoder for å emitte event
           this.emit('sl-change');
         });
       }

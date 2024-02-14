@@ -7,6 +7,7 @@
       "types": "./nve-designsystem.d.ts"
     },
     "./components/*": "./components/*",
+    "./registerIcons/*": "./registerIcons/*",
     "./css/*": "./css/*"
   },
   "type": "module",

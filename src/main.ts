@@ -17,6 +17,15 @@ import tooltipDemo from './components/nve-tooltip/nve-tooltip.demo';
 import radioGroupDemo from './components/nve-radio-group/nve-radio-group.demo';
 import selectDemo from './components/nve-select/nve-select.demo';
 
+import { icons, registerIconLibrary } from './registerIcons/systemLibraryCustomization';
+
+registerIconLibrary('system', {
+  resolver: (name) => {
+    console.log('icons injected');
+    return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
+  },
+});
+
 render(
   [
     alertDemo,
