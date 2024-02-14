@@ -165,15 +165,6 @@ const table = html`
           <nve-input filled size="large" label="large" value="large"></nve-input>
         </td>
       </tr>
-      <tr>
-        <td>Størrelse: Stor</td>
-        <td>
-          <nve-input size="large" label="large"> <nve-icon name="info" slot="suffix"></nve-icon></nve-input>
-        </td>
-        <td>
-          <nve-input filled size="large" label="large" value="large"></nve-input>
-        </td>
-      </tr>
     </tbody>
   </table>
   <h3 id="nve-inpu-validering">nve-input constraint validering</h3>
