@@ -53,7 +53,7 @@ export default css`
 
   :host::part(message)::before {
     content: var(--nve-alert-title);
-    font: var(--label-large));
+    font: var(--label-large);
     white-space: nowrap;
   }
 
