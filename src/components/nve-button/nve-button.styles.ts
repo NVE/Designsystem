@@ -6,7 +6,7 @@ export default css`
   .button {
     width: fit-content;
     align-items: center;
-    padding: var(--spacing-medium, 1rem) calc(var(--spacing-large, 1.5rem) - var(--spacing-x-small, 0.5rem));
+    box-sizing: border-box;
   }
 
   .button ::slotted(nve-badge) {
@@ -71,14 +71,17 @@ export default css`
 
   .button--small {
     height: var(--sizing-x-small);
-    padding: var(--spacing-x-small, 0.5rem) 0px;
+    min-height: unset;
+    padding: 0px;
   }
   .button--large {
     height: var(--sl-input-height-medium);
+    min-height: unset;
     padding: var(--spacing-medium, 1rem) var(---spacing-x-small, 0.5rem);
   }
   .button--medium {
     height: var(--sl-input-height-small);
+    min-height: unset;
     padding: var(--spacing-small, 0.75rem) var(---spacing-x-small, 0.5rem);
   }
 
