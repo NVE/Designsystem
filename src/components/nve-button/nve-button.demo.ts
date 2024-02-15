@@ -14,15 +14,15 @@ export default html`
     </thead>
     <tbody>
       <tr>
-        <td>Primary Medium</td>
+        <td>Primary Large</td>
         <td>
-          <nve-button size="medium" variant="primary">I'm an NVE-button</nve-button>
+          <nve-button variant="primary">I'm an NVE-button</nve-button>
         </td>
         <td>
-          <nve-button disabled size="medium" variant="primary">I'm an NVE-button</nve-button>
+          <nve-button disabled variant="primary">I'm an NVE-button</nve-button>
         </td>
         <td>
-          <nve-button loading size="medium" variant="primary">I'm an NVE-button</nve-button>
+          <nve-button loading variant="primary">I'm an NVE-button</nve-button>
         </td>
       </tr>
       <tr>
@@ -38,15 +38,15 @@ export default html`
         </td>
       </tr>
       <tr>
-        <td>Primary Large</td>
+        <td>Primary Medium</td>
         <td>
-          <nve-button size="large" variant="primary">I'm an NVE-button</nve-button>
+          <nve-button size="medium" variant="primary">I'm an NVE-button</nve-button>
         </td>
         <td>
-          <nve-button disabled size="large" variant="primary">I'm an NVE-button</nve-button>
+          <nve-button disabled size="medium" variant="primary">I'm an NVE-button</nve-button>
         </td>
         <td>
-          <nve-button loading size="large" variant="primary">I'm an NVE-button</nve-button>
+          <nve-button loading size="medium" variant="primary">I'm an NVE-button</nve-button>
         </td>
       </tr>
       <tr>
@@ -160,7 +160,7 @@ export default html`
       <tr>
         <td>Button with prefix icon</td>
         <td>
-          <nve-button size="large" variant="primary"
+          <nve-button loading size="large" variant="primary"
             >I'm an NVE-button
             <nve-icon name="warning" slot="prefix"></nve-icon>
           </nve-button>
@@ -172,7 +172,30 @@ export default html`
           <nve-button loading size="small" variant="primary"
             >I'm an NVE-button
             <nve-icon name="warning" slot="suffix"></nve-icon>
+            <nve-icon name="warning" slot="prefix"></nve-icon>
           </nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Button with suffix icon</td>
+        <td>
+          <nve-button loading size="medium" variant="primary"
+            >I'm an NVE-button
+            <nve-icon name="warning" slot="suffix"></nve-icon>
+            <nve-icon name="warning" slot="prefix"></nve-icon>
+          </nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Button with suffix icon</td>
+        <td>
+          <nve-button size="medium" variant="primary">I'm an NVE-button </nve-button>
+        </td>
+      </tr>
+      <tr>
+        <td>Button with suffix icon</td>
+        <td>
+          <nve-button size="small" variant="primary">I'm an NVE-button </nve-button>
         </td>
       </tr>
     </tbody>

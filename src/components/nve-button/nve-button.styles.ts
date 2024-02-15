@@ -22,7 +22,6 @@ export default css`
     position: relative;
     top: 0;
     left: 0;
-    margin-left: var(--spacing-x-small, 0.5rem);
   }
 
   :host ::slotted(nve-icon) {
@@ -34,8 +33,28 @@ export default css`
   }
 
   :host::part(label) {
-    margin: 0 var(--spacing-x-small, 0.5rem);
     font: var(--label-medium);
+  }
+
+  :host([size='medium'])::part(spinner),
+  :host([size='large'])::part(spinner) {
+    margin-right: var(--spacing-small);
+  }
+
+  :host::part(base) {
+    gap: var(--spacing-x-small);
+  }
+
+  :host([size='small'])::part(spinner) {
+    margin-right: var(--spacing-x-small);
+  }
+
+  :host([size='small'])::part(label) {
+    font: var(--label-x-small);
+  }
+
+  .button--has-prefix.button--small {
+    padding-inline-start: var(--spacing-x-small);
   }
 
   .button--has-label.button--large .button__label,
@@ -44,26 +63,23 @@ export default css`
     padding: unset;
   }
 
-  .button--has-prefix.button--small,
-  .button--has-prefix.button--medium,
-  .button--has-prefix.button--large {
-    padding-inline-start: var(--spacing-large);
-  }
-
   .button--has-suffix.button--small,
   .button--has-suffix.button--medium,
   .button--has-suffix.button--large {
-    padding-inline-end: var(--spacing-large);
+    padding-inline-end: unset;
   }
 
   .button--small {
-    height: var(--sl-input-height-small);
+    height: var(--sizing-x-small);
+    padding: var(--spacing-x-small, 0.5rem) 0px;
   }
   .button--large {
-    height: var(--sl-input-height-large);
+    height: var(--sl-input-height-medium);
+    padding: var(--spacing-medium, 1rem) var(---spacing-x-small, 0.5rem);
   }
   .button--medium {
-    height: var(--sl-input-height-medium);
+    height: var(--sl-input-height-small);
+    padding: var(--spacing-small, 0.75rem) var(---spacing-x-small, 0.5rem);
   }
 
   /* PRIMARY */
