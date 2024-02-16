@@ -2,7 +2,7 @@
 
 En sl-menu i NVE-forkledning.
 Mer info: https://shoelace.style/components/menu
-
+Man kan bruke nve-label for å skille mellom kategorier. Nve-label inn i nve-menu har en spesiell styling.
 
 ## Properties
 
