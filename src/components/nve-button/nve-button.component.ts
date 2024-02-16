@@ -1,4 +1,4 @@
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { SlButton } from '@shoelace-style/shoelace';
 import styles from './nve-button.styles';
 
@@ -19,6 +19,7 @@ export default class NveButton extends SlButton {
     super();
   }
   static styles = [SlButton.styles, styles];
+  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'large';
 }
 
 declare global {
