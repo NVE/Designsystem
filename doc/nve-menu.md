@@ -2,7 +2,8 @@
 
 En sl-menu i NVE-forkledning.
 Mer info: https://shoelace.style/components/menu
-
+Man kan bruke nve-label inni sl-menu, f.eks. til å kategorisere menyvalg.
+Nve-label får en spesiell styling når den brukes inni nve-menu
 
 ## Properties
 

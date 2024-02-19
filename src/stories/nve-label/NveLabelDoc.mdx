@@ -51,6 +51,32 @@ Bruk property "tooltip" for å legge til tooltip
   <Canvas of={NveLabelStories.Tooltip} />
 </div>
 
+## Tooltip posisjon
+
+Bruk property "iconLeft" for å endre info ikon posisjon til venstre. Hvis iconLeft ikke er brukt, skal ikonen vises til høyre som default.
+
+<div style={{ width: '20rem' }}>
+  <span class="elem">
+    <Canvas of={NveLabelStories.IconPositionLeft} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveLabelStories.Tooltip} />
+  </span>
+</div>
+
+## Tooltip ikon farge
+
+I noen tilfeller trenger man å ha svart farge på ikonen. Bruk "iconColor" property til å endre den. Tilgjengelige verdier er "black" og "default"
+
+<div style={{ width: '20rem' }}>
+  <span class="elem">
+    <Canvas of={NveLabelStories.IconColorBlack} />
+  </span>
+  <span class="elem">
+    <Canvas of={NveLabelStories.Tooltip} />
+  </span>
+</div>
+
 ## Parametere/Props
 
 Her kan du se hvilke parametere (props) komponenten kan ta imot og se endringer i kode

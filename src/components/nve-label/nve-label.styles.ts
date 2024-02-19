@@ -10,6 +10,7 @@ export const styles = css`
     width: 100%;
     display: flex;
     align-items: center;
+    gap: var(--spacing-xx-small);
   }
 
   /* skriftstørrelser */
@@ -44,6 +45,9 @@ export const styles = css`
     align-items: center;
     vertical-align: bottom;
     cursor: pointer;
-    margin-left: var(--spacing-xx-small);
+  }
+
+  :host([iconColor='black']) .nve-info-icon {
+    color: var(--grey-999, #000000);
   }
 `;

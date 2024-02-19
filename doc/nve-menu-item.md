@@ -7,7 +7,6 @@ Mer info: https://shoelace.style/components/menu-item
 
 | Property        | Attribute       | Type                     | Default | Description                                      |
 |-----------------|-----------------|--------------------------|---------|--------------------------------------------------|
-| `category`      | `category`      | `boolean`                | false   | Gjør at teksten vises som en unclickable kategori |
 | `checked`       |                 | `boolean`                |         | Draws the item in a checked state.               |
 | `defaultSlot`   |                 | `HTMLSlotElement`        |         |                                                  |
 | `dir`           |                 | `string`                 |         |                                                  |

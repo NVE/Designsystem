@@ -8,6 +8,8 @@ import '../nve-tooltip/nve-tooltip.component';
 /**
  * Ledetekst med valgfritt verktøy-hint (og tilhørende info-ikon)
  *
+ * Kan brukes med inn i nve-menu (hvor den har en spesiell styling) som kategori skiller.
+ *
  * @slot (default) - teksten som skal vises. Eller du kan bruke value-attributtet
  * @slot tooltip - innhold i denne blir vist som en tooltip hvis man svever over info-ikonet
  *
@@ -37,6 +39,16 @@ export default class NveLabel extends LitElement {
    * Denne teksten blir vist som et verktøyhint hvis man svever over info-ikonet
    */
   @property({ reflect: true }) tooltip?: string = undefined;
+
+  /**
+   * Om tooltip ikone skal vises på venstre siden
+   */
+  @property({ type: Boolean, reflect: true }) iconLeft = false;
+
+  /**
+   * Ikon farge
+   */
+  @property({ reflect: true }) iconColor: 'default' | 'black' = 'default';
 
   static styles = [styles];
 
@@ -71,7 +83,10 @@ export default class NveLabel extends LitElement {
   }
 
   render() {
-    return html` ${this.renderValueProperty()} ${this.renderInfoIconWithTooltip()} `;
+    return html`
+      ${this.iconLeft ? this.renderInfoIconWithTooltip() : null} ${this.renderValueProperty()}
+      ${!this.iconLeft ? this.renderInfoIconWithTooltip() : null}
+    `;
   }
 }
 
