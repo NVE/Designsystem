@@ -18,7 +18,7 @@ const table = html`
       <tr>
         <td>Størrelse: x-small</td>
         <td>
-          <nve-label size="x-small" value="En helt vanlig ledetekst"></nve-label>
+          <nve-label size="x-small" value="En helt vanlig ledetekst"> </nve-label>
         </td>
         <td>
           <nve-label light size="x-small" value="En helt vanlig ledetekst"></nve-label>
@@ -96,6 +96,19 @@ const table = html`
         <td>
           <nve-label light value="Svev over ikonet" iconColor="black">
             <div slot="tooltip">Hjelpetekst i <strong>HTML</strong></div>
+          </nve-label>
+        </td>
+      </tr>
+      <tr>
+        <td>Med suffix slot</td>
+        <td>
+          <nve-label value="Laster ned data">
+            <nve-spinner slot="suffix"></nve-spinner>
+          </nve-label>
+        </td>
+        <td>
+          <nve-label light value="Laster ned data">
+            <nve-spinner slot="suffix"></nve-spinner>
           </nve-label>
         </td>
       </tr>

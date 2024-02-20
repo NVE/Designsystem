@@ -12,6 +12,7 @@ import '../nve-tooltip/nve-tooltip.component';
  *
  * @slot (default) - teksten som skal vises. Eller du kan bruke value-attributtet
  * @slot tooltip - innhold i denne blir vist som en tooltip hvis man svever over info-ikonet
+ * @slot suffix - viser ekstra innhold etter hoved label som f.eks. nve-spinner
  *
  * TODO: Skal være litt mer plass mellom tekst og info-ikon
  * TODO: Hvis du angir både value og innhold i slot, er det value som vises. Det bør være motsatt.
@@ -85,6 +86,7 @@ export default class NveLabel extends LitElement {
   render() {
     return html`
       ${this.iconLeft ? this.renderInfoIconWithTooltip() : null} ${this.renderValueProperty()}
+      <slot name="suffix"></slot>
       ${!this.iconLeft ? this.renderInfoIconWithTooltip() : null}
     `;
   }
