@@ -20,4 +20,5 @@ Kan brukes med inn i nve-menu (hvor den har en spesiell styling) som kategori sk
 | Name        | Description                                      |
 |-------------|--------------------------------------------------|
 | `(default)` | teksten som skal vises. Eller du kan bruke value-attributtet |
-| `tooltip`   | innhold i denne blir vist som en tooltip hvis man svever over info-ikonet<br /><br />TODO: Skal være litt mer plass mellom tekst og info-ikon<br />TODO: Hvis du angir både value og innhold i slot, er det value som vises. Det bør være motsatt. |
+| `suffix`    | viser ekstra innhold etter hoved label som f.eks. nve-spinner<br /><br />TODO: Skal være litt mer plass mellom tekst og info-ikon<br />TODO: Hvis du angir både value og innhold i slot, er det value som vises. Det bør være motsatt. |
+| `tooltip`   | innhold i denne blir vist som en tooltip hvis man svever over info-ikonet |
