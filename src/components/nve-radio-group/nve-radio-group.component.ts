@@ -88,11 +88,10 @@ export default class NveRadioGroup extends SlRadioGroup {
       //`"${this.requiredLabel}"` er en rar syntaksen men hvis vi ikke bruker fnytter html skjønner ikke at requiredLabel er en verdi
       this.style.setProperty('--sl-input-required-content', `"${this.requiredLabel}"`);
     }
-    const hasDataUserInvalidAttr = this.hasAttribute('data-user-invalid');
-    if (hasDataUserInvalidAttr && !this.alreadyInvalid) {
+    if (this.hasAttribute('data-user-invalid') && !this.alreadyInvalid) {
       this.makeInvalid();
     }
-    if (!hasDataUserInvalidAttr) {
+    if (!this.hasAttribute('data-invalid') && !this.hasAttribute('data-user-invalid')) {
       this.resetValidation();
     }
   }
