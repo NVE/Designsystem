@@ -7,6 +7,7 @@ import styles from './nve-menu-item.styles';
  *
  */
 @customElement('nve-menu-item')
+// @ts-expect-error - overskriving av private metoder i sl-menu-item
 export default class NveMenuItem extends SlMenuItem {
   /**
    * Tekst som vises som subtext(undertekst).
@@ -29,6 +30,12 @@ export default class NveMenuItem extends SlMenuItem {
     super();
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    // foreløpig fjerner mouseover event for å unngå at fokus blir stjelet når man skriver i search input felt og nve-menu med nve-menu items dukker opp
+    this.removeEventListener('mouseover', this.handleMouseOver);
+  }
+
   /**
    * Sørger for at subtext blir satt på, hvis den er tilstede i properties
    */
@@ -38,6 +45,12 @@ export default class NveMenuItem extends SlMenuItem {
       this.style.setProperty('--nve-menu-item-subtext', `"${this.subtext}"`);
     }
   }
+
+  // det er metoden fra sl-menu-item som er overstyrt her så at vi kan fjerne mouseover event
+  private handleMouseOver = (event: MouseEvent) => {
+    this.focus();
+    event.stopPropagation();
+  };
 
   static styles = [SlMenuItem.styles, styles];
 }
