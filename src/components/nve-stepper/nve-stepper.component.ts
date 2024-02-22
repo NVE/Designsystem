@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html } from "lit";
 import { customElement, property, query, state } from "lit/decorators.js";
 import { StepProps, StepState } from "./nve-step/nve-step.component";
 import styles from './nve-stepper.styles';
