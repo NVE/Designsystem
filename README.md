@@ -23,7 +23,6 @@ export default defineConfig({
   plugins: [
     vue({
       template: {
-        transformAssetUrls,
         compilerOptions: {
           isCustomElement: (tag) => tag.includes('nve-'),
         },
@@ -33,7 +32,7 @@ export default defineConfig({
 });
 ```
 
-3. I tillegg trenger du å importere <em>en</em> .css-fil for farge-tema i main.ts. Filene finnes i mappa `nve-designsystem/build/css/`. For NVE-tema, bruk:
+3. I tillegg trenger du å importere <em>en</em> .css-fil for farge-tema i main.ts. Filene finnes i mappa `nve-designsystem/css/`. For NVE-tema, bruk:
 
 ```ts
 import 'nve-designsystem/css/nve.css';
@@ -47,6 +46,19 @@ import 'nve-designsystem/css/varsom.css';
 
 Det finnes også varianter av disse to filene med mørkt tema.
 
+4. Siden vi tvinger shoelace til å bruke våre egne `system` ikoner vi må overskrive shoelace registry med våre egne ikoner.
+   Det fungerer ikke når man gjør det i nve-designsystemet repo (enda) så forhåpentligvis det er en foreløpig løsning.
+   I main.ts eller App.vue skriv
+
+```js
+import { icons, registerIconLibrary } from 'nve-designsystem/registerIcons/systemLibraryCustomization';
+registerIconLibrary('system', {
+  resolver: (name) => {
+    return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
+  },
+});
+```
+
 ### Eksempel på bruk av komponent
 
 ```html
@@ -54,7 +66,7 @@ Det finnes også varianter av disse to filene med mørkt tema.
   <nve-button variant="primary" size="small" @click="send">Button</nve-button>
 </template>
 <script setup lang="ts">
-  import { NveButton } from 'nve-designsystem';
+  import 'nve-designsystem/components/nve-button/nve-button.component.js';
 </script>
 ```
 
@@ -102,7 +114,7 @@ Vi setter reflect: true på alle properties i komponenter (se eksempel under) fo
 
 ### Eksport
 
-Komponenter skal eksponeres i src/index.ts fila på denne måten:
+Komponenter skal eksponeres i src/nve-designsystem.ts fila på denne måten:
 
 ```js
 export { default as NveComponent } from './components/nve-component/nve-component.component';

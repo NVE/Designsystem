@@ -1,4 +1,4 @@
-import { SlDialog } from '@shoelace-style/shoelace';
+import SlDialog from '@shoelace-style/shoelace/dist/components/dialog/dialog.js';
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-dialog-styles';
 /**

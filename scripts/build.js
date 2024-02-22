@@ -1,6 +1,5 @@
 //Brukes til å kjøre bygg med fil kopiering
 import { exec } from 'child_process';
-import cpy from 'cpy';
 import util from 'util';
 import chalk from 'chalk';
 import nextTask from './nextTask.js';
@@ -23,7 +22,4 @@ await nextTask('Running the TypeScript compiler', () => {
 });
 await nextTask('Building the project', () => {
   return execPromise('vite build');
-});
-await nextTask('Copy css variables files', () => {
-  return cpy('./build/css/**/*', 'dist/css/', { concurrency: 100 });
 });

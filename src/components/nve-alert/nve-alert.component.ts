@@ -1,4 +1,4 @@
-import { SlAlert } from '@shoelace-style/shoelace';
+import SlAlert from '@shoelace-style/shoelace/dist/components/alert/alert.js';
 import styles from './nve-alert.styles';
 import { customElement, property } from 'lit/decorators.js';
 
