@@ -1,6 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-badge.styles';
-import { SlBadge } from '@shoelace-style/shoelace';
+import SlBadge from '@shoelace-style/shoelace/dist/components/badge/badge.js';
 
 /**
  * En sl-badge med Nve utvidelse.

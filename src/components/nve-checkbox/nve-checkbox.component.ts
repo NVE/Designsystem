@@ -1,5 +1,5 @@
 import { customElement } from 'lit/decorators.js';
-import { SlCheckbox } from '@shoelace-style/shoelace';
+import SlCheckbox from '@shoelace-style/shoelace/dist/components/checkbox/checkbox.js';
 import styles from './nve-checkbox.styles';
 
 /**

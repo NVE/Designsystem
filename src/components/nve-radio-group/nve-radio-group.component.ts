@@ -1,5 +1,7 @@
 import { customElement, property, state } from 'lit/decorators.js';
-import { SlRadio, SlRadioGroup, SlRadioButton } from '@shoelace-style/shoelace';
+import SlRadio from '@shoelace-style/shoelace/dist/components/radio/radio.js';
+import SlRadioButton from '@shoelace-style/shoelace/dist/components/radio-button/radio-button.js';
+import SlRadioGroup from '@shoelace-style/shoelace/dist/components/radio-group/radio-group.js';
 import NveRadioButton from '../nve-radio-button/nve-radio-button.component';
 import NveRadio from '../nve-radio/nve-radio.component';
 import styles from './nve-radio-group.styles';
@@ -88,11 +90,10 @@ export default class NveRadioGroup extends SlRadioGroup {
       //`"${this.requiredLabel}"` er en rar syntaksen men hvis vi ikke bruker fnytter html skjønner ikke at requiredLabel er en verdi
       this.style.setProperty('--sl-input-required-content', `"${this.requiredLabel}"`);
     }
-    const hasDataUserInvalidAttr = this.hasAttribute('data-user-invalid');
-    if (hasDataUserInvalidAttr && !this.alreadyInvalid) {
+    if (this.hasAttribute('data-user-invalid') && !this.alreadyInvalid) {
       this.makeInvalid();
     }
-    if (!hasDataUserInvalidAttr) {
+    if (!this.hasAttribute('data-invalid') && !this.hasAttribute('data-user-invalid')) {
       this.resetValidation();
     }
   }

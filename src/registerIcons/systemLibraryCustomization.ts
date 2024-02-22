@@ -101,9 +101,11 @@ const icons: Icons = {
   `,
 };
 
-registerIconLibrary('system', {
-  resolver: (name) => {
-    console.log('icons injected');
-    return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
-  },
-});
+export { icons, registerIconLibrary };
+
+// registerIconLibrary('system', {
+//   resolver: (name) => {
+//     console.log('icons injected');
+//     return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
+//   },
+// });

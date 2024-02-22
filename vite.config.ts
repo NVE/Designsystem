@@ -1,22 +1,50 @@
 // vite.config.ts
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { extname, relative, resolve } from 'path';
+import { fileURLToPath } from 'node:url';
 import dts from 'vite-plugin-dts';
-import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
+import { glob } from 'glob';
+
+/** Inneholder alle stiene til filene som skal bundles, og skal ha types */
+const includedPaths = ['src/**/*.ts'];
+/** Inneholder stiene til filene som ikke skal bundles, og som ikke skal ha types */
+const excludedPaths = [
+  'src/components/**/*.demo.ts',
+  'src/stories/**',
+  'src/assets/**',
+  'src/styles/**',
+  'src/utils/**',
+  'src/main.ts',
+];
 
 export default defineConfig({
   plugins: [
-    cssInjectedByJsPlugin(),
     dts({
-      include: ['src/index.ts', 'src/components/**/*.component.ts'],
+      include: includedPaths,
+      exclude: excludedPaths,
     }),
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      name: 'NveDesignsystem',
-      fileName: 'nve-designsystem',
-      formats: ['es', 'umd'],
+      entry: resolve(__dirname, 'src/nve-designsystem.ts'),
+      formats: ['es'],
+    },
+    rollupOptions: {
+      input: Object.fromEntries(
+        glob
+          .sync(includedPaths, {
+            ignore: excludedPaths,
+          })
+          .map((file) => [
+            // from src/components/button/button.tsx => components/button/button
+            relative('src', file.slice(0, file.length - extname(file).length)),
+            fileURLToPath(new URL(file, import.meta.url)),
+          ])
+      ),
+      output: {
+        entryFileNames: '[name].js',
+        chunkFileNames: 'chunks/[name].js',
+      },
     },
   },
 });

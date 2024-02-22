@@ -1,9 +1,4 @@
 import type { StorybookConfig } from '@storybook/web-components-vite';
-
-const globalCSSPath = process.env.NODE_ENV === 'production' ? '/assets/global.css' : '../src/styles/global.css';
-
-const varsomCSSPath = process.env.NODE_ENV === 'production' ? '/assets/varsom.css' : '../../../build/css/varsom.css';
-
 // we have to add another styling files after they will be in use
 
 const config: StorybookConfig = {
@@ -21,8 +16,8 @@ const config: StorybookConfig = {
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-  <link rel="stylesheet" href="${varsomCSSPath}" />
-  <link rel="stylesheet" href="${globalCSSPath}" />
+  <link rel="stylesheet" href="/css/varsom.css" />
+  <link rel="stylesheet"  href="/css/global.css"/>
   <link
   rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -30,7 +25,6 @@ const config: StorybookConfig = {
 `,
   docs: {
     autodocs: 'tag',
-
   },
 };
 export default config;

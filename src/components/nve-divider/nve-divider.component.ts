@@ -1,4 +1,4 @@
-import { SlDivider } from '@shoelace-style/shoelace';
+import SlDivider from '@shoelace-style/shoelace/dist/components/divider/divider.js';
 import { css } from 'lit';
 import { customElement } from 'lit/decorators.js';
 

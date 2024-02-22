@@ -1,4 +1,4 @@
-import { SlOption } from '@shoelace-style/shoelace';
+import SlOption from '@shoelace-style/shoelace/dist/components/option/option.js';
 import { customElement } from 'lit/decorators.js';
 import styles from './nve-option.styles';
 /**

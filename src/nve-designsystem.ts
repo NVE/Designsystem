@@ -1,6 +1,4 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
-import './styles/global.css';
-
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
 export { default as NveBadge } from './components/nve-badge/nve-badge.component';
 export { default as NveButton } from './components/nve-button/nve-button.component';

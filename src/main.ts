@@ -1,6 +1,6 @@
 // test-applikasjon for komponentbiblioteket
 import { render } from 'lit';
-import '../build/css/varsom.css';
+import '../public/css/varsom.css';
 import './styles/testsite.css';
 /* Importer demo-side for hver komponent du vil vise her og sett det i render-funksjonen */
 import alertDemo from './components/nve-alert/nve-alert.demo';
@@ -17,6 +17,15 @@ import tooltipDemo from './components/nve-tooltip/nve-tooltip.demo';
 import radioGroupDemo from './components/nve-radio-group/nve-radio-group.demo';
 import selectDemo from './components/nve-select/nve-select-demo';
 import stepperDemo from './components/nve-stepper/nve-stepper.demo';
+
+import { icons, registerIconLibrary } from './registerIcons/systemLibraryCustomization';
+
+registerIconLibrary('system', {
+  resolver: (name) => {
+    console.log('icons injected');
+    return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
+  },
+});
 
 render(
   [

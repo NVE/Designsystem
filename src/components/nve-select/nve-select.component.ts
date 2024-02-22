@@ -1,4 +1,4 @@
-import { SlSelect } from '@shoelace-style/shoelace';
+import SlSelect from '@shoelace-style/shoelace/dist/components/select/select.js';
 import { customElement } from 'lit/decorators.js';
 import styles from './nve-select.styles';
 import NveOption from '../nve-option/nve-option.component';
@@ -40,6 +40,7 @@ export default class NveSelect extends SlSelect {
 
       if (this.value !== oldValue) {
         this.updateComplete.then(() => {
+          console.log(this);
           this.emit('sl-input');
           this.emit('sl-change');
         });
