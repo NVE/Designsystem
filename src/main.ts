@@ -16,6 +16,7 @@ import labelDemo from './components/nve-label/nve-label.demo';
 import tooltipDemo from './components/nve-tooltip/nve-tooltip.demo';
 import radioGroupDemo from './components/nve-radio-group/nve-radio-group.demo';
 import selectDemo from './components/nve-select/nve-select-demo';
+import stepperDemo from './components/nve-stepper/nve-stepper.demo';
 
 render(
   [
@@ -32,6 +33,7 @@ render(
     checkboxGroupDemo,
     dialogDemo,
     selectDemo,
+    stepperDemo
   ],
   document.getElementById('app')!
 ); // Render the Lit app in the specified container

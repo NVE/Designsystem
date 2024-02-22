@@ -22,3 +22,6 @@ export { default as NveSpinner } from './components/nve-spinner/nve-spinner.comp
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
 export { default as NveSelect } from './components/nve-select/nve-select.component';
 export { default as NveOption } from './components/nve-option/nve-option.component';
+export { default as NveStepper } from './components/nve-stepper/nve-stepper.component';
+export { default as NveStep } from './components/nve-stepper/nve-step/nve-step.component';
+
