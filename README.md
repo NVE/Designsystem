@@ -51,7 +51,7 @@ Det finnes også varianter av disse to filene med mørkt tema.
    I main.ts eller App.vue skriv
 
 ```js
-import { icons, registerIconLibrary } from 'nve-designsystem/registerIcons/systemLibraryCustomization';
+import { icons, registerIconLibrary } from 'nve-designsystem/registerIcons/systemLibraryCustomization.js';
 registerIconLibrary('system', {
   resolver: (name) => {
     return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
