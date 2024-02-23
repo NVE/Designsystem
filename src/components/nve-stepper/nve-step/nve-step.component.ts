@@ -3,10 +3,10 @@ import { customElement, property } from "lit/decorators.js";
 import  styles from './nve-step.styles';
 
 export enum StepState {
-  IkkePåbegynt,
-  Aktiv,
-  Fullført,
-  Feilet,
+  NotStarted,
+  Started,
+  Done,
+  Error,
 }
 
 export interface StepProps {
@@ -15,6 +15,7 @@ export interface StepProps {
   description: string;
   state: StepState;
   isSelected: boolean;
+  readyForEntrance:boolean;
 }
 
 @customElement("nve-step")
@@ -23,56 +24,56 @@ export default class NveStep extends LitElement {
   icons: string[] = [];
 
   @property({ reflect: true }) 
-  title: string = '';
-
+  title: string = "";
+  
   @property({ type: Number })
   index = 0;
-
-  @property({ type: String })
-  titleText: string = "";
-
+  
   @property({ type: String })
   description: string = "";
+  
+  @property({ type: Number })
+  state: StepState = StepState.NotStarted; // Erstatt med standardverdi
 
   @property({ type: Number })
-  state: StepState = StepState.IkkePåbegynt; // Erstatt med standardverdi
+  stepperIndex: number = 0;
 
-  @property({ type: Boolean })
+  @property({ type: Boolean, reflect: true })
   isSelected: boolean = false;
 
   @property({ type: Boolean })
   isLast: boolean = false;
 
+  @property({ type: Boolean })
+  entraceAllowed: boolean = false;
+
   @property ({type :String })
   orientation: 'horizontal' | 'vertical' = 'horizontal';
 
-  // @state() hasError = false;
-  // @state() started = false;
-  // @state() evaluated = false;
-
   static styles = [styles];
-
-  setState(){}
 
   iconForState(state: StepState): string {
     let icon = "";
-    // this.isSelected = false;
     switch (state) {
-      case StepState.IkkePåbegynt:
+      case StepState.NotStarted:
         icon = `counter_${this.index + 1}`;
         break;
-      case StepState.Aktiv:
+      case StepState.Started:
+        if(this.isSelected)
         icon = `counter_${this.index + 1}`;
+        else
+        icon = "error";
         break;
-      case StepState.Fullført:
-      case StepState.Feilet:
+      case StepState.Done:
         icon = "check_circle";
+        break;
+      case StepState.Error:
+        icon = "error";
         break;
       default:
         icon = "help_outline";
         break;
     }
-    this.requestUpdate();
     return icon;
   }
 
@@ -80,10 +81,6 @@ export default class NveStep extends LitElement {
     this.dispatchEvent(
       new CustomEvent("clicked", { detail: { index: this.index } })
     );
-    // this.requestUpdate();
-    // // this.isSelected = true;
-    console.log("this.isSelected xx", this.isSelected)
-    setTimeout(()=> console.log("this.isSelected xx", this.isSelected), 1000)
   }
 
   render() {
@@ -93,18 +90,17 @@ export default class NveStep extends LitElement {
           @click="${this.onClick}"
           class="material-symbols-outlined ${this.isSelected
             ? "selected"
-            : ""} ${this.state == StepState.Feilet ? "hasError" : ""} ${this.state >0
+            : ""} ${this.state == StepState.Error ? "hasError" : ""} ${this.state >0
             ? ""
             : "notStarted"}"
         >
         <nve-icon slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
         </span>
-        
-        
+           
         ${this.isLast
           ? ""
           : html`<div
-              class="divider-horizontal ${this.isSelected
+              class="divider-horizontal ${this.index < this.stepperIndex
                 ? "selectedInterval"
                 : ""} ${this.state >0? "" : "notStarted"}"
             ></div>`}

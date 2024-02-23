@@ -16,31 +16,36 @@ let steps = [
     icons: ["settings"],
     title: "Step 1",
     description: "This is the first step",
-    state: StepState.Aktiv,
+    state: StepState.Started,
+    readyForEntrance: true
   },
   {
     icons: ["settings"],
     title: "Step 2",
     description: "This is the second step", 
-    state: StepState.IkkePåbegynt,
+    state: StepState.NotStarted,
+    readyForEntrance: true
   },
   {
     icons: ["settings"],
     title: "Step 3",
     description: "This is the third step",
-    state: StepState.IkkePåbegynt,
+    state: StepState.NotStarted,
+    readyForEntrance: true
   },
   {
     icons: ["settings"],
     title: "Step 4",
     description: "This is the fourth step",
-    state: StepState.IkkePåbegynt,
+    state: StepState.NotStarted,
+    readyForEntrance: true
   },
   {
     icons: ["settings"],
     title: "Step 5",
     description: "This is the fourth step",
-    state: StepState.IkkePåbegynt,
+    state: StepState.NotStarted,
+    readyForEntrance: false
   },
 ] as StepProps[];
 
