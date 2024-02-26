@@ -15,6 +15,7 @@ import inputDemo from './components/nve-input/nve-input.demo';
 import labelDemo from './components/nve-label/nve-label.demo';
 import tooltipDemo from './components/nve-tooltip/nve-tooltip.demo';
 import radioGroupDemo from './components/nve-radio-group/nve-radio-group.demo';
+import selectDemo from './components/nve-select/nve-select.demo';
 import stepperDemo from './components/nve-stepper/nve-stepper.demo';
 
 import { icons, registerIconLibrary } from './registerIcons/systemLibraryCustomization';
@@ -40,6 +41,7 @@ render(
     checkboxDemo,
     checkboxGroupDemo,
     dialogDemo,
+    selectDemo,
     stepperDemo
   ],
   document.getElementById('app')!
