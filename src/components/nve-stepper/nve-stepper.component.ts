@@ -7,17 +7,14 @@ import styles from './nve-stepper.styles';
 export default class NveStepper extends LitElement {
   static styles = [styles];
 
-  @property({ type: String })
+  @property()
   orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   @property({ type: Number })
-  selectedStep = 0;
-  
+  selectedStep!: number;
+
   @property({ type: Array })
   steps = new Array<StepProps>();
-
-  @state() atStart = true;
-  @state() atEnd = true;
 
   @query('.scroll-menu')
   scrollContainer!: Element;
@@ -25,42 +22,19 @@ export default class NveStepper extends LitElement {
   stepWidth = 100;
 
   firstUpdated() {
-    setTimeout(()=>this.checkOverflow(), 100)
-    this.checkOverflow();
-    this.steps[0].isSelected = true;
+    this.setStep(this.selectedStep);
   }
-
-  checkOverflow() {
-    const totalStepsWidth = this.steps.length * this.stepWidth;
-    const containerWidth = this.scrollContainer!.clientWidth;
-    this.atStart = this.scrollContainer!.scrollLeft <= 0;
-    this.atEnd = totalStepsWidth <= containerWidth;
-  }
-
+  checkOverflow() {}
   nextStep() {
     if (this.selectedStep < this.steps.length - 1) {
       this.setStep(this.selectedStep + 1);
-      this.scrollContainer.scrollBy({
-        left: this.stepWidth,
-        behavior: 'smooth',
-      });
     }
-    this.scrollToSelectedStep();
-    this.checkOverflow();
   }
-
   prevStep() {
     if (this.selectedStep > 0) {
       this.setStep(this.selectedStep - 1);
-      this.scrollContainer.scrollBy({
-        left: -this.stepWidth,
-        behavior: 'smooth',
-      });
     }
-    this.scrollToSelectedStep();
-    this.checkOverflow();
   }
-
   selectStep(event: any) {
     if (event.detail.index > 0) {
       if (this.steps[event.detail.index - 1].state == StepState.NotStarted) {
@@ -69,7 +43,6 @@ export default class NveStepper extends LitElement {
     }
     this.setStep(event.detail.index);
   }
-
   setStep(index: number) {
     if (this.steps[index].readyForEntrance) {
       this.selectedStep = index;
@@ -84,63 +57,35 @@ export default class NveStepper extends LitElement {
       }
     }
   }
-  scrollingLeft() {
-    if (this.scrollContainer.scrollLeft <= 0) {
-      this.atStart = true;
-      return;
-    }
-    this.scrollContainer.scrollBy({
-      left: -this.stepWidth,
-      behavior: 'smooth',
-    });
-    this.atStart = false;
-    this.atEnd = false;
-  }
-
-  scrollingRight() {
-    if (this.scrollContainer.scrollLeft >= this.scrollContainer.scrollWidth - this.scrollContainer.clientWidth) {
-      this.atEnd = true;
-      return;
-    }
-    this.scrollContainer.scrollBy({ left: this.stepWidth, behavior: 'smooth' });
-    this.atEnd = false;
-    this.atStart = false;
-  }
-
-  scrollToSelectedStep() {
-    const selectedStepLeft = this.stepWidth * this.selectedStep;
-    this.scrollContainer.scrollLeft = selectedStepLeft;
-  }
-
   render() {
     return html`
       <div class="stepper ${this.orientation}">
-        <nve-button size="small" style="z-index:2" variant="primary" @click=${this.prevStep}>Prev</nve-button>
-        <div class="scroll-menu">
-          <a class="scroll-button prev ${this.atStart ? 'hidden' : ''}" @click=${this.scrollingLeft}>&#10094;</a>
-          <div class="flex-container">
-            ${this.steps.map(
-              (step, index) => html`
-                <nve-step
-                  @clicked=${this.selectStep}
-                  .icons=${step.icons}
-                  .title=${step.title}
-                  .description=${step.description}
-                  .state=${step.state}
-                  .stepperIndex=${this.selectedStep}
-                  .isSelected=${step.isSelected}
-                  .isLast=${index === this.steps.length - 1}
-                  .index=${index}
-                  .readyForEntrance=${step.readyForEntrance}
-                  .direction=${this.orientation}
-                >
-                </nve-step>
-              `
-            )}
-          </div>
-          <a class="scroll-button next ${this.atEnd ? 'hidden' : ''}" @click=${this.scrollingRight}>&#10095;</a>
+        <nve-button size="medium" variant="primary" @click=${this.prevStep}
+          ><nve-icon slot="prefix" name="navigate_before"></nve-icon>Forrige</nve-button
+        >
+        <div class="flex-container">
+          ${this.steps.map(
+            (step, index) => html`
+              <nve-step
+                @clicked=${this.selectStep}
+                .icons=${step.icons}
+                .title=${step.title}
+                .description=${step.description}
+                .state=${step.state}
+                .stepperIndex=${this.selectedStep}
+                .isSelected=${step.isSelected}
+                .isLast=${index === this.steps.length - 1}
+                .index=${index}
+                .readyForEntrance=${step.readyForEntrance}
+                .direction=${this.orientation}
+              >
+              </nve-step>
+            `
+          )}
         </div>
-        <nve-button size="small" style="z-index:2" variant="primary" @click=${this.nextStep}>Next</nve-button>
+        <nve-button size="medium" variant="primary" @click=${this.nextStep}>
+          <nve-icon slot="suffix" name="navigate_next"></nve-icon>Neste</nve-button
+        >
       </div>
     `;
   }
@@ -155,4 +100,5 @@ declare global {
 export interface StepperProps {
   selectedStep: number;
   orientation: 'horizontal' | 'vertical';
+  steps: StepProps[];
 }

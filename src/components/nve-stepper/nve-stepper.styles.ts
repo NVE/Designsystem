@@ -10,6 +10,7 @@ export default css`
   align-items: center;
   justify-content: center;
   overflow: hidden; /* Sørger for at innhold som går ut over ikke vises */
+
 }
 
 a {
@@ -33,7 +34,7 @@ button {
 
 .flex-container {
   display: flex;
-  padding: 20px;
+  padding: 20px 40px 20px 40px;
   position: relative;
 }
 .hidden {

@@ -6,11 +6,6 @@ import { StepProps, StepState } from './nve-step/nve-step.component';
  * Demonstrasjon av nve-label
  */
 
-let stepperProps = {
-  selectedStep: 0,
-  orientation: 'horizontal',
-} as StepperProps;
-
 let steps = [
   {
     icons: ["settings"],
@@ -45,15 +40,22 @@ let steps = [
     title: "Step 5",
     description: "This is the fourth step",
     state: StepState.NotStarted,
-    readyForEntrance: false
+    readyForEntrance: true
   },
 ] as StepProps[];
 
+let stepperProps = {
+  selectedStep: 0,
+  orientation: 'vertical',
+  steps: steps,
+} as StepperProps;
+
+
 const stepperTest = html`
   <hr />
-  <h3 id="nve-label">nve-stepper</h3>
-  <br>
-  <nve-stepper  .stepperProps=${stepperProps} .steps=${steps}></nve-stepper>
+    <nve-stepper .selectedStep=${stepperProps.selectedStep}
+    .steps=${stepperProps.steps}></nve-stepper>
+  </div>
 `;
 
 export default stepperTest;

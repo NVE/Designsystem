@@ -4,17 +4,23 @@ import { css } from 'lit';
  * Stiler til nve-step
  */
 export default css`
-.step {
+.step-figure {
   position: relative;
   display: flex;
   align-items: center;
+  
 }
 
 .divider-horizontal {
   height: 2px;
-  width: 100px;
+  width: 180px;
   background-color: black;
   flex-grow: 1;
+}
+
+.step-title{
+  font-size: 18px; 
+  font-weight:bold;
 }
 
 .selectedInterval {

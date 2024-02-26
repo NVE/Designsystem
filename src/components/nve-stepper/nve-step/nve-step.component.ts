@@ -86,6 +86,7 @@ export default class NveStep extends LitElement {
   render() {
     return html`
       <div class="step">
+        <div class="step-figure"> 
         <span
           @click="${this.onClick}"
           class="material-symbols-outlined ${this.isSelected
@@ -103,7 +104,9 @@ export default class NveStep extends LitElement {
               class="divider-horizontal ${this.index < this.stepperIndex
                 ? "selectedInterval"
                 : ""} ${this.state >0? "" : "notStarted"}"
-            ></div>`}
+        ></div>`}
+        </div>
+        <div class="step-title">${this.title}</div>
       </div>
     `;
   }
