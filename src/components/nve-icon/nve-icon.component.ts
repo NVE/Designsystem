@@ -12,6 +12,7 @@ export default class NveIcon extends LitElement {
   static styles = [styles];
 
   // @property({ reflect: true }) size: 'x-small' | 'small' | 'medium' | 'large' = 'small';
+  @property({ type: String }) library: 'Outlined' | 'Sharp' = 'Outlined';
 
   /** Navnet på ikonet i Material Symbols-biblioteket */
   @property({ reflect: true }) name = '';
@@ -19,7 +20,7 @@ export default class NveIcon extends LitElement {
   protected firstUpdated() {}
 
   render() {
-    return html`<span class="material-symbols-outlined">${this.name}</span>`;
+    return html`<span style="font-family:Material Symbols ${this.library}">${this.name}</span>`;
   }
 }
 declare global {

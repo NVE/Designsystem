@@ -26,6 +26,9 @@ export default class NveStep extends LitElement {
   @property({ reflect: true }) 
   title: string = "";
   
+  @property({ type: String})
+  iconLibrary : 'Outlined' | 'Sharp' = 'Outlined';
+
   @property({ type: Number })
   index = 0;
   
@@ -71,7 +74,7 @@ export default class NveStep extends LitElement {
         icon = "error";
         break;
       default:
-        icon = "help_outline";
+        icon = `help_${this.iconLibrary}`;
         break;
     }
     return icon;
@@ -85,17 +88,18 @@ export default class NveStep extends LitElement {
 
   render() {
     return html`
+    <h1>${this.iconLibrary}</h1>
       <div class="step">
         <div class="step-figure"> 
         <span
           @click="${this.onClick}"
-          class="material-symbols-outlined ${this.isSelected
+          class="${this.isSelected
             ? "selected"
             : ""} ${this.state == StepState.Error ? "hasError" : ""} ${this.state >0
             ? ""
             : "notStarted"}"
         >
-        <nve-icon slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
+        <nve-icon library=${this.iconLibrary} slot="suffix"  name="${this.iconForState(this.state)}"></nve-icon>
         </span>
            
         ${this.isLast

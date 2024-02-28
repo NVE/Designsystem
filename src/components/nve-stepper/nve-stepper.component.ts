@@ -13,6 +13,9 @@ export default class NveStepper extends LitElement {
   @property({ type: Number })
   selectedStep!: number;
 
+  @property({ type: String})
+  iconLibrary : 'Outlined' | 'Sharp' = 'Outlined';
+
   @property({ type: Array })
   steps = new Array<StepProps>();
 
@@ -59,15 +62,17 @@ export default class NveStepper extends LitElement {
   }
   render() {
     return html`
+        <h1>${this.iconLibrary}</h1>
       <div class="stepper ${this.orientation}">
         <nve-button size="medium" variant="primary" @click=${this.prevStep}
-          ><nve-icon slot="prefix" name="navigate_before"></nve-icon>Forrige</nve-button
+          ><nve-icon slot="prefix" name="navigate_before" library="${this.iconLibrary}"></nve-icon>Forrige</nve-button
         >
         <div class="flex-container">
           ${this.steps.map(
             (step, index) => html`
               <nve-step
                 @clicked=${this.selectStep}
+                .iconLibrary=${this.iconLibrary}
                 .icons=${step.icons}
                 .title=${step.title}
                 .description=${step.description}
@@ -84,7 +89,7 @@ export default class NveStepper extends LitElement {
           )}
         </div>
         <nve-button size="medium" variant="primary" @click=${this.nextStep}>
-          <nve-icon slot="suffix" name="navigate_next"></nve-icon>Neste</nve-button
+          <nve-icon slot="suffix" name="navigate_next" library="${this.iconLibrary}"></nve-icon>Neste</nve-button
         >
       </div>
     `;
