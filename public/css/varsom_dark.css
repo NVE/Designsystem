@@ -1,9 +1,9 @@
 /**
  * Do not edit directly
- * Generated on Thu, 15 Feb 2024 12:17:16 GMT
+ * Generated on Wed, 28 Feb 2024 15:55:24 GMT
  */
 
-@import './global.css';
+@import './global.css'; 
 :root.darkmode {
   --dangerlevel-foreground-subtle-level5: var(--varsom-blue-999);
   --dangerlevel-foreground-subtle-level4: var(--varsom-blue-999);
@@ -99,7 +99,8 @@
   --neutrals-border-subtle: var(--varsom-blue-800);
   --neutrals-border-mute: var(--varsom-blue-999);
   --neutrals-border-default: var(--grey-500);
-  --neutrals-foreground-subtle: var(--varsom-blue-100);
+  --neutrals-foreground-colored: var(--varsom-blue-100);
+  --neutrals-foreground-subtle: var(--grey-200);
   --neutrals-foreground-primary: var(--grey-000);
   --neutrals-background-canvas: var(--varsom-blue-950);
   --neutrals-background-secondary: var(--varsom-blue-800);
