@@ -62,7 +62,6 @@ export default class NveStepper extends LitElement {
   }
   render() {
     return html`
-        <h1>${this.iconLibrary}</h1>
       <div class="stepper ${this.orientation}">
         <nve-button size="medium" variant="primary" @click=${this.prevStep}
           ><nve-icon slot="prefix" name="navigate_before" library="${this.iconLibrary}"></nve-icon>Forrige</nve-button

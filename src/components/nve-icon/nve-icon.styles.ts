@@ -18,6 +18,9 @@ export default css`
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+:host {
+    display: flex;
+}
 
   /* we need it to center the icon */
   :is(span) {

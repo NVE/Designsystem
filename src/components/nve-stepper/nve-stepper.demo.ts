@@ -53,6 +53,7 @@ let stepperProps = {
 
 const stepperTest = html`
   <hr />
+  <h3 id="nve-stepper">nve-stepper</h3>
     <nve-stepper .selectedStep=${stepperProps.selectedStep}
     .steps=${stepperProps.steps}></nve-stepper>
   </div>

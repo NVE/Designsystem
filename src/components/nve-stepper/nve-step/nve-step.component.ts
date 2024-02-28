@@ -88,7 +88,6 @@ export default class NveStep extends LitElement {
 
   render() {
     return html`
-    <h1>${this.iconLibrary}</h1>
       <div class="step">
         <div class="step-figure"> 
         <span
@@ -110,7 +109,7 @@ export default class NveStep extends LitElement {
                 : ""} ${this.state >0? "" : "notStarted"}"
         ></div>`}
         </div>
-        <div class="step-title">${this.title}</div>
+        <div style="padding-top:4px" class="step-title">${this.title}</div>
       </div>
     `;
   }
