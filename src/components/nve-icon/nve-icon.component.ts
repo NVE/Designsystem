@@ -17,7 +17,7 @@ export default class NveIcon extends LitElement {
   protected firstUpdated() {}
 
   render() {
-    return html`<span class="material-symbols-outlined">${this.name}</span>`;
+    return html`<span part="icon" class="material-symbols-outlined">${this.name}</span>`;
   }
 }
 declare global {
