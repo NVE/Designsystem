@@ -21,6 +21,10 @@ export default css`
     border-radius: var(--border-radius-small);
   }
 
+  .input--standard:hover:not(.input--disabled) {
+    border-color: var(--neutrals-border-subtle) !important;
+  }
+
   :host::after {
     content: var(--nve-input-error-message);
     font: var(--detailtext-caption);
