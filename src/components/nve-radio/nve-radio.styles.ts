@@ -8,8 +8,8 @@ export default css`
 
   /* Sett "ring" og fjern default blå bakgrunn fra shoelace */
   :host(:hover)::part(control) {
-    border: solid var(--border-width-strong) var(--neutrals-foreground-subtle);
-    background-color: var(--neutrals-background-primary);
+    border: solid var(--border-width-strong) var(--neutrals-foreground-subtle) !important;
+    background-color: var(--neutrals-background-primary) !important;
   }
 
   :host([data-invalid])::part(control) {
