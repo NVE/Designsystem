@@ -942,7 +942,7 @@
       "type": "borderRadius"
     },
     "circle": {
-      "value": "50%",
+      "value": "50px",
       "type": "borderRadius"
     },
     "pill": {
