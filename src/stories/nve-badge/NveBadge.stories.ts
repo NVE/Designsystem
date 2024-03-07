@@ -14,7 +14,7 @@ const meta = {
     },
     variant: {
       control: { type: 'select' },
-      options: ['primary', 'success', 'neutral', 'warning', 'danger'],
+      options: ['primary', 'success', 'neutral', 'warning', 'danger', 'brand'],
     },
   },
   parameters: {
@@ -39,7 +39,7 @@ export const Example: Story = {
   args: {
     variant: 'primary',
     size: 'medium',
-    name: "badge",
+    name: 'badge',
     low: false,
   },
 };
@@ -48,7 +48,7 @@ export const Primary: Story = {
     variant: 'primary',
     size: 'medium',
     low: false,
-    name: "primary"
+    name: 'primary',
   },
 };
 
@@ -57,7 +57,7 @@ export const Neutral: Story = {
     variant: 'neutral',
     size: 'medium',
     low: false,
-    name: "neutral"
+    name: 'neutral',
   },
 };
 
@@ -66,7 +66,7 @@ export const Warning: Story = {
     variant: 'warning',
     size: 'medium',
     low: false,
-    name: "warning"
+    name: 'warning',
   },
 };
 
@@ -75,7 +75,7 @@ export const Success: Story = {
     variant: 'success',
     size: 'medium',
     low: false,
-    name: "success"
+    name: 'success',
   },
 };
 
@@ -84,7 +84,16 @@ export const Danger: Story = {
     variant: 'danger',
     size: 'medium',
     low: false,
-    name: "danger"
+    name: 'danger',
+  },
+};
+
+export const Brand: Story = {
+  args: {
+    variant: 'brand',
+    size: 'medium',
+    low: false,
+    name: 'brand',
   },
 };
 
@@ -93,7 +102,7 @@ export const Small: Story = {
     variant: 'success',
     size: 'small',
     low: false,
-    name: "small badge"
+    name: 'small badge',
   },
 };
 
@@ -102,7 +111,7 @@ export const Medium: Story = {
     variant: 'success',
     size: 'medium',
     low: false,
-    name: "medium badge"
+    name: 'medium badge',
   },
 };
 
@@ -111,7 +120,7 @@ export const Large: Story = {
     variant: 'success',
     size: 'large',
     low: false,
-    name: "large badge"
+    name: 'large badge',
   },
 };
 
@@ -120,7 +129,7 @@ export const Lowwarning: Story = {
     variant: 'warning',
     size: 'large',
     low: true,
-    name: "warning"
+    name: 'warning',
   },
 };
 
@@ -129,7 +138,7 @@ export const Lowsuccess: Story = {
     variant: 'success',
     size: 'large',
     low: true,
-    name: "success"
+    name: 'success',
   },
 };
 
@@ -138,7 +147,7 @@ export const Lowprimary: Story = {
     variant: 'primary',
     size: 'large',
     low: true,
-    name: "primary"
+    name: 'primary',
   },
 };
 
@@ -147,7 +156,7 @@ export const Lowdanger: Story = {
     variant: 'danger',
     size: 'large',
     low: true,
-    name: "danger"
+    name: 'danger',
   },
 };
 
@@ -156,7 +165,16 @@ export const Lowneutral: Story = {
     variant: 'neutral',
     size: 'large',
     low: true,
-    name: "neutral",
+    name: 'neutral',
+  },
+};
+
+export const Lowbrand: Story = {
+  args: {
+    variant: 'brand',
+    size: 'large',
+    low: true,
+    name: 'brand',
   },
 };
 
@@ -164,9 +182,7 @@ export const Inbutton: Story = {
   args: {
     variant: 'warning',
     size: 'small',
-    name: "badge",
-    button: true
+    name: 'badge',
+    button: true,
   },
 };
-
-

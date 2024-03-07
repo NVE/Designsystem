@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 28 Feb 2024 15:55:24 GMT
+ * Generated on Wed, 06 Mar 2024 13:06:25 GMT
  */
 
 @import './global.css'; 
@@ -150,7 +150,7 @@
   --border-width-default: 1px;
   --border-width-none: 0px;
   --border-radius-pill: 9999px;
-  --border-radius-circle: 50%;
+  --border-radius-circle: 50px;
   --border-radius-large: 6px;
   --border-radius-small: 4px;
   --border-radius-none: 0px;

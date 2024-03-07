@@ -20,6 +20,12 @@ export default html`
         <td><nve-badge variant="neutral" size="large">Ikke påbegynt</nve-badge></td>
       </tr>
       <tr>
+        <td>Brand</td>
+        <td><nve-badge variant="brand" size="small">Ikke påbegynt</nve-badge></td>
+        <td><nve-badge variant="brand">Ikke påbegynt</nve-badge></td>
+        <td><nve-badge variant="brand" size="large">Ikke påbegynt</nve-badge></td>
+      </tr>
+      <tr>
         <td>Primary</td>
         <td><nve-badge size="small">Under behandling</nve-badge></td>
         <td><nve-badge>Under behandling</nve-badge></td>
@@ -39,15 +45,21 @@ export default html`
       </tr>
       <tr>
         <td>Warning</td>
-        <td><nve-badge variant="warning" size="small">Feil</nve-badge></td>
-        <td><nve-badge variant="warning">Feil</nve-badge></td>
-        <td><nve-badge variant="warning" size="large">Feil</nve-badge></td>
+        <td><nve-badge variant="warning" size="small">1</nve-badge></td>
+        <td><nve-badge variant="warning">1</nve-badge></td>
+        <td><nve-badge variant="warning" size="large">1</nve-badge></td>
       </tr>
       <tr>
         <td>Low Neutral</td>
         <td><nve-badge low variant="neutral" size="small">Ikke påbegynt</nve-badge></td>
         <td><nve-badge low variant="neutral">Ikke påbegynt</nve-badge></td>
         <td><nve-badge low variant="neutral" size="large">Ikke påbegynt</nve-badge></td>
+      </tr>
+      <tr>
+        <td>Low Brand</td>
+        <td><nve-badge low variant="brand" size="small">Under behandling</nve-badge></td>
+        <td><nve-badge low variant="brand">Under behandling</nve-badge></td>
+        <td><nve-badge low variant="brand" size="large">Under behandling</nve-badge></td>
       </tr>
       <tr>
         <td>Low Primary</td>
