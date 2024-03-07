@@ -84,3 +84,11 @@ export const Required: Story = {
   },
 };
 
+export const Validation: Story = {
+  args: {
+    orientation: 'horizontal',
+    validation: true,
+    label: 'Validering'
+  },
+};
+
