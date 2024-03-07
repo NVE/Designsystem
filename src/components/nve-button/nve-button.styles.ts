@@ -22,6 +22,7 @@ export default css`
     position: relative;
     top: 0;
     left: 0;
+    margin-right: var(--spacing-x-small);
   }
 
   :host ::slotted(nve-icon) {
@@ -36,25 +37,43 @@ export default css`
     font: var(--label-medium);
   }
 
-  :host([size='medium'])::part(spinner),
-  :host([size='large'])::part(spinner) {
-    margin-right: var(--spacing-small);
-  }
-
-  :host::part(base) {
-    gap: var(--spacing-x-small);
-  }
-
-  :host([size='small'])::part(spinner) {
-    margin-right: var(--spacing-x-small);
+  :host([size='medium'])::part(label) {
+    font: var(--label-small);
   }
 
   :host([size='small'])::part(label) {
     font: var(--label-x-small);
   }
 
+  /** check if has loading if yes apply changes to has-suffix class it shouldnt be fire if loading is not here */
+
+  :host([loading]) .button--has-suffix.button--medium,
+  :host([loading]) .button--has-suffix.button--large {
+    padding-inline-end: var(--spacing-x-small);
+  }
+
+  :host([loading]) .button--has-suffix.button--small {
+    padding-inline-end: 0.125rem;
+  }
+
+  .button--has-suffix.button--medium {
+    padding-inline-end: var(--spacing-medium, 1rem);
+  }
+  .button--has-suffix.button--large {
+    padding-inline-end: var(--spacing-medium, 1rem);
+  }
+
+  :host::part(base) {
+    gap: var(--spacing-x-small);
+  }
+
   .button--has-prefix.button--small {
     padding-inline-start: var(--spacing-x-small);
+  }
+
+  .button--has-prefix.button--large,
+  .button--has-prefix.button--medium {
+    padding-inline-start: var(--spacing-medium, 1rem);
   }
 
   .button--has-label.button--large .button__label,
@@ -63,26 +82,21 @@ export default css`
     padding: unset;
   }
 
-  .button--has-suffix.button--small,
-  .button--has-suffix.button--medium,
-  .button--has-suffix.button--large {
-    padding-inline-end: unset;
-  }
-
   .button--small {
     height: var(--sizing-x-small);
     min-height: unset;
     padding: 0px;
   }
   .button--large {
-    height: var(--sl-input-height-medium);
+    height: var(--sizing-medium);
     min-height: unset;
-    padding: var(--spacing-medium, 1rem) var(---spacing-x-small, 0.5rem);
+    padding: var(--spacing-medium, 1rem) calc(var(--spacing-medium, 1rem) - var(--spacing-x-small));
   }
+  /* fjern gap forskjell på venstre og høyre */
   .button--medium {
-    height: var(--sl-input-height-small);
+    height: var(--sizing-small);
     min-height: unset;
-    padding: var(--spacing-small, 0.75rem) var(---spacing-x-small, 0.5rem);
+    padding: var(--spacing-medium, 1rem) calc(var(--spacing-medium, 1rem) - var(--spacing-x-small));
   }
 
   /* PRIMARY */

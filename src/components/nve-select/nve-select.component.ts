@@ -41,8 +41,8 @@ export default class NveSelect extends SlSelect {
       if (this.value !== oldValue) {
         this.updateComplete.then(() => {
           console.log(this);
-          this.emit('sl-input' as any);
-          this.emit('sl-change' as any);
+          this.emit('sl-input');
+          this.emit('sl-change');
         });
       }
 
