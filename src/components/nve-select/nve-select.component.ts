@@ -21,7 +21,7 @@ export default class NveSelect extends SlSelect {
     popup?.setAttribute('distance', '3');
   }
 
-  // @ts-expect-error - overskriving av private metoder i sl-select
+  // @ts-ignore
   private handleOptionClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
     const option = target.closest('nve-option');
@@ -41,7 +41,9 @@ export default class NveSelect extends SlSelect {
       if (this.value !== oldValue) {
         this.updateComplete.then(() => {
           console.log(this);
+          // @ts-expect-error - this is shadowed by outer container
           this.emit('sl-input');
+          // @ts-expect-error - this is shadowed by outer container
           this.emit('sl-change');
         });
       }
@@ -71,7 +73,7 @@ export default class NveSelect extends SlSelect {
   private getAllOptions() {
     return [...this.querySelectorAll<NveOption>('nve-option')];
   }
-  // @ts-expect-error - overskriving av private metoder i sl-select
+  // @ts-ignore
   private getFirstOption() {
     return this.querySelector<NveOption>('nve-option');
   }
