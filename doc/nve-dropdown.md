@@ -26,7 +26,7 @@ Se https://shoelace.style/components/dropdown
 | Method                    | Type                                             | Description                                      |
 |---------------------------|--------------------------------------------------|--------------------------------------------------|
 | `addOpenListeners`        | `(): void`                                       |                                                  |
-| `emit`                    | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
+| `emit`                    | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 88 more ... \| "wheel">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...>; ...` | Emits a custom event with more convenient defaults. |
 | `focusOnTrigger`          | `(): void`                                       |                                                  |
 | `getMenu`                 | `(): NveMenu \| undefined`                       |                                                  |
 | `handleOpenChange`        | `(): Promise<void>`                              |                                                  |

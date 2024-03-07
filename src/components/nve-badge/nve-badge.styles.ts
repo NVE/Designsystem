@@ -1,70 +1,94 @@
 import { css } from 'lit';
 
 export default css`
-  :host::part(base) {
-    border-radius: 3.125rem;
-    white-space: nowrap;
-    text-align: center;
-    font: var(--label-small);
-    padding: 0.375rem 0.4375rem;
-    color: var(--interactive-primary-foreground-default, #fff);
+  :host {
+    display: inline-flex;
   }
 
-  /* padding basert på størrelse */
-  :host([size='large'])::part(base) {
-    padding: var(--spacing-x-small) 0.5625rem;
+  .badge {
+    display: inline-flex;
+    padding: var(--spacing-xx-small, 4px) var(--spacing-x-small, 8px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-circle, 50px);
   }
 
-  :host([size='small'])::part(base) {
-    font-size: 0.75rem;
-    padding: var(--spacing-xx-small) 0.31rem;
+  /* Variant modifiers */
+  .badge--brand {
+    background-color: var(--brand-primary);
+    color: var(--interactive-primary-foreground-default);
   }
 
-  /* bakgrunn farger basert på variant */
-  :host([variant='primary'])::part(base) {
-    background: var(--feedback-background-emphasized-info, #1e6fdc);
+  .badge--neutral {
+    background-color: var(--feedback-background-default-neutral, #e4e5e7);
+    color: var(--feedback-foreground-default-neutral, #00131c);
   }
 
-  :host([variant='neutral'])::part(base) {
-    background: var(--neutrals-foreground-subtle, #60656c);
+  .badge--primary {
+    background-color: var(--feedback-background-emphasized-info, #1e6fdc);
+    color: var(--feedback-foreground-emphasized-info, #fff);
   }
 
-  :host([variant='success'])::part(base) {
-    background: var(--feedback-background-emphasized-success, #00814b);
+  .badge--success {
+    background-color: var(--feedback-background-emphasized-success, #00814b);
+    color: var(--feedback-foreground-emphasized-success, #fff);
   }
-
-  :host([variant='danger'])::part(base) {
-    background: var(--feedback-background-emphasized-error, #c00);
-  }
-
-  :host([variant='warning'])::part(base) {
+  .badge--warning {
+    background-color: var(--feedback-background-emphasized-warning, #ffd046);
     color: var(--feedback-foreground-emphasized-warning, #0d0d0e);
-    background: var(--feedback-background-emphasized-warning, #ffd046);
   }
 
-  /* low bakgrunn farger basert på variant */
-
-  :host([low])::part(base) {
-    color: var(--neutrals-foreground-primary, #0d0d0e);
+  .badge--danger {
+    background-color: var(--feedback-background-emphasized-error, #c00);
+    color: var(--feedback-foreground-emphasized-error, #fff);
   }
 
-  :host([low][variant='primary'])::part(base) {
-    background: var(--feedback-background-default-info, #ceeaff);
+  /* Low modifiers */
+  .low {
+    color: var(--neutrals-foreground-primary, #00131c);
   }
 
-  :host([low][variant='neutral'])::part(base) {
-    background: var(--neutrals-background-secondary, #e4e5e7);
+  .badge--brand.low {
+    background-color: var(--brand-light);
   }
 
-  :host([low][variant='success'])::part(base) {
-    background: var(--feedback-background-default-success, #cbf9cb);
+  .badge--neutral.low {
+    background-color: var(--feedback-background-subtle-neutral, #f7f7f8);
   }
 
-  :host([low][variant='danger'])::part(base) {
-    background: var(--feedback-background-default-error, #ffd8de);
+  .badge--primary.low {
+    background-color: var(--feedback-background-default-info, #ceeaff);
   }
 
-  :host([low][variant='warning'])::part(base) {
-    background: var(--feedback-background-default-warning, #ffe8a5);
+  .badge--success.low {
+    background-color: var(--feedback-background-default-success, #cbf9cb);
+  }
+  .badge--warning.low {
+    background-color: var(--feedback-background-default-warning, #ffe8a5);
+  }
+  .badge--danger.low {
+    background-color: var(--feedback-background-default-error, #ffd8de);
+  }
+
+  /* Sizing modifiers */
+  .badge--small {
+    padding: var(--spacing-xx-small, 4px) 6px;
+    font-family: 'Source Sans Pro';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 10px;
+  }
+
+  .badge--medium {
+    padding: var(--spacing-xx-small, 4px) var(--spacing-x-small, 8px);
+    font: var(--label-x-small);
+  }
+
+  .badge--large {
+    // 2 piksler per top og bottom for å få 27px høyde
+    padding: calc(var(--spacing-xx-small, 4px) + 1px) 10px;
+    font: var(--label-small);
   }
 `;

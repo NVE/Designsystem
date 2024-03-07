@@ -23,7 +23,7 @@ Se https://shoelace.style/components/alert
 
 | Method                 | Type                                             | Description                                      |
 |------------------------|--------------------------------------------------|--------------------------------------------------|
-| `emit`                 | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
+| `emit`                 | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 88 more ... \| "wheel">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...>; ...` | Emits a custom event with more convenient defaults. |
 | `handleDurationChange` | `(): void`                                       |                                                  |
 | `handleOpenChange`     | `(): Promise<void>`                              |                                                  |
 | `hide`                 | `(): Promise<void>`                              | Hides the alert                                  |
