@@ -11,7 +11,7 @@ import styles from './nve-icon.styles';
 export default class NveIcon extends LitElement {
   static styles = [styles];
 
-  // @property({ reflect: true }) size: 'x-small' | 'small' | 'medium' | 'large' = 'small';
+  @property({ reflect: true }) size: 'x-small' | 'small' | 'medium' | 'large' = 'small';
   @property({ type: String }) library: 'Outlined' | 'Sharp' = 'Outlined';
 
   /** Navnet på ikonet i Material Symbols-biblioteket */
