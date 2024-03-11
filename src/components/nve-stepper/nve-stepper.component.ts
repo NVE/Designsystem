@@ -13,21 +13,21 @@ export default class NveStepper extends LitElement {
   @property({ type: Number })
   selectedStep!: number;
 
+  @property({ type: Number })
+  spaceBetweenSteps = 200;
+
   @property({ type: String})
   iconLibrary : 'Outlined' | 'Sharp' = 'Outlined';
 
   @property({ type: Array })
   steps = new Array<StepProps>();
 
-  @query('.scroll-menu')
-  scrollContainer!: Element;
-
   stepWidth = 100;
 
   firstUpdated() {
     this.setStep(this.selectedStep);
   }
-  checkOverflow() {}
+
   nextStep() {
     if (this.selectedStep < this.steps.length - 1) {
       this.setStep(this.selectedStep + 1);
@@ -60,10 +60,17 @@ export default class NveStepper extends LitElement {
       }
     }
   }
+    getExtremes() {
+    if(this.selectedStep === 0)
+      return "start"
+      if(this.selectedStep === this.steps.length - 1){
+        return "end"
+      }
+    }
   render() {
     return html`
       <div class="stepper ${this.orientation}">
-        <nve-button size="medium" variant="primary" @click=${this.prevStep}
+        <nve-button .disabled=${this.getExtremes() === "start"} size="medium" variant="primary" @click=${this.prevStep}
           ><nve-icon slot="prefix" name="navigate_before" library="${this.iconLibrary}"></nve-icon>Forrige</nve-button
         >
         <div class="flex-container">
@@ -80,6 +87,7 @@ export default class NveStepper extends LitElement {
                 .isSelected=${step.isSelected}
                 .isLast=${index === this.steps.length - 1}
                 .index=${index}
+                .spaceBetweenSteps=${this.spaceBetweenSteps}
                 .readyForEntrance=${step.readyForEntrance}
                 .direction=${this.orientation}
               >
@@ -87,13 +95,15 @@ export default class NveStepper extends LitElement {
             `
           )}
         </div>
-        <nve-button size="medium" variant="primary" @click=${this.nextStep}>
+        <nve-button .disabled=${this.getExtremes() === "end"} size="medium" variant="primary" @click=${this.nextStep}>
           <nve-icon slot="suffix" name="navigate_next" library="${this.iconLibrary}"></nve-icon>Neste</nve-button
         >
       </div>
     `;
   }
 }
+
+
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -103,6 +113,6 @@ declare global {
 
 export interface StepperProps {
   selectedStep: number;
-  orientation: 'horizontal' | 'vertical';
   steps: StepProps[];
+  spaceBetweenSteps: number;
 }

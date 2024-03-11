@@ -25,6 +25,9 @@ export default class NveStep extends LitElement {
 
   @property({ reflect: true }) 
   title: string = "";
+
+  @property({ type: Number })
+  spaceBetweenSteps = 200;
   
   @property({ type: String})
   iconLibrary : 'Outlined' | 'Sharp' = 'Outlined';
@@ -50,8 +53,9 @@ export default class NveStep extends LitElement {
   @property({ type: Boolean })
   entraceAllowed: boolean = false;
 
-  @property ({type :String })
-  orientation: 'horizontal' | 'vertical' = 'horizontal';
+  //TODO
+  // @property ({type :String })
+  // orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   static styles = [styles];
 
@@ -85,6 +89,7 @@ export default class NveStep extends LitElement {
       new CustomEvent("clicked", { detail: { index: this.index } })
     );
   }
+  
 
   render() {
     return html`
@@ -104,6 +109,7 @@ export default class NveStep extends LitElement {
         ${this.isLast
           ? ""
           : html`<div
+              style="width:${this.spaceBetweenSteps}px"
               class="divider-horizontal ${this.index < this.stepperIndex
                 ? "selectedInterval"
                 : ""} ${this.state >0? "" : "notStarted"}"

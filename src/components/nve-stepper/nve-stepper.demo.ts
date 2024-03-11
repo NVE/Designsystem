@@ -46,8 +46,8 @@ let steps = [
 
 let stepperProps = {
   selectedStep: 0,
-  orientation: 'vertical',
   steps: steps,
+  spaceBetweenSteps: 200,
 } as StepperProps;
 
 
@@ -55,6 +55,7 @@ const stepperTest = html`
   <hr />
   <h3 id="nve-stepper">nve-stepper</h3>
     <nve-stepper .selectedStep=${stepperProps.selectedStep}
+    .spaceBetweenSteps=${stepperProps.spaceBetweenSteps}
     .steps=${stepperProps.steps}></nve-stepper>
   </div>
 `;

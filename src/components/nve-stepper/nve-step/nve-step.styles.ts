@@ -13,13 +13,12 @@ export default css`
 
 .divider-horizontal {
   height: 2px;
-  width: 180px;
   background-color: black;
   flex-grow: 1;
 }
 
 .step-title{
-  font-size: 18px; 
+  font-size: 16px; 
   font-weight:bold;
 }
 
@@ -63,3 +62,5 @@ span {
 }
 
 `;
+
+
