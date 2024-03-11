@@ -11,9 +11,8 @@ const meta: Meta<StepperProps> = {
     selectedStep: {
       control: 'number',
     },
-    orientation: {
-      control: { type: 'select'}, 
-      options: ['horizontal', 'vertical']
+    spaceBetweenSteps: {
+      control: 'number',
     },
     steps: {
       control: 'object', // Her kan du tilpasse kontrollen etter behov
@@ -69,14 +68,14 @@ let steps = [
 
 let stepperProps = {
   selectedStep: 2,
-  orientation: 'horizontal',
+  spaceBetweenSteps: 200,
   steps: steps,
 } as StepperProps;
 
 export const Standard: Story = {
   args: {
     selectedStep: stepperProps.selectedStep,
-    orientation: stepperProps.orientation,
+    spaceBetweenSteps: stepperProps.spaceBetweenSteps,
     steps: steps,
 
   },
