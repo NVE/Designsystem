@@ -39,7 +39,7 @@ export default class NveStep extends LitElement {
   description: string = "";
   
   @property({ type: Number })
-  state: StepState = StepState.NotStarted; // Erstatt med standardverdi
+  state: StepState = StepState.NotStarted; 
 
   @property({ type: Number })
   stepperIndex: number = 0;

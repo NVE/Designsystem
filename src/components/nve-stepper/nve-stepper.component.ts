@@ -104,7 +104,6 @@ export default class NveStepper extends LitElement {
 }
 
 
-
 declare global {
   interface HTMLElementTagNameMap {
     'my-nve': NveStepper;
