@@ -1,8 +1,5 @@
 import { css } from 'lit';
 
-/**
- * Stiler til nve-step
- */
 export default css`
 .step-figure {
   position: relative;
@@ -29,10 +26,6 @@ export default css`
 .selected {
   font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 1, "opsz" 48 !important;
 }
-
-/* :host([selected=true]) {
-  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 1, "opsz" 48 !important;
-} */
 
 .hasError {
   color: red;

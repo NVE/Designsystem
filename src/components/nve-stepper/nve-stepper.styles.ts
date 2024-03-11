@@ -1,16 +1,13 @@
 import { css } from 'lit';
 
-/**
- * Stiler til nve-stepper
- */
+
 export default css`
 .stepper {
   display: flex;
   position: relative;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Sørger for at innhold som går ut over ikke vises */
-
+  overflow: hidden;
 }
 
 a {
