@@ -160,7 +160,7 @@ export default html`
       <tr>
         <td>Button with prefix icon</td>
         <td>
-          <nve-button loading size="large" variant="primary"
+          <nve-button size="medium" variant="primary"
             >I'm an NVE-button
             <nve-icon name="warning" slot="prefix"></nve-icon>
           </nve-button>
@@ -169,33 +169,10 @@ export default html`
       <tr>
         <td>Button with suffix icon</td>
         <td>
-          <nve-button loading size="small" variant="primary"
-            >I'm an NVE-button
-            <nve-icon name="warning" slot="suffix"></nve-icon>
-            <nve-icon name="warning" slot="prefix"></nve-icon>
-          </nve-button>
-        </td>
-      </tr>
-      <tr>
-        <td>Button with suffix icon</td>
-        <td>
-          <nve-button loading size="medium" variant="primary"
+          <nve-button size="medium" variant="primary"
             >I'm an NVE-button
             <nve-icon name="warning" slot="suffix"></nve-icon>
-            <nve-icon name="warning" slot="prefix"></nve-icon>
           </nve-button>
-        </td>
-      </tr>
-      <tr>
-        <td>Button with suffix icon</td>
-        <td>
-          <nve-button size="medium" variant="primary">I'm an NVE-button </nve-button>
-        </td>
-      </tr>
-      <tr>
-        <td>Button with suffix icon</td>
-        <td>
-          <nve-button size="small" variant="primary">I'm an NVE-button </nve-button>
         </td>
       </tr>
     </tbody>

@@ -38,6 +38,10 @@
         "type": "color"
       },
       "Subtle": {
+        "value": "{grey.600}",
+        "type": "color"
+      },
+      "Colored": {
         "value": "{varsom_blue.500}",
         "type": "color"
       }

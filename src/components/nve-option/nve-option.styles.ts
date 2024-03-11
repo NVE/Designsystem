@@ -15,7 +15,7 @@ export default css`
 
   /* fjerner checkmark siden den er hvit */
   :host::part(checked-icon) {
-    display: none;
+    display: none !important;
   }
 
   .option--current,

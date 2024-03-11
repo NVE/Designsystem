@@ -22,8 +22,8 @@ export default css`
   :host::part(control control--indeterminate),
   :host([disabled]:hover)::part(control control--checked),
   :host([disabled]:hover)::part(control control--indeterminate) {
-    background: var(--neutrals-foreground-primary);
-    border-color: var(--neutrals-foreground-primary);
+    background: var(--neutrals-foreground-primary) !important;
+    border-color: var(--neutrals-foreground-primary) !important;
   }
 
   :host([data-invalid])::part(control),
@@ -38,7 +38,7 @@ export default css`
   }
 
   :host(:hover)::part(control) {
-    border-color: var(--neutrals-foreground-subtle, #006b99);
+    border-color: var(--neutrals-foreground-subtle, #006b99) !important;
   }
 
   sl-icon::part(checked-icon svg) {

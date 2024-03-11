@@ -169,7 +169,9 @@ const table = html`
   </table>
   <h3 id="nve-inpu-validering">nve-input constraint validering</h3>
   <form style="max-width: 300px" onsubmit="event.preventDefault();">
-    <nve-input required errorMessage="Kan ikke være tom" label="Label" value=""></nve-input>
+    <nve-input required errorMessage="Kan ikke være tom" label="Label" value="">
+      <nve-icon slot="suffix" name="search"></nve-icon>
+    </nve-input>
     <nve-button style="margin-top: 10px" variant="primary" type="submit" size="small">Submit</nve-button>
   </form>
   <h3 id="nve-inpu-validering">nve-input custom validering (med blur)</h3>

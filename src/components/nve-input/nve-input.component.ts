@@ -90,6 +90,7 @@ export default class NveInput extends SlInput {
   private showErrorIcon() {
     const nveInput = this;
     const nveIcon = document.createElement('nve-icon');
+    nveIcon.setAttribute('id', 'error-icon');
     nveIcon.setAttribute('name', 'error');
     nveIcon.setAttribute('slot', 'suffix');
     // ikone farge
@@ -101,9 +102,10 @@ export default class NveInput extends SlInput {
   }
   private hideErrorIcon() {
     const nveInput = this;
-    const nveIcon = nveInput.querySelector('[slot="suffix"]');
-    if (nveIcon) {
-      nveIcon.remove();
+    //make sure its an error icon!
+    const errorIcon = nveInput.querySelector('#error-icon');
+    if (errorIcon) {
+      errorIcon.remove();
     }
   }
 }

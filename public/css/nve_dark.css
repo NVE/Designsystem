@@ -1,9 +1,9 @@
 /**
  * Do not edit directly
- * Generated on Thu, 15 Feb 2024 12:17:16 GMT
+ * Generated on Wed, 06 Mar 2024 13:06:25 GMT
  */
 
-@import './global.css';
+@import './global.css'; 
 :root.darkmode {
   --dangerlevel-foreground-subtle-level5: var(--grey-950);
   --dangerlevel-foreground-subtle-level4: var(--grey-950);
@@ -99,6 +99,7 @@
   --neutrals-border-subtle: var(--grey-800);
   --neutrals-border-mute: var(--grey-950);
   --neutrals-border-default: var(--grey-500);
+  --neutrals-foreground-colored: var(--nve-brand-000);
   --neutrals-foreground-subtle: var(--grey-200);
   --neutrals-foreground-primary: var(--grey-000);
   --neutrals-background-canvas: var(--grey-850);

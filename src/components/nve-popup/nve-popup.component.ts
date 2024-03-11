@@ -1,5 +1,5 @@
 import { customElement } from 'lit/decorators.js';
-import { SlPopup } from '@shoelace-style/shoelace';
+import SlPopup from '@shoelace-style/shoelace/dist/components/popup/popup.js';
 
 /**
  * En sl-popup med NVE design.

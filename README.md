@@ -51,7 +51,7 @@ Det finnes også varianter av disse to filene med mørkt tema.
    I main.ts eller App.vue skriv
 
 ```js
-import { icons, registerIconLibrary } from 'nve-designsystem/registerIcons/systemLibraryCustomization';
+import { icons, registerIconLibrary } from 'nve-designsystem/registerIcons/systemLibraryCustomization.js';
 registerIconLibrary('system', {
   resolver: (name) => {
     return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
@@ -148,6 +148,14 @@ ser bedre ut enn dette:
 ```
 
 Hvis det ikke er mulig å style med ::part, bruk css-klasser.
+Tydeligvis safari (liten forbokstav med vilje) sliter med å ta presedens i :host(:hover)::part(control) syntaksen over klasser derfor noen ganger blir shoelace sin styling ikke overskrevet riktig. Derfor må vi huske å teste web komponenter i safari og. Problemet blir løst med '!important' keyword som f.eks.
+
+```css
+:host([disabled]:hover)::part(control control--indeterminate) {
+  background: var(--neutrals-foreground-primary) !important;
+  border-color: var(--neutrals-foreground-primary) !important;
+}
+```
 
 ### Typografi
 

@@ -17,7 +17,7 @@ Nve-label får en spesiell styling når den brukes inni nve-menu
 
 | Method           | Type                                             | Description                                      |
 |------------------|--------------------------------------------------|--------------------------------------------------|
-| `emit`           | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
+| `emit`           | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 88 more ... \| "wheel">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...>; ...` | Emits a custom event with more convenient defaults. |
 | `getAllItems`    | `(): SlMenuItem[]`                               |                                                  |
 | `getCurrentItem` | `(): SlMenuItem \| undefined`                    |                                                  |
 | `setCurrentItem` | `(item: SlMenuItem): void`                       |                                                  |

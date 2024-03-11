@@ -54,7 +54,7 @@ ved å overstyre noen private metoder i SlRadioGroup.
 | Method              | Type                                             | Description                                      |
 |---------------------|--------------------------------------------------|--------------------------------------------------|
 | `checkValidity`     | `(): boolean`                                    | Checks for validity but does not show a validation message. Returns `true` when valid and `false` when invalid. |
-| `emit`              | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 113 more ... \| "sl-start">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<.....` | Emits a custom event with more convenient defaults. |
+| `emit`              | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 88 more ... \| "wheel">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...>; ...` | Emits a custom event with more convenient defaults. |
 | `getForm`           | `(): HTMLFormElement \| null`                    | Gets the associated form, if one exists.         |
 | `handlePropChange`  | `(oldValue: any, newValue: any): boolean`        |                                                  |
 | `handleSizeChange`  | `(): void`                                       |                                                  |

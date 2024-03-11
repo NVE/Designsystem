@@ -26,8 +26,8 @@ export default css`
   }
 
   :host::part(popup) {
-    border-radius: var(--border-radius-small, 0.25rem);
-    border: 1px solid var(--neutrals-foreground-subtle, #006b99);
+    border-radius: var(--border-radius-small, 0.25rem) !important;
+    border: 1px solid var(--neutrals-foreground-subtle, #006b99) !important;
   }
 
   /* filled*/
