@@ -28,48 +28,49 @@ const meta: Meta<StepperProps> = {
 export default meta;
 export type Story = StoryObj<StepperProps>;
 
+
 let steps = [
   {
     icons: ["settings"],
     title: "Step 1",
-    description: "This is the first step",
+    description: "The first step",
     state: StepState.Started,
     readyForEntrance: true
   },
   {
     icons: ["settings"],
     title: "Step 2",
-    description: "This is the second step", 
+    description: "The second step", 
     state: StepState.NotStarted,
     readyForEntrance: true
   },
   {
     icons: ["settings"],
     title: "Step 3",
-    description: "This is the third step",
+    description: "The third step",
     state: StepState.NotStarted,
     readyForEntrance: true
   },
   {
     icons: ["settings"],
     title: "Step 4",
-    description: "This is the fourth step",
+    description: "The fourth step",
     state: StepState.NotStarted,
     readyForEntrance: true
   },
   {
     icons: ["settings"],
     title: "Step 5",
-    description: "This is the fourth step",
+    description: "The fifth step",
     state: StepState.NotStarted,
     readyForEntrance: true
   },
 ] as StepProps[];
 
 let stepperProps = {
-  selectedStep: 2,
-  spaceBetweenSteps: 200,
+  selectedStep: 0,
   steps: steps,
+  spaceBetweenSteps: 200,
 } as StepperProps;
 
 export const Standard: Story = {

@@ -115,7 +115,8 @@ export default class NveStep extends LitElement {
                 : ""} ${this.state >0? "" : "notStarted"}"
         ></div>`}
         </div>
-        <div style="padding-top:4px" class="step-title">${this.title}</div>
+        <div class="step-title">${this.title}</div>
+        <div class="step-description">${this.description}</div>
       </div>
     `;
   }

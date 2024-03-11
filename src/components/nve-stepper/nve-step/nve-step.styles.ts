@@ -17,6 +17,12 @@ export default css`
 .step-title{
   font-size: 16px; 
   font-weight:bold;
+  padding-top:4px
+}
+.step-description{
+  font-size: 14px; 
+  font-weight:bold;
+  padding-top:4px
 }
 
 .selectedInterval {
