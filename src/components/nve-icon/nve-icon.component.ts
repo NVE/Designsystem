@@ -11,13 +11,15 @@ import styles from './nve-icon.styles';
 export default class NveIcon extends LitElement {
   static styles = [styles];
 
+  @property({ type: String }) library: 'Outlined' | 'Sharp' = 'Outlined';
+
   /** Navnet på ikonet i Material Symbols-biblioteket */
   @property({ reflect: true }) name = '';
 
   protected firstUpdated() {}
 
   render() {
-    return html`<span part="icon" class="material-symbols-outlined">${this.name}</span>`;
+    return html`<span style="font-family:Material Symbols ${this.library}">${this.name}</span>`;
   }
 }
 declare global {

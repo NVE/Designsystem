@@ -1,15 +1,26 @@
 import { css } from 'lit';
 
 export default css`
-  :host {
-    /* Apply Material Icons font-family to the Shadow DOM */
-    font-family: 'Material Symbols Outlined';
-  }
+
   /* Brukes i dropdown. Eneste måten å override shadow dom for å rotere expand_more ikonet når menyen åpner */
   :host([name='expand_more']) {
     transform: var(--icon-rotation, none);
     transition: transform 0.3s ease;
   }
+
+  /* prevent icon beeing highlighted */ 
+  :host {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+:host {
+    display: flex;
+}
 
   /* we need it to center the icon */
   :is(span) {
