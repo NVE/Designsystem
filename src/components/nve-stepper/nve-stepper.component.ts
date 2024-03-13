@@ -11,7 +11,7 @@ export default class NveStepper extends LitElement {
   orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   @property({ type: Object })
-  selectedStepIndex= { value: 0 };
+  selectedStepIndex = { value: 0 };
 
   @property({ type: Number })
   spaceBetweenSteps = 200;
@@ -84,7 +84,7 @@ export default class NveStepper extends LitElement {
                 .title=${step.title}
                 .description=${step.description}
                 .state=${step.state}
-                .stepperIndex=${this.selectedStepIndex.value}
+                .selectedStepIndex=${this.selectedStepIndex.value}
                 .isSelected=${step.isSelected}
                 .isLast=${index === this.steps.length - 1}
                 .index=${index}

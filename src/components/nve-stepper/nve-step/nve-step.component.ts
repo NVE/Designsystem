@@ -42,7 +42,7 @@ export default class NveStep extends LitElement {
   state: StepState = StepState.NotStarted; 
 
   @property({ type: Number })
-  stepperIndex: number = 0;
+  selectedStepIndex: number = 0;
 
   @property({ type: Boolean, reflect: true })
   isSelected: boolean = false;
@@ -110,7 +110,7 @@ export default class NveStep extends LitElement {
           ? ""
           : html`<div
               style="width:${this.spaceBetweenSteps}px"
-              class="divider-horizontal ${this.index < this.stepperIndex
+              class="divider-horizontal ${this.index < this.selectedStepIndex
                 ? "selectedInterval"
                 : ""} ${this.state >0? "" : "notStarted"}"
         ></div>`}
