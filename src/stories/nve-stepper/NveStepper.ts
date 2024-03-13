@@ -4,7 +4,7 @@ import { StepperProps } from '../../components/nve-stepper/nve-stepper.component
 
 export const NveStepper= (props: StepperProps) => {
   return  html`
-    <nve-stepper .selectedStep=${props.selectedStep}
+    <nve-stepper .selectedStep=${props.selectedStepIndex}
     .spaceBetweenSteps=${props.spaceBetweenSteps}
     .steps=${props.steps}></nve-stepper>
 `;

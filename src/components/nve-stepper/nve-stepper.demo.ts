@@ -44,8 +44,8 @@ let steps = [
   },
 ] as StepProps[];
 
-let stepperProps = {
-  selectedStep: 0,
+const stepperProps = {
+  selectedStepIndex: { value: 0 },
   steps: steps,
   spaceBetweenSteps: 200,
 } as StepperProps;
@@ -54,7 +54,7 @@ let stepperProps = {
 const stepperTest = html`
   <hr />
   <h3 id="nve-stepper">nve-stepper</h3>
-    <nve-stepper .selectedStep=${stepperProps.selectedStep}
+  <nve-stepper .selectedStep=${stepperProps.selectedStepIndex}
     .spaceBetweenSteps=${stepperProps.spaceBetweenSteps}
     .steps=${stepperProps.steps}></nve-stepper>
   </div>

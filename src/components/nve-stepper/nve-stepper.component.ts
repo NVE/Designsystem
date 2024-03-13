@@ -10,8 +10,8 @@ export default class NveStepper extends LitElement {
   @property()
   orientation: 'horizontal' | 'vertical' = 'horizontal';
 
-  @property({ type: Number })
-  selectedStep!: number;
+  @property({ type: Object })
+  selectedStepIndex= { value: 0 };
 
   @property({ type: Number })
   spaceBetweenSteps = 200;
@@ -25,17 +25,17 @@ export default class NveStepper extends LitElement {
   stepWidth = 100;
 
   firstUpdated() {
-    this.setStep(this.selectedStep);
+    this.setStep(this.selectedStepIndex.value);
   }
 
   nextStep() {
-    if (this.selectedStep < this.steps.length - 1) {
-      this.setStep(this.selectedStep + 1);
+    if (this.selectedStepIndex.value < this.steps.length - 1) {
+      this.setStep(this.selectedStepIndex.value + 1);
     }
   }
   prevStep() {
-    if (this.selectedStep > 0) {
-      this.setStep(this.selectedStep - 1);
+    if (this.selectedStepIndex.value > 0) {
+      this.setStep(this.selectedStepIndex.value - 1);
     }
   }
   selectStep(event: any) {
@@ -48,7 +48,7 @@ export default class NveStepper extends LitElement {
   }
   setStep(index: number) {
     if (this.steps[index].readyForEntrance) {
-      this.selectedStep = index;
+      this.selectedStepIndex.value = index;
       for (let i = 0; i < this.steps.length; i++) {
         this.steps[i].isSelected = i === index;
         if (i <= index) {
@@ -59,11 +59,12 @@ export default class NveStepper extends LitElement {
         this.steps = [...this.steps];
       }
     }
+    console.log("this.selectedStepIndex2", this.selectedStepIndex);
   }
     getExtremes() {
-    if(this.selectedStep === 0)
+    if(this.selectedStepIndex.value === 0)
       return "start"
-      if(this.selectedStep === this.steps.length - 1){
+      if(this.selectedStepIndex.value === this.steps.length - 1){
         return "end"
       }
     }
@@ -83,7 +84,7 @@ export default class NveStepper extends LitElement {
                 .title=${step.title}
                 .description=${step.description}
                 .state=${step.state}
-                .stepperIndex=${this.selectedStep}
+                .stepperIndex=${this.selectedStepIndex.value}
                 .isSelected=${step.isSelected}
                 .isLast=${index === this.steps.length - 1}
                 .index=${index}
@@ -111,7 +112,7 @@ declare global {
 }
 
 export interface StepperProps {
-  selectedStep: number;
+  selectedStepIndex: { value: number};
   steps: StepProps[];
   spaceBetweenSteps: number;
 }

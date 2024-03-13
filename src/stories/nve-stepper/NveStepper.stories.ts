@@ -8,8 +8,8 @@ const meta: Meta<StepperProps> = {
   title: 'Nve/NveStepper',
   render: (args) => NveStepper(args),
   argTypes: {
-    selectedStep: {
-      control: 'number',
+    selectedStepIndex: {
+      control: 'object',
     },
     spaceBetweenSteps: {
       control: 'number',
@@ -68,14 +68,14 @@ let steps = [
 ] as StepProps[];
 
 let stepperProps = {
-  selectedStep: 0,
+  selectedStepIndex: { value: 0 },
   steps: steps,
   spaceBetweenSteps: 200,
 } as StepperProps;
 
 export const Standard: Story = {
   args: {
-    selectedStep: stepperProps.selectedStep,
+    selectedStepIndex: stepperProps.selectedStepIndex,
     spaceBetweenSteps: stepperProps.spaceBetweenSteps,
     steps: steps,
 
