@@ -6,7 +6,6 @@ import styles from './nve-stepper.styles';
 @customElement('nve-stepper')
 export default class NveStepper extends LitElement {
   static styles = [styles];
-
   /**
    * Hvilken retning steppene skal gå. TODO: implementer vertical
    */
@@ -23,18 +22,18 @@ export default class NveStepper extends LitElement {
   @property({ type: Number })
   spaceBetweenSteps = 200;
   /**
-   * Hvilken ikonbibliotek som skal brukes
+   * Hvilken ikonbibliotek som skal brukes, Sharp eller Outlined.
    */
   @property({ type: String })
   iconLibrary: 'Outlined' | 'Sharp' = 'Outlined';
   /**
    * Mulighet om å endre teksten på knapp ved siste steg,
-   * default er disabled neste
+   * default er disabled neste.
    */
   @property({ type: String })
   optionalEndButton = '';
   /**
-   * Steppene som skal vises, se StepProps interface for data som skal sendes inn
+   * Steppene som skal vises, se StepProps interface for data som skal sendes inn.
    */
   @property({ type: Array })
   steps = new Array<StepProps>();
@@ -103,7 +102,6 @@ export default class NveStepper extends LitElement {
               <nve-step
                 @clicked=${this.selectStep}
                 .iconLibrary=${this.iconLibrary}
-                .icons=${step.icons}
                 .title=${step.title}
                 .description=${step.description}
                 .state=${step.state}
