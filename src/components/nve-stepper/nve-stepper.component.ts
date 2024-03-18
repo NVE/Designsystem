@@ -84,6 +84,10 @@ export default class NveStepper extends LitElement {
       return 'end';
     }
   }
+  onComplete() {
+    this.dispatchEvent(new CustomEvent('complete', { bubbles: true }));
+  }
+
   render() {
     return html`
       <div class="stepper ${this.orientation}">
@@ -122,7 +126,7 @@ export default class NveStepper extends LitElement {
             .disabled=${this.getExtremes() === 'end' && this.optionalEndButton === ''}
             size="medium"
             variant="primary"
-            @click=${this.nextStep}
+            @click=${this.getExtremes() === 'end' && this.optionalEndButton !== '' ? this.onComplete : this.nextStep}
           >
             <nve-icon slot="suffix" name="navigate_next" library="${this.iconLibrary}"></nve-icon>
             ${this.getExtremes() === 'end' && this.optionalEndButton !== '' ? this.optionalEndButton : 'Neste'}

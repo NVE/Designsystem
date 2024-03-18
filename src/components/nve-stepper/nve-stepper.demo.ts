@@ -51,7 +51,9 @@ const stepperTest = html`
   <nve-stepper .selectedStep=${stepperProps.selectedStepIndex}
     .spaceBetweenSteps=${stepperProps.spaceBetweenSteps}
     .optionalEndButton=${'Fullfør'}
-    .steps=${stepperProps.steps}></nve-stepper>
+    .steps=${stepperProps.steps}
+    @complete=${() => console.log('Complete action')}
+    ></nve-stepper>
   </div>
 `;
 
