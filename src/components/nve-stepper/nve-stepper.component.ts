@@ -7,21 +7,35 @@ import styles from './nve-stepper.styles';
 export default class NveStepper extends LitElement {
   static styles = [styles];
 
+  /**
+   * Hvilken retning steppene skal gå. TODO: implementer vertical
+   */
   @property()
   orientation: 'horizontal' | 'vertical' = 'horizontal';
-
+  /**
+   * Indeks for valgt steg, gir mulighet for å styre hvilket steg som er valgt.
+   */
   @property({ type: Object })
   selectedStepIndex = { value: 0 };
-
+  /**
+   * Avstand mellom steppene
+   */
   @property({ type: Number })
   spaceBetweenSteps = 200;
-
+  /**
+   * Hvilken ikonbibliotek som skal brukes
+   */
   @property({ type: String })
   iconLibrary: 'Outlined' | 'Sharp' = 'Outlined';
-
+  /**
+   * Mulighet om å endre teksten på knapp ved siste steg,
+   * default er disabled neste
+   */
   @property({ type: String })
-  optionalEndButton = 'Fullfør';
-
+  optionalEndButton = '';
+  /**
+   * Steppene som skal vises, se StepProps interface for data som skal sendes inn
+   */
   @property({ type: Array })
   steps = new Array<StepProps>();
 
@@ -61,6 +75,10 @@ export default class NveStepper extends LitElement {
       }
     }
   }
+  /**
+   * Sjekker om vi er på start eller slutten av steppene
+   * @returns 'start', 'end' eller undefined
+   */
   getExtremes() {
     if (this.selectedStepIndex.value === 0) return 'start';
     if (this.selectedStepIndex.value === this.steps.length - 1) {
