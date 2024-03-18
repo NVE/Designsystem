@@ -16,13 +16,14 @@ export default class NveStepper extends LitElement {
   @property({ type: Number })
   spaceBetweenSteps = 200;
 
-  @property({ type: String})
-  iconLibrary : 'Outlined' | 'Sharp' = 'Outlined';
+  @property({ type: String })
+  iconLibrary: 'Outlined' | 'Sharp' = 'Outlined';
+
+  @property({ type: String })
+  optionalEndButton = 'Fullfør';
 
   @property({ type: Array })
   steps = new Array<StepProps>();
-
-  stepWidth = 100;
 
   firstUpdated() {
     this.setStep(this.selectedStepIndex.value);
@@ -59,21 +60,25 @@ export default class NveStepper extends LitElement {
         this.steps = [...this.steps];
       }
     }
-    console.log("this.selectedStepIndex2", this.selectedStepIndex);
   }
-    getExtremes() {
-    if(this.selectedStepIndex.value === 0)
-      return "start"
-      if(this.selectedStepIndex.value === this.steps.length - 1){
-        return "end"
-      }
+  getExtremes() {
+    if (this.selectedStepIndex.value === 0) return 'start';
+    if (this.selectedStepIndex.value === this.steps.length - 1) {
+      return 'end';
     }
+  }
   render() {
     return html`
       <div class="stepper ${this.orientation}">
-        <nve-button .disabled=${this.getExtremes() === "start"} size="medium" variant="primary" @click=${this.prevStep}
-          ><nve-icon slot="prefix" name="navigate_before" library="${this.iconLibrary}"></nve-icon>Forrige</nve-button
-        >
+        <div style="width: 120px">
+          <nve-button
+            .disabled=${this.getExtremes() === 'start'}
+            size="medium"
+            variant="primary"
+            @click=${this.prevStep}
+            ><nve-icon slot="prefix" name="navigate_before" library="${this.iconLibrary}"></nve-icon>Forrige</nve-button
+          >
+        </div>
         <div class="flex-container">
           ${this.steps.map(
             (step, index) => html`
@@ -96,14 +101,21 @@ export default class NveStepper extends LitElement {
             `
           )}
         </div>
-        <nve-button .disabled=${this.getExtremes() === "end"} size="medium" variant="primary" @click=${this.nextStep}>
-          <nve-icon slot="suffix" name="navigate_next" library="${this.iconLibrary}"></nve-icon>Neste</nve-button
-        >
+        <div style="width: 120px">
+          <nve-button
+            .disabled=${this.getExtremes() === 'end' && this.optionalEndButton === ''}
+            size="medium"
+            variant="primary"
+            @click=${this.nextStep}
+          >
+            <nve-icon slot="suffix" name="navigate_next" library="${this.iconLibrary}"></nve-icon>
+            ${this.getExtremes() === 'end' && this.optionalEndButton !== '' ? this.optionalEndButton : 'Neste'}
+          </nve-button>
+        </div>
       </div>
     `;
   }
 }
-
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -112,7 +124,7 @@ declare global {
 }
 
 export interface StepperProps {
-  selectedStepIndex: { value: number};
+  selectedStepIndex: { value: number };
   steps: StepProps[];
   spaceBetweenSteps: number;
 }
