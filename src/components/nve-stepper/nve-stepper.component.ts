@@ -38,6 +38,14 @@ export default class NveStepper extends LitElement {
   @property({ type: Array })
   steps = new Array<StepProps>();
 
+  /**
+   * Ved endring av props, re-render komponenten eksternt med document.querySelector("nve-stepper")?.reRender();
+   * Ellers vil man ikke se endringene før intern state endres.
+   */
+  reRender() {
+    this.requestUpdate();
+  }
+
   firstUpdated() {
     this.setStep(this.selectedStepIndex.value);
   }
@@ -66,7 +74,7 @@ export default class NveStepper extends LitElement {
       for (let i = 0; i < this.steps.length; i++) {
         this.steps[i].isSelected = i === index;
         if (i <= index) {
-          if (this.steps[i].state < StepState.Done) {
+          if (this.steps[i].state !== StepState.Done) {
             this.steps[i].state = StepState.Started;
           }
         }

@@ -48,7 +48,7 @@ const stepperProps = {
 const stepperTest = html`
   <hr />
   <h3 id="nve-stepper">nve-stepper</h3>
-  <nve-stepper .selectedStep=${stepperProps.selectedStepIndex}
+  <nve-stepper .selectedStepIndex=${stepperProps.selectedStepIndex}
     .spaceBetweenSteps=${stepperProps.spaceBetweenSteps}
     .optionalEndButton=${'Fullfør'}
     .steps=${stepperProps.steps}
