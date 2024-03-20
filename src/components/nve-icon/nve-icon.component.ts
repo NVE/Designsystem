@@ -24,7 +24,8 @@ export default class NveIcon extends LitElement {
       const link = document.createElement('link');
       link.id = `material-icons-${this.library.toLowerCase()}`;
       link.rel = 'stylesheet';
-      link.href = `https://fonts.googleapis.com/css2?family=Material+Symbols+${this.library}:opsz,wght,FILL,GRAD@24,400,0,0`;
+      link.href = `https://fonts.googleapis.com/css2?family=Material+Symbols+${this.library}:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200`;
+
       document.head.appendChild(link);
     }
   }
