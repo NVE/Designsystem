@@ -81,7 +81,8 @@ export default class NveStep extends LitElement {
         else icon = 'error';
         break;
       case StepState.Done:
-        icon = 'check_circle';
+        if (this.isSelected) icon = `counter_${this.index + 1}`;
+        else icon = 'check_circle';
         break;
       case StepState.Error:
         icon = 'error';
@@ -103,10 +104,9 @@ export default class NveStep extends LitElement {
         <div class="step-figure">
           <span
             @click="${this.onClick}"
-            class="${this.isSelected ? 'selected' : ''} ${this.state == StepState.Error ? 'hasError' : ''} ${this
-              .state > 0
-              ? ''
-              : 'notStarted'}"
+            class="${this.index <= this.selectedStepIndex ? 'reached' : ''} ${this.state == StepState.Error
+              ? 'hasError'
+              : ''} ${this.state > 0 ? '' : 'notStarted'}"
           >
             <nve-icon library=${this.iconLibrary} slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
           </span>
