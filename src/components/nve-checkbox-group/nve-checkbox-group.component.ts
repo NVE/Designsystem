@@ -3,13 +3,14 @@ import { customElement, property, query, state } from 'lit/decorators.js';
 import '../nve-label/nve-label.component';
 import styles from './nve-checkbox-group.styles';
 import toggleBooleanAttrOnListOfNodes from '../../utils/updateInvalidProperty';
+import deepCompare from '../../utils/deepCompare';
 
 @customElement('nve-checkbox-group')
 /**
  * Representerer en tilpasset sjekboksgruppekomponent.
  * Denne komponenten burde brukes kun med <nve-checkbox> komponent.
  * Man kan ta i bruk selectedValues som inneholder value-attributet fra alle aktive sjekkbokser inn i sjekkboksgruppen. Den
- * oppdaterer seg automatisk når mån klikker på sjekkbokser.
+ * oppdaterer seg automatisk når mån klikker på sjekkbokser. Man kan lagre både primitiver og objekter i selectedValues.
  * Valideres både med constraint validation (kun required støttes per i dag), og custom validering. Custom validering prioriteres når man submitter formen.
  * <nve-checkbox> komponenter som er wrappet i <nve-checkbox-group>
  * @slot default - innholder alle nve-checkbox komponenter for global style styring og validering
@@ -112,7 +113,7 @@ export default class NveCheckboxGroup extends LitElement {
     if (target.checked) {
       this.selectedValues.push(target.value);
     } else {
-      const indexToRemove = this.selectedValues.findIndex((element) => element === target.value);
+      const indexToRemove = this.selectedValues.findIndex((element) => deepCompare(element, target.value));
       if (indexToRemove !== -1) {
         this.selectedValues.splice(indexToRemove, 1);
       }
