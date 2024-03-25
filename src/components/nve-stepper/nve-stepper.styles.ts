@@ -1,12 +1,15 @@
 import { css } from 'lit';
 
 export default css`
-  .stepper {
+  .container {
     display: flex;
-    position: relative;
+  }
+  .stepper {
+    margin: auto;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    min-width: 100%;
+    justify-content: space-between;
   }
 
   a {
@@ -15,27 +18,18 @@ export default css`
   }
   .step {
     height: 200px;
+    flex-grow: 1;
   }
   button {
-    z-index: 2;
     user-select: none;
-  }
-
-  .scroll-menu {
-    display: flex;
-    align-items: center;
-    overflow-x: hidden;
   }
 
   .flex-container {
     display: flex;
     padding: 20px 60px 20px 60px;
-    position: relative;
+    flex-grow: 1;
   }
-  .hidden {
-    visibility: hidden;
-    pointer-events: none;
-  }
+
   :host {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */

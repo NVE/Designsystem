@@ -64,6 +64,14 @@ export default class NveStep extends LitElement {
   @property({ type: Boolean })
   entraceAllowed: boolean = false;
 
+  firstUpdated() {
+    this.style.setProperty('--flex-grow', this.isLast ? '0' : '1');
+  }
+
+  updated() {
+    this.style.setProperty('line-color', this.isLast ? '0' : '1');
+  }
+
   //TODO
   // @property ({type :String })
   // orientation: 'horizontal' | 'vertical' = 'horizontal';
@@ -115,8 +123,8 @@ export default class NveStep extends LitElement {
             ? ''
             : html`<div
                 style="width:${this.spaceBetweenSteps}px"
-                class="divider-horizontal ${this.index < this.selectedStepIndex ? 'selectedInterval' : ''} ${this
-                  .state > 0
+                class="divider-horizontal ${this.index < this.selectedStepIndex ? 'reachedInterval' : ''} ${this.state >
+                0
                   ? ''
                   : 'notStarted'}"
               ></div>`}

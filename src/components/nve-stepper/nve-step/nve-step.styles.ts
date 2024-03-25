@@ -1,6 +1,9 @@
 import { css } from 'lit';
 
 export default css`
+  :host {
+    flex-grow: var(--flex-grow, 1); /* Fallback til 1 hvis ikke satt */
+  }
   .step-figure {
     position: relative;
     display: flex;
@@ -9,8 +12,9 @@ export default css`
 
   .divider-horizontal {
     height: 2px;
-    background-color: black;
+    background-color: var(--grey-150);
     flex-grow: 1;
+    min-width: 100px;
   }
 
   .step-title {
@@ -24,8 +28,9 @@ export default css`
     padding-top: 4px;
   }
 
-  .selectedInterval {
+  .reachedInterval {
     height: 4px;
+    background-color: black;
   }
 
   .reached {
@@ -41,7 +46,7 @@ export default css`
   }
 
   .notStarted {
-    color: rgb(184, 184, 184);
+    color: var(--grey-150);
   }
 
   .evaluated {
