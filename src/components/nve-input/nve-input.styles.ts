@@ -21,8 +21,16 @@ export default css`
     border-radius: var(--border-radius-small);
   }
 
+  :host::part(base) {
+    transition: border var(--transition-time) ease-in-out;
+  }
+
   .input--standard:hover:not(.input--disabled) {
-    border-color: var(--neutrals-border-subtle) !important;
+    border-color: var(--neutrals-foreground-primary) !important;
+  }
+
+  .input--filled:hover:not(.input--disabled) {
+    border-color: var(--neutrals-border-default) !important;
   }
 
   :host::after {
@@ -34,7 +42,6 @@ export default css`
   :host([required]) .form-control--has-label .form-control__label::after,
   :host([requiredLabel])::part(form-control-label)::after {
     content: var(--sl-input-required-content);
-    margin-top: var(--spacing-xx-small);
     font: var(--label-x-small-light);
     color: var(--feedback-background-emphasized-error);
   }

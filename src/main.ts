@@ -17,6 +17,7 @@ import tooltipDemo from './components/nve-tooltip/nve-tooltip.demo';
 import radioGroupDemo from './components/nve-radio-group/nve-radio-group.demo';
 import selectDemo from './components/nve-select/nve-select.demo';
 import stepperDemo from './components/nve-stepper/nve-stepper.demo';
+import textareaDemo from './components/nve-textarea/nve-textarea.demo';
 
 import { icons, registerIconLibrary } from './registerIcons/systemLibraryCustomization';
 
@@ -41,8 +42,9 @@ render(
     checkboxDemo,
     checkboxGroupDemo,
     dialogDemo,
+    textareaDemo,
     selectDemo,
-    stepperDemo
+    stepperDemo,
   ],
   document.getElementById('app')!
 ); // Render the Lit app in the specified container

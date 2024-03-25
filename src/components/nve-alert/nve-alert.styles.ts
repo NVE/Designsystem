@@ -43,7 +43,7 @@ export default css`
     padding: var(--spacing-xx-small);
     border-radius: 50%;
     stroke: var(--neutrals-foreground-primary);
-    transition: background-color 0.3s ease;
+    transition: background-color var(--transition-time) ease;
   }
 
   :host::part(message)::after {
