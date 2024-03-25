@@ -17,9 +17,9 @@ export { default as NveRadio } from './components/nve-radio/nve-radio.component'
 export { default as NveRadioButton } from './components/nve-radio-button/nve-radio-button.component';
 export { default as NveRadioGroup } from './components/nve-radio-group/nve-radio-group.component';
 export { default as NveSpinner } from './components/nve-spinner/nve-spinner.component';
+export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
 export { default as NveSelect } from './components/nve-select/nve-select.component';
 export { default as NveOption } from './components/nve-option/nve-option.component';
 export { default as NveStepper } from './components/nve-stepper/nve-stepper.component';
 export { default as NveStep } from './components/nve-stepper/nve-step/nve-step.component';
-

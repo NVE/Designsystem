@@ -4,7 +4,7 @@ export default css`
   /* Brukes i dropdown. Eneste måten å override shadow dom for å rotere expand_more ikonet når menyen åpner */
   :host([name='expand_more']) {
     transform: var(--icon-rotation, none);
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-time) ease;
   }
 
   /* prevent icon beeing highlighted */

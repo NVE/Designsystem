@@ -15,7 +15,7 @@ export default css`
     border-radius: var(--border-radius-small);
     width: 1.1rem;
     height: 1.1rem;
-    transition: all 0.3s ease-in;
+    transition: all var(--transition-time) ease-in;
   }
 
   :host::part(control control--checked),

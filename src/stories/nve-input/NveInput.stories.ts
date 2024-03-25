@@ -31,7 +31,7 @@ export const Primary: Story = {
     required: false,
     type: 'text',
     tooltip: false,
-    icon: false
+    icon: false,
   },
 };
 
@@ -71,7 +71,6 @@ export const Filledone: Story = {
   },
 };
 
-
 export const Filledtwo: Story = {
   args: {
     filled: true,
@@ -103,10 +102,9 @@ export const Unlocked: Story = {
     label: 'Ledetekst',
     value: 'Skrivebeskyttet',
     size: 'large',
-    readonly: true
+    readonly: true,
   },
 };
-
 
 export const Enabled: Story = {
   args: {
@@ -114,7 +112,6 @@ export const Enabled: Story = {
     label: 'Ledetekst',
     value: 'Aktivert',
     size: 'medium',
-    
   },
 };
 
@@ -127,7 +124,6 @@ export const Disabled: Story = {
     disabled: true,
   },
 };
-
 
 export const Mandatory: Story = {
   args: {
@@ -148,7 +144,7 @@ export const Invalid: Story = {
     max: '10',
     required: true,
     requiredLabel: 'Mandatory field',
-    helpText: "Enter number between 1 and 10"
+    helpText: 'Enter number between 1 and 10',
   },
 };
 
@@ -157,7 +153,7 @@ export const Icon: Story = {
     label: 'Ledetekst',
     size: 'medium',
     value: 'Input med ikon',
-    icon: true    
+    icon: true,
   },
 };
 
@@ -166,19 +162,19 @@ export const Tooltip: Story = {
     label: 'Ledetekst',
     value: '41',
     size: 'medium',
-    tooltip: true
+    tooltip: true,
   },
 };
 
 export const Date: Story = {
   args: {
-    type: 'date'
+    type: 'date',
   },
 };
 
 export const Datetime: Story = {
   args: {
-    type: 'datetime-local'
+    type: 'datetime-local',
   },
 };
 
@@ -187,9 +183,6 @@ export const Password: Story = {
     label: 'Ledetekst',
     value: 'hemmelig',
     size: 'medium',
-    type: 'password'
+    type: 'password',
   },
 };
-
-
-

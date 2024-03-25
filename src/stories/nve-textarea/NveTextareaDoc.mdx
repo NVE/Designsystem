@@ -1,0 +1,53 @@
+import './../css/stories.css';
+
+import { Canvas, Story, Meta, Title, Subtitle, Description, Source, Primary, Controls } from '@storybook/blocks';
+
+import * as NveTextareaStories from './NveTextarea.stories';
+
+<Meta isTemplate />
+
+<Title />
+<Description />
+<br />
+<br />
+
+## Filled
+
+Bruk property "filled" for å fylle textarea-felt med farge
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveTextareaStories.Filled} />
+  </span>
+</div>
+
+## Skrivebeskyttet
+
+Bruk property "readonly" for å gjøre feltet Skrivebeskyttet
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveTextareaStories.Readonly} />
+  </span>
+</div>
+
+## Deaktivert
+
+Bruk property "disabled" for å disable textarea
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveTextareaStories.Disabled} />
+  </span>
+</div>
+
+## Obligatorisk
+
+Bruk properties "required" og "requiredLabel" for å vise obligatorisk label.
+Se flere eksempler <a href='https://shoelace.style/getting-started/form-controls#constraint-validation'>her</a>. Legg inn hjelpetekst med property "helpText"
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveTextareaStories.Mandatory} />
+  </span>
+</div>
