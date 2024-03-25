@@ -204,6 +204,7 @@ export default class NveTextarea extends LitElement {
         </div>
         <div part="base">
           <textarea
+            part="textarea"
             class="textarea__control"
             title=${this.title /** En tom tittel hindrer nettleserens valideringsverktøy i å vises ved overføring */}
             name=${ifDefined(this.name)}
