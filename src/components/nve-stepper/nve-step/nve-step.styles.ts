@@ -2,7 +2,7 @@ import { css } from 'lit';
 
 export default css`
   :host {
-    flex-grow: var(--flex-grow, 1); /* Fallback til 1 hvis ikke satt */
+    flex-grow: var(--flex-grow, 1);
   }
   .step-figure {
     position: relative;
@@ -14,7 +14,6 @@ export default css`
     height: 2px;
     background-color: var(--grey-150);
     flex-grow: 1;
-    min-width: 100px;
   }
 
   .step-title {

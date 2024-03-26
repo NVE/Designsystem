@@ -122,7 +122,7 @@ export default class NveStep extends LitElement {
           ${this.isLast
             ? ''
             : html`<div
-                style="width:${this.spaceBetweenSteps}px"
+                style="min-width:${this.spaceBetweenSteps}px"
                 class="divider-horizontal ${this.index < this.selectedStepIndex ? 'reachedInterval' : ''} ${this.state >
                 0
                   ? ''
