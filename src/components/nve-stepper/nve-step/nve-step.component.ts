@@ -64,6 +64,14 @@ export default class NveStep extends LitElement {
   @property({ type: Boolean })
   entraceAllowed: boolean = false;
 
+  firstUpdated() {
+    this.style.setProperty('--flex-grow', this.isLast ? '0' : '1');
+  }
+
+  updated() {
+    this.style.setProperty('line-color', this.isLast ? '0' : '1');
+  }
+
   //TODO
   // @property ({type :String })
   // orientation: 'horizontal' | 'vertical' = 'horizontal';
@@ -106,7 +114,7 @@ export default class NveStep extends LitElement {
             @click="${this.onClick}"
             class="${this.index <= this.selectedStepIndex ? 'reached' : ''} ${this.state == StepState.Error
               ? 'hasError'
-              : ''} ${this.state > 0 ? '' : 'notStarted'}"
+              : ''} ${this.state > 0 ? '' : 'not-started'}"
           >
             <nve-icon library=${this.iconLibrary} slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
           </span>
@@ -114,11 +122,11 @@ export default class NveStep extends LitElement {
           ${this.isLast
             ? ''
             : html`<div
-                style="width:${this.spaceBetweenSteps}px"
-                class="divider-horizontal ${this.index < this.selectedStepIndex ? 'selectedInterval' : ''} ${this
+                style="min-width:${this.spaceBetweenSteps}px"
+                class="divider-horizontal ${this.index < this.selectedStepIndex ? 'reached-interval' : ''} ${this
                   .state > 0
                   ? ''
-                  : 'notStarted'}"
+                  : 'not-started'}"
               ></div>`}
         </div>
         <div class="step-title">${this.title}</div>
