@@ -27,9 +27,9 @@ export default css`
     padding-top: 4px;
   }
 
-  .reachedInterval {
+  .reached-interval {
     height: 4px;
-    background-color: black;
+    background-color: var(--grey-999);
   }
 
   .reached {
@@ -44,7 +44,7 @@ export default css`
     color: red;
   }
 
-  .notStarted {
+  .not-started {
     color: var(--grey-150);
   }
 

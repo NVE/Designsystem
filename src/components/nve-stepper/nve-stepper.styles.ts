@@ -8,7 +8,7 @@ export default css`
     margin: auto;
     display: flex;
     align-items: center;
-    min-width: 100%;
+    width: 100%;
     justify-content: space-between;
   }
 
@@ -28,6 +28,11 @@ export default css`
     display: flex;
     padding: 20px 60px 20px 60px;
     flex-grow: 1;
+  }
+
+  .button-container {
+    width: 120px;
+    text-align: center;
   }
 
   :host {

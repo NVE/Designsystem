@@ -114,7 +114,7 @@ export default class NveStep extends LitElement {
             @click="${this.onClick}"
             class="${this.index <= this.selectedStepIndex ? 'reached' : ''} ${this.state == StepState.Error
               ? 'hasError'
-              : ''} ${this.state > 0 ? '' : 'notStarted'}"
+              : ''} ${this.state > 0 ? '' : 'not-started'}"
           >
             <nve-icon library=${this.iconLibrary} slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
           </span>
@@ -123,10 +123,10 @@ export default class NveStep extends LitElement {
             ? ''
             : html`<div
                 style="min-width:${this.spaceBetweenSteps}px"
-                class="divider-horizontal ${this.index < this.selectedStepIndex ? 'reachedInterval' : ''} ${this.state >
-                0
+                class="divider-horizontal ${this.index < this.selectedStepIndex ? 'reached-interval' : ''} ${this
+                  .state > 0
                   ? ''
-                  : 'notStarted'}"
+                  : 'not-started'}"
               ></div>`}
         </div>
         <div class="step-title">${this.title}</div>

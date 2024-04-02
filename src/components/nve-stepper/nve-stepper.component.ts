@@ -100,7 +100,7 @@ export default class NveStepper extends LitElement {
     return html`
       <div class="container">
         <div class="stepper ${this.orientation}">
-          <div style="width: 120px; text-align:center">
+          <div class="button-container">
             <nve-button
               .disabled=${this.getExtremes() === 'start'}
               size="medium"
@@ -131,7 +131,7 @@ export default class NveStepper extends LitElement {
               `
             )}
           </div>
-          <div style="width: 120px; text-align:center">
+          <div class="button-container">
             <nve-button
               .disabled=${this.getExtremes() === 'end' && this.optionalEndButton === ''}
               size="medium"
