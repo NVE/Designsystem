@@ -1,6 +1,6 @@
 {
   "name": "nve-designsystem",
-  "version": "0.1.59",
+  "version": "0.1.60",
   "exports": {
     ".": {
       "import": "./nve-designsystem.js",
