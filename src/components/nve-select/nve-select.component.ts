@@ -1,15 +1,33 @@
 import SlSelect from '@shoelace-style/shoelace/dist/components/select/select.js';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-select.styles';
 import NveOption from '../nve-option/nve-option.component';
 
 /**
  * En Shoelace-select i NVE-forkledning.
- * Se https://shoelace.style/components/select
+ * Se https://shoelace.style/components/select. Bruker constraint og custom validering. Klarte ikke å sette feil ikone når
+ * validering feiler. Eneste måte å gjøre det på kunne ha vært å bruke ::after pseudo-element på noen av sl-select partene, men
+ * funka ikke med ikonen.
  */
 @customElement('nve-select')
 // @ts-expect-error -next-line - overskriving av private metoder i sl-select
 export default class NveSelect extends SlSelect {
+  /**
+   * Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard.
+   */
+  @property() requiredLabel = '*Obligatorisk';
+  /**
+   * Brukes til enkel constraint validation til å overskrive default nettleseren melding
+   */
+  @property({ reflect: true }) errorMessage?: string;
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('sl-invalid', (e) => {
+      // vi vil ikke at nettleseren viser feil meldingen til oss
+      e.preventDefault();
+    });
+  }
+
   constructor() {
     super();
   }
@@ -17,8 +35,25 @@ export default class NveSelect extends SlSelect {
 
   protected firstUpdated(changedProperties: any) {
     super.firstUpdated(changedProperties);
+    if (this.requiredLabel) {
+      this.style.setProperty('--sl-input-required-content', `"${this.requiredLabel}"`);
+    }
     const popup = this.shadowRoot?.querySelector('sl-popup');
     popup?.setAttribute('distance', '3');
+  }
+
+  updated(changedProperties: any) {
+    super.updated(changedProperties);
+    const hasDataUserInvalidAttr = this.hasAttribute('data-user-invalid');
+    if (hasDataUserInvalidAttr) {
+      if (!this.errorMessage) {
+        this.errorMessage = this.validationMessage;
+      }
+      this.style.setProperty('--nve-input-error-message', `"${this.validationMessage}"`);
+    }
+    if (!hasDataUserInvalidAttr) {
+      this.style.setProperty('--nve-input-error-message', '');
+    }
   }
 
   // @ts-ignore
@@ -40,7 +75,6 @@ export default class NveSelect extends SlSelect {
 
       if (this.value !== oldValue) {
         this.updateComplete.then(() => {
-          console.log(this);
           // @ts-expect-error - this is shadowed by outer container
           this.emit('sl-input');
           // @ts-expect-error - this is shadowed by outer container

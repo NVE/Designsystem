@@ -1,54 +1,58 @@
 # nve-select
 
 En Shoelace-select i NVE-forkledning.
-Se https://shoelace.style/components/select
+Se https://shoelace.style/components/select. Bruker constraint og custom validering. Klarte ikke å sette feil ikone når
+validering feiler. Eneste måte å gjøre det på kunne ha vært å bruke ::after pseudo-element på noen av sl-select partene, men
+funka ikke med ikonen.
 
 ## Properties
 
-| Property            | Modifiers | Type                                             | Description                                      |
-|---------------------|-----------|--------------------------------------------------|--------------------------------------------------|
-| `checkValidity`     |           | `() => boolean`                                  |                                                  |
-| `clearable`         |           | `boolean`                                        | Adds a clear button when the select is not empty. |
-| `combobox`          |           | `HTMLSlotElement`                                |                                                  |
-| `currentOption`     |           | `SlOption`                                       |                                                  |
-| `defaultChecked`    |           | `boolean \| undefined`                           |                                                  |
-| `defaultValue`      |           | `string \| string[]`                             | The default value of the form control. Primarily used for resetting the form control. |
-| `dir`               |           | `string`                                         |                                                  |
-| `disabled`          |           | `boolean`                                        | Disables the select control.                     |
-| `displayInput`      |           | `HTMLInputElement`                               |                                                  |
-| `displayLabel`      |           | `string`                                         |                                                  |
-| `filled`            |           | `boolean`                                        | Draws a filled select.                           |
-| `form`              |           | `string`                                         | By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you<br />to place the form control outside of a form and associate it with the form that has this `id`. The form must be in<br />the same document or shadow root for this to work. |
-| `getForm`           |           | `() => HTMLFormElement \| null`                  |                                                  |
-| `getTag`            |           | `(option: SlOption, index: number) => string \| HTMLElement \| TemplateResult` | A function that customizes the tags to be rendered when multiple=true. The first argument is the option, the second<br />is the current tag's index.  The function should return either a Lit TemplateResult or a string containing trusted HTML of the symbol to render at<br />the specified value. |
-| `helpText`          |           | `string`                                         | The select's help text. If you need to display HTML, use the `help-text` slot instead. |
-| `hoist`             |           | `boolean`                                        | Enable this option to prevent the listbox from being clipped when the component is placed inside a container with<br />`overflow: auto\|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios. |
-| `label`             |           | `string`                                         | The select's label. If you need to display HTML, use the `label` slot instead. |
-| `lang`              |           | `string`                                         |                                                  |
-| `listbox`           |           | `HTMLSlotElement`                                |                                                  |
-| `max`               |           | `string \| number \| Date \| undefined`          |                                                  |
-| `maxOptionsVisible` |           | `number`                                         | The maximum number of selected options to show when `multiple` is true. After the maximum, "+n" will be shown to<br />indicate the number of additional items that are selected. Set to 0 to remove the limit. |
-| `maxlength`         |           | `number \| undefined`                            |                                                  |
-| `min`               |           | `string \| number \| Date \| undefined`          |                                                  |
-| `minlength`         |           | `number \| undefined`                            |                                                  |
-| `multiple`          |           | `boolean`                                        | Allows more than one option to be selected.      |
-| `name`              |           | `string`                                         | The name of the select, submitted as a name/value pair with form data. |
-| `open`              |           | `boolean`                                        | Indicates whether or not the select is open. You can toggle this attribute to show and hide the menu, or you can<br />use the `show()` and `hide()` methods and this attribute will reflect the select's open state. |
-| `pattern`           |           | `string \| undefined`                            |                                                  |
-| `pill`              |           | `boolean`                                        | Draws a pill-style select with rounded edges.    |
-| `placeholder`       |           | `string`                                         | Placeholder text to show as a hint when the select is empty. |
-| `placement`         |           | `"top" \| "bottom"`                              | The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox<br />inside of the viewport. |
-| `popup`             |           | `SlPopup`                                        |                                                  |
-| `reportValidity`    |           | `() => boolean`                                  |                                                  |
-| `required`          |           | `boolean`                                        | The select's required attribute.                 |
-| `selectedOptions`   |           | `SlOption[]`                                     |                                                  |
-| `setCustomValidity` |           | `(message: string) => void`                      |                                                  |
-| `size`              |           | `"small" \| "medium" \| "large"`                 | The select's size.                               |
-| `step`              |           | `number \| "any" \| undefined`                   |                                                  |
-| `validationMessage` | readonly  | `string`                                         | Gets the validation message                      |
-| `validity`          | readonly  | `ValidityState`                                  | Gets the validity state object                   |
-| `value`             |           | `string \| string[]`                             | The current value of the select, submitted as a name/value pair with form data. When `multiple` is enabled, the<br />value attribute will be a space-delimited list of values based on the options selected, and the value property will<br />be an array. **For this reason, values must not contain spaces.** |
-| `valueInput`        |           | `HTMLInputElement`                               |                                                  |
+| Property            | Attribute       | Modifiers | Type                                             | Default         | Description                                      |
+|---------------------|-----------------|-----------|--------------------------------------------------|-----------------|--------------------------------------------------|
+| `checkValidity`     |                 |           | `() => boolean`                                  |                 |                                                  |
+| `clearable`         |                 |           | `boolean`                                        |                 | Adds a clear button when the select is not empty. |
+| `combobox`          |                 |           | `HTMLSlotElement`                                |                 |                                                  |
+| `currentOption`     |                 |           | `SlOption`                                       |                 |                                                  |
+| `defaultChecked`    |                 |           | `boolean \| undefined`                           |                 |                                                  |
+| `defaultValue`      |                 |           | `string \| string[]`                             |                 | The default value of the form control. Primarily used for resetting the form control. |
+| `dir`               |                 |           | `string`                                         |                 |                                                  |
+| `disabled`          |                 |           | `boolean`                                        |                 | Disables the select control.                     |
+| `displayInput`      |                 |           | `HTMLInputElement`                               |                 |                                                  |
+| `displayLabel`      |                 |           | `string`                                         |                 |                                                  |
+| `errorMessage`      | `errorMessage`  |           | `string \| undefined`                            |                 | Brukes til enkel constraint validation til å overskrive default nettleseren melding |
+| `filled`            |                 |           | `boolean`                                        |                 | Draws a filled select.                           |
+| `form`              |                 |           | `string`                                         |                 | By default, form controls are associated with the nearest containing `<form>` element. This attribute allows you<br />to place the form control outside of a form and associate it with the form that has this `id`. The form must be in<br />the same document or shadow root for this to work. |
+| `getForm`           |                 |           | `() => HTMLFormElement \| null`                  |                 |                                                  |
+| `getTag`            |                 |           | `(option: SlOption, index: number) => string \| HTMLElement \| TemplateResult` |                 | A function that customizes the tags to be rendered when multiple=true. The first argument is the option, the second<br />is the current tag's index.  The function should return either a Lit TemplateResult or a string containing trusted HTML of the symbol to render at<br />the specified value. |
+| `helpText`          |                 |           | `string`                                         |                 | The select's help text. If you need to display HTML, use the `help-text` slot instead. |
+| `hoist`             |                 |           | `boolean`                                        |                 | Enable this option to prevent the listbox from being clipped when the component is placed inside a container with<br />`overflow: auto\|scroll`. Hoisting uses a fixed positioning strategy that works in many, but not all, scenarios. |
+| `label`             |                 |           | `string`                                         |                 | The select's label. If you need to display HTML, use the `label` slot instead. |
+| `lang`              |                 |           | `string`                                         |                 |                                                  |
+| `listbox`           |                 |           | `HTMLSlotElement`                                |                 |                                                  |
+| `max`               |                 |           | `string \| number \| Date \| undefined`          |                 |                                                  |
+| `maxOptionsVisible` |                 |           | `number`                                         |                 | The maximum number of selected options to show when `multiple` is true. After the maximum, "+n" will be shown to<br />indicate the number of additional items that are selected. Set to 0 to remove the limit. |
+| `maxlength`         |                 |           | `number \| undefined`                            |                 |                                                  |
+| `min`               |                 |           | `string \| number \| Date \| undefined`          |                 |                                                  |
+| `minlength`         |                 |           | `number \| undefined`                            |                 |                                                  |
+| `multiple`          |                 |           | `boolean`                                        |                 | Allows more than one option to be selected.      |
+| `name`              |                 |           | `string`                                         |                 | The name of the select, submitted as a name/value pair with form data. |
+| `open`              |                 |           | `boolean`                                        |                 | Indicates whether or not the select is open. You can toggle this attribute to show and hide the menu, or you can<br />use the `show()` and `hide()` methods and this attribute will reflect the select's open state. |
+| `pattern`           |                 |           | `string \| undefined`                            |                 |                                                  |
+| `pill`              |                 |           | `boolean`                                        |                 | Draws a pill-style select with rounded edges.    |
+| `placeholder`       |                 |           | `string`                                         |                 | Placeholder text to show as a hint when the select is empty. |
+| `placement`         |                 |           | `"top" \| "bottom"`                              |                 | The preferred placement of the select's menu. Note that the actual placement may vary as needed to keep the listbox<br />inside of the viewport. |
+| `popup`             |                 |           | `SlPopup`                                        |                 |                                                  |
+| `reportValidity`    |                 |           | `() => boolean`                                  |                 |                                                  |
+| `required`          |                 |           | `boolean`                                        |                 | The select's required attribute.                 |
+| `requiredLabel`     | `requiredLabel` |           | `string`                                         | "*Obligatorisk" | Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard. |
+| `selectedOptions`   |                 |           | `SlOption[]`                                     |                 |                                                  |
+| `setCustomValidity` |                 |           | `(message: string) => void`                      |                 |                                                  |
+| `size`              |                 |           | `"small" \| "medium" \| "large"`                 |                 | The select's size.                               |
+| `step`              |                 |           | `number \| "any" \| undefined`                   |                 |                                                  |
+| `validationMessage` |                 | readonly  | `string`                                         |                 | Gets the validation message                      |
+| `validity`          |                 | readonly  | `ValidityState`                                  |                 | Gets the validity state object                   |
+| `value`             |                 |           | `string \| string[]`                             |                 | The current value of the select, submitted as a name/value pair with form data. When `multiple` is enabled, the<br />value attribute will be a space-delimited list of values based on the options selected, and the value property will<br />be an array. **For this reason, values must not contain spaces.** |
+| `valueInput`        |                 |           | `HTMLInputElement`                               |                 |                                                  |
 
 ## Methods
 
