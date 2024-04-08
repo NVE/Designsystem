@@ -3,11 +3,8 @@ import { html } from 'lit';
 const validateInputFieldDemo = (e: any) => {
   e.preventDefault();
   const inputElement = document.getElementById('demoTextAreaVal') as HTMLInputElement;
-  const inputElementValue = inputElement.value;
   if (!inputElement) return;
-  const valid = inputElementValue == '42';
-
-  if (!valid) {
+  if (!inputElement.value) {
     inputElement.setCustomValidity('Feil svar');
   } else {
     inputElement.setCustomValidity('');
@@ -61,7 +58,7 @@ export default html`
       </tr>
     </tbody>
   </table>
-  <h3>nve-checkbox-group constraint validering</h3>
+  <h3>nve-textarea constraint validering</h3>
   <form>
     <nve-textarea
       @sl-invalid="${() => console.log('invalid')}"
@@ -72,17 +69,9 @@ export default html`
     ></nve-textarea>
     <nve-button style="margin-top:10px" type="submit" variant="primary" size="small">Submit</nve-button>
   </form>
-  <h3>nve-checkbox-group custom validering</h3>
+  <h3>nve-textarea custom validering</h3>
   <form @submit="${(e: any) => validateInputFieldDemo(e)}" id="demoFormCustomVal">
-    <nve-textarea
-      label="Validering"
-      @sl-blur="${validateInputFieldDemo}"
-      @sl-invalid="${() => console.log('invalid')}"
-      errorMessage="Kan ikke stå tom"
-      helpText="Skriv noe tekst"
-      required
-      id="demoTextAreaVal"
-    ></nve-textarea>
+    <nve-textarea required label="Validering" @sl-blur="${validateInputFieldDemo}" id="demoTextAreaVal"></nve-textarea>
     <nve-button style="margin-top:10px" type="submit" variant="primary" size="small">Submit</nve-button>
   </form>
 `;
