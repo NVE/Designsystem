@@ -56,7 +56,7 @@ const table = html`
     </tbody>
   </table>
   <h3 id="nve-select-validering">nve-select constraint validering</h3>
-  <form @submit="${(e: any) => validateSelectDemo(e)}" id="demoFormCustomVal" style="max-width: 300px">
+  <form @submit="${(e: any) => validateSelectDemo(e)}" style="max-width: 300px">
     <nve-select required errorMessage="Må velge et alternativ" id="demo" clear-icon @sl-change="${resetValidation}">
       <nve-label value="Hjelpetekst" slot="label" tooltip="Hjelpetekst"></nve-label>
       <nve-option value="option-1">Option 1</nve-option>
@@ -67,7 +67,7 @@ const table = html`
     <nve-button style="margin-top: 10px" variant="primary" type="submit" size="small">Submit</nve-button>
   </form>
   <h3 id="nve-select-validering">nve-select custom validering (med blur)</h3>
-  <form @submit="${(e: any) => validateSelectDemo(e)}" id="demoFormCustomVal" style="max-width: 300px">
+  <form @submit="${(e: any) => validateSelectDemo(e)}" style="max-width: 300px">
     <nve-select required id="demoSelect" clear-icon @sl-change="${resetValidation}">
       <nve-label value="Hjelpetekst" slot="label" tooltip="Hjelpetekst"></nve-label>
       <nve-option value="option-1">Option 1</nve-option>

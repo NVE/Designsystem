@@ -6,7 +6,8 @@ import nextTask from './nextTask.js';
 import fs from 'fs';
 
 const execPromise = util.promisify(exec);
-
+// get mode type. Production is default.
+const command = process.argv[2];
 //check if dist folder exists and delete it
 if (fs.existsSync('./dist')) {
   fs.rm('./dist', { recursive: true }, (err) => {
@@ -21,5 +22,5 @@ await nextTask('Running the TypeScript compiler', () => {
   return execPromise('tsc');
 });
 await nextTask('Building the project', () => {
-  return execPromise('vite build');
+  return execPromise(`vite build ${command === 'dev' ? '--mode development' : ''}`);
 });

@@ -212,7 +212,7 @@ Publisering til npm skjer ved hjelp av Github actions. Når man pusher til `main
 
 Før man pusher til main er det lurt å teste pakke lokalt. Med `npm run pack` kan man teste hvordan pakken oppfører seg akkurat på samme måte som etter publisering. For å teste en nve-designsystem pakke lokalt:
 
-1. Kjør `npm run build`
+1. Kjør `npm run build` (du kan også kjøre `npm run build:dev` om du ønsker å få tilgang til sourcemaps)
 2. Kjør `npm run pack`. En .tgz fil med pakken navn og versjon burde dukke opp i dist mappe
 3. Åpen et annet prosjekt hvor du kan teste nve-designsystem pakken
 4. Kjør `npm  i` <nve-designsystem-x.y.z.tgz med full sti>`

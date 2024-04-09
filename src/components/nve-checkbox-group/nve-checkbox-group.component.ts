@@ -29,7 +29,7 @@ export default class NveCheckboxGroup extends LitElement {
   /** Viser i ikone og tooltip tekst ved siden av label. Skal ikke fungere uten label */
   @property() tooltip?: string;
   /** Om gruppen skal rendres horisontalt eller vertikalt */
-  @property() orientation: 'horizontal' | 'vertical' = 'vertical';
+  @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
   /** Feil melding som vises under gruppe hvis validering feiler */
   @property() errorMessage?: string;
   /** Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard */

@@ -28,6 +28,13 @@ export default class NveSelect extends SlSelect {
     });
   }
 
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.removeEventListener('sl-invalid', (e) => {
+      e.preventDefault();
+    });
+  }
+
   constructor() {
     super();
   }
@@ -49,7 +56,7 @@ export default class NveSelect extends SlSelect {
       if (!this.errorMessage) {
         this.errorMessage = this.validationMessage;
       }
-      this.style.setProperty('--nve-input-error-message', `"${this.validationMessage}"`);
+      this.style.setProperty('--nve-input-error-message', `"${this.errorMessage}"`);
     }
     if (!hasDataUserInvalidAttr) {
       this.style.setProperty('--nve-input-error-message', '');
