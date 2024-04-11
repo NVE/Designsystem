@@ -59,7 +59,7 @@
     "storybook": "^7.6.4",
     "style-dictionary-utils": "^2.0.4",
     "typescript": "^5.2.2",
-    "vite": "^5.0.12",
+    "vite": "^5.0.13",
     "vite-plugin-dts": "^3.7.0",
     "web-component-analyzer": "^2.0.0"
   },
