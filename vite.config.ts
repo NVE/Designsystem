@@ -17,34 +17,37 @@ const excludedPaths = [
   'src/main.ts',
 ];
 
-export default defineConfig({
-  plugins: [
-    dts({
-      include: includedPaths,
-      exclude: excludedPaths,
-    }),
-  ],
-  build: {
-    lib: {
-      entry: resolve(__dirname, 'src/nve-designsystem.ts'),
-      formats: ['es'],
-    },
-    rollupOptions: {
-      input: Object.fromEntries(
-        glob
-          .sync(includedPaths, {
-            ignore: excludedPaths,
-          })
-          .map((file) => [
-            // from src/components/button/button.tsx => components/button/button
-            relative('src', file.slice(0, file.length - extname(file).length)),
-            fileURLToPath(new URL(file, import.meta.url)),
-          ])
-      ),
-      output: {
-        entryFileNames: '[name].js',
-        chunkFileNames: 'chunks/[name].js',
+export default defineConfig(({ mode }) => {
+  return {
+    plugins: [
+      dts({
+        include: includedPaths,
+        exclude: excludedPaths,
+      }),
+    ],
+    build: {
+      sourcemap: mode === 'development' ? true : false,
+      lib: {
+        entry: resolve(__dirname, 'src/nve-designsystem.ts'),
+        formats: ['es'],
+      },
+      rollupOptions: {
+        input: Object.fromEntries(
+          glob
+            .sync(includedPaths, {
+              ignore: excludedPaths,
+            })
+            .map((file) => [
+              // from src/components/button/button.tsx => components/button/button
+              relative('src', file.slice(0, file.length - extname(file).length)),
+              fileURLToPath(new URL(file, import.meta.url)),
+            ])
+        ),
+        output: {
+          entryFileNames: '[name].js',
+          chunkFileNames: 'chunks/[name].js',
+        },
       },
     },
-  },
+  };
 });

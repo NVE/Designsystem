@@ -18,6 +18,7 @@
     "pack": "node scripts/prepublish.js pack",
     "publish": "node scripts/prepublish.js publish",
     "build": "node scripts/build.js",
+    "build:dev": "node scripts/build.js dev",
     "preview": "vite preview",
     "lint": "eslint \"**/*.{js,ts}\"",
     "doc": "npx web-component-analyzer analyze src/components/**/*.ts --format markdown --outDir doc",

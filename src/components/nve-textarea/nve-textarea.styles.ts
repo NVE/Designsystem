@@ -2,32 +2,31 @@ import { css } from 'lit';
 
 export default css`
   :host {
-    width: fit-content;
     display: flex;
   }
 
-  :host::part(form-control) {
+  .form-control {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-x-small);
+    width: 100%;
   }
 
-  :host::part(base) {
+  .textarea__base {
     display: flex;
     position: relative; /** trengs for å posisjonere ikonen */
-    width: fit-content;
   }
 
   .textarea__control {
     font: var(--body-small);
+    box-sizing: border-box;
     padding: var(--sizing-4x-small);
     padding-right: var(--sizing-2x-small); /** trenger padding for å vise ikone så at teksten ikke dekker den */
     border-radius: var(--border-radius-small);
     border: var(--border-width-default, 1px) solid var(--neutrals-border-default);
     min-height: var(--sizing-2x-small);
-    min-width: 30px;
     transition: border var(--transition-time) ease-in-out;
-
+    width: 100%;
     &:hover:not(:disabled) {
       border-color: var(--neutrals-foreground-primary);
     }
@@ -62,7 +61,7 @@ export default css`
     border: none;
   }
 
-  :host::part(textarea-label) {
+  .textarea__label {
     display: flex;
     justify-content: space-between;
     gap: 0.5rem;

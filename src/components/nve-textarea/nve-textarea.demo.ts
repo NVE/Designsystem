@@ -60,17 +60,11 @@ export default html`
   </table>
   <h3>nve-textarea constraint validering</h3>
   <form>
-    <nve-textarea
-      @sl-invalid="${() => console.log('invalid')}"
-      label="Validering"
-      errorMessage="Kan ikke stå tom"
-      helpText="Skriv noe tekst"
-      required
-    ></nve-textarea>
+    <nve-textarea label="Validering" errorMessage="Kan ikke stå tom" helpText="Skriv noe tekst" required></nve-textarea>
     <nve-button style="margin-top:10px" type="submit" variant="primary" size="small">Submit</nve-button>
   </form>
   <h3>nve-textarea custom validering</h3>
-  <form @submit="${(e: any) => validateInputFieldDemo(e)}" id="demoFormCustomVal">
+  <form @submit="${(e: any) => validateInputFieldDemo(e)}">
     <nve-textarea required label="Validering" @sl-blur="${validateInputFieldDemo}" id="demoTextAreaVal"></nve-textarea>
     <nve-button style="margin-top:10px" type="submit" variant="primary" size="small">Submit</nve-button>
   </form>
