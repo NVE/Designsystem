@@ -63,6 +63,11 @@ export default class NveSelect extends SlSelect {
     }
   }
 
+  focus() {
+    const popup = this.shadowRoot?.querySelector('sl-popup') as HTMLElement;
+    popup?.classList.add('select--focused');
+  }
+
   // @ts-ignore
   private handleOptionClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
