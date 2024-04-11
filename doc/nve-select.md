@@ -4,6 +4,8 @@ En Shoelace-select i NVE-forkledning.
 Se https://shoelace.style/components/select. Bruker constraint og custom validering. Klarte ikke å sette feil ikone når
 validering feiler. Eneste måte å gjøre det på kunne ha vært å bruke ::after pseudo-element på noen av sl-select partene, men
 funka ikke med ikonen.
+Man kan bruke .focus() for å fokusere komponenten programatisk. Sjekk https://shoelace.style/getting-started/usage#methods for å se hvordan å bruke det.
+Kan være at i Vue applikasjon man må kjøre .focus i neste tick for å fokusere komponenten.
 
 ## Properties
 
@@ -61,7 +63,7 @@ funka ikke med ikonen.
 | `blur`                 | `(): void`                                       | Removes focus from the control.                  |
 | `checkValidity`        | `(): boolean`                                    | Checks for validity but does not show a validation message. Returns `true` when valid and `false` when invalid. |
 | `emit`                 | `{ <T extends "abort" \| "animationcancel" \| "animationend" \| "animationiteration" \| "animationstart" \| "auxclick" \| "beforeinput" \| "blur" \| "cancel" \| "canplay" \| "canplaythrough" \| ... 88 more ... \| "wheel">(name: EventTypeDoesNotRequireDetail<...>, options?: SlEventInit<...> \| undefined): GetCustomEventType<...>; ...` | Emits a custom event with more convenient defaults. |
-| `focus`                | `(options?: FocusOptions \| undefined): void`    | Sets focus on the control.                       |
+| `focus`                | `(): void`                                       | Sets focus on the control.                       |
 | `getForm`              | `(): HTMLFormElement \| null`                    | Gets the associated form, if one exists.         |
 | `handleDisabledChange` | `(): void`                                       |                                                  |
 | `handleOpenChange`     | `(): Promise<void>`                              |                                                  |

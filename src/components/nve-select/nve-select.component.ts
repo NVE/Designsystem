@@ -8,6 +8,8 @@ import NveOption from '../nve-option/nve-option.component';
  * Se https://shoelace.style/components/select. Bruker constraint og custom validering. Klarte ikke å sette feil ikone når
  * validering feiler. Eneste måte å gjøre det på kunne ha vært å bruke ::after pseudo-element på noen av sl-select partene, men
  * funka ikke med ikonen.
+ * Man kan bruke .focus() for å fokusere komponenten programatisk. Sjekk https://shoelace.style/getting-started/usage#methods for å se hvordan å bruke det.
+ * Kan være at i Vue applikasjon man må kjøre .focus i neste tick for å fokusere komponenten.
  */
 @customElement('nve-select')
 // @ts-expect-error -next-line - overskriving av private metoder i sl-select
