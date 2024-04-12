@@ -18,6 +18,7 @@ import radioGroupDemo from './components/nve-radio-group/nve-radio-group.demo';
 import selectDemo from './components/nve-select/nve-select.demo';
 import stepperDemo from './components/nve-stepper/nve-stepper.demo';
 import textareaDemo from './components/nve-textarea/nve-textarea.demo';
+import detailsDemo from './components/nve-details/nve-details.demo';
 
 import { icons, registerIconLibrary } from './registerIcons/systemLibraryCustomization';
 
@@ -45,6 +46,7 @@ render(
     textareaDemo,
     selectDemo,
     stepperDemo,
+    detailsDemo,
   ],
   document.getElementById('app')!
 ); // Render the Lit app in the specified container

@@ -18,3 +18,4 @@ Komponenter i alfabetisk rekkefølge:
 - [nve-radio-group](./nve-radio-group.md)
 - [nve-spinner](./nve-spinner.md)
 - [nve-tooltip](./nve-tooltip.md)
+- [nve-details](./nve-details.md)
