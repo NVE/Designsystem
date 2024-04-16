@@ -145,6 +145,28 @@ const table = html`
         </div>
       </nve-details>
     </div>
+
+    <div style="line-height: 51px; padding-inline: 1rem;">Subtle</div>
+    <div>
+      <nve-details summary="Subtle tittel" variant="subtle">
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ultrices, libero quis mattis fringilla, ipsum
+          tellus tincidunt tortor, ac dapibus libero tellus at metus. Praesent laoreet turpis ac sapien varius vehicula
+          non at eros. Sed sit amet justo eget massa viverra pellentesque a id sem. Curabitur risus orci, mollis quis
+          tincidunt quis, venenatis interdum massa.
+        </div>
+      </nve-details>
+    </div>
+    <div>
+      <nve-details summary="Subtle tittel" variant="subtle" left-stroke id="subtletest">
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ultrices, libero quis mattis fringilla, ipsum
+          tellus tincidunt tortor, ac dapibus libero tellus at metus. Praesent laoreet turpis ac sapien varius vehicula
+          non at eros. Sed sit amet justo eget massa viverra pellentesque a id sem. Curabitur risus orci, mollis quis
+          tincidunt quis, venenatis interdum massa.
+        </div>
+      </nve-details>
+    </div>
   </div>
 `;
 

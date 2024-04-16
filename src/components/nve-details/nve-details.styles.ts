@@ -41,7 +41,11 @@ export default css`
     --border-left-color: var(--feedback-background-emphasized-warning);
     --text-color: var(--neutrals-foreground-primary);
   }
-
+  :host([variant='subtle']) {
+    --bg-color: var(--neutrals-background-primary-contrast);
+    --border-left-color: var(--neutrals-foreground-primary);
+    --text-color: var(--neutrals-foreground-primary);
+  }
   :host::part(summary-icon) {
     font-size: 1.5rem;
     transition:

@@ -33,7 +33,7 @@ export const Details: Story = {
     summary: { control: { type: 'text' } },
     variant: {
       control: { type: 'select' },
-      options: ['brand', 'neutral', 'info', 'error', 'success', 'warning'],
+      options: ['brand', 'neutral', 'info', 'error', 'success', 'warning', 'subtle'],
     },
     leftStroke: {
       control: { type: 'boolean' },

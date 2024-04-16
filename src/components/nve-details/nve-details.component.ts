@@ -13,7 +13,8 @@ export default class NveDetails extends SlDetails {
   }
 
   @property({ type: Boolean, reflect: true }) leftStroke: boolean = false;
-  @property({ reflect: true }) variant: 'brand' | 'neutral' | 'info' | 'error' | 'success' | 'warning' = 'brand';
+  @property({ reflect: true }) variant: 'brand' | 'neutral' | 'info' | 'error' | 'success' | 'warning' | 'subtle' =
+    'brand';
   static styles = [SlDetails.styles, styles];
   updated(changedProperties: any) {
     super.updated(changedProperties);
