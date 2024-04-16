@@ -46,6 +46,11 @@ export default css`
     --border-left-color: var(--neutrals-foreground-primary);
     --text-color: var(--neutrals-foreground-primary);
   }
+
+  :host::part(header) {
+    font: var(--header-x-small);
+  }
+
   :host::part(summary-icon) {
     font-size: 1.5rem;
     transition:
@@ -63,5 +68,6 @@ export default css`
   }
   .details__content {
     padding-block-start: 8px;
+    font: var(--body-small);
   }
 `;
