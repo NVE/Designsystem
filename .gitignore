@@ -6,3 +6,6 @@ node_modules
 # ignore dist - (npm build output)
 dist/
 *.tgz
+
+# ignorer generert dokumentasjon
+_site/
