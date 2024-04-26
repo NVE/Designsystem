@@ -220,7 +220,9 @@ export default class NveTextarea extends LitElement {
                 ></nve-label>
               `
             : null}
-          ${this.required ? html`<span class="textarea__required-label">${this.requiredLabel}</span>` : null}
+          ${this.required && this.label
+            ? html`<span class="textarea__required-label">${this.requiredLabel}</span>`
+            : null}
         </div>
         <div part="base" class="textarea__base">
           <textarea
@@ -244,6 +246,10 @@ export default class NveTextarea extends LitElement {
             @input=${this.handleInput}
             @blur=${this.handleBlur}
           ></textarea>
+          <!-- Her kommer litt hokus pokus med å poisjonere ikonen. Det er en ekstra div med posisjon relativt 
+          som skal vises rett etter textarea, og den skal inneholde ikone med position absolute som skal deretter vises inn i textarea.
+          Må gjøres sånn fordi vi vil ikke begrense textarea__base brede til fit-content (da textarea kan aldri ta så mye plass som er 
+          tilgjengelig i nettleseren og man må alltid sette brede på den manuelt. Nei takk.) -->
           <!-- Foreløpig kan man ha enten 'lock' eller 'error' ikone -->
           ${this.disabled || this.showErrorMessage
             ? html`<div class="textarea__icon__container">

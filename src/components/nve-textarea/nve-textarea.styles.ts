@@ -14,7 +14,6 @@ export default css`
 
   .textarea__base {
     display: flex;
-    position: relative; /** trengs for å posisjonere ikonen */
   }
 
   .textarea__control {
@@ -89,12 +88,13 @@ export default css`
   }
 
   .textarea__icon__container {
-    position: absolute;
-    right: var(--sizing-4x-small);
-    top: var(--sizing-4x-small);
+    position: relative; /** trengs for å posisjonere ikonen */
   }
 
   .textarea__icon--error {
+    position: absolute;
+    left: -24px;
+    top: 10px;
     color: var(--feedback-background-emphasized-error);
   }
 `;
