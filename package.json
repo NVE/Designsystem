@@ -14,7 +14,7 @@
   "types": "nve-designsystem.d.ts",
   "scripts": {
     "add-component": "node scripts/createNewComponent.js",
-    "dev": "vite",
+    "dev": "astro dev",
     "pack": "node scripts/prepublish.js pack",
     "publish": "node scripts/prepublish.js publish",
     "build": "node scripts/build.js",
@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.11.2",
+    "astro": "^4.10.1",
     "chromatic": "^10.1.0",
     "lit": "^3.0.2"
   },
