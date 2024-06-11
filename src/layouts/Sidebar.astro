@@ -1,0 +1,23 @@
+---
+import {SIDEBAR} from '../config';
+const {currentPage} = Astro.props;
+const currentPageMatch = currentPage.slice(1);
+
+const isCurrentPage = (item) => {
+	if (item.link) {
+		return item.link.includes(currentPageMatch);
+	}
+	return false;
+};
+
+/** const getLinkClasses til aktiv lenke */
+---
+<aside title="Site Navigation">
+    <nav>
+        <ul>
+            {
+SIDEBAR
+            }
+        </ul>
+    </nav>
+</aside>

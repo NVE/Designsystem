@@ -7,7 +7,7 @@ import NveRadio from '../nve-radio/nve-radio.component';
 import styles from './nve-radio-group.styles';
 import { watch } from '../../utils/watch';
 import toggleBooleanAttrOnListOfNodes from '../../utils/updateInvalidProperty';
-import { PropertyValues } from 'lit';
+import type { PropertyValues } from 'lit';
 
 /**
  * En sl-radio-group i NVE-forkledning.

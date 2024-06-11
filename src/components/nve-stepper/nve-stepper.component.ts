@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { StepProps, StepState } from './nve-step/nve-step.component';
+import type { StepProps, StepState } from './nve-step/nve-step.component';
 import styles from './nve-stepper.styles';
 
 @customElement('nve-stepper')

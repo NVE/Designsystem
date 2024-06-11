@@ -32,6 +32,7 @@
     "copy-files-storybook": "cpy \"./build/css/*\" \"./src/styles/*\" storybook-static/assets"
   },
   "dependencies": {
+    "@astrojs/mdx": "^3.1.0",
     "@shoelace-style/shoelace": "^2.11.2",
     "astro": "^4.10.1",
     "chromatic": "^10.1.0",
