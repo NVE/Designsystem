@@ -14,7 +14,7 @@
   "types": "nve-designsystem.d.ts",
   "scripts": {
     "add-component": "node scripts/createNewComponent.js",
-    "dev": "vite",
+    "dev": "npx eleventy --serve",
     "pack": "node scripts/prepublish.js pack",
     "publish": "node scripts/prepublish.js publish",
     "build": "node scripts/build.js",
@@ -37,6 +37,7 @@
     "lit": "^3.0.2"
   },
   "devDependencies": {
+    "@11ty/eleventy": "3.0.0-alpha.11",
     "@mdx-js/loader": "^3.0.0",
     "@storybook/addon-docs": "^7.6.4",
     "@storybook/addon-essentials": "^7.6.4",
