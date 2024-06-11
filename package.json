@@ -1,5 +1,12 @@
 {
   "name": "nve-designsystem",
+  "description": "Designsystem for NVE",
+  "author": {
+    "name": "NVE",
+    "email": "nve@nve.no"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/NVE/Designsystem/",
   "version": "0.1.62",
   "exports": {
     ".": {
@@ -46,13 +53,20 @@
     "@storybook/web-components-vite": "^7.6.4",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
+    "command-line-args": "^5.2.1",
+    "comment-parser": "^1.4.0",
     "cpy": "^11.0.0",
     "cpy-cli": "^5.0.0",
+    "custom-element-jet-brains-integration": "^1.4.0",
+    "custom-element-vs-code-integration": "^1.2.1",
+    "custom-element-vuejs-integration": "^1.0.0",
+    "custom-elements-manifest": "^2.1.0",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-lit": "^1.10.1",
     "eslint-plugin-storybook": "^0.6.15",
     "glob": "^10.3.10",
+    "pascal-case": "^3.1.2",
     "prettier": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
