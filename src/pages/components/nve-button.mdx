@@ -1,20 +1,19 @@
 ---
 title: 'Buttons'
 component: 'nve-button'
-layout: '../../layouts/MainLayout.astro'
 setup: |
   import ../../components/nve-button/nve-button.component.ts
   import ../../components/nve-input/nve-input.component.ts
 ---
 
-import MainLayout from '../../layouts/MainLayout.astro';
+import ComponentLayout from '../../layouts/ComponentLayout.astro';
 import { Content as Tab } from '../../../doc/nve-button.md';
 
 ## All buttons
 
 bla blaibdasbdaj asd
 
-<MainLayout title="title" component="nve-button">
+<ComponentLayout title="title" component="nve-button">
   <nve-button variant="primary">Button</nve-button>
   <Tab></Tab>
-</MainLayout>
+</ComponentLayout>

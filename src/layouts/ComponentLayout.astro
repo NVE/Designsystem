@@ -1,9 +1,9 @@
 ---
+const { title, component } = Astro.props;
 import '../../public/css/global.css'
 import '../../public/css/varsom.css'
 
 const currentPage = new URL(Astro.request.url).pathname;
-import ComponentLayout from './ComponentLayout.astro';
 ---
 
 <html dir="lts" lang="nb-no">
@@ -13,13 +13,10 @@ import ComponentLayout from './ComponentLayout.astro';
 <title>NVE Designsystem</title>
 </head>
   <body>
-    <h1>Main</h1>
+    <h1>{title}</h1>
+    <!-- Description -->
+    <p>{component}</p>
     <slot />
-    <ComponentLayout component="nve-button" />
-  <script >
-   const webComponentsJS = import.meta.glob(
-    '../components/**/*.component.ts',
-    { eager: true })
-</script>
+    <!-- docs -->
   </body>
 </html>
