@@ -61,7 +61,7 @@ registerIconLibrary('system', {
 
 5. Valgfritt: Vue 3, Eslint-regler og VS Code
    Hvis du bruker VS Code og starter et nytt prosjekt gjennom npm run create vue@latest og bruker standard eslint-reglene, kan du
-   få feil fra eslint-regler og automatisk retting fra VS-kode. Du kan legge til disse ESLint-reglene før for å unngå disse feilene:
+   få feil fra eslint-regler og automatisk retting fra VS-kode. Du kan legge til disse ESLint-reglene for å unngå disse feilene:
    "vue/no-deprecated-slot-attribute": "off",
    "vue/attribute-hyphenation": "off",
    "vue/v-on-event-hyphenation": "off",
