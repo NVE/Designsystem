@@ -62,6 +62,7 @@
     "custom-element-vs-code-integration": "^1.2.1",
     "custom-element-vuejs-integration": "^1.0.0",
     "custom-elements-manifest": "^2.1.0",
+    "custom-elements-manifest-inheritance": "^1.1.1",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-lit": "^1.10.1",

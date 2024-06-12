@@ -2,10 +2,12 @@ import * as path from 'path';
 import { customElementJetBrainsPlugin } from 'custom-element-jet-brains-integration';
 import { customElementVsCodePlugin } from 'custom-element-vs-code-integration';
 import { customElementVuejsPlugin } from 'custom-element-vuejs-integration';
+import { cemInheritancePlugin } from 'custom-elements-manifest-inheritance';
 import { parse } from 'comment-parser';
 import { pascalCase } from 'pascal-case';
 import commandLineArgs from 'command-line-args';
 import fs from 'fs';
+import externalCEM from '@shoelace-style/shoelace/dist/custom-elements.json' assert { type: 'json' };
 
 const packageData = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const { name, description, version, author, homepage, license } = packageData;
@@ -28,10 +30,16 @@ function replace(string, terms) {
   return string;
 }
 
+const cemInheritancePluginOptions = {
+  externalManifests: [externalCEM],
+};
+
 export default {
   globs: ['src/components/**/*.component.ts'],
   exclude: ['**/*.styles.ts', '**/*.demo.ts'],
   plugins: [
+    cemInheritancePlugin(cemInheritancePluginOptions),
+
     // Append package data
     {
       name: 'shoelace-package-data',
@@ -39,7 +47,6 @@ export default {
         customElementsManifest.package = { name, description, version, author, homepage, license };
       },
     },
-
     // Infer tag names because we no longer use @customElement decorators.
     {
       name: 'shoelace-infer-tag-names',
@@ -48,27 +55,21 @@ export default {
           case ts.SyntaxKind.ClassDeclaration: {
             const className = node.name.getText();
             const classDoc = moduleDoc?.declarations?.find((declaration) => declaration.name === className);
-
             const importPath = moduleDoc.path;
-
             // This is kind of a best guess at components. "thing.component.ts"
             if (!importPath.endsWith('.component.ts')) {
               return;
             }
-
             const tagName = path.basename(importPath, '.component.ts');
             const tagNameWithoutPrefix = tagName.replaceAll('nve-', '');
-
             classDoc.tagNameWithoutPrefix = tagNameWithoutPrefix;
             classDoc.tagName = tagName;
-
             // This used to be set to true by @customElement
             classDoc.customElement = true;
           }
         }
       },
     },
-
     // Parse custom jsDoc tags
     {
       name: 'shoelace-custom-tags',
@@ -79,20 +80,16 @@ export default {
             const classDoc = moduleDoc?.declarations?.find((declaration) => declaration.name === className);
             const customTags = ['animation', 'dependency', 'documentation', 'since', 'status', 'title'];
             let customComments = '/**';
-
             node.jsDoc?.forEach((jsDoc) => {
               jsDoc?.tags?.forEach((tag) => {
                 const tagName = tag.tagName.getText();
-
                 if (customTags.includes(tagName)) {
                   customComments += `\n * @${tagName} ${tag.comment}`;
                 }
               });
             });
-
             // This is what allows us to map JSDOC comments to ReactWrappers.
             classDoc['jsDoc'] = node.jsDoc?.map((jsDoc) => jsDoc.getFullText()).join('\n');
-
             const parsed = parse(`${customComments}\n */`);
             parsed[0].tags?.forEach((t) => {
               switch (t.tag) {
@@ -106,7 +103,6 @@ export default {
                     description: noDash(t.description),
                   });
                   break;
-
                 // Dependencies
                 case 'dependency':
                   if (!Array.isArray(classDoc['dependencies'])) {
@@ -114,7 +110,6 @@ export default {
                   }
                   classDoc['dependencies'].push(t.name);
                   break;
-
                 // Value-only metadata tags
                 case 'documentation':
                 case 'since':
@@ -122,13 +117,11 @@ export default {
                 case 'title':
                   classDoc[t.tag] = t.name;
                   break;
-
                 // All other tags
                 default:
                   if (!Array.isArray(classDoc[t.tag])) {
                     classDoc[t.tag] = [];
                   }
-
                   classDoc[t.tag].push({
                     name: t.name,
                     description: t.description,
@@ -140,7 +133,6 @@ export default {
         }
       },
     },
-
     {
       name: 'shoelace-react-event-names',
       analyzePhase({ ts, node, moduleDoc }) {
@@ -148,7 +140,6 @@ export default {
           case ts.SyntaxKind.ClassDeclaration: {
             const className = node.name.getText();
             const classDoc = moduleDoc?.declarations?.find((declaration) => declaration.name === className);
-
             if (classDoc?.events) {
               classDoc.events.forEach((event) => {
                 event.reactName = `on${pascalCase(event.name)}`;
@@ -159,7 +150,6 @@ export default {
         }
       },
     },
-
     {
       name: 'shoelace-translate-module-paths',
       packageLinkPhase({ customElementsManifest }) {
@@ -177,13 +167,10 @@ export default {
             { from: /^src\//, to: '' }, // Strip the src/ prefix
             { from: /\.component.(t|j)sx?$/, to: '.js' }, // Convert .ts to .js
           ];
-
           mod.path = replace(mod.path, terms);
-
           for (const ex of mod.exports ?? []) {
             ex.declaration.module = replace(ex.declaration.module, terms);
           }
-
           for (const dec of mod.declarations ?? []) {
             if (dec.kind === 'class') {
               for (const member of dec.members ?? []) {
@@ -196,7 +183,6 @@ export default {
         });
       },
     },
-
     // Generate custom VS Code data
     // TODO: Kommentert ut fordi jeg får denne feilen:
     // [custom-element-vs-code-integration]: Looks like you've hit an error in third party plugin: custom-element-vs-code-integration. Please try to create a minimal reproduction and inform the author of the custom-element-vs-code-integration plugin.
@@ -211,7 +197,6 @@ export default {
     //     },
     //   ],
     // }),
-
     // TODO: Kommentert ut fordi vi får denne feilen:
     // [custom-element-jet-brains-integration]: Looks like you've hit an error in third party plugin: custom-element-jet-brains-integration. Please try to create a minimal reproduction and inform the author of the custom-element-jet-brains-integration plugin.
     // TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of Promise
@@ -226,7 +211,6 @@ export default {
     //     };
     //   },
     // }),
-
     // TODO: Kommentert ut fordi vi får denne feilen:
     // TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of Promise
     // customElementVuejsPlugin({
