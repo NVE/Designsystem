@@ -1,28 +1,50 @@
 <template>
-  <div></div>
+  <p>this is nve-alert</p>
+  <!--markdown part-->
+  <div v-html="mardkownContent"></div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import MarkdownIt from 'markdown-it';
-import '../styles/global.css';
-import '../styles/varsom.css';
-// bruke src for lokal utvikling og bruk selve bibliotet import når appen er deployet
-import '../../src/components/nve-alert/nve-alert.component.ts';
-const markdown = new MarkdownIt();
-const mardkownConten = ref('');
-async function loadMarkdown() {
-  const fileName = 'nve-alert'; // This can be dynamically set
+import { useRoute } from 'vue-router';
+import '../../../src/components/nve-alert/nve-alert.component';
+import '../../../src/components/nve-icon/nve-icon.component';
+import markdownit from 'markdown-it';
+import codePreview from '../utils/codePreview';
+import hljs from 'highlight.js';
+
+const markdown = markdownit({
+  html: true,
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(str, { language: lang }).value;
+      } catch (__) {}
+    }
+
+    return ''; // use external default escaping
+  },
+});
+const mardkownContent = ref('');
+const route = useRoute();
+async function loadMarkdownAndComponent() {
+  const fileName = route.params.component; // This can be dynamically set
   try {
-    const md = await import(`../../doc/${fileName}.md?raw`);
-    mardkownConten.value = markdown.render(md.default);
+    const mdModule = await import(`../../../doc/${fileName}.md?raw`);
+    // bruke src for lokal utvikling og bruk selve bibliotet import når appen er deployet
+    //await import(`../../../src/components/${fileName}/${fileName}.component.ts`);
+    const test = codePreview(mdModule.default);
+    // finne html:preview deler i markdown filen og lage en eksempel boks
+
+    const a = markdown.render(mdModule.default);
+    mardkownContent.value = markdown.render(test);
   } catch (error) {
     console.error('Failed to load markdown file', error);
-    mardkownConten.value = 'Failed to load content.';
+    mardkownContent.value = 'Failed to load content.';
   }
 }
 
-onMounted(loadMarkdown);
+onMounted(loadMarkdownAndComponent);
 </script>
 
 <style scoped></style>

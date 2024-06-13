@@ -1,0 +1,30 @@
+.code-preview {
+  position: relative;
+  border-radius: 3px;
+  background-color: var(--sl-color-neutral-50);
+  margin-bottom: 1.5rem;
+}
+
+.code-preview__preview {
+  position: relative;
+  border: solid 1px var(--sl-color-neutral-200);
+  border-bottom: none;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: var(--sl-color-neutral-0);
+  min-width: 20rem;
+  max-width: 100%;
+  padding: 1.5rem 3.25rem 1.5rem 1.5rem;
+}
+.code-preview__source--html {
+  white-space: pre;
+}
+
+/* HLJS theme */
+.hljs-tag .hljs-name {
+  color: var(--blue-700);
+}
+
+.hljs-tag .hljs-attr {
+  color: var(--green-850);
+}

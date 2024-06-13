@@ -21,7 +21,7 @@
   "types": "nve-designsystem.d.ts",
   "scripts": {
     "add-component": "node scripts/createNewComponent.js",
-    "dev": "npx eleventy --serve",
+    "dev": "cd docs-vue && vite",
     "pack": "node scripts/prepublish.js pack",
     "publish": "node scripts/prepublish.js publish",
     "build": "node scripts/build.js",
