@@ -5,7 +5,7 @@ meta:
 layout: component
 ---
 
-```html
+```html:preview
 <nve-alert open>
   <sl-icon slot="icon" name="info-circle"></sl-icon>
   Dette er en standard alert
@@ -22,7 +22,7 @@ Du finner også flere eksempler i [Shoelace-dokumentasjonen](https://shoelace.st
 
 ### Variant
 
-Bruk attributtet 'variant' for å styre farger.
+Bruk `variant` for å styre farger.
 
 ```html:preview
 <nve-alert variant="primary" open>
@@ -54,7 +54,7 @@ Bruk attributtet 'variant' for å styre farger.
 
 ### Left stroke
 
-Bruk attributtet "leftstroke" for å vise en fet strek på venstre side.
+Bruk `leftstroke` for å vise en fet strek på venstre side.
 
 ```html:preview
 <nve-alert variant="danger" text="Left stroke" leftstroke open>
@@ -63,7 +63,7 @@ Bruk attributtet "leftstroke" for å vise en fet strek på venstre side.
 
 ### Emphasized
 
-Bruk property "emphasized" for å få litt mørkere bakgrunnsfarge.
+Bruk `emphasized` for å få litt mørkere bakgrunnsfarge.
 
 ```html:preview
 <nve-alert variant="warning" text="Emphasized" emphasized open>
@@ -75,7 +75,7 @@ Bruk property "emphasized" for å få litt mørkere bakgrunnsfarge.
 
 ### Tittel og tekst
 
-Du kan bruke "title" for å lage en slags overskrift. Resten av teksten kan da legges i "text".
+Du kan bruke `title` for å lage en slags overskrift. Resten av teksten kan da legges i `text`.
 
 ```html:preview
 <nve-alert text="og tekst" title="Tittel" open></nve-alert>
@@ -92,7 +92,7 @@ Du kan bruke "title" for å lage en slags overskrift. Resten av teksten kan da l
 Bruk `closable` for å vise en lukke-knapp på høyre side, som skjuler komponenten.
 
 ```html:preview
-<nve-alert variant="primary" open closable class="alert-closeable">
+<nve-alert open closable class="alert-closeable">
   Trykk på krysset for å lukke denne
 </nve-alert>
 
@@ -107,7 +107,7 @@ Bruk `closable` for å vise en lukke-knapp på høyre side, som skjuler komponen
 
 ### Ikoner
 
-Ikoner er valgfrie, og legges i slot'en som heter "icon".
+Ikoner er valgfrie, og legges i slot'en `icon`.
 
 ```html:preview
 <nve-alert open>

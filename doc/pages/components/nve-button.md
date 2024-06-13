@@ -15,7 +15,7 @@ Du finner også flere eksempler i [Shoelace-dokumentasjonen](https://shoelace.st
 
 ### Varianter
 
-Bruk attributtet `variant` for å velge farge.
+Bruk `variant` for å velge farge.
 `success` og `warning` skal ikke brukes.
 
 ```html:preview
@@ -29,7 +29,7 @@ Bruk attributtet `variant` for å velge farge.
 
 ### Størrelse
 
-Bruk property `size` for å endre størrelse.
+Bruk `size` for å endre størrelse.
 
 ```html:preview
 <nve-button size="small">small</nve-button>
@@ -39,7 +39,7 @@ Bruk property `size` for å endre størrelse.
 
 ### Disabled
 
-Bruk property `disabled` for å deaktivere knappen.
+Bruk `disabled` for å deaktivere knappen.
 
 ```html:preview
 <nve-button disabled>deaktivert</nve-button>
@@ -48,7 +48,7 @@ Bruk property `disabled` for å deaktivere knappen.
 
 ### Loading
 
-Bruk property `loading` for å legge til ei snurre.
+Bruk `loading` for å legge til ei snurre.
 
 ```html:preview
 <nve-button loading>loading</nve-button>

@@ -15,7 +15,7 @@ Du finner også flere eksempler i [Shoelace-dokumentasjonen](https://shoelace.st
 
 ### Varianter
 
-Bruk property `variant` for å velge farge.
+Bruk `variant` for å velge farge.
 
 ```html:preview
 <nve-badge variant="primary">primary (dette er standard)</nve-badge>
@@ -28,7 +28,7 @@ Bruk property `variant` for å velge farge.
 
 ### Størrelse
 
-Bruk property "size" for å velge størrelse.
+Bruk `size` for å velge størrelse.
 
 ```html:preview
 <nve-badge size="small">small</nve-badge>
@@ -38,7 +38,7 @@ Bruk property "size" for å velge størrelse.
 
 ### Low
 
-Bruk property "low" for å gjøre badge mildere.
+Bruk `low` for å gjøre badge mildere.
 
 ```html:preview
 <nve-badge low>low</nve-badge>
@@ -47,7 +47,7 @@ Bruk property "low" for å gjøre badge mildere.
 
 ### Knapp med badge
 
-Du kan vise badge på en knapp ved å legge badge inni <nve-button>.
+Du kan vise badge på en knapp ved å legge badge inni `<nve-button>`.
 
 ```html:preview
 <nve-button variant="primary">
