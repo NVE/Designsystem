@@ -23,3 +23,4 @@ export { default as NveSelect } from './components/nve-select/nve-select.compone
 export { default as NveOption } from './components/nve-option/nve-option.component';
 export { default as NveStepper } from './components/nve-stepper/nve-stepper.component';
 export { default as NveStep } from './components/nve-stepper/nve-step/nve-step.component';
+export { default as NveDetails } from './components/nve-details/nve-details.component';

@@ -1,0 +1,36 @@
+import './../css/stories.css';
+
+import { Canvas, Story, Meta, Title, Subtitle, Description, Source, Primary, Controls } from '@storybook/blocks';
+
+import * as NveDetailsStories from './NveDetails.stories';
+
+<Meta isTemplate />
+
+<Title />
+<Description />
+<br />
+<br />
+
+## Generelt
+
+Denne komponenten arver det meste fra SlDetails
+Trykk "show code" for å se hvordan de ulike eksemplene genereres.
+Bruk property "variant" for å sette bakgrunn, og "left-stroke" for å sette at det skal være en tykk linje på siden
+Bruk arvede properties som "open" for å sette at den skal være åpen ved første visning, og "summary" for å sette tittel (er også en slot for det)
+
+## Standard Details
+
+<div class="container">
+  <span class="elem">
+    <Canvas of={NveDetailsStories.Details} />
+  </span>
+</div>
+
+## Parametere/Props
+
+Her kan du se hvilke parametere (props) komponenten kan ta imot og se endringer i kode
+
+<div class="container">
+  <Primary />
+</div>
+<Controls />

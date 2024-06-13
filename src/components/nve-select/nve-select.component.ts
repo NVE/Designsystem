@@ -89,9 +89,7 @@ export default class NveSelect extends SlSelect {
 
       if (this.value !== oldValue) {
         this.updateComplete.then(() => {
-          // @ts-expect-error - this is shadowed by outer container
           this.emit('sl-input');
-          // @ts-expect-error - this is shadowed by outer container
           this.emit('sl-change');
         });
       }
