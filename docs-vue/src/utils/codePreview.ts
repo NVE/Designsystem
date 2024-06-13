@@ -12,10 +12,6 @@ export default function codePreview(markdownText: string): string {
   return replacedText;
 }
 
-function escapeHtml(str): string {
-  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-
 function createPreviewBox(code: string): string {
   // Assuming the language is HTML. Use hljs.highlightAuto(code) if the language is unknown.
   const highlightedCode = hljs.highlight(code, { language: 'html' }).value;

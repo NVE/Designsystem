@@ -11,32 +11,19 @@ import '../../../src/components/nve-alert/nve-alert.component';
 import '../../../src/components/nve-icon/nve-icon.component';
 import markdownit from 'markdown-it';
 import codePreview from '../utils/codePreview';
-import hljs from 'highlight.js';
 
 const markdown = markdownit({
   html: true,
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(str, { language: lang }).value;
-      } catch (__) {}
-    }
-
-    return ''; // use external default escaping
-  },
 });
 const mardkownContent = ref('');
 const route = useRoute();
 async function loadMarkdownAndComponent() {
   const fileName = route.params.component; // This can be dynamically set
   try {
-    const mdModule = await import(`../../../doc/${fileName}.md?raw`);
+    const mdModule = await import(`../../../doc/pages/components/${fileName}.md?raw`);
     // bruke src for lokal utvikling og bruk selve bibliotet import når appen er deployet
     //await import(`../../../src/components/${fileName}/${fileName}.component.ts`);
     const test = codePreview(mdModule.default);
-    // finne html:preview deler i markdown filen og lage en eksempel boks
-
-    const a = markdown.render(mdModule.default);
     mardkownContent.value = markdown.render(test);
   } catch (error) {
     console.error('Failed to load markdown file', error);

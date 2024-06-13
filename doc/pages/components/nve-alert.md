@@ -7,7 +7,7 @@ layout: component
 
 ```html:preview
 <nve-alert open>
-  <sl-icon slot="icon" name="info-circle"></sl-icon>
+  <nve-icon slot="icon" name="info"></nve-icon>
   Dette er en standard alert
 </nve-alert>
 ```
