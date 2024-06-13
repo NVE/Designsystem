@@ -1,5 +1,4 @@
 <template>
-  <nve-alert variant="primary" title="Hei" open></nve-alert>
   <router-view></router-view>
 </template>
 
@@ -7,4 +6,6 @@
 import '../styles/global.css';
 import '../styles/varsom.css';
 import '../styles/codePreview.css';
+//sikre at den importeres fra bibliotekk i prod
+import '../../src/components/nve-icon/nve-icon.component';
 </script>

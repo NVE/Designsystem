@@ -1,9 +1,6 @@
----
-meta:
-  title: Button
-  description: Buttons represent actions that are available to the user.
-layout: component
----
+# Nve-button
+
+#### Buttons represent actions that are available to the user.
 
 ```html:preview
 <nve-button>NVE-knappen</nve-button>

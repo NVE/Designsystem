@@ -1,9 +1,6 @@
----
-meta:
-  title: Checkbox
-  description: Checkboxes allow the user to toggle an option on or off.
-layout: component
----
+# Nve-checkbox
+
+#### Checkboxes allow the user to toggle an option on or off.
 
 ```html:preview
 <nve-checkbox>Ja, jeg vil!</nve-checkbox>

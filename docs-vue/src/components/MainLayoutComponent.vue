@@ -1,8 +1,12 @@
 <template>
-  <main>
-    <PageIndexComponent></PageIndexComponent> 
-    <router-view></router-view>
-  </main>
+  <div style="display: flex">
+    <aside>
+      <PageIndexComponent></PageIndexComponent>
+    </aside>
+    <main>
+      <router-view></router-view>
+    </main>
+  </div>
 </template>
 
 <script setup lang="ts">

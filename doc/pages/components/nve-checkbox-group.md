@@ -1,9 +1,6 @@
----
-meta:
-  title: nve-checkbox-group
-  description: Brukes for å vise status eller antall
-layout: component
----
+# Nve-checkbox-group
+
+#### Brukes for å vise status eller antall.
 
 ```html:preview
 <nve-checkbox-group label="Vennligst velg 1 og/eller 2">

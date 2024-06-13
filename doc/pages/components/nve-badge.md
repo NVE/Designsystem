@@ -1,9 +1,6 @@
----
-meta:
-  title: nve-badge
-  description: Brukes for å vise status eller antall
-layout: component
----
+# Nve-badge
+
+#### Brukes for å vise status eller antall
 
 ```html:preview
 <nve-badge>Badge</nve-badge>

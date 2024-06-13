@@ -1,15 +1,18 @@
----
-meta:
-  title: nve-alert
-  description: Brukes til å vise viktige beskjeder enten på en side eller som en enkel popup (toast)
-layout: component
----
+# Nve-alert
+
+#### Brukes til å vise viktige beskjeder enten på en side eller som en enkel popup (toast)
 
 ```html:preview
-<nve-alert open>
+<nve-alert open  closable class="alert-closable">
   <nve-icon slot="icon" name="info"></nve-icon>
   Dette er en standard alert
 </nve-alert>
+<script>
+  const alert = document.querySelector('.alert-closable');
+  alert.addEventListener('sl-after-hide', () => {
+    setTimeout(() => (alert.open = true), 2000);
+  });
+</script>
 ```
 
 :::tip
@@ -68,7 +71,7 @@ Bruk `emphasized` for å få litt mørkere bakgrunnsfarge.
 ```html:preview
 <nve-alert variant="warning" text="Emphasized" emphasized open>
 </nve-alert>
-
+<br/>
 <nve-alert variant="warning" text="Ikke emphasized" open>
 </nve-alert>
 ```
@@ -79,11 +82,11 @@ Du kan bruke `title` for å lage en slags overskrift. Resten av teksten kan da l
 
 ```html:preview
 <nve-alert text="og tekst" title="Tittel" open></nve-alert>
-
+<br/>
 <nve-alert title="Kun tittel" open></nve-alert>
-
+<br/>
 <nve-alert text="kun tekst" open></nve-alert>
-
+<br/>
 <nve-alert title="Tittel" open>TODO: Hvordan funker dette med tekst inni elementet?</nve-alert>
 ```
 
@@ -114,7 +117,7 @@ Ikoner er valgfrie, og legges i slot'en `icon`.
   <nve-icon slot="icon" name="check_circle"></nve-icon>
   med ikon
 </nve-alert>
-
+<br/>
 <nve-alert open>
   uten ikon
 </nve-alert>

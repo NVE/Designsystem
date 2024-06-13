@@ -1,23 +1,59 @@
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+  border-bottom: solid 1px var(--grey-200);
+}
+
+h3 {
+  font-size: 1.625rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+  font-weight: 300;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .code-preview {
   position: relative;
   border-radius: 3px;
-  background-color: var(--sl-color-neutral-50);
+  background-color: #fff;
   margin-bottom: 1.5rem;
 }
 
 .code-preview__preview {
   position: relative;
-  border: solid 1px var(--sl-color-neutral-200);
+  border: solid 1px var(--grey-200);
   border-bottom: none;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  background-color: var(--sl-color-neutral-0);
   min-width: 20rem;
   max-width: 100%;
-  padding: 1.5rem 3.25rem 1.5rem 1.5rem;
+  padding: 1.5rem;
 }
-.code-preview__source--html {
-  white-space: pre;
+
+.code-preview__source {
+  background-color: #f7f7f7;
+  border: solid 1px var(--grey-200);
+  padding: 1rem;
+  :is(pre) {
+    margin: 0;
+  }
 }
 
 /* HLJS theme */
@@ -27,4 +63,51 @@
 
 .hljs-tag .hljs-attr {
   color: var(--green-850);
+}
+
+/* Callouts */
+.callout {
+  position: relative;
+  background-color: var(--sl-color-neutral-100);
+  border-left: solid 4px var(--sl-color-neutral-500);
+  border-radius: var(--docs-border-radius);
+  color: var(--sl-color-neutral-800);
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  margin-bottom: var(--docs-content-vertical-spacing);
+}
+
+.callout > :first-child {
+  margin-top: 0;
+}
+
+.callout > :last-child {
+  margin-bottom: 0;
+}
+
+.callout--tip {
+  background-color: var(--sl-color-primary-100);
+  border-left-color: var(--sl-color-primary-600);
+  color: var(--sl-color-primary-800);
+}
+
+.callout::before {
+  content: '';
+  position: absolute;
+  top: calc(50% - 0.8rem);
+  left: calc(-0.8rem - 2px);
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sl-font-serif);
+  font-weight: var(--sl-font-weight-bold);
+  color: var(--sl-color-neutral-0);
+  clip-path: circle(50% at 50% 50%);
+}
+
+.callout--tip::before {
+  content: 'i';
+  font-style: italic;
+  background-color: var(--sl-color-primary-600);
 }
