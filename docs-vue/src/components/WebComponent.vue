@@ -1,37 +1,27 @@
+<!-- Viser tolket markdown fil til en dok siden på en komponent -->
 <template>
   <!--markdown part-->
   <div class="md-content" v-html="mardkownContent"></div>
 </template>
 
 <script setup lang="ts">
-import { nextTick, onMounted, reactive, ref, watch } from 'vue';
+import { nextTick, reactive, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import markdownit from 'markdown-it';
-import mardkownItContainer from 'markdown-it-container';
 import { Script, codePreview } from '../utils/codePreview';
+import markdown from '../markdownItSetup';
 
-const markdown = markdownit({
-  html: true,
-});
 const mardkownContent = ref('');
 const scripts = reactive<Script[]>([]);
 const route = useRoute();
 async function loadMarkdownAndComponent() {
-  const fileName = route.params.component; // This can be dynamically set
-  ['tip', 'warning', 'danger'].forEach((type) => {
-    markdown.use(mardkownItContainer, type, {
-      render: function (tokens, idx) {
-        if (tokens[idx].nesting === 1) {
-          return `<div role="alert" class="callout callout--${type}">`;
-        }
-        return '</div>\n';
-      },
-    });
-  });
+  const fileName = route.params.component;
   try {
     const mdModule = await import(`../../../doc/pages/components/${fileName}.md?raw`);
-    // bruke src for lokal utvikling og bruk selve bibliotet import når appen er deployet
-    await import(`../../../src/components/${fileName}/${fileName}.component.ts`);
+    /* denne kommentert delen brukes til å importere nve komponenter dynamisk. Foreløpig har vi ikke støtte for avhengiheter i 
+    custom-elements-manifest derfor appen vet ikke om den trenger å importere flere enn den hoved komponenten 
+    (f.eks nve-dropdown krever nve-button og nve-menu). Når det er på plass da kan vi importere komponenter dynamisk som 
+    er en bedre tilnærming enn å importere alle komponentene med en gang.  */
+    //await import(`../../../src/components/${fileName}/${fileName}.component.ts`);
     const replacedText = codePreview(mdModule.default);
     mardkownContent.value = markdown.render(replacedText.text);
     scripts.push(...replacedText.scripts);
@@ -41,7 +31,8 @@ async function loadMarkdownAndComponent() {
   }
 }
 
-/** Lager en anonym IIFE som kjører bare innenfor den spesifiserte div-en  */
+/** Lager en anonym IIFE som legges til til en script innenfor den spesifiserte div-en med gitt id. 
+Den kjører ikke globalt */
 function attachScriptToDiv(scriptContent: string, id: string) {
   const div = document.querySelector(`.code-preview-${id}`);
   if (div) {
@@ -55,12 +46,12 @@ function attachScriptToDiv(scriptContent: string, id: string) {
     div.appendChild(script);
   }
 }
+
 watch(
   () => route.params.component,
   async (newComponent, oldComponent) => {
     if (newComponent !== oldComponent) {
       await loadMarkdownAndComponent();
-      // Assuming `uniqueId` is known or retrieved dynamically
       nextTick().then(() => {
         scripts.forEach((script) => attachScriptToDiv(script.script, script.id));
       });

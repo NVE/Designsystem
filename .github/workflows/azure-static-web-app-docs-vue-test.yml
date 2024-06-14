@@ -1,0 +1,34 @@
+name: Test NVE Designsystem dokumentasjon side
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'docs-vue/**'
+
+jobs:
+  # Run when a pull request is created or updated
+   call-reusable-workflow:
+    uses: ./azure-static-web-app-vue-build-reusable.yml
+    with:
+      node_version: '20'
+      app_location: 'docs-vue'
+      output_location: 'dist'
+    secrets:
+      AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  close_pull_request_job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close Pull Request Job
+    steps:
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: 'close'

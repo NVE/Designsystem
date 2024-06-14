@@ -6,7 +6,7 @@
 <nve-checkbox>Ja, jeg vil!</nve-checkbox>
 ```
 
-:::tip
+:::warning
 TODO: SKal vi ha med en tekst a la denne for alle skjema-elementer?
 This component works with standard `<form>` elements. Please refer to the section on [form controls](/getting-started/form-controls) to learn more about form submission and client-side validation.
 :::

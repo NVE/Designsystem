@@ -1,3 +1,4 @@
+<!-- Hoved wrapper som inneholder alle komponenter i visning -->
 <template>
   <div style="display: flex">
     <aside>

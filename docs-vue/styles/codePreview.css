@@ -1,3 +1,22 @@
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    Source Sans Pro,
+    Arial,
+    sans-serif;
+}
+
 h1,
 h2,
 h3,
@@ -84,12 +103,6 @@ main {
   margin-bottom: 0;
 }
 
-.callout--tip {
-  background-color: var(--sl-color-primary-100);
-  border-left-color: var(--sl-color-primary-600);
-  color: var(--sl-color-primary-800);
-}
-
 .callout::before {
   content: '';
   position: absolute;
@@ -106,8 +119,36 @@ main {
   clip-path: circle(50% at 50% 50%);
 }
 
+.callout--tip {
+  background-color: var(--sl-color-primary-100);
+  border-left-color: var(--sl-color-primary-600);
+  color: var(--sl-color-primary-800);
+}
+
 .callout--tip::before {
   content: 'i';
   font-style: italic;
   background-color: var(--sl-color-primary-600);
+}
+
+.callout--warning {
+  background-color: var(--sl-color-warning-100);
+  border-left-color: var(--sl-color-warning-600);
+  color: var(--sl-color-warning-800);
+}
+
+.callout--warning::before {
+  content: '!';
+  background-color: var(--sl-color-warning-600);
+}
+
+.callout--danger {
+  background-color: var(--sl-color-danger-100);
+  border-left-color: var(--sl-color-danger-600);
+  color: var(--sl-color-danger-800);
+}
+
+.callout--danger::before {
+  content: '‼';
+  background-color: var(--sl-color-danger-600);
 }
