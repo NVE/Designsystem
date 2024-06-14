@@ -27,12 +27,12 @@ Teksten på høyre side kan legges i `value` eller inni `nve-checkbox`.
 
 ### Checked
 
-Bruk `checked` for å huke av. Bruk `intederminate` for strek.
+Bruk `checked` for å huke av. Bruk `indeterminate` for å vise at man ikke har tatt stilling ennå.
 
 ```html:preview
-<nve-checkbox checked="true">Checked</nve-checkbox>
-<nve-checkbox checked="false">Unchecked</nve-checkbox>
-<nve-checkbox intederminate>Intederminate</nve-checkbox>
+<nve-checkbox checked="true">checked</nve-checkbox>
+<nve-checkbox>unchecked (default)</nve-checkbox>
+<nve-checkbox indeterminate>indeterminate</nve-checkbox>
 ```
 
 ### Disabled

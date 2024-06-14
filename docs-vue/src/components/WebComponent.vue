@@ -14,12 +14,19 @@ const mardkownContent = ref('');
 const scripts = reactive<Script[]>([]);
 const route = useRoute();
 async function loadMarkdownAndComponent() {
-  const fileName = route.params.component;
+  const componentName = route.params.component;
   try {
-    const mdModule = await import(`../../../doc/pages/components/${fileName}.md?raw`);
-    /* denne kommentert delen brukes til å importere nve komponenter dynamisk. Foreløpig har vi ikke støtte for avhengiheter i 
-    custom-elements-manifest derfor appen vet ikke om den trenger å importere flere enn den hoved komponenten 
-    (f.eks nve-dropdown krever nve-button og nve-menu). Når det er på plass da kan vi importere komponenter dynamisk som 
+    let mdModule;
+    // import liker ikke / i variable, derfor litt hardkoding av url her
+    if (componentName) {
+      mdModule = await import(`../../../doc/pages/components/${componentName}.md?raw`);
+    } else {
+      const pageName = route.params.page;
+      mdModule = await import(`../../../doc/pages/${pageName}.md?raw`);
+    }
+    /* denne kommentert delen brukes til å importere nve komponenter dynamisk. Foreløpig har vi ikke støtte for avhengiheter i
+    custom-elements-manifest derfor appen vet ikke om den trenger å importere flere enn den hoved komponenten
+    (f.eks nve-dropdown krever nve-button og nve-menu). Når det er på plass da kan vi importere komponenter dynamisk som
     er en bedre tilnærming enn å importere alle komponentene med en gang.  */
     //await import(`../../../src/components/${fileName}/${fileName}.component.ts`);
     const replacedText = codePreview(mdModule.default);
@@ -31,7 +38,7 @@ async function loadMarkdownAndComponent() {
   }
 }
 
-/** Lager en anonym IIFE som legges til til en script innenfor den spesifiserte div-en med gitt id. 
+/** Lager en anonym IIFE som legges til til en script innenfor den spesifiserte div-en med gitt id.
 Den kjører ikke globalt */
 function attachScriptToDiv(scriptContent: string, id: string) {
   const div = document.querySelector(`.code-preview-${id}`);
@@ -46,6 +53,19 @@ function attachScriptToDiv(scriptContent: string, id: string) {
     div.appendChild(script);
   }
 }
+
+watch(
+  () => route.params.page,
+  async (newComponent, oldComponent) => {
+    if (newComponent !== oldComponent) {
+      await loadMarkdownAndComponent();
+      nextTick().then(() => {
+        scripts.forEach((script) => attachScriptToDiv(script.script, script.id));
+      });
+    }
+  },
+  { immediate: true }
+);
 
 watch(
   () => route.params.component,

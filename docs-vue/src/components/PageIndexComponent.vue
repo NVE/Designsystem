@@ -1,11 +1,12 @@
 <!-- 
- En liste over alle sider i applikasjonen.
- Hvert innslag i lista er en link til en side.
- Lista er organisert som en trestruktur.
+ Oversikt over alle sider i applikasjonen.
+ De fleste sidene mapper til en markdown-fil under /doc/pages.
   -->
 <template>
-  <h1>Innholdsfortegnelse</h1>
-  <h2>Validering</h2>
+  <h1>NVE Designsystem</h1>
+  <h2>
+    <router-link to="/validation">Validering</router-link>
+  </h2>
   <h2>Bruk i Vue</h2>
   <h2>Komponenter</h2>
   <ul>
