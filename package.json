@@ -29,6 +29,7 @@
     "preview": "vite preview",
     "lint": "eslint \"**/*.{js,ts}\"",
     "doc": "npx web-component-analyzer analyze src/components/**/*.ts --format markdown --outDir doc",
+    "manifest": "npx  @custom-elements-manifest/analyzer analyze --outdir dist",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build  && npm run copy-files-storybook",
     "build:light": "node transform.js light",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "3.0.0-alpha.11",
+    "@custom-elements-manifest/analyzer": "^0.10.2",
     "@mdx-js/loader": "^3.0.0",
     "@storybook/addon-docs": "^7.6.4",
     "@storybook/addon-essentials": "^7.6.4",
