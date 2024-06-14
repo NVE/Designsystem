@@ -17,9 +17,7 @@ jobs:
       node_version: '20'
       app_location: 'docs-vue'
       output_location: 'dist'
-    secrets:
-      AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    secrets: inherit
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

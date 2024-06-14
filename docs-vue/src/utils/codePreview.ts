@@ -1,5 +1,6 @@
 /** Bytter html:preview md syntaksen til en interaktiv komponent og kode eksempel */
-import hljs from 'highlight.js'; //brukes til å vise kode eksempel med syntax highlighting
+import hljs from 'highlight.js/lib/core'; //brukes til å vise kode eksempel med syntax highlighting
+import html from 'highlight.js/lib/languages/xml';
 
 export type Script = {
   script: string;
@@ -10,6 +11,8 @@ export type CodePreview = {
   text: string;
   scripts: Script[];
 };
+
+hljs.registerLanguage('html', html);
 
 // det er global counter som brukes til å sette en unik id i code-preview diver. Grunnen er å isolere script tagene å koble de til riktig preview.
 let uniqueIdCounter = 0;

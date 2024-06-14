@@ -8,11 +8,13 @@
   "license": "MIT",
   "homepage": "https://github.com/NVE/Designsystem/",
   "version": "0.1.62",
+  "customElements": "custom-elements.json",
   "exports": {
     ".": {
       "import": "./nve-designsystem.js",
       "types": "./nve-designsystem.d.ts"
     },
+    "./dist/custom-elements.json": "./custom-elements.json",
     "./components/*": "./components/*",
     "./registerIcons/*": "./registerIcons/*",
     "./css/*": "./css/*"
@@ -21,13 +23,13 @@
   "types": "nve-designsystem.d.ts",
   "scripts": {
     "add-component": "node scripts/createNewComponent.js",
-    "dev": "cd docs-vue && vite",
+    "dev": "node scripts/createCustomElementsManifest.js && cd docs-vue && vite",
     "pack": "node scripts/prepublish.js pack",
     "publish": "node scripts/prepublish.js publish",
     "build": "node scripts/build.js",
     "build:dev": "node scripts/build.js dev",
     "preview": "vite preview",
-    "lint": "eslint \"**/*.{js,ts}\"",
+    "lint": "eslint \"**/*.{js,ts,vue}\"",
     "doc": "npx web-component-analyzer analyze src/components/**/*.ts --format markdown --outDir doc",
     "manifest": "npx  @custom-elements-manifest/analyzer analyze --outdir dist",
     "storybook": "storybook dev -p 6006",
@@ -57,6 +59,7 @@
     "@storybook/web-components-vite": "^7.6.4",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
     "command-line-args": "^5.2.1",
     "comment-parser": "^1.4.0",
     "cpy": "^11.0.0",
@@ -70,6 +73,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-lit": "^1.10.1",
     "eslint-plugin-storybook": "^0.6.15",
+    "eslint-plugin-vue": "^9.26.0",
     "glob": "^10.3.10",
     "pascal-case": "^3.1.2",
     "prettier": "^3.1.0",
