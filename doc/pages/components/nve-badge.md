@@ -12,10 +12,10 @@ Du finner også flere eksempler i [Shoelace-dokumentasjonen](https://shoelace.st
 
 ### Varianter
 
-Bruk `variant` for å velge farge.
+Bruk `variant` for å velge farge. Primary er standard og trenger ikke settes.
 
 ```html:preview
-<nve-badge variant="primary">primary (dette er standard)</nve-badge>
+<nve-badge variant="primary">primary</nve-badge>
 <nve-badge variant="neutral">neutral</nve-badge>
 <nve-badge variant="success">success</nve-badge>
 <nve-badge variant="warning">warning</nve-badge>
@@ -25,7 +25,7 @@ Bruk `variant` for å velge farge.
 
 ### Størrelse
 
-Bruk `size` for å velge størrelse.
+Bruk `size` for å velge størrelse. `medium` er standard.
 
 ```html:preview
 <nve-badge size="small">small</nve-badge>
@@ -35,11 +35,25 @@ Bruk `size` for å velge størrelse.
 
 ### Low
 
-Bruk `low` for å gjøre badge mildere.
+Bruk `low` for lysere bakgrunnsfarge. Teksten blir da svart for alle varianter.
 
 ```html:preview
-<nve-badge low>low</nve-badge>
-<nve-badge>vanlig</nve-badge>
+<nve-badge low variant="primary">primary</nve-badge>
+<nve-badge low variant="neutral">neutral</nve-badge>
+<nve-badge low variant="success">success</nve-badge>
+<nve-badge low variant="warning">warning</nve-badge>
+<nve-badge low variant="danger">danger</nve-badge>
+<nve-badge low variant="brand">brand</nve-badge>
+low
+<br/>
+<br/>
+<nve-badge variant="primary">primary</nve-badge>
+<nve-badge variant="neutral">neutral</nve-badge>
+<nve-badge variant="success">success</nve-badge>
+<nve-badge variant="warning">warning</nve-badge>
+<nve-badge variant="danger">danger</nve-badge>
+<nve-badge variant="brand">brand</nve-badge>
+vanlig
 ```
 
 ### Knapp med badge
