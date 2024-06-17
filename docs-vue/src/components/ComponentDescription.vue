@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { componentDescription as getComponentDescription } from '../customElementsManifest.store';
+import { getComponentDescription } from '../customElementsManifest.store';
 
 const props = defineProps<{
   componentName: string;

@@ -11,6 +11,8 @@
       <h1>{{ componentName }}</h1>
       <ComponentDescription :componentName></ComponentDescription>
       <WebComponent></WebComponent>
+      <ComponentFields :componentName></ComponentFields>
+      <ComponentMethods :componentName></ComponentMethods>
     </div>
  </template>
  
@@ -20,6 +22,8 @@
     import { useRoute } from 'vue-router';
     import ComponentDescription from './ComponentDescription.vue';
     import WebComponent from './WebComponent.vue';
+    import ComponentFields from './ComponentFields.vue';
+    import ComponentMethods from './ComponentMethods.vue';
 
     const route = useRoute();
     const componentName = ref<string>('');
