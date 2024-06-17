@@ -8,7 +8,7 @@ const routes: RouteRecordRaw[] = [
       //TODO: Kan dette skrives smartere?
       {
         path: 'components/:component',
-        component: () => import('../components/WebComponent.vue'),
+        component: () => import('../components/ComponentDocPage.vue'),
       },
       {
         path: ':page',
