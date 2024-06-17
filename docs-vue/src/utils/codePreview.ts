@@ -20,7 +20,7 @@ let uniqueIdCounter = 0;
 /** Bytter html:preview delen i markdown med interkativt preview. Den returnerer både byttet tekst og skriptene som skal
 legges til i de bestemte divene hvor bruker skrev <script> tagene under html:preview  */
 export function codePreview(markdownText: string): CodePreview {
-  const regex = /```html:preview\s+([\s\S]*?)\s+```/g;
+  const regex = /```html:preview\s+([\s\S]*?)\s+```/gi;
   const scripts: Script[] = [];
 
   const replacedText = markdownText.replace(regex, (_, code): string => {
@@ -32,7 +32,7 @@ export function codePreview(markdownText: string): CodePreview {
 }
 
 function createPreviewBox(code: string, scripts: Script[]): string {
-  const scriptRegex = /<script>([\s\S]*?)<\/script>/g;
+  const scriptRegex = /<script>([\s\S]*?)<\/script>/gi;
   // kutte ut script delen fra html:preview
   const codeWithoutScript = code.replace(scriptRegex, (_, code) => {
     scripts.push({ script: code, id: `${uniqueIdCounter}` });
