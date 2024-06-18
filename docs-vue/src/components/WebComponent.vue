@@ -1,7 +1,10 @@
 <!-- Viser tolket markdown fil til en dok siden på en komponent -->
 <template>
   <!--markdown part-->
-  <div class="md-content" v-html="mardkownContent"></div>
+  <div
+    class="md-content"
+    v-html="mardkownContent"
+  />
 </template>
 
 <script setup lang="ts">
@@ -19,7 +22,7 @@ async function loadMarkdownAndComponent() {
     let mdModule;
     // import liker ikke / i variable, derfor litt hardkoding av url her
     if (componentName) {
-      mdModule = await import(`../../../doc/pages/components/${componentName}.md?raw`);
+      mdModule = await import(`../../../src/components/${componentName}/${componentName}.md?raw`);
     } else {
       const pageName = route.params.page;
       mdModule = await import(`../../../doc/pages/${pageName}.md?raw`);
@@ -33,8 +36,10 @@ async function loadMarkdownAndComponent() {
     mardkownContent.value = markdown.render(replacedText.text);
     scripts.push(...replacedText.scripts);
   } catch (error) {
-    console.error('Failed to load markdown file', error);
-    mardkownContent.value = 'Failed to load content.';
+    const filename = `${route.params.component || route.params.page}.md`;
+    const message = `Fant ikke ${filename}`;
+    console.warn(message, error);
+    mardkownContent.value = `<nve-alert variant="warning" open><nve-icon slot="icon" name="warning"></nve-icon>${message}</nve-alert>`;
   }
 }
 
