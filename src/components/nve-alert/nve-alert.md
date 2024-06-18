@@ -1,22 +1,14 @@
-# Nve-alert
-
 #### Brukes til å vise viktige beskjeder enten på en side eller som en enkel popup (toast)
 
 ```html:preview
-<nve-alert open  closable class="alert-closable">
+<nve-alert open>
   <nve-icon slot="icon" name="info"></nve-icon>
   Dette er en standard alert
 </nve-alert>
-<script>
-  const alert = document.querySelector('.alert-closable');
-  alert.addEventListener('sl-after-hide', () => {
-    setTimeout(() => (alert.open = true), 2000);
-  });
-</script>
 ```
 
 :::tip
-Alert vil ikke vises før du setter attributtet `open`.
+Bruk `open` for å vise en alert. Hvis ikke `open` er satt, vises den ikke.
 :::
 
 ## Eksempler
@@ -25,12 +17,12 @@ Du finner også flere eksempler i [Shoelace-dokumentasjonen](https://shoelace.st
 
 ### Variant
 
-Bruk `variant` for å styre farger.
+Bruk `variant` for å styre farger. `primary` er standard og trenger ikke spesifiseres.
 
 ```html:preview
-<nve-alert variant="primary" open>
+<nve-alert open>
     <nve-icon slot="icon" name="info"></nve-icon>
-    primary (dette er standard)
+    primary
 </nve-alert>
 <br />
 <nve-alert variant="success" open>
@@ -78,7 +70,7 @@ Bruk `emphasized` for å få litt mørkere bakgrunnsfarge.
 
 ### Tittel og tekst
 
-Du kan bruke `title` for å lage en slags overskrift. Resten av teksten kan da legges i `text`.
+Du kan bruke `title` for å lage en slags overskrift. Resten av teksten kan enten ligge i `text` eller inni elementet.
 
 ```html:preview
 <nve-alert text="og tekst" title="Tittel" open></nve-alert>
@@ -87,7 +79,10 @@ Du kan bruke `title` for å lage en slags overskrift. Resten av teksten kan da l
 <br/>
 <nve-alert text="kun tekst" open></nve-alert>
 <br/>
-<nve-alert title="Tittel" open>TODO: Hvordan funker dette med tekst inni elementet?</nve-alert>
+<nve-alert title="Tittel" text="og tekst" open>
+  TODO: Tekst inni elementet burde nok hatt samme stil som text-egenskapen og
+  kanskje man ikke burde kunne vise begge samtidig?
+</nve-alert>
 ```
 
 ### Closable

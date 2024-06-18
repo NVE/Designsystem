@@ -1,5 +1,3 @@
-# Nve-dropdown
-
 ```html:preview
 <nve-dropdown>
   <nve-button variant="primary" slot="trigger">
@@ -33,5 +31,3 @@
   </nve-menu>
 </nve-dropdown>
 ```
-
-Du finner også flere eksempler i [Shoelace-dokumentasjonen](https://shoelace.style/components/dropdown).

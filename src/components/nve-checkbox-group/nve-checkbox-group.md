@@ -1,7 +1,3 @@
-# Nve-checkbox-group
-
-#### Brukes for å vise status eller antall.
-
 ```html:preview
 <nve-checkbox-group label="Vennligst velg 1 og/eller 2">
   <nve-checkbox>1</nve-checkbox>

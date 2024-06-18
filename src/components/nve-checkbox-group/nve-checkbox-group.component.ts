@@ -5,16 +5,17 @@ import styles from './nve-checkbox-group.styles';
 import toggleBooleanAttrOnListOfNodes from '../../utils/updateInvalidProperty';
 import deepCompare from '../../utils/deepCompare';
 
-@customElement('nve-checkbox-group')
 /**
- * Representerer en tilpasset sjekboksgruppekomponent.
- * Denne komponenten burde brukes kun med <nve-checkbox> komponent.
- * Man kan ta i bruk selectedValues som inneholder value-attributet fra alle aktive sjekkbokser inn i sjekkboksgruppen. Den
- * oppdaterer seg automatisk når mån klikker på sjekkbokser. Man kan lagre både primitiver og objekter i selectedValues.
- * Valideres både med constraint validation (kun required støttes per i dag), og custom validering. Custom validering prioriteres når man submitter formen.
- * <nve-checkbox> komponenter som er wrappet i <nve-checkbox-group>
- * @slot default - innholder alle nve-checkbox komponenter for global style styring og validering
+ * Bruk denne for å håndtere flere avkrysningsbokser (`nve-checkbox`) som hører sammen.
+ * Denne komponenten støtter kun `<nve-checkbox>`.
+ * Bruk `selectedValues` som inneholder `value` fra alle aktive avkrysningsbokser i gruppa. 
+ * Man kan lagre både primitiver og objekter i selectedValues.
+ * Gruppa oppdaterer seg automatisk når man klikker på en avkrysningsboks. 
+ * Støtter både constraint validation (kun `required`) og tilpasset validering. 
+ * Tilpasset validering prioriteres foran `required`.
+ * @slot default - legg avkrysningsboksene inni denne.
  * */
+@customElement('nve-checkbox-group')
 export default class NveCheckboxGroup extends LitElement {
   constructor() {
     super();
@@ -24,22 +25,22 @@ export default class NveCheckboxGroup extends LitElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
   /** Om minst en sjekkboks er sjekket på */
   @property({ type: Boolean, reflect: true }) required = false;
-  /** Viser label til sjekboksgruppen */
+  /** Ledetekst */
   @property() label?: string;
-  /** Viser i ikone og tooltip tekst ved siden av label. Skal ikke fungere uten label */
+  /** Viser i-ikon og hjelpetekst ved siden av label. Du må ha en label for å bruke denne. */
   @property() tooltip?: string;
-  /** Om gruppen skal rendres horisontalt eller vertikalt */
+  /** Om gruppa skal vises horisontalt eller vertikalt */
   @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
-  /** Feil melding som vises under gruppe hvis validering feiler */
+  /** Feilmelding som vises under gruppe hvis validering feiler */
   @property() errorMessage?: string;
-  /** Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard */
+  /** Tekst som vises for å markere at et felt er obligatorisk */
   @property() requiredLabel = '*Obligatorisk';
-  /** Returnerer et array av value-attributet til alle sjekkbokser som er valgt */
+  /** Returnerer en tabell av value-attributet til alle sjekkbokser som er valgt */
   @property({ type: Array }) selectedValues?: string[];
   @query('slot') slot: any;
   /** Bestemmer om feilmelding skal vises når validering feiler  */
   @state() protected showErrorMessage = false;
-  /** State på custom validering. Den trengs for å kunne kjøre både constaraint- og custom validering samtidig. */
+  /** Status for tilpasset validering. Den trengs for å kunne kjøre både constraint- og tilpasset validering samtidig. */
   @state() protected isCustomValidationError = false;
 
   static styles = [styles];
@@ -106,7 +107,7 @@ export default class NveCheckboxGroup extends LitElement {
     this.checkValidity();
   }
 
-  /** Oppdaterer selectedValues property hver gang man endrer noen av sjekkbokser i sjekkboksgruppen.  */
+  /** Oppdaterer selectedValues property hver gang man endrer noen av sjekkbokser i sjekkboksgruppa.  */
   private updateSelectedValues = (e: Event) => {
     if (!this.selectedValues) return;
     const target = e.target as HTMLInputElement;
@@ -188,16 +189,16 @@ export default class NveCheckboxGroup extends LitElement {
         aria-errormessage="error-message"
       >
         ${this.label
-          ? html`<div class="checkbox-group__label">
+        ? html`<div class="checkbox-group__label">
               <nve-label id="label" value=${this.label} size="small" tooltip=${this.tooltip!}></nve-label>
             </div>`
-          : null}
+        : null}
         <slot class="checkbox-group__checkboxes"></slot>
         ${this.showErrorMessage
-          ? html`<span role="alert" id="error-message" class="checkbox-group__error-message"
+        ? html`<span role="alert" id="error-message" class="checkbox-group__error-message"
               >${this.errorMessage || null}</span
             >`
-          : null}
+        : null}
       </fieldset>
     `;
   }

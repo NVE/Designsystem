@@ -1,5 +1,3 @@
-# Nve-dialog
-
 ```html:preview
  <nve-button onclick="this.nextElementSibling.show()" class="open-dialog">Vis dialogen</nve-button>
  <nve-dialog label="label">
@@ -9,7 +7,3 @@
   </div>
  </nve-dialog>
 ```
-
-## Eksempler
-
-Du finner også flere eksempler i [Shoelace-dokumentasjonen](https://shoelace.style/components/popup).

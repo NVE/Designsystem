@@ -1,22 +1,16 @@
-# Nve-button
-
-#### Buttons represent actions that are available to the user.
-
 ```html:preview
 <nve-button>NVE-knappen</nve-button>
 ```
 
 ## Eksempler
 
-Du finner også flere eksempler i [Shoelace-dokumentasjonen](https://shoelace.style/components/button).
-
 ### Varianter
 
-Bruk `variant` for å velge farge.
+Bruk `variant` for å velge farge. `default` er standard.
 `success` og `warning` skal ikke brukes.
 
 ```html:preview
-<nve-button variant="default">default (standard)</nve-button>
+<nve-button>default</nve-button>
 <nve-button variant="primary">primary</nve-button>
 <nve-button variant="secondary">secondary</nve-button>
 <nve-button variant="neutral">neutral</nve-button>
@@ -26,12 +20,12 @@ Bruk `variant` for å velge farge.
 
 ### Størrelse
 
-Bruk `size` for å endre størrelse.
+Bruk `size` for å endre størrelse. `large` er standard.
 
 ```html:preview
 <nve-button size="small">small</nve-button>
 <nve-button size="medium">medium</nve-button>
-<nve-button size="large">large</nve-button>
+<nve-button>large</nve-button>
 ```
 
 ### Disabled

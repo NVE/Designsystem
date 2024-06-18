@@ -10,7 +10,7 @@
     v-html="description"
   />
   <div v-else>
-    Beskrivelse mangler.
+    Beskrivelse mangler i JsDoc.
   </div>
 
   <div v-if="parent">
