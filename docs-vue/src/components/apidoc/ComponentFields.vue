@@ -3,18 +3,27 @@
  Henter opplysningene fra custom-elements.json.
  -->
 <template>
-  <h2>Felter</h2>
-  <!-- TODO: Hvordan kan vi vise om en property er et attributt eller ikke? Finner ikke dette i custom-elmenets.json -->
+  <h2>Egenskaper</h2>
   <table>
     <tr>
       <td>Navn</td>
+      <td>Attributt-synk</td>
       <td>Type</td>
       <td>Standardverdi</td>
       <td>Arvet fra</td>
       <td>Beskrivelse</td>
     </tr>
-    <tr v-for="field in fields">
+    <tr
+      v-for="field in fields"
+      :key="field.name"
+    >
       <td>{{ field.name }}</td>
+      <td>
+        <nve-icon
+          v-if="field.reflects"
+          name="Check"
+        />
+      </td>
       <td>{{ field.type?.text }}</td>
       <td>{{ field.default }}</td>
       <td>{{ field.inheritedFrom?.name }}</td>
@@ -25,7 +34,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { getComponentFields } from '../customElementsManifest.store';
+import { getComponentFields } from '../../customElementsManifest.store';
 
 const props = defineProps<{
   componentName: string;
@@ -33,9 +42,3 @@ const props = defineProps<{
 
 const fields = computed(() => getComponentFields(props.componentName));
 </script>
-
-<style scoped>
-  th {
-    text-align: left;
-  }
-</style>
