@@ -3,16 +3,29 @@
  De fleste sidene mapper til en markdown-fil under /doc/pages.
   -->
 <template>
-  <h1>NVE Designsystem</h1>
-  <h2>
-    <router-link to="/validation">Validering</router-link>
-  </h2>
-  <h2>Bruk i Vue</h2>
-  <h2>Komponenter</h2>
+  <nve-label>NVE Designsystem</nve-label>
   <ul>
-    <li v-for="componentName in componentNames" :key="componentName">
-      <router-link :to="`/components/${componentName}`">{{ componentName }}</router-link>
+    <li>
+      <router-link to="/vue">
+        Bruk i Vue
+      </router-link>
     </li>
+    <li>
+      <router-link to="/validation">
+        Validering
+      </router-link>
+    </li>
+    <li>Komponenter</li>
+    <ul>
+      <li
+        v-for="componentName in componentNames"
+        :key="componentName"
+      >
+        <router-link :to="`/components/${componentName}`">
+          {{ componentName }}
+        </router-link>
+      </li>
+    </ul>
   </ul>
 </template>
 
