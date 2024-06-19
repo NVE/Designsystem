@@ -10,6 +10,7 @@ export interface NveTextareaProps {
   readonly: boolean;
   required: boolean;
   requiredLabel: string;
+  rows: number;
 }
 
 export const NveTextarea = (props: NveTextareaProps) => {
@@ -24,6 +25,7 @@ export const NveTextarea = (props: NveTextareaProps) => {
       ?disabled=${props.disabled}
       helpText=${props.helpText}
       ?readonly=${props.readonly}
+      rows=${props.rows}
     >
     </nve-textarea>
   `;

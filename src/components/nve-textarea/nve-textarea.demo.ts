@@ -56,6 +56,15 @@ export default html`
           <nve-textarea required filled helpText="Må skrive noe" value="Tekst"></nve-textarea>
         </td>
       </tr>
+      <tr>
+        <td>Antall rader</td>
+        <td>
+          <nve-textarea label="rows satt til 10" value="Tekst" rows="10"></nve-textarea>
+        </td>
+        <td>
+          <nve-textarea filled label="rows satt til 10" value="Tekst" rows="10"></nve-textarea>
+        </td>
+      </tr>
     </tbody>
   </table>
   <h3>nve-textarea constraint validering</h3>
