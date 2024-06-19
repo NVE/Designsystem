@@ -1,6 +1,7 @@
 /** Bytter html:preview md syntaksen til en interaktiv komponent og kode eksempel */
-import hljs from 'highlight.js/lib/core'; //brukes til å vise kode eksempel med syntax highlighting
+import hljs from 'highlight.js/lib/core'; //brukes til å vise kodeeksempel med syntax highlighting
 import html from 'highlight.js/lib/languages/xml';
+import 'highlight.js/styles/vs.css'; //brukes til å style kodeeksempler
 
 export type Script = {
   script: string;

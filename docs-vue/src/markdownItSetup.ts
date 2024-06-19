@@ -1,9 +1,19 @@
 import markdownit from 'markdown-it';
 import mardkownItContainer from 'markdown-it-container';
 import { Token } from 'markdown-it/index.js';
+import hljs from 'highlight.js';
 
 const markdown = markdownit({
   html: true,
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(str, { language: 'js' }).value;
+      } catch (__) { console.warn(__) }
+    }
+
+    return ''; // use external default escaping
+  }
 });
 
 ['tip', 'warning', 'danger'].forEach((type) => {

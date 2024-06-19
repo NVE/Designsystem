@@ -53,6 +53,7 @@ TODO: Formatere som Vue-kode?
     <nve-button type="submit">Submit</nve-button>
   </form>
 </template>
+
 <script>
   const inputComponent = ref<HTMLInputElement| null>();
   const inputComponent2 = ref<HTMLInputElement| null>();
@@ -86,7 +87,6 @@ TODO: Formatere som Vue-kode?
 ```
 
 Eksempel på hvordan validere sjekkboks-grupper i Vue:
-TODO: Formatere som Vue-kode?
 
 ```html
 <template>

@@ -2,6 +2,18 @@
  * Standard-stiler for dokumentasjons-nettstedet
  */
 
+p,
+code,
+ul,
+th,
+td {
+  font-size: var(--font-size-small);
+}
+
+code {
+  font-weight: var(--font-weight-semibold);
+}
+
 th {
   text-align: left;
 }
