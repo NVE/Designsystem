@@ -28,7 +28,7 @@ Bruk `orientation` for å velge retning.
 Bruk `tooltip` for å legge til et info-ikon etter ledetekst. Ikonet vises ikke hvis ikke `label` er satt.
 
 ```html:preview
-<nve-checkbox-group label="Svev over ikonet for å se hjelpeteksten" tooletip="Hjelpetekst">
+<nve-checkbox-group label="Svev over ikonet for å se hjelpeteksten" tooltip="Hjelpetekst">
   <nve-checkbox>1</nve-checkbox>
   <nve-checkbox>2</nve-checkbox>
 </nve-checkbox-group>

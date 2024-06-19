@@ -10,10 +10,18 @@
     v-html="description"
   />
   <div v-else>
-    Beskrivelse mangler i JsDoc.
+    <nve-alert
+      variant="warning"
+      open
+    >
+      <nve-icon
+        name="warning"
+      />
+      Fant ikke beskrivelse i JsDoc for {{ props.componentName }}
+    </nve-alert>
   </div>
 
-  <div v-if="parent">
+  <p v-if="parent">
     Arvet fra: 
     <span v-if="parentDocUrl">
       <a
@@ -22,7 +30,7 @@
       >{{ parent.name }}</a>
     </span>
     <span v-else> {{ parent.name }}</span>
-  </div>
+  </p>
 </template>
 
 <script setup lang="ts">

@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './routes';
 import { icons, registerIconLibrary } from '../../src/registerIcons/systemLibraryCustomization';
-import './importAllComponennts';
+import './importAllComponents';
 
 const app = createApp(App);
 app.use(router);
