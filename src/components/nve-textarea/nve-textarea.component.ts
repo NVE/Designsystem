@@ -92,7 +92,12 @@ export default class NveTextarea extends LitElement {
    */
   @property() inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
-  /** Antall rader i textarea-taggen */
+  /** Antall rader med tekst i textarea-taggen.
+   * Browser-default dersom denne ikke er satt er 2 i alle browsere
+   *
+   * Bestemmer initiell høyde på textarea-boksen
+   * (settes slik at antall rader * font-høyde får plass)
+   */
   @property() rows?: number;
 
   /** Bestemmer om feilmelding skal vises når validering feiler  */
