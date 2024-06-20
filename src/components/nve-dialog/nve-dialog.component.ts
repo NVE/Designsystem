@@ -2,16 +2,13 @@ import SlDialog from '@shoelace-style/shoelace/dist/components/dialog/dialog.js'
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-dialog-styles';
 /**
- * En sl-dialog i NVE-forkledning.
- * Mer info: https://shoelace.style/components/dialog
- *
- * Vil du ha ikon foran tittelen kan du angi navnet på ikonet som attributt "icon".
- * Skal det ikke være mulig å trykke utenfor for å lukke dialogen, sett på disableDialog attributt
+ * En dialogboks.
+ * Vil du ha ikon foran overskriften, bruk `icon`.
+ * Skal det ikke være mulig å trykke utenfor for å lukke dialogen, bruk `disableBackground`.
  *
  * @slot label - teksten som skal vises i overskriften. Eller du kan bruke label-attributtet
  * @slot body - hovedinnholdet
- * @slot footer - feltet i bunden hvor knappene er plassert
- *
+ * @slot footer - feltet i bunnen hvor knappene er plassert
  */
 @customElement('nve-dialog')
 export default class NveDialog extends SlDialog {
@@ -20,7 +17,7 @@ export default class NveDialog extends SlDialog {
    */
   @property({ type: String, reflect: true }) icon = '';
   /**
-   * Hvis disableBacground er true, kan man ikke trykke utenfor dialogen for å lukke den.
+   * Hvis denne er satt, kan man ikke trykke utenfor dialogen for å lukke den.
    */
   @property({ type: Boolean, reflect: true }) disableBackground = false;
 
@@ -29,7 +26,6 @@ export default class NveDialog extends SlDialog {
   }
 
   /**
-   *
    * Stjålet fra shoelace eksempel. Hindrer at man lukker dialogen ved å trykke utenfor
    */
   handleRequestClose(event: any) {
@@ -45,6 +41,7 @@ export default class NveDialog extends SlDialog {
     }
     this.updateIcon();
   }
+
   /**
    * Oppdaterer ikonet som vises i dialogens tittel.
    * Metoden søker først etter tittel-elementet i komponentens skygge-DOM.

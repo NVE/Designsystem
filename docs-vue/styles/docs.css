@@ -1,0 +1,54 @@
+/**
+ * Standard-stiler for dokumentasjons-nettstedet
+ */
+
+p,
+code,
+ul,
+th,
+td {
+  font-size: var(--font-size-small);
+}
+
+.code-preview__source > pre > code {
+  line-break: normal;
+}
+
+div:not(.code-preview__source) > pre > code {
+  background-color: var(--feedback-background-default-neutral);
+}
+
+pre > code:not(.code-preview__source) {
+  display: block;
+}
+
+th {
+  text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: unset;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr {
+  border-bottom: 1px solid;
+}
+
+td {
+  padding: 1rem 1rem;
+}
+
+th {
+  font-weight: var(--font-weight-semibold);
+}

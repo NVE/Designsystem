@@ -6,3 +6,5 @@
 /www
 /build
 /loader
+/docs-vue/dist
+/docs-vue/node-modules

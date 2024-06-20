@@ -5,11 +5,9 @@ import { classMap } from 'lit/directives/class-map.js';
 
 /**
  * En liten etikett som vanligvis vises inne i eller i nærheten av en annen større grensesnittkomponent, som representerer en status, egenskap eller andre metadata.
- * Kan også brukes med knappen som i Shoelace
- * Importerer ingen styles fra shoelace derfor pill og pulse property skal ikke fungere.
  * @property {string} size = small, medium eller large
  * @property {string} variant = primary, success, neutral, warning, danger, brand
- * @property {boolean} low = viser svakere farger på badgen
+ * @property {boolean} low = gir lysere bakgrunnsfarge
  */
 @customElement('nve-badge')
 export default class NveBadge extends LitElement {
@@ -31,18 +29,18 @@ export default class NveBadge extends LitElement {
       <span
         part="base"
         class=${classMap({
-          badge: true,
-          'badge--primary': this.variant === 'primary',
-          'badge--success': this.variant === 'success',
-          'badge--neutral': this.variant === 'neutral',
-          'badge--warning': this.variant === 'warning',
-          'badge--danger': this.variant === 'danger',
-          'badge--brand': this.variant === 'brand',
-          'badge--small': this.size === 'small',
-          'badge--medium': this.size === 'medium',
-          'badge--large': this.size === 'large',
-          low: this.low,
-        })}
+      badge: true,
+      'badge--primary': this.variant === 'primary',
+      'badge--success': this.variant === 'success',
+      'badge--neutral': this.variant === 'neutral',
+      'badge--warning': this.variant === 'warning',
+      'badge--danger': this.variant === 'danger',
+      'badge--brand': this.variant === 'brand',
+      'badge--small': this.size === 'small',
+      'badge--medium': this.size === 'medium',
+      'badge--large': this.size === 'large',
+      low: this.low,
+    })}
         role="status"
       >
         <slot></slot>

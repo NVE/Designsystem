@@ -21,6 +21,11 @@ if (fs.existsSync('./dist')) {
 await nextTask('Running the TypeScript compiler', () => {
   return execPromise('tsc');
 });
+
 await nextTask('Building the project', () => {
   return execPromise(`vite build ${command === 'dev' ? '--mode development' : ''}`);
+});
+
+await nextTask('Creating custom-elements.json in dist folder', () => {
+  return execPromise('npm run manifest');
 });

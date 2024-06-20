@@ -3,10 +3,8 @@ import SlCheckbox from '@shoelace-style/shoelace/dist/components/checkbox/checkb
 import styles from './nve-checkbox.styles';
 
 /**
- * En sl-checkbox.
- * Mer info: https://shoelace.style/components/checkbox
- * Kan brukes akkurat som en vanlig sl-checkbox komponent.
- * Vi burde ikke justere størrelsen på den siden det finnes bare en 'size' alternativ i design systemet.
+ * En avkrysningsboks.
+ * Ikke bruk `size`, i NVE bruker vi kun en størrelse på avkrysningsbokser.
  */
 @customElement('nve-checkbox')
 export default class NveCheckbox extends SlCheckbox {
@@ -25,7 +23,7 @@ export default class NveCheckbox extends SlCheckbox {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener('sl-invalid', () => {});
+    this.removeEventListener('sl-invalid', () => { });
   }
 }
 

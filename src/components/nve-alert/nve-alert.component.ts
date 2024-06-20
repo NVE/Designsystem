@@ -3,8 +3,7 @@ import styles from './nve-alert.styles';
 import { customElement, property } from 'lit/decorators.js';
 
 /**
- * En Shoelace-alert med Nve styling
- * Se https://shoelace.style/components/alert
+ * Brukes til å vise viktige beskjeder enten på en side eller som en enkel popup
  */
 @customElement('nve-alert')
 export default class NveAlert extends SlAlert {

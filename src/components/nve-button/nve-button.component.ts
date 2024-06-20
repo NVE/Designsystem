@@ -3,12 +3,10 @@ import SlButton from '@shoelace-style/shoelace/dist/components/button/button.js'
 import styles from './nve-button.styles';
 
 /**
- * En Shoelace-knapp i NVE-forkledning.
- * Se https://shoelace.style/components/button
+ * Selveste NVE-knappen
+ * Bruk `href` for å gjøre den om til en <a>
  *
- * For å lage en lenke knapp legg til href på nve-button og den skal automatisk bli gjort om til <a>
- *
- * Vi skal ikke bruke properties:
+ * Disse feltene skal ikke brukes:
  * - circle
  * - caret
  * - pill
