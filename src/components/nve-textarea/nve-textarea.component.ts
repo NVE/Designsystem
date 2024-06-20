@@ -92,6 +92,14 @@ export default class NveTextarea extends LitElement {
    */
   @property() inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
 
+  /** Antall rader med tekst i textarea-taggen.
+   * Browser-default dersom denne ikke er satt er 2 i alle browsere
+   *
+   * Bestemmer initiell høyde på textarea-boksen
+   * (settes slik at antall rader * font-høyde får plass)
+   */
+  @property() rows?: number;
+
   /** Bestemmer om feilmelding skal vises når validering feiler  */
   @state() private showErrorMessage = false;
 
@@ -242,6 +250,7 @@ export default class NveTextarea extends LitElement {
             ?autofocus=${this.autofocus}
             inputmode=${ifDefined(this.inputmode)}
             aria-describedby="help-text"
+            rows=${ifDefined(this.rows)}
             @change=${this.handleChange}
             @input=${this.handleInput}
             @blur=${this.handleBlur}

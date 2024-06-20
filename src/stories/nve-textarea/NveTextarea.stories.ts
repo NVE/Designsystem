@@ -30,6 +30,7 @@ export const Primary: Story = {
     required: false,
     requiredLabel: '',
     tooltip: 'Tooltip tekst',
+    rows: 4,
   },
 };
 
