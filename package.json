@@ -31,7 +31,7 @@
     "preview": "vite preview",
     "lint": "eslint \"**/*.{js,ts,vue}\"",
     "doc": "npx web-component-analyzer analyze src/components/**/*.ts --format markdown --outDir doc",
-    "manifest": "node scripts/createCustomElementsManifest.js",
+    "manifest": "npx  @custom-elements-manifest/analyzer analyze --outdir dist",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build  && npm run copy-files-storybook",
     "build:light": "node transform.js light",
