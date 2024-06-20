@@ -8,6 +8,7 @@ export interface NveCheckboxProps {
   value: string;
 }
 
+
 export const NveCheckbox = (props: NveCheckboxProps) => {
   return html`
     <nve-checkbox
@@ -19,5 +20,6 @@ export const NveCheckbox = (props: NveCheckboxProps) => {
       ?data-valid=${!props.dataUserInvalid}
       >Value</nve-checkbox
     >
+    </form>
   `;
 };
