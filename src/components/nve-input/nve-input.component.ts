@@ -3,28 +3,26 @@ import SlInput from '@shoelace-style/shoelace/dist/components/input/input.js';
 import styles from './nve-input.styles';
 
 /**
- * En sl-input i NVE-forkledning.
- * Mer info: https://shoelace.style/components/input
- *
+ * Et tekstfelt. 
  * Vil du ha info-ikon med hjelpetekst etter ledeteksten, putt en nve-label i label-slot.
  * Disse attributtene skal ikke brukes:
  * - pill
  *
- * TODO: Felte blir breddere når feil ikone vises. Alt på grunn av at det dukker opp i en slot. Hvis Vi bestemmer oss
- * å ha en fast verdi på sloten, kan det kanksje påvirke andre elementer som skal vises i sloten.
+ * TODO: Feltet blir bredere hvis validering feiler, fordi vi må ha plass til feil-ikonet.
  */
 @customElement('nve-input')
 export default class NveInput extends SlInput {
   /**
-   * Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard.
+   * Tekst som vises for å markere at et felt er obligatorisk
    */
   @property() requiredLabel = '*Obligatorisk';
   /**
-   * Brukes til enkel constraint validation til å overskrive default nettleseren melding
+   * Feilmelding som vises hvis validering feiler
    */
   @property({ reflect: true }) errorMessage?: string;
   /**
-   * Hjelpe variabler som sjekker om input feltet er allerede invalid
+   * Intern hjelpevariabler som brukes i validering
+   * TODO: Kan denne være private?
    */
   @state() protected alreadyInvalid = false;
 
@@ -37,7 +35,7 @@ export default class NveInput extends SlInput {
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('sl-invalid', (e) => {
-      // vi vil ikke at nettleseren viser feil meldingen til oss
+      // vi vil ikke at nettleseren viser feilmeldingen til oss
       e.preventDefault();
       if (!this.alreadyInvalid) {
         this.makeInvalid();

@@ -1,7 +1,7 @@
 /**
  * Viser dokumentasjonssida for en komponent.
  * Inneholder 
- * - overskrift (navn på komponenten), 
+ * - overskrift (navn på komponenten, fra JsDoc), 
  * - beskrivelse av komponenten (fra JsDoc), 
  * - hjelpetekst med kodeeksempler (fra komponentens markdown-fil),
  * - API-dokumentasjon (fra JsDoc)

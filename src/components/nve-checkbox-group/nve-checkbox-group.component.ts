@@ -7,8 +7,7 @@ import deepCompare from '../../utils/deepCompare';
 
 /**
  * Bruk denne for å håndtere flere avkrysningsbokser (`nve-checkbox`) som hører sammen.
- * Denne komponenten støtter kun `<nve-checkbox>`.
- * Bruk `selectedValues` som inneholder `value` fra alle aktive avkrysningsbokser i gruppa. 
+ * `selectedValues` inneholder `value` til hver av avkrysningsboksene som er valgt i gruppa. 
  * Man kan lagre både primitiver og objekter i selectedValues.
  * Gruppa oppdaterer seg automatisk når man klikker på en avkrysningsboks. 
  * Støtter både constraint validation (kun `required`) og tilpasset validering. 
@@ -109,11 +108,13 @@ export default class NveCheckboxGroup extends LitElement {
 
   /** Oppdaterer selectedValues property hver gang man endrer noen av sjekkbokser i sjekkboksgruppa.  */
   private updateSelectedValues = (e: Event) => {
-    if (!this.selectedValues) return;
     const target = e.target as HTMLInputElement;
     if (target.checked) {
+      if (!this.selectedValues) {
+        this.selectedValues = [];
+      }
       this.selectedValues.push(target.value);
-    } else {
+    } else if (this.selectedValues) {
       const indexToRemove = this.selectedValues.findIndex((element) => deepCompare(element, target.value));
       if (indexToRemove !== -1) {
         this.selectedValues.splice(indexToRemove, 1);
