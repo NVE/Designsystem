@@ -105,8 +105,9 @@ Her er noen eksempler.
 ### Datatyper
 
 I tillegg til tekst, støtter vi de <a href="https://shoelace.style/components/input#input-types" target="\_blank">samme datatypene som `SlInput`</a>.
+
 `step` i kombinasjon med number helper deg å håndterer desimaltall. Du kan bruke både komma og punktum som desimalskilletegn.
-Her er noen eksempler.
+Her er noen eksempler:
 
 ```html:preview
 <nve-input type="number" label="Kun heltall"></nve-input>
@@ -123,9 +124,9 @@ Her er noen eksempler.
 Bruk `size` for å velge høyde. Ledeteksten tilpasses automatisk, mens skrifttypen til innholdet er fast uansett. `medium` er standard.
 
 ```html:preview
-<nve-input size="small" label="small" value="small"></nve-input>
+<nve-input size="small" label="small" value="innhold"></nve-input>
 <br/>
-<nve-input label="medium" value="medium"></nve-input>
+<nve-input label="medium" value="innhold"></nve-input>
 <br/>
-<nve-input size="large" label="large" value="large"></nve-input>
+<nve-input size="large" label="large" value="innhold"></nve-input>
 ```

@@ -3,13 +3,9 @@ import SlButton from '@shoelace-style/shoelace/dist/components/button/button.js'
 import styles from './nve-button.styles';
 
 /**
- * Selveste NVE-knappen
- * Bruk `href` for å gjøre den om til en <a>
- *
- * Disse feltene skal ikke brukes:
- * - circle
- * - caret
- * - pill
+ * Selveste NVE-knappen.
+ * Bruk href for å gjøre den om til en link.
+ * Disse feltene skal ikke brukes: circle, caret og pill
  */
 @customElement('nve-button')
 export default class NveButton extends SlButton {

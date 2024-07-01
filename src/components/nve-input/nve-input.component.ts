@@ -5,9 +5,7 @@ import styles from './nve-input.styles';
 /**
  * Et tekstfelt. 
  * Vil du ha info-ikon med hjelpetekst etter ledeteksten, putt en nve-label i label-slot.
- * Disse attributtene skal ikke brukes:
- * - pill
- *
+ * pill skal ikke brukes.
  * TODO: Feltet blir bredere hvis validering feiler, fordi vi må ha plass til feil-ikonet.
  */
 @customElement('nve-input')

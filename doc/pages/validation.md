@@ -9,18 +9,19 @@ Vi tilbyr en forenklet variant av Shoelace sin måte å validere input på. Du b
 
 Alle komponentene som kan brukes til å samle inn data har støtte for validering av input.
 
-`nve-radio-group` og `nve-checkbox-group` støtter kun `required` av reglene i Constraint Validation API, i tillegg til "egendefinert validering".
 Både sjekkbokser og radioknapper må ligge i en gruppe for å kunne valideres.
 
-Det finnes to måter å validere på, constraint validation og "egendefinert" validering.
+Det finnes to måter å validere på, [Constraint Validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation) og "egendefinert" validering.
 
-## [Constraint Validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
+## Constraint Validation
 
 hvor nettleser validerer skjema selv basert på hvilke validerings-attributer (`required`, `pattern`, `min`, `max`) komponenten har.
 
-Du må ha en feilmelding i `errorMessage`, ellers vises nettleseren sin standard feilmelding. Hvis du har flere validerings-attributer i samme komponent, husk at det kun er en `errorMessage` som vises. Hvis du vil tilpasse feilmeldinger til attributet som feilet må du gjøre det selv - sjekk [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState).
+Du må ha en feilmelding i `errorMessage`, ellers vises nettleseren sin standard feilmelding. Hvis du har flere validerings-attributer i samme komponent, må du finne en felles feilmelding som dekker alle tilfeller. Hvis du vil tilpasse feilmeldinger til attributtet som feilet må du gjøre det selv - sjekk [validityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState).
 
 Constraint validation kaster feil på det første ugyldige feltet den finner. Er det flere felt som feiler, vil ikke feilmelding for disse vises før man trykker submit-knappen på nytt. Det kan eventuelt fikses manuelt hvis man ønsker det. TODO: Hvordan?
+
+`nve-radio-group` og `nve-checkbox-group` støtter kun `required`.
 
 ## Egendefinert validering
 

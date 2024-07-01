@@ -3,7 +3,7 @@
  <nve-dialog label="label">
   Innhold
   <div slot="footer">
-    <nve-button variant="primary" onclick="this.parentElement.parentElement.hide()">Lukk</nve-button>
+    <nve-button onclick="this.parentElement.parentElement.hide()">Lukk</nve-button>
   </div>
  </nve-dialog>
 ```

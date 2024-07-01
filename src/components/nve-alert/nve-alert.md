@@ -1,5 +1,3 @@
-#### Brukes til å vise viktige beskjeder enten på en side eller som en enkel popup (toast)
-
 ```html:preview
 <nve-alert open>
   <nve-icon slot="icon" name="info"></nve-icon>
@@ -12,8 +10,6 @@ Bruk `open` for å vise en alert. Hvis ikke `open` er satt, vises den ikke.
 :::
 
 ## Eksempler
-
-Du finner også flere eksempler i [Shoelace-dokumentasjonen](https://shoelace.style/components/alert).
 
 ### Variant
 
@@ -105,7 +101,7 @@ Bruk `closable` for å vise en lukke-knapp på høyre side, som skjuler komponen
 
 ### Ikoner
 
-Ikoner er valgfrie, og legges i slot'en `icon`.
+Ikoner legges i sporet `icon`.
 
 ```html:preview
 <nve-alert open>
