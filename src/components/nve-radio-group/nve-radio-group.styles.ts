@@ -52,7 +52,7 @@ export default css`
   :host([orientation='vertical'])::part(form-control),
   :host([vertical])::part(form-control) {
     font: var(--label-x-small-light);
-    color: var(--feedback-background-emphasized-error);
+    color: var(--neutrals-foreground-mute, #3C3F44);
     align-items: flex-start;
   }
 
