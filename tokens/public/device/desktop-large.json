@@ -1131,7 +1131,11 @@
   },
   "Device": {
     "Width": {
-      "value": "{Device-Width.x-large}",
+      "value": "{Device-Width.desktop-large}",
+      "type": "sizing"
+    },
+    "Content": {
+      "value": "{Device-Width.Content-area.desktop-large}",
       "type": "sizing"
     }
   }

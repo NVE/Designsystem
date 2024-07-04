@@ -291,10 +291,7 @@
     "name": "private",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Brand/nve": "enabled",
-      "Brand/varsom": "disabled",
-      "Theme/light": "disabled",
-      "Theme/dark": "disabled"
+      "Brand/nve": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1664:44569",
     "$figmaModeId": "1664:20",
@@ -444,10 +441,14 @@
       "Dimensions.18x": "5e27db42373266f108f5dae94cb76e8c83d91e92",
       "Dimensions.19x": "694d2c8946a73cc0ea15dc71144b771e8a8e6108",
       "Dimensions.20x": "494e541181f4a836300d924337b513efd27a48bd",
-      "Device-Width.small": "548707d69c66ab3b6e7f5a01ba955f266a2381eb",
-      "Device-Width.medium": "0f28686d95540a3da73e5ba5cb784c2c9168fd00",
-      "Device-Width.large": "ff0d8198b428e41853bc4dbcca8eb3aca16f0fbe",
-      "Device-Width.x-large": "0266fba355754f5d322e229db2499e1eba8f0944"
+      "Device-Width.mobile": "548707d69c66ab3b6e7f5a01ba955f266a2381eb",
+      "Device-Width.desktop-small": "0f28686d95540a3da73e5ba5cb784c2c9168fd00",
+      "Device-Width.desktop": "ff0d8198b428e41853bc4dbcca8eb3aca16f0fbe",
+      "Device-Width.desktop-large": "0266fba355754f5d322e229db2499e1eba8f0944",
+      "Device-Width.Content-area.mobile": "6c2ee17b85974c849248c51476763231d3ad2544",
+      "Device-Width.Content-area.desktop-small": "838a9357acdab4fb70c8a35312f4d6e8c0912398",
+      "Device-Width.Content-area.desktop": "9aa771974616e591323b222bc0cefb4135b122c3",
+      "Device-Width.Content-area.desktop-large": "763d9c287ee574dc7552a7da8b6319f9ac6b0d72"
     },
     "group": "Core"
   },
@@ -457,10 +458,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "public/device/desktop": "enabled",
-      "Brand/nve": "source",
-      "Brand/varsom": "disabled",
-      "Theme/light": "disabled",
-      "Theme/dark": "disabled"
+      "Brand/nve": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:1664:44719",
     "$figmaModeId": "1664:21",
@@ -496,7 +494,8 @@
       "borderWidth.none": "921312a8eb0a20d6411575d1ff2c6cf4a5f74f23",
       "borderWidth.default": "51908de45b004cae0366ac19057304c9ab805b0d",
       "borderWidth.strong": "b998ccdc440c86bc86d254da10aca2316c07c6a3",
-      "Device.Width": "e75aadee1aa652c18daa74ee184380eb4b813d9a"
+      "Device.Width": "e75aadee1aa652c18daa74ee184380eb4b813d9a",
+      "Device.Content": "b15a92cce1ac07f5100b0e74afec3826fe9faa57"
     },
     "group": "Device"
   },
@@ -506,10 +505,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "public/device/desktop-large": "enabled",
-      "Brand/nve": "source",
-      "Brand/varsom": "disabled",
-      "Theme/light": "disabled",
-      "Theme/dark": "disabled"
+      "Brand/nve": "source"
     },
     "group": "Device",
     "$figmaCollectionId": "VariableCollectionId:1664:44719",
@@ -546,7 +542,8 @@
       "borderWidth.none": "921312a8eb0a20d6411575d1ff2c6cf4a5f74f23",
       "borderWidth.default": "51908de45b004cae0366ac19057304c9ab805b0d",
       "borderWidth.strong": "b998ccdc440c86bc86d254da10aca2316c07c6a3",
-      "Device.Width": "e75aadee1aa652c18daa74ee184380eb4b813d9a"
+      "Device.Width": "e75aadee1aa652c18daa74ee184380eb4b813d9a",
+      "Device.Content": "b15a92cce1ac07f5100b0e74afec3826fe9faa57"
     }
   },
   {
@@ -555,10 +552,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "public/device/desktop-small": "enabled",
-      "Brand/nve": "source",
-      "Brand/varsom": "disabled",
-      "Theme/light": "disabled",
-      "Theme/dark": "disabled"
+      "Brand/nve": "source"
     },
     "group": "Device",
     "$figmaVariableReferences": {
@@ -592,7 +586,9 @@
       "borderWidth.none": "921312a8eb0a20d6411575d1ff2c6cf4a5f74f23",
       "borderWidth.default": "51908de45b004cae0366ac19057304c9ab805b0d",
       "borderWidth.strong": "b998ccdc440c86bc86d254da10aca2316c07c6a3",
-      "Device.Width": "e75aadee1aa652c18daa74ee184380eb4b813d9a"
+      "Device.Width": "e75aadee1aa652c18daa74ee184380eb4b813d9a",
+      "Device.Content": "b15a92cce1ac07f5100b0e74afec3826fe9faa57",
+      "spacing-grid.margin-top": "86409c807ef33ca3a04868636801624eb0fcf092"
     },
     "$figmaCollectionId": "VariableCollectionId:1664:44719",
     "$figmaModeId": "1664:23"
@@ -603,10 +599,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "public/device/mobile": "enabled",
-      "Brand/nve": "source",
-      "Brand/varsom": "disabled",
-      "Theme/light": "disabled",
-      "Theme/dark": "disabled"
+      "Brand/nve": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:1664:44719",
     "$figmaModeId": "1664:24",
@@ -641,7 +634,9 @@
       "borderWidth.none": "921312a8eb0a20d6411575d1ff2c6cf4a5f74f23",
       "borderWidth.default": "51908de45b004cae0366ac19057304c9ab805b0d",
       "borderWidth.strong": "b998ccdc440c86bc86d254da10aca2316c07c6a3",
-      "Device.Width": "e75aadee1aa652c18daa74ee184380eb4b813d9a"
+      "Device.Width": "e75aadee1aa652c18daa74ee184380eb4b813d9a",
+      "Device.Content": "b15a92cce1ac07f5100b0e74afec3826fe9faa57",
+      "spacing-grid.margin-top": "86409c807ef33ca3a04868636801624eb0fcf092"
     },
     "group": "Device"
   },

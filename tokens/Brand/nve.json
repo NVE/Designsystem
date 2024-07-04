@@ -622,21 +622,39 @@
     }
   },
   "Device-Width": {
-    "small": {
+    "mobile": {
       "value": "393px",
       "type": "sizing"
     },
-    "medium": {
+    "desktop-small": {
       "value": "800px",
       "type": "sizing"
     },
-    "large": {
+    "desktop": {
       "value": "1440px",
       "type": "sizing"
     },
-    "x-large": {
+    "desktop-large": {
       "value": "2440px",
       "type": "sizing"
+    },
+    "Content-area": {
+      "mobile": {
+        "value": "345px",
+        "type": "sizing"
+      },
+      "desktop-small": {
+        "value": "700px",
+        "type": "sizing"
+      },
+      "desktop": {
+        "value": "1000px",
+        "type": "sizing"
+      },
+      "desktop-large": {
+        "value": "1200px",
+        "type": "sizing"
+      }
     }
   }
 }

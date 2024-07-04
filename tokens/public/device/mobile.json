@@ -155,6 +155,10 @@
     "gutter": {
       "value": "3.5rem",
       "type": "spacing"
+    },
+    "margin-top": {
+      "value": "{Dimensions.4x}",
+      "type": "spacing"
     }
   },
   "fontSize": {
@@ -1127,7 +1131,11 @@
   },
   "Device": {
     "Width": {
-      "value": "{Device-Width.small}",
+      "value": "{Device-Width.mobile}",
+      "type": "sizing"
+    },
+    "Content": {
+      "value": "{Device-Width.Content-area.mobile}",
       "type": "sizing"
     }
   }

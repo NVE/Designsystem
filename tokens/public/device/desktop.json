@@ -145,7 +145,7 @@
   },
   "spacing-grid": {
     "margin-left&right": {
-      "value": "{Dimensions.20x}",
+      "value": "220px",
       "type": "spacing"
     },
     "gap": {
@@ -1131,7 +1131,11 @@
   },
   "Device": {
     "Width": {
-      "value": "{Device-Width.large}",
+      "value": "{Device-Width.desktop}",
+      "type": "sizing"
+    },
+    "Content": {
+      "value": "{Device-Width.Content-area.desktop}",
       "type": "sizing"
     }
   }
