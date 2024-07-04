@@ -93,7 +93,7 @@ Bruk `closable` for å vise en lukke-knapp på høyre side, som skjuler komponen
 <script>
   // Denne snutten vil vise alert igjen etter 2 sekunder, slik at du kan prøve å lukke den flere ganger
   const alert = document.querySelector('.alert-closeable');
-  alert.addEventListener('sl-after-hide', () => {
+  alert.addEventListener('sl-after-hide', async () => {
     setTimeout(() => (alert.open = true), 2000);
   });
 </script>
