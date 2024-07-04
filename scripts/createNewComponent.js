@@ -1,6 +1,7 @@
 import fs from 'fs';
 import chalk from 'chalk';
 import nextTask from './nextTask.js';
+import process from 'process';
 
 const componentName = process.argv[2];
 
@@ -46,9 +47,6 @@ const createComponentFile = () => {
         super();
       }
 
-      //VIKTIG! Husk at du må importere komponent i index.ts 
-      // For å vise en demonstrasjon av en komponent når vi starter appen lokalt import den i main.ts 
-
     }
     
     declare global {
@@ -62,11 +60,25 @@ const createComponentFile = () => {
 
 const createDemoFile = () => {
   const demoContent = `
-  import { html } from 'lit';
+    Start med et enklest mulig kodeeksempel for å kunne vise komponenten.
+    \`\`\`html:preview
+    <${componentName}></${componentName}>
+    \`\`\`
+    
+    Skriv evt. generelle tips som ikke passer å ha i @JsDoc. Pass på at det ikke blir dobbelt opp med det du har skrevet i @JsDoc.
+    
+    ## Eksempler
+ 
+    Legg eksempler på funksjonalitet her. Hvert tema skal ha egen overskrift på nivå 3, f.eks.: ### Deaktivering.
+    
+    ### TODO: Eksempel 1
 
-  export default html\`\``;
+    ### TODO: Eksempel 2
 
-  fs.writeFileSync(`src/components/${folderName}/${componentName}.demo.ts`, demoContent);
+    osv..:)
+`;
+
+  fs.writeFileSync(`src/components/${folderName}/${componentName}.md`, demoContent);
 };
 
 const createStylesFile = () => {

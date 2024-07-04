@@ -6,6 +6,8 @@ import fs from 'fs';
 import chalk from 'chalk';
 import path from 'path';
 import nextTask from './nextTask.js';
+import process from 'process';
+import { Buffer } from 'buffer';
 
 const execPromise = util.promisify(exec);
 const command = process.argv[2];
@@ -30,7 +32,7 @@ fs.readdir('./dist', (err, files) => {
   }
 });
 
-const source = fs.readFileSync('./package.json').toString('utf-8');
+const source = Buffer.from(fs.readFileSync('./package.json').toString('utf-8'));
 const sourceObj = JSON.parse(source);
 sourceObj.scripts = {};
 sourceObj.devDependencies = {};

@@ -6,9 +6,9 @@ import '../nve-icon/nve-icon.component';
 import '../nve-tooltip/nve-tooltip.component';
 
 /**
- * Ledetekst med valgfritt verktøy-hint (og tilhørende info-ikon)
+ * Ledetekst med verktøy-hint (og tilhørende info-ikon)
  *
- * Kan brukes med inn i nve-menu (hvor den har en spesiell styling) som kategori skiller.
+ * Kan også brukes i nve-menu for å skille kategorier. Her får den en spesiell utforming.
  *
  * @slot (default) - teksten som skal vises. Eller du kan bruke value-attributtet
  * @slot tooltip - innhold i denne blir vist som en tooltip hvis man svever over info-ikonet

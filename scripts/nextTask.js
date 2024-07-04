@@ -1,6 +1,8 @@
 // Helper function to run tasks in async
 import ora from 'ora';
 import chalk from 'chalk';
+import process from 'process';
+
 const spinner = ora({ hideCursor: false }).start();
 export default async function nextTask(label, action) {
   spinner.text = label;

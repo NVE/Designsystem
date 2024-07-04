@@ -4,10 +4,9 @@ import styles from './nve-select.styles';
 import NveOption from '../nve-option/nve-option.component';
 
 /**
- * En Shoelace-select i NVE-forkledning.
- * Se https://shoelace.style/components/select. Bruker constraint og custom validering. Klarte ikke å sette feil ikone når
- * validering feiler. Eneste måte å gjøre det på kunne ha vært å bruke ::after pseudo-element på noen av sl-select partene, men
- * funka ikke med ikonen.
+ * En nedtrekksliste, også kjent som rullgardin eller drop-down list. Kjært barn har mange navn.
+ * TODO: Klarte ikke å sette feil-ikonet når validering feiler. Eneste måte å gjøre det på kunne ha vært å bruke ::after pseudo-element på noen av sl-select partene, men
+ * funka ikke med ikonet.
  * Man kan bruke .focus() for å fokusere komponenten programatisk. Sjekk https://shoelace.style/getting-started/usage#methods for å se hvordan å bruke det.
  * Kan være at i Vue applikasjon man må kjøre .focus i neste tick for å fokusere komponenten.
  */

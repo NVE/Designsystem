@@ -10,19 +10,17 @@ import toggleBooleanAttrOnListOfNodes from '../../utils/updateInvalidProperty';
 import { PropertyValues } from 'lit';
 
 /**
- * En sl-radio-group i NVE-forkledning.
- * Se https://shoelace.style/components/radio-group
- * Denne komponenten tillater bruk av nve-radio og nve-radio-button elementer inne i <nve-radio-group></nve-radio-group>
- * ved å overstyre noen private metoder i SlRadioGroup.
- *
+ * Brukes til å gruppere radioknapper som hører sammen. Den kan inneholde både nve-radio og nve-radio-button.
+ * Pass på at nve-radio eller nva-radio-button har en value, ellers vil ikke radiogruppa fungere som forventet.
+ * 
  * @extends SlRadioGroup
  *
  * @dependency NveRadioButton, NveRadio
  *
- * @property {string} orientation = horizontal eller vertical - Om radio-gruppen skal rendres horisontalt
- * @property {boolean} disabled = disable eller enable gruppen med radio-knapper
+ * @property {string} orientation = horizontal eller vertical - Om radiogruppen skal vises vannrett eller loddrett
+ * @property {boolean} disabled = deaktivere eller aktivere gruppen med radioknapper
  *
- * @slot Standard slot hvor `<nve-radio>` eller `<nve-radio-button>` plasseres
+ * @slot Standard slot hvor <nve-radio> eller <nve-radio-button> plasseres
  *
  * @example <nve-radio-group horizontal value="1"><nve-radio value="1">Value 1 (checked)</nve-radio></nve-radio-group>
  * @example <nve-radio-group vertical value="1"><nve-radio value="1">Value 1 (checked)</nve-radio></nve-radio-group>
@@ -41,11 +39,11 @@ export default class NveRadioGroup extends SlRadioGroup {
    */
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
   /**
-   * Deaktivere alle radio knapper i gruppen
+   * Deaktivere alle radioknapper i gruppen
    */
   @property({ type: Boolean, reflect: true }) disabled = false;
   /**
-   * Feil melding som vises under radiogruppe. Vi har ikke tilgang til SlRadioGroup errorMessage så må overskrive med vår egen
+   * Feilmelding som vises under radiogruppe. Vi har ikke tilgang til SlRadioGroup errorMessage så må overskrive med vår egen
    */
   @property({ reflect: true }) errorMessage?: string;
   /**
@@ -53,7 +51,7 @@ export default class NveRadioGroup extends SlRadioGroup {
    */
   @property() requiredLabel = '*Obligatorisk';
   /**
-   * Hjelpe variabel som sjekker om radio gruppe er allerede invalid
+   * Hjelpevariabel som sjekker om radio gruppe er allerede invalid
    */
   @state() private alreadyInvalid = false;
   /**
@@ -154,6 +152,7 @@ export default class NveRadioGroup extends SlRadioGroup {
     ];
   };
 
+  // TODO: Sjekk generert API-dokumentasjon, ser ut som koden blir vist i dokumentasjonen
   // @ts-ignore
   private handleRadioClick = function (event) {
     // Lagt til nve-radio og nve-radio-button

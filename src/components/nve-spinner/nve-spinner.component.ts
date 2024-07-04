@@ -3,8 +3,7 @@ import SlSpinner from '@shoelace-style/shoelace/dist/components/spinner/spinner.
 import { css } from 'lit';
 
 /**
- * En Shoelace-spinner i NVE-forkledning.
- * Se https://shoelace.style/components/spinner
+ * Ei snurre
  */
 @customElement('nve-spinner')
 export default class NveSpinner extends SlSpinner {

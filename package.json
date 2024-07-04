@@ -1,11 +1,20 @@
 {
   "name": "nve-designsystem",
+  "description": "Designsystem for NVE",
+  "author": {
+    "name": "NVE",
+    "email": "nve@nve.no"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/NVE/Designsystem/",
   "version": "0.1.65",
+  "customElements": "custom-elements.json",
   "exports": {
     ".": {
       "import": "./nve-designsystem.js",
       "types": "./nve-designsystem.d.ts"
     },
+    "./dist/custom-elements.json": "./custom-elements.json",
     "./components/*": "./components/*",
     "./registerIcons/*": "./registerIcons/*",
     "./css/*": "./css/*"
@@ -14,54 +23,53 @@
   "types": "nve-designsystem.d.ts",
   "scripts": {
     "add-component": "node scripts/createNewComponent.js",
-    "dev": "vite",
+    "dev": "node scripts/createCustomElementsManifest.js && cd doc-site && vite",
     "pack": "node scripts/prepublish.js pack",
     "publish": "node scripts/prepublish.js publish",
     "build": "node scripts/build.js",
     "build:dev": "node scripts/build.js dev",
     "preview": "vite preview",
-    "lint": "eslint \"**/*.{js,ts}\"",
-    "doc": "npx web-component-analyzer analyze src/components/**/*.ts --format markdown --outDir doc",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build  && npm run copy-files-storybook",
+    "lint": "eslint \"**/*.{js,ts,vue}\"",
+    "manifest": "npx  @custom-elements-manifest/analyzer analyze --outdir dist",
     "build:light": "node transform.js light",
     "build:dark": "node transform.js dark",
     "build:varsom_light": "node transform.js varsom",
     "build:varsom_dark": "node transform.js varsom_dark",
     "tokenbuild": "npm run build:light && npm run build:dark && npm run build:varsom_light && npm run build:varsom_dark",
-    "copy-files-storybook": "cpy \"./build/css/*\" \"./src/styles/*\" storybook-static/assets"
+    "postinstall": "cd doc-site && npm install"
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.11.2",
-    "chromatic": "^10.1.0",
     "lit": "^3.0.2"
   },
   "devDependencies": {
-    "@mdx-js/loader": "^3.0.0",
-    "@storybook/addon-docs": "^7.6.4",
-    "@storybook/addon-essentials": "^7.6.4",
-    "@storybook/addon-links": "^7.6.4",
-    "@storybook/blocks": "^7.6.4",
-    "@storybook/web-components": "^7.6.4",
-    "@storybook/web-components-vite": "^7.6.4",
+    "@custom-elements-manifest/analyzer": "^0.10.2",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "command-line-args": "^5.2.1",
+    "comment-parser": "^1.4.0",
     "cpy": "^11.0.0",
     "cpy-cli": "^5.0.0",
+    "custom-element-jet-brains-integration": "^1.4.0",
+    "custom-element-vs-code-integration": "^1.2.1",
+    "custom-element-vuejs-integration": "^1.0.0",
+    "custom-elements-manifest": "^2.1.0",
+    "custom-elements-manifest-inheritance": "^1.1.1",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-lit": "^1.10.1",
-    "eslint-plugin-storybook": "^0.6.15",
+    "eslint-plugin-vue": "^9.26.0",
     "glob": "^10.3.10",
+    "ora": "^8.0.1",
+    "pascal-case": "^3.1.2",
     "prettier": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.6.4",
     "style-dictionary-utils": "^2.0.4",
     "typescript": "^5.2.2",
     "vite": "^5.0.12",
-    "vite-plugin-dts": "^3.7.0",
-    "web-component-analyzer": "^2.0.0"
+    "vite-plugin-dts": "^3.7.0"
   },
   "overrides": {
     "prettier": "^3.1.0"
