@@ -1,22 +1,22 @@
 {
   "Brand": {
     "Primary": {
-      "value": "{varsom_brand.500}",
+      "value": "{brand.500}",
       "type": "color"
     },
     "Light": {
-      "value": "{varsom_brand.000}",
+      "value": "{brand.300}",
       "type": "color"
     },
     "Deep": {
-      "value": "{varsom_brand.600}",
+      "value": "{brand.700}",
       "type": "color"
     }
   },
   "Neutrals": {
     "Background": {
       "Primary-Contrast": {
-        "value": "{varsom_blue.000}",
+        "value": "{grey.050}",
         "type": "color"
       },
       "Primary": {
@@ -24,17 +24,17 @@
         "type": "color"
       },
       "Secondary": {
-        "value": "{varsom_blue.050}",
+        "value": "{grey.150}",
         "type": "color"
       },
       "Canvas": {
-        "value": "{varsom_blue.000}",
+        "value": "{grey.050}",
         "type": "color"
       }
     },
     "Foreground": {
       "Primary": {
-        "value": "{varsom_blue.999}",
+        "value": "{grey.950}",
         "type": "color"
       },
       "Subtle": {
@@ -42,7 +42,7 @@
         "type": "color"
       },
       "Colored": {
-        "value": "{varsom_blue.500}",
+        "value": "{brand.500}",
         "type": "color"
       }
     },
@@ -56,7 +56,7 @@
         "type": "color"
       },
       "Subtle": {
-        "value": "{varsom_blue.050}",
+        "value": "{grey.150}",
         "type": "color"
       },
       "Disabled": {
@@ -69,15 +69,15 @@
     "Primary": {
       "Background": {
         "Default": {
-          "value": "{varsom_blue.850}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.600}",
+          "value": "{grey.800}",
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.850}",
+          "value": "{grey.950}",
           "type": "color"
         }
       },
@@ -105,29 +105,29 @@
     "Secondary": {
       "Background": {
         "Default": {
-          "value": "{varsom_blue.050}",
+          "value": "{grey.150}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.100}",
+          "value": "{grey.200}",
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.050}",
+          "value": "{grey.150}",
           "type": "color"
         }
       },
       "Foreground": {
         "Default": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         }
       },
@@ -141,34 +141,25 @@
     "Outlined": {
       "Foreground": {
         "Default": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.850}",
-          "type": "color",
-          "$extensions": {
-            "studio.tokens": {
-              "modify": {
-                "type": "alpha",
-                "value": "0.38",
-                "space": "lch"
-              }
-            }
-          }
+          "value": "{grey.950}",
+          "type": "color"
         }
       },
       "Border": {
         "Default": {
-          "value": "{varsom_blue.200}",
+          "value": "{grey.500}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Focus": {
@@ -176,7 +167,7 @@
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.200}",
+          "value": "{grey.500}",
           "type": "color"
         }
       }
@@ -184,21 +175,21 @@
     "Ghost": {
       "Background": {
         "Hover": {
-          "value": "{varsom_blue.050}",
+          "value": "{grey.150}",
           "type": "color"
         }
       },
       "Foreground": {
         "Default": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         }
       },
@@ -215,7 +206,7 @@
         "type": "color"
       },
       "Hover": {
-        "value": "{varsom_blue.999}",
+        "value": "{grey.950}",
         "type": "color"
       },
       "Focus": {
@@ -249,7 +240,8 @@
         },
         "Neutral": {
           "value": "{grey.150}",
-          "type": "color"
+          "type": "color",
+          "description": "For neutral messages"
         }
       },
       "Subtle": {
@@ -300,45 +292,45 @@
     "Foreground": {
       "Default": {
         "Info": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Error": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Warning": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Success": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Neutral": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         }
       },
       "Subtle": {
         "Info": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Error": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Warning": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Success": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Neutral": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         }
       },
@@ -438,19 +430,19 @@
     "Foreground": {
       "Default": {
         "Level1": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level2": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level3": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level4": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level5": {
@@ -460,45 +452,45 @@
       },
       "Mute": {
         "Level1": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level2": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level3": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level4": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level5": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         }
       },
       "Subtle": {
         "Level1": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level2": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level3": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level4": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level5": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         }
       }

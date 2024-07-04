@@ -1,34 +1,34 @@
 {
   "Brand": {
     "Primary": {
-      "value": "{varsom_brand.500}",
+      "value": "{brand.300}",
       "type": "color"
     },
     "Light": {
-      "value": "{varsom_brand.000}",
+      "value": "{brand.500}",
       "type": "color"
     },
     "Deep": {
-      "value": "{varsom_brand.600}",
+      "value": "{brand.700}",
       "type": "color"
     }
   },
   "Neutrals": {
     "Background": {
       "Primary-Contrast": {
-        "value": "{varsom_blue.950}",
+        "value": "{grey.850}",
         "type": "color"
       },
       "Primary": {
-        "value": "{varsom_blue.999}",
+        "value": "{grey.950}",
         "type": "color"
       },
       "Secondary": {
-        "value": "{varsom_blue.800}",
+        "value": "{grey.700}",
         "type": "color"
       },
       "Canvas": {
-        "value": "{varsom_blue.950}",
+        "value": "{grey.850}",
         "type": "color"
       }
     },
@@ -42,7 +42,7 @@
         "type": "color"
       },
       "Colored": {
-        "value": "{varsom_blue.100}",
+        "value": "{brand.000}",
         "type": "color"
       }
     },
@@ -52,11 +52,11 @@
         "type": "color"
       },
       "Mute": {
-        "value": "{varsom_blue.999}",
+        "value": "{grey.950}",
         "type": "color"
       },
       "Subtle": {
-        "value": "{varsom_blue.800}",
+        "value": "{grey.800}",
         "type": "color"
       },
       "Disabled": {
@@ -69,29 +69,29 @@
     "Primary": {
       "Background": {
         "Default": {
-          "value": "{varsom_blue.000}",
+          "value": "{grey.000}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.050}",
+          "value": "{grey.150}",
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.000}",
+          "value": "{grey.000}",
           "type": "color"
         }
       },
       "Foreground": {
         "Default": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Border": {
@@ -105,15 +105,15 @@
     "Secondary": {
       "Background": {
         "Default": {
-          "value": "{varsom_blue.800}",
+          "value": "{grey.700}",
           "type": "color"
         },
         "Hover": {
-          "value": "{varsom_blue.600}",
+          "value": "{grey.600}",
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.800}",
+          "value": "{grey.700}",
           "type": "color"
         }
       },
@@ -155,7 +155,7 @@
       },
       "Border": {
         "Default": {
-          "value": "{varsom_blue.500}",
+          "value": "{grey.600}",
           "type": "color"
         },
         "Hover": {
@@ -167,7 +167,7 @@
           "type": "color"
         },
         "Disabled": {
-          "value": "{varsom_blue.100}",
+          "value": "{grey.600}",
           "type": "color"
         }
       }
@@ -175,7 +175,7 @@
     "Ghost": {
       "Background": {
         "Hover": {
-          "value": "{varsom_blue.800}",
+          "value": "{grey.700}",
           "type": "color"
         }
       },
@@ -214,7 +214,7 @@
         "type": "color"
       },
       "Visited": {
-        "value": "{grey.500}",
+        "value": "{grey.200}",
         "type": "color"
       }
     }
@@ -343,7 +343,7 @@
           "type": "color"
         },
         "Warning": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Success": {
@@ -351,7 +351,7 @@
           "type": "color"
         },
         "Neutral": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         }
       }
@@ -429,19 +429,19 @@
     "Foreground": {
       "Default": {
         "Level1": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level2": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level3": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level4": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level5": {
@@ -451,45 +451,45 @@
       },
       "Mute": {
         "Level1": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level2": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level3": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level4": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level5": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         }
       },
       "Subtle": {
         "Level1": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level2": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level3": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level4": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         },
         "Level5": {
-          "value": "{varsom_blue.999}",
+          "value": "{grey.950}",
           "type": "color"
         }
       }
