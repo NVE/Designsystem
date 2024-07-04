@@ -81,7 +81,7 @@ export default css`
     font: var(--label-x-small);
   }
   :host([indent]) .menu-item__label  {
-    color: var(--neutrals-foreground-mute, #3C3F44);
+    color: var(--neutrals-foreground-primary);
   
   }
   :host([indent]) .menu-item  {

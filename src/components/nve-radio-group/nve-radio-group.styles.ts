@@ -36,7 +36,7 @@ export default css`
 
   :host::part(form-control-label) {
     display: flex;
-    color: var(--neutrals-foreground-mute);
+    color: var(--neutrals-foreground-primary);
     font: var(--label-small-light);
     margin-bottom: unset;
     text-align: left;
@@ -52,7 +52,7 @@ export default css`
   :host([orientation='vertical'])::part(form-control),
   :host([vertical])::part(form-control) {
     font: var(--label-x-small-light);
-    color: var(--neutrals-foreground-mute, #3C3F44);
+    color: var(--neutrals-foreground-primary);
     align-items: flex-start;
   }
 
