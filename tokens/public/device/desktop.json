@@ -103,49 +103,49 @@
   },
   "spacing": {
     "xx-small": {
-      "value": "{4px}",
+      "value": "{Dimensions.4px}",
       "type": "spacing"
     },
     "x-small": {
-      "value": "{8px}",
+      "value": "{Dimensions.8px}",
       "type": "spacing"
     },
     "small": {
-      "value": "{1x}",
+      "value": "{Dimensions.1x}",
       "type": "spacing"
     },
     "medium": {
-      "value": "{2x}",
+      "value": "{Dimensions.2x}",
       "type": "spacing"
     },
     "large": {
-      "value": "{4x}",
+      "value": "{Dimensions.4x}",
       "type": "spacing"
     },
     "x-large": {
-      "value": "{6x}",
+      "value": "{Dimensions.6x}",
       "type": "spacing"
     },
     "2x-large": {
-      "value": "{8x}",
+      "value": "{Dimensions.8x}",
       "type": "spacing"
     },
     "3x-large": {
-      "value": "{14x}",
+      "value": "{Dimensions.14x}",
       "type": "spacing"
     },
     "4x-large": {
-      "value": "{17x}",
+      "value": "{Dimensions.17x}",
       "type": "spacing"
     },
     "5x-large": {
-      "value": "{20x}",
+      "value": "{Dimensions.20x}",
       "type": "spacing"
     }
   },
   "spacing-grid": {
-    "margin": {
-      "value": "4rem",
+    "margin-left&right": {
+      "value": "{Dimensions.20x}",
       "type": "spacing"
     },
     "gap": {
@@ -154,6 +154,10 @@
     },
     "gutter": {
       "value": "3.5rem",
+      "type": "spacing"
+    },
+    "margin-top": {
+      "value": "{Dimensions.8x}",
       "type": "spacing"
     }
   },

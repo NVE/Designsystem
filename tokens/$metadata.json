@@ -2,8 +2,8 @@
   "tokenSetOrder": [
     "private",
     "public/device/desktop",
-    "public/device/desktop_lg",
-    "public/device/desktop_small",
+    "public/device/desktop-large",
+    "public/device/desktop-small",
     "public/device/mobile",
     "Theme/nve_light",
     "Theme/nve_dark",

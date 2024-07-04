@@ -103,49 +103,49 @@
   },
   "spacing": {
     "xx-small": {
-      "value": "{Dimensions.2px}",
-      "type": "spacing"
-    },
-    "x-small": {
-      "value": "{Dimensions.4px}",
-      "type": "spacing"
-    },
-    "small": {
       "value": "{Dimensions.8px}",
       "type": "spacing"
     },
-    "medium": {
+    "x-small": {
       "value": "{Dimensions.1x}",
       "type": "spacing"
     },
+    "small": {
+      "value": "{Dimensions.3x}",
+      "type": "spacing"
+    },
+    "medium": {
+      "value": "{Dimensions.7x}",
+      "type": "spacing"
+    },
     "large": {
-      "value": "{Dimensions.2x}",
+      "value": "{Dimensions.9x}",
       "type": "spacing"
     },
     "x-large": {
-      "value": "{Dimensions.4x}",
-      "type": "spacing"
-    },
-    "2x-large": {
       "value": "{Dimensions.6x}",
       "type": "spacing"
     },
+    "2x-large": {
+      "value": "{Dimensions.8x}",
+      "type": "spacing"
+    },
     "3x-large": {
-      "value": "{Dimensions.12x}",
+      "value": "{Dimensions.15x}",
       "type": "spacing"
     },
     "4x-large": {
-      "value": "{Dimensions.14x}",
+      "value": "{Dimensions.18x}",
       "type": "spacing"
     },
     "5x-large": {
-      "value": "{Dimensions.16x}",
+      "value": "{Dimensions.20x}",
       "type": "spacing"
     }
   },
   "spacing-grid": {
     "margin-left&right": {
-      "value": "{Dimensions.4x}",
+      "value": "900px",
       "type": "spacing"
     },
     "gap": {
@@ -154,6 +154,10 @@
     },
     "gutter": {
       "value": "3.5rem",
+      "type": "spacing"
+    },
+    "margin-top": {
+      "value": "{Dimensions.8x}",
       "type": "spacing"
     }
   },
@@ -1127,7 +1131,7 @@
   },
   "Device": {
     "Width": {
-      "value": "{Device-Width.small}",
+      "value": "{Device-Width.x-large}",
       "type": "sizing"
     }
   }

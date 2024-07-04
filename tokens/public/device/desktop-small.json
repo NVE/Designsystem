@@ -103,49 +103,49 @@
   },
   "spacing": {
     "xx-small": {
-      "value": "{Dimensions.2px}",
-      "type": "spacing"
-    },
-    "x-small": {
       "value": "{Dimensions.4px}",
       "type": "spacing"
     },
-    "small": {
+    "x-small": {
       "value": "{Dimensions.8px}",
       "type": "spacing"
     },
-    "medium": {
+    "small": {
       "value": "{Dimensions.1x}",
       "type": "spacing"
     },
-    "large": {
+    "medium": {
       "value": "{Dimensions.2x}",
       "type": "spacing"
     },
-    "x-large": {
+    "large": {
       "value": "{Dimensions.4x}",
       "type": "spacing"
     },
-    "2x-large": {
+    "x-large": {
       "value": "{Dimensions.6x}",
       "type": "spacing"
     },
-    "3x-large": {
-      "value": "{Dimensions.12x}",
+    "2x-large": {
+      "value": "{Dimensions.8x}",
       "type": "spacing"
     },
-    "4x-large": {
+    "3x-large": {
       "value": "{Dimensions.14x}",
       "type": "spacing"
     },
+    "4x-large": {
+      "value": "{Dimensions.17x}",
+      "type": "spacing"
+    },
     "5x-large": {
-      "value": "{Dimensions.16x}",
+      "value": "{Dimensions.20x}",
       "type": "spacing"
     }
   },
   "spacing-grid": {
     "margin-left&right": {
-      "value": "{Dimensions.4x}",
+      "value": "4rem",
       "type": "spacing"
     },
     "gap": {
@@ -1127,7 +1127,7 @@
   },
   "Device": {
     "Width": {
-      "value": "{Device-Width.small}",
+      "value": "{Device-Width.large}",
       "type": "sizing"
     }
   }
