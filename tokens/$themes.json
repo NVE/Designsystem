@@ -58,8 +58,9 @@
     },
     "selectedTokenSets": {
       "private": "source",
-      "public/device/base": "enabled",
-      "Theme/nve_light": "enabled"
+      "Theme/nve_light": "enabled",
+      "public/device/desktop_small": "disabled",
+      "public/device/desktop": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:536:5850",
     "$figmaModeId": "536:0",
@@ -204,8 +205,9 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "private": "source",
-      "public/device/base": "enabled",
-      "Theme/nve_dark": "enabled"
+      "Theme/nve_dark": "enabled",
+      "public/device/desktop_small": "disabled",
+      "public/device/desktop": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:536:5850",
     "$figmaModeId": "536:1",
@@ -349,7 +351,9 @@
     "name": "private",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "private": "enabled"
+      "private": "enabled",
+      "public/device/desktop_small": "disabled",
+      "public/device/desktop": "disabled"
     },
     "$figmaCollectionId": "VariableCollectionId:340:3914",
     "$figmaModeId": "340:2",
@@ -499,7 +503,8 @@
     "selectedTokenSets": {
       "Theme/varsom_light": "enabled",
       "private": "source",
-      "public/device/base": "enabled"
+      "public/device/desktop_small": "disabled",
+      "public/device/desktop": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:536:5850",
     "$figmaModeId": "536:2",
@@ -611,8 +616,9 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "private": "source",
-      "public/device/base": "enabled",
-      "Theme/varsom_dark": "enabled"
+      "Theme/varsom_dark": "enabled",
+      "public/device/desktop_small": "disabled",
+      "public/device/desktop": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:536:5850",
     "$figmaModeId": "536:3",

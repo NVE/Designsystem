@@ -1,12 +1,10 @@
 {
   "tokenSetOrder": [
     "private",
-    "public/device/base",
-    "public/device/desktop_lg",
     "public/device/desktop",
-    "public/device/tablet",
+    "public/device/desktop_lg",
+    "public/device/desktop_small",
     "public/device/mobile",
-    "public/device/mobile_sm",
     "Theme/nve_light",
     "Theme/nve_dark",
     "Theme/varsom_light",

@@ -560,5 +560,143 @@
   "disabled": {
     "value": "38%",
     "type": "opacity"
+  },
+  "1px": {
+    "value": "0.063rem",
+    "type": "dimension"
+  },
+  "2px": {
+    "value": "0.125rem",
+    "type": "dimension"
+  },
+  "4px": {
+    "value": "0.25rem",
+    "type": "dimension"
+  },
+  "6px": {
+    "value": "0.375rem",
+    "type": "dimension"
+  },
+  "8px": {
+    "value": "0.5rem",
+    "type": "dimension"
+  },
+  "1x": {
+    "value": "0.75rem",
+    "type": "dimension",
+    "description": "12px"
+  },
+  "2x": {
+    "value": "1rem",
+    "type": "dimension",
+    "description": "16px"
+  },
+  "3x": {
+    "value": "1.25rem",
+    "type": "dimension",
+    "description": "20px"
+  },
+  "4x": {
+    "value": "1.5rem",
+    "type": "dimension",
+    "description": "24px"
+  },
+  "5x": {
+    "value": "1.75rem",
+    "type": "dimension",
+    "description": "28px"
+  },
+  "6x": {
+    "value": "2rem",
+    "type": "dimension",
+    "description": "32px"
+  },
+  "7x": {
+    "value": "2.25rem",
+    "type": "dimension",
+    "description": "36px"
+  },
+  "8x": {
+    "value": "2.5rem",
+    "type": "dimension",
+    "description": "40px"
+  },
+  "9x": {
+    "value": "2.75rem",
+    "type": "dimension",
+    "description": "44px"
+  },
+  "10x": {
+    "value": "3rem",
+    "type": "dimension",
+    "description": "48px"
+  },
+  "11x": {
+    "value": "3.25rem",
+    "type": "dimension",
+    "description": "52px"
+  },
+  "12x": {
+    "value": "3.5rem",
+    "type": "dimension",
+    "description": "56px"
+  },
+  "13x": {
+    "value": "3.75rem",
+    "type": "dimension",
+    "description": "60px"
+  },
+  "14x": {
+    "value": "4rem",
+    "type": "dimension",
+    "description": "64px"
+  },
+  "15x": {
+    "value": "4.25rem",
+    "type": "dimension",
+    "description": "68px"
+  },
+  "16x": {
+    "value": "4.5rem",
+    "type": "dimension",
+    "description": "72px"
+  },
+  "17x": {
+    "value": "5rem",
+    "type": "dimension",
+    "description": "80px"
+  },
+  "18x": {
+    "value": "6rem",
+    "type": "dimension",
+    "description": "96px"
+  },
+  "19x": {
+    "value": "7.75rem",
+    "type": "dimension",
+    "description": "125px"
+  },
+  "20x": {
+    "value": "8rem",
+    "type": "dimension",
+    "description": "128px"
+  },
+  "Device-Width": {
+    "small": {
+      "value": "393px",
+      "type": "sizing"
+    },
+    "medium": {
+      "value": "800px",
+      "type": "sizing"
+    },
+    "large": {
+      "value": "1440px",
+      "type": "sizing"
+    },
+    "x-large": {
+      "value": "2440px",
+      "type": "sizing"
+    }
   }
 }
