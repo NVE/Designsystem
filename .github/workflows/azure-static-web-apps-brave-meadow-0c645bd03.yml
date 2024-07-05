@@ -37,7 +37,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: 'upload'
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: '/doc-site' # App source code path
+          app_location: 'doc-site' # App source code path
           output_location: 'dist' # Built app content directory - optional
 
   close_pull_request_job:
