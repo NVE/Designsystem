@@ -34,6 +34,9 @@ export default class NveInput extends SlInput implements INveComponent{
    */
   @state() protected alreadyInvalid = false;
 
+  @property({ type: String, reflect: true }) inputId?: string;
+
+
   static styles = [SlInput.styles, styles];
 
   constructor() {
@@ -66,11 +69,21 @@ export default class NveInput extends SlInput implements INveComponent{
   updated(changedProperties: any) {
     super.updated(changedProperties);
     const hasDataUserInvalidAttr = this.hasAttribute('data-user-invalid');
+    if (changedProperties.has('inputId')) {
+      this.updateInputId();
+    }
     if (hasDataUserInvalidAttr && !this.alreadyInvalid) {
       this.makeInvalid();
     }
     if (!hasDataUserInvalidAttr) {
       this.resetValidation();
+    }
+  }
+
+  private updateInputId() {
+    const input = this.shadowRoot?.querySelector('input');
+    if (input && this.inputId) {
+      input.id = this.inputId;
     }
   }
 
