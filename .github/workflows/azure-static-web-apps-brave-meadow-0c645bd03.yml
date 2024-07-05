@@ -41,8 +41,9 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: 'upload'
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: 'doc-site' # App source code path
-          output_location: 'doc-site/dist' # Built app content directory - optional
+          app_location: 'doc-site/dist' # When used with skip_app_build: true, this value is the app's build output location.
+          skip_app_build: true # Skip build process during workflow if true
+          skip_api_build: true # Skip build process for api if true
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
