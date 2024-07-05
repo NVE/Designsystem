@@ -42,6 +42,7 @@ jobs:
           action: 'upload'
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: 'doc-site/dist' # When used with skip_app_build: true, this value is the app's build output location.
+          output_location: ''
           skip_app_build: true # Skip build process during workflow if true
           skip_api_build: true # Skip build process for api if true
 
