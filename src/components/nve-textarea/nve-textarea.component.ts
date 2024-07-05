@@ -6,6 +6,7 @@ import { live } from 'lit/directives/live.js';
 import { classMap } from 'lit/directives/class-map.js';
 import '../nve-icon/nve-icon.component';
 import '../nve-label/nve-label.component';
+import { INveComponent } from '@interfaces/NveComponent.interface';
 
 /**
  * @dependency nve-icon
@@ -33,7 +34,7 @@ import '../nve-label/nve-label.component';
  * våre komponeter skal bli diskriminert i gruppe validering. Derfor anbefales det å bruke custom validering på textarea med setCustomValidation.
  */
 @customElement('nve-textarea')
-export default class NveTextarea extends LitElement {
+export default class NveTextarea extends LitElement implements INveComponent{
   static styles = [styles];
 
   /** Navnet på tekstområdet, sendt som et navn/verdi-par med skjemadata */
@@ -49,6 +50,11 @@ export default class NveTextarea extends LitElement {
 
   /** Viser filled variant */
   @property({ type: Boolean, reflect: true }) filled = false;
+
+    /**
+   * Brukes for å kunne identifisere komponenten i tester
+   */
+    @property({reflect: true, type: String}) testId:string = '';
 
   /** Label tekst */
   @property() label = '';

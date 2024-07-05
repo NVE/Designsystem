@@ -1,6 +1,7 @@
 import { customElement, property, state } from 'lit/decorators.js';
 import SlInput from '@shoelace-style/shoelace/dist/components/input/input.js';
 import styles from './nve-input.styles';
+import { INveComponent } from '@interfaces/NveComponent.interface';
 
 /**
  * En sl-input i NVE-forkledning.
@@ -14,7 +15,7 @@ import styles from './nve-input.styles';
  * å ha en fast verdi på sloten, kan det kanksje påvirke andre elementer som skal vises i sloten.
  */
 @customElement('nve-input')
-export default class NveInput extends SlInput {
+export default class NveInput extends SlInput implements INveComponent{
   /**
    * Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard.
    */
@@ -23,6 +24,11 @@ export default class NveInput extends SlInput {
    * Brukes til enkel constraint validation til å overskrive default nettleseren melding
    */
   @property({ reflect: true }) errorMessage?: string;
+  /**
+   * Brukes for å kunne identifisere komponenten i tester
+   */
+  @property({reflect: true, type: String}) testId:string = '';
+
   /**
    * Hjelpe variabler som sjekker om input feltet er allerede invalid
    */
