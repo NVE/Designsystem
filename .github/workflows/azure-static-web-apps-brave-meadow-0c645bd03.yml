@@ -31,7 +31,7 @@ jobs:
         run: npm install
 
       - name: Build both nve-components and doc site
-        run: npm run build
+        run: npm run build:doc
 
       - name: Build and deploy doc site
         id: builddeploy
