@@ -1,6 +1,6 @@
 # Github-actions for å bygge og installere test- og produksjonsversjon av dokumentasjons-appen i skyen
 
-name: Azure Static Web Apps CI/CD
+name: Bygg og installasjon av dokumentasjons-app i skyen
 
 on:
   push:
