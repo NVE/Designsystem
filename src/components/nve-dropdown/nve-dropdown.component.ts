@@ -1,20 +1,23 @@
 import SlDropdown from '@shoelace-style/shoelace/dist/components/dropdown/dropdown.js';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { getTabbableBoundary } from '../../utils/tabbable';
 import NveButton from '../nve-button/nve-button.component';
 import NveMenu from '../nve-menu/nve-menu.component';
 import styles from './nve-dropdown.styles';
+import { INveComponent } from '@interfaces/NveComponent.interface';
 /**
  * En Shoelace-dropdown i NVE-forkledning.
  * Se https://shoelace.style/components/dropdown
  */
 @customElement('nve-dropdown')
 // @ts-expect-error - overskriving av private metoder i sl-dropdown
-export default class NveDropdown extends SlDropdown {
+export default class NveDropdown extends SlDropdown implements INveComponent {
   constructor() {
     super();
   }
   static styles = [SlDropdown.styles, styles];
+  @property({reflect: true, type: String}) testId:string = '';
+
 
   getMenu() {
     return this.panel.assignedElements({ flatten: true }).find((el) => el.tagName.toLowerCase() === 'nve-menu') as

@@ -35,10 +35,11 @@ const createComponentFile = () => {
   const content = `
     import { LitElement } from 'lit';
     import { customElement } from 'lit/decorators.js';
+    import { INveComponent } from '@interfaces/NveComponent.interface';
     import styles from './${componentName}.styles';
 
     @customElement('${componentName}')
-    export default class ${className} extends LitElement {
+    export default class ${className} extends LitElement implements INveComponent {
 
       static styles = [styles];
 

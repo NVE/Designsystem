@@ -119,6 +119,10 @@ Vi setter reflect: true på alle properties i komponenter (se eksempel under) fo
 @property({ reflect: true }) title: string = '';
 ```
 
+### INveComponent
+
+vi har et Interface INveComponent for funksjonalitet som må brukes på alle komponenter.
+
 ### Eksport
 
 Komponenter skal eksponeres i src/nve-designsystem.ts fila på denne måten:
