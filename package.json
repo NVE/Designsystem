@@ -1,13 +1,16 @@
 {
   "name": "nve-designsystem",
   "description": "Designsystem for NVE",
+  "version": "0.1.65",
   "author": {
     "name": "NVE",
     "email": "nve@nve.no"
   },
   "license": "MIT",
   "homepage": "https://github.com/NVE/Designsystem/",
-  "version": "0.1.65",
+  "engines": {
+    "node": ">=20"
+  },
   "customElements": "custom-elements.json",
   "exports": {
     ".": {
