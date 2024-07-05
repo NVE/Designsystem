@@ -30,7 +30,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build And Deploy
+      - name: Build both nve-components and doc site
+        run: npm run build
+
+      - name: Build and deploy doc site
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
