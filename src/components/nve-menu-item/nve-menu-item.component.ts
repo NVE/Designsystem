@@ -1,6 +1,7 @@
 import SlMenuItem from '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-menu-item.styles';
+import { applyStyles } from '@utils/styles';
 /**
  * En sl-menu-item i NVE-forkledning.
  * Mer info: https://shoelace.style/components/menu-item
@@ -26,6 +27,11 @@ export default class NveMenuItem extends SlMenuItem {
    */
   @property({ type: Boolean, reflect: true }) indent: boolean = false;
 
+   /**
+  * Egendefinerte stiler som skal brukes på knappen. 
+   */
+   @property({ reflect: true, type: String }) customStyle?: string;
+
   constructor() {
     super();
   }
@@ -37,12 +43,20 @@ export default class NveMenuItem extends SlMenuItem {
   }
 
   /**
-   * Sørger for at subtext blir satt på, hvis den er tilstede i properties
+   * Sørger for at subtext og customStyle blir satt på, hvis de er tilstede i properties
+   * 
    */
   updated(changedProperties: any) {
     super.updated(changedProperties);
     if (changedProperties.has('subtext')) {
       this.style.setProperty('--nve-menu-item-subtext', `"${this.subtext}"`);
+    }
+    if (changedProperties.has('customStyle') && this.customStyle) {
+      const menuItemElement = this.renderRoot.querySelector('.menu-item') as HTMLElement;
+
+      if (menuItemElement) {
+        applyStyles(menuItemElement, this.customStyle);
+      }
     }
   }
 

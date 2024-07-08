@@ -1,4 +1,5 @@
-import type { ReactiveController, ReactiveControllerHost } from 'lit';
+import type { LitElement, ReactiveController, ReactiveControllerHost } from 'lit';
+import { applyStyles } from './styles';
 
 /** 
  * A reactive controller that determines when slots exist. 
@@ -110,4 +111,51 @@ export function getTextContent(slot: HTMLSlotElement | undefined | null): string
   });
 
   return text;
+}
+
+
+/**
+ * Bruker tilpassede stiler på spesifikke slots i en LitElement-komponent.
+ * 
+ * Denne funksjonen analyserer den angitte stilstrengen, trekker ut sporspesifikke stiler,
+ * og bruker disse stilene på de tilsvarende sporelementene i komponenten.
+ *
+ * @param-stiler – En streng som inneholder CSS-stiler med sporspesifikke velgere, f.eks. "slot:prefix { display: none; }; slot:label { padding-left: 8px; }".
+ * @param-komponent - LitElement-komponenten som stilene skal brukes på.
+ */
+export const applySlotStyle = (styles: string,component:LitElement) => {
+    const slotStyleRegex = /slot:([^{]+){([^}]+)}/g;
+    let match;
+    
+    while ((match = slotStyleRegex.exec(styles)) !== null) {
+      const slotName = match[1].trim();
+      const styles = match[2].split(';').filter(style => style.trim()).join(';');
+      const slotElement = getSlotElement(slotName, component);
+
+      if (slotElement) {
+        applyStyles(slotElement, styles);
+      }
+    }
+  
+}
+
+/**
+ * Henter HTMLElement knyttet til et spesifikt slot i en LitElement-komponent.
+ * 
+ * Denne funksjonen identifiserer og returnerer elementet som tilsvarer det gitte spornavnet.
+ *
+ * @param slotName - Navnet på slot som elementet skal hentes for. Akseptable verdier er prefix, suffix eller label.
+ * @param-komponent - LitElement-komponenten som inneholder slot.
+ * @returns HTMLElementet som er knyttet til det angitte slot, eller null hvis slot ikke eksisterer.
+ */
+ const getSlotElement = (slotName: string, component:LitElement): HTMLElement | null => {
+  switch (slotName) {
+    case 'prefix':
+    case 'suffix':
+      return component.renderRoot.querySelector(`slot[name="${slotName}"]`) as HTMLElement;
+    case 'label':
+      return component.renderRoot.querySelector(`slot[part="${slotName}"]`) as HTMLElement;
+    default:
+      return null;
+  }
 }

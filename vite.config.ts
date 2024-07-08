@@ -28,7 +28,8 @@ export default defineConfig(({ mode }) => {
       }),
       alias({
         entries: [
-          { find: '@interfaces', replacement: resolve(__dirname, 'src/interfaces') }
+          { find: '@interfaces', replacement: resolve(__dirname, 'src/interfaces') },
+          { find: '@utils', replacement: resolve(__dirname, 'src/utils') }
         ]
       }) as Plugin
     ],
