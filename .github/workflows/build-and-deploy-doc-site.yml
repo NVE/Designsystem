@@ -53,7 +53,7 @@ jobs:
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
-    name: Close Pull Request Job
+    name: Lukker pull request og fjerner testmiljø for denne PR
     steps:
       - name: Close Pull Request
         id: closepullrequest
