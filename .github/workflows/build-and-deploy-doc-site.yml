@@ -7,8 +7,7 @@ name: Bygg og installasjon av dok-app i skyen
 on:
   push:
     branches:
-      - feature/installer-i-skyen
-      # bytt til denne når jeg er ferdig med å teste - main
+      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
