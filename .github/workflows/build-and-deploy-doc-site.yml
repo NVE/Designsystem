@@ -1,6 +1,6 @@
 # Github-actions for å bygge og installere test- og produksjonsversjon av dokumentasjons-appen
 # Applikasjonen kjører som en static web app i Azure
-# Hver pull request har en egen testversjon av appen
+# Hver pull request har en egen testversjon av appen, se "Preview environments" for denne appen i Azure
 
 name: Bygg og installasjon av dok-app i skyen
 
@@ -18,26 +18,26 @@ jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
+    name: Bygg og installer
     steps:
-      - name: Checkout repository
+      - name: Hent kode fra Github
         uses: actions/checkout@v4
         with:
           submodules: true
           lfs: false
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+      - name: Klargjør Node.js-miljø
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20.x'
 
-      - name: Install dependencies
+      - name: Installer avhengigheter
         run: npm install
 
-      - name: Build both nve-components and doc site
+      - name: Bygg både nve-komponenter og dokumentasjons-nettsted
         run: npm run build:doc
 
-      - name: Build and deploy doc site
+      - name: Installer dokumentasjons-nettsted
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
@@ -47,8 +47,8 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: 'doc-site/dist' # When used with skip_app_build: true, this value is the app's build output location.
           output_location: ''
-          skip_app_build: true # Skip build process during workflow if true
-          skip_api_build: true # Skip build process for api if true
+          skip_app_build: true # Vi har allerede bygget appen, så trenger ikke gjøre det her
+          skip_api_build: true # Dette nettstedet trenger ikke noe API
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
