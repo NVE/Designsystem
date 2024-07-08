@@ -1,7 +1,7 @@
 # NVE Designsystem
 
 Dette er skrevet for de som <i>utvikler</i> NVE Designsystem.
-TODO: Skal du kun <i>bruke</i> designsystemet, finner du dokumentasjon og kodeeksempler her: [designsystem.nve.no](https://designsystem.nve.no).
+TODO: Skal du kun <i>bruke</i> designsystemet, finner du dokumentasjon og kodeeksempler her: [https://brave-meadow-0c645bd03.5.azurestaticapps.net/](https://brave-meadow-0c645bd03.5.azurestaticapps.net/).
 
 Repositoryet inneholder css generert fra Figma-tokens i Designsystemet. Her finner du [pakka i npm](https://www.npmjs.com/package/nve-designsystem).
 
@@ -130,19 +130,36 @@ Vi trenger <em>ikke</em> å style:
 
 ## Dokumentasjon
 
-- Vi dokumenterer på norsk
-- Alle komponenter dokumenteres med JsDoc-tags i koden. Alt som er tilgjengelig for de som bruker komponentene skal dokumenteres, dvs. alle public klasser, interfaces, properties/attributter, metoder, events, slots, css-parts og css-properties. [Her er noen tips](https://github.com/runem/web-component-analyzer#-how-to-document-your-components-using-jsdoc).
-  Når du kjører opp test/dokumentasjons-applikasjonen, blir denne dokumentasjonen fanget og lagret i `custom-elements.json`. Du kan også generere fila manuelt med `npm run manifest`. Dokumentasjons-applikasjonen bruker denne fila.
-- Skriv litt øverst i `.component.ts`-fila om hva komponenten skal brukes til. Om det er Shoelace-properties som ikke skal brukes fordi dette ikke passer med designsystemet, må du dokumentere det her.
-- Brukerveiledning med kodeeksempler skriver du i markdown-fila til komponenten. Dokumentasjons-applikasjonen viser denne markdown-fila sammen med info fra `custom-elements.json`.
-  Lag kodeeksempler både for å teste at komponenten funker som forventet <em>og</em> for å vise hvordan komponenten funker.
-  Slik strukturerer du markdown-fila:
+Vi dokumenterer på norsk
 
-  1. Start med et enklest mulig kodeeksempel for å kunne vise komponenten. Alle kodeksempler startes med ` ``` ` `html:preview` og avsluttes med ` ``` `
-  2. Skriv evt. generelle tips som ikke passer å ha i @JsDoc. Pass på at det ikke blir dobbelt opp med det du har skrevet i @JsDoc.
-  3. Legg inn kodeeksempler under kapittel-overskriften `## Eksempler`. Hvert tema skal ha egen overskrift, f.eks.: `### Deaktivering`.
+### Dokumentasjon i koden (JsDoc)
 
-  Hvis du har laget en ny markdown-fil, må du starte test-applikasjonen på nytt ved å skrive r + <enter> i konsollet for at fila skal leses.
+Alle komponenter dokumenteres med JsDoc-tags i koden. Alt som er tilgjengelig for de som bruker komponentene skal dokumenteres, dvs. alle public klasser, interfaces, properties/attributter, metoder, events, slots, css-parts og css-properties. [Her er noen tips](https://github.com/runem/web-component-analyzer#-how-to-document-your-components-using-jsdoc).
+
+Når du kjører opp test/dokumentasjons-applikasjonen, blir kildekoden lest og JsDoc samt en del andre opplysninger lagret i `custom-elements.json`. Du kan også generere fila manuelt med `npm run manifest`. Dokumentasjons-applikasjonen bruker denne fila.
+
+Skriv litt øverst i `.component.ts`-fila om hva komponenten skal brukes til. Om det er Shoelace-properties som ikke skal brukes fordi dette ikke passer med designsystemet, må du dokumentere det her.
+
+### Dokumentasjon i Markdown
+
+Resten av brukerveiledninga med kodeeksempler skriver du i markdown-fila til komponenten. Dokumentasjons-applikasjonen viser denne markdown-fila sammen med info fra `custom-elements.json`.
+
+:::tip
+Lag kodeeksempler både for å teste at komponenten funker som forventet <em>og</em> for å vise hvordan komponenten funker.
+:::
+
+Slik strukturerer du markdown-fila:
+
+1. Start med et enklest mulig kodeeksempel for å kunne vise komponenten. Alle kodeksempler startes med ` ``` ` `html:preview` og avsluttes med ` ``` `
+2. Skriv evt. generelle tips som ikke passer å ha i @JsDoc. Pass på at det ikke blir dobbelt opp med det du har skrevet i @JsDoc.
+3. Legg inn resten av kodeeksemplene under kapittel-overskriften `## Eksempler`. Hvert tema skal ha egen overskrift, f.eks.: `### Deaktivering`.
+
+Hvis du har laget en ny komponent, må du legge til en import av komponenten i `/doc-site/src/importAllComponents.ts`, for at komponenten skal vises i dokumentasjons-applikasjonen.
+Hvis du har laget en ny markdown-fil, må du starte test-applikasjonen på nytt ved å skrive r + <enter> i konsollet for at fila skal leses.
+
+### Annen dokumentasjon
+
+Dokumenatasjon som går på tvers av komponenter ligger i egne markdown-filer. Disse ligger under /doc/pages. For å vise en slik side må den linkes til, enten fra menyen i `MenuComponent.vue` eller fra en annen side. Url blir det samme som navnet på markdown-fila, men uten `.md`.
 
 ## Publisering til npm
 
@@ -160,9 +177,9 @@ Før man pusher til main er det lurt å teste pakke lokalt. Med `npm run pack` k
 
 ## Test-app for pull requests
 
-Pull requests på komponenter skal også kunne godkjennes av designere. Derfor har vi satt opp en azure static app som kjører test/dokumentasjons-applikasjonen. Denne bygges og kjøres når man lager en PR.
+Pull requests på komponenter skal også kunne godkjennes av designere. Derfor har vi satt opp en azure static app som kjører test/dokumentasjons-applikasjonen i egne `Preview environments`. Appen bygges og kjøres når man lager en PR.
 
-Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'er kan det være at appen ikke bygges. De skal slettes automatisk når en PR lukkes, men det er ikke alltid dette virker. I slike tilfeller må vi slette appene manuelt i Azure-portalen. Appene ligger i denne ressursgruppa: TEST-Designsystemet-RG. Marcin, Øystein, Joel, Fred og Tommy har tilgang til dette.
+Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'er kan det være at appen ikke bygges. De skal slettes automatisk når en PR lukkes, men det er ikke alltid dette virker. I slike tilfeller må vi slette appene manuelt i Azure-portalen. Appene finner du i ressursgruppe `TEST-Designsystemet-RG`, Resource `nve-designsystem-dok`, menyvalg `Settings/Environments`. Marcin, Øystein, Joel, Fred og Tommy har tilgang til dette.
 
 ## Bygge globale css-filer
 
