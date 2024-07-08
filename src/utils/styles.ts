@@ -5,7 +5,7 @@
  * egenskaper og verdier, og bruker hver stil på det angitte HTMLElementet.
  *
  * @param element - HTML-elementet som stilene skal brukes på.
- * @param-stiler - En streng som inneholder CSS-stiler, f.eks. "bredde: 100px; høyde: 50px;".
+ * @param-stiler - En streng som inneholder CSS-stiler, f.eks. "width: 100px; height: 50px;".
  */
 export const applyStyles = (element: HTMLElement, styles: string)  => {
     styles.split(';').filter(style => style.trim()).forEach(style => {

@@ -21,7 +21,7 @@ const table = html`
     </nve-menu>
   </nve-dropdown>
       
-  <nve-dropdown  width="500px">
+  <nve-dropdown width="300px">
     <nve-button variant="primary" slot="trigger"  
       customStyle="width: 400px; display: flex; justify-content: space-between; "
       slotStyle="slot:prefix { display: none; }; slot:label { padding-left: 8px; };"
