@@ -7,7 +7,7 @@
   <ul>
     <li>
       <router-link to="/home">
-        Om designsystemet
+        Om biblioteket
       </router-link>
     </li>
     <li>

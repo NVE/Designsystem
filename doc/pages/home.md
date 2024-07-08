@@ -1,11 +1,18 @@
-# Om NVE Designsystem
+# Om komponentbiblioteket
 
-Her finner du brukerveiledning og dokumentasjon for NVE Designsystem.
-Designsystemet er basert på [Web Components-standarden](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) og skal derfor kunne brukes med alle teknologier som støtter HTML.
+Dette er brukerveiledninga for komponentbiblioteket som er en del av [NVE Designsystem](https://nve.frontify.com/r/JxB2JgxjfU97ZEEW1KGvc-ortcWfK51EiOcROUDCijg).
 
-Profilmanual i [Frontify](https://nve.frontify.com/).
-Kildekode i [GitHub](https://github.com/NVE/Designsystem)
+Alle komponentene er [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components), og dette gjør at de skal kunne brukes i de fleste web-applikasjoner, uavhengig av rammeverk.
+Komponentene er ferdig utformet med NVE sitt design.
 
-Designsystemet utvikles på dugnad og etter behov. Vi vil gjerne ha bidrag fra deg!
-Finner du feil i dokumentasjon eller komponenter, gi beskjed ved å [registrere en sak i Jira](https://nveprojects.atlassian.net/browse/DS-132) eller huk tak i f.eks. Maren, Joel, Marcin eller Øystein.  
-Er det småting som må fikses, lag gjerne en [pull request i Github](https://github.com/NVE/Designsystem/pulls), men les [readme](https://github.com/NVE/Designsystem) først.
+Kildekoden til komponentene finner du i [GitHub](https://github.com/NVE/Designsystem).
+
+Designsystemet utvikles på dugnad og etter behov.
+
+:::tip
+Vi vil gjerne ha bidrag fra deg!
+:::
+
+Finner du feil i dokumentasjon eller komponenter, gi beskjed ved å [registrere en sak i Jira](https://nveprojects.atlassian.net/browse/DS-132) eller huk tak i f.eks. Maren, Joel, Marcin eller Øystein. Kanskje noen allerede jobber med akkurat dette problemet ?
+
+Er det småting som bør fikses, lag gjerne en [pull request i Github](https://github.com/NVE/Designsystem/pulls), men les [readme](https://github.com/NVE/Designsystem) først. Readme inneholder både tips og en del kjøreregler.

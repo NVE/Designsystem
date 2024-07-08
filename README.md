@@ -1,7 +1,7 @@
 # NVE Designsystem
 
 Dette er skrevet for de som <i>utvikler</i> NVE Designsystem.
-TODO: Skal du kun <i>bruke</i> designsystemet, finner du dokumentasjon og kodeeksempler her: [https://brave-meadow-0c645bd03.5.azurestaticapps.net/](https://brave-meadow-0c645bd03.5.azurestaticapps.net/).
+Skal du kun <i>bruke</i> designsystemet, finner du brukerveiledning her: [https://brave-meadow-0c645bd03.5.azurestaticapps.net/](https://brave-meadow-0c645bd03.5.azurestaticapps.net/).
 
 Repositoryet inneholder css generert fra Figma-tokens i Designsystemet. Her finner du [pakka i npm](https://www.npmjs.com/package/nve-designsystem).
 
@@ -58,7 +58,7 @@ Skissene i Figma er et forslag til design, ikke en spesifikasjon.
 
 Hvis vi skal ta utgangspunkt i en Shoelace-komponent, pass på at designet ikke går for mye på tvers av slik komponenten er laget i Shoelace. Hvis du ser at du må endre `render()`-metoden for få til ønsket design, ta opp med designeren om hen heller kan justere designet.
 
-Pass også på at API'et til komponenten blir ryddig. Navn på properties må følge god praksis for web-komponenter, og ikke alle properties er nødvendig å implementere. F.eks. trenger vi ikke en showHelpText-property. Det holder med en helpText-property med blank som standard-verdi. Da viser du helpText hvis den finnes.
+Pass også på at API'et til komponenten blir ryddig. Navn på properties må følge god praksis for web-komponenter, og det er ikke sikkert alle properties i Figma er nødvendig å implementere. F.eks. trenger vi ikke en showHelpText-property. Det holder med en helpText-property med blank som standard-verdi. Da viser du helpText hvis den finnes.
 
 ## Styling
 
@@ -81,7 +81,7 @@ ser bedre ut enn dette:
 ```
 
 Hvis det ikke er mulig å style med ::part, bruk css-klasser.
-safari (liten forbokstav med vilje) sliter med å håndtere parts med denne syntaksen `:host(:hover)::part(control)`, med det resultat at stilene til Shoelace ikke blir overskrvet som ønsket. Derfor må vi huske å teste web komponenter i safari og. Problemet kan løses med bruk av '!important', f.eks.:
+safari (liten forbokstav med vilje) sliter med å håndtere parts med denne syntaksen `:host(:hover)::part(control)`, med det resultat at stilene til Shoelace ikke blir overskrevet som ønsket. Derfor må vi huske å teste web-komponenter i safari også. Problemet kan løses med bruk av '!important', f.eks.:
 
 ```css
 :host([disabled]:hover)::part(control control--indeterminate) {
@@ -134,7 +134,7 @@ Vi dokumenterer på norsk
 
 ### Dokumentasjon i koden (JsDoc)
 
-Alle komponenter dokumenteres med JsDoc-tags i koden. Alt som er tilgjengelig for de som bruker komponentene skal dokumenteres, dvs. alle public klasser, interfaces, properties/attributter, metoder, events, slots, css-parts og css-properties. [Her er noen tips](https://github.com/runem/web-component-analyzer#-how-to-document-your-components-using-jsdoc).
+Alle komponenter dokumenteres med JsDoc-tags i koden. Fordelen med dette er at denne dokumentasjonen vises f.eks. i VSCode. Alt som er tilgjengelig for de som bruker komponentene skal dokumenteres, dvs. alle public klasser, interfaces, properties/attributter, metoder, events, slots, css-parts og css-properties. [Her er noen tips](https://github.com/runem/web-component-analyzer#-how-to-document-your-components-using-jsdoc).
 
 Når du kjører opp test/dokumentasjons-applikasjonen, blir kildekoden lest og JsDoc samt en del andre opplysninger lagret i `custom-elements.json`. Du kan også generere fila manuelt med `npm run manifest`. Dokumentasjons-applikasjonen bruker denne fila.
 
