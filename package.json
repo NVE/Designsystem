@@ -1,13 +1,16 @@
 {
   "name": "nve-designsystem",
   "description": "Designsystem for NVE",
+  "version": "0.1.65",
   "author": {
     "name": "NVE",
     "email": "nve@nve.no"
   },
   "license": "MIT",
   "homepage": "https://github.com/NVE/Designsystem/",
-  "version": "0.1.65",
+  "engines": {
+    "node": ">=20"
+  },
   "customElements": "custom-elements.json",
   "exports": {
     ".": {
@@ -28,6 +31,7 @@
     "publish": "node scripts/prepublish.js publish",
     "build": "node scripts/build.js",
     "build:dev": "node scripts/build.js dev",
+    "build:doc": "node scripts/build.js && cd doc-site && vite build",
     "preview": "vite preview",
     "lint": "eslint \"**/*.{js,ts,vue}\"",
     "manifest": "npx  @custom-elements-manifest/analyzer analyze --outdir dist",
