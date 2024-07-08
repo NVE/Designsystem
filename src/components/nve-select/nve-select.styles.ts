@@ -13,8 +13,7 @@ export default css`
   :host::part(combobox) {
     font: var(--body-small);
     color: var(--neutrals-foreground-primary, #0d0d0e);
-    max-width: 300px;
-    min-width: 200px;
+
     border-radius: 0.25rem;
     border: var(--border-width-default, 1px) solid var(--neutrals-border-default, #878c94);
   }
