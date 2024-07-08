@@ -6,7 +6,15 @@ import { applyStyles } from '@utils/styles';
 import { applySlotStyle } from '@utils/slot';
 
 /**
- * En tilpasset knappkomponent som forlenger Shoelace button.
+ * En Shoelace-knapp i NVE-forkledning.
+ * Se https://shoelace.style/components/button
+ * 
+ * For å lage en lenke knapp legg til href på nve-button og den skal automatisk bli gjort om til <a>
+ * 
+ *  Vi skal ikke bruke properties:
+ * - circle
+ * - caret
+ * - pill
  * 
  * Denne komponenten lar tilpassede stiler brukes på knappen og dens slots.
  * Det inkluderer egenskaper for størrelse, testId, egendefinerte stiler og slot spesifikke stiler.
