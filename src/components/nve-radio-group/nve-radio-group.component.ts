@@ -55,6 +55,9 @@ export default class NveRadioGroup extends SlRadioGroup {
   /**
    * Hjelpe variabel som sjekker om radio gruppe er allerede invalid
    */
+
+  @property({reflect: true, type: String}) testId: string = '';
+
   @state() private alreadyInvalid = false;
   /**
    * Ikke mulig å få taket i errorMessage til superklassen (SlRadioGroup), og den trengs for å vise feilmelding under radio gruppe.
@@ -62,6 +65,7 @@ export default class NveRadioGroup extends SlRadioGroup {
    * overskriver NveRadioGroup errorMessage prop når sl-input trigges, derfor må vi lagre den i staten når komponenten renderes første gang.
    */
   @state() private errorMessageCopy = '';
+  
 
   /* overvåker og setter disabled på under-radio-elementer når disabled endres */
   @watch('disabled')
