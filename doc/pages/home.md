@@ -5,6 +5,8 @@ Dette er brukerveiledninga for komponentbiblioteket som er en del av [NVE Design
 Alle komponentene er [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components), og dette gjør at de skal kunne brukes i de fleste web-applikasjoner, uavhengig av rammeverk.
 Komponentene er ferdig utformet med NVE sitt design.
 
+Mange av komponentene er basert på [Shoelace](https://shoelace.style/). Det meste som står i [Shoelace-dokumentasjonen om bruk av komponenter](https://shoelace.style/getting-started/usage) gjelder også for nve-komponenter.
+
 Kildekoden til komponentene finner du i [GitHub](https://github.com/NVE/Designsystem).
 
 Designsystemet utvikles på dugnad og etter behov.
