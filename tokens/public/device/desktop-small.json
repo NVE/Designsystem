@@ -715,7 +715,7 @@
   },
   "Device": {
     "Width": {
-      "value": "{Device-Width.desktop}",
+      "value": "{Device-Width.desktop-small}",
       "type": "sizing"
     },
     "Content": {
