@@ -673,15 +673,15 @@
   },
   "spacing": {
     "xx-small": {
-      "value": "{Dimensions.8px}",
-      "type": "spacing"
-    },
-    "x-small": {
       "value": "{Dimensions.1x}",
       "type": "spacing"
     },
+    "x-small": {
+      "value": "{Dimensions.2x}",
+      "type": "spacing"
+    },
     "small": {
-      "value": "{Dimensions.3x}",
+      "value": "{Dimensions.4x}",
       "type": "spacing"
     },
     "medium": {
@@ -693,15 +693,15 @@
       "type": "spacing"
     },
     "x-large": {
-      "value": "{Dimensions.6x}",
+      "value": "{Dimensions.10x}",
       "type": "spacing"
     },
     "2x-large": {
-      "value": "{Dimensions.8x}",
+      "value": "{Dimensions.12x}",
       "type": "spacing"
     },
     "3x-large": {
-      "value": "{Dimensions.15x}",
+      "value": "{Dimensions.16x}",
       "type": "spacing"
     },
     "4x-large": {
@@ -715,11 +715,11 @@
   },
   "Device": {
     "Width": {
-      "value": "{Device-Width.desktop}",
+      "value": "{Device-Width.desktop-large}",
       "type": "sizing"
     },
     "Content": {
-      "value": "{Content-area.desktop}",
+      "value": "{Content-area.desktop-large}",
       "type": "sizing"
     }
   },
