@@ -1,11 +1,11 @@
 {
   "Brand": {
     "Primary": {
-      "value": "{brand.300}",
+      "value": "{brand.500}",
       "type": "color"
     },
     "Light": {
-      "value": "{brand.500}",
+      "value": "{brand.300}",
       "type": "color"
     },
     "Deep": {
