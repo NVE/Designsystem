@@ -719,7 +719,7 @@
       "type": "sizing"
     },
     "Content": {
-      "value": "{Content-area.desktop}",
+      "value": "{Content-area.mobile}",
       "type": "sizing"
     }
   },
