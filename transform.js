@@ -62,7 +62,7 @@ StyleDictionary.registerFormat({
         outputReferences,
         formatting: { indentation: `${isDarkmode ? '    ' : '  '}` },
       }) +
-      `${isDarkmode ? '  \n}\n' : ''}` +
+      `${isDarkmode ? '\n  }\n' : ''}` +
       '\n}\n'
     );
   },
