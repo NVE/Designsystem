@@ -3,8 +3,7 @@ import { css } from 'lit';
 import { customElement } from 'lit/decorators.js';
 
 /**
- * En Shoelace-divider i NVE-forkledning.
- * Se https://shoelace.style/components/divider
+ * Bruk denne til å skille innhold fra hverandre
  */
 @customElement('nve-divider')
 export default class NveDivider extends SlDivider {

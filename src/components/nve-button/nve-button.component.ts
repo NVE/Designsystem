@@ -4,15 +4,9 @@ import styles from './nve-button.styles';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 
 /**
- * En Shoelace-knapp i NVE-forkledning.
- * Se https://shoelace.style/components/button
- *
- * For å lage en lenke knapp legg til href på nve-button og den skal automatisk bli gjort om til <a>
- *
- * Vi skal ikke bruke properties:
- * - circle
- * - caret
- * - pill
+ * Selveste NVE-knappen.
+ * Bruk href for å gjøre den om til en link.
+ * Disse feltene skal ikke brukes: circle, caret og pill
  */
 @customElement('nve-button')
 export default class NveButton extends SlButton implements INveComponent{

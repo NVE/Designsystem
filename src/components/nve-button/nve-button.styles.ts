@@ -7,13 +7,14 @@ export default css`
     width: fit-content;
     align-items: center;
     box-sizing: border-box;
+    position: relative;
   }
 
   .button ::slotted(nve-badge) {
     position: absolute;
     top: 0;
     right: 0;
-    translate: 50% -50%;
+    transform: translate(50%, -50%);
     pointer-events: none;
   }
 

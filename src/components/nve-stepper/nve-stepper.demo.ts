@@ -2,11 +2,9 @@ import { html } from 'lit';
 import { StepperProps } from './nve-stepper.component';
 import { StepProps, StepState } from './nve-step/nve-step.component';
 
-/**
- * Demonstrasjon av nve-label
- */
+//TODO: Denne skal fjernes når vi har laget nve-stepper.md
 
-let steps = [
+const steps = [
   {
     title: 'Step 1',
     description: 'The first step',

@@ -1,0 +1,16 @@
+{
+  "name": "nve-designsystem-doc",
+  "version": "1.0.0",
+  "description": "Brukerveiledning for komponentbiblioteket til NVE designsystem",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vitepress dev ",
+    "build": "vitepress build ",
+    "preview": "vitepress preview "
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vitepress": "^1.3.0"
+  }
+}

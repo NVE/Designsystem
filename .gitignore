@@ -3,6 +3,10 @@ node_modules
 
 # ignore Visual Studio local folder
 .vs/
-# ignore dist - (npm build output)
+
+# npm build output
 dist/
+
 *.tgz
+doc-site/.vitepress/cache
+doc-site/.vitepress/dist

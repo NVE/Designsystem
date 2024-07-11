@@ -10,6 +10,15 @@ import '../nve-icon/nve-icon.component';
 import '../nve-label/nve-label.component';
 
 /**
+ * Skal brukes til å lage lang tekstfelt. Min høyde er satt opp til --sizing-2x-small. De fleste attributer som brukes på vanlig textarea
+ * burde bli støttet her. Hvis det er noe som mangler, bare å legge til.
+ * Man kan bruke label og tooltip attributer for å vise label over textarea. Samt med helpText. Trenger ikke noe eksta slots per i dag. Trengs ikke å lage separate slots for det.
+ * Siden vi skulle bruke ikoner inn i textarea var det enklere å lage vår egen komponent enn å leke med sl-textarea
+ *
+ * Validering. Siden textarea ikke er shoelace komponent, constraint valdiering skal ikke fungere så bra med andre shoelace komponenter i formen.
+ * Shoelace wrapper alle sine form komponenter i en form kontroll som gjør at alle blir validert samtidig når man bruker constraint validering. Det er ikke en default
+ * nettlesersen oppførsel. Submit event stopper på den første feil den møter i formen. Per i dag siden vi blander både shoelace komponenter og våre egne
+ * våre komponeter skal bli diskriminert i gruppe validering. Derfor anbefales det å bruke custom validering på textarea med setCustomValidation.
  * @dependency nve-icon
  * @dependency nve-label
  *
@@ -24,15 +33,6 @@ import '../nve-label/nve-label.component';
  * @csspart base - textarea og ikone container
  * @csspart help-text-container - container for hjelpetekst
  *
- * Skal brukes til å lage lang tekstfelt. Min høyde er satt opp til --sizing-2x-small. De fleste attributer som brukes på vanlig textarea
- * burde bli støttet her. Hvis det er noe som mangler, bare å legge til.
- * Man kan bruke label og tooltip attributer for å vise label over textarea. Samt med helpText. Trenger ikke noe eksta slots per i dag. Trengs ikke å lage separate slots for det.
- * Siden vi skulle bruke ikoner inn i textarea var det enklere å lage vår egen komponent enn å leke med sl-textarea
- *
- * Validering. Siden textarea ikke er shoelace komponent, constraint valdiering skal ikke fungere så bra med andre shoelace komponenter i formen.
- * Shoelace wrapper alle sine form komponenter i en form kontroll som gjør at alle blir validert samtidig når man bruker constraint validering. Det er ikke en default
- * nettlesersen oppførsel. Submit event stopper på den første feil den møter i formen. Per i dag siden vi blander både shoelace komponenter og våre egne
- * våre komponeter skal bli diskriminert i gruppe validering. Derfor anbefales det å bruke custom validering på textarea med setCustomValidation.
  */
 @customElement('nve-textarea')
 export default class NveTextarea extends LitElement implements INveComponent{
@@ -136,7 +136,7 @@ export default class NveTextarea extends LitElement implements INveComponent{
     const formControl = this.shadowRoot?.querySelector('.textarea__label') as HTMLElement;
     if (textarea) {
       this.resizeObserver = new ResizeObserver((entries) => {
-        for (let entry of entries) {
+        for (const entry of entries) {
           formControl.style.width = `${entry.contentRect.width + 32}px`;
         }
       });

@@ -4,15 +4,17 @@ import styles from './nve-icon.styles';
 
 /**
  * Et ikon.
- * Vi bruker ikoner fra Material Symbols. Man kan bruke både 'Sharp' og 'Outlined' ikoner.
+ * Vi bruker ikoner fra Material Symbols.
+ * Vi bruker strek-tykkelse 400 uansett størrelse på ikonet.
+ * Fill skal ikke brukes. 
  * @see https://fonts.google.com/icons
  */
 @customElement('nve-icon')
 export default class NveIcon extends LitElement {
   static styles = [styles];
 
-  /** Bestemmer om man skal bruke 'sharp' eller 'outlined' ikoner */
-  @property({ type: String }) library: 'Outlined' | 'Sharp' = 'Outlined';
+  /** Skarpe eller myke hjørner. Ikonene i ikonsettet skal i utgangspunktet ha skarpe hjørner, men hjørner kan være avrundet om det gjør motivet tydeligere. */
+  @property({ type: String }) library: 'Outlined' | 'Sharp' = 'Sharp';
 
   /** Navnet på ikonet i Material Symbols-biblioteket */
   @property({ reflect: true }) name = '';

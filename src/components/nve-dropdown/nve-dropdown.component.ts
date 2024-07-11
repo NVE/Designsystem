@@ -6,8 +6,7 @@ import NveMenu from '../nve-menu/nve-menu.component';
 import styles from './nve-dropdown.styles';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 /**
- * En Shoelace-dropdown i NVE-forkledning.
- * Se https://shoelace.style/components/dropdown
+ * TODO: Beskrivelse mangler
  */
 @customElement('nve-dropdown')
 // @ts-expect-error - overskriving av private metoder i sl-dropdown

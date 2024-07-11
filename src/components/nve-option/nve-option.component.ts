@@ -2,8 +2,7 @@ import SlOption from '@shoelace-style/shoelace/dist/components/option/option.js'
 import { customElement } from 'lit/decorators.js';
 import styles from './nve-option.styles';
 /**
- * En Shoelace-option i NVE-forkledning.
- * Se https://shoelace.style/components/option
+ * Representerer et valg i nve-select.
  */
 @customElement('nve-option')
 export default class NveOption extends SlOption {

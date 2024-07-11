@@ -3,6 +3,7 @@
 .eslintrc.js
 /vite.config.ts
 /tokens
-/www
 /build
 /loader
+/doc-site/dist
+/doc-site/node-modules
