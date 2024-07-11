@@ -1,4 +1,4 @@
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import SlRadioButton from '@shoelace-style/shoelace/dist/components/radio-button/radio-button.js';
 
 /**
@@ -11,6 +11,8 @@ export default class NveRadioButton extends SlRadioButton {
     super();
   }
   static styles = [SlRadioButton.styles];
+  @property({reflect: true, type: String}) testId: string = '';
+
 }
 
 declare global {

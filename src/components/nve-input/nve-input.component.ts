@@ -1,6 +1,7 @@
 import { customElement, property, state } from 'lit/decorators.js';
 import SlInput from '@shoelace-style/shoelace/dist/components/input/input.js';
 import styles from './nve-input.styles';
+import { INveComponent } from '@interfaces/NveComponent.interface';
 
 /**
  * Et tekstfelt. 
@@ -9,7 +10,7 @@ import styles from './nve-input.styles';
  * TODO: Feltet blir bredere hvis validering feiler, fordi vi må ha plass til feil-ikonet.
  */
 @customElement('nve-input')
-export default class NveInput extends SlInput {
+export default class NveInput extends SlInput implements INveComponent{
   /**
    * Tekst som vises for å markere at et felt er obligatorisk
    */
@@ -22,6 +23,17 @@ export default class NveInput extends SlInput {
    * Intern hjelpevariabler som brukes i validering
    * TODO: Kan denne være private?
    */
+ /**
+   * Brukes for å kunne identifisere komponenten i tester
+   */
+  @property({reflect: true, type: String}) testId:string = '';
+
+ /**
+   * Brukes for å kunne identifisere komponenten
+   */
+  @property({ type: String, reflect: true }) inputId?: string;
+
+
   @state() protected alreadyInvalid = false;
 
   static styles = [SlInput.styles, styles];
@@ -56,11 +68,21 @@ export default class NveInput extends SlInput {
   updated(changedProperties: any) {
     super.updated(changedProperties);
     const hasDataUserInvalidAttr = this.hasAttribute('data-user-invalid');
+    if (changedProperties.has('inputId')) {
+      this.updateInputId();
+    }
     if (hasDataUserInvalidAttr && !this.alreadyInvalid) {
       this.makeInvalid();
     }
     if (!hasDataUserInvalidAttr) {
       this.resetValidation();
+    }
+  }
+
+  private updateInputId() {
+    const input = this.shadowRoot?.querySelector('input');
+    if (input && this.inputId) {
+      input.id = this.inputId;
     }
   }
 

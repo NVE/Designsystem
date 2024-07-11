@@ -40,11 +40,15 @@ Du kan også lage filene manuelt. Følg mønsteret i eksemplet nedenfor:
 
 ## Properties
 
-Vi setter reflect: true på alle properties i komponenter (se eksempel under) for å kunne se properties som oppdateres i DOMen. Gjelder reaktive applikasjoner.
+Vi setter reflect: true på alle properties i komponenter for å kunne se properties som oppdateres i DOM. Se eksempel:
 
 ```js
 @property({ reflect: true }) title: string = '';
 ```
+
+## INveComponent
+
+Alle komponenter skal implementere INveComponent
 
 ## Eksport
 

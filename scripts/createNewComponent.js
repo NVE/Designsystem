@@ -29,12 +29,16 @@ const createComponentFile = () => {
     .split('-')
     .map((n) => n.charAt(0).toUpperCase() + n.slice(1))
     .join('');
-  const content = `import { LitElement } from 'lit';
-import { customElement } from 'lit/decorators.js';
-import styles from './${componentName}.styles';
+  const content = `
+  import { LitElement } from 'lit';
+  import { customElement, property } from 'lit/decorators.js';
+  import { INveComponent } from '@interfaces/NveComponent.interface';
+  import styles from './${componentName}.styles';
 
-@customElement('${componentName}')
-export default class ${className} extends LitElement {
+  @customElement('${componentName}')
+  export default class ${className} extends LitElement implements INveComponent {
+
+  @property({reflect: true, type: String}) testId: string = '';
 
   static styles = [styles];
 

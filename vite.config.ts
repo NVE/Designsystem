@@ -4,6 +4,8 @@ import { extname, relative, resolve } from 'path';
 import { fileURLToPath } from 'node:url';
 import dts from 'vite-plugin-dts';
 import { glob } from 'glob';
+import alias from '@rollup/plugin-alias';
+import type { Plugin } from 'vite';
 
 /** Inneholder alle stiene til filene som skal bundles, og skal ha types */
 const includedPaths = ['src/**/*.ts'];
@@ -24,6 +26,11 @@ export default defineConfig(({ mode }) => {
         include: includedPaths,
         exclude: excludedPaths,
       }),
+      alias({
+        entries: [
+          { find: '@interfaces', replacement: resolve(__dirname, 'src/interfaces') }
+        ]
+      }) as Plugin
     ],
     build: {
       sourcemap: mode === 'development' ? true : false,
