@@ -30,6 +30,7 @@
     "publish": "node scripts/prepublish.js publish",
     "build": "node scripts/build.js",
     "build:dev": "node scripts/build.js dev",
+    "build:doc": "node scripts/build.js && cd doc-site && npm run build",
     "preview": "vite preview",
     "lint": "eslint \"**/*.{js,ts,vue}\"",
     "manifest": "npx  @custom-elements-manifest/analyzer analyze --outdir dist",
