@@ -1,7 +1,7 @@
 # NVE Designsystem
 
 Dette er skrevet for de som <i>utvikler</i> NVE Designsystem.
-TODO: Skal du kun <i>bruke</i> designsystemet, finner du dokumentasjon og kodeeksempler her: [designsystem.nve.no](https://designsystem.nve.no).
+Skal du kun <i>bruke</i> designsystemet, finner du dokumentasjon og kodeeksempler her: [https://brave-meadow-0c645bd03.5.azurestaticapps.net/](https://brave-meadow-0c645bd03.5.azurestaticapps.net/).
 
 Repositoryet inneholder css generert fra Figma-tokens i Designsystemet. Her finner du [pakka i npm](https://www.npmjs.com/package/nve-designsystem).
 
@@ -10,6 +10,11 @@ Her er skisser i [Figma](https://www.figma.com/files/1033298377581647627/project
 De fleste komponentene bygger på [Shoelace](https://shoelace.style/), men er tilpasset NVE Designsystem. Etterhvert vil de fleste Shoelace-komponenter få sin NVE-variant, men vi har også komponenter som ikke er basert på Shoelace. Vi anbefaler at du laster ned [kildekoden til Shoelace](https://github.com/shoelace-style/shoelace) og setter deg inn i [Lit](https://lit.dev/), som vi bruker som rammeverk.
 
 ## Kjøremiljø
+
+Dette prosjektet inneholder to applikasjoner:
+
+- I rot-mappa ligger selve komponentbiblioteket med nve-komponenten
+- I mappa `doc-site` ligger test-applikasjonen som viser brukerveiledninga. Teknisk beskrivelse av denne ligger i egen [readme](doc-site/README.md)
 
 Kjør `npm install` og `npm run dev` for å starte test-applikasjonen. Applikasjonen er selve brukerveiledninga for komponentbiblioteket, så her ligger api-dokumentasjon, beskrivelse av funksjonalitet og ikke minst kodeeksempler.
 
@@ -25,16 +30,13 @@ Vi skiller API + funksjonalitet, styling og test/dokumentasjon i hver sine filer
 
 Du kan lage skall til en ny komponent ved å kjøre `npm run add-component {navn på komponent}`. Scriptet oppretter riktige filer for deg.
 
-Du kan også lage filene manuelt. Lag en mappe under `src/components`. Navnet på mappa skal være samme som komponent-navnet. Eksempel:
+Du kan også lage filene manuelt. Følg mønsteret i eksemplet nedenfor:
 
-| Filnavn                            | Beskrivelse           |
-| ---------------------------------- | --------------------- |
-| nve-button                         | Mappe for komponenten |
-| nve-button/nve-button.component.ts | Selve komponenten     |
-| nve-button/nve-button.styles.ts    | Styling               |
-| nve-button/nve-button.md           | Test og dokumentasjon |
-
-Markdown-fila blir lest av test/dokumentasjons-applikasjonen og innholdet blir presentert i applikasjonen.
+| Sti                                                | Beskrivelse           |
+| -------------------------------------------------- | --------------------- |
+| /src/components/nve-button/nve-button.component.ts | Selve komponenten     |
+| /src/components/nve-button/nve-button.styles.ts    | Styling               |
+| /doc-site/components/nve-button.md                 | Test og dokumentasjon |
 
 ## Properties
 
@@ -130,19 +132,78 @@ Vi trenger <em>ikke</em> å style:
 
 ## Dokumentasjon
 
-- Vi dokumenterer på norsk
-- Alle komponenter dokumenteres med JsDoc-tags i koden. Alt som er tilgjengelig for de som bruker komponentene skal dokumenteres, dvs. alle public klasser, interfaces, properties/attributter, metoder, events, slots, css-parts og css-properties. [Her er noen tips](https://github.com/runem/web-component-analyzer#-how-to-document-your-components-using-jsdoc).
-  Når du kjører opp test/dokumentasjons-applikasjonen, blir denne dokumentasjonen fanget og lagret i `custom-elements.json`. Du kan også generere fila manuelt med `npm run manifest`. Dokumentasjons-applikasjonen bruker denne fila.
-- Skriv litt øverst i `.component.ts`-fila om hva komponenten skal brukes til. Om det er Shoelace-properties som ikke skal brukes fordi dette ikke passer med designsystemet, må du dokumentere det her.
-- Brukerveiledning med kodeeksempler skriver du i markdown-fila til komponenten. Dokumentasjons-applikasjonen viser denne markdown-fila sammen med info fra `custom-elements.json`.
-  Lag kodeeksempler både for å teste at komponenten funker som forventet <em>og</em> for å vise hvordan komponenten funker.
-  Slik strukturerer du markdown-fila:
+**Vi dokumenterer på norsk**
 
-  1. Start med et enklest mulig kodeeksempel for å kunne vise komponenten. Alle kodeksempler startes med ` ``` ` `html:preview` og avsluttes med ` ``` `
-  2. Skriv evt. generelle tips som ikke passer å ha i @JsDoc. Pass på at det ikke blir dobbelt opp med det du har skrevet i @JsDoc.
-  3. Legg inn kodeeksempler under kapittel-overskriften `## Eksempler`. Hvert tema skal ha egen overskrift, f.eks.: `### Deaktivering`.
+### JsDoc
 
-  Hvis du har laget en ny markdown-fil, må du starte test-applikasjonen på nytt ved å skrive r + <enter> i konsollet for at fila skal leses.
+Alle komponenter dokumenteres med JsDoc-tags i koden. Alt som er tilgjengelig for de som bruker komponentene skal dokumenteres, dvs. alle public klasser, interfaces, properties/attributter, metoder, events, slots, css-parts og css-properties.
+[Her er noen tips](https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#documenting-your-components).
+
+Når du kjører opp test/dokumentasjons-applikasjonen, blir koden scannet og metadata + JsDoc lagret i `custom-elements.json`. Du kan også generere fila manuelt med `npm run manifest`. Dokumentasjons-applikasjonen bruker denne fila.
+
+Skriv litt øverst i `.component.ts`-fila om hva komponenten skal brukes til. Om det er Shoelace-properties som ikke skal brukes fordi dette ikke passer med designsystemet, må du dokumentere det her.
+
+### Brukerveiledning
+
+Brukerveiledning med kodeeksempler skriver du i markdown-fila til komponenten. Dokumentasjons-applikasjonen viser denne markdown-fila sammen med info fra `custom-elements.json`.
+
+Lag kodeeksempler både for å teste at komponenten funker som forventet <em>og</em> for å vise hvordan komponenten funker.
+
+Markdown-fila skal ha denne strukturen:
+
+1. Filhode
+2. Enklest mulig kodeeksempel
+3. Generelle tips
+4. Resten av kodeeksemplene under overskriften `## Eksempler`
+
+Mer om dette:
+
+#### 1. Filhode
+
+Markdown-fila må starte med denne blokka:
+
+```md
+---
+layout: component
+---
+```
+
+#### 2. Enklest mulig kodeeksempel
+
+Deretter lager du et enklest mulig kodeeksempel for å kunne vise komponenten. Alle kodeksempler legges i en slik blokk:
+
+````
+<CodeExamplePreview>
+
+```html
+Her skriver du html-koden
+```
+</CodeExamplePreview>
+````
+
+Du må ha et ekstra linjeskift etter `<CodeExamplePreview>`og `</CodeExamplePreview>`
+
+#### 3. Generelle tips
+
+Skriv evt. generelle tips som ikke passer å ha i @JsDoc. Pass på at det ikke blir dobbelt opp med det du har skrevet i @JsDoc. 3.
+
+#### 4. Resten av kodeeksemplene
+
+Nå er turen kommet til å demonstrere hvordan komponenten funker.
+Lag kodeeksempler for de viktigste tingene du kan gjøre med komponenten, og for å vise hvordan komponenten oppfører seg. Bruk dette for å teste at komponenten oppfører seg slik den skal.
+
+Eksemplene legger du under overskriften `## Eksempler`
+Hvert tema skal ha egen overskrift, f.eks.: `### Deaktivering`.
+
+Du kan også lage mer avanserte kodeeksempler i Vue. Se hvordan dette er gjort i [doc-site/introduction/vue.md](doc-site/introduction/vue.md).
+
+---
+
+Hvis du har laget en ny markdown-fil, må du starte test-applikasjonen på nytt ved å skrive `r` og taste `<enter>` i konsollet, for at fila skal leses.
+
+### Annen dokumentasjon
+
+Du kan også lage egne markdown-filer for spesielle tema, slik vi har gjort under `doc-site/introduction`. Lag en link til fila fra menyen i `doc-site/.vitepress/config.mts`.
 
 ## Publisering til npm
 

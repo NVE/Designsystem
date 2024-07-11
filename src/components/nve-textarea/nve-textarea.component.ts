@@ -17,7 +17,6 @@ import '../nve-label/nve-label.component';
  * Shoelace wrapper alle sine form komponenter i en form kontroll som gjør at alle blir validert samtidig når man bruker constraint validering. Det er ikke en default
  * nettlesersen oppførsel. Submit event stopper på den første feil den møter i formen. Per i dag siden vi blander både shoelace komponenter og våre egne
  * våre komponeter skal bli diskriminert i gruppe validering. Derfor anbefales det å bruke custom validering på textarea med setCustomValidation.
- *
  * @dependency nve-icon
  * @dependency nve-label
  *
@@ -32,7 +31,7 @@ import '../nve-label/nve-label.component';
  * @csspart base - textarea og ikone container
  * @csspart help-text-container - container for hjelpetekst
  *
-*/
+ */
 @customElement('nve-textarea')
 export default class NveTextarea extends LitElement {
   static styles = [styles];
@@ -220,7 +219,7 @@ export default class NveTextarea extends LitElement {
       <div part="form-control" class=${classMap({ 'form-control': true, 'form-control--has-label': this.label })}>
         <div part="textarea-label" class="textarea__label">
           ${this.label
-        ? html`
+            ? html`
                 <nve-label
                   for="input"
                   aria-hidden=${this.label ? 'false' : 'true'}
@@ -228,10 +227,10 @@ export default class NveTextarea extends LitElement {
                   tooltip=${ifDefined(this.tooltip)}
                 ></nve-label>
               `
-        : null}
+            : null}
           ${this.required && this.label
-        ? html`<span class="textarea__required-label">${this.requiredLabel}</span>`
-        : null}
+            ? html`<span class="textarea__required-label">${this.requiredLabel}</span>`
+            : null}
         </div>
         <div part="base" class="textarea__base">
           <textarea
@@ -262,22 +261,22 @@ export default class NveTextarea extends LitElement {
           tilgjengelig i nettleseren og man må alltid sette brede på den manuelt. Nei takk.) -->
           <!-- Foreløpig kan man ha enten 'lock' eller 'error' ikone -->
           ${this.disabled || this.showErrorMessage
-        ? html`<div class="textarea__icon__container">
+            ? html`<div class="textarea__icon__container">
                 ${this.disabled ? html`<nve-icon name="lock"></nve-icon>` : null}
                 ${this.showErrorMessage ? html`<nve-icon class="textarea__icon--error" name="error"></nve-icon>` : null}
               </div>`
-        : null}
+            : null}
         </div>
         <div part="help-text-container" class="textarea__help-text__container">
           <!-- Ikke vis hjelpe tekst mens feil -->
           ${!this.showErrorMessage && this.helpText
-        ? html`<span class="textarea__help-text" aria-hidden=${this.helpText ? 'false' : 'true'}
+            ? html`<span class="textarea__help-text" aria-hidden=${this.helpText ? 'false' : 'true'}
                 >${this.helpText}</span
               >`
-        : null}
+            : null}
           ${this.showErrorMessage
-        ? html`<span class="textarea__help-text textarea__help-text--error">${this.errorMessage}</span>`
-        : null}
+            ? html`<span class="textarea__help-text textarea__help-text--error">${this.errorMessage}</span>`
+            : null}
         </div>
       </div>
     `;

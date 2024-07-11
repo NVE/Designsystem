@@ -23,7 +23,9 @@
   "types": "nve-designsystem.d.ts",
   "scripts": {
     "add-component": "node scripts/createNewComponent.js",
-    "dev": "node scripts/createCustomElementsManifest.js && cd doc-site && vite",
+    "dev": "node scripts/createCustomElementsManifest.js && cd doc-site && npm run dev",
+    "doc:build": "cd doc-site && npm run build",
+    "doc:preview": "cd doc-site && npm run preview",
     "pack": "node scripts/prepublish.js pack",
     "publish": "node scripts/prepublish.js publish",
     "build": "node scripts/build.js",

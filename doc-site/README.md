@@ -1,11 +1,41 @@
-# Brukerveiledning for komponentbiblioteket til NVE Designsystem
+Dette er en dokumentasjonsside for et prosjekt som kjører i [Vitepress](https://vitepress.dev/guide/what-is-vitepress).
 
-Dette er en separat Vue-applikasjon som viser hvordan man bruker komponentbiblioteket.
-Den henter informasjon fra JsDoc i kildekoden til komponentene og setter dette sammen med annen dokumentasjon skrevet i markdown-filer.
-Markdown-filene kan inneholde kodeeksempler. Kodeeksempler markert med ```html:preview vil vises med forhåndsvisning i HTML og med koden under. Evt. Javascript-kode i disse kodeblokkene vil kjøre, men de vil ikke vises i kodeeksemplet i applikasjonen.
+For å starte docs sida lokalt kan du bare kjøre (fra Designsystem root mappe):
 
-Dette er en standard Vue3-applikasjon som kjøres av Vite. Vi bruker `<script setup>` med både html-mal, kode og stiler i en fil, sjekk ut [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) for mer info.
+```
+npm run dev
+```
 
-## Anbefalt utviklingsmiljø
+VIKTIG! Når man kjører npm run dev første gang, skal appen rerendres på nytt etter en stund. Grunnen er dynamiske importer
+av nve-komponenter som vite må rebundle etter de blir importert. Grunne vi må importere nve-komponenter dynamisk i klien
+delen er at Vitepress bygger sider via SSR, som betyr at noen komponenter (de som f.eks bruker Web API via nettleseren)
+kan ikke fungere i node miljø. Egentlig alle shoelace komponenter. Etter den første kjøring skal cache mappe opprettes
+under .vitepress, og den skal sikre at rerendering skal ikke skje igjen.
+[Les mer her.](https://vitepress.dev/guide/ssr-compat#ssr-compatibility)
 
-[VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (tidligere Volar) og deaktiver Vetur
+Vitepress sin routing er filbasert, derfor bør alt som skal vises på siden være i rotmappen doc-vitepress.
+All logikk, gjenbrukbare vue UI-komponenter, og layout-konfigurasjon ligger under mappen .vitepress/theme.
+
+Hver komponentdokumentasjon markdown-fil må arve komponentlayouten. Du kan sette den øverst i filen med
+
+```
+---
+layout: component
+---
+```
+
+Husk å importere komponenten innen `<script>`-taggene, ellers vil du ikke se innholdet. Vi kunne ha laget en automatisk import av komponenter i malene, men da må vi sjekke hele DOM-treet og se etter alle nve-komponenter. Dette er ikke den beste løsningen fra et ytelsesperspektiv, derfor forventer vi at utviklere skal importere komponentene selv. En annen bedre løsning kan være å skanne selve .md fil i en vue komponent og se etter alle nve-taggene og importere de automatisk.
+
+Når du legger til en ny komponent under doc-vitepress/components-mappen, må du restarte appen og kjøre `npm run dev` på nytt for å kunne se den i sidebaren.
+
+Før du lager en PR, test gjerne bygg lokalt med:
+
+```
+npm run doc:build
+```
+
+og deretter med:
+
+```
+npm run doc:preview
+```
