@@ -165,7 +165,14 @@
       "Dangerlevel.Foreground.Subtle.Level2": "8c530275bd8b02fafdde02defbede273e1e018c4",
       "Dangerlevel.Foreground.Subtle.Level3": "a7e7f66122a6dda5158bbf3f67e288543e1f5172",
       "Dangerlevel.Foreground.Subtle.Level4": "d48e6bf0972daefbdfb76221069401fe6d9ef41e",
-      "Dangerlevel.Foreground.Subtle.Level5": "31cde76f751a78dbdcdad30125fe6b0f46c36c6b"
+      "Dangerlevel.Foreground.Subtle.Level5": "31cde76f751a78dbdcdad30125fe6b0f46c36c6b",
+      "Interactive.danger.background.default": "0e5f74b5572c67403a3e96dfcbcf5bea483f81a1",
+      "Interactive.danger.background.hover": "a0af67a09848c7051ea20fd1f6ed166a6fd73bd9",
+      "Interactive.danger.background.disabled": "08a832d39c3a1ed467946da5b5e4a85fe73b3b99",
+      "Interactive.danger.foreground.default": "d14a94efc97a92a89e722e5c5cb886384ddd3a3a",
+      "Interactive.danger.foreground.hover": "32efc122079623ebd3e6bad92ff408b89c807553",
+      "Interactive.danger.foreground.disabled": "03efcda6e9a98352a7815dc7db713e5573c64db2",
+      "Interactive.danger.border.focus": "455dff29e13016fbc45faaf57c354dca51711c96"
     },
     "group": "Theme"
   },
@@ -223,6 +230,12 @@
       "Interactive.Links.Hover": "96fd57c6a9e11c09a7c8d40f41e9b2c03f57868e",
       "Interactive.Links.Focus": "b88777303f825bc656db524cbd6d291e27037812",
       "Interactive.Links.Visited": "13c39fdb25be44bff559ac3d044209d194ca5c4d",
+      "Interactive.danger.background.default": "0e5f74b5572c67403a3e96dfcbcf5bea483f81a1",
+      "Interactive.danger.background.hover": "a0af67a09848c7051ea20fd1f6ed166a6fd73bd9",
+      "Interactive.danger.background.disabled": "08a832d39c3a1ed467946da5b5e4a85fe73b3b99",
+      "Interactive.danger.foreground.default": "d14a94efc97a92a89e722e5c5cb886384ddd3a3a",
+      "Interactive.danger.foreground.hover": "32efc122079623ebd3e6bad92ff408b89c807553",
+      "Interactive.danger.foreground.disabled": "03efcda6e9a98352a7815dc7db713e5573c64db2",
       "Feedback.Background.Default.Info": "6da713d930d65fc40b557dd0511a88e36bff2388",
       "Feedback.Background.Default.Error": "926610ed927537b9ea55afcfc1e2d49f5ebbece0",
       "Feedback.Background.Default.Warning": "189395f968e184e46d4f035021b8ad87d60c0bc8",
@@ -282,7 +295,8 @@
       "Dangerlevel.Foreground.Subtle.Level2": "8c530275bd8b02fafdde02defbede273e1e018c4",
       "Dangerlevel.Foreground.Subtle.Level3": "a7e7f66122a6dda5158bbf3f67e288543e1f5172",
       "Dangerlevel.Foreground.Subtle.Level4": "d48e6bf0972daefbdfb76221069401fe6d9ef41e",
-      "Dangerlevel.Foreground.Subtle.Level5": "31cde76f751a78dbdcdad30125fe6b0f46c36c6b"
+      "Dangerlevel.Foreground.Subtle.Level5": "31cde76f751a78dbdcdad30125fe6b0f46c36c6b",
+      "Interactive.danger.border.focus": "455dff29e13016fbc45faaf57c354dca51711c96"
     },
     "group": "Theme"
   },

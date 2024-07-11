@@ -217,6 +217,43 @@
         "value": "{grey.600}",
         "type": "color"
       }
+    },
+    "danger": {
+      "background": {
+        "default": {
+          "value": "{red.700}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{red.850}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{red.700}",
+          "type": "color",
+          "$extensions": {}
+        }
+      },
+      "foreground": {
+        "default": {
+          "value": "{grey.000}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{grey.000}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{grey.000}",
+          "type": "color"
+        }
+      },
+      "border": {
+        "focus": {
+          "value": "{blue.500}",
+          "type": "color"
+        }
+      }
     }
   },
   "Feedback": {

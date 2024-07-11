@@ -217,6 +217,42 @@
         "value": "{grey.200}",
         "type": "color"
       }
+    },
+    "danger": {
+      "background": {
+        "default": {
+          "value": "{red.500}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{red.400}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{red.500}",
+          "type": "color"
+        }
+      },
+      "foreground": {
+        "default": {
+          "value": "{grey.950}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{grey.950}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{grey.950}",
+          "type": "color"
+        }
+      },
+      "border": {
+        "focus": {
+          "value": "{blue.500}",
+          "type": "color"
+        }
+      }
     }
   },
   "Feedback": {
