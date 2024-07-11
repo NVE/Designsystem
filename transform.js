@@ -25,9 +25,9 @@ const isVarsomDark = process.argv?.[2] === 'varsom_dark';
 
 const tokenfilter = (token) => {
   if (isDark) {
-    return token.filePath === darkModeFile;
+    return token.filePath.replaceAll('\\', '/') === darkModeFile.replaceAll('\\', '/');
   } else if (isVarsomDark) {
-    return token.filePath === darkModeVarsomFile;
+    return token.filePath.replaceAll('\\', '/') === darkModeVarsomFile.replaceAll('\\', '/');
   }
   return true;
 };
@@ -50,11 +50,19 @@ StyleDictionary.registerFormat({
   name: 'css/variables',
   formatter: function ({ dictionary, file, options }) {
     const { outputReferences, theme } = options;
+    const isDarkmode = theme === 'darkmode';
     return (
       fileHeader({ file }) +
       `@import './global.css'; \n` +
+      `${isDarkmode ? '@media not print {\n  ' : ''}` +
       `:root${theme ? '.' + theme : ''} {\n` +
-      formattedVariables({ format: 'css', dictionary, outputReferences }) +
+      formattedVariables({
+        format: 'css',
+        dictionary,
+        outputReferences,
+        formatting: { indentation: `${isDarkmode ? '    ' : '  '}` },
+      }) +
+      `${isDarkmode ? '\n  }\n' : ''}` +
       '\n}\n'
     );
   },
