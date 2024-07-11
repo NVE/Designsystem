@@ -1,103 +1,63 @@
-# Github-actions for å bygge og installere test- og produksjonsversjon av dokumentasjons-appen i skyen
+# Github-actions for å bygge og installere test- og produksjonsversjon av dokumentasjons-appen
+# Applikasjonen kjører som en static web app i Azure
+# Hver pull request har en egen testversjon av appen, se "Preview environments" for denne appen i Azure
 
-name: Azure Static Web Apps CI/CD
+name: Bygg og installasjon av dok-app i skyen
 
 on:
   push:
     branches:
-      - main
+      - test/vite-press-codesansbox #TODO: Endre til main før vi fullfører PR
+
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
 
 jobs:
-  # Run when a pull request is created or updated
-  build_and_deploy_pull_request:
-    if: github.event_name == 'pull_request' && github.event.action != 'closed'
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
-    name: Build and Deploy Pull Request
+    name: Bygg og installer
     steps:
-      - name: Checkout repository
+      - name: Hent kode fra Github
         uses: actions/checkout@v4
         with:
           submodules: true
+          lfs: false
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+      - name: Klargjør Node.js-miljø
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20.x'
 
-      - name: Install dependencies
+      - name: Installer avhengigheter
         run: npm install
 
-      - name: Build And Deploy
+      - name: Bygg både nve-komponenter og dokumentasjons-nettsted
+        run: npm run build:doc
+
+      - name: Installer dokumentasjons-nettsted
+        id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BRAVE_MEADOW_0C645BD03 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: 'upload'
-          app_location: 'doc-site'
-          output_location: 'dist'
-          app_build_command: 'npm run build'
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: 'doc-site/dist' # When used with skip_app_build: true, this value is the app's build output location.
+          output_location: ''
+          skip_app_build: true # Vi har allerede bygget appen, så trenger ikke gjøre det her
+          skip_api_build: true # Dette nettstedet trenger ikke noe API
 
-  # # Run when we push to develop
-  # build_and_deploy_develop:
-  #   if: github.event_name == 'push'
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-  #     SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-  #     SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
-  #     SENTRY_URL: ${{ secrets.SENTRY_URL }}
-
-  #   name: Build and Deploy develop-branch (beta.regobs.no)
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         submodules: true
-  #     - name: Create apiKey.json file
-  #       env:
-  #         REGOBS_API_KEY: ${{secrets.REGOBS_APPTOKEN}}
-  #       shell: bash
-  #       run: |
-  #         echo "{\"apiKey\":\"$REGOBS_API_KEY\"}" > ./src/assets/apikey.json
-  #     - name: Build And Deploy
-  #       id: builddeploy
-  #       uses: Azure/static-web-apps-deploy@v1
-  #       with:
-  #         azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_WATER_056410803 }}
-  #         repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
-  #         action: 'upload'
-  #         ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-  #         # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-  #         app_location: '/' # App source code path
-  #         # api_location: "api" # Api source code path - optional
-  #         output_location: 'www' # Built app content directory - optional
-  #         # app_build_command: For Node.js applications, you can define a custom command to build the static content application.
-  #         app_build_command: 'npm run translations:add-nn-app-fallback && npm run create-version-file && npm run build:prod'
-  #         ###### End of Repository/Build Configurations ######
-  #     - id: set_version
-  #       run: |
-  #         content=`cat ./src/environments/version.json`
-  #         echo "::set-output name=packageJson::$content"
-  #     - run: |
-  #         echo '${{fromJson(steps.set_version.outputs.packageJson).version}}'
-  #     ###### Install Sentry CLI & Create new Sentry releas ######
-  #     - run: |
-  #         curl -sL https://sentry.io/get-cli/ | bash
-  #         sentry-cli releases new ${{fromJson(steps.set_version.outputs.packageJson).version}}
-  #         sentry-cli releases files ${{fromJson(steps.set_version.outputs.packageJson).version}} upload-sourcemaps www -x .js -x .map --dist ${{fromJson(steps.set_version.outputs.packageJson).revision}} --log-level=debug --validate --verbose --rewrite --strip-common-prefix --url-prefix=~
-  #         sentry-cli releases finalize ${{fromJson(steps.set_version.outputs.packageJson).version}}
-
-  # close_pull_request_job:
-  #   if: github.event_name == 'pull_request' && github.event.action == 'closed'
-  #   runs-on: ubuntu-latest
-  #   name: Close Pull Request Job
-  #   steps:
-  #     - name: Close Pull Request
-  #       id: closepullrequest
-  #       uses: Azure/static-web-apps-deploy@v1
-  #       with:
-  #         azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_WATER_056410803 }}
-  #         action: 'close'
+  close_pull_request_job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Lukker pull request og fjerner testmiljø for denne PR
+    steps:
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BRAVE_MEADOW_0C645BD03 }}
+          action: 'close'
