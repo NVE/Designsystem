@@ -10,7 +10,7 @@ Alle komponentene som kan brukes til å samle inn data har støtte for validerin
 
 Både sjekkbokser og radioknapper må ligge i en gruppe for å kunne valideres.
 
-Det finnes to måter å validere på, [Constraint Validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation) og "egendefinert" validering.
+Det finnes to måter å validere på, [Constraint Validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation) og manuell validering.
 
 ## Constraint Validation
 
@@ -24,9 +24,9 @@ Du finner eksempler på bruk av constraint validation på sida for [nve-input](.
 
 `nve-radio-group` og `nve-checkbox-group` støtter kun `required`.
 
-## Egendefinert validering
+## Manuell validering
 
-Du kan også lage dine egne valideringsregler med `setCustomValidity()`.
+Du kan også lage dine egne valideringsregler og bruke `setCustomValidity()` for å vise en feilmelding.
 
 Her er et eksempel på hvordan man kan lage egne valideringsregler i Vue:
 
@@ -109,4 +109,4 @@ const validate = () => {
 Hvis en komponent feiler, sender den `sl-invalid`-event. Lytt etter denne hvis du trenger å legge til noe ekstra funksjonalitet.
 Ifølge shoelace-dokumentasjonen skulle også `form` sende `sl-invalid` hvis noen av feltene feiler, men det virker som dette ikke fungerer bestandig.
 
-NB! Vi støtter ikke bruk av constraint validation og egendefinert validering i samme komponent.
+NB! Vi støtter ikke bruk av constraint validation og manuell validering i samme komponent.

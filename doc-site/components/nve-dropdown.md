@@ -2,6 +2,10 @@
 layout: component
 ---
 
+:::tip
+For nedtrekksliste/"rullgardin"/dropdown-list, bruk [nve-select](nve-select.html)
+:::
+
 <CodeExamplePreview>
 
 ```html
