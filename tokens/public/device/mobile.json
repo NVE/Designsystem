@@ -721,6 +721,10 @@
     "Content": {
       "value": "{Content-area.mobile}",
       "type": "sizing"
+    },
+    "margin": {
+      "value": "{Device-margin.mobile}",
+      "type": "sizing"
     }
   },
   "Sizing": {

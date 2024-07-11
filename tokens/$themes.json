@@ -106,6 +106,13 @@
       "Interactive.Links.Hover": "96fd57c6a9e11c09a7c8d40f41e9b2c03f57868e",
       "Interactive.Links.Focus": "b88777303f825bc656db524cbd6d291e27037812",
       "Interactive.Links.Visited": "13c39fdb25be44bff559ac3d044209d194ca5c4d",
+      "Interactive.danger.background.default": "0e5f74b5572c67403a3e96dfcbcf5bea483f81a1",
+      "Interactive.danger.background.hover": "a0af67a09848c7051ea20fd1f6ed166a6fd73bd9",
+      "Interactive.danger.background.disabled": "08a832d39c3a1ed467946da5b5e4a85fe73b3b99",
+      "Interactive.danger.foreground.default": "d14a94efc97a92a89e722e5c5cb886384ddd3a3a",
+      "Interactive.danger.foreground.hover": "32efc122079623ebd3e6bad92ff408b89c807553",
+      "Interactive.danger.foreground.disabled": "03efcda6e9a98352a7815dc7db713e5573c64db2",
+      "Interactive.danger.border.focus": "455dff29e13016fbc45faaf57c354dca51711c96",
       "Feedback.Background.Default.Info": "6da713d930d65fc40b557dd0511a88e36bff2388",
       "Feedback.Background.Default.Error": "926610ed927537b9ea55afcfc1e2d49f5ebbece0",
       "Feedback.Background.Default.Warning": "189395f968e184e46d4f035021b8ad87d60c0bc8",
@@ -165,14 +172,7 @@
       "Dangerlevel.Foreground.Subtle.Level2": "8c530275bd8b02fafdde02defbede273e1e018c4",
       "Dangerlevel.Foreground.Subtle.Level3": "a7e7f66122a6dda5158bbf3f67e288543e1f5172",
       "Dangerlevel.Foreground.Subtle.Level4": "d48e6bf0972daefbdfb76221069401fe6d9ef41e",
-      "Dangerlevel.Foreground.Subtle.Level5": "31cde76f751a78dbdcdad30125fe6b0f46c36c6b",
-      "Interactive.danger.background.default": "0e5f74b5572c67403a3e96dfcbcf5bea483f81a1",
-      "Interactive.danger.background.hover": "a0af67a09848c7051ea20fd1f6ed166a6fd73bd9",
-      "Interactive.danger.background.disabled": "08a832d39c3a1ed467946da5b5e4a85fe73b3b99",
-      "Interactive.danger.foreground.default": "d14a94efc97a92a89e722e5c5cb886384ddd3a3a",
-      "Interactive.danger.foreground.hover": "32efc122079623ebd3e6bad92ff408b89c807553",
-      "Interactive.danger.foreground.disabled": "03efcda6e9a98352a7815dc7db713e5573c64db2",
-      "Interactive.danger.border.focus": "455dff29e13016fbc45faaf57c354dca51711c96"
+      "Dangerlevel.Foreground.Subtle.Level5": "31cde76f751a78dbdcdad30125fe6b0f46c36c6b"
     },
     "group": "Theme"
   },
@@ -236,6 +236,7 @@
       "Interactive.danger.foreground.default": "d14a94efc97a92a89e722e5c5cb886384ddd3a3a",
       "Interactive.danger.foreground.hover": "32efc122079623ebd3e6bad92ff408b89c807553",
       "Interactive.danger.foreground.disabled": "03efcda6e9a98352a7815dc7db713e5573c64db2",
+      "Interactive.danger.border.focus": "455dff29e13016fbc45faaf57c354dca51711c96",
       "Feedback.Background.Default.Info": "6da713d930d65fc40b557dd0511a88e36bff2388",
       "Feedback.Background.Default.Error": "926610ed927537b9ea55afcfc1e2d49f5ebbece0",
       "Feedback.Background.Default.Warning": "189395f968e184e46d4f035021b8ad87d60c0bc8",
@@ -295,8 +296,7 @@
       "Dangerlevel.Foreground.Subtle.Level2": "8c530275bd8b02fafdde02defbede273e1e018c4",
       "Dangerlevel.Foreground.Subtle.Level3": "a7e7f66122a6dda5158bbf3f67e288543e1f5172",
       "Dangerlevel.Foreground.Subtle.Level4": "d48e6bf0972daefbdfb76221069401fe6d9ef41e",
-      "Dangerlevel.Foreground.Subtle.Level5": "31cde76f751a78dbdcdad30125fe6b0f46c36c6b",
-      "Interactive.danger.border.focus": "455dff29e13016fbc45faaf57c354dca51711c96"
+      "Dangerlevel.Foreground.Subtle.Level5": "31cde76f751a78dbdcdad30125fe6b0f46c36c6b"
     },
     "group": "Theme"
   },
@@ -330,7 +330,8 @@
       "Sizing.large": "6f389d3a2ca5443172f19003b8cc0b21ce85e021",
       "Sizing.x-large": "62a2f2c56766b883de6b275875dc67a8f872e6c0",
       "Sizing.3x-small": "ee2acad4a9341d793c4f68bd01799ce364c6eda0",
-      "Sizing.4x-small": "c7487c89d9ac6e9a112df4a834132ca51fbdd7dc"
+      "Sizing.4x-small": "c7487c89d9ac6e9a112df4a834132ca51fbdd7dc",
+      "Device.margin": "ab0dc86a5da10115abcfafc71c1895a1b7ae33be"
     },
     "group": "Device"
   },
@@ -365,7 +366,8 @@
       "Sizing.large": "6f389d3a2ca5443172f19003b8cc0b21ce85e021",
       "Sizing.x-large": "62a2f2c56766b883de6b275875dc67a8f872e6c0",
       "Sizing.3x-small": "ee2acad4a9341d793c4f68bd01799ce364c6eda0",
-      "Sizing.4x-small": "c7487c89d9ac6e9a112df4a834132ca51fbdd7dc"
+      "Sizing.4x-small": "c7487c89d9ac6e9a112df4a834132ca51fbdd7dc",
+      "Device.margin": "ab0dc86a5da10115abcfafc71c1895a1b7ae33be"
     }
   },
   {
@@ -397,7 +399,8 @@
       "Sizing.large": "6f389d3a2ca5443172f19003b8cc0b21ce85e021",
       "Sizing.x-large": "62a2f2c56766b883de6b275875dc67a8f872e6c0",
       "Sizing.3x-small": "ee2acad4a9341d793c4f68bd01799ce364c6eda0",
-      "Sizing.4x-small": "c7487c89d9ac6e9a112df4a834132ca51fbdd7dc"
+      "Sizing.4x-small": "c7487c89d9ac6e9a112df4a834132ca51fbdd7dc",
+      "Device.margin": "ab0dc86a5da10115abcfafc71c1895a1b7ae33be"
     },
     "$figmaCollectionId": "VariableCollectionId:1679:2794",
     "$figmaModeId": "1679:13"
@@ -432,7 +435,8 @@
       "Sizing.large": "6f389d3a2ca5443172f19003b8cc0b21ce85e021",
       "Sizing.x-large": "62a2f2c56766b883de6b275875dc67a8f872e6c0",
       "Sizing.3x-small": "ee2acad4a9341d793c4f68bd01799ce364c6eda0",
-      "Sizing.4x-small": "c7487c89d9ac6e9a112df4a834132ca51fbdd7dc"
+      "Sizing.4x-small": "c7487c89d9ac6e9a112df4a834132ca51fbdd7dc",
+      "Device.margin": "ab0dc86a5da10115abcfafc71c1895a1b7ae33be"
     },
     "group": "Device"
   },
@@ -586,7 +590,11 @@
       "Device-Width.mobile": "4763cdbdf840fd903492e0159f298a24e1f0ae31",
       "Device-Width.desktop-small": "fadc50cce1592debc0ec23ece460877fe2027fc7",
       "Device-Width.desktop": "726b91bfe9c8a83fa74cf80c03710170c5dd961b",
-      "Device-Width.desktop-large": "f15016fe81cc1dc2855d95e3e5d36ab5c17f7a97"
+      "Device-Width.desktop-large": "f15016fe81cc1dc2855d95e3e5d36ab5c17f7a97",
+      "Device-margin.mobile": "2e6c9415e79c16bec8a47dde11fd9bdc6ba7dfe4",
+      "Device-margin.desktop-small": "e8e419e5ae9d6a171668f14525165e1b4d4d0fed",
+      "Device-margin.desktop": "77bfccf939b28102a8709063f2f14bbf78fb9a7c",
+      "Device-margin.desktop-large": "bcb1536728217b84b92be933f431bf0f04d53067"
     },
     "group": "Brand"
   },
@@ -741,7 +749,11 @@
       "Device-Width.mobile": "4763cdbdf840fd903492e0159f298a24e1f0ae31",
       "Device-Width.desktop-small": "fadc50cce1592debc0ec23ece460877fe2027fc7",
       "Device-Width.desktop": "726b91bfe9c8a83fa74cf80c03710170c5dd961b",
-      "Device-Width.desktop-large": "f15016fe81cc1dc2855d95e3e5d36ab5c17f7a97"
+      "Device-Width.desktop-large": "f15016fe81cc1dc2855d95e3e5d36ab5c17f7a97",
+      "Device-margin.mobile": "2e6c9415e79c16bec8a47dde11fd9bdc6ba7dfe4",
+      "Device-margin.desktop-small": "e8e419e5ae9d6a171668f14525165e1b4d4d0fed",
+      "Device-margin.desktop": "77bfccf939b28102a8709063f2f14bbf78fb9a7c",
+      "Device-margin.desktop-large": "bcb1536728217b84b92be933f431bf0f04d53067"
     },
     "group": "Brand"
   }

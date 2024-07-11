@@ -1067,7 +1067,7 @@
   },
   "Content-area": {
     "mobile": {
-      "value": "345px",
+      "value": "366px",
       "type": "sizing"
     },
     "desktop-small": {
@@ -1085,7 +1085,7 @@
   },
   "Device-Width": {
     "mobile": {
-      "value": "393px",
+      "value": "390px",
       "type": "sizing"
     },
     "desktop-small": {
@@ -1098,6 +1098,24 @@
     },
     "desktop-large": {
       "value": "2440px",
+      "type": "sizing"
+    }
+  },
+  "Device-margin": {
+    "mobile": {
+      "value": "24px",
+      "type": "sizing"
+    },
+    "desktop-small": {
+      "value": "50px",
+      "type": "sizing"
+    },
+    "desktop": {
+      "value": "220px",
+      "type": "sizing"
+    },
+    "desktop-large": {
+      "value": "720px",
       "type": "sizing"
     }
   }

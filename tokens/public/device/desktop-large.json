@@ -721,6 +721,10 @@
     "Content": {
       "value": "{Content-area.desktop-large}",
       "type": "sizing"
+    },
+    "margin": {
+      "value": "{Device-margin.desktop-large}",
+      "type": "sizing"
     }
   },
   "Sizing": {
