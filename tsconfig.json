@@ -25,7 +25,9 @@
 
     "baseUrl": "./",
     "paths": {
-      "@interfaces/*": ["src/interfaces/*"]
+      "@interfaces/*": ["src/interfaces/*"],
+      "@utils/*": ["src/utils/*"]
+
     }
   },
   "include": ["src"]
