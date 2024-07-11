@@ -1115,7 +1115,7 @@
       "type": "sizing"
     },
     "desktop-large": {
-      "value": "720px",
+      "value": "620px",
       "type": "sizing"
     }
   }
