@@ -7,7 +7,7 @@ name: Bygg og installasjon av dok-app i skyen
 on:
   push:
     branches:
-      - test/vite-press-codesansbox #TODO: Endre til main før vi fullfører PR
+      - main
 
   pull_request:
     types: [opened, synchronize, reopened, closed]
