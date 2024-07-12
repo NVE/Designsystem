@@ -617,15 +617,15 @@
   },
   "spacing": {
     "xx-small": {
-      "value": "{Dimensions.0,5x}",
-      "type": "spacing"
-    },
-    "x-small": {
       "value": "{Dimensions.1x}",
       "type": "spacing"
     },
-    "small": {
+    "x-small": {
       "value": "{Dimensions.2x}",
+      "type": "spacing"
+    },
+    "small": {
+      "value": "{Dimensions.3x}",
       "type": "spacing"
     },
     "medium": {
@@ -645,15 +645,15 @@
       "type": "spacing"
     },
     "3x-large": {
-      "value": "{Dimensions.13x}",
+      "value": "{Dimensions.16x}",
       "type": "spacing"
     },
     "4x-large": {
-      "value": "{Dimensions.15x}",
+      "value": "{Dimensions.24x}",
       "type": "spacing"
     },
     "5x-large": {
-      "value": "{Dimensions.17x}",
+      "value": "{Dimensions.30x}",
       "type": "spacing"
     }
   },

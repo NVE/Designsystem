@@ -828,7 +828,7 @@
         "type": "spacing"
       },
       "desktop-large": {
-        "value": "620",
+        "value": "620px",
         "type": "spacing"
       }
     }

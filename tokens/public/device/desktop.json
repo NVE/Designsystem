@@ -653,7 +653,7 @@
       "type": "spacing"
     },
     "5x-large": {
-      "value": "{Dimensions.20x}",
+      "value": "{Dimensions.30x}",
       "type": "spacing"
     }
   },
