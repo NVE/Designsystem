@@ -36,20 +36,43 @@ Bruk `orientation` for å velge retning. `vertical` er standard.
 
 ### Valgte verdier
 
-TODO: Dette funker ikke. Lage et Vue-eksempel i stedet?
+`selectedValues` gir deg en liste av valgte avkrysningsbokser sin `value`
 
-`selectedValues` gir deg en liste av valgte avkrysningsbokser sin `value`. Klikk på elementet og sjekk konsollet for å se `selectedValues`.
-
-<CodeExamplePreview>
-
-```html
-<nve-checkbox-group label="Vennligst velg 1 eller 2" onclick="console.log('selectedValues er ' + selectedValues)">
-  <nve-checkbox value="value1">1</nve-checkbox>
-  <nve-checkbox value="value2">2</nve-checkbox>
-</nve-checkbox-group>
+```vue
+<template>
+  <nve-checkbox-group label="Vennligst velg 1 eller 2" :selectedValues="result">
+    <nve-checkbox value="value1">1</nve-checkbox>
+    <nve-checkbox value="value2">2</nve-checkbox>
+  </nve-checkbox-group>
+  Du har valgt: {{ result }}
+</template>
+<script setup lang="ts">
+import 'nve-designsystem/components/nve-checkbox-group/nve-checkbox-group.component.js';
+import 'nve-designsystem/components/nve-checkbox/nve-checkbox.component.js';
+import { ref } from 'vue';
+const result = ref<string[]>([]);
+</script>
 ```
 
-</CodeExamplePreview>
+<SandboxPreview>
+
+```
+<template>
+  <nve-checkbox-group label="Vennligst velg 1 eller 2" :selectedValues="result">
+    <nve-checkbox value="value1">1</nve-checkbox>
+    <nve-checkbox value="value2">2</nve-checkbox>
+  </nve-checkbox-group>
+  Du har valgt: {{ result }}
+</template>
+<script setup lang="ts">
+import 'nve-designsystem/components/nve-checkbox-group/nve-checkbox-group.component.js';
+import 'nve-designsystem/components/nve-checkbox/nve-checkbox.component.js';
+import { ref } from 'vue';
+const result = ref<string[]>([]);
+</script>
+```
+
+</SandboxPreview>
 
 ### Hjelpetekst
 
