@@ -36,10 +36,11 @@ watch(
 
 const sandboxUrl = computed(() => {
   if (!sandboxId.value) return '';
-  return `https://codesandbox.io/embed/${sandboxId.value}?module=${encodeURIComponent(filePath)}`;
+  return `https://codesandbox.io/embed/${sandboxId.value}?module=${encodeURIComponent(filePath)}&view=split`;
 });
 
 // Codesandbox vue prosjekt oppsette. Kjøres via vue cli. Klarte ikke å kjøre vite script setup malen i codesandbox.
+// TODO: Ikke hardkode versjonsnummer til nve-designsystem
 const sandboxDefinition = (content: string) => ({
   files: {
     'package.json': {

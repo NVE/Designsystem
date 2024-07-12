@@ -38,22 +38,6 @@ Bruk `orientation` for å velge retning. `vertical` er standard.
 
 `selectedValues` gir deg en liste av valgte avkrysningsbokser sin `value`
 
-```vue
-<template>
-  <nve-checkbox-group label="Vennligst velg 1 eller 2" :selectedValues="result">
-    <nve-checkbox value="value1">1</nve-checkbox>
-    <nve-checkbox value="value2">2</nve-checkbox>
-  </nve-checkbox-group>
-  Du har valgt: {{ result }}
-</template>
-<script setup lang="ts">
-import 'nve-designsystem/components/nve-checkbox-group/nve-checkbox-group.component.js';
-import 'nve-designsystem/components/nve-checkbox/nve-checkbox.component.js';
-import { ref } from 'vue';
-const result = ref<string[]>([]);
-</script>
-```
-
 <SandboxPreview>
 
 ```
@@ -64,10 +48,12 @@ const result = ref<string[]>([]);
   </nve-checkbox-group>
   Du har valgt: {{ result }}
 </template>
+
 <script setup lang="ts">
 import 'nve-designsystem/components/nve-checkbox-group/nve-checkbox-group.component.js';
 import 'nve-designsystem/components/nve-checkbox/nve-checkbox.component.js';
 import { ref } from 'vue';
+
 const result = ref<string[]>([]);
 </script>
 ```
