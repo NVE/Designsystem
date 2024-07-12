@@ -796,7 +796,7 @@
     }
   },
   "Content": {
-    "spacing-top&bottom": {
+    "margin-top-bottom": {
       "mobile": {
         "value": "24px",
         "type": "spacing"
@@ -811,6 +811,24 @@
       },
       "desktop-large": {
         "value": "40px",
+        "type": "spacing"
+      }
+    },
+    "margin-left-right": {
+      "mobile": {
+        "value": "24px",
+        "type": "spacing"
+      },
+      "desktop-small": {
+        "value": "50px",
+        "type": "spacing"
+      },
+      "desktop": {
+        "value": "220px",
+        "type": "spacing"
+      },
+      "desktop-large": {
+        "value": "620",
         "type": "spacing"
       }
     }
@@ -1098,24 +1116,6 @@
     },
     "desktop-large": {
       "value": "2440px",
-      "type": "sizing"
-    }
-  },
-  "Device-margin": {
-    "mobile": {
-      "value": "24px",
-      "type": "sizing"
-    },
-    "desktop-small": {
-      "value": "50px",
-      "type": "sizing"
-    },
-    "desktop": {
-      "value": "220px",
-      "type": "sizing"
-    },
-    "desktop-large": {
-      "value": "620px",
       "type": "sizing"
     }
   }
