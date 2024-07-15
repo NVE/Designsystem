@@ -1,10 +1,11 @@
 // https://vitepress.dev/guide/custom-theme
 import { h } from 'vue';
-import type { Theme } from 'vitepress';
+import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import './style.css';
 import '../../../public/css/global.css';
-import '../../../public/css/varsom.css';
+import '../theme/styles/nve_theme.css';
+import '../theme/styles/varsom_theme.css';
 import { icons, registerIconLibrary } from '../../../src/registerIcons/systemLibraryCustomization';
 import ComponentLayout from './components/ComponentLayout.vue';
 import CodeExamplePreview from './components/CodeExamplePreview.vue';
@@ -14,10 +15,32 @@ import LinkButton from './components/LinkButton.vue';
 import PageHeader from './components/PageHeader.vue';
 import ComponentOverview from './components/ComponentOverview.vue';
 import Card from './components/Card.vue';
+import ThemeSelect from './components/ThemeSelect.vue';
+import { useCurrentTheme, Theme } from './composables/useCurrentTheme';
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
+    const { isDark } = useData();
+    const { currentTheme } = useCurrentTheme();
+
+    // Hente rikig tema
+    if (currentTheme.value === Theme.NVE) {
+      document.documentElement.classList.remove('varsom');
+      document.documentElement.classList.remove('varsom_darkmode');
+      document.documentElement.classList.add('nve');
+    } else {
+      document.documentElement.classList.remove('nve');
+      document.documentElement.classList.remove('nve_darkmode');
+      document.documentElement.classList.add('varsom');
+    }
+
+    // Setter darkmode må sikkert trigge det en gang til når jeg bytter tema
+    if (isDark.value) {
+      document.documentElement.classList.add(`${currentTheme.value}_darkmode`);
+    } else {
+      document.documentElement.classList.remove(`${currentTheme.value}_darkmode`);
+    }
     return h(DefaultTheme.Layout, null, {});
   },
   async enhanceApp({ app, router, siteData }) {
@@ -34,6 +57,7 @@ export default {
         await Promise.all(importPromises);
       })();
     }
+
     app.component('component', ComponentLayout);
     app.component('CodeExamplePreview', CodeExamplePreview);
     app.component('SandboxPreview', SandboxPreview);
@@ -42,11 +66,11 @@ export default {
     app.component('PageHeader', PageHeader);
     app.component('ComponentOverview', ComponentOverview);
     app.component('Card', Card);
-
+    app.component('ThemeSelect', ThemeSelect);
     registerIconLibrary('system', {
       resolver: (name) => {
         return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
       },
     });
   },
-} satisfies Theme;
+};
