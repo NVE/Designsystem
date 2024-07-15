@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress';
 import fs from 'fs';
 import path from 'path';
+import ChangeThemaSelect from './theme/components/ChangeThemaSelect.vue';
 
 // Henter navn på alle filene i 'components' mappe
 const componentFiles = fs.readdirSync(path.resolve(__dirname, '../components'));
@@ -17,6 +18,7 @@ const figmaIcon = {
 
 export default defineConfig({
   title: 'NVE Designsystem',
+  head: [['link', { rel: 'icon', href: '/assets/nve-logo.svg' }]],
   themeConfig: {
     docFooter: {
       prev: 'Forrige side',
@@ -29,6 +31,7 @@ export default defineConfig({
     nav: [
       { text: 'Introduksjon', link: '/introduction/home' },
       { text: 'Komponenter', link: `/components/nve-alert.html` },
+      { component: 'ChangeThemaSelect' },
     ],
     outlineTitle: 'På denne sida',
     sidebar: [
