@@ -19,16 +19,13 @@
     "publish": "node scripts/prepublish.js publish",
     "build": "node scripts/build.js",
     "build:dev": "node scripts/build.js dev",
+    "inject": "node scripts/injectDeviceStyles.js",
     "preview": "vite preview",
     "lint": "eslint \"**/*.{js,ts}\"",
     "doc": "npx web-component-analyzer analyze src/components/**/*.ts --format markdown --outDir doc",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build  && npm run copy-files-storybook",
-    "build:light": "node transform.js light",
-    "build:dark": "node transform.js dark",
-    "build:varsom_light": "node transform.js varsom",
-    "build:varsom_dark": "node transform.js varsom_dark",
-    "tokenbuild": "npm run build:light && npm run build:dark && npm run build:varsom_light && npm run build:varsom_dark",
+    "tokenbuild": "node tokenTransform/tokenTransform.js && node scripts/injectDeviceStyles.js",
     "copy-files-storybook": "cpy \"./build/css/*\" \"./src/styles/*\" storybook-static/assets"
   },
   "dependencies": {
