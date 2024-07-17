@@ -104,8 +104,6 @@ Bruk `closable` for å vise en lukke-knapp på høyre side, som skjuler komponen
 
 <CodeExamplePreview arrangeComponentsVertically>
 
-TODO: Fikse lukke-scriptet
-
 ```html
 <nve-alert open closable class="alert-closeable"> Trykk på krysset for å lukke denne </nve-alert>
 
