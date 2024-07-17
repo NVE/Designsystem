@@ -1,19 +1,5 @@
 {
   "Header": {
-    "2x-large": {
-      "value": {
-        "fontFamily": "{fontFamilies.source-sans-pro}",
-        "fontWeight": "{fontWeight.semibold}",
-        "lineHeight": "{lineHeights.0}",
-        "fontSize": "{fontSize.3xlarge}",
-        "letterSpacing": "{letterSpacing.0}",
-        "paragraphSpacing": "{paragraphSpacing.5}",
-        "paragraphIndent": "{paragraphIndent.0}",
-        "textCase": "{textCase.none}",
-        "textDecoration": "{textDecoration.none}"
-      },
-      "type": "typography"
-    },
     "x-large": {
       "value": {
         "fontFamily": "{fontFamilies.source-sans-pro}",
@@ -64,20 +50,6 @@
         "fontSize": "{fontSize.medium}",
         "letterSpacing": "{letterSpacing.0}",
         "paragraphSpacing": "{paragraphSpacing.3}",
-        "paragraphIndent": "{paragraphIndent.0}",
-        "textCase": "{textCase.none}",
-        "textDecoration": "{textDecoration.none}"
-      },
-      "type": "typography"
-    },
-    "x-small": {
-      "value": {
-        "fontFamily": "{fontFamilies.source-sans-pro}",
-        "fontWeight": "{fontWeight.semibold}",
-        "lineHeight": "{lineHeights.4}",
-        "fontSize": "{fontSize.small}",
-        "letterSpacing": "{letterSpacing.0}",
-        "paragraphSpacing": "{paragraphSpacing.2}",
         "paragraphIndent": "{paragraphIndent.0}",
         "textCase": "{textCase.none}",
         "textDecoration": "{textDecoration.none}"
@@ -128,20 +100,6 @@
       },
       "type": "typography"
     },
-    "2x-large": {
-      "value": {
-        "fontFamily": "{fontFamilies.source-sans-pro}",
-        "fontWeight": "{fontWeight.regular}",
-        "lineHeight": "{lineHeights.0}",
-        "fontSize": "{fontSize.3xlarge}",
-        "letterSpacing": "{letterSpacing.0}",
-        "paragraphSpacing": "{paragraphSpacing.5}",
-        "paragraphIndent": "{paragraphIndent.0}",
-        "textCase": "{textCase.none}",
-        "textDecoration": "{textDecoration.none}"
-      },
-      "type": "typography"
-    },
     "medium": {
       "value": {
         "fontFamily": "{fontFamilies.source-sans-pro}",
@@ -150,20 +108,6 @@
         "fontSize": "{fontSize.large}",
         "letterSpacing": "{letterSpacing.0}",
         "paragraphSpacing": "{paragraphSpacing.3}",
-        "paragraphIndent": "{paragraphIndent.0}",
-        "textCase": "{textCase.none}",
-        "textDecoration": "{textDecoration.none}"
-      },
-      "type": "typography"
-    },
-    "x-small": {
-      "value": {
-        "fontFamily": "{fontFamilies.source-sans-pro}",
-        "fontWeight": "{fontWeight.regular}",
-        "lineHeight": "{lineHeights.4}",
-        "fontSize": "{fontSize.small}",
-        "letterSpacing": "{letterSpacing.0}",
-        "paragraphSpacing": "{paragraphSpacing.2}",
         "paragraphIndent": "{paragraphIndent.0}",
         "textCase": "{textCase.none}",
         "textDecoration": "{textDecoration.none}"
@@ -673,15 +617,15 @@
   },
   "spacing": {
     "xx-small": {
-      "value": "{Dimensions.0,5x}",
-      "type": "spacing"
-    },
-    "x-small": {
       "value": "{Dimensions.1x}",
       "type": "spacing"
     },
-    "small": {
+    "x-small": {
       "value": "{Dimensions.2x}",
+      "type": "spacing"
+    },
+    "small": {
+      "value": "{Dimensions.3x}",
       "type": "spacing"
     },
     "medium": {
@@ -701,15 +645,15 @@
       "type": "spacing"
     },
     "3x-large": {
-      "value": "{Dimensions.13x}",
+      "value": "{Dimensions.16x}",
       "type": "spacing"
     },
     "4x-large": {
-      "value": "{Dimensions.15x}",
+      "value": "{Dimensions.24x}",
       "type": "spacing"
     },
     "5x-large": {
-      "value": "{Dimensions.17x}",
+      "value": "{Dimensions.30x}",
       "type": "spacing"
     }
   },
@@ -763,6 +707,16 @@
       "value": "0.5rem",
       "type": "sizing",
       "description": "8px"
+    }
+  },
+  "content": {
+    "margin-top-bottom": {
+      "value": "{Content.margin-top-bottom.desktop-small}",
+      "type": "spacing"
+    },
+    "margin-left-right": {
+      "value": "{Content.margin-left-right.desktop-small}",
+      "type": "spacing"
     }
   }
 }

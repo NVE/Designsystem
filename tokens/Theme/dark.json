@@ -1,11 +1,11 @@
 {
   "Brand": {
     "Primary": {
-      "value": "{brand.300}",
+      "value": "{brand.500}",
       "type": "color"
     },
     "Light": {
-      "value": "{brand.500}",
+      "value": "{brand.300}",
       "type": "color"
     },
     "Deep": {
@@ -42,7 +42,7 @@
         "type": "color"
       },
       "Colored": {
-        "value": "{brand.000}",
+        "value": "{brand.300}",
         "type": "color"
       }
     },
@@ -216,6 +216,42 @@
       "Visited": {
         "value": "{grey.200}",
         "type": "color"
+      }
+    },
+    "danger": {
+      "background": {
+        "default": {
+          "value": "{red.500}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{red.400}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{red.500}",
+          "type": "color"
+        }
+      },
+      "foreground": {
+        "default": {
+          "value": "{grey.950}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{grey.950}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{grey.950}",
+          "type": "color"
+        }
+      },
+      "border": {
+        "focus": {
+          "value": "{blue.500}",
+          "type": "color"
+        }
       }
     }
   },
