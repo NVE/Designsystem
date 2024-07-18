@@ -202,6 +202,7 @@ export default class NveStep extends LitElement {
     return this.description ? html`<div class="step-description">${this.description}</div>` : '';
   }
 
+
   renderVerticalStep(): TemplateResult {
     return html`
       <div class="vertical-container">

@@ -38,6 +38,7 @@ export default defineConfig({
           { text: 'Om komponentbiblioteket', link: '/introduction/home' },
           { text: 'Bruk i Vue', link: '/introduction/vue' },
           { text: 'Validering', link: '/introduction/validation' },
+          { text: 'Nve-Stepper', link: '/introduction/stepper' },
         ],
       },
       { text: 'Komponenter', items: componentsLinks },
