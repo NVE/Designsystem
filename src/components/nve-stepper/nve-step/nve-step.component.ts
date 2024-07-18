@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { CSSResultArray, LitElement, TemplateResult, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-step.styles';
 
@@ -11,36 +11,32 @@ export enum StepState {
 
 export interface StepProps {
   title: string;
-  description: string;
+  description?: string;
   state: StepState;
   isSelected: boolean;
   readyForEntrance: boolean;
+  disableClick?: boolean;
+  orientation?: string;
 }
 
 @customElement('nve-step')
 export default class NveStep extends LitElement {
   @property({ reflect: true })
   title: string = '';
-  /**
-   * Avstand mellom steppene
-   */
+
+  /** Avstand mellom Steps */
   @property({ type: Number })
   spaceBetweenSteps = 200;
-  /**
-   * Hvilken ikonbibliotek som skal brukes, Sharp eller Outlined.
-   */
-  @property({ type: String })
-  iconLibrary: 'Outlined' | 'Sharp' = 'Outlined';
-  /**
-   * Stegets index
-   */
+
+  /** Step index */
   @property({ type: Number })
   index = 0;
 
   @property({ type: String })
   description: string = '';
+
   /**
-   * Er steget besøkt, ikke besøkt, fullført eller feilet
+   * Er Step besøkt, ikke besøkt, fullført eller feilet
    * @type {StepState}
    */
   @property({ type: Number })
@@ -48,90 +44,192 @@ export default class NveStep extends LitElement {
 
   @property({ type: Number })
   selectedStepIndex: number = 0;
-  /**
-   * Er steget valgt
-   */
+
+  /** Er Step valgt */
   @property({ type: Boolean, reflect: true })
   isSelected: boolean = false;
-  /**
-   * Er steget det siste i rekken
-   */
+
+  /** Er Step det siste i rekken */
   @property({ type: Boolean })
   isLast: boolean = false;
-  /**
-   * Er det lov å gå inn i steget, alle krav er oppfylt
-   */
-  @property({ type: Boolean })
-  entraceAllowed: boolean = false;
 
-  firstUpdated() {
+  /**  Er det lov å gå inn i Step, alle krav er oppfylt  */
+  @property({ type: Boolean })
+  entranceAllowed: boolean = false;
+
+  /** Deaktiverer muligheten til å klikke på komponenten slik at den blir valgt.*/
+  @property({ type: Boolean })
+  disableClick: boolean = false;
+
+    /**  Hvilken retning Steps skal gå. */
+  @property()
+  orientation: 'horizontal' | 'vertical' = 'horizontal';
+  
+
+  firstUpdated(): void {
     this.style.setProperty('--flex-grow', this.isLast ? '0' : '1');
   }
 
-  updated() {
+  updated(): void {
     this.style.setProperty('line-color', this.isLast ? '0' : '1');
   }
 
-  //TODO
-  // @property ({type :String })
-  // orientation: 'horizontal' | 'vertical' = 'horizontal';
+  static styles: CSSResultArray = [styles];
 
-  static styles = [styles];
+  isOrientationVertical(): boolean {
+    return this.orientation === 'vertical';
+  }
+
 
   iconForState(state: StepState): string {
     let icon = '';
     switch (state) {
       case StepState.NotStarted:
-        icon = `counter_${this.index + 1}`;
+        icon = 'circle';
         break;
       case StepState.Started:
-        if (this.isSelected) icon = `counter_${this.index + 1}`;
-        else icon = 'error';
+        icon = 'trip_origin';
         break;
       case StepState.Done:
-        if (this.isSelected) icon = `counter_${this.index + 1}`;
-        else icon = 'check_circle';
+        icon = 'check_circle';
         break;
       case StepState.Error:
         icon = 'error';
         break;
       default:
-        icon = `help_${this.iconLibrary}`;
+        icon = 'check_circle';
         break;
     }
     return icon;
   }
 
-  onClick() {
-    this.dispatchEvent(new CustomEvent('clicked', { detail: { index: this.index } }));
+  getStateText(state: StepState): string {
+    switch (state) {
+      case StepState.NotStarted:
+        return 'Ikke påbegynt';
+      case StepState.Started:
+        return 'Aktiv';
+      case StepState.Done:
+        return 'Fullført';
+      case StepState.Error:
+        return 'Feil';
+      default:
+        return 'Ikke påbegynt';
+    }
   }
 
-  render() {
+  getStateColorClass(state: StepState): string {
+    switch (state) {
+      case StepState.NotStarted:
+        return 'state-not-started-color';
+      case StepState.Started:
+        return 'state-started-color';
+      case StepState.Done:
+        return 'state-done-color';
+      case StepState.Error:
+        return 'state-error-color';
+      default:
+        return 'state-not-started-color';
+    }
+  }
+
+  getTitleClass(state: StepState): string {
+    switch (state) {
+      case StepState.NotStarted:
+        return 'state-not-started-color';
+      case StepState.Error:
+        return 'state-error-color';
+      default:
+        return '';
+    }
+  }
+
+  getIconClass(state: StepState): string {
+    switch (state) {
+      case StepState.Started:
+        return '';
+      case StepState.NotStarted:
+        return 'state-not-started-icon-color filled-icon';
+      case StepState.Error:
+        return 'state-error-color filled-icon';
+      default:
+        return 'filled-icon';
+    }
+  }
+
+  getIsClickableClass(): string {
+    return this.disableClick ? 'disable-click' : 'clickable';
+  }
+
+  getDividerColorClass(): string {
+    return this.index < this.selectedStepIndex ? 'divider-reached-color' : 'divider-not-reached-color';
+  }
+
+  onClick(): void {
+    if (!this.disableClick) {
+      this.dispatchEvent(new CustomEvent('clicked', { detail: { index: this.index } }));
+    }
+  }
+
+  renderDivider(): TemplateResult | string {
+    const dividerClass = this.isOrientationVertical() ? 'divider-vertical' : 'divider-horizontal';
+    return this.isLast
+      ? ''
+      : html`
+          <div class="vertical-divider-container">
+          <div
+          style="${this.isOrientationVertical() ? `height:${this.spaceBetweenSteps}px` : `min-width:${this.spaceBetweenSteps}px`}"
+          class="${dividerClass} ${this.getDividerColorClass()}"
+        ></div>
+        </div>`;
+  }
+
+  renderDescription(): TemplateResult | string {
+    return this.description ? html`<div class="step-description">${this.description}</div>` : '';
+  }
+
+
+  renderVerticalStep(): TemplateResult {
     return html`
-      <div class="step">
+      <div class="vertical-container">
+        <div class="step-figure-vertical">
+          <div
+            @click="${this.onClick}"
+            class="${this.getIsClickableClass()} ${this.getIconClass(this.state)}"
+          >
+            <nve-icon slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
+          </div>
+          ${this.renderDivider()}
+        </div>
+        <div class="text-container-vertical">
+          <div class="step-title step-title-vertical ${this.getTitleClass(this.state)}">${this.title}</div>
+          <div class="step-state ${this.getStateColorClass(this.state)}">
+            ${this.getStateText(this.state)}
+          </div>       
+          ${this.renderDescription()}
+        </div>
+      </div>
+    `;
+  }
+
+  render(): TemplateResult {
+    return this.isOrientationVertical() ? this.renderVerticalStep() : html`
         <div class="step-figure">
           <span
             @click="${this.onClick}"
-            class="${this.index <= this.selectedStepIndex ? 'reached' : ''} ${this.state == StepState.Error
-              ? 'hasError'
-              : ''} ${this.state > 0 ? '' : 'not-started'}"
+            class="${this.getIsClickableClass()} ${this.getIconClass(this.state)}"
           >
-            <nve-icon library=${this.iconLibrary} slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
+            <nve-icon  slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
           </span>
-
-          ${this.isLast
-            ? ''
-            : html`<div
-                style="min-width:${this.spaceBetweenSteps}px"
-                class="divider-horizontal ${this.index < this.selectedStepIndex ? 'reached-interval' : ''} ${this
-                  .state > 0
-                  ? ''
-                  : 'not-started'}"
-              ></div>`}
+          ${this.renderDivider()}
         </div>
-        <div class="step-title">${this.title}</div>
-        <div class="step-description">${this.description}</div>
-      </div>
+        <div class="${this.isLast ? "" : "text-container"}">
+          <div class="step-title ${this.getTitleClass(this.state)}">${this.title}</div>
+          <div class="step-state ${this.getStateColorClass(this.state)}">
+            ${this.getStateText(this.state)}
+          </div>       
+          ${this.renderDescription()}
+        </div>
     `;
   }
 }
