@@ -140,6 +140,18 @@ export default class NveStepperDemo extends LitElement implements INveComponent 
 
   render() {
     return html`
+      <h2>Mobile version</h2>
+      <div class="container">
+        <nve-stepper
+          id="verticalStepperWithDefaultButtons"
+          .steps=${custom_btn_steps1}
+          .orientation=${"vertical"}
+          .spaceBetweenSteps=${100}
+          .displayMobileVersion=${true}
+        ></nve-stepper>
+      </div>
+      <nve-divider></nve-divider>
+
       <h2>Vertical with default buttons</h2>
       <div class="container">
         <nve-stepper

@@ -2,6 +2,8 @@ import { CSSResultArray, LitElement, TemplateResult, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { StepProps, StepState } from './nve-step/nve-step.component';
 import styles from './nve-stepper.styles';
+import './nve-stepper-mobile.component';
+
 
 export interface INveStepper extends HTMLElement {
   nextStep(): void;
@@ -11,6 +13,9 @@ export interface INveStepper extends HTMLElement {
   getCurrentIndex(): number;
 }
 
+function isMobileDevice(): boolean {
+  return /Mobi|Android/i.test(navigator.userAgent);
+}
 @customElement('nve-stepper')
 export default class NveStepper extends LitElement {
   static styles: CSSResultArray = [styles];
@@ -35,6 +40,12 @@ export default class NveStepper extends LitElement {
 
   @property({ type: Boolean })
   hideStepButtons: boolean = false;
+
+  @property({ type: Boolean })
+  hideMobileStepButtons: boolean = false;
+
+  @property({ type: Boolean })
+  displayMobileVersion: boolean = false;
 
   reRender(): void {
     this.requestUpdate();
@@ -73,6 +84,7 @@ export default class NveStepper extends LitElement {
 
   finishSteps(): void {
     // Tom funksjon, kan defineres utenfor komponenten
+
   }
 
   setStep(index: number): void {
@@ -102,6 +114,18 @@ export default class NveStepper extends LitElement {
     if (this.selectedStepIndex.value === this.steps.length - 1) {
       return 'end';
     }
+  }
+
+  handleMobileNextStep() {
+    if (this.selectedStepIndex.value < this.steps.length - 1) {
+      this.nextStep();
+    } else {
+      this.finishSteps();
+    }
+  }
+
+  handleMobilePrevStep() {
+    this.prevStep();
   }
 
   renderBackButton(): TemplateResult | string {
@@ -158,7 +182,20 @@ export default class NveStepper extends LitElement {
     `;
   }
 
+
   render(): TemplateResult {
+    if (isMobileDevice() || this.displayMobileVersion) {
+      return html`
+        <nve-stepper-mobile
+          .steps=${this.steps}
+          .selectedStepIndex=${this.selectedStepIndex}
+          .hideStepButtons=${this.hideMobileStepButtons}
+          @next-step=${this.handleMobileNextStep}
+          @prev-step=${this.handleMobilePrevStep}
+        ></nve-stepper-mobile>
+      `;
+    }
+
     return html`
       <div class="stepper ${this.orientation}">
         ${this.isOrientationVertical() ? "" : this.renderBackButton()}
