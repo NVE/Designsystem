@@ -4,49 +4,65 @@ import { StepProps, StepState } from './nve-step/nve-step.component';
 import styles from './nve-stepper.styles';
 import './nve-stepper-mobile.component';
 
-
 export interface INveStepper extends HTMLElement {
   nextStep(): void;
   prevStep(): void;
   selectStep(event: CustomEvent): void;
   finishSteps(): void;
   getCurrentIndex(): number;
+  reRender(): void;
 }
 
 function isMobileDevice(): boolean {
   return /Mobi|Android/i.test(navigator.userAgent);
 }
+
 @customElement('nve-stepper')
 export default class NveStepper extends LitElement {
   static styles: CSSResultArray = [styles];
 
+  /** Hvilken retning Steps skal gå. */
   @property()
   orientation: 'horizontal' | 'vertical' = 'horizontal';
 
+  /** Indeks for valgt steg, gir mulighet for å styre hvilket steg som er valgt. */
   @property({ type: Object })
   selectedStepIndex: { value: number } = { value: 0 };
 
+  /** Avstand mellom Steps */
   @property({ type: Number })
   spaceBetweenSteps: number = 200;
 
+  /** Mulighet om å endre teksten på knapp ved siste steg. */
   @property({ type: String })
   optionalEndButton: string = 'Sende';
 
+  /** Steps som skal vises, se StepProps interface for data som skal sendes inn. */
   @property({ type: Array })
   steps: StepProps[] = [];
 
+  /** Deaktiverer muligheten til å klikke på en Step komponenten slik at den blir valgt. */
   @property({ type: Boolean })
   disableStepClick: boolean = true;
 
+  /** Skjuler Neste og Forrige knappene slik at du kan implementere dine egne Neste og Forrige knappene. */
   @property({ type: Boolean })
   hideStepButtons: boolean = false;
 
+  /** Skjuler Neste og Forrige knappene på mobilversjonen. */
   @property({ type: Boolean })
   hideMobileStepButtons: boolean = false;
 
+  /** Viser mobilversjonen av Stepper. */
   @property({ type: Boolean })
   displayMobileVersion: boolean = false;
 
+  /**
+   * Ved endring av props, re-render komponenten eksternt med document.querySelector("nve-stepper")?.reRender();
+   * Dette er nyttig når du vil tvinge en oppdatering av komponenten uten å endre dens interne state.
+   * Ellers vil man ikke se endringene før intern state endres.
+   * `requestUpdate` er en innebygd Lit funksjon som planlegger en oppdatering av komponenten.
+   */
   reRender(): void {
     this.requestUpdate();
   }
@@ -59,6 +75,7 @@ export default class NveStepper extends LitElement {
     stepperElement.selectStep = this.selectStep.bind(this);
     stepperElement.finishSteps = this.finishSteps.bind(this);
     stepperElement.getCurrentIndex = this.getCurrentIndex.bind(this);
+    stepperElement.reRender = this.reRender.bind(this);
   }
 
   nextStep(): void {
@@ -83,18 +100,24 @@ export default class NveStepper extends LitElement {
   }
 
   finishSteps(): void {
-    // Tom funksjon, kan defineres utenfor komponenten
-
+    // Denne funksjonen kan implementeres utenfor komponenten for å definere
+    // spesifikk logikk som skal utføres når stegprosessen er fullført.
+    // Standard oppførsel er tom, men kan utvides der komponenten brukas av utvikleren.
   }
 
   setStep(index: number): void {
+    // Hvis det nåværende steget er mindre enn det nye steget og det nåværende steget er startet,
+    // sett det nåværende steget til fullført.
     if (this.selectedStepIndex.value < index && this.steps[this.selectedStepIndex.value].state === StepState.Started) {
       this.steps[this.selectedStepIndex.value].state = StepState.Done;
     }
 
+    // Hvis det nye steget er klart for å gå til neste,
+    // oppdater den valgte stegindeksen og status for Steps.
     if (this.steps[index].readyForEntrance) {
       this.selectedStepIndex.value = index;
 
+      // Oppdaterer status og valg for alle Steps.
       for (let i = 0; i < this.steps.length; i++) {
         this.steps[i].isSelected = i === index;
         if (i === index) {
@@ -109,6 +132,8 @@ export default class NveStepper extends LitElement {
     return this.selectedStepIndex.value;
   }
 
+  
+  // Sjekker om vi er på start eller slutten av Steps
   getExtremes(): string | undefined {
     if (this.selectedStepIndex.value === 0) return 'start';
     if (this.selectedStepIndex.value === this.steps.length - 1) {
@@ -181,7 +206,6 @@ export default class NveStepper extends LitElement {
       </div>
     `;
   }
-
 
   render(): TemplateResult {
     if (isMobileDevice() || this.displayMobileVersion) {

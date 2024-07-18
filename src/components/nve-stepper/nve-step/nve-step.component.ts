@@ -24,15 +24,11 @@ export default class NveStep extends LitElement {
   @property({ reflect: true })
   title: string = '';
 
-  /**
-   * Avstand mellom steppene
-   */
+  /** Avstand mellom Steps */
   @property({ type: Number })
   spaceBetweenSteps = 200;
 
-  /**
-   * Stegets index
-   */
+  /** Step index */
   @property({ type: Number })
   index = 0;
 
@@ -40,7 +36,7 @@ export default class NveStep extends LitElement {
   description: string = '';
 
   /**
-   * Er steget besøkt, ikke besøkt, fullført eller feilet
+   * Er Step besøkt, ikke besøkt, fullført eller feilet
    * @type {StepState}
    */
   @property({ type: Number })
@@ -49,33 +45,23 @@ export default class NveStep extends LitElement {
   @property({ type: Number })
   selectedStepIndex: number = 0;
 
-  /**
-   * Er steget valgt
-   */
+  /** Er Step valgt */
   @property({ type: Boolean, reflect: true })
   isSelected: boolean = false;
 
-  /**
-   * Er steget det siste i rekken
-   */
+  /** Er Step det siste i rekken */
   @property({ type: Boolean })
   isLast: boolean = false;
 
-  /**
-   * Er det lov å gå inn i steget, alle krav er oppfylt
-   */
+  /**  Er det lov å gå inn i Step, alle krav er oppfylt  */
   @property({ type: Boolean })
   entranceAllowed: boolean = false;
 
-  /**
-   * Deaktiverer muligheten til å klikke på komponenten slik at den blir valgt.
-   */
+  /** Deaktiverer muligheten til å klikke på komponenten slik at den blir valgt.*/
   @property({ type: Boolean })
   disableClick: boolean = false;
 
-    /**
-   * Hvilken retning steppene skal gå. 
-   */
+    /**  Hvilken retning Steps skal gå. */
   @property()
   orientation: 'horizontal' | 'vertical' = 'horizontal';
   

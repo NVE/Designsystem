@@ -1,34 +1,23 @@
 import { CSSResultArray, LitElement, TemplateResult, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-stepper-mobile.styles';
+import { StepProps } from './nve-step/nve-step.component';
 
-export interface StepProps {
-  title: string;
-  description?: string;
-  state: StepState;
-  isSelected: boolean;
-  readyForEntrance: boolean;
-  disableClick?: boolean;
-  orientation?: string;
-}
-
-export enum StepState {
-  NotStarted,
-  Started,
-  Done,
-  Error,
-}
 
 @customElement('nve-stepper-mobile')
 export default class NveStepperMobile extends LitElement {
   static styles: CSSResultArray = [styles];
 
+
+  /** Steps som skal vises, se StepProps interface for data som skal sendes inn. */
   @property({ type: Array })
   steps: StepProps[] = [];
 
+  /** Indeks for valgt steg, gir mulighet for å styre hvilket steg som er valgt. */
   @property({ type: Object })
   selectedStepIndex: { value: number } = { value: 0 };
 
+   /** Skjuler Neste og Forrige knappene slik at du kan implementere dine egne Neste og Forrige knappene. */
   @property({ type: Boolean })
   hideStepButtons: boolean = false;
 
