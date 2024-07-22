@@ -4,27 +4,53 @@ import { StepProps, StepState } from './nve-step/nve-step.component';
 import styles from './nve-stepper.styles';
 import './nve-stepper-mobile.component';
 
-/** Interface for stepper-komponenten som definerer nødvendige metoder */
+/** Interface for stepper-komponenten */
 export interface INveStepper extends HTMLElement {
   /** Går til neste steg */
-  nextStep(): void;
+  nextStep?(): void;
   /** Går til forrige steg */
-  prevStep(): void;
+  prevStep?(): void;
   /** Velger et spesifikt steg basert på event */
-  selectStep(event: CustomEvent): void;
+  selectStep?(event: CustomEvent): void;
   /** Fullfører alle stegene */
   finishSteps(): void;
   /** Henter indeksen for gjeldende steg */
-  getCurrentIndex(): number;
+  getCurrentIndex?(): number;
   /** Tvinger en re-render av komponenten */
-  reRender(): void;
+  reRender?(): void;
+
+  /** Hvilken retning Steps skal gå. */
+  orientation?: 'horizontal' | 'vertical';
+
+  /** Indeks for valgt steg, gir mulighet for å styre hvilket steg som er valgt. */
+  selectedStepIndex?: { value: number };
+
+  /** Avstand mellom Steps */
+  spaceBetweenSteps?: number;
+
+  /** Mulighet om å endre teksten på knapp ved siste steg. */
+  optionalEndButton?: string;
+
+  /** Steps som skal vises, se StepProps interface for data som skal sendes inn. */
+  steps: StepProps[];
+
+  /** Deaktiverer muligheten til å klikke på en Step komponenten slik at den blir valgt. */
+  disableStepClick?: boolean;
+
+  /** Skjuler Neste og Forrige knappene slik at du kan implementere dine egne Neste og Forrige knappene. */
+  hideStepButtons?: boolean;
+
+  /** Skjuler Neste og Forrige knappene på mobilversjonen. */
+  hideMobileStepButtons?: boolean;
+
+  /** Viser mobilversjonen av Stepper. */
+  displayMobileVersion?: boolean;
 }
 
 /** Funksjon for å sjekke om enheten er en mobil enhet */
 function isMobileDevice(): boolean {
   return /Mobi|Android/i.test(navigator.userAgent);
 }
-
 /**
  * En stepper-komponent brukes for å bryte ned en kompleks prosess i flere mindre, håndterbare trinn.
  * Hver trinn representerer en del av prosessen og brukeren kan navigere frem og tilbake mellom trinnene. 
