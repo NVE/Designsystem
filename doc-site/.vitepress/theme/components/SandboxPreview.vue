@@ -47,7 +47,7 @@ const sandboxDefinition = (content: string) => ({
       content: {
         dependencies: {
           vue: '^3.2.0',
-          'nve-designsystem': '^0.1.65',
+          'nve-designsystem': '^0.1.71',
           '@vue/cli-plugin-babel': '~4.5.0',
           '@vue/cli-service': '~4.5.0',
           '@vue/compiler-sfc': '^3.0.0-0',

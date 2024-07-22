@@ -4,19 +4,33 @@ import { StepProps, StepState } from './nve-step/nve-step.component';
 import styles from './nve-stepper.styles';
 import './nve-stepper-mobile.component';
 
+/** Interface for stepper-komponenten som definerer nødvendige metoder */
 export interface INveStepper extends HTMLElement {
+  /** Går til neste steg */
   nextStep(): void;
+  /** Går til forrige steg */
   prevStep(): void;
+  /** Velger et spesifikt steg basert på event */
   selectStep(event: CustomEvent): void;
+  /** Fullfører alle stegene */
   finishSteps(): void;
+  /** Henter indeksen for gjeldende steg */
   getCurrentIndex(): number;
+  /** Tvinger en re-render av komponenten */
   reRender(): void;
 }
 
+/** Funksjon for å sjekke om enheten er en mobil enhet */
 function isMobileDevice(): boolean {
   return /Mobi|Android/i.test(navigator.userAgent);
 }
 
+/**
+ * En stepper-komponent brukes for å bryte ned en kompleks prosess i flere mindre, håndterbare trinn.
+ * Hver trinn representerer en del av prosessen og brukeren kan navigere frem og tilbake mellom trinnene. 
+ * Dette gir en strukturert og intuitiv måte å fullføre flertrinnsoppgaver på, som for eksempel skjemaer eller registreringsprosesser. 
+ * Steppers kan være enten horisontale eller vertikale, og kan tilpasses med valideringslogikk og egne knapper.
+ */
 @customElement('nve-stepper')
 export default class NveStepper extends LitElement {
   static styles: CSSResultArray = [styles];
@@ -67,6 +81,7 @@ export default class NveStepper extends LitElement {
     this.requestUpdate();
   }
 
+  /** Metode som kjøres første gang komponenten er lagt til i DOM */
   firstUpdated(): void {
     this.setStep(this.selectedStepIndex.value);
     const stepperElement = this as unknown as INveStepper;
@@ -78,18 +93,21 @@ export default class NveStepper extends LitElement {
     stepperElement.reRender = this.reRender.bind(this);
   }
 
+  /** Metode for å gå til neste steg */
   nextStep(): void {
     if (this.selectedStepIndex.value < this.steps.length - 1) {
       this.setStep(this.selectedStepIndex.value + 1);
     }
   }
 
+  /** Metode for å gå til forrige steg */
   prevStep(): void {
     if (this.selectedStepIndex.value > 0) {
       this.setStep(this.selectedStepIndex.value - 1);
     }
   }
 
+  /** Metode for å velge et spesifikt steg */
   selectStep(event: CustomEvent): void {
     if (event.detail.index > 0) {
       if (this.steps[event.detail.index - 1].state == StepState.NotStarted) {
@@ -99,12 +117,14 @@ export default class NveStepper extends LitElement {
     this.setStep(event.detail.index);
   }
 
+  /** Metode som kjøres når alle stegene er fullført */
   finishSteps(): void {
     // Denne funksjonen kan implementeres utenfor komponenten for å definere
     // spesifikk logikk som skal utføres når stegprosessen er fullført.
     // Standard oppførsel er tom, men kan utvides der komponenten brukas av utvikleren.
   }
 
+  /** Metode for å sette et spesifikt steg */
   setStep(index: number): void {
     // Hvis det nåværende steget er mindre enn det nye steget og det nåværende steget er startet,
     // sett det nåværende steget til fullført.
@@ -128,12 +148,12 @@ export default class NveStepper extends LitElement {
     }
   }
 
+  /** Metode for å hente den gjeldende indeksen */
   getCurrentIndex(): number {
     return this.selectedStepIndex.value;
   }
 
-  
-  // Sjekker om vi er på start eller slutten av Steps
+  /** Metode for å sjekke om vi er på start eller slutten av Steps */
   getExtremes(): string | undefined {
     if (this.selectedStepIndex.value === 0) return 'start';
     if (this.selectedStepIndex.value === this.steps.length - 1) {
@@ -141,7 +161,8 @@ export default class NveStepper extends LitElement {
     }
   }
 
-  handleMobileNextStep() {
+  /** Metode for å håndtere neste steg på mobil */
+  handleMobileNextStep(): void {
     if (this.selectedStepIndex.value < this.steps.length - 1) {
       this.nextStep();
     } else {
@@ -149,10 +170,12 @@ export default class NveStepper extends LitElement {
     }
   }
 
-  handleMobilePrevStep() {
+  /** Metode for å håndtere forrige steg på mobil */
+  handleMobilePrevStep(): void {
     this.prevStep();
   }
 
+  /** Metode for å render tilbakeknappen */
   renderBackButton(): TemplateResult | string {
     return this.hideStepButtons ? '' : html`
       <nve-button
@@ -167,10 +190,12 @@ export default class NveStepper extends LitElement {
     `;
   }
 
+  /** Metode for å sjekke om orienteringen er vertikal */
   isOrientationVertical(): boolean {
     return this.orientation === 'vertical';
   }
 
+  /** Metode for å render fremoverknappen */
   renderForwardButton(): TemplateResult | string {
     if (this.hideStepButtons) return '';
     if (this.getExtremes() === 'end') {
@@ -198,6 +223,7 @@ export default class NveStepper extends LitElement {
     `;
   }
 
+  /** Metode for å render knapper i vertikal orientering */
   renderVerticalButtons(): TemplateResult | string {
     return this.hideStepButtons ? '' : html`
       <div class="vertical-btn-container">
@@ -207,6 +233,7 @@ export default class NveStepper extends LitElement {
     `;
   }
 
+  /** Hoved render-metode */
   render(): TemplateResult {
     if (isMobileDevice() || this.displayMobileVersion) {
       return html`

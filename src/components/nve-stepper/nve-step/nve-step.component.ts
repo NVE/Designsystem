@@ -2,6 +2,7 @@ import { CSSResultArray, LitElement, TemplateResult, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-step.styles';
 
+/** Enum for å representere tilstanden til et steg */
 export enum StepState {
   NotStarted,
   Started,
@@ -9,6 +10,7 @@ export enum StepState {
   Error,
 }
 
+/** Interface for å definere egenskapene til et steg */
 export interface StepProps {
   title: string;
   description?: string;
@@ -19,68 +21,78 @@ export interface StepProps {
   orientation?: string;
 }
 
+/** Komponent for et enkelt steg i en stepper */
 @customElement('nve-step')
 export default class NveStep extends LitElement {
+  /** Tittel på steget */
   @property({ reflect: true })
   title: string = '';
 
-  /** Avstand mellom Steps */
+  /** Avstand mellom stegene */
   @property({ type: Number })
   spaceBetweenSteps = 200;
 
-  /** Step index */
+  /** Indeks for steget */
   @property({ type: Number })
   index = 0;
 
+  /** Beskrivelse av steget */
   @property({ type: String })
   description: string = '';
 
   /**
-   * Er Step besøkt, ikke besøkt, fullført eller feilet
+   * Stegets tilstand: Ikke startet, påbegynt, fullført eller feilet
    * @type {StepState}
    */
   @property({ type: Number })
   state: StepState = StepState.NotStarted;
 
+  /** Indeks for det valgte steget */
   @property({ type: Number })
   selectedStepIndex: number = 0;
 
-  /** Er Step valgt */
+  /** Angir om steget er valgt */
   @property({ type: Boolean, reflect: true })
   isSelected: boolean = false;
 
-  /** Er Step det siste i rekken */
+  /** Angir om steget er det siste i rekken */
   @property({ type: Boolean })
   isLast: boolean = false;
 
-  /**  Er det lov å gå inn i Step, alle krav er oppfylt  */
+  /** Angir om det er tillatt å gå inn i steget */
   @property({ type: Boolean })
   entranceAllowed: boolean = false;
 
-  /** Deaktiverer muligheten til å klikke på komponenten slik at den blir valgt.*/
+  /** Deaktiverer muligheten til å klikke på steget for å velge det */
   @property({ type: Boolean })
   disableClick: boolean = false;
 
-    /**  Hvilken retning Steps skal gå. */
+  /** Retningen stegene skal gå i: horisontal eller vertikal */
   @property()
   orientation: 'horizontal' | 'vertical' = 'horizontal';
-  
 
+  /** Metode som kjøres første gang komponenten er lagt til i DOM */
   firstUpdated(): void {
     this.style.setProperty('--flex-grow', this.isLast ? '0' : '1');
   }
 
+  /** Metode som kjøres hver gang komponentens oppdateres */
   updated(): void {
     this.style.setProperty('line-color', this.isLast ? '0' : '1');
   }
 
+  /** Definerer stilene som brukes av komponenten */
   static styles: CSSResultArray = [styles];
 
+  /** Sjekker om orienteringen er vertikal */
   isOrientationVertical(): boolean {
     return this.orientation === 'vertical';
   }
 
-
+  /**
+   * Returnerer ikonet for den gitte stegetilstanden
+   * @param state - Stegets tilstand
+   */
   iconForState(state: StepState): string {
     let icon = '';
     switch (state) {
@@ -103,6 +115,10 @@ export default class NveStep extends LitElement {
     return icon;
   }
 
+  /**
+   * Returnerer teksten for den gitte stegetilstanden
+   * @param state - Stegets tilstand
+   */
   getStateText(state: StepState): string {
     switch (state) {
       case StepState.NotStarted:
@@ -118,6 +134,10 @@ export default class NveStep extends LitElement {
     }
   }
 
+  /**
+   * Returnerer CSS-klassen for fargen til den gitte stegetilstanden
+   * @param state - Stegets tilstand
+   */
   getStateColorClass(state: StepState): string {
     switch (state) {
       case StepState.NotStarted:
@@ -133,6 +153,10 @@ export default class NveStep extends LitElement {
     }
   }
 
+  /**
+   * Returnerer CSS-klassen for tittelen til den gitte stegetilstanden
+   * @param state - Stegets tilstand
+   */
   getTitleClass(state: StepState): string {
     switch (state) {
       case StepState.NotStarted:
@@ -144,6 +168,10 @@ export default class NveStep extends LitElement {
     }
   }
 
+  /**
+   * Returnerer CSS-klassen for ikonet til den gitte stegetilstanden
+   * @param state - Stegets tilstand
+   */
   getIconClass(state: StepState): string {
     switch (state) {
       case StepState.Started:
@@ -157,20 +185,24 @@ export default class NveStep extends LitElement {
     }
   }
 
+  /** Returnerer CSS-klassen for om steget er klikkbart */
   getIsClickableClass(): string {
     return this.disableClick ? 'disable-click' : 'clickable';
   }
 
+  /** Returnerer CSS-klassen for fargen til divideren */
   getDividerColorClass(): string {
     return this.index < this.selectedStepIndex ? 'divider-reached-color' : 'divider-not-reached-color';
   }
 
+  /** Håndterer klikk på steget */
   onClick(): void {
     if (!this.disableClick) {
       this.dispatchEvent(new CustomEvent('clicked', { detail: { index: this.index } }));
     }
   }
 
+  /** Render divideren mellom stegene */
   renderDivider(): TemplateResult | string {
     const dividerClass = this.isOrientationVertical() ? 'divider-vertical' : 'divider-horizontal';
     return this.isLast
@@ -184,11 +216,12 @@ export default class NveStep extends LitElement {
         </div>`;
   }
 
+  /** Render beskrivelsen av steget */
   renderDescription(): TemplateResult | string {
     return this.description ? html`<div class="step-description">${this.description}</div>` : '';
   }
 
-
+  /** Render vertikalt steg */
   renderVerticalStep(): TemplateResult {
     return html`
       <div class="vertical-container">
@@ -212,6 +245,7 @@ export default class NveStep extends LitElement {
     `;
   }
 
+  /** Render metoden for komponenten */
   render(): TemplateResult {
     return this.isOrientationVertical() ? this.renderVerticalStep() : html`
         <div class="step-figure">

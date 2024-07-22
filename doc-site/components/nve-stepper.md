@@ -4,11 +4,4 @@ layout: component
 
 ## Stepper Komponent
 
-<CodeExamplePreview>
-
-```html
-<nve-stepper-demo></nve-stepper-demo>
-```
-
-</CodeExamplePreview>
-````
+Se dokumentasjon med eksempler på hvordan du bruker komponenten i Vue [her](/introduction/stepper.html).
