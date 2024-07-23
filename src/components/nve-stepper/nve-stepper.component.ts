@@ -5,7 +5,7 @@ import styles from './nve-stepper.styles';
 import './nve-stepper-mobile.component';
 
 /** Interface for stepper-komponenten */
-export interface INveStepper extends HTMLElement {
+export interface INveStepper {
   /** Går til neste steg */
   nextStep?(): void;
   /** Går til forrige steg */
