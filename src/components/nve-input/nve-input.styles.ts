@@ -89,4 +89,8 @@ export default css`
     justify-content: space-between;
     margin-inline-start: unset;
   }
+
+  .input--medium .input__prefix ::slotted(*) {
+    margin-inline-start: var(--spacing-x-small, 0.5rem); ;
+  }
 `;

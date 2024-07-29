@@ -175,3 +175,22 @@ Bruk `size` for å velge høyde. Ledeteksten tilpasses automatisk, mens skriftty
 ```
 
 </CodeExamplePreview>
+
+### Prefix & Suffix Icons
+
+Bruk `prefix` for mørk bakgrunnsfarge
+Bruk `prefix` og `suffix` slots for att lægga til icons.
+
+<CodeExamplePreview>
+
+```html
+<nve-input>
+  <nve-icon name="search" slot="prefix"></nve-icon>
+</nve-input>
+
+<nve-input>
+  <nve-icon name="check" slot="suffix"></nve-icon>
+</nve-input>
+```
+
+</CodeExamplePreview>
