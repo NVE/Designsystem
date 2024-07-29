@@ -5,7 +5,7 @@ import styles from './nve-stepper.styles';
 import './nve-stepper-mobile.component';
 
 /** Interface for stepper-komponenten */
-export interface INveStepper extends HTMLElement {
+export interface INveStepper {
   /** Går til neste steg */
   nextStep?(): void;
   /** Går til forrige steg */
@@ -276,7 +276,7 @@ export default class NveStepper extends LitElement {
     return html`
       <div class="stepper ${this.orientation}">
         ${this.isOrientationVertical() ? "" : this.renderBackButton()}
-        <div class="steps-container ${this.orientation}">
+        <div class="steps-container ${this.orientation}  ${this.hideStepButtons ? '' : 'steps-container-with-buttons'}">
           ${this.steps.map(
             (step, index) => html`
               <nve-step
