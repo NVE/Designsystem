@@ -34,9 +34,10 @@ export default css`
   .vertical-btn-container {
     display: flex;
     width: 100%;
-    padding: 20px 60px 20px 60px;
+    padding: 20px 60px;
     justify-content: space-between;
     box-sizing: border-box;
+    max-width: 600px;
   }
 
   .vertical {
@@ -45,10 +46,11 @@ export default css`
 
   .steps-container {
     display: flex;
-    padding: 20px 60px 20px 60px;
     flex-grow: 1;
   }
 
-
+  .steps-container-with-buttons {
+    padding: 20px 60px;
+  }
 
 `;

@@ -75,6 +75,14 @@ export default css`
   padding-top: 0.625rem; /*10px; */
 }
 
+.step-description-max-width-vertical {
+  max-width:430px; 
+}
+
+.step-description-max-width-horizontal {
+  max-width:150px; 
+  padding-bottom: var(--spacing-large, 1.5rem);
+}
 
 .divider-not-reached-color {
   /* TODO the token --neutrals-background-secondary gives wrong color #c8eaf9 instead of #E4E5E7
@@ -111,8 +119,7 @@ export default css`
 
 .vertical-container {
   display: flex;
-  align-items: stretch; 
-  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -134,6 +141,7 @@ export default css`
   flex-direction: column; 
   align-items: center;
   width: 100%;
+  flex:1;
 }  
 
 .vertical-divider-container {
@@ -141,13 +149,16 @@ export default css`
   justify-content: center;
   flex-grow: 1;
   height: 100%;
+  width: 2px;
+  padding-top:1px;
 }
 
 .text-container-vertical {
-  padding-left: 1.5rem; /*24px; */
+  padding-left: 8px;
   justify-content: center;
   display: flex;
   flex-direction: column;
+  flex:4;
 }
 
 .step-title-vertical {

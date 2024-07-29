@@ -218,7 +218,7 @@ export default class NveStep extends LitElement {
 
   /** Render beskrivelsen av steget */
   renderDescription(): TemplateResult | string {
-    return this.description ? html`<div class="step-description">${this.description}</div>` : '';
+    return this.description ? html`<div class="step-description ${this.orientation === 'vertical' ? 'step-description-max-width-vertical' : 'step-description-max-width-horizontal'}">${this.description}</div>` : '';
   }
 
   /** Render vertikalt steg */
