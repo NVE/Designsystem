@@ -77,11 +77,11 @@ export default css`
 
 .step-description-max-width-vertical {
   max-width:430px; 
+  padding-bottom: var(--spacing-large, 1.5rem);
 }
 
 .step-description-max-width-horizontal {
   max-width:150px; 
-  padding-bottom: var(--spacing-large, 1.5rem);
 }
 
 .divider-not-reached-color {
@@ -158,7 +158,7 @@ export default css`
   justify-content: center;
   display: flex;
   flex-direction: column;
-  flex:4;
+  flex:10;
 }
 
 .step-title-vertical {

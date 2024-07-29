@@ -1,5 +1,5 @@
 import { CSSResultArray, LitElement, TemplateResult, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import styles from './nve-step.styles';
 
 /** Enum for å representere tilstanden til et steg */
@@ -71,6 +71,10 @@ export default class NveStep extends LitElement {
   @property()
   orientation: 'horizontal' | 'vertical' = 'horizontal';
 
+  /** Brukes for å justere høyden for den vertikale skilleveggen blir så høy som nær Step har en description. */
+  @query('.step-description')
+  descriptionElement!: HTMLElement;
+
   /** Metode som kjøres første gang komponenten er lagt til i DOM */
   firstUpdated(): void {
     this.style.setProperty('--flex-grow', this.isLast ? '0' : '1');
@@ -78,6 +82,9 @@ export default class NveStep extends LitElement {
 
   /** Metode som kjøres hver gang komponentens oppdateres */
   updated(): void {
+    if (this.isOrientationVertical()) {
+      this.updateVerticalDividerHeight();
+    }
     this.style.setProperty('line-color', this.isLast ? '0' : '1');
   }
 
@@ -202,6 +209,16 @@ export default class NveStep extends LitElement {
     }
   }
 
+  /** Brukes for beregning av riktig høyde før divider. Description elementet har padding, så høyden før divider var for kort, så bruk denne funksjonen for regner ut riktig høyde. */
+  updateVerticalDividerHeight(): void {
+    const TRIP_ORIGIN_ICON_HEIGHT = 24; 
+    const descriptionHeight = this.descriptionElement.offsetHeight + TRIP_ORIGIN_ICON_HEIGHT;
+    const dividerElement = this.shadowRoot!.querySelector('.vertical-divider-container .divider-vertical') as HTMLElement;
+    if (dividerElement) {
+      dividerElement.style.height = `${descriptionHeight}px`;
+    }
+  }
+
   /** Render divideren mellom stegene */
   renderDivider(): TemplateResult | string {
     const dividerClass = this.isOrientationVertical() ? 'divider-vertical' : 'divider-horizontal';
@@ -238,8 +255,10 @@ export default class NveStep extends LitElement {
           <div class="step-title step-title-vertical ${this.getTitleClass(this.state)}">${this.title}</div>
           <div class="step-state ${this.getStateColorClass(this.state)}">
             ${this.getStateText(this.state)}
-          </div>       
+          </div>
+          <div>       
           ${this.renderDescription()}
+          </div>
         </div>
       </div>
     `;
