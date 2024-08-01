@@ -1,3 +1,5 @@
+<PageHeader title="For utviklere" imagePath="../../../assets/code-blocks.png"></PageHeader>
+
 # Nve-Stepper
 
 Her er eksempler på hvordan du bruker Nve-Stepper i Vue:
@@ -31,9 +33,7 @@ Eksemplet viser hvordan du bruker nve-stepper med standardinnstillinger. Som sta
 
 For å legge til valideringslogikk før du går til neste trinn, kan du skrive over komponentens nextStep-funksjon. Dette gjør det mulig å kontrollere om gjeldende trinn er gyldig før du går videre. Nedenfor finner du et eksempel på hvordan du kan skrive over nextStep-funksjonen og inkludere egen valideringslogikk.
 
-:::tip
-Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.
-:::
+<Card title="Tips">Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.</Card>
 
 #### Egen tekst for siste knapp
 
@@ -426,9 +426,7 @@ Før du administrerer at kontrollen av det siste trinnet er riktig, bør du skri
 
 For å legge til valideringslogikk før du går til neste trinn, kan du skrive over komponentens nextStep-funksjon. Dette gjør det mulig å kontrollere om gjeldende trinn er gyldig før du går videre. Nedenfor finner du et eksempel på hvordan du kan skrive over nextStep-funksjonen og inkludere egen valideringslogikk.
 
-:::tip
-Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.
-:::
+<Card title="Tips">Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.</Card>
 
 #### Egen tekst for siste knapp uten standardknapper
 
