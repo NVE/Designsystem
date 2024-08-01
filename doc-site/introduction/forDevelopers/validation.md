@@ -1,4 +1,4 @@
-<PageHeader title="For utviklere" imagePath="../../../assets/images/code-blocks.png"></PageHeader>
+<PageHeader title="For utviklere" imagePath="@images/code-blocks.png"></PageHeader>
 
 # Validering av input
 
@@ -22,7 +22,7 @@ Du må ha en feilmelding i `errorMessage`, ellers vises nettleseren sin standard
 
 Constraint validation kaster feil på det første ugyldige feltet den finner. Er det flere felt som feiler, vil ikke feilmelding for disse vises før man trykker submit-knappen på nytt. Det kan eventuelt fikses manuelt hvis man ønsker det. TODO: Hvordan?
 
-Du finner eksempler på bruk av constraint validation på sida for [nve-input](../components/nve-input.html#constraint-validation).
+Du finner eksempler på bruk av constraint validation på sida for [nve-input](../../components/nve-input.html#constraint-validation).
 
 `nve-radio-group` og `nve-checkbox-group` støtter kun `required`.
 

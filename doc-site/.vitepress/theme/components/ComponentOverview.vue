@@ -34,7 +34,7 @@
   
   <script setup lang="ts">
     import LinkButton from './LinkButton.vue';
-    import { componentsVersions } from '../../../assets/componentVersionsData.js';
+    import { componentsVersions } from '@assets/componentVersionsData.js';
 
     const openINewTab = (url: string) => {
       window.open(url, '_blank');

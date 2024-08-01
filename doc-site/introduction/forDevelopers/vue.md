@@ -1,4 +1,4 @@
-<PageHeader title="For utviklere" imagePath="../../../assets/images/code-blocks.png"></PageHeader>
+<PageHeader title="For utviklere" imagePath="@images/code-blocks.png"></PageHeader>
 TODO: Legge til tab komponent
 
 # Bruk av designsystemet i Vue 3
