@@ -1,4 +1,4 @@
-<PageHeader title="Introduksjon" imagePath="../../../assets/introduction-icon.png"></PageHeader>
+<PageHeader title="Introduksjon" imagePath="../../../assets/images/introduction-icon.png"></PageHeader>
 TODO: Legg til tab komponent
 
 # Designelementer

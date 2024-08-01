@@ -1,4 +1,4 @@
-<PageHeader title="For utviklere" imagePath="../../../assets/code-blocks.png"></PageHeader>
+<PageHeader title="For utviklere" imagePath="../../../assets/images/code-blocks.png"></PageHeader>
 
 # Nve-Stepper
 
