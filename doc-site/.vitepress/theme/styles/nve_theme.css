@@ -1,11 +1,9 @@
 /**
  * Do not edit directly
- * Generated on Tue, 16 Jul 2024 11:27:09 GMT
+ * Generated on Thu, 11 Jul 2024 08:53:44 GMT
  */
 
-@import './global.css'; 
-:root {
-  --varsom-blue-050: #c8eaf9;
+:root.nve { --varsom-blue-050: #c8eaf9;
   --varsom-blue-000: #eff8fc;
   --varsom-blue-999: #00131c;
   --varsom-blue-950: #002738;
@@ -358,5 +356,111 @@
   --neutrals-background-primary-contrast: var(--grey-050);
   --brand-deep: var(--nve-brand-700);
   --brand-light: var(--nve-brand-300);
-  --brand-primary: var(--nve-brand-500);
+  --brand-primary: var(--nve-brand-500); }
+
+@media not print {
+  :root.nve_darkmode { --dangerlevel-foreground-subtle-level5: var(--grey-950);
+    --dangerlevel-foreground-subtle-level4: var(--grey-950);
+    --dangerlevel-foreground-subtle-level3: var(--grey-950);
+    --dangerlevel-foreground-subtle-level2: var(--grey-950);
+    --dangerlevel-foreground-subtle-level1: var(--grey-950);
+    --dangerlevel-foreground-mute-level5: var(--grey-950);
+    --dangerlevel-foreground-mute-level4: var(--grey-950);
+    --dangerlevel-foreground-mute-level3: var(--grey-950);
+    --dangerlevel-foreground-mute-level2: var(--grey-950);
+    --dangerlevel-foreground-mute-level1: var(--grey-950);
+    --dangerlevel-foreground-default-level5: var(--grey-000);
+    --dangerlevel-foreground-default-level4: var(--grey-950);
+    --dangerlevel-foreground-default-level3: var(--grey-950);
+    --dangerlevel-foreground-default-level2: var(--grey-950);
+    --dangerlevel-foreground-default-level1: var(--grey-950);
+    --dangerlevel-background-default-level5: var(--grey-950);
+    --dangerlevel-background-default-level4: var(--red-500);
+    --dangerlevel-background-default-level3: var(--orange-400);
+    --dangerlevel-background-default-level2: var(--yellow-500);
+    --dangerlevel-background-default-level1: var(--green-500);
+    --dangerlevel-background-subtle-level5: var(--grey-150);
+    --dangerlevel-background-subtle-level4: var(--red-000);
+    --dangerlevel-background-subtle-level3: var(--orange-050);
+    --dangerlevel-background-subtle-level2: var(--yellow-100);
+    --dangerlevel-background-subtle-level1: var(--green-100);
+    --dangerlevel-background-mute-level5: var(--grey-200);
+    --dangerlevel-background-mute-level4: var(--red-050);
+    --dangerlevel-background-mute-level3: var(--orange-150);
+    --dangerlevel-background-mute-level2: var(--yellow-200);
+    --dangerlevel-background-mute-level1: var(--green-150);
+    --feedback-foreground-emphasized-neutral: var(--grey-950);
+    --feedback-foreground-emphasized-success: var(--grey-000);
+    --feedback-foreground-emphasized-warning: var(--grey-950);
+    --feedback-foreground-emphasized-error: var(--grey-000);
+    --feedback-foreground-emphasized-info: var(--grey-000);
+    --feedback-foreground-subtle-neutral: var(--grey-000);
+    --feedback-foreground-subtle-success: var(--grey-000);
+    --feedback-foreground-subtle-warning: var(--grey-000);
+    --feedback-foreground-subtle-error: var(--grey-000);
+    --feedback-foreground-subtle-info: var(--grey-000);
+    --feedback-foreground-default-neutral: var(--grey-000);
+    --feedback-foreground-default-success: var(--grey-000);
+    --feedback-foreground-default-warning: var(--grey-000);
+    --feedback-foreground-default-error: var(--grey-000);
+    --feedback-foreground-default-info: var(--grey-000);
+    --feedback-background-emphasized-neutral: var(--grey-150);
+    --feedback-background-emphasized-success: var(--green-800);
+    --feedback-background-emphasized-warning: var(--yellow-500);
+    --feedback-background-emphasized-error: var(--red-700);
+    --feedback-background-emphasized-info: var(--blue-700);
+    --feedback-background-subtle-neutral: var(--grey-850);
+    --feedback-background-subtle-success: var(--green-999);
+    --feedback-background-subtle-warning: var(--yellow-999);
+    --feedback-background-subtle-error: var(--red-999);
+    --feedback-background-subtle-info: var(--blue-999);
+    --feedback-background-default-neutral: var(--grey-800);
+    --feedback-background-default-success: var(--green-950);
+    --feedback-background-default-warning: var(--yellow-950);
+    --feedback-background-default-error: var(--red-950);
+    --feedback-background-default-info: var(--blue-950);
+    --interactive-links-visited: var(--grey-200);
+    --interactive-links-focus: var(--blue-500);
+    --interactive-links-hover: var(--grey-000);
+    --interactive-links-default: var(--blue-400);
+    --interactive-ghost-border-focus: var(--blue-500);
+    --interactive-ghost-foreground-disabled: var(--grey-000);
+    --interactive-ghost-foreground-hover: var(--grey-000);
+    --interactive-ghost-foreground-default: var(--grey-000);
+    --interactive-ghost-background-hover: var(--grey-700);
+    --interactive-outlined-border-disabled: var(--grey-600);
+    --interactive-outlined-border-focus: var(--blue-500);
+    --interactive-outlined-border-hover: var(--grey-000);
+    --interactive-outlined-border-default: var(--grey-600);
+    --interactive-outlined-foreground-disabled: var(--grey-000);
+    --interactive-outlined-foreground-hover: var(--grey-000);
+    --interactive-outlined-foreground-default: var(--grey-000);
+    --interactive-secondary-border-focus: var(--blue-500);
+    --interactive-secondary-foreground-disabled: var(--grey-000);
+    --interactive-secondary-foreground-hover: var(--grey-000);
+    --interactive-secondary-foreground-default: var(--grey-000);
+    --interactive-secondary-background-disabled: var(--grey-700);
+    --interactive-secondary-background-hover: var(--grey-600);
+    --interactive-secondary-background-default: var(--grey-700);
+    --interactive-primary-foreground-border-focus: var(--blue-500);
+    --interactive-primary-foreground-disabled: var(--grey-950);
+    --interactive-primary-foreground-hover: var(--grey-950);
+    --interactive-primary-foreground-default: var(--grey-950);
+    --interactive-primary-background-disabled: var(--grey-000);
+    --interactive-primary-background-hover: var(--grey-150);
+    --interactive-primary-background-default: var(--grey-000);
+    --neutrals-border-disabled: var(--grey-500);
+    --neutrals-border-subtle: var(--grey-800);
+    --neutrals-border-mute: var(--grey-950);
+    --neutrals-border-default: var(--grey-500);
+    --neutrals-foreground-colored: var(--nve-brand-000);
+    --neutrals-foreground-subtle: var(--grey-200);
+    --neutrals-foreground-primary: var(--grey-000);
+    --neutrals-background-canvas: var(--grey-850);
+    --neutrals-background-secondary: var(--grey-700);
+    --neutrals-background-primary: var(--grey-950);
+    --neutrals-background-primary-contrast: var(--grey-850);
+    --brand-deep: var(--nve-brand-700);
+    --brand-light: var(--nve-brand-500);
+    --brand-primary: var(--nve-brand-300); }
 }
