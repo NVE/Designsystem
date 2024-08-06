@@ -104,18 +104,18 @@ export default css`
 
   /* PRIMARY */
   .button--standard.button--primary {
-    // TODO token interactive-primary-background-default has wrong color according to design
+    /* TODO token interactive-primary-background-default has wrong color according to design */
     /* background-color:  var(--interactive-primary-background-default, #0D0D0E); */
-    background-color:  #0D0D0E;
+    background-color:  #0D0D0E !important;
     border-color: var(--interactive-primary-background-default);
     color: var(--interactive-primary-foreground-default);
   }
   .button--standard.button--primary:hover:not(.button--disabled),
   .button--standard.button--primary:active:not(.button--disabled) {
     border-color: var(--interactive-primary-background-hover);
-    // TODO token interactive-primary-background-hover has wrong color according to design
+    /* TODO token interactive-primary-background-hover has wrong color according to design */
     /* background: var(--Interactive-Primary-Background-Hover, #3C3F44); */
-    background: #3C3F44;
+    background: #3C3F44 !important;
     color: var(--interactive-primary-foreground-default);
   }
 
