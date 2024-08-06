@@ -8,6 +8,8 @@ export default css`
     align-items: center;
     box-sizing: border-box;
     position: relative;
+    border:none;
+    min-width: 119px;
   }
 
   .button ::slotted(nve-badge) {
@@ -102,14 +104,18 @@ export default css`
 
   /* PRIMARY */
   .button--standard.button--primary {
-    background-color: var(--interactive-primary-background-default);
+    // TODO token interactive-primary-background-default has wrong color according to design
+    /* background-color:  var(--interactive-primary-background-default, #0D0D0E); */
+    background-color:  #0D0D0E;
     border-color: var(--interactive-primary-background-default);
     color: var(--interactive-primary-foreground-default);
   }
   .button--standard.button--primary:hover:not(.button--disabled),
   .button--standard.button--primary:active:not(.button--disabled) {
     border-color: var(--interactive-primary-background-hover);
-    background: var(--interactive-primary-background-hover);
+    // TODO token interactive-primary-background-hover has wrong color according to design
+    /* background: var(--Interactive-Primary-Background-Hover, #3C3F44); */
+    background: #3C3F44;
     color: var(--interactive-primary-foreground-default);
   }
 
@@ -118,6 +124,7 @@ export default css`
     border-color: var(--interactive-secondary-background-default);
     background: var(--interactive-secondary-background-default);
     color: var(--interactive-secondary-foreground-default);
+    border:none !important;
   }
   .button--standard.button--default:hover:not(.button--disabled) {
     border-color: var(--interactive-secondary-background-hover);
@@ -132,10 +139,11 @@ export default css`
     background-color: transparent;
   }
   .button--standard.button--neutral {
-    border: none;
+    border-radius: var(--border-radius-small, 4px);
+    border: var(--border-width-default, 1px) solid  #878C94;
   }
   .button--standard.button--neutral:hover:not(.button--disabled) {
-    background-color: var(--interactive-ghost-background-hover);
+    background-color: white;
     color: var(--interactive-ghost-foreground-hover);
   }
 
@@ -149,7 +157,7 @@ export default css`
   .button--outline.button--neutral:hover:not(.button--disabled),
   .button--outline.button--neutral.button--checked:not(.button--disabled) {
     border-color: var(--interactive-outlined-border-hover);
-    color: var(--interactive-outlined-foreground-default);
+    color: var(--interactive-outlined-foreground-default); */
     background-color: transparent;
   }
 
