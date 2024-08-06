@@ -1,4 +1,4 @@
-<PageHeader title="For designere" imagePath="@images/images/design-services.png"></PageHeader>
+<PageHeader title="For designere" imagePath="../../assets/images/design-services.png"></PageHeader>
 TODO: Legge til tab komponent
 
 # Kom igang

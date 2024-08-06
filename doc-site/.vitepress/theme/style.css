@@ -170,7 +170,15 @@ th {
 
 .VPContent.is-home {
   padding-top: var(--vp-nav-height);
-  background-image: url('../../assets//images/start-page-image.jpg');
+  background-image: url('../../assets/images/start-page-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.dark .VPContent.is-home {
+  background-image: url('../../assets/images/dark-mode-start-image.avif');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

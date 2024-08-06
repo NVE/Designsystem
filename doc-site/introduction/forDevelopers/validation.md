@@ -1,10 +1,11 @@
-<PageHeader title="For utviklere" imagePath="@images/code-blocks.png"></PageHeader>
+<PageHeader title="For utviklere" imagePath="../../assets/images/code-blocks.png"></PageHeader>
 
 # Validering av input
 
-:::tip
-Komponentene du skal validere må ligge inni en `<form>`, fordi validering utføres når `submit`-eventet fyres av.
-:::
+<Card title="Tips">
+Komponentene du skal validere må ligge inni en &lt;form&gt;, fordi validering utføres når `submit`-eventet fyres av.
+
+</Card>
 
 Vi tilbyr en forenklet variant av Shoelace sin måte å validere input på. Du bør lese om [hvordan Shoelace gjør det](https://shoelace.style/getting-started/form-controls).
 

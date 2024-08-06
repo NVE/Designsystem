@@ -21,7 +21,6 @@
   <script setup lang="ts">
   type Props = {
     title: string,
-
     variant: string
   }
   
@@ -54,6 +53,7 @@
     gap: var(--spacing-small, 12px);
     align-self: stretch;
     border-radius: var(--borderRadius-small, 4px);
+    margin-top: 3rem;
   }
   
   .card-title-container {

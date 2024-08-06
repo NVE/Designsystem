@@ -10,7 +10,6 @@ import ComponentLayout from './components/ComponentLayout.vue';
 import CodeExamplePreview from './components/CodeExamplePreview.vue';
 import SandboxPreview from './components/SandboxPreview.vue';
 import StartPage from './components/StartPage.vue';
-import IntroductionPage from './components/IntroductionPage.vue';
 import LinkButton from './components/LinkButton.vue';
 import PageHeader from './components/PageHeader.vue';
 import ComponentOverview from './components/ComponentOverview.vue';
@@ -39,7 +38,6 @@ export default {
     app.component('CodeExamplePreview', CodeExamplePreview);
     app.component('SandboxPreview', SandboxPreview);
     app.component('StartPage', StartPage);
-    app.component('IntroductionPage', IntroductionPage);
     app.component('LinkButton', LinkButton);
     app.component('PageHeader', PageHeader);
     app.component('ComponentOverview', ComponentOverview);

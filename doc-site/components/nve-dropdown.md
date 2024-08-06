@@ -2,9 +2,10 @@
 layout: component
 ---
 
-:::tip
-For nedtrekksliste/"rullgardin"/dropdown-list, bruk [nve-select](nve-select.html)
-:::
+<Card title="Tips">
+<span>For nedtrekksliste/"rullgardin"/dropdown-list, bruk <a href="/components/nve-select.html">nve-select</a></span>
+
+</Card>
 
 <CodeExamplePreview>
 

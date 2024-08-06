@@ -17,7 +17,7 @@
   <style scoped>
     .header-container {
         background:  #F7F7F8;
-        width: 887px;
+        /* width: 887px; */
         height:116px;
         display: flex;
         justify-content: space-between;
