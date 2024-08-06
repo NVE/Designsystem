@@ -10,7 +10,7 @@
     type Props = {
         URL: string
         text: string
-        openInNewTab: boolean;
+        openInNewTab?: boolean;
     };
 
   const {text, openInNewTab, URL} =  withDefaults(defineProps<Props>(), {

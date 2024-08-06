@@ -1,4 +1,4 @@
-<PageHeader title="For designere" imagePath="../../assets/images/design-services.png"></PageHeader>
+<PageHeader title="For designere" imagePath="designer" pageLevel=2></PageHeader>
 TODO: Legge til tab komponent
 
 ## Bidrag
@@ -27,7 +27,7 @@ Det er tre ulike måter du kan bidra til designsystemet på. Du kan legge til ny
 </style>
 
 <div class="left-image-container">
-  <img src="@images/contribution-1.png" width="auto">
+  <img src="../../assets/images/contribution-1.png" width="auto">
   <div>
     <h2 class="h2-style">Legg til</h2>
     <p>Har du skisset opp nye komponenter du ser blir mye brukt i NVE eller Varsoms tjenester og kan nytte andre prosjekter? Da ønsker vi veldig gjerne at du lager en sak i Jira hvor du legger ved skissen din. Velges den for utvikling, lager du komponentet gjennom en branch i Figma og kode. Er du fornøyd, markerer du den som ferdig i Jira. Da går saken over til designsystem-kvalitetsikrer, som har ansvar for kvalitetsjekk og publisering.</p>
@@ -35,7 +35,7 @@ Det er tre ulike måter du kan bidra til designsystemet på. Du kan legge til ny
 </div>
 
 <div class="left-image-container">
-  <img src="@images/contribution-2.png" width="auto">
+  <img src="../../assets/images/contribution-2.png" width="auto">
   <div>
     <h2 class="h2-style">Forbedring</h2>
     <p>Dekker ikke et eksisterende komponent hele ditt behov eller har du en ny og bedre idé på hvordan komponenten bør fungere? Legg inn saken i Jira. Velges den for utvikling, lager du en branch i Figma og forbedrer komponenten. Er du fornøyd, markerer du den som ferdig i Jira. Da går saken over til designsystem-ansvarlig, som har ansvar for kvalitetsjekk og publisering.</p>
@@ -43,7 +43,7 @@ Det er tre ulike måter du kan bidra til designsystemet på. Du kan legge til ny
 </div>
 
 <div class="left-image-container">
-  <img src="@images/contribution-3.png" width="auto">
+  <img src="../../assets/images/contribution-3.png" width="auto">
   <div>
     <h2 class="h2-style">Bugs og feil</h2>
     <p>Opplever du bugs eller noe feil fra komponenter i designsystemet? Det kommer til å skje i blant. Meld fra via Jira, så vil designsystem-kvalitetsikrer ta over saken og undersøke feilen.</p>
@@ -66,7 +66,7 @@ Designsystemet er en felles dugnad fra og for alle prosjekter i NVE og Varsom. D
 4. **Løs oppgaven i Figma eller i kode**  
    Løs oppgaven du har fått tildelt i Figma eller i kode avhengig av oppgave. Sørg for at du forholder deg til retningslinjene satt i profilmanualen og i designsystemet, og sørg for at løsningen din oppfyller kravene til universell utforming.
 
-<Card title="Krav">
+<Card title="Krav" variant="info">
 <ul>
 <li class="list-item">Gi komponenten et navn som er fornuftig. Det skal være lett å finne for folk som ikke vet om det. Navnet skal være beskrivende for hva det er eller hva det gjør.
 </li>
@@ -78,5 +78,5 @@ Designsystemet er en felles dugnad fra og for alle prosjekter i NVE og Varsom. D
 
 ## Bruk Branching
 
-<img src="@images/contribution-4.png" width="auto">
+<img src="../../assets/images/contribution-4.png" width="auto">
 Skal oppgaven løses i Figma er det viktig at du bruker featuren kalt branching. Ved å lage en branch av hovedfilen sørger du for at designjusteringene du gjør ikke publiseres i hovedfilen før endringene er kvalitetssikret. Lær mer om branching i Figma i lenken under.

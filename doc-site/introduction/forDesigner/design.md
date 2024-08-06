@@ -1,4 +1,4 @@
-<PageHeader title="For designere" imagePath="../../assets/images/design-services.png"></PageHeader>
+<PageHeader title="For designere" imagePath="designer"  pageLevel=2></PageHeader>
 TODO: Legge til tab komponent
 
 Designsystem samler og tilgjengeliggjør verktøy, filer, komponenter og designretningslinjer som brukes av designere og utviklere for å lage gode og konsekvente brukeropplevelser i NVE og Varsoms digitale tjenester.

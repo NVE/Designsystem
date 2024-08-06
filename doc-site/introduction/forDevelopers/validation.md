@@ -1,8 +1,8 @@
-<PageHeader title="For utviklere" imagePath="../../assets/images/code-blocks.png"></PageHeader>
+<PageHeader title="For utviklere" imagePath="developer"  pageLevel=2></PageHeader>
 
 # Validering av input
 
-<Card title="Tips">
+<Card title="Tips" variant="info">
 Komponentene du skal validere må ligge inni en &lt;form&gt;, fordi validering utføres når `submit`-eventet fyres av.
 
 </Card>

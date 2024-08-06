@@ -10,7 +10,7 @@ layout: component
 
 </CodeExamplePreview>
 
-<Card title="Tips">
+<Card title="Tips" variant="info">
 Bruk `open` for å vise en alert. Hvis ikke `open` er satt, vises den ikke.
 
 </Card>

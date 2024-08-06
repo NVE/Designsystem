@@ -1,11 +1,11 @@
-<PageHeader title="Introduksjon" imagePath="../assets/images/introduction-icon.png"></PageHeader>
+<PageHeader title="Introduksjon" imagePath="intro" pageLevel=1></PageHeader>
 TODO: Legg til tab komponent
 
 # Om designsystemet
 
 Designsystemet samler og tilgjengeliggjør verktøy, filer, komponenter og designretningslinjer som brukes av designere og utviklere for å lage gode og konsekvente brukeropplevelser i NVE og Varsoms digitale tjenester. Designsystemet skal sette NVE og Varsoms profiler i kontekst. Med andre ord vise deg hvorfor, hvor, når og hvordan du bruker og videreutvikler innhold i designsystemet for å skape gevinster og tettere samarbeid på tvers av roller og produkter.
 
-<Card title="Designsystemets formål">
+<Card title="Designsystemets formål" variant="info">
 
 - Sikre visuell og funksjonell konsistens i forskjellige produkter og kanaler
 - Sentral kvalitetssikring og tilpassing til krav som universell utforming

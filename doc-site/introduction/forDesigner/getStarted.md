@@ -1,4 +1,4 @@
-<PageHeader title="For designere" imagePath="../../assets/images/design-services.png"></PageHeader>
+<PageHeader title="For designere" imagePath="designer"  pageLevel=2></PageHeader>
 TODO: Legge til tab komponent
 
 # Kom igang
@@ -23,7 +23,7 @@ For å kunne bruke designsystemet må du aktivere denne i Figma. Alle komponentn
 1. Trykk deg inn på library ikonet i en arbeidsfil <nve-icon name="import_contacts" style="display: inline; padding-left:8px;"></nve-icon>
 
 2. Der skal designsystem filene ligge. Den er delt i 6 deler. Fil 01, 02 og 03 er grunnleggende om må aktiveres før bruk.
-   <img src="@images/get-started-1.png" width="auto">
+   <img src="../../assets/images/get-started-1.png" width="auto">
 
 ## Bytte tema, brands og skjermstørrelse
 
@@ -34,6 +34,6 @@ Theme - Kan du bytte mellom dark og light-mode.
 Brand - Bytter du mellom NVE og Varsom sitt design.  
 Device - Kan du bytte mellom forskjellige skjermstørrelser. Da vil innholdet justere seg i forhold til hvilken flate du jobber på.
 
-<img src="@images/get-started-2.png" width="auto">
+<img src="../../assets/images/get-started-2.png" width="auto">
 
-<Card title="Tips">For at dette skal funke utmerket må du huske å bruke variablene som er fastsatt og ikke løse designverdier. Da vil ikke alt av innholdet endres i forhold til hva slags variabler/tokens du bruker.</Card>
+<Card title="Tips" variant="info">For at dette skal funke utmerket må du huske å bruke variablene som er fastsatt og ikke løse designverdier. Da vil ikke alt av innholdet endres i forhold til hva slags variabler/tokens du bruker.</Card>

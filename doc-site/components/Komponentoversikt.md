@@ -1,3 +1,3 @@
-<PageHeader title="Komponentoversikt" imagePath="../../../assets/images/deployed-code.png"></PageHeader>
+<PageHeader title="Komponentoversikt" imagePath="developer" pageLevel=1></PageHeader>
 
 <ComponentOverview />

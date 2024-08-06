@@ -1,4 +1,4 @@
-<PageHeader title="For utviklere" imagePath="../../assets/images/code-blocks.png"></PageHeader>
+<PageHeader title="For utviklere" imagePath="developer"  pageLevel=2></PageHeader>
 TODO: Legg til tab komponent
 
 Dette er brukerveiledninga for komponentbiblioteket som er en del av NVE Designsystem.
