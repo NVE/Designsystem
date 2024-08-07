@@ -16,11 +16,11 @@ Det er tre ulike måter du kan bidra til designsystemet på. Du kan legge til ny
     margin-top: 3rem;
   }
   .left-image-container img {
-    margin-right: 1rem; 
+    margin-right: 1rem;
   }
 
   .h2-style {
-    border-top: none !important; 
+    border-top: none !important;
     margin:0 !important;  
     padding:0 !important;
   }

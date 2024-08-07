@@ -30,7 +30,7 @@ export default defineConfig({
 });
 ```
 
-TODO: BUrde vi også inkludert type-info? Se https://shoelace.style/frameworks/vue#types
+TODO: BUrde vi også inkludert type-info? Se <https://shoelace.style/frameworks/vue#types>
 
 ## Stiler
 
