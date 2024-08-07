@@ -1,8 +1,11 @@
+<PageHeader title="For utviklere" imagePath="developer"  pageLevel=2></PageHeader>
+
 # Validering av input
 
-:::tip
-Komponentene du skal validere må ligge inni en `<form>`, fordi validering utføres når `submit`-eventet fyres av.
-:::
+<Card title="Tips" variant="info">
+Komponentene du skal validere må ligge inni en &lt;form&gt;, fordi validering utføres når `submit`-eventet fyres av.
+
+</Card>
 
 Vi tilbyr en forenklet variant av Shoelace sin måte å validere input på. Du bør lese om [hvordan Shoelace gjør det](https://shoelace.style/getting-started/form-controls).
 
@@ -20,7 +23,7 @@ Du må ha en feilmelding i `errorMessage`, ellers vises nettleseren sin standard
 
 Constraint validation kaster feil på det første ugyldige feltet den finner. Er det flere felt som feiler, vil ikke feilmelding for disse vises før man trykker submit-knappen på nytt. Det kan eventuelt fikses manuelt hvis man ønsker det. TODO: Hvordan?
 
-Du finner eksempler på bruk av constraint validation på sida for [nve-input](../components/nve-input.html#constraint-validation).
+Du finner eksempler på bruk av constraint validation på sida for [nve-input](../../components/nve-input.html#constraint-validation).
 
 `nve-radio-group` og `nve-checkbox-group` støtter kun `required`.
 

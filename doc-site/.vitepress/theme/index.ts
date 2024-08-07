@@ -9,6 +9,11 @@ import { icons, registerIconLibrary } from '../../../src/registerIcons/systemLib
 import ComponentLayout from './components/ComponentLayout.vue';
 import CodeExamplePreview from './components/CodeExamplePreview.vue';
 import SandboxPreview from './components/SandboxPreview.vue';
+import StartPage from './components/StartPage.vue';
+import LinkButton from './components/LinkButton.vue';
+import PageHeader from './components/PageHeader.vue';
+import ComponentOverview from './components/ComponentOverview.vue';
+import Card from './components/Card.vue';
 
 export default {
   extends: DefaultTheme,
@@ -32,6 +37,12 @@ export default {
     app.component('component', ComponentLayout);
     app.component('CodeExamplePreview', CodeExamplePreview);
     app.component('SandboxPreview', SandboxPreview);
+    app.component('StartPage', StartPage);
+    app.component('LinkButton', LinkButton);
+    app.component('PageHeader', PageHeader);
+    app.component('ComponentOverview', ComponentOverview);
+    app.component('Card', Card);
+
     registerIconLibrary('system', {
       resolver: (name) => {
         return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;

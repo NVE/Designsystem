@@ -1,20 +1,38 @@
-# Om komponentbiblioteket
+<PageHeader title="Introduksjon" imagePath="intro" pageLevel=1></PageHeader>
+TODO: Legg til tab komponent
 
-Dette er brukerveiledninga for komponentbiblioteket som er en del av [NVE Designsystem](https://nve.frontify.com/r/JxB2JgxjfU97ZEEW1KGvc-ortcWfK51EiOcROUDCijg).
+# Om designsystemet
 
-Alle komponentene er [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components), og dette gjør at de skal kunne brukes i de fleste web-applikasjoner, uavhengig av rammeverk.
-Komponentene er ferdig utformet med NVE sitt design.
+Designsystemet samler og tilgjengeliggjør verktøy, filer, komponenter og designretningslinjer som brukes av designere og utviklere for å lage gode og konsekvente brukeropplevelser i NVE og Varsoms digitale tjenester. Designsystemet skal sette NVE og Varsoms profiler i kontekst. Med andre ord vise deg hvorfor, hvor, når og hvordan du bruker og videreutvikler innhold i designsystemet for å skape gevinster og tettere samarbeid på tvers av roller og produkter.
 
-Mange av komponentene er basert på [Shoelace](https://shoelace.style/). Det meste som står i [Shoelace-dokumentasjonen om bruk av komponenter](https://shoelace.style/getting-started/usage) gjelder også for nve-komponenter.
+<Card title="Designsystemets formål" variant="info">
 
-Kildekoden til komponentene finner du i [GitHub](https://github.com/NVE/Designsystem).
+- Sikre visuell og funksjonell konsistens i forskjellige produkter og kanaler
+- Sentral kvalitetssikring og tilpassing til krav som universell utforming
+- Gjøre det enklere å komme i gang med design og utvikling i NVE og Varsom
+- Styrke kommunikasjon og samarbeid mellom design og utvikling
 
-Designsystemet utvikles på dugnad og etter behov.
+</Card>
 
-:::tip
-Vi vil gjerne ha bidrag fra deg!
-:::
+## Våre prinsipper
 
-Finner du feil i dokumentasjon eller komponenter, gi beskjed ved å [registrere en sak i Jira](https://nveprojects.atlassian.net/browse/DS-132) eller huk tak i f.eks. Maren, Joel, Marcin eller Øystein. Kanskje noen allerede jobber med akkurat dette problemet ?
+<div class="two-card-container">
+    <Card variant="nve-card" title="Enkelhet">Det skal være enkelt å bruke designsystemet. Enkelt å ta det i bruk, forstå og bidra.</Card>
+    <Card variant="nve-card" title="Åpent">Designsystemet skal være åpent og transparent. Designsystemet er laget for alle brukere.</Card>
+    <Card variant="nve-card" title="Fleksibilitet">Designsystemet skal være fleksibelt og enkelt å bruke. Det inneholder byggeklosser som kan passe på de fleste produkter.</Card>
+    <Card variant="nve-card" title="Bidrag">Vi jobber sammen med å skape og videreutvikle designsystemet. Vi er avhengig at flere bidrar inn til systemet. Les mer om bidrag på siden.</Card>
+    <Card variant="nve-card" title="Standarder">Designsystemet skal være en standard for alle som jobber med grensesnittet mot sluttbruker. Dette skal være en "source of truth". Designsystemet jobber mot konsistens og kvalitet i kode og design.</Card>
+</div>
 
-Er det småting som bør fikses, lag gjerne en [pull request i Github](https://github.com/NVE/Designsystem/pulls), men les [readme](https://github.com/NVE/Designsystem) først. Readme inneholder både tips og en del kjøreregler.
+<style>
+.two-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-medium, 24px);
+}
+
+.two-card-container > * {
+    flex: 1 1 calc(50% - var(--spacing-medium, 24px));
+    box-sizing: border-box;
+}
+</style>

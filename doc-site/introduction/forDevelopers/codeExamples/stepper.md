@@ -1,3 +1,5 @@
+<PageHeader title="For utviklere" imagePath="developer"  pageLevel=3></PageHeader>
+
 # Nve-Stepper
 
 Her er eksempler på hvordan du bruker Nve-Stepper i Vue:
@@ -31,9 +33,7 @@ Eksemplet viser hvordan du bruker nve-stepper med standardinnstillinger. Som sta
 
 For å legge til valideringslogikk før du går til neste trinn, kan du skrive over komponentens nextStep-funksjon. Dette gjør det mulig å kontrollere om gjeldende trinn er gyldig før du går videre. Nedenfor finner du et eksempel på hvordan du kan skrive over nextStep-funksjonen og inkludere egen valideringslogikk.
 
-:::tip
-Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.
-:::
+<Card title="Tips" variant="info">Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.</Card>
 
 #### Egen tekst for siste knapp
 
@@ -53,7 +53,7 @@ Denne funksjonen henter gjeldende trinnindeks ved å bruke getCurrentIndex-metod
 
 Denne funksjonen lar deg flytte til et bestemt trinn ved å bruke selectStep-metoden. Den utløser en CustomEvent med select-step og ønsket trinnindeks. Dette er nyttig når du trenger å navigere til et spesifikt trinn programmatisk basert på visse betingelser.
 
-:::tip
+::: info
 Merk at selectStep-funksjonen har følgende condition:
 if (this.steps[event.detail.index - 1].state == StepState.NotStarted) return;
 :::
@@ -308,7 +308,7 @@ Eksemplet viser hvordan du bruker en horisontal nve-stepper med standardinnstill
 ### orientation
 
 Property orientation har valgene: 'horisontal' | 'vertikal' der 'horisontal' er default.
-:::tip
+:::info
 Merk: Du må bruke orientation="horizontal", ikke :orientation="horizontal".
 :::
 
@@ -426,9 +426,7 @@ Før du administrerer at kontrollen av det siste trinnet er riktig, bør du skri
 
 For å legge til valideringslogikk før du går til neste trinn, kan du skrive over komponentens nextStep-funksjon. Dette gjør det mulig å kontrollere om gjeldende trinn er gyldig før du går videre. Nedenfor finner du et eksempel på hvordan du kan skrive over nextStep-funksjonen og inkludere egen valideringslogikk.
 
-:::tip
-Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.
-:::
+<Card title="Tips" variant="info">Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.</Card>
 
 #### Egen tekst for siste knapp uten standardknapper
 
