@@ -153,7 +153,7 @@ export default css`
   .button--outline.button--neutral:hover:not(.button--disabled),
   .button--outline.button--neutral.button--checked:not(.button--disabled) {
     border-color: var(--interactive-outlined-border-hover);
-    color: var(--interactive-outlined-foreground-default); */
+    color: var(--interactive-outlined-foreground-default); 
     background-color: transparent;
   }
 
