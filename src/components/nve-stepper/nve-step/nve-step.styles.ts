@@ -85,9 +85,7 @@ export default css`
 }
 
 .divider-not-reached-color {
-  /* TODO the token --neutrals-background-secondary gives wrong color #c8eaf9 instead of #E4E5E7
-  color:var(--neutrals-background-secondary, #E4E5E7); */
-  background:#E4E5E7; 
+  color:var(--neutrals-background-secondary, #E4E5E7);
 }
 
 .divider-reached-color {
@@ -95,9 +93,7 @@ export default css`
 }
 
 .state-not-started-icon-color {
-  /* TODO the token --neutrals-background-secondary gives wrong color #c8eaf9 instead of #E4E5E7
-  color:var(--neutrals-background-secondary, #E4E5E7); */
-  color:#E4E5E7; 
+  color:var(--neutrals-background-secondary, #E4E5E7); 
 }
 
 .state-not-started-color {

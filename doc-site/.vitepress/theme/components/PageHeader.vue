@@ -6,34 +6,33 @@
   </template>
   
   <script setup lang="ts">
-    import { useData } from 'vitepress'
-  type Props = {
-    title: string,
-    imagePath: string,
-    pageLevel: string
-  }
-  const { title, imagePath, pageLevel } = defineProps<Props>();
+    import { useData } from 'vitepress';
+    import introDarkMode from '../../../assets/images/intro-dark-mode.svg';
+    import intro from '../../../assets/images/intro.png';
+    import designServicesDarkMode from '../../../assets/images/design-services-dark-mode.svg';
+    import designServices from '../../../assets/images/design-services.png';
+    import codeBlocksDarkMode from '../../../assets/images/code-blocks-dark-mode.svg';
+    import codeBlocks from '../../../assets/images/code-blocks.png';
 
-  const { isDark } = useData()
+    type Props = {
+      title: string;
+      imagePath: string;
+      pageLevel: string;
+    };
+    const { title, imagePath, pageLevel } = defineProps<Props>();
 
-  const getImage = (imagePath: string) => {
-    let pageLevelString = "../"; 
-    switch (pageLevel) {
-      case "2":
-      pageLevelString = "../../"
-      case "3":
-      pageLevelString = "../../../"
-    }
-    switch (imagePath) {
-      case "intro":
-        return isDark.value ? pageLevelString +'assets/images/intro-dark-mode.svg':pageLevelString+ 'assets/images/intro.png';
-      case "designer":
-        return isDark.value ? pageLevelString + 'assets/images/design-services-dark-mode.svg': pageLevelString + 'assets/images/design-services.png';
-      case "developer":
-        return isDark.value ? pageLevelString + 'assets/images/code-blocks-dark-mode.svg': pageLevelString + 'assets/images/code-blocks.png';
-    }
-  }
+    const { isDark } = useData();
 
+    const getImage = (imagePath: string) => {
+      switch (imagePath) {
+        case 'intro':
+          return isDark.value ? introDarkMode : intro;
+        case 'designer':
+          return isDark.value ? designServicesDarkMode : designServices;
+        case 'developer':
+          return isDark.value ? codeBlocksDarkMode : codeBlocks;
+      }
+    };
   </script>
   
   <style scoped>
