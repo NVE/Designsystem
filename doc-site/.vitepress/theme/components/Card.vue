@@ -15,7 +15,16 @@
       </div>
       <slot></slot>
     </div>
+
   </div>
+  <div v-if="variant === 'subtle-card'">
+    <div class="card info-card">
+      <div class="card-title-container">
+        <p class="card-title">{{ title }}</p>
+      </div>
+      <slot></slot>
+    </div>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -36,10 +45,14 @@ const { title } = withDefaults(defineProps<Props>(), {
 }
 
 .nve-card {
-  background-color: #c8102e;
-  color: var(--neutrals-background-primary, #ffffff);
-  background-color: #c8102e;
-  color: var(--neutrals-background-primary, #ffffff);
+  background-color: var(--neutrals-brand-light, #FFD8DE);
+  color: var(--neutrals-foreground-primary, #000000);
+  min-height: 200px;
+}
+
+.subtle-card {
+  background-color: var(--neutrals-background-primary, #b9cad7);
+  color: var(--neutrals-foreground-primary, #000000);
   min-height: 200px;
 }
 
@@ -51,7 +64,7 @@ const { title } = withDefaults(defineProps<Props>(), {
   gap: var(--spacing-small, 12px);
   align-self: stretch;
   border-radius: var(--borderRadius-small, 4px);
-  margin-top: 3rem;
+  margin-top: 0rem;
 }
 
 .card-title-container {
