@@ -37,3 +37,54 @@ Device - Kan du bytte mellom forskjellige skjermstørrelser. Da vil innholdet ju
 <img src="../../assets/images/get-started-2.png" width="auto">
 
 <Card title="Tips" variant="info">For at dette skal funke utmerket må du huske å bruke variablene som er fastsatt og ikke løse designverdier. Da vil ikke alt av innholdet endres i forhold til hva slags variabler/tokens du bruker.</Card>
+
+## Bestanddeler
+Designsystemet består av grunnleggende stiler og komponenter som brukes for å designe digitale tjenester for både NVE og Varsom. Vi deler bestanddelene inn i tre kategorier: Primitiver, komponenter og mønstre.
+
+<style>
+  .left-image-container {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 4rem;
+  }
+  .left-image-container img {
+    margin-right: 1rem;
+    padding-top: 0rem;
+   border-radius: 4px;
+  }
+
+  .h2-style {
+    border-top: none !important;
+    margin:0 !important;  
+    padding:0 !important;
+  }
+</style>
+
+
+<div class="left-image-container">
+  <img src="../../assets/images/primitiver.png" width="50%">
+  <div>
+    <h2 class="h2-style">Primitiver</h2>
+    <p>Primitiver (også kalt foundations) er de mest grunnleggende byggeklossene og retningslinjene for design i NVE. 
+    Det er kommunikasjonsavdelingen i NVE som forvalter NVE og Varsom sine profilmanualer, som utgjør grunnlaget for primitiver i designsystemet. Profilmanualene finner du under NVE profil og Varsom profil..</p>
+  </div>
+</div>
+
+<div class="left-image-container">
+  <img src="../../assets/images/komponenter.png" width="50%">
+  <div>
+    <h2 class="h2-style">Komponenter</h2>
+    <p>Komponenter er enkle grafiske elementer som bygges opp gjennom våre designprinsipper. Komponentene skal være fleksible å bruke, og tilby flere valg og varianter.</p>
+  </div>
+</div>
+
+<div class="left-image-container">
+  <img src="../../assets/images/mønstre.png" width="50%">
+  <div>
+    <h2 class="h2-style">Mønstre</h2>
+    <p>Er en sammensetning av flere komponenter sammen. Dette er mer enn 4-5 komponenter satt sammen for å danne et mer komplekst grensesnittelement.
+
+Dette kan for eksempel være en header/navigasjonsbar eller et “cookies” panel som kommer opp.</p>
+  </div>
+</div>
+

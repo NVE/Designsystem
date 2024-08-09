@@ -5,6 +5,8 @@ TODO: Legg til tab komponent
 
 Designsystemet samler og tilgjengeliggjør verktøy, filer, komponenter og designretningslinjer som brukes av designere og utviklere for å lage gode og konsekvente brukeropplevelser i NVE og Varsoms digitale tjenester. Designsystemet skal sette NVE og Varsoms profiler i kontekst. Med andre ord vise deg hvorfor, hvor, når og hvordan du bruker og videreutvikler innhold i designsystemet for å skape gevinster og tettere samarbeid på tvers av roller og produkter.
 
+Et designsystem handler, til tross for sitt navn, om mer enn bare design. Det handler først og fremst om mennesker, og hvordan vi må jobbe for å få brukt designet godt på en praktisk måte når vi utvikler en løsning. Designsystem som konsept er ikke teknologibundet, men er heller et uttrykk som beskriver prosessene og vanene som leder til mest effektivt design, utvikling og ledelse.
+
 <Card title="Designsystemets formål" variant="info">
 
 - Sikre visuell og funksjonell konsistens i forskjellige produkter og kanaler
@@ -29,6 +31,7 @@ Designsystemet samler og tilgjengeliggjør verktøy, filer, komponenter og desig
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-medium, 24px);
+
 }
 
 .two-card-container > * {

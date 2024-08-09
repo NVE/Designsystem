@@ -37,30 +37,33 @@ export default defineConfig({
         items: [
           { text: 'Om designsystemet', link: '/introduction/home' },
           { text: 'Designelementer', link: '/introduction/designElements' },
-          { text: 'For designere',
+          { text: 'Universell Utforming', link: '/introduction/universellUtforming' },
+          {
+            text: 'For designere',
             items: [
               { text: 'Design', link: '/introduction/forDesigner/design' },
               { text: 'Kom igang', link: '/introduction/forDesigner/getStarted' },
               { text: 'Bidrag', link: '/introduction/forDesigner/contribution' },
 
             ]
-           },
+          },
           {
             text: 'For utviklere',
             items: [
               { text: 'Utvikling', link: '/introduction/forDevelopers/development' },
               { text: 'Bruk i Vue', link: '/introduction/forDevelopers/vue' },
-              { text: 'Validering', link: '/introduction/forDevelopers/validation'},
-              { text: 'Kodeeksempler i Vue', 
+              { text: 'Validering', link: '/introduction/forDevelopers/validation' },
+              {
+                text: 'Kodeeksempler i Vue',
                 items: [
                   { text: 'nve-stepper', link: '/introduction/forDevelopers/codeExamples/stepper' },
                 ],
               },
             ],
-          },          
+          },
         ],
       },
-      { text: 'Komponenter', items:  componentsLinks },
+      { text: 'Komponenter', items: componentsLinks },
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/NVE/Designsystem', ariaLabel: 'Link til kildekoden i Github' },
