@@ -1,5 +1,5 @@
 <template>
-  <div v-if="variant === 'nve-card'">
+  <div>
     <div class="card nve-card">
       <div class="card-title-container">
         <p class="card-title">{{ title }}</p>
@@ -7,26 +7,12 @@
       <p class="text"><slot></slot></p>
     </div>
   </div>
-  <div v-if="variant === 'info'">
-    <div class="card info-card">
-      <div class="card-title-container">
-        <nve-icon name="info" slot="prefix" style="font-size: 26px; padding-right: 8px"></nve-icon>
-        <p class="card-title">{{ title }}</p>
-      </div>
-      <slot></slot>
-    </div>
-  </div>
 </template>
 
 <script setup lang="ts">
-type Props = {
+defineProps<{
   title: string;
-  variant: string;
-};
-
-const { title } = withDefaults(defineProps<Props>(), {
-  variant: 'info',
-});
+}>();
 </script>
 
 <style scoped>

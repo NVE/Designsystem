@@ -33,7 +33,7 @@ Eksemplet viser hvordan du bruker nve-stepper med standardinnstillinger. Som sta
 
 For å legge til valideringslogikk før du går til neste trinn, kan du skrive over komponentens nextStep-funksjon. Dette gjør det mulig å kontrollere om gjeldende trinn er gyldig før du går videre. Nedenfor finner du et eksempel på hvordan du kan skrive over nextStep-funksjonen og inkludere egen valideringslogikk.
 
-<Card title="Tips" variant="info">Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.</Card>
+<nve-message-card title="Tips">Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.</nve-message-card>
 
 #### Egen tekst for siste knapp
 
@@ -53,129 +53,133 @@ Denne funksjonen henter gjeldende trinnindeks ved å bruke getCurrentIndex-metod
 
 Denne funksjonen lar deg flytte til et bestemt trinn ved å bruke selectStep-metoden. Den utløser en CustomEvent med select-step og ønsket trinnindeks. Dette er nyttig når du trenger å navigere til et spesifikt trinn programmatisk basert på visse betingelser.
 
-::: info
-Merk at selectStep-funksjonen har følgende condition:
-if (this.steps[event.detail.index - 1].state == StepState.NotStarted) return;
-:::
+<nve-message-card title="Tips">
+  Merk at selectStep-funksjonen har følgende condition:
+  if (this.steps[event.detail.index - 1].state == StepState.NotStarted) return;
+</nve-message-card>
 
-```vue
+<CodeExamplePreview onlyCode="true">
+
+```html
 <template>
   <nve-stepper ref="stepper" :steps="steps"></nve-stepper>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+  import { onMounted, ref } from 'vue';
 
-import 'nve-designsystem/components/nve-stepper/nve-stepper.component';
-import 'nve-designsystem/components/nve-button/nve-button.component';
-import 'nve-designsystem/components/nve-icon/nve-icon.component';
+  import 'nve-designsystem/components/nve-stepper/nve-stepper.component';
+  import 'nve-designsystem/components/nve-button/nve-button.component';
+  import 'nve-designsystem/components/nve-icon/nve-icon.component';
 
-import { StepProps } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
-import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
+  import { StepProps } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
+  import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
 
-const steps: StepProps[] = [
-  {
-    title: 'Kategorisering',
-    description: 'Lorem Ipsum',
-    state: StepState.Started,
-    isSelected: true,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Beskrivelse',
-    description: 'Lorem Ipsum',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Kontakt info',
-    description: 'Lorem Ipsum',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Oppsumering',
-    description: 'Lorem Ipsum',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-];
+  const steps: StepProps[] = [
+    {
+      title: 'Kategorisering',
+      description: 'Lorem Ipsum',
+      state: StepState.Started,
+      isSelected: true,
+      readyForEntrance: true,
+    },
+    {
+      title: 'Beskrivelse',
+      description: 'Lorem Ipsum',
+      state: StepState.NotStarted,
+      isSelected: false,
+      readyForEntrance: true,
+    },
+    {
+      title: 'Kontakt info',
+      description: 'Lorem Ipsum',
+      state: StepState.NotStarted,
+      isSelected: false,
+      readyForEntrance: true,
+    },
+    {
+      title: 'Oppsumering',
+      description: 'Lorem Ipsum',
+      state: StepState.NotStarted,
+      isSelected: false,
+      readyForEntrance: true,
+    },
+  ];
 
-// Get a reference to the stepper component
-const stepper = ref<HTMLElement | null>(null);
+  // Get a reference to the stepper component
+  const stepper = ref<HTMLElement | null>(null);
 
-onMounted(() => {
-  initializeStepper();
-  logCurrentIndex();
-});
+  onMounted(() => {
+    initializeStepper();
+    logCurrentIndex();
+  });
 
-// Function to initialize the stepper component
-const initializeStepper = () => {
-  if (stepper.value) {
-    const nveStepper = stepper.value as unknown as INveStepper;
+  // Function to initialize the stepper component
+  const initializeStepper = () => {
+    if (stepper.value) {
+      const nveStepper = stepper.value as unknown as INveStepper;
 
-    // Override the original nextStep method
-    overrideNextStep(nveStepper);
-    // Override the finishSteps method with custom logic
-    overrideFinishSteps(nveStepper);
-  }
-};
-
-// Function to override the nextStep method with custom validation
-const overrideNextStep = (nveStepper: INveStepper) => {
-  // Store a reference to the original nextStep method, binding 'this' to 'nveStepper'
-  const originalNextStep = nveStepper.nextStep.bind(nveStepper);
-
-  nveStepper.nextStep = () => {
-    // Perform custom validation before advancing to the next step
-    if (validateCurrentStep(nveStepper)) {
-      console.log('Validation success');
-      originalNextStep();
-    } else {
-      console.log('Validation failed');
+      // Override the original nextStep method
+      overrideNextStep(nveStepper);
+      // Override the finishSteps method with custom logic
+      overrideFinishSteps(nveStepper);
     }
   };
-};
 
-// Function to override the finishSteps method with custom logic
-const overrideFinishSteps = (nveStepper: INveStepper) => {
-  nveStepper.finishSteps = () => {
-    console.log('Custom finish steps logic executed!');
-    // Add your custom logic here
+  // Function to override the nextStep method with custom validation
+  const overrideNextStep = (nveStepper: INveStepper) => {
+    // Store a reference to the original nextStep method, binding 'this' to 'nveStepper'
+    const originalNextStep = nveStepper.nextStep.bind(nveStepper);
+
+    nveStepper.nextStep = () => {
+      // Perform custom validation before advancing to the next step
+      if (validateCurrentStep(nveStepper)) {
+        console.log('Validation success');
+        originalNextStep();
+      } else {
+        console.log('Validation failed');
+      }
+    };
   };
-};
 
-// Function to validate the current step
-const validateCurrentStep = (nveStepper: INveStepper) => {
-  const currentIndex = nveStepper.getCurrentIndex();
-  // Example condition: Ensure the description is not empty
-  return steps[currentIndex].description.trim() !== '';
-};
+  // Function to override the finishSteps method with custom logic
+  const overrideFinishSteps = (nveStepper: INveStepper) => {
+    nveStepper.finishSteps = () => {
+      console.log('Custom finish steps logic executed!');
+      // Add your custom logic here
+    };
+  };
 
-// Function to log the current step index
-const logCurrentIndex = () => {
-  if (stepper.value) {
-    const nveStepper = stepper.value as unknown as INveStepper;
+  // Function to validate the current step
+  const validateCurrentStep = (nveStepper: INveStepper) => {
     const currentIndex = nveStepper.getCurrentIndex();
-    console.log(`Current step index: ${currentIndex}`);
-  }
-};
+    // Example condition: Ensure the description is not empty
+    return steps[currentIndex].description.trim() !== '';
+  };
 
-// Function to move to a specific step
-// NOTE that the selectStep function has the condition:
-//    if (this.steps[event.detail.index - 1].state == StepState.NotStarted) {
-//        return; }
-const moveToStep = (index: number) => {
-  if (stepper.value) {
-    const nveStepper = stepper.value as unknown as INveStepper;
-    nveStepper.selectStep(new CustomEvent('select-step', { detail: { index } }));
-    console.log(`Moved to step index: ${index}`);
-  }
-};
+  // Function to log the current step index
+  const logCurrentIndex = () => {
+    if (stepper.value) {
+      const nveStepper = stepper.value as unknown as INveStepper;
+      const currentIndex = nveStepper.getCurrentIndex();
+      console.log(`Current step index: ${currentIndex}`);
+    }
+  };
+
+  // Function to move to a specific step
+  // NOTE that the selectStep function has the condition:
+  // if (this.steps[event.detail.index - 1].state == StepState.NotStarted) {
+  // return; }
+  const moveToStep = (index: number) => {
+    if (stepper.value) {
+      const nveStepper = stepper.value as unknown as INveStepper;
+      nveStepper.selectStep(new CustomEvent('select-step', { detail: { index } }));
+      console.log(`Moved to step index: ${index}`);
+    }
+  };
 </script>
 ```
+
+</CodeExamplePreview>
 
 <SandboxPreview>
 
@@ -194,109 +198,109 @@ import "nve-designsystem/components/nve-icon/nve-icon.component";
 import { StepProps } from "nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js";
 import { StepState } from "nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js";
 const steps: StepProps[] = [
-  {
-    title: 'Kategorisering',
-    description: 'Lorem Ipsum',
-    state: StepState.Started,
-    isSelected: true,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Beskrivelse',
-    description: 'Lorem Ipsum',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Kontakt info',
-    description: 'Lorem Ipsum',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Oppsumering',
-    description: 'Lorem Ipsum',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
+{
+title: 'Kategorisering',
+description: 'Lorem Ipsum',
+state: StepState.Started,
+isSelected: true,
+readyForEntrance: true,
+},
+{
+title: 'Beskrivelse',
+description: 'Lorem Ipsum',
+state: StepState.NotStarted,
+isSelected: false,
+readyForEntrance: true,
+},
+{
+title: 'Kontakt info',
+description: 'Lorem Ipsum',
+state: StepState.NotStarted,
+isSelected: false,
+readyForEntrance: true,
+},
+{
+title: 'Oppsumering',
+description: 'Lorem Ipsum',
+state: StepState.NotStarted,
+isSelected: false,
+readyForEntrance: true,
+},
 ];
 
 // Get a reference to the stepper component
 const stepper = ref<HTMLElement | null>(null);
 
 onMounted(() => {
-  initializeStepper();
-  logCurrentIndex();
+initializeStepper();
+logCurrentIndex();
 });
 
 // Function to initialize the stepper component
 const initializeStepper = () => {
-  if (stepper.value) {
-    const nveStepper = stepper.value as unknown as INveStepper;
+if (stepper.value) {
+const nveStepper = stepper.value as unknown as INveStepper;
 
     // Override the original nextStep method
     overrideNextStep(nveStepper);
     // Override the finishSteps method with custom logic
     overrideFinishSteps(nveStepper);
-  }
+
+}
 };
 
 // Function to override the nextStep method with custom validation
 const overrideNextStep = (nveStepper: INveStepper) => {
-  // Store a reference to the original nextStep method, binding 'this' to 'nveStepper'
-  const originalNextStep = nveStepper.nextStep.bind(nveStepper);
+// Store a reference to the original nextStep method, binding 'this' to 'nveStepper'
+const originalNextStep = nveStepper.nextStep.bind(nveStepper);
 
-  nveStepper.nextStep = () => {
-    // Perform custom validation before advancing to the next step
-    if (validateCurrentStep(nveStepper)) {
-      console.log('Validation success');
-      originalNextStep();
-    } else {
-      console.log('Validation failed');
-    }
-  };
+nveStepper.nextStep = () => {
+// Perform custom validation before advancing to the next step
+if (validateCurrentStep(nveStepper)) {
+console.log('Validation success');
+originalNextStep();
+} else {
+console.log('Validation failed');
+}
+};
 };
 
 // Function to override the finishSteps method with custom logic
 const overrideFinishSteps = (nveStepper: INveStepper) => {
-  nveStepper.finishSteps = () => {
-    console.log('Custom finish steps logic executed!');
-    // Add your custom logic here
-  };
+nveStepper.finishSteps = () => {
+console.log('Custom finish steps logic executed!');
+// Add your custom logic here
+};
 };
 
 // Function to validate the current step
 const validateCurrentStep = (nveStepper: INveStepper) => {
-  const currentIndex = nveStepper.getCurrentIndex();
-  // Example condition: Ensure the description is not empty
-  return steps[currentIndex].description.trim() !== '';
+const currentIndex = nveStepper.getCurrentIndex();
+// Example condition: Ensure the description is not empty
+return steps[currentIndex].description.trim() !== '';
 };
 
 // Function to log the current step index
 const logCurrentIndex = () => {
-  if (stepper.value) {
-    const nveStepper = stepper.value as unknown as INveStepper;
-    const currentIndex = nveStepper.getCurrentIndex();
-    console.log(`Current step index: ${currentIndex}`);
-  }
+if (stepper.value) {
+const nveStepper = stepper.value as unknown as INveStepper;
+const currentIndex = nveStepper.getCurrentIndex();
+console.log(`Current step index: ${currentIndex}`);
+}
 };
 
 // Function to move to a specific step
 // NOTE that the selectStep function has the condition:
-//    if (this.steps[event.detail.index - 1].state == StepState.NotStarted) {
-//        return; }
+// if (this.steps[event.detail.index - 1].state == StepState.NotStarted) {
+// return; }
 const moveToStep = (index: number) => {
-  if (stepper.value) {
-    const nveStepper = stepper.value as unknown as INveStepper;
-    nveStepper.selectStep(new CustomEvent('select-step', { detail: { index } }));
-    console.log(`Moved to step index: ${index}`);
-  }
+if (stepper.value) {
+const nveStepper = stepper.value as unknown as INveStepper;
+nveStepper.selectStep(new CustomEvent('select-step', { detail: { index } }));
+console.log(`Moved to step index: ${index}`);
+}
 };
 </script>
-
 ```
 
 </SandboxPreview>
@@ -308,60 +312,64 @@ Eksemplet viser hvordan du bruker en horisontal nve-stepper med standardinnstill
 ### orientation
 
 Property orientation har valgene: 'horisontal' | 'vertikal' der 'horisontal' er default.
-:::info
+<nve-message-card title="Tips">
 Merk: Du må bruke orientation="horizontal", ikke :orientation="horizontal".
-:::
+</nve-message-card>
 
 ### spaceBetweenSteps
 
 Du kan justere avstanden mellom stegene ved å sende et tall til spaceBetweenSteps. Default er 200.
 
-```vue
+<CodeExamplePreview onlyCode="true">
+
+```html
 <template>
   <nve-stepper :steps="steps" orientation="vertical" :spaceBetweenSteps="100"></nve-stepper>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+  import { onMounted, ref } from 'vue';
 
-import 'nve-designsystem/components/nve-stepper/nve-stepper.component';
-import 'nve-designsystem/components/nve-button/nve-button.component';
-import 'nve-designsystem/components/nve-icon/nve-icon.component';
+  import 'nve-designsystem/components/nve-stepper/nve-stepper.component';
+  import 'nve-designsystem/components/nve-button/nve-button.component';
+  import 'nve-designsystem/components/nve-icon/nve-icon.component';
 
-import { StepProps } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
-import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
+  import { StepProps } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
+  import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
 
-const steps: StepProps[] = [
-  {
-    title: 'Kategorisering',
-    description: 'Lorem Ipsum',
-    state: StepState.Started,
-    isSelected: true,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Beskrivelse',
-    description: 'Lorem Ipsum',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Kontakt info',
-    description: 'Lorem Ipsum',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Oppsumering',
-    description: 'Lorem Ipsum',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-];
+  const steps: StepProps[] = [
+    {
+      title: 'Kategorisering',
+      description: 'Lorem Ipsum',
+      state: StepState.Started,
+      isSelected: true,
+      readyForEntrance: true,
+    },
+    {
+      title: 'Beskrivelse',
+      description: 'Lorem Ipsum',
+      state: StepState.NotStarted,
+      isSelected: false,
+      readyForEntrance: true,
+    },
+    {
+      title: 'Kontakt info',
+      description: 'Lorem Ipsum',
+      state: StepState.NotStarted,
+      isSelected: false,
+      readyForEntrance: true,
+    },
+    {
+      title: 'Oppsumering',
+      description: 'Lorem Ipsum',
+      state: StepState.NotStarted,
+      isSelected: false,
+      readyForEntrance: true,
+    },
+  ];
 </script>
 ```
+
+</CodeExamplePreview>
 
 <SandboxPreview>
 
@@ -426,7 +434,7 @@ Før du administrerer at kontrollen av det siste trinnet er riktig, bør du skri
 
 For å legge til valideringslogikk før du går til neste trinn, kan du skrive over komponentens nextStep-funksjon. Dette gjør det mulig å kontrollere om gjeldende trinn er gyldig før du går videre. Nedenfor finner du et eksempel på hvordan du kan skrive over nextStep-funksjonen og inkludere egen valideringslogikk.
 
-<Card title="Tips" variant="info">Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.</Card>
+<nve-message-card title="Tips">Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.</nve-message-card>
 
 #### Egen tekst for siste knapp uten standardknapper
 
@@ -446,7 +454,9 @@ En property som angir om standardknappene skal vises eller ikke.
 
 Denne funksjonen henter gjeldende trinnindeks ved å bruke getCurrentIndex-metoden til stepper-komponenten og logger den til konsollen. Dette er nyttig for feilsøking eller for å spore hvilket trinn brukeren er på.
 
-```vue
+<CodeExamplePreview onlyCode="true">
+
+```html
 <template>
   <div>
     <nve-stepper ref="stepper" :steps="steps" :hideStepButtons="true"></nve-stepper>
@@ -462,117 +472,119 @@ Denne funksjonen henter gjeldende trinnindeks ved å bruke getCurrentIndex-metod
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+  import { onMounted, ref } from 'vue';
 
-import 'nve-designsystem/components/nve-stepper/nve-stepper.component';
-import 'nve-designsystem/components/nve-button/nve-button.component';
-import 'nve-designsystem/components/nve-icon/nve-icon.component';
+  import 'nve-designsystem/components/nve-stepper/nve-stepper.component';
+  import 'nve-designsystem/components/nve-button/nve-button.component';
+  import 'nve-designsystem/components/nve-icon/nve-icon.component';
 
-import { INveStepper } from 'nve-designsystem/components/nve-stepper/nve-stepper.component';
-import { StepProps } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
-import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
+  import { INveStepper } from 'nve-designsystem/components/nve-stepper/nve-stepper.component';
+  import { StepProps } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
+  import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
 
-const steps: StepProps[] = [
-  {
-    title: 'Kategorisering',
-    description: 'Lorem Ipsum',
-    state: StepState.Started,
-    isSelected: true,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Beskrivelse',
-    description: 'Lorem Ipsum',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Kontakt info',
-    description: 'Lorem Ipsum',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Oppsumering',
-    description: 'Lorem Ipsum',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-];
+  const steps: StepProps[] = [
+    {
+      title: 'Kategorisering',
+      description: 'Lorem Ipsum',
+      state: StepState.Started,
+      isSelected: true,
+      readyForEntrance: true,
+    },
+    {
+      title: 'Beskrivelse',
+      description: 'Lorem Ipsum',
+      state: StepState.NotStarted,
+      isSelected: false,
+      readyForEntrance: true,
+    },
+    {
+      title: 'Kontakt info',
+      description: 'Lorem Ipsum',
+      state: StepState.NotStarted,
+      isSelected: false,
+      readyForEntrance: true,
+    },
+    {
+      title: 'Oppsumering',
+      description: 'Lorem Ipsum',
+      state: StepState.NotStarted,
+      isSelected: false,
+      readyForEntrance: true,
+    },
+  ];
 
-const stepper = ref<INveStepper | null>(null);
-const isLastStep = ref(false);
+  const stepper = ref<INveStepper | null>(null);
+  const isLastStep = ref(false);
 
-onMounted(() => {
-  initializeStepper();
-  updateIsLastStep();
-});
+  onMounted(() => {
+    initializeStepper();
+    updateIsLastStep();
+  });
 
-// Initialize the stepper and override its methods
-const initializeStepper = () => {
-  if (stepper.value) {
-    const nveStepper = stepper.value;
+  // Initialize the stepper and override its methods
+  const initializeStepper = () => {
+    if (stepper.value) {
+      const nveStepper = stepper.value;
 
-    // Override nextStep method
-    const originalNextStep = nveStepper.nextStep.bind(nveStepper);
-    nveStepper.nextStep = () => {
-      if (validateCurrentStep(nveStepper)) {
-        console.log('Validation success');
-        originalNextStep();
+      // Override nextStep method
+      const originalNextStep = nveStepper.nextStep.bind(nveStepper);
+      nveStepper.nextStep = () => {
+        if (validateCurrentStep(nveStepper)) {
+          console.log('Validation success');
+          originalNextStep();
+          updateIsLastStep();
+        } else {
+          console.log('Validation failed');
+        }
+      };
+
+      // Override prevStep method
+      const originalPrevStep = nveStepper.prevStep.bind(nveStepper);
+      nveStepper.prevStep = () => {
+        originalPrevStep();
         updateIsLastStep();
-      } else {
-        console.log('Validation failed');
-      }
-    };
+      };
 
-    // Override prevStep method
-    const originalPrevStep = nveStepper.prevStep.bind(nveStepper);
-    nveStepper.prevStep = () => {
-      originalPrevStep();
-      updateIsLastStep();
-    };
+      // Override finishSteps method
+      nveStepper.finishSteps = () => {
+        console.log('Custom finish steps logic executed!');
+        // Add your custom logic here
+      };
+    }
+  };
 
-    // Override finishSteps method
-    nveStepper.finishSteps = () => {
-      console.log('Custom finish steps logic executed!');
-      // Add your custom logic here
-    };
-  }
-};
+  // Validate the current step
+  const validateCurrentStep = (nveStepper: INveStepper) => {
+    const currentIndex = nveStepper.getCurrentIndex();
+    return steps[currentIndex].description.trim() !== '';
+  };
 
-// Validate the current step
-const validateCurrentStep = (nveStepper: INveStepper) => {
-  const currentIndex = nveStepper.getCurrentIndex();
-  return steps[currentIndex].description.trim() !== '';
-};
+  // Update the isLastStep flag based on the current step index
+  const updateIsLastStep = () => {
+    if (stepper.value) {
+      isLastStep.value = stepper.value.getCurrentIndex() === steps.length - 1;
+    }
+  };
 
-// Update the isLastStep flag based on the current step index
-const updateIsLastStep = () => {
-  if (stepper.value) {
-    isLastStep.value = stepper.value.getCurrentIndex() === steps.length - 1;
-  }
-};
+  // Handle custom next/finish button click
+  const handleNextStepOrFinish = () => {
+    if (isLastStep.value && stepper.value) {
+      stepper.value.finishSteps();
+    } else if (stepper.value) {
+      stepper.value.nextStep();
+    }
+  };
 
-// Handle custom next/finish button click
-const handleNextStepOrFinish = () => {
-  if (isLastStep.value && stepper.value) {
-    stepper.value.finishSteps();
-  } else if (stepper.value) {
-    stepper.value.nextStep();
-  }
-};
-
-// Handle custom previous button click
-const handlePrevStep = () => {
-  if (stepper.value) {
-    stepper.value.prevStep();
-  }
-};
+  // Handle custom previous button click
+  const handlePrevStep = () => {
+    if (stepper.value) {
+      stepper.value.prevStep();
+    }
+  };
 </script>
 ```
+
+</CodeExamplePreview>
 
 <SandboxPreview>
 
@@ -726,51 +738,55 @@ Det er mulig å bruke mobilutseende selv på desktop-enheter ved å sette proper
 En property som angir om standardknappene skal vises eller ikke.
 Hvis du velger å skjule standardknappene, se eksempelet "Stepper uten standardknapper" hvordan du implementerer dine egne knapper.
 
-```vue
+<CodeExamplePreview onlyCode="true">
+
+```html
 <template>
   <nve-stepper :steps="steps" :displayMobileVersion="true"> </nve-stepper>
 </template>
 
 <script setup lang="ts">
-import 'nve-designsystem/components/nve-stepper/nve-stepper.component';
-import 'nve-designsystem/components/nve-button/nve-button.component';
-import 'nve-designsystem/components/nve-icon/nve-icon.component';
+  import 'nve-designsystem/components/nve-stepper/nve-stepper.component';
+  import 'nve-designsystem/components/nve-button/nve-button.component';
+  import 'nve-designsystem/components/nve-icon/nve-icon.component';
 
-import { StepProps } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
-import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
+  import { StepProps } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
+  import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
 
-const steps: StepProps[] = [
-  {
-    title: 'Kategorisering',
-    description: '',
-    state: StepState.Started,
-    isSelected: true,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Beskrivelse',
-    description: '',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Kontakt info',
-    description: '',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-  {
-    title: 'Oppsumering',
-    description: '',
-    state: StepState.NotStarted,
-    isSelected: false,
-    readyForEntrance: true,
-  },
-];
+  const steps: StepProps[] = [
+    {
+      title: 'Kategorisering',
+      description: '',
+      state: StepState.Started,
+      isSelected: true,
+      readyForEntrance: true,
+    },
+    {
+      title: 'Beskrivelse',
+      description: '',
+      state: StepState.NotStarted,
+      isSelected: false,
+      readyForEntrance: true,
+    },
+    {
+      title: 'Kontakt info',
+      description: '',
+      state: StepState.NotStarted,
+      isSelected: false,
+      readyForEntrance: true,
+    },
+    {
+      title: 'Oppsumering',
+      description: '',
+      state: StepState.NotStarted,
+      isSelected: false,
+      readyForEntrance: true,
+    },
+  ];
 </script>
 ```
+
+</CodeExamplePreview>
 
 <SandboxPreview>
 
