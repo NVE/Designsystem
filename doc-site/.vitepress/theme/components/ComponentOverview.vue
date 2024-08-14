@@ -93,21 +93,22 @@ const getBadgeVariant = (status: string) => {
   }
 };
 
-const sortOrder = [
-  'Ferdig',
-  'Under arbeid',
-  'Trenger kvalitetssjekk',
-  'Revideres',
-  'Skal revideres',
-  'Ferdig - Mangler Figma lenke',
-  'Ikke påbegynt',
-];
+// TODO: Sortering på status
+// const sortOrder = [
+//   'Ferdig',
+//   'Under arbeid',
+//   'Trenger kvalitetssjekk',
+//   'Revideres',
+//   'Skal revideres',
+//   'Ferdig - Mangler Figma lenke',
+//   'Ikke påbegynt',
+// ];
 
-const sortedComponentsVersions = computed(() => {
-  return componentsVersions.slice().sort((a, b) => {
-    return sortOrder.indexOf(a.statusCode) - sortOrder.indexOf(b.statusCode);
-  });
-});
+// const sortedComponentsVersions = computed(() => {
+//   return componentsVersions.slice().sort((a, b) => {
+//     return sortOrder.indexOf(a.statusCode) - sortOrder.indexOf(b.statusCode);
+//   });
+// });
 </script>
 
 <style scoped>
