@@ -9,14 +9,13 @@ import { INveComponent } from '@interfaces/NveComponent.interface';
  * Disse feltene skal ikke brukes: circle, caret og pill
  */
 @customElement('nve-button')
-export default class NveButton extends SlButton implements INveComponent{
+export default class NveButton extends SlButton implements INveComponent {
   constructor() {
     super();
   }
   static styles = [SlButton.styles, styles];
   @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'large';
-  @property({reflect: true, type: String}) testId: string = '';
-
+  @property({ reflect: true, type: String }) testId: string = '';
 }
 
 declare global {
