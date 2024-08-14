@@ -15,14 +15,13 @@ layout: component
 ### Varianter
 
 Bruk `variant` for å velge farge. `default` er standard.
-`success` og `warning` skal ikke brukes.
+`success` og `warning` skal ikke brukes. Vi bruker heller ikke `outline`-attributt, men `neutral`-variant
 
 <CodeExamplePreview>
 
 ```html
-<nve-button>default</nve-button>
 <nve-button variant="primary">primary</nve-button>
-<nve-button variant="secondary">secondary</nve-button>
+<nve-button>default</nve-button>
 <nve-button variant="neutral">neutral</nve-button>
 <nve-button variant="text">text</nve-button>
 <nve-button variant="danger">danger</nve-button>
