@@ -1,8 +1,8 @@
+<!-- Viser liste over alle komponenter med status på design og utvikling -->
 <template>
-  <p>TODO Implement a solution that fetch the latest version of the Components</p>
   <LinkButton
     URL="https://www.figma.com/design/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=111-25&m=dev"
-    text="Åpne Figma komponentoversikt"
+    text="Til komponentoversikt i Figma"
     :openInNewTab="true"
   />
 
@@ -10,37 +10,37 @@
     <table>
       <thead>
         <tr>
-          <th>Publisert versjon</th>
-          <th>Type komponent</th>
-          <th>Status design</th>
+          <th>Komponent</th>
           <th>Status kode</th>
+          <th>Status design</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(row, index) in sortedComponentsVersions" :key="index">
-          <td>{{ row.publishedVersion }}</td>
+        <tr v-for="(component, index) in componentStatuses" :key="index">
           <td>
-            <a :href="row.typeComponentLink">{{ row.typeComponent }}</a>
-            <div>{{ row.description }}</div>
+            <a v-if="doWeHaveComponent(component.name)" :href="component.name">{{ component.name }}</a>
+            <span v-else>{{ component.name }}</span>
+          </td>
+          <td>
+            <nve-badge :variant="getBadgeVariant(component.statusCode)" style="padding: 1rem">
+              {{ component.statusCode }}
+            </nve-badge>
           </td>
           <td>
             <span class="status-design-container">
-              <nve-badge :variant="getBadgeVariant(row.statusDesign)" style="padding: 1rem 0">
-                {{ row.statusDesign }}
+              <nve-badge :variant="getBadgeVariant(component.statusDesign)" style="padding: 1rem 0">
+                {{ component.statusDesign }}
               </nve-badge>
-              <nve-tooltip content="Åpne i Figma">
-                <nve-icon
-                  class="figma-icon"
-                  @click.prevent="openINewTab(row.statusDesignLink)"
-                  name="design_services"
-                ></nve-icon>
-              </nve-tooltip>
+              <a
+                v-if="component.nodeId"
+                title="Åpne i Figma"
+                :href="linkToFigmaComponent(component.nodeId)"
+                target="_blank"
+                class="figma-link"
+              >
+                <nve-icon class="figma-icon" name="design_services"></nve-icon>
+              </a>
             </span>
-          </td>
-          <td>
-            <nve-badge :variant="getBadgeVariant(row.statusCode)" style="padding: 1rem">
-              {{ row.statusCode }}
-            </nve-badge>
           </td>
         </tr>
       </tbody>
@@ -51,11 +51,28 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import LinkButton from './LinkButton.vue';
-import { componentsVersions } from '../../../assets/componentVersionsData';
+import { componentNames } from '../customElementsManifest.store';
 
-const openINewTab = (url: string) => {
-  window.open(url, '_blank');
+export interface ComponentStatus {
+  name: string;
+  nodeId: string;
+  description?: string;
+  statusDesign: string;
+  statusCode: string;
+}
+
+const props = defineProps<{
+  componentStatuses: ComponentStatus[];
+}>();
+
+const linkToFigmaComponent = (figmaId: string) => {
+  return `https://www.figma.com/file/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=${figmaId}`;
 };
+
+const doWeHaveComponent = (name: string): boolean => {
+  return componentNames.value.some((component) => component === name);
+};
+
 const getBadgeVariant = (status: string) => {
   switch (status) {
     case 'Ferdig':
@@ -63,7 +80,6 @@ const getBadgeVariant = (status: string) => {
     case 'Ikke påbegynt':
       return 'primary';
     case 'Revideres':
-      return 'neutral';
     case 'Skal revideres':
       return 'neutral';
     case 'Under arbeid':
@@ -104,7 +120,6 @@ th,
 td {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: center;
 }
 
 th {
@@ -134,6 +149,9 @@ th {
 .figma-icon {
   cursor: pointer;
   font-size: 26px;
-  padding-right: 8px;
+}
+
+.figma-link {
+  text-decoration: none;
 }
 </style>
