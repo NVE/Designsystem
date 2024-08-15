@@ -9,7 +9,6 @@ export default css`
     box-sizing: border-box;
     position: relative;
     border: none;
-    min-width: 119px;
   }
 
   .button ::slotted(nve-badge) {
