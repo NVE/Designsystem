@@ -15,7 +15,7 @@ export default class NveButton extends SlButton implements INveComponent {
   }
   static styles = [SlButton.styles, styles];
   @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'large';
-  @property({ reflect: true, type: String }) testId: string = '';
+  @property({ reflect: true, type: String }) testId: string | undefined = undefined;
 }
 
 declare global {
