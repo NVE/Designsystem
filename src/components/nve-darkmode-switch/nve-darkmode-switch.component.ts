@@ -23,7 +23,6 @@ export default class NveDarkmodeSwitch extends LitElement implements INveCompone
   localStorageVariable = 'preferdarkmode';
 
   private toggleDarkmode(event: CustomEvent) {
-    console.dir((event.target! as HTMLInputElement).checked);
     this.darkmode = !!(event.target! as HTMLInputElement).checked;
     localStorage.setItem(this.localStorageVariable, this.darkmode.toString());
     if (this.darkmode) {
