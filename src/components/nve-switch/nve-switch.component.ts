@@ -129,11 +129,11 @@ export default class NveSwitch extends LitElement implements INveComponent {
         />
         <span part="control" class="switch__control">
           <span part="thumb" class="switch__thumb"></span>
-          <span class="switch__icon switch__onicon"><slot name="onicon"></slot></span>
           <span class="switch__icon switch__officon"><slot name="officon"></slot></span>
+          <span class="switch__icon switch__onicon"><slot name="onicon"></slot></span>
         </span>
 
-        <div part="label" class="switch__label">
+        <div part="label" class="">
           <slot name="label"></slot>
         </div>
       </label>

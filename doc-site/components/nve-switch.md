@@ -23,3 +23,23 @@ Med ikoner:
 ```
 
 </CodeExamplePreview>
+
+Label:
+<CodeExamplePreview>
+
+```html
+<nve-switch>
+  <div slot="label">Slå på</div>
+</nve-switch>
+```
+
+</CodeExamplePreview>
+
+Disabled:
+<CodeExamplePreview>
+
+```html
+<nve-switch disabled> </nve-switch>
+```
+
+</CodeExamplePreview>

@@ -24,3 +24,4 @@ export { default as NveStepper } from './components/nve-stepper/nve-stepper.comp
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
 export { default as NveSwitch } from './components/nve-switch/nve-switch.component';
+export { default as NveDarkmodeSwitch } from './components/nve-darkmode-switch/nve-darkmode-switch.component';

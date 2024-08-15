@@ -1,6 +1,11 @@
 import { css } from 'lit';
 
 export default css`
+  .switch {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-x-small);
+  }
   .switch .switch__control {
     display: flex;
     align-items: center;
@@ -12,6 +17,7 @@ export default css`
     width: var(--sizing-medium);
     --on-color: var(--neutrals-foreground-subtle);
     --off-color: var(--neutrals-background-secondary);
+    --label-color: var(--neutrals-foreground-primary);
     background-color: var(--off-color);
     transition: background-color 0.4s ease-in-out;
   }
@@ -45,15 +51,25 @@ export default css`
     transition: color 0.4s ease-in-out;
   }
   .switch .switch__control .switch__icon.switch__onicon {
-    left: calc(100% - var(--font-size-2xsmall) - 2px);
+    left: calc(0% + 6px);
   }
 
   .switch .switch__control .switch__icon.switch__officon {
-    left: calc(0% + 6px);
+    left: calc(100% - var(--font-size-2xsmall) - 6px);
   }
 
   .switch input[type='checkbox'] {
     clip: rect(0, 0, 0, 0);
     position: absolute;
+  }
+  .switch .switch__label {
+    font: var(--label-medium-light);
+    color: var(--label-color);
+  }
+  .switch.switch--focused:has(:focus-visible) .switch__control {
+    outline: 2px solid var(--interactive-links-focus);
+  }
+  .switch.switch--disabled {
+    opacity: var(--disabled);
   }
 `;
