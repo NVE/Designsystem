@@ -83,6 +83,9 @@ export default css`
   .button--has-label.button--medium .button__label {
     padding: unset;
   }
+  .button:not(.button--has-label) .button__label {
+    display: none;
+  }
 
   .button--small {
     height: var(--sizing-x-small);
