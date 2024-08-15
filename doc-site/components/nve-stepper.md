@@ -93,38 +93,38 @@ Bruk `hideMobileStepButtons` for å skjule knappene i mobil-versjon.
 
 Her er eksempler på hvordan du bruker Nve-Stepper i Vue:
 
-## Vertikal med standardknapper
+### Vertikal med standardknapper
 
 Eksemplet viser hvordan du bruker nve-stepper med standardinnstillinger. Som standard får du en stepper som ligger horisontalt med tilbake- og fremoverknapper. Ved siste trinn endres fremover-knappen automatisk til en Send-knapp.
 
-### nextStep-funksjonen
+#### nextStep-funksjonen
 
 For å legge til valideringslogikk før du går til neste trinn, kan du skrive over komponentens nextStep-funksjon. Dette gjør det mulig å kontrollere om gjeldende trinn er gyldig før du går videre. Nedenfor finner du et eksempel på hvordan du kan skrive over nextStep-funksjonen og inkludere egen valideringslogikk.
 
-<Card title="Tips" variant="info">Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.</Card>
+<nve-message-card title="Tips">
+Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes</nve-message-card>
 
-#### Egen tekst for siste knapp
+##### Egen tekst for siste knapp
 
 Du kan velge din egen tekst på knappen ved å sende en string til property optionalEndButton, for eksempel optionalEndButton="Klar".
 
-### finishSteps-funksjonen
+#### finishSteps-funksjonen
 
 Du må skrive over komponentens finishSteps-funksjon for å håndtere hva som skal skje når du er ferdig med stepperen. Nedenfor er et eksempel på hvordan du kan skrive om finishSteps-funksjonen.
 
-### Forklaring av tilleggsfunksjoner
+#### Forklaring av tilleggsfunksjoner
 
-#### getCurrentIndex-funksjon
+##### getCurrentIndex-funksjon
 
 Denne funksjonen henter gjeldende trinnindeks ved å bruke getCurrentIndex-metoden til stepper-komponenten og logger den til konsollen. Dette er nyttig for feilsøking eller for å spore hvilket trinn brukeren befinner seg på.
 
-#### selectStep-funksjon
+##### selectStep-funksjon
 
 Denne funksjonen lar deg flytte til et bestemt trinn ved å bruke selectStep-metoden. Den utløser en CustomEvent med select-step og ønsket trinnindeks. Dette er nyttig når du trenger å navigere til et spesifikt trinn programmatisk basert på visse betingelser.
 
-::: info
+<nve-message-card title="Info" variant="neutral">
 Merk at selectStep-funksjonen har følgende condition:
-if (this.steps[event.detail.index - 1].state == StepState.NotStarted) return;
-:::
+if (this.steps[event.detail.index - 1].state == StepState.NotStarted) return;</nve-message-card>
 
 ```vue
 <template>
@@ -369,35 +369,36 @@ const moveToStep = (index: number) => {
 
 </SandboxPreview>
 
-## Stepper uten standardknapper
+### Stepper uten standardknapper
 
 Eksemplet viser hvordan du bruker nve-stepper uten standardknapper, slik at du fleksibelt kan plassere egne knapper der du trenger dem.
 
-### prevStep-funksjonen
+#### prevStep-funksjonen
 
 Før du administrerer at kontrollen av det siste trinnet er riktig, bør du skrive ovenfor PrevState og legge til hnaten til stepperens indeks.
 
-### nextStep-funksjon uten standardknapper
+#### nextStep-funksjon uten standardknapper
 
 For å legge til valideringslogikk før du går til neste trinn, kan du skrive over komponentens nextStep-funksjon. Dette gjør det mulig å kontrollere om gjeldende trinn er gyldig før du går videre. Nedenfor finner du et eksempel på hvordan du kan skrive over nextStep-funksjonen og inkludere egen valideringslogikk.
 
-<Card title="Tips" variant="info">Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes.</Card>
+<nve-message-card title="Tips">
+Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes</nve-message-card>
 
-#### Egen tekst for siste knapp uten standardknapper
+##### Egen tekst for siste knapp uten standardknapper
 
 Du kan velge din egen tekst på knappen ved å sende en string til property optionalEndButton, for eksempel optionalEndButton="Klar".
 
-### finishSteps-funksjon uten standardknapper
+#### finishSteps-funksjon uten standardknapper
 
 Du må skrive over komponentens finishSteps-funksjon for å håndtere hva som skal skje når du er ferdig med stepperen. Nedenfor er et eksempel på hvordan du kan skrive om finishSteps-funksjonen.
 
-### Forklaring av tilleggsfunksjoner uten standardknapper
+#### Forklaring av tilleggsfunksjoner uten standardknapper
 
-#### hideStepButtons
+##### hideStepButtons
 
 En property som angir om standardknappene skal vises eller ikke.
 
-#### getCurrentIndex-funksjon uten standardknapper
+##### getCurrentIndex-funksjon uten standardknapper
 
 Denne funksjonen henter gjeldende trinnindeks ved å bruke getCurrentIndex-metoden til stepper-komponenten og logger den til konsollen. Dette er nyttig for feilsøking eller for å spore hvilket trinn brukeren er på.
 
