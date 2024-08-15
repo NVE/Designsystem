@@ -18,7 +18,7 @@
       <tbody>
         <tr v-for="(component, index) in componentStatuses" :key="index">
           <td>
-            <a v-if="doWeHaveComponent(component.name)" :href="component.name">{{ component.name }}</a>
+            <a v-if="isComponent(component.name)" :href="component.name">{{ component.name }}</a>
             <span v-else>{{ component.name }}</span>
           </td>
           <td>
@@ -44,24 +44,91 @@
           </td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <td>Totalt antall komponenter: {{ componentStatuses.length }}</td>
+          <td>
+            <!-- Antall komponenter i biblioteket per status -->
+            <nve-badge variant="success"
+              >Ferdig: {{ componentStatuses.filter((status) => status.statusCode === 'Ferdig').length }}</nve-badge
+            >
+            <nve-badge variant="warning"
+              >Under arbeid:
+              {{ componentStatuses.filter((status) => status.statusCode === 'Under arbeid').length }}</nve-badge
+            >
+            <nve-badge variant="neutral"
+              >Skal revideres eller under revidering:
+              {{
+                componentStatuses.filter(
+                  (status) => status.statusCode === 'Skal revideres' || status.statusCode === 'Revideres'
+                ).length
+              }}</nve-badge
+            >
+            <nve-badge variant="brand"
+              >Trenger kvalitetssjekk:
+              {{
+                componentStatuses.filter((status) => status.statusCode === 'Trenger kvalitetssjekk').length
+              }}</nve-badge
+            >
+            <nve-badge variant="brand"
+              >Ukjent: {{ componentStatuses.filter((status) => status.statusCode == null).length }}</nve-badge
+            >
+          </td>
+          <td>
+            <!-- Antall komponenter i Figma per status -->
+            <nve-badge variant="success"
+              >Ferdig: {{ componentStatuses.filter((status) => status.statusDesign === 'Ferdig').length }}</nve-badge
+            >
+            <nve-badge variant="warning"
+              >Under arbeid:
+              {{ componentStatuses.filter((status) => status.statusDesign === 'Under arbeid').length }}</nve-badge
+            >
+            <nve-badge variant="neutral"
+              >Skal revideres eller under revidering:
+              {{
+                componentStatuses.filter(
+                  (status) => status.statusDesign === 'Skal revideres' || status.statusDesign === 'Revideres'
+                ).length
+              }}</nve-badge
+            >
+            <nve-badge variant="brand"
+              >Trenger kvalitetssjekk:
+              {{
+                componentStatuses.filter((status) => status.statusDesign === 'Trenger kvalitetssjekk').length
+              }}</nve-badge
+            >
+            <nve-badge variant="brand"
+              >Ukjent: {{ componentStatuses.filter((status) => status.statusDesign == null).length }}</nve-badge
+            >
+          </td>
+        </tr>
+      </tfoot>
     </table>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
 import LinkButton from './LinkButton.vue';
 import { componentNames } from '../customElementsManifest.store';
 
-export interface ComponentStatus {
+interface ComponentStatus {
+  /** Navn på komponenten. F.eks. nve-button */
   name: string;
+
+  /** nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en til aktuell side når du ser på komponenten i Figma. */
   nodeId: string;
+
+  /** En kort beskrivelse av komponenten */
   description?: string;
+
+  /** Status på design i Figma. Bruk en av disse: 'Ferdig', 'Ikke påbegynt', 'Revideres', 'Skal revideres', 'Under arbeid', 'Trenger kvalitetssjekk'. Sett undefined hvis ukjent */
   statusDesign: string;
+
+  /** Status på komponenten. Bruk en av disse: 'Ferdig', 'Ikke påbegynt', 'Revideres', 'Skal revideres', 'Under arbeid', 'Trenger kvalitetssjekk'. Sett undefined hvis ukjent */
   statusCode: string;
 }
 
-const props = defineProps<{
+defineProps<{
   componentStatuses: ComponentStatus[];
 }>();
 
@@ -69,7 +136,7 @@ const linkToFigmaComponent = (figmaId: string) => {
   return `https://www.figma.com/file/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=${figmaId}`;
 };
 
-const doWeHaveComponent = (name: string): boolean => {
+const isComponent = (name: string): boolean => {
   return componentNames.value.some((component) => component === name);
 };
 
@@ -86,8 +153,6 @@ const getBadgeVariant = (status: string) => {
       return 'warning';
     case 'Trenger kvalitetssjekk':
       return 'brand';
-    case 'Ferdig - Mangler Figma lenke':
-      return 'danger';
     default:
       return '';
   }

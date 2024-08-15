@@ -1,6 +1,9 @@
 <PageHeader title="Oversikt over komponenter" imagePath="developer" pageLevel=1></PageHeader>
 
-<!-- Lista over komponenter er sortert alfabetisk på navn -->
+<!--
+Lista over komponenter er sortert alfabetisk på navn.
+nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en til aktuell side når du ser på komponenten i Figma.
+-->
 
 <ComponentOverview :componentStatuses="
 [
