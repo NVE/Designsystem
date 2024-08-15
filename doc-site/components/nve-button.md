@@ -66,3 +66,17 @@ Bruk `loading` for å legge til ei snurre.
 ```
 
 </CodeExamplePreview>
+
+### Kun ikon
+
+Knapper med kun ikon i prefix eller suffix kan også brukes:
+
+<CodeExamplePreview>
+
+```html
+<nve-button>
+  <nve-icon slot="prefix" name="dark_mode" library="Sharp"></nve-icon>
+</nve-button>
+```
+
+</CodeExamplePreview>
