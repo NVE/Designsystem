@@ -108,4 +108,4 @@ Hvis du ikke ser komponenten når du kjører sida, sjekk om du har importert den
 
 Les også om [bruk av Shoelace-komponenter i Vue](https://shoelace.style/frameworks/vue). Det meste der gjelder for Nve-komponenter også.
 
-<Card title="Tips" variant="info">Bruke både opening og closing tag individuelt. &lt;nve-button /&gt; funker ikke i Vue.</Card>
+<nve-message-card title="Tips">Bruke både opening og closing tag individuelt. &lt;nve-button /&gt; funker ikke i Vue.</nve-message-card>

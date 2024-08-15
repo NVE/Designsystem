@@ -10,10 +10,9 @@ layout: component
 
 </CodeExamplePreview>
 
-<Card title="Tips" variant="info">
+<nve-message-card title="Tips">
 Bruk `open` for å vise en alert. Hvis ikke `open` er satt, vises den ikke.
-
-</Card>
+</nve-message-card>
 
 ## Eksempler
 

@@ -2,17 +2,27 @@
 <template>
   <div class="code-example-box" ref="codeExampleBox">
     <!-- Fjerner html fra ```html, hvis du vil fjerne andre sprøkene gjerne legg til replace, eller lag en utils metode -->
-    <div class="slot-container" v-html="slot?.textContent?.replace('html', '')" />
+    <div v-if="!onlyCode" class="slot-container" v-html="slot?.textContent?.replace('html', '')" />
     <div ref="slot">
       <slot />
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import { ref, onMounted, nextTick } from 'vue';
 const slot = ref<HTMLElement | null>(null);
 const codeExampleBox = ref<HTMLElement | null>(null);
+const scriptElements = ref<HTMLScriptElement[]>([]);
 
+withDefaults(
+  defineProps<{
+    onlyCode: boolean;
+  }>(),
+  {
+    onlyCode: false,
+  }
+);
 /** Henter script delen fra kodeeksempel og legger den ved i code-example-box så at den kan kjøres */
 const processAndExecuteScripts = () => {
   if (slot.value) {
@@ -24,7 +34,12 @@ const processAndExecuteScripts = () => {
       scriptMatches.forEach((scriptTag: string) => {
         const scriptContent = scriptTag.match(/<script.*>([\s\S]*?)<\/script>/);
         const scriptElement = document.createElement('script');
-        scriptElement.textContent = scriptContent ? scriptContent[1] : '';
+        scriptElement.textContent = `
+          (function() {
+            ${scriptContent ? scriptContent[1] : ''}
+          })();
+        `;
+        scriptElements.value.push(scriptElement);
         nextTick(() => codeExampleBox.value?.appendChild(scriptElement));
       });
     }
