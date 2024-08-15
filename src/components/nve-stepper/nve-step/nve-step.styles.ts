@@ -85,7 +85,7 @@ export default css`
 }
 
 .divider-not-reached-color {
-  color:var(--neutrals-background-secondary, #E4E5E7);
+  background:var(--neutrals-background-secondary, #E4E5E7);
 }
 
 .divider-reached-color {
