@@ -54,10 +54,6 @@ export default defineConfig({
               { text: 'Utvikling', link: '/introduction/forDevelopers/development' },
               { text: 'Bruk i Vue', link: '/introduction/forDevelopers/vue' },
               { text: 'Validering', link: '/introduction/forDevelopers/validation' },
-              {
-                text: 'Kodeeksempler i Vue',
-                items: [{ text: 'nve-stepper', link: '/introduction/forDevelopers/codeExamples/stepper' }],
-              },
             ],
           },
         ],

@@ -227,7 +227,7 @@ export default class NveStep extends LitElement {
       : html`
           <div class="vertical-divider-container">
           <div
-          style="${this.isOrientationVertical() ? `height:${this.spaceBetweenSteps}px` : `min-width:${this.spaceBetweenSteps}px`}"
+          style="${this.isOrientationVertical() ? `height:${this.spaceBetweenSteps}px` : ''}"
           class="${dividerClass} ${this.getDividerColorClass()}"
         ></div>
         </div>`;
