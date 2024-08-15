@@ -5,6 +5,7 @@ export default css`
     display: flex;
     align-items: center;
     gap: var(--spacing-x-small);
+    --hover-offset: 0px;
   }
   .switch .switch__control {
     display: flex;
@@ -33,10 +34,12 @@ export default css`
     height: var(--font-size-xsmall);
     width: var(--font-size-xsmall);
     border-radius: 2rem;
+    translate: var(--hover-offset, 0);
     z-index: 1;
     background-color: var(--on-color);
     transition:
       left 0.4s ease-in-out,
+      translate 0.1s,
       background-color 0.4s ease-in-out;
   }
   .switch .switch__control .switch__icon {
@@ -68,6 +71,12 @@ export default css`
   }
   .switch.switch--focused:has(:focus-visible) .switch__control {
     outline: 2px solid var(--interactive-links-focus);
+  }
+  .switch:not(.switch--disabled):hover {
+    --hover-offset: 2px;
+  }
+  .switch:not(.switch--disabled).switch--checked:hover {
+    --hover-offset: -2px;
   }
   .switch.switch--disabled {
     opacity: var(--disabled);
