@@ -4,9 +4,10 @@ import { customElement, property } from 'lit/decorators.js';
 
 /**
  * Komponent for å sette .darkmode-klasse på root.
- * Må kun være en av dem på siden, de vil ikke synkronisere data
- * hvorvidt bruker foretrekker dark-mode eller ikke hentes fra browser via "prefers-color-scheme".
- * Dersom bruker setter darkmode ved å klikke på komponenten, lagres valget i localstorage
+ * Må kun være en av dem på siden, de vil ikke synkronisere data.
+ *
+ * Hvorvidt bruker foretrekker dark-mode eller ikke hentes fra browser via "prefers-color-scheme".
+ * Dersom bruker setter darkmode ved å klikke på komponenten, lagres valget i localstorage.
  *
  * Man kan bruke "darkmodeclass" for å sette klassen som legges til dersom den ikke er "darkmode"
  */
