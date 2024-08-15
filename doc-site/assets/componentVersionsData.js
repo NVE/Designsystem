@@ -356,4 +356,14 @@ export const componentsVersions = [
       'https://www.figma.com/design/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=1784-78028&m=dev',
     statusCode: 'Ikke påbegynt',
   },
+  {
+    publishedVersion: '-',
+    typeComponent: 'nve-switch',
+    typeComponentLink: '#',
+    description: 'Togglebutton',
+    statusDesign: 'Trenger kvalitetssjekk',
+    statusDesignLink:
+      'https://www.figma.com/design/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=4229-83176&m=dev',
+    statusCode: 'Ikke påbegynt',
+  },
 ];
