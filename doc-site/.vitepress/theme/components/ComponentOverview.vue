@@ -22,9 +22,14 @@
             <span v-else>{{ component.name }}</span>
           </td>
           <td>
-            <nve-badge :variant="getBadgeVariant(component.statusCode)" style="padding: 1rem">
-              {{ component.statusCode }}
-            </nve-badge>
+            <div v-if="!isComponent(component.name) && component.statusCode === 'Ferdig'">
+              Status er satt til ferdig, men komponenten finnes ikke
+            </div>
+            <div v-else>
+              <nve-badge :variant="getBadgeVariant(component.statusCode)" style="padding: 1rem">
+                {{ component.statusCode }}
+              </nve-badge>
+            </div>
           </td>
           <td>
             <span class="status-design-container">
