@@ -58,11 +58,10 @@ export default class NveSwitch extends LitElement implements INveComponent {
 
   private handleBlur() {
     this.hasFocus = false;
-    this.emit('blur');
   }
 
   private handleInput() {
-    this.emit('input');
+    //do nothing, bubble event
   }
 
   private handleClick() {
@@ -72,7 +71,6 @@ export default class NveSwitch extends LitElement implements INveComponent {
 
   private handleFocus() {
     this.hasFocus = true;
-    this.emit('focus');
   }
   private handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'ArrowLeft') {

@@ -12,7 +12,7 @@ layout: component
 
 ## Eksempler
 
-### Med ikoner:
+### Med ikoner
 
 <CodeExamplePreview>
 
@@ -24,6 +24,7 @@ layout: component
 ```
 
 </CodeExamplePreview>
+
 Se også [nve-darkmode-switch](/components/nve-darkmode-switch)
 
 ### Label, vises bak bryter
@@ -31,14 +32,12 @@ Se også [nve-darkmode-switch](/components/nve-darkmode-switch)
 <CodeExamplePreview>
 
 ```html
-<nve-switch>
-  <div>Slå på</div>
-</nve-switch>
+<nve-switch> Slå på </nve-switch>
 ```
 
 </CodeExamplePreview>
 
-### Bruk `disabled` for å deaktivere bryteren:
+### Bruk `disabled` for å deaktivere bryteren
 
 <CodeExamplePreview>
 

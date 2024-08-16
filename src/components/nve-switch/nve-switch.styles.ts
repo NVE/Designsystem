@@ -20,7 +20,7 @@ export default css`
     --off-color: var(--neutrals-background-secondary);
     --label-color: var(--neutrals-foreground-primary);
     background-color: var(--off-color);
-    transition: background-color 0.4s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
   }
   .switch--checked .switch__control {
     /* 100% - bredde på thumb + 4px */
@@ -38,9 +38,9 @@ export default css`
     z-index: 1;
     background-color: var(--on-color);
     transition:
-      left 0.4s ease-in-out,
+      left 0.3s ease-in-out,
       translate 0.1s,
-      background-color 0.4s ease-in-out;
+      background-color 0.3s ease-in-out;
   }
   .switch__icon {
     height: var(--font-size-2xsmall);
@@ -51,7 +51,7 @@ export default css`
     justify-content: center;
     position: absolute;
     color: var(--on-color);
-    transition: color 0.4s ease-in-out;
+    transition: color 0.3s ease-in-out;
   }
   .switch__icon.switch__onicon {
     left: calc(0% + 6px);

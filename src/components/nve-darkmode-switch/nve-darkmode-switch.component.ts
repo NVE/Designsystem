@@ -25,6 +25,7 @@ export default class NveDarkmodeSwitch extends LitElement implements INveCompone
   localStorageVariable = 'preferdarkmode';
 
   private toggleDarkmode(event: ChangeEvent<HTMLInputElement>) {
+    console.dir(1);
     this.darkmode = !!event.target.checked;
     localStorage.setItem(this.localStorageVariable, this.darkmode.toString());
     if (this.darkmode) {
@@ -32,6 +33,14 @@ export default class NveDarkmodeSwitch extends LitElement implements INveCompone
     } else {
       document.documentElement.classList.remove(this.darkmodeclass);
     }
+  }
+
+  private checkFocus() {
+    console.dir(2);
+  }
+
+  private checkInput() {
+    console.dir(3);
   }
 
   connectedCallback() {
@@ -56,7 +65,12 @@ export default class NveDarkmodeSwitch extends LitElement implements INveCompone
   }
 
   render(): TemplateResult {
-    return html`<nve-switch @change=${this.toggleDarkmode} ?checked=${this.darkmode}>
+    return html`<nve-switch
+      @change=${this.toggleDarkmode}
+      @focus=${this.checkFocus}
+      @input=${this.checkInput}
+      ?checked=${this.darkmode}
+    >
       <nve-icon slot="onicon" name="dark_mode"></nve-icon>
       <nve-icon slot="officon" name="light_mode"></nve-icon>
     </nve-switch>`;
