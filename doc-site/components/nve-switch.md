@@ -49,4 +49,22 @@ Se også [nve-darkmode-switch](/components/nve-darkmode-switch)
 
 ### Hent ut verdien
 
-Du kan hente ut `checked`-verdien akkurat som med en vanlig html-checkbox:
+Du kan hente ut `checked`-verdien akkurat som med en vanlig html-checkbox, enten via elementet eller på en event
+
+Dersom du har html:
+
+```html
+<nve-switch onchange="changehandler" />
+```
+
+Så kan du ha
+
+```javascript
+const checked = document.querySelector("nve-switch").checked;
+// checked er nå true eller false
+
+// På event:
+function changehandler(event: ChangeEvent) {
+  const checked = event.target.checked;
+}
+```
