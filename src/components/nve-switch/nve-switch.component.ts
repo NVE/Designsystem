@@ -9,14 +9,20 @@ import styles from './nve-switch.styles';
 /**
  * En vippe-bryter med støtte for ikoner.
  *
- * @slot Tekst etter bryteren
+ * @slot - Tekst etter bryteren
  * @slot onicon - Det første ikonet (til venstre). Synlig når status er PÅ
  * @slot officon - Det andre ikonet (til høyre). Synlig når status er AV
  *
- * @event blur
- * @event change
- * @event input
- * @event focus
+ * @event blur Bryter mister fokus
+ * @event change Bryter endres
+ * @event input Bryter endres
+ * @event focus Bryter får fokus
+ *
+ * @csspart base Topp-element
+ * @csspart control Element rundt bryteren
+ * @csspart thumb Bryter-indikatoren
+ * @csspart label Tekst bak bryteren
+ *
  */
 @customElement('nve-switch')
 export default class NveSwitch extends LitElement implements INveComponent {
