@@ -38,7 +38,7 @@ const createComponentFile = () => {
   @customElement('${componentName}')
   export default class ${className} extends LitElement implements INveComponent {
 
-  @property({reflect: true, type: String}) testId: string = '';
+  @property({reflect: true, type: String}) testId: string | undefined = undefined;
 
   static styles = [styles];
 
