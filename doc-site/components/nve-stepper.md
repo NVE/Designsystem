@@ -2,10 +2,24 @@
 layout: component
 ---
 
+Bruk `hideStepButtons` for å skjule knappene i desktop-versjon. Om du døljer knapparna så måste du implementera egna knappar och du anvænda metoderna `nextStep` och `prevStep` för att hantera logiken, se Vue exemplet [här](#stepper-uten-standardknapper).
 <CodeExamplePreview>
 
 ```html
+<nve-label>Med knapper</nve-label>
 <nve-stepper
+  steps='
+  [
+  {"title":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 2","description":"Beskrivelse av steg 2","state":0,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 3","description":"Beskrivelse av steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+
+<nve-label>Uten knapper</nve-label>
+p
+<nve-stepper
+  hideStepButtons
   steps='
   [
   {"title":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
@@ -40,8 +54,28 @@ Merk: Du må bruke orientation="horizontal", ikke :orientation="horizontal".
 </nve-stepper>
 
 <nve-label>vertical</nve-label>
+<div style="height:800px">
+  <nve-stepper
+    style="height:100px"
+    endButtonText="Klar"
+    orientation="vertical"
+    steps='
+  [
+  {"title":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 2","description":"Beskrivelse av steg 2","state":0,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 3","description":"Beskrivelse av steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
+  >
+  </nve-stepper>
+</div>
+```
+
+</CodeExamplePreview>
+
+<CodeExamplePreview>
+
+```html
+<nve-label>Exempel med `spaceBetweenSteps` och `endButtonText`</nve-label>
 <nve-stepper
-  orientation="vertical"
   steps='
   [
   {"title":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
@@ -106,7 +140,7 @@ Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke de
 
 ##### Egen tekst for siste knapp
 
-Du kan velge din egen tekst på knappen ved å sende en string til property optionalEndButton, for eksempel optionalEndButton="Klar".
+Du kan velge din egen tekst på knappen ved å sende en string til property endButtonText, for eksempel endButtonText="Klar".
 
 #### finishSteps-funksjonen
 
@@ -386,7 +420,7 @@ Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke de
 
 ##### Egen tekst for siste knapp uten standardknapper
 
-Du kan velge din egen tekst på knappen ved å sende en string til property optionalEndButton, for eksempel optionalEndButton="Klar".
+Du kan velge din egen tekst på knappen ved å sende en string til property endButtonText, for eksempel endButtonText="Klar".
 
 #### finishSteps-funksjon uten standardknapper
 

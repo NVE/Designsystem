@@ -28,9 +28,6 @@ export default class NveStep extends LitElement {
   @property({ reflect: true })
   title: string = '';
 
-  /** Avstand mellom stegene */
-  @property({ type: Number })
-  spaceBetweenSteps = 200;
 
   /** Indeks for steget */
   @property({ type: Number })
@@ -83,7 +80,7 @@ export default class NveStep extends LitElement {
   /** Metode som kjøres hver gang komponentens oppdateres */
   updated(): void {
     if (this.isOrientationVertical()) {
-      this.updateVerticalDividerHeight();
+      // this.updateVerticalDividerHeight();
     }
     this.style.setProperty('line-color', this.isLast ? '0' : '1');
   }
@@ -209,15 +206,6 @@ export default class NveStep extends LitElement {
     }
   }
 
-  /** Brukes for beregning av riktig høyde før divider. Description elementet har padding, så høyden før divider var for kort, så bruk denne funksjonen for regner ut riktig høyde. */
-  updateVerticalDividerHeight(): void {
-    const TRIP_ORIGIN_ICON_HEIGHT = 24; 
-    const descriptionHeight = this.descriptionElement.offsetHeight + TRIP_ORIGIN_ICON_HEIGHT;
-    const dividerElement = this.shadowRoot!.querySelector('.vertical-divider-container .divider-vertical') as HTMLElement;
-    if (dividerElement) {
-      dividerElement.style.height = `${descriptionHeight}px`;
-    }
-  }
 
   /** Render divideren mellom stegene */
   renderDivider(): TemplateResult | string {
@@ -227,7 +215,6 @@ export default class NveStep extends LitElement {
       : html`
           <div class="vertical-divider-container">
           <div
-          style="${this.isOrientationVertical() ? `height:${this.spaceBetweenSteps}px` : ''}"
           class="${dividerClass} ${this.getDividerColorClass()}"
         ></div>
         </div>`;

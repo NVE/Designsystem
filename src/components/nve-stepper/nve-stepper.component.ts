@@ -25,11 +25,8 @@ export interface INveStepper {
   /** Indeks for valgt steg, gir mulighet for å styre hvilket steg som er valgt. */
   selectedStepIndex?: { value: number };
 
-  /** Avstand mellom Steps */
-  spaceBetweenSteps?: number;
-
   /** Mulighet om å endre teksten på knapp ved siste steg. */
-  optionalEndButton?: string;
+  endButtonText?: string;
 
   /** Steps som skal vises, se StepProps interface for data som skal sendes inn. */
   steps: StepProps[];
@@ -69,13 +66,10 @@ export default class NveStepper extends LitElement {
   @property({ type: Object })
   selectedStepIndex: { value: number } = { value: 0 };
 
-  /** Avstand mellom Steps */
-  @property({ type: Number })
-  spaceBetweenSteps: number = 200;
 
   /** Mulighet om å endre teksten på knapp ved siste steg. */
   @property({ type: String })
-  optionalEndButton: string = 'Sende';
+  endButtonText: string = 'Sende';
 
   /** Steps som skal vises, se StepProps interface for data som skal sendes inn. */
   @property({ type: Array })
@@ -232,7 +226,7 @@ export default class NveStepper extends LitElement {
           @click=${this.finishSteps}
         >
           <nve-icon slot="suffix" name="done"></nve-icon>
-          ${this.optionalEndButton}
+          ${this.endButtonText}
         </nve-button>
       `;
     }
@@ -288,7 +282,6 @@ export default class NveStepper extends LitElement {
                 .isSelected=${step.isSelected}
                 .isLast=${index === this.steps.length - 1}
                 .index=${index}
-                .spaceBetweenSteps=${this.spaceBetweenSteps}
                 .readyForEntrance=${step.readyForEntrance}
                 .orientation=${this.orientation}
                 .disableClick=${this.disableStepClick}
