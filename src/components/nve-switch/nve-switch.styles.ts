@@ -7,7 +7,7 @@ export default css`
     gap: var(--spacing-x-small);
     --hover-offset: 0px;
   }
-  .switch .switch__control {
+  .switch__control {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,13 +22,13 @@ export default css`
     background-color: var(--off-color);
     transition: background-color 0.4s ease-in-out;
   }
-  .switch.switch--checked .switch__control {
+  .switch--checked .switch__control {
     /* 100% - bredde på thumb + 4px */
     --left: calc(100% - var(--font-size-xsmall) - 4px);
     --on-color: var(--neutrals-background-secondary);
     --off-color: var(--neutrals-foreground-subtle);
   }
-  .switch .switch__control .switch__thumb {
+  .switch__thumb {
     position: absolute;
     left: var(--left);
     height: var(--font-size-xsmall);
@@ -42,7 +42,7 @@ export default css`
       translate 0.1s,
       background-color 0.4s ease-in-out;
   }
-  .switch .switch__control .switch__icon {
+  .switch__icon {
     height: var(--font-size-2xsmall);
     width: var(--font-size-2xsmall);
     font-size: var(--font-size-2xsmall);
@@ -53,11 +53,11 @@ export default css`
     color: var(--on-color);
     transition: color 0.4s ease-in-out;
   }
-  .switch .switch__control .switch__icon.switch__onicon {
+  .switch__icon.switch__onicon {
     left: calc(0% + 6px);
   }
 
-  .switch .switch__control .switch__icon.switch__officon {
+  .switch__icon.switch__officon {
     left: calc(100% - var(--font-size-2xsmall) - 6px);
   }
 
@@ -65,7 +65,7 @@ export default css`
     clip: rect(0, 0, 0, 0);
     position: absolute;
   }
-  .switch .switch__label {
+  .switch__label {
     font: var(--label-medium-light);
     color: var(--label-color);
   }

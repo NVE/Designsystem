@@ -73,7 +73,7 @@ export default class NveSwitch extends LitElement implements INveComponent {
       event.preventDefault();
       this.checked = false;
       this.emit('change');
-      this.emit('sl-input');
+      this.emit('input');
     }
 
     if (event.key === 'ArrowRight') {

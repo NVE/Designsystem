@@ -26,7 +26,8 @@ layout: component
 </CodeExamplePreview>
 Se også [nve-darkmode-switch](/components/nve-darkmode-switch)
 
-###Label, vises bak bryter
+### Label, vises bak bryter
+
 <CodeExamplePreview>
 
 ```html
