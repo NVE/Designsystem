@@ -60,11 +60,13 @@ Dersom du har html:
 Så kan du ha
 
 ```javascript
-const checked = document.querySelector("nve-switch").checked;
+const checked = document.querySelector('nve-switch').checked;
 // checked er nå true eller false
 
 // På event:
-function changehandler(event: ChangeEvent) {
+function changehandler(event) {
   const checked = event.target.checked;
 }
 ```
+
+Du kan også bruke attributten `checked` på `nve-switch` for å sette verdien via lytting på change, tilsvarende som for en checkbox
