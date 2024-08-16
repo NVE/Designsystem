@@ -4,6 +4,7 @@ export { default as NveBadge } from './components/nve-badge/nve-badge.component'
 export { default as NveButton } from './components/nve-button/nve-button.component';
 export { default as NveCheckbox } from './components/nve-checkbox/nve-checkbox.component';
 export { default as NveCheckboxGroup } from './components/nve-checkbox-group/nve-checkbox-group.component';
+export { default as NveDarkmodeSwitch } from './components/nve-darkmode-switch/nve-darkmode-switch.component';
 export { default as NveDialog } from './components/nve-dialog/nve-dialog.component';
 export { default as NveDivider } from './components/nve-divider/nve-divider.component';
 export { default as NveDropdown } from './components/nve-dropdown/nve-dropdown.component';
@@ -21,7 +22,6 @@ export { default as NveSelect } from './components/nve-select/nve-select.compone
 export { default as NveSpinner } from './components/nve-spinner/nve-spinner.component';
 export { default as NveStep } from './components/nve-stepper/nve-step/nve-step.component';
 export { default as NveStepper } from './components/nve-stepper/nve-stepper.component';
+export { default as NveSwitch } from './components/nve-switch/nve-switch.component';
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
-export { default as NveSwitch } from './components/nve-switch/nve-switch.component';
-export { default as NveDarkmodeSwitch } from './components/nve-darkmode-switch/nve-darkmode-switch.component';

@@ -7,9 +7,9 @@ import { live } from 'lit/directives/live.js';
 import { classMap } from 'lit/directives/class-map.js';
 import styles from './nve-switch.styles';
 /**
- * En toggle-button med støtte for ikoner.
+ * En vippe-bryter med støtte for ikoner.
  *
- * @slot label - Tekst etter switch
+ * @slot Tekst etter bryteren
  * @slot onicon - Det første ikonet (til venstre). Synlig når status er PÅ
  * @slot officon - Det andre ikonet (til høyre). Synlig når status er AV
  *
@@ -134,7 +134,7 @@ export default class NveSwitch extends LitElement implements INveComponent {
         </span>
 
         <div part="label" class="">
-          <slot name="label"></slot>
+          <slot></slot>
         </div>
       </label>
     </div>`;

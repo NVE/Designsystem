@@ -12,7 +12,8 @@ layout: component
 
 ## Eksempler
 
-Med ikoner:
+### Med ikoner:
+
 <CodeExamplePreview>
 
 ```html
@@ -23,19 +24,21 @@ Med ikoner:
 ```
 
 </CodeExamplePreview>
+Se også [nve-darkmode-switch](/components/nve-darkmode-switch)
 
-Label:
+###Label, vises bak bryter
 <CodeExamplePreview>
 
 ```html
 <nve-switch>
-  <div slot="label">Slå på</div>
+  <div>Slå på</div>
 </nve-switch>
 ```
 
 </CodeExamplePreview>
 
-Disabled:
+### Bruk `disabled` for å deaktivere bryteren:
+
 <CodeExamplePreview>
 
 ```html
@@ -43,3 +46,7 @@ Disabled:
 ```
 
 </CodeExamplePreview>
+
+### Hent ut verdien
+
+Du kan hente ut `checked`-verdien akkurat som med en vanlig html-checkbox:
