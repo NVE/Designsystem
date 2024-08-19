@@ -442,14 +442,14 @@ const steps: StepProps[] = [
   },
   {
     title: 'Beskrivelse',
-    description: 'Lorem Ipsum',
+    description: '',
     state: StepState.NotStarted,
     isSelected: false,
     readyForEntrance: true,
   },
   {
     title: 'Kontakt info',
-    description: 'Lorem Ipsum',
+    description: '',
     state: StepState.NotStarted,
     isSelected: false,
     readyForEntrance: true,
@@ -585,14 +585,14 @@ const steps: StepProps[] = [
   },
   {
     title: 'Beskrivelse',
-    description: 'Lorem Ipsum',
+    description: '',
     state: StepState.NotStarted,
     isSelected: false,
     readyForEntrance: true,
   },
   {
     title: 'Kontakt info',
-    description: 'Lorem Ipsum',
+    description: '',
     state: StepState.NotStarted,
     isSelected: false,
     readyForEntrance: true,

@@ -184,7 +184,11 @@ export default class NveStep extends LitElement {
   }
 
   private renderDescription(): TemplateResult | string {
-    return this.description ? html`<div class="step-description ${this.orientation === 'vertical' ? 'step-description-max-width-vertical' : 'step-description-max-width-horizontal'}">${this.description}</div>` : '';
+    return this.isDescriptionValid(this.description) ? html`<div class="step-description ${this.orientation === 'vertical' ? 'step-description-max-width-vertical' : 'step-description-max-width-horizontal'}">${this.description}</div>` : '';
+  }
+
+  private isDescriptionValid(description:string): boolean { 
+    return description.trim().length > 0;
   }
 
   private renderVerticalStep(): TemplateResult {
