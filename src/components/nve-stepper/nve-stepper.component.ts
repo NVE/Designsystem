@@ -10,8 +10,8 @@ export interface INveStepper {
   nextStep?(): void;
   /** Går til forrige steg */
   prevStep?(): void;
-  /** Velger et spesifikt steg basert på event */
-  selectStep?(event: CustomEvent): void;
+  /** Velger et spesifikt steg */
+  selectStep?(index: number): void;
   /** Fullfører alle stegene */
   finishSteps(): void;
   /** Henter indeksen for gjeldende steg */
@@ -22,17 +22,11 @@ export interface INveStepper {
   /** Hvilken retning Steps skal gå. */
   orientation?: 'horizontal' | 'vertical';
 
-  /** Indeks for valgt steg, gir mulighet for å styre hvilket steg som er valgt. */
-  selectedStepIndex?: { value: number };
-
   /** Mulighet om å endre teksten på knapp ved siste steg. */
   endButtonText?: string;
 
   /** Steps som skal vises, se StepProps interface for data som skal sendes inn. */
   steps: StepProps[];
-
-  /** Deaktiverer muligheten til å klikke på en Step komponenten slik at den blir valgt. */
-  disableStepClick?: boolean;
 
   /** Skjuler Neste og Forrige knappene slik at du kan implementere dine egne Neste og Forrige knappene. */
   hideStepButtons?: boolean;
@@ -62,11 +56,6 @@ export default class NveStepper extends LitElement {
   @property()
   orientation: 'horizontal' | 'vertical' = 'horizontal';
 
-  /** Indeks for valgt steg, gir mulighet for å styre hvilket steg som er valgt. */
-  @property({ type: Object })
-  selectedStepIndex: { value: number } = { value: 0 };
-
-
   /** Mulighet om å endre teksten på knapp ved siste steg. */
   @property({ type: String })
   endButtonText: string = 'Sende';
@@ -74,10 +63,6 @@ export default class NveStepper extends LitElement {
   /** Steps som skal vises, se StepProps interface for data som skal sendes inn. */
   @property({ type: Array })
   steps: StepProps[] = [];
-
-  /** Deaktiverer muligheten til å klikke på en Step komponenten slik at den blir valgt. */
-  @property({ type: Boolean })
-  disableStepClick: boolean = true;
 
   /** Skjuler Neste og Forrige knappene slik at du kan implementere dine egne Neste og Forrige knappene. */
   @property({ type: Boolean })
@@ -100,6 +85,9 @@ export default class NveStepper extends LitElement {
   reRender(): void {
     this.requestUpdate();
   }
+
+  selectedStepIndex: { value: number } = { value: 0 };
+
 
   /** Metode som kjøres første gang komponenten er lagt til i DOM */
   firstUpdated(): void {
@@ -128,13 +116,8 @@ export default class NveStepper extends LitElement {
   }
 
   /** Metode for å velge et spesifikt steg */
-  selectStep(event: CustomEvent): void {
-    if (event.detail.index > 0) {
-      if (this.steps[event.detail.index - 1].state == StepState.NotStarted) {
-        return;
-      }
-    }
-    this.setStep(event.detail.index);
+  selectStep(index: number): void {
+    this.setStep(index);
   }
 
   /** Metode som kjøres når alle stegene er fullført */
@@ -144,8 +127,7 @@ export default class NveStepper extends LitElement {
     // Standard oppførsel er tom, men kan utvides der komponenten brukas av utvikleren.
   }
 
-  /** Metode for å sette et spesifikt steg */
-  setStep(index: number): void {
+  private setStep(index: number): void {
     // Hvis det nåværende steget er mindre enn det nye steget og det nåværende steget er startet,
     // sett det nåværende steget til fullført.
     if (this.selectedStepIndex.value < index && this.steps[this.selectedStepIndex.value].state === StepState.Started) {
@@ -173,16 +155,14 @@ export default class NveStepper extends LitElement {
     return this.selectedStepIndex.value;
   }
 
-  /** Metode for å sjekke om vi er på start eller slutten av Steps */
-  getExtremes(): string | undefined {
+  private getExtremes(): string | undefined {
     if (this.selectedStepIndex.value === 0) return 'start';
     if (this.selectedStepIndex.value === this.steps.length - 1) {
       return 'end';
     }
   }
 
-  /** Metode for å håndtere neste steg på mobil */
-  handleMobileNextStep(): void {
+  private handleMobileNextStep(): void {
     if (this.selectedStepIndex.value < this.steps.length - 1) {
       this.nextStep();
     } else {
@@ -190,13 +170,12 @@ export default class NveStepper extends LitElement {
     }
   }
 
-  /** Metode for å håndtere forrige steg på mobil */
-  handleMobilePrevStep(): void {
+
+  private handleMobilePrevStep(): void {
     this.prevStep();
   }
 
-  /** Metode for å render tilbakeknappen */
-  renderBackButton(): TemplateResult | string {
+  private renderBackButton(): TemplateResult | string {
     return this.hideStepButtons ? '' : html`
       <nve-button
         .disabled=${this.getExtremes() === 'start'}
@@ -210,13 +189,12 @@ export default class NveStepper extends LitElement {
     `;
   }
 
-  /** Metode for å sjekke om orienteringen er vertikal */
-  isOrientationVertical(): boolean {
+  private isOrientationVertical(): boolean {
     return this.orientation === 'vertical';
   }
 
-  /** Metode for å render fremoverknappen */
-  renderForwardButton(): TemplateResult | string {
+
+  private renderForwardButton(): TemplateResult | string {
     if (this.hideStepButtons) return '';
     if (this.getExtremes() === 'end') {
       return html`
@@ -243,8 +221,7 @@ export default class NveStepper extends LitElement {
     `;
   }
 
-  /** Metode for å render knapper i vertikal orientering */
-  renderVerticalButtons(): TemplateResult | string {
+  private renderVerticalButtons(): TemplateResult | string {
     return this.hideStepButtons ? '' : html`
       <div class="vertical-btn-container">
         ${this.renderBackButton()}
@@ -274,7 +251,6 @@ export default class NveStepper extends LitElement {
           ${this.steps.map(
             (step, index) => html`
               <nve-step
-                @clicked=${this.selectStep}
                 .title=${step.title}
                 .description=${step.description}
                 .state=${step.state}
@@ -284,7 +260,6 @@ export default class NveStepper extends LitElement {
                 .index=${index}
                 .readyForEntrance=${step.readyForEntrance}
                 .orientation=${this.orientation}
-                .disableClick=${this.disableStepClick}
               >
               </nve-step>
             `

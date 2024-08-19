@@ -17,7 +17,6 @@ export interface StepProps {
   state: StepState;
   isSelected: boolean;
   readyForEntrance: boolean;
-  disableClick?: boolean;
   orientation?: string;
 }
 
@@ -60,9 +59,6 @@ export default class NveStep extends LitElement {
   @property({ type: Boolean })
   entranceAllowed: boolean = false;
 
-  /** Deaktiverer muligheten til å klikke på steget for å velge det */
-  @property({ type: Boolean })
-  disableClick: boolean = false;
 
   /** Retningen stegene skal gå i: horisontal eller vertikal */
   @property()
@@ -88,16 +84,12 @@ export default class NveStep extends LitElement {
   /** Definerer stilene som brukes av komponenten */
   static styles: CSSResultArray = [styles];
 
-  /** Sjekker om orienteringen er vertikal */
-  isOrientationVertical(): boolean {
+  private isOrientationVertical(): boolean {
     return this.orientation === 'vertical';
   }
 
-  /**
-   * Returnerer ikonet for den gitte stegetilstanden
-   * @param state - Stegets tilstand
-   */
-  iconForState(state: StepState): string {
+
+  private iconForState(state: StepState): string {
     let icon = '';
     switch (state) {
       case StepState.NotStarted:
@@ -119,11 +111,7 @@ export default class NveStep extends LitElement {
     return icon;
   }
 
-  /**
-   * Returnerer teksten for den gitte stegetilstanden
-   * @param state - Stegets tilstand
-   */
-  getStateText(state: StepState): string {
+  private getStateText(state: StepState): string {
     switch (state) {
       case StepState.NotStarted:
         return 'Ikke påbegynt';
@@ -138,11 +126,8 @@ export default class NveStep extends LitElement {
     }
   }
 
-  /**
-   * Returnerer CSS-klassen for fargen til den gitte stegetilstanden
-   * @param state - Stegets tilstand
-   */
-  getStateColorClass(state: StepState): string {
+
+  private getStateColorClass(state: StepState): string {
     switch (state) {
       case StepState.NotStarted:
         return 'state-not-started-color';
@@ -157,11 +142,7 @@ export default class NveStep extends LitElement {
     }
   }
 
-  /**
-   * Returnerer CSS-klassen for tittelen til den gitte stegetilstanden
-   * @param state - Stegets tilstand
-   */
-  getTitleClass(state: StepState): string {
+  private getTitleClass(state: StepState): string {
     switch (state) {
       case StepState.NotStarted:
         return 'state-not-started-color';
@@ -172,11 +153,7 @@ export default class NveStep extends LitElement {
     }
   }
 
-  /**
-   * Returnerer CSS-klassen for ikonet til den gitte stegetilstanden
-   * @param state - Stegets tilstand
-   */
-  getIconClass(state: StepState): string {
+  private getIconClass(state: StepState): string {
     switch (state) {
       case StepState.Started:
         return '';
@@ -189,26 +166,12 @@ export default class NveStep extends LitElement {
     }
   }
 
-  /** Returnerer CSS-klassen for om steget er klikkbart */
-  getIsClickableClass(): string {
-    return this.disableClick ? 'disable-click' : 'clickable';
-  }
-
-  /** Returnerer CSS-klassen for fargen til divideren */
-  getDividerColorClass(): string {
+  private getDividerColorClass(): string {
     return this.index < this.selectedStepIndex ? 'divider-reached-color' : 'divider-not-reached-color';
   }
 
-  /** Håndterer klikk på steget */
-  onClick(): void {
-    if (!this.disableClick) {
-      this.dispatchEvent(new CustomEvent('clicked', { detail: { index: this.index } }));
-    }
-  }
 
-
-  /** Render divideren mellom stegene */
-  renderDivider(): TemplateResult | string {
+  private renderDivider(): TemplateResult | string {
     const dividerClass = this.isOrientationVertical() ? 'divider-vertical' : 'divider-horizontal';
     return this.isLast
       ? ''
@@ -220,19 +183,16 @@ export default class NveStep extends LitElement {
         </div>`;
   }
 
-  /** Render beskrivelsen av steget */
-  renderDescription(): TemplateResult | string {
+  private renderDescription(): TemplateResult | string {
     return this.description ? html`<div class="step-description ${this.orientation === 'vertical' ? 'step-description-max-width-vertical' : 'step-description-max-width-horizontal'}">${this.description}</div>` : '';
   }
 
-  /** Render vertikalt steg */
-  renderVerticalStep(): TemplateResult {
+  private renderVerticalStep(): TemplateResult {
     return html`
       <div class="vertical-container">
         <div class="step-figure-vertical">
           <div
-            @click="${this.onClick}"
-            class="${this.getIsClickableClass()} ${this.getIconClass(this.state)}"
+            class=" ${this.getIconClass(this.state)}"
           >
             <nve-icon slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
           </div>
@@ -251,13 +211,11 @@ export default class NveStep extends LitElement {
     `;
   }
 
-  /** Render metoden for komponenten */
   render(): TemplateResult {
     return this.isOrientationVertical() ? this.renderVerticalStep() : html`
         <div class="step-figure">
           <span
-            @click="${this.onClick}"
-            class="${this.getIsClickableClass()} ${this.getIconClass(this.state)}"
+            class=" ${this.getIconClass(this.state)}"
           >
             <nve-icon  slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
           </span>
