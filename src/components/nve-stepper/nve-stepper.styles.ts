@@ -16,6 +16,7 @@ export default css`
     align-items: center;
     width: 100%;
     justify-content: space-between;
+    height: 100%;
   }
 
   .step {
