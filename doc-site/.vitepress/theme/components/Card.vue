@@ -56,6 +56,7 @@ const { title } = withDefaults(defineProps<Props>(), {
   min-height: 200px;
 }
 
+
 .card {
   display: flex;
   padding: var(--spacing-large, 24px);

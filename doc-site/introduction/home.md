@@ -3,7 +3,7 @@ TODO: Legg til tab komponent
 
 # Om designsystemet
 
-Designsystemet samler og tilgjengeliggjør verktøy, filer, komponenter og designretningslinjer som brukes av designere og utviklere for å lage gode og konsekvente brukeropplevelser i NVE og Varsoms digitale tjenester. Designsystemet skal sette NVE og Varsoms profiler i kontekst. Med andre ord vise deg hvorfor, hvor, når og hvordan du bruker og videreutvikler innhold i designsystemet for å skape gevinster og tettere samarbeid på tvers av roller og produkter.
+Designsystemet samler og tilgjengeliggjør verktøy, filer, komponenter og designretningslinjer som brukes av designere og utviklere for å lage gode og konsekvente brukeropplevelser i NVEs digitale tjenester. Designsystemet skal sette NVEs profiler i kontekst. Med andre ord vise deg hvorfor, hvor, når og hvordan du bruker og videreutvikler innhold i designsystemet for å skape gevinster og tettere samarbeid på tvers av roller og produkter.
 
 Et designsystem handler, til tross for sitt navn, om mer enn bare design. Det handler først og fremst om mennesker, og hvordan vi må jobbe for å få brukt designet godt på en praktisk måte når vi utvikler en løsning. Designsystem som konsept er ikke teknologibundet, men er heller et uttrykk som beskriver prosessene og vanene som leder til mest effektivt design, utvikling og ledelse.
 
@@ -11,12 +11,14 @@ Et designsystem handler, til tross for sitt navn, om mer enn bare design. Det ha
 
 - Sikre visuell og funksjonell konsistens i forskjellige produkter og kanaler
 - Sentral kvalitetssikring og tilpassing til krav som universell utforming
-- Gjøre det enklere å komme i gang med design og utvikling i NVE og Varsom
+- Gjøre det enklere å komme i gang med design og utvikling i NVE
 - Styrke kommunikasjon og samarbeid mellom design og utvikling
 
 </Card>
 
 ## Våre prinsipper
+
+TODO: Fikse kortene sine farger, til tokensstyrt farge
 
 <div class="two-card-container">
     <Card variant="nve-card" title="Enkelhet">Det skal være enkelt å bruke designsystemet. Enkelt å ta det i bruk, forstå og bidra.</Card>
