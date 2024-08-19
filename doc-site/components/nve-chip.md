@@ -20,7 +20,7 @@ Du kan også bruket sporet "extra"
 <CodeExamplePreview>
 
 ```html
-<nve-chip extraText="Ekstra tekst"> Se her! </nve-chip>
+<nve-chip extra-text="Ekstra tekst"> Se her! </nve-chip>
 <nve-chip>
   <span>Se her!</span>
   <span slot="extra" style="color: red;">Ekstra tekst</span>

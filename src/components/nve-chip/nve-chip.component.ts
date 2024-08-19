@@ -49,7 +49,7 @@ export default class NveChip extends LitElement {
 
   private computeStyleColor() {
     const varName = `${this.emphasis}-${this.variant}`;
-    const hoverVariant = this.emphasis === 'default' ? 'empasized' : this.emphasis === 'subtle' ? 'default' : 'subtle';
+    const hoverVariant = this.emphasis === 'default' ? 'emphasized' : this.emphasis === 'subtle' ? 'default' : 'subtle';
     const hoverVarName = `${hoverVariant}-${this.variant}`;
 
     const background = `--feedback-background-${varName}`;
