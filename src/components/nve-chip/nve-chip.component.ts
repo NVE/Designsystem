@@ -32,6 +32,8 @@ export default class NveChip extends LitElement {
   @property({ type: String, reflect: true }) size: 'small' | 'medium' = 'medium';
   /** Ekstra tekst */
   @property({ type: String, reflect: false, attribute: true }) 'extra-text' = '';
+  /** Viser dot-ikon i prefix */
+  @property({ type: Boolean, reflect: false }) dot: boolean = false;
   /** Viser lukke-knapp */
   @property({ type: Boolean, reflect: false }) 'has-close': boolean = false;
   /** aria-label på lukke-knapp */
@@ -78,7 +80,13 @@ export default class NveChip extends LitElement {
         })}
         style=${this.computeStyleColor()}
       >
-        <slot name="prefix"></slot>
+        <slot name="prefix"
+          >${this.dot
+            ? html`<svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="5.5" cy="5" r="5" fill="currentcolor" />
+              </svg> `
+            : nothing}</slot
+        >
         <slot part="text"></slot>
         <slot name="extra" part="extra">${this['extra-text']}</slot>
         ${this['has-close']

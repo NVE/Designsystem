@@ -52,17 +52,18 @@ Sporet "prefix" kan brukes for å legge inn et ikon foran teksten
   Se her!
   <nve-icon slot="prefix" library="Sharp" name="error" />
 </nve-chip>
-<nve-chip size="medium">
-  Se her!
-  <nve-icon
-    slot="prefix"
-    library="Sharp"
-    name="circle"
-    style="font-variation-settings:
-    'FILL' 1,
-    'GRAD' 1;"
-  />
+
 </nve-chip>
+```
+
+</CodeExamplePreview>
+
+Du kan også bruke attributten "dot" for å legge inn en prikk istedenfor ikon
+
+<CodeExamplePreview>
+
+```html
+<nve-chip size="medium" dot> Se her! </nve-chip>
 ```
 
 </CodeExamplePreview>
@@ -170,7 +171,7 @@ Attributten has-close brukes for å si at chip skal ha en "Lukk"-knapp
 </script>
 
 <div style="display: grid; align-items: center; gap: 16px; grid-template-columns: repeat(3, max-content)">
-  <nve-chip emphasis="emphasized" has-close onnve-close="alert('click')">
+  <nve-chip emphasis="emphasized" has-close>
     Neutral, emphasized
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
