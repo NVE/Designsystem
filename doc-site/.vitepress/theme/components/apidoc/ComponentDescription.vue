@@ -5,7 +5,7 @@
 <template>
   <!-- TODO: Fjern v-html og erstatt med en komponent som håndterer markdown
     -->
-  <div v-if="description" v-html="description" />
+  <div v-if="description" v-html="description" style="white-space: pre-wrap" />
   <div v-else>
     <nve-alert variant="warning" open>
       <nve-icon name="warning" />

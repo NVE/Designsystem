@@ -9,6 +9,8 @@ export default css`
     box-sizing: border-box;
     position: relative;
     border: none;
+    min-width: 48px;
+    transition: background-color 0.3s ease;
   }
 
   .button ::slotted(nve-badge) {
@@ -21,6 +23,7 @@ export default css`
 
   :host::part(spinner) {
     --track-color: none;
+    --track-width: 2.5px;
     position: relative;
     top: 0;
     left: 0;

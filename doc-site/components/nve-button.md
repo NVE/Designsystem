@@ -69,7 +69,7 @@ Bruk `loading` for å legge til ei snurre.
 
 ### Kun ikon
 
-Knapper med kun ikon i prefix eller suffix kan også brukes:
+Knapper med kun ikon i prefix eller suffix kan også brukes. Det finnes en dedikert [nve-icon-button](./nve-icon-button) komponent som kan passe bedre til din behov.
 
 <CodeExamplePreview>
 

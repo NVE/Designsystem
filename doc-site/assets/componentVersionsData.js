@@ -300,16 +300,6 @@ export const componentsVersions = [
   },
   {
     publishedVersion: '-',
-    typeComponent: 'nve-switch-toggle',
-    typeComponentLink: '#',
-    description: 'Switch / toggle',
-    statusDesign: 'Under arbeid',
-    statusDesignLink:
-      'https://www.figma.com/design/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=4229-83176&m=dev',
-    statusCode: 'Ikke påbegynt',
-  },
-  {
-    publishedVersion: '-',
     typeComponent: 'nve-skeleton-loader',
     typeComponentLink: '#',
     description: 'Skeleton loader',
@@ -355,5 +345,25 @@ export const componentsVersions = [
     statusDesignLink:
       'https://www.figma.com/design/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=1784-78028&m=dev',
     statusCode: 'Ikke påbegynt',
+  },
+  {
+    publishedVersion: '-',
+    typeComponent: 'nve-switch',
+    typeComponentLink: '#',
+    description: 'Togglebutton',
+    statusDesign: 'Trenger kvalitetssjekk',
+    statusDesignLink:
+      'https://www.figma.com/design/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=4229-83176&m=dev',
+    statusCode: 'Under arbeid',
+  },
+  {
+    publishedVersion: '-',
+    typeComponent: 'nve-darkmode-switch',
+    typeComponentLink: '#',
+    description: 'Togglebutton for dark mode',
+    statusDesign: 'Trenger kvalitetssjekk',
+    statusDesignLink:
+      'https://www.figma.com/design/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=4229-83176&m=dev',
+    statusCode: 'Under arbeid',
   },
 ];
