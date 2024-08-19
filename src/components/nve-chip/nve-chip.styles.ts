@@ -11,6 +11,7 @@ export default css`
     background: var(--_bg-color);
     width: fit-content;
     white-space: nowrap;
+    line-height: 1;
   }
   :host::part(text) {
     font: var(--label-x-small);
