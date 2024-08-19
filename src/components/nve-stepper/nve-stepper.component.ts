@@ -76,6 +76,9 @@ export default class NveStepper extends LitElement {
   @property({ type: Boolean })
   displayMobileVersion: boolean = false;
 
+  private selectedStepIndex: { value: number } = { value: 0 };
+
+
   /**
    * Ved endring av props, re-render komponenten eksternt med document.querySelector("nve-stepper")?.reRender();
    * Dette er nyttig når du vil tvinge en oppdatering av komponenten uten å endre dens interne state.
@@ -86,7 +89,6 @@ export default class NveStepper extends LitElement {
     this.requestUpdate();
   }
 
-  selectedStepIndex: { value: number } = { value: 0 };
 
 
   /** Metode som kjøres første gang komponenten er lagt til i DOM */
@@ -127,33 +129,36 @@ export default class NveStepper extends LitElement {
     // Standard oppførsel er tom, men kan utvides der komponenten brukas av utvikleren.
   }
 
-  private setStep(index: number): void {
-    // Hvis det nåværende steget er mindre enn det nye steget og det nåværende steget er startet,
-    // sett det nåværende steget til fullført.
-    if (this.selectedStepIndex.value < index && this.steps[this.selectedStepIndex.value].state === StepState.Started) {
-      this.steps[this.selectedStepIndex.value].state = StepState.Done;
-    }
-
-    // Hvis det nye steget er klart for å gå til neste,
-    // oppdater den valgte stegindeksen og status for Steps.
-    if (this.steps[index].readyForEntrance) {
-      this.selectedStepIndex.value = index;
-
-      // Oppdaterer status og valg for alle Steps.
-      for (let i = 0; i < this.steps.length; i++) {
-        this.steps[i].isSelected = i === index;
-        if (i === index) {
-          this.steps[i].state = StepState.Started;
-        }
-      }
-      this.steps = [...this.steps];
-    }
-  }
-
   /** Metode for å hente den gjeldende indeksen */
-  getCurrentIndex(): number {
-    return this.selectedStepIndex.value;
+    getCurrentIndex(): number {
+      return this.selectedStepIndex.value;
   }
+  
+
+  private setStep(index: number): void {
+
+    if (this.steps[index].readyForEntrance) {
+        this.selectedStepIndex.value = index;
+
+       // Oppdater status og valg for alle trinn
+        for (let i = 0; i < this.steps.length; i++) {
+            if (i < index) {
+                // Alle trinn under indeks er satt til Done
+                this.steps[i].state = StepState.Done;
+            } else if (i === index) {
+                // Steget ved indeks er satt til Active
+                this.steps[i].state = StepState.Active;
+            } else if (this.steps[i].state !== StepState.NotStarted) {
+                // Alle trinn over indeksen som ikke er NotStarted er satt til Started
+                this.steps[i].state = StepState.Started;
+            }
+
+            this.steps[i].isSelected = i === index;
+        }
+
+        this.steps = [...this.steps];
+    }
+}
 
   private getExtremes(): string | undefined {
     if (this.selectedStepIndex.value === 0) return 'start';

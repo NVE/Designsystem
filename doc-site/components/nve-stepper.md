@@ -59,18 +59,16 @@ Se Vue eksempel [her](#stepper-uten-standardknapper) hvordan du bruker metoderna
 </nve-stepper>
 
 <nve-label>vertical</nve-label>
-<div style="height:800px">
-  <nve-stepper
-    endButtonText="Klar"
-    orientation="vertical"
-    steps='
+<nve-stepper
+  endButtonText="Klar"
+  orientation="vertical"
+  steps='
   [
   {"title":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
   {"title":"Steg 2","description":"Beskrivelse av steg 2","state":0,"isSelected":false,"readyForEntrance":true},
   {"title":"Steg 3","description":"Beskrivelse av steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
-  >
-  </nve-stepper>
-</div>
+>
+</nve-stepper>
 ```
 
 </CodeExamplePreview>

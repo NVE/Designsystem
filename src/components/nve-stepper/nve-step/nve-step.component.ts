@@ -6,6 +6,7 @@ import styles from './nve-step.styles';
 export enum StepState {
   NotStarted,
   Started,
+  Active,
   Done,
   Error,
 }
@@ -75,9 +76,6 @@ export default class NveStep extends LitElement {
 
   /** Metode som kjøres hver gang komponentens oppdateres */
   updated(): void {
-    if (this.isOrientationVertical()) {
-      // this.updateVerticalDividerHeight();
-    }
     this.style.setProperty('line-color', this.isLast ? '0' : '1');
   }
 
@@ -95,6 +93,10 @@ export default class NveStep extends LitElement {
       case StepState.NotStarted:
         icon = 'circle';
         break;
+      case StepState.Active:
+        icon = 'radio_button_checked';
+        break;
+        
       case StepState.Started:
         icon = 'trip_origin';
         break;
@@ -115,8 +117,10 @@ export default class NveStep extends LitElement {
     switch (state) {
       case StepState.NotStarted:
         return 'Ikke påbegynt';
-      case StepState.Started:
+      case StepState.Active:
         return 'Aktiv';
+      case StepState.Started:
+        return 'Påbegynt';
       case StepState.Done:
         return 'Fullført';
       case StepState.Error:
@@ -131,7 +135,7 @@ export default class NveStep extends LitElement {
     switch (state) {
       case StepState.NotStarted:
         return 'state-not-started-color';
-      case StepState.Started:
+      case StepState.Active:
         return 'state-started-color';
       case StepState.Done:
         return 'state-done-color';
