@@ -26,14 +26,14 @@
               Status er satt til ferdig, men komponenten finnes ikke
             </div>
             <div v-else>
-              <nve-badge :variant="getBadgeVariant(component.statusCode)" style="padding: 1rem">
+              <nve-badge :variant="getBadgeVariant(component.statusCode)" low>
                 {{ component.statusCode }}
               </nve-badge>
             </div>
           </td>
           <td>
             <span class="status-design-container">
-              <nve-badge :variant="getBadgeVariant(component.statusDesign)" style="padding: 1rem 0">
+              <nve-badge :variant="getBadgeVariant(component.statusDesign)" low>
                 {{ component.statusDesign }}
               </nve-badge>
               <a
@@ -43,7 +43,7 @@
                 target="_blank"
                 class="figma-link"
               >
-                <nve-icon class="figma-icon" name="design_services"></nve-icon>
+                <img src="/assets/figma-logo.svg" class="figma-icon" alt="figma-logo" />
               </a>
             </span>
           </td>
@@ -51,58 +51,66 @@
       </tbody>
       <tfoot>
         <tr>
-          <td>Totalt antall komponenter: {{ componentStatuses.length }}</td>
+          <td>Antall planlagte komponenter: {{ componentStatuses.length }}</td>
           <td>
             <!-- Antall komponenter i biblioteket per status -->
-            <nve-badge variant="success"
+            <nve-badge variant="success" low
               >Ferdig: {{ componentStatuses.filter((status) => status.statusCode === 'Ferdig').length }}</nve-badge
             >
-            <nve-badge variant="warning"
+            <br />
+            <nve-badge variant="warning" low
               >Under arbeid:
               {{ componentStatuses.filter((status) => status.statusCode === 'Under arbeid').length }}</nve-badge
             >
-            <nve-badge variant="neutral"
-              >Skal revideres eller under revidering:
+            <br />
+            <nve-badge variant="neutral" low
+              >Skal revideres / under revidering:
               {{
                 componentStatuses.filter(
                   (status) => status.statusCode === 'Skal revideres' || status.statusCode === 'Revideres'
                 ).length
               }}</nve-badge
             >
-            <nve-badge variant="brand"
+            <br />
+            <nve-badge variant="brand" low
               >Trenger kvalitetssjekk:
               {{
                 componentStatuses.filter((status) => status.statusCode === 'Trenger kvalitetssjekk').length
               }}</nve-badge
             >
-            <nve-badge variant="brand"
+            <br />
+            <nve-badge variant="brand" low
               >Ukjent: {{ componentStatuses.filter((status) => status.statusCode == null).length }}</nve-badge
             >
           </td>
           <td>
             <!-- Antall komponenter i Figma per status -->
-            <nve-badge variant="success"
+            <nve-badge variant="success" low
               >Ferdig: {{ componentStatuses.filter((status) => status.statusDesign === 'Ferdig').length }}</nve-badge
             >
-            <nve-badge variant="warning"
+            <br />
+            <nve-badge variant="warning" low
               >Under arbeid:
               {{ componentStatuses.filter((status) => status.statusDesign === 'Under arbeid').length }}</nve-badge
             >
-            <nve-badge variant="neutral"
-              >Skal revideres eller under revidering:
+            <br />
+            <nve-badge variant="neutral" low
+              >Skal revideres / under revidering:
               {{
                 componentStatuses.filter(
                   (status) => status.statusDesign === 'Skal revideres' || status.statusDesign === 'Revideres'
                 ).length
               }}</nve-badge
             >
-            <nve-badge variant="brand"
+            <br />
+            <nve-badge variant="brand" low
               >Trenger kvalitetssjekk:
               {{
                 componentStatuses.filter((status) => status.statusDesign === 'Trenger kvalitetssjekk').length
               }}</nve-badge
             >
-            <nve-badge variant="brand"
+            <br />
+            <nve-badge variant="brand" low
               >Ukjent: {{ componentStatuses.filter((status) => status.statusDesign == null).length }}</nve-badge
             >
           </td>
@@ -213,13 +221,14 @@ th {
 
 .status-design-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
   align-items: center;
+  gap: 1rem;
 }
 
 .figma-icon {
   cursor: pointer;
-  font-size: 26px;
+  width: 0.75rem;
 }
 
 .figma-link {
