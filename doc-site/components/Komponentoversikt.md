@@ -5,8 +5,14 @@ Lista over komponenter er sortert alfabetisk på navn.
 nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en til aktuell side når du ser på komponenten i Figma.
 -->
 
-<ComponentOverview :componentStatuses="
-[
+<ComponentOverview :componentStatuses="[
+  {
+   name: 'nve-accordion',     
+    nodeId: '2341-77166',      
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ikke påbegynt'   
+  },
   {
     name: 'nve-alert',     
     nodeId: '4229-7',      
@@ -15,11 +21,18 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ferdig'   
   },
   {
-    name: 'nve-attachment',
+    name: 'nve-attachments',
+    nodeId: '647-192139',
+    description: 'Viser liste over opplastede vedlegg',
+    statusDesign: 'Skal revideres',
+    statusCode: 'Ikke påbegynt'
+  },
+  {
+    name: 'nve-attachment-upload',
     nodeId: '4295-142731', 
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: undefined
+    description: 'For å laste opp vedlegg',
+    statusDesign: 'Skal revideres',
+    statusCode: 'Ikke påbegynt'
   },
   {
     name: 'nve-avatar',
@@ -46,7 +59,7 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     name: 'nve-button',
     nodeId: '111-30',
     description: undefined,
-    statusDesign: 'Skal revideres',
+    statusDesign: 'Under arbeid',
     statusCode: 'Ferdig'
   },
   {
@@ -57,17 +70,17 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ikke påbegynt'
   },
   {
-    name: 'nve-carousel-image',
-    nodeId: '480-49356',
+    name: 'nve-darkmode-switch',
+    nodeId: '4229-83176',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
+    statusCode: 'Ferdig'
   },
   {
-    name: 'nve-chart',
-    nodeId: '3087-105935',
-    description: undefined,
-    statusDesign: 'Ikke påbegynt',
+    name: 'nve-image-carousel',
+    nodeId: '480-49356',
+    description: 'Bildekarusell',
+    statusDesign: 'Skal revideres',
     statusCode: 'Ikke påbegynt'
   },
   {
@@ -78,15 +91,15 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ferdig'
   },
   {
-    name: 'nve-chips-filter',
-    nodeId: '839-137560',
+    name: 'nve-checkbox-group',
+    nodeId: '4229-100252',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
+    statusCode: 'Ferdig'
   },
   {
-    name: 'nve-chips-tag',
-    nodeId: undefined,
+    name: 'nve-calendar',
+    nodeId: '5831-20450',
     description: undefined,
     statusDesign: 'Ferdig',
     statusCode: 'Ikke påbegynt'
@@ -95,19 +108,12 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     name: 'nve-comment',
     nodeId: '3077-45608',
     description: undefined,
-    statusDesign: 'Under arbeid',
-    statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-details-accordion-v2',
-    nodeId: '2341-77166',
-    description: undefined,
     statusDesign: 'Ferdig',
     statusCode: 'Ikke påbegynt'
   },
   {
     name: 'nve-dialog',
-    nodeId: undefined,
+    nodeId: '1360-4722',
     description: undefined,
     statusDesign: undefined,
     statusCode: 'Ferdig'
@@ -115,13 +121,6 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
   {
     name: 'nve-dropdown',
     nodeId: '3077-54191',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Under arbeid'
-  },
-  {
-    name: 'nve-files',
-    nodeId: '647-192139',
     description: undefined,
     statusDesign: 'Ferdig',
     statusCode: 'Ferdig'
@@ -138,7 +137,7 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     nodeId: '111-33',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Trenger kvalitetssjekk'
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-label',
@@ -148,24 +147,38 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ferdig'
   },
   {
-    name: 'nve-links',
+    name: 'nve-link-card',
     nodeId: '3684-156320',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: undefined
-  },
-  {
-    name: 'nve-logos',
-    nodeId: undefined,
     description: undefined,
     statusDesign: 'Ferdig',
     statusCode: 'Ikke påbegynt'
   },
   {
-    name: 'nve-maps',
-    nodeId: undefined,
+    name: 'nve-map',
+    nodeId: '2341-75038',
+    description: undefined,
+    statusDesign: 'Ikke påbegynt',
+    statusCode: 'Ikke påbegynt'
+  },
+  {
+   name: 'nve-menu',     
+    nodeId: '3077-54191',      
     description: undefined,
     statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'   
+  },
+  {
+   name: 'nve-message-card',     
+    nodeId: '8239-2704',      
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Under arbeid'   
+  },
+  {
+    name: 'nve-navbar',
+    nodeId: '203-17',
+    description: undefined,
+    statusDesign: 'Ikke påbegynt',
     statusCode: 'Ikke påbegynt'
   },
   {
@@ -186,7 +199,14 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     name: 'nve-progress-bar',
     nodeId: '3087-96526',
     description: undefined,
-    statusDesign: 'Under arbeid',
+    statusDesign: 'Ikke påbegynt',
+    statusCode: 'Ikke påbegynt'
+  },
+  {
+    name: 'nve-progress-ring',
+    nodeId: '8238-83643',
+    description: undefined,
+    statusDesign: 'Ikke påbegynt',
     statusCode: 'Ikke påbegynt'
   },
   {
@@ -198,14 +218,14 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
   },
   {
     name: 'nve-radio-button',
-    nodeId: undefined,
+    nodeId: '4229-83173',
     description: undefined,
-    statusDesign: 'Ferdig',
+    statusDesign: 'Ikke påbegynt',
     statusCode: 'Ferdig'
   },
   {
     name: 'nve-radio-group',
-    nodeId: undefined,
+    nodeId: '4229-83173',
     description: undefined,
     statusDesign: 'Ferdig',
     statusCode: 'Ferdig'
@@ -214,15 +234,15 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     name: 'nve-range-slider',
     nodeId: '3087-105692',
     description: undefined,
-    statusDesign: 'Ferdig',
+    statusDesign: 'Under arbeid',
     statusCode: 'Ikke påbegynt'
   },
   {
     name: 'nve-search',
     nodeId: '951-140533',
     description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
+    statusDesign: 'Skal revideres',
+    statusCode: 'Ikke påbegynt'
   },
   {
     name: 'nve-select',
@@ -232,15 +252,8 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Trenger kvalitetssjekk'
   },
   {
-    name: 'nve-skeleton-loader',
+    name: 'nve-skeleton',
     nodeId: '4229-83175',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: undefined
-  },
-  {
-    name: 'nve-slot-component',
-    nodeId: '2683-87571',
     description: undefined,
     statusDesign: 'Ferdig',
     statusCode: 'Ikke påbegynt'
@@ -256,29 +269,36 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     name: 'nve-stepper',
     nodeId: '1784-78028',
     description: undefined,
-    statusDesign: 'Trenger kvalitetssjekk',
-    statusCode: 'Ikke påbegynt'
+    statusDesign: 'Ferdig',
+    statusCode: 'Under arbeid'
   },
   {
-    name: 'nve-switch-toggle',
+    name: 'nve-switch',
     nodeId: '4229-83176',
     description: undefined,
-    statusDesign: 'Under arbeid',
-    statusCode: 'Ikke påbegynt'
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-table',
     nodeId: '111-35',
     description: undefined,
-    statusDesign: 'Revideres',
-    statusCode: undefined
+    statusDesign: 'Ferdig',
+    statusCode: 'Ikke påbegynt'
   },
   {
     name: 'nve-tabs',
-    nodeId: undefined,
+    nodeId: '383-21541',
     description: undefined,
     statusDesign: 'Ferdig',
     statusCode: 'Ikke påbegynt'
+  },
+  {
+    name: 'nve-tag',
+    nodeId: '839-137560',
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Under arbeid'
   },
   {
     name: 'nve-textarea',
@@ -288,17 +308,24 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ferdig'
   },
   {
+    name: 'nve-textarea-with-formatting',
+    nodeId: '8238-83510',
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ikke påbegynt'
+  },
+  {
     name: 'nve-tooltip',
     nodeId: '1239-131317',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Under arbeid'
+    statusCode: 'Skal revideres'
   },
   {
     name: 'nve-tree',
     nodeId: '3769-59546',
     description: undefined,
-    statusDesign: 'Under arbeid',
+    statusDesign: 'Under revidering',
     statusCode: 'Ikke påbegynt'
   }
 ]" />
