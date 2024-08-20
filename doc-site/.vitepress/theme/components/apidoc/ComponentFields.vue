@@ -10,9 +10,10 @@
   <table>
     <tr>
       <td>Navn</td>
-      <td>Attributt-synk</td>
+      <td>
+        <a href="https://lit.dev/docs/components/properties/#reflected-attributes" target="_blank">A</a>
+      </td>
       <td>Type</td>
-      <td>Standardverdi</td>
       <td>Arvet fra</td>
       <td>Beskrivelse</td>
     </tr>
@@ -21,8 +22,10 @@
       <td>
         <nve-icon v-if="field.reflects" name="Check" />
       </td>
-      <td>{{ field.type?.text }}</td>
-      <td>{{ field.default }}</td>
+      <td>
+        {{ field.type?.text }}
+        <span v-if="field.default"> = {{ field.default }}</span>
+      </td>
       <td>{{ field.inheritedFrom?.name }}</td>
       <td>{{ field.description }}</td>
     </tr>
