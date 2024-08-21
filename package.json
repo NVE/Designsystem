@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "homepage": "https://github.com/NVE/Designsystem/",
-  "version": "0.1.86",
+  "version": "0.1.87",
   "customElements": "custom-elements.json",
   "exports": {
     ".": {
