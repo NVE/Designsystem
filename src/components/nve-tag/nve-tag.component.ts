@@ -1,11 +1,11 @@
 import { customElement, property } from 'lit/decorators.js';
 import { LitElement, html, nothing } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import styles from './nve-chip.styles';
+import styles from './nve-tag.styles';
 /**
- * En chip/tag som brukes for å vise litt info eller for filtre. Har en valgfri lukke-knapp
+ * En tag som brukes for å vise litt info eller for filtre. Har en valgfri lukke-knapp
  *
- * @property {string} variant Fargen på chip. neutral, success, info, warning, error
+ * @property {string} variant Fargen på tag. neutral, success, info, warning, error
  * @property {string} saturation Hvor sterk fargen på bakgrunnen er. emphasized, subtle, default
  * @property {string} size Størrelse. small, medium
  *
@@ -21,12 +21,12 @@ import styles from './nve-chip.styles';
  * @csspart close Lukk-ikon
  *
  */
-@customElement('nve-chip')
-export default class NveChip extends LitElement {
+@customElement('nve-tag')
+export default class NveTag extends LitElement {
   static styles = [styles];
   /** Variant */
   @property({ type: String, reflect: true }) variant: 'neutral' | 'success' | 'info' | 'warning' | 'error' = 'neutral';
-  /** Saturation - Hvor mettet fargen på chip er */
+  /** Saturation - Hvor mettet fargen på tag er */
   @property({ type: String, reflect: true }) saturation: 'emphasized' | 'subtle' | 'default' = 'default';
   /** Størrelse på komponenten */
   @property({ type: String, reflect: true }) size: 'small' | 'medium' = 'medium';
@@ -54,17 +54,17 @@ export default class NveChip extends LitElement {
       <span
         part="base"
         class=${classMap({
-          chip: true,
-          'chip--neutral': this.variant === 'neutral',
-          'chip--info': this.variant === 'info',
-          'chip--success': this.variant === 'success',
-          'chip--warning': this.variant === 'warning',
-          'chip--error': this.variant === 'error',
-          'chip--small': this.size === 'small',
-          'chip--medium': this.size === 'medium',
-          'chip--saturation-emphasized': this.saturation === 'emphasized',
-          'chip--saturation-subtle': this.saturation === 'subtle',
-          'chip--saturation-default': this.saturation === 'default',
+          tag: true,
+          'tag--neutral': this.variant === 'neutral',
+          'tag--info': this.variant === 'info',
+          'tag--success': this.variant === 'success',
+          'tag--warning': this.variant === 'warning',
+          'tag--error': this.variant === 'error',
+          'tag--small': this.size === 'small',
+          'tag--medium': this.size === 'medium',
+          'tag--saturation-emphasized': this.saturation === 'emphasized',
+          'tag--saturation-subtle': this.saturation === 'subtle',
+          'tag--saturation-default': this.saturation === 'default',
         })}
       >
         <slot name="prefix"
@@ -79,7 +79,7 @@ export default class NveChip extends LitElement {
         ${this['closeable']
           ? html`<button
               part="close"
-              class="chip-close"
+              class="tag-close"
               aria-label="${this['close-aria-label']}"
               @click=${this.closeButtonClick}
             >
@@ -93,6 +93,6 @@ export default class NveChip extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'nve-chip': NveChip;
+    'nve-tag': NveTag;
   }
 }

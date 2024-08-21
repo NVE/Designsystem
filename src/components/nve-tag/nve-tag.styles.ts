@@ -1,7 +1,7 @@
 import { css } from 'lit';
 
 export default css`
-  .chip {
+  .tag {
     display: flex;
     gap: var(--spacing-xx-small);
     padding-inline: var(--spacing-x-small);
@@ -114,13 +114,13 @@ export default css`
   ::slotted(nve-icon) {
     font-size: var(--font-size-small);
   }
-  .chip--medium {
+  .tag--medium {
     height: var(--sizing-x-small);
   }
-  .chip--small {
+  .tag--small {
     height: var(--sizing-2x-small);
   }
-  .chip-close {
+  .tag-close {
     border: none;
     color: var(--_text_color);
     background-color: transparent;
@@ -129,21 +129,21 @@ export default css`
       background-color 0.3s ease,
       color 0.3s ease;
   }
-  .chip-close:focus-visible {
+  .tag-close:focus-visible {
     outline: none;
   }
-  .chip:has(.chip-close:focus-visible) {
+  .tag:has(.tag-close:focus-visible) {
     outline: var(--_text-color) auto 1px;
   }
-  .chip-close:hover {
+  .tag-close:hover {
     background-color: var(--_hover-bg-color);
     color: var(--_hover-text-color);
   }
-  .chip.chip--saturation-emphasized:has(.chip-close:focus-visible) {
+  .tag.tag--saturation-emphasized:has(.tag-close:focus-visible) {
     outline-color: var(--neutrals-foreground-primary);
   }
 
-  .chip.chip--saturation-emphasized.chip--neutral:has(.chip-close:focus-visible) {
+  .tag.tag--saturation-emphasized.tag--neutral:has(.tag-close:focus-visible) {
     outline-color: var(--interactive-primary-foreground-border-focus);
   }
 `;
