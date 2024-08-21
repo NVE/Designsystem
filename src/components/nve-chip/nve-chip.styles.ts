@@ -139,11 +139,11 @@ export default css`
     background-color: var(--_hover-bg-color);
     color: var(--_hover-text-color);
   }
-  .chip.chip--emphasis-emphasized:has(.chip-close:focus-visible) {
+  .chip.chip--saturation-emphasized:has(.chip-close:focus-visible) {
     outline-color: var(--neutrals-foreground-primary);
   }
 
-  .chip.chip--emphasis-emphasized.chip--neutral:has(.chip-close:focus-visible) {
+  .chip.chip--saturation-emphasized.chip--neutral:has(.chip-close:focus-visible) {
     outline-color: var(--interactive-primary-foreground-border-focus);
   }
 `;
