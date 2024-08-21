@@ -6,7 +6,7 @@ import styles from './nve-chip.styles';
  * En chip/tag som brukes for å vise litt info eller for filtre. Har en valgfri lukke-knapp
  *
  * @property {string} variant Fargen på chip. neutral, success, info, warning, error
- * @property {string} emphasis Hvor sterk fargen på bakgrunnen er. emphasized, subtle, default
+ * @property {string} saturation Hvor sterk fargen på bakgrunnen er. emphasized, subtle, default
  * @property {string} size Størrelse. small, medium
  *
  * @slot - Tekst på tag
@@ -26,8 +26,8 @@ export default class NveChip extends LitElement {
   static styles = [styles];
   /** Variant */
   @property({ type: String, reflect: true }) variant: 'neutral' | 'success' | 'info' | 'warning' | 'error' = 'neutral';
-  /** Emphasis - Hvor mettet fargen på chip er */
-  @property({ type: String, reflect: true }) emphasis: 'emphasized' | 'subtle' | 'default' = 'default';
+  /** Saturation - Hvor mettet fargen på chip er */
+  @property({ type: String, reflect: true }) saturation: 'emphasized' | 'subtle' | 'default' = 'default';
   /** Størrelse på komponenten */
   @property({ type: String, reflect: true }) size: 'small' | 'medium' = 'medium';
   /** Ekstra tekst */
@@ -62,9 +62,9 @@ export default class NveChip extends LitElement {
           'chip--error': this.variant === 'error',
           'chip--small': this.size === 'small',
           'chip--medium': this.size === 'medium',
-          'chip--emphasis-emphasized': this.emphasis === 'emphasized',
-          'chip--emphasis-subtle': this.emphasis === 'subtle',
-          'chip--emphasis-default': this.emphasis === 'default',
+          'chip--saturation-emphasized': this.saturation === 'emphasized',
+          'chip--saturation-subtle': this.saturation === 'subtle',
+          'chip--saturation-default': this.saturation === 'default',
         })}
       >
         <slot name="prefix"

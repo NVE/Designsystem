@@ -14,91 +14,91 @@ export default css`
     line-height: 1;
   }
 
-  :host([variant='neutral'][emphasis='emphasized']) {
+  :host([variant='neutral'][saturation='emphasized']) {
     --_bg-color: var(--feedback-background-emphasized-neutral);
     --_text-color: var(--feedback-foreground-emphasized-neutral);
     --_hover-bg-color: var(--feedback-background-default-neutral);
     --_hover-text-color: var(--feedback-foreground-default-neutral);
   }
-  :host([variant='neutral'][emphasis='default']) {
+  :host([variant='neutral'][saturation='default']) {
     --_bg-color: var(--feedback-background-default-neutral);
     --_text-color: var(--feedback-foreground-default-neutral);
     --_hover-bg-color: var(--feedback-background-subtle-neutral);
     --_hover-text-color: var(--feedback-foreground-subtle-neutral);
   }
-  :host([variant='neutral'][emphasis='subtle']) {
+  :host([variant='neutral'][saturation='subtle']) {
     --_bg-color: var(--feedback-background-subtle-neutral);
     --_text-color: var(--feedback-foreground-subtle-neutral);
     --_hover-bg-color: var(--feedback-background-default-neutral);
     --_hover-text-color: var(--feedback-foreground-default-neutral);
   }
-  :host([variant='success'][emphasis='emphasized']) {
+  :host([variant='success'][saturation='emphasized']) {
     --_bg-color: var(--feedback-background-emphasized-success);
     --_text-color: var(--feedback-foreground-emphasized-success);
     --_hover-bg-color: var(--feedback-background-default-success);
     --_hover-text-color: var(--feedback-foreground-default-success);
   }
-  :host([variant='success'][emphasis='default']) {
+  :host([variant='success'][saturation='default']) {
     --_bg-color: var(--feedback-background-default-success);
     --_text-color: var(--feedback-foreground-default-success);
     --_hover-bg-color: var(--feedback-background-subtle-success);
     --_hover-text-color: var(--feedback-foreground-subtle-success);
   }
-  :host([variant='success'][emphasis='subtle']) {
+  :host([variant='success'][saturation='subtle']) {
     --_bg-color: var(--feedback-background-subtle-success);
     --_text-color: var(--feedback-foreground-subtle-success);
     --_hover-bg-color: var(--feedback-background-default-success);
     --_hover-text-color: var(--feedback-foreground-default-success);
   }
-  :host([variant='info'][emphasis='emphasized']) {
+  :host([variant='info'][saturation='emphasized']) {
     --_bg-color: var(--feedback-background-emphasized-info);
     --_text-color: var(--feedback-foreground-emphasized-info);
     --_hover-bg-color: var(--feedback-background-default-info);
     --_hover-text-color: var(--feedback-foreground-default-info);
   }
-  :host([variant='info'][emphasis='default']) {
+  :host([variant='info'][saturation='default']) {
     --_bg-color: var(--feedback-background-default-info);
     --_text-color: var(--feedback-foreground-default-info);
     --_hover-bg-color: var(--feedback-background-subtle-info);
     --_hover-text-color: var(--feedback-foreground-subtle-info);
   }
-  :host([variant='info'][emphasis='subtle']) {
+  :host([variant='info'][saturation='subtle']) {
     --_bg-color: var(--feedback-background-subtle-info);
     --_text-color: var(--feedback-foreground-subtle-info);
     --_hover-bg-color: var(--feedback-background-default-info);
     --_hover-text-color: var(--feedback-foreground-default-info);
   }
-  :host([variant='warning'][emphasis='emphasized']) {
+  :host([variant='warning'][saturation='emphasized']) {
     --_bg-color: var(--feedback-background-emphasized-warning);
     --_text-color: var(--feedback-foreground-emphasized-warning);
     --_hover-bg-color: var(--feedback-background-default-warning);
     --_hover-text-color: var(--feedback-foreground-default-warning);
   }
-  :host([variant='warning'][emphasis='default']) {
+  :host([variant='warning'][saturation='default']) {
     --_bg-color: var(--feedback-background-default-warning);
     --_text-color: var(--feedback-foreground-default-warning);
     --_hover-bg-color: var(--feedback-background-subtle-warning);
     --_hover-text-color: var(--feedback-foreground-subtle-warning);
   }
-  :host([variant='warning'][emphasis='subtle']) {
+  :host([variant='warning'][saturation='subtle']) {
     --_bg-color: var(--feedback-background-subtle-warning);
     --_text-color: var(--feedback-foreground-subtle-warning);
     --_hover-bg-color: var(--feedback-background-default-warning);
     --_hover-text-color: var(--feedback-foreground-default-warning);
   }
-  :host([variant='error'][emphasis='emphasized']) {
+  :host([variant='error'][saturation='emphasized']) {
     --_bg-color: var(--feedback-background-emphasized-error);
     --_text-color: var(--feedback-foreground-emphasized-error);
     --_hover-bg-color: var(--feedback-background-default-error);
     --_hover-text-color: var(--feedback-foreground-default-error);
   }
-  :host([variant='error'][emphasis='default']) {
+  :host([variant='error'][saturation='default']) {
     --_bg-color: var(--feedback-background-default-error);
     --_text-color: var(--feedback-foreground-default-error);
     --_hover-bg-color: var(--feedback-background-subtle-error);
     --_hover-text-color: var(--feedback-foreground-subtle-error);
   }
-  :host([variant='error'][emphasis='subtle']) {
+  :host([variant='error'][saturation='subtle']) {
     --_bg-color: var(--feedback-background-subtle-error);
     --_text-color: var(--feedback-foreground-subtle-error);
     --_hover-bg-color: var(--feedback-background-default-error);
