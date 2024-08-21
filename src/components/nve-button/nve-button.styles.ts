@@ -3,6 +3,10 @@ import { css } from 'lit';
 export default css`
   /* kan ikke bruke gap fordi den lager rom mellom slots selv om de er tomme */
   /* derfor setter margin på ::part(label) og substraherer margin verdi i horizontal padding i selve .button klassen  */
+  :host {
+    --nve-icon-color: inherit;
+  }
+
   .button {
     width: fit-content;
     align-items: center;
@@ -11,6 +15,30 @@ export default css`
     border: none;
     min-width: 48px;
     transition: background-color 0.3s ease;
+  }
+
+  :host([has-icon-only])::part(base) {
+    gap: unset;
+  }
+
+  :host([has-icon-only]) .button--small {
+    gap: unset;
+    padding: var(--spacing-xx-small);
+    min-width: unset;
+  }
+
+  :host([has-icon-only]) .button--medium {
+    gap: unset;
+    padding: var(--spacing-x-small);
+    min-width: unset;
+  }
+
+  :host([has-icon-only][circle])::part(base) {
+    width: unset;
+  }
+
+  :host([has-icon-only][loading])::part(spinner) {
+    margin-right: 0;
   }
 
   .button ::slotted(nve-badge) {
@@ -26,16 +54,14 @@ export default css`
     --track-width: 2.5px;
     position: relative;
     top: 0;
+    font-size: 24px;
     left: 0;
     margin-right: var(--spacing-x-small);
   }
 
   :host ::slotted(nve-icon) {
     font-size: 24px;
-  }
-
-  :host([size='small']) ::slotted(nve-icon) {
-    font-size: 20px;
+    color: var(--nve-icon-color);
   }
 
   :host::part(label) {
@@ -142,6 +168,12 @@ export default css`
     border-radius: var(--border-radius-small, 4px);
     border: none;
   }
+
+  :host([variant='text'][circle]) .button.button--standard,
+  :host([variant='ghost'][circle]) .button.button--standard {
+    border-radius: 50%;
+  }
+
   :host([variant='text']) .button.button--standard:hover:not(.button--disabled),
   :host([variant='ghost']) .button.button--standard:hover:not(.button--disabled) {
     background-color: var(--interactive-ghost-background-hover);
