@@ -35,7 +35,7 @@ export default class NveChip extends LitElement {
   /** Viser dot-ikon i prefix */
   @property({ type: Boolean, reflect: false }) dot: boolean = false;
   /** Viser lukke-knapp */
-  @property({ type: Boolean, reflect: false }) 'has-close': boolean = false;
+  @property({ type: Boolean, reflect: false }) 'closeable': boolean = false;
   /** aria-label på lukke-knapp */
   @property({ type: String, reflect: false }) 'close-aria-label': string = 'Lukk';
 
@@ -47,18 +47,6 @@ export default class NveChip extends LitElement {
       detail: {},
     });
     this.dispatchEvent(event);
-  }
-
-  private computeStyleColor() {
-    const varName = `${this.emphasis}-${this.variant}`;
-    const hoverVariant = this.emphasis === 'default' ? 'emphasized' : this.emphasis === 'subtle' ? 'default' : 'subtle';
-    const hoverVarName = `${hoverVariant}-${this.variant}`;
-
-    const background = `--feedback-background-${varName}`;
-    const text = `--feedback-foreground-${varName}`;
-    const hoverBackground = `--feedback-background-${hoverVarName}`;
-    const hoverText = `--feedback-foreground-${hoverVarName}`;
-    return `--_text-color: var(${text}); --_bg-color: var(${background}); --_hover-bg-color: var(${hoverBackground}); --_hover-text-color: var(${hoverText});`;
   }
 
   render() {
@@ -78,7 +66,6 @@ export default class NveChip extends LitElement {
           'chip--emphasis-subtle': this.emphasis === 'subtle',
           'chip--emphasis-default': this.emphasis === 'default',
         })}
-        style=${this.computeStyleColor()}
       >
         <slot name="prefix"
           >${this.dot
@@ -89,7 +76,7 @@ export default class NveChip extends LitElement {
         >
         <slot part="text"></slot>
         <slot name="extra" part="extra">${this['extra-text']}</slot>
-        ${this['has-close']
+        ${this['closeable']
           ? html`<button
               part="close"
               class="chip-close"

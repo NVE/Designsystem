@@ -150,7 +150,7 @@ Disse attributtene brukes for å sette farge på chip
 
 ### Chip med lukk-knapp
 
-Attributten has-close brukes for å si at chip skal ha en "Lukk"-knapp
+Attributten closeable brukes for å si at chip skal ha en "Lukk"-knapp
 
 - Ved klikk så sendes event "nve-close"
 - Send også med "close-aria-label" dersom aria-label ikke skal være "Lukk"
@@ -160,7 +160,7 @@ Attributten has-close brukes for å si at chip skal ha en "Lukk"-knapp
 ```html
 <!-- Eksempel-script som legger på event-listener på knappen -->
 <script>
-  const closeable = document.querySelectorAll('nve-chip[has-close]');
+  const closeable = document.querySelectorAll('nve-chip[closeable]');
   closeable.forEach((chip) =>
     chip.addEventListener('nve-close', (e) => {
       const variant = e.target.variant;
@@ -171,67 +171,67 @@ Attributten has-close brukes for å si at chip skal ha en "Lukk"-knapp
 </script>
 
 <div style="display: grid; align-items: center; gap: 16px; grid-template-columns: repeat(3, max-content)">
-  <nve-chip emphasis="emphasized" has-close>
+  <nve-chip emphasis="emphasized" closeable>
     Neutral, emphasized
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
-  <nve-chip emphasis="default" variant="neutral" has-close>
+  <nve-chip emphasis="default" variant="neutral" closeable>
     Neutral, default
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
-  <nve-chip emphasis="subtle" has-close>
+  <nve-chip emphasis="subtle" closeable>
     Neutral, subtle
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
 
-  <nve-chip emphasis="emphasized" variant="info" has-close>
+  <nve-chip emphasis="emphasized" variant="info" closeable>
     Info, emphasized
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
-  <nve-chip emphasis="default" variant="info" has-close>
+  <nve-chip emphasis="default" variant="info" closeable>
     Info, default
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
-  <nve-chip emphasis="subtle" variant="info" has-close>
+  <nve-chip emphasis="subtle" variant="info" closeable>
     Info, subtle
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
 
-  <nve-chip emphasis="emphasized" variant="success" has-close>
+  <nve-chip emphasis="emphasized" variant="success" closeable>
     Success, emphasized
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
-  <nve-chip emphasis="default" variant="success" has-close>
+  <nve-chip emphasis="default" variant="success" closeable>
     Success, default
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
-  <nve-chip emphasis="subtle" variant="success" has-close>
+  <nve-chip emphasis="subtle" variant="success" closeable>
     Success, subtle
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
 
-  <nve-chip emphasis="emphasized" variant="warning" has-close>
+  <nve-chip emphasis="emphasized" variant="warning" closeable>
     Warning, emphasized
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
-  <nve-chip emphasis="default" variant="warning" has-close>
+  <nve-chip emphasis="default" variant="warning" closeable>
     Warning, default
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
-  <nve-chip emphasis="subtle" variant="warning" has-close>
+  <nve-chip emphasis="subtle" variant="warning" closeable>
     Warning, subtle
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
 
-  <nve-chip emphasis="emphasized" variant="error" has-close close-aria-label="Custom label satt">
+  <nve-chip emphasis="emphasized" variant="error" closeable close-aria-label="Custom label satt">
     Error, emphasized
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
-  <nve-chip emphasis="default" variant="error" has-close>
+  <nve-chip emphasis="default" variant="error" closeable>
     Error, default
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
-  <nve-chip emphasis="subtle" variant="error" has-close>
+  <nve-chip emphasis="subtle" variant="error" closeable>
     Error, subtle
     <nve-icon slot="prefix" library="Sharp" name="error" />
   </nve-chip>
