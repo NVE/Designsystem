@@ -31,7 +31,7 @@ Du kan også bruket sporet "extra"
 
 ### Størrelse
 
-Attributten "size" brukes for å sette størrelse på chip. Velg mellom small og medium (medium er default)
+Attributten "size" brukes for å sette størrelse på tag. Velg mellom small og medium (medium er default)
 
 <CodeExamplePreview>
 
@@ -70,7 +70,7 @@ Du kan også bruke attributten "dot" for å legge inn en prikk istedenfor ikon
 
 ### Variant og saturation
 
-Disse attributtene brukes for å sette farge på chip
+Disse attributtene brukes for å sette farge på tag
 
 - Variant kan være neutral, info, success, warning, error; neutral er standard
 - Saturation kan være emphasized, subtle, default; default er standard
@@ -148,9 +148,9 @@ Disse attributtene brukes for å sette farge på chip
 
 </CodeExamplePreview>
 
-### Chip med lukk-knapp
+### Tag med lukk-knapp
 
-Attributten closeable brukes for å si at chip skal ha en "Lukk"-knapp
+Attributten closeable brukes for å si at tag skal ha en "Lukk"-knapp
 
 - Ved klikk så sendes event "nve-close"
 - Send også med "close-aria-label" dersom aria-label ikke skal være "Lukk"
@@ -161,8 +161,8 @@ Attributten closeable brukes for å si at chip skal ha en "Lukk"-knapp
 <!-- Eksempel-script som legger på event-listener på knappen -->
 <script>
   const closeable = document.querySelectorAll('nve-tag[closeable]');
-  closeable.forEach((chip) =>
-    chip.addEventListener('nve-close', (e) => {
+  closeable.forEach((tag) =>
+    tag.addEventListener('nve-close', (e) => {
       const variant = e.target.variant;
       const saturation = e.target.saturation;
       alert(`Klikket ${variant} ${saturation} knapp`);
