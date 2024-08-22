@@ -13,6 +13,7 @@
           <th>Komponent</th>
           <th>Status kode</th>
           <th>Status design</th>
+          <th>Feil / oppgaver</th>
         </tr>
       </thead>
       <tbody>
@@ -46,6 +47,15 @@
                 <img src="/assets/figma-logo.svg" class="figma-icon" alt="figma-logo" />
               </a>
             </span>
+          </td>
+          <td>
+            <ul v-if="issuesForComponent(component.name)?.length > 0">
+              <li v-for="issue of issuesForComponent(component.name)">
+                <a :href="issue.url" target="_blank"
+                  >{{ issue.title }} <span v-if="issue.isPullRequest"> (PR) </span></a
+                >
+              </li>
+            </ul>
           </td>
         </tr>
       </tbody>
@@ -123,6 +133,8 @@
 <script setup lang="ts">
 import LinkButton from './LinkButton.vue';
 import { componentNames } from '../customElementsManifest.store';
+import { fetchIssues, Issue } from '../github.services';
+import { ref, defineProps, onMounted } from 'vue';
 
 interface ComponentStatus {
   /** Navn på komponenten. F.eks. nve-button */
@@ -151,6 +163,16 @@ const linkToFigmaComponent = (figmaId: string) => {
 
 const isComponent = (name: string): boolean => {
   return componentNames.value.some((component) => component === name);
+};
+
+const issues = ref<Map<string, Issue[]>>(new Map<string, Issue[]>());
+
+onMounted(async () => {
+  issues.value = await fetchIssues();
+});
+
+const issuesForComponent = (componentName: string): Issue[] => {
+  return issues.value.get(componentName) || [];
 };
 
 const getBadgeVariant = (status: string) => {
