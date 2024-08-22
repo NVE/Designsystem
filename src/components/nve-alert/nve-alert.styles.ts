@@ -91,7 +91,7 @@ export default css`
     }
   }
 
-  /* emphasized */
+  /* Styling for høyere metningsgrad */
   :host([variant='neutral']) .alert,
   :host([saturation='emphasized']) .alert {
     color: var(--interactive-primary-foreground-default);

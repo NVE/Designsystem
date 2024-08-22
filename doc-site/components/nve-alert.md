@@ -63,7 +63,7 @@ Bruk `leftstroke` for å vise en fet strek på venstre side.
 
 </CodeExamplePreview>
 
-### Emphasized
+### Høyere metning
 
 Bruk `saturation="emphasized"` for å få litt mørkere bakgrunnsfarge.
 
