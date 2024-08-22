@@ -30,7 +30,7 @@ Brukes som veiledning i skjemaer eller som en informasjon til brukere.
 export default class NveMessageCard extends LitElement implements INveComponent {
   @property({ reflect: true, type: String }) testId: string = '';
   /** Bestemmer sterkere bakgrunnsfarge */
-  @property({ type: Boolean, reflect: true }) emphasized: boolean = false;
+  @property({ type: String, reflect: false }) saturation: 'emphasized' | null = null;
   /** Bestemmer om størrelsen */
   @property({ reflect: true }) size: 'default' | 'compact' | 'simple' = 'default';
   /** Bestemmer om kort skal vise lukk knappen i høyre hjørnet */

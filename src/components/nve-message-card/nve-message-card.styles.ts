@@ -117,14 +117,14 @@ export default css`
 
   /** Sterkere farger */
 
-  :host([emphasized]) .message-card--neutral {
+  :host([saturation='emphasized']) .message-card--neutral {
     background: var(--neutrals-background-secondary);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
   }
 
-  :host([emphasized]) .message-card--danger {
+  :host([saturation='emphasized']) .message-card--danger {
     color: var(--feedback-foreground-emphasized-error);
     background: var(--feedback-background-emphasized-error);
     .message-card__close-btn:hover {
@@ -133,7 +133,7 @@ export default css`
     }
   }
 
-  :host([emphasized]) .message-card--warning {
+  :host([saturation='emphasized']) .message-card--warning {
     color: var(--feedback-foreground-emphasized-warning);
     background: var(--feedback-background-emphasized-warning);
     .message-card__close-btn:hover {
@@ -141,7 +141,7 @@ export default css`
     }
   }
 
-  :host([emphasized]) .message-card--success {
+  :host([saturation='emphasized']) .message-card--success {
     color: var(--feedback-foreground-emphasized-success);
     background: var(--feedback-background-emphasized-success);
     .message-card__close-btn:hover {
@@ -150,7 +150,7 @@ export default css`
     }
   }
 
-  :host([emphasized]) .message-card--primary {
+  :host([saturation='emphasized']) .message-card--primary {
     color: var(--feedback-foreground-emphasized-info);
     background: var(--feedback-background-emphasized-info);
     .message-card__close-btn:hover {

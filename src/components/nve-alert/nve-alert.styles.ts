@@ -93,7 +93,7 @@ export default css`
 
   /* emphasized */
   :host([variant='neutral']) .alert,
-  :host([emphasized]) .alert {
+  :host([saturation='emphasized']) .alert {
     color: var(--interactive-primary-foreground-default);
     .alert__icon {
       color: var(--interactive-primary-foreground-default) !important;
@@ -102,7 +102,7 @@ export default css`
       stroke: var(--interactive-primary-foreground-default) !important;
     }
   }
-  :host([emphasized][variant='warning']) .alert {
+  :host([saturation='emphasized'][variant='warning']) .alert {
     color: var(--feedback-foreground-default-warning);
     .alert__icon {
       color: var(--feedback-foreground-default-warning) !important;
@@ -111,40 +111,40 @@ export default css`
       stroke: var(--feedback-foreground-default-warning) !important;
     }
   }
-  :host([emphasized]) .alert--primary {
+  :host([saturation='emphasized']) .alert--primary {
     background-color: var(--feedback-background-emphasized-info);
     & sl-icon-button::part(base):hover {
       background: var(--feedback-background-subtle-info);
       stroke: var(--feedback-background-emphasized-info) !important;
     }
   }
-  :host([emphasized]) .alert--danger {
+  :host([saturation='emphasized']) .alert--danger {
     background-color: var(--feedback-background-emphasized-error);
     & sl-icon-button::part(base):hover {
       background: var(--feedback-background-subtle-error);
       stroke: var(--feedback-background-emphasized-error) !important;
     }
   }
-  :host([emphasized]) .alert--success {
+  :host([saturation='emphasized']) .alert--success {
     background-color: var(--feedback-background-emphasized-success);
     & sl-icon-button::part(base):hover {
       background: var(--feedback-background-subtle-success);
       stroke: var(--feedback-background-emphasized-success) !important;
     }
   }
-  :host([emphasized]) .alert--neutral {
+  :host([saturation='emphasized']) .alert--neutral {
     background-color: var(--neutrals-foreground-primary);
     & sl-icon-button::part(base):hover {
       background: var(--feedback-background-subtle-neutral, #f7f7f8);
       stroke: var(--neutrals-foreground-primary) !important;
     }
   }
-  :host([emphasized]) .alert--warning {
+  :host([saturation='emphasized']) .alert--warning {
     background-color: var(--feedback-background-emphasized-warning);
   }
 
   /* leftStroke */
-  :host([leftStroke][emphasized]) .alert,
+  :host([leftStroke][saturation='emphasized']) .alert,
   :host([leftStroke]) .alert {
     border-left: 6px solid;
   }
@@ -165,19 +165,19 @@ export default css`
   }
 
   /* leftStroke and emphasized */
-  :host([leftStroke][emphasized]) .alert--primary {
+  :host([leftStroke][saturation='emphasized']) .alert--primary {
     border-color: var(--feedback-background-default-info);
   }
-  :host([leftStroke][emphasized]) .alert--danger {
+  :host([leftStroke][saturation='emphasized']) .alert--danger {
     border-color: var(--feedback-background-default-error);
   }
-  :host([leftStroke][emphasized]) .alert--success {
+  :host([leftStroke][saturation='emphasized']) .alert--success {
     border-color: var(--feedback-background-subtle-success);
   }
-  :host([leftStroke][emphasized]) .alert--neutral {
+  :host([leftStroke][saturation='emphasized']) .alert--neutral {
     border-color: var(--neutrals-foreground-subtle);
   }
-  :host([leftStroke][emphasized]) .alert--warning {
+  :host([leftStroke][saturation='emphasized']) .alert--warning {
     border-color: var(--feedback-background-default-warning);
   }
 `;
