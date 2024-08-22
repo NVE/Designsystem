@@ -6,6 +6,11 @@
     :openInNewTab="true"
   />
 
+  <nve-message-card
+    title="Merk saker og PR'er i Github med komponentnavn for å se dem her"
+    size="simple"
+  ></nve-message-card>
+
   <div>
     <table>
       <thead>
@@ -13,7 +18,7 @@
           <th>Komponent</th>
           <th>Status kode</th>
           <th>Status design</th>
-          <th>Feil / oppgaver</th>
+          <th>Feil / oppgaver / PR</th>
         </tr>
       </thead>
       <tbody>
