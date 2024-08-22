@@ -23,5 +23,6 @@ export { default as NveSpinner } from './components/nve-spinner/nve-spinner.comp
 export { default as NveStep } from './components/nve-stepper/nve-step/nve-step.component';
 export { default as NveStepper } from './components/nve-stepper/nve-stepper.component';
 export { default as NveSwitch } from './components/nve-switch/nve-switch.component';
+export { default as NveTag } from './components/nve-tag/nve-tag.component';
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
