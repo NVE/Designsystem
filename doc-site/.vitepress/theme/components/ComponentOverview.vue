@@ -87,11 +87,6 @@
           <td><nve-tag variant="neutral" size="small">Skal revideres</nve-tag></td>
         </tr>
         <tr>
-          <td>{{ codeStatusCount('Revideres') }}</td>
-          <td>{{ designStatusCount('Revideres') }}</td>
-          <td><nve-tag variant="neutral" size="small">Revideres</nve-tag></td>
-        </tr>
-        <tr>
           <td>{{ codeStatusCount('Trenger kvalitetssjekk') }}</td>
           <td>{{ designStatusCount('Trenger kvalitetssjekk') }}</td>
           <td><nve-tag variant="error" size="small">Trenger kvalitetssjekk</nve-tag></td>
@@ -167,7 +162,6 @@ const getBadgeVariant = (status: string) => {
       return 'success';
     case 'Ikke påbegynt':
       return 'info';
-    case 'Revideres':
     case 'Skal revideres':
       return 'neutral';
     case 'Under arbeid':
