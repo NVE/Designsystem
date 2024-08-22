@@ -113,7 +113,7 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
   },
   {
     name: 'nve-dialog',
-    nodeId: '1360-4722',
+    nodeId: undefined,
     description: undefined,
     statusDesign: undefined,
     statusCode: 'Ferdig'
