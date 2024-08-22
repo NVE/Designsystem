@@ -45,29 +45,29 @@ export default css`
   }
 
   /* Low modifiers */
-  .low {
+  .saturation--subtle {
     color: var(--neutrals-foreground-primary, #00131c);
   }
 
-  .badge--brand.low {
+  .badge--brand.saturation--subtle {
     background-color: var(--brand-light);
   }
 
-  .badge--neutral.low {
+  .badge--neutral.saturation--subtle {
     background-color: var(--feedback-background-subtle-neutral, #f7f7f8);
   }
 
-  .badge--primary.low {
+  .badge--primary.saturation--subtle {
     background-color: var(--feedback-background-default-info, #ceeaff);
   }
 
-  .badge--success.low {
+  .badge--success.saturation--subtle {
     background-color: var(--feedback-background-default-success, #cbf9cb);
   }
-  .badge--warning.low {
+  .badge--warning.saturation--subtle {
     background-color: var(--feedback-background-default-warning, #ffe8a5);
   }
-  .badge--danger.low {
+  .badge--danger.saturation--subtle {
     background-color: var(--feedback-background-default-error, #ffd8de);
   }
 

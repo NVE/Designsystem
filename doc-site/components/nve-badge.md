@@ -45,20 +45,20 @@ Bruk `size` for å velge størrelse. `medium` er standard.
 
 ### Low
 
-Bruk `low` for lysere bakgrunnsfarge. Teksten blir da svart for alle varianter.
+Bruk `saturation="subtle"` for lysere bakgrunnsfarge. Teksten vil også skifte farge.
 
 <CodeExamplePreview>
 
 ```html
 <dl>
-  <dt>low</dt>
+  <dt>lav metning</dt>
   <dd>
-    <nve-badge low>primary</nve-badge>
-    <nve-badge low variant="neutral">neutral</nve-badge>
-    <nve-badge low variant="success">success</nve-badge>
-    <nve-badge low variant="warning">warning</nve-badge>
-    <nve-badge low variant="danger">danger</nve-badge>
-    <nve-badge low variant="brand">brand</nve-badge>
+    <nve-badge saturation="subtle">primary</nve-badge>
+    <nve-badge saturation="subtle" variant="neutral">neutral</nve-badge>
+    <nve-badge saturation="subtle" variant="success">success</nve-badge>
+    <nve-badge saturation="subtle" variant="warning">warning</nve-badge>
+    <nve-badge saturation="subtle" variant="danger">danger</nve-badge>
+    <nve-badge saturation="subtle" variant="brand">brand</nve-badge>
   </dd>
   <dt>vanlig</dt>
   <dd>

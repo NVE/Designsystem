@@ -57,16 +57,16 @@ Forskjellen mellom `compact` og `simple` er at `simple` viser kun tittel og ikon
 
 ### Emphasized
 
-Bruk `emphasized` for å vise sterkere bakgrunnsfarge.
+Bruk `saturation="emphasized"` for å vise sterkere bakgrunnsfarge.
 
 <CodeExamplePreview>
 
 ```html
-<nve-message-card emphasized title="Tittel">Primary</nve-message-card>
-<nve-message-card emphasized variant="neutral" title="Tittel">Neutral</nve-message-card>
-<nve-message-card emphasized variant="warning" title="Tittel">Warning</nve-message-card>
-<nve-message-card emphasized variant="danger" title="Tittel">Danger</nve-message-card>
-<nve-message-card emphasized variant="success" title="Tittel">Success</nve-message-card>
+<nve-message-card saturation="emphasized" title="Tittel">Primary</nve-message-card>
+<nve-message-card saturation="emphasized" variant="neutral" title="Tittel">Neutral</nve-message-card>
+<nve-message-card saturation="emphasized" variant="warning" title="Tittel">Warning</nve-message-card>
+<nve-message-card saturation="emphasized" variant="danger" title="Tittel">Danger</nve-message-card>
+<nve-message-card saturation="emphasized" variant="success" title="Tittel">Success</nve-message-card>
 ```
 
 </CodeExamplePreview>
