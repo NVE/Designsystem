@@ -45,7 +45,7 @@ Bruk `size` for å velge størrelse. `medium` er standard.
 
 ### Low
 
-Bruk `saturation="low"` for lysere bakgrunnsfarge. Teksten vil også skifte farge.
+Bruk `saturation="subtle"` for lysere bakgrunnsfarge. Teksten vil også skifte farge.
 
 <CodeExamplePreview>
 
@@ -53,12 +53,12 @@ Bruk `saturation="low"` for lysere bakgrunnsfarge. Teksten vil også skifte farg
 <dl>
   <dt>lav metning</dt>
   <dd>
-    <nve-badge saturation="low">primary</nve-badge>
-    <nve-badge saturation="low" variant="neutral">neutral</nve-badge>
-    <nve-badge saturation="low" variant="success">success</nve-badge>
-    <nve-badge saturation="low" variant="warning">warning</nve-badge>
-    <nve-badge saturation="low" variant="danger">danger</nve-badge>
-    <nve-badge saturation="low" variant="brand">brand</nve-badge>
+    <nve-badge saturation="subtle">primary</nve-badge>
+    <nve-badge saturation="subtle" variant="neutral">neutral</nve-badge>
+    <nve-badge saturation="subtle" variant="success">success</nve-badge>
+    <nve-badge saturation="subtle" variant="warning">warning</nve-badge>
+    <nve-badge saturation="subtle" variant="danger">danger</nve-badge>
+    <nve-badge saturation="subtle" variant="brand">brand</nve-badge>
   </dd>
   <dt>vanlig</dt>
   <dd>

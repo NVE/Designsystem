@@ -23,7 +23,7 @@ export default class NveBadge extends LitElement {
   /** Størrelse på komponenten */
   @property({ type: String, reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
   /** Viser lav metning, default er at denne ikke er satt */
-  @property({ type: String, reflect: false }) saturation: 'low' | null = null;
+  @property({ type: String, reflect: false }) saturation: 'subtle' | null = null;
   render() {
     return html`
       <span
@@ -39,7 +39,7 @@ export default class NveBadge extends LitElement {
           'badge--small': this.size === 'small',
           'badge--medium': this.size === 'medium',
           'badge--large': this.size === 'large',
-          'saturation--low': this.saturation === 'low',
+          'saturation--subtle': this.saturation === 'subtle',
         })}
         role="status"
       >
