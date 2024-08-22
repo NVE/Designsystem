@@ -43,7 +43,7 @@ Bruk `size` for å velge størrelse. `medium` er standard.
 
 </CodeExamplePreview>
 
-### Low
+### Lav metning
 
 Bruk `saturation="subtle"` for lysere bakgrunnsfarge. Teksten vil også skifte farge.
 

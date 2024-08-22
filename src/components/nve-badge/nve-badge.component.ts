@@ -7,7 +7,7 @@ import { classMap } from 'lit/directives/class-map.js';
  * En liten etikett som vanligvis vises inne i eller i nærheten av en annen større grensesnittkomponent, som representerer en status, egenskap eller andre metadata.
  * @property {string} size = small, medium eller large
  * @property {string} variant = primary, success, neutral, warning, danger, brand
- * @property {boolean} low = gir lysere bakgrunnsfarge
+ * @property {string} saturation = Setter metningsgrad. subtle er eneste støttede, evt ikke satt.
  */
 @customElement('nve-badge')
 export default class NveBadge extends LitElement {

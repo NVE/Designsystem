@@ -55,7 +55,7 @@ Forskjellen mellom `compact` og `simple` er at `simple` viser kun tittel og ikon
 
 </CodeExamplePreview>
 
-### Emphasized
+### Høyere metning
 
 Bruk `saturation="emphasized"` for å vise sterkere bakgrunnsfarge.
 

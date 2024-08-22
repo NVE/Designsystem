@@ -44,7 +44,7 @@ export default css`
     color: var(--feedback-foreground-emphasized-error, #fff);
   }
 
-  /* Low modifiers */
+  /* Lav metningsgrad */
   .saturation--subtle {
     color: var(--neutrals-foreground-primary, #00131c);
   }
