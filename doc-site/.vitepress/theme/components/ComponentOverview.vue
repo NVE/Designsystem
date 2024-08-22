@@ -27,16 +27,16 @@
               Status er satt til ferdig, men komponenten finnes ikke
             </div>
             <div v-else>
-              <nve-badge :variant="getBadgeVariant(component.statusCode)" low>
+              <nve-tag :variant="getBadgeVariant(component.statusCode)" size="small">
                 {{ component.statusCode }}
-              </nve-badge>
+              </nve-tag>
             </div>
           </td>
           <td>
             <span class="status-design-container">
-              <nve-badge :variant="getBadgeVariant(component.statusDesign)" low>
+              <nve-tag :variant="getBadgeVariant(component.statusDesign)" size="small">
                 {{ component.statusDesign }}
-              </nve-badge>
+              </nve-tag>
               <a
                 v-if="component.nodeId"
                 title="Åpne i Figma"
@@ -61,69 +61,40 @@
       </tbody>
       <tfoot>
         <tr>
-          <td>Antall planlagte komponenter: {{ componentStatuses.length }}</td>
-          <td>
-            <!-- Antall komponenter i biblioteket per status -->
-            <nve-badge variant="success" low
-              >Ferdig: {{ componentStatuses.filter((status) => status.statusCode === 'Ferdig').length }}</nve-badge
-            >
-            <br />
-            <nve-badge variant="warning" low
-              >Under arbeid:
-              {{ componentStatuses.filter((status) => status.statusCode === 'Under arbeid').length }}</nve-badge
-            >
-            <br />
-            <nve-badge variant="neutral" low
-              >Skal revideres / under revidering:
-              {{
-                componentStatuses.filter(
-                  (status) => status.statusCode === 'Skal revideres' || status.statusCode === 'Revideres'
-                ).length
-              }}</nve-badge
-            >
-            <br />
-            <nve-badge variant="brand" low
-              >Trenger kvalitetssjekk:
-              {{
-                componentStatuses.filter((status) => status.statusCode === 'Trenger kvalitetssjekk').length
-              }}</nve-badge
-            >
-            <br />
-            <nve-badge variant="brand" low
-              >Ukjent: {{ componentStatuses.filter((status) => status.statusCode == null).length }}</nve-badge
-            >
-          </td>
-          <td>
-            <!-- Antall komponenter i Figma per status -->
-            <nve-badge variant="success" low
-              >Ferdig: {{ componentStatuses.filter((status) => status.statusDesign === 'Ferdig').length }}</nve-badge
-            >
-            <br />
-            <nve-badge variant="warning" low
-              >Under arbeid:
-              {{ componentStatuses.filter((status) => status.statusDesign === 'Under arbeid').length }}</nve-badge
-            >
-            <br />
-            <nve-badge variant="neutral" low
-              >Skal revideres / under revidering:
-              {{
-                componentStatuses.filter(
-                  (status) => status.statusDesign === 'Skal revideres' || status.statusDesign === 'Revideres'
-                ).length
-              }}</nve-badge
-            >
-            <br />
-            <nve-badge variant="brand" low
-              >Trenger kvalitetssjekk:
-              {{
-                componentStatuses.filter((status) => status.statusDesign === 'Trenger kvalitetssjekk').length
-              }}</nve-badge
-            >
-            <br />
-            <nve-badge variant="brand" low
-              >Ukjent: {{ componentStatuses.filter((status) => status.statusDesign == null).length }}</nve-badge
-            >
-          </td>
+          <th rowspan="7">Antall komponenter</th>
+          <td>{{ codeStatusCount('Ferdig') }}</td>
+          <td>{{ designStatusCount('Ferdig') }}</td>
+          <td><nve-tag variant="success" size="small">Ferdig</nve-tag></td>
+        </tr>
+        <tr>
+          <td>{{ codeStatusCount('Under arbeid') }}</td>
+          <td>{{ designStatusCount('Under arbeid') }}</td>
+          <td><nve-tag variant="warning" size="small">Under arbeid</nve-tag></td>
+        </tr>
+        <tr>
+          <td>{{ codeStatusCount('Ikke påbegynt') }}</td>
+          <td>{{ designStatusCount('Ikke påbegynt') }}</td>
+          <td><nve-tag variant="info" size="small">Ikke påbegynt</nve-tag></td>
+        </tr>
+        <tr>
+          <td>{{ codeStatusCount('Skal revideres') }}</td>
+          <td>{{ designStatusCount('Skal revideres') }}</td>
+          <td><nve-tag variant="neutral" size="small">Skal revideres</nve-tag></td>
+        </tr>
+        <tr>
+          <td>{{ codeStatusCount('Revideres') }}</td>
+          <td>{{ designStatusCount('Revideres') }}</td>
+          <td><nve-tag variant="neutral" size="small">Revideres</nve-tag></td>
+        </tr>
+        <tr>
+          <td>{{ codeStatusCount('Trenger kvalitetssjekk') }}</td>
+          <td>{{ designStatusCount('Trenger kvalitetssjekk') }}</td>
+          <td><nve-tag variant="error" size="small">Trenger kvalitetssjekk</nve-tag></td>
+        </tr>
+        <tr>
+          <td>{{ componentStatuses.filter((s) => s.statusCode !== undefined).length }}</td>
+          <td>{{ componentStatuses.filter((s) => s.statusDesign !== undefined).length }}</td>
+          <td><nve-tag variant="neutral" size="small">Alle planlagte</nve-tag></td>
         </tr>
       </tfoot>
     </table>
@@ -153,9 +124,11 @@ interface ComponentStatus {
   statusCode: string;
 }
 
-defineProps<{
+const props = defineProps<{
   componentStatuses: ComponentStatus[];
 }>();
+
+props.componentStatuses.sort((a, b) => a.name.localeCompare(b.name));
 
 const linkToFigmaComponent = (figmaId: string) => {
   return `https://www.figma.com/file/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=${figmaId}`;
@@ -163,6 +136,14 @@ const linkToFigmaComponent = (figmaId: string) => {
 
 const isComponent = (name: string): boolean => {
   return componentNames.value.some((component) => component === name);
+};
+
+const codeStatusCount = (status: string | null): number => {
+  return props.componentStatuses.filter((s) => s.statusCode == status).length;
+};
+
+const designStatusCount = (status: string | null): number => {
+  return props.componentStatuses.filter((s) => s.statusDesign == status).length;
 };
 
 const issues = ref<Map<string, Issue[]>>(new Map<string, Issue[]>());
@@ -180,14 +161,14 @@ const getBadgeVariant = (status: string) => {
     case 'Ferdig':
       return 'success';
     case 'Ikke påbegynt':
-      return 'primary';
+      return 'info';
     case 'Revideres':
     case 'Skal revideres':
       return 'neutral';
     case 'Under arbeid':
       return 'warning';
     case 'Trenger kvalitetssjekk':
-      return 'brand';
+      return 'error';
     default:
       return '';
   }
@@ -231,6 +212,10 @@ th {
 .dark td {
   background-color: black;
   color: white;
+}
+
+tfoot > tr > td {
+  text-align: right;
 }
 
 .status {
