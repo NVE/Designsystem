@@ -163,3 +163,21 @@ Du kan også bruke ulike `trigger` for å si når tooltip skal åpnes
 ```
 
 </CodeExamplePreview>
+
+### Innhold i tooltip
+
+Du kan bruke `content`-sporet dersom du vil ha mer enn enkel tekst i tooltip
+
+<CodeExamplePreview>
+
+```html
+<nve-tooltip style="display:flex; justify-content:center;" open trigger="click" placement="bottom">
+  <div slot="content" style="display:flex; align-items: center; gap: 8px; justify-content: flex-start;">
+    <nve-icon style="font-size:24px;" name="info"></nve-icon>
+    <div style="max-width: 12ch;">Tooltip med ikon og tekst</div>
+  </div>
+  <nve-button>Hover Me</nve-button>
+</nve-tooltip>
+```
+
+</CodeExamplePreview>

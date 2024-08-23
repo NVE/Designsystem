@@ -1,12 +1,3 @@
-/** border-radius: var(--sl-tooltip-border-radius);
-    background-color: var(--sl-tooltip-background-color);
-    font-family: var(--sl-tooltip-font-family);
-    font-size: var(--sl-tooltip-font-size);
-    font-weight: var(--sl-tooltip-font-size);
-    line-height: var(--sl-tooltip-font-size);
-    color: var(--sl-tooltip-color);
-    padding: var(--sl-tooltip-padding); */
-
 import { css } from 'lit';
 
 export default css`
@@ -16,9 +7,13 @@ export default css`
     --sl-tooltip-color: var(--_text-color);
     --sl-tooltip-font-weight: initial;
     --sl-tooltip-font-size: initial;
-    --sl-tooltip-padding: var(--spacing-x-small);
+    --sl-tooltip-padding: var(--spacing-xx-small) var(--spacing-x-small);
     --sl-tooltip-border-radius: var(--border-radius-small);
     font: var(--label-small-light);
+    --_border-color: transparent;
+  }
+  :host([saturation='subtle'])::part(popup) {
+    filter: drop-shadow(0px 0px 2px var(--_border-color));
   }
   :host([variant='neutral'][saturation='emphasized']) {
     --_bg-color: var(--feedback-background-emphasized-neutral);
@@ -31,6 +26,7 @@ export default css`
   :host([variant='neutral'][saturation='subtle']) {
     --_bg-color: var(--feedback-background-subtle-neutral);
     --_text-color: var(--feedback-foreground-subtle-neutral);
+    --_border-color: var(--feedback-background-emphasized-neutral);
   }
   :host([variant='success'][saturation='emphasized']) {
     --_bg-color: var(--feedback-background-emphasized-success);
@@ -43,6 +39,7 @@ export default css`
   :host([variant='success'][saturation='subtle']) {
     --_bg-color: var(--feedback-background-subtle-success);
     --_text-color: var(--feedback-foreground-subtle-success);
+    --_border-color: var(--feedback-background-emphasized-success);
   }
   :host([variant='info'][saturation='emphasized']) {
     --_bg-color: var(--feedback-background-emphasized-info);
@@ -55,6 +52,7 @@ export default css`
   :host([variant='info'][saturation='subtle']) {
     --_bg-color: var(--feedback-background-subtle-info);
     --_text-color: var(--feedback-foreground-subtle-info);
+    --_border-color: var(--feedback-background-emphasized-info);
   }
   :host([variant='warning'][saturation='emphasized']) {
     --_bg-color: var(--feedback-background-emphasized-warning);
@@ -67,6 +65,7 @@ export default css`
   :host([variant='warning'][saturation='subtle']) {
     --_bg-color: var(--feedback-background-subtle-warning);
     --_text-color: var(--feedback-foreground-subtle-warning);
+    --_border-color: var(--feedback-background-emphasized-warning);
   }
   :host([variant='error'][saturation='emphasized']) {
     --_bg-color: var(--feedback-background-emphasized-error);
@@ -79,5 +78,6 @@ export default css`
   :host([variant='error'][saturation='subtle']) {
     --_bg-color: var(--feedback-background-subtle-error);
     --_text-color: var(--feedback-foreground-subtle-error);
+    --_border-color: var(--feedback-background-emphasized-error);
   }
 `;
