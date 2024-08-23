@@ -499,14 +499,14 @@
     "value": "38%",
     "type": "opacity"
   },
-  "Dimensions": {
-    "0,25x": {
+  "Dimension": {
+    "025x": {
       "value": "0.0625rem",
       "rem": "0.0625rem",
       "type": "Dimension",
       "description": "1px"
     },
-    "0,5x": {
+    "05x": {
       "value": "0.125rem",
       "rem": "0.125rem",
       "type": "Dimension",
@@ -530,7 +530,7 @@
       "type": "Dimension",
       "description": "12px"
     },
-    "3,5x": {
+    "3-5x": {
       "value": "0.875rem",
       "rem": "0.75rem",
       "type": "Dimension",
@@ -542,7 +542,7 @@
       "type": "Dimension",
       "description": "16px"
     },
-    "4,5x": {
+    "4-5x": {
       "value": "1.125rem",
       "rem": "1rem",
       "type": "Dimension",
@@ -804,7 +804,7 @@
   "paragraphIndent": {
     "0": {
       "value": "0px",
-      "type": "dimension"
+      "type": "paragraphIndent"
     }
   },
   "Content": {
@@ -879,68 +879,6 @@
     "strong": {
       "value": "2px",
       "type": "borderWidth"
-    }
-  },
-  "fontSize": {
-    "3xsmall": {
-      "value": "0.5rem",
-      "type": "fontSizes",
-      "description": "8 px"
-    },
-    "2xsmall": {
-      "value": "0.75rem",
-      "type": "fontSizes",
-      "description": "12 px"
-    },
-    "xsmall": {
-      "value": "0.875rem",
-      "type": "fontSizes",
-      "description": "14 px"
-    },
-    "small": {
-      "value": "1rem",
-      "type": "fontSizes",
-      "description": "16 px"
-    },
-    "medium": {
-      "value": "1.125rem",
-      "type": "fontSizes",
-      "description": "18 px"
-    },
-    "large": {
-      "value": "1.25rem",
-      "type": "fontSizes",
-      "description": "20 px"
-    },
-    "xlarge": {
-      "value": "1.5rem",
-      "type": "fontSizes",
-      "description": "24 px"
-    },
-    "2xlarge": {
-      "value": "1.75rem",
-      "type": "fontSizes",
-      "description": "28 px"
-    },
-    "3xlarge": {
-      "value": "2rem",
-      "type": "fontSizes",
-      "description": "32 px"
-    },
-    "4xlarge": {
-      "value": "2.25rem",
-      "type": "fontSizes",
-      "description": "36px"
-    },
-    "5xlarge": {
-      "value": "2.5rem",
-      "type": "fontSizes",
-      "description": "40px"
-    },
-    "6xlarge": {
-      "value": "3rem",
-      "type": "fontSizes",
-      "description": "48px"
     }
   },
   "fontWeight": {
@@ -1145,5 +1083,9 @@
       "value": "2440px",
       "type": "sizing"
     }
+  },
+  "test": {
+    "value": "1rem",
+    "type": "Dimension"
   }
 }
