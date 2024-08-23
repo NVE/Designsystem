@@ -17,7 +17,7 @@
         <tr>
           <th>Komponent</th>
           <th>Status kode</th>
-          <th>Status design</th>
+          <th colspan="2">Status design</th>
           <th>Feil / oppgaver / PR</th>
         </tr>
       </thead>
@@ -37,21 +37,21 @@
               </nve-tag>
             </div>
           </td>
-          <td>
-            <span class="status-design-container">
-              <nve-tag :variant="getBadgeVariant(component.statusDesign)" size="small">
-                {{ component.statusDesign }}
-              </nve-tag>
-              <a
-                v-if="component.nodeId"
-                title="Åpne i Figma"
-                :href="linkToFigmaComponent(component.nodeId)"
-                target="_blank"
-                class="figma-link"
-              >
-                <img src="/assets/figma-logo.svg" class="figma-icon" alt="figma-logo" />
-              </a>
-            </span>
+          <td class="status-design">
+            <nve-tag :variant="getBadgeVariant(component.statusDesign)" size="small">
+              {{ component.statusDesign }}
+            </nve-tag>
+          </td>
+          <td class="figma-link-cell">
+            <a
+              v-if="component.nodeId"
+              title="Åpne i Figma"
+              :href="linkToFigmaComponent(component.nodeId)"
+              target="_blank"
+              class="figma-link"
+            >
+              <img src="/assets/figma-logo.svg" class="figma-icon" alt="figma-logo" />
+            </a>
           </td>
           <td>
             <ul v-if="issuesForComponent(component.name)?.length > 0">
@@ -66,34 +66,38 @@
       </tbody>
       <tfoot>
         <tr>
+          <!-- Separarer sammendraget fra resten av tabellen, så det ser ut som en egen tabell -->
+          <td class="divider-row"></td>
+        </tr>
+        <tr>
           <th rowspan="7">Antall komponenter</th>
           <td>{{ codeStatusCount('Ferdig') }}</td>
-          <td>{{ designStatusCount('Ferdig') }}</td>
+          <td colspan="2">{{ designStatusCount('Ferdig') }}</td>
           <td><nve-tag variant="success" size="small">Ferdig</nve-tag></td>
         </tr>
         <tr>
           <td>{{ codeStatusCount('Under arbeid') }}</td>
-          <td>{{ designStatusCount('Under arbeid') }}</td>
+          <td colspan="2">{{ designStatusCount('Under arbeid') }}</td>
           <td><nve-tag variant="warning" size="small">Under arbeid</nve-tag></td>
         </tr>
         <tr>
           <td>{{ codeStatusCount('Ikke påbegynt') }}</td>
-          <td>{{ designStatusCount('Ikke påbegynt') }}</td>
+          <td colspan="2">{{ designStatusCount('Ikke påbegynt') }}</td>
           <td><nve-tag variant="info" size="small">Ikke påbegynt</nve-tag></td>
         </tr>
         <tr>
           <td>{{ codeStatusCount('Skal revideres') }}</td>
-          <td>{{ designStatusCount('Skal revideres') }}</td>
+          <td colspan="2">{{ designStatusCount('Skal revideres') }}</td>
           <td><nve-tag variant="neutral" size="small">Skal revideres</nve-tag></td>
         </tr>
         <tr>
           <td>{{ codeStatusCount('Trenger kvalitetssjekk') }}</td>
-          <td>{{ designStatusCount('Trenger kvalitetssjekk') }}</td>
+          <td colspan="2">{{ designStatusCount('Trenger kvalitetssjekk') }}</td>
           <td><nve-tag variant="error" size="small">Trenger kvalitetssjekk</nve-tag></td>
         </tr>
         <tr>
           <td>{{ componentStatuses.filter((s) => s.statusCode !== undefined).length }}</td>
-          <td>{{ componentStatuses.filter((s) => s.statusDesign !== undefined).length }}</td>
+          <td colspan="2">{{ componentStatuses.filter((s) => s.statusDesign !== undefined).length }}</td>
           <td><nve-tag variant="neutral" size="small">Alle planlagte</nve-tag></td>
         </tr>
       </tfoot>
@@ -105,7 +109,7 @@
 import LinkButton from './LinkButton.vue';
 import { componentNames } from '../customElementsManifest.store';
 import { fetchIssues, Issue } from '../github.services';
-import { ref, defineProps, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
 interface ComponentStatus {
   /** Navn på komponenten. F.eks. nve-button */
@@ -215,21 +219,20 @@ th {
 
 tfoot > tr > td {
   text-align: right;
+  background-color: white;
 }
 
-.status {
-  display: inline-block;
-  background-color: #e0e0e0;
-  padding: 2px 5px;
-  border-radius: 3px;
-  margin-right: 10px;
+.divider-row {
+  border: none;
 }
 
-.status-design-container {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 1rem;
+.status-design {
+  border-right: none;
+}
+
+.figma-link-cell {
+  width: 2rem;
+  border-left: none;
 }
 
 .figma-icon {
@@ -239,5 +242,9 @@ tfoot > tr > td {
 
 .figma-link {
   text-decoration: none;
+}
+
+ul {
+  margin: 0;
 }
 </style>
