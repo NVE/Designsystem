@@ -22,28 +22,29 @@ export default css`
     box-shadow: var(--soft);
   }
   :host([saturation='subtle'])::part(body) {
-    border: var(--border-width-strong) solid var(--_border-color);
+    border: var(--border-width-default) solid var(--_border-color);
     box-shadow: var(--hard);
   }
   :host([saturation='subtle']) [data-current-placement^='top'] {
-    --_border-bottom-width: 2px;
-    --_border-right-width: 2px;
+    --_border-bottom-width: var(--border-width-default);
+    --_border-right-width: var(--border-width-default);
+    --_arrow-nudge-y: 1px;
   }
 
   :host([saturation='subtle']) [data-current-placement^='bottom'] {
-    --_border-top-width: 2px;
-    --_border-left-width: 2px;
+    --_border-top-width: var(--border-width-default);
+    --_border-left-width: var(--border-width-default);
     --_arrow-nudge-y: 1px;
   }
 
   :host([saturation='subtle']) [data-current-placement^='left'] {
-    --_border-top-width: 2px;
-    --_border-right-width: 2px;
+    --_border-top-width: var(--border-width-default);
+    --_border-right-width: var(--border-width-default);
   }
 
   :host([saturation='subtle']) [data-current-placement^='right'] {
-    --_border-bottom-width: 2px;
-    --_border-left-width: 2px;
+    --_border-bottom-width: var(--border-width-default);
+    --_border-left-width: var(--border-width-default);
   }
 
   :host([saturation='subtle'])::part(arrow) {
