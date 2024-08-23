@@ -195,10 +195,10 @@ Du kan bruke `placement` for å si hvilken side tooltip skal være på
   <nve-tooltip style="display:flex; justify-content:center;" placement="top-start" content="top-start">
     <nve-button>Hover Me</nve-button>
   </nve-tooltip>
-  <nve-tooltip style="display:flex; justify-content:center;" saturation="subtle" placement="top" content="top">
+  <nve-tooltip style="display:flex; justify-content:center;" placement="top" content="top">
     <nve-button>Hover Me</nve-button>
   </nve-tooltip>
-  <nve-tooltip style="display:flex; justify-content:center;" saturation="subtle" placement="top-end" content="top-end">
+  <nve-tooltip style="display:flex; justify-content:center;" placement="top-end" content="top-end">
     <nve-button>Hover Me</nve-button>
   </nve-tooltip>
   <nve-tooltip style="display:flex; justify-content:center;" placement="left-start" content="left-start">
@@ -211,7 +211,7 @@ Du kan bruke `placement` for å si hvilken side tooltip skal være på
   <nve-tooltip style="display:flex; justify-content:center;" placement="bottom-start" content="bottom-start">
     <nve-button>Hover Me</nve-button>
   </nve-tooltip>
-  <nve-tooltip style="display:flex; justify-content:center;" saturation="subtle" placement="bottom" content="bottom">
+  <nve-tooltip style="display:flex; justify-content:center;" placement="bottom" content="bottom">
     <nve-button>Hover Me</nve-button>
   </nve-tooltip>
   <nve-tooltip style="display:flex; justify-content:center;" placement="bottom-end" content="bottom-end">
