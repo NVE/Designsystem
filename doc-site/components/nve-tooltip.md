@@ -171,13 +171,78 @@ Du kan bruke `content`-sporet dersom du vil ha mer enn enkel tekst i tooltip
 <CodeExamplePreview>
 
 ```html
-<nve-tooltip style="display:flex; justify-content:center;" open trigger="click" placement="bottom">
+<nve-tooltip style="display:flex; justify-content:center;" trigger="click" placement="bottom">
   <div slot="content" style="display:flex; align-items: center; gap: 8px; justify-content: flex-start;">
     <nve-icon style="font-size:24px;" name="info"></nve-icon>
     <div style="max-width: 12ch;">Tooltip med ikon og tekst</div>
   </div>
-  <nve-button>Hover Me</nve-button>
+  <nve-button>Klikk for å åpne</nve-button>
 </nve-tooltip>
+```
+
+</CodeExamplePreview>
+
+### Plassering av tooltip
+
+Du kan bruke `placement` for å si hvilken side tooltip skal være på
+
+<CodeExamplePreview>
+
+```html
+<div
+  style="display: grid; gap: var(--spacing-small); grid-template-columns: 1fr 1fr 1fr; align-items: center; justify-content: center;"
+>
+  <nve-tooltip
+    style="display:flex; justify-content:center;"
+    saturation="subtle"
+    placement="top-start"
+    content="top-start"
+  >
+    <nve-button>Hover Me</nve-button>
+  </nve-tooltip>
+  <nve-tooltip style="display:flex; justify-content:center;" saturation="subtle" placement="top" content="top">
+    <nve-button>Hover Me</nve-button>
+  </nve-tooltip>
+  <nve-tooltip style="display:flex; justify-content:center;" saturation="subtle" placement="top-end" content="top-end">
+    <nve-button>Hover Me</nve-button>
+  </nve-tooltip>
+  <nve-tooltip
+    style="display:flex; justify-content:center;"
+    saturation="subtle"
+    placement="left-start"
+    content="left-start"
+  >
+    <nve-button>Hover Me</nve-button>
+  </nve-tooltip>
+  <div></div>
+  <nve-tooltip
+    style="display:flex; justify-content:center;"
+    saturation="subtle"
+    placement="right-start"
+    content="right-start"
+  >
+    <nve-button>Hover Me</nve-button>
+  </nve-tooltip>
+  <nve-tooltip
+    style="display:flex; justify-content:center;"
+    saturation="subtle"
+    placement="bottom-start"
+    content="bottom-start"
+  >
+    <nve-button>Hover Me</nve-button>
+  </nve-tooltip>
+  <nve-tooltip style="display:flex; justify-content:center;" saturation="subtle" placement="bottom" content="bottom">
+    <nve-button>Hover Me</nve-button>
+  </nve-tooltip>
+  <nve-tooltip
+    style="display:flex; justify-content:center;"
+    saturation="subtle"
+    placement="bottom-end"
+    content="bottom-end"
+  >
+    <nve-button>Hover Me</nve-button>
+  </nve-tooltip>
+</div>
 ```
 
 </CodeExamplePreview>

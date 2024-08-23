@@ -11,9 +11,48 @@ export default css`
     --sl-tooltip-border-radius: var(--border-radius-small);
     font: var(--label-small-light);
     --_border-color: transparent;
+    --_border-top-width: 0;
+    --_border-left-width: 0;
+    --_border-right-width: 0;
+    --_border-bottom-width: 0;
+    --_arrow-nudge-y: 0;
+    --_arrow-nudge-x: 0;
   }
-  :host([saturation='subtle'])::part(popup) {
-    filter: drop-shadow(0px 0px 2px var(--_border-color));
+  :host::part(body) {
+    box-shadow: var(--soft);
+  }
+  :host([saturation='subtle'])::part(body) {
+    border: var(--border-width-strong) solid var(--_border-color);
+    box-shadow: var(--hard);
+  }
+  :host([saturation='subtle']) [data-current-placement^='top'] {
+    --_border-bottom-width: 2px;
+    --_border-right-width: 2px;
+  }
+
+  :host([saturation='subtle']) [data-current-placement^='bottom'] {
+    --_border-top-width: 2px;
+    --_border-left-width: 2px;
+    --_arrow-nudge-y: 1px;
+  }
+
+  :host([saturation='subtle']) [data-current-placement^='left'] {
+    --_border-top-width: 2px;
+    --_border-right-width: 2px;
+  }
+
+  :host([saturation='subtle']) [data-current-placement^='right'] {
+    --_border-bottom-width: 2px;
+    --_border-left-width: 2px;
+  }
+
+  :host([saturation='subtle'])::part(arrow) {
+    border-top: var(--_border-top-width) solid var(--_border-color);
+    border-bottom: var(--_border-bottom-width) solid var(--_border-color);
+    border-left: var(--_border-left-width) solid var(--_border-color);
+    border-right: var(--_border-right-width) solid var(--_border-color);
+    z-index: 1;
+    translate: var(--_arrow-nudge-x) var(--_arrow-nudge-y);
   }
   :host([variant='neutral'][saturation='emphasized']) {
     --_bg-color: var(--feedback-background-emphasized-neutral);
