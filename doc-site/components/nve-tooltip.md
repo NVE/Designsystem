@@ -192,12 +192,7 @@ Du kan bruke `placement` for å si hvilken side tooltip skal være på
 <div
   style="display: grid; gap: var(--spacing-small); grid-template-columns: 1fr 1fr 1fr; align-items: center; justify-content: center;"
 >
-  <nve-tooltip
-    style="display:flex; justify-content:center;"
-    saturation="subtle"
-    placement="top-start"
-    content="top-start"
-  >
+  <nve-tooltip style="display:flex; justify-content:center;" placement="top-start" content="top-start">
     <nve-button>Hover Me</nve-button>
   </nve-tooltip>
   <nve-tooltip style="display:flex; justify-content:center;" saturation="subtle" placement="top" content="top">
@@ -206,40 +201,20 @@ Du kan bruke `placement` for å si hvilken side tooltip skal være på
   <nve-tooltip style="display:flex; justify-content:center;" saturation="subtle" placement="top-end" content="top-end">
     <nve-button>Hover Me</nve-button>
   </nve-tooltip>
-  <nve-tooltip
-    style="display:flex; justify-content:center;"
-    saturation="subtle"
-    placement="left-start"
-    content="left-start"
-  >
+  <nve-tooltip style="display:flex; justify-content:center;" placement="left-start" content="left-start">
     <nve-button>Hover Me</nve-button>
   </nve-tooltip>
   <div></div>
-  <nve-tooltip
-    style="display:flex; justify-content:center;"
-    saturation="subtle"
-    placement="right-start"
-    content="right-start"
-  >
+  <nve-tooltip style="display:flex; justify-content:center;" placement="right-start" content="right-start">
     <nve-button>Hover Me</nve-button>
   </nve-tooltip>
-  <nve-tooltip
-    style="display:flex; justify-content:center;"
-    saturation="subtle"
-    placement="bottom-start"
-    content="bottom-start"
-  >
+  <nve-tooltip style="display:flex; justify-content:center;" placement="bottom-start" content="bottom-start">
     <nve-button>Hover Me</nve-button>
   </nve-tooltip>
   <nve-tooltip style="display:flex; justify-content:center;" saturation="subtle" placement="bottom" content="bottom">
     <nve-button>Hover Me</nve-button>
   </nve-tooltip>
-  <nve-tooltip
-    style="display:flex; justify-content:center;"
-    saturation="subtle"
-    placement="bottom-end"
-    content="bottom-end"
-  >
+  <nve-tooltip style="display:flex; justify-content:center;" placement="bottom-end" content="bottom-end">
     <nve-button>Hover Me</nve-button>
   </nve-tooltip>
 </div>

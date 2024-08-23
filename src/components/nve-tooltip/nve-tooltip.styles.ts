@@ -15,8 +15,6 @@ export default css`
     --_border-left-width: 0;
     --_border-right-width: 0;
     --_border-bottom-width: 0;
-    --_arrow-nudge-y: 0;
-    --_arrow-nudge-x: 0;
   }
   :host::part(body) {
     box-shadow: var(--soft);
@@ -28,13 +26,11 @@ export default css`
   :host([saturation='subtle']) [data-current-placement^='top'] {
     --_border-bottom-width: var(--border-width-default);
     --_border-right-width: var(--border-width-default);
-    --_arrow-nudge-y: 1px;
   }
 
   :host([saturation='subtle']) [data-current-placement^='bottom'] {
     --_border-top-width: var(--border-width-default);
     --_border-left-width: var(--border-width-default);
-    --_arrow-nudge-y: 1px;
   }
 
   :host([saturation='subtle']) [data-current-placement^='left'] {
@@ -53,7 +49,7 @@ export default css`
     border-left: var(--_border-left-width) solid var(--_border-color);
     border-right: var(--_border-right-width) solid var(--_border-color);
     z-index: 1;
-    translate: var(--_arrow-nudge-x) var(--_arrow-nudge-y);
+    translate: var(--_arrow-nudge-x, 0) var(--_arrow-nudge-y, 0);
   }
   :host([variant='neutral'][saturation='emphasized']) {
     --_bg-color: var(--feedback-background-emphasized-neutral);
