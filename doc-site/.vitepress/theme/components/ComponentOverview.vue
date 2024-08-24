@@ -54,13 +54,7 @@
             </a>
           </td>
           <td>
-            <ul v-if="issuesForComponent(component.name)?.length > 0">
-              <li v-for="issue of issuesForComponent(component.name)">
-                <a :href="issue.url" target="_blank"
-                  >{{ issue.title }} <span v-if="issue.isPullRequest"> (PR) </span></a
-                >
-              </li>
-            </ul>
+            <ComponentIssues :componentName="component.name" />
           </td>
         </tr>
       </tbody>
@@ -108,8 +102,7 @@
 <script setup lang="ts">
 import LinkButton from './LinkButton.vue';
 import { componentNames } from '../customElementsManifest.store';
-import { fetchIssues, Issue } from '../github.services';
-import { ref, onMounted } from 'vue';
+import ComponentIssues from './ComponentIssues.vue';
 
 interface ComponentStatus {
   /** Navn på komponenten. F.eks. nve-button */
@@ -148,16 +141,6 @@ const codeStatusCount = (status: string | null): number => {
 
 const designStatusCount = (status: string | null): number => {
   return props.componentStatuses.filter((s) => s.statusDesign == status).length;
-};
-
-const issues = ref<Map<string, Issue[]>>(new Map<string, Issue[]>());
-
-onMounted(async () => {
-  issues.value = await fetchIssues();
-});
-
-const issuesForComponent = (componentName: string): Issue[] => {
-  return issues.value.get(componentName) || [];
 };
 
 const getBadgeVariant = (status: string) => {

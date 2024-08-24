@@ -20,7 +20,7 @@ export interface Issue {
  */
 export const fetchIssues = async (): Promise<Map<string, Issue[]>> => {
   let done = false;
-  const pageSize = 10;
+  const pageSize = 100;
   let page = 1;
 
   const issuesPerComponent = new Map<string, Issue[]>();

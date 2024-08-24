@@ -17,7 +17,7 @@ const scriptElements = ref<HTMLScriptElement[]>([]);
 
 withDefaults(
   defineProps<{
-    onlyCode: boolean;
+    onlyCode?: boolean;
   }>(),
   {
     onlyCode: false,
