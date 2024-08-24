@@ -7,7 +7,11 @@ import { fetchIssues, Issue } from './github.services';
 import { reactive, ref } from 'vue';
 
 export const issues = ref<Map<string, Issue[]>>(new Map<string, Issue[]>());
-issues.value = await fetchIssues(); //initiell lasting av saker
+
+//initiell lasting av saker
+fetchIssues().then((data) => {
+  issues.value = data;
+});
 
 /**
  * Hent åpne saker og PR-er knytta til komponent.
