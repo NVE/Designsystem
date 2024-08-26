@@ -30,7 +30,7 @@ export default defineConfig({
     },
     nav: [
       { text: 'Introduksjon', link: '/introduction/home' },
-      { text: 'Komponenter', link: `/components/nve-alert.html` },
+      { text: 'Komponenter', link: `/components/Komponentoversikt.html` },
       { component: 'ThemeSelect' },
     ],
     outlineTitle: 'På denne sida',
