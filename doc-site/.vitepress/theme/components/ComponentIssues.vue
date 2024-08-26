@@ -1,8 +1,10 @@
 <!-- Viser alle saker i Github knytta til denne komponenten -->
 <template>
   <div v-if="showHeader">
-    <h2 id="issues">Feil / oppgaver / PR</h2>
-    <a class="header-anchor" href="#issues" aria-label='Permalink to "Issues"'>&ZeroWidthSpace;</a>
+    <h2 id="issues">
+      Feil / oppgaver / PR
+      <a class="header-anchor" href="#issues" aria-label='Permalink to "Issues"'>&ZeroWidthSpace;</a>
+    </h2>
   </div>
   <ul v-if="issues?.length > 0">
     <li v-for="issue of issues">
