@@ -1,12 +1,12 @@
 {
   "tokenSetOrder": [
-    "Brand/nve",
-    "Brand/varsom",
+    "brand/nve",
+    "brand/varsom",
     "public/device/desktop",
     "public/device/desktop-large",
     "public/device/desktop-small",
     "public/device/mobile",
-    "Theme/light",
-    "Theme/dark"
+    "public/theme/light",
+    "public/theme/dark"
   ]
 }

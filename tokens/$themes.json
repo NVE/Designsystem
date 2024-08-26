@@ -130,7 +130,7 @@
       "dropdown": "S:9712b7529601aad2ad212fdf85734a75970dfa91,"
     },
     "selectedTokenSets": {
-      "Brand/nve": "enabled"
+      "brand/nve": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1679:2815",
     "$figmaModeId": "1679:15",
@@ -332,8 +332,8 @@
     "name": "Varsom",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "Brand/nve": "enabled",
-      "Brand/varsom": "enabled"
+      "brand/nve": "enabled",
+      "brand/varsom": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1679:2815",
     "$figmaModeId": "1679:16",
@@ -539,7 +539,7 @@
       "hard": "S:32497d10b263e0b5f649e6997c6c4255bfd0abd9,"
     },
     "selectedTokenSets": {
-      "Theme/light": "enabled"
+      "public/theme/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1679:2689",
     "$figmaModeId": "1679:9",
@@ -775,7 +775,7 @@
       "Dangerlevel.Foreground.Subtle.Level5": "S:5cce946b35d6fe0ec60aeaa6eb41753eaf228998,"
     },
     "selectedTokenSets": {
-      "Theme/dark": "enabled"
+      "public/theme/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1679:2689",
     "$figmaModeId": "1679:10",
