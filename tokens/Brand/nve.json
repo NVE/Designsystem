@@ -527,7 +527,7 @@
       "type": "dimension",
       "description": "12px"
     },
-    "3-5x": {
+    "3,5x": {
       "value": "0.875rem",
       "type": "dimension",
       "description": "14px"
@@ -537,7 +537,7 @@
       "type": "dimension",
       "description": "16px"
     },
-    "4-5x": {
+    "4,5x": {
       "value": "1.125rem",
       "type": "dimension",
       "description": "18px"
