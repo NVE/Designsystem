@@ -16,9 +16,7 @@ export default css`
     --_border-right-width: 0;
     --_border-bottom-width: 0;
   }
-  :host::part(body) {
-    box-shadow: var(--soft);
-  }
+
   :host([saturation='subtle'])::part(body) {
     border: var(--border-width-default) solid var(--_border-color);
     box-shadow: var(--hard);

@@ -2,7 +2,12 @@
 <template>
   <div class="code-example-box" ref="codeExampleBox">
     <!-- Fjerner html fra ```html, hvis du vil fjerne andre sprøkene gjerne legg til replace, eller lag en utils metode -->
-    <div v-if="!onlyCode" class="slot-container" v-html="slot?.textContent?.replace('html', '')" />
+    <div
+      v-if="!onlyCode"
+      class="slot-container"
+      v-html="slot?.textContent?.replace('html', '')"
+      :style="containerStyle"
+    />
     <div ref="slot">
       <slot />
     </div>
@@ -10,14 +15,34 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, onMounted, nextTick, computed } from 'vue';
 const slot = ref<HTMLElement | null>(null);
 const codeExampleBox = ref<HTMLElement | null>(null);
 const scriptElements = ref<HTMLScriptElement[]>([]);
+const containerStyle = computed(() => {
+  let style = '';
+  if (props.containerItemsAlign) {
+    style += `align-items: ${props.containerItemsAlign};`;
+  }
+  if (props.containerGridTemplateColumns) {
+    style += `display: grid; gap: var(--spacing-small); grid-template-columns: ${props.containerGridTemplateColumns}; justify-content: center;`;
+  }
+  if (props.containerJustifyContent) {
+    style += `justify-content: ${props.containerJustifyContent};`;
+  }
+  if (props.containerJustifyItems) {
+    style += `justify-items: ${props.containerJustifyItems};`;
+  }
+  return style;
+});
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     onlyCode: boolean;
+    containerItemsAlign: string;
+    containerGridTemplateColumns: string;
+    containerJustifyContent: string;
+    containerJustifyItems: string;
   }>(),
   {
     onlyCode: false,
@@ -54,5 +79,9 @@ onMounted(() => {
 <style scoped>
 .code-example-box {
   margin: 16px 0;
+}
+
+.slot-container {
+  justify-content: center;
 }
 </style>
