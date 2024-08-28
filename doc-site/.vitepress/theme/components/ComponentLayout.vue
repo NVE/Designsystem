@@ -2,6 +2,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vitepress';
 import { computed } from 'vue';
+import ComponentIssues from './ComponentIssues.vue';
 import ComponentEvents from './apidoc/ComponentEvents.vue';
 import ComponentFields from './apidoc/ComponentFields.vue';
 import ComponentMethods from './apidoc/ComponentMethods.vue';
@@ -48,6 +49,9 @@ const componentName = computed(() => {
             <div class="vp-doc">
               <h1 style="margin-bottom: 32px">{{ componentName }}</h1>
               <ComponentDescription :componentName="componentName" />
+
+              <ComponentIssues :componentName="componentName" showHeader />
+              <p>&nbsp;</p>
 
               <Content />
 

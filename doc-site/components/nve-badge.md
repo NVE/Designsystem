@@ -38,7 +38,7 @@ Bruk `size` for å velge størrelse. `medium` er standard.
 ```html
 <nve-badge size="small">small</nve-badge>
 <nve-badge>medium</nve-badge>
-<nve-badge size="large ">large</nve-badge>
+<nve-badge size="large">large</nve-badge>
 ```
 
 </CodeExamplePreview>
