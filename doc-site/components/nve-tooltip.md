@@ -8,7 +8,7 @@ Se også [nve-label](./nve-label.html)
 
 ### nve-button
 
-<CodeExamplePreview container-flex-align="start">
+<CodeExamplePreview container-items-align="start">
 
 ```html
 <nve-tooltip content="Dette er et verktøyhint">
