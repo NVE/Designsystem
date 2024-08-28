@@ -151,7 +151,7 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     nodeId: '3684-156320',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
+    statusCode: 'Under arbeid'   
   },
   {
     name: 'nve-map',
