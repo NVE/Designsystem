@@ -103,12 +103,12 @@ export default css`
     }
   }
   :host([saturation='emphasized'][variant='warning']) .alert {
-    color: var(--feedback-foreground-default-warning);
+    color: var(--feedback-foreground-emphasized-warning);
     .alert__icon {
-      color: var(--feedback-foreground-default-warning) !important;
+      color: var(--feedback-foreground-emphasized-warning) !important;
     }
     & sl-icon-button::part(base) {
-      stroke: var(--feedback-foreground-default-warning) !important;
+      stroke: var(--feedback-foreground-emphasized-warning) !important;
     }
   }
   :host([saturation='emphasized']) .alert--primary {
