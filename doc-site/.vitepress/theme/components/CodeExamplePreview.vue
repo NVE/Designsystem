@@ -35,14 +35,22 @@ const containerStyle = computed(() => {
   }
   return style;
 });
-
+/**
+ * Props for CodeExamplePreview
+ *
+ * onlyCode: Viser kun kode-boksen, ikke render av koden
+ * containerItemsAlign: Brukes for å sette align-items på visning-container
+ * containerGridTemplateColumns: Bruk denne for å sette grid-template-columns på visning-container. Setter da naturligvis også display: grid
+ * containerJustifyContent: justify-content på visning-container
+ * containerJustifyItems: justify-items på visning-container
+ */
 const props = withDefaults(
   defineProps<{
-    onlyCode: boolean;
-    containerItemsAlign: string;
-    containerGridTemplateColumns: string;
-    containerJustifyContent: string;
-    containerJustifyItems: string;
+    onlyCode?: boolean;
+    containerItemsAlign?: string;
+    containerGridTemplateColumns?: string;
+    containerJustifyContent?: string;
+    containerJustifyItems?: string;
   }>(),
   {
     onlyCode: false,
