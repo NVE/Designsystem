@@ -35,6 +35,9 @@ export default class NveLinkCard extends LitElement implements INveComponent {
   /** Valgfri nedlastingsfunksjon som kan overstyres for å implementere spesifikk nedlastingslogikk */
   @property() downloadHandler: () => void = this.defaultDownloadHandler;
 
+  /** Tilpasset klikk-handler som kan brukes til å overstyre standard atferd (f.eks. i Vue med vue-router) */
+  @property() customClickHandler?: (event: MouseEvent) => void;
+
   static styles = [styles];
 
   constructor() {
@@ -80,8 +83,34 @@ export default class NveLinkCard extends LitElement implements INveComponent {
 
   /**
    * Denne funksjonen bestemmer hva som skjer når kortet blir klikket, basert på verdien av `clickAction`.
+   * Hvis Ctrl, Shift, Alt eller Meta er trykket, følger vi standard bruksmønstre:
+   * Ctrl/Cmd + Klikk: Åpner lenken i en ny fane.
+   * Shift + Klikk: Åpner lenken i et nytt vindu.
+   * Alt + Klikk: Laster ned lenken (hvis det er en fil).
+   * Hvis `customClickHandler` er definert, overstyres standard klikkatferd.
    */
-  private handleClick() {
+  private handleClick(event: MouseEvent) {
+    // Overstyr standard klikkatferd med customClickHandler om den finnes
+    if (this.customClickHandler) {
+      this.customClickHandler(event);
+      return;
+    }
+
+    if (this.href && (event.ctrlKey || event.metaKey)) {
+        window.open(this.href, '_blank');
+      return;
+    }
+
+    if (this.href && event.shiftKey) {
+        window.open(this.href, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    if (event.altKey && this.clickAction === 'download' && this.href) {
+      this.downloadHandler();
+      return;
+    }
+
     switch (this.clickAction) {
       case 'internal':
         if (this.href) {
@@ -126,7 +155,7 @@ export default class NveLinkCard extends LitElement implements INveComponent {
 
   render() {
     return html`
-      <div class="link-card ${this.size} ${this.variant}" @click="${this.handleClick}">
+      <a class="link-card ${this.size} ${this.variant}" @click="${this.handleClick}">
         <div class="content">
           <div class="title">${this.title}</div>
           ${this.additionalText ? html`<div class="additional-text">${this.additionalText}</div>` : null}
@@ -134,7 +163,7 @@ export default class NveLinkCard extends LitElement implements INveComponent {
         <div>
           <nve-icon slot="suffix" name="${this.getIconName()}" style="font-size: 1.5rem;"></nve-icon>
         </div>
-      </div>
+      </a>
     `;
   }
 }
