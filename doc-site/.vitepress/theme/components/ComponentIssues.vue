@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from 'vue';
+import { computed } from 'vue';
 import githubStore from '../github.store';
 
 const props = defineProps<{
