@@ -7,18 +7,18 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
 
 <ComponentOverview :componentStatuses="[
   {
-   name: 'nve-accordion',     
-    nodeId: '2341-77166',      
+   name: 'nve-accordion',
+    nodeId: '2341-77166',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'   
+    statusCode: 'Ikke påbegynt'
   },
   {
-    name: 'nve-alert',     
-    nodeId: '4229-7',      
+    name: 'nve-alert',
+    nodeId: '4229-7',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'   
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-attachments',
@@ -29,7 +29,7 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
   },
   {
     name: 'nve-attachment-upload',
-    nodeId: '4295-142731', 
+    nodeId: '4295-142731',
     description: 'For å laste opp vedlegg',
     statusDesign: 'Skal revideres',
     statusCode: 'Ikke påbegynt'
@@ -151,7 +151,7 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     nodeId: '3684-156320',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Under arbeid'   
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-map',
@@ -161,18 +161,18 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ikke påbegynt'
   },
   {
-   name: 'nve-menu',     
-    nodeId: '3077-54191',      
+   name: 'nve-menu',
+    nodeId: '3077-54191',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'   
+    statusCode: 'Ferdig'
   },
   {
-   name: 'nve-message-card',     
-    nodeId: '8239-2704',      
+   name: 'nve-message-card',
+    nodeId: '8239-2704',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Under arbeid'   
+    statusCode: 'Under arbeid'
   },
   {
     name: 'nve-navbar',
