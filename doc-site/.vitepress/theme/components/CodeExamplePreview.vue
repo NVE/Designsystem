@@ -38,11 +38,11 @@ const containerStyle = computed(() => {
 
 const props = withDefaults(
   defineProps<{
-    onlyCode: boolean;
-    containerItemsAlign: string;
-    containerGridTemplateColumns: string;
-    containerJustifyContent: string;
-    containerJustifyItems: string;
+    onlyCode?: boolean;
+    containerItemsAlign?: string;
+    containerGridTemplateColumns?: string;
+    containerJustifyContent?: string;
+    containerJustifyItems?: string;
   }>(),
   {
     onlyCode: false,

@@ -19,8 +19,8 @@ Her er [oversikt over ikoner i Material Symbols](https://fonts.google.com/icons)
 <CodeExamplePreview>
 
 ```html
-<nve-icon name="Rocket" style="width: 1.25rem;height: 1.25rem;"></nve-icon> liten (20px høyde)
-<nve-icon name="Rocket" style="width: 1.5rem;height: 1.5rem;"></nve-icon> stor (24px høyde)
+<nve-icon name="Rocket" style="font-size: 1.25rem;"></nve-icon> liten (20px høyde)
+<nve-icon name="Rocket" style="font-size: 1.5rem;"></nve-icon> stor (24px høyde)
 ```
 
 </CodeExamplePreview>
