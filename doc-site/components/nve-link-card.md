@@ -10,14 +10,15 @@ layout: component
 
 </CodeExamplePreview>
 
-## Actions
+## Klikkhandlinger
 
 <CodeExamplePreview>
 
 ```html
+
 <nve-link-card
   title="Intern lenke"
-  additionalText="Klikk for å gå til itern linke"
+  additionalText="Klikk for å gå til intern linke"
   variant="contrast"
   href="/components/Komponentoversikt"
   clickAction="internal"
@@ -37,11 +38,20 @@ layout: component
   additionalText="Klikk for å laste ned en tilpasset fil"
   variant="contrast"
   size="medium"
+  id="customDownloadCard"
   clickAction="download"
- .downloadHandler=${() => {
-    // Custom logic for downloading
-  }}>
+>
 </nve-link-card>
+
+<script>
+  function customLogic() {
+    console.log("Custom logic for downloading");
+    // Her kan du legge til din egendefinerte nedlastingslogikk
+  }
+
+  // Her binder vi customLogic-funksjonen til kortets onclick-hendelse
+  document.getElementById("customDownloadCard").onclick = customLogic;
+</script>
 
   <nve-link-card
     title="Ekstern lenke"
@@ -63,7 +73,7 @@ layout: component
 
 </CodeExamplePreview>
 
-## Variants
+## Varianter
 
 <CodeExamplePreview>
 
@@ -75,7 +85,7 @@ layout: component
 
 </CodeExamplePreview>
 
-### Sizes
+### Størrelse
 
 <CodeExamplePreview>
 
@@ -83,6 +93,21 @@ layout: component
 <nve-link-card title="Kommuneplan" additionalText="Additional text." variant="contrast" size="small"></nve-link-card>
 <nve-link-card title="Kommuneplan" additionalText="Additional text." variant="contrast" size="medium"></nve-link-card>
 <nve-link-card title="Kommuneplan" additionalText="Additional text." variant="contrast" size="large"></nve-link-card>
+```
+
+</CodeExamplePreview>
+
+## Tekststørrelse
+
+Vi har ingen begrensning på lengden på tittelen eller teksten, men det er opp til designer og utvikler å velge tekster som ser bra ut.
+
+<CodeExamplePreview>
+
+```html
+<nve-link-card
+  title="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  additionalText="Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+></nve-link-card>
 ```
 
 </CodeExamplePreview>
