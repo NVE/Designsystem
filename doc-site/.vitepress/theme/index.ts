@@ -14,7 +14,6 @@ import StartPage from './components/StartPage.vue';
 import LinkButton from './components/LinkButton.vue';
 import PageHeader from './components/PageHeader.vue';
 import ComponentOverview from './components/ComponentOverview.vue';
-import Card from './components/Card.vue';
 import ThemeSelect from './components/ThemeSelect.vue';
 import { useCurrentTheme, Theme } from './composables/useCurrentTheme';
 
@@ -65,7 +64,6 @@ export default {
     app.component('LinkButton', LinkButton);
     app.component('PageHeader', PageHeader);
     app.component('ComponentOverview', ComponentOverview);
-    app.component('Card', Card);
     app.component('ThemeSelect', ThemeSelect);
     registerIconLibrary('system', {
       resolver: (name) => {

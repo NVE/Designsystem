@@ -39,14 +39,26 @@ export default defineConfig({
         text: 'Introduksjon',
         items: [
           { text: 'Om designsystemet', link: '/introduction/home' },
-          { text: 'Designelementer', link: '/introduction/designElements' },
+          { text: 'Universell Utforming', link: '/introduction/universellUtforming' },
+          {
+            text: 'Designelementer',
+            items: [
+              { text: 'Tokens', link: '/introduction/designelementer/tokens' },
+              { text: 'Farger', link: '/introduction/designelementer/farger' },
+              { text: 'Typografi', link: '/introduction/designelementer/typography' },
+              { text: 'Avstander og luft', link: '/introduction/designelementer/avstander' },
+              { text: 'Visuell form', link: '/introduction/designelementer/visuellform' },
+              { text: 'Animasjoner', link: '/introduction/designelementer/animasjoner' },
+            ]
+          },
           {
             text: 'For designere',
             items: [
               { text: 'Design', link: '/introduction/forDesigner/design' },
               { text: 'Kom igang', link: '/introduction/forDesigner/getStarted' },
               { text: 'Bidrag', link: '/introduction/forDesigner/contribution' },
-            ],
+
+            ]
           },
           {
             text: 'For utviklere',

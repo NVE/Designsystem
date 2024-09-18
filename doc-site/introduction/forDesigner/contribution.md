@@ -17,6 +17,7 @@ Det er tre ulike måter du kan bidra til designsystemet på. Du kan legge til ny
   }
   .left-image-container img {
     margin-right: 1rem;
+    border-radius: 4px;
   }
 
   .h2-style {
@@ -52,13 +53,39 @@ Det er tre ulike måter du kan bidra til designsystemet på. Du kan legge til ny
 
 ## Bidragsprosess
 
+### Enkle saker
+
+For spørsmål og avklaringer er Teams et utmerket verktøy. Du kan enkelt stille spørsmål og dele tanker på FUX-kanalen, der hele produktutviklingsmiljøet hjelper hverandre med både små og store utfordringer. Hvis kanalen ikke passer for deg, kan du også kontakte de ansvarlige for design og kode via e-post.
+
+### Komplekse saker
+
+Hvis du trenger å gjøre endringer på eksisterende komponenter eller bygge nye, ønsker vi å ta en samtale med deg. Sammen vil vi vurdere kompleksiteten i oppgaven og hva teamet ditt har kapasitet til. Vårt mål er å unngå at designsystemet blir en flaskehals i produktutviklingen. Derfor ønsker vi å avklare hvordan teamet ditt kan bidra med konsept, design og kode.
+
+### Eksempler på hvordan samtalen kan utvikle seg
+
+#### Endringen er kun relevant for ditt team
+
+Teamet ditt utvikler en lokal komponent. Vi holder dialogen gående og vurderer om andre team får samme behov senere.
+
+### Endringen er enkel, og andre team har lignende behov
+
+Teamet ditt kan foreslå endringen i designsystemet, hvor ansvarlige vurderer om det er verdt å investere tid og ressurser i videre utvikling. Dette gjøres ved å opprette en branch.
+
+#### Endringen er kompleks, eller det skal bygges en ny komponent
+
+Teamet ditt og designsystemansvarlige samarbeider om en løsning, og vi fordeler arbeidsoppgavene i fellesskap.
+
+<hr>
+
+### Hvordan bidra?
+
 Designsystemet er en felles dugnad fra og for alle prosjekter i NVE og Varsom. Derfor er vi avhengig av bidrag for å bygge og iterer på designsystemet. Her forklarer vi hvordan du kan bidra.
 
 1. **Før du starter**  
-   Sjekk alltid om det er en komponent eller et mønster som dekker dine behov. Figma er et flott sted å starte. Her finner du en oversikt over alle komponenter og profilelementer, og du finner beskrivende eksempler. Ta gjerne kontakt via Teams hvis du er usikker.
+   Sjekk alltid om det er en komponent eller et mønster som dekker dine behov. [Figma](https://www.figma.com/files/1033298377581647627/project/85006605/Public---Designsystem?fuid=1201899461213591908) er et flott sted å starte. Her finner du en oversikt over alle komponenter og profilelementer, og du finner beskrivende eksempler. Ta gjerne kontakt via Teams hvis du er usikker.
 
 2. **Rapporter i Jira**  
-   Opplever du at det er noe som mangler, er utydelig eller feil? Vil vi gjerne du legger inn henvendelsen inn i Jira eller tagger DS-132 Designsystemet gjennom ditt Jira prosjekt. Der vil designsystem-ansvarlig vurdere, fordele og gi ut oppgaver.
+   Opplever du at det er noe som mangler, er utydelig eller feil? Vil vi gjerne du legger inn henvendelsen inn i [Jira](https://nveprojects.atlassian.net/browse/DS-132) eller tagger DS-132 Designsystemet gjennom ditt Jira prosjekt. Der vil designsystem-ansvarlig vurdere, fordele og gi ut oppgaver.
 
 3. **Få tildelt oppgaven**  
    Designsystemansvarlig vil vurdere og deretter delegere oppgaven. Du får som regel samme oppgave du har lagt inn, med mindre designsystemansvarlig avgjør at det ikke er behov for det, eller at det er en bug. Om det er en bug løses oppgaven av designsystemansvarlig. Om du ikke ønsker å jobbe med oppgaven eller ikke har tid, må du melde ifra til designsystemansvarlig.
@@ -77,5 +104,6 @@ Designsystemet er en felles dugnad fra og for alle prosjekter i NVE og Varsom. D
 
 ## Bruk Branching
 
-<img src="../../assets/images/contribution-4.png" width="auto">
-Skal oppgaven løses i Figma er det viktig at du bruker featuren kalt branching. Ved å lage en branch av hovedfilen sørger du for at designjusteringene du gjør ikke publiseres i hovedfilen før endringene er kvalitetssikret. Lær mer om branching i Figma i lenken under.
+<img src="../../assets/images/contribution-4.png" width="auto" >
+
+Skal oppgaven løses i Figma er det viktig at du bruker featuren kalt branching. Ved å lage en branch av hovedfilen sørger du for at designjusteringene du gjør ikke publiseres i hovedfilen før endringene er kvalitetssikret. Lær mer om branching i Figma [her](https://www.figma.com/best-practices/branching-in-figma/).

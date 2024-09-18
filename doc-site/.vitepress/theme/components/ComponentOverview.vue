@@ -5,6 +5,7 @@
     text="Til komponentoversikt i Figma"
     :openInNewTab="true"
   />
+  <div style="padding-top: 2rem"></div>
 
   <nve-message-card
     title="Merk saker og PR'er i Github med komponentnavn for å se dem her"
