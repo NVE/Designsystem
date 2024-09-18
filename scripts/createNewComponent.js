@@ -98,8 +98,6 @@ const addComponentToExports = () => {
   const lines = existingComponentFile.split(/\r?\n/);
   const exports = lines.filter((l) => l.startsWith('export'));
   const comments = lines.filter((l) => !l.startsWith('export') && !!l);
-  console.dir(comments.length);
-  console.dir(exports.length);
   exports.push(`export { default as ${className} } from './components/${componentName}/${componentName}.component';`);
   exports.sort();
   const newFile = `${comments.join('\r\n')}
