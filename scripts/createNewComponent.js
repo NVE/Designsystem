@@ -1,7 +1,7 @@
 import fs from 'fs';
 import chalk from 'chalk';
 import nextTask from './nextTask.js';
-import process, { exit } from 'process';
+import process from 'process';
 
 const componentName = process.argv[2];
 
