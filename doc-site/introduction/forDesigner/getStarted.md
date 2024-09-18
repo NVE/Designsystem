@@ -36,9 +36,10 @@ Device - Kan du bytte mellom forskjellige skjermstørrelser. Da vil innholdet ju
 
 <img src="../../assets/images/get-started-2.png" width="auto">
 
-<Card title="Tips" variant="info">For at dette skal funke utmerket må du huske å bruke variablene som er fastsatt og ikke løse designverdier. Da vil ikke alt av innholdet endres i forhold til hva slags variabler/tokens du bruker.</Card>
+<nve-message-card title="Tips">For at dette skal funke utmerket må du huske å bruke variablene som er fastsatt og ikke løse designverdier. Da vil ikke alt av innholdet endres i forhold til hva slags variabler/tokens du bruker.</nve-message-card>
 
 ## Bestanddeler
+
 Designsystemet består av grunnleggende stiler og komponenter som brukes for å designe digitale tjenester for både NVE og Varsom. Vi deler bestanddelene inn i tre kategorier: Primitiver, komponenter og mønstre.
 
 <style>
@@ -60,12 +61,11 @@ Designsystemet består av grunnleggende stiler og komponenter som brukes for å 
   }
 </style>
 
-
 <div class="left-image-container">
   <img src="../../assets/images/primitiver.png" width="50%">
   <div>
     <h2 class="h2-style">Primitiver</h2>
-    <p>Primitiver (også kalt foundations) er de mest grunnleggende byggeklossene og retningslinjene for design i NVE. 
+    <p>Primitiver (også kalt foundations) er de mest grunnleggende byggeklossene og retningslinjene for design i NVE.
     Det er kommunikasjonsavdelingen i NVE som forvalter NVE og Varsom sine profilmanualer, som utgjør grunnlaget for primitiver i designsystemet. Profilmanualene finner du under NVE profil og Varsom profil..</p>
   </div>
 </div>
@@ -85,6 +85,6 @@ Designsystemet består av grunnleggende stiler og komponenter som brukes for å 
     <p>Er en sammensetning av flere komponenter sammen. Dette er mer enn 4-5 komponenter satt sammen for å danne et mer komplekst grensesnittelement.
 
 Dette kan for eksempel være en header/navigasjonsbar eller et “cookies” panel som kommer opp.</p>
+
   </div>
 </div>
-

@@ -2,10 +2,9 @@
 
 # Validering av input
 
-<Card title="Tips" variant="info">
-Komponentene du skal validere må ligge inni en &lt;form&gt;, fordi validering utføres når `submit`-eventet fyres av.
-
-</Card>
+<nve-message-card title="Tips">
+  Komponentene du skal validere må ligge inni en &lt;form&gt;, fordi validering utføres når submit-eventet fyres av.
+</nve-message-card>
 
 Vi tilbyr en forenklet variant av Shoelace sin måte å validere input på. Du bør lese om [hvordan Shoelace gjør det](https://shoelace.style/getting-started/form-controls).
 

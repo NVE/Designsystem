@@ -85,7 +85,7 @@ export default css`
 }
 
 .divider-not-reached-color {
-  color:var(--neutrals-background-secondary, #E4E5E7);
+  background:var(--neutrals-background-secondary, #E4E5E7);
 }
 
 .divider-reached-color {
@@ -117,6 +117,7 @@ export default css`
   display: flex;
   align-items: flex-start;
   width: 100%;
+  height: 100%;
 }
 
 .divider-horizontal {
@@ -129,6 +130,7 @@ export default css`
   width: 2px;
   flex-grow: 1;
   width: 100%;
+  height: 100%;
 }
 
 .step-figure-vertical { 
@@ -138,6 +140,7 @@ export default css`
   align-items: center;
   width: 100%;
   flex:1;
+  height: 100%;
 }  
 
 .vertical-divider-container {

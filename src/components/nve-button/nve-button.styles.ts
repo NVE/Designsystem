@@ -3,13 +3,42 @@ import { css } from 'lit';
 export default css`
   /* kan ikke bruke gap fordi den lager rom mellom slots selv om de er tomme */
   /* derfor setter margin på ::part(label) og substraherer margin verdi i horizontal padding i selve .button klassen  */
+  :host {
+    --nve-icon-color: inherit;
+  }
+
   .button {
     width: fit-content;
     align-items: center;
     box-sizing: border-box;
     position: relative;
-    border:none;
-    min-width: 119px;
+    border: none;
+    min-width: 48px;
+    transition: background-color 0.3s ease;
+  }
+
+  :host([has-icon-only])::part(base) {
+    gap: unset;
+  }
+
+  :host([has-icon-only]) .button--small {
+    gap: unset;
+    padding: var(--spacing-xx-small);
+    min-width: unset;
+  }
+
+  :host([has-icon-only]) .button--medium {
+    gap: unset;
+    padding: var(--spacing-x-small);
+    min-width: unset;
+  }
+
+  :host([has-icon-only][circle])::part(base) {
+    width: unset;
+  }
+
+  :host([has-icon-only][loading])::part(spinner) {
+    margin-right: 0;
   }
 
   .button ::slotted(nve-badge) {
@@ -22,18 +51,17 @@ export default css`
 
   :host::part(spinner) {
     --track-color: none;
+    --track-width: 2.5px;
     position: relative;
     top: 0;
+    font-size: 24px;
     left: 0;
     margin-right: var(--spacing-x-small);
   }
 
   :host ::slotted(nve-icon) {
     font-size: 24px;
-  }
-
-  :host([size='small']) ::slotted(nve-icon) {
-    font-size: 20px;
+    color: var(--nve-icon-color);
   }
 
   :host::part(label) {
@@ -84,6 +112,9 @@ export default css`
   .button--has-label.button--medium .button__label {
     padding: unset;
   }
+  .button:not(.button--has-label) .button__label {
+    display: none;
+  }
 
   .button--small {
     height: var(--sizing-x-small);
@@ -103,57 +134,69 @@ export default css`
   }
 
   /* PRIMARY */
-  .button--standard.button--primary {
-    background-color:  var(--interactive-primary-background-default, #0D0D0E);
-    border-color: var(--interactive-primary-background-default);
+  :host([variant='primary']) .button--standard.button {
+    background-color: var(--interactive-primary-background-default);
     color: var(--interactive-primary-foreground-default);
+    border: none;
   }
-  .button--standard.button--primary:hover:not(.button--disabled),
-  .button--standard.button--primary:active:not(.button--disabled) {
-    border-color: var(--interactive-primary-background-hover);
-    background: var(--interactive-primary-background-hover, #3C3F44);
+  :host([variant='primary']) .button--standard.button:hover:not(.button--disabled),
+  :host([variant='primary']) .button--standard.button:active:not(.button--disabled) {
+    background: var(--interactive-primary-background-hover);
     color: var(--interactive-primary-foreground-default);
   }
 
-  /* SECONDARY */
-  .button--standard.button--default {
-    border-color: var(--interactive-secondary-background-default);
+  /* DEFAULT, aka SECONDARY */
+  :host:not([variant]) .button--standard.button,
+  :host([variant='secondary']) .button--standard.button,
+  :host([variant='default']) .button--standard.button {
     background: var(--interactive-secondary-background-default);
     color: var(--interactive-secondary-foreground-default);
-    border: none !important;
+    border: none;
   }
-  .button--standard.button--default:hover:not(.button--disabled) {
-    border-color: var(--interactive-secondary-background-hover);
+  :host:not([variant]) .button--standard.button:hover:not(.button--disabled),
+  :host([variant='secondary']) .button--standard.button:hover:not(.button--disabled),
+  :host([variant='default']) .button--standard.button:hover:not(.button--disabled) {
     background: var(--interactive-secondary-background-hover);
-    color: var(--sl-color-neutral-700);
+    color: var(--interactive-secondary-foreground-hover);
   }
 
-  /* GHOST */
-  .button--outline.button--neutral,
-  .button--standard.button--neutral {
+  /* TEXT aka GHOST */
+  :host([variant='text']) .button.button--standard,
+  :host([variant='ghost']) .button.button--standard {
     color: var(--interactive-ghost-foreground-default);
     background-color: transparent;
-  }
-  .button--standard.button--neutral {
     border-radius: var(--border-radius-small, 4px);
-    border: var(--border-width-default, 1px) solid  #878C94;
+    border: none;
   }
-  .button--standard.button--neutral:hover:not(.button--disabled) {
-    background-color: white;
+
+  :host([variant='text'][circle]) .button.button--standard,
+  :host([variant='ghost'][circle]) .button.button--standard {
+    border-radius: 50%;
+  }
+
+  :host([variant='text']) .button.button--standard:hover:not(.button--disabled),
+  :host([variant='ghost']) .button.button--standard:hover:not(.button--disabled) {
+    background-color: var(--interactive-ghost-background-hover);
     color: var(--interactive-ghost-foreground-hover);
   }
 
-  /* OUTLINE */
-  .button--outline.button--neutral,
-  .button--outline.button--neutral:active:not(.button--disabled) {
+  /* NEUTRAL, aka OUTLINE */
+  :host([variant='neutral']) .button.button--standard,
+  :host([variant='outline']) .button.button--standard,
+  :host([outline]) .button.button {
     color: var(--interactive-outlined-foreground-default);
     border-color: var(--interactive-outlined-border-default);
+    border-width: var(--border-width-default);
+    border-style: solid;
     background-color: transparent;
   }
-  .button--outline.button--neutral:hover:not(.button--disabled),
-  .button--outline.button--neutral.button--checked:not(.button--disabled) {
+  :host([variant='neutral']) .button.button--standard:hover:not(.button--disabled),
+  :host([variant='outline']) .button.button--standard:hover:not(.button--disabled),
+  :host([outline]) .button.button:hover:not(.button--disabled) {
     border-color: var(--interactive-outlined-border-hover);
-    color: var(--interactive-outlined-foreground-default); 
+    color: var(--interactive-outlined-foreground-hover);
+    border-width: var(--border-width-default);
+    border-style: solid;
     background-color: transparent;
   }
 

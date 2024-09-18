@@ -10,13 +10,15 @@
 
 <script setup lang="ts">
 import { computed, watch, ref } from 'vue';
+import { Theme, useCurrentTheme } from '../composables/useCurrentTheme';
 const sandboxId = ref('');
 const slot = ref<HTMLElement | null>(null);
 const filePath = '/src/App.vue';
+const { currentTheme } = useCurrentTheme();
 
 watch(
-  () => slot.value?.textContent,
-  async (newVal) => {
+  [() => slot.value?.textContent, () => currentTheme.value],
+  async ([newVal, newTheme]) => {
     if (!newVal) return;
     const text = newVal.replace('vue', '').replace(/\n/g, '\\n').replace(/\t/g, '\\t');
     await fetch('https://codesandbox.io/api/v1/sandboxes/define?json=1', {
@@ -24,7 +26,7 @@ watch(
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(sandboxDefinition(newVal)),
+      body: JSON.stringify(sandboxDefinition(newVal, newTheme)),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -41,13 +43,13 @@ const sandboxUrl = computed(() => {
 
 // Codesandbox vue prosjekt oppsette. Kjøres via vue cli. Klarte ikke å kjøre vite script setup malen i codesandbox.
 // TODO: Ikke hardkode versjonsnummer til nve-designsystem
-const sandboxDefinition = (content: string) => ({
+const sandboxDefinition = (content: string, theme: Theme) => ({
   files: {
     'package.json': {
       content: {
         dependencies: {
           vue: '^3.2.0',
-          'nve-designsystem': '^0.1.71',
+          'nve-designsystem': '^0.1.85',
           '@vue/cli-plugin-babel': '~4.5.0',
           '@vue/cli-service': '~4.5.0',
           '@vue/compiler-sfc': '^3.0.0-0',
@@ -96,7 +98,7 @@ const sandboxDefinition = (content: string) => ({
     'src/main.js': {
       content: `
         import { createApp } from 'vue';
-        import 'nve-designsystem/css/varsom.css';
+        import 'nve-designsystem/css/${theme}.css';
         import "nve-designsystem/css/global.css";
         import {icons,registerIconLibrary,} from 'nve-designsystem/registerIcons/systemLibraryCustomization.js';
         import App from './App.vue';

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress';
 import fs from 'fs';
 import path from 'path';
+import ThemeSelect from './theme/components/ThemeSelect.vue';
 
 // Henter navn på alle filene i 'components' mappe
 const componentFiles = fs.readdirSync(path.resolve(__dirname, '../components'));
@@ -17,6 +18,7 @@ const figmaIcon = {
 
 export default defineConfig({
   title: 'NVE Designsystem',
+  head: [['link', { rel: 'icon', href: '/assets/nve-logo.svg' }]],
   themeConfig: {
     docFooter: {
       prev: 'Forrige side',
@@ -28,7 +30,8 @@ export default defineConfig({
     },
     nav: [
       { text: 'Introduksjon', link: '/introduction/home' },
-      { text: 'Komponenter', link: `/components/nve-alert.html` },
+      { text: 'Komponenter', link: `/components/Komponentoversikt.html` },
+      { component: 'ThemeSelect' },
     ],
     outlineTitle: 'På denne sida',
     sidebar: [
@@ -46,10 +49,6 @@ export default defineConfig({
               { text: 'Avstander og luft', link: '/introduction/designelementer/avstander' },
               { text: 'Visuell form', link: '/introduction/designelementer/visuellform' },
               { text: 'Animasjoner', link: '/introduction/designelementer/animasjoner' },
-
-
-
-
             ]
           },
           {
@@ -67,12 +66,6 @@ export default defineConfig({
               { text: 'Utvikling', link: '/introduction/forDevelopers/development' },
               { text: 'Bruk i Vue', link: '/introduction/forDevelopers/vue' },
               { text: 'Validering', link: '/introduction/forDevelopers/validation' },
-              {
-                text: 'Kodeeksempler i Vue',
-                items: [
-                  { text: 'nve-stepper', link: '/introduction/forDevelopers/codeExamples/stepper' },
-                ],
-              },
             ],
           },
         ],

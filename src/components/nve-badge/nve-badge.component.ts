@@ -7,7 +7,7 @@ import { classMap } from 'lit/directives/class-map.js';
  * En liten etikett som vanligvis vises inne i eller i nærheten av en annen større grensesnittkomponent, som representerer en status, egenskap eller andre metadata.
  * @property {string} size = small, medium eller large
  * @property {string} variant = primary, success, neutral, warning, danger, brand
- * @property {boolean} low = gir lysere bakgrunnsfarge
+ * @property {string} saturation = Setter metningsgrad. subtle er eneste støttede, evt ikke satt.
  */
 @customElement('nve-badge')
 export default class NveBadge extends LitElement {
@@ -22,25 +22,25 @@ export default class NveBadge extends LitElement {
     | 'brand' = 'primary';
   /** Størrelse på komponenten */
   @property({ type: String, reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
-  /** Viser Low variant, High er default */
-  @property({ type: Boolean, reflect: true }) low = false;
+  /** Viser lav metning, default er at denne ikke er satt */
+  @property({ type: String, reflect: false }) saturation: 'subtle' | null = null;
   render() {
     return html`
       <span
         part="base"
         class=${classMap({
-      badge: true,
-      'badge--primary': this.variant === 'primary',
-      'badge--success': this.variant === 'success',
-      'badge--neutral': this.variant === 'neutral',
-      'badge--warning': this.variant === 'warning',
-      'badge--danger': this.variant === 'danger',
-      'badge--brand': this.variant === 'brand',
-      'badge--small': this.size === 'small',
-      'badge--medium': this.size === 'medium',
-      'badge--large': this.size === 'large',
-      low: this.low,
-    })}
+          badge: true,
+          'badge--primary': this.variant === 'primary',
+          'badge--success': this.variant === 'success',
+          'badge--neutral': this.variant === 'neutral',
+          'badge--warning': this.variant === 'warning',
+          'badge--danger': this.variant === 'danger',
+          'badge--brand': this.variant === 'brand',
+          'badge--small': this.size === 'small',
+          'badge--medium': this.size === 'medium',
+          'badge--large': this.size === 'large',
+          'saturation--subtle': this.saturation === 'subtle',
+        })}
         role="status"
       >
         <slot></slot>

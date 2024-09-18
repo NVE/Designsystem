@@ -10,10 +10,9 @@ layout: component
 
 </CodeExamplePreview>
 
-<Card title="Tips" variant="info">
+<nve-message-card title="Tips">
 Bruk `open` for å vise en alert. Hvis ikke `open` er satt, vises den ikke.
-
-</Card>
+</nve-message-card>
 
 ## Eksempler
 
@@ -64,16 +63,45 @@ Bruk `leftstroke` for å vise en fet strek på venstre side.
 
 </CodeExamplePreview>
 
-### Emphasized
+### Høyere metning
 
-Bruk `emphasized` for å få litt mørkere bakgrunnsfarge.
+Bruk `saturation="emphasized"` for å få litt mørkere bakgrunnsfarge.
 
 <CodeExamplePreview arrangeComponentsVertically>
 
 ```html
-<nve-alert variant="warning" text="Emphasized" emphasized open> </nve-alert>
-
-<nve-alert variant="warning" text="Ikke emphasized" open> </nve-alert>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem">
+  <nve-alert variant="warning" text="Emphasized" saturation="emphasized" open>
+    <nve-icon slot="icon" name="info"></nve-icon>
+  </nve-alert>
+  <nve-alert variant="warning" text="Ikke emphasized" open>
+    <nve-icon slot="icon" name="info"></nve-icon>
+  </nve-alert>
+  <nve-alert variant="success" text="Emphasized" saturation="emphasized" open>
+    <nve-icon slot="icon" name="info"></nve-icon>
+  </nve-alert>
+  <nve-alert variant="success" text="Ikke emphasized" open>
+    <nve-icon slot="icon" name="info"></nve-icon>
+  </nve-alert>
+  <nve-alert variant="neutral" text="Emphasized" saturation="emphasized" open>
+    <nve-icon slot="icon" name="info"></nve-icon>
+  </nve-alert>
+  <nve-alert variant="neutral" text="Ikke emphasized" open>
+    <nve-icon slot="icon" name="info"></nve-icon>
+  </nve-alert>
+  <nve-alert variant="danger" text="Emphasized" saturation="emphasized" open>
+    <nve-icon slot="icon" name="info"></nve-icon>
+  </nve-alert>
+  <nve-alert variant="danger" text="Ikke emphasized" open>
+    <nve-icon slot="icon" name="info"></nve-icon>
+  </nve-alert>
+  <nve-alert text="Emphasized" saturation="emphasized" open>
+    <nve-icon slot="icon" name="info"></nve-icon>
+  </nve-alert>
+  <nve-alert text="Ikke emphasized" open>
+    <nve-icon slot="icon" name="info"></nve-icon>
+  </nve-alert>
+</div>
 ```
 
 </CodeExamplePreview>

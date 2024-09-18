@@ -1,11 +1,11 @@
 # NVE Designsystem
 
 Dette er skrevet for de som <i>utvikler</i> NVE Designsystem.
-Skal du kun <i>bruke</i> designsystemet, finner du dokumentasjon og kodeeksempler her: [https://brave-meadow-0c645bd03.5.azurestaticapps.net/](https://brave-meadow-0c645bd03.5.azurestaticapps.net/).
+Skal du kun <i>bruke</i> designsystemet, finner du dokumentasjon og kodeeksempler her: [https://designsystem.nve.no/](https://designsystem.nve.no/).
 
-Repositoryet inneholder css generert fra Figma-tokens i Designsystemet. Her finner du [pakka i npm](https://www.npmjs.com/package/nve-designsystem).
+Repositoryet inneholder css generert fra Figma-tokens i Designsystemet. [Her finner du pakka i npm](https://www.npmjs.com/package/nve-designsystem).
 
-Her er skisser i [Figma](https://www.figma.com/files/1033298377581647627/project/85006605/Public---Designsystem?fuid=854992400462434435).
+[Her](https://www.figma.com/files/1033298377581647627/project/85006605/Public---Designsystem?fuid=854992400462434435) er skisser i Figma.
 
 De fleste komponentene bygger på [Shoelace](https://shoelace.style/), men er tilpasset NVE Designsystem. Etterhvert vil de fleste Shoelace-komponenter få sin NVE-variant, men vi har også komponenter som ikke er basert på Shoelace. Vi anbefaler at du laster ned [kildekoden til Shoelace](https://github.com/shoelace-style/shoelace) og setter deg inn i [Lit](https://lit.dev/), som vi bruker som rammeverk.
 
@@ -13,8 +13,8 @@ De fleste komponentene bygger på [Shoelace](https://shoelace.style/), men er ti
 
 Dette prosjektet inneholder to applikasjoner:
 
-- I rot-mappa ligger selve komponentbiblioteket med nve-komponenten
-- I mappa `doc-site` ligger test-applikasjonen som viser brukerveiledninga. Teknisk beskrivelse av denne ligger i egen [readme](doc-site/README.md)
+- I rot-mappa ligger selve komponentbiblioteket med nve-komponentene
+- I mappa `doc-site` ligger test-applikasjonen som viser brukerveiledninga for biblioteket. Teknisk beskrivelse av denne ligger i egen [readme](doc-site/README.md)
 
 Kjør `npm install` og `npm run dev` for å starte test-applikasjonen. Applikasjonen er selve brukerveiledninga for komponentbiblioteket, så her ligger api-dokumentasjon, beskrivelse av funksjonalitet og ikke minst kodeeksempler.
 
@@ -149,7 +149,7 @@ Skriv litt øverst i `.component.ts`-fila om hva komponenten skal brukes til. Om
 
 ### Brukerveiledning
 
-Brukerveiledning med kodeeksempler skriver du i markdown-fila til komponenten. Dokumentasjons-applikasjonen viser denne markdown-fila sammen med info fra `custom-elements.json`.
+Brukerveiledning med kodeeksempler skriver du i markdown-fila til komponenten. Dokumentasjons-applikasjonen viser denne markdown-fila sammen med info fra `custom-elements.json`. Fila skal hete det samme som komponenten, men med .md som etternavn, og legges her: `doc-site/components`. Eksempel: `doc-site/components/nve-button.md`
 
 Lag kodeeksempler både for å teste at komponenten funker som forventet <em>og</em> for å vise hvordan komponenten funker.
 

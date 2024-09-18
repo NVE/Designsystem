@@ -54,20 +54,25 @@ Det er tre ulike måter du kan bidra til designsystemet på. Du kan legge til ny
 ## Bidragsprosess
 
 ### Enkle saker
+
 For spørsmål og avklaringer er Teams et utmerket verktøy. Du kan enkelt stille spørsmål og dele tanker på FUX-kanalen, der hele produktutviklingsmiljøet hjelper hverandre med både små og store utfordringer. Hvis kanalen ikke passer for deg, kan du også kontakte de ansvarlige for design og kode via e-post.
 
 ### Komplekse saker
+
 Hvis du trenger å gjøre endringer på eksisterende komponenter eller bygge nye, ønsker vi å ta en samtale med deg. Sammen vil vi vurdere kompleksiteten i oppgaven og hva teamet ditt har kapasitet til. Vårt mål er å unngå at designsystemet blir en flaskehals i produktutviklingen. Derfor ønsker vi å avklare hvordan teamet ditt kan bidra med konsept, design og kode.
 
-### Eksempler på hvordan samtalen kan utvikle seg:
+### Eksempler på hvordan samtalen kan utvikle seg
 
-#### Endringen er kun relevant for ditt team:
+#### Endringen er kun relevant for ditt team
+
 Teamet ditt utvikler en lokal komponent. Vi holder dialogen gående og vurderer om andre team får samme behov senere.
 
-### Endringen er enkel, og andre team har lignende behov:
+### Endringen er enkel, og andre team har lignende behov
+
 Teamet ditt kan foreslå endringen i designsystemet, hvor ansvarlige vurderer om det er verdt å investere tid og ressurser i videre utvikling. Dette gjøres ved å opprette en branch.
 
-#### Endringen er kompleks, eller det skal bygges en ny komponent:
+#### Endringen er kompleks, eller det skal bygges en ny komponent
+
 Teamet ditt og designsystemansvarlige samarbeider om en løsning, og vi fordeler arbeidsoppgavene i fellesskap.
 
 <hr>
@@ -88,16 +93,14 @@ Designsystemet er en felles dugnad fra og for alle prosjekter i NVE og Varsom. D
 4. **Løs oppgaven i Figma eller i kode**  
    Løs oppgaven du har fått tildelt i Figma eller i kode avhengig av oppgave. Sørg for at du forholder deg til retningslinjene satt i profilmanualen og i designsystemet, og sørg for at løsningen din oppfyller kravene til universell utforming.
 
-
-<Card title="Krav" variant="info">
-<ul>
-<li class="list-item">Gi komponenten et navn som er fornuftig. Det skal være lett å finne for folk som ikke vet om det. Navnet skal være beskrivende for hva det er eller hva det gjør.
-</li>
-        <li class="list-item">Gjør komponenten enkel å bruke for andre ved å sørge for at den fungerer bra i andre sammenhenger enn den du designet den for: Ulike størrelser, med ulik mengde innhold osv.</li>
-        <li class="list-item"> Legg til alle varianter/rekvisitter, og navngi dem fornuftig.</li>
-        <li class="list-item">Dokumenter arbeidet ditt.</li>
-    </ul>
-    </Card>
+<nve-message-card title="Krav">
+  <ul>
+    <li class="list-item">Gi komponenten et navn som er fornuftig. Det skal være lett å finne for folk som ikke vet om det. Navnet skal være beskrivende for hva det er eller hva det gjør.</li>
+    <li class="list-item">Gjør komponenten enkel å bruke for andre ved å sørge for at den fungerer bra i andre sammenhenger enn den du designet den for: Ulike størrelser, med ulik mengde innhold osv.</li>
+    <li class="list-item"> Legg til alle varianter/rekvisitter, og navngi dem fornuftig.</li>
+    <li class="list-item">Dokumenter arbeidet ditt.</li>
+  </ul>
+</nve-message-card>
 
 ## Bruk Branching
 

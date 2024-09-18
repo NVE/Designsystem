@@ -13,9 +13,6 @@ export default class NveStepperMobile extends LitElement {
   @property({ type: Array })
   steps: StepProps[] = [];
 
-  /** Indeks for valgt steg, gir mulighet for å styre hvilket steg som er valgt. */
-  @property({ type: Object })
-  selectedStepIndex: { value: number } = { value: 0 };
 
    /** Skjuler Neste og Forrige knappene slik at du kan implementere dine egne Neste og Forrige knappene. */
   @property({ type: Boolean })
@@ -36,6 +33,9 @@ export default class NveStepperMobile extends LitElement {
     });
     this.dispatchEvent(event);
   }
+
+  selectedStepIndex: { value: number } = { value: 0 };
+
 
   render(): TemplateResult {
     const currentStep = this.steps[this.selectedStepIndex.value];
