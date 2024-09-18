@@ -18,22 +18,27 @@ Et designsystem handler, til tross for sitt navn, om mer enn bare design. Det ha
 
 <div class="two-card-container">
   <nve-message-card
+    class="card"
     showIcon="false"
     variant="danger"
     title="Enkelhet">Det skal være enkelt å bruke designsystemet. Enkelt å ta det i bruk, forstå og bidra.</nve-message-card>
   <nve-message-card
+    class="card"
     showIcon="false"
     variant="danger"
     title="Åpent">Designsystemet skal være åpent og transparent. Designsystemet er laget for alle brukere.</nve-message-card>
   <nve-message-card
+      class="card"
     showIcon="false"
     variant="danger"
     title="Fleksibilitet">Designsystemet skal være fleksibelt og enkelt å bruke. Det inneholder byggeklosser som kan passe på de fleste produkter.</nve-message-card>
   <nve-message-card
+    class="card"
     showIcon="false"
     variant="danger"
     title="Bidrag">Designsystemet skal være en standard for alle som jobber med grensesnittet mot sluttbruker. Dette skal være en "source of truth". Designsystemet jobber mot konsistens og kvalitet i kode og design.</nve-message-card>
   <nve-message-card
+    class="card"
     showIcon="false"
     variant="danger"
     title="Standarder">Designsystemet skal være en standard for alle som jobber med grensesnittet mot sluttbruker. Dette skal være en "source of truth". Designsystemet jobber mot konsistens og kvalitet i kode og design.</nve-message-card>
@@ -44,11 +49,14 @@ Et designsystem handler, til tross for sitt navn, om mer enn bare design. Det ha
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-medium, 24px);
-
 }
 
 .two-card-container > * {
     flex: 1 1 calc(50% - var(--spacing-medium, 24px));
     box-sizing: border-box;
+}
+
+.card::part(base) {
+    height: 200px;
 }
 </style>
