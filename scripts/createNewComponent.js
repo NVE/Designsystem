@@ -24,11 +24,12 @@ const createFolder = () => {
   }
 };
 
+const className = componentName
+  .split('-')
+  .map((n) => n.charAt(0).toUpperCase() + n.slice(1))
+  .join('');
+
 const createComponentFile = () => {
-  const className = componentName
-    .split('-')
-    .map((n) => n.charAt(0).toUpperCase() + n.slice(1))
-    .join('');
   const content = `
   import { LitElement } from 'lit';
   import { customElement, property } from 'lit/decorators.js';
@@ -92,6 +93,19 @@ export default css\`\``;
   fs.writeFileSync(`src/components/${folderName}/${componentName}.styles.ts`, stylesContent);
 };
 
+const addComponentToExports = () => {
+  const existingComponentFile = fs.readFileSync('src/nve-designsystem.ts', { encoding: 'utf8', flag: 'r' });
+  const lines = existingComponentFile.split(/\r?\n/);
+  const exports = lines.filter((l) => l.startsWith('export'));
+  const comments = lines.filter((l) => !l.startsWith('export') && !!l);
+  exports.push(`export { default as ${className} } from './components/${componentName}/${componentName}.component';`);
+  exports.sort();
+  const newFile = `${comments.join('\r\n')}
+${exports.join('\r\n')}
+  `;
+  fs.writeFileSync('src/nve-designsystem.ts', newFile);
+};
+
 const createFiles = () => {
   createComponentFile();
   createDemoFile();
@@ -100,3 +114,4 @@ const createFiles = () => {
 
 await nextTask(`Creating folder ${componentName}`, () => createFolder());
 await nextTask(`Creating files`, () => createFiles());
+await nextTask(`Adding component to exports`, () => addComponentToExports());
