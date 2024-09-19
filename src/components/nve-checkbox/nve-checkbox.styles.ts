@@ -41,12 +41,9 @@ export default css`
     border-color: var(--neutrals-foreground-subtle, #006b99) !important;
   }
 
-  sl-icon::part(checked-icon svg) {
-    color: var(--grey-000);
-  }
-
-  sl-icon::part(checked-icon svg) > * {
-    stroke: blue;
+  sl-icon {
+    --sl-color-neutral-0: var(--neutrals-background-primary);
+    color: var(--neutrals-background-primary);
   }
 
   :host(:hover)::part(control control--checked),
@@ -55,7 +52,7 @@ export default css`
   }
 
   .checkbox--disabled {
-    opacity: 0.38;
+    opacity: var(--disabled);
   }
   .checkbox {
     align-items: center;

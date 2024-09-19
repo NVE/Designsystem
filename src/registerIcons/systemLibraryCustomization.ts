@@ -61,9 +61,7 @@ const icons: Icons = {
     </svg>
   `,
   indeterminate: `
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-        <path d="M240-440v-80h480v80H240Z"/>
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -48 48 48"><path d="M12-22v-6h24v6H12Z" fill="currentColor"/></svg>
   `,
   'person-fill': `
     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
