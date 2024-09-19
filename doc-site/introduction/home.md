@@ -41,7 +41,7 @@ Et designsystem handler, til tross for sitt navn, om mer enn bare design. Det ha
     class="card"
     showIcon="false"
     variant="danger"
-    title="Standarder">Designsystemet skal være en standard for alle som jobber med grensesnittet mot sluttbruker. Dette skal være en "source of truth". Designsystemet jobber mot konsistens og kvalitet i kode og design.</nve-message-card>
+    title="Standarder">Designsystemet skal være en standard for alle som jobber med grensesnittet mot sluttbruker. Dette skal være en "single source of truth". Designsystemet jobber mot konsistens og kvalitet i kode og design.</nve-message-card>
 </div>
 
 <style>
