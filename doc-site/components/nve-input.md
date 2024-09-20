@@ -146,7 +146,7 @@ Her er noen eksempler.
 
 ### Datatyper
 
-I tillegg til tekst, støtter vi de <a href="https://shoelace.style/components/input#input-types" target="\_blank">samme datatypene som `SlInput`</a>.
+I tillegg til tekst, støtter vi de <a href="https://shoelace.style/components/input#input-types" target="\_blank">samme datatypene som `SlInput`</a> som igjen støtter de fleste datatypene til <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types" target="\_blank">html sin `<input>`</a>.
 
 `step` i kombinasjon med number helper deg å håndterer desimaltall. Du kan bruke både komma og punktum som desimalskilletegn.
 Her er noen eksempler:
@@ -158,6 +158,23 @@ Her er noen eksempler:
 <nve-input type="number" step="0.1" label="Maks en desimal"></nve-input>
 <nve-input type="number" step="any" label="Bruk så mange desimaler du vil"></nve-input>
 <nve-input type="datetime-local" label="Skriv inn eller velg dato og tidspunkt"></nve-input>
+<nve-input type="date" label="Skriv inn eller velg dato"></nve-input>
+<nve-input type="time" label="Skriv inn eller velg tidspunkt"></nve-input>
+<nve-input type="month" label="Skriv inn eller velg måned og år"></nve-input>
+<nve-input
+  type="number"
+  value="Date().getFullYear()"
+  label="Skriv inn eller velg år"
+  min="1900"
+  max="2100"
+  class="year-input"
+></nve-input>
+
+<script>
+  // setter dette året som standard-valg i år-input'en
+  const yearInput = document.querySelector('.year-input');
+  yearInput.value = new Date().getFullYear();
+</script>
 ```
 
 </CodeExamplePreview>
