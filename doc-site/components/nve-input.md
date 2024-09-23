@@ -148,8 +148,46 @@ Her er noen eksempler.
 
 I tillegg til tekst, støtter vi de <a href="https://shoelace.style/components/input#input-types" target="\_blank">samme datatypene som `SlInput`</a> som igjen støtter de fleste datatypene til <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types" target="\_blank">html sin `<input>`</a>.
 
-`step` i kombinasjon med number helper deg å håndterer desimaltall. Du kan bruke både komma og punktum som desimalskilletegn.
-Her er noen eksempler:
+Legg merke til at `value` vil være `string`, uavhengig av hvilken `type` du har satt.
+Du må selv konvertere `value` til riktig type, se eksemplet i Vue nedenfor:
+
+<SandboxPreview>
+
+```
+
+<template>
+  <nve-input
+    type="number"
+    :value="inputValue"
+    @input="inputValue = $event.target.value"
+    label="Her vil value være av type string, selv om vi har satt type = number"
+  >
+  </nve-input>
+  typeof '{{ inputValue }}' = {{ typeof inputValue}}
+  <br/><br/>
+  <nve-input
+    type="number"
+    :value="numberInputValue.toString()"
+     @input="(event) => numberInputValue = Number(event.target.value)"
+    label="Her konverterer vi value automatisk til number">
+  </nve-input>
+  typeof {{ numberInputValue }} = {{ typeof numberInputValue}}
+</template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import "nve-designsystem/components/nve-input/nve-input.component";
+const inputValue = ref("");
+const numberInputValue = ref(0);
+</script>
+
+```
+
+</SandboxPreview>
+
+#### Tall
+
+`step` i kombinasjon med `type="number"` helper deg å håndterer desimaltall. Du kan bruke både komma og punktum som desimalskilletegn.
 
 <CodeExamplePreview>
 
@@ -157,6 +195,17 @@ Her er noen eksempler:
 <nve-input type="number" label="Kun heltall"></nve-input>
 <nve-input type="number" step="0.1" label="Maks en desimal"></nve-input>
 <nve-input type="number" step="any" label="Bruk så mange desimaler du vil"></nve-input>
+```
+
+</CodeExamplePreview>
+
+#### Dato / tid
+
+Du kan bruke alle alle dato-typer som html `<input>` støtter. Nedenfor er det noen eksempler. Det finnes ikke en egen type for å velge kun år, men siden år er et heltall, kan vi bruke noen triks til å begrense/lette valgene. `step`kan også brukes i kompinasjon med enkelte datotyper.
+
+<CodeExamplePreview>
+
+```html
 <nve-input type="datetime-local" label="Skriv inn eller velg dato og tidspunkt"></nve-input>
 <nve-input type="date" label="Skriv inn eller velg dato"></nve-input>
 <nve-input type="time" label="Skriv inn eller velg tidspunkt"></nve-input>
@@ -168,7 +217,8 @@ Her er noen eksempler:
   min="1900"
   max="2100"
   class="year-input"
-></nve-input>
+>
+</nve-input>
 
 <script>
   // setter dette året som standard-valg i år-input'en
