@@ -187,7 +187,7 @@ const numberInputValue = ref(0);
 
 #### Tall
 
-`step` i kombinasjon med `type="number"` helper deg å håndterer desimaltall. Du kan bruke både komma og punktum som desimalskilletegn.
+`step` i kombinasjon med `type="number"` helper deg å håndtere desimaltall. Du kan bruke både komma og punktum som desimalskilletegn.
 
 <CodeExamplePreview>
 
@@ -201,7 +201,9 @@ const numberInputValue = ref(0);
 
 #### Dato / tid
 
-Du kan bruke alle alle dato-typer som html `<input>` støtter. Nedenfor er det noen eksempler. Det finnes ikke en egen type for å velge kun år, men siden år er et heltall, kan vi bruke noen triks til å begrense/lette valgene. `step`kan også brukes i kompinasjon med enkelte datotyper.
+Du kan bruke alle dato-typer som html `<input>` støtter. Nedenfor er det noen eksempler.
+Det finnes ikke en egen type for å velge kun år, men du kan sette type til `number` og evt. min- og maks for å tvinge folk til å velge / skrive inn et fornuftig årstall.
+`step` kan også brukes i kompinasjon med enkelte datotyper.
 
 <CodeExamplePreview>
 
@@ -210,15 +212,7 @@ Du kan bruke alle alle dato-typer som html `<input>` støtter. Nedenfor er det n
 <nve-input type="date" label="Skriv inn eller velg dato"></nve-input>
 <nve-input type="time" label="Skriv inn eller velg tidspunkt"></nve-input>
 <nve-input type="month" label="Skriv inn eller velg måned og år"></nve-input>
-<nve-input
-  type="number"
-  value="Date().getFullYear()"
-  label="Skriv inn eller velg år"
-  min="1900"
-  max="2100"
-  class="year-input"
->
-</nve-input>
+<nve-input type="number" label="Skriv inn eller velg år" min="1900" max="2100" class="year-input"> </nve-input>
 
 <script>
   // setter dette året som standard-valg i år-input'en
