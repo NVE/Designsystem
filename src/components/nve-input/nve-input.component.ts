@@ -2,15 +2,17 @@ import { customElement, property, state } from 'lit/decorators.js';
 import SlInput from '@shoelace-style/shoelace/dist/components/input/input.js';
 import styles from './nve-input.styles';
 import { INveComponent } from '@interfaces/NveComponent.interface';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { PropertyValues } from 'lit';
 
 /**
- * Et tekstfelt. 
+ * Et tekstfelt.
  * Vil du ha info-ikon med hjelpetekst etter ledeteksten, putt en nve-label i label-slot.
  * pill skal ikke brukes.
  * TODO: Feltet blir bredere hvis validering feiler, fordi vi må ha plass til feil-ikonet.
  */
 @customElement('nve-input')
-export default class NveInput extends SlInput implements INveComponent{
+export default class NveInput extends SlInput implements INveComponent {
   /**
    * Tekst som vises for å markere at et felt er obligatorisk
    */
@@ -23,16 +25,15 @@ export default class NveInput extends SlInput implements INveComponent{
    * Intern hjelpevariabler som brukes i validering
    * TODO: Kan denne være private?
    */
- /**
+  /**
    * Brukes for å kunne identifisere komponenten i tester
    */
-  @property({reflect: true, type: String}) testId:string = '';
+  @property({ reflect: true, type: String }) testId: string = '';
 
- /**
+  /**
    * Brukes for å kunne identifisere komponenten
    */
   @property({ type: String, reflect: true }) inputId?: string;
-
 
   @state() protected alreadyInvalid = false;
 
@@ -63,9 +64,13 @@ export default class NveInput extends SlInput implements INveComponent{
     if (this.requiredLabel) {
       this.style.setProperty('--sl-input-required-content', `"${this.requiredLabel}"`);
     }
+    const input = this.shadowRoot?.querySelector('input');
+    if (input && ifDefined(this.autocomplete) && (this.autocomplete == 'false' || !this.autocomplete)) {
+      input.setAttribute('aria-autocomplete', 'none');
+    }
   }
 
-  updated(changedProperties: any) {
+  updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
     const hasDataUserInvalidAttr = this.hasAttribute('data-user-invalid');
     if (changedProperties.has('inputId')) {
@@ -106,7 +111,6 @@ export default class NveInput extends SlInput implements INveComponent{
   }
 
   private showErrorIcon() {
-    const nveInput = this;
     const nveIcon = document.createElement('nve-icon');
     nveIcon.setAttribute('id', 'error-icon');
     nveIcon.setAttribute('name', 'error');
@@ -116,12 +120,11 @@ export default class NveInput extends SlInput implements INveComponent{
       '--feedback-background-emphasized-error'
     );
     nveIcon.style.color = variableValue.trim();
-    nveInput.appendChild(nveIcon);
+    this.appendChild(nveIcon);
   }
   private hideErrorIcon() {
-    const nveInput = this;
     //make sure its an error icon!
-    const errorIcon = nveInput.querySelector('#error-icon');
+    const errorIcon = this.querySelector('#error-icon');
     if (errorIcon) {
       errorIcon.remove();
     }

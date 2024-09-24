@@ -175,3 +175,16 @@ Bruk `size` for å velge høyde. Ledeteksten tilpasses automatisk, mens skriftty
 ```
 
 </CodeExamplePreview>
+
+### Autocomplete
+
+Bruk `autocomplete` for å slå av autocomplete-funksjonalitet i browser. Denne setter også `aria-autocomplete="none"` dersom satt til false
+
+<CodeExamplePreview>
+
+```html
+<nve-input value="" name="firstname" label="Autocomplete: på"></nve-input>
+<nve-input value="" autocomplete="false" name="firstname" label="Autocomplete: av"></nve-input>
+```
+
+</CodeExamplePreview>
