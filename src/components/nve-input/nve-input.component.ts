@@ -34,6 +34,8 @@ export default class NveInput extends SlInput implements INveComponent {
    * Brukes for å kunne identifisere komponenten
    */
   @property({ type: String, reflect: true }) inputId?: string;
+  /** Brukes for å hindre nettleseren fra å validere feltet */
+  @property({ type: Boolean }) noValidation = false;
 
   @state() protected alreadyInvalid = false;
 
@@ -92,6 +94,9 @@ export default class NveInput extends SlInput implements INveComponent {
   }
 
   private makeInvalid() {
+    if (this.noValidation) {
+      return;
+    }
     this.showErrorIcon();
     this.showErrorMessage();
     this.alreadyInvalid = true;
