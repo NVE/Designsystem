@@ -65,7 +65,7 @@ export default class NveInput extends SlInput implements INveComponent {
       this.style.setProperty('--sl-input-required-content', `"${this.requiredLabel}"`);
     }
     const input = this.shadowRoot?.querySelector('input');
-    if (input && ifDefined(this.autocomplete) && (this.autocomplete == 'false' || !this.autocomplete)) {
+    if (input && ifDefined(this.autocomplete) && this.autocomplete === 'false') {
       input.setAttribute('aria-autocomplete', 'none');
     }
   }
