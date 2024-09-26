@@ -31,6 +31,22 @@ Bruk `value` for å hente valgt verdi eller velge noe på forhånd.
 
 </CodeExamplePreview>
 
+### Mørk bakgrunn
+
+Bruk `filled` for mørk bakgrunnsfarge
+
+<CodeExamplePreview>
+
+```html
+<nve-select value="filled" filled>
+  <nve-option value="valg1">Valg 1</nve-option>
+  <nve-option value="valg2">Valg 2</nve-option>
+  <nve-option value="valg3">Valg 3</nve-option>
+</nve-select>
+```
+
+</CodeExamplePreview>
+
 ### Flervalg
 
 Bruk `multiple` for å tillate valg av flere verdier. Bruk `clearable` for å gjøre det enkelt å fjerne valgene.
