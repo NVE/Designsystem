@@ -1,16 +1,16 @@
 import SlMenuItem from '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-menu-item.styles';
+
 /**
- * En sl-menu-item i NVE-forkledning.
- * Mer info: https://shoelace.style/components/menu-item
- *
+ * Bruk denne til å lage valg i en nve-menu.
+ * Property "loading" støttes foreløpig ikke.
  */
 @customElement('nve-menu-item')
 // @ts-expect-error - overskriving av private metoder i sl-menu-item
 export default class NveMenuItem extends SlMenuItem {
   /**
-   * Tekst som vises som subtext(undertekst).
+   * Gi menyvalget en egen undertekst.
    */
   @property({ type: String, reflect: true }) subtext: string = '';
   /**
@@ -22,7 +22,7 @@ export default class NveMenuItem extends SlMenuItem {
    */
   @property({ type: Boolean, reflect: true }) dividerBottom: boolean = false;
   /**
-   * Gjør at teksten blir indent og mindre dominant farge
+   * Gjør at teksten får innrykk og en svakere farge
    */
   @property({ type: Boolean, reflect: true }) indent: boolean = false;
 
