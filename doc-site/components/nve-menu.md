@@ -49,25 +49,31 @@ Virker enklere √• bruke `nve-divider` i standard-sporet i stedet, om vi hadde f√
 <CodeExamplePreview>
 
 ```html
-<nve-label>Bruk av nve-divider</nve-label>
-<nve-menu>
-  <nve-menu-item>Valg 1</nve-menu-item>
-  <nve-menu-item>Valg 2</nve-menu-item>
-  <nve-divider></nve-divider>
-  <nve-menu-item>Valg 3</nve-menu-item>
-  <nve-menu-item>Valg 4</nve-menu-item>
-  <nve-divider></nve-divider>
-  <nve-menu-item>Valg 5</nve-menu-item>
-</nve-menu>
-
-<nve-label>Bruk av dividerTop og dividerBottom</nve-label>
-<nve-menu>
-  <nve-menu-item>Valg 1</nve-menu-item>
-  <nve-menu-item>Valg 2</nve-menu-item>
-  <nve-menu-item dividerTop>Valg 3</nve-menu-item>
-  <nve-menu-item dividerBottom>Valg 4</nve-menu-item>
-  <nve-menu-item>Valg 5</nve-menu-item>
-</nve-menu>
+<div style="display:flex;">
+  <div>
+    <nve-label>Bruk av nve-divider</nve-label>
+    <nve-menu>
+      <nve-menu-item>Valg 1</nve-menu-item>
+      <nve-menu-item>Valg 2</nve-menu-item>
+      <nve-divider></nve-divider>
+      <nve-menu-item>Valg 3</nve-menu-item>
+      <nve-menu-item>Valg 4</nve-menu-item>
+      <nve-divider></nve-divider>
+      <nve-menu-item>Valg 5</nve-menu-item>
+    </nve-menu>
+  </div>
+  <div>...</div>
+  <div>
+    <nve-label>Bruk av dividerTop og dividerBottom</nve-label>
+    <nve-menu>
+      <nve-menu-item>Valg 1</nve-menu-item>
+      <nve-menu-item>Valg 2</nve-menu-item>
+      <nve-menu-item dividerTop>Valg 3</nve-menu-item>
+      <nve-menu-item dividerBottom>Valg 4</nve-menu-item>
+      <nve-menu-item>Valg 5</nve-menu-item>
+    </nve-menu>
+  </div>
+</div>
 ```
 
 </CodeExamplePreview>
