@@ -1,0 +1,218 @@
+[
+  {
+    "id": 5989577802,
+    "node_id": "LA_kwDOKWXiTc8AAAABZQG0Sg",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/bug",
+    "name": "bug",
+    "color": "d73a4a",
+    "default": true,
+    "description": "Something isn't working"
+  },
+  {
+    "id": 6452840045,
+    "node_id": "LA_kwDOKWXiTc8AAAABgJ6GbQ",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/dependencies",
+    "name": "dependencies",
+    "color": "0366d6",
+    "default": false,
+    "description": "Pull requests that update a dependency file"
+  },
+  {
+    "id": 7329089929,
+    "node_id": "LA_kwDOKWXiTc8AAAABtNkJiQ",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/design%20-%20%E2%86%A3%20p%C3%A5g%C3%A5r",
+    "name": "design - ↣ pågår",
+    "color": "fbca04",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 7337712862,
+    "node_id": "LA_kwDOKWXiTc8AAAABtVyc3g",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/design%20-%20%E2%98%91%EF%B8%8E%20ferdig",
+    "name": "design - ☑︎ ferdig",
+    "color": "fbca04",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 7337723235,
+    "node_id": "LA_kwDOKWXiTc8AAAABtVzFYw",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/design%20-%20skal%20jobbes%20med",
+    "name": "design - skal jobbes med",
+    "color": "fbca04",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 5989577806,
+    "node_id": "LA_kwDOKWXiTc8AAAABZQG0Tg",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/documentation",
+    "name": "documentation",
+    "color": "0075ca",
+    "default": true,
+    "description": "Dokumentasjon av en komponent eller designsystemet"
+  },
+  {
+    "id": 5989577817,
+    "node_id": "LA_kwDOKWXiTc8AAAABZQG0WQ",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/duplicate",
+    "name": "duplicate",
+    "color": "cfd3d7",
+    "default": true,
+    "description": "This issue or pull request already exists"
+  },
+  {
+    "id": 5989577831,
+    "node_id": "LA_kwDOKWXiTc8AAAABZQG0Zw",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/good%20first%20issue",
+    "name": "good first issue",
+    "color": "7057ff",
+    "default": true,
+    "description": "Good for newcomers"
+  },
+  {
+    "id": 5989577842,
+    "node_id": "LA_kwDOKWXiTc8AAAABZQG0cg",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/help%20wanted",
+    "name": "help wanted",
+    "color": "008672",
+    "default": true,
+    "description": "Extra attention is needed"
+  },
+  {
+    "id": 5989577851,
+    "node_id": "LA_kwDOKWXiTc8AAAABZQG0ew",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/invalid",
+    "name": "invalid",
+    "color": "e4e669",
+    "default": true,
+    "description": "This doesn't seem right"
+  },
+  {
+    "id": 7329050452,
+    "node_id": "LA_kwDOKWXiTc8AAAABtNhvVA",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/justering%20p%C3%A5%20eksisterende%20komponent",
+    "name": "justering på eksisterende komponent",
+    "color": "B160EF",
+    "default": false,
+    "description": "Justering på eksisterende komponent"
+  },
+  {
+    "id": 7361073541,
+    "node_id": "LA_kwDOKWXiTc8AAAABtsERhQ",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/nve-dialog",
+    "name": "nve-dialog",
+    "color": "DC6E99",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 7361066563,
+    "node_id": "LA_kwDOKWXiTc8AAAABtsD2Qw",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/nve-input",
+    "name": "nve-input",
+    "color": "6E926F",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 7361074519,
+    "node_id": "LA_kwDOKWXiTc8AAAABtsEVVw",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/nve-label",
+    "name": "nve-label",
+    "color": "DFC09D",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 7360561190,
+    "node_id": "LA_kwDOKWXiTc8AAAABtrlAJg",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/nve-radio",
+    "name": "nve-radio",
+    "color": "0606C4",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 7361068506,
+    "node_id": "LA_kwDOKWXiTc8AAAABtsD92g",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/nve-radio-group",
+    "name": "nve-radio-group",
+    "color": "A15FDE",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 7361069889,
+    "node_id": "LA_kwDOKWXiTc8AAAABtsEDQQ",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/nve-select",
+    "name": "nve-select",
+    "color": "E20E69",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 7360557801,
+    "node_id": "LA_kwDOKWXiTc8AAAABtrky6Q",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/nve-textarea",
+    "name": "nve-textarea",
+    "color": "6394D5",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 7360556093,
+    "node_id": "LA_kwDOKWXiTc8AAAABtrksPQ",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/nve-tooltip",
+    "name": "nve-tooltip",
+    "color": "80EDD6",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 7329046853,
+    "node_id": "LA_kwDOKWXiTc8AAAABtNhhRQ",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/ny%20feature%20p%C3%A5%20eksisterende%20komponent",
+    "name": "ny feature på eksisterende komponent",
+    "color": "07FC7D",
+    "default": false,
+    "description": "Ny feature på eksisterende komponent"
+  },
+  {
+    "id": 5989577825,
+    "node_id": "LA_kwDOKWXiTc8AAAABZQG0YQ",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/ny%20komponent",
+    "name": "ny komponent",
+    "color": "a2eeef",
+    "default": false,
+    "description": "Ny komponent"
+  },
+  {
+    "id": 5989577854,
+    "node_id": "LA_kwDOKWXiTc8AAAABZQG0fg",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/question",
+    "name": "question",
+    "color": "d876e3",
+    "default": true,
+    "description": "Further information is requested"
+  },
+  {
+    "id": 7329305785,
+    "node_id": "LA_kwDOKWXiTc8AAAABtNxUuQ",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/Tokens",
+    "name": "Tokens",
+    "color": "0A1879",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 5989577866,
+    "node_id": "LA_kwDOKWXiTc8AAAABZQG0ig",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/wontfix",
+    "name": "wontfix",
+    "color": "ffffff",
+    "default": true,
+    "description": "This will not be worked on"
+  }
+]
