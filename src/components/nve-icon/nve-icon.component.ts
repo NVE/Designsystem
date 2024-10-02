@@ -34,7 +34,7 @@ export default class NveIcon extends LitElement {
       document.head.appendChild(link);
     }
 
-    // Siden lasting av materialikoner kan ta litt tid, lager vi en plassholder før for å unngå at en tekst på navnet på ikonet er synlig før ikonet har rukket å laste.
+    // Siden lasting av materialikoner kan ta litt tid, lager vi en plassholder for å unngå at en tekst på navnet på ikonet er synlig før ikonet har rukket å laste.
     const observer = new FontFaceObserver(`Material Symbols ${this.library}`);
     observer.load().then(() => {
       this.iconLoaded = true;
