@@ -1,16 +1,15 @@
 <!-- Viser liste over alle komponenter med status på design og utvikling -->
 <template>
-  <LinkButton
-    URL="https://www.figma.com/design/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=111-25&m=dev"
-    text="Til komponentoversikt i Figma"
-    :openInNewTab="true"
-  />
   <div style="padding-top: 2rem"></div>
 
   <nve-message-card
     title="Merk saker og PR'er i Github med komponentnavn for å se dem her"
     size="simple"
   ></nve-message-card>
+
+  <div class="search-container">
+    <input type="text" v-model="searchQuery" placeholder="Søk etter komponentnavn" class="search-input" />
+  </div>
 
   <div>
     <table>
@@ -23,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(component, index) in componentStatuses" :key="index">
+        <tr v-for="(component, index) in filteredComponents" :key="index">
           <td>
             <a v-if="isComponent(component.name)" :href="component.name">{{ component.name }}</a>
             <span v-else>{{ component.name }}</span>
@@ -101,9 +100,9 @@
 </template>
 
 <script setup lang="ts">
-import LinkButton from './LinkButton.vue';
 import { componentNames } from '../customElementsManifest.store';
 import ComponentIssues from './ComponentIssues.vue';
+import { ref, computed } from 'vue';
 
 interface ComponentStatus {
   /** Navn på komponenten. F.eks. nve-button */
@@ -127,6 +126,13 @@ const props = defineProps<{
 }>();
 
 props.componentStatuses.sort((a, b) => a.name.localeCompare(b.name));
+
+const searchQuery = ref('');
+
+const filteredComponents = computed(() => {
+  const searchLower = searchQuery.value.toLowerCase();
+  return props.componentStatuses.filter((component) => component.name.toLowerCase().includes(searchLower));
+});
 
 const linkToFigmaComponent = (figmaId: string) => {
   return `https://www.figma.com/file/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=${figmaId}`;
@@ -230,5 +236,33 @@ tfoot > tr > td {
 
 ul {
   margin: 0;
+}
+
+.search-container {
+  margin: 2rem 0 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #e6f4ff;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #999;
+  font-style: italic;
 }
 </style>

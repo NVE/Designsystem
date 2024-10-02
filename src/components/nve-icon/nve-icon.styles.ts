@@ -27,4 +27,11 @@ export default css`
     line-height: 24px;
     font-weight: var(--font-weight-regular);
   }
+
+  .placeholder {
+    display: inline-block;
+    width: 24px; 
+    height: 24px; 
+    background-color: transparent;  
+  }
 `;
