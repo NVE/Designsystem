@@ -8,7 +8,7 @@
   ></nve-message-card>
 
   <div class="search-container">
-    <input type="text" v-model="searchQuery" placeholder="Søk etter komponentnavn" class="search-input" />
+    <nve-input type="text" v-model="searchQuery" placeholder="Søk etter komponentnavn" class="search-input" />
   </div>
 
   <div>
@@ -247,22 +247,5 @@ ul {
 
 .search-input {
   width: 100%;
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.search-input:focus {
-  border-color: #e6f4ff;
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
-  outline: none;
-}
-
-.search-input::placeholder {
-  color: #999;
-  font-style: italic;
 }
 </style>
