@@ -27,24 +27,14 @@ Standard er Liten størrelse 16px.
 <CodeExamplePreview>
 
 ```html
-<span style="display:flex; flex-direction:row;  gap:10px;"><nve-icon name="Rocket"></nve-icon>Standard</span>
+<nve-icon name="Rocket"></nve-icon>Liten (16px høy)
 
-<span style="display:flex; flex-direction:row; gap:10px;"
-  ><nve-icon name="Rocket" style="font-size: 16px;"></nve-icon>Liten</span
->
+<nve-icon name="Rocket" style="font-size: 20px;"></nve-icon>Medium (20px høy)
 
-<span style="display:flex; flex-direction:row; gap:10px;"
-  ><nve-icon name="Rocket" style="font-size: 20px;"></nve-icon>Medium</span
->
-<span style="display:flex; flex-direction:row; gap:10px;"
-  ><nve-icon name="Rocket" style="font-size: 24px;">Stor</nve-icon>Stor</span
->
+<nve-icon name="Rocket" style="font-size: 24px;"></nve-icon>Stor (24px høy)
 ```
 
 </CodeExamplePreview>
-
-- TODO: Burde vi sette standard størrelse automatisk?
-- TODO: Hvorfor bruker Figma 20 og 24px bredde når Google bruker 16px?
 
 ### Skarpe eller mye kanter
 

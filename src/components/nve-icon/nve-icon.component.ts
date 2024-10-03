@@ -48,7 +48,7 @@ export default class NveIcon extends LitElement {
     if (this.iconLoaded) {
       return html`<span part="icon" style="font-family: 'Material Symbols ${this.library}'; ">${this.name}</span>`;
     } else {
-      return html`<div class="placeholder"></div>`;
+      return html`<nve-skeleton class="placeholder" effect="sheen"></nve-skeleton>`;
     }
   }
 }

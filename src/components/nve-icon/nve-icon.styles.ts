@@ -28,10 +28,9 @@ export default css`
     font-weight: var(--font-weight-regular);
   }
 
-  .placeholder {
-    display: inline-block;
+  .placeholder::part(indicator) {
     width: 24px; 
     height: 24px; 
-    background-color: transparent;  
+    border-radius: 4px;
   }
 `;
