@@ -8,7 +8,14 @@
   ></nve-message-card>
 
   <div class="search-container">
-    <nve-input type="text" v-model="searchQuery" placeholder="Søk etter komponentnavn" class="search-input" />
+    <!-- <nve-input type="text" v-model="searchQuery" placeholder="Søk etter komponentnavn" class="search-input" /> -->
+    <nve-input
+      type="text"
+      :value="searchQuery"
+      @input="onInput"
+      placeholder="Søk etter komponentnavn"
+      class="search-input"
+    />
   </div>
 
   <div>
@@ -16,8 +23,8 @@
       <thead>
         <tr>
           <th>Komponent</th>
-          <th>Status kode</th>
           <th colspan="2">Status design</th>
+          <th>Status kode</th>
           <th>Feil / oppgaver / PR</th>
         </tr>
       </thead>
@@ -26,16 +33,6 @@
           <td>
             <a v-if="isComponent(component.name)" :href="component.name">{{ component.name }}</a>
             <span v-else>{{ component.name }}</span>
-          </td>
-          <td>
-            <div v-if="!isComponent(component.name) && component.statusCode === 'Ferdig'">
-              Status er satt til ferdig, men komponenten finnes ikke
-            </div>
-            <div v-else>
-              <nve-tag :variant="getBadgeVariant(component.statusCode)" size="small">
-                {{ component.statusCode }}
-              </nve-tag>
-            </div>
           </td>
           <td class="status-design">
             <nve-tag :variant="getBadgeVariant(component.statusDesign)" size="small">
@@ -53,6 +50,17 @@
               <img src="/assets/figma-logo.svg" class="figma-icon" alt="figma-logo" />
             </a>
           </td>
+          <td>
+            <div v-if="!isComponent(component.name) && component.statusCode === 'Ferdig'">
+              Status er satt til ferdig, men komponenten finnes ikke
+            </div>
+            <div v-else>
+              <nve-tag :variant="getBadgeVariant(component.statusCode)" size="small">
+                {{ component.statusCode }}
+              </nve-tag>
+            </div>
+          </td>
+
           <td>
             <ComponentIssues :componentName="component.name" />
           </td>
@@ -128,12 +136,15 @@ const props = defineProps<{
 props.componentStatuses.sort((a, b) => a.name.localeCompare(b.name));
 
 const searchQuery = ref('');
+const onInput = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  searchQuery.value = target.value; // Uppdatera searchQuery med det nya värdet
+};
 
 const filteredComponents = computed(() => {
   const searchLower = searchQuery.value.toLowerCase();
   return props.componentStatuses.filter((component) => component.name.toLowerCase().includes(searchLower));
 });
-
 const linkToFigmaComponent = (figmaId: string) => {
   return `https://www.figma.com/file/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=${figmaId}`;
 };
