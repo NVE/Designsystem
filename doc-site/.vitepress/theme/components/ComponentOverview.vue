@@ -1,10 +1,5 @@
 <!-- Viser liste over alle komponenter med status på design og utvikling -->
 <template>
-  <LinkButton
-    URL="https://www.figma.com/design/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=111-25&m=dev"
-    text="Til komponentoversikt i Figma"
-    :openInNewTab="true"
-  />
   <div style="padding-top: 2rem"></div>
 
   <nve-message-card
@@ -12,31 +7,31 @@
     size="simple"
   ></nve-message-card>
 
+  <div class="search-container">
+    <nve-input
+      type="text"
+      :value="searchQuery"
+      @input="onInput"
+      placeholder="Søk etter komponentnavn"
+      class="search-input"
+    />
+  </div>
+
   <div>
     <table>
       <thead>
         <tr>
           <th>Komponent</th>
-          <th>Status kode</th>
           <th colspan="2">Status design</th>
+          <th>Status kode</th>
           <th>Feil / oppgaver / PR</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(component, index) in componentStatuses" :key="index">
+        <tr v-for="(component, index) in filteredComponents" :key="index">
           <td>
             <a v-if="isComponent(component.name)" :href="component.name">{{ component.name }}</a>
             <span v-else>{{ component.name }}</span>
-          </td>
-          <td>
-            <div v-if="!isComponent(component.name) && component.statusCode === 'Ferdig'">
-              Status er satt til ferdig, men komponenten finnes ikke
-            </div>
-            <div v-else>
-              <nve-tag :variant="getBadgeVariant(component.statusCode)" size="small">
-                {{ component.statusCode }}
-              </nve-tag>
-            </div>
           </td>
           <td class="status-design">
             <nve-tag :variant="getBadgeVariant(component.statusDesign)" size="small">
@@ -54,6 +49,17 @@
               <img src="/assets/figma-logo.svg" class="figma-icon" alt="figma-logo" />
             </a>
           </td>
+          <td>
+            <div v-if="!isComponent(component.name) && component.statusCode === 'Ferdig'">
+              Status er satt til ferdig, men komponenten finnes ikke
+            </div>
+            <div v-else>
+              <nve-tag :variant="getBadgeVariant(component.statusCode)" size="small">
+                {{ component.statusCode }}
+              </nve-tag>
+            </div>
+          </td>
+
           <td>
             <ComponentIssues :componentName="component.name" />
           </td>
@@ -101,9 +107,9 @@
 </template>
 
 <script setup lang="ts">
-import LinkButton from './LinkButton.vue';
 import { componentNames } from '../customElementsManifest.store';
 import ComponentIssues from './ComponentIssues.vue';
+import { ref, computed } from 'vue';
 
 interface ComponentStatus {
   /** Navn på komponenten. F.eks. nve-button */
@@ -127,6 +133,18 @@ const props = defineProps<{
 }>();
 
 props.componentStatuses.sort((a, b) => a.name.localeCompare(b.name));
+
+const searchQuery = ref('');
+
+const onInput = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  searchQuery.value = target.value;
+};
+
+const filteredComponents = computed(() => {
+  const searchLower = searchQuery.value.toLowerCase();
+  return props.componentStatuses.filter((component) => component.name.toLowerCase().includes(searchLower));
+});
 
 const linkToFigmaComponent = (figmaId: string) => {
   return `https://www.figma.com/file/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=${figmaId}`;
@@ -230,5 +248,16 @@ tfoot > tr > td {
 
 ul {
   margin: 0;
+}
+
+.search-container {
+  margin: 2rem 0 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
 }
 </style>

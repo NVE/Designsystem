@@ -27,4 +27,10 @@ export default css`
     line-height: 24px;
     font-weight: var(--font-weight-regular);
   }
+
+  .placeholder::part(indicator) {
+    width: 24px; 
+    height: 24px; 
+    border-radius: 4px;
+  }
 `;

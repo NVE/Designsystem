@@ -256,7 +256,7 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     nodeId: '4229-83175',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-spinner',

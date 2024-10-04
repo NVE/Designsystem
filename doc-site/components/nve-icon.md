@@ -16,18 +16,25 @@ Her er [oversikt over ikoner i Material Symbols](https://fonts.google.com/icons)
 
 ### Størrelse
 
+For å endre størrelsen, sett font-size property på ikonet.
+Du må bruke følgende font-size størrelse nedenfor:
+
+- Liten: 16px
+- Medium: 20px
+- Stor: 24px
+
+Standard er Liten størrelse 16px.
 <CodeExamplePreview>
 
 ```html
-<nve-icon name="Rocket" style="font-size: 1.25rem;"></nve-icon> liten (20px høyde)
-<nve-icon name="Rocket" style="font-size: 1.5rem;"></nve-icon> stor (24px høyde)
+<nve-icon name="Rocket"></nve-icon>Liten (16px høy)
+
+<nve-icon name="Rocket" style="font-size: 20px;"></nve-icon>Medium (20px høy)
+
+<nve-icon name="Rocket" style="font-size: 24px;"></nve-icon>Stor (24px høy)
 ```
 
 </CodeExamplePreview>
-
-- TODO: Burde vi sette standard størrelse automatisk?
-- TODO: Burde vi ha en egen property for størrelse?
-- TODO: Hvorfor bruker Figma 20 og 24px bredde når Google bruker 16px?
 
 ### Skarpe eller mye kanter
 
