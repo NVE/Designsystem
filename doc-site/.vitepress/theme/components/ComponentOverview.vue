@@ -51,7 +51,7 @@
           </td>
           <td>
             <div v-if="!isComponent(component.name) && component.statusCode === 'Ferdig'">
-              Status er satt til ferdig, men komponenten finnes ikke
+              TEST Status er satt til ferdig, men komponenten finnes ikke
             </div>
             <div v-else>
               <nve-tag :variant="getBadgeVariant(component.statusCode)" size="small">
