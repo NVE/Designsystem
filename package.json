@@ -22,6 +22,7 @@
   "type": "module",
   "types": "nve-designsystem.d.ts",
   "scripts": {
+    "release": "standard-version",
     "add-component": "node scripts/createNewComponent.js",
     "dev": "node scripts/createCustomElementsManifest.js && cd doc-site && npm run dev",
     "doc:build": "cd doc-site && npm run build",
@@ -72,6 +73,7 @@
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "standard-version": "^9.5.0",
     "style-dictionary-utils": "^4.0.0",
     "typescript": "^5.6.2",
     "vite": "^5.4.6",
