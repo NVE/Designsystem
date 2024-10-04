@@ -59,7 +59,6 @@
               </nve-tag>
             </div>
           </td>
-
           <td>
             <ComponentIssues :componentName="component.name" />
           </td>
