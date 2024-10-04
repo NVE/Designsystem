@@ -8,7 +8,6 @@
   ></nve-message-card>
 
   <div class="search-container">
-    <!-- <nve-input type="text" v-model="searchQuery" placeholder="Søk etter komponentnavn" class="search-input" /> -->
     <nve-input
       type="text"
       :value="searchQuery"
@@ -136,15 +135,17 @@ const props = defineProps<{
 props.componentStatuses.sort((a, b) => a.name.localeCompare(b.name));
 
 const searchQuery = ref('');
+
 const onInput = (event: Event) => {
   const target = event.target as HTMLInputElement;
-  searchQuery.value = target.value; // Uppdatera searchQuery med det nya värdet
+  searchQuery.value = target.value;
 };
 
 const filteredComponents = computed(() => {
   const searchLower = searchQuery.value.toLowerCase();
   return props.componentStatuses.filter((component) => component.name.toLowerCase().includes(searchLower));
 });
+
 const linkToFigmaComponent = (figmaId: string) => {
   return `https://www.figma.com/file/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=${figmaId}`;
 };
