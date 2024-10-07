@@ -39,7 +39,8 @@ name: Publish package to npmjs and Generate Changelog
 on:
   push:
     branches:
-      - main
+      # - main
+      - 'test-auto-changelog'
     paths:
       - 'src/**'
       - 'build/**'
@@ -71,7 +72,7 @@ jobs:
       - name: Build package
         run: npm run build
 
-      - name: Publish to npm
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
+      # - name: Publish to npm
+      #   run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
