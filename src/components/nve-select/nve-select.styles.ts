@@ -83,12 +83,13 @@ export default css`
   .form-control--has-help-text .form-control__help-text {
     margin-top: var(--spacing-x-small);
   }
-  /* Formaterer "*Obligatorisk" over input-felt og til høyre riktig når required er satt */
+
   .form-control--has-label .form-control__label {
     display: flex;
     width: 100%;
     justify-content: space-between;
     margin-inline-start: unset;
     margin-bottom: var(--spacing-x-small);
+    font: var(--label-small);
   }
 `;

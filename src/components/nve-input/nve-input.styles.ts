@@ -59,9 +59,10 @@ export default css`
     font: var(--body-large);
   }
 
-  .form-control label {
-    font: var(--label-medium);
+  .form-control--has-label .form-control__label {
+    font: var(--label-small);
     align-items: center;
+    margin-bottom: var(--spacing-x-small);
   }
 
   /* Riktig fokus-markering også i filled-modus */
