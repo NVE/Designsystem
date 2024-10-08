@@ -1,3 +1,11 @@
+# [0.3.0-test-release.2](https://github.com/NVE/Designsystem/compare/v0.3.0-test-release.1...v0.3.0-test-release.2) (2024-10-08)
+
+
+### Features
+
+* **config:** from commitizen ([2b05e7b](https://github.com/NVE/Designsystem/commit/2b05e7b880f1bb1675d6fb1d4343676ccd57684e))
+* from conventional commits extensions ([761de81](https://github.com/NVE/Designsystem/commit/761de81755205c72387d8a12d7a0a0050f81d9ab))
+
 # [0.3.0-test-release.1](https://github.com/NVE/Designsystem/compare/v0.2.13...v0.3.0-test-release.1) (2024-10-08)
 
 
