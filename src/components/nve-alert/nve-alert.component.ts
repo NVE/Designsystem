@@ -18,9 +18,9 @@ export default class NveAlert extends SlAlert {
   @property({ reflect: true }) title: string = '';
   /** Tynnere beskrivelse tekst */
   @property({ reflect: true }) text: string = '';
-  /** Bestemmer sterkere bakgrunnsfarge */
+  /** Bestemmer sterkere bakgrunnsfarge  */
   @property({ type: String, reflect: false }) saturation: 'emphasized' | null = null;
-  /** Ramme linje til venstre  */
+  /** Ramme linje til venstre */
   @property({ type: Boolean, reflect: true }) leftStroke: boolean = false;
 
   static styles = [
