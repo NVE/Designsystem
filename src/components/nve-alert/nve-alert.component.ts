@@ -14,7 +14,7 @@ export default class NveAlert extends SlAlert {
   constructor() {
     super();
   }
-  /** Tykk tekst, vises helt til venstre */
+  /** Tykk tekst, vises helt til venstre   */
   @property({ reflect: true }) title: string = '';
   /** Tynnere beskrivelse tekst */
   @property({ reflect: true }) text: string = '';
