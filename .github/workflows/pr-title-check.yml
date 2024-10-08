@@ -4,7 +4,7 @@ name: Enforce Conventional PR Title
 on:
   pull_request:
     branches:
-      - test-release # This runs when a PR targets the `test-release` branch
+      - test-release
     types:
       - opened
       - edited
@@ -14,11 +14,8 @@ jobs:
   lint_pr_title:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Enforce Conventional PR Title
-        uses: CondeNast/conventional-pull-request-action@v0.2.0
+      - uses: amannn/action-semantic-pull-request@v3.5.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          titleOnly: true # This enforces the conventional commit format only for the PR title
