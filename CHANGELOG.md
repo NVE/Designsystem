@@ -1,3 +1,25 @@
+# [1.0.0-test-release.1](https://github.com/NVE/Designsystem/compare/v0.3.0-test-release.2...v1.0.0-test-release.1) (2024-10-08)
+
+
+### Features
+
+* **commitizen:** commitizen ([1329114](https://github.com/NVE/Designsystem/commit/132911453665af13ad187c3bbb24da8cc417eb90))
+* implement semantic release for changelog generation ([e0c939e](https://github.com/NVE/Designsystem/commit/e0c939e49e22b0295f19b9b98b2593185ac65a69))
+
+
+### BREAKING CHANGES
+
+* **commitizen:** testing
+
+* feat: test from extensions
+
+* feat: testar
+
+* feat:
+* testing
+
+feat: test from extensions
+
 # [0.3.0-test-release.2](https://github.com/NVE/Designsystem/compare/v0.3.0-test-release.1...v0.3.0-test-release.2) (2024-10-08)
 
 
