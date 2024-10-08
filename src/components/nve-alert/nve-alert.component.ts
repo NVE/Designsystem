@@ -16,7 +16,7 @@ export default class NveAlert extends SlAlert {
   }
   /** Tykk tekst, vises helt til venstre   */
   @property({ reflect: true }) title: string = '';
-  /** Tynnere beskrivelse tekst */
+  /** Tynnere beskrivelse tekst  */
   @property({ reflect: true }) text: string = '';
   /** Bestemmer sterkere bakgrunnsfarge  */
   @property({ type: String, reflect: false }) saturation: 'emphasized' | null = null;
