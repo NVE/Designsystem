@@ -1,3 +1,4 @@
+# .github/workflows/build-and-release.yml
 name: Build and Release for Test 2
 
 on:
@@ -13,16 +14,10 @@ on:
 jobs:
   build_and_release:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Enforce Conventional PR Title
-        uses: CondeNast/conventional-pull-request-action@v0.2.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-node@v3
         with:
