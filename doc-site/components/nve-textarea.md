@@ -5,7 +5,7 @@ layout: component
 <CodeExamplePreview>
 
 ```html
-<nve-textarea label="Har kan du skrive akkurat hva du vil"></nve-textarea>
+<nve-textarea label="Her kan du skrive akkurat hva du vil"></nve-textarea>
 ```
 
 </CodeExamplePreview>

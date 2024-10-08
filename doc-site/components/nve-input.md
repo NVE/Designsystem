@@ -5,7 +5,7 @@ layout: component
 <CodeExamplePreview arrangeComponentsVertically>
 
 ```html
-<nve-input label="Har kan du skrive akkurat hva du vil"></nve-input>
+<nve-input label="Her kan du skrive akkurat hva du vil"></nve-input>
 ```
 
 </CodeExamplePreview>
