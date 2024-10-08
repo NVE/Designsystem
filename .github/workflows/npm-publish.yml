@@ -3,7 +3,7 @@ name: Build and Release for Test 2
 on:
   push:
     branches:
-      - test-release # Byt från 'main' till 'test-release'
+      - test-release
     paths:
       - 'src/**'
       - 'build/**'
@@ -13,10 +13,16 @@ on:
 jobs:
   build_and_release:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Viktigt för att `semantic-release` ska kunna analysera alla commits
+          fetch-depth: 0
+
+      - name: Enforce Conventional PR Title
+        uses: CondeNast/conventional-pull-request-action@v0.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/setup-node@v3
         with:
