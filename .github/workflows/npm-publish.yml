@@ -35,7 +35,7 @@
 
 #          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
 
-name: Build and Release for Test
+name: Build and Release for Test 2
 
 on:
   push:
