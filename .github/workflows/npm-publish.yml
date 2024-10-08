@@ -1,9 +1,45 @@
-name: Publish package to npmjs
+# name: Publish package to npmjs
+
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'src/**'
+#       - 'build/**'
+#       - 'public/css/**'
+#   workflow_dispatch:
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+
+#       # Setup .npmrc file to publish to npm
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: '20.x'
+#           registry-url: 'https://registry.npmjs.org'
+
+#       - name: Build and Publish
+#         run: |
+#           npm i
+#           npm run build
+#           git config --global user.email "jobl@nve.no"
+#           git config --global user.name "Designsystem"
+#           npm version patch -m "Bump version to %s [skip ci]" --force
+#           git push --follow-tags
+#           npm run publish
+#         env:
+#           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
+
+name: Build and Release for Test
 
 on:
   push:
     branches:
-      - main
+      - test-release # Byt från 'main' till 'test-release'
     paths:
       - 'src/**'
       - 'build/**'
@@ -11,25 +47,36 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build_and_release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Viktigt för att `semantic-release` ska kunna analysera alla commits
 
-      # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Build and Publish
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Semantic Release (Dry Run)
+        run: npx semantic-release --dry-run
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH }}
+
+      - name: Configure Git for npm version
+        if: ${{ steps.semantic-release.outputs.new-release-published == 'true' }}
         run: |
-          npm i
-          npm run build
           git config --global user.email "jobl@nve.no"
           git config --global user.name "Designsystem"
-          npm version patch -m "Bump version to %s [skip ci]" --force
-          git push --follow-tags
-          npm run publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
+
+      - name: Push tags and changes
+        if: ${{ steps.semantic-release.outputs.new-release-published == 'true' }}
+        run: git push --follow-tags
