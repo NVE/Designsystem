@@ -17,4 +17,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          titleOnly: true # This enforces the conventional commit format only for the PR title
+          titleOnly: true
