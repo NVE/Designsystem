@@ -32,7 +32,8 @@
 #           git push --follow-tags
 #           npm run publish
 #         env:
-#           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
+
+#          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
 
 name: Build and Release for Test
 
