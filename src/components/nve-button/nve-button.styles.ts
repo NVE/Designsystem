@@ -122,7 +122,7 @@ export default css`
     padding: 0px;
   }
   .button--large {
-    height: var(--sizing-medium);
+    height: 200px;
     min-height: unset;
     padding: var(--spacing-medium, 1rem) calc(var(--spacing-medium, 1rem) - var(--spacing-x-small));
   }
@@ -136,7 +136,6 @@ export default css`
   /* PRIMARY */
   :host([variant='primary']) .button--standard.button {
     background-color: darkgreen;
-    animation: blink ls linear infinite;
     color: var(--interactive-primary-foreground-default);
     border: none;
   }
