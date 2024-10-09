@@ -136,7 +136,6 @@ export default css`
   /* PRIMARY */
   :host([variant='primary']) .button--standard.button {
     background-color: darkgreen;
-    animation: blink ls linear infinite;
     color: var(--interactive-primary-foreground-default);
     border: none;
   }
