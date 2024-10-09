@@ -1,3 +1,15 @@
+# [1.0.0-test-release.7](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.6...v1.0.0-test-release.7) (2024-10-09)
+
+
+### Features
+
+* testing breaking change with Commitizien ([d62fafe](https://github.com/NVE/Designsystem/commit/d62fafe0195346b6947b677418ec86d7fb40dbd8)), closes [#42](https://github.com/NVE/Designsystem/issues/42)
+
+
+### BREAKING CHANGES
+
+* everything
+
 # [1.0.0-test-release.6](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.5...v1.0.0-test-release.6) (2024-10-09)
 
 
