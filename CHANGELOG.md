@@ -1,3 +1,10 @@
+# [1.0.0-test-release.8](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.7...v1.0.0-test-release.8) (2024-10-09)
+
+
+### Features
+
+* testing breaking change with commitizen ([9ffdceb](https://github.com/NVE/Designsystem/commit/9ffdceb03f245e1d8466675c5955ca3973fdd322))
+
 # [1.0.0-test-release.7](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.6...v1.0.0-test-release.7) (2024-10-09)
 
 
