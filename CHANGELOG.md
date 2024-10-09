@@ -1,3 +1,15 @@
+# [1.0.0-test-release.5](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.4...v1.0.0-test-release.5) (2024-10-09)
+
+
+### Bug Fixes
+
+* **alert:** testing fixing a bug with alert ([912127d](https://github.com/NVE/Designsystem/commit/912127da53006d7b72e64c2201cc83f1c1d8efe4))
+
+
+### Features
+
+* testing VS code extenstions together with Commitzien. ([0d7bb7e](https://github.com/NVE/Designsystem/commit/0d7bb7eb5cbcccf1056ec87bd44bed7152ade589))
+
 # [1.0.0-test-release.4](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.3...v1.0.0-test-release.4) (2024-10-09)
 
 
