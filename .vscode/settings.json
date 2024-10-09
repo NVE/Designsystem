@@ -36,6 +36,7 @@
     "editor.formatOnSaveMode": "file"
   },
   "conventionalCommits.scopes": [
-    "conventional commits"
+    "conventional commits",
+    "VS code extension"
   ]
 }
