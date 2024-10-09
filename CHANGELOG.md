@@ -1,3 +1,10 @@
+# [1.0.0-test-release.9](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.8...v1.0.0-test-release.9) (2024-10-09)
+
+
+### Features
+
+* **nve-button:** Gjort knappen mye mer interessant ([#299](https://github.com/NVE/Designsystem/issues/299)) ([dfb5738](https://github.com/NVE/Designsystem/commit/dfb57384115879e72f115d1d6a5ee513edae7ad0))
+
 # [1.0.0-test-release.8](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.7...v1.0.0-test-release.8) (2024-10-09)
 
 
