@@ -1,5 +1,66 @@
-# .github/workflows/build-and-release.yml
-name: Build and Release for Test 2
+# TODO - Update the branch name to the main branch when testing is finished.
+# name: Build, Release, and Publish
+
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'src/**'
+#       - 'build/**'
+#       - 'public/css/**'
+#   workflow_dispatch:
+
+# jobs:
+#   build_and_release:
+#     runs-on: ubuntu-latest
+#     steps:
+#       # Step 1: Checkout the code
+#       - uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
+
+#       # Step 2: Setup Node.js environment
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: '20.x'
+#           registry-url: 'https://registry.npmjs.org'
+
+#       # Step 3: Install dependencies
+#       - name: Install dependencies
+#         run: npm install
+
+#       # Step 4: Build the project
+#       - name: Build
+#         run: npm run build
+
+#       # Step 5: Semantic Release for versioning and release notes
+#       - name: Semantic Release
+#         run: npx semantic-release
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           NPM_TOKEN: ${{ secrets.NPM_PUBLISH }}
+
+#       # Step 6: Configure Git if a new release is published
+#       - name: Configure Git for npm version
+#         if: ${{ steps.semantic-release.outputs.new-release-published == 'true' }}
+#         run: |
+#           git config --global user.email "jobl@nve.no"
+#           git config --global user.name "Designsystem"
+
+#       # Step 7: Push new tags if a new release is published
+#       - name: Push tags and changes
+#         if: ${{ steps.semantic-release.outputs.new-release-published == 'true' }}
+#         run: git push --follow-tags
+
+#       # Step 8: Publish to NPM only on main branch
+#       - name: Publish to NPM
+#         if: github.ref == 'refs/heads/main' && steps.semantic-release.outputs.new-release-published == 'true'
+#         run: npm run publish
+#         env:
+#           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
+
+name: Build and Release for Test
 
 on:
   push:
