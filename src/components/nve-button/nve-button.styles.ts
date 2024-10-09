@@ -135,7 +135,7 @@ export default css`
 
   /* PRIMARY */
   :host([variant='primary']) .button--standard.button {
-    background-color: var(--interactive-primary-background-default);
+    background-color: darkgreen;
     color: var(--interactive-primary-foreground-default);
     border: none;
   }
