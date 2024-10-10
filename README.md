@@ -77,7 +77,6 @@ Changelog-filene genereres automatisk basert på commit-meldingene dine og blir 
 
 ### Betingelser for Semantic Release
 
-<
 Merk at `semantic-release` stiller visse betingelser før oppdatering av changeloggen. For at en endring skal registreres i changelogen, må følgende krav være oppfylt:
 
 - Commit-typen må være en av følgende:
