@@ -1,5 +1,6 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av npm run add-component */
+  
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
 export { default as NveBadge } from './components/nve-badge/nve-badge.component';
 export { default as NveButton } from './components/nve-button/nve-button.component';
@@ -19,6 +20,7 @@ export { default as NvePopup } from './components/nve-popup/nve-popup.component'
 export { default as NveRadio } from './components/nve-radio/nve-radio.component';
 export { default as NveRadioButton } from './components/nve-radio-button/nve-radio-button.component';
 export { default as NveRadioGroup } from './components/nve-radio-group/nve-radio-group.component';
+export { default as NveRelativeTime } from './components/nve-relative-time/nve-relative-time.component';
 export { default as NveSelect } from './components/nve-select/nve-select.component';
 export { default as NveSkeleton } from './components/nve-skeleton/nve-skeleton.component';
 export { default as NveSpinner } from './components/nve-spinner/nve-spinner.component';
