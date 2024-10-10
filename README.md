@@ -75,6 +75,21 @@ npx cz
 
 Changelog-filene genereres automatisk basert på commit-meldingene dine og blir synlige i [release-notatene](https://github.com/NVE/Designsystem/releases) på GitHub.
 
+### Betingelser for Semantic Release
+
+<
+Merk at `semantic-release` stiller visse betingelser før oppdatering av changeloggen. For at en endring skal registreres i changelogen, må følgende krav være oppfylt:
+
+- Commit-typen må være en av følgende:
+  - `BREAKING CHANGE`: Introduserer en endring som bryter bakoverkompatibiliteten
+  - `feat`: Legger til en ny funksjonalitet
+  - `fix`: Retter en feil
+  - `perf`: Forbedrer ytelsen
+- Endringen må ha skjedd i en av følgende mappespesifikasjoner:
+  - `src/**`
+  - `build/**`
+  - `public/css/**`
+
 ## Oppretting av en ny komponent og mappestruktur
 
 <em>Alle komponenters navn skal starte med `nve-`. Bruk det samme navnet som komponenten får i html. Kun små bokstaver og bindestrek er tillatt i navnet.</em>
