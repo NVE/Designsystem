@@ -2,7 +2,6 @@
 layout: component
 ---
 
-viser et kort sammendrag og utvides for å vise ekstra innhold.
 <CodeExamplePreview>
 
 ```html
@@ -47,7 +46,6 @@ Bruk summary-ikon og collapse-ikon for å endre henholdsvis utvidelses- og skjul
 
 <style>
   nve-accordion.custom-icons::part(summary-icon) {
-    /* Disable the expand/collapse animation */
     rotate: none;
   }
 </style>
@@ -81,7 +79,6 @@ Accordion er designet for å fungere uavhengig, men du kan simulere en gruppe de
 <script>
   const container = document.querySelector('.accordion-group-example');
 
-  // Close all other details when one is shown
   container.addEventListener('sl-show', (event) => {
     if (event.target.localName === 'nve-accordion') {
       [...container.querySelectorAll('nve-accordion')].map((details) => (details.open = event.target === details));
