@@ -32,7 +32,7 @@ Bruk `vertical` for å lage en vertikal skillelinje. Du må sette en høyde for 
 
 ### Bruk i menyer
 
-Bruk denne til å skille menyvalg fra hverandre.
+Bruk denne til å skille menyvalg fra hverandre. Streken får en annen farge når den er inni en meny.
 
 <CodeExamplePreview>
 
