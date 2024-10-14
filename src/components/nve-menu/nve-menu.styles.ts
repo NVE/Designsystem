@@ -14,6 +14,7 @@ export default css`
   ::slotted(nve-divider) {
     border-top: var(--borderWidth-strong, 2px) solid var(--Neutrals-Border-Subtle, #c8eaf9);
     opacity: var(--borderWidth-default, 1);
-    margin: 1px;
+    margin-top: 1px;
+    margin-bottom: 1px;
   }
 `;
