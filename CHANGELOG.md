@@ -1,3 +1,10 @@
+# [1.0.0-test-release.10](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.9...v1.0.0-test-release.10) (2024-10-14)
+
+
+### Features
+
+* test1 ([a69c154](https://github.com/NVE/Designsystem/commit/a69c1547f9d5f2b82998f0facff3f425e640e9e7))
+
 # [1.0.0-test-release.9](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.8...v1.0.0-test-release.9) (2024-10-09)
 
 
