@@ -8,7 +8,8 @@ import { classMap } from 'lit/directives/class-map.js';
  * @property {string} size = small, medium eller large
  * @property {string} variant = primary, success, neutral, warning, danger, brand
  * @property {string} saturation = Setter metningsgrad. subtle er eneste støttede, evt ikke satt.
- */
+* 
+*/
 @customElement('nve-badge')
 export default class NveBadge extends LitElement {
   static styles = [styles];
