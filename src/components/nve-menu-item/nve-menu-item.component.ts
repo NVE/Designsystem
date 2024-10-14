@@ -1,6 +1,7 @@
 import SlMenuItem from '@shoelace-style/shoelace/dist/components/menu-item/menu-item.js';
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-menu-item.styles';
+import { PropertyValues } from 'lit';
 
 /**
  * Bruk denne til å lage valg i en nve-menu.
@@ -13,14 +14,6 @@ export default class NveMenuItem extends SlMenuItem {
    * Gi menyvalget en egen undertekst.
    */
   @property({ type: String, reflect: true }) subtext: string = '';
-  /**
-   * Setter en divider på toppen av item.
-   */
-  @property({ type: Boolean, reflect: true }) dividerTop: boolean = false;
-  /**
-   * Setter en divider på bunnen av item.
-   */
-  @property({ type: Boolean, reflect: true }) dividerBottom: boolean = false;
   /**
    * Gjør at teksten får innrykk og en svakere farge
    */
@@ -39,7 +32,7 @@ export default class NveMenuItem extends SlMenuItem {
   /**
    * Sørger for at subtext blir satt på, hvis den er tilstede i properties
    */
-  updated(changedProperties: any) {
+  updated(changedProperties: PropertyValues<this>) {
     super.updated(changedProperties);
     if (changedProperties.has('subtext')) {
       this.style.setProperty('--nve-menu-item-subtext', `"${this.subtext}"`);

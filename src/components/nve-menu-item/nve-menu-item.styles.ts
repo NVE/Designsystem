@@ -19,12 +19,13 @@ export default css`
     border-radius: 4px;
     width: 1.125rem;
     visibility: visible;
-    margin-right: var(--spacing-small, 0.75rem);
-   
+    margin-right: var(--spacing-small, 0.75rem);   
   }
+  
   :host([type="checkbox"]) sl-icon {
     opacity: 0;
   }
+
   .menu-item .menu-item__check {
     display: none; 
   }
@@ -44,11 +45,8 @@ export default css`
  
 
   .menu-item__label {
-
     color: var(--neutrals-foreground-primary, #00131C);
     font: var(--label-small-light);
-    
-
   }
   
   /* Design av subtext  */
@@ -59,21 +57,9 @@ export default css`
     font: var(--body-compact-xsmall-compact)
   }
 
-  /* Border i topp  */
-  :host([dividerTop]) {
-    border-top: var(--borderWidth-strong, 2px) solid var(--Neutrals-Border-Subtle, #C8EAF9);
-    opacity: var(--borderWidth-default, 1);
-  }
-  
-  /* Border i bunn  */
-  :host([dividerBottom]) {
-    border-bottom: var(--borderWidth-strong, 2px) solid var(--Neutrals-Border-Subtle, #C8EAF9);
-    opacity: var(--borderWidth-default, 1);
-  }
-  /* Gjør item unclickable når category property er på*/
+  /* Gjør item unclickable når category property er på */
   :host([category]) {
     pointer-events: none;
-
   }
 
   :host([category]) .menu-item__label{
