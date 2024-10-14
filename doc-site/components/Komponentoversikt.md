@@ -10,7 +10,7 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
    name: 'nve-accordion',
     nodeId: '2341-77166',
     description: undefined,
-    statusDesign: 'Skal revideres',
+    statusDesign: 'Ferdig',
     statusCode: 'Ikke påbegynt'
   },
   {
