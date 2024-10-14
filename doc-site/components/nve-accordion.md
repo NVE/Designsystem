@@ -32,7 +32,7 @@ Bruk disabled for å deaktivere accordion.
 
 ### Tilpasse Summary Ikon
 
-Bruk summary-ikon og collapse-ikon for å endre henholdsvis utvidelses- og skjulikonene. For å deaktivere animasjonen, overstyr rotate-egenskapen på summary-iko som vist nedenfor.
+Bruk summary-ikon og collapse-ikon for å endre henholdsvis utvidelses- og skjulikonene. For å deaktivere animasjonen, overstyr rotate-egenskapen på summary-ikon som vist nedenfor.
 <CodeExamplePreview>
 
 ```html
