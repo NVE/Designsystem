@@ -7,15 +7,15 @@ import { PropertyValues } from 'lit';
  * Brukes til å vise viktige beskjeder enten på en side eller som en enkel popup.
  *
  * Hvis du trenger å vise en statisk varsling med mer informasjon, kan det hende at
- * nve-message-card er et bedre valg. 
- * 
+ * nve-message-card er et bedre valg. skriver noe ekstra her
+ *
  */
 @customElement('nve-alert')
 export default class NveAlert extends SlAlert {
   constructor() {
     super();
   }
-  
+
   /** Tykk tekst, vises helt til venstre */
   @property({ reflect: true }) title: string = '';
   /** Tynnere beskrivelse tekst  */
