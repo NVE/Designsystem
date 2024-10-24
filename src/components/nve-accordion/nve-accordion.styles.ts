@@ -32,6 +32,7 @@ export default css`
   .details__summary-icon {
     /* Overstyrer shoelace sin animasjon. */
     rotate: 90deg;
+    border-radius: var(--border-radius-small);
   }
   .details--open .details__summary-icon {
     rotate: 270deg;
