@@ -170,6 +170,31 @@ Man kan sette en tykk linje til venstre av komponenten ved å angi `leftstroke`.
 
 </CodeExamplePreview>
 
+### Kompakt visning
+
+Viser accordion uten padding til venstre og høyre, og med en border under. Sett `compact` for å vise denne
+
+<CodeExamplePreview>
+
+```html
+<div>
+  <nve-accordion summary="Kompakt visning" compact>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </nve-accordion>
+  <nve-accordion summary="Kompakt visning" compact>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </nve-accordion>
+  <nve-accordion summary="Kompakt visning" compact>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </nve-accordion>
+</div>
+```
+
+</CodeExamplePreview>
+
 ### Høyrejustering chevron
 
 Shoelace har chevron (dropdown-ikonet) til høyre, men vi har det til venstre. Dersom du ønsker å ha det til høyre, så kan du angi det med `rightalignedchevron`

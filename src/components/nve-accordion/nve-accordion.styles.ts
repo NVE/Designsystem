@@ -43,7 +43,7 @@ export default css`
     --_text-color: var(--neutrals-foreground-primary);
     --_hover-bg-color: var(--neutrals-background-secondary);
     --_hover-text-color: var(--neutrals-foreground-primary);
-    --_border-color: var(--neutrals-foreground-primary);
+    --_border-color: var(--neutrals-border-default);
     --_left_border-color: var(--brand-primary);
   }
 
@@ -52,7 +52,7 @@ export default css`
     --_text-color: var(--neutrals-foreground-primary);
     --_hover-bg-color: var(--feedback-background-default-neutral);
     --_hover-text-color: var(--neutrals-foreground-primary);
-    --_border-color: var(--neutrals-foreground-primary);
+    --_border-color: var(--neutrals-border-default);
     --_left_border-color: var(--brand-primary);
   }
 
@@ -103,5 +103,11 @@ export default css`
   :host([rightalignedchevron]) .details__summary {
     order: 0;
     margin-inline-start: 0;
+  }
+
+  :host([compact]) .details {
+    padding-inline: 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--_border-color, var(--_text-color));
   }
 `;

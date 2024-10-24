@@ -19,6 +19,8 @@ export default class NveAccordion extends SlDetails implements INveComponent {
   @property({ type: Boolean, reflect: false }) rightalignedchevron: boolean = false;
   /** border rundt hele komponenten */
   @property({ type: Boolean, reflect: false }) border: boolean = false;
+  /** kompakt visning uten sidepadding og border under */
+  @property({ type: Boolean, reflect: false }) compact: boolean = false;
 
   static styles = [SlDetails.styles, styles];
 
