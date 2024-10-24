@@ -94,3 +94,138 @@ Accordion er designet for å fungere uavhengig, men du kan simulere en gruppe de
 ```
 
 </CodeExamplePreview>
+
+### Varianter
+
+Vi har mye av de samme variantene her som i andre steder av løsningen. `none` er standard, og har ingen bakgrunn. `neutral` har her hvit bakgrunn.
+
+<CodeExamplePreview>
+
+```html
+<nve-accordion summary="none" open> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </nve-accordion>
+<nve-accordion summary="neutral" open variant="neutral">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+<nve-accordion summary="secondary" open variant="secondary">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+<nve-accordion summary="info" open variant="info">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+<nve-accordion summary="success" open variant="success">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+<nve-accordion summary="warning" open variant="warning">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+<nve-accordion summary="error" open variant="error">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+```
+
+</CodeExamplePreview>
+
+### Ramme
+
+Som standard har accordion ikke ramme rundt, men du kan sette det ved å sette `border` på komponenten
+
+<CodeExamplePreview>
+
+```html
+<nve-accordion summary="none" open border> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </nve-accordion>
+<nve-accordion summary="neutral" open variant="neutral" border>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+<nve-accordion summary="secondary" open variant="secondary" border>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+<nve-accordion summary="info" open variant="info" border>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+<nve-accordion summary="success" open variant="success" border>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+<nve-accordion summary="warning" open variant="warning" border>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+<nve-accordion summary="error" open variant="error" border>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+```
+
+</CodeExamplePreview>
+
+### Tykk linje til venstre
+
+Man kan sette en tykk linje til venstre av komponenten ved å angi `leftstroke`. Denne er i samme farge som `border` er med unntak for `none` og `neutral`-variantene som har den i `brand-primary`
+
+<CodeExamplePreview>
+
+```html
+<nve-accordion summary="Ramme på venstre side" leftstroke>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</nve-accordion>
+```
+
+</CodeExamplePreview>
+
+### Kompakt visning
+
+Viser accordion uten padding til venstre og høyre, og med en border under. Sett `compact` for å vise denne
+
+<CodeExamplePreview>
+
+```html
+<div>
+  <nve-accordion summary="Kompakt visning" compact>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </nve-accordion>
+  <nve-accordion summary="Kompakt visning" compact>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </nve-accordion>
+  <nve-accordion summary="Kompakt visning" compact>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </nve-accordion>
+</div>
+```
+
+</CodeExamplePreview>
+
+### Høyrejustering chevron
+
+Shoelace har chevron (dropdown-ikonet) til høyre, men vi har det til venstre. Dersom du ønsker å ha det til høyre, så kan du angi det med `rightalignedchevron`
+
+<CodeExamplePreview>
+
+```html
+<nve-accordion summary="Ikon til høyre" rightalignedchevron>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</nve-accordion>
+```
+
+</CodeExamplePreview>
+
+### Tilpassing av tittel-sporet
+
+Man kan bruke `summary` for å sette tittel, men kan også angi det som et eget spor dersom det er nødvendig
+
+<CodeExamplePreview>
+
+```html
+<nve-accordion>
+  <div slot="summary" class="customheader" style="display: flex; gap: var(--spacing-small); align-items: center;">
+    <div>Her er litt tekst</div>
+    <div style="color: var(--brand-primary); font-size: 0.8em; font-weight: 400;">Annen tekst</div>
+    <nve-icon name="home"></nve-icon>
+  </div>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</nve-accordion>
+```
+
+</CodeExamplePreview>
