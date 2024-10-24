@@ -112,13 +112,16 @@ Som standard har accordion ikke ramme rundt, men du kan sette det ved å sette `
 
 ### Varianter
 
-Vi har mye av de samme variantene her som i andre steder av løsningen. `none` er standard. Vi har også saturation som kan brukes for å gjøre bakgrunnen sterkere.
+Vi har mye av de samme variantene her som i andre steder av løsningen. `none` er standard, og har ingen bakgrunn.
 
-<CodeExamplePreview container-grid-template-columns="1fr 1fr 1fr;" container-items-align="start" container-justify-items="stretch">
+<CodeExamplePreview>
 
 ```html
 <nve-accordion summary="none" open> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </nve-accordion>
 <nve-accordion summary="neutral" open variant="neutral" saturation="subtle">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion>
+<nve-accordion summary="secondary" open variant="secondary" saturation="subtle">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 </nve-accordion>
 <nve-accordion summary="info" open variant="info" saturation="subtle">

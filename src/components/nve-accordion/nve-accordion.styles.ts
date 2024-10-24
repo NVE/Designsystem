@@ -38,7 +38,7 @@ export default css`
   }
 
   :host([variant='none']) {
-    --_bg-color: var(--neutrals-background-primary);
+    --_bg-color: transparent;
     --_text-color: var(--neutrals-foreground-primary);
     --_hover-bg-color: var(--neutrals-background-secondary);
     --_hover-text-color: var(--neutrals-foreground-primary);
@@ -47,6 +47,15 @@ export default css`
   }
 
   :host([variant='neutral']) {
+    --_bg-color: var(--neutrals-background-primary);
+    --_text-color: var(--neutrals-foreground-primary);
+    --_hover-bg-color: var(--feedback-background-default-neutral);
+    --_hover-text-color: var(--neutrals-foreground-primary);
+    --_border-color: var(--neutrals-foreground-primary);
+    --_left_border-color: var(--brand-primary);
+  }
+
+  :host([variant='secondary']) {
     --_bg-color: var(--feedback-background-subtle-neutral);
     --_text-color: var(--feedback-foreground-subtle-neutral);
     --_hover-bg-color: var(--feedback-background-default-neutral);
