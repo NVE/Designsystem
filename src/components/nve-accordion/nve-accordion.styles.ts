@@ -61,7 +61,7 @@ export default css`
     --_text-color: var(--feedback-foreground-subtle-neutral);
     --_hover-bg-color: var(--feedback-background-default-neutral);
     --_hover-text-color: var(--feedback-foreground-default-neutral);
-    --_border-color: var(--neutrals-background-primary);
+    --_border-color: var(--feedback-background-emphasized-neutral);
   }
   :host([variant='success']) {
     --_bg-color: var(--feedback-background-subtle-success);
