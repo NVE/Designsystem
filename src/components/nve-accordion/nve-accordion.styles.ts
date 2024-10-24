@@ -60,35 +60,35 @@ export default css`
     --_text-color: var(--feedback-foreground-subtle-neutral);
     --_hover-bg-color: var(--feedback-background-default-neutral);
     --_hover-text-color: var(--feedback-foreground-default-neutral);
-    --_border-color: var(--neutrals-foreground-primary);
+    --_border-color: var(--neutrals-background-primary);
   }
   :host([variant='success']) {
     --_bg-color: var(--feedback-background-subtle-success);
     --_text-color: var(--feedback-foreground-subtle-success);
     --_hover-bg-color: var(--feedback-background-default-success);
     --_hover-text-color: var(--feedback-foreground-default-success);
-    --_border-color: var(--neutrals-foreground-emphasized-success);
+    --_border-color: var(--feedback-background-emphasized-success);
   }
   :host([variant='info']) {
     --_bg-color: var(--feedback-background-subtle-info);
     --_text-color: var(--feedback-foreground-subtle-info);
     --_hover-bg-color: var(--feedback-background-default-info);
     --_hover-text-color: var(--feedback-foreground-default-info);
-    --_border-color: var(--neutrals-foreground-emphasized-info);
+    --_border-color: var(--feedback-background-emphasized-info);
   }
   :host([variant='warning']) {
     --_bg-color: var(--feedback-background-subtle-warning);
     --_text-color: var(--feedback-foreground-subtle-warning);
     --_hover-bg-color: var(--feedback-background-default-warning);
     --_hover-text-color: var(--feedback-foreground-default-warning);
-    --_border-color: var(--neutrals-foreground-emphasized-warning);
+    --_border-color: var(--feedback-background-emphasized-warning);
   }
   :host([variant='error']) {
     --_bg-color: var(--feedback-background-subtle-error);
     --_text-color: var(--feedback-foreground-subtle-error);
     --_hover-bg-color: var(--feedback-background-default-error);
     --_hover-text-color: var(--feedback-foreground-default-error);
-    --_border-color: var(--neutrals-foreground-emphasized-error);
+    --_border-color: var(--feedback-background-emphasized-error);
   }
 
   :host([border]) .details {
