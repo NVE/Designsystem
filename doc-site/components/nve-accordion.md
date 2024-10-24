@@ -118,22 +118,22 @@ Vi har mye av de samme variantene her som i andre steder av løsningen. `none` e
 
 ```html
 <nve-accordion summary="none" open> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </nve-accordion>
-<nve-accordion summary="neutral" open variant="neutral" saturation="subtle">
+<nve-accordion summary="neutral" open variant="neutral">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 </nve-accordion>
-<nve-accordion summary="secondary" open variant="secondary" saturation="subtle">
+<nve-accordion summary="secondary" open variant="secondary">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 </nve-accordion>
-<nve-accordion summary="info" open variant="info" saturation="subtle">
+<nve-accordion summary="info" open variant="info">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 </nve-accordion>
-<nve-accordion summary="success" open variant="success" saturation="subtle">
+<nve-accordion summary="success" open variant="success">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 </nve-accordion>
-<nve-accordion summary="warning" open variant="warning" saturation="subtle">
+<nve-accordion summary="warning" open variant="warning">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 </nve-accordion>
-<nve-accordion summary="error" open variant="error" saturation="subtle">
+<nve-accordion summary="error" open variant="error">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 </nve-accordion>
 ```
@@ -163,6 +163,26 @@ Shoelace har chevron (dropdown-ikonet) til høyre, men vi har det til venstre. D
 
 ```html
 <nve-accordion summary="Ikon til høyre" rightalignedchevron>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</nve-accordion>
+```
+
+</CodeExamplePreview>
+
+### Tilpassing av tittel-sporet
+
+Man kan bruke `summary` for å sette tittel, men kan også angi det som et eget spor dersom det er nødvendig
+
+<CodeExamplePreview>
+
+```html
+<nve-accordion>
+  <div slot="summary" class="customheader" style="display: flex; gap: var(--spacing-small); align-items: center;">
+    <div>Her er litt tekst</div>
+    <div style="color: var(--brand-primary); font-size: 0.8em; font-weight: 400;">Annen tekst</div>
+    <nve-icon name="home"></nve-icon>
+  </div>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
   aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 </nve-accordion>
