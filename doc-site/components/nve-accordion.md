@@ -195,21 +195,6 @@ Viser accordion uten padding til venstre og høyre, og med en border under. Sett
 
 </CodeExamplePreview>
 
-### Høyrejustering chevron
-
-Shoelace har chevron (dropdown-ikonet) til høyre, men vi har det til venstre. Dersom du ønsker å ha det til høyre, så kan du angi det med `rightalignedchevron`
-
-<CodeExamplePreview>
-
-```html
-<nve-accordion summary="Ikon til høyre" rightalignedchevron>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-</nve-accordion>
-```
-
-</CodeExamplePreview>
-
 ### Tilpassing av tittel-sporet
 
 Man kan bruke `summary` for å sette tittel, men kan også angi det som et eget spor dersom det er nødvendig
