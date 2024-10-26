@@ -101,7 +101,7 @@ export default css`
     padding-inline: var(--spacing-large);
   }
 
-  :host([leftstroke]) .details {
+  :host([leftStroke]) .details {
     border-left: 5px solid var(--_left_border-color, var(--_border-color, var(--_text-color)));
     padding-inline: var(--spacing-medium);
   }
