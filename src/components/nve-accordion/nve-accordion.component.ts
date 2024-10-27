@@ -14,7 +14,6 @@ export default class NveAccordion extends LitElement implements INveComponent {
 
   //  lukker evt. andre åpne nve-details når en nve-details åpnes
   private handleShow = (event: Event) => {
-    console.log('nve-accordion handleShow');
     if ((event.target as Element)?.localName === 'nve-details') {
       // finn alle under-elementer av typen nve-details
       [...this.querySelectorAll('nve-details')].map((detailsComponent) => {
@@ -26,11 +25,9 @@ export default class NveAccordion extends LitElement implements INveComponent {
 
   constructor() {
     super();
-    console.log('nve-accordion constructor');
   }
 
   async firstUpdated() {
-    console.log('nve-accordion firstUpdated');
     await new Promise((r) => setTimeout(r, 0)); // Gi nettleser en sjanse til å tegne komponenten først
     this.addEventListener('sl-show', (event) => this.handleShow(event)); // få beskjed når et nve-detail åpnes
   }
