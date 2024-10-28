@@ -46,6 +46,9 @@ export default css`
     --_hover-text-color: var(--neutrals-foreground-primary);
     --_border-color: var(--neutrals-border-default);
     --_left_border-color: var(--brand-primary);
+    .details {
+      padding-inline: 0;
+    }
   }
 
   :host([variant='neutral']) {
@@ -95,10 +98,12 @@ export default css`
 
   :host([border]) .details {
     border: 1px solid var(--_border-color, var(--_text-color));
+    padding-inline: var(--spacing-large);
   }
 
   :host([leftstroke]) .details {
     border-left: 5px solid var(--_left_border-color, var(--_border-color, var(--_text-color)));
+    padding-inline: var(--spacing-medium);
   }
 
   :host([compact]) .details {

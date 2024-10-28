@@ -97,7 +97,7 @@ Accordion er designet for å fungere uavhengig, men du kan simulere en gruppe de
 
 ### Varianter
 
-Vi har mye av de samme variantene her som i andre steder av løsningen. `none` er standard, og har ingen bakgrunn. `neutral` har her hvit bakgrunn.
+Vi har mye av de samme variantene her som i andre steder av løsningen. `none` er standard, og har ingen bakgrunn eller padding på sidene. `neutral` har her hvit bakgrunn.
 
 <CodeExamplePreview>
 
