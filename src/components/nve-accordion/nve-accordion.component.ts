@@ -15,8 +15,6 @@ export default class NveAccordion extends SlDetails implements INveComponent {
   /** Variant. Setter farge på bakgrunn og tekst */
   @property({ type: String, reflect: true }) variant: 'none' | 'neutral' | 'info' | 'success' | 'warning' | 'error' =
     'none';
-  /** Dropdown-ikon vises til høyre, ikke venstre */
-  @property({ type: Boolean, reflect: false }) rightalignedchevron: boolean = false;
   /** border rundt hele komponenten */
   @property({ type: Boolean, reflect: false }) border: boolean = false;
   /** kompakt visning uten sidepadding og border under */
