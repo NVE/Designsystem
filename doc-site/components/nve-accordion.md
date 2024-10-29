@@ -6,13 +6,13 @@ layout: component
 
 ```html
 <nve-accordion>
-  <nve-details summary="Sammendrag 1" open> Mer detaljer om 1. </nve-details>
-  <nve-details summary="Sammendrag 2"> Mer detaljer om 2. </nve-details>
-  <nve-details summary="Sammendrag 3"> Mer detaljer om 3. </nve-details>
+  <nve-accordion-item summary="Sammendrag 1" open> Mer detaljer om 1. </nve-accordion-item>
+  <nve-accordion-item summary="Sammendrag 2"> Mer detaljer om 2. </nve-accordion-item>
+  <nve-accordion-item summary="Sammendrag 3"> Mer detaljer om 3. </nve-accordion-item>
 </nve-accordion>
 ```
 
 </CodeExamplePreview>
 <br/>
 
-Gå til [nve-details](/components/nve-details) for mer info om denne komponenten.
+Gå til [nve-accordion-item](/components/nve-accordion-item) for mer info om denne komponenten.

@@ -14,6 +14,13 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Under arbeid'
   },
   {
+   name: 'nve-accordion-item',
+    nodeId: '2341-77166',
+    description: undefined,
+    statusDesign: 'Under arbeid',
+    statusCode: 'Under arbeid'
+  },
+  {
     name: 'nve-alert',
     nodeId: '4229-7',
     description: undefined,
@@ -75,13 +82,6 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     description: undefined,
     statusDesign: 'Ferdig',
     statusCode: 'Ferdig'
-  },
-  {
-   name: 'nve-details',
-    nodeId: '2341-77166',
-    description: undefined,
-    statusDesign: 'Under arbeid',
-    statusCode: 'Under arbeid'
   },
   {
     name: 'nve-image-carousel',

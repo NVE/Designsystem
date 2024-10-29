@@ -5,10 +5,10 @@ layout: component
 <CodeExamplePreview>
 
 ```html
-<nve-details summary="Vis mer tekst">
+<nve-accordion-item summary="Vis mer tekst">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
   aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-</nve-details>
+</nve-accordion-item>
 ```
 
 </CodeExamplePreview>
@@ -17,7 +17,7 @@ layout: component
 
 ### Accordion
 
-Bruk [nve-accordion](/components/nve-accordion) hvis du vil ha flere `nve-detail` under hverandre, men kun tillate at _en_ `nve-detail` er åpen om gangen.
+Bruk [nve-accordion](/components/nve-accordion) hvis du vil ha flere `nve-accordion-item` under hverandre, men kun tillate at _en_ `nve-accordion-item` er åpen om gangen.
 
 ### Varianter
 
@@ -26,23 +26,25 @@ Vi har mye av de samme variantene her som i andre steder av løsningen. `none` e
 <CodeExamplePreview>
 
 ```html
-<nve-details summary="none" open> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </nve-details>
-<nve-details summary="neutral" open variant="neutral">
+<nve-accordion-item summary="none" open> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </nve-accordion-item>
+<nve-accordion-item summary="neutral" open variant="neutral">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</nve-details>
-<nve-details summary="secondary" open variant="secondary">
+</nve-accordion-item>
+<nve-accordion-item summary="secondary" open variant="secondary">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</nve-details>
-<nve-details summary="info" open variant="info"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </nve-details>
-<nve-details summary="success" open variant="success">
+</nve-accordion-item>
+<nve-accordion-item summary="info" open variant="info">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</nve-details>
-<nve-details summary="warning" open variant="warning">
+</nve-accordion-item>
+<nve-accordion-item summary="success" open variant="success">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</nve-details>
-<nve-details summary="error" open variant="error">
+</nve-accordion-item>
+<nve-accordion-item summary="warning" open variant="warning">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</nve-details>
+</nve-accordion-item>
+<nve-accordion-item summary="error" open variant="error">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion-item>
 ```
 
 </CodeExamplePreview>
@@ -54,25 +56,27 @@ Som standard har accordion ikke ramme rundt, men du kan sette det ved å sette `
 <CodeExamplePreview>
 
 ```html
-<nve-details summary="none" open border> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </nve-details>
-<nve-details summary="neutral" open variant="neutral" border>
+<nve-accordion-item summary="none" open border>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</nve-details>
-<nve-details summary="secondary" open variant="secondary" border>
+</nve-accordion-item>
+<nve-accordion-item summary="neutral" open variant="neutral" border>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</nve-details>
-<nve-details summary="info" open variant="info" border>
+</nve-accordion-item>
+<nve-accordion-item summary="secondary" open variant="secondary" border>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</nve-details>
-<nve-details summary="success" open variant="success" border>
+</nve-accordion-item>
+<nve-accordion-item summary="info" open variant="info" border>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</nve-details>
-<nve-details summary="warning" open variant="warning" border>
+</nve-accordion-item>
+<nve-accordion-item summary="success" open variant="success" border>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</nve-details>
-<nve-details summary="error" open variant="error" border>
+</nve-accordion-item>
+<nve-accordion-item summary="warning" open variant="warning" border>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</nve-details>
+</nve-accordion-item>
+<nve-accordion-item summary="error" open variant="error" border>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</nve-accordion-item>
 ```
 
 </CodeExamplePreview>
@@ -84,10 +88,10 @@ Bruk `leftStroke` for å sette en tykk strek til venstre for komponenten. Denne 
 <CodeExamplePreview>
 
 ```html
-<nve-details summary="Ramme på venstre side" leftStroke>
+<nve-accordion-item summary="Ramme på venstre side" leftStroke>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
   aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-</nve-details>
+</nve-accordion-item>
 ```
 
 </CodeExamplePreview>
@@ -100,18 +104,18 @@ Viser accordion uten padding til venstre og høyre, og med en border under. Sett
 
 ```html
 <div>
-  <nve-details summary="Kompakt visning" compact>
+  <nve-accordion-item summary="Kompakt visning" compact>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </nve-details>
-  <nve-details summary="Kompakt visning" compact>
+  </nve-accordion-item>
+  <nve-accordion-item summary="Kompakt visning" compact>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </nve-details>
-  <nve-details summary="Kompakt visning" compact>
+  </nve-accordion-item>
+  <nve-accordion-item summary="Kompakt visning" compact>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </nve-details>
+  </nve-accordion-item>
 </div>
 ```
 
@@ -124,7 +128,7 @@ Man kan bruke `summary` for å sette tittel, men kan også angi det som et eget 
 <CodeExamplePreview>
 
 ```html
-<nve-details>
+<nve-accordion-item>
   <div slot="summary" class="customheader" style="display: flex; gap: var(--spacing-small); align-items: center;">
     <div>Her er litt tekst</div>
     <div style="color: var(--brand-primary); font-size: 0.8em; font-weight: 400;">Annen tekst</div>
@@ -132,7 +136,7 @@ Man kan bruke `summary` for å sette tittel, men kan også angi det som et eget 
   </div>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
   aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-</nve-details>
+</nve-accordion-item>
 ```
 
 </CodeExamplePreview>
@@ -144,10 +148,10 @@ Bruk disabled for å deaktivere komponenten.
 <CodeExamplePreview>
 
 ```html
-<nve-details summary="Disabled" disabled>
+<nve-accordion-item summary="Disabled" disabled>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
   aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-</nve-details>
+</nve-accordion-item>
 ```
 
 </CodeExamplePreview>
@@ -158,16 +162,16 @@ Bruk summary-ikon og collapse-ikon for å endre henholdsvis ikonene for å åpne
 <CodeExamplePreview>
 
 ```html
-<nve-details summary="Toggle Me" class="custom-icons">
+<nve-accordion-item summary="Toggle Me" class="custom-icons">
   <nve-icon name="add" slot="expand-icon"></nve-icon>
   <nve-icon name="remove" slot="collapse-icon"></nve-icon>
 
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
   aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-</nve-details>
+</nve-accordion-item>
 
 <style>
-  nve-details.custom-icons::part(summary-icon) {
+  nve-accordion-item.custom-icons::part(summary-icon) {
     rotate: none;
   }
 </style>

@@ -1,13 +1,14 @@
 import { customElement, property } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
-import styles from './nve-details.styles';
+import styles from './nve-accordion-item.styles';
 import { SlDetails } from '@shoelace-style/shoelace';
 
 /**
- * Viser et kort sammendrag og utvides for å vise ekstra innhold.
+ * Viser et kort sammendrag og utvides for å vise ekstra innhold. 
+ * Kan brukes som en selvstendig komponent eller som en del av nve-accordion.
  */
-@customElement('nve-details')
-export default class NveDetails extends SlDetails implements INveComponent {
+@customElement('nve-accordion-item')
+export default class NveAccordionItem extends SlDetails implements INveComponent {
   @property({ reflect: true, type: String }) testId: string | undefined = undefined;
 
   /** tykk strek på venstre side  */
@@ -32,6 +33,6 @@ export default class NveDetails extends SlDetails implements INveComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'nve-details': NveDetails;
+    'nve-accordion-item': NveAccordionItem;
   }
 }
