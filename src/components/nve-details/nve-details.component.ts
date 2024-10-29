@@ -11,7 +11,7 @@ export default class NveDetails extends SlDetails implements INveComponent {
   @property({ reflect: true, type: String }) testId: string | undefined = undefined;
 
   /** tykk strek på venstre side  */
-  @property({ type: Boolean, reflect: true }) leftstroke: boolean = false;
+  @property({ type: Boolean, reflect: true }) leftStroke: boolean = false;
 
   /** Setter farge på bakgrunn og tekst */
   @property({ type: String, reflect: true }) variant: 'none' | 'neutral' | 'info' | 'success' | 'warning' | 'error' =

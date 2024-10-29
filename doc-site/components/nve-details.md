@@ -79,12 +79,12 @@ Som standard har accordion ikke ramme rundt, men du kan sette det ved å sette `
 
 ### Tykk linje til venstre
 
-Man kan sette en tykk linje til venstre av komponenten ved å angi `leftstroke`. Denne er i samme farge som `border` er med unntak for `none` og `neutral`-variantene som har den i `brand-primary`
+Bruk `leftStroke` for å sette en tykk strek til venstre for komponenten. Denne er i samme farge som `border`, med unntak av `none` og `neutral`-variantene, som har fargen `brand-primary`
 
 <CodeExamplePreview>
 
 ```html
-<nve-details summary="Ramme på venstre side" leftstroke>
+<nve-details summary="Ramme på venstre side" leftStroke>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
   aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 </nve-details>
