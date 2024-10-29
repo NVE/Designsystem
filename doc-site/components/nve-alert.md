@@ -53,12 +53,12 @@ Bruk `variant` for å styre farger. `primary` er standard og trenger ikke spesif
 
 ### Left stroke
 
-Bruk `leftstroke` for å vise en fet strek på venstre side.
+Bruk `leftStroke` for å vise en fet strek på venstre side.
 
 <CodeExamplePreview arrangeComponentsVertically>
 
 ```html
-<nve-alert variant="danger" text="Left stroke" leftstroke open> </nve-alert>
+<nve-alert variant="danger" text="Left stroke" leftStroke open> </nve-alert>
 ```
 
 </CodeExamplePreview>
