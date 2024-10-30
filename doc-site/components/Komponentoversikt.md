@@ -10,14 +10,14 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
    name: 'nve-accordion',
     nodeId: '2341-77166',
     description: undefined,
-    statusDesign: 'Under arbeid',
+    statusDesign: 'Ferdig',
     statusCode: 'Under arbeid'
   },
   {
    name: 'nve-accordion-item',
     nodeId: '2341-77166',
     description: undefined,
-    statusDesign: 'Under arbeid',
+    statusDesign: 'Ferdig',
     statusCode: 'Under arbeid'
   },
   {
