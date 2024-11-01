@@ -4,7 +4,7 @@ import styles from './nve-accordion-item.styles';
 import { SlDetails } from '@shoelace-style/shoelace';
 
 /**
- * Viser et kort sammendrag og utvides for å vise ekstra innhold. 
+ * Viser et kort sammendrag og utvides for å vise ekstra innhold.
  * Kan brukes som en selvstendig komponent eller som en del av nve-accordion.
  */
 @customElement('nve-accordion-item')
@@ -19,10 +19,10 @@ export default class NveAccordionItem extends SlDetails implements INveComponent
     'none';
 
   /** Vis en ramme rundt hele komponenten */
-  @property({ type: Boolean, reflect: false }) border: boolean = false;
+  @property({ type: Boolean, reflect: true }) border: boolean = false;
 
   /** Kompakt visning uten luft på sidene. En strek vil vises under for å skille komponenter fra hverandre */
-  @property({ type: Boolean, reflect: false }) compact: boolean = false;
+  @property({ type: Boolean, reflect: true }) compact: boolean = false;
 
   static styles = [SlDetails.styles, styles];
 
