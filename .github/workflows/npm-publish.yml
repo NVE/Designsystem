@@ -60,6 +60,51 @@
 #         env:
 #           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
 
+# name: Build and Release for Test
+
+# on:
+#   push:
+#     branches:
+#       - test-release
+#     paths:
+#       - 'src/**'
+#       - 'build/**'
+#       - 'public/css/**'
+#   workflow_dispatch:
+
+# jobs:
+#   build_and_release:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
+
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: '20.x'
+#           registry-url: 'https://registry.npmjs.org'
+
+#       - name: Install dependencies
+#         run: npm install
+
+#       - name: Build
+#         run: npm run build
+
+#       - name: Semantic Release
+#         run: npx semantic-release
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           NPM_TOKEN: ${{ secrets.NPM_PUBLISH }}
+
+#       - name: Configure Git for npm version
+#         run: |
+#           git config --global user.email "jobl@nve.no"
+#           git config --global user.name "Designsystem"
+
+#       - name: Push tags and changes
+#         run: git push --follow-tags
+
 name: Build and Release for Test
 
 on:
@@ -96,11 +141,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_PUBLISH }}
-
-      - name: Configure Git for npm version
-        run: |
-          git config --global user.email "jobl@nve.no"
-          git config --global user.name "Designsystem"
-
-      - name: Push tags and changes
-        run: git push --follow-tags

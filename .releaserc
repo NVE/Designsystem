@@ -2,14 +2,19 @@
   "branches": [
     "main",
     {
-      "name": "test-release",
-      "prerelease": true
+      "name": "test-release"
     }
   ],
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": false
+      }
+    ],
     {
       "path": "@semantic-release/github",
       "assets": [
