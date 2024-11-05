@@ -98,11 +98,9 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_PUBLISH }}
 
       - name: Configure Git for npm version
-        if: ${{ steps.semantic-release.outputs.new-release-published == 'true' }}
         run: |
           git config --global user.email "jobl@nve.no"
           git config --global user.name "Designsystem"
 
       - name: Push tags and changes
-        if: ${{ steps.semantic-release.outputs.new-release-published == 'true' }}
         run: git push --follow-tags
