@@ -11,6 +11,8 @@ import { PropertyValues } from 'lit';
  * 
  * nve-message-card er et bedre valg. skriver noe ekstra her
  *
+ * 
+ * 
  */
 @customElement('nve-alert')
 export default class NveAlert extends SlAlert {
