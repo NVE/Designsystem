@@ -1,3 +1,10 @@
+# [1.0.0-test-release.13](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.12...v1.0.0-test-release.13) (2024-11-05)
+
+
+### Features
+
+* feat test ([5bfe41d](https://github.com/NVE/Designsystem/commit/5bfe41d42bf8c2fc1cf9bb6059a3e4befd2c2f9a))
+
 # [1.0.0-test-release.12](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.11...v1.0.0-test-release.12) (2024-11-05)
 
 
