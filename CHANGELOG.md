@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/NVE/Designsystem/compare/v1.2.0...v2.0.0) (2024-11-05)
+
+
+### Features
+
+* testar npx c ([12891d2](https://github.com/NVE/Designsystem/commit/12891d2b0ba85a3fc11a3e9aaeb2406b7e677cee))
+
+
+### BREAKING CHANGES
+
+* alert
+
 # [1.2.0](https://github.com/NVE/Designsystem/compare/v1.1.0...v1.2.0) (2024-11-05)
 
 
