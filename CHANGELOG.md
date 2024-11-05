@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/NVE/Designsystem/compare/v1.0.0...v1.1.0) (2024-11-05)
+
+
+### Features
+
+* **components:** test conventonal commits ([98d839d](https://github.com/NVE/Designsystem/commit/98d839d50083dccafad77de3f478e5b556c451b7))
+
 # [1.0.0](https://github.com/NVE/Designsystem/compare/v0.2.13...v1.0.0) (2024-11-05)
 
 
