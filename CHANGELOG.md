@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/NVE/Designsystem/compare/v1.1.0...v1.2.0) (2024-11-05)
+
+
+### Features
+
+* beabeabeabeabeabeabeabea ([b0487d8](https://github.com/NVE/Designsystem/commit/b0487d89ade9d919ee39f0abe7a2e67bab79fe06))
+
 # [1.1.0](https://github.com/NVE/Designsystem/compare/v1.0.0...v1.1.0) (2024-11-05)
 
 
