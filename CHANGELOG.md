@@ -1,3 +1,16 @@
+# [1.0.0-test-release.11](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.10...v1.0.0-test-release.11) (2024-11-05)
+
+
+### Features
+
+* npx cz test ([5495e0f](https://github.com/NVE/Designsystem/commit/5495e0fd405a26a8e0d3fcc9d73d19b680a3546c)), closes [#123](https://github.com/NVE/Designsystem/issues/123)
+* testar ([b8611c4](https://github.com/NVE/Designsystem/commit/b8611c42a83b1e862cc6d0ae2afd5b3d77a94c2d))
+
+
+### BREAKING CHANGES
+
+* test
+
 # [1.0.0-test-release.10](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.9...v1.0.0-test-release.10) (2024-10-14)
 
 
