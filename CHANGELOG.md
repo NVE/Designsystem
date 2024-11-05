@@ -1,3 +1,10 @@
+# [1.0.0-test-release.12](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.11...v1.0.0-test-release.12) (2024-11-05)
+
+
+### Features
+
+* **test:** :art: commit vs source controll ([6664143](https://github.com/NVE/Designsystem/commit/666414373114f06302657e8bb5d92db4b326415a))
+
 # [1.0.0-test-release.11](https://github.com/NVE/Designsystem/compare/v1.0.0-test-release.10...v1.0.0-test-release.11) (2024-11-05)
 
 
