@@ -14,8 +14,10 @@ export { default as NveDropdown } from './components/nve-dropdown/nve-dropdown.c
 export { default as NveIcon } from './components/nve-icon/nve-icon.component';
 export { default as NveInput } from './components/nve-input/nve-input.component';
 export { default as NveLabel } from './components/nve-label/nve-label.component';
+export { default as NveLinkCard } from './components/nve-link-card/nve-link-card.component';
 export { default as NveMenu } from './components/nve-menu/nve-menu.component';
 export { default as NveMenuItem } from './components/nve-menu-item/nve-menu-item.component';
+export { default as NveMessageCard } from './components/nve-message-card/nve-message-card.component';
 export { default as NveOption } from './components/nve-option/nve-option.component';
 export { default as NvePopup } from './components/nve-popup/nve-popup.component';
 export { default as NveRadio } from './components/nve-radio/nve-radio.component';
@@ -31,4 +33,3 @@ export { default as NveSwitch } from './components/nve-switch/nve-switch.compone
 export { default as NveTag } from './components/nve-tag/nve-tag.component';
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
-  
