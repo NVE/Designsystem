@@ -33,8 +33,10 @@ export const fetchIssues = async (): Promise<Map<string, Issue[]>> => {
       });
       response.data.forEach((issue: any) => {
         issue.labels.forEach((label: any) => {
-          //sjekker om denne saken er merka med et komponentnavn
-          if (componentNames.value.includes(label.name)) {
+          // Sjekker om denne saken er merka med et komponentnavn. 
+          // Vi sjekker ikke mot komponentregisteret, 
+          // for vi vil også ha med navn på komponenter som ikke er laget ennå 
+          if (label.name?.startsWith('nve-')) {
             const issuesForThisComponent = issuesPerComponent.get(label.name) || [];
             issuesForThisComponent.push({
               title: issue.title,
