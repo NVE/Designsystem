@@ -48,7 +48,7 @@ export default css`
 
   .radio {
     display: flex;
-    font: var(--label-x-small-light);
+    font: var(--label-small-light);
     color: var(--neutrals-foreground-primary);
     background-color: var(--neutrals-background-primary);
     gap: var(--spacing-x-small, 0.5rem); /* sett gap */

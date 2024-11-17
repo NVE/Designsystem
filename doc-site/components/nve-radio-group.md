@@ -50,6 +50,30 @@ Bruk `orientation` for å velge retning. `vertical` er standard.
 
 </CodeExamplePreview>
 
+### Størrelse
+
+Bruk `size` for å sette størrelse. `medium` er standard.
+<CodeExamplePreview>
+
+```html
+<nve-radio-group size="small" label="Vennligst velg en av disse">
+  <nve-radio value="valg1">Valg 1</nve-radio>
+  <nve-radio value="valg2">Valg 2</nve-radio>
+</nve-radio-group>
+<br />
+<nve-radio-group label="Vennligst velg en av disse">
+  <nve-radio value="valg1">Valg 1</nve-radio>
+  <nve-radio value="valg2">Valg 2</nve-radio>
+</nve-radio-group>
+<br />
+<nve-radio-group size="large" label="Vennligst velg en av disse">
+  <nve-radio value="valg1">Valg 1</nve-radio>
+  <nve-radio value="valg2">Valg 2</nve-radio>
+</nve-radio-group>
+```
+
+</CodeExamplePreview>
+
 ### Valgt verdi
 
 `value` gir deg valgt radioknapp sin `value`. Klikk på elementet og sjekk konsollet for å se `value`.
@@ -81,7 +105,7 @@ Du kan også sette `value` selv.
 ### Deaktivering
 
 Bruk `disabled` for å deaktivere hele gruppa.
-TODO: Dette virker ikke, må fikses.
+TODO: Dette virker ikke, må fikses. Men du kan deaktivere enkelt-elementer i gruppa.
 
 <CodeExamplePreview>
 
