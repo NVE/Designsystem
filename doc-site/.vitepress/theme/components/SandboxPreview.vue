@@ -11,6 +11,7 @@
 <script setup lang="ts">
 import { computed, watch, ref } from 'vue';
 import { Theme, useCurrentTheme } from '../composables/useCurrentTheme';
+import { useNpmRegistry } from '../composables/useNpmRegistry';
 const sandboxId = ref('');
 const slot = ref<HTMLElement | null>(null);
 const filePath = '/src/App.vue';
@@ -41,6 +42,10 @@ const sandboxUrl = computed(() => {
   return `https://codesandbox.io/embed/${sandboxId.value}?module=${encodeURIComponent(filePath)}&view=split`;
 });
 
+const latestDesignsystemVersion = computed(() => {
+  return useNpmRegistry().getLatestDesignsystemVersion();
+});
+
 // Codesandbox vue prosjekt oppsette. Kjøres via vue cli. Klarte ikke å kjøre vite script setup malen i codesandbox.
 // TODO: Ikke hardkode versjonsnummer til nve-designsystem
 const sandboxDefinition = (content: string, theme: Theme) => ({
@@ -49,7 +54,7 @@ const sandboxDefinition = (content: string, theme: Theme) => ({
       content: {
         dependencies: {
           vue: '^3.2.0',
-          'nve-designsystem': '^0.1.85',
+          'nve-designsystem': `^${latestDesignsystemVersion.value}`,
           '@vue/cli-plugin-babel': '~4.5.0',
           '@vue/cli-service': '~4.5.0',
           '@vue/compiler-sfc': '^3.0.0-0',
