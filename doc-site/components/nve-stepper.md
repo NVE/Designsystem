@@ -73,6 +73,24 @@ Se Vue eksempel [her](#stepper-uten-standardknapper) hvordan du bruker metoderna
 
 </CodeExamplePreview>
 
+### Skjul tilstandstekst for alle trinn
+
+<CodeExamplePreview>
+
+```html
+<nve-stepper
+  hideStateText
+  steps='
+  [
+  {"title":"Steg 1","description":"","state":1,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 2","description":"","state":0,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 3","description":"","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+```
+
+</CodeExamplePreview>
+
 ### Mobil-versjon
 
 Stepperen vises automatisk i en egen mobil-versjon på små skjermer.
