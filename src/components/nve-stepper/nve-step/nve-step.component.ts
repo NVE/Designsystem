@@ -19,6 +19,8 @@ export interface StepProps {
   isSelected: boolean;
   readyForEntrance: boolean;
   orientation?: string;
+  hideStateText?: boolean;
+  
 }
 
 /** Komponent for et enkelt steg i en stepper */
@@ -64,6 +66,10 @@ export default class NveStep extends LitElement {
   /** Retningen stegene skal gå i: horisontal eller vertikal */
   @property()
   orientation: 'horizontal' | 'vertical' = 'horizontal';
+
+  /** Angir om stateText skal skjules */
+  @property({ type: Boolean })
+  hideStateText: boolean = false;
 
   /** Brukes for å justere høyden for den vertikale skilleveggen blir så høy som nær Step har en description. */
   @query('.step-description')
@@ -223,7 +229,7 @@ export default class NveStep extends LitElement {
         <div class="text-container-vertical">
           <div class="step-title step-title-vertical ${this.getTitleClass(this.state)}">${this.title}</div>
           <div class="step-state ${this.getStateColorClass(this.state)}">
-            ${this.getStateText(this.state)}
+            ${this.hideStateText ? '' : this.getStateText(this.state)}
           </div>
           <div>       
           ${this.renderDescription()}
@@ -246,7 +252,7 @@ export default class NveStep extends LitElement {
         <div class="${this.isLast ? "" : "text-container"}">
           <div class="step-title ${this.getTitleClass(this.state)}">${this.title}</div>
           <div class="step-state ${this.getStateColorClass(this.state)}">
-            ${this.getStateText(this.state)}
+          ${this.hideStateText ? '' : this.getStateText(this.state)}
           </div>       
           ${this.renderDescription()}
         </div>
