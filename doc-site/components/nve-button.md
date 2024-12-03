@@ -31,14 +31,14 @@ Bruk `variant` for å velge farge. `default` er standard.
 
 ### Størrelse
 
-Bruk `size` for å endre størrelse. `large` er standard.
+Bruk `size` for å endre størrelse. `medium` er standard.
 
 <CodeExamplePreview>
 
 ```html
 <nve-button size="small">small</nve-button>
-<nve-button size="medium">medium</nve-button>
-<nve-button>large</nve-button>
+<nve-button>medium</nve-button>
+<nve-button size="large">large</nve-button>
 ```
 
 </CodeExamplePreview>
