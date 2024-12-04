@@ -32,13 +32,13 @@ export default {
   name: 'fontWeights/number',
   type: 'value',
   transitive: true,
-  matcher: (token) => {
+  filter: (token) => {
     if (token.type === 'fontWeights') {
       return true;
     }
     return false;
   },
-  transformer: (token) => {
+  transform: (token) => {
     // check if value exists in matrix
     const fromMatrix = fontWeights[token.value.toLowerCase()];
     if (fromMatrix !== undefined) return fromMatrix;

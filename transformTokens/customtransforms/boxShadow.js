@@ -2,11 +2,11 @@ export default {
   name: 'boxshadow/css',
   type: 'value',
   transitive: true,
-  matcher: function (token) {
+  filter: function (token) {
     const match = token.type === 'boxShadow';
     return match;
   },
-  transformer: function (token) {
+  transform: function (token) {
     const vals = token.value;
     if (Array.isArray(vals)) {
       return vals.map((v) => transformSingleShadow(v)).join(', ');
