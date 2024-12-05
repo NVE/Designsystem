@@ -12,6 +12,10 @@ export default css`
     cursor: pointer;
   }
 
+  .link-card:hover .link-card__title {
+  text-decoration: underline;
+}
+
   .link-card--small {
     min-height: 40px;
     padding: var(--spacing-small, 12px) var(--spacing-medium, 16px);
@@ -33,6 +37,8 @@ export default css`
     font-weight: 400;
     line-height: 150%;
   }
+
+
 
   .link-card__title--small {
     font-size: 0.875rem;
