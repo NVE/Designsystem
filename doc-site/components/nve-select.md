@@ -80,17 +80,17 @@ Bruk `max-options-visible` for å begrense hvor mange valg du vil vise.
 
 ### Størrelse
 
-Bruk `size` for å velge størrelse. `small` er standard.
+Bruk `size` for å velge størrelse. `medium` er standard.
 
 <CodeExamplePreview>
 
 ```html
-<nve-select label="small">
+<nve-select label="small" size="small">
   <nve-option value="valg1">Hummer</nve-option>
   <nve-option value="valg2">Kanari</nve-option>
 </nve-select>
 
-<nve-select label="medium" size="medium">
+<nve-select label="medium">
   <nve-option value="valg1">Hummer</nve-option>
   <nve-option value="valg2">Kanari</nve-option>
 </nve-select>

@@ -115,10 +115,10 @@ export default css`
     font-size: var(--font-size-small);
   }
   .tag--medium {
-    height: var(--sizing-x-small);
+    height: var(--sizing-small);
   }
   .tag--small {
-    height: var(--sizing-2x-small);
+    height: var(--sizing-x-small);
   }
   .tag-close {
     border: none;

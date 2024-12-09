@@ -10,7 +10,7 @@ import '../nve-icon/nve-icon.component';
 import '../nve-label/nve-label.component';
 
 /**
- * Skal brukes til å lage lang tekstfelt. Min høyde er satt opp til --sizing-2x-small. De fleste attributer som brukes på vanlig textarea
+ * Brukes til å lage lange tekstfelter. Min høyde er satt opp til --sizing-x-small. De fleste attributer som brukes på vanlig textarea
  * burde bli støttet her. Hvis det er noe som mangler, bare å legge til.
  * Man kan bruke label og tooltip attributer for å vise label over textarea. Samt med helpText. Trenger ikke noe eksta slots per i dag. Trengs ikke å lage separate slots for det.
  * Siden vi skulle bruke ikoner inn i textarea var det enklere å lage vår egen komponent enn å leke med sl-textarea
@@ -35,7 +35,7 @@ import '../nve-label/nve-label.component';
  *
  */
 @customElement('nve-textarea')
-export default class NveTextarea extends LitElement implements INveComponent{
+export default class NveTextarea extends LitElement implements INveComponent {
   static styles = [styles];
 
   /** Navnet på tekstområdet, sendt som et navn/verdi-par med skjemadata */
@@ -88,11 +88,10 @@ export default class NveTextarea extends LitElement implements INveComponent{
   /** Indikerer om nettleserens autokorrekturfunksjon er på eller av. */
   @property() tooltip?: string;
 
-   /**
+  /**
    * Brukes for å kunne identifisere komponenten i tester
    */
-  @property({reflect: true, type: String}) testId:string = '';
-
+  @property({ reflect: true, type: String }) testId: string = '';
 
   /**
    * Forteller nettleseren hvilken type data som vil bli skrevet inn av brukeren, slik at den kan vise det passende virtuelle

@@ -19,11 +19,11 @@ export default css`
   .textarea__control {
     font: var(--body-small);
     box-sizing: border-box;
-    padding: var(--sizing-4x-small);
-    padding-right: var(--sizing-2x-small); /** trenger padding for å vise ikone så at teksten ikke dekker den */
+    padding: var(--sizing-3x-small);
+    padding-right: var(--sizing-x-small); /** trenger padding for å vise ikone så at teksten ikke dekker den */
     border-radius: var(--border-radius-small);
     border: var(--border-width-default, 1px) solid var(--neutrals-border-default);
-    min-height: var(--sizing-2x-small);
+    min-height: var(--sizing-x-small);
     transition: border var(--transition-time) ease-in-out;
     width: 100%;
     &:hover:not(:disabled) {

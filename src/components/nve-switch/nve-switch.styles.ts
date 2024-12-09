@@ -11,11 +11,11 @@ export default css`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: var(--sizing-2x-small);
+    height: var(--sizing-small);
     border-radius: 1rem;
     position: relative;
     --left: calc(0% + 4px);
-    width: var(--sizing-medium);
+    width: var(--sizing-x-large);
     --on-color: var(--neutrals-foreground-subtle);
     --off-color: var(--neutrals-background-secondary);
     --label-color: var(--neutrals-foreground-primary);
