@@ -92,4 +92,10 @@ export default css`
     margin-bottom: var(--spacing-x-small);
     font: var(--label-small);
   }
+
+  :host::part(expand-icon) {
+    height: var(--sizing-2x-small);
+    width: var(--sizing-2x-small);
+    font-size: var(--font-size-medium);
+  }
 `;
