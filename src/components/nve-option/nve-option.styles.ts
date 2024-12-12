@@ -3,6 +3,7 @@ import { css } from 'lit';
 export default css`
   :host {
     font: var(--body-small);
+    --sl-font-sans: var(--font-families-source-sans-pro);
     color: var(--neutrals-foreground-primary, #0d0d0e);
   }
   .option--hover:not(.option--current):not(.option--disabled) {
