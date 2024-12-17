@@ -39,6 +39,10 @@
     "5x-large": {
       "value": "{Dimension.22x}",
       "type": "spacing"
+    },
+    "none": {
+      "value": "0",
+      "type": "spacing"
     }
   },
   "Device": {

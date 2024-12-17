@@ -528,6 +528,212 @@
           "value": "{grey.950}",
           "type": "color"
         }
+      },
+      "Yellow": {
+        "Background": {
+          "value": "{yellow.150}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{lime.999}",
+          "type": "color"
+        }
+      },
+      "Grey": {
+        "Background": {
+          "value": "{grey.150}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{grey.850}",
+          "type": "color"
+        }
+      },
+      "Red": {
+        "Background": {
+          "value": "{red.100}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{red.999}",
+          "type": "color"
+        }
+      },
+      "Blue": {
+        "Background": {
+          "value": "{blue.150}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{blue.950}",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "Supplemental": {
+    "Subtle": {
+      "Teal": {
+        "Background": {
+          "value": "{teal.850}",
+          "type": "color"
+        },
+        "foreground": {
+          "value": "{teal.150}",
+          "type": "color"
+        }
+      },
+      "Purple": {
+        "Background": {
+          "value": "{purple.950}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{purple.150}",
+          "type": "color"
+        }
+      },
+      "Lime": {
+        "Background": {
+          "value": "{lime.850}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{lime.150}",
+          "type": "color"
+        }
+      },
+      "Magenta": {
+        "Background": {
+          "value": "{magenta.850}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{magenta.100}",
+          "type": "color"
+        }
+      },
+      "Yellow": {
+        "Background": {
+          "value": "{yellow.999}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{yellow.050}",
+          "type": "color"
+        }
+      },
+      "Grey": {
+        "Background": {
+          "value": "{grey.900}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{grey.000}",
+          "type": "color"
+        }
+      },
+      "Red": {
+        "Background": {
+          "value": "{red.950}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{red.100}",
+          "type": "color"
+        }
+      },
+      "Blue": {
+        "Background": {
+          "value": "{blue.950}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{blue.100}",
+          "type": "color"
+        }
+      }
+    },
+    "Emphasized": {
+      "Teal": {
+        "Background": {
+          "value": "{teal.400}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{teal.950}",
+          "type": "color"
+        }
+      },
+      "Purple": {
+        "Background": {
+          "value": "{purple.150}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{purple.950}",
+          "type": "color"
+        }
+      },
+      "Lime": {
+        "Background": {
+          "value": "{lime.300}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{lime.950}",
+          "type": "color"
+        }
+      },
+      "Magenta": {
+        "Background": {
+          "value": "{magenta.300}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{magenta.950}",
+          "type": "color"
+        }
+      },
+      "Yellow": {
+        "Background": {
+          "value": "{yellow.300}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{grey.999}",
+          "type": "color"
+        }
+      },
+      "Grey": {
+        "Background": {
+          "value": "{grey.400}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{grey.999}",
+          "type": "color"
+        }
+      },
+      "Red": {
+        "Background": {
+          "value": "{red.300}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{grey.999}",
+          "type": "color"
+        }
+      },
+      "Blue": {
+        "Background": {
+          "value": "{blue.300}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{grey.999}",
+          "type": "color"
+        }
       }
     }
   }

@@ -531,5 +531,171 @@
         }
       }
     }
+  },
+  "Supplemental": {
+    "Subtle": {
+      "Teal": {
+        "Background": {
+          "value": "{teal.150}",
+          "type": "color"
+        },
+        "foreground": {
+          "value": "{teal.900}",
+          "type": "color"
+        }
+      },
+      "Purple": {
+        "Background": {
+          "value": "{purple.200}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{purple.950}",
+          "type": "color"
+        }
+      },
+      "Lime": {
+        "Background": {
+          "value": "{lime.150}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{lime.850}",
+          "type": "color"
+        }
+      },
+      "Magenta": {
+        "Background": {
+          "value": "{magenta.150}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{magenta.850}",
+          "type": "color"
+        }
+      },
+      "Yellow": {
+        "Background": {
+          "value": "{yellow.150}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{lime.999}",
+          "type": "color"
+        }
+      },
+      "Grey": {
+        "Background": {
+          "value": "{grey.150}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{grey.850}",
+          "type": "color"
+        }
+      },
+      "Red": {
+        "Background": {
+          "value": "{red.100}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{red.999}",
+          "type": "color"
+        }
+      },
+      "Blue": {
+        "Background": {
+          "value": "{blue.150}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{blue.950}",
+          "type": "color"
+        }
+      }
+    },
+    "Emphasized": {
+      "Teal": {
+        "Background": {
+          "value": "{teal.500}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{teal.950}",
+          "type": "color"
+        }
+      },
+      "Purple": {
+        "Background": {
+          "value": "{purple.400}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{purple.950}",
+          "type": "color"
+        }
+      },
+      "Lime": {
+        "Background": {
+          "value": "{lime.500}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{lime.900}",
+          "type": "color"
+        }
+      },
+      "Magenta": {
+        "Background": {
+          "value": "{magenta.500}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{magenta.950}",
+          "type": "color"
+        }
+      },
+      "Yellow": {
+        "Background": {
+          "value": "{yellow.400}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{grey.999}",
+          "type": "color"
+        }
+      },
+      "Grey": {
+        "Background": {
+          "value": "{grey.400}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{grey.999}",
+          "type": "color"
+        }
+      },
+      "Red": {
+        "bACKGROUND": {
+          "value": "{red.300}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{grey.999}",
+          "type": "color"
+        }
+      },
+      "Blue": {
+        "Background": {
+          "value": "{blue.400}",
+          "type": "color"
+        },
+        "Foreground": {
+          "value": "{grey.999}",
+          "type": "color"
+        }
+      }
+    }
   }
 }

@@ -195,7 +195,7 @@
         "lineHeight": "{lineHeights.5}",
         "fontSize": "{fontSize.medium}",
         "letterSpacing": "{letterSpacing.0}",
-        "paragraphSpacing": "{paragraphSpacing.4}",
+        "paragraphSpacing": "{paragraphSpacing.2}",
         "paragraphIndent": "{paragraphIndent.0}",
         "textCase": "{textCase.none}",
         "textDecoration": "{textDecoration.none}"
@@ -209,7 +209,7 @@
         "lineHeight": "{lineHeights.5}",
         "fontSize": "{fontSize.medium}",
         "letterSpacing": "{letterSpacing.0}",
-        "paragraphSpacing": "{paragraphSpacing.4}",
+        "paragraphSpacing": "{paragraphSpacing.2}",
         "paragraphIndent": "{paragraphIndent.0}",
         "textCase": "{textCase.none}",
         "textDecoration": "{textDecoration.underline}"
@@ -223,7 +223,7 @@
         "lineHeight": "{lineHeights.5}",
         "fontSize": "{fontSize.small}",
         "letterSpacing": "{letterSpacing.0}",
-        "paragraphSpacing": "{paragraphSpacing.4}",
+        "paragraphSpacing": "{paragraphSpacing.2}",
         "paragraphIndent": "{paragraphIndent.0}",
         "textCase": "{textCase.none}",
         "textDecoration": "{textDecoration.none}"
@@ -237,7 +237,7 @@
         "lineHeight": "{lineHeights.5}",
         "fontSize": "{fontSize.small}",
         "letterSpacing": "{letterSpacing.0}",
-        "paragraphSpacing": "{paragraphSpacing.4}",
+        "paragraphSpacing": "{paragraphSpacing.2}",
         "paragraphIndent": "{paragraphIndent.0}",
         "textCase": "{textCase.none}",
         "textDecoration": "{textDecoration.underline}"
@@ -251,7 +251,7 @@
         "lineHeight": "{lineHeights.5}",
         "fontSize": "{fontSize.xsmall}",
         "letterSpacing": "{letterSpacing.0}",
-        "paragraphSpacing": "{paragraphSpacing.3}",
+        "paragraphSpacing": "{paragraphSpacing.2}",
         "paragraphIndent": "{paragraphIndent.0}",
         "textCase": "{textCase.none}",
         "textDecoration": "{textDecoration.none}"
@@ -265,7 +265,7 @@
         "lineHeight": "{lineHeights.5}",
         "fontSize": "{fontSize.xsmall}",
         "letterSpacing": "{letterSpacing.0}",
-        "paragraphSpacing": "{paragraphSpacing.3}",
+        "paragraphSpacing": "{paragraphSpacing.2}",
         "paragraphIndent": "{paragraphIndent.0}",
         "textCase": "{textCase.none}",
         "textDecoration": "{textDecoration.underline}"
@@ -279,7 +279,7 @@
         "lineHeight": "{lineHeights.5}",
         "fontSize": "{fontSize.2xsmall}",
         "letterSpacing": "{letterSpacing.0}",
-        "paragraphSpacing": "{paragraphSpacing.3}",
+        "paragraphSpacing": "{paragraphSpacing.2}",
         "paragraphIndent": "{paragraphIndent.0}",
         "textCase": "{textCase.none}",
         "textDecoration": "{textDecoration.none}"
@@ -293,7 +293,7 @@
         "lineHeight": "{lineHeights.5}",
         "fontSize": "{fontSize.2xsmall}",
         "letterSpacing": "{letterSpacing.0}",
-        "paragraphSpacing": "{paragraphSpacing.3}",
+        "paragraphSpacing": "{paragraphSpacing.2}",
         "paragraphIndent": "{paragraphIndent.0}",
         "textCase": "{textCase.none}",
         "textDecoration": "{textDecoration.underline}"
@@ -613,6 +613,10 @@
     "5x-large": {
       "value": "{Dimension.24x}",
       "type": "spacing"
+    },
+    "none": {
+      "value": "0",
+      "type": "spacing"
     }
   },
   "Device": {
@@ -713,6 +717,40 @@
       "value": "{Dimension.12x}",
       "type": "fontSizes",
       "description": "40 px"
+    }
+  },
+  "fixedSizing": {
+    "x-small": {
+      "value": "{Dimension.5x}",
+      "type": "sizing"
+    },
+    "small": {
+      "value": "{Dimension.6x}",
+      "type": "sizing"
+    },
+    "xx-small": {
+      "value": "{Dimension.4x}",
+      "type": "sizing"
+    },
+    "medium": {
+      "value": "{Dimension.8x}",
+      "type": "sizing"
+    },
+    "large": {
+      "value": "{Dimension.10x}",
+      "type": "sizing"
+    },
+    "x-large": {
+      "value": "{Dimension.12x}",
+      "type": "sizing"
+    },
+    "2x-large": {
+      "value": "{Dimension.14x}",
+      "type": "sizing"
+    },
+    "3x-large": {
+      "value": "{Dimension.16x}",
+      "type": "sizing"
     }
   }
 }
