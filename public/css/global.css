@@ -10,9 +10,9 @@
   --sl-focus-ring-offset: -1px;
   --sl-border-radius-medium: var(--border-radius-small);
   --sl-border-radius-small: var(--border-radius-small);
-  --sl-input-height-small: var(--sizing-small);
-  --sl-input-height-medium: var(--sizing-medium);
-  --sl-input-height-large: var(--sizing-large);
+  --sl-input-height-small: var(--fixed-sizing-medium);
+  --sl-input-height-medium: var(--fixed-sizing-large);
+  --sl-input-height-large: var(--fixed-sizing-x-large);
 
   --sl-input-background-color: var(--neutrals-background-primary, #fff);
   --sl-input-background-color-focus: var(--neutrals-background-primary, #fff);
