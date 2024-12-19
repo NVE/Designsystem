@@ -48,11 +48,11 @@
     },
     "Border": {
       "Default": {
-        "value": "{grey.500}",
+        "value": "{grey.300}",
         "type": "color"
       },
       "Mute": {
-        "value": "{grey.950}",
+        "value": "{grey.600}",
         "type": "color"
       },
       "Subtle": {

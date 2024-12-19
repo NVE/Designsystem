@@ -34,7 +34,7 @@
     },
     "Foreground": {
       "Primary": {
-        "value": "{grey.950}",
+        "value": "{grey.999}",
         "type": "color"
       },
       "Subtle": {
@@ -52,16 +52,25 @@
         "type": "color"
       },
       "Mute": {
-        "value": "{grey.000}",
+        "value": "{grey.300}",
         "type": "color"
       },
       "Subtle": {
-        "value": "{grey.150}",
+        "value": "{grey.200}",
         "type": "color"
       },
       "Disabled": {
         "value": "{grey.500}",
-        "type": "color"
+        "type": "color",
+        "$extensions": {
+          "studio.tokens": {
+            "modify": {
+              "type": "alpha",
+              "value": "0.5",
+              "space": "lch"
+            }
+          }
+        }
       }
     }
   },
