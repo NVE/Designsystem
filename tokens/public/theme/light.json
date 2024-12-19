@@ -337,45 +337,45 @@
     "Foreground": {
       "Default": {
         "Info": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Error": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Warning": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Success": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Neutral": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         }
       },
       "Subtle": {
         "Info": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Error": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Warning": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Success": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Neutral": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         }
       },
@@ -389,7 +389,7 @@
           "type": "color"
         },
         "Warning": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Success": {
@@ -475,19 +475,19 @@
     "Foreground": {
       "Default": {
         "Level1": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Level2": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Level3": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Level4": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Level5": {
@@ -497,45 +497,45 @@
       },
       "Mute": {
         "Level1": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Level2": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Level3": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Level4": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Level5": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         }
       },
       "Subtle": {
         "Level1": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Level2": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Level3": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Level4": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         },
         "Level5": {
-          "value": "{grey.950}",
+          "value": "{grey.999}",
           "type": "color"
         }
       }
