@@ -4,13 +4,13 @@ export default {
   name: 'fixZeroes',
   type: 'name',
   transitive: true,
-  matcher: (token) => {
+  filter: (token) => {
     if (token.name.slice(-2) === '-0') {
       return true;
     }
     return false;
   },
-  transformer: (token) => {
+  transform: (token) => {
     return `${token.name.slice(0, -2)}-zero`;
   },
 };

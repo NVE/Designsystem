@@ -37,8 +37,8 @@ Bruk `size` for å endre størrelse. `large` er standard.
 
 ```html
 <nve-button size="small">small</nve-button>
-<nve-button size="medium">medium</nve-button>
-<nve-button>large</nve-button>
+<nve-button>medium</nve-button>
+<nve-button size="large">large</nve-button>
 ```
 
 </CodeExamplePreview>
@@ -98,8 +98,8 @@ Knapper med kun ikon kan brukes ved å sette `nve-icon` i den standard sporet.
 <CodeExamplePreview>
 
 ```html
+<nve-button size="large" variant="primary"><nve-icon name="warning"></nve-icon></nve-button>
 <nve-button><nve-icon name="warning"></nve-icon></nve-button>
-<nve-button size="medium" variant="primary"><nve-icon name="warning"></nve-icon></nve-button>
 <nve-button size="small" variant="neutral"><nve-icon name="warning"></nve-icon></nve-button>
 ```
 
@@ -120,8 +120,8 @@ Knapper med bare ikon kan også bruke attributtet `circle` for å vise en rund k
 <CodeExamplePreview>
 
 ```html
+<nve-button circle variant="neutral" size="large"><nve-icon name="more_vert"></nve-button>
 <nve-button circle><nve-icon name="more_vert"></nve-button>
-<nve-button circle variant="neutral" size="medium"><nve-icon name="more_vert"></nve-button>
 <nve-button circle size="small" variant="text"><nve-icon name="more_vert"></nve-icon></nve-button>
 ```
 
