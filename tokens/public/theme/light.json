@@ -56,7 +56,7 @@
         "type": "color"
       },
       "Subtle": {
-        "value": "{grey.200}",
+        "value": "{grey.150}",
         "type": "color"
       },
       "Disabled": {
