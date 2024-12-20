@@ -15,7 +15,7 @@ export default class NveButton extends SlButton implements INveComponent {
     super();
   }
   static styles = [SlButton.styles, styles];
-  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'large';
+  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
   @property({ reflect: true, type: String }) testId: string | undefined = undefined;
 
   // setter has-icon-only attributtet hvis det er kun ikone i standard sporet. Trengs for riktig styling.

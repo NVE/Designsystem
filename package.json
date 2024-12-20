@@ -34,11 +34,7 @@
     "preview": "vite preview",
     "lint": "eslint \"**/*.{js,ts,vue}\"",
     "manifest": "npx  @custom-elements-manifest/analyzer analyze --outdir dist",
-    "build:light": "node transform.js light",
-    "build:dark": "node transform.js dark",
-    "build:varsom_light": "node transform.js varsom",
-    "build:varsom_dark": "node transform.js varsom_dark",
-    "tokenbuild": "npm run build:light && npm run build:dark && npm run build:varsom_light && npm run build:varsom_dark && node scripts/updateCssTokensInDocs.js",
+    "tokenbuild": "node transformTokens/transform.js && node scripts/groupDeviceFilesToBrandFiles.js && node scripts/updateCssTokensInDocs.js",
     "postinstall": "cd doc-site && npm install"
   },
   "dependencies": {
@@ -72,7 +68,8 @@
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "style-dictionary-utils": "^4.0.0",
+    "style-dictionary": "^4.2.0",
+    "style-dictionary-utils": "^3.2.0",
     "typescript": "^5.6.2",
     "vite": "^5.4.6",
     "vite-plugin-dts": "^4.2.1"

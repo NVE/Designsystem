@@ -85,7 +85,7 @@ Bruk `size` for å velge størrelse. `small` er standard.
 <CodeExamplePreview>
 
 ```html
-<nve-select label="small">
+<nve-select label="small" size="small">
   <nve-option value="valg1">Hummer</nve-option>
   <nve-option value="valg2">Kanari</nve-option>
 </nve-select>

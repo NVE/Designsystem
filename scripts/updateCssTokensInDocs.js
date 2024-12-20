@@ -5,23 +5,31 @@ import path from 'path';
 const updateCssTokensInDocs = (docsFileName, theme) => {
   // Les doc-site css filen
   const docCssFile = path.join(`doc-site/.vitepress/theme/styles/${docsFileName}.css`);
-  let docCssFileContent = fs.readFileSync(docCssFile, 'utf8');
+  // Siker at innhold skrives på nytt
+  let docCssFileContent = '';
 
   // Les css filene med tokene i /public
   const publicCssLightContent = fs.readFileSync(`public/css/${theme}.css`, 'utf8');
   const publicCssDarkContent = fs.readFileSync(`public/css/${theme}_dark.css`, 'utf8');
 
-  // Ta ut styles fra :root i css filene med tokene
+  // Ta ut styles fra :root i css filene
   const lightRootStylesMatch = publicCssLightContent.match(/:root\s*{([^}]*)}/);
   const darkRootStylesMatch = publicCssDarkContent.match(/:root\.darkmode\s*{([^}]*)}/);
   const newLightStyles = lightRootStylesMatch ? lightRootStylesMatch[1].trim() : '';
   const newDarkStyles = darkRootStylesMatch ? darkRootStylesMatch[1].trim() : '';
 
-  let regexDark = new RegExp(`:root\\.${theme}_darkmode\\s*{[^}]*}`, 'g');
-  let regexLight = new RegExp(`:root\\.${theme}\\s*{[^}]*}`, 'g');
-  // Erstatt style innhold i doc-site css filen
-  docCssFileContent = docCssFileContent.replace(regexDark, `:root.${theme}_darkmode { ${newDarkStyles} }`);
-  docCssFileContent = docCssFileContent.replace(regexLight, `:root.${theme} { ${newLightStyles} }`);
+  docCssFileContent += `:root.${theme} { ${newLightStyles} }\n`;
+  docCssFileContent += `:root.${theme}_darkmode { ${newDarkStyles} }\n`;
+
+  const mediaQueryRegex = /@media[^{]*{[^{}]*({[^{}]*}[^{}]*)*}/g;
+  // Ta ut media queries fra css filene og lagre innhold av hver @media i et array
+  const lightMediaQueries = [...publicCssLightContent.matchAll(mediaQueryRegex)];
+  // Legge til media queries til både :root og :root.darkmode
+  lightMediaQueries.forEach((mediaQuery) => {
+    const mediaQueryContent = mediaQuery[0];
+    const newMediaQueryContent = mediaQueryContent.replace(/:root\s*{/, `:root.${theme}, :root.${theme}_darkmode {`);
+    docCssFileContent += `\n${newMediaQueryContent}`;
+  });
 
   // Skriv ny innhold til doc-site filene
   fs.writeFileSync(docCssFile, docCssFileContent);

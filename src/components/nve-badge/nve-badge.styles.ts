@@ -7,7 +7,7 @@ export default css`
 
   .badge {
     display: inline-flex;
-    padding: var(--spacing-xx-small, 4px) var(--spacing-x-small, 8px);
+    padding: var(--spacing-xx-small) var(--spacing-x-small);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -82,7 +82,7 @@ export default css`
   }
 
   .badge--medium {
-    padding: var(--spacing-xx-small, 4px) var(--spacing-x-small, 8px);
+    padding: var(--spacing-xx-small) var(--spacing-x-small);
     font: var(--label-x-small);
   }
 

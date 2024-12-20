@@ -117,18 +117,18 @@ export default css`
   }
 
   .button--small {
-    height: var(--sizing-x-small);
+    height: var(--fixed-sizing-medium);
     min-height: unset;
     padding: 0px;
   }
   .button--large {
-    height: var(--sizing-medium);
+    height: var(--fixed-sizing-x-large);
     min-height: unset;
     padding: var(--spacing-medium, 1rem) calc(var(--spacing-medium, 1rem) - var(--spacing-x-small));
   }
   /* fjern gap forskjell på venstre og høyre */
   .button--medium {
-    height: var(--sizing-small);
+    height: var(--fixed-sizing-large);
     min-height: unset;
     padding: var(--spacing-medium, 1rem) calc(var(--spacing-medium, 1rem) - var(--spacing-x-small));
   }
