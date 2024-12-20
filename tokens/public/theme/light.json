@@ -284,7 +284,7 @@
           "type": "color"
         },
         "Neutral": {
-          "value": "{grey.150}",
+          "value": "{neutralgrey.150}",
           "type": "color",
           "description": "For neutral messages"
         }
@@ -307,7 +307,7 @@
           "type": "color"
         },
         "Neutral": {
-          "value": "{grey.050}",
+          "value": "{neutralgrey.050}",
           "type": "color"
         }
       },
@@ -329,7 +329,7 @@
           "type": "color"
         },
         "Neutral": {
-          "value": "{grey.800}",
+          "value": "{neutralgrey.800}",
           "type": "color"
         }
       }
@@ -337,45 +337,45 @@
     "Foreground": {
       "Default": {
         "Info": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Error": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Warning": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Success": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Neutral": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         }
       },
       "Subtle": {
         "Info": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Error": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Warning": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Success": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Neutral": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         }
       },
@@ -389,7 +389,7 @@
           "type": "color"
         },
         "Warning": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Success": {
@@ -423,7 +423,7 @@
           "type": "color"
         },
         "Level5": {
-          "value": "{grey.200}",
+          "value": "{neutralgrey.200}",
           "type": "color"
         }
       },
@@ -445,7 +445,7 @@
           "type": "color"
         },
         "Level5": {
-          "value": "{grey.150}",
+          "value": "{neutralgrey.150}",
           "type": "color"
         }
       },
@@ -467,7 +467,7 @@
           "type": "color"
         },
         "Level5": {
-          "value": "{grey.950}",
+          "value": "{neutralgrey.950}",
           "type": "color"
         }
       }
@@ -475,67 +475,67 @@
     "Foreground": {
       "Default": {
         "Level1": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Level2": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Level3": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Level4": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Level5": {
-          "value": "{grey.000}",
+          "value": "{neutralgrey.000}",
           "type": "color"
         }
       },
       "Mute": {
         "Level1": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Level2": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Level3": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Level4": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Level5": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         }
       },
       "Subtle": {
         "Level1": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Level2": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Level3": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Level4": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         },
         "Level5": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         }
       }
@@ -595,11 +595,11 @@
       },
       "Grey": {
         "Background": {
-          "value": "{grey.150}",
+          "value": "{neutralgrey.150}",
           "type": "color"
         },
         "Foreground": {
-          "value": "{grey.850}",
+          "value": "{neutralgrey.850}",
           "type": "color"
         }
       },
@@ -677,11 +677,11 @@
       },
       "Grey": {
         "Background": {
-          "value": "{grey.400}",
+          "value": "{neutralgrey.400}",
           "type": "color"
         },
         "Foreground": {
-          "value": "{grey.999}",
+          "value": "{neutralgrey.999}",
           "type": "color"
         }
       },
