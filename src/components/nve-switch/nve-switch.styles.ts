@@ -15,7 +15,7 @@ export default css`
     border-radius: 1rem;
     position: relative;
     --left: calc(0% + 4px);
-    width: var(--sizing-medium);
+    width: 48px;
     --on-color: var(--neutrals-foreground-subtle);
     --off-color: var(--neutrals-background-secondary);
     --label-color: var(--neutrals-foreground-primary);
@@ -31,8 +31,8 @@ export default css`
   .switch__thumb {
     position: absolute;
     left: var(--left);
-    height: var(--font-size-xsmall);
-    width: var(--font-size-xsmall);
+    height: 18px;
+    width: 18px;
     border-radius: 2rem;
     translate: var(--hover-offset, 0);
     z-index: 1;
