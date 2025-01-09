@@ -41,7 +41,7 @@ export default css`
     align-items: center;
     gap: 8px;
     width: 100%;
-    font: var(--header-x-small);
+    font: var(--label-large);
     :is(span) {
       overflow: hidden;
       text-overflow: ellipsis;

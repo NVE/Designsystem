@@ -1,0 +1,126 @@
+{
+  "brand": {
+    "100": {
+      "value": "#fabf82",
+      "type": "color"
+    },
+    "150": {
+      "value": "#f8b673",
+      "type": "color"
+    },
+    "200": {
+      "value": "#f7ae63",
+      "type": "color"
+    },
+    "300": {
+      "value": "#fabf82",
+      "type": "color"
+    },
+    "400": {
+      "value": "#FF7B43",
+      "type": "color"
+    },
+    "500": {
+      "value": "#FF5F1B",
+      "type": "color"
+    },
+    "600": {
+      "value": "#F44900",
+      "type": "color"
+    },
+    "700": {
+      "value": "#F44900",
+      "type": "color"
+    },
+    "800": {
+      "value": "#874602",
+      "type": "color"
+    },
+    "850": {
+      "value": "#763d02",
+      "type": "color"
+    },
+    "900": {
+      "value": "#653502",
+      "type": "color"
+    },
+    "950": {
+      "value": "#542c01",
+      "type": "color"
+    },
+    "999": {
+      "value": "#432301",
+      "type": "color"
+    },
+    "000": {
+      "value": "#ffdfba",
+      "type": "color"
+    },
+    "050": {
+      "value": "#fbc792",
+      "type": "color"
+    }
+  },
+  "grey": {
+    "100": {
+      "value": "#f7f7f8",
+      "type": "color"
+    },
+    "150": {
+      "value": "#c8eaf9",
+      "type": "color"
+    },
+    "200": {
+      "value": "#7EC4E2",
+      "type": "color"
+    },
+    "300": {
+      "value": "#b7babf",
+      "type": "color"
+    },
+    "400": {
+      "value": "#9fa3a9",
+      "type": "color"
+    },
+    "500": {
+      "value": "#878c94",
+      "type": "color"
+    },
+    "600": {
+      "value": "#006b99",
+      "type": "color"
+    },
+    "700": {
+      "value": "#00425F",
+      "type": "color"
+    },
+    "800": {
+      "value": "#00425F",
+      "type": "color"
+    },
+    "850": {
+      "value": "#002738",
+      "type": "color"
+    },
+    "900": {
+      "value": "#1b1c1e",
+      "type": "color"
+    },
+    "950": {
+      "value": "#00364E",
+      "type": "color"
+    },
+    "999": {
+      "value": "#00131C",
+      "type": "color"
+    },
+    "000": {
+      "value": "#ffffff",
+      "type": "color"
+    },
+    "050": {
+      "value": "#eff8fc",
+      "type": "color"
+    }
+  }
+}

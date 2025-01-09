@@ -16,7 +16,7 @@ export default css`
   }
   .details__header {
     padding: 0;
-    font: var(--header-x-small);
+    font: var(--label-large);
   }
   .details__content {
     padding: 0;
