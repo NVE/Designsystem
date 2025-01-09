@@ -4,6 +4,7 @@ import { styles } from './nve-label.styles';
 import { HasSlotController } from '../../utils/slot';
 import '../nve-icon/nve-icon.component';
 import '../nve-tooltip/nve-tooltip.component';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * Ledetekst med verktøy-hint (og tilhørende info-ikon)
@@ -51,6 +52,11 @@ export default class NveLabel extends LitElement {
    */
   @property({ reflect: true }) iconColor: 'default' | 'black' = 'default';
 
+  /**
+   * For-attributten legges på label, og brukes som html-standard. Sett til samme som id på elementet label tilhører
+   */
+  @property({ reflect: true }) for?: string = undefined;
+
   static styles = [styles];
 
   private renderInfoIconWithTooltip() {
@@ -72,12 +78,22 @@ export default class NveLabel extends LitElement {
     if (this.value.length) {
       // Vis value-property
       // For å vise label i slot INNI tooltip-slot, må label-slot ha et navn
-      return html` <label part="form-control-label" class="form-control__label" aria-hidden="false">
+      return html` <label
+        part="form-control-label"
+        class="form-control__label"
+        aria-hidden="false"
+        for=${ifDefined(this.for)}
+      >
         <slot name="label">${this.value}</slot>
       </label>`;
     } else {
       // Vis evt. slot-innhold i stedet
-      return html` <label part="form-control-label" class="form-control__label" aria-hidden="false">
+      return html` <label
+        part="form-control-label"
+        class="form-control__label"
+        aria-hidden="false"
+        for=${ifDefined(this.for)}
+      >
         <slot></slot>
       </label>`;
     }

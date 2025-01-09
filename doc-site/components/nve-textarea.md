@@ -108,7 +108,14 @@ Feltet må ligge i en `<form>` for at validering skal funke.
     label="Minimum 3 og maks 5 tegn"
     errorMessage="Mellom 3 og 5 tegn her, takk"
   ></nve-textarea>
-
+  <nve-textarea
+    filled
+    required
+    minlength="3"
+    maxLength="5"
+    label="Minimum 3 og maks 5 tegn"
+    errorMessage="Mellom 3 og 5 tegn her, takk"
+  ></nve-textarea>
   <nve-button type="submit" variant="primary">Submit</nve-button>
 </form>
 ```

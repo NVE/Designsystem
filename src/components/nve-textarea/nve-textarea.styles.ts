@@ -54,6 +54,10 @@ export default css`
     }
   }
 
+  :host([filled][data-user-invalid]) .textarea__control {
+    border-color: var(--feedback-background-emphasized-error);
+  }
+
   :host([readonly]) .textarea__control {
     background: var(--neutrals-background-secondary);
     color: var(--neutrals-foreground-subtle,);
