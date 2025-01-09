@@ -35,7 +35,7 @@ import '../nve-label/nve-label.component';
  *
  */
 @customElement('nve-textarea')
-export default class NveTextarea extends LitElement implements INveComponent{
+export default class NveTextarea extends LitElement implements INveComponent {
   static styles = [styles];
 
   /** Navnet på tekstområdet, sendt som et navn/verdi-par med skjemadata */
@@ -88,11 +88,10 @@ export default class NveTextarea extends LitElement implements INveComponent{
   /** Indikerer om nettleserens autokorrekturfunksjon er på eller av. */
   @property() tooltip?: string;
 
-   /**
+  /**
    * Brukes for å kunne identifisere komponenten i tester
    */
-  @property({reflect: true, type: String}) testId:string = '';
-
+  @property({ reflect: true, type: String }) testId: string = '';
 
   /**
    * Forteller nettleseren hvilken type data som vil bli skrevet inn av brukeren, slik at den kan vise det passende virtuelle
@@ -117,11 +116,13 @@ export default class NveTextarea extends LitElement implements INveComponent{
   /** Hoved input felt i nve-textarea komponentet. Brukes til constraint validering */
   @query('.textarea__control') input!: HTMLTextAreaElement;
 
+  //Brukes for "for"-attributten på nve-label.
+  private textAreaid: string = '';
   constructor() {
     super();
+    this.textAreaid = `textarea-${[...Array(20)].map(() => Math.random().toString(36)[2]).join('')}`;
   }
   private resizeObserver: ResizeObserver | null = null;
-
   firstUpdated() {
     // Sjekker om data-valid når komponenten først lastes
     if (this.required) {
@@ -229,7 +230,7 @@ export default class NveTextarea extends LitElement implements INveComponent{
           ${this.label
             ? html`
                 <nve-label
-                  for="input"
+                  for=${this.textAreaid}
                   aria-hidden=${this.label ? 'false' : 'true'}
                   value=${this.label}
                   tooltip=${ifDefined(this.tooltip)}
@@ -242,6 +243,7 @@ export default class NveTextarea extends LitElement implements INveComponent{
         </div>
         <div part="base" class="textarea__base">
           <textarea
+            id=${this.textAreaid}
             part="textarea"
             class="textarea__control"
             title=${this.title /** En tom tittel hindrer nettleserens valideringsverktøy i å vises ved overføring */}
