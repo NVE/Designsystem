@@ -23,17 +23,12 @@ const componentName = computed(() => {
 
 onMounted(() => {
   const hash = window.location.hash?.substring(1);
-  console.dir(hash);
   if (hash) {
     // Vi må vente litt slik at codeexample etc blir loadet og rendrer ok.
     setTimeout(() => {
       const scrollto = document.getElementById(hash);
       if (scrollto) {
-        console.dir('hello?');
         let pos = scrollto.getBoundingClientRect();
-        console.dir(pos);
-        console.dir(window.scrollY);
-        console.dir(pos.top + window.scrollY);
         window.scrollTo(pos.left, pos.top + window.scrollY - 50);
       }
     }, 500);
