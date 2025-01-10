@@ -1,7 +1,7 @@
 <!-- Komponent layout med beksrivelse, innhold og andre -->
 <script setup lang="ts">
 import { useRoute } from 'vitepress';
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import ComponentIssues from './ComponentIssues.vue';
 import ComponentEvents from './apidoc/ComponentEvents.vue';
 import ComponentFields from './apidoc/ComponentFields.vue';
@@ -19,6 +19,20 @@ const { hasSidebar, hasAside, leftAside } = useSidebar();
 const componentName = computed(() => {
   const filename = route.path.split('/').pop();
   return filename ? filename.replace('.html', '') : '';
+});
+
+onMounted(() => {
+  const hash = window.location.hash?.substring(1);
+  if (hash) {
+    // Vi må vente litt slik at codeexample etc blir loadet og rendrer ok.
+    setTimeout(() => {
+      const scrollto = document.getElementById(hash);
+      if (scrollto) {
+        let pos = scrollto.getBoundingClientRect();
+        window.scrollTo(pos.left, pos.top + window.scrollY - 70);
+      }
+    }, 500);
+  }
 });
 </script>
 
