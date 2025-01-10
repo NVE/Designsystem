@@ -84,6 +84,33 @@ export default class NveInput extends SlInput implements INveComponent {
     if (!hasDataUserInvalidAttr) {
       this.resetValidation();
     }
+    if (changedProperties.has('readonly') && this.shadowRoot) {
+      const oldReadOnly: boolean | undefined = changedProperties.get('readonly');
+      const newReadonly = this.readonly;
+      console.dir(oldReadOnly);
+      console.dir(newReadonly);
+      if (!oldReadOnly && newReadonly) {
+        //readonly endret fra falsy til true
+        //Sjekker om vi har et ikon i suffix-slot allerede. Dersom vi har det, så skipper vi
+        if (!(this.shadowRoot.querySelector('slot[name=suffix]') as HTMLSlotElement).assignedElements().length) {
+          //debugger;
+          const nveIcon = document.createElement('nve-icon');
+          nveIcon.setAttribute('id', 'readonly-icon');
+          nveIcon.setAttribute('name', 'visibility');
+          nveIcon.setAttribute('slot', 'suffix');
+          this.appendChild(nveIcon);
+        }
+      } else if (!newReadonly && oldReadOnly) {
+        //endret fra true til false
+        const readonlyIcon = (this.shadowRoot.querySelector('slot[name=suffix]') as HTMLSlotElement)
+          .assignedElements()
+          .find((x) => x.id === 'readonly-icon');
+
+        if (readonlyIcon) {
+          readonlyIcon.remove();
+        }
+      }
+    }
   }
 
   private updateInputId() {

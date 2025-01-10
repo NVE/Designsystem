@@ -71,14 +71,16 @@ Du kan også vise et låse-ikon ved å legge `nve-icon` i sporet `suffix`.
 
 ### Skrivebeskyttet
 
-Bruk `readonly` for å stenge mulighet for å endre innholdet
+Bruk `readonly` for å stenge mulighet for å endre innholdet. Input-feltet får da et ikon dersom suffix-slot ikke er satt
 
 <CodeExamplePreview>
 
 ```html
-<nve-input readonly value="Dette får du ikke endret"></nve-input>
-
-<nve-input value="men dette kan du endre"></nve-input>
+<nve-input id="in1" readonly value="Dette får du ikke endret"></nve-input>
+<nve-input id="in2" readonly value="Dette får du heller ikke endret, og vi har lagt på et ikon spesifikt her">
+  <nve-icon slot="suffix" name="asterisk" />
+</nve-input>
+<nve-input id="in3" value="men dette kan du endre"></nve-input>
 ```
 
 </CodeExamplePreview>
