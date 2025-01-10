@@ -29,7 +29,7 @@ onMounted(() => {
       const scrollto = document.getElementById(hash);
       if (scrollto) {
         let pos = scrollto.getBoundingClientRect();
-        window.scrollTo(pos.left, pos.top + window.scrollY - 50);
+        window.scrollTo(pos.left, pos.top + window.scrollY - 70);
       }
     }, 500);
   }
