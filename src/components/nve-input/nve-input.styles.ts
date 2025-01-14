@@ -77,6 +77,14 @@ export default css`
     border-color: var(--neutrals-background-secondary);
     background: var(--neutrals-background-secondary);
   }
+  :host([readonly]) :is(:hover, .input--focused) {
+    border-color: transparent;
+    background: var(--neutrals-background-secondary);
+    outline: none;
+  }
+  :host([readonly]) .input.input--standard:hover:not(.input--disabled) {
+    border-color: transparent !important;
+  }
 
   /* Gir rød ramme ved valideringsfeil  */
   :host([data-user-invalid])::part(base) {
