@@ -35,7 +35,7 @@ import '../nve-label/nve-label.component';
  *
  */
 @customElement('nve-textarea')
-export default class NveTextarea extends LitElement implements INveComponent{
+export default class NveTextarea extends LitElement implements INveComponent {
   static styles = [styles];
 
   /** Navnet på tekstområdet, sendt som et navn/verdi-par med skjemadata */
@@ -88,11 +88,10 @@ export default class NveTextarea extends LitElement implements INveComponent{
   /** Indikerer om nettleserens autokorrekturfunksjon er på eller av. */
   @property() tooltip?: string;
 
-   /**
+  /**
    * Brukes for å kunne identifisere komponenten i tester
    */
-  @property({reflect: true, type: String}) testId:string = '';
-
+  @property({ reflect: true, type: String }) testId: string = '';
 
   /**
    * Forteller nettleseren hvilken type data som vil bli skrevet inn av brukeren, slik at den kan vise det passende virtuelle
@@ -121,7 +120,6 @@ export default class NveTextarea extends LitElement implements INveComponent{
     super();
   }
   private resizeObserver: ResizeObserver | null = null;
-
   firstUpdated() {
     // Sjekker om data-valid når komponenten først lastes
     if (this.required) {
@@ -229,7 +227,6 @@ export default class NveTextarea extends LitElement implements INveComponent{
           ${this.label
             ? html`
                 <nve-label
-                  for="input"
                   aria-hidden=${this.label ? 'false' : 'true'}
                   value=${this.label}
                   tooltip=${ifDefined(this.tooltip)}
