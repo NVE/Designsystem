@@ -1,6 +1,7 @@
 import SlOption from '@shoelace-style/shoelace/dist/components/option/option.js';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-option.styles';
+import { PropertyValues } from 'lit';
 /**
  * Representerer et valg i nve-select.
  */
@@ -10,9 +11,13 @@ export default class NveOption extends SlOption {
     super();
   }
   static styles = [SlOption.styles, styles];
+  /**
+   * Tekst som vises i select når denne er valgt. Default er at all råtekst vises.
+   */
+  @property() textLabel: string | undefined = undefined;
 
   /* Setter filled attributt på option når parent-select er filled, for å få annen hover-farge*/
-  firstUpdated(changedProperties: any): void {
+  firstUpdated(changedProperties: PropertyValues): void {
     super.firstUpdated(changedProperties);
     const select = this.closest('nve-select');
     if (select?.hasAttribute('filled')) {
@@ -20,6 +25,16 @@ export default class NveOption extends SlOption {
     } else {
       this.toggleAttribute('filled', false);
     }
+  }
+
+  /**
+   * Gir tilbake plain-tekst-label som vises i select
+   */
+  override getTextLabel(): string {
+    if (this.textLabel) {
+      return this.textLabel;
+    }
+    return super.getTextLabel();
   }
 }
 
