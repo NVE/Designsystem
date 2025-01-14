@@ -116,11 +116,8 @@ export default class NveTextarea extends LitElement implements INveComponent {
   /** Hoved input felt i nve-textarea komponentet. Brukes til constraint validering */
   @query('.textarea__control') input!: HTMLTextAreaElement;
 
-  //Brukes for "for"-attributten på nve-label.
-  private textAreaid: string = '';
   constructor() {
     super();
-    this.textAreaid = `textarea-${[...Array(20)].map(() => Math.random().toString(36)[2]).join('')}`;
   }
   private resizeObserver: ResizeObserver | null = null;
   firstUpdated() {
@@ -230,7 +227,6 @@ export default class NveTextarea extends LitElement implements INveComponent {
           ${this.label
             ? html`
                 <nve-label
-                  for=${this.textAreaid}
                   aria-hidden=${this.label ? 'false' : 'true'}
                   value=${this.label}
                   tooltip=${ifDefined(this.tooltip)}
@@ -243,7 +239,6 @@ export default class NveTextarea extends LitElement implements INveComponent {
         </div>
         <div part="base" class="textarea__base">
           <textarea
-            id=${this.textAreaid}
             part="textarea"
             class="textarea__control"
             title=${this.title /** En tom tittel hindrer nettleserens valideringsverktøy i å vises ved overføring */}
