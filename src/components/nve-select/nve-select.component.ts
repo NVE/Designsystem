@@ -2,6 +2,7 @@ import SlSelect from '@shoelace-style/shoelace/dist/components/select/select.js'
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-select.styles';
 import NveOption from '../nve-option/nve-option.component';
+import { PropertyValues } from 'lit';
 
 /**
  * En nedtrekksliste, også kjent som rullgardin eller drop-down list. Kjært barn har mange navn.
@@ -41,7 +42,7 @@ export default class NveSelect extends SlSelect {
   }
   static styles = [SlSelect.styles, styles];
 
-  protected firstUpdated(changedProperties: any) {
+  protected firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
     if (this.requiredLabel) {
       this.style.setProperty('--sl-input-required-content', `"${this.requiredLabel}"`);
@@ -50,7 +51,7 @@ export default class NveSelect extends SlSelect {
     popup?.setAttribute('distance', '3');
   }
 
-  updated(changedProperties: any) {
+  updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
     const hasDataUserInvalidAttr = this.hasAttribute('data-user-invalid');
     if (hasDataUserInvalidAttr) {
@@ -68,7 +69,6 @@ export default class NveSelect extends SlSelect {
     const popup = this.shadowRoot?.querySelector('sl-popup') as HTMLElement;
     popup?.classList.add('select--focused');
   }
-
   // @ts-ignore
   private handleOptionClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
@@ -118,6 +118,7 @@ export default class NveSelect extends SlSelect {
   private getAllOptions() {
     return [...this.querySelectorAll<NveOption>('nve-option')];
   }
+
   // @ts-ignore
   private getFirstOption() {
     return this.querySelector<NveOption>('nve-option');

@@ -2,6 +2,8 @@
 layout: component
 ---
 
+Se også [nve-option](./nve-option.html)
+
 <CodeExamplePreview>
 
 ```html
@@ -127,6 +129,24 @@ Bruk `requiredlabel` hvis du vil vise noe annet enn `*Obligatorisk`. Feltet må 
 
   <nve-button type="submit">Submit</nve-button>
 </form>
+```
+
+</CodeExamplePreview>
+
+### Bruk ulik tekst for select og option
+
+Bruk `textLabel` i `nve-option` dersom du ønsker at teksten som vises i selve select-feltet ikke skal være all teksten som er i option.
+
+<CodeExamplePreview>
+
+```html
+<nve-select value="valg2" label="Endre denne hvis du ikke vil ha foreslått valg" multiple>
+  <nve-option value="valg1" textLabel="Valg 1">
+    <span>Valg 1</span> - <span>Denne teksten vil ikke vises når denne er valgt</span>
+  </nve-option>
+  <nve-option value="valg2"><span>Valg 2</span> - <span>Denne teksten blir med når den er valgt</span></nve-option>
+  <nve-option value="valg3">Valg 3</nve-option>
+</nve-select>
 ```
 
 </CodeExamplePreview>
