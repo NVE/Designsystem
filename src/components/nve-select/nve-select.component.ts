@@ -1,5 +1,5 @@
 import SlSelect from '@shoelace-style/shoelace/dist/components/select/select.js';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
 import styles from './nve-select.styles';
 import NveOption from '../nve-option/nve-option.component';
 import { PropertyValues } from 'lit';
@@ -19,28 +19,28 @@ export default class NveSelect extends SlSelect {
    */
   @property() requiredLabel = '*Obligatorisk';
   /**
-   * Brukes til enkel constraint validation til å overskrive default nettleseren melding
+   * Brukes til enkel constraint validation til å overskrive default nettleser-melding
    */
   @property({ reflect: true }) errorMessage?: string;
-  connectedCallback() {
-    super.connectedCallback();
-    this.addEventListener('sl-invalid', (e) => {
-      // vi vil ikke at nettleseren viser feil meldingen til oss
-      e.preventDefault();
-    });
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-    this.removeEventListener('sl-invalid', (e) => {
-      e.preventDefault();
-    });
-  }
 
   constructor() {
     super();
   }
   static styles = [SlSelect.styles, styles];
+
+  // vi vil ikke at nettleseren viser feil meldingen til oss
+  private slInvalidEventListener = (e: CustomEvent) => {
+    e.preventDefault();
+  };
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('sl-invalid', this.slInvalidEventListener);
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.removeEventListener('sl-invalid', this.slInvalidEventListener);
+  }
 
   protected firstUpdated(changedProperties: PropertyValues) {
     super.firstUpdated(changedProperties);
@@ -69,8 +69,11 @@ export default class NveSelect extends SlSelect {
     const popup = this.shadowRoot?.querySelector('sl-popup') as HTMLElement;
     popup?.classList.add('select--focused');
   }
-  // @ts-ignore
-  private handleOptionClick(event: MouseEvent) {
+
+  @state() private override valueHasChanged: boolean = false;
+
+  // @ts-expect-error overskriver private method
+  private override handleOptionClick(event: MouseEvent) {
     const target = event.target as HTMLElement;
     const option = target.closest('nve-option');
     const oldValue = this.value;
@@ -87,6 +90,7 @@ export default class NveSelect extends SlSelect {
       this.updateComplete.then(() => this.displayInput.focus({ preventScroll: true }));
 
       if (this.value !== oldValue) {
+        this.valueHasChanged = true;
         this.updateComplete.then(() => {
           this.emit('sl-input');
           this.emit('sl-change');
@@ -101,26 +105,24 @@ export default class NveSelect extends SlSelect {
   }
   //Lagt til nve-option
   private handleDefaultSlotChange() {
-    const allOptions = this.getAllOptions();
-    const value = Array.isArray(this.value) ? this.value : [this.value];
-    const values: string[] = [];
-
-    if (customElements.get('nve-option')) {
-      allOptions.forEach((option) => values.push(option.value));
-
-      // @ts-expect-error - overskriving av private metoder for å sette selected
-      this.setSelectedOptions(allOptions.filter((el) => value.includes(el.value)));
-    } else {
+    if (!customElements.get('nve-option')) {
       customElements.whenDefined('nve-option').then(() => this.handleDefaultSlotChange());
     }
+
+    const allOptions = this.getAllOptions();
+    const val = this.valueHasChanged ? this.value : this.defaultValue;
+    const value = Array.isArray(val) ? val : [val];
+
+    // @ts-expect-error - overskriving av private metoder for å sette selected
+    this.setSelectedOptions(allOptions.filter((el) => value.includes(el.value)));
   }
   //Lagt til nve-option
-  private getAllOptions() {
+  private override getAllOptions() {
     return [...this.querySelectorAll<NveOption>('nve-option')];
   }
 
-  // @ts-ignore
-  private getFirstOption() {
+  // @ts-expect-error overskriver private method
+  private override getFirstOption() {
     return this.querySelector<NveOption>('nve-option');
   }
 }
