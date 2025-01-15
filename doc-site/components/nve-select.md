@@ -135,7 +135,7 @@ Bruk `requiredlabel` hvis du vil vise noe annet enn `*Obligatorisk`. Feltet må 
 
 ### Bruk ulik tekst for select og option
 
-Bruk `textLabel` dersom du ønsker at teksten som vises i selve select-feltet ikke skal være all teksten som er i option.
+Bruk `textLabel` i `nve-option` dersom du ønsker at teksten som vises i selve select-feltet ikke skal være all teksten som er i option.
 
 <CodeExamplePreview>
 
