@@ -34,6 +34,7 @@ export default css`
     rotate: 90deg;
     border-radius: var(--border-radius-small);
     font-size: var(--font-size-medium);
+    fill: currentColor;
   }
   .details--open .details__summary-icon {
     rotate: 270deg;
