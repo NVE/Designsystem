@@ -165,7 +165,7 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     nodeId: '2341-75038',
     description: undefined,
     statusDesign: 'Ikke påbegynt',
-    statusCode: 'Ikke påbegynt'
+    statusCode: 'Vil ikke bli bygget'
   },
   {
    name: 'nve-menu',
@@ -179,21 +179,21 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     nodeId: '8239-2704',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Under arbeid'
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-navbar',
     nodeId: '203-17',
     description: undefined,
     statusDesign: 'Ikke påbegynt',
-    statusCode: 'Ikke påbegynt'
+    statusCode: 'Vil ikke bli bygget'
   },
   {
     name: 'nve-pagination',
     nodeId: '951-139793',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
+    statusCode: 'Vil ikke bli bygget'
   },
   {
     name: 'nve-popup',
