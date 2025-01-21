@@ -1,5 +1,5 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from 'vue';
+import { h, watch } from 'vue';
 import { useData } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import './style.css';
@@ -24,21 +24,30 @@ export default {
     const { currentTheme } = useCurrentTheme();
 
     // Hente rikig tema
-    if (currentTheme.value === Theme.NVE) {
-      document.documentElement.classList.remove('varsom');
-      document.documentElement.classList.remove('varsom_darkmode');
-      document.documentElement.classList.add('nve');
-    } else {
-      document.documentElement.classList.remove('nve');
-      document.documentElement.classList.remove('nve_darkmode');
-      document.documentElement.classList.add('varsom');
-    }
+    const applyTheme = () => {
+      if (currentTheme.value === Theme.NVE) {
+        document.documentElement.classList.remove('varsom');
+        document.documentElement.classList.remove('varsom_darkmode');
+        document.documentElement.classList.add('nve');
+      } else {
+        document.documentElement.classList.remove('nve');
+        document.documentElement.classList.remove('nve_darkmode');
+        document.documentElement.classList.add('varsom');
+      }
 
-    // Setter darkmode må sikkert trigge det en gang til når jeg bytter tema
-    if (isDark.value) {
-      document.documentElement.classList.add(`${currentTheme.value}_darkmode`);
-    } else {
-      document.documentElement.classList.remove(`${currentTheme.value}_darkmode`);
+      // Setter darkmode må sikkert trigge det en gang til når jeg bytter tema
+      if (isDark.value) {
+        document.documentElement.classList.add(`${currentTheme.value}_darkmode`);
+      } else {
+        document.documentElement.classList.remove(`${currentTheme.value}_darkmode`);
+      }
+    };
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      applyTheme();
+
+      watch([isDark, currentTheme], () => {
+        applyTheme();
+      });
     }
     return h(DefaultTheme.Layout, null, {});
   },
