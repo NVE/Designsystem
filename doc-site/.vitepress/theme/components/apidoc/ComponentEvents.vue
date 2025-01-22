@@ -9,19 +9,23 @@
       <a class="header-anchor" href="#hendelser" aria-label='Permalink to "Hendelser"'>&ZeroWidthSpace;</a>
     </h2>
     <table>
-      <tr>
-        <td>Navn</td>
-        <td>Arvet fra</td>
-        <td>Beskrivelse</td>
-      </tr>
-      <tr v-for="event in events" :key="event.name">
-        <td v-if="event.name">
-          {{ event.name }}
-        </td>
-        <td v-else>(standard)</td>
-        <td>{{ event.inheritedFrom?.name }}</td>
-        <td style="width: 60%">{{ event.description }}</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>Navn</th>
+          <th>Arvet fra</th>
+          <th>Beskrivelse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="event in events" :key="event.name">
+          <td v-if="event.name">
+            {{ event.name }}
+          </td>
+          <td v-else>(standard)</td>
+          <td>{{ event.inheritedFrom?.name }}</td>
+          <td style="width: 60%">{{ event.description }}</td>
+        </tr>
+      </tbody>
     </table>
   </template>
 </template>

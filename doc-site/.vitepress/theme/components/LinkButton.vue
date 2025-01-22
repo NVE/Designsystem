@@ -13,9 +13,11 @@ type Props = {
   openInNewTab?: boolean;
 };
 
-const { text, openInNewTab, URL } = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   openInNewTab: false,
 });
+
+const { text, openInNewTab, URL } = props;
 
 const navigateTo = (route) => {
   // TODO improve this with maybe a router-link component to avoid hardcoding the base url

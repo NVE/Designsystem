@@ -9,14 +9,18 @@
       <a class="header-anchor" href="#deler" aria-label='Permalink to "Deler"'>&ZeroWidthSpace;</a>
     </h2>
     <table>
-      <tr>
-        <td>Navn</td>
-        <td>Beskrivelse</td>
-      </tr>
-      <tr v-for="part in parts" :key="part.name">
-        <td>{{ part.name }}</td>
-        <td style="width: 100%">{{ part.description }}</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>Navn</th>
+          <th>Beskrivelse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="part in parts" :key="part.name">
+          <td>{{ part.name }}</td>
+          <td style="width: 100%">{{ part.description }}</td>
+        </tr>
+      </tbody>
     </table>
   </template>
 </template>
