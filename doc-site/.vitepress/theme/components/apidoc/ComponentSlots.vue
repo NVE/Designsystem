@@ -9,17 +9,21 @@
       <a class="header-anchor" href="#spor" aria-label='Permalink to "Spor"'>&ZeroWidthSpace;</a>
     </h2>
     <table>
-      <tr>
-        <td>Navn</td>
-        <td>Beskrivelse</td>
-      </tr>
-      <tr v-for="slot in slots" :key="slot.name">
-        <td v-if="slot.name">
-          {{ slot.name }}
-        </td>
-        <td v-else>(standard)</td>
-        <td style="width: 100%">{{ slot.description }}</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>Navn</th>
+          <th>Beskrivelse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="slot in slots" :key="slot.name">
+          <td v-if="slot.name">
+            {{ slot.name }}
+          </td>
+          <td v-else>(standard)</td>
+          <td style="width: 100%">{{ slot.description }}</td>
+        </tr>
+      </tbody>
     </table>
   </template>
 </template>

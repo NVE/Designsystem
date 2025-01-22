@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@octokit/request": "^9.1.3",
-    "vitepress": "^1.3.0"
+    "@octokit/request": "^9.2.0",
+    "vitepress": "^1.6.1"
   }
 }

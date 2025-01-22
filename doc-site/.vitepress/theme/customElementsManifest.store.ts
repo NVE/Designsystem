@@ -100,17 +100,25 @@ const getComponentClassDeclaration = (componentName: string): CustomElementDecla
  * @returns en komponent med angitt navn eller undefined om komponenten ikke finnes
  */
 const getModuleByName = (name: string): Module | undefined => {
-  return modules.value.find((module) => getComponentName(module) === name);
+  const allModules = getAllModulesByName(name);
+  const module = allModules.at(0);
+  return module;
+};
+
+const getAllModulesByName = (name: string): Array<Module> => {
+  const allModules = modules.value.filter((module) => getComponentName(module) === name);
+  return allModules;
 };
 
 const getComponentName = (module: Module): string | undefined => {
-  return module.path.split('/').pop()?.replace('.js', '');
+  const name = module.path.split('/').pop()?.replace('.js', '')?.replace('.component.ts', '');
+  return name;
 };
 
 // Henter navn på alle komponentene ved oppstart
 modules.value.forEach((module) => {
   const name = getComponentName(module);
-  if (name) {
+  if (name && !componentNames.value.includes(name)) {
     componentNames.value.push(name);
   }
 });
