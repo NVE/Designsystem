@@ -38,8 +38,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-import { useCurrentTheme, Theme } from '../composables/useCurrentTheme';
+import { onBeforeMount, ref, watch } from 'vue';
+import { useCurrentTheme, Theme, themeLocalStorageVariable } from '../composables/useCurrentTheme';
 import useClickOutside from '../composables/useClickOutside';
 
 const { changeCurrentTheme, currentTheme } = useCurrentTheme();
@@ -69,6 +69,13 @@ const changeThemeAndCloseMenu = (theme: Theme) => {
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
+
+onBeforeMount(() => {
+  const lsThemeString = localStorage.getItem(themeLocalStorageVariable);
+  if (lsThemeString && Object.values(Theme).includes(lsThemeString as Theme)) {
+    changeCurrentTheme(lsThemeString as Theme);
+  }
+});
 </script>
 
 <style scoped>
