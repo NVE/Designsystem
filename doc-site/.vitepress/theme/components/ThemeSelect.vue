@@ -9,7 +9,7 @@
   >
     <div class="divider"></div>
     <div class="select-button">
-      <img :src="`/assets/${currentTheme}-logo.svg`" alt="nve-logo" />
+      <img :src="image" alt="nve-logo" />
       <span :class="[isMenuOpen ? 'vpi-chevron-up' : 'vpi-chevron-down', 'text-icon']"></span>
     </div>
     <div v-if="isMenuOpen" class="menu-drop">
@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, ref, watch } from 'vue';
+import { computed, onBeforeMount, onMounted, ref, watch } from 'vue';
 import { useCurrentTheme, Theme, themeLocalStorageVariable } from '../composables/useCurrentTheme';
 import useClickOutside from '../composables/useClickOutside';
 
@@ -47,6 +47,7 @@ const isMenuOpen = ref<boolean>(false);
 const selectTheme = ref<HTMLElement | null>(null);
 const { isClickOutside, checkIfClickOutside } = useClickOutside(selectTheme);
 
+const image = ref(`/assets/${currentTheme.value}-logo.svg`);
 watch(isMenuOpen, (newValue) => {
   if (newValue) {
     document.addEventListener('click', checkIfClickOutside);
@@ -59,6 +60,10 @@ watch(isClickOutside, (newValue) => {
   if (newValue) {
     isMenuOpen.value = false;
   }
+});
+
+watch(currentTheme, (newValue, oldValue) => {
+  image.value = `/assets/${newValue}-logo.svg`;
 });
 
 const changeThemeAndCloseMenu = (theme: Theme) => {
