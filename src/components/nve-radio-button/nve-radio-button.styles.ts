@@ -9,6 +9,9 @@ export default css`
     --sl-spacing-small: var(--spacing-x-small);
     --sl-spacing-medium: var(--spacing-small);
     --sl-spacing-large: var(--spacing-small);
+    --sl-input-border-color: var(--_border-color);
+    --sl-font-sans: var(--font-families-source-sans-pro);
+    --sl-input-font-family: var(--font-families-source-sans-pro);
   }
   :host([pill]) {
     --_border-radius: var(--border-radius-pill);
@@ -28,6 +31,7 @@ export default css`
     /* vi bruker multiple selectors for å øke specificity og dermed overskrive shoelace */
     /* Pass på at denne er over :[first|last]-of-type */
     border-radius: 0;
+    font-weight: var(--font-weight-regular);
   }
 
   :host(:first-of-type) .button {
