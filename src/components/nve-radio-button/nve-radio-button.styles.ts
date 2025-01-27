@@ -6,6 +6,9 @@ export default css`
     --_active-text-color: var(--neutrals-background-primary);
     --_border-color: var(--neutrals-border-subtle);
     --_border-radius: var(--border-radius-small);
+    --sl-spacing-small: var(--spacing-x-small);
+    --sl-spacing-medium: var(--spacing-small);
+    --sl-spacing-large: var(--spacing-small);
   }
   :host([pill]) {
     --_border-radius: var(--border-radius-pill);

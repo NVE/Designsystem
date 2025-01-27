@@ -4,8 +4,6 @@ import styles from './nve-radio-button.styles';
 
 /**
  * En sl-radio-button med NVE design.
- * Se https://shoelace.style/components/radio-button
- *
  *
  * Merk at denne har ekstra hjørne-styling på første og siste knapp i gruppen.
  * Man må derfor unngå å ha andre elementer blant nve-radio-button

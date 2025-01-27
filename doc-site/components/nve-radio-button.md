@@ -12,6 +12,20 @@ Se også [nve-radio-group](./nve-radio-group.html)
 
 ```html
 <nve-radio-group label="Vennligst velg en av disse">
+  <nve-radio-button value="valg1">Valg 1 </nve-radio-button>
+  <nve-radio-button value="valg2">Valg 2</nve-radio-button>
+  <nve-radio-button value="valg3">Valg 3 </nve-radio-button>
+</nve-radio-group>
+```
+
+</CodeExamplePreview>
+
+### Bruk av slots for ikon
+
+<CodeExamplePreview>
+
+```html
+<nve-radio-group label="Vennligst velg en av disse">
   <nve-radio-button value="valg1">
     <nve-icon slot="prefix" name="close"></nve-icon>
     <div>Med ikon</div>
@@ -39,6 +53,33 @@ Se også [nve-radio-group](./nve-radio-group.html)
   <nve-radio-button value="valg2" pill>Valg 2</nve-radio-button>
   <nve-radio-button value="valg3" pill> Valg 3 </nve-radio-button>
   <nve-radio-button value="valg4" pill> Valg 4 </nve-radio-button>
+</nve-radio-group>
+```
+
+</CodeExamplePreview>
+
+### Ulike størrelser
+
+Man setter størrelse på `nve-radio-group`, og denne setter igjen størrelse på `nve-radio-button`
+<CodeExamplePreview>
+
+```html
+<nve-radio-group size="large" label="Vennligst velg en av disse">
+  <nve-radio-button value="valg1">Valg 1 </nve-radio-button>
+  <nve-radio-button value="valg2">Valg 2</nve-radio-button>
+  <nve-radio-button value="valg3">Valg 3 </nve-radio-button>
+</nve-radio-group>
+
+<nve-radio-group size="medium" label="Vennligst velg en av disse">
+  <nve-radio-button value="valg1">Valg 1 </nve-radio-button>
+  <nve-radio-button value="valg2">Valg 2</nve-radio-button>
+  <nve-radio-button value="valg3">Valg 3 </nve-radio-button>
+</nve-radio-group>
+
+<nve-radio-group size="small" label="Vennligst velg en av disse">
+  <nve-radio-button value="valg1">Valg 1 </nve-radio-button>
+  <nve-radio-button value="valg2">Valg 2</nve-radio-button>
+  <nve-radio-button value="valg3">Valg 3 </nve-radio-button>
 </nve-radio-group>
 ```
 
