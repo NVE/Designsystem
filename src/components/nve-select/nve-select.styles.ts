@@ -97,5 +97,6 @@ export default css`
     height: var(--sizing-2x-small);
     width: var(--sizing-2x-small);
     font-size: var(--font-size-medium);
+    fill: currentColor;
   }
 `;
