@@ -15,6 +15,8 @@ import NveOption from '../nve-option/nve-option.component';
 export default class NveSelect extends SlSelect {
   /**
    * Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard.
+   * 
+   * 
    */
   @property() requiredLabel = '*Obligatorisk';
   /**
