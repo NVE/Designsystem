@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/NVE/Designsystem/compare/v2.4.0...v2.5.0) (2025-01-29)
+
+
+### Features
+
+* fix select ([#379](https://github.com/NVE/Designsystem/issues/379)) ([1539dd9](https://github.com/NVE/Designsystem/commit/1539dd910c29eb43b048ade5bc85fa712656922b))
+
 # [2.4.0](https://github.com/NVE/Designsystem/compare/v2.3.0...v2.4.0) (2025-01-29)
 
 
