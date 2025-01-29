@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/NVE/Designsystem/compare/v2.3.0...v2.4.0) (2025-01-29)
+
+
+### Features
+
+* adding step feature ([#378](https://github.com/NVE/Designsystem/issues/378)) ([2de9217](https://github.com/NVE/Designsystem/commit/2de921718703a8a331a9cc38149d3b4a0b5653f6))
+
 # [2.3.0](https://github.com/NVE/Designsystem/compare/v2.2.0...v2.3.0) (2025-01-29)
 
 
