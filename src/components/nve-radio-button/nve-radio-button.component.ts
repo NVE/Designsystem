@@ -10,7 +10,7 @@ import styles from './nve-radio-button.styles';
  *
  * I motsetning til vanlig button så har denne støtte for "pill", men gjelder også da kun første og siste knapp
  *
- *  @extends SlRadioGroup
+ *  @extends SlRadioButton
  */
 
 @customElement('nve-radio-button')

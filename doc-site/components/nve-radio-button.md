@@ -6,8 +6,6 @@ layout: component
 
 Se også [nve-radio-group](./nve-radio-group.html)
 
-### Bruk av slots for ikon
-
 <CodeExamplePreview>
 
 ```html
