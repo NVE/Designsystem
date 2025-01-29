@@ -106,6 +106,7 @@ export default class NveLinkCard extends LitElement implements INveComponent {
   }
   /**
    * Returnerer ikonnavnet som vises på kortet basert på clickAction.
+   * 
    */
   private getIconName() {
     switch (this.clickAction) {
