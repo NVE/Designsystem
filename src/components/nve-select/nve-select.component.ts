@@ -21,6 +21,8 @@ export default class NveSelect extends SlSelect {
   @property() requiredLabel = '*Obligatorisk';
   /**
    * Brukes til enkel constraint validation til å overskrive default nettleseren melding
+   * 
+   * 
    */
   @property({ reflect: true }) errorMessage?: string;
   connectedCallback() {
