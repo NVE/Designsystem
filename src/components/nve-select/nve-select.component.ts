@@ -70,7 +70,7 @@ export default class NveSelect extends SlSelect {
     popup?.classList.add('select--focused');
   }
 
-  @state() private  valueHasChanged: boolean = false;
+  @state() private override valueHasChanged: boolean = false;
 
   // @ts-expect-error overskriver private method
   private override handleOptionClick(event: MouseEvent) {
