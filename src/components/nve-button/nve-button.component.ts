@@ -3,6 +3,17 @@ import SlButton from '@shoelace-style/shoelace/dist/components/button/button.js'
 import styles from './nve-button.styles';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 
+export type SlButtonVariant = SlButton['variant'];
+export type SlButtonSize = SlButton['size'];
+
+/** Interface for å definere egenskapene til en button */
+export interface NveButtonProps {
+  size?: SlButtonSize;
+  variant?: SlButtonVariant;
+  disabled?: boolean;
+  loading?: boolean;
+  testId?: string;
+}
 /**
  * Selveste NVE-knappen.
  * Bruk href for å gjøre den om til en link.
@@ -14,8 +25,11 @@ export default class NveButton extends SlButton implements INveComponent {
   constructor() {
     super();
   }
-  static styles = [SlButton.styles, styles];
-  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+  static styles = [SlButton.styles, styles]; 
+  @property({ reflect: true }) size: SlButtonSize = 'medium';
+  @property({ reflect: true }) variant: SlButtonVariant = 'default';
+  @property({ reflect: true, type: Boolean }) disabled: boolean = false;
+  @property({ reflect: true, type: Boolean }) loading: boolean = false;
   @property({ reflect: true, type: String }) testId: string | undefined = undefined;
 
   // setter has-icon-only attributtet hvis det er kun ikone i standard sporet. Trengs for riktig styling.
