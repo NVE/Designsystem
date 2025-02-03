@@ -12,9 +12,8 @@ export interface NveButtonProps {
   variant?: SlButtonVariant;
   disabled?: boolean;
   loading?: boolean;
+  circle?: boolean;
   testId?: string;
-  href: string;
-  target: '_blank' | '_parent' | '_self' | '_top';
 }
 /**
  * Selveste NVE-knappen.
@@ -27,14 +26,14 @@ export default class NveButton extends SlButton implements INveComponent {
   constructor() {
     super();
   }
+  testId: string | undefined;
   static styles = [SlButton.styles, styles]; 
   @property({ reflect: true }) size: SlButtonSize = 'medium';
   @property({ reflect: true }) variant: SlButtonVariant = 'default';
   @property({ reflect: true, type: Boolean }) disabled: boolean = false;
   @property({ reflect: true, type: Boolean }) loading: boolean = false;
   @property({ reflect: true, type: Boolean }) circle: boolean = false;
-  @property({ reflect: true, type: String }) href: string = '';
-  @property({ reflect: true, type: String }) testId: string | undefined = undefined;
+
 
   // setter has-icon-only attributtet hvis det er kun ikone i standard sporet. Trengs for riktig styling.
   firstUpdated(): void {
