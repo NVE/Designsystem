@@ -140,3 +140,27 @@ I noen tilfeller må man sette en annen farge på ikonet. Dette kan enkelt gjør
 ```
 
 </CodeExamplePreview>
+
+### Lenker
+
+Bruk `href` for å gjøre knappen til en lenke som åpner en URL. Når `href` er satt, vil `<nve-button>` renderes som et `<a>`-element i stedet for et vanlig `<button>`-element. Attributtet `target` spesifiserer hvor den nye siden skal åpnes.
+
+- `href`: URL som knappen skal lenke til.
+- `target`: Spesifiserer hvor lenken åpnes. Mulige verdier er:
+  - `_blank`: Åpner lenken i en ny fane.
+  - `_self`: Åpner lenken i samme vindu eller fane som den ble klikket fra.
+  - `_parent`: Åpner lenken i foreldrerammen.
+  - `_top`: Åpner lenken i det øverste nivået av rammen (top-level frame).
+
+#### Eksempel på bruk av `href` og `target`
+
+<CodeExamplePreview>
+
+```html
+<!-- Åpne en ekstern lenke i en ny fane -->
+<nve-button href="https://www.nve.no/" target="_blank">Gå til NVE.no</nve-button>
+<!-- Standardknapp uten lenke -->
+<nve-button>Standardknapp</nve-button>
+```
+
+</CodeExamplePreview>
