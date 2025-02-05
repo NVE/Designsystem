@@ -112,6 +112,13 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ikke påbegynt'
   },
   {
+    name: 'nve-combobox',
+    nodeId: '4277-125162',
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Under arbeid'
+  },
+  {
     name: 'nve-comment',
     nodeId: '3077-45608',
     description: undefined,
