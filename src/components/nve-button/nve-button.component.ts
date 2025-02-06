@@ -9,6 +9,8 @@ import { INveComponent } from '@interfaces/NveComponent.interface';
  * Disse feltene skal ikke brukes:caret og pill
  * Circle attributte skal brukes kun når man viser bare et ikon.
  * 
+ * 
+ * 
  */
 @customElement('nve-button')
 export default class NveButton extends SlButton implements INveComponent {
