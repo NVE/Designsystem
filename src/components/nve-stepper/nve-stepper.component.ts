@@ -4,7 +4,11 @@ import { StepProps, StepState } from './nve-step/nve-step.component';
 import styles from './nve-stepper.styles';
 import './nve-stepper-mobile.component';
 
-/** Interface for stepper-komponenten */
+/** Interface for stepper-komponenten 
+ * 
+ * 
+ * 
+*/
 export interface INveStepper {
   /** Går til neste steg */
   nextStep?(): void;
