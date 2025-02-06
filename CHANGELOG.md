@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/NVE/Designsystem/compare/v2.7.0...v2.8.0) (2025-02-06)
+
+
+### Features
+
+* **test:** kort beskrivning ([#395](https://github.com/NVE/Designsystem/issues/395)) ([96609f2](https://github.com/NVE/Designsystem/commit/96609f272a97c108ab7caccfaaaf018b0ccddf91))
+
 # [2.7.0](https://github.com/NVE/Designsystem/compare/v2.6.0...v2.7.0) (2025-02-06)
 
 
