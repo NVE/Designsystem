@@ -1,3 +1,17 @@
+# [5.0.0](https://github.com/NVE/Designsystem/compare/v4.0.0...v5.0.0) (2025-02-06)
+
+
+### Features
+
+* **manual scope:** test 0 ([#398](https://github.com/NVE/Designsystem/issues/398)) ([91df9c6](https://github.com/NVE/Designsystem/commit/91df9c6b57124cb8b64d571faf27b4127584cf50))
+
+
+### BREAKING CHANGES
+
+* **manual scope:** commit 2
+* feat(scope 3): Manuellt 
+hejsan manuellt test
+
 # [4.0.0](https://github.com/NVE/Designsystem/compare/v3.0.0...v4.0.0) (2025-02-06)
 
 
