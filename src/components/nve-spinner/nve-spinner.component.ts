@@ -4,6 +4,8 @@ import { css } from 'lit';
 
 /**
  * Ei snurre
+ * 
+ * 
  */
 @customElement('nve-spinner')
 export default class NveSpinner extends SlSpinner {
