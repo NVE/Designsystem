@@ -9,6 +9,8 @@ import NveOption from '../nve-option/nve-option.component';
  * funka ikke med ikonet.
  * Man kan bruke .focus() for å fokusere komponenten programatisk. Sjekk https://shoelace.style/getting-started/usage#methods for å se hvordan å bruke det.
  * Kan være at i Vue applikasjon man må kjøre .focus i neste tick for å fokusere komponenten.
+ * 
+ * 
  */
 @customElement('nve-select')
 // @ts-expect-error -next-line - overskriving av private metoder i sl-select
