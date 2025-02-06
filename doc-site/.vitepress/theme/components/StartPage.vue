@@ -2,14 +2,12 @@
   <div class="nve-home">
     <section>
       <h1 class="nve-hero-title">Brukerveiledning for NVE Designsystem</h1>
-      <p class="nve-hero-text">
-        Velkommen til brukerveiledninga for NVEs designsystem. Denne innholder:
-        <ul>
-          <li>Litt om hva designsystemet består av</li>
-          <li>En separat introduksjon for designere og for utviklere</li>
-          <li>API-dokumentasjon for hver komponent</li>
-        </ul>
-      </p>
+      <p class="nve-hero-text">Velkommen til brukerveiledninga for NVEs designsystem. Denne innholder:</p>
+      <ul>
+        <li>Litt om hva designsystemet består av og enkelte retningslinjer</li>
+        <li>En separat introduksjon for designere og for utviklere</li>
+        <li>API-dokumentasjon for hver komponent</li>
+      </ul>
       <div class="links-container">
         <LinkButton URL="/introduction/home" text="Introduksjon" />
         <LinkButton URL="https://nve.frontify.com/" text="Profil og primitiver" :openInNewTab="true" />
