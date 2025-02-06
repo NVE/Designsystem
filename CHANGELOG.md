@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/NVE/Designsystem/compare/v2.5.0...v2.6.0) (2025-02-06)
+
+
+### Features
+
+* test docs ([f735377](https://github.com/NVE/Designsystem/commit/f735377a7646646b4f6942ef0b4edffbaeece23a))
+
 # [2.5.0](https://github.com/NVE/Designsystem/compare/v2.4.0...v2.5.0) (2025-01-29)
 
 
