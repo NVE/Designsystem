@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/NVE/Designsystem/compare/v2.6.0...v2.7.0) (2025-02-06)
+
+
+### Features
+
+* test Source controll ([#393](https://github.com/NVE/Designsystem/issues/393)) ([2a3a1e8](https://github.com/NVE/Designsystem/commit/2a3a1e80e265e9086ce232ef19333d0249972bf5))
+
 # [2.6.0](https://github.com/NVE/Designsystem/compare/v2.5.0...v2.6.0) (2025-02-06)
 
 
