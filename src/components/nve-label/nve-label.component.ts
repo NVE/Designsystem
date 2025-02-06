@@ -16,6 +16,9 @@ import '../nve-tooltip/nve-tooltip.component';
  *
  * TODO: Skal være litt mer plass mellom tekst og info-ikon
  * TODO: Hvis du angir både value og innhold i slot, er det value som vises. Det bør være motsatt.
+ * 
+ * 
+ * 
  */
 @customElement('nve-label')
 export default class NveLabel extends LitElement {

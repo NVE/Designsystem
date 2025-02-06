@@ -38,6 +38,7 @@
   "conventionalCommits.scopes": [
     "conventional commits",
     "VS code extension",
-    "test"
+    "test",
+    "docs"
   ]
 }
