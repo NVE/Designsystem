@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/NVE/Designsystem/compare/v2.8.0...v3.0.0) (2025-02-06)
+
+
+### Features
+
+* **docs:** titel håper jeg ([#396](https://github.com/NVE/Designsystem/issues/396)) ([35da7d5](https://github.com/NVE/Designsystem/commit/35da7d527993d2b59e57fbeabf9fefe7b5ee644d))
+
+
+### BREAKING CHANGES
+
+* **docs:** Breaking bad
+
 # [2.8.0](https://github.com/NVE/Designsystem/compare/v2.7.0...v2.8.0) (2025-02-06)
 
 
