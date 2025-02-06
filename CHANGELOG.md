@@ -1,3 +1,19 @@
+# [4.0.0](https://github.com/NVE/Designsystem/compare/v3.0.0...v4.0.0) (2025-02-06)
+
+
+### Features
+
+* **test:** hej ([#397](https://github.com/NVE/Designsystem/issues/397)) ([057b162](https://github.com/NVE/Designsystem/commit/057b16249f246242a39f5a0173089f9497fd6e57))
+
+
+### BREAKING CHANGES
+
+* **test:** breaking bad
+
+* feat: commit 4
+
+låååång
+
 # [3.0.0](https://github.com/NVE/Designsystem/compare/v2.8.0...v3.0.0) (2025-02-06)
 
 
