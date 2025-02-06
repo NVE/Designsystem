@@ -5,8 +5,6 @@ import styles from './nve-menu-item.styles';
  * En sl-menu-item i NVE-forkledning.
  * Mer info: https://shoelace.style/components/menu-item
  *
- * 
- * 
  */
 @customElement('nve-menu-item')
 // @ts-expect-error - overskriving av private metoder i sl-menu-item
