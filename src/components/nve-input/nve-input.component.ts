@@ -10,6 +10,9 @@ import { PropertyValues } from 'lit';
  * Vil du ha info-ikon med hjelpetekst etter ledeteksten, putt en nve-label i label-slot.
  * pill skal ikke brukes.
  * TODO: Feltet blir bredere hvis validering feiler, fordi vi må ha plass til feil-ikonet.
+ * 
+ * 
+ * 
  */
 @customElement('nve-input')
 export default class NveInput extends SlInput implements INveComponent {
