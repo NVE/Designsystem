@@ -15,6 +15,7 @@ import {
   Slot,
   Event,
   CssPart,
+  CssCustomProperty,
 } from 'custom-elements-manifest/schema';
 
 export const modules = ref<Array<Module>>((customElementsManifest as Package)['modules']);
@@ -94,6 +95,10 @@ const getComponentMembers = (componentName: string): ClassMember[] => {
 const getComponentClassDeclaration = (componentName: string): CustomElementDeclaration | undefined => {
   const module = getModuleByName(componentName);
   return module?.declarations?.find((declaration) => declaration.kind === 'class') as CustomElementDeclaration;
+};
+
+export const getComponentCssVariables = (componentName: string): CssCustomProperty[] => {
+  return (getComponentClassDeclaration(componentName)?.cssProperties as CssCustomProperty[]) || [];
 };
 
 /**

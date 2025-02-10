@@ -1,10 +1,15 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av npm run add-component */
+  
+  
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
 export { default as NveBadge } from './components/nve-badge/nve-badge.component';
 export { default as NveButton } from './components/nve-button/nve-button.component';
+export { default as NveCarousel } from './components/nve-carousel/nve-carousel.component';
+export { default as NveCarouselItem } from './components/nve-carousel-item/nve-carousel-item.component';
+export { default as NveCarouselThumbnail } from './components/nve-carousel-thumbnail/nve-carousel-thumbnail.component';
 export { default as NveCheckbox } from './components/nve-checkbox/nve-checkbox.component';
 export { default as NveCheckboxGroup } from './components/nve-checkbox-group/nve-checkbox-group.component';
 export { default as NveDarkmodeSwitch } from './components/nve-darkmode-switch/nve-darkmode-switch.component';
@@ -33,3 +38,4 @@ export { default as NveSwitch } from './components/nve-switch/nve-switch.compone
 export { default as NveTag } from './components/nve-tag/nve-tag.component';
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
+  
