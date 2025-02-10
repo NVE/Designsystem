@@ -182,19 +182,6 @@ export default {
       },
     },
     // Generate custom VS Code data
-    // TODO: Kommentert ut fordi jeg får denne feilen:
-    // [custom-element-vs-code-integration]: Looks like you've hit an error in third party plugin: custom-element-vs-code-integration. Please try to create a minimal reproduction and inform the author of the custom-element-vs-code-integration plugin.
-    // TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
-    // customElementVsCodePlugin({
-    //   outdir,
-    //   cssFileName: null,
-    //   referencesTemplate: (_, tag) => [
-    //     {
-    //       name: 'Documentation',
-    //       url: `https://designsystem.nve.no/components/${tag}`,
-    //     },
-    //   ],
-    // }),
     customElementVsCodePlugin({
       outdir: outdir || 'dist',
       cssFileName: null,
