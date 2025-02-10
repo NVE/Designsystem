@@ -89,7 +89,7 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     description: 'Bildekarusell',
     statusDesign: 'Trenger kvalitetsjekk',
     statusDesign: 'Skal revideres',
-    statusCode: 'Ikke påbegynt'
+    statusCode: 'Under arbeid'
   },
   {
     name: 'nve-drawer',
