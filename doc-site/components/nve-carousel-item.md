@@ -2,21 +2,11 @@
 layout: component
 ---
 
-Se også [nve-carousel-item](./nve-carousel-item.html)
-
 TODO: Start med et enklest mulig kodeeksempel i html for å kunne vise komponenten.
 <CodeExamplePreview>
 
 ```html
-<nve-carousel pagination navigation loop>
-  <nve-carousel-item>
-    <img src="https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg" alt="bilde" />
-  </nve-carousel-item>
-
-  <nve-carousel-item>
-    <img src="https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg" alt="bilde" />
-  </nve-carousel-item>
-</nve-carousel>
+<nve-carousel-item></nve-carousel-item>
 ```
 
 </CodeExamplePreview>
@@ -28,7 +18,5 @@ TODO: Skriv evt. generelle tips som ikke passer å ha i @JsDoc. Pass på at det 
 Legg eksempler på funksjonalitet her. Hvert tema skal ha egen overskrift på nivå 3.
 
 ### TODO: Eksempel 1
-
 ### TODO: Eksempel 2
-
 osv..:)

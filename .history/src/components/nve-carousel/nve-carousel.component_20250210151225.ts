@@ -1,5 +1,6 @@
 
 import { customElement, property } from 'lit/decorators.js';
+import { PropertyValues } from 'lit';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-carousel.styles';
 import SlCarousel  from '@shoelace-style/shoelace/dist/components/carousel/carousel.js';
@@ -14,7 +15,15 @@ export default class NveCarousel extends SlCarousel implements INveComponent {
   }
 
   @property({reflect: true, type: String}) testId: string | undefined = undefined;
+  /* Bildebeskrivelse */
+  @property({ type: String, reflect: true }) description = '';
 
+  updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (changedProperties.has('title')) {
+      this.style.setProperty('--nve-carousel-description', `"${this.description}"`);
+    }
+  }
 }
 
 declare global {
