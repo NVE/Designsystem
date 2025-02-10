@@ -29,23 +29,15 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Semantic Release
+      - name: Semantic Release (Versioning only)
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure Git for npm version
-        if: ${{ steps.semantic-release.outputs.new-release-published == 'true' }}
+      - name: Configure Git for version bump
         run: |
-          git config --global user.email "omy@nve.no"
+          git config --global user.email "jobl@nve.no"
           git config --global user.name "Designsystem"
 
       - name: Push tags and changes
-        if: ${{ steps.semantic-release.outputs.new-release-published == 'true' }}
         run: git push --follow-tags
-
-      - name: Publish to NPM
-        if: github.ref == 'refs/heads/main' && steps.semantic-release.outputs.new-release-published == 'true'
-        run: npm run publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
