@@ -1,3 +1,11 @@
+# [0.12.0](https://github.com/NVE/Designsystem/compare/v0.11.0...v0.12.0) (2025-02-11)
+
+
+### Features
+
+* **':** testar actions ([#412](https://github.com/NVE/Designsystem/issues/412)) ([b383d81](https://github.com/NVE/Designsystem/commit/b383d817823ed61607dcb60742a396f7bff15105))
+* testar actions ([#413](https://github.com/NVE/Designsystem/issues/413)) ([e9fefac](https://github.com/NVE/Designsystem/commit/e9fefacab0ba269a0ee3a441969d77c74a38f262))
+
 # [0.11.0](https://github.com/NVE/Designsystem/compare/v0.10.0...v0.11.0) (2025-02-11)
 
 
