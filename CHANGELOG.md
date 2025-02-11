@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/NVE/Designsystem/compare/v1.1.0...v1.1.1) (2025-02-11)
+
+
+### Bug Fixes
+
+* **test:** this is a fix test ([#415](https://github.com/NVE/Designsystem/issues/415)) ([4d3661c](https://github.com/NVE/Designsystem/commit/4d3661cf9f5cb0fd850dfd26beb00062fbb308e0))
+
 # [1.1.0](https://github.com/NVE/Designsystem/compare/v1.0.0...v1.1.0) (2025-02-11)
 
 
