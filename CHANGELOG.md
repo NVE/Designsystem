@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/NVE/Designsystem/compare/v1.1.1...v1.2.0) (2025-02-11)
+
+
+### Features
+
+* testar version handlig feat ([#416](https://github.com/NVE/Designsystem/issues/416)) ([f960d1e](https://github.com/NVE/Designsystem/commit/f960d1eb04f5de8049fd5ea57326298e08b41427))
+
 ## [1.1.1](https://github.com/NVE/Designsystem/compare/v1.1.0...v1.1.1) (2025-02-11)
 
 
