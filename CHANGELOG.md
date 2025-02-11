@@ -1,3 +1,10 @@
+# [0.11.0](https://github.com/NVE/Designsystem/compare/v0.10.0...v0.11.0) (2025-02-11)
+
+
+### Features
+
+* testar ([#411](https://github.com/NVE/Designsystem/issues/411)) ([d902f39](https://github.com/NVE/Designsystem/commit/d902f39c2645e9227fc350742416789666f8a141))
+
 # [0.10.0](https://github.com/NVE/Designsystem/compare/v0.9.0...v0.10.0) (2025-02-11)
 
 
