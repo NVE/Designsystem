@@ -1,15 +1,22 @@
-name: Publish package to npmjs
+name: Build, Release, and Publish
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'build/**'
+      - 'public/css/**'
   workflow_dispatch:
 
 jobs:
-  publish:
+  build_and_release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v3
         with:
@@ -19,10 +26,28 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Publish new version to npm
+      - name: Build
+        run: npm run build
+
+      - name: Semantic Release (Versioning only)
+        id: semantic_release
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git for version bump
+        if: steps.semantic_release.outputs.new-release-published == 'true'
         run: |
           git config --global user.email "jobl@nve.no"
           git config --global user.name "Designsystem"
+
+      - name: Push tags and changes
+        if: steps.semantic_release.outputs.new-release-published == 'true'
+        run: git push --follow-tags
+
+      - name: Publish new version to npm
+        if: steps.semantic_release.outputs.new-release-published == 'true'
+        run: |
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
