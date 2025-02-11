@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/NVE/Designsystem/compare/v1.3.0...v2.0.0) (2025-02-11)
+
+
+### Features
+
+* test breaking change 2 ([#418](https://github.com/NVE/Designsystem/issues/418)) ([55e420f](https://github.com/NVE/Designsystem/commit/55e420f88af34f981e5a543a82dfd283e11d1951))
+
+
+### BREAKING CHANGES
+
+* everythiung nooooo
+
 # [1.3.0](https://github.com/NVE/Designsystem/compare/v1.2.0...v1.3.0) (2025-02-11)
 
 
