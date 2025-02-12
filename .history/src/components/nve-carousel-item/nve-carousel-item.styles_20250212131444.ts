@@ -1,0 +1,28 @@
+import { css } from 'lit';
+
+export default css`
+
+::slotted(img) {
+    object-fit: contain;
+    width: 100%;
+    height: fit-content;
+    display: block;
+}
+
+.carousel-item__description {
+    background-color: #C8EAF9;
+    width: 100%;
+    object-fit: contain;
+    height: auto;
+    padding: 0 16px;
+    display: flex;
+}
+
+:host(nve-carousel-item) {
+    aspect-ratio: auto;
+}
+
+.rotate-horizontal {
+    transform: rotate(90deg);
+  }
+`

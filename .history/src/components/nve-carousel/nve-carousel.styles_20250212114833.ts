@@ -1,0 +1,58 @@
+import { css } from 'lit';
+
+export default css`
+
+
+:host::part(base) {
+    gap: 1rem 10px;
+
+}
+
+:host::part(scroll-container) {
+    aspect-ratio: auto;
+    object-fit: contain;
+}
+
+:host::part(navigation-button) {
+    background-color: var(--neutrals-border-mute);
+    opacity: 70%;
+    padding: 6px;
+    border-radius: 100px;
+    color:  var(--neutrals-background-primary);
+}
+
+:host::part(navigation-button):hover {
+    background-color: var(--interactive-secondary-background-hover);
+    opacity: 70%;
+    transition: 0.3s;
+    color: var(--neutrals-background-primary);
+}
+
+:host::part(pagination) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+:host::part(pagination-item) {
+    background-color: var(--neutrals-border-mute);
+
+}
+
+:host::part(pagination-item):hover {
+    background-color:  var(--neutrals-border-default);
+    transition: 0.3s;
+
+}
+
+:host::part(pagination-item--active) {
+    background-color: var(--neutrals-background-primary);
+    border: 3px solid var(--neutrals-border-mute);
+    width: 14px;
+    height: 14px;
+}
+
+:host::part(pagination-item--active):hover {
+    background-color: var(--neutrals-background-primary);
+}
+`
