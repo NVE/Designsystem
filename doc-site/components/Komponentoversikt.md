@@ -92,13 +92,6 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Under arbeid'
   },
   {
-    name: 'nve-drawer',
-    nodeId: 'TODO',
-    description: 'Skuff',
-    statusDesign: 'Trenger kvalitetsjekk',
-    statusCode: 'Under arbeid'
-  },
-  {
     name: 'nve-checkbox',
     nodeId: '4229-100252',
     description: undefined,
