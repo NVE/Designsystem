@@ -24,7 +24,7 @@
         size="compact"
         title="Sjekk også Shoelace-dokumentasjonen"
       >
-        Denne komponenten bygger på en Shoelace-komponent. Sjekke også dokumentasjonen i Shoelace for å få full oversikt
+        Denne komponenten bygger på en Shoelace-komponent. Sjekk også dokumentasjonen i Shoelace for å få full oversikt
         over hvordan komponenten funker.</nve-message-card
       >
     </span>
