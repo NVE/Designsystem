@@ -8,10 +8,7 @@ layout: component
 <div>
   <nve-button>Åpne</nve-button>
   <nve-drawer label="Skuff" class="drawer-overview">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet
     <nve-button variant="primary" slot="footer"> Lukk </nve-button>
   </nve-drawer>
 </div>
@@ -20,7 +17,6 @@ layout: component
   const drawer = document.querySelector('.drawer-overview');
   const openButton = drawer.previousElementSibling;
   const closeButton = drawer.querySelector('nve-button[variant="primary"]');
-
   openButton.addEventListener('click', () => drawer.show());
   closeButton.addEventListener('click', () => drawer.hide());
 </script>
@@ -32,6 +28,41 @@ Default er at drawer åpner seg på høyre side.
 
 ## Eksempler
 
+### Slots
+
+Vi har 3 slots pluss hoved innholdet vi kan endre på
+
+- `label`
+- `header-actions`
+- `footer`
+
+Label slotten kan også brukes som et attributt på nve-drawer `<nve-drawer label="Skuff">`
+
+<CodeExamplePreview>
+
+```html
+<div>
+  <nve-button>Åpne</nve-button>
+  <nve-drawer placement="end" class="drawer-placement-start">
+    <div slot="label">Dette er label slot'en</div>
+    <div slot="header-actions" style="display:flex; align-items: center; ">
+      <nve-button size="large" variant="primary"><nve-icon name="warning"></nve-icon></nve-button>
+    </div>
+
+    Lorem ipsum dolor sit amet
+    <div slot="footer">Her er footer slot'en</div>
+  </nve-drawer>
+</div>
+
+<script>
+  const drawer = document.querySelector('.drawer-placement-start');
+  const openButton = drawer.previousElementSibling;
+  openButton.addEventListener('click', () => drawer.show());
+</script>
+```
+
+</CodeExamplePreview>
+
 ### Åpne fra venstre side
 
 Bruk `placement="start"` for å åpne drawer fra venstre side
@@ -40,22 +71,13 @@ Bruk `placement="start"` for å åpne drawer fra venstre side
 ```html
 <div>
   <nve-button>Åpne</nve-button>
-  <nve-drawer label="Skuff" placement="start" class="drawer-placement-start">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    <nve-button variant="primary" slot="footer"> Lukk </nve-button>
-  </nve-drawer>
+  <nve-drawer label="Skuff" placement="start" class="drawer-placement-start"> Lorem ipsum dolor sit amet </nve-drawer>
 </div>
 
 <script>
   const drawer = document.querySelector('.drawer-placement-start');
   const openButton = drawer.previousElementSibling;
-  const closeButton = drawer.querySelector('nve-button[variant="primary"]');
-
   openButton.addEventListener('click', () => drawer.show());
-  closeButton.addEventListener('click', () => drawer.hide());
 </script>
 ```
 
@@ -69,22 +91,13 @@ Bruk `placement="top"` for å åpne drawer fra toppen
 ```html
 <div>
   <nve-button>Åpne</nve-button>
-  <nve-drawer label="Skuff" placement="top" class="drawer-placement-top">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    <nve-button variant="primary" slot="footer"> Lukk </nve-button>
-  </nve-drawer>
+  <nve-drawer label="Skuff" placement="top" class="drawer-placement-top"> Lorem ipsum dolor sit amet </nve-drawer>
 </div>
 
 <script>
   const drawer = document.querySelector('.drawer-placement-top');
   const openButton = drawer.previousElementSibling;
-  const closeButton = drawer.querySelector('nve-button[variant="primary"]');
-
   openButton.addEventListener('click', () => drawer.show());
-  closeButton.addEventListener('click', () => drawer.hide());
 </script>
 ```
 
@@ -99,10 +112,7 @@ Bruk `placement="bottom"` for å åpne drawer fra bunn av siden
 <div>
   <nve-button>Åpne</nve-button>
   <nve-drawer label="Skuff" placement="bottom" class="drawer-placement-bottom">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet
     <nve-button variant="primary" slot="footer"> Lukk </nve-button>
   </nve-drawer>
 </div>
@@ -110,10 +120,7 @@ Bruk `placement="bottom"` for å åpne drawer fra bunn av siden
 <script>
   const drawer = document.querySelector('.drawer-placement-bottom');
   const openButton = drawer.previousElementSibling;
-  const closeButton = drawer.querySelector('nve-button[variant="primary"]');
-
   openButton.addEventListener('click', () => drawer.show());
-  closeButton.addEventListener('click', () => drawer.hide());
 </script>
 ```
 
@@ -131,11 +138,8 @@ I motsetning til vanlige skuffer, er ikke inneholdte skuffer modale. Dette betyr
 <div
   style="position: relative; border: solid 2px var(--sl-panel-border-color); height: 300px; padding: 1rem; margin-bottom: 1rem;"
 >
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
   <sl-drawer label="Skuff" contained class="drawer-contained" style="--size: 50%;">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    <nve-button variant="primary" slot="footer"> Lukk </nve-button>
   </sl-drawer>
 </div>
 
@@ -144,10 +148,8 @@ I motsetning til vanlige skuffer, er ikke inneholdte skuffer modale. Dette betyr
 <script>
   const drawer = document.querySelector('.drawer-contained');
   const openButton = drawer.parentElement.nextElementSibling;
-  const closeButton = drawer.querySelector('nve-button[variant="primary"]');
 
   openButton.addEventListener('click', () => (drawer.open = !drawer.open));
-  closeButton.addEventListener('click', () => drawer.hide());
 </script>
 ```
 
