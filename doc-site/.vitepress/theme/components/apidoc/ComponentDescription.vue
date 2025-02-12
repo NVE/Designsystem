@@ -14,9 +14,19 @@
   </div>
 
   <p v-if="parent">
-    Arvet fra:
+    Arvet fra
     <span v-if="parentDocUrl">
-      <a :href="parentDocUrl" target="_blank">{{ parent.name }}</a>
+      <a :href="parentDocUrl" target="_blank">{{ parent.name }}</a
+      >.
+      <p />
+      <nve-message-card
+        :v-if="parent?.name?.startsWith('sl-')"
+        size="compact"
+        title="Sjekk også Shoelace-dokumentasjonen"
+      >
+        Denne komponenten bygger på en Shoelace-komponent. Sjekke også dokumentasjonen i Shoelace for å få full oversikt
+        over hvordan komponenten funker.</nve-message-card
+      >
     </span>
     <span v-else> {{ parent.name }}</span>
   </p>
