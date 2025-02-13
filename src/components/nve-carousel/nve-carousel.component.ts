@@ -6,7 +6,7 @@ import SlCarousel  from '@shoelace-style/shoelace/dist/components/carousel/carou
 import { SlCarouselItem } from '@shoelace-style/shoelace';
 
 /**
- * Bruk propertien "description" for å legge på bildetekst under bildet.
+ * Bruk propertien "description" på nve-carousel-item for å legge på bildetekst under bildet.
  * Anbefaler å bare godta liggende eller stående formater på bilder i karusellen for best layout.
  * Bildekarusellen støtter ikke denne propertien: orientation="vertical".
  */

@@ -5,6 +5,11 @@
   import { html, PropertyValues } from 'lit';
   import SlCarouselItem  from '@shoelace-style/shoelace/dist/components/carousel-item/carousel-item.js';
 
+/**
+ * Bruk propertien "description" for å legge på bildetekst under bildet.
+ * Anbefaler å bare godta liggende eller stående formater på bilder i karusellen for best layout.
+ */
+
 @customElement('nve-carousel-item')
 export default class NveCarouselItem extends SlCarouselItem implements INveComponent {
 

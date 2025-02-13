@@ -22,8 +22,6 @@ Se også [nve-carousel-item](./nve-carousel-item.html) som brukes inne i `nve-ca
 
 </CodeExamplePreview>
 
-TODO: Skriv evt. generelle tips som ikke passer å ha i @JsDoc. Pass på at det ikke blir dobbelt opp med det du har skrevet i @JsDoc.
-
 ## Eksempler
 
 ### Navigering
@@ -71,7 +69,7 @@ Bruk `pagination` for å legge på paginerings-knapper under bildekarusellen.
 
 ### Looping
 
-Bruk `loop` for å legge på paginerings-knapper under bildekarusellen.
+Bruk `loop` for å kunne bla igjennom bildene fra start flere ganger.
 
 <CodeExamplePreview>
 
@@ -93,7 +91,7 @@ Bruk `loop` for å legge på paginerings-knapper under bildekarusellen.
 
 ### Bildetekst
 
-Bruk `description` på `nve-csarousel-item`for å legge til en bildetekst til hvert bilde om ønskelig.
+Bruk `description` på `nve-csarousel-item`for å legge til en bildetekst til hvert bilde om ønskelig. Det er mulig å bare ha bildetekst på noen av bildene.
 
 <CodeExamplePreview>
 

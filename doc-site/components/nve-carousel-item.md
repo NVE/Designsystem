@@ -2,21 +2,45 @@
 layout: component
 ---
 
-TODO: Start med et enklest mulig kodeeksempel i html for å kunne vise komponenten.
+Gå til [nve-carousel](./nve-carousel.html) for mer info om denne komponenten.
+
 <CodeExamplePreview>
 
 ```html
-<nve-carousel-item></nve-carousel-item>
+<nve-carousel pagination navigation loop>
+  <nve-carousel-item>
+    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="../assets/images/mønstre.png" alt="bilde" />
+  </nve-carousel-item>
+</nve-carousel>
 ```
 
 </CodeExamplePreview>
 
-TODO: Skriv evt. generelle tips som ikke passer å ha i @JsDoc. Pass på at det ikke blir dobbelt opp med det du har skrevet i @JsDoc.
+### Bildetekst
 
-## Eksempler
+Bruk `description` på `nve-csarousel-item`for å legge til en bildetekst til hvert bilde om ønskelig. Det er mulig å bare ha bildetekst på noen av bildene.
 
-Legg eksempler på funksjonalitet her. Hvert tema skal ha egen overskrift på nivå 3.
+<CodeExamplePreview>
 
-### TODO: Eksempel 1
-### TODO: Eksempel 2
-osv..:)
+```html
+<nve-carousel navigation pagination loop>
+  <nve-carousel-item description="Foto: Ola Nordmann.">
+    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+  </nve-carousel-item>
+  <nve-carousel-item description="Fjellrekken på natten.">
+    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+  </nve-carousel-item>
+  <nve-carousel-item description="Bildekollage."
+    >.
+    <img src="../assets/images/mønstre.png" alt="bilde" />
+  </nve-carousel-item>
+</nve-carousel>
+```
+
+</CodeExamplePreview>
