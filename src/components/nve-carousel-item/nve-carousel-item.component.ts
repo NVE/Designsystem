@@ -25,15 +25,15 @@ export default class NveCarouselItem extends SlCarouselItem implements INveCompo
       }
     }
 
-    render() {
-      return html`
-        <slot></slot>
-        ${this.description ? html`
-          <div class="carousel-item__description">
-            <p>${this.description}</p>
-          </div>` : ''}
-      `;
-    }
+  render() {
+    return html`
+      <slot></slot>
+      ${this.description ? html`
+        <div class="carousel-item__description">
+          <p>${this.description}</p>
+        </div>` : ''}
+    `;
+  }
 }
 
 declare global {

@@ -5,6 +5,12 @@ import styles from './nve-carousel.styles';
 import SlCarousel  from '@shoelace-style/shoelace/dist/components/carousel/carousel.js';
 import { SlCarouselItem } from '@shoelace-style/shoelace';
 
+/**
+ * Bruk propertien "description" for å legge på bildetekst under bildet.
+ * Anbefaler å bare godta liggende eller stående formater på bilder i karusellen for best layout.
+ * Bildekarusellen støtter ikke denne propertien: orientation="vertical".
+ */
+
 @customElement('nve-carousel')
 // @ts-expect-error overskriver declarations of a private property
 export default class NveCarousel extends SlCarousel implements INveComponent {

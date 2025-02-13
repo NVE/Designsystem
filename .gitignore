@@ -1,5 +1,6 @@
 node_modules
 .DS_Store
+.history
 
 # ignore Visual Studio local folder
 .vs/

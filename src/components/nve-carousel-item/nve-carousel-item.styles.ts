@@ -9,7 +9,7 @@ export default css`
 }
 
 .carousel-item__description {
-    background-color: #C8EAF9;
+    background-color: var(--teal-150);
     width: 100%;
     object-fit: contain;
     height: auto;
