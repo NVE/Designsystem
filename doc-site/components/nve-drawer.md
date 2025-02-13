@@ -24,7 +24,7 @@ layout: component
 
 </CodeExamplePreview>
 
-Default er at drawer åpner seg på høyre side.
+Default er at skuffen åpner seg på høyre side.
 
 ## Eksempler
 
@@ -43,7 +43,7 @@ Label slotten kan også brukes som et attributt på nve-drawer `<nve-drawer labe
 ```html
 <div>
   <nve-button>Åpne</nve-button>
-  <nve-drawer placement="end" class="drawer-placement-start">
+  <nve-drawer placement="end" class="drawer-slot">
     <div slot="label">Dette er label slot'en</div>
     <div slot="header-actions" style="display:flex; align-items: center; ">
       <nve-button size="large" variant="primary"><nve-icon name="warning"></nve-icon></nve-button>
@@ -55,7 +55,7 @@ Label slotten kan også brukes som et attributt på nve-drawer `<nve-drawer labe
 </div>
 
 <script>
-  const drawer = document.querySelector('.drawer-placement-start');
+  const drawer = document.querySelector('.drawer-slot');
   const openButton = drawer.previousElementSibling;
   openButton.addEventListener('click', () => drawer.show());
 </script>
@@ -65,7 +65,7 @@ Label slotten kan også brukes som et attributt på nve-drawer `<nve-drawer labe
 
 ### Åpne fra venstre side
 
-Bruk `placement="start"` for å åpne drawer fra venstre side
+Bruk `placement="start"` for å åpne skuffen fra venstre side
 <CodeExamplePreview>
 
 ```html
@@ -77,7 +77,13 @@ Bruk `placement="start"` for å åpne drawer fra venstre side
 <script>
   const drawer = document.querySelector('.drawer-placement-start');
   const openButton = drawer.previousElementSibling;
-  openButton.addEventListener('click', () => drawer.show());
+  console.log('openButton ', openButton);
+
+  openButton.addEventListener('click', () => {
+    console.log('sadsfsfd');
+
+    drawer.show();
+  });
 </script>
 ```
 
@@ -85,7 +91,7 @@ Bruk `placement="start"` for å åpne drawer fra venstre side
 
 ### Åpne fra toppen
 
-Bruk `placement="top"` for å åpne drawer fra toppen
+Bruk `placement="top"` for å åpne skuffen fra toppen
 <CodeExamplePreview>
 
 ```html
@@ -105,7 +111,7 @@ Bruk `placement="top"` for å åpne drawer fra toppen
 
 ### Åpne fra bunn
 
-Bruk `placement="bottom"` for å åpne drawer fra bunn av siden
+Bruk `placement="bottom"` for å åpne skuffen fra bunn av siden
 <CodeExamplePreview>
 
 ```html
