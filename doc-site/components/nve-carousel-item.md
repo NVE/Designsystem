@@ -24,7 +24,7 @@ Gå til [nve-carousel](./nve-carousel.html) for mer info om denne komponenten.
 
 ### Bildetekst
 
-Bruk `description` på `nve-csarousel-item`for å legge til en bildetekst til hvert bilde om ønskelig. Det er mulig å bare ha bildetekst på noen av bildene.
+Bruk `description` på `nve-carousel-item`for å legge til en bildetekst til hvert bilde om ønskelig. Det er mulig å bare ha bildetekst på noen av bildene.
 
 <CodeExamplePreview>
 
