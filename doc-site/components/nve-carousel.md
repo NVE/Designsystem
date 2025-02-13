@@ -9,13 +9,20 @@ Se også [nve-carousel-item](./nve-carousel-item.html) som brukes inne i `nve-ca
 ```html
 <nve-carousel pagination navigation loop>
   <nve-carousel-item>
-    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+    <img
+      src="https://github.com/NVE/Designsystem/blob/main/doc-site/assets/images/start-page-image.jpg"
+      alt="Image of nature daylight"
+    />
+  </nve-carousel-item>
+
+  <nve-carousel-item>
+    <img src="../assets/images/start-page-image.jpg" alt="Image of nature daylight" />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+    <img src="../assets/images/dark-mode-start-image.avif" alt="Image of nature at night" />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/mønstre.png" alt="bilde" />
+    <img src="../assets/images/mønstre.png" alt="Collage" />
   </nve-carousel-item>
 </nve-carousel>
 ```
