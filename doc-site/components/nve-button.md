@@ -62,7 +62,9 @@ Bruk `prefix` spor for å vise noe foran knapp teksten, f.eks et ikon.
 <CodeExamplePreview>
 
 ```html
+<nve-button size="small"><nve-icon slot="prefix" name="warning"></nve-icon>Varsel</nve-button>
 <nve-button><nve-icon slot="prefix" name="warning"></nve-icon>Varsel</nve-button>
+<nve-button size="large"><nve-icon slot="prefix" name="warning"></nve-icon>Varsel</nve-button>
 ```
 
 </CodeExamplePreview>
@@ -93,7 +95,7 @@ Bruk `loading` for å legge til ei snurre.
 
 ### Kun ikon
 
-Knapper med kun ikon kan brukes ved å sette `nve-icon` i den standard sporet.
+Knapper med kun ikon kan brukes ved å sette `nve-icon` i standardsporet.
 
 <CodeExamplePreview>
 
