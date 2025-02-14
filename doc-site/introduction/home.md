@@ -10,8 +10,8 @@ Et designsystem handler, til tross for sitt navn, om mer enn bare design. Det ha
 <nve-message-card title="Designsystemets formål">
 <span>- Sikre visuell og funksjonell konsistens i forskjellige produkter og kanaler</span>
 <span>- Sentral kvalitetssikring og tilpassing til krav som universell utforming</span>
-<span>- Gjøre det enklere å komme i gang med design og utvikling i NVE og Varsom</span>
-<span>- Styrke kommunikasjon og samarbeid mellom design og utvikling</span>
+<span>- Gjøre det enklere å komme i gang med design og utvikling av brukergrensesnitt i NVE</span>
+<span>- Styrke kommunikasjon og samarbeid mellom desigere og utviklere</span>
 </nve-message-card>
 
 ## Våre prinsipper

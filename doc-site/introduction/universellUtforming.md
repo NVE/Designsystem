@@ -1,6 +1,6 @@
 <PageHeader title="Universell Utforming" imagePath="intro" pageLevel=1></PageHeader>
 
-Universelt utformede designløsninger sørger for at våre tjenester er tilgjengelig for alle. Ved å gi rom for mangfoldet i befolkningen gir vi den enkelte rom for å utfolde seg, bestemme selv og delta på like vilkår. NVE og Varsoms tjenester skal alltid oppfylle UU-tilsynets regelverk og krav for offentlig sektor (WCAG 2.1).
+Universelt utformede designløsninger sørger for at våre tjenester er tilgjengelig for alle. Ved å gi rom for mangfoldet i befolkningen gir vi den enkelte rom for å utfolde seg, bestemme selv og delta på like vilkår. NVEs tjenester skal alltid oppfylle UU-tilsynets regelverk og krav for offentlig sektor (WCAG 2.1).
 
 <hr>
 
@@ -12,7 +12,7 @@ IKT-løsninger i Norge skal være universelt utformet. Dette gjelder nettløsnin
 
 ## Designsystemet
 
-Alle primitiver, komponenter og mønstre i designsystemet skal designes i henhold til regelverket. På den måten gir vi designere og utviklere gode verktøy for å lage universelt utformede designløsninger, og det gjøres på tvers av NVE og Varsom sine tjenester.
+Alle primitiver, komponenter og mønstre i designsystemet skal designes i henhold til regelverket. På den måten gir vi designere og utviklere gode verktøy for å lage universelt utformede designløsninger, og det gjøres på tvers av alle NVEs tjenester.
 
 ### Les deg opp på regelverk og krav til universell utforming
 
