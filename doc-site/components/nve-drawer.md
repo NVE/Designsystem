@@ -46,18 +46,19 @@ Label slotten kan også brukes som et attributt på nve-drawer `<nve-drawer labe
   <nve-drawer placement="end" class="drawer-slot">
     <div slot="label">Dette er label slot'en</div>
     <div slot="header-actions" style="display:flex; align-items: center; ">
-      <nve-button size="large" variant="primary"><nve-icon name="warning"></nve-icon></nve-button>
+      <nve-button id="dialogBtn" variant="text"><nve-icon name="warning"></nve-icon></nve-button>
     </div>
-
     Lorem ipsum dolor sit amet
     <div slot="footer">Her er footer slot'en</div>
   </nve-drawer>
+  <nve-dialog id="dialog" label="Ett eksempel"> <p>Dette er et eksempel</p> </nve-dialog>
 </div>
-
 <script>
   const drawer = document.querySelector('.drawer-slot');
   const openButton = drawer.previousElementSibling;
+
   openButton.addEventListener('click', () => drawer.show());
+  document.getElementById('dialogBtn').addEventListener('click', () => document.getElementById('dialog').show());
 </script>
 ```
 
@@ -77,13 +78,7 @@ Bruk `placement="start"` for å åpne skuffen fra venstre side
 <script>
   const drawer = document.querySelector('.drawer-placement-start');
   const openButton = drawer.previousElementSibling;
-  console.log('openButton ', openButton);
-
-  openButton.addEventListener('click', () => {
-    console.log('sadsfsfd');
-
-    drawer.show();
-  });
+  openButton.addEventListener('click', () => drawer.show());
 </script>
 ```
 
