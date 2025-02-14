@@ -2,8 +2,9 @@ import { css } from 'lit';
 
 export default css`
   :host::part(panel) {
-    background-color: var(--neutrals-background-primary);
     padding: var(--spacing-x-large) var(--spacing-large) var(--spacing-x-large) var(--spacing-large);
+    background-color: var(--neutrals-background-primary);
+    color: var(--neutrals-foreground-primary);
   }
 
   :host::part(header) {
@@ -20,7 +21,7 @@ export default css`
   :host::part(header-actions) {
     padding: 0;
   }
-    
+
   :host::part(close-button):hover {
     background-color: var(--interactive-ghost-background-hover);
     border-radius: var(--border-radius-small, 4px);
