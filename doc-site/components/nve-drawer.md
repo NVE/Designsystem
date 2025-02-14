@@ -114,7 +114,6 @@ Bruk `placement="bottom"` for å åpne skuffen fra bunn av siden
   <nve-button>Åpne</nve-button>
   <nve-drawer label="Skuff" placement="bottom" class="drawer-placement-bottom">
     Lorem ipsum dolor sit amet
-    <nve-button variant="primary" slot="footer"> Lukk </nve-button>
   </nve-drawer>
 </div>
 
