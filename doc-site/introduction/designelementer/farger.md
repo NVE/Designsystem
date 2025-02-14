@@ -1,21 +1,17 @@
 <PageHeader title="Farger" imagePath="tokens" pageLevel=1></PageHeader>
 TODO: Legg til tab komponent
 
-
 ## Farger
+
 <img src="../../assets/images/farger1.png" width="auto">
 
-
-Fargene er basert på NVE og Varsoms profilmanualer, men i designsystemet har farger kontekstbaserte roller. Det vil si at fargene blir tildelt en rolle og kontekst, og at du må sørge for å bruke fargene riktig basert på rollen. 
-
+Fargene er basert på NVE og Varsoms profilmanualer, men i designsystemet har farger kontekstbaserte roller. Det vil si at fargene blir tildelt en rolle og kontekst, og at du må sørge for å bruke fargene riktig basert på rollen.
 
 I designsystemet har farger kontekstbaserte roller. Det vil si at når du bruker fargene, må du bruke de i riktig kontekst. F.eks: Vil det stå om fargen brukes i elementer med forgrunn eller bakgrunn. Dette sikrere at fargene brukes i riktig kontekst og gjør det enklere å oppfylle kravene til universell utforming. Det gjør også at vi får et felles og konsekvent uttrykk på tvers av design.
 
-
-
 ### Fargekategorier
-Vi har fire hovedkategorier:
 
+Vi har fire hovedkategorier:
 
 TODO: Fikse disse kortene
 
@@ -28,4 +24,6 @@ TODO: Fikse disse kortene
 
 ### Farger i designsystemet
 
-TODO: Legge til oversikt over alle fargene vi har i tokens. Referanse: https://www.designsystemet.no/grunnleggende/designelementer/farger
+<ColorList></ColorList>
+
+Se også <br/> https://www.designsystemet.no/grunnleggende/designelementer/farger
