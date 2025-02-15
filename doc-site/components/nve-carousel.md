@@ -7,15 +7,15 @@ Se også [nve-carousel-item](./nve-carousel-item.html) som brukes inne i `nve-ca
 <CodeExamplePreview>
 
 ```html
-<nve-carousel pagination navigation loop>
+<nve-carousel pagination navigation loop thumbnailImages>
   <nve-carousel-item>
-    <img src="../assets/images/start-page-image.jpg" alt="Image of nature daylight" />
+    <img src="../assets/images/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/dark-mode-start-image.avif" alt="Image of nature at night" />
+    <img src="../assets/images/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/mønstre.png" alt="Collage" />
+    <img src="../assets/images/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>
 ```
