@@ -156,6 +156,34 @@ Bruk `slides-per-page` for å vise flere bilder per slide i karusellen. Du kan o
 
 </CodeExamplePreview>
 
+### Thumbnails
+
+Bruk `nve-carousel-thumbnails` komponentet for å vise thumbnailsbilder under bildekarusellen.
+
+<CodeExamplePreview>
+
+```html
+<nve-carousel navigation loop>
+  <nve-carousel-item>
+    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="../assets/images/mønstre.png" alt="bilde" />
+  </nve-carousel-item>
+</nve-carousel>
+
+<nve-carousel-thumbnails>
+  <img src="../assets/images/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
+  <img src="../assets/images/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
+  <img src="../assets/images/mønstre.png" alt="Mønstre" />
+</nve-carousel-thumbnails>
+```
+
+</CodeExamplePreview>
+
 ### Vertikal scrolling
 
 Bildekarusellen støtter ikke vertikal scrolling per nå.

@@ -1,0 +1,38 @@
+import { css } from 'lit';
+
+export default css`
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    alight-items: center;
+    height: auto;
+}
+
+.thumbnails__scroller {
+    display: flex;
+        justify-content: center;
+    alight-items: center;
+    gap: 5px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-padding: 5px;
+    height: auto;
+        width: 85%
+}
+
+::slotted(img) {
+    height: 64px !important;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    opacity: 0.3;
+    will-change: opacity;
+    transition: 250ms opacity;
+    cursor: pointer;
+}
+
+::slotted(img.active) {
+    opacity: 1;
+}
+
+`

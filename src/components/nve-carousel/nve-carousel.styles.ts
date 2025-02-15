@@ -3,7 +3,7 @@ import { css } from 'lit';
 export default css`
 
 :host::part(base) {
-    gap: 1rem 10px;
+    gap: 0rem 10px;
     max-heigth: fit-content;
 }
 
@@ -31,6 +31,7 @@ export default css`
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-top: 1rem;
 }
 
 :host::part(pagination-item) {
