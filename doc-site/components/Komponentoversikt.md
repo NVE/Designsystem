@@ -140,6 +140,13 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusDesign: 'Ferdig',
     statusCode: 'Ferdig'
   },
+    {
+    name: 'nve-drawer',
+    nodeId: '1976-5493',
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
+  },
   {
     name: 'nve-icon',
     nodeId: undefined,
