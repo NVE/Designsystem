@@ -34,4 +34,3 @@ export { default as NveTag } from './components/nve-tag/nve-tag.component';
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
 export type { StepProps } from './components/nve-stepper/nve-step/nve-step.component';
-export type { NveButtonProps } from './components/nve-button/nve-button.component';
