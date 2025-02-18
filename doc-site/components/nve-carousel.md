@@ -158,7 +158,7 @@ Bruk `slides-per-page` for å vise flere bilder per slide i karusellen. Du kan o
 
 ### Thumbnails
 
-Bruk `nve-carousel-thumbnails` komponentet for å vise thumbnailsbilder under bildekarusellen.
+Bruk `nve-carousel-thumbnail` komponentet for å vise thumbnailsbilder under bildekarusellen.
 
 <CodeExamplePreview>
 
@@ -175,11 +175,11 @@ Bruk `nve-carousel-thumbnails` komponentet for å vise thumbnailsbilder under bi
   </nve-carousel-item>
 </nve-carousel>
 
-<nve-carousel-thumbnails>
+<nve-carousel-thumbnail>
   <img src="../assets/images/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   <img src="../assets/images/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   <img src="../assets/images/mønstre.png" alt="Mønstre" />
-</nve-carousel-thumbnails>
+</nve-carousel-thumbnail>
 ```
 
 </CodeExamplePreview>

@@ -9,7 +9,7 @@ export { default as NveBadge } from './components/nve-badge/nve-badge.component'
 export { default as NveButton } from './components/nve-button/nve-button.component';
 export { default as NveCarousel } from './components/nve-carousel/nve-carousel.component';
 export { default as NveCarouselItem } from './components/nve-carousel-item/nve-carousel-item.component';
-export { default as NveCarouselThumbnails } from './components/nve-carousel-thumbnails/nve-carousel-thumbnails.component';
+export { default as NveCarouselThumbnail } from './components/nve-carousel-thumbnail/nve-carousel-thumbnail.component';
 export { default as NveCheckbox } from './components/nve-checkbox/nve-checkbox.component';
 export { default as NveCheckboxGroup } from './components/nve-checkbox-group/nve-checkbox-group.component';
 export { default as NveDarkmodeSwitch } from './components/nve-darkmode-switch/nve-darkmode-switch.component';

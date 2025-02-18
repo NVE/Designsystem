@@ -1,14 +1,14 @@
 import { css } from 'lit';
 
 export default css`
-.thumbnails {
+.thumbnail {
     display: flex;
     justify-content: center;
     alight-items: center;
     height: auto;
 }
 
-.thumbnails__scroller {
+.thumbnail__scroller {
     display: flex;
         justify-content: center;
     alight-items: center;

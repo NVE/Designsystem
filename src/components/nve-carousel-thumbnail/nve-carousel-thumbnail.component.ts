@@ -2,10 +2,10 @@
   import { html, LitElement } from 'lit';
   import { customElement, property } from 'lit/decorators.js';
   import { INveComponent } from '@interfaces/NveComponent.interface';
-  import styles from './nve-carousel-thumbnails.styles';
+  import styles from './nve-carousel-thumbnail.styles';
 
-  @customElement('nve-carousel-thumbnails')
-  export default class NveCarouselThumbnails extends LitElement implements INveComponent {
+  @customElement('nve-carousel-thumbnail')
+  export default class NveCarouselThumbnail extends LitElement implements INveComponent {
 
   @property({reflect: true, type: String}) testId: string | undefined = undefined;
 
@@ -57,8 +57,8 @@
 
   render() {
     return  html`
-      <div class="thumbnails">
-        <div class="thumbnails__scroller">
+      <div class="thumbnail">
+        <div class="thumbnail__scroller">
           <slot @slotchange="${this.handleSlotChange}"></slot>
         </div>
       </div>
@@ -69,6 +69,6 @@
 
 declare global {
   interface HTMLElementTagNameMap {
-    'nve-carousel-thumbnails': NveCarouselThumbnails;
+    'nve-carousel-thumbnail': NveCarouselThumbnail;
   }
 }
