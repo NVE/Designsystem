@@ -10,6 +10,7 @@ export { default as NveCheckboxGroup } from './components/nve-checkbox-group/nve
 export { default as NveDarkmodeSwitch } from './components/nve-darkmode-switch/nve-darkmode-switch.component';
 export { default as NveDialog } from './components/nve-dialog/nve-dialog.component';
 export { default as NveDivider } from './components/nve-divider/nve-divider.component';
+export { default as NveDrawer } from './components/nve-drawer/nve-drawer.component';
 export { default as NveDropdown } from './components/nve-dropdown/nve-dropdown.component';
 export { default as NveIcon } from './components/nve-icon/nve-icon.component';
 export { default as NveInput } from './components/nve-input/nve-input.component';
@@ -34,3 +35,4 @@ export { default as NveTag } from './components/nve-tag/nve-tag.component';
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
 export type { StepProps } from './components/nve-stepper/nve-step/nve-step.component';
+  

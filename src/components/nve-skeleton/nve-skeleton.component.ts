@@ -5,6 +5,7 @@
   import SlSkeleton from '@shoelace-style/shoelace/dist/components/skeleton/skeleton.js';
 /**
  * Skeletons  brukes til å gi en visuell representasjon av hvor innholdet til slutt vil bli tegnet.
+ * 
  */
   @customElement('nve-skeleton')
   export default class NveSkeleton extends SlSkeleton implements INveComponent {

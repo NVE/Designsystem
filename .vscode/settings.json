@@ -34,5 +34,9 @@
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSaveMode": "file"
-  }
+  },
+  "conventionalCommits.scopes": [
+    "conventional commits",
+    "VS code extension",
+  ]
 }
