@@ -1,9 +1,9 @@
 
   import { customElement, property } from 'lit/decorators.js';
-  import { INveComponent } from '@interfaces/NveComponent.interface';
-  import styles from './nve-carousel-item.styles';
   import { html, PropertyValues } from 'lit';
+  import { INveComponent } from '@interfaces/NveComponent.interface';
   import SlCarouselItem  from '@shoelace-style/shoelace/dist/components/carousel-item/carousel-item.js';
+  import styles from './nve-carousel-item.styles';
 
 /**
  * Bruk propertien "description" for å legge på bildetekst under bildet.

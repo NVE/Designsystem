@@ -1,14 +1,14 @@
 
 import { customElement, property } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
-import styles from './nve-carousel.styles';
-import SlCarousel  from '@shoelace-style/shoelace/dist/components/carousel/carousel.js';
 import { SlCarouselItem } from '@shoelace-style/shoelace';
+import SlCarousel  from '@shoelace-style/shoelace/dist/components/carousel/carousel.js';
+import styles from './nve-carousel.styles';
 
 /**
  * Bruk propertien "description" på nve-carousel-item for å legge på bildetekst under bildet.
  * Anbefaler å bare godta liggende eller stående formater på bilder i karusellen for best layout.
- * Bildekarusellen støtter ikke denne propertien: orientation="vertical".
+ * Nve-carousel støtter ikke propertien: orientation="vertical".
  */
 
 @customElement('nve-carousel')

@@ -2,8 +2,8 @@
   import { html, LitElement } from 'lit';
   import { customElement, property } from 'lit/decorators.js';
   import { INveComponent } from '@interfaces/NveComponent.interface';
-  import styles from './nve-carousel-thumbnail.styles';
   import { NveCarousel } from 'src/nve-designsystem';
+  import styles from './nve-carousel-thumbnail.styles';
 
   @customElement('nve-carousel-thumbnail')
   export default class NveCarouselThumbnail extends LitElement implements INveComponent {
@@ -26,17 +26,17 @@
     });
   }
 
+  /**
+   * Tatt fra Shoelace:
+   * https://shoelace.style/components/carousel#gallery-example
+   *
+  */
   firstUpdated() {
     const carousel = this.closest('nve-carousel') as NveCarousel;
     const scroller = this.shadowRoot?.querySelector('.thumbnail__scroller');
     const thumbnail = this.shadowRoot?.querySelectorAll('.thumbnail__image');
 
-    console.log('carousel:', carousel);
-    console.log('scroller:', scroller);
-    console.log('thumbnail:', thumbnail);
-
     if (scroller && thumbnail && carousel) {
-      console.log('heihei');
       scroller.addEventListener('click', e => {
         const target = e.target as HTMLElement;
 
