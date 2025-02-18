@@ -3,6 +3,7 @@
   import { customElement, property } from 'lit/decorators.js';
   import { INveComponent } from '@interfaces/NveComponent.interface';
   import styles from './nve-carousel-thumbnail.styles';
+  import { NveCarousel } from 'src/nve-designsystem';
 
   @customElement('nve-carousel-thumbnail')
   export default class NveCarouselThumbnail extends LitElement implements INveComponent {
@@ -20,33 +21,38 @@
     const nodes = slot?.assignedNodes({ flatten: true }) as HTMLElement[];
     nodes.forEach(node => {
       if (node instanceof HTMLImageElement) {
-        node.classList.add('thumbnails__image');
-        node.setAttribute('part', 'thumbnail-image');
+        node.classList.add('thumbnail__image');
       }
     });
   }
 
   firstUpdated() {
-    const carousel = this.closest('nve-carousel');
-    const scroller = this.shadowRoot?.querySelector('.thumbnails__scroller');
-    const thumbnails = this.shadowRoot?.querySelectorAll('.thumbnails__image');
+    const carousel = this.closest('nve-carousel') as NveCarousel;
+    const scroller = this.shadowRoot?.querySelector('.thumbnail__scroller');
+    const thumbnail = this.shadowRoot?.querySelectorAll('.thumbnail__image');
 
-    if (scroller && thumbnails && carousel) {
+    console.log('carousel:', carousel);
+    console.log('scroller:', scroller);
+    console.log('thumbnail:', thumbnail);
+
+    if (scroller && thumbnail && carousel) {
+      console.log('heihei');
       scroller.addEventListener('click', e => {
         const target = e.target as HTMLElement;
 
-        if (target.matches('.thumbnails__image')) {
-          const index = Array.from(thumbnails).indexOf(target);
-          (carousel as any).goToSlide(index);
+        if (target.matches('.thumbnail__image')) {
+          console.log('Thumbnail clicked:', target);
+          const index = Array.from(thumbnail).indexOf(target);
+          carousel.goToSlide(index);
         }
       });
-      carousel.addEventListener('sl-slide-change', e => {
-        const slideIndex = (e as CustomEvent).detail.index;
+      carousel.addEventListener('sl-slide-change', event => {
+        const slideIndex = (event as CustomEvent).detail.index;
 
-        thumbnails.forEach((thumb, i) => {
-          thumb.classList.toggle('active', i === slideIndex);
-          if (i === slideIndex) {
-            thumb.scrollIntoView({
+        thumbnail.forEach((image, index) => {
+          image.classList.toggle('active', index === slideIndex);
+          if (index === slideIndex) {
+            image.scrollIntoView({
               block: 'nearest'
             });
           }

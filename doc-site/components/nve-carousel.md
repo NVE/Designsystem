@@ -9,13 +9,13 @@ Se også [nve-carousel-item](./nve-carousel-item.html) som brukes inne i `nve-ca
 ```html
 <nve-carousel pagination navigation loop thumbnailImages>
   <nve-carousel-item>
-    <img src="../assets/images/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
+    <img src="../public/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
+    <img src="../public/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/mønstre.png" alt="Mønstre" />
+    <img src="../public/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>
 ```
@@ -32,13 +32,13 @@ Bruk `navigation` for å legge på navigerings-knapper på hver side av bildet i
 ```html
 <nve-carousel navigation>
   <nve-carousel-item>
-    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+    <img src="../public/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+    <img src="../public/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/mønstre.png" alt="bilde" />
+    <img src="../public/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>
 ```
@@ -54,13 +54,13 @@ Bruk `pagination` for å legge på paginerings-knapper under bildekarusellen.
 ```html
 <nve-carousel pagination>
   <nve-carousel-item>
-    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+    <img src="../public/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+    <img src="../public/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/mønstre.png" alt="bilde" />
+    <img src="../public/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>
 ```
@@ -76,13 +76,13 @@ Bruk `loop` for å kunne bla igjennom bildene fra start flere ganger.
 ```html
 <nve-carousel navigation pagination loop>
   <nve-carousel-item>
-    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+    <img src="../public/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+    <img src="../public/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/mønstre.png" alt="bilde" />
+    <img src="../public/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>
 ```
@@ -97,15 +97,14 @@ Bruk `description` på `nve-csarousel-item`for å legge til en bildetekst til hv
 
 ```html
 <nve-carousel navigation pagination loop>
-  <nve-carousel-item description="Foto: Ola Nordmann.">
-    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+  <nve-carousel-item>
+    <img src="../public/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
-  <nve-carousel-item description="Fjellrekken på natten.">
-    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+  <nve-carousel-item>
+    <img src="../public/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   </nve-carousel-item>
-  <nve-carousel-item description="Bildekollage."
-    >.
-    <img src="../assets/images/mønstre.png" alt="bilde" />
+  <nve-carousel-item>
+    <img src="../public/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>
 ```
@@ -121,13 +120,13 @@ Bruk `autoplay` til å rotere mellom bildene i karusellen automatisk.
 ```html
 <nve-carousel pagination autoplay>
   <nve-carousel-item>
-    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+    <img src="../public/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+    <img src="../public/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/mønstre.png" alt="bilde" />
+    <img src="../public/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>
 ```
@@ -143,13 +142,13 @@ Bruk `slides-per-page` for å vise flere bilder per slide i karusellen. Du kan o
 ```html
 <nve-carousel pagination slides-per-page="2" slides-per-move="2">
   <nve-carousel-item>
-    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+    <img src="../public/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+    <img src="../public/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/mønstre.png" alt="bilde" />
+    <img src="../public/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>
 ```
@@ -165,20 +164,20 @@ Bruk `nve-carousel-thumbnail` komponentet for å vise thumbnailsbilder under bil
 ```html
 <nve-carousel navigation loop>
   <nve-carousel-item>
-    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+    <img src="../public/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+    <img src="../public/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/mønstre.png" alt="bilde" />
+    <img src="../public/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>
 
 <nve-carousel-thumbnail>
-  <img src="../assets/images/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
-  <img src="../assets/images/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
-  <img src="../assets/images/mønstre.png" alt="Mønstre" />
+  <img src="../public/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
+  <img src="../public/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
+  <img src="../public/assets/mønstre.png" alt="Mønstre" />
 </nve-carousel-thumbnail>
 ```
 

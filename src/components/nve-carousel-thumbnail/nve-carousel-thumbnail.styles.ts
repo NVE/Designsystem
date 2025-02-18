@@ -10,7 +10,7 @@ export default css`
 
 .thumbnail__scroller {
     display: flex;
-        justify-content: center;
+    justify-content: center;
     alight-items: center;
     gap: 5px;
     overflow-x: auto;
@@ -18,7 +18,7 @@ export default css`
     scroll-behavior: smooth;
     scroll-padding: 5px;
     height: auto;
-        width: 85%
+    width: 85%
 }
 
 ::slotted(img) {
@@ -34,5 +34,4 @@ export default css`
 ::slotted(img.active) {
     opacity: 1;
 }
-
 `
