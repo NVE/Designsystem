@@ -54,14 +54,22 @@ export default css`
     --track-width: 2.5px;
     position: relative;
     top: 0;
-    font-size: 24px;
+    font-size: var(--font-size-large);
     left: 0;
     margin-right: var(--spacing-x-small);
   }
 
   :host ::slotted(nve-icon) {
-    font-size: 24px;
+    font-size: var(--font-size-large);
     color: var(--nve-icon-color);
+  }
+
+  :host([size='small']) ::slotted(nve-icon) {
+    font-size: var(--font-size-medium);
+  }
+
+  :host([size='large']) ::slotted(nve-icon) {
+    font-size: var(--font-size-large); // large og medium har samme ikonstr i figma
   }
 
   :host::part(label) {
