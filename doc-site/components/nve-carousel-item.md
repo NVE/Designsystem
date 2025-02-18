@@ -36,8 +36,7 @@ Bruk `description` på `nve-carousel-item`for å legge til en bildetekst til hve
   <nve-carousel-item description="Fjellrekken på natten.">
     <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
   </nve-carousel-item>
-  <nve-carousel-item description="Bildekollage."
-    >.
+  <nve-carousel-item description="Bildekollage.">
     <img src="../assets/images/mønstre.png" alt="bilde" />
   </nve-carousel-item>
 </nve-carousel>
