@@ -43,3 +43,26 @@ Bruk `description` på `nve-carousel-item`for å legge til en bildetekst til hve
 ```
 
 </CodeExamplePreview>
+
+### Horisontale og vertikale bilder sammen
+
+<CodeExamplePreview>
+
+```html
+<nve-carousel pagination navigation loop>
+  <nve-carousel-item>
+    <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/mønstre.png" alt="Mønstre" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/farger1.png" alt="Farger" />
+  </nve-carousel-item>
+</nve-carousel>
+```
+
+</CodeExamplePreview>
