@@ -1,6 +1,6 @@
 
 import { html, LitElement } from 'lit';
-import { property } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 import { NveCarousel } from 'src/nve-designsystem';
 import styles from './nve-carousel-thumbnail.styles';
@@ -9,6 +9,8 @@ import styles from './nve-carousel-thumbnail.styles';
  * Nve-carousel-thumbnail brukes sammen med nve-carousel.
  * Pass på å legge på en id på karusellen, slik at thumbnailen vet hvilken karusell den skal lytte på.
  */
+
+@customElement('nve-carousel-thumbnail')
 
 export default class NveCarouselThumbnail extends LitElement implements INveComponent {
   @property({ reflect: true, type: String }) testId: string | undefined = undefined;
@@ -79,5 +81,11 @@ export default class NveCarouselThumbnail extends LitElement implements INveComp
         </div>
       </div>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'nve-carousel-thumbnail': NveCarouselThumbnail;
   }
 }
