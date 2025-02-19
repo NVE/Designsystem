@@ -13,16 +13,16 @@ import styles from './nve-carousel-thumbnail.styles';
 @customElement('nve-carousel-thumbnail')
 
 export default class NveCarouselThumbnail extends LitElement implements INveComponent {
-  @property({ reflect: true, type: String }) testId: string | undefined = undefined;
-
-  /** Brukes til å targete riktig karusell som skal kobles opp mot thumbnailsene.*/
-  @property({ reflect: true, type: String }) carouselId: '' | undefined = undefined; // For å vite hvilken karusell vi skal lytte på.
 
   static styles = [styles];
 
   constructor() {
     super();
   }
+
+  @property({ reflect: true, type: String }) testId: string | undefined = undefined;
+  /** Brukes til å targete riktig karusell som skal kobles opp mot thumbnailsene.*/
+  @property({ reflect: true, type: String }) carouselId: '' | undefined = undefined; // For å vite hvilken karusell vi skal lytte på.
 
   private handleSlotChange() {
     const slot = this.shadowRoot?.querySelector('slot');

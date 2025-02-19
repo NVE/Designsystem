@@ -7,7 +7,7 @@ Se også [nve-carousel-item](./nve-carousel-item.html) som brukes inne i `nve-ca
 <CodeExamplePreview>
 
 ```html
-<nve-carousel pagination navigation loop thumbnailImages>
+<nve-carousel pagination navigation loop>
   <nve-carousel-item>
     <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
@@ -16,9 +16,6 @@ Se også [nve-carousel-item](./nve-carousel-item.html) som brukes inne i `nve-ca
   </nve-carousel-item>
   <nve-carousel-item>
     <img src="/assets/mønstre.png" alt="Mønstre" />
-  </nve-carousel-item>
-  <nve-carousel-item>
-    <img src="/assets/farger1.png" alt="Farger" />
   </nve-carousel-item>
 </nve-carousel>
 ```
@@ -92,6 +89,29 @@ Bruk `loop` for å kunne bla igjennom bildene fra start flere ganger.
 
 </CodeExamplePreview>
 
+### Horisontale og vertikale bilder sammen
+
+<CodeExamplePreview>
+
+```html
+<nve-carousel pagination navigation loop>
+  <nve-carousel-item>
+    <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/mønstre.png" alt="Mønstre" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/farger1.png" alt="Farger" />
+  </nve-carousel-item>
+</nve-carousel>
+```
+
+</CodeExamplePreview>
+
 ### Bildetekst
 
 Bruk `description` på `nve-csarousel-item`for å legge til en bildetekst til hvert bilde om ønskelig. Det er mulig å bare ha bildetekst på noen av bildene.
@@ -113,6 +133,34 @@ Bruk `description` på `nve-csarousel-item`for å legge til en bildetekst til hv
     <img src="/assets/farger1.png" alt="Farger" />
   </nve-carousel-item>
 </nve-carousel>
+```
+
+</CodeExamplePreview>
+
+### Thumbnails
+
+Bruk `nve-carousel-thumbnail` komponentet for å vise thumbnails under bildekarusellen. For å koble thumbnails opp mot riktig karusell, må det å defineres en `id` på `nve-carousel`, og `carouselId` på `nve-carousel-thumbnail`. Desse må være like.
+
+<CodeExamplePreview>
+
+```html
+<nve-carousel navigation loop id="thumbnail">
+  <nve-carousel-item>
+    <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/mønstre.png" alt="Mønstre" />
+  </nve-carousel-item>
+</nve-carousel>
+
+<nve-carousel-thumbnail carouselId="thumbnail">
+  <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
+  <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
+  <img src="/assets/mønstre.png" alt="Mønstre" />
+</nve-carousel-thumbnail>
 ```
 
 </CodeExamplePreview>
@@ -157,34 +205,6 @@ Bruk `slides-per-page` for å vise flere bilder per slide i karusellen. Du kan o
     <img src="/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>
-```
-
-</CodeExamplePreview>
-
-### Thumbnails
-
-Bruk `nve-carousel-thumbnail` komponentet for å vise thumbnails under bildekarusellen. For å koble thumbnails opp mot riktig karusell, trengs det å definere `id` på `nve-carousel` og `carouselId` på `nve-carousel-thumbnail`. Desse må være like.
-
-<CodeExamplePreview>
-
-```html
-<nve-carousel navigation loop id="test">
-  <nve-carousel-item>
-    <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
-  </nve-carousel-item>
-  <nve-carousel-item>
-    <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
-  </nve-carousel-item>
-  <nve-carousel-item>
-    <img src="/assets/mønstre.png" alt="Mønstre" />
-  </nve-carousel-item>
-</nve-carousel>
-
-<nve-carousel-thumbnail carouselId="test">
-  <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
-  <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
-  <img src="/assets/mønstre.png" alt="Mønstre" />
-</nve-carousel-thumbnail>
 ```
 
 </CodeExamplePreview>

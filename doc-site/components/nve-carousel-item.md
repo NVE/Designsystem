@@ -30,13 +30,13 @@ Bruk `description` på `nve-carousel-item`for å legge til en bildetekst til hve
 
 ```html
 <nve-carousel navigation pagination loop>
-  <nve-carousel-item>
+  <nve-carousel-item description="Foto: Ola Nordmann.">
     <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
-  <nve-carousel-item>
+  <nve-carousel-item description="Fjellrekken på natten.">
     <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   </nve-carousel-item>
-  <nve-carousel-item>
+  <nve-carousel-item description="Bildekollage av mønstre.">
     <img src="/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>

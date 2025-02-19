@@ -20,7 +20,7 @@ export default class NveCarouselItem extends SlCarouselItem implements INveCompo
   }
 
   @property({reflect: true, type: String}) testId: string | undefined = undefined;
- /* Bildebeskrivelse */
+  /** Brukes til å legge på beskrivelse på bildene. */
   @property({ type: String, reflect: true }) description = '';
 
   updated(changedProperties: PropertyValues) {
