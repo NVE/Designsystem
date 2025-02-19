@@ -10,6 +10,7 @@ export default css`
 
 .carousel-item__description {
     background-color: var(--teal-150);
+    color: var(--neutrals-foreground-primary);
     width: 100%;
     object-fit: contain;
     height: auto;
