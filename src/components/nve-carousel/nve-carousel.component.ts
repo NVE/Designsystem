@@ -23,7 +23,7 @@ export default class NveCarousel extends SlCarousel implements INveComponent {
 
   @property({reflect: true, type: String}) testId: string | undefined = undefined;
 
-  /* Overskrive metoden fra shoelace, slik den ser etter nve-carousel-item isteden for sl-carousle-item */
+  /* Overskrive metoden fra shoelace, slik den ser etter nve-carousel-item isteden for sl-carousel-item */
   // @ts-expect-error overskriver private method
   private override isCarouselItem(node: Node): node is SlCarouselItem {
     return node instanceof Element && node.tagName.toLowerCase() === 'nve-carousel-item';

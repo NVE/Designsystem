@@ -29,7 +29,7 @@
   /**
    * Tatt fra Shoelace:
    * https://shoelace.style/components/carousel#gallery-example
-   *
+   * Funksjonaliteten funker ikke per nå.
   */
   firstUpdated() {
     const carousel = this.closest('nve-carousel') as NveCarousel;
@@ -41,7 +41,6 @@
         const target = e.target as HTMLElement;
 
         if (target.matches('.thumbnail__image')) {
-          console.log('Thumbnail clicked:', target);
           const index = Array.from(thumbnail).indexOf(target);
           carousel.goToSlide(index);
         }
