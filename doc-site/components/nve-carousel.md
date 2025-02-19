@@ -17,6 +17,9 @@ Se også [nve-carousel-item](./nve-carousel-item.html) som brukes inne i `nve-ca
   <nve-carousel-item>
     <img src="/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/farger1.png" alt="Farger" />
+  </nve-carousel-item>
 </nve-carousel>
 ```
 
@@ -106,6 +109,9 @@ Bruk `description` på `nve-csarousel-item`for å legge til en bildetekst til hv
   <nve-carousel-item description="Bildekollage av mønstre.">
     <img src="/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
+  <nve-carousel-item description="Sammensetting av farger.">
+    <img src="/assets/farger1.png" alt="Farger" />
+  </nve-carousel-item>
 </nve-carousel>
 ```
 
@@ -118,7 +124,7 @@ Bruk `autoplay` til å rotere mellom bildene i karusellen automatisk.
 <CodeExamplePreview>
 
 ```html
-<nve-carousel pagination autoplay>
+<nve-carousel pagination autoplay loop>
   <nve-carousel-item>
     <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
