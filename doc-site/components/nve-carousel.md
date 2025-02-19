@@ -146,7 +146,7 @@ Bruk `slides-per-page` for å vise flere bilder per slide i karusellen. Du kan o
 <CodeExamplePreview>
 
 ```html
-<nve-carousel pagination slides-per-page="2" slides-per-move="2">
+<nve-carousel pagination navigation slides-per-page="2" slides-per-move="2">
   <nve-carousel-item>
     <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
@@ -161,14 +161,14 @@ Bruk `slides-per-page` for å vise flere bilder per slide i karusellen. Du kan o
 
 </CodeExamplePreview>
 
-### Thumbnails (funker ikke)
+### Thumbnails
 
-Bruk `nve-carousel-thumbnail` komponentet for å vise thumbnailsbilder under bildekarusellen.
+Bruk `nve-carousel-thumbnail` komponentet for å vise thumbnails under bildekarusellen. For å koble thumbnails opp mot riktig karusell, trengs det å definere `id` på `nve-carousel` og `carouselId` på `nve-carousel-thumbnail`. Desse må være like.
 
 <CodeExamplePreview>
 
 ```html
-<nve-carousel navigation loop>
+<nve-carousel navigation loop id="test">
   <nve-carousel-item>
     <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
@@ -180,8 +180,7 @@ Bruk `nve-carousel-thumbnail` komponentet for å vise thumbnailsbilder under bil
   </nve-carousel-item>
 </nve-carousel>
 
-<!-- Virker som thumbnail komponentet må være inne i nve-carousel, men får ikke til å funke. -->
-<nve-carousel-thumbnail>
+<nve-carousel-thumbnail carouselId="test">
   <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   <img src="/assets/mønstre.png" alt="Mønstre" />

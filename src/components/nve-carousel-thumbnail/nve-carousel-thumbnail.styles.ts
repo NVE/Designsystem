@@ -4,7 +4,7 @@ export default css`
 .thumbnail {
     display: flex;
     justify-content: center;
-    alight-items: center;
+    align-items: center;
     height: auto;
 }
 
@@ -21,7 +21,7 @@ export default css`
     width: 85%
 }
 
-::slotted(img) {
+::slotted(.thumbnail__image) {
     height: 64px !important;
     aspect-ratio: 3/2;
     object-fit: cover;
@@ -31,7 +31,7 @@ export default css`
     cursor: pointer;
 }
 
-::slotted(img.active) {
+::slotted(.thumbnail__image--active) {
     opacity: 1;
 }
 `
