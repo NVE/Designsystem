@@ -9,13 +9,13 @@ Gå til [nve-carousel](./nve-carousel.html) for mer info om denne komponenten.
 ```html
 <nve-carousel pagination navigation loop>
   <nve-carousel-item>
-    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+    <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+    <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="../assets/images/mønstre.png" alt="bilde" />
+    <img src="/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>
 ```
@@ -30,14 +30,14 @@ Bruk `description` på `nve-carousel-item`for å legge til en bildetekst til hve
 
 ```html
 <nve-carousel navigation pagination loop>
-  <nve-carousel-item description="Foto: Ola Nordmann.">
-    <img src="../assets/images/start-page-image.jpg" alt="bilde" />
+  <nve-carousel-item>
+    <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>
-  <nve-carousel-item description="Fjellrekken på natten.">
-    <img src="../assets/images/dark-mode-start-image.avif" alt="bilde" />
+  <nve-carousel-item>
+    <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   </nve-carousel-item>
-  <nve-carousel-item description="Bildekollage.">
-    <img src="../assets/images/mønstre.png" alt="bilde" />
+  <nve-carousel-item>
+    <img src="/assets/mønstre.png" alt="Mønstre" />
   </nve-carousel-item>
 </nve-carousel>
 ```
