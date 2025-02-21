@@ -62,7 +62,7 @@ Det er mulig å kombinere horistontalt og vertikalt innhold i karusellen, men de
     <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="/assets/graasubrean.jpg" alt="Snødekkeundersøkelse" />
+    <img src="/assets/snoedekkeundersoekelse.jpg" alt="Snødekkeundersøkelse" />
   </nve-carousel-item>
 </nve-carousel>
 ```
