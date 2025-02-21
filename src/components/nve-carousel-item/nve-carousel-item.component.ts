@@ -6,9 +6,8 @@
   import styles from './nve-carousel-item.styles';
 
 /**
- * Et karusellelement som representerer innholdet i en karusell.
+ * Et karusellelement som representerer bilder eller annet valgfritt innhold i en karusell.
  * Bruk propertien "description" for å legge på bildetekst under bildet.
- * Kan brukes til bilder eller annet valgrfritt innhold.
  * Anbefaler å bare godta liggende eller stående formater på bilder i karusellen for best layout.
  */
 
