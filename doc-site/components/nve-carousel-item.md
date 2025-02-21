@@ -52,6 +52,8 @@ Bruk `description` på `nve-carousel-item`for å legge til en bildetekst til hve
 
 ### Horisontale og vertikale bilder sammen
 
+Det er mulig å kombinere horistontalt og vertikalt innhold i karusellen, men dette endrer høyden på selve karusellen ettersom den går ut i fra det høyeste innholdet i karusellen.
+
 <CodeExamplePreview>
 
 ```html
