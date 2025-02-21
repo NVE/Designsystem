@@ -9,13 +9,16 @@ Gå til [nve-carousel](./nve-carousel.html) for mer info om denne komponenten.
 ```html
 <nve-carousel navigation>
   <nve-carousel-item>
-    <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
+    <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
+    <img src="/assets/nigardsbreen.jpg" alt="Nigardsbreen" />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="/assets/mønstre.png" alt="Mønstre" />
+    <img src="/assets/tarhalsen_fyr.jpg" alt="Tarhalsen fyr" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/skogfjordvann.jpg" alt="Skogfjordvann" />
   </nve-carousel-item>
 </nve-carousel>
 ```
@@ -30,14 +33,17 @@ Bruk `description` på `nve-carousel-item`for å legge til en bildetekst til hve
 
 ```html
 <nve-carousel navigation pagination loop>
-  <nve-carousel-item description="Foto: Ola Nordmann.">
-    <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
+  <nve-carousel-item description="Transmisjonsnett i Sogn og Fjordane. Foto: Velaug Amalie Mook.">
+    <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
   </nve-carousel-item>
-  <nve-carousel-item description="Fjellrekken på natten.">
-    <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
+  <nve-carousel-item description="Snømåling på Nigardsbreen.">
+    <img src="/assets/nigardsbreen.jpg" alt="Nigardsbreen" />
   </nve-carousel-item>
-  <nve-carousel-item description="Bildekollage av mønstre.">
-    <img src="/assets/mønstre.png" alt="Mønstre" />
+  <nve-carousel-item description="Tarhalsen fyr Sørøya. Foto: Stig Storheil.">
+    <img src="/assets/tarhalsen_fyr.jpg" alt="Tarhalsen fyr" />
+  </nve-carousel-item>
+  <nve-carousel-item description="Nivellering Skogsfjordvann.">
+    <img src="/assets/skogfjordvann.jpg" alt="Skogfjordvann" />
   </nve-carousel-item>
 </nve-carousel>
 ```
@@ -51,16 +57,10 @@ Bruk `description` på `nve-carousel-item`for å legge til en bildetekst til hve
 ```html
 <nve-carousel pagination navigation loop>
   <nve-carousel-item>
-    <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
+    <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
   </nve-carousel-item>
   <nve-carousel-item>
-    <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
-  </nve-carousel-item>
-  <nve-carousel-item>
-    <img src="/assets/mønstre.png" alt="Mønstre" />
-  </nve-carousel-item>
-  <nve-carousel-item>
-    <img src="/assets/farger1.png" alt="Farger" />
+    <img src="/assets/graasubrean.jpg" alt="Snødekkeundersøkelse" />
   </nve-carousel-item>
 </nve-carousel>
 ```
