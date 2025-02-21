@@ -12,7 +12,7 @@ export default css`
     display: flex;
     justify-content: center;
     alight-items: center;
-    gap: var(spacing-xx-small);
+    gap: var(--spacing-xx-small);
     overflow-x: auto;
     scrollbar-width: none;
     scroll-behavior: smooth;
@@ -22,7 +22,7 @@ export default css`
 }
 
 ::slotted(.thumbnail__image) {
-    height: var(spacing-3x-large) !important;
+    height: var(--spacing-3x-large) !important;
     aspect-ratio: 3/2;
     object-fit: cover;
     opacity: 0.3;

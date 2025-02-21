@@ -186,7 +186,7 @@ Bruk `autoplay` til å rotere mellom bildene i karusellen automatisk. For å end
 <CodeExamplePreview>
 
 ```html
-<nve-carousel pagination autoplay loop>
+<nve-carousel pagination loop autoplay>
   <nve-carousel-item>
     <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
   </nve-carousel-item>
