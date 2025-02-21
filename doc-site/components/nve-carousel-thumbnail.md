@@ -24,6 +24,8 @@ Gå til [nve-carousel](./nve-carousel.html) for mer info om denne komponenten.
   <img src="/assets/dark-mode-start-image.avif" alt="Bilde av naturen på natten." />
   <img src="/assets/mønstre.png" alt="Mønstre" />
 </nve-carousel-thumbnail>
+
+Miniatybilder som forhåndsviser bildene i karusellen.
 ```
 
 </CodeExamplePreview>

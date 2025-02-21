@@ -14,7 +14,7 @@ export default css`
     width: 100%;
     object-fit: contain;
     height: auto;
-    padding: 0 16px;
+    padding: 0 var(--spacing-medium);
 }
 
 :host(nve-carousel-item) {

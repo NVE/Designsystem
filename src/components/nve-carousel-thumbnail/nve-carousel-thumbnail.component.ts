@@ -6,8 +6,8 @@ import { NveCarousel } from 'src/nve-designsystem';
 import styles from './nve-carousel-thumbnail.styles';
 
 /**
- * Nve-carousel-thumbnail brukes sammen med nve-carousel.
- * Pass på å legge på en id på karusellen, slik at thumbnailen vet hvilken karusell den skal lytte på.
+ * En rekke med miniatyrbilder som brukes til å forhåndsvise bildene i nve-carousel.
+ * Definer en lik id på nve-carousel og nve-carousel-thumbnail for å koble komponentene sammen.
  */
 
 @customElement('nve-carousel-thumbnail')
@@ -38,7 +38,7 @@ export default class NveCarouselThumbnail extends LitElement implements INveComp
 
   private handleClick(e: Event) {
     if (!this.carouselId) return;
-    const carousel = document.getElementById(this.carouselId) as NveCarousel; // Find by carousel-id.
+    const carousel = document.getElementById(this.carouselId) as NveCarousel; // Finner riktig karusell basert på id.
     const target = e.target as HTMLElement;
     const slot = this.shadowRoot?.querySelector('slot');
 

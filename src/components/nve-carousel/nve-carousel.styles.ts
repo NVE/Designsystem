@@ -16,8 +16,8 @@ export default css`
 :host::part(navigation-button) {
     background-color: var(--neutrals-background-secondary);
     opacity: 70%;
-    padding: 6px;
-    border-radius: 100px;
+    padding: var(--spacing-x-small);
+    border-radius: var(--dimension-25x);
 }
 
 :host::part(navigation-button):hover {
@@ -36,22 +36,20 @@ export default css`
 
 :host::part(pagination-item) {
     background-color: var(--neutrals-border-mute);
-    width: 10px;
-    height: 10px;
-
+    width: var(--spacing-x-small);
+    height: var(--spacing-x-small);
 }
 
 :host::part(pagination-item):hover {
     background-color:  var(--neutrals-border-default);
     transition: 0.3s;
-
 }
 
 :host::part(pagination-item--active) {
     background-color: var(--neutrals-background-primary);
     border: 3px solid var(--neutrals-border-mute);
-    width: 12px;
-    height: 12px;
+    width: var(--spacing-small);
+    height: var(--spacing-small);
 }
 
 :host::part(pagination-item--active):hover {

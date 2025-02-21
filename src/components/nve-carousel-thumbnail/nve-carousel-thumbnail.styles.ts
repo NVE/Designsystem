@@ -12,17 +12,17 @@ export default css`
     display: flex;
     justify-content: center;
     alight-items: center;
-    gap: 5px;
+    gap: var(spacing-xx-small);
     overflow-x: auto;
     scrollbar-width: none;
     scroll-behavior: smooth;
-    scroll-padding: 5px;
+    scroll-padding: var(spacing-xx-small);
     height: auto;
     width: 85%
 }
 
 ::slotted(.thumbnail__image) {
-    height: 64px !important;
+    height: var(spacing-3x-large) !important;
     aspect-ratio: 3/2;
     object-fit: cover;
     opacity: 0.3;

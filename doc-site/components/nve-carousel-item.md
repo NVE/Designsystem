@@ -7,7 +7,7 @@ Gå til [nve-carousel](./nve-carousel.html) for mer info om denne komponenten.
 <CodeExamplePreview>
 
 ```html
-<nve-carousel pagination navigation loop>
+<nve-carousel navigation>
   <nve-carousel-item>
     <img src="/assets/start-page-image.jpg" alt="Bilde av naturen i dagslys." />
   </nve-carousel-item>

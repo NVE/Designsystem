@@ -6,8 +6,7 @@ import SlCarousel  from '@shoelace-style/shoelace/dist/components/carousel/carou
 import styles from './nve-carousel.styles';
 
 /**
- * Bruk propertien "description" på nve-carousel-item for å legge på bildetekst under bildet.
- * Anbefaler å bare godta liggende eller stående formater på bilder i karusellen for best layout.
+ * En karusell for å vise bilder eller annet valgfritt innhold i en serie.
  * Nve-carousel støtter ikke propertien: orientation="vertical".
  */
 
