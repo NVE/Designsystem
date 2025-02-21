@@ -1,4 +1,4 @@
-# [1.1.0](https://github.com/NVE/Designsystem/compare/v1.0.0...v1.1.0) (2025-02-17)
+# [1.3.1](https://github.com/NVE/Designsystem/compare/v1.0.0...v1.1.0) (2025-02-17)
 
 ### Features
 
