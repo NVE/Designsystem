@@ -15,6 +15,7 @@
       "types": "./nve-designsystem.d.ts"
     },
     "./dist/custom-elements.json": "./custom-elements.json",
+    "./dist/vscode.html-custom-data.json": "./vscode.html-custom-data.json",
     "./components/*": "./components/*",
     "./registerIcons/*": "./registerIcons/*",
     "./css/*": "./css/*"
