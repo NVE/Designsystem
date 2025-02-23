@@ -27,6 +27,7 @@
     "paths": {
       "@interfaces/*": ["src/interfaces/*"]
     }
+    //    "types": ["dist/types/vue/index.d.ts"] TODO: Vet ikke om vi trenger å ha med dette
   },
   "include": ["src"]
 }

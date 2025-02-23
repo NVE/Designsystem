@@ -1,5 +1,6 @@
 import * as path from 'path';
 import { customElementVsCodePlugin } from 'custom-element-vs-code-integration';
+import { customElementVuejsPlugin } from 'custom-element-vuejs-integration';
 import { cemInheritancePlugin } from 'custom-elements-manifest-inheritance';
 import { parse } from 'comment-parser';
 import { pascalCase } from 'pascal-case';
@@ -233,6 +234,14 @@ export default {
           url: `https://designsystem.nve.no/components/${tag}`,
         },
       ],
+    }),
+    //Generer metadata til Vue-prosjekter for dokumentasjon, autofullføring og type-validering
+    customElementVuejsPlugin({
+      outdir: './dist/types/vue',
+      fileName: 'index.d.ts',
+      globalTypePath: './dist/nve-designsystem.d.ts',
+      // componentTypePath: (_, tag) =>
+      //   `../../components/${tag.replace('nve-', '')}/${tag.replace('nve-', '')}.component.js`,
     }),
   ],
 };

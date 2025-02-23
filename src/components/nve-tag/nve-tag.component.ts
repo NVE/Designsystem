@@ -31,13 +31,13 @@ export default class NveTag extends LitElement {
   /** Størrelse på komponenten */
   @property({ type: String, reflect: true }) size: 'small' | 'medium' = 'medium';
   /** Ekstra tekst */
-  @property({ type: String, reflect: false, attribute: true }) 'extra-text' = '';
+  @property({ type: String, reflect: false, attribute: true }) extraText = '';
   /** Viser dot-ikon i prefix */
   @property({ type: Boolean, reflect: false }) dot: boolean = false;
   /** Viser lukke-knapp */
-  @property({ type: Boolean, reflect: false }) 'closeable': boolean = false;
+  @property({ type: Boolean, reflect: false }) closeable: boolean = false;
   /** aria-label på lukke-knapp */
-  @property({ type: String, reflect: false }) 'close-aria-label': string = 'Lukk';
+  @property({ type: String, reflect: false }) closeAriaLabel: string = 'Lukk';
 
   private closeButtonClick() {
     const event = new CustomEvent('nve-close', {
@@ -75,12 +75,12 @@ export default class NveTag extends LitElement {
             : nothing}</slot
         >
         <slot part="text"></slot>
-        <slot name="extra" part="extra">${this['extra-text']}</slot>
+        <slot name="extra" part="extra">${this['extraText']}</slot>
         ${this['closeable']
           ? html`<button
               part="close"
               class="tag-close"
-              aria-label="${this['close-aria-label']}"
+              aria-label="${this['closeAriaLabel']}"
               @click=${this.closeButtonClick}
             >
               <nve-icon name="close" library="Sharp"></nve-icon>
