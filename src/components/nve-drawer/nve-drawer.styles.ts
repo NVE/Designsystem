@@ -13,12 +13,16 @@ export default css`
   }
 
   :host::part(title) {
+    display: flex;
+    align-items: center;
     font-size: var(--font-size-medium);
     font-weight: var(--font-weight-semibold);
     padding: 0;
   }
 
   :host::part(header-actions) {
+    display: flex;
+    align-items: center;
     padding: 0;
   }
 
