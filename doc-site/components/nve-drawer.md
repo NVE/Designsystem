@@ -45,7 +45,7 @@ Label slotten kan også brukes som et attributt på nve-drawer `<nve-drawer labe
   <nve-button>Åpne</nve-button>
   <nve-drawer placement="end" class="drawer-slot">
     <div slot="label">Dette er label slot'en</div>
-    <div slot="header-actions" style="display:flex; align-items: center; ">
+    <div slot="header-actions">
       <nve-button id="dialogBtn" variant="text"><nve-icon name="warning"></nve-icon></nve-button>
     </div>
     Lorem ipsum dolor sit amet
@@ -112,9 +112,7 @@ Bruk `placement="bottom"` for å åpne skuffen fra bunn av siden
 ```html
 <div>
   <nve-button>Åpne</nve-button>
-  <nve-drawer label="Skuff" placement="bottom" class="drawer-placement-bottom">
-    Lorem ipsum dolor sit amet
-  </nve-drawer>
+  <nve-drawer label="Skuff" placement="bottom" class="drawer-placement-bottom"> Lorem ipsum dolor sit amet </nve-drawer>
 </div>
 
 <script>
