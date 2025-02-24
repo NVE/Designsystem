@@ -142,9 +142,13 @@ export default class NveCombobox extends LitElement implements INveComponent {
     { label: 'Sea Pig Worm', value: 'sea_pig_worm' },
   ];
 
+  @state() displayList: 'listWithoutSelectedElements' | 'listWithPossibleSearchHits' | 'selectedItems' =
+    'listWithoutSelectedElements';
   @state() listWithoutSelectedElements: OptionInterface[] = [];
-  @state() inputValue: string = '';
+  @state() listWithPossibleSearchHits: OptionInterface[] = [];
   @state() selectedItems: OptionInterface[] = [];
+  @state() inputValue: string = '';
+
   @state() isPopupActive: boolean = false;
 
   steps: StepProps[] = [];
@@ -158,8 +162,24 @@ export default class NveCombobox extends LitElement implements INveComponent {
   handleInput(event: Event) {
     const target = event.target as HTMLInputElement;
     this.inputValue = target.value;
+    const res = this.searchForOptions(target.value);
+    this.setListWithPossibleSearchHits(res);
+  }
 
-    // Lag
+  setListWithPossibleSearchHits(options: OptionInterface[]) {
+    this.listWithPossibleSearchHits = [];
+    this.listWithPossibleSearchHits.push(...options);
+    this.displayList = 'listWithPossibleSearchHits';
+  }
+
+  searchForOptions(searchText: string) {
+    return this.listWithoutSelectedElements.filter((option) => {
+      return this.regExp(searchText, option);
+    });
+  }
+
+  regExp(searchText: string, option: OptionInterface) {
+    return new RegExp(searchText, 'i').test(option.label);
   }
   handleFocus() {
     console.log('handleFocus');
@@ -201,6 +221,10 @@ export default class NveCombobox extends LitElement implements INveComponent {
     this.isPopupActive = false;
   }
 
+  addHighlightingToSearchResult(option: OptionInterface) {
+    return option.label.replace(new RegExp(this.inputValue, 'i'), (match) => `<b>${match}</b>`);
+  }
+
   render() {
     return html`
       <nve-popup placement="bottom" sync="width" .active="${this.isPopupActive}">
@@ -229,10 +253,17 @@ export default class NveCombobox extends LitElement implements INveComponent {
           tabindex="-1"
           @blur="${this.handleBlur}"
         >
-          ${this.selectedItems?.map(
-            (item) => html` <nve-option disabled @click="${() => this.selectItem(item)}"> ${item.label}</nve-option> `
+          ${this.displayList === 'listWithPossibleSearchHits' &&
+          this.listWithPossibleSearchHits?.map(
+            (item) => html`
+              <nve-option
+                @click="${() => this.selectItem(item)}"
+                textLabel="${this.addHighlightingToSearchResult(item)}"
+              ></nve-option>
+            `
           )}
-          ${this.listWithoutSelectedElements?.map(
+          ${this.displayList === 'listWithoutSelectedElements' &&
+          this.listWithoutSelectedElements?.map(
             (item) => html` <nve-option @click="${() => this.selectItem(item)}"> ${item.label}</nve-option> `
           )}
         </div>
@@ -246,3 +277,12 @@ declare global {
     'nve-combobox': NveCombobox;
   }
 }
+/*
+
+       ${this.displayList === 'selectedItems' &&
+          this.selectedItems?.map(
+            (item) => html` <nve-option disabled @click="${() => this.selectItem(item)}"> ${item.label}</nve-option> `
+          )} 
+
+
+*/
