@@ -300,3 +300,7 @@ Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'e
 
 Når vi har nye design-tokens eller endringer i tokens må vi generere globale css-filer på nytt.
 Kjør følgende kommando: `npm run tokenbuild`.
+
+## Hvorfor er det slik?
+
+Her er [bakgrunn for en del valg vi har gjort](design-beslutninger.md) underveis.
