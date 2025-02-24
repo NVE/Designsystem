@@ -81,7 +81,7 @@ Hvis du bruker VS Code og starter et nytt prosjekt gjennom npm run create vue@la
   <nve-button @Click="count++">Du har trykket på denne NVE-knappen {{ count }} gang(er)</nve-button>
 </template>
 <script setup lang="ts">
-import { NveButton } from 'nve-designsystem';
+import { NveButton } from 'nve-designsystem/components/nve-button/nve-button.component.js';
 import { ref } from 'vue';
 const count = ref(0);
 </script>
@@ -96,6 +96,7 @@ Under kjører vi denne koden i en sandkasse. Du kan endre koden selv ved å velg
   <nve-button @Click="count++">Du har trykket på denne NVE-knappen {{ count }} gang(er)</nve-button>
 </template>
 <script setup lang="ts">
+//TODO: Fikse sandbox slik at vi kan bruke anbefalt struktur på import av nve-komponenter
 import 'nve-designsystem/components/nve-button/nve-button.component.js';
 import { ref } from 'vue';
 const count = ref(0);
@@ -110,6 +111,13 @@ Les også om [bruk av Shoelace-komponenter i Vue](https://shoelace.style/framewo
 
 ## Mer hjelp i VS Code
 
+Vi bruker [Custom Element VS Code Integration](https://github.com/break-stuff/cem-tools/tree/main/packages/vs-code-integration) til å generere hjelpedokumentasjon til VS Code.
+
 Legg denne inn i `.vscode/settings.json`, for få dokumentasjon og autofullføring av attributt-verdier i VS Code:
 
 `"html.customData": ["./node_modules/nve-designsystem/vscode.html-custom-data.json"]`
+
+Da får du disse funksjonene:
+
+- Hold muspeker over komponentnavnet i html-malen for å se dokumentasjon på komponenten
+- Bruk Ctrl-space for hjelp til å fullføre attributtnavn og for å vise tilgjengelige valg der et attributt har et begrenset sett av lovlige valg.
