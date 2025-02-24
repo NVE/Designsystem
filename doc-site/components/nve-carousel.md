@@ -229,6 +229,40 @@ Bruk `slides-per-page` for å vise flere lysbilder per visning i karusellen. Du 
 
 </CodeExamplePreview>
 
+### Vise noe annet enn bilder
+
+Du kan også legge andre ting enn bilder i `nve-carousel-item`.
+
+<CodeExamplePreview>
+
+```html
+<nve-carousel navigation>
+  <nve-carousel-item>
+    <div>
+      <h1>Velg språk / choose language</h1>
+      <br />
+      <nve-select label="Språk/language">
+        <nve-option value="valg1">Norsk</nve-option>
+        <nve-option value="valg2">Engelsk</nve-option>
+      </nve-select>
+    </div>
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <div style="color: green">
+      <h1>Du greide det!</h1>
+      <p>Nå kan du:</p>
+      <ul>
+        <li>Finne deg noe godt å spise/drikke</li>
+        <li>Lene deg tilbake</li>
+        <li>Ta helg</li>
+      </ul>
+    </div>
+  </nve-carousel-item>
+</nve-carousel>
+```
+
+</CodeExamplePreview>
+
 ### Vertikal scrolling
 
 Bildekarusellen støtter ikke vertikal scrolling per nå.

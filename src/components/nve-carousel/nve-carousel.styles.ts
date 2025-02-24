@@ -1,16 +1,19 @@
 import { css } from 'lit';
 
 export default css`
+:host(nve-carousel) {
+    height: fit-content;
+}
 
 :host::part(base) {
     gap: 0rem 10px;
-    max-heigth: fit-content;
+    height: auto;
 }
 
 :host::part(scroll-container) {
     aspect-ratio: auto;
     object-fit: contain;
-    height: auto;
+    height: 500px; //sette høyden på karusellen
 }
 
 :host::part(navigation-button) {
@@ -55,4 +58,5 @@ export default css`
 :host::part(pagination-item--active):hover {
     background-color: var(--neutrals-background-primary);
 }
+
 `

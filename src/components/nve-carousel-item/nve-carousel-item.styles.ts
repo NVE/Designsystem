@@ -2,22 +2,20 @@ import { css } from 'lit';
 
 export default css`
 
+:host(nve-carousel-item) {
+    aspect-ratio: auto;
+    object-fit: contain;
+    height: auto;
+}
+
 ::slotted(img) {
     object-fit: contain;
-    width: 100%;
-    height: fit-content;
 }
 
 .carousel-item__description {
     background-color: var(--teal-150);
     color: var(--neutrals-foreground-primary);
     width: 100%;
-    object-fit: contain;
-    height: auto;
     padding: 0 var(--spacing-medium);
-}
-
-:host(nve-carousel-item) {
-    aspect-ratio: auto;
 }
 `
