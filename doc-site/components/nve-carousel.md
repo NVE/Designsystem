@@ -25,7 +25,7 @@ Se også [nve-carousel-item](./nve-carousel-item.html) som brukes inne i `nve-ca
 
 </CodeExamplePreview>
 
-Karusellen brukes til å vise innhold i en serie som brukerne kan klikke seg gjennom.
+Karusellen brukes til å vise innhold i en serie som brukerne kan klikke seg gjennom. Karusellen fyller vidden i elementet den er plassert i.
 
 ## Eksempler
 
