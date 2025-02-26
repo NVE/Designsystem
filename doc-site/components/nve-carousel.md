@@ -263,7 +263,7 @@ Du kan også legge andre ting enn bilder i `nve-carousel-item`.
 
 </CodeExamplePreview>
 
-### Navigering
+### Numerisk visning av aktivt lysbilde
 
 Bruk `pagination-counter` for å legge på en aktiv / total - visning på karusellen
 <CodeExamplePreview>
