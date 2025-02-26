@@ -1,19 +1,13 @@
 import { css } from 'lit';
 
 export default css`
-:host(nve-carousel) {
-    height: fit-content;
-}
-
 :host::part(base) {
     gap: 0rem 10px;
-    height: auto;
 }
 
 :host::part(scroll-container) {
     aspect-ratio: auto;
     object-fit: contain;
-    height: 500px; //sette høyden på karusellen
 }
 
 :host::part(navigation-button) {

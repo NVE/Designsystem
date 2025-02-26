@@ -3,7 +3,7 @@ import { css } from 'lit';
 export default css`
 
 :host(nve-carousel-item) {
-    aspect-ratio: auto;
+    aspect-ratio: 16/9;
     object-fit: contain;
     height: auto;
 }
