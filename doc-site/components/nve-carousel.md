@@ -263,6 +263,30 @@ Du kan også legge andre ting enn bilder i `nve-carousel-item`.
 
 </CodeExamplePreview>
 
+### Navigering
+
+Bruk `pagination-counter` for å legge på en aktiv / total - visning på karusellen
+<CodeExamplePreview>
+
+```html
+<nve-carousel pagination-counter pagination>
+  <nve-carousel-item>
+    <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/nigardsbreen.jpg" alt="Nigardsbreen" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/tarhalsen_fyr.jpg" alt="Tarhalsen fyr" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/skogfjordvann.jpg" alt="Skogfjordvann" />
+  </nve-carousel-item>
+</nve-carousel>
+```
+
+</CodeExamplePreview>
+
 ### Vertikal scrolling
 
 Bildekarusellen støtter ikke vertikal scrolling per nå.
