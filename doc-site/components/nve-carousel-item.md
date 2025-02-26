@@ -42,8 +42,11 @@ Bruk `description` på `nve-carousel-item`for å legge til en bildetekst til hve
   <nve-carousel-item description="Tarhalsen fyr Sørøya. Foto: Stig Storheil.">
     <img src="/assets/tarhalsen_fyr.jpg" alt="Tarhalsen fyr" />
   </nve-carousel-item>
-  <nve-carousel-item description="Nivellering Skogsfjordvann.">
+  <nve-carousel-item>
     <img src="/assets/skogfjordvann.jpg" alt="Skogfjordvann" />
+  </nve-carousel-item>
+  <nve-carousel-item description="Snødekkeundersøkelse. Foto: Gustav Pless.">
+    <img src="/assets/snoedekkeundersoekelse.jpg" alt="Snødekkeundersøkelse" />
   </nve-carousel-item>
 </nve-carousel>
 ```

@@ -53,6 +53,52 @@ Bruk `navigation` for å legge på navigerings-knapper på hver side av bildet i
 
 </CodeExamplePreview>
 
+### Numerisk visning av aktivt lysbilde
+
+Bruk `pagination-counter` for å legge på en "aktiv / total" visning på elementene i karusellen.
+<CodeExamplePreview>
+
+```html
+<nve-carousel navigation pagination-counter>
+  <nve-carousel-item>
+    <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/nigardsbreen.jpg" alt="Nigardsbreen" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/tarhalsen_fyr.jpg" alt="Tarhalsen fyr" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/skogfjordvann.jpg" alt="Skogfjordvann" />
+  </nve-carousel-item>
+</nve-carousel>
+```
+
+</CodeExamplePreview>
+
+Bruk `pagination-counter-bg` sammen med `pagination-counter` for å legge på en bakgrunnsfarge på telleren.
+<CodeExamplePreview>
+
+```html
+<nve-carousel navigation pagination-counter pagination-counter-bg>
+  <nve-carousel-item>
+    <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/nigardsbreen.jpg" alt="Nigardsbreen" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/tarhalsen_fyr.jpg" alt="Tarhalsen fyr" />
+  </nve-carousel-item>
+  <nve-carousel-item>
+    <img src="/assets/skogfjordvann.jpg" alt="Skogfjordvann" />
+  </nve-carousel-item>
+</nve-carousel>
+```
+
+</CodeExamplePreview>
+
 ### Paginering
 
 Bruk `pagination` for å legge på paginerings-knapper under bildekarusellen.
@@ -139,8 +185,11 @@ Bruk `description` på `nve-carousel-item`for å legge til en bildetekst til hve
   <nve-carousel-item description="Tarhalsen fyr Sørøya. Foto: Stig Storheil.">
     <img src="/assets/tarhalsen_fyr.jpg" alt="Tarhalsen fyr" />
   </nve-carousel-item>
-  <nve-carousel-item description="Nivellering Skogsfjordvann.">
+  <nve-carousel-item>
     <img src="/assets/skogfjordvann.jpg" alt="Skogfjordvann" />
+  </nve-carousel-item>
+  <nve-carousel-item description="Snødekkeundersøkelse. Foto: Gustav Pless.">
+    <img src="/assets/snoedekkeundersoekelse.jpg" alt="Snødekkeundersøkelse" />
   </nve-carousel-item>
 </nve-carousel>
 ```
@@ -257,30 +306,6 @@ Du kan også legge andre ting enn bilder i `nve-carousel-item`.
         <li>Ta helg</li>
       </ul>
     </div>
-  </nve-carousel-item>
-</nve-carousel>
-```
-
-</CodeExamplePreview>
-
-### Numerisk visning av aktivt lysbilde
-
-Bruk `pagination-counter` for å legge på en aktiv / total - visning på karusellen
-<CodeExamplePreview>
-
-```html
-<nve-carousel pagination-counter pagination>
-  <nve-carousel-item>
-    <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
-  </nve-carousel-item>
-  <nve-carousel-item>
-    <img src="/assets/nigardsbreen.jpg" alt="Nigardsbreen" />
-  </nve-carousel-item>
-  <nve-carousel-item>
-    <img src="/assets/tarhalsen_fyr.jpg" alt="Tarhalsen fyr" />
-  </nve-carousel-item>
-  <nve-carousel-item>
-    <img src="/assets/skogfjordvann.jpg" alt="Skogfjordvann" />
   </nve-carousel-item>
 </nve-carousel>
 ```

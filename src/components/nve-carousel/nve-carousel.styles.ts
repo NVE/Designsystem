@@ -9,11 +9,14 @@ export default css`
     content: attr(data-active-item) ' / ' attr(data-num-items);
     display: block;
     position: absolute;
-    bottom: 2rem;
-    right: 2rem;
-    background-color: var(--neutrals-background-secondary);
-    padding: var(--spacing-x-small);
+    bottom: 0;
+    right: 0;
+    padding: var(--spacing-xx-small);
     border-radius: var(--border-radius-small);
+  }
+
+  :host([pagination-counter][pagination-counter-bg])::part(scroll-container)::after {
+    background-color: var(--neutrals-background-secondary);
   }
 
   :host::part(scroll-container) {

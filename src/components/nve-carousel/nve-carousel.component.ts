@@ -22,6 +22,8 @@ export default class NveCarousel extends SlCarousel implements INveComponent {
   @property({ reflect: true, type: String }) testId: string | undefined = undefined;
   /** Dersom denne er satt vises en teller av typen "1 / 4" på karusellen. */
   @property({ reflect: true, type: Boolean }) paginationCounter: boolean = false;
+   /** Dersom denne er satt vises en grå bakgrunn på paginerings-telleren. */
+  @property({ reflect: true, type: Boolean }) paginationCounterBg: boolean = false;
 
   /* Overskrive metoden fra shoelace, slik den ser etter nve-carousel-item isteden for sl-carousel-item */
   // @ts-expect-error overskriver private method
