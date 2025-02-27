@@ -29,7 +29,6 @@ Gå til [nve-carousel](./nve-carousel.html) for mer info om denne komponenten.
   <img src="/assets/skogfjordvann.jpg" alt="Skogfjordvann" />
 </nve-carousel-thumbnail>
 
-Miniatybilder som forhåndsviser bildene i karusellen.
 ```
 
 </CodeExamplePreview>
