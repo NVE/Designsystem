@@ -87,9 +87,8 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     name: 'nve-carousel',
     nodeId: '480-49356',
     description: 'Bildekarusell',
-    statusDesign: 'Trenger kvalitetsjekk',
-    statusDesign: 'Skal revideres',
-    statusCode: 'Under arbeid'
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-checkbox',
