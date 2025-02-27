@@ -11,14 +11,11 @@ export default css`
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: var(--spacing-xx-small);
+    padding: var(--spacing-xx-small) var(--spacing-x-small);
     border-radius: var(--border-radius-small);
     color: var(--pagination-counter-color, inherit);
-  }
+    background-color: var(--pagination-counter-bg-color, inherit);  }
 
-  :host([pagination-counter][pagination-counter-bg])::part(scroll-container)::after {
-    background-color: var(--pagination-counter-bg-color, inherit);
-  }
 
   :host::part(scroll-container) {
     aspect-ratio: auto;

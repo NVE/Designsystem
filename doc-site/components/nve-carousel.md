@@ -56,10 +56,11 @@ Bruk `navigation` for å legge på navigerings-knapper på hver side av bildet i
 ### Numerisk visning av aktivt lysbilde
 
 Bruk `pagination-counter` for å legge på en "aktiv / total" visning på elementene i karusellen.
+
 <CodeExamplePreview>
 
 ```html
-<nve-carousel navigation pagination-counter pagination-counter-color="#c1121f">
+<nve-carousel navigation pagination-counter>
   <nve-carousel-item>
     <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
   </nve-carousel-item>
@@ -77,31 +78,58 @@ Bruk `pagination-counter` for å legge på en "aktiv / total" visning på elemen
 
 </CodeExamplePreview>
 
-Bruk `pagination-counter-bg` sammen med `pagination-counter` for å legge på en bakgrunnsfarge på telleren.
+Endre fargen på paginerings telleren ved å legge inn en inline style på `--pagination-counter-color`. Under er det brukt i en div for å vise eksempelet, men stylingen kan i praksis settes rett i `nve-carousel`.
 <CodeExamplePreview>
 
 ```html
-<nve-carousel navigation pagination-counter pagination-counter-bg pagination-counter-bg-color="#669bbc">
-  <nve-carousel-item>
-    <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
-  </nve-carousel-item>
-  <nve-carousel-item>
-    <img src="/assets/nigardsbreen.jpg" alt="Nigardsbreen" />
-  </nve-carousel-item>
-  <nve-carousel-item>
-    <img src="/assets/tarhalsen_fyr.jpg" alt="Tarhalsen fyr" />
-  </nve-carousel-item>
-  <nve-carousel-item>
-    <img src="/assets/skogfjordvann.jpg" alt="Skogfjordvann" />
-  </nve-carousel-item>
-</nve-carousel>
+<div style="--pagination-counter-color: red;">
+  <nve-carousel navigation pagination-counter>
+    <nve-carousel-item>
+      <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
+    </nve-carousel-item>
+    <nve-carousel-item>
+      <img src="/assets/nigardsbreen.jpg" alt="Nigardsbreen" />
+    </nve-carousel-item>
+    <nve-carousel-item>
+      <img src="/assets/tarhalsen_fyr.jpg" alt="Tarhalsen fyr" />
+    </nve-carousel-item>
+    <nve-carousel-item>
+      <img src="/assets/skogfjordvann.jpg" alt="Skogfjordvann" />
+    </nve-carousel-item>
+  </nve-carousel>
+</div>
+```
+
+</CodeExamplePreview>
+
+Det kan legges til en bakgrunnsfarge på paginerings-telleren. Endre bakgrunnsfargen ved å legge inn en inline style på `--pagination-counter-bg-color`. Under er det brukt i en div for å vise eksempelet, men stylingen kan i praksis settes rett i `nve-carousel`.
+
+<CodeExamplePreview>
+
+```html
+<div style="--pagination-counter-bg-color: lightgray;">
+  <nve-carousel navigation pagination-counter>
+    <nve-carousel-item>
+      <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
+    </nve-carousel-item>
+    <nve-carousel-item>
+      <img src="/assets/nigardsbreen.jpg" alt="Nigardsbreen" />
+    </nve-carousel-item>
+    <nve-carousel-item>
+      <img src="/assets/tarhalsen_fyr.jpg" alt="Tarhalsen fyr" />
+    </nve-carousel-item>
+    <nve-carousel-item>
+      <img src="/assets/skogfjordvann.jpg" alt="Skogfjordvann" />
+    </nve-carousel-item>
+  </nve-carousel>
+</div>
 ```
 
 </CodeExamplePreview>
 
 ### Paginering
 
-Bruk `pagination` for å legge på paginerings-knapper under bildekarusellen.
+Bruk `pagination` for å legge på paginerings-knapper under bildekarusellen. Det er ikke anbefalt å bruke både `pagination` og `pagination-counter` sammen da det strider i mot design-mønstret.
 
 <CodeExamplePreview>
 
