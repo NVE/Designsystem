@@ -13,10 +13,11 @@ export default css`
     right: 0;
     padding: var(--spacing-xx-small);
     border-radius: var(--border-radius-small);
+    color: var(--pagination-counter-color, inherit);
   }
 
   :host([pagination-counter][pagination-counter-bg])::part(scroll-container)::after {
-    background-color: var(--neutrals-background-secondary);
+    background-color: var(--pagination-counter-bg-color, inherit);
   }
 
   :host::part(scroll-container) {

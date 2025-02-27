@@ -59,7 +59,7 @@ Bruk `pagination-counter` for å legge på en "aktiv / total" visning på elemen
 <CodeExamplePreview>
 
 ```html
-<nve-carousel navigation pagination-counter>
+<nve-carousel navigation pagination-counter pagination-counter-color="#c1121f">
   <nve-carousel-item>
     <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
   </nve-carousel-item>
@@ -81,7 +81,7 @@ Bruk `pagination-counter-bg` sammen med `pagination-counter` for å legge på en
 <CodeExamplePreview>
 
 ```html
-<nve-carousel navigation pagination-counter pagination-counter-bg>
+<nve-carousel navigation pagination-counter pagination-counter-bg pagination-counter-bg-color="#669bbc">
   <nve-carousel-item>
     <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
   </nve-carousel-item>
