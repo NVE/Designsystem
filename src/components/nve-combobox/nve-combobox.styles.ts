@@ -18,4 +18,5 @@ export default css`
     // max-width: var(--auto-size-available-width);
     max-height: 200px;
   }
+ 
 `;

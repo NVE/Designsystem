@@ -7,7 +7,9 @@ TODO: Start med et enklest mulig kodeeksempel i html for å kunne vise komponent
 
 ```html
 <div style="height:30vh">
-  <nve-combobox></nve-combobox>
+  <form>
+    <nve-combobox></nve-combobox>
+  </form>
 </div>
 ```
 
