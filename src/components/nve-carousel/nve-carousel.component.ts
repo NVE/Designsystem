@@ -8,8 +8,8 @@ import { PropertyValueMap } from 'lit';
 /**
  * En karusell for å vise bilder eller annet valgfritt innhold i en serie.
  * Nve-carousel støtter ikke propertien: orientation="vertical".
- * @cssproperty --pagination-counter-color - The color of the pagination-counter text.
- * @cssproperty --pagination-counter-bg-color - The background-color of the pagination-counter.
+ * @cssproperty --pagination-counter-color - Fargen på sidetellerteksten.
+ * @cssproperty --pagination-counter-bg-color - Bakgrunnsfargen til pagineringstelleren.
  */
 
 @customElement('nve-carousel')
