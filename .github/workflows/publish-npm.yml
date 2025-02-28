@@ -41,9 +41,9 @@ jobs:
           git config --global user.email "jobl@nve.no"
           git config --global user.name "Designsystem"
 
-      - name: Publish new version to npm
-        if: ${{ success() }}
-        run: |
-          npm run publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
+      # - name: Publish new version to npm
+      #   if: ${{ success() }}
+      #   run: |
+      #     npm run publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH }}
