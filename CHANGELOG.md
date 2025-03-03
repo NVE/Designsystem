@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/NVE/Designsystem/compare/v1.4.3...v1.4.4) (2025-03-03)
+
+
+### Bug Fixes
+
+* rette .css stier i global.css ([#443](https://github.com/NVE/Designsystem/issues/443)) ([51ff529](https://github.com/NVE/Designsystem/commit/51ff5291fde80ea33c3326f6a0ecacbb41f8a2f0))
+
 ## [1.4.3](https://github.com/NVE/Designsystem/compare/v1.4.2...v1.4.3) (2025-03-03)
 
 
