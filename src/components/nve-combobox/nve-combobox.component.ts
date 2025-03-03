@@ -209,11 +209,14 @@ export default class NveCombobox extends LitElement implements INveComponent {
     // console.log('getWidthOfNveTags ', this.getWidthOfNveTags());
   }
 
-  selectItem(index: number) {
-    const copyOfSelectedItems = [...this.values];
+  selectItem(option: OptionInterface) {
+    const copyOfValues = [...this.values];
+    const indexInValues = copyOfValues.findIndex((optionValue) => optionValue.value === option.value);
+    if (indexInValues === -1) return;
+
     if (!this.multiple && this.selectedOptions.length === 1) {
-      for (let i = 0; i < copyOfSelectedItems.length; i++) {
-        const option = copyOfSelectedItems[i];
+      for (let i = 0; i < copyOfValues.length; i++) {
+        const option = copyOfValues[i];
         if (option?.selected) {
           option.selected = false;
           break;
@@ -221,9 +224,10 @@ export default class NveCombobox extends LitElement implements INveComponent {
       }
       this.selectedOptions = [];
     }
-    copyOfSelectedItems[index].selected = true;
-    this.selectedOptions.push(copyOfSelectedItems[index]);
-    this.values = copyOfSelectedItems;
+
+    copyOfValues[indexInValues].selected = true;
+    this.selectedOptions.push(option);
+    this.values = copyOfValues;
     this.inputValue = '';
     this.isPopupActive = false;
   }
@@ -323,15 +327,15 @@ export default class NveCombobox extends LitElement implements INveComponent {
           label="Velg et dyr"
         >
           ${this.selectedOptions.map(
-            (item, i) => html`
+            (option, i) => html`
               <nve-tag
                 tabindex="${this.getTabIndex(i)}"
-                @nve-close="${() => this.unselectItem(item)}"
+                @nve-close="${() => this.unselectItem(option)}"
                 slot="prefix"
                 closeable
                 size="small"
               >
-                ${item.label}
+                ${option.label}
               </nve-tag>
             `
           )}
@@ -360,31 +364,31 @@ export default class NveCombobox extends LitElement implements INveComponent {
           ${this.shouldDisplayList('listWithPossibleSearchHits')
             ? this.listWithPossibleSearchHits.length > 0
               ? this.listWithPossibleSearchHits.map(
-                  (item, i) => html`
-                    <nve-option tabindex="-1" value="${item.value}" @click="${() => this.selectItem(i)}">
-                      ${this.addHighlightingToSearchResult(item)}
+                  (option) => html`
+                    <nve-option tabindex="-1" value="${option.value}" @click="${() => this.selectItem(option)}">
+                      ${this.addHighlightingToSearchResult(option)}
                     </nve-option>
                   `
                 )
               : html`<nve-option disabled>Ingen resultater</nve-option> `
             : ''}
           ${this.shouldDisplayList('values')
-            ? this.values.map((item, i) => {
-                return !item.selected
+            ? this.values.map((option, i) => {
+                return !option.selected
                   ? html` <nve-option
                       tabindex="${this.getTabIndex(i)}"
-                      value="${item.value}"
-                      @click="${() => this.selectItem(i)}"
-                      >${item.label}</nve-option
+                      value="${option.value}"
+                      @click="${() => this.selectItem(option)}"
+                      >${option.label}</nve-option
                     >`
                   : html`
                       <nve-option
                         tabindex="${this.getTabIndex(i)}"
-                        value="${item.value}"
-                        @click=${() => this.unselectItem(item)}
+                        value="${option.value}"
+                        @click=${() => this.unselectItem(option)}
                       >
                         <nve-icon slot="prefix" name="check" style="font-size: 1.5rem;"></nve-icon>
-                        ${item.label}
+                        ${option.label}
                       </nve-option>
                     `;
               })
