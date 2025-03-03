@@ -30,7 +30,7 @@ export default defineConfig({
 });
 ```
 
-TODO: BUrde vi også inkludert type-info? Se <https://shoelace.style/frameworks/vue#types>
+TODO: Burde vi også inkludert type-info? Se <https://shoelace.style/frameworks/vue#types>
 
 ## Stiler
 
@@ -81,7 +81,7 @@ Hvis du bruker VS Code og starter et nytt prosjekt gjennom npm run create vue@la
   <nve-button @Click="count++">Du har trykket på denne NVE-knappen {{ count }} gang(er)</nve-button>
 </template>
 <script setup lang="ts">
-import 'nve-designsystem/components/nve-button/nve-button.component.js';
+import { NveButton } from 'nve-designsystem';
 import { ref } from 'vue';
 const count = ref(0);
 </script>
@@ -108,4 +108,8 @@ Hvis du ikke ser komponenten når du kjører sida, sjekk om du har importert den
 
 Les også om [bruk av Shoelace-komponenter i Vue](https://shoelace.style/frameworks/vue). Det meste der gjelder for Nve-komponenter også.
 
-<nve-message-card title="Tips">Bruke både opening og closing tag individuelt. &lt;nve-button /&gt; funker ikke i Vue.</nve-message-card>
+## Mer hjelp i VS Code
+
+Legg denne inn i `.vscode/settings.json`, for få dokumentasjon og autofullføring av attributt-verdier i VS Code:
+
+`"html.customData": ["./node_modules/nve-designsystem/vscode.html-custom-data.json"]`
