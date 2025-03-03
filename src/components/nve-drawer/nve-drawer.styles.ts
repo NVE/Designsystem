@@ -15,7 +15,7 @@ export default css`
   :host::part(title) {
     display: flex;
     align-items: center;
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-small);
     font-weight: var(--font-weight-semibold);
     padding: 0;
   }
