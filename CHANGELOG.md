@@ -1,3 +1,12 @@
+## [1.4.1](https://github.com/NVE/Designsystem/compare/v1.4.0...v1.4.1) (2025-03-03)
+
+
+### Bug Fixes
+
+* bruke release bot ([#438](https://github.com/NVE/Designsystem/issues/438)) ([405a525](https://github.com/NVE/Designsystem/commit/405a525c34eba2fb4604c95935dda00aebdd84de))
+* publish pipeline release-bot [#1](https://github.com/NVE/Designsystem/issues/1) ([#440](https://github.com/NVE/Designsystem/issues/440)) ([0941eac](https://github.com/NVE/Designsystem/commit/0941eaca4e1ca4551fbd4dfc757bc752fdc6ba6b))
+* støtte css-filer import via cdn ([#439](https://github.com/NVE/Designsystem/issues/439)) ([293cf4c](https://github.com/NVE/Designsystem/commit/293cf4c9348a13b3733dc49ef33d07211ea1722f))
+
 # [1.4.0](https://github.com/NVE/Designsystem/compare/v1.3.1...v1.4.0) (2025-02-28)
 
 
