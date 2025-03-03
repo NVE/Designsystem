@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/NVE/Designsystem/compare/v1.4.1...v1.4.2) (2025-03-03)
+
+
+### Bug Fixes
+
+* publish branch releaser bot ([#441](https://github.com/NVE/Designsystem/issues/441)) ([129c29c](https://github.com/NVE/Designsystem/commit/129c29cb92e8f6041054c772a8ffb0d9ea747775)), closes [#1](https://github.com/NVE/Designsystem/issues/1) [#2](https://github.com/NVE/Designsystem/issues/2)
+
 ## [1.4.1](https://github.com/NVE/Designsystem/compare/v1.4.0...v1.4.1) (2025-03-03)
 
 
