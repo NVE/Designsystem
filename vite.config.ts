@@ -6,6 +6,8 @@ import dts from 'vite-plugin-dts';
 import { glob } from 'glob';
 import alias from '@rollup/plugin-alias';
 import type { Plugin } from 'vite';
+import fs from 'fs';
+import path from 'path';
 
 /** Inneholder alle stiene til filene som skal bundles, og skal ha types */
 const includedPaths = ['src/**/*.ts'];
@@ -19,6 +21,22 @@ const excludedPaths = [
   'src/main.ts',
 ];
 
+// Sikre at vi henter riktig css fil i global.css etter build
+function replaceImportAfterBuild() {
+  return {
+    name: 'replace-import-path',
+    closeBundle() {
+      const globalCssPath = path.resolve(__dirname, 'dist/css/global.css');
+      if (fs.existsSync(globalCssPath)) {
+        let content = fs.readFileSync(globalCssPath, 'utf8');
+        content = content.replace('../../dist/nve-designsystem.css', '../nve-designsystem.css');
+        fs.writeFileSync(globalCssPath, content, 'utf8');
+        console.log('✅ Fixed import path in global.css');
+      }
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => {
   return {
     plugins: [
@@ -27,10 +45,9 @@ export default defineConfig(({ mode }) => {
         exclude: excludedPaths,
       }),
       alias({
-        entries: [
-          { find: '@interfaces', replacement: resolve(__dirname, 'src/interfaces') }
-        ]
-      }) as Plugin
+        entries: [{ find: '@interfaces', replacement: resolve(__dirname, 'src/interfaces') }],
+      }) as Plugin,
+      replaceImportAfterBuild(),
     ],
     build: {
       sourcemap: mode === 'development' ? true : false,
