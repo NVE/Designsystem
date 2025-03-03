@@ -10,6 +10,11 @@ on:
       - 'public/css/**'
   workflow_dispatch:
 
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
 jobs:
   build_and_release:
     runs-on: ubuntu-latest
