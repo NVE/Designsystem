@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/NVE/Designsystem/compare/v1.4.2...v1.4.3) (2025-03-03)
+
+
+### Bug Fixes
+
+* publish pipeline release-bot ([#442](https://github.com/NVE/Designsystem/issues/442)) ([3d45425](https://github.com/NVE/Designsystem/commit/3d45425d8a24354a01bc6176f345ee2a4eaae970)), closes [#1](https://github.com/NVE/Designsystem/issues/1) [#2](https://github.com/NVE/Designsystem/issues/2) [#3](https://github.com/NVE/Designsystem/issues/3)
+
 ## [1.4.2](https://github.com/NVE/Designsystem/compare/v1.4.1...v1.4.2) (2025-03-03)
 
 
