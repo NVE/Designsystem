@@ -294,9 +294,20 @@ Før man lager en PR eller er det lurt å teste pakke lokalt. Med `npm run pack`
 
 Pull requests på komponenter skal også kunne godkjennes av designere. Derfor har vi satt opp en azure static app som kjører test/dokumentasjons-applikasjonen. Denne bygges og kjøres når man lager en PR.
 
-Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'er kan det være at appen ikke bygges. De skal slettes automatisk når en PR lukkes, men det er ikke alltid dette virker. I slike tilfeller må vi slette appene manuelt i Azure-portalen. Appene ligger i denne ressursgruppa: TEST-Designsystemet-RG. Marcin, Øystein, Joel, Fred og Tommy har tilgang til dette.
+Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'er kan det være at appen ikke bygges. De skal slettes automatisk når en PR lukkes, men det er ikke alltid dette virker. Hvis du får disse feilmeldingene i bygget, kan det være verdt å sjekke hvor mange "preview environments" som kjører:
+
+```
+The content server has rejected the request with: InternalServerError
+Reason: An unexpected error has occurred. Please try again later.
+```
+
+I slike tilfeller må vi slette appene manuelt i Azure-portalen. Appene ligger i ressursgruppa `TEST-Designsystemet-RG`. Gå til ressursen `nve-designystem-dok` og velg `Environments`. Marcin, Øystein, Joel, Fred og Tommy har tilgang til dette.
 
 ## Bygge globale css-filer
 
 Når vi har nye design-tokens eller endringer i tokens må vi generere globale css-filer på nytt.
 Kjør følgende kommando: `npm run tokenbuild`.
+
+## Hvorfor er det slik?
+
+Her er [bakgrunn for en del valg vi har gjort](design-beslutninger.md) underveis.
