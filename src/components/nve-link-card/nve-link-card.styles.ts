@@ -12,10 +12,14 @@ export default css`
   }
 
   .link-card:hover .link-card__title {
-  text-decoration: underline;
-}
+    text-decoration: underline;
+  }
 
-  .link-card--small {
+  .link-card:active {
+    outline: var(--interactive-primary-foreground-border-focus, #008FFB) solid 2px;
+    }
+
+  .link-card--small {nve-designsystem.css
     min-height: 40px;
     padding: var(--spacing-small, 12px) var(--spacing-medium, 16px);
   }
@@ -36,8 +40,6 @@ export default css`
     font-weight: 400;
     line-height: 150%;
   }
-
-
 
   .link-card__title--small {
     font-size: 0.875rem;
@@ -85,6 +87,6 @@ export default css`
 
   .link-card--secondary:hover {
     border-radius: var(--borderRadius-large, 6px);
-    border: 2px solid var(--neutrals-foreground-primary, #0D0D0E);
+    outline: var(--neutrals-foreground-primary, #0D0D0E) solid 2px;
   }
 `;

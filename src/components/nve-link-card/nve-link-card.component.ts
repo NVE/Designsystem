@@ -37,7 +37,7 @@ export default class NveLinkCard extends LitElement implements INveComponent {
 
   static styles = [styles];
 
-    /**
+  /**
    * Standard nedlastingsfunksjon som brukes hvis downloadHandler ikke er overstyrt. 
    * Bruker lenken (href) til å laste ned en fil.
    */
@@ -71,10 +71,12 @@ export default class NveLinkCard extends LitElement implements INveComponent {
    * Alt + Klikk: Laster ned lenken (hvis det er en fil).
    * Hvis customClickHandler er definert, overstyres standard klikkatferd.
    */
-  private handleClick(event: MouseEvent) {
+  private handleClick(event: MouseEvent | KeyboardEvent) {
     // Overstyr standard klikkatferd med customClickHandler om den finnes
     if (this.customClickHandler) {
-      this.customClickHandler(event);
+      if (event instanceof MouseEvent) {
+        this.customClickHandler(event);
+      }
       return;
     }
     if (this.href && (event.ctrlKey || event.metaKey)) {
@@ -104,6 +106,16 @@ export default class NveLinkCard extends LitElement implements INveComponent {
         break;
     }
   }
+
+/**
+ * Denne er lagt til slik man klikke på cardet ved bruk av tastaturet.
+ */
+  private handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.handleClick(event);
+    }
+  }
+
   /**
    * Returnerer ikonnavnet som vises på kortet basert på clickAction.
    */
@@ -119,7 +131,7 @@ export default class NveLinkCard extends LitElement implements INveComponent {
 
   render() {
     return html`
-      <a part="link-card" class="link-card link-card--${this.size} link-card--${this.variant}" @click="${this.handleClick}">
+    <a part="link-card" class="link-card link-card--${this.size} link-card--${this.variant}" @click="${this.handleClick}" @keydown="${this.handleKeyDown}" tabindex="0">
         <div class="link-card__content">
           <div part="title" class="link-card__title">${this.title}</div>
           ${this.additionalText ? html`<div part="additional-text" class="link-card__additional-text">${this.additionalText}</div>` : nothing }
