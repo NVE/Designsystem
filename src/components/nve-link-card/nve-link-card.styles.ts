@@ -17,7 +17,7 @@ export default css`
 
   .link-card:active {
     outline: var(--interactive-primary-foreground-border-focus, #008FFB) solid 2px;
-    }
+  }
 
   .link-card--small {nve-designsystem.css
     min-height: 40px;
