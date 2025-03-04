@@ -18,7 +18,9 @@ import { ref, createRef } from 'lit/directives/ref.js';
  * Keyboard navigering 
   - nesten ferdig, men trenger arrow navigering , mulig inputRef under er løsningen 
 
- * Fikse props (values/isMultiSelect osv).
+ - Ser ut som at det er en fil på nve-tag, for å fjerne valg må man tabbe 2 ganger og styling er feil
+ 
+  * teste emitted verdi 
 
  * Validering av input (rød ramme)
 
@@ -43,7 +45,9 @@ type ListType = 'values' | 'listWithPossibleSearchHits';
 @customElement('nve-combobox')
 export default class NveCombobox extends LitElement implements INveComponent {
   @property({ reflect: true, type: String }) testId: string | undefined = undefined;
+  @property({ reflect: true, type: String }) label: string = '';
   @property({ reflect: true, type: Boolean }) multiple: boolean | undefined = true;
+  @property({ reflect: true, type: Boolean }) disabled: boolean = true;
 
   @property({ type: Array<OptionInterface> }) values: OptionInterface[] = [
     { label: 'Cat', value: 'cat' },
@@ -161,6 +165,19 @@ export default class NveCombobox extends LitElement implements INveComponent {
   @state() isPopupActive: boolean = false;
   @state() nveTagWidth: number = 0;
 
+  // MÅ testes ut i Vue
+  private emit(eventname: string, value: OptionInterface[]): void {
+    const event = new CustomEvent(eventname, {
+      bubbles: true,
+      cancelable: false,
+      composed: true,
+      detail: {
+        value,
+      },
+    });
+    this.dispatchEvent(event);
+  }
+
   private resizeObserver: ResizeObserver | null = null;
   private width: number = 0;
   inputRef = createRef<HTMLInputElement>();
@@ -209,7 +226,10 @@ export default class NveCombobox extends LitElement implements INveComponent {
     // console.log('getWidthOfNveTags ', this.getWidthOfNveTags());
   }
 
-  selectItem(option: OptionInterface) {
+  selectItem(option: OptionInterface, event?: KeyboardEvent) {
+    if (this.disabled) return;
+    if (event instanceof KeyboardEvent && event.key !== 'Enter') return;
+
     const copyOfValues = [...this.values];
     const indexInValues = copyOfValues.findIndex((optionValue) => optionValue.value === option.value);
     if (indexInValues === -1) return;
@@ -228,11 +248,14 @@ export default class NveCombobox extends LitElement implements INveComponent {
     copyOfValues[indexInValues].selected = true;
     this.selectedOptions.push(option);
     this.values = copyOfValues;
+    this.emit('nve-combobox-selected-options', this.selectedOptions);
     this.inputValue = '';
     this.isPopupActive = false;
   }
 
-  unselectItem(option: OptionInterface) {
+  unselectItem(option: OptionInterface, event?: KeyboardEvent) {
+    if (this.disabled) return;
+    if (event instanceof KeyboardEvent && event.key !== 'Enter') return;
     const copyOfValues = [...this.values];
     const copyOfSelectedOptions = [...this.selectedOptions];
 
@@ -311,10 +334,6 @@ export default class NveCombobox extends LitElement implements INveComponent {
     requestAnimationFrame(() => element!.scrollIntoView(true));
   }
 
-  getTabIndex(index: number) {
-    return index === 0 ? 0 : -1;
-  }
-
   render() {
     return html`
       <nve-popup placement="bottom" sync="width" .active="${this.isPopupActive}">
@@ -324,16 +343,19 @@ export default class NveCombobox extends LitElement implements INveComponent {
           .value="${this.inputValue}"
           @input="${this.handleInput}"
           @focus="${this.handleFocus}"
-          label="Velg et dyr"
+          autocomplete="off"
+          label="${this.label}"
+          ?disabled=${this.disabled}
         >
           ${this.selectedOptions.map(
-            (option, i) => html`
+            (option) => html`
               <nve-tag
-                tabindex="${this.getTabIndex(i)}"
+                tabindex="0"
                 @nve-close="${() => this.unselectItem(option)}"
                 slot="prefix"
                 closeable
                 size="small"
+                .closeable=${!this.disabled}
               >
                 ${option.label}
               </nve-tag>
@@ -354,18 +376,25 @@ export default class NveCombobox extends LitElement implements INveComponent {
         <div
           id="listbox"
           role="listbox"
-          expanded="${!!this.isPopupActive}-"
+          expanded="${!!this.isPopupActive}"
           aria-labelledby="label"
           part="listbox"
           class="select__listbox"
           tabindex="-1"
           @blur="${this.handleBlur}"
+          ?disabled=${this.disabled}
         >
           ${this.shouldDisplayList('listWithPossibleSearchHits')
             ? this.listWithPossibleSearchHits.length > 0
               ? this.listWithPossibleSearchHits.map(
                   (option) => html`
-                    <nve-option tabindex="-1" value="${option.value}" @click="${() => this.selectItem(option)}">
+                    <nve-option
+                      tabindex="0"
+                      value="${option.value}"
+                      ?disabled=${this.disabled}
+                      @keydown="${(e: KeyboardEvent) => this.selectItem(option, e)}"
+                      @click="${() => this.selectItem(option)}"
+                    >
                       ${this.addHighlightingToSearchResult(option)}
                     </nve-option>
                   `
@@ -373,18 +402,22 @@ export default class NveCombobox extends LitElement implements INveComponent {
               : html`<nve-option disabled>Ingen resultater</nve-option> `
             : ''}
           ${this.shouldDisplayList('values')
-            ? this.values.map((option, i) => {
+            ? this.values.map((option) => {
                 return !option.selected
                   ? html` <nve-option
-                      tabindex="${this.getTabIndex(i)}"
+                      tabindex="0"
                       value="${option.value}"
+                      ?disabled=${this.disabled}
+                      @keydown="${(e: KeyboardEvent) => this.selectItem(option, e)}"
                       @click="${() => this.selectItem(option)}"
                       >${option.label}</nve-option
                     >`
                   : html`
                       <nve-option
-                        tabindex="${this.getTabIndex(i)}"
+                        tabindex="0"
+                        ?disabled=${this.disabled}
                         value="${option.value}"
+                        @keydown="${(e: KeyboardEvent) => this.unselectItem(option, e)}"
                         @click=${() => this.unselectItem(option)}
                       >
                         <nve-icon slot="prefix" name="check" style="font-size: 1.5rem;"></nve-icon>
@@ -403,12 +436,3 @@ declare global {
     'nve-combobox': NveCombobox;
   }
 }
-/*
-
-       ${this.displayList === 'selectedItems' &&
-          this.selectedItems?.map(
-            (item) => html` <nve-option disabled @click="${() => this.selectItem(item)}"> ${item.label}</nve-option> `
-          )} 
-
-
-*/

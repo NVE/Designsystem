@@ -15,8 +15,15 @@ export default css`
     padding-inline: 0;
     overflow: auto;
     overscroll-behavior: none;
-    // max-width: var(--auto-size-available-width);
+
     max-height: 200px;
   }
- 
+
+  .select__listbox:disabled {
+    background-color: red;
+  }
+  /* Feil selector */
+  nve-input::part(base) {
+    /* background-color: var(--interactive-secondary-background-disabled); */
+  }
 `;
