@@ -131,7 +131,7 @@ export default class NveLinkCard extends LitElement implements INveComponent {
 
   render() {
     return html`
-    <a part="link-card" class="link-card link-card--${this.size} link-card--${this.variant}" @click="${this.handleClick}" @keydown="${this.handleKeyDown}" tabindex="0">
+    <a part="link-card" class="link-card link-card--${this.size} link-card--${this.variant}" tabindex="0" @click="${this.handleClick}" @keydown="${this.handleKeyDown}">
         <div class="link-card__content">
           <div part="title" class="link-card__title">${this.title}</div>
           ${this.additionalText ? html`<div part="additional-text" class="link-card__additional-text">${this.additionalText}</div>` : nothing }
