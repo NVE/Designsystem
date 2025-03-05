@@ -14,7 +14,7 @@ export default css`
     position: relative;
     border: none;
     min-width: 48px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   :host([has-icon-only])::part(base) {
