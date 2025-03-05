@@ -1,3 +1,10 @@
+## [1.4.7](https://github.com/NVE/Designsystem/compare/v1.4.6...v1.4.7) (2025-03-05)
+
+
+### Bug Fixes
+
+* **nve-button:** outline knapp skal også ha transition på ramme når m… ([#457](https://github.com/NVE/Designsystem/issues/457)) ([91ae096](https://github.com/NVE/Designsystem/commit/91ae096d5fbabd8125b4cf842e1db5859f583144))
+
 ## [1.4.6](https://github.com/NVE/Designsystem/compare/v1.4.5...v1.4.6) (2025-03-05)
 
 
