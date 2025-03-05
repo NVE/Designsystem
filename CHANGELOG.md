@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/NVE/Designsystem/compare/v1.4.7...v1.5.0) (2025-03-05)
+
+
+### Features
+
+* **nve-icon:** støtte offline ikoner med src egenskap ([#456](https://github.com/NVE/Designsystem/issues/456)) ([c951e29](https://github.com/NVE/Designsystem/commit/c951e29ec9a65612dc2fafc09c1bcd0c9a0518de)), closes [#2](https://github.com/NVE/Designsystem/issues/2)
+
 ## [1.4.7](https://github.com/NVE/Designsystem/compare/v1.4.6...v1.4.7) (2025-03-05)
 
 
