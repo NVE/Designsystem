@@ -12,8 +12,8 @@ export default css`
     cursor: pointer;
   }
 
-  .link-card--outline {
-     outline: var(--interactive-primary-foreground-border-focus, #008FFB)
+  .link-card:focus {
+    outline: var(--interactive-primary-foreground-border-focus, #008FFB) solid 2px;
   }
 
   .link-card__title {
