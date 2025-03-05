@@ -14,23 +14,37 @@ export default css`
     -khtml-user-select: none; /* Konqueror HTML */
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    --icon-size: 16px;
   }
   :host {
     display: flex;
   }
 
+  :is(img) {
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
+
   /* we need it to center the icon */
   :is(span) {
     display: inline-flex;
-    line-height: 24px;
+    font-size: var(--icon-size);
+    line-height: var(--icon-size);
     font-weight: var(--font-weight-regular);
   }
 
   .placeholder::part(indicator) {
-    width: 24px; 
-    height: 24px; 
+    width: var(--icon-size);
+    height: var(--icon-size);
     border-radius: 4px;
+  }
+
+  .material-outlined {
+    font-family: 'Material Symbols Outlined';
+  }
+
+  .material-sharp {
+    font-family: 'Material Symbols Sharp';
   }
 `;
