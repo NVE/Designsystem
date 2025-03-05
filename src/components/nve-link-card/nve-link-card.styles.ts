@@ -3,21 +3,18 @@ export default css`
   .link-card {
     border-radius: var(--borderRadius-large, 6px);
     padding: var(--spacing-medium, 16px) var(--spacing-large, 24px);
-    transition: background-color 0.3s, outline-color 0.3s;
+    transition: all 0.3s ease;
     border: 2px solid transparent;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    text-decoration: none;
   }
 
   .link-card:focus {
     outline: var(--interactive-primary-foreground-border-focus, #008FFB) solid 2px;
-  }
-
-  .link-card__title {
-    transition: text-decoration 0.3s;
   }
 
   .link-card:hover .link-card__title {
