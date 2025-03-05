@@ -88,7 +88,6 @@ export default css`
 
   .link-card--secondary {
     background: var(--neutrals-background-secondary, #E4E5E7);  
-    transition: outline-color 0.3s;
   }
 
   .link-card--secondary:hover {
