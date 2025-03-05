@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/NVE/Designsystem/compare/v1.4.5...v1.4.6) (2025-03-05)
+
+
+### Bug Fixes
+
+* **nve-link-card:** css outline og tab accessibility ([#453](https://github.com/NVE/Designsystem/issues/453)) ([2c38339](https://github.com/NVE/Designsystem/commit/2c383391f9b5e1e456718122e189ebc157763089))
+
 ## [1.4.5](https://github.com/NVE/Designsystem/compare/v1.4.4...v1.4.5) (2025-03-05)
 
 
