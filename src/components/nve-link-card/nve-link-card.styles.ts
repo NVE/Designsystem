@@ -3,7 +3,8 @@ export default css`
   .link-card {
     border-radius: var(--borderRadius-large, 6px);
     padding: var(--spacing-medium, 16px) var(--spacing-large, 24px);
-    transition: background-color 0.3s, border-color 0.3s;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,9 +12,17 @@ export default css`
     cursor: pointer;
   }
 
+  .link-card:focus {
+    outline: var(--interactive-primary-foreground-border-focus, #008FFB) solid 2px;
+  }
+
   .link-card:hover .link-card__title {
-  text-decoration: underline;
-}
+    text-decoration: underline;
+  }
+
+  .link-card:active {
+    outline: var(--interactive-primary-foreground-border-focus, #008FFB) solid 2px;
+  }
 
   .link-card--small {
     min-height: 40px;
@@ -36,8 +45,6 @@ export default css`
     font-weight: 400;
     line-height: 150%;
   }
-
-
 
   .link-card__title--small {
     font-size: 0.875rem;
