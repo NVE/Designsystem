@@ -10,7 +10,6 @@ export default css`
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    text-decoration: none;
   }
 
   .link-card:focus {
@@ -25,7 +24,7 @@ export default css`
     outline: var(--interactive-primary-foreground-border-focus, #008FFB) solid 2px;
   }
 
-  .link-card--small {nve-designsystem.css
+  .link-card--small {
     min-height: 40px;
     padding: var(--spacing-small, 12px) var(--spacing-medium, 16px);
   }
