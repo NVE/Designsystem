@@ -4,6 +4,7 @@ export default css`
     border-radius: var(--borderRadius-large, 6px);
     padding: var(--spacing-medium, 16px) var(--spacing-large, 24px);
     transition: background-color 0.3s, outline-color 0.3s;
+    border: 2px solid transparent;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -96,6 +97,6 @@ export default css`
 
   .link-card--secondary:hover {
     border-radius: var(--borderRadius-large, 6px);
-    outline: var(--neutrals-foreground-primary, #0D0D0E) solid 2px;
+    border: 2px solid var(--neutrals-foreground-primary, #0D0D0E);
   }
 `;
