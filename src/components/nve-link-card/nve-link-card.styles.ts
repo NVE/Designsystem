@@ -11,6 +11,14 @@ export default css`
     cursor: pointer;
   }
 
+  .link-card--outline {
+     outline: var(--interactive-primary-foreground-border-focus, #008FFB)
+  }
+
+  .link-card__title {
+    transition: text-decoration 0.3s;
+  }
+
   .link-card:hover .link-card__title {
     text-decoration: underline;
   }
