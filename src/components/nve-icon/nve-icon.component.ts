@@ -7,12 +7,12 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * Et ikon.
- * Vi bruker ikoner fra Material Symbols.
- * Vi bruker strek-tykkelse 400 uansett størrelse på ikonet.
- * Fill skal ikke brukes.
+ * Vi bruker ikoner fra Material Symbols, men det er også mulig å bruke ikoner fra egen repo. Det anbefales sterkt å bruke Material-ikonene.
+ * Strektykkelsen skal være 400, uavhengig av ikonets størrelse, og kun stilene Sharp og Outlined skal brukes.
+ * Fill-stilen bør unngås, da den fyller hele ikonet med farge i stedet for å bruke kun konturer
  * @see https://fonts.google.com/icons
  * @csspart icon - Selve ikon span-element.
- * @cssproperty --icon-size - Størrelse på ikonen. 16px er et standard.
+ * @cssproperty --icon-size - Størrelse på ikonet. 16px er standard.
  */
 @customElement('nve-icon')
 export default class NveIcon extends LitElement {
@@ -33,6 +33,7 @@ export default class NveIcon extends LitElement {
   protected firstUpdated() {
     // For å unngå å importere material ikoner i index.html, vi legger til ikoner programmatisk på den første oppdatering
     // hvis material-icons lenke ikke eksisterer allerede.
+    if (this.src) return;
     if (!document.getElementById(`material-icons-${this.library.toLowerCase()}`)) {
       const link = document.createElement('link');
       link.id = `material-icons-${this.library.toLowerCase()}`;

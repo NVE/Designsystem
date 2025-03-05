@@ -9,16 +9,13 @@ export default css`
 
   /* prevent icon beeing highlighted */
   :host {
+    display: flex;
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     --icon-size: 16px;
-  }
-  :host {
-    display: flex;
+    font-size: var(--icon-size);
+    line-height: var(--icon-size);
   }
 
   :is(img) {
@@ -29,8 +26,8 @@ export default css`
   /* we need it to center the icon */
   :is(span) {
     display: inline-flex;
-    font-size: var(--icon-size);
-    line-height: var(--icon-size);
+    font-size: inherit;
+    line-height: inherit;
     font-weight: var(--font-weight-regular);
   }
 
