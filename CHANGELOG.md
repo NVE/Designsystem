@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/NVE/Designsystem/compare/v1.4.4...v1.4.5) (2025-03-05)
+
+
+### Bug Fixes
+
+* **nve-drawer:** forbedringer til design ([#430](https://github.com/NVE/Designsystem/issues/430)) ([bc08e7f](https://github.com/NVE/Designsystem/commit/bc08e7f2d58235c51d7369fa5d343db6a4d40bc1))
+
 ## [1.4.4](https://github.com/NVE/Designsystem/compare/v1.4.3...v1.4.4) (2025-03-03)
 
 
