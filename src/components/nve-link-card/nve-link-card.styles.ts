@@ -3,7 +3,7 @@ export default css`
   .link-card {
     border-radius: var(--borderRadius-large, 6px);
     padding: var(--spacing-medium, 16px) var(--spacing-large, 24px);
-    transition: background-color 0.3s, border-color 0.3s;
+    transition: background-color 0.3s, outline-color 0.3s;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -83,6 +83,7 @@ export default css`
 
   .link-card--secondary {
     background: var(--neutrals-background-secondary, #E4E5E7);  
+    transition: outline-color 0.5s;
   }
 
   .link-card--secondary:hover {
