@@ -1,3 +1,7 @@
+---
+outline: [2, 3]
+---
+
 <PageHeader title="Typografi" imagePath="typografi" pageLevel=1></PageHeader>
 
 ## Typografi
@@ -24,4 +28,52 @@ Fonten heter Source Sans 3 i Google Fonts. Der kan du finne informasjon om hvord
 
 <hr>
 
-TODO: Legge til oversikt over alle typografiske elementer vi har i tokens. Referanse: https://aksel.nav.no/grunnleggende/styling/typografi
+## Typografi variabler
+
+Vi tilbyr 7 fontstørrelsevariabler som er beregnet basert på dimensjonsvariabler, som igjen skaleres basert på skjermstørrelsen (TODO: device tokens-seksjonen).
+
+Vi bruker 4 brytningspunkter:
+
+<ul>
+<li><b>Desktop-large</b>: For store skjermer, som store monitorer. Brytningspunkt: 1400px.</li>
+<li><b>Desktop</b>: For vanlige stasjonære og bærbare datamaskiner.</li>
+<li><b>Desktop-small</b>: For mindre skjermer, som små bærbare PC-er. Brytningspunkt: 1200px.</li>
+<li><b>Mobile</b>: For smarttelefoner og andre små enheter. Brytningspunkt: 600px.</li>
+</ul>
+
+Under kan du teste hvordan fontene endres på forskjellige skjermstørrelser.
+
+<TypographyTable tableContentType="default"></TypographyTable>
+
+Videre, basert på fontstørrelsevariablene som tilpasser seg skjermstørrelsen, har vi også definert fontvariabler for å opprettholde konsistens på tvers av ulike komponenter. Disse fontvariablene er grupperte CSS-`font` -egenskaper som kombinerer `font-weight`, `font-size`, `line-height` og `font-family` til en enkelt enhet. Ved å bruke disse spesifikke variablene, sikrer vi at riktig linjehøyde og fontstørrelse benyttes, i tråd med universell utforming designprinsipper og beste praksis.
+
+I Figma-skisser blir disse font-egenskapene typisk brukt på ulike tekststiler og komponenter. For eksempel, header-stiler blir definert ved å bruke --heading- variabler, noe som sikrer en sammenhengende og standardisert tilnærming til typografi på tvers av design-systemet.
+
+### Header
+
+Header typografi variabler skal vanligvis brukes på html header-tagene som `<h1>`, `<h2>` osv.
+<TypographyTable tableContentType="headers"></TypographyTable>
+
+### Subheader
+
+<TypographyTable tableContentType="subheaders"></TypographyTable>
+
+### Ingress
+
+<TypographyTable tableContentType="ingress"></TypographyTable>
+
+### Body
+
+<TypographyTable tableContentType="body"></TypographyTable>
+
+### Body compact
+
+<TypographyTable tableContentType="body-compact"></TypographyTable>
+
+### Detail text
+
+<TypographyTable tableContentType="detail-text"></TypographyTable>
+
+### Label
+
+<TypographyTable tableContentType="label"></TypographyTable>
