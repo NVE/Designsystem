@@ -26,11 +26,11 @@ export default css`
   }
 
   .input--standard:hover:not(.input--disabled) {
-    border-color: var(--neutrals-foreground-primary) !important;
+    border-color: var(--neutrals-foreground-primary);
   }
 
   .input--filled:hover:not(.input--disabled) {
-    border-color: var(--neutrals-border-default) !important;
+    border-color: var(--neutrals-border-default);
   }
 
   :host::after {
@@ -73,16 +73,7 @@ export default css`
   }
 
   /* Annen bakgrunnsfarge og ingen ramme når skrivebeskyttet */
-  :host([readonly])::part(base) {
-    border-color: var(--neutrals-background-secondary);
-    background: var(--neutrals-background-secondary);
-  }
-
-  :host([readonly]) .input.input--standard:hover:not(.input--disabled) {
-    border-color: transparent !important;
-    background: var(--neutrals-background-secondary);
-  }
-
+  :host([readonly])::part(base),
   :host([readonly]) .input.input--medium.input--standard {
     border-color: transparent !important;
     background: var(--neutrals-background-secondary);
