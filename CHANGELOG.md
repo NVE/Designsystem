@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/NVE/Designsystem/compare/v1.5.0...v1.5.1) (2025-03-06)
+
+
+### Bug Fixes
+
+* **nve-input:** rettet hover-effekt over label i nve-input med skrivebeskyttelse ([#459](https://github.com/NVE/Designsystem/issues/459)) ([8831fff](https://github.com/NVE/Designsystem/commit/8831fff543afb6d81248b3f6d90ca3a22d240a26))
+
 # [1.5.0](https://github.com/NVE/Designsystem/compare/v1.4.7...v1.5.0) (2025-03-05)
 
 
