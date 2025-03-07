@@ -1,5 +1,4 @@
 <PageHeader title="For designere" imagePath="designer"  pageLevel=2></PageHeader>
-TODO: Legge til tab komponent
 
 # Kom igang
 

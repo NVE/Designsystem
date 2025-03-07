@@ -1,5 +1,4 @@
 <PageHeader title="For utviklere" imagePath="developer"  pageLevel=2></PageHeader>
-TODO: Legge til tab komponent
 
 # Bruk av designsystemet i Vue 3
 
