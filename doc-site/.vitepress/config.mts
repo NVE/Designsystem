@@ -62,7 +62,7 @@ export default defineConfig({
           {
             text: 'For utviklere',
             items: [
-              { text: 'Utvikling', link: '/introduction/forDevelopers/development' },
+              { text: 'Les dette først', link: '/introduction/forDevelopers/development' },
               { text: 'Importering av filer', link: '/introduction/forDevelopers/import' },
               { text: 'Bruk i Vue', link: '/introduction/forDevelopers/vue' },
               { text: 'Validering', link: '/introduction/forDevelopers/validation' },
