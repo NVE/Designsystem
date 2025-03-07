@@ -6,9 +6,14 @@
       <a class="header-anchor" href="#issues" aria-label='Permalink to "Issues"'>&ZeroWidthSpace;</a>
     </h2>
   </div>
-  <ul v-if="issues?.length > 0">
+  <ul v-if="issues?.length">
     <li v-for="issue of issues">
-      <a :href="issue.url" target="_blank">{{ issue.title }} <span v-if="issue.isPullRequest"> (PR) </span></a>
+      <a :href="issue.url" target="_blank">{{ issue.title }} <span v-if="issue.isPullRequest"> (PR) </span> </a>
+      <span v-if="issue.assigneeLogins.length">
+        <nve-badge v-for="user in issue.assigneeLogins" :key="user" variant="neutral" size="small">{{
+          user
+        }}</nve-badge>
+      </span>
     </li>
   </ul>
   <p v-else v-if="showHeader">
