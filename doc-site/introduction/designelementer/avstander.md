@@ -1,5 +1,4 @@
 <PageHeader title="Avstander og luft" imagePath="avstander og luft" pageLevel=1></PageHeader>
-TODO: Legg til tab komponent
 
 # Avstander og luft
 
