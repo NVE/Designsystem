@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/NVE/Designsystem/compare/v1.5.1...v1.5.2) (2025-03-07)
+
+
+### Bug Fixes
+
+* **tokens:** sørge for at large-desktop tar breakpoint på min-width 1400px ([#463](https://github.com/NVE/Designsystem/issues/463)) ([349072a](https://github.com/NVE/Designsystem/commit/349072aee10e5895dd1b544a9b86395d6d2ccf77))
+
 ## [1.5.1](https://github.com/NVE/Designsystem/compare/v1.5.0...v1.5.1) (2025-03-06)
 
 
