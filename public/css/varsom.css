@@ -21,7 +21,7 @@
   --brand-050: #fbc792;
   --grey-100: #f7f7f8;
   --grey-150: #c8eaf9;
-  --grey-200: #c9cbcf;
+  --grey-200: #7ec4e2;
   --grey-300: #b7babf;
   --grey-400: #9fa3a9;
   --grey-500: #878c94;
@@ -526,7 +526,7 @@
   --fixed-sizing-x-large: var(--dimension-12x);
   --fixed-sizing-2x-large: var(--dimension-14x);
   --fixed-sizing-3x-large: var(--dimension-16x); }
-@media (max-width:1400px) { 
+@media (min-width: 1400px) {
 :root {
   --spacing-none: 0;
   --content-margin-top-bottom-mobile: 24px;
@@ -578,7 +578,7 @@
   --font-size-3xlarge: var(--dimension-12x);
 }
 }
-@media (max-width:1200px) { 
+@media (max-width: 1200px) {
 :root {
   --spacing-none: 0;
   --content-margin-top-bottom-mobile: 24px;
@@ -630,7 +630,7 @@
   --font-size-3xlarge: var(--dimension-11x);
 }
 }
-@media (max-width:600px) { 
+@media (max-width: 600px) {
 :root {
   --spacing-none: 0;
   --content-margin-top-bottom-mobile: 24px;
