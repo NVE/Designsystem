@@ -32,13 +32,13 @@ myStyleDictionary.registerFormat({
 myStyleDictionary.registerFormat({
   name: 'css/device',
   format: ({ dictionary, options }) => {
-    const { outputReferences } = options;
-    return options.maxWidth
-      ? `${'@media (max-width:' + options.maxWidth + 'px) { \n'}` +
+    const { outputReferences, minWidth, maxWidth } = options;
+    return minWidth || maxWidth
+      ? `@media (${maxWidth ? 'max-width' : 'min-width'}: ${maxWidth || minWidth}px) {\n` +
           `:root {\n` +
           formattedVariables({ format: 'css', dictionary, outputReferences }) +
-          '\n}' +
-          '\n}\n'
+          '\n}\n' +
+          '}\n'
       : formattedVariables({ format: 'css', dictionary, outputReferences });
   },
 });
@@ -62,7 +62,7 @@ const filterDevicesTokens = (token) => {
   );
 };
 
-const transformDeviceTokens = async (device, maxWidth) => {
+const transformDeviceTokens = async (device, minWidth, maxWidth) => {
   const deviceTokens = await myStyleDictionary.extend({
     source: [
       'tokens/$metadata.json',
@@ -82,6 +82,7 @@ const transformDeviceTokens = async (device, maxWidth) => {
             format: 'css/device',
             options: {
               outputReferences: true,
+              minWidth: minWidth,
               maxWidth: maxWidth,
             },
           },
@@ -94,13 +95,13 @@ const transformDeviceTokens = async (device, maxWidth) => {
 
 const devices = [
   { name: 'desktop' },
-  { name: 'desktop-large', maxWidth: 1400 },
+  { name: 'desktop-large', minWidth: 1400 },
   { name: 'desktop-small', maxWidth: 1200 },
   { name: 'mobile', maxWidth: 600 },
 ];
 
 // transform alle tilgjengelige gjenstander
-devices.forEach(async ({ name, maxWidth }) => await transformDeviceTokens(name, maxWidth));
+devices.forEach(async ({ name, minWidth, maxWidth }) => await transformDeviceTokens(name, minWidth, maxWidth));
 
 const nveTokensLight = await myStyleDictionary.extend({
   source: ['tokens/brand/nve.json', 'tokens/*json', 'tokens/public/theme/light.json'],

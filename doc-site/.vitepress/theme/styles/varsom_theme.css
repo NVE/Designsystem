@@ -15,7 +15,7 @@
   --brand-050: #fbc792;
   --grey-100: #f7f7f8;
   --grey-150: #c8eaf9;
-  --grey-200: #c9cbcf;
+  --grey-200: #7ec4e2;
   --grey-300: #b7babf;
   --grey-400: #9fa3a9;
   --grey-500: #878c94;
@@ -537,7 +537,7 @@
   --brand-050: #fbc792;
   --grey-100: #f7f7f8;
   --grey-150: #c8eaf9;
-  --grey-200: #c9cbcf;
+  --grey-200: #7ec4e2;
   --grey-300: #b7babf;
   --grey-400: #9fa3a9;
   --grey-500: #878c94;
@@ -955,7 +955,7 @@
   --supplemental-emphasized-blue-background: var(--blue-300);
   --supplemental-emphasized-blue-foreground: var(--grey-999); }
 
-@media (max-width:1400px) { 
+@media (min-width: 1400px) {
 :root.varsom, :root.varsom_darkmode {
   --spacing-none: 0;
   --content-margin-top-bottom-mobile: 24px;
@@ -1007,7 +1007,7 @@
   --font-size-3xlarge: var(--dimension-12x);
 }
 }
-@media (max-width:1200px) { 
+@media (max-width: 1200px) {
 :root.varsom, :root.varsom_darkmode {
   --spacing-none: 0;
   --content-margin-top-bottom-mobile: 24px;
@@ -1059,7 +1059,7 @@
   --font-size-3xlarge: var(--dimension-11x);
 }
 }
-@media (max-width:600px) { 
+@media (max-width: 600px) {
 :root.varsom, :root.varsom_darkmode {
   --spacing-none: 0;
   --content-margin-top-bottom-mobile: 24px;
