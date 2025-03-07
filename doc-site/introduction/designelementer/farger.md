@@ -1,5 +1,4 @@
 <PageHeader title="Farger" imagePath="tokens" pageLevel=1></PageHeader>
-TODO: Legg til tab komponent
 
 ## Farger
 

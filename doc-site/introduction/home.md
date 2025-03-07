@@ -1,5 +1,4 @@
 <PageHeader title="Introduksjon" imagePath="intro" pageLevel=1></PageHeader>
-TODO: Legg til tab komponent
 
 # Om designsystemet
 

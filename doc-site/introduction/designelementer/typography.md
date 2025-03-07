@@ -1,5 +1,4 @@
 <PageHeader title="Typografi" imagePath="typografi" pageLevel=1></PageHeader>
-TODO: Legg til tab komponent
 
 ## Typografi
 
