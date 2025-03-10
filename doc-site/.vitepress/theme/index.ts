@@ -15,6 +15,8 @@ import LinkButton from './components/LinkButton.vue';
 import PageHeader from './components/PageHeader.vue';
 import ComponentOverview from './components/ComponentOverview.vue';
 import ThemeSelect from './components/ThemeSelect.vue';
+import TypographyTable from './components/TypographyTable.vue';
+import { cssTokenState } from './cssTokenState';
 import { useCurrentTheme, Theme } from './composables/useCurrentTheme';
 
 export default {
@@ -56,7 +58,16 @@ export default {
       // siden VitePress bygges via SSR, vi må sikre at våre web komponenter lastes ned i nettleseren bare
       // derfor importerer vi alle komponenter når miljø ikke er SSR
       const components = import.meta.glob('../../../src/components/*/*.component.ts');
+      const styles = import.meta.glob('./styles/nve_theme.css', { as: 'raw' });
 
+      // Read the content of the nve_theme.css file
+      (async () => {
+        const importPromises = Object.values(styles).map((importFunc) =>
+          typeof importFunc === 'function' ? importFunc() : Promise.resolve(null)
+        );
+        const cssFileResult = await Promise.all(importPromises);
+        cssTokenState.initGlobalState(cssFileResult.join('\n'));
+      })();
       //vi batcher imports for å redusere antall nettverksforespørsler og for å ikke restarte applikasjonen flere ganger
       (async () => {
         const importPromises = Object.values(components).map((importFunc) =>
@@ -65,7 +76,6 @@ export default {
         await Promise.all(importPromises);
       })();
     }
-
     app.component('component', ComponentLayout);
     app.component('CodeExamplePreview', CodeExamplePreview);
     app.component('SandboxPreview', SandboxPreview);
@@ -74,6 +84,7 @@ export default {
     app.component('PageHeader', PageHeader);
     app.component('ComponentOverview', ComponentOverview);
     app.component('ThemeSelect', ThemeSelect);
+    app.component('TypographyTable', TypographyTable);
     registerIconLibrary('system', {
       resolver: (name) => {
         return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
