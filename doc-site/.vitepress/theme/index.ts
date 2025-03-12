@@ -15,6 +15,7 @@ import LinkButton from './components/LinkButton.vue';
 import PageHeader from './components/PageHeader.vue';
 import ComponentOverview from './components/ComponentOverview.vue';
 import ThemeSelect from './components/ThemeSelect.vue';
+import ColorList from './components/ColorList.vue';
 import { useCurrentTheme, Theme } from './composables/useCurrentTheme';
 
 export default {
@@ -74,6 +75,7 @@ export default {
     app.component('PageHeader', PageHeader);
     app.component('ComponentOverview', ComponentOverview);
     app.component('ThemeSelect', ThemeSelect);
+    app.component('ColorList', ColorList);
     registerIconLibrary('system', {
       resolver: (name) => {
         return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
