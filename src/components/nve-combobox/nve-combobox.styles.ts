@@ -1,4 +1,4 @@
-import { css } from 'lit';
+import { css } from "lit";
 
 export default css`
   .select__listbox {
@@ -15,13 +15,41 @@ export default css`
     padding-inline: 0;
     overflow: auto;
     overscroll-behavior: none;
-
     max-height: 200px;
   }
 
   .select__listbox:disabled {
     background-color: red;
   }
+
+  nve-tag {
+    margin-top: 8px;
+
+    margin-bottom: 11px;
+  }
+
+  nve-input::part(prefix) {
+    flex-wrap: wrap;
+    max-width: 80%;
+    height: var(--sl-input-height-medium);
+  }
+
+  @media (max-width: 992px) {
+    nve-input::part(prefix) {
+      max-width: 70%;
+    }
+    nve-tag {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    nve-input::part(prefix) {
+      max-width: 50%;
+    }
+  }
+
   /* Feil selector */
   nve-input::part(base) {
     /* background-color: var(--interactive-secondary-background-disabled); */

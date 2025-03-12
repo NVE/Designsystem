@@ -23,6 +23,21 @@ Legg eksempler på funksjonalitet her. Hvert tema skal ha egen overskrift på ni
 
 ### TODO: Eksempel 1
 
+<CodeExamplePreview>
+
+```html
+<div style="height:30vh">
+  <form>
+    <nve-combobox ></nve-combobox>
+  </form>
+</div>
+```
+
+</CodeExamplePreview>
+
+
+
+
 ### TODO: Eksempel 2
 
 osv..:)
