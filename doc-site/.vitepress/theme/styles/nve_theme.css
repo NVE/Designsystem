@@ -955,7 +955,7 @@
   --supplemental-emphasized-blue-background: var(--blue-300);
   --supplemental-emphasized-blue-foreground: var(--grey-999); }
 
-@media (max-width:1400px) { 
+@media (min-width: 1400px) {
 :root.nve, :root.nve_darkmode {
   --spacing-none: 0;
   --content-margin-top-bottom-mobile: 24px;
@@ -1007,7 +1007,7 @@
   --font-size-3xlarge: var(--dimension-12x);
 }
 }
-@media (max-width:1200px) { 
+@media (max-width: 1200px) {
 :root.nve, :root.nve_darkmode {
   --spacing-none: 0;
   --content-margin-top-bottom-mobile: 24px;
@@ -1059,7 +1059,7 @@
   --font-size-3xlarge: var(--dimension-11x);
 }
 }
-@media (max-width:600px) { 
+@media (max-width: 600px) {
 :root.nve, :root.nve_darkmode {
   --spacing-none: 0;
   --content-margin-top-bottom-mobile: 24px;

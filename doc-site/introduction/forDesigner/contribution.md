@@ -1,5 +1,4 @@
 <PageHeader title="For designere" imagePath="designer" pageLevel=2></PageHeader>
-TODO: Legge til tab komponent
 
 ## Bidrag
 
@@ -31,7 +30,7 @@ Det er tre ulike måter du kan bidra til designsystemet på. Du kan legge til ny
   <img src="../../assets/images/contribution-1.png" width="auto">
   <div>
     <h2 class="h2-style">Legg til</h2>
-    <p>Har du skisset opp nye komponenter du ser blir mye brukt i NVE eller Varsoms tjenester og kan nytte andre prosjekter? Da ønsker vi veldig gjerne at du lager en sak i Jira hvor du legger ved skissen din. Velges den for utvikling, lager du komponentet gjennom en branch i Figma og kode. Er du fornøyd, markerer du den som ferdig i Jira. Da går saken over til designsystem-kvalitetsikrer, som har ansvar for kvalitetsjekk og publisering.</p>
+    <p>Har du skisset opp nye komponenter du ser blir mye brukt i NVEs tjenester og kan nytte andre prosjekter? Da ønsker vi veldig gjerne at du lager en sak i Jira hvor du legger ved skissen din. Velges den for utvikling, lager du komponentet gjennom en branch i Figma og kode. Er du fornøyd, markerer du den som ferdig i Jira. Da går saken over til designsystem-kvalitetsikrer, som har ansvar for kvalitetsjekk og publisering.</p>
   </div>
 </div>
 
@@ -79,7 +78,7 @@ Teamet ditt og designsystemansvarlige samarbeider om en løsning, og vi fordeler
 
 ### Hvordan bidra?
 
-Designsystemet er en felles dugnad fra og for alle prosjekter i NVE og Varsom. Derfor er vi avhengig av bidrag for å bygge og iterer på designsystemet. Her forklarer vi hvordan du kan bidra.
+Designsystemet er en felles dugnad fra og for alle prosjekter i NVE. Derfor er vi avhengig av bidrag for å bygge og forbedre designsystemet. Her forklarer vi hvordan du kan bidra.
 
 1. **Før du starter**  
    Sjekk alltid om det er en komponent eller et mønster som dekker dine behov. [Figma](https://www.figma.com/files/1033298377581647627/project/85006605/Public---Designsystem?fuid=1201899461213591908) er et flott sted å starte. Her finner du en oversikt over alle komponenter og profilelementer, og du finner beskrivende eksempler. Ta gjerne kontakt via Teams hvis du er usikker.

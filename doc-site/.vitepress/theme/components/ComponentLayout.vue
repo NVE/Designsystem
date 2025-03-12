@@ -12,6 +12,7 @@ import ComponentDescription from './apidoc/ComponentDescription.vue';
 import VPDocFooter from 'vitepress/dist/client/theme-default/components/VPDocFooter.vue';
 import VPDocAside from 'vitepress/dist/client/theme-default/components/VPDocAside.vue';
 import { useSidebar } from 'vitepress/theme';
+import ComponentCssVariables from './apidoc/ComponentCssVariables.vue';
 
 const route = useRoute();
 const { hasSidebar, hasAside, leftAside } = useSidebar();
@@ -74,6 +75,7 @@ onMounted(() => {
               <ComponentFields :componentName="componentName" />
               <ComponentMethods :componentName="componentName" />
               <ComponentParts :componentName="componentName" />
+              <ComponentCssVariables :componentName="componentName" />
             </div>
           </main>
           <VPDocFooter>

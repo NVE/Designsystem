@@ -255,7 +255,7 @@ export default class NveTextarea extends LitElement implements INveComponent {
             ?autofocus=${this.autofocus}
             inputmode=${ifDefined(this.inputmode)}
             aria-describedby="help-text"
-            rows=${ifDefined(this.rows)}
+            rows=${ifDefined(this.rows && this.rows >= 3 ? this.rows : 3)}
             @change=${this.handleChange}
             @input=${this.handleInput}
             @blur=${this.handleBlur}

@@ -3,15 +3,22 @@
  * For å koble en sak eller PR i Github til en komponent, merk den med komponent-navnet, f.eks. `nve-checkbox`
  */
 import { request } from '@octokit/request';
-import { componentNames } from './customElementsManifest.store';
 
 /**
  * En sak eller PR i Github
  */
 export interface Issue {
+  /** Sammendrag / tittel */
   title: string;
+
+  /** Link til saken */
   url: string;
+
+  /** true hvis denne er en PR */
   isPullRequest: boolean;
+
+  /** En liste av brukernavn til ansvarlige. Tom liste = ingen som har ansvar for saken */
+  assigneeLogins: string[];
 }
 
 /**
@@ -33,15 +40,16 @@ export const fetchIssues = async (): Promise<Map<string, Issue[]>> => {
       });
       response.data.forEach((issue: any) => {
         issue.labels.forEach((label: any) => {
-          // Sjekker om denne saken er merka med et komponentnavn. 
-          // Vi sjekker ikke mot komponentregisteret, 
-          // for vi vil også ha med navn på komponenter som ikke er laget ennå 
+          // Sjekker om denne saken er merka med et komponentnavn.
+          // Vi sjekker ikke mot komponentregisteret,
+          // for vi vil også ha med navn på komponenter som ikke er laget ennå
           if (label.name?.startsWith('nve-')) {
             const issuesForThisComponent = issuesPerComponent.get(label.name) || [];
             issuesForThisComponent.push({
               title: issue.title,
               url: issue.html_url,
               isPullRequest: issue.pull_request,
+              assigneeLogins: issue.assignees.map((assignee: any) => assignee.login),
             });
             issuesPerComponent.set(label.name, issuesForThisComponent);
           }

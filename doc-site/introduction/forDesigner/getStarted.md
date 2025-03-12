@@ -1,5 +1,4 @@
 <PageHeader title="For designere" imagePath="designer"  pageLevel=2></PageHeader>
-TODO: Legge til tab komponent
 
 # Kom igang
 
@@ -7,7 +6,7 @@ TODO: Legge til tab komponent
 
 Før du starter å bruke et designsystem, er det flere viktige skritt og forberedelser du bør gjøre for å sikre en jevn og vellykket integrasjon av designsystemet i dine prosjekter.
 
-- Gjør deg kjent med NVE og Varsoms profilmanualer
+- Gjør deg kjent med NVE og Varsom sine profilmanualer
 - Sett deg inn i komponentbiblioteket i Figma
 - Få oversikt over hvilke andre designprosjekter som er aktive
 - Bli med i kanalen "Design og UX" og "Designsystemet" på NVE Teams
@@ -40,7 +39,7 @@ Device - Kan du bytte mellom forskjellige skjermstørrelser. Da vil innholdet ju
 
 ## Bestanddeler
 
-Designsystemet består av grunnleggende stiler og komponenter som brukes for å designe digitale tjenester for både NVE og Varsom. Vi deler bestanddelene inn i tre kategorier: Primitiver, komponenter og mønstre.
+Designsystemet består av grunnleggende stiler og komponenter som brukes for å designe digitale tjenester for NVE. Vi deler bestanddelene inn i tre kategorier: Primitiver, komponenter og mønstre.
 
 <style>
   .left-image-container {

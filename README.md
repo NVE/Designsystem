@@ -16,11 +16,88 @@ Dette prosjektet inneholder to applikasjoner:
 - I rot-mappa ligger selve komponentbiblioteket med nve-komponentene
 - I mappa `doc-site` ligger test-applikasjonen som viser brukerveiledninga for biblioteket. Teknisk beskrivelse av denne ligger i egen [readme](doc-site/README.md)
 
-Kjør `npm install` og `npm run dev` for å starte test-applikasjonen. Applikasjonen er selve brukerveiledninga for komponentbiblioteket, så her ligger api-dokumentasjon, beskrivelse av funksjonalitet og ikke minst kodeeksempler.
+Kjør `npm install` og `npm run dev` for å starte test-applikasjonen.
+
+Dersom applikasjonen ikke er bygget på forhånd, vil npm run dev automatisk sørge for at den bygges og at dist-mappen opprettes.
+
+Vi bygger applikasjonen før kjøring for å sikre at den importerer custom-elements.json og nve-designsystem.css fra dist. Siden begge filer ganske statiske man trenger ikke å å bygge
+appen på nytt hver gang man gjør noen endringer i component filen. Disse to filene kunne vært plassert i src, men vi
+unngår det – særlig for shoelace.css – fordi filen da måtte blitt manuelt kopiert fra node_modules til src (eller håndtert via et script).
+
+Ved å importere shoelace.css direkte i main.ts, sørger Vite for korrekt bundling. Dette eliminerer behovet for å endre @import-referanser i global.css og gir dist-mappen som eneste source of truth.
+
+Applikasjonen er selve brukerveiledninga for komponentbiblioteket, så her ligger api-dokumentasjon, beskrivelse av funksjonalitet og ikke minst kodeeksempler.
 
 ## Pull requests
 
 Ikke push endringer direkte i `main`. Lag en pull request.
+
+### Conventional Commits
+
+Vi har innført **Conventional Commits**-standarden i vårt prosjekt for å automatisere oppdatering av versjonsnummer og generering av changelog-filer. Når du lager en pull request (PR) som skal merges til `main`-branchen, må tittelen på PR-en følge denne standarden for at den skal bli godkjent.
+
+#### Standardformatet er som følger
+
+`<type>(<scope>): <beskrivelse>`
+
+- **type**: Definerer hvilken type endring det er. Eksempler:
+
+  - `feat`: Legger til ny funksjonalitet
+  - `fix`: Fikser en feil
+  - `chore`: Oppgaver som ikke endrer kode (f.eks. oppdatering av verktøy)
+  - `refactor`: En kodeendring som verken fikser en feil eller legger til en funksjon
+  - `docs`: Endringer i dokumentasjon
+  - `style`: Endringer som ikke påvirker logikken i koden (f.eks. formattering)
+  - `build`: Endringer som påvirker byggesystemet eller eksterne avhengigheter
+  - `ci`: Endringer i våre CI-konfigurasjonsfiler og skript
+
+- **scope** (valgfritt): Beskriver hvor i prosjektet endringen er gjort. Eksempler:
+
+  - `auth`: Endringer relatert til autentisering
+  - `ui`: Endringer i brukergrensesnittet
+
+- **beskrivelse**: En kortfattet, imperativ beskrivelse av hva endringen gjør. Den skal være på én linje og beskrive hva koden gjør etter endringen. For eksempel: "Legg til validering for e-postadresse."
+
+#### Eksempler på commit-meldinger
+
+- feat(auth): legg til støtte for 2-faktor autentisering fix(ui): rettet layout-feil på forsiden
+- docs: oppdatert README med nye installasjonsinstruksjoner
+
+For mer informasjon om standarden, kan du lese mer på [Conventional Commits.](https://www.conventionalcommits.org/en/v1.0.0/)
+
+#### PR-sjekk før merging til main
+
+Tittelen på PR-en må oppfylle **Conventional Commits**-standarden. Dette blir automatisk validert som en del av en PR-sjekk.
+
+#### Verktøy for å følge standarden
+
+Det er flere måter å sikre at du følger **Conventional Commits**-standarden:
+
+1. Commitizen: Du kan bruke Commitizen direkte i terminalen for å lage commits i riktig format. Bruke denne kommandoen for å lage en commit:
+
+```script
+npx cz
+```
+
+2. VS Code-utvidelse: Hvis du bruker Visual Studio Code, kan du installere utvidelsen [VS Code Conventional Commits](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits) for å sikre at commit-meldinger følger standarden. Etter at du har installert tillegget, kan du klikke på den runde sirkelen til høyre for Source Control for att gjøre en commit.
+
+## Changelog
+
+Changelog-filene genereres automatisk basert på commit-meldingene dine og blir synlige i [release-notatene](https://github.com/NVE/Designsystem/releases) på GitHub.
+
+### Betingelser for Semantic Release
+
+Merk at `semantic-release` stiller visse betingelser før oppdatering av changeloggen. For at en endring skal registreres i changelogen, må følgende krav være oppfylt:
+
+- Commit-typen må være en av følgende:
+  - `BREAKING CHANGE`: Introduserer en endring som bryter bakoverkompatibiliteten
+  - `feat`: Legger til en ny funksjonalitet
+  - `fix`: Retter en feil
+  - `perf`: Forbedrer ytelsen
+- Endringen må ha skjedd i en av følgende mappespesifikasjoner:
+  - `src/**`
+  - `build/**`
+  - `public/css/**`
 
 ## Oppretting av en ny komponent og mappestruktur
 
@@ -227,9 +304,20 @@ Før man lager en PR eller er det lurt å teste pakke lokalt. Med `npm run pack`
 
 Pull requests på komponenter skal også kunne godkjennes av designere. Derfor har vi satt opp en azure static app som kjører test/dokumentasjons-applikasjonen. Denne bygges og kjøres når man lager en PR.
 
-Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'er kan det være at appen ikke bygges. De skal slettes automatisk når en PR lukkes, men det er ikke alltid dette virker. I slike tilfeller må vi slette appene manuelt i Azure-portalen. Appene ligger i denne ressursgruppa: TEST-Designsystemet-RG. Marcin, Øystein, Joel, Fred og Tommy har tilgang til dette.
+Det er maks 10 apper som kan kjøres samtidig, så hvis det er flere enn 10 PR'er kan det være at appen ikke bygges. De skal slettes automatisk når en PR lukkes, men det er ikke alltid dette virker. Hvis du får disse feilmeldingene i bygget, kan det være verdt å sjekke hvor mange "preview environments" som kjører:
+
+```
+The content server has rejected the request with: InternalServerError
+Reason: An unexpected error has occurred. Please try again later.
+```
+
+I slike tilfeller må vi slette appene manuelt i Azure-portalen. Appene ligger i ressursgruppa `TEST-Designsystemet-RG`. Gå til ressursen `nve-designystem-dok` og velg `Environments`. Marcin, Øystein, Joel, Fred og Tommy har tilgang til dette.
 
 ## Bygge globale css-filer
 
 Når vi har nye design-tokens eller endringer i tokens må vi generere globale css-filer på nytt.
 Kjør følgende kommando: `npm run tokenbuild`.
+
+## Hvorfor er det slik?
+
+Her er [bakgrunn for en del valg vi har gjort](design-beslutninger.md) underveis.

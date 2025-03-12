@@ -11,14 +11,14 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     nodeId: '2341-77166',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Under arbeid'
+    statusCode: 'Ferdig'
   },
   {
    name: 'nve-accordion-item',
     nodeId: '2341-77166',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Under arbeid'
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-alert',
@@ -84,11 +84,11 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ferdig'
   },
   {
-    name: 'nve-image-carousel',
+    name: 'nve-carousel',
     nodeId: '480-49356',
     description: 'Bildekarusell',
-    statusDesign: 'Skal revideres',
-    statusCode: 'Ikke påbegynt'
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-checkbox',
@@ -112,6 +112,13 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ikke påbegynt'
   },
   {
+    name: 'nve-combobox',
+    nodeId: '4277-125162',
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Under arbeid'
+  },
+  {
     name: 'nve-comment',
     nodeId: '3077-45608',
     description: undefined,
@@ -130,6 +137,13 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     nodeId: '3077-54191',
     description: undefined,
     statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
+  },
+    {
+    name: 'nve-drawer',
+    nodeId: '1976-5493',
+    description: undefined,
+    statusDesign: 'Skal revideres',
     statusCode: 'Ferdig'
   },
   {
