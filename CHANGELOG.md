@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/NVE/Designsystem/compare/v1.6.0...v1.6.1) (2025-03-12)
+
+
+### Bug Fixes
+
+* **472:** rettet farge feil på nve-option, nve-ikon i mørk modus ([#473](https://github.com/NVE/Designsystem/issues/473)) ([088e607](https://github.com/NVE/Designsystem/commit/088e60783bc2d8fa9fd9b91c19edd36740694342)), closes [#472](https://github.com/NVE/Designsystem/issues/472)
+
 # [1.6.0](https://github.com/NVE/Designsystem/compare/v1.5.2...v1.6.0) (2025-03-12)
 
 
