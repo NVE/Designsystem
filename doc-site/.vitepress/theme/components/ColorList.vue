@@ -54,9 +54,6 @@ const maxColumns = computed(() => {
 </script>
 
 <template>
-  <h4>Dette er fargene slik de er definert.</h4>
-  <div>Man skal ikke bruke disse variablene direkte, men heller bruke andre variabler som bruker disse</div>
-
   <div class="holder" :style="`--_cols: ${maxColumns}`">
     <div v-if="nveColors" class="color-map">
       <div class="row">
@@ -85,35 +82,28 @@ const maxColumns = computed(() => {
           </nve-tooltip>
         </div>
       </div>
-    </div>
-    <h4 v-if="varsomColors">Varsom overstyrer noen av disse fargene:</h4>
-    <div v-if="varsomColors" class="color-map">
-      <div class="row">
-        <div class="cell"></div>
-        <div v-for="index in maxColumns + 1" class="cell">
-          {{
-            Object.values(nveColors)
-              .at(0)
-              ?.at(index - 1)?.name
-          }}
+
+      <template v-if="varsomColors">
+        <div class="row">
+          <div class="rowspan">Varsom overstyrer noen av disse fargene:</div>
         </div>
-      </div>
-      <div v-for="(value, key, index) in varsomColors" class="row">
-        <div>{{ key }}</div>
-        <div
-          v-for="v in value"
-          class="cell"
-          :style="`--_c: ${v.value}; --_tc: ${calculateContrastingTextColor(v.value)}`"
-        >
-          <nve-tooltip>
-            <div slot="content">
-              <div>--{{ key }}-{{ v.name }}</div>
-              <div>{{ v.value }}</div>
-            </div>
-            <div class="value"></div>
-          </nve-tooltip>
+        <div v-for="(value, key, index) in varsomColors" class="row">
+          <div>{{ key }}</div>
+          <div
+            v-for="v in value"
+            class="cell"
+            :style="`--_c: ${v.value}; --_tc: ${calculateContrastingTextColor(v.value)}`"
+          >
+            <nve-tooltip>
+              <div slot="content">
+                <div>--{{ key }}-{{ v.name }}</div>
+                <div>{{ v.value }}</div>
+              </div>
+              <div class="value"></div>
+            </nve-tooltip>
+          </div>
         </div>
-      </div>
+      </template>
     </div>
   </div>
 </template>
@@ -130,6 +120,12 @@ const maxColumns = computed(() => {
   grid-column-end: calc(var(--_cols) + 2);
   & > :first-child {
     padding-inline-end: 8px;
+  }
+  & .rowspan {
+    grid-column-start: 1;
+    grid-column-end: var(--_cols);
+    font-weight: bold;
+    line-height: 1.5;
   }
 }
 .cell {

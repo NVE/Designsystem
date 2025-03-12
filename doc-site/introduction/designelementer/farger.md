@@ -24,6 +24,10 @@ TODO: Fikse disse kortene
 
 ### Farger i designsystemet
 
+#### Dette er fargene slik de er definert.
+
+Man skal ikke bruke disse variablene direkte, men heller bruke andre variabler som bruker disse
+
 <ColorList></ColorList>
 
 Se også <br/> https://www.designsystemet.no/grunnleggende/designelementer/farger
