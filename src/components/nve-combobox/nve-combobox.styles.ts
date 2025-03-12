@@ -18,13 +18,16 @@ export default css`
     max-height: 200px;
   }
 
-  .select__listbox:disabled {
+  .select__listbox[disabled] {
     background-color: red;
+  }
+
+  .select__listbox[filled] {
+    background-color: var(--neutrals-background-primary-contrast, #eff8fc);
   }
 
   nve-tag {
     margin-top: 8px;
-
     margin-bottom: 11px;
   }
 
@@ -49,6 +52,8 @@ export default css`
       max-width: 50%;
     }
   }
+
+  //--interactive-links-default
 
   /* Feil selector */
   nve-input::part(base) {

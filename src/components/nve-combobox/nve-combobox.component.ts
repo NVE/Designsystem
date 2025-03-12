@@ -29,8 +29,13 @@ import { ref, createRef } from "lit/directives/ref.js";
  
  *  Det er ikke mulig å sette aria-* selected på option progrmatisk : https://github.com/shoelace-style/shoelace/blob/next/src/components/option/option.component.ts
 
-
-* Fjern tags 
+* Hvilke input attributter skal jeg støtte?  pattern requiredLabel  errorLabeldisabled req og filled  ? holder dette? 
+   -mulig jeg bør støtte antall valgt valg ? eller skal dette støttes et annet sted? 
+   
+   
+* Sjekke om error  border kommer frem 
+ 
+   *requiredLabel vises frem usansett 
 
 setTimeout(() => {
       const element = this.shadowRoot?.querySelector("nve-input.inputWithTags");
@@ -123,10 +128,22 @@ type ListType = "values" | "listWithPossibleSearchHits";
 export default class NveCombobox extends LitElement implements INveComponent {
   @property({ reflect: true, type: String }) testId: string | undefined =
     undefined;
-  @property({ reflect: true, type: String }) label: string = "";
+  @property({ reflect: true, type: String }) label: string = "Label";
   @property({ reflect: true, type: Boolean }) multiple: boolean | undefined =
     true;
   @property({ reflect: true, type: Boolean }) disabled: boolean = false;
+  @property({ reflect: true, type: Boolean }) filled: boolean = false;
+  @property({ reflect: true, type: Boolean }) required: boolean = false;
+
+  // Mulig denne kan fjernes, men brukt for test
+  @property({ reflect: true, type: Boolean }) error: boolean = false;
+
+  @property({ reflect: true, type: Boolean }) requiredLabel:
+    | string
+    | undefined = "undefisssned";
+  @property({ reflect: true, type: Boolean }) errorMessage: string =
+    "-!ERROR!-";
+
   @property({ type: Array<OptionInterface> }) values: OptionInterface[] = [
     { label: "Cat", value: "cat" },
     { label: "Dog", value: "dog" },
@@ -241,6 +258,16 @@ export default class NveCombobox extends LitElement implements INveComponent {
   @state() isPopupActive: boolean = false;
   @state() numberOfTagsToDisplay: number = 100;
 
+  private toggleIsDisabled() {
+    this.disabled = !this.disabled;
+  }
+  private toggleIsFilled() {
+    this.filled = !this.filled;
+  }
+  private toggleIsReq() {
+    this.required = !this.required;
+  }
+
   // MÅ testes ut i Vue
   private emit(eventname: string, value: OptionInterface[]): void {
     const event = new CustomEvent(eventname, {
@@ -253,8 +280,6 @@ export default class NveCombobox extends LitElement implements INveComponent {
     });
     this.dispatchEvent(event);
   }
-
-  private resizeObserver: ResizeObserver | null = null;
   static styles = [styles];
 
   constructor() {
@@ -299,7 +324,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
 
   handleBlur() {
     console.log("handleBlur");
-    this.isPopupActive = false;
+    //this.isPopupActive = false; // Race problem, usikker på hvor jeg skal sette blur.
     this.listWithPossibleSearchHits = [];
   }
 
@@ -329,7 +354,6 @@ export default class NveCombobox extends LitElement implements INveComponent {
     this.values = copyOfValues;
     this.emit("nve-combobox-selected-options", this.selectedOptions);
     this.inputValue = "";
-    this.isPopupActive = false;
   }
 
   unselectItem(option: OptionInterface, event?: KeyboardEvent) {
@@ -376,6 +400,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   }
 
   toggleIsPopupActive(event?: KeyboardEvent | PointerEvent) {
+    if (this.disabled) return;
     if (event instanceof KeyboardEvent) {
       if (
         event.key === "Enter" ||
@@ -390,21 +415,28 @@ export default class NveCombobox extends LitElement implements INveComponent {
     }
   }
 
-  firstUpdated() {}
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    if (this.resizeObserver) {
-      this.resizeObserver.disconnect();
-    }
-  }
+  //firstUpdated() {
+  /*  document.addEventListener("click", (event) => {
+      const popup = document.querySelector("nve-popup");
+      const target = event.target as Node;
+      console.log("hi");
+      if (popup && !popup.contains(target)) {
+        // Close the popup or perform your desired action
+        popup.style.display = "none";
+      }
+    });*/
+  //}
 
   render() {
     return html`
+      <button @click="${this.toggleIsDisabled}">Disable</button>
+      <button @click="${this.toggleIsFilled}">Filled</button>
+      <button @click="${this.toggleIsReq}">Required</button>
       <nve-popup
         placement="bottom"
         sync="width"
         .active="${this.isPopupActive}"
+        distance="8"
       >
         <nve-input
           class="inputWithTags"
@@ -412,19 +444,23 @@ export default class NveCombobox extends LitElement implements INveComponent {
           .value="${this.inputValue}"
           @input="${this.handleInput}"
           @focus="${this.handleFocus}"
+          @blur="${this.handleBlur}"
           autocomplete="off"
           label="${this.label}"
           ?disabled=${this.disabled}
+          ?filled=${this.filled}
+          ?required=${this.required}
+          ${this.requiredLabel ? `requiredLabel="${this.requiredLabel}"` : null}
+          errorMessage="${this.errorMessage}"
         >
           ${this.selectedOptions.map((option) => {
             return html`
               <nve-tag
                 slot="prefix"
                 tabindex="0"
-                @nve-close="${() => this.unselectItem(option)}"
-                closeable
                 size="small"
                 .closeable=${!this.disabled}
+                @nve-close="${() => this.unselectItem(option)}"
               >
                 ${option.label}
               </nve-tag>
@@ -433,7 +469,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
           ${!this.isPopupActive &&
           this.selectedOptions?.length &&
           html`
-            <nve-tag slot="suffix" size="small">
+            <nve-tag slot="prefix" size="small">
               ${this.selectedOptions.length}
             </nve-tag>
           `}
@@ -447,6 +483,17 @@ export default class NveCombobox extends LitElement implements INveComponent {
               style="font-size: 1.5rem;"
             ></nve-icon>
           `}
+          ${this.error &&
+          html`
+            <nve-icon
+              slot="suffix"
+              size="small"
+              name="error"
+              style="font-size: 1.5rem; color: rgb(204, 0, 0)"
+            >
+              ${this.selectedOptions.length}
+            </nve-icon>
+          `}
         </nve-input>
         <div
           id="listbox"
@@ -456,8 +503,8 @@ export default class NveCombobox extends LitElement implements INveComponent {
           part="listbox"
           class="select__listbox"
           tabindex="-1"
-          @blur="${this.handleBlur}"
           ?disabled=${this.disabled}
+          ?filled=${this.filled}
         >
           ${this.shouldDisplayList("listWithPossibleSearchHits")
             ? this.listWithPossibleSearchHits.length > 0
@@ -498,6 +545,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
                       <nve-option
                         tabindex="0"
                         ?disabled=${this.disabled}
+                        .selected="${true}"
                         value="${option.value}"
                         @keydown="${(e: KeyboardEvent) =>
                           this.unselectItem(option, e)}"
