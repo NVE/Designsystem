@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/NVE/Designsystem/compare/v1.5.2...v1.6.0) (2025-03-12)
+
+
+### Features
+
+* Laget en tabell som viser fargene i DS ([b483220](https://github.com/NVE/Designsystem/commit/b4832201036fb9d7c18a525b8488422c0effa238))
+
 ## [1.5.2](https://github.com/NVE/Designsystem/compare/v1.5.1...v1.5.2) (2025-03-07)
 
 
