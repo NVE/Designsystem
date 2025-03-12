@@ -91,7 +91,7 @@ Bruk `value` for å gi menyvalget en unik ID. Du kan lese av `value` til aktuelt
   <nve-menu-item value="opt-1">Option 1</nve-menu-item>
   <nve-menu-item value="opt-2">Option 2</nve-menu-item>
   <nve-menu-item value="opt-3">Option 3</nve-menu-item>
-  <sl-divider></sl-divider>
+  <nve-divider></nve-divider>
   <nve-menu-item type="checkbox" value="opt-4">Checkbox 4</nve-menu-item>
   <nve-menu-item type="checkbox" value="opt-5">Checkbox 5</nve-menu-item>
   <nve-menu-item type="checkbox" value="opt-6">Checkbox 6</nve-menu-item>

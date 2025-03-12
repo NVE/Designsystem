@@ -5,6 +5,7 @@ export default css`
     margin-top: var(--spacing-xx-small);
     border: none;
     box-shadow: var(--soft);
+    background: var(--neutrals-background-primary);
   }
   ::slotted(nve-label) {
     padding: var(--spacing-small);
