@@ -36,17 +36,14 @@ export default css`
     align-items: center;
     justify-items: flex-start;
     background: var(--neutrals-background-primary, #FFF);
-    padding: var(--spacing-small, 0.75rem) 0px var(--spacing-small, 0.75rem) var(--spacing-small, 0.75rem)
+    padding: var(--spacing-small, 0.75rem) 0px var(--spacing-small, 0.75rem) var(--spacing-small, 0.75rem);
+    color: var(--neutrals-foreground-primary, #00131C);
+    font: var(--label-small-light);  
+    fill: var(--neutrals-foreground-primary, #00131C);
   }
 
   .menu-item .menu-item__prefix::slotted(*) {
     margin-inline-end: var(--spacing-x-small, 0.75rem);
-  }
- 
-
-  .menu-item__label {
-    color: var(--neutrals-foreground-primary, #00131C);
-    font: var(--label-small-light);
   }
   
   /* Design av subtext  */
@@ -76,7 +73,10 @@ export default css`
   }
   :host(:hover:not([aria-disabled="true"], :focus-visible)) .menu-item, .menu-item--submenu-expanded {
     background-color: var(--neutrals-background-secondary);  
+    color: var(--neutrals-foreground-primary, #00131C);
   }
+  
+  
     /* Disabled fargen  */
   .menu-item.menu-item--disabled {
     opacity: 0.38;
@@ -88,8 +88,6 @@ export default css`
     color: var(--interactive-outlined-foreground-default);
     background-color: transparent;
   }
-    /* Farge på submenu chevron  */
-  :host::part(submenu-icon) {
-    color:var(--neutrals-foreground-subtle);
-  }
+
+
 `;
