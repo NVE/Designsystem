@@ -112,6 +112,20 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ikke påbegynt'
   },
   {
+    name: 'nve-carousel-item',
+    nodeId: undefined,
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
+  },
+    {
+    name: 'nve-carousel-thumbnail',
+    nodeId: undefined,
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
+  },
+  {
     name: 'nve-combobox',
     nodeId: '4277-125162',
     description: undefined,
@@ -130,6 +144,13 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     nodeId: undefined,
     description: undefined,
     statusDesign: undefined,
+    statusCode: 'Ferdig'
+  },
+    {
+    name: 'nve-divider',
+    nodeId: undefined,
+    description: undefined,
+    statusDesign:  'Ferdig',
     statusCode: 'Ferdig'
   },
   {
@@ -188,9 +209,23 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusDesign: 'Ferdig',
     statusCode: 'Ferdig'
   },
+    {
+   name: 'nve-menu-item',
+    nodeId: undefined,
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
+  },
   {
    name: 'nve-message-card',
     nodeId: '8239-2704',
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
+  },
+  {
+    name: 'nve-option',
+    nodeId: undefined,
     description: undefined,
     statusDesign: 'Ferdig',
     statusCode: 'Ferdig'
@@ -257,6 +292,13 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     description: undefined,
     statusDesign: 'Under arbeid',
     statusCode: 'Ikke påbegynt'
+  },
+    {
+    name: 'nve-relative-time',
+    nodeId: undefined,
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-search',
