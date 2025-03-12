@@ -8,6 +8,7 @@ export default css`
   }
   .option--hover:not(.option--current):not(.option--disabled) {
     background-color: var(--neutrals-background-primary-contrast, #f7f7f8);
+    color: var(--neutrals-foreground-primary, #0d0d0e);
   }
   .option--selected:not(.option--disabled) {
     background-color: var(--neutrals-background-secondary, #e4e5e7);
@@ -36,4 +37,6 @@ export default css`
   :host([filled]) .option--hover:not(.option--current):not(.option--disabled):hover {
     background-color: var(--neutrals-background-primary, #fff);
   }
+
+
 `;
