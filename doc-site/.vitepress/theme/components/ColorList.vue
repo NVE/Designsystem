@@ -1,3 +1,4 @@
+<!-- Viser en tabell med alle fargene som er definert for NVE og Varsom -->
 <script setup lang="ts">
 import nveVariables from '../../../../tokens/brand/nve.json';
 import varsomVariables from '../../../../tokens/brand/varsom.json';
