@@ -4,11 +4,11 @@ outline: [2, 3]
 
 <PageHeader title="Typografi" imagePath="typografi" pageLevel=1></PageHeader>
 
-<img src="../../assets/images/typo.png" width="auto">
-
 Typografi er et av de sterkeste virkemidlene vi har for å lage visuelle hierarkier. For å sikre et konsekvent visuelt uttrykk på alle våre tjenester definerer designsystemet satte stiler på font-størrelse, font-vekt og linjeavstand. Vi bruker skrifttypen Source Sans i all kommunikasjon.
 
 #### Source Sans
+
+<img src="../../assets/images/typo.png" width="auto">
 
 Source Sans Pro/3 er en «open-source» sans serif skrifttype, laget for å gi god lesbarhet på digitale produkter. I designsystemet bruker vi kun vektene Regular og Semibold, med tilhørende italics-versjoner.
 
