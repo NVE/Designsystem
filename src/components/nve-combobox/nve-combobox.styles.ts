@@ -1,4 +1,4 @@
-import { css } from 'lit';
+import { css } from "lit";
 
 export default css`
   .select__listbox {
@@ -27,8 +27,7 @@ export default css`
   }
 
   nve-tag {
-    margin-top: 8px;
-    margin-bottom: 11px;
+    margin: 8px;
   }
 
   nve-input::part(input) {
@@ -39,16 +38,21 @@ export default css`
     width: 88%;
     display: flex;
     flex-wrap: wrap;
+    background: red;
   }
+
   /* Feil selector */
   nve-input::part(base) {
-    /* background-color: var(--interactive-secondary-background-disabled); */
+    display: flex;
+    justify-content: space-between;
     height: unset;
     min-height: var(--sl-input-height-medium);
   }
 
   .input-prefix {
+    max-width: 100%;
     border: none;
+    margin: 8px;
   }
 
   .input-prefix:focus-visible {
