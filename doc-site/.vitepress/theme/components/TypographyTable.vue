@@ -1,8 +1,9 @@
+<!-- Viser en font verdi tabell for et valgt innhold (se TableContent type), og for en valgt skjermbredde -->
 <template>
   <div v-if="cssTokenState.stateInitialized" ref="componentRoot" class="typography-table">
     <nve-radio-group
       size="large"
-      label="Skjerm størrelse:"
+      label="Skjermbredde:"
       orientation="horizontal"
       value="default"
       @sl-input="setResolution($event.target.value)"

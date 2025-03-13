@@ -1,3 +1,4 @@
+// Mapper typografi css-variabler fra .css fil til lesbare objekter.
 import { reactive, ref } from 'vue';
 import { FontValues, FontVariables, TableContent } from './types/FontValues';
 
