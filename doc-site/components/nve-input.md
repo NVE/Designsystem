@@ -21,7 +21,30 @@ Bruk `filled` for mørk bakgrunnsfarge
 ```html
 <nve-input value="filled" filled></nve-input>
 
-<nve-input value="ikke filled"></nve-input>
+<nve-input value="ikke filled">
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <div slot="prefix">bingo</div>
+  <input slot="prefix" />
+</nve-input>
 ```
 
 </CodeExamplePreview>

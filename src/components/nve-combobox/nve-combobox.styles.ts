@@ -1,4 +1,4 @@
-import { css } from "lit";
+import { css } from 'lit';
 
 export default css`
   .select__listbox {
@@ -31,32 +31,27 @@ export default css`
     margin-bottom: 11px;
   }
 
+  nve-input::part(input) {
+    display: none;
+  }
+
   nve-input::part(prefix) {
+    width: 88%;
+    display: flex;
     flex-wrap: wrap;
-    max-width: 80%;
-    height: var(--sl-input-height-medium);
   }
-
-  @media (max-width: 992px) {
-    nve-input::part(prefix) {
-      max-width: 70%;
-    }
-    nve-tag {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    nve-input::part(prefix) {
-      max-width: 50%;
-    }
-  }
-
-  //--interactive-links-default
-
   /* Feil selector */
   nve-input::part(base) {
     /* background-color: var(--interactive-secondary-background-disabled); */
+    height: unset;
+    min-height: var(--sl-input-height-medium);
+  }
+
+  .input-prefix {
+    border: none;
+  }
+
+  .input-prefix:focus-visible {
+    outline: none;
   }
 `;
