@@ -38,6 +38,7 @@ export default css`
     width: 88%;
     display: flex;
     flex-wrap: wrap;
+    flex-grow: 1;
     background: red;
   }
 
@@ -50,9 +51,13 @@ export default css`
   }
 
   .input-prefix {
-    max-width: 100%;
     border: none;
-    margin: 8px;
+    height: 38px;
+    font-size: 16px;
+
+    flex-grow: 1;
+
+    background: green;
   }
 
   .input-prefix:focus-visible {

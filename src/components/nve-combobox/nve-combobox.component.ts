@@ -15,10 +15,6 @@ import "../nve-icon/nve-icon.component";
 /*
 TODO: 
   - Fikse fokus problemet
-
-
-
-
 */
 interface OptionInterface {
   label: string;
@@ -379,10 +375,9 @@ export default class NveCombobox extends LitElement implements INveComponent {
           autocomplete="off"
           label="${this.label}"
           errorMessage="${this.errorMessage}"
-          .value="${this.inputValue}"
-          @blur="${this.handleBlur}"
           @focus="${this.handleFocus}"
           @click="${this.handleFocus}"
+          .value="${this.inputValue}"
           ?disabled=${this.disabled}
           ?filled=${this.filled}
           ?required=${this.required}
@@ -393,8 +388,8 @@ export default class NveCombobox extends LitElement implements INveComponent {
                 slot="prefix"
                 tabindex="0"
                 size="small"
-                .closeable=${!this.disabled}
                 @nve-close="${() => this.unSelectOption(option)}"
+                .closeable=${!this.disabled}
               >
                 ${option.label}
               </nve-tag>
@@ -403,10 +398,10 @@ export default class NveCombobox extends LitElement implements INveComponent {
           <input
             slot="prefix"
             class="input-prefix"
-            .value="${this.inputValue}"
             @input="${this.handleInput}"
             @focus="${this.handleFocus}"
             @click="${this.handleFocus}"
+            .value="${this.inputValue}"
             ${ref(this.inputRef)}
           />
           ${this.shouldDisplayCounter() &&
@@ -454,13 +449,13 @@ export default class NveCombobox extends LitElement implements INveComponent {
                   (option, i) => html`
                     <nve-option
                       tabindex="0"
-                      value="${option.value}"
-                      ?disabled=${this.disabled}
-                      .selected="${option.selected}"
                       @keydown="${(e: KeyboardEvent) =>
                         this.toggleOptionInListWithSearchHits(option, i, e)}"
                       @click="${() =>
                         this.toggleOptionInListWithSearchHits(option, i)}"
+                      value="${option.value}"
+                      ?disabled=${this.disabled}
+                      .selected="${option.selected}"
                     >
                       ${option.selected
                         ? html`
@@ -485,8 +480,6 @@ export default class NveCombobox extends LitElement implements INveComponent {
                   <nve-option
                     tabindex="0"
                     value="${option.value}"
-                    ?disabled=${this.disabled}
-                    .selected="${option.selected}"
                     @keydown="${(e: KeyboardEvent) =>
                       option.selected
                         ? this.unSelectOption(option, e)
@@ -495,6 +488,8 @@ export default class NveCombobox extends LitElement implements INveComponent {
                       option.selected
                         ? this.unSelectOption(option)
                         : this.selectOption(option)}"
+                    ?disabled=${this.disabled}
+                    .selected="${option.selected}"
                   >
                     ${option.selected
                       ? html`
