@@ -1,6 +1,7 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av npm run add-component */
 import '../node_modules/@shoelace-style/shoelace/dist/themes/light.css';
+
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
@@ -35,6 +36,9 @@ export { default as NveSpinner } from './components/nve-spinner/nve-spinner.comp
 export { default as NveStep } from './components/nve-stepper/nve-step/nve-step.component';
 export { default as NveStepper } from './components/nve-stepper/nve-stepper.component';
 export { default as NveSwitch } from './components/nve-switch/nve-switch.component';
+export { default as NveTab } from './components/nve-tab/nve-tab.component';
+export { default as NveTabGroup } from './components/nve-tab-group/nve-tab-group.component';
+export { default as NveTabPanel } from './components/nve-tab-panel/nve-tab-panel.component';
 export { default as NveTag } from './components/nve-tag/nve-tag.component';
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
