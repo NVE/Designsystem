@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/NVE/Designsystem/compare/v1.6.1...v1.6.2) (2025-03-24)
+
+
+### Bug Fixes
+
+* **nve-step:** sette nve-icon størrelsen til 24px ([#484](https://github.com/NVE/Designsystem/issues/484)) ([63e7445](https://github.com/NVE/Designsystem/commit/63e744585f3a675595a44a76ba30128ab02acb0d))
+
 ## [1.6.1](https://github.com/NVE/Designsystem/compare/v1.6.0...v1.6.1) (2025-03-12)
 
 
