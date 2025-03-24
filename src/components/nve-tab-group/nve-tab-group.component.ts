@@ -12,7 +12,7 @@ import { NveTab, NveTabPanel } from 'src/nve-designsystem';
  * Disse kobles sammen med `panel` på NveTab som skal være det samme som `name` på NveTabPanel
  *
  * @slot - For innholdet på hver fane. Må være en eller flere `<nve-tab-panel>`-elementer
- * @slot nav - For fane-knapper. Må være `<nve-tab>`
+ * @slot nav - For fane-knapper. Må være av typen `<nve-tab>`
  *
  * @csspart base - Hele komponenten er inne i denne.
  * @csspart tabs - Konteiner som inneholder fane-knappene.
@@ -24,18 +24,21 @@ import { NveTab, NveTabPanel } from 'src/nve-designsystem';
 export default class NveTabGroup extends LitElement implements INveComponent {
   @property({ reflect: true, type: String }) testId: string | undefined = undefined;
 
-  /* Skal vi vise bakgrunn eller ikke for fane-knappene */
+  /**  Skal vi vise bakgrunn eller ikke for fane-knappene */
   @property({ reflect: true, type: Boolean }) showbackground: boolean = false;
-  /* Skal vi vise linje under fane-knapp-raden eller ikke */
+  /** Skal vi vise linje under fane-knapp-raden eller ikke */
   @property({ reflect: true, type: Boolean }) showunderline: boolean = false;
 
   private activeTab?: NveTab;
   private mutationObserver!: MutationObserver; /* Blir laget i connectedCallback */
+  private resizeObserver!: ResizeObserver;
   private tabs: NveTab[] = [];
   private panels: NveTabPanel[] = [];
 
   @query('.tab-group') tabGroup!: HTMLElement;
   @query('.tab-group__body') body!: HTMLSlotElement;
+  @query('.tab-group__tabs') tabsholder!: HTMLSlotElement;
+  @query('.tab-group__nav') nav!: HTMLElement;
   @query('.tab-group__indicator') indicator!: HTMLElement;
   static styles = [styles];
 
@@ -59,11 +62,16 @@ export default class NveTabGroup extends LitElement implements INveComponent {
       if (mutations.some((m) => m.attributeName === 'disabled')) {
         this.syncTabsAndPanels();
       }
+      this.repositionIndicator();
+    });
+    this.resizeObserver = new ResizeObserver(() => {
+      this.repositionIndicator();
     });
 
     this.updateComplete.then(() => {
       this.syncTabsAndPanels();
       this.mutationObserver.observe(this, { attributes: true, childList: true, subtree: true });
+      this.resizeObserver.observe(this.nav);
       // Wait for tabs and tab panels to be registered
       whenAllDefined.then(() => {
         this.setAriaLabels();
@@ -133,20 +141,19 @@ export default class NveTabGroup extends LitElement implements INveComponent {
       return;
     }
 
-    const width = currentTab.clientWidth;
-    const allTabs = this.getAllTabs();
-    const precedingTabs = allTabs.slice(0, allTabs.indexOf(currentTab));
-    const offset = precedingTabs.reduce(
-      (previous, current) => ({
-        left: previous.left + current.clientWidth,
-        top: previous.top + current.clientHeight,
-      }),
-      { left: 0, top: 0 }
-    );
+    let width = currentTab.clientWidth;
+    const gap = this.tabsholder.computedStyleMap().get('gap')?.toString();
 
+    let left = currentTab.offsetLeft - currentTab.parentElement!.offsetLeft;
+
+    if (gap) {
+      const gapNumeric = Number(gap.replace('px', ''));
+      left -= gapNumeric;
+      width += 2 * gapNumeric;
+    }
     this.indicator.style.width = `${width}px`;
     this.indicator.style.height = 'auto';
-    this.indicator.style.translate = `${offset.left}px`;
+    this.indicator.style.translate = `${left}px`;
   }
 
   private handleClick(event: MouseEvent) {

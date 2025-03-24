@@ -12,6 +12,7 @@ export default class NveTab extends LitElement implements INveComponent {
   @property({ reflect: true, type: String }) testId: string | undefined = undefined;
   @property({ reflect: true, type: String }) panel: string = '';
   @property({ reflect: true, type: Boolean }) disabled: boolean = false;
+  /** Settes av nve-tab-group */
   @property({ reflect: true, type: Boolean }) active: boolean = false;
 
   @query('.tab') tab!: HTMLElement;

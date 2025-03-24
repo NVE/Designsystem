@@ -17,8 +17,10 @@ export default css`
     border-radius: var(--border-radius-small) var(--border-radius-small) var(--border-radius-none)
       var(--border-radius-none);
     transition: var(--transition-speed) color;
-    padding: var(--spacing-medium) var(--spacing-small);
-    color: var(--neutrals-foreground-mute);
+    padding: 0 var(--spacing-small);
+    color: var(--tab-color);
+    background: var(--background-color);
+    min-height: var(--fixed-sizing-2x-large);
   }
 
   .tab:hover:not(.tab--disabled) {
@@ -30,7 +32,8 @@ export default css`
 
   .tab.tab--active:not(.tab--disabled) {
     font: var(--label-medium);
-    color: var(--neutrals-foreground-primary);
+    color: var(--active-tab-color);
+    background: var(--active-background-color);
   }
 
   .tab:focus {

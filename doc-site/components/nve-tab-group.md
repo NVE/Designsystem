@@ -2,33 +2,101 @@
 layout: component
 ---
 
-TODO: Start med et enklest mulig kodeeksempel i html for å kunne vise komponenten.
 <CodeExamplePreview>
 
 ```html
 <nve-tab-group>
-  <nve-tab slot="nav" panel="general">General</nve-tab>
-  <nve-tab slot="nav" panel="custom">Custom</nve-tab>
-  <nve-tab slot="nav" panel="advanced">Advanced</nve-tab>
+  <nve-tab slot="nav" panel="p1">Fane 1</nve-tab>
+  <nve-tab slot="nav" panel="p2">Fane 2</nve-tab>
+  <nve-tab slot="nav" panel="p3">Fane 3</nve-tab>
   <nve-tab slot="nav" panel="disabled" disabled>Disabled</nve-tab>
 
-  <nve-tab-panel name="general">This is the general tab panel.</nve-tab-panel>
-  <nve-tab-panel name="custom">This is the custom tab panel.</nve-tab-panel>
-  <nve-tab-panel name="advanced">This is the advanced tab panel.</nve-tab-panel>
-  <nve-tab-panel name="disabled">This is a disabled tab panel.</nve-tab-panel>
+  <nve-tab-panel name="p1">Dette er innholdet i den første fanen</nve-tab-panel>
+  <nve-tab-panel name="p2">Innhold i fane nummer 2</nve-tab-panel>
+  <nve-tab-panel name="p3">Her har vi fane 3-innholdet</nve-tab-panel>
+  <nve-tab-panel name="disabled">Dette innholdet vil ikke kunne ses, siden fanen er disabled</nve-tab-panel>
 </nve-tab-group>
 ```
 
 </CodeExamplePreview>
 
-TODO: Skriv evt. generelle tips som ikke passer å ha i @JsDoc. Pass på at det ikke blir dobbelt opp med det du har skrevet i @JsDoc.
-
 ## Eksempler
 
-Legg eksempler på funksjonalitet her. Hvert tema skal ha egen overskrift på nivå 3.
+### Bakgrunn bak fane-knapper
 
-### TODO: Eksempel 1
+Vi kan slå på en bakgrunnsfarge med `showbackground`
+<CodeExamplePreview>
 
-### TODO: Eksempel 2
+```html
+<nve-tab-group showbackground>
+  <nve-tab slot="nav" panel="p1">Fane 1</nve-tab>
+  <nve-tab slot="nav" panel="p2">Fane 2</nve-tab>
+  <nve-tab slot="nav" panel="p3">Fane 3</nve-tab>
+  <nve-tab slot="nav" panel="disabled" disabled>Disabled</nve-tab>
 
-osv..:)
+  <nve-tab-panel name="p1">Dette er innholdet i den første fanen</nve-tab-panel>
+  <nve-tab-panel name="p2">Innhold i fane nummer 2</nve-tab-panel>
+  <nve-tab-panel name="p3">
+    <div>
+      Her har vi fane 3-innholdet
+      <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
+    </div>
+  </nve-tab-panel>
+  <nve-tab-panel name="disabled">Dette innholdet vil ikke kunne ses, siden fanen er disabled</nve-tab-panel>
+</nve-tab-group>
+```
+
+</CodeExamplePreview>
+
+### Skillelinje mellom fane-knapper og faner
+
+Vi kan vise en linje under alle fane-knappene med `showunderline`
+
+<CodeExamplePreview>
+
+```html
+<nve-tab-group showunderline>
+  <nve-tab slot="nav" panel="p1">Fane 1</nve-tab>
+  <nve-tab slot="nav" panel="p2">Fane 2</nve-tab>
+  <nve-tab slot="nav" panel="p3">Fane 3</nve-tab>
+  <nve-tab slot="nav" panel="disabled" disabled>Disabled</nve-tab>
+
+  <nve-tab-panel name="p1">Dette er innholdet i den første fanen</nve-tab-panel>
+  <nve-tab-panel name="p2">Innhold i fane nummer 2</nve-tab-panel>
+  <nve-tab-panel name="p3">
+    <div>
+      Her har vi fane 3-innholdet
+      <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
+    </div>
+  </nve-tab-panel>
+  <nve-tab-panel name="disabled">Dette innholdet vil ikke kunne ses, siden fanen er disabled</nve-tab-panel>
+</nve-tab-group>
+```
+
+</CodeExamplePreview>
+
+### Innhold i fane-knapper
+
+Siden `nve-tab` er et eget element, står man fritt til å bestemme innholdet i denne
+
+<CodeExamplePreview>
+
+```html
+<nve-tab-group showunderline showbackground>
+  <nve-tab slot="nav" panel="p1">
+    <nve-icon name="warning" style="color: var(--brand-primary); margin-inline-end: var(--spacing-xx-small)"></nve-icon>
+    <span>Se her!</span>
+  </nve-tab>
+  <nve-tab slot="nav" panel="p2">
+    <span>Mange meldinger</span>
+    <nve-badge variant="danger" style="margin-inline-start: var(--spacing-xx-small)">432</nve-badge>
+  </nve-tab>
+  <nve-tab slot="nav" panel="p3"> Fane 3 </nve-tab>
+
+  <nve-tab-panel name="p1">Dette er innholdet i den første fanen</nve-tab-panel>
+  <nve-tab-panel name="p2">Innhold i fane nummer 2</nve-tab-panel>
+  <nve-tab-panel name="p3">Her har vi fane 3-innholdet</nve-tab-panel>
+</nve-tab-group>
+```
+
+</CodeExamplePreview>
