@@ -5,6 +5,8 @@ import styles from './nve-tab.styles';
 import { watch } from '../../utils/watch';
 import { classMap } from 'lit/directives/class-map.js';
 
+let id = 0;
+
 /**
  * Knapp for å velge en fane.
  *
@@ -13,9 +15,9 @@ import { classMap } from 'lit/directives/class-map.js';
  * NveTabGroup er den som disse skal ligge i
  * Disse kobles sammen med `panel` på NveTab som skal være det samme som `name` på NveTabPanel
  *
+ * @csspart base - Hele komponenten er inne i denne.
+ *
  */
-
-let id = 0;
 
 @customElement('nve-tab')
 export default class NveTab extends LitElement implements INveComponent {
