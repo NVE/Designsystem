@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="field in fields" :key="field.name">
+      <tr v-for="field in fields.filter((f) => f.privacy !== 'private')" :key="field.name">
         <td>{{ field.name }}</td>
         <td>
           {{ field.type?.text }}
