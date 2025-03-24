@@ -5,7 +5,7 @@ import styles from './nve-tab-group.styles';
 import { NveTab, NveTabPanel } from 'src/nve-designsystem';
 
 /**
- * Viser faner. Sørger for at hver gruppe har et synlig panel.
+ * En komponent for å vise faner. Bruker underkomponenter for å vise knapper og det innholdet den spesifikke knappen skal vise
  *
  * NveTab er selve knappen for å velge fane
  * NveTabPanel er innholdet for hver fane
