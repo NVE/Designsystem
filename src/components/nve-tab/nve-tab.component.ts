@@ -5,6 +5,16 @@ import styles from './nve-tab.styles';
 import { watch } from '../../utils/watch';
 import { classMap } from 'lit/directives/class-map.js';
 
+/**
+ * Knapp for å velge en fane.
+ *
+ * NveTab er selve knappen for å velge fane
+ * NveTabPanel er innholdet for hver fane
+ * NveTabGroup er den som disse skal ligge i
+ * Disse kobles sammen med `panel` på NveTab som skal være det samme som `name` på NveTabPanel
+ *
+ */
+
 let id = 0;
 
 @customElement('nve-tab')

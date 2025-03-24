@@ -5,7 +5,7 @@ import styles from './nve-tab-group.styles';
 import { NveTab, NveTabPanel } from 'src/nve-designsystem';
 
 /**
- * @summary Viser faner. Sørger for at hver gruppe har et synlig panel.
+ * Viser faner. Sørger for at hver gruppe har et synlig panel.
  *
  * NveTab er selve knappen for å velge fane
  * NveTabPanel er innholdet for hver fane
