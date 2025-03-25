@@ -16,13 +16,20 @@ export default css`
     cursor: pointer;
     border-radius: var(--border-radius-small) var(--border-radius-small) var(--border-radius-none)
       var(--border-radius-none);
-    transition: var(--transition-speed) color;
+    transition:
+      var(--transition-speed) color,
+      var(--transition-speed) background-color;
     padding: 0 var(--spacing-small);
     color: var(--tab-color);
-    background: var(--background-color);
+    background-color: var(--background-color);
     min-height: var(--fixed-sizing-2x-large);
     border-bottom: transparent;
     position: relative;
+  }
+
+  .tab:hover:not(.tab--disabled):not(.tab--active) {
+    color: var(--neutrals-foreground-primary);
+    background-color: var(--active-background-color);
   }
 
   .tab:hover:not(.tab--disabled):not(.tab--active)::after {
@@ -43,7 +50,7 @@ export default css`
   .tab.tab--active:not(.tab--disabled) {
     font: var(--label-medium);
     color: var(--active-tab-color);
-    background: var(--active-background-color);
+    background-color: var(--active-background-color);
   }
 
   .tab:focus {
