@@ -21,10 +21,20 @@ export default css`
     color: var(--tab-color);
     background: var(--background-color);
     min-height: var(--fixed-sizing-2x-large);
+    border-bottom: transparent;
+    position: relative;
   }
 
-  .tab:hover:not(.tab--disabled) {
+  .tab:hover:not(.tab--disabled):not(.tab--active)::after {
+    content: ' ';
+    height: var(--track-width);
+    width: 100%;
     color: var(--neutrals-foreground-primary);
+    border-bottom: var(--track-width) solid var(--hover-track-color);
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: calc(0.5 * var(--gap-size));
   }
   .tab:focus-visible:not(.tab--disabled) {
     color: var(--neutrals-foreground-primary);

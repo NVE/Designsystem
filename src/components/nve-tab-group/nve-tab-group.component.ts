@@ -244,8 +244,9 @@ export default class NveTabGroup extends LitElement implements INveComponent {
       <div part="base" class="tab-group" @click=${this.handleClick} @keydown=${this.handleKeyDown}>
         <div class="tab-group__nav" part="nav">
           <div part="tabs" class="tab-group__tabs" role="tablist">
-            <div part="active-tab-indicator" class="tab-group__indicator"></div>
             <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
+            <div class="tab-group__underline"></div>
+            <div part="active-tab-indicator" class="tab-group__indicator"></div>
           </div>
         </div>
         <slot part="body" class="tab-group__body" @slotchange=${this.syncTabsAndPanels}></slot>

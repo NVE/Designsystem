@@ -12,6 +12,8 @@ export default css`
     --transition-speed: 0.3s;
     --track-color: transparent;
     --active-offset: 0;
+    --hover-track-color: var(--neutrals-border-default);
+    --gap-size: var(--spacing-xx-small);
   }
 
   :host([showbackground]) {
@@ -26,6 +28,7 @@ export default css`
 
   :host([showunderline][showbackground]) {
     --track-color: var(--neutrals-border-default);
+    --hover-track-color: var(--interactive-primary-background-hover);
   }
 
   .tab-group {
@@ -39,9 +42,8 @@ export default css`
     align-items: end;
     position: relative;
     flex: 1 1 auto;
-    gap: var(--spacing-xx-small);
+    gap: var(--gap-size);
     flex-direction: row;
-    border-bottom: solid var(--track-width) var(--track-color);
   }
 
   .tab-group__nav-container {
@@ -54,11 +56,19 @@ export default css`
 
   .tab-group__indicator {
     position: absolute;
-    bottom: calc(var(--active-offset) * var(--track-width));
+    bottom: 0;
     border-bottom: solid var(--track-width) var(--active-border-bottom-color);
     transition:
       var(--transition-speed) translate ease,
       var(--transition-speed) width ease;
+  }
+
+  .tab-group__underline {
+    position: absolute;
+    height: var(--track-width);
+    width: 100%;
+    bottom: 0;
+    border-bottom: solid var(--track-width) var(--track-color);
   }
 
   .tab-group__body {
