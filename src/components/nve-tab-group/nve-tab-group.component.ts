@@ -14,6 +14,10 @@ import { NveTab, NveTabPanel } from 'src/nve-designsystem';
  * @slot - For innholdet på hver fane. Må være en eller flere `<nve-tab-panel>`-elementer
  * @slot nav - For fane-knapper. Må være av typen `<nve-tab>`
  *
+ * @event nve-tab-hide Sendes når en fane gjemmes. Fanenavn er i details-objektet
+ * @event nve-tab-show Sendes når en fane blir synlig. Fanenavn er i details-objektet
+ *
+ *
  * @csspart base - Hele komponenten er inne i denne.
  * @csspart tabs - Konteiner som inneholder fane-knappene.
  * @csspart active-tab-indicator - Linje under aktiv fane.
@@ -51,6 +55,16 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     super();
   }
 
+  private emit(eventname: string, detail = {}): void {
+    const event = new CustomEvent(eventname, {
+      bubbles: true,
+      cancelable: false,
+      composed: true,
+      detail: detail,
+    });
+    this.dispatchEvent(event);
+  }
+
   connectedCallback() {
     const whenAllDefined = Promise.all([
       customElements.whenDefined('nve-tab'),
@@ -80,7 +94,7 @@ export default class NveTabGroup extends LitElement implements INveComponent {
       // Wait for tabs and tab panels to be registered
       whenAllDefined.then(() => {
         this.setAriaLabels();
-        this.setActiveTab(this.getActiveTab() ?? this.tabs[0]);
+        this.setActiveTab(this.getActiveTab() ?? this.tabs[0], { emitEvents: false });
       });
     });
   }
@@ -130,13 +144,20 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     return this.tabs.find((el) => el.active);
   }
 
-  private setActiveTab(tab: NveTab) {
+  private setActiveTab(tab: NveTab, options: { emitEvents: boolean }) {
     if (tab !== this.activeTab && !tab.disabled) {
+      const previousTab = this.activeTab;
       this.activeTab = tab;
       // Sync active tab and panel
       this.tabs.forEach((el) => (el.active = el === this.activeTab));
       this.panels.forEach((el) => (el.active = el.name === this.activeTab?.panel));
       this.syncIndicator();
+      if (options.emitEvents) {
+        if (previousTab) {
+          this.emit('nve-tab-hide', { detail: { name: previousTab.panel } });
+        }
+        this.emit('nve-tab-show', { detail: { name: this.activeTab.panel } });
+      }
     }
   }
   private repositionIndicator() {
@@ -171,7 +192,7 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     }
 
     if (tab !== null) {
-      this.setActiveTab(tab);
+      this.setActiveTab(tab, { emitEvents: true });
     }
   }
 
@@ -187,7 +208,7 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     // Aktiver tab med Enter eller space
     if (['Enter', ' '].includes(event.key)) {
       if (tab !== null) {
-        this.setActiveTab(tab);
+        this.setActiveTab(tab, { emitEvents: true });
         event.preventDefault();
       }
     }
@@ -214,7 +235,7 @@ export default class NveTabGroup extends LitElement implements INveComponent {
           index = 0;
         }
         this.tabs[index].focus({ preventScroll: true });
-        this.setActiveTab(this.tabs[index]);
+        this.setActiveTab(this.tabs[index], { emitEvents: true });
         event.preventDefault();
       }
     }
