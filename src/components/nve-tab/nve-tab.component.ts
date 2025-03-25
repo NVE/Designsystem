@@ -30,7 +30,7 @@ export default class NveTab extends LitElement implements INveComponent {
   @property({ reflect: true, type: Boolean }) active: boolean = false;
 
   /** Spørring for selve faneknappen */
-  @query('.tab') tab!: HTMLElement;
+  @query('.tab') private tab!: HTMLElement;
 
   static styles = [styles];
   private readonly attrId = ++id;

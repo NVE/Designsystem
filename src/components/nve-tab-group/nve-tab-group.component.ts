@@ -39,16 +39,14 @@ export default class NveTabGroup extends LitElement implements INveComponent {
   private tabs: NveTab[] = [];
   private panels: NveTabPanel[] = [];
 
-  /** Spørring for base-elementet */
-  @query('.tab-group') tabGroup!: HTMLElement;
   /** Spørring for indre element som holder faneinnholdet */
-  @query('.tab-group__body') body!: HTMLSlotElement;
+  @query('.tab-group__body') private body!: HTMLSlotElement;
   /** Spørring for det ytre elementet som faneknapper og indikator ligger i */
-  @query('.tab-group__tabs') tabsholder!: HTMLSlotElement;
+  @query('.tab-group__tabs') private tabsholder!: HTMLSlotElement;
   /** Spørring for det indre elementet som holder faneknapper */
-  @query('.tab-group__nav') nav!: HTMLElement;
+  @query('.tab-group__nav') private nav!: HTMLElement;
   /** Spørring for indikator-elementet som viser aktiv fane */
-  @query('.tab-group__indicator') indicator!: HTMLElement;
+  @query('.tab-group__indicator') private indicator!: HTMLElement;
   static styles = [styles];
 
   constructor() {
