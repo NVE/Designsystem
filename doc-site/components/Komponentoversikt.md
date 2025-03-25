@@ -350,11 +350,11 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ikke påbegynt'
   },
   {
-    name: 'nve-tabs',
+    name: 'nve-tab-group',
     nodeId: '383-21541',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-tag',
