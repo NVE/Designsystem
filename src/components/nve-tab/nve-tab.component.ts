@@ -22,11 +22,14 @@ let id = 0;
 @customElement('nve-tab')
 export default class NveTab extends LitElement implements INveComponent {
   @property({ reflect: true, type: String }) testId: string | undefined = undefined;
+  /** navn på NvePanel som denne er knyttet til */
   @property({ reflect: true, type: String }) panel: string = '';
+  /** Setter til insaktiv */
   @property({ reflect: true, type: Boolean }) disabled: boolean = false;
   /** Settes av nve-tab-group */
   @property({ reflect: true, type: Boolean }) active: boolean = false;
 
+  /** Spørring for selve faneknappen */
   @query('.tab') tab!: HTMLElement;
 
   static styles = [styles];
@@ -46,18 +49,18 @@ export default class NveTab extends LitElement implements INveComponent {
   handleDisabledChange() {
     this.setAttribute('aria-disabled', this.disabled ? 'true' : 'false');
   }
-  /** Sets focus to the tab. */
+  /** Gir faneknappen fokus */
   focus(options?: FocusOptions) {
     this.tab.focus(options);
   }
 
-  /** Removes focus from the tab. */
+  /** Fjerner fokus fra faneknapp */
   blur() {
     this.tab.blur();
   }
 
   render() {
-    // If the user didn't provide an ID, we'll set one so we can link tabs and tab panels with aria labels
+    // Vi må ha en id. Så dersom bruker ikke setter det, så gir vi den en basert på teller
     this.id = this.id.length > 0 ? this.id : this.componentId;
     return html` <div
       part="base"

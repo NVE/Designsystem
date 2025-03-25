@@ -9,12 +9,12 @@ layout: component
   <nve-tab slot="nav" panel="p1">Fane 1</nve-tab>
   <nve-tab slot="nav" panel="p2">Fane 2</nve-tab>
   <nve-tab slot="nav" panel="p3">Fane 3</nve-tab>
-  <nve-tab slot="nav" panel="disabled" disabled>Disabled</nve-tab>
+  <nve-tab slot="nav" panel="inaktiv" disabled>Inaktiv</nve-tab>
 
   <nve-tab-panel name="p1">Dette er innholdet i den første fanen</nve-tab-panel>
   <nve-tab-panel name="p2">Innhold i fane nummer 2</nve-tab-panel>
   <nve-tab-panel name="p3">Her har vi fane 3-innholdet</nve-tab-panel>
-  <nve-tab-panel name="disabled">Dette innholdet vil ikke kunne ses, siden fanen er disabled</nve-tab-panel>
+  <nve-tab-panel name="inaktiv">Dette innholdet vil ikke kunne ses, siden fanen er inaktiv</nve-tab-panel>
 </nve-tab-group>
 ```
 
@@ -32,7 +32,7 @@ Vi kan slå på en bakgrunnsfarge med `showbackground`
   <nve-tab slot="nav" panel="p1">Fane 1</nve-tab>
   <nve-tab slot="nav" panel="p2">Fane 2</nve-tab>
   <nve-tab slot="nav" panel="p3">Fane 3</nve-tab>
-  <nve-tab slot="nav" panel="disabled" disabled>Disabled</nve-tab>
+  <nve-tab slot="nav" panel="inaktiv" disabled>Inaktiv</nve-tab>
 
   <nve-tab-panel name="p1">Dette er innholdet i den første fanen</nve-tab-panel>
   <nve-tab-panel name="p2">Innhold i fane nummer 2</nve-tab-panel>
@@ -42,7 +42,7 @@ Vi kan slå på en bakgrunnsfarge med `showbackground`
       <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
     </div>
   </nve-tab-panel>
-  <nve-tab-panel name="disabled">Dette innholdet vil ikke kunne ses, siden fanen er disabled</nve-tab-panel>
+  <nve-tab-panel name="inaktiv">Dette innholdet vil ikke kunne ses, siden fanen er inaktiv</nve-tab-panel>
 </nve-tab-group>
 ```
 
@@ -59,7 +59,7 @@ Vi kan vise en linje under alle fane-knappene med `showunderline`
   <nve-tab slot="nav" panel="p1">Fane 1</nve-tab>
   <nve-tab slot="nav" panel="p2">Fane 2</nve-tab>
   <nve-tab slot="nav" panel="p3">Fane 3</nve-tab>
-  <nve-tab slot="nav" panel="disabled" disabled>Disabled</nve-tab>
+  <nve-tab slot="nav" panel="p4" disabled>Inaktiv</nve-tab>
 
   <nve-tab-panel name="p1">Dette er innholdet i den første fanen</nve-tab-panel>
   <nve-tab-panel name="p2">Innhold i fane nummer 2</nve-tab-panel>
@@ -69,7 +69,7 @@ Vi kan vise en linje under alle fane-knappene med `showunderline`
       <img src="/assets/transmisjonsnett.jpg" alt="Transmisjonsnett" />
     </div>
   </nve-tab-panel>
-  <nve-tab-panel name="disabled">Dette innholdet vil ikke kunne ses, siden fanen er disabled</nve-tab-panel>
+  <nve-tab-panel name="p4">Dette innholdet vil ikke kunne ses, siden fanen er inaktiv</nve-tab-panel>
 </nve-tab-group>
 ```
 
@@ -93,6 +93,25 @@ Siden `nve-tab` er et eget element, står man fritt til å bestemme innholdet i 
   </nve-tab>
   <nve-tab slot="nav" panel="p3"> Fane 3 </nve-tab>
 
+  <nve-tab-panel name="p1">Dette er innholdet i den første fanen</nve-tab-panel>
+  <nve-tab-panel name="p2">Innhold i fane nummer 2</nve-tab-panel>
+  <nve-tab-panel name="p3">Her har vi fane 3-innholdet</nve-tab-panel>
+</nve-tab-group>
+```
+
+</CodeExamplePreview>
+
+### Sett en fane som aktiv ved første visning
+
+Bruk `active` på en fane for å sette den til aktiv.
+
+<CodeExamplePreview>
+
+```html
+<nve-tab-group showunderline showbackground>
+  <nve-tab slot="nav" panel="p1">Første</nve-tab>
+  <nve-tab slot="nav" panel="p2" active>Andre</nve-tab>
+  <nve-tab slot="nav" panel="p3">Tredje</nve-tab>
   <nve-tab-panel name="p1">Dette er innholdet i den første fanen</nve-tab-panel>
   <nve-tab-panel name="p2">Innhold i fane nummer 2</nve-tab-panel>
   <nve-tab-panel name="p3">Her har vi fane 3-innholdet</nve-tab-panel>

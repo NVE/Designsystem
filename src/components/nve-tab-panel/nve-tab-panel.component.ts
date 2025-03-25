@@ -22,6 +22,7 @@ let id = 0;
 @customElement('nve-tab-panel')
 export default class NveTabPanel extends LitElement implements INveComponent {
   @property({ reflect: true, type: String }) testId: string | undefined = undefined;
+  /** Navn på fanen. Må tilsvare en 'panel' satt på en nve-tab */
   @property({ reflect: true, type: String }) name: string = '';
   /** Settes av nve-tab-group */
   @property({ reflect: true, type: Boolean }) active: boolean = false;
