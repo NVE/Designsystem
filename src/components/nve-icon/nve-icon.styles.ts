@@ -13,7 +13,7 @@ export default css`
     user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-    --icon-size: 16px;
+    --icon-size: 24px;
     font-size: var(--icon-size);
     line-height: var(--icon-size);
   }
