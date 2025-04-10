@@ -5,7 +5,7 @@ export default css`
     gap: 0rem 10px;
   }
 
-  :host([pagination-counter])::part(scroll-container)::after {
+  :host([pagination-counter]) #scroll-container::after {
     content: attr(data-active-item) ' / ' attr(data-num-items);
     display: block;
     position: absolute;
@@ -14,8 +14,8 @@ export default css`
     padding: var(--spacing-xx-small) var(--spacing-x-small);
     border-radius: var(--border-radius-small);
     color: var(--pagination-counter-color, inherit);
-    background-color: var(--pagination-counter-bg-color, inherit);  }
-
+    background-color: var(--pagination-counter-bg-color, inherit);
+  }
 
   :host::part(scroll-container) {
     aspect-ratio: auto;
