@@ -1,3 +1,11 @@
+## [1.6.3](https://github.com/NVE/Designsystem/compare/v1.6.2...v1.6.3) (2025-04-10)
+
+
+### Bug Fixes
+
+* Bump vite to 6.2.4 ([#489](https://github.com/NVE/Designsystem/issues/489)) ([cf579f4](https://github.com/NVE/Designsystem/commit/cf579f4ba626f19e220c8c0d0cd382e0f142b59c))
+* Oppgradert esbuild og vite ([#486](https://github.com/NVE/Designsystem/issues/486)) ([4a5bda2](https://github.com/NVE/Designsystem/commit/4a5bda2578f069f08c263fdcb7b09fa51990c2de))
+
 ## [1.6.2](https://github.com/NVE/Designsystem/compare/v1.6.1...v1.6.2) (2025-03-24)
 
 
