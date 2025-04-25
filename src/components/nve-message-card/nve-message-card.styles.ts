@@ -41,6 +41,7 @@ export default css`
     align-items: center;
     gap: 8px;
     width: 100%;
+    padding: 2px 0;
     font: var(--label-large);
     :is(span) {
       overflow: hidden;
@@ -50,7 +51,7 @@ export default css`
   }
 
   .message-card__body {
-    font: var(--body-medium);
+    font: var(--body-large);
   }
 
   .message-card__close-btn {
@@ -75,7 +76,7 @@ export default css`
 
   nve-icon::part(icon) {
     display: unset;
-    font-size: 24px;
+    font-size: 22px
   }
 
   /** Varianter */
@@ -166,11 +167,24 @@ export default css`
     gap: var(--spacing-x-small);
   }
 
-  :host([size='simple']) .message-card__header-title {
-    font: var(--label-small-light);
+  :host([size='default']) .message-card__header-title {
+    font: var(--header-small);
   }
 
-  :host([size='simple']) nve-icon::part(icon) {
+  :host([size='compact']) .message-card__header-title {
+    font: var(--label-medium);
+  }
+
+  :host([size='simple']) .message-card__header-title {
+    font: var(--label-medium-light);
+  }
+
+  :host([size='compact']) .message-card__body {
+    font: var(--body-small);
+  }
+
+  :host([size='simple']) nve-icon::part(icon),
+  :host([size='compact']) nve-icon::part(icon) {
     font-size: 20px;
   }
 `;
