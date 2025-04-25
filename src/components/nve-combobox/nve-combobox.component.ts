@@ -15,17 +15,20 @@ import "../nve-icon/nve-icon.component";
 /*
 TODO: 
   - Fikse fokus problemet
+  - Se på submit i form 
 */
-interface OptionInterface {
+interface Option {
   label: string;
   value: string | number;
   selected?: boolean;
 }
-
-type ListType = "values" | "listWithPossibleSearchHits";
+ 
 
 @customElement("nve-combobox")
 export default class NveCombobox extends LitElement implements INveComponent {
+
+
+  // Skal slettes 
   private toggleIsDisabled() {
     this.disabled = !this.disabled;
   }
@@ -36,142 +39,32 @@ export default class NveCombobox extends LitElement implements INveComponent {
     this.required = !this.required;
   }
 
-  @property({ reflect: true, type: String }) testId: string | undefined =
-    undefined;
-  @property({ reflect: true, type: String }) label: string = "Label";
-  @property({ reflect: true, type: Boolean }) multiple: boolean | undefined =
-    true;
-  @property({ reflect: true, type: Boolean }) disabled: boolean = false;
-  @property({ reflect: true, type: Boolean }) filled: boolean = false;
-  @property({ reflect: true, type: Boolean }) required: boolean = false;
+  @property() label?: string; //ok
+  @property() requiredLabel?: string = "*Obligatorisk"; // ok 
+  @property() errorMessage?: string =  "-!ERROR!-"; //får ikke sjekket denne, trenger at form fungerer
 
-  // Mulig denne kan fjernes, men brukt for test
-  @property({ reflect: true, type: Boolean }) error: boolean = false;
+  @property({ type: Array<Option> }) values: Option[] = []; //ok 
 
-  @property({ reflect: true, type: Boolean }) requiredLabel:
-    | string
-    | undefined = "undefisssned";
-  @property({ reflect: true, type: Boolean }) errorMessage: string =
-    "-!ERROR!-";
+  @property({ reflect: true, type: Boolean }) singular: boolean  = false; // ok
+  @property({ reflect: true, type: Boolean }) disabled: boolean = false; // ok
+  @property({ reflect: true, type: Boolean }) filled: boolean = false; // ok
+  @property({ reflect: true, type: Boolean }) required: boolean = false; // ok
+  @property({ reflect: true, type: String }) testId: string | undefined = undefined; // ???
 
-  @property({ type: Array<OptionInterface> }) values: OptionInterface[] = [
-    { label: "Cat", value: "cat" },
-    { label: "Dog", value: "dog" },
-    { label: "Bird", value: "bird" },
-    { label: "Fish", value: "fish" },
-    { label: "Horse", value: "horse" },
-    { label: "Rabbit", value: "rabbit" },
-    { label: "Hamster", value: "hamster" },
-    { label: "Guinea Pig", value: "guinea_pig" },
-    { label: "Turtle", value: "turtle" },
-    { label: "Snake", value: "snake" },
-    { label: "Lizard", value: "lizard" },
-    { label: "Parrot", value: "parrot" },
-    { label: "Canary", value: "canary" },
-    { label: "Budgerigar", value: "budgerigar" },
-    { label: "Goat", value: "goat" },
-    { label: "Sheep", value: "sheep" },
-    { label: "Cow", value: "cow" },
-    { label: "Pig", value: "pig" },
-    { label: "Hen", value: "hen" },
-    { label: "Rooster", value: "rooster" },
-    { label: "Duck", value: "duck" },
-    { label: "Goose", value: "goose" },
-    { label: "Turkey", value: "turkey" },
-    { label: "Peacock", value: "peacock" },
-    { label: "Kangaroo", value: "kangaroo" },
-    { label: "Koala", value: "koala" },
-    { label: "Panda", value: "panda" },
-    { label: "Tiger", value: "tiger" },
-    { label: "Lion", value: "lion" },
-    { label: "Leopard", value: "leopard" },
-    { label: "Cheetah", value: "cheetah" },
-    { label: "Elephant", value: "elephant" },
-    { label: "Rhinoceros", value: "rhinoceros" },
-    { label: "Hippopotamus", value: "hippopotamus" },
-    { label: "Giraffe", value: "giraffe" },
-    { label: "Zebra", value: "zebra" },
-    { label: "Bear", value: "bear" },
-    { label: "Wolf", value: "wolf" },
-    { label: "Fox", value: "fox" },
-    { label: "Wolverine", value: "wolverine" },
-    { label: "Badger", value: "badger" },
-    { label: "Otter", value: "otter" },
-    { label: "Beaver", value: "beaver" },
-    { label: "Squirrel", value: "squirrel" },
-    { label: "Hare", value: "hare" },
-    { label: "Roe Deer", value: "roe_deer" },
-    { label: "Deer", value: "deer" },
-    { label: "Moose", value: "moose" },
-    { label: "Reindeer", value: "reindeer" },
-    { label: "Musk Ox", value: "musk_ox" },
-    { label: "Wild Boar", value: "wild_boar" },
-    { label: "Marten", value: "marten" },
-    { label: "Stoat", value: "stoat" },
-    { label: "Ferret", value: "ferret" },
-    { label: "Mink", value: "mink" },
-    { label: "Sea Lion", value: "sea_lion" },
-    { label: "Elephant Seal", value: "elephant_seal" },
-    { label: "Manatee", value: "manatee" },
-    { label: "Dolphin", value: "dolphin" },
-    { label: "Whale", value: "whale" },
-    { label: "Orca", value: "orca" },
-    { label: "Shark", value: "shark" },
-    { label: "Ray", value: "ray" },
-    { label: "Jellyfish", value: "jellyfish" },
-    { label: "Crab", value: "crab" },
-    { label: "Lobster", value: "lobster" },
-    { label: "Shrimp", value: "shrimp" },
-    { label: "Oyster", value: "oyster" },
-    { label: "Mussel", value: "mussel" },
-    { label: "Starfish", value: "starfish" },
-    { label: "Sea Cucumber", value: "sea_cucumber" },
-    { label: "Sea Anemone", value: "sea_anemone" },
-    { label: "Coral", value: "coral" },
-    { label: "Ink", value: "ink" },
-    { label: "Octopus", value: "octopus" },
-    { label: "Seahorse", value: "seahorse" },
-    { label: "Sea Serpent", value: "sea_serpent" },
-    { label: "Sea Dragon", value: "sea_dragon" },
-    { label: "Sea Snake", value: "sea_snake" },
-    { label: "Sea Scorpion", value: "sea_scorpion" },
-    { label: "Sea Spider", value: "sea_spider" },
-    { label: "Sea Crayfish", value: "sea_crayfish" },
-    { label: "Sea Mouse", value: "sea_mouse" },
-    { label: "Sea Urchin", value: "sea_urchin" },
-    { label: "Sea Pig", value: "sea_pig" },
-    { label: "Sea Pig Worm", value: "sea_pig_worm" },
-    { label: "Sea Pig Fish", value: "sea_pig_fish" },
-    { label: "Sea Pig Crab", value: "sea_pig_crab" },
-    { label: "Sea Pig Crayfish", value: "sea_pig_crayfish" },
-    { label: "Sea Pig Mouse", value: "sea_pig_mouse" },
-    { label: "Sea Pig Star", value: "sea_pig_star" },
-    { label: "Sea Pig Worm", value: "sea_pig_worm" },
-    { label: "Sea Pig Fish", value: "sea_pig_fish" },
-    { label: "Sea Pig Crab", value: "sea_pig_crab" },
-    { label: "Sea Pig Crayfish", value: "sea_pig_crayfish" },
-    { label: "Sea Pig Mouse", value: "sea_pig_mouse" },
-    { label: "Sea Pig Star", value: "sea_pig_star" },
-    { label: "Sea Pig Worm", value: "sea_pig_worm" },
-    { label: "Sea Pig Fish", value: "sea_pig_fish" },
-    { label: "Sea Pig Crab", value: "sea_pig_crab" },
-    { label: "Sea Pig Crayfish", value: "sea_pig_crayfish" },
-    { label: "Sea Pig Mouse", value: "sea_pig_mouse" },
-    { label: "Sea Pig Star", value: "sea_pig_star" },
-    { label: "Sea Pig Worm", value: "sea_pig_worm" },
-  ];
-
-  @state() displayList: ListType = "values";
-  @state() listWithSearchHits: OptionInterface[] = [];
-  @state() selectedOptions: OptionInterface[] = [];
+  @state() displaySearchResult: boolean = false
+  @state() listWithSearchHits: Option[] = [];
+  @state() selectedOptions: Option[] = [];
   @state() inputValue: string = "";
   @state() isPopupActive: boolean = false;
-  @state() numberOfTagsToDisplay: number = 100;
+
+  //Fikse denne 
+  @state() error?: boolean = false;
+
 
   private inputRef = createRef<HTMLInputElement>();
 
   // MÅ testes ut i Vue
-  private emit(eventname: string, value: OptionInterface[]): void {
+  private emit(eventname: string, value: Option[]): void {
     const event = new CustomEvent(eventname, {
       bubbles: true,
       cancelable: false,
@@ -198,7 +91,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   handleFocus() {
     console.log("handleFocus");
     this.isPopupActive = true;
-    this.displayList = "values";
+    this.displaySearchResult = false
     this.inputRef.value?.focus();
   }
 
@@ -208,16 +101,16 @@ export default class NveCombobox extends LitElement implements INveComponent {
     this.listWithSearchHits = [];
   }
 
-  setListWithSearchHits(options: OptionInterface[]) {
+  setListWithSearchHits(options: Option[]) {
     this.listWithSearchHits = [];
     this.listWithSearchHits.push(...options);
-    this.displayList = "listWithPossibleSearchHits";
+    this.displaySearchResult =  true;
   }
 
-  private searchForOptions(searchText: string) {
-    const searchTextLowerCase = searchText.toLowerCase();
+  private searchForOptions(searchString: string) {
+    const searchTextLowerCase = searchString.toLowerCase();
     return this.values
-      .filter((option) => new RegExp(searchText, "i").test(option.label))
+      .filter((option) => new RegExp(searchString, "i").test(option.label))
       .sort((a, b) => {
         const aStartsWith = a.label
           .toLowerCase()
@@ -231,7 +124,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
       });
   }
 
-  selectOption(option: OptionInterface, event?: KeyboardEvent) {
+  selectOption(option: Option, event?: KeyboardEvent) {
     if (
       this.disabled ||
       (event instanceof KeyboardEvent && event.key !== "Enter")
@@ -244,7 +137,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     );
     if (indexInValues === -1) return;
 
-    if (!this.multiple && this.selectedOptions.length === 1) {
+    if (this.singular && this.selectedOptions.length === 1) {
       for (let i = 0; i < copyOfValues.length; i++) {
         const option = copyOfValues[i];
         if (option?.selected) {
@@ -262,7 +155,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     this.inputValue = "";
   }
 
-  unSelectOption(option: OptionInterface, event?: KeyboardEvent) {
+  unSelectOption(option: Option, event?: KeyboardEvent) {
     if (
       this.disabled ||
       (event instanceof KeyboardEvent && event.key !== "Enter")
@@ -288,7 +181,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   }
 
   toggleOptionInListWithSearchHits(
-    option: OptionInterface,
+    option: Option,
     index: number,
     event?: KeyboardEvent
   ) {
@@ -307,7 +200,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     // Hvis vi det ikke er mulig å velge mer enn 1,
     // Finn alternativer som er valgt og set de false
     // Men ikke for valget som nettopp har blitt valgt
-    if (!this.multiple) {
+    if (this.singular) {
       for (let i = 0; i < copyOfListWithPossibleSearchHits.length; i++) {
         const option = copyOfListWithPossibleSearchHits[i];
         if (option?.selected && i !== index) {
@@ -370,10 +263,10 @@ export default class NveCombobox extends LitElement implements INveComponent {
         distance="8"
       >
         <nve-input
-          class="inputWithTags"
           slot="anchor"
           autocomplete="off"
-          label="${this.label}"
+          label="${this.label}"      
+          requiredLabel="${this.requiredLabel}"
           errorMessage="${this.errorMessage}"
           @focus="${this.handleFocus}"
           @click="${this.handleFocus}"
@@ -443,7 +336,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
           ?disabled=${this.disabled}
           ?filled=${this.filled}
         >
-          ${this.displayList === "listWithPossibleSearchHits"
+          ${this.displaySearchResult === true
             ? this.listWithSearchHits.length > 0
               ? this.listWithSearchHits.map(
                   (option, i) => html`
@@ -474,7 +367,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
                   <nve-option disabled>Ingen resultater</nve-option>
                 `
             : ""}
-          ${this.displayList === "values"
+          ${this.displaySearchResult === false
             ? this.values.map(
                 (option) => html`
                   <nve-option

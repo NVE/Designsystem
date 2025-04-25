@@ -1,7 +1,41 @@
 import { css } from "lit";
 
+
+
 export default css`
-  .select__listbox {
+
+  nve-input::part(input) {
+    display: none;
+  }
+
+  nve-input::part(base) {
+    display: flex;
+    justify-content: space-between;
+    height: unset;
+    
+  }
+
+  nve-input::part(prefix) {
+    width: 88%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+  }
+
+  nve-tag[slot="prefix"] {
+   margin:8px;
+  }
+
+  .input-prefix[slot="prefix"]{
+    border: none;    
+    min-height: var(--sl-input-height-medium);
+    font-size: 16px; 
+    &:focus-visible {
+     outline: none;
+    }
+  }
+ 
+    .select__listbox {
     display: block;
     position: relative;
     font-family: var(--sl-font-sans);
@@ -18,49 +52,11 @@ export default css`
     max-height: 200px;
   }
 
-  .select__listbox[disabled] {
+  .select__listbox[disabled] { 
     background-color: red;
   }
 
   .select__listbox[filled] {
     background-color: var(--neutrals-background-primary-contrast, #eff8fc);
-  }
-
-  nve-tag {
-    margin: 8px;
-  }
-
-  nve-input::part(input) {
-    display: none;
-  }
-
-  nve-input::part(prefix) {
-    width: 88%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    background: red;
-  }
-
-  /* Feil selector */
-  nve-input::part(base) {
-    display: flex;
-    justify-content: space-between;
-    height: unset;
-    min-height: var(--sl-input-height-medium);
-  }
-
-  .input-prefix {
-    border: none;
-    height: 38px;
-    font-size: 16px;
-
-    flex-grow: 1;
-
-    background: green;
-  }
-
-  .input-prefix:focus-visible {
-    outline: none;
   }
 `;
