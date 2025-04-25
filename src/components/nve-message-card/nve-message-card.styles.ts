@@ -42,7 +42,8 @@ export default css`
     gap: 8px;
     width: 100%;
     padding: 2px 0;
-    font: var(--label-large);
+    font: var(--header-small);
+    line-height: 140%;
     :is(span) {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -167,9 +168,7 @@ export default css`
     gap: var(--spacing-x-small);
   }
 
-  :host([size='default']) .message-card__header-title {
-    font: var(--header-small);
-  }
+
 
   :host([size='compact']) .message-card__header-title {
     font: var(--label-medium);
