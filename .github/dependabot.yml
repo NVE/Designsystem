@@ -1,0 +1,44 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 5
+    groups:
+      security-updates:
+        applies-to: security-updates
+        patterns:
+          - '*'
+    commit-message:
+      prefix: 'chore(security)'
+      include: 'scope'
+    labels:
+      - 'security'
+      - 'dependencies'
+    reviewers:
+      - 'gruble'
+      - 'amish1188'
+      - 'NVEJoel'
+      - 'tomapedersen'
+
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 5
+    groups:
+      version-updates:
+        applies-to: version-updates
+        patterns:
+          - '*'
+    commit-message:
+      prefix: 'chore(deps)'
+      include: 'scope'
+    labels:
+      - 'dependencies'
+    reviewers:
+      - 'gruble'
+      - 'amish1188'
+      - 'NVEJoel'
+      - 'tomapedersen'

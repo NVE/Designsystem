@@ -45,11 +45,7 @@ Vi har innført **Conventional Commits**-standarden i vårt prosjekt for å auto
   - `feat`: Legger til ny funksjonalitet
   - `fix`: Fikser en feil
   - `chore`: Oppgaver som ikke endrer kode (f.eks. oppdatering av verktøy)
-  - `refactor`: En kodeendring som verken fikser en feil eller legger til en funksjon
   - `docs`: Endringer i dokumentasjon
-  - `style`: Endringer som ikke påvirker logikken i koden (f.eks. formattering)
-  - `build`: Endringer som påvirker byggesystemet eller eksterne avhengigheter
-  - `ci`: Endringer i våre CI-konfigurasjonsfiler og skript
 
 - **scope** (valgfritt): Beskriver hvor i prosjektet endringen er gjort. Eksempler:
 
