@@ -22,3 +22,4 @@ jobs:
             fix 
             feat
             docs
+            chore
