@@ -1,3 +1,12 @@
+## [1.6.4](https://github.com/NVE/Designsystem/compare/v1.6.3...v1.6.4) (2025-04-28)
+
+
+### Bug Fixes
+
+* **nve-message-card:** endret tekststørrelse slik de matcher designskisser ([#500](https://github.com/NVE/Designsystem/issues/500)) ([68b2eb9](https://github.com/NVE/Designsystem/commit/68b2eb919c1ad29fada6e21fc0e5e494a17eb6ca))
+* **vite:** Bump vite from 5.4.16 to 5.4.18 in /doc-site ([#498](https://github.com/NVE/Designsystem/issues/498)) ([e6e1ca2](https://github.com/NVE/Designsystem/commit/e6e1ca232c90ab32aa542e99e6de36cbf26aa0be))
+* **vite:** Bump vite from 6.2.4 to 6.2.5 ([#493](https://github.com/NVE/Designsystem/issues/493)) ([853b959](https://github.com/NVE/Designsystem/commit/853b959e3adfd2c662792ff41a6c33f8fc50735a))
+
 ## [1.6.3](https://github.com/NVE/Designsystem/compare/v1.6.2...v1.6.3) (2025-04-10)
 
 
