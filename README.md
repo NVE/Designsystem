@@ -95,6 +95,26 @@ Merk at `semantic-release` stiller visse betingelser før oppdatering av changel
   - `build/**`
   - `public/css/**`
 
+## Automatiske oppdateringer med Dependabot
+Vi bruker **Dependabot** for å automatisk opprette pull requests når det finnes oppdateringer av avhengigheter eller sikkerhetsfikser i vår `package.json`.  
+Konfigurasjonen for Dependabot ligger i: .github/dependabot.yml
+
+Når Dependabot oppretter en pull request, genereres det automatisk et **forhåndsvisningsmiljø** av nettsiden via **Azure Static Web Apps**. Dette lar deg enkelt sjekke hvordan endringene påvirker dokumentasjonsappen.
+
+### Slik finner du lenken til forhåndsvisningen:
+1. Gå inn i den aktuelle pull requesten.
+2. Klikk på fanen **Checks**.
+3. Velg jobben **"Bygg og installasjon av dok-app i skyen"**.
+4. Gå til steget **"Installer dokumentasjons-nettsted"**.
+5. Se etter linjen som inneholder:  Visit your site at: https://...
+6. Klikk på lenken for å åpne den midlertidige versjonen av nettstedet.
+
+Merk: Lenken vises **ikke automatisk som en kommentar** i PR-en.  
+Dette skyldes at Dependabot, av sikkerhetsgrunner, ikke har tillatelse til å poste kommentarer via GitHub Actions. Derfor kan du se følgende feilmelding i loggene:
+```
+Unexpectedly failed to add GitHub comment.
+```
+   
 ## Oppretting av en ny komponent og mappestruktur
 
 <em>Alle komponenters navn skal starte med `nve-`. Bruk det samme navnet som komponenten får i html. Kun små bokstaver og bindestrek er tillatt i navnet.</em>
