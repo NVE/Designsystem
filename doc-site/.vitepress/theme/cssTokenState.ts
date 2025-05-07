@@ -53,6 +53,7 @@ const labelVariables: (FontVariables | null)[] = [];
  * Initialiserer font variabeler og verdier fra en css fil
  * @param cssFileContent
  */
+// eslint-disable-next-line max-lines-per-function
 const initGlobalState = (cssFileContent: string) => {
   const cssContentDefault: string[] = cssFileContent.match(/:root\.nve\s*\{([\s\S]*?)\}/) || [];
   const cssContent1400px: string[] = cssFileContent.match(/@media\s*\(min-width:\s*1400px\)\s*\{([\s\S]*?)\}/) || [];

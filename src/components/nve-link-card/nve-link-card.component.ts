@@ -57,9 +57,7 @@ export default class NveLinkCard extends LitElement implements INveComponent {
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
-      } catch (error) {
-        console.error('Download failed:', error);
-      }
+      } catch{}
     }
   }
 

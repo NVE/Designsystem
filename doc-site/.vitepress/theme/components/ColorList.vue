@@ -33,7 +33,6 @@ const rgbToLightness = (r: number, g: number, b: number) => (1 / 2) * (Math.max(
 
 const calculateContrastingTextColor = (color: string) => {
   //aller helst vil vi bruke en css-regel som color-contrast() her, men den er kun i Safari per nå.
-  console.dir(color);
   if (!color.startsWith('#') || color.length < 7) {
     return '#000';
   } else {
@@ -59,7 +58,7 @@ const maxColumns = computed(() => {
     <div v-if="nveColors" class="color-map">
       <div class="row">
         <div class="cell"></div>
-        <div v-for="index in maxColumns + 1" class="cell">
+        <div v-for="index in maxColumns + 1" :key="index" class="cell">
           {{
             Object.values(nveColors)
               .at(0)
@@ -67,10 +66,11 @@ const maxColumns = computed(() => {
           }}
         </div>
       </div>
-      <div v-for="(value, key, index) in nveColors" class="row">
+      <div v-for="(value, key) in nveColors" :key="key" class="row">
         <div>{{ key }}</div>
         <div
           v-for="v in value"
+          :key="v.name"
           class="cell"
           :style="`--_c: ${v.value}; --_tc: ${calculateContrastingTextColor(v.value)}`"
         >
@@ -88,10 +88,11 @@ const maxColumns = computed(() => {
         <div class="row">
           <div class="rowspan">Varsom overstyrer noen av disse fargene:</div>
         </div>
-        <div v-for="(value, key, index) in varsomColors" class="row">
+        <div v-for="(value, key) in varsomColors" :key="key" class="row">
           <div>{{ key }}</div>
           <div
             v-for="v in value"
+            :key="v.name"
             class="cell"
             :style="`--_c: ${v.value}; --_tc: ${calculateContrastingTextColor(v.value)}`"
           >

@@ -3,34 +3,36 @@
  Beskrivelsen er selve klasse-dokumentasjonen til komponenten, og hentes fra JsDoc.
  -->
 <template>
-  <!-- TODO: Fjern v-html og erstatt med en komponent som håndterer markdown
+  <div>
+    <!-- TODO: Fjern v-html og erstatt med en komponent som håndterer markdown
     -->
-  <div v-if="description" v-html="description" style="white-space: pre-wrap" />
-  <div v-else>
-    <nve-alert variant="warning" open>
-      <nve-icon name="warning" />
-      Fant ikke beskrivelse i JsDoc for {{ props.componentName }}
-    </nve-alert>
-  </div>
+    <div v-if="description" v-html="description" style="white-space: pre-wrap" />
+    <div v-else>
+      <nve-alert variant="warning" open>
+        <nve-icon name="warning" />
+        Fant ikke beskrivelse i JsDoc for {{ props.componentName }}
+      </nve-alert>
+    </div>
 
-  <p v-if="parent">
-    Arvet fra
-    <span v-if="parentDocUrl">
-      <a :href="parentDocUrl" target="_blank">{{ parent.name }}</a
-      >.
-      <p />
-      <nve-message-card
-        :v-if="parent?.name?.startsWith('sl-')"
-        size="compact"
-        title="Sjekk også Shoelace-dokumentasjonen"
-      >
-        Denne komponenten bygger på en Shoelace-komponent. Sjekk også dokumentasjonen i Shoelace for å få full oversikt
-        over hvordan komponenten funker.</nve-message-card
-      >
-    </span>
-    <span v-else> {{ parent.name }}</span>
-  </p>
-  <slot />
+    <p v-if="parent">
+      Arvet fra
+      <span v-if="parentDocUrl">
+        <a :href="parentDocUrl" target="_blank">{{ parent.name }}</a
+        >.
+        <p />
+        <nve-message-card
+          :v-if="parent?.name?.startsWith('sl-')"
+          size="compact"
+          title="Sjekk også Shoelace-dokumentasjonen"
+        >
+          Denne komponenten bygger på en Shoelace-komponent. Sjekk også dokumentasjonen i Shoelace for å få full
+          oversikt over hvordan komponenten funker.</nve-message-card
+        >
+      </span>
+      <span v-else> {{ parent.name }}</span>
+    </p>
+    <slot />
+  </div>
 </template>
 
 <script setup lang="ts">

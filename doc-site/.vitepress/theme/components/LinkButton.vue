@@ -1,9 +1,11 @@
 <template>
-  <nve-button v-if="!openInNewTab" variant="secondary" @click="navigateTo(URL)">{{ text }}</nve-button>
-  <nve-button v-if="openInNewTab" variant="secondary" @click="openINewTab(URL)"
-    >{{ text }}
-    <nve-icon name="open_in_new" slot="suffix"></nve-icon>
-  </nve-button>
+  <div>
+    <nve-button v-if="!openInNewTab" variant="secondary" @click="navigateTo(URL)">{{ text }}</nve-button>
+    <nve-button v-if="openInNewTab" variant="secondary" @click="openINewTab(URL)"
+      >{{ text }}
+      <nve-icon name="open_in_new" slot="suffix"></nve-icon>
+    </nve-button>
+  </div>
 </template>
 
 <script setup lang="ts">
