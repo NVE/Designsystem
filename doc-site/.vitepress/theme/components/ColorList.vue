@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import nveVariables from '../../../../tokens/brand/nve.json';
 import varsomVariables from '../../../../tokens/brand/varsom.json';
-import { computed } from '@vue/reactivity';
+import { computed } from 'vue';
 
 const jsonToColorMap = (styleSheet: typeof nveVariables | typeof varsomVariables) => {
   const colorMap: Record<string, Array<{ name: string; value: string }>> = {};

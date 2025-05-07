@@ -1,4 +1,4 @@
-<PageHeader title="Universell Utforming" imagePath="intro" pageLevel=1></PageHeader>
+<PageHeader title="Universell Utforming" imagePath="intro" />
 
 Universelt utformede designløsninger sørger for at våre tjenester er tilgjengelig for alle. Ved å gi rom for mangfoldet i befolkningen gir vi den enkelte rom for å utfolde seg, bestemme selv og delta på like vilkår. NVEs tjenester skal alltid oppfylle UU-tilsynets regelverk og krav for offentlig sektor (WCAG 2.1).
 

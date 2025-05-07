@@ -1,4 +1,4 @@
-<PageHeader title="Farger" imagePath="tokens" pageLevel=1></PageHeader>
+<PageHeader title="Farger" imagePath="designer" />
 
 ## Farger
 
@@ -14,7 +14,7 @@ Vi har fire hovedkategorier:
 
 TODO: Fikse disse kortene
 
-<div class="two-card-container"> 
+<div class="two-card-container">
     <Card variant="subtle-card" title="Neutrals">Farger som er veldig nøytrale og kategorisert med bruksnivå (primary, secondary). Det gir deg fleksibilitet i å velge mellom farger, samtidig som det er tydelig hvilke farge som er default.</Card>
     <Card variant="subtle-card" title="Interactive">Farger som brukes på interaktive handlinger. Knappene og linker bruker blandt annet disse fargene.</Card>
     <Card variant="subtle-card" title="Feedback">Feedback-farger som brukes i varslinger, status og tilbakemeldinger i grensesnittet.</Card>
@@ -23,10 +23,10 @@ TODO: Fikse disse kortene
 
 ### Farger i designsystemet
 
-#### Dette er fargene slik de er definert.
+#### Dette er fargene slik de er definert
 
 Man skal ikke bruke disse variablene direkte, men heller bruke andre variabler som bruker disse
 
 <ColorList></ColorList>
 
-Se også <br/> https://www.designsystemet.no/grunnleggende/designelementer/farger
+Se også <br/> <https://www.designsystemet.no/grunnleggende/designelementer/farger>

@@ -1,4 +1,4 @@
-<PageHeader title="Animasjoner" imagePath="Animasjoner" pageLevel=1></PageHeader>
+<PageHeader title="Animasjoner" imagePath="designer" />
 
 Animasjon er et kraftig verktøy som effektivt veileder brukere og styrer oppmerksomheten mot det essensielle. Gjennom å skape sømløse overganger tilfører animasjon en moderne dimensjon til vår visuelle profil. Vi bruker animasjon for å skape særpreg som gir en helhetlig brukeropplevelse, kamuflere nedlastningstid og skape fokus i brukergrensesnittet.
 

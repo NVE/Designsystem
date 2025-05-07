@@ -1,4 +1,4 @@
-<PageHeader title="Avstander og luft" imagePath="avstander og luft" pageLevel=1></PageHeader>
+<PageHeader title="Avstander og luft" imagePath="designer" />
 
 # Avstander og luft
 
