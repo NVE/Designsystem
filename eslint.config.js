@@ -19,6 +19,7 @@ export default [
       'doc-site/.vitepress/cache',
       'vite.config.ts',
       '.eslintrc.js',
+      'custom-elements-manifest.config.js',
     ],
   },
 
