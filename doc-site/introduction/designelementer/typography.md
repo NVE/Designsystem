@@ -2,7 +2,7 @@
 outline: [2, 3]
 ---
 
-<PageHeader title="Typografi" imagePath="typografi" pageLevel=1></PageHeader>
+<PageHeader title="Typografi" imagePath="designer" />
 
 Typografi er et av de sterkeste virkemidlene vi har for å lage visuelle hierarkier. For å sikre et konsekvent visuelt uttrykk på alle våre tjenester definerer designsystemet satte stiler på font-størrelse, font-vekt og linjeavstand. Vi bruker skrifttypen Source Sans i all kommunikasjon.
 

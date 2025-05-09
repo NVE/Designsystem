@@ -3,7 +3,7 @@
  Henter opplysningene fra custom-elements.json.
  -->
 <template>
-  <template v-if="events.length">
+  <div v-if="events.length">
     <h2 id="hendelser">
       Hendelser
       <a class="header-anchor" href="#hendelser" aria-label='Permalink to "Hendelser"'>&ZeroWidthSpace;</a>
@@ -27,7 +27,7 @@
         </tr>
       </tbody>
     </table>
-  </template>
+  </div>
 </template>
 
 <script setup lang="ts">

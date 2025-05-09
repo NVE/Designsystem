@@ -1,0 +1,8 @@
+echo "🎨 Formatting code..."
+npm run lint || {
+  echo "❌ Formatting failed. Commit aborted."
+  echo "ℹ️  To skip this check, run: git commit --no-verify"
+  exit 1
+}
+
+echo "✅ Pre-commit checks passed!"

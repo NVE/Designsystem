@@ -3,7 +3,7 @@
  Henter opplysningene fra custom-elements.json.
  -->
 <template>
-  <template v-if="customprops.length">
+  <div v-if="customprops.length">
     <h2 id="spor">
       Spesifikke CSS-variabler for komponent
       <a class="header-anchor" href="#cssvariables" aria-label='Permalink to "cssvariables"'>&ZeroWidthSpace;</a>
@@ -24,7 +24,7 @@
         </tr>
       </tbody>
     </table>
-  </template>
+  </div>
 </template>
 
 <script setup lang="ts">

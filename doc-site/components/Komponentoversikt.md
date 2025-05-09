@@ -1,4 +1,4 @@
-<PageHeader title="Oversikt over komponenter" imagePath="developer" pageLevel=1></PageHeader>
+<PageHeader title="Oversikt over komponenter" imagePath="developer"></PageHeader>
 
 <!--
 Lista over komponenter er sortert alfabetisk på navn.
