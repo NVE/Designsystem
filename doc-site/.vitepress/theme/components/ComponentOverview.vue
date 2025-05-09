@@ -1,110 +1,108 @@
 <!-- Viser liste over alle komponenter med status på design og utvikling -->
 <template>
+  <div style="padding-top: 2rem"></div>
+
+  <nve-message-card
+    title="Merk saker og PR'er i Github med komponentnavn for å se dem her"
+    size="simple"
+  ></nve-message-card>
+
+  <div class="search-container">
+    <nve-input
+      type="text"
+      :value="searchQuery"
+      @input="onInput"
+      placeholder="Søk etter komponentnavn"
+      class="search-input"
+    />
+  </div>
+
   <div>
-    <div style="padding-top: 2rem"></div>
-
-    <nve-message-card
-      title="Merk saker og PR'er i Github med komponentnavn for å se dem her"
-      size="simple"
-    ></nve-message-card>
-
-    <div class="search-container">
-      <nve-input
-        type="text"
-        :value="searchQuery"
-        @input="onInput"
-        placeholder="Søk etter komponentnavn"
-        class="search-input"
-      />
-    </div>
-
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Komponent</th>
-            <th colspan="2">Status design</th>
-            <th>Status kode</th>
-            <th>Feil / oppgaver / PR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(component, index) in filteredComponents" :key="index">
-            <td>
-              <a v-if="isComponent(component.name)" :href="component.name">{{ component.name }}</a>
-              <span v-else>{{ component.name }}</span>
-            </td>
-            <td class="status-design">
-              <nve-tag :variant="getBadgeVariant(component.statusDesign)" size="small">
-                {{ component.statusDesign }}
+    <table>
+      <thead>
+        <tr>
+          <th>Komponent</th>
+          <th colspan="2">Status design</th>
+          <th>Status kode</th>
+          <th>Feil / oppgaver / PR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(component, index) in filteredComponents" :key="index">
+          <td>
+            <a v-if="isComponent(component.name)" :href="component.name">{{ component.name }}</a>
+            <span v-else>{{ component.name }}</span>
+          </td>
+          <td class="status-design">
+            <nve-tag :variant="getBadgeVariant(component.statusDesign)" size="small">
+              {{ component.statusDesign }}
+            </nve-tag>
+          </td>
+          <td class="figma-link-cell">
+            <a
+              v-if="component.nodeId"
+              title="Åpne i Figma"
+              :href="linkToFigmaComponent(component.nodeId)"
+              target="_blank"
+              class="figma-link"
+            >
+              <img src="/assets/figma-logo.svg" class="figma-icon" alt="figma-logo" />
+            </a>
+          </td>
+          <td>
+            <div v-if="!isComponent(component.name) && component.statusCode === 'Ferdig'">
+              Status er satt til ferdig, men komponenten finnes ikke
+            </div>
+            <div v-else>
+              <nve-tag :variant="getBadgeVariant(component.statusCode)" size="small">
+                {{ component.statusCode }}
               </nve-tag>
-            </td>
-            <td class="figma-link-cell">
-              <a
-                v-if="component.nodeId"
-                title="Åpne i Figma"
-                :href="linkToFigmaComponent(component.nodeId)"
-                target="_blank"
-                class="figma-link"
-              >
-                <img src="/assets/figma-logo.svg" class="figma-icon" alt="figma-logo" />
-              </a>
-            </td>
-            <td>
-              <div v-if="!isComponent(component.name) && component.statusCode === 'Ferdig'">
-                Status er satt til ferdig, men komponenten finnes ikke
-              </div>
-              <div v-else>
-                <nve-tag :variant="getBadgeVariant(component.statusCode)" size="small">
-                  {{ component.statusCode }}
-                </nve-tag>
-              </div>
-            </td>
+            </div>
+          </td>
 
-            <td>
-              <ComponentIssues :componentName="component.name" />
-            </td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <!-- Separarer sammendraget fra resten av tabellen, så det ser ut som en egen tabell -->
-            <td class="divider-row"></td>
-          </tr>
-          <tr>
-            <th rowspan="7">Antall komponenter</th>
-            <td>{{ codeStatusCount('Ferdig') }}</td>
-            <td colspan="2">{{ designStatusCount('Ferdig') }}</td>
-            <td><nve-tag variant="success" size="small">Ferdig</nve-tag></td>
-          </tr>
-          <tr>
-            <td>{{ codeStatusCount('Under arbeid') }}</td>
-            <td colspan="2">{{ designStatusCount('Under arbeid') }}</td>
-            <td><nve-tag variant="warning" size="small">Under arbeid</nve-tag></td>
-          </tr>
-          <tr>
-            <td>{{ codeStatusCount('Ikke påbegynt') }}</td>
-            <td colspan="2">{{ designStatusCount('Ikke påbegynt') }}</td>
-            <td><nve-tag variant="info" size="small">Ikke påbegynt</nve-tag></td>
-          </tr>
-          <tr>
-            <td>{{ codeStatusCount('Skal revideres') }}</td>
-            <td colspan="2">{{ designStatusCount('Skal revideres') }}</td>
-            <td><nve-tag variant="neutral" size="small">Skal revideres</nve-tag></td>
-          </tr>
-          <tr>
-            <td>{{ codeStatusCount('Trenger kvalitetssjekk') }}</td>
-            <td colspan="2">{{ designStatusCount('Trenger kvalitetssjekk') }}</td>
-            <td><nve-tag variant="error" size="small">Trenger kvalitetssjekk</nve-tag></td>
-          </tr>
-          <tr>
-            <td>{{ componentStatuses.filter((s) => s.statusCode !== undefined).length }}</td>
-            <td colspan="2">{{ componentStatuses.filter((s) => s.statusDesign !== undefined).length }}</td>
-            <td><nve-tag variant="neutral" size="small">Alle planlagte</nve-tag></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
+          <td>
+            <ComponentIssues :componentName="component.name" />
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <!-- Separarer sammendraget fra resten av tabellen, så det ser ut som en egen tabell -->
+          <td class="divider-row"></td>
+        </tr>
+        <tr>
+          <th rowspan="7">Antall komponenter</th>
+          <td>{{ codeStatusCount('Ferdig') }}</td>
+          <td colspan="2">{{ designStatusCount('Ferdig') }}</td>
+          <td><nve-tag variant="success" size="small">Ferdig</nve-tag></td>
+        </tr>
+        <tr>
+          <td>{{ codeStatusCount('Under arbeid') }}</td>
+          <td colspan="2">{{ designStatusCount('Under arbeid') }}</td>
+          <td><nve-tag variant="warning" size="small">Under arbeid</nve-tag></td>
+        </tr>
+        <tr>
+          <td>{{ codeStatusCount('Ikke påbegynt') }}</td>
+          <td colspan="2">{{ designStatusCount('Ikke påbegynt') }}</td>
+          <td><nve-tag variant="info" size="small">Ikke påbegynt</nve-tag></td>
+        </tr>
+        <tr>
+          <td>{{ codeStatusCount('Skal revideres') }}</td>
+          <td colspan="2">{{ designStatusCount('Skal revideres') }}</td>
+          <td><nve-tag variant="neutral" size="small">Skal revideres</nve-tag></td>
+        </tr>
+        <tr>
+          <td>{{ codeStatusCount('Trenger kvalitetssjekk') }}</td>
+          <td colspan="2">{{ designStatusCount('Trenger kvalitetssjekk') }}</td>
+          <td><nve-tag variant="error" size="small">Trenger kvalitetssjekk</nve-tag></td>
+        </tr>
+        <tr>
+          <td>{{ componentStatuses.filter((s) => s.statusCode !== undefined).length }}</td>
+          <td colspan="2">{{ componentStatuses.filter((s) => s.statusDesign !== undefined).length }}</td>
+          <td><nve-tag variant="neutral" size="small">Alle planlagte</nve-tag></td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 </template>
 

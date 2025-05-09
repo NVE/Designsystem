@@ -1,12 +1,10 @@
 <!-- Live code sandboks komponent. Viser en codesandbox embedded vindu. Foreløpig støtter kun vue-->
 <template>
-  <div>
-    <div id="embed-container">
-      <iframe v-if="sandboxUrl" :src="sandboxUrl" style="width: 100%; height: 500px"></iframe>
-    </div>
-    <div style="display: none" ref="slot">
-      <slot />
-    </div>
+  <div id="embed-container">
+    <iframe v-if="sandboxUrl" :src="sandboxUrl" style="width: 100%; height: 500px"></iframe>
+  </div>
+  <div style="display: none" ref="slot">
+    <slot />
   </div>
 </template>
 

@@ -4,38 +4,36 @@
  Vi trenger ikke å vise private metoder, men også lit lifecycle methods, derfor blir de filtrert bort.
 -->
 <template>
-  <div>
-    <template v-if="methods.length">
-      <h2 id="metoder">
-        Metoder
-        <a class="header-anchor" href="#metoder" aria-label='Permalink to "Metoder"'>&ZeroWidthSpace;</a>
-      </h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Navn</th>
-            <th>Parametre</th>
-            <th>Returtype</th>
-            <th>Arvet fra</th>
-            <th>Beskrivelse</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="method in methods" :key="method.name">
-            <td>{{ method.name }}</td>
-            <td>
-              <div v-for="parameter in method.parameters" :key="parameter.name">
-                {{ parameter.name }}: {{ parameter.type?.text }}
-              </div>
-            </td>
-            <td>{{ method.return?.type?.text }}</td>
-            <td>{{ method.inheritedFrom?.name }}</td>
-            <td>{{ method.description }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </template>
-  </div>
+  <template v-if="methods.length">
+    <h2 id="metoder">
+      Metoder
+      <a class="header-anchor" href="#metoder" aria-label='Permalink to "Metoder"'>&ZeroWidthSpace;</a>
+    </h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Navn</th>
+          <th>Parametre</th>
+          <th>Returtype</th>
+          <th>Arvet fra</th>
+          <th>Beskrivelse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="method in methods" :key="method.name">
+          <td>{{ method.name }}</td>
+          <td>
+            <div v-for="parameter in method.parameters" :key="parameter.name">
+              {{ parameter.name }}: {{ parameter.type?.text }}
+            </div>
+          </td>
+          <td>{{ method.return?.type?.text }}</td>
+          <td>{{ method.inheritedFrom?.name }}</td>
+          <td>{{ method.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </template>
 </template>
 
 <script setup lang="ts">
