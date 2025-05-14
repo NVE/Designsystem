@@ -3,20 +3,13 @@ Vue-komponentbiblioteket utvider designsystemet med funksjonalitet som er for av
 
 - Kildekode: [GitHub](https://github.com/NVE/nve-vue-components)
 - Dokumentasjon og installasjon: [NPM](https://www.npmjs.com/package/@norges-vassdrags-og-energidirektorat/nve-vue-components)
+- Les mer om utviklingsprosess og struktur i prosjektets [CONTRIBUTING.md](https://github.com/NVE/nve-vue-components/blob/main/CONTRIBUTING.md)
 
 Biblioteket kan installeres og brukes i alle Vue 3-prosjekter:
 
 ```bash
 npm install @norges-vassdrags-og-energidirektorat/nve-vue-components
 ```
-
-## For utviklere
-
-- Biblioteket følger **Conventional Commits** og bruker **semantic-release** for versjonshåndtering og publisering til npm.
-
-- Endringer som merges til `main` vil automatisk utløse en publisering til npm og oppdatere changelog.
-
-- Les mer om utviklingsprosess og struktur i prosjektets [CONTRIBUTING.md](https://github.com/NVE/nve-vue-components/blob/main/CONTRIBUTING.md)
 
 ## Dokumentasjon og demo
 
