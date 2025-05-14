@@ -38,7 +38,6 @@
     "postinstall": "cd doc-site && npm install"
   },
   "dependencies": {
-    "@norges-vassdrags-og-energidirektorat/nve-vue-components": "^1.2.1",
     "@shoelace-style/shoelace": "^2.19.1",
     "fontfaceobserver": "^2.3.0",
     "lit": "^3.2.1"
