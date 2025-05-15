@@ -66,6 +66,7 @@ export default defineConfig({
               { text: 'Importering av filer', link: '/introduction/forDevelopers/import' },
               { text: 'Bruk i Vue', link: '/introduction/forDevelopers/vue' },
               { text: 'Validering', link: '/introduction/forDevelopers/validation' },
+              { text: 'Vue-komponentbibliotek', link: '/introduction/forDevelopers/vueLibrary' },
             ],
           },
         ],

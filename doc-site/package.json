@@ -13,5 +13,8 @@
   "devDependencies": {
     "@octokit/request": "^9.2.0",
     "vitepress": "^1.6.1"
+  },
+  "dependencies": {
+    "@norges-vassdrags-og-energidirektorat/nve-vue-components": "^1.3.0"
   }
 }

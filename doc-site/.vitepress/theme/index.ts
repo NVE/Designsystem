@@ -19,6 +19,7 @@ import ColorList from './components/ColorList.vue';
 import TypographyTable from './components/TypographyTable.vue';
 import { cssTokenState } from './cssTokenState';
 import { useCurrentTheme, Theme } from './composables/useCurrentTheme';
+import NveTableDemo from './components/NveTableDemo.vue';
 
 export default {
   extends: DefaultTheme,
@@ -85,8 +86,10 @@ export default {
     app.component('PageHeader', PageHeader);
     app.component('ComponentOverview', ComponentOverview);
     app.component('ThemeSelect', ThemeSelect);
-    app.component('ColorList', ColorList);
+    app.component('ColorList', ColorList); 
     app.component('TypographyTable', TypographyTable);
+    app.component('NveTableDemo', NveTableDemo);
+
     registerIconLibrary('system', {
       resolver: (name) => {
         return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;
