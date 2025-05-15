@@ -45,7 +45,7 @@ export default class NveDropdown extends SlDropdown implements INveComponent {
     }
   }
   // @ts-expect-error - overskriving av private metoder i sl-dropdown
-  private handlePanelSelect = (event: any) => {
+  private handlePanelSelect = (event: CustomEvent) => {
     const target = event.target as HTMLElement;
 
     // Hide the dropdown when a menu item is selected

@@ -50,10 +50,8 @@ export default class NveIcon extends LitElement {
         this.iconLoaded = true;
         this.requestUpdate();
       })
-      .catch((error) => {
-        console.error('Failed to load the icon font:', error);
-      });
-  }
+      .catch()
+        }
 
   render() {
     if (this.src) {

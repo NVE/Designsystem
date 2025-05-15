@@ -1,4 +1,4 @@
-<PageHeader title="For designere" imagePath="designer"  pageLevel=2></PageHeader>
+<PageHeader title="For designere" imagePath="designer"  ></PageHeader>
 
 # Kom igang
 

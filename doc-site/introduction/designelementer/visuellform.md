@@ -1,4 +1,4 @@
-<PageHeader title="Visuell form" imagePath="Visuell form" pageLevel=1></PageHeader>
+<PageHeader title="Visuell form" imagePath="Visuell form" ></PageHeader>
 
 Her finner du designsystemet retningslinjer for border width, border radius og skygger.
 
