@@ -1,4 +1,4 @@
-<PageHeader title="Tokens" imagePath="tokens" pageLevel=1></PageHeader>
+<PageHeader title="Tokens" imagePath="tokens" ></PageHeader>
 
 ### Designelementer
 

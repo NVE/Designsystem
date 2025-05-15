@@ -1,4 +1,4 @@
-<PageHeader title="Introduksjon" imagePath="intro" pageLevel=1></PageHeader>
+<PageHeader title="Introduksjon" imagePath="intro" ></PageHeader>
 
 # Om designsystemet
 

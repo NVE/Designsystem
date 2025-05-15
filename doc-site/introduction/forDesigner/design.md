@@ -1,4 +1,4 @@
-<PageHeader title="For designere" imagePath="designer"  pageLevel=2></PageHeader>
+<PageHeader title="For designere" imagePath="designer"  ></PageHeader>
 
 Designsystem samler og tilgjengeliggjør verktøy, filer, komponenter og designretningslinjer som brukes av designere og utviklere for å lage gode og konsekvente brukeropplevelser i NVEs digitale tjenester.
 

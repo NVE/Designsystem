@@ -1,4 +1,4 @@
-<PageHeader title="Farger" imagePath="tokens" pageLevel=1></PageHeader>
+<PageHeader title="Farger" imagePath="tokens" ></PageHeader>
 
 ## Farger
 

@@ -1,4 +1,4 @@
-<PageHeader title="For utviklere" imagePath="developer"  pageLevel=2></PageHeader>
+<PageHeader title="For utviklere" imagePath="developer"  ></PageHeader>
 
 # Importering av filer
 
