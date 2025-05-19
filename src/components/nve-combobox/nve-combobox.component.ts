@@ -15,51 +15,42 @@ import "../nve-icon/nve-icon.component";
 /*
 TODO: 
   - Fikse fokus problemet
-  - Se på submit i form 
+  - Se på submit i form (må jeg implementere min egen løsning for å få det til å fungere?)
+  - lage eksempler 
+  - hover a listbox problem
+  - selected values som input må vi ha   //ok
+  - number of selected values we ikke til høyre //ok
 */
 interface Option {
   label: string;
   value: string | number;
   selected?: boolean;
 }
- 
 
 @customElement("nve-combobox")
 export default class NveCombobox extends LitElement implements INveComponent {
-
-
-  // Skal slettes 
-  private toggleIsDisabled() {
-    this.disabled = !this.disabled;
-  }
-  private toggleIsFilled() {
-    this.filled = !this.filled;
-  }
-  private toggleIsReq() {
-    this.required = !this.required;
-  }
-
   @property() label?: string; //ok
-  @property() requiredLabel?: string = "*Obligatorisk"; // ok 
-  @property() errorMessage?: string =  "-!ERROR!-"; //får ikke sjekket denne, trenger at form fungerer
+  @property() placeholder?: string; //ok
+  @property() requiredLabel?: string = "*Obligatorisk"; // ok
+  @property() errorMessage?: string = "-!ERROR!-"; //får ikke sjekket denne, trenger at form fungerer
 
-  @property({ type: Array<Option> }) values: Option[] = []; //ok 
+  @property({ type: Array<Option> }) values: Option[] = []; //ok
 
-  @property({ reflect: true, type: Boolean }) singular: boolean  = false; // ok
+  @property({ reflect: true, type: Boolean }) singular: boolean = false; // ok, men går vekk fra denne, bytter denne ut med maxSelected
   @property({ reflect: true, type: Boolean }) disabled: boolean = false; // ok
   @property({ reflect: true, type: Boolean }) filled: boolean = false; // ok
   @property({ reflect: true, type: Boolean }) required: boolean = false; // ok
-  @property({ reflect: true, type: String }) testId: string | undefined = undefined; // ???
+  @property({ reflect: true, type: String }) testId: string | undefined =
+    undefined;
 
-  @state() displaySearchResult: boolean = false
+  @state() displaySearchResult: boolean = false;
   @state() listWithSearchHits: Option[] = [];
   @state() selectedOptions: Option[] = [];
   @state() inputValue: string = "";
   @state() isPopupActive: boolean = false;
 
-  //Fikse denne 
+  //Fikse denne
   @state() error?: boolean = false;
-
 
   private inputRef = createRef<HTMLInputElement>();
 
@@ -81,6 +72,10 @@ export default class NveCombobox extends LitElement implements INveComponent {
     super();
   }
 
+  firstUpdated() {
+    this.selectedOptions = this.values.filter((value) => value?.selected);
+  }
+
   handleInput(event: Event) {
     const target = event.target as HTMLInputElement;
     this.inputValue = target.value;
@@ -91,7 +86,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   handleFocus() {
     console.log("handleFocus");
     this.isPopupActive = true;
-    this.displaySearchResult = false
+    this.displaySearchResult = false;
     this.inputRef.value?.focus();
   }
 
@@ -104,7 +99,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   setListWithSearchHits(options: Option[]) {
     this.listWithSearchHits = [];
     this.listWithSearchHits.push(...options);
-    this.displaySearchResult =  true;
+    this.displaySearchResult = true;
   }
 
   private searchForOptions(searchString: string) {
@@ -178,6 +173,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
 
     this.selectedOptions = copyOfSelectedOptions;
     this.values = copyOfValues;
+    this.emit("nve-combobox-selected-options", copyOfSelectedOptions);
   }
 
   toggleOptionInListWithSearchHits(
@@ -253,9 +249,6 @@ export default class NveCombobox extends LitElement implements INveComponent {
 
   render() {
     return html`
-      <button @click="${this.toggleIsDisabled}">Disable</button>
-      <button @click="${this.toggleIsFilled}">Filled</button>
-      <button @click="${this.toggleIsReq}">Required</button>
       <nve-popup
         placement="bottom"
         sync="width"
@@ -265,7 +258,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
         <nve-input
           slot="anchor"
           autocomplete="off"
-          label="${this.label}"      
+          label="${this.label}"
           requiredLabel="${this.requiredLabel}"
           errorMessage="${this.errorMessage}"
           @focus="${this.handleFocus}"
@@ -288,21 +281,25 @@ export default class NveCombobox extends LitElement implements INveComponent {
               </nve-tag>
             `;
           })}
-          <input
-            slot="prefix"
-            class="input-prefix"
-            @input="${this.handleInput}"
-            @focus="${this.handleFocus}"
-            @click="${this.handleFocus}"
-            .value="${this.inputValue}"
-            ${ref(this.inputRef)}
-          />
           ${this.shouldDisplayCounter() &&
           html`
             <nve-tag slot="prefix" size="small">
               ${this.selectedOptions.length}
             </nve-tag>
           `}
+          <input
+            placeholder="${this.placeholder}"
+            slot="prefix"
+            class="input-prefix"
+            @input="${this.handleInput}"
+            @focus="${this.handleFocus}"
+            @click="${this.handleFocus}"
+            ?filled=${this.filled}
+            ?disabled=${this.disabled}
+            .value="${this.inputValue}"
+            ${ref(this.inputRef)}
+          />
+
           ${html`
             <nve-icon
               tabindex="0"

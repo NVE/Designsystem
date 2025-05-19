@@ -1,9 +1,6 @@
 import { css } from "lit";
 
-
-
 export default css`
-
   nve-input::part(input) {
     display: none;
   }
@@ -12,7 +9,6 @@ export default css`
     display: flex;
     justify-content: space-between;
     height: unset;
-    
   }
 
   nve-input::part(prefix) {
@@ -23,19 +19,23 @@ export default css`
   }
 
   nve-tag[slot="prefix"] {
-   margin:8px;
+    margin: 8px;
   }
 
-  .input-prefix[slot="prefix"]{
-    border: none;    
+  .input-prefix[slot="prefix"] {
+    border: none;
     min-height: var(--sl-input-height-medium);
-    font-size: 16px; 
+    font-size: 16px;
+    
+    &[filled] {
+      background-color: var(--sl-input-filled-background-color);
+    }
     &:focus-visible {
-     outline: none;
+      outline: none;
     }
   }
- 
-    .select__listbox {
+
+  .select__listbox {
     display: block;
     position: relative;
     font-family: var(--sl-font-sans);
@@ -50,10 +50,6 @@ export default css`
     overflow: auto;
     overscroll-behavior: none;
     max-height: 200px;
-  }
-
-  .select__listbox[disabled] { 
-    background-color: red;
   }
 
   .select__listbox[filled] {
