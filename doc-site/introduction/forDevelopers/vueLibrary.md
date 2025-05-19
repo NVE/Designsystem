@@ -1,4 +1,5 @@
 <PageHeader title="Vue-komponentbibliotek" imagePath="developer"></PageHeader>
+
 Vue-komponentbiblioteket utvider designsystemet med funksjonalitet som er for avansert for webkomponenter alene. Det er tilpasset Vue 3 og gjør det enklere å jobbe med komplekse UI-behov i større prosjekter.
 
 - Kildekode: [GitHub](https://github.com/NVE/nve-vue-components)
