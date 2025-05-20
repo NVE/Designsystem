@@ -36,24 +36,46 @@ export default class NveCombobox extends LitElement implements INveComponent {
 
   @property({ type: Array<Option> }) values: Option[] = []; //ok
 
-  @property({ reflect: true, type: Boolean }) singular: boolean = false; // ok, men går vekk fra denne, bytter denne ut med maxSelected
+  @property({ reflect: true, type: Boolean }) singular: boolean = false; // ok
   @property({ reflect: true, type: Boolean }) disabled: boolean = false; // ok
   @property({ reflect: true, type: Boolean }) filled: boolean = false; // ok
   @property({ reflect: true, type: Boolean }) required: boolean = false; // ok
   @property({ reflect: true, type: String }) testId: string | undefined =
     undefined;
 
-  @state() displaySearchResult: boolean = false;
-  @state() listWithSearchHits: Option[] = [];
-  @state() selectedOptions: Option[] = [];
+  @state() listWithSearchHits: Option[] = []; // Listen som vises inn i popupen når man har skrevet i input feltet
+  @state() displaySearchResult: boolean = false; // Skal listWithSearchHits vises eller ikke
+
+  @state() selectedOptions: Option[] = []; // Valgte alternativer
   @state() inputValue: string = "";
   @state() isPopupActive: boolean = false;
 
   //Fikse denne
   @state() error?: boolean = false;
 
-  private inputRef = createRef<HTMLInputElement>();
+  private prefixInputRef = createRef<HTMLInputElement>();
 
+  static styles = [styles];
+
+  constructor() {
+    super();
+  }
+
+  firstUpdated() {
+    this.selectedOptions = this.values.filter((value) => value?.selected);
+  }
+
+  private boundHandleOutsideClick = this.handleOutsideClick.bind(this);
+
+  connectedCallback() {
+    super.connectedCallback();
+    document.addEventListener("click", this.boundHandleOutsideClick, true);
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener("click", this.boundHandleOutsideClick, true);
+    super.disconnectedCallback();
+  }
   // MÅ testes ut i Vue
   private emit(eventname: string, value: Option[]): void {
     const event = new CustomEvent(eventname, {
@@ -66,40 +88,68 @@ export default class NveCombobox extends LitElement implements INveComponent {
     });
     this.dispatchEvent(event);
   }
-  static styles = [styles];
 
-  constructor() {
-    super();
-  }
-
-  firstUpdated() {
-    this.selectedOptions = this.values.filter((value) => value?.selected);
-  }
-
-  handleInput(event: Event) {
-    const target = event.target as HTMLInputElement;
-    this.inputValue = target.value;
-    const res = this.searchForOptions(target.value);
-    this.setListWithSearchHits(res);
+  private handleOutsideClick(event: MouseEvent) {
+    if (
+      !this.shadowRoot?.contains(event.target as Node) &&
+      !this.contains(event.target as Node)
+    ) {
+      this.isPopupActive = false;
+      this.listWithSearchHits = [];
+      this.inputValue = "";
+      this.displaySearchResult = false;
+    }
   }
 
   handleFocus() {
     console.log("handleFocus");
-    this.isPopupActive = true;
     this.displaySearchResult = false;
-    this.inputRef.value?.focus();
+    // Setter fokus på input feltet som er inne i prefix sloten
+    this.prefixInputRef.value?.focus();
+    this.handleInput();
+    this.isPopupActive = true;
   }
 
-  handleBlur() {
-    console.log("handleBlur");
-    this.isPopupActive = false;
-    this.listWithSearchHits = [];
+  togglePopupActive(event: Event) {
+    event.stopPropagation();
+    this.isPopupActive = !this.isPopupActive;
   }
 
-  setListWithSearchHits(options: Option[]) {
-    this.listWithSearchHits = [];
-    this.listWithSearchHits.push(...options);
+  handleInput() {
+    const inputElement = this.prefixInputRef.value;
+    if (inputElement && inputElement.value) {
+      this.inputValue = inputElement.value;
+      const res = this.searchForOptions(inputElement.value);
+      this.updateListWithSearchHits(res);
+    } else {
+      this.displaySearchResult = false;
+    }
+  }
+
+  handleKeyDown(event?: KeyboardEvent | PointerEvent) {
+    if (this.disabled) return;
+
+    if (event instanceof KeyboardEvent) {
+      if (
+        event.key === "Enter" ||
+        event.key === "ArrowUp" ||
+        event.key === "ArrowDown"
+      ) {
+        event.preventDefault();
+        this.isPopupActive = !this.isPopupActive;
+      } else if (event.key === "Tab") {
+        this.isPopupActive = true;
+      }
+    } else {
+      console.log("toggleIsPopupActive");
+      this.isPopupActive = !this.isPopupActive;
+    }
+  }
+
+  updateListWithSearchHits(options: Option[]) {
+    this.listWithSearchHits = [...options];
     this.displaySearchResult = true;
+    this.isPopupActive = true;
   }
 
   private searchForOptions(searchString: string) {
@@ -147,7 +197,6 @@ export default class NveCombobox extends LitElement implements INveComponent {
     this.selectedOptions.push(option);
     this.values = copyOfValues;
     this.emit("nve-combobox-selected-options", this.selectedOptions);
-    this.inputValue = "";
   }
 
   unSelectOption(option: Option, event?: KeyboardEvent) {
@@ -225,24 +274,6 @@ export default class NveCombobox extends LitElement implements INveComponent {
     `;
   }
 
-  toggleIsPopupActive(event?: KeyboardEvent | PointerEvent) {
-    if (this.disabled) return;
-    if (event instanceof KeyboardEvent) {
-      if (
-        event.key === "Enter" ||
-        event.key === "ArrowUp" ||
-        event.key === "ArrowDown"
-      ) {
-        event.preventDefault();
-        this.isPopupActive = !this.isPopupActive;
-      } else if (event.key === "Tab") {
-        this.isPopupActive = true;
-      }
-    } else {
-      this.isPopupActive = !this.isPopupActive;
-    }
-  }
-
   shouldDisplayCounter() {
     return !this.isPopupActive && this.selectedOptions?.length;
   }
@@ -263,6 +294,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
           errorMessage="${this.errorMessage}"
           @focus="${this.handleFocus}"
           @click="${this.handleFocus}"
+          @keydown="${this.handleKeyDown}"
           .value="${this.inputValue}"
           ?disabled=${this.disabled}
           ?filled=${this.filled}
@@ -292,22 +324,19 @@ export default class NveCombobox extends LitElement implements INveComponent {
             slot="prefix"
             class="input-prefix"
             @input="${this.handleInput}"
-            @focus="${this.handleFocus}"
-            @click="${this.handleFocus}"
             ?filled=${this.filled}
             ?disabled=${this.disabled}
             .value="${this.inputValue}"
-            ${ref(this.inputRef)}
+            ${ref(this.prefixInputRef)}
           />
 
           ${html`
             <nve-icon
               tabindex="0"
-              @keydown="${this.toggleIsPopupActive}"
-              @click="${this.toggleIsPopupActive}"
               slot="suffix"
               name="keyboard_arrow_${this.isPopupActive ? "up" : "down"}"
               style="font-size: 1.5rem;"
+              @click="${this.togglePopupActive}"
             ></nve-icon>
           `}
           ${this.error &&
@@ -349,7 +378,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
                     >
                       ${option.selected
                         ? html`
-                            ${option.label}
+                            ${this.addHighlightingToSearchResult(option.label)}
                             <nve-icon
                               slot="prefix"
                               name="check"
