@@ -20,7 +20,7 @@ export interface StepProps {
   readyForEntrance: boolean;
   orientation?: string;
   hideStateText?: boolean;
-  
+  hideDescriptions?: boolean;
 }
 
 /** Komponent for et enkelt steg i en stepper */
@@ -37,7 +37,7 @@ export default class NveStep extends LitElement {
 
   /** Beskrivelse av steget */
   @property({ type: String })
-  description: string = '';
+  description?: string;
 
   /**
    * Stegets tilstand: Ikke startet, påbegynt, fullført eller feilet
@@ -70,6 +70,10 @@ export default class NveStep extends LitElement {
   /** Angir om stateText skal skjules */
   @property({ type: Boolean })
   hideStateText: boolean = false;
+
+  /** Angir om beskrivelser skal skjules */
+  @property({ type: Boolean })
+  hideDescriptions: boolean = false;
 
   /** Brukes for å justere høyden for den vertikale skilleveggen blir så høy som nær Step har en description. */
   @query('.step-description')
@@ -198,17 +202,29 @@ export default class NveStep extends LitElement {
   }
 
   private renderDescription(): TemplateResult | string {
-    return this.isDescriptionValid(this.description) ? html`<div class="step-description ${this.orientation === 'vertical' ? 'step-description-max-width-vertical' : 'step-description-max-width-horizontal'}">${this.description}</div>` : '';
+    if (!this.isDescriptionValid(this.description)) {
+      // Return an empty div with min-height to maintain spacing when no description
+      return html`<div class="step-description empty-description ${this.orientation === 'vertical' ? 'step-description-max-width-vertical' : 'step-description-max-width-horizontal'}"></div>`;
+    }
+    return html`<div class="step-description ${this.orientation === 'vertical' ? 'step-description-max-width-vertical' : 'step-description-max-width-horizontal'}">${this.description}</div>`;
   }
 
-  private isDescriptionValid(description:string): boolean { 
-    return description.trim().length > 0;
+  private isDescriptionValid(description: string | undefined): boolean { 
+    // Simplify this expression for clarity
+    return !!description && description?.trim().length > 0 === true;
   }
 
   /** Brukes for beregning av riktig høyde før divider. Description elementet har padding, så høyden før divider var for kort, så bruk denne funksjonen for regner ut riktig høyde. */
   private updateVerticalDividerHeight(): void {
     const TRIP_ORIGIN_ICON_HEIGHT = 24; 
-    const descriptionHeight = this.descriptionElement.offsetHeight + TRIP_ORIGIN_ICON_HEIGHT;
+    const DEFAULT_HEIGHT = TRIP_ORIGIN_ICON_HEIGHT + 10; // Default height if no description
+    
+    let descriptionHeight = DEFAULT_HEIGHT;
+      // Only then try to access the element in the DOM
+      if (this.descriptionElement) {
+        descriptionHeight = this.descriptionElement.offsetHeight + TRIP_ORIGIN_ICON_HEIGHT;
+      }
+    
     const dividerElement = this.shadowRoot!.querySelector('.vertical-divider-container .divider-vertical') as HTMLElement;
     if (dividerElement) {
       dividerElement.style.height = `${descriptionHeight}px`;
@@ -232,7 +248,7 @@ export default class NveStep extends LitElement {
             ${this.hideStateText ? '' : this.getStateText(this.state)}
           </div>
           <div>       
-          ${this.renderDescription()}
+          ${this.hideDescriptions ? '' : this.renderDescription()}
           </div>
         </div>
       </div>
@@ -254,7 +270,7 @@ export default class NveStep extends LitElement {
           <div class="step-state ${this.getStateColorClass(this.state)}">
           ${this.hideStateText ? '' : this.getStateText(this.state)}
           </div>       
-          ${this.renderDescription()}
+          ${this.hideDescriptions ? '' : this.renderDescription()}
         </div>
     `;
   }
