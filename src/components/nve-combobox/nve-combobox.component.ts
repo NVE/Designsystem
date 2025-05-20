@@ -20,6 +20,8 @@ TODO:
   - hover a listbox problem
   - selected values som input må vi ha   //ok
   - number of selected values we ikke til høyre //ok
+  - https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/
+  https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/
 */
 interface Option {
   label: string;
@@ -126,7 +128,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     }
   }
 
-  handleKeyDown(event?: KeyboardEvent | PointerEvent) {
+  handleKeyDown(event?: KeyboardEvent) {
     if (this.disabled) return;
 
     if (event instanceof KeyboardEvent) {
@@ -140,10 +142,9 @@ export default class NveCombobox extends LitElement implements INveComponent {
       } else if (event.key === "Tab") {
         this.isPopupActive = true;
       }
-    } else {
-      console.log("toggleIsPopupActive");
-      this.isPopupActive = !this.isPopupActive;
-    }
+    } //else {
+    // // this.isPopupActive = !this.isPopupActive;
+    //}
   }
 
   updateListWithSearchHits(options: Option[]) {
@@ -287,6 +288,9 @@ export default class NveCombobox extends LitElement implements INveComponent {
         distance="8"
       >
         <nve-input
+          aria-controls="listbox"
+          aria-expanded="${this.isPopupActive}"
+          aria-haspopup="listbox"
           slot="anchor"
           autocomplete="off"
           label="${this.label}"
@@ -307,6 +311,8 @@ export default class NveCombobox extends LitElement implements INveComponent {
                 tabindex="0"
                 size="small"
                 @nve-close="${() => this.unSelectOption(option)}"
+                @keydown="${(event: KeyboardEvent) =>
+                  this.unSelectOption(option, event)}"
                 .closeable=${!this.disabled}
               >
                 ${option.label}
@@ -355,7 +361,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
           id="listbox"
           role="listbox"
           expanded="${!!this.isPopupActive}"
-          aria-labelledby="label"
+          aria-labelledby="${this.label}"
           part="listbox"
           class="select__listbox"
           tabindex="-1"

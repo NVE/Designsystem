@@ -22,12 +22,12 @@ export default css`
   nve-tag[slot="prefix"] {
     margin: 8px;
   }
- 
+
   .input-prefix[slot="prefix"] {
     border: none;
     min-height: var(--sl-input-height-medium);
     font-size: 16px;
-    background-color: red;
+    // background-color: red;
     &[filled] {
       background-color: var(--sl-input-filled-background-color);
     }
