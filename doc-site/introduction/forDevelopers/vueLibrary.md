@@ -2,13 +2,13 @@
 Vue-komponentbiblioteket utvider designsystemet med funksjonalitet som er for avansert for webkomponenter alene. Det er tilpasset Vue 3 og gjør det enklere å jobbe med komplekse UI-behov i større prosjekter.
 
 - Kildekode: [GitHub](https://github.com/NVE/nve-vue-components)
-- Dokumentasjon og installasjon: [NPM](https://www.npmjs.com/package/@norges-vassdrags-og-energidirektorat/nve-vue-components)
+- Dokumentasjon og installasjon: [NPM](https://www.npmjs.com/package/@nve-org/vue-components)
 - Les mer om utviklingsprosess og struktur i prosjektets [CONTRIBUTING.md](https://github.com/NVE/nve-vue-components/blob/main/CONTRIBUTING.md)
 
 Biblioteket kan installeres og brukes i alle Vue 3-prosjekter:
 
 ```bash
-npm install @norges-vassdrags-og-energidirektorat/nve-vue-components
+npm install @nve-org/vue-components
 ```
 
 ## Dokumentasjon og demo
@@ -23,8 +23,8 @@ komponentene brukes på denne siden.
 
 ```vue
 <script setup lang="ts">
-import { NveTable, sortByProperty, sortByFunction } from '@norges-vassdrags-og-energidirektorat/nve-vue-components';
-import type { TableHeader } from '@norges-vassdrags-og-energidirektorat/nve-vue-components';
+import { NveTable, sortByProperty, sortByFunction } from '@nve-org/vue-components';
+import type { TableHeader } from '@nve-org/vue-components';
 import { NveButton, NveCheckboxGroup, NveCheckbox, NveIcon, NveAccordionItem } from 'nve-designsystem';
 import { ref, type Ref, useTemplateRef } from 'vue';
 type Country = {
