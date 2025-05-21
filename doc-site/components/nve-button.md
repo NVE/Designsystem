@@ -83,12 +83,12 @@ Bruk `suffix` spor for å vise noe etter knapp teksten, f.eks et ikon.
 
 ### Loading
 
-Bruk `loading` for å legge til ei snurre.
+Bruk `loading` for å legge til ei snurre. Klikk for å slå av og på loading
 
 <CodeExamplePreview>
 
 ```html
-<nve-button loading>loading</nve-button>
+<nve-button loading onclick="this.loading = !this.loading">loading</nve-button>
 ```
 
 </CodeExamplePreview>
@@ -112,7 +112,9 @@ Man kan fortsatt bruke `loading` attributtet for å vise kun spinner.
 <CodeExamplePreview>
 
 ```html
-<nve-button loading size="medium" variant="primary"><nve-icon name="warning"></nve-icon></nve-button>
+<nve-button loading size="medium" variant="primary" onclick="this.loading = !this.loading">
+  <nve-icon name="warning"></nve-icon>
+</nve-button>
 ```
 
 </CodeExamplePreview>
