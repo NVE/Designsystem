@@ -62,7 +62,7 @@ export default {
       const components = import.meta.glob('../../../src/components/*/*.component.ts');
 
       // Lese inn nve_theme.css for å hente ut css variabler
-      const styles = import.meta.glob('./styles/nve_theme.css', { as: 'raw' });
+      const styles = import.meta.glob('./styles/nve_theme.css', { query: '?raw', import: 'default' });
       (async () => {
         const importPromises = Object.values(styles).map((importFunc) =>
           typeof importFunc === 'function' ? importFunc() : Promise.resolve(null)
@@ -86,7 +86,7 @@ export default {
     app.component('PageHeader', PageHeader);
     app.component('ComponentOverview', ComponentOverview);
     app.component('ThemeSelect', ThemeSelect);
-    app.component('ColorList', ColorList); 
+    app.component('ColorList', ColorList);
     app.component('TypographyTable', TypographyTable);
     app.component('NveTableDemo', NveTableDemo);
 
