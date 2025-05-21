@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { NveTable, sortByProperty, sortByFunction } from '@norges-vassdrags-og-energidirektorat/nve-vue-components';
 import type { TableHeader } from '@norges-vassdrags-og-energidirektorat/nve-vue-components';
-import { NveButton, NveCheckboxGroup, NveCheckbox, NveIcon, NveAccordionItem } from 'nve-designsystem';
 import { ref, type Ref, useTemplateRef } from 'vue';
 type Country = {
   name: string;
@@ -177,7 +176,7 @@ const selectedContinents: Ref<Array<string>> = ref([...allContinents]);
 
 const continents = useTemplateRef('continents-checkbox-group');
 const updateContinents = () => {
-  selectedContinents.value = continents.value?.selectedValues ?? [];
+  selectedContinents.value = (continents.value as any)?.selectedValues ?? [];
 };
 
 const toggleColumn = (header: TableHeader<Country>) => {
