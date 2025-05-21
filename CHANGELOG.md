@@ -1,3 +1,11 @@
+## [1.6.6](https://github.com/NVE/Designsystem/compare/v1.6.5...v1.6.6) (2025-05-21)
+
+
+### Bug Fixes
+
+* En del småendringer og bugfikser på nve-alert ([#519](https://github.com/NVE/Designsystem/issues/519)) ([c8df7e7](https://github.com/NVE/Designsystem/commit/c8df7e7c5fb7e5d7917259d50255c3041fc67eb9))
+* Kan nå bygge med node 22 ([#514](https://github.com/NVE/Designsystem/issues/514)) ([a793de5](https://github.com/NVE/Designsystem/commit/a793de50369312297e51352956c6f31c6b8e3883))
+
 ## [1.6.5](https://github.com/NVE/Designsystem/compare/v1.6.4...v1.6.5) (2025-05-21)
 
 
