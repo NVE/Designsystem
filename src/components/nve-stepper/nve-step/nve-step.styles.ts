@@ -78,6 +78,11 @@ export default css`
     padding-top: 0.625rem; /*10px; */
   }
 
+  .empty-description {
+    min-height: 1rem; /* Set a minimum height for empty descriptions */
+    padding-top: 0.625rem; /* Match the padding of regular descriptions */
+  }
+
   .step-description-max-width-vertical {
     max-width: 430px;
     padding-bottom: var(--spacing-large, 1.5rem);

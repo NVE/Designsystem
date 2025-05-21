@@ -7,7 +7,7 @@ import { parse } from 'comment-parser';
 import { pascalCase } from 'pascal-case';
 import commandLineArgs from 'command-line-args';
 import fs from 'fs';
-import externalCEM from '@shoelace-style/shoelace/dist/custom-elements.json' assert { type: 'json' };
+import externalCEM from '@shoelace-style/shoelace/dist/custom-elements.json' with { type: 'json' };
 
 const packageData = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const { name, description, version, author, homepage, license } = packageData;

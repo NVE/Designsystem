@@ -39,6 +39,9 @@ export interface INveStepper {
 
   /** Angir om stateText skal skjules for alle trinn */
   hideStateText?: boolean;
+
+  /** Skjuler beskrivelser for alle trinn */
+  hideDescriptions?: boolean;
 }
 
 /** Funksjon for å sjekke om enheten er en mobil enhet */
@@ -82,6 +85,10 @@ export default class NveStepper extends LitElement {
    /** Angir om stateText skal skjules for alle trinn */
   @property({ type: Boolean })
   hideStateText: boolean = false;
+
+  /** Skjuler beskrivelser for alle trinn */
+  @property({ type: Boolean })
+  hideDescriptions: boolean = false;
 
   private selectedStepIndex: { value: number } = { value: 0 };
 
@@ -273,6 +280,7 @@ export default class NveStepper extends LitElement {
                 .readyForEntrance=${step.readyForEntrance}
                 .orientation=${this.orientation}
                 .hideStateText=${this.hideStateText}
+                .hideDescriptions=${this.hideDescriptions}
               >
               </nve-step>
             `

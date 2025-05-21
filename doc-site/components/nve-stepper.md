@@ -78,6 +78,7 @@ Se Vue eksempel [her](#stepper-uten-standardknapper) hvordan du bruker metoderna
 <CodeExamplePreview>
 
 ```html
+<nve-label>horizontal</nve-label>
 <nve-stepper
   hideStateText
   steps='
@@ -85,6 +86,84 @@ Se Vue eksempel [her](#stepper-uten-standardknapper) hvordan du bruker metoderna
   {"title":"Steg 1","description":"","state":1,"isSelected":false,"readyForEntrance":true},
   {"title":"Steg 2","description":"","state":0,"isSelected":false,"readyForEntrance":true},
   {"title":"Steg 3","description":"","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+
+<nve-label>vertical</nve-label>
+<nve-stepper
+  hideStateText
+  orientation="vertical"
+  steps='
+  [
+  {"title":"Steg 1","description":"","state":1,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 2","description":"","state":0,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 3","description":"","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+```
+
+</CodeExamplePreview>
+
+### Kompakt stepper uten beskrivelser
+
+Bruk `hideDescriptions` for å skjule alle beskrivelser og få en mer kompakt visning. Dette er nyttig når du har begrenset plass eller når beskrivelsene ikke er nødvendige for brukeren.
+
+Selv om du setter `hideDescriptions=true`, kan du fortsatt definere beskrivelser i step-objektene. Disse vil bli skjult i grensesnittet men kan brukes i andre sammenhenger eller vises senere om nødvendig.
+
+<CodeExamplePreview>
+
+```html
+<nve-label>Kompakt horizontal</nve-label>
+<nve-stepper
+  hideDescriptions
+  steps='
+  [
+  {"title":"Steg 1","description":"Denne beskrivelsen vises ikke","state":1,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 2","description":"Denne beskrivelsen vises ikke","state":0,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 3","description":"Denne beskrivelsen vises ikke","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+
+<nve-label>Kompakt vertical</nve-label>
+<nve-stepper
+  hideDescriptions
+  orientation="vertical"
+  steps='
+  [
+  {"title":"Steg 1","description":"Denne beskrivelsen vises ikke","state":1,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 2","description":"Denne beskrivelsen vises ikke","state":0,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 3","description":"Denne beskrivelsen vises ikke","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+```
+
+</CodeExamplePreview>
+
+### Skjul description for steg 2
+
+Dette eksempelet viser at `description` er en valgfri egenskap. Steg 2 har ingen beskrivelse, mens steg 1 og 3 har beskrivelser.
+
+<CodeExamplePreview>
+
+```html
+<nve-label>horizontal</nve-label>
+<nve-stepper
+  steps='
+  [
+  {"title":"Steg 1","description":"Beskrivelse steg 1","state":1,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 2","state":0,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 3","description":"Beskrivelse steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+
+<nve-label>vertical</nve-label>
+<nve-stepper
+  orientation="vertical"
+  steps='
+    [
+  {"title":"Steg 1","description":"Beskrivelse steg 1","state":1,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 2","state":0,"isSelected":false,"readyForEntrance":true},
+  {"title":"Steg 3","description":"Beskrivelse steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
 >
 </nve-stepper>
 ```
