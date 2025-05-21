@@ -55,7 +55,7 @@ export default {
     }
     return h(DefaultTheme.Layout, null, {});
   },
-  async enhanceApp({ app, router, siteData }) {
+  async enhanceApp({ app }) {
     if (!import.meta.env.SSR) {
       // siden VitePress bygges via SSR, vi må sikre at våre web komponenter lastes ned i nettleseren bare
       // derfor importerer vi alle komponenter når miljø ikke er SSR

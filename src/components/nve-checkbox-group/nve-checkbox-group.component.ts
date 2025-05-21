@@ -35,6 +35,7 @@ export default class NveCheckboxGroup extends LitElement {
   @property() requiredLabel = '*Obligatorisk';
   /** Returnerer en tabell av value-attributet til alle sjekkbokser som er valgt. Man kan lagre både primitiver og objekter i selectedValues. */
   @property({ type: Array }) selectedValues?: string[];
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @query('slot') slot: any;
   /** Bestemmer om feilmelding skal vises når validering feiler  */
   @state() protected showErrorMessage = false;
@@ -74,7 +75,7 @@ export default class NveCheckboxGroup extends LitElement {
     });
   }
 
-  updated(changedProperties: any) {
+  updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated(changedProperties);
     if (changedProperties.has('disabled')) {
       const nveCheckboxes = Array.from(this.querySelectorAll('nve-checkbox'));
