@@ -3,7 +3,7 @@ import { css } from 'lit';
 export default css`
   /* have to use class cause icon button also has base part that got impacted */
   .alert {
-    /*display: flex;*/
+    display: flex;
     padding: var(--spacing-medium, 1rem) var(--spacing-large, 1.5rem);
     align-items: center;
     border: none;
