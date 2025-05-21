@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/NVE/Designsystem/compare/v1.6.4...v1.6.5) (2025-05-21)
+
+
+### Bug Fixes
+
+* **stepper:** 511 stepper skjuling av description for et steg fungerer ikke ([#512](https://github.com/NVE/Designsystem/issues/512)) ([0586dc8](https://github.com/NVE/Designsystem/commit/0586dc820a71faa612783ac7db5d34e9f858854e))
+
 ## [1.6.4](https://github.com/NVE/Designsystem/compare/v1.6.3...v1.6.4) (2025-04-28)
 
 
