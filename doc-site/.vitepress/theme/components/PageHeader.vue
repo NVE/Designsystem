@@ -19,7 +19,7 @@ type Props = {
   imagePath: string;
   pageLevel: string;
 };
-const { title, imagePath, pageLevel } = defineProps<Props>();
+const { title, imagePath } = defineProps<Props>();
 
 const { isDark } = useData();
 

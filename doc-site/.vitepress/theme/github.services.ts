@@ -38,31 +38,44 @@ export const fetchIssues = async (): Promise<Map<string, Issue[]>> => {
         per_page: pageSize,
         page: page,
       });
-      response.data.forEach((issue: any) => {
-        issue.labels.forEach((label: any) => {
+      response.data.forEach((issue: GithubIssue) => {
+        issue.labels.forEach((label: GithubLabel) => {
           // Sjekker om denne saken er merka med et komponentnavn.
           // Vi sjekker ikke mot komponentregisteret,
           // for vi vil også ha med navn på komponenter som ikke er laget ennå
           if (label.name?.startsWith('nve-')) {
-            const issuesForThisComponent = issuesPerComponent.get(label.name) || [];
-            issuesForThisComponent.push({
-              title: issue.title,
-              url: issue.html_url,
-              isPullRequest: issue.pull_request,
-              assigneeLogins: issue.assignees.map((assignee: any) => assignee.login),
-            });
-            issuesPerComponent.set(label.name, issuesForThisComponent);
+        const issuesForThisComponent = issuesPerComponent.get(label.name) || [];
+        issuesForThisComponent.push({
+          title: issue.title,
+          url: issue.html_url,
+          isPullRequest: !!issue.pull_request,
+          assigneeLogins: issue.assignees.map((assignee: GithubAssignee) => assignee.login),
+        });
+        issuesPerComponent.set(label.name, issuesForThisComponent);
           }
         });
       });
+
+    interface GithubIssue {
+      title: string;
+      html_url: string;
+      pull_request?: object;
+      assignees: GithubAssignee[];
+      labels: GithubLabel[];
+    }
+
+    interface GithubLabel {
+      name?: string;
+    }
+
+    interface GithubAssignee {
+      login: string;
+    }
       done = response.data.length < pageSize; // hvis denne sida var full, må vi prøve å hente en side til for å se om det er flere
-      console.log(`Fant ${response.data.length} issues i side ${page}.`);
       page++;
-    } catch (error) {
-      console.error(error);
+    } catch {
       done = true;
     }
   }
-  console.log(`Fant ${issuesPerComponent.size} komponenter med issues`);
   return issuesPerComponent;
 };

@@ -176,6 +176,7 @@ const selectedContinents: Ref<Array<string>> = ref([...allContinents]);
 
 const continents = useTemplateRef('continents-checkbox-group');
 const updateContinents = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   selectedContinents.value = (continents.value as any)?.selectedValues ?? [];
 };
 

@@ -220,6 +220,7 @@ export default class NveTextarea extends LitElement implements INveComponent {
     this.toggleAttribute('data-user-invalid', !isValid);
   }
 
+  // eslint-disable-next-line max-lines-per-function
   render() {
     return html`
       <div part="form-control" class=${classMap({ 'form-control': true, 'form-control--has-label': this.label })}>
