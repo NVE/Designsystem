@@ -119,9 +119,8 @@ Du kan bruke `title` for å lage en slags overskrift. Resten av teksten kan ente
 
 <nve-alert text="kun tekst" open></nve-alert>
 
-<nve-alert title="Tittel" text="og tekst" open>
-  TODO: Tekst inni elementet burde nok hatt samme stil som text-egenskapen og kanskje man ikke burde kunne vise begge
-  samtidig?
+<nve-alert title="Tittel" text="og tekst som ikke vises" open>
+  Dersom en alert har både text-egenskap og tekst i selve elementet så skjuler vi teksten i egenskapen
 </nve-alert>
 ```
 
@@ -159,6 +158,20 @@ Ikoner legges i sporet `icon`.
   med ikon
 </nve-alert>
 <nve-alert open> uten ikon </nve-alert>
+```
+
+</CodeExamplePreview>
+
+### Ikoner
+
+Ikoner legges i sporet `icon`.
+
+<CodeExamplePreview arrangeComponentsVertically>
+
+```html
+<nve-alert open text="Hello">
+  <div><nve-button /></div>
+</nve-alert>
 ```
 
 </CodeExamplePreview>

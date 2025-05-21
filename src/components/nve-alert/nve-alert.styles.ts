@@ -17,6 +17,7 @@ export default css`
     align-items: center;
     margin-left: var(--spacing-x-small, 0.5rem);
     gap: var(--spacing-medium, 1rem);
+    font: var(--body-medium);
   }
   :host::part(--sl-input-icon-color-hover) {
     font-size: 24px;
@@ -51,10 +52,14 @@ export default css`
     font: var(--body-medium);
   }
 
-  :host::part(message)::before {
+  .alert__message::before {
     content: var(--nve-alert-title);
     font: var(--label-large);
     white-space: nowrap;
+  }
+  .alert__message::after {
+    content: var(--nve-alert-text);
+    font: var(--body-medium);
   }
 
   /*variants */
@@ -179,5 +184,10 @@ export default css`
   }
   :host([leftStroke][saturation='emphasized']) .alert--warning {
     border-color: var(--feedback-background-default-warning);
+  }
+
+  /* lukk-knapp. Overstyrer sl-icon-button sin border-radius */
+  sl-icon-button::part(base) {
+    border-radius: var(--border-radius-small);
   }
 `;
