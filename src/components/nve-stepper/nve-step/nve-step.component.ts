@@ -248,7 +248,7 @@ export default class NveStep extends LitElement {
             ${this.hideStateText ? '' : this.getStateText(this.state)}
           </div>
           <div>       
-          ${this.hideDescriptions ? '' : this.renderDescription()}
+            ${this.hideDescriptions ? '' : this.renderDescription()}
           </div>
         </div>
       </div>
@@ -268,9 +268,9 @@ export default class NveStep extends LitElement {
         <div class="${this.isLast ? "" : "text-container"}">
           <div class="step-title ${this.getTitleClass(this.state)}">${this.title}</div>
           <div class="step-state ${this.getStateColorClass(this.state)}">
-          ${this.hideStateText ? '' : this.getStateText(this.state)}
+            ${this.hideStateText ? '' : this.getStateText(this.state)}
           </div>       
-          ${this.hideDescriptions ? '' : this.renderDescription()}
+            ${this.hideDescriptions ? '' : this.renderDescription()}
         </div>
     `;
   }

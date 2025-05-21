@@ -169,6 +169,7 @@ Dette eksempelet viser at `description` er en valgfri egenskap. Steg 2 har ingen
 ```
 
 </CodeExamplePreview>
+
 ### Mobil-versjon
 
 Stepperen vises automatisk i en egen mobil-versjon på små skjermer.

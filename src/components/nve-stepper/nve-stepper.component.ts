@@ -19,9 +19,6 @@ export interface INveStepper {
   /** Tvinger en re-render av komponenten */
   reRender?(): void;
 
-  /** Skjuler beskrivelser for alle trinn */
-  hideDescriptions?: boolean;
-
   /** Hvilken retning Steps skal gå. */
   orientation?: 'horizontal' | 'vertical';
 
@@ -42,6 +39,9 @@ export interface INveStepper {
 
   /** Angir om stateText skal skjules for alle trinn */
   hideStateText?: boolean;
+
+  /** Skjuler beskrivelser for alle trinn */
+  hideDescriptions?: boolean;
 }
 
 /** Funksjon for å sjekke om enheten er en mobil enhet */
