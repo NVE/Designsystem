@@ -15,7 +15,10 @@
       "types": "./nve-designsystem.d.ts"
     },
     "./dist/custom-elements.json": "./custom-elements.json",
-    "./components/*": "./components/*",
+    "./components/*": {
+      "import": "./components/*/*.component.js",
+      "types": "./components/*/*.component.d.ts"
+    },
     "./registerIcons/*": "./registerIcons/*",
     "./css/*": "./css/*"
   },
