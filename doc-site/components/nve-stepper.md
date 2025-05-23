@@ -856,7 +856,6 @@ const toggleStepVisibility = () => {
       return {
         ...step,
         hideStep: !showAllSteps.value,
-        title: step.title + '.', // Denne endringen fungerer allerede
       };
     }
     return step;
@@ -941,7 +940,6 @@ const toggleStepVisibility = () => {
     {
       ...steps.value[1],
       hideStep: hideSecondStep,
-      title: steps.value[1].title + '.' // Denne endringen fungerer allerede
     }, // Andre steg - oppdatert
     { ...steps.value[2] } // Tredje steg - uendret
   ];
