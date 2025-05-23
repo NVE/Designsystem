@@ -20,7 +20,8 @@ export interface StepProps {
   readyForEntrance: boolean;
   orientation?: string;
   hideStateText?: boolean;
-  hideDescriptions?: boolean;
+  hideDescription?: boolean;
+  hideStep?: boolean;
 }
 
 /** Komponent for et enkelt steg i en stepper */
@@ -73,7 +74,11 @@ export default class NveStep extends LitElement {
 
   /** Angir om beskrivelser skal skjules */
   @property({ type: Boolean })
-  hideDescriptions: boolean = false;
+  hideDescription: boolean = false;
+
+  /** Angir omhele steget skal skjules */
+  @property({ type: Boolean })
+  hideStep?: boolean = false;
 
   /** Brukes for å justere høyden for den vertikale skilleveggen blir så høy som nær Step har en description. */
   @query('.step-description')
@@ -204,7 +209,7 @@ export default class NveStep extends LitElement {
   private renderDescription(): TemplateResult | string {
     if (!this.isDescriptionValid(this.description)) {
       // Return an empty div with min-height to maintain spacing when no description
-      return html`<div class="step-description empty-description ${this.orientation === 'vertical' ? 'step-description-max-width-vertical' : 'step-description-max-width-horizontal'}"></div>`;
+      return html`<div class="step-description step-description-empty ${this.orientation === 'vertical' ? 'step-description-max-width-vertical' : 'step-description-max-width-horizontal'}"></div>`;
     }
     return html`<div class="step-description ${this.orientation === 'vertical' ? 'step-description-max-width-vertical' : 'step-description-max-width-horizontal'}">${this.description}</div>`;
   }
@@ -232,7 +237,8 @@ export default class NveStep extends LitElement {
   }
 
   private renderVerticalStep(): TemplateResult {
-    return html`
+    return this.hideStep === true ? html`` : 
+    html`
       <div class="vertical-container">
         <div class="step-figure-vertical">
           <div
@@ -248,7 +254,7 @@ export default class NveStep extends LitElement {
             ${this.hideStateText ? '' : this.getStateText(this.state)}
           </div>
           <div>       
-            ${this.hideDescriptions ? '' : this.renderDescription()}
+            ${this.hideDescription ? '' : this.renderDescription()}
           </div>
         </div>
       </div>
@@ -256,7 +262,7 @@ export default class NveStep extends LitElement {
   }
 
   render(): TemplateResult {
-    return this.isOrientationVertical() ? this.renderVerticalStep() : html`
+    return this.isOrientationVertical() ? this.renderVerticalStep() : this.hideStep === true ? html`` : html`
         <div class="step-figure">
           <span
             class=" ${this.getIconClass(this.state)}"
@@ -270,7 +276,7 @@ export default class NveStep extends LitElement {
           <div class="step-state ${this.getStateColorClass(this.state)}">
             ${this.hideStateText ? '' : this.getStateText(this.state)}
           </div>       
-            ${this.hideDescriptions ? '' : this.renderDescription()}
+            ${this.hideDescription ? '' : this.renderDescription()}
         </div>
     `;
   }

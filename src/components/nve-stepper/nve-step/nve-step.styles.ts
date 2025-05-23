@@ -78,7 +78,7 @@ export default css`
     padding-top: 0.625rem; /*10px; */
   }
 
-  .empty-description {
+  .step-description-empty {
     min-height: 1rem; /* Set a minimum height for empty descriptions */
     padding-top: 0.625rem; /* Match the padding of regular descriptions */
   }
