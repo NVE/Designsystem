@@ -6,7 +6,7 @@ layout: component
 
 ### Standard med og uten knapper
 
-Bruk `hideStepButtons` for å skjule knappene i desktop-versjon. Hvis du skjuler knappene, må du implementere dine egne knapper og du bruker metodene `nextStep` og `prevStep` for å håndtere logikken.
+Bruk `hideStepButtons` for å skjule knappene i desktop-versjon. Hvis du skjuler knappene, må du implementere dine egne knapper og du bruker metodene `nextStep` og `prevStep` for å håndtere logikken. Du kan også bruke `hideStep` på individuelle steg i `steps`-arrayet for å skjule spesifikke steg - navigasjon vil automatisk hoppe over de skjulte stegene.
 
 I siste trinn erstattes neste knapp med en klarknapp, som standard er teksten "Sende", men du kan endre teksten gjennom egenskapen `endButtonText`. Du må bruke metoden `finishSteps` for du spesifiserer hva som skal skje på den siste knappen.
 
@@ -200,6 +200,25 @@ Bruk `hideMobileStepButtons` for å skjule knappene i mobil-versjon.
   {"title":"Steg 1", "state":2,"isSelected":true,"readyForEntrance":true},
   {"title":"Steg 2", "state":2,"isSelected":false,"readyForEntrance":true},
   {"title":"Steg 3", "state":2,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+```
+
+</CodeExamplePreview>
+
+### Skjule bestemte steg
+
+Bruk `hideStep`-propertyen på individuelle steg for å skjule dem fra visningen. Stepper-komponenten vil automatisk hoppe over skjulte steg ved navigasjon.
+
+<CodeExamplePreview>
+
+```html
+<nve-stepper
+  steps='
+  [
+  {"title":"Steg 1","description":"Dette steget er synlig","state":1,"isSelected":true,"readyForEntrance":true},
+  {"title":"Steg 2","description":"Dette steget er skjult","state":0,"isSelected":false,"readyForEntrance":true,"hideStep":true},
+  {"title":"Steg 3","description":"Dette steget er synlig","state":0,"isSelected":false,"readyForEntrance":true}]'
 >
 </nve-stepper>
 ```
@@ -771,6 +790,176 @@ const handlePrevStep = () => {
     stepper.value.prevStep();
   }
 };
+</script>
+
+```
+
+</SandboxPreview>
+
+### Skjul bestemte steg i Vue
+
+Du kan kontrollere visningen av bestemte steg ved å bruke `hideStep`-propertyen. Dette eksempelet viser hvordan du kan dynamisk vise eller skjule steg i en Vue-applikasjon:
+
+```vue
+<template>
+  <div>
+    <nve-button @click="toggleStepVisibility">{{ showAllSteps ? 'Skjul steg 2' : 'Vis alle steg' }}</nve-button>
+    <nve-stepper ref="stepper" :steps="steps"></nve-stepper>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { onMounted, ref, watch } from 'vue';
+
+import 'nve-designsystem/components/nve-stepper/nve-stepper.component';
+import 'nve-designsystem/components/nve-button/nve-button.component';
+
+import { StepProps } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
+import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
+import { INveStepper } from 'nve-designsystem/components/nve-stepper/nve-stepper.component';
+
+const showAllSteps = ref(true);
+const stepper = ref<HTMLElement | null>(null);
+
+const steps = ref<StepProps[]>([
+  {
+    title: 'Steg 1',
+    description: 'Første steg',
+    state: StepState.Active,
+    isSelected: true,
+    readyForEntrance: true,
+  },
+  {
+    title: 'Steg 2',
+    description: 'Andre steg',
+    state: StepState.NotStarted,
+    isSelected: false,
+    readyForEntrance: true,
+    hideStep: false, // Steg er synlig som standard
+  },
+  {
+    title: 'Steg 3',
+    description: 'Tredje steg',
+    state: StepState.NotStarted,
+    isSelected: false,
+    readyForEntrance: true,
+  },
+]);
+
+const toggleStepVisibility = () => {
+  showAllSteps.value = !showAllSteps.value;
+
+  // For å sikre at endringer i hideStep blir oppdaget av Lit-komponenten,
+  // må vi lage en helt ny kopi av steps-arrayet
+  steps.value = steps.value.map((step, index) => {
+    if (index === 1) {
+      return {
+        ...step,
+        hideStep: !showAllSteps.value,
+      };
+    }
+    return step;
+  });
+
+  // Gi beskjed til stepper at den skal oppdatere seg
+  if (stepper.value) {
+    (stepper.value as unknown as INveStepper).reRender();
+  }
+};
+
+onMounted(() => {
+  // Initialiser stepper
+  if (stepper.value) {
+    const nveStepper = stepper.value as unknown as INveStepper;
+  }
+});
+</script>
+```
+
+Når du endrer `hideStep`-egenskapen på et steg, bør du kalle `reRender()`-metoden for å sikre at stepper-komponenten oppdaterer visningen. Stepper-komponenten vil automatisk håndtere navigasjon og hoppe over skjulte steg.
+
+<SandboxPreview>
+
+```
+<template>
+  <div>
+    <nve-button @click="toggleStepVisibility">{{ showAllSteps ? 'Skjul steg 2' : 'Vis alle steg' }}</nve-button>
+    <nve-stepper ref="stepper" :steps="steps"></nve-stepper>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { onMounted, ref, watch } from 'vue';
+
+import 'nve-designsystem/components/nve-stepper/nve-stepper.component';
+import 'nve-designsystem/components/nve-button/nve-button.component';
+
+import { StepProps } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
+import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js';
+import { INveStepper } from 'nve-designsystem/components/nve-stepper/nve-stepper.component';
+
+const showAllSteps = ref(true);
+const stepper = ref<HTMLElement | null>(null);
+
+const steps = ref<StepProps[]>([
+  {
+    title: 'Steg 1',
+    description: 'Første steg',
+    state: StepState.Active,
+    isSelected: true,
+    readyForEntrance: true,
+  },
+  {
+    title: 'Steg 2',
+    description: 'Andre steg',
+    state: StepState.NotStarted,
+    isSelected: false,
+    readyForEntrance: true,
+    hideStep: false, // Steg er synlig som standard
+  },
+  {
+    title: 'Steg 3',
+    description: 'Tredje steg',
+    state: StepState.NotStarted,
+    isSelected: false,
+    readyForEntrance: true,
+  },
+]);
+
+const toggleStepVisibility = () => {
+  showAllSteps.value = !showAllSteps.value;
+
+  // For å sikre at hideStep-endringer oppdages må vi gjøre en mer
+  // omfattende endring av steps-arrayet enn bare å endre enkeltegenskaper
+  const hideSecondStep = !showAllSteps.value;
+
+  // Lag et helt nytt array med oppdaterte verdier
+  // Dette sikrer at Lit oppfatter endringen som en faktisk endring av data
+  const updatedSteps: StepProps[] = [
+    { ...steps.value[0] }, // Første steg - uendret
+    {
+      ...steps.value[1],
+      hideStep: hideSecondStep,
+    }, // Andre steg - oppdatert
+    { ...steps.value[2] } // Tredje steg - uendret
+  ];
+
+  // Sett det nye arrayet som steps.value
+  steps.value = updatedSteps;
+
+  // Fortell Lit-komponenten at den må oppdatere seg
+  if (stepper.value) {
+    (stepper.value as unknown as INveStepper).reRender();
+  }
+};
+
+onMounted(() => {
+  // Initialiser stepper
+  if (stepper.value) {
+    const nveStepper = stepper.value as unknown as INveStepper;
+  }
+});
+
 </script>
 
 ```

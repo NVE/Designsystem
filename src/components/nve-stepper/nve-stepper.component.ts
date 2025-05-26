@@ -92,7 +92,6 @@ export default class NveStepper extends LitElement {
 
   private selectedStepIndex: { value: number } = { value: 0 };
 
-
   /**
    * Ved endring av props, re-render komponenten eksternt med document.querySelector("nve-stepper")?.reRender();
    * Dette er nyttig når du vil tvinge en oppdatering av komponenten uten å endre dens interne state.
@@ -116,23 +115,53 @@ export default class NveStepper extends LitElement {
     stepperElement.getCurrentIndex = this.getCurrentIndex.bind(this);
     stepperElement.reRender = this.reRender.bind(this);
   }
-
   /** Metode for å gå til neste steg */
   nextStep(): void {
     if (this.selectedStepIndex.value < this.steps.length - 1) {
-      this.setStep(this.selectedStepIndex.value + 1);
+      // Finn neste synlige steg
+      let nextIndex = this.selectedStepIndex.value + 1;
+      while (nextIndex < this.steps.length && this.steps[nextIndex].hideStep) {
+        nextIndex++;
+      }
+      
+      if (nextIndex < this.steps.length) {
+        this.setStep(nextIndex);
+      }
     }
   }
 
   /** Metode for å gå til forrige steg */
   prevStep(): void {
     if (this.selectedStepIndex.value > 0) {
-      this.setStep(this.selectedStepIndex.value - 1);
+      // Finn forrige synlige steg
+      let prevIndex = this.selectedStepIndex.value - 1;
+      while (prevIndex >= 0 && this.steps[prevIndex].hideStep) {
+        prevIndex--;
+      }
+      
+      if (prevIndex >= 0) {
+        this.setStep(prevIndex);
+      }
     }
   }
-
   /** Metode for å velge et spesifikt steg */
   selectStep(index: number): void {
+    // Sjekk om det valgte steget er skjult
+    if (index < 0 || index >= this.steps.length || this.steps[index].hideStep) {
+      // Finn nærmeste synlige steg hvis mulig
+      const nextVisibleIndex = this.findNextVisibleStepIndex(index);
+      if (nextVisibleIndex !== -1) {
+        index = nextVisibleIndex;
+      } else {
+        const prevVisibleIndex = this.findPrevVisibleStepIndex(index);
+        if (prevVisibleIndex !== -1) {
+          index = prevVisibleIndex;
+        } else {
+          // Ingen synlige steg funnet, gjør ingenting
+          return;
+        }
+      }
+    }
     this.setStep(index);
   }
 
@@ -148,13 +177,28 @@ export default class NveStepper extends LitElement {
       return this.selectedStepIndex.value;
   }
   
-
   private setStep(index: number): void {
+    if (this.steps[index] && this.steps[index].readyForEntrance) {
+        // Hvis gjeldende step er skjult, hopp til neste synlige steg
+        if (this.steps[index].hideStep) {
+            // Finn neste synlige steg
+            const nextVisibleIndex = this.findNextVisibleStepIndex(index);
+            if (nextVisibleIndex !== -1) {
+                this.selectedStepIndex.value = nextVisibleIndex;
+                index = nextVisibleIndex;
+            } else {
+                // Hvis ingen synlige steg er funnet framover, prøv å finne et bakover
+                const prevVisibleIndex = this.findPrevVisibleStepIndex(index);
+                if (prevVisibleIndex !== -1) {
+                    this.selectedStepIndex.value = prevVisibleIndex;
+                    index = prevVisibleIndex;
+                }
+            }
+        } else {
+            this.selectedStepIndex.value = index;
+        }
 
-    if (this.steps[index].readyForEntrance) {
-        this.selectedStepIndex.value = index;
-
-       // Oppdater status og valg for alle trinn
+        // Oppdater status og valg for alle trinn
         for (let i = 0; i < this.steps.length; i++) {
             if (i < index) {
                 // Alle trinn under indeks er satt til Done
@@ -173,6 +217,34 @@ export default class NveStepper extends LitElement {
         this.steps = [...this.steps];
     }
 }
+
+  /**
+   * Finn neste synlige steg fra gitt indeks
+   * @param currentIndex Nåværende indeks
+   * @returns Indeks for neste synlige steg, eller -1 hvis ingen finnes
+   */
+  private findNextVisibleStepIndex(currentIndex: number): number {
+      for (let i = currentIndex + 1; i < this.steps.length; i++) {
+          if (!this.steps[i].hideStep) {
+              return i;
+          }
+      }
+      return -1;
+  }
+
+  /**
+   * Finn forrige synlige steg fra gitt indeks
+   * @param currentIndex Nåværende indeks
+   * @returns Indeks for forrige synlige steg, eller -1 hvis ingen finnes
+   */
+  private findPrevVisibleStepIndex(currentIndex: number): number {
+      for (let i = currentIndex - 1; i >= 0; i--) {
+          if (!this.steps[i].hideStep) {
+              return i;
+          }
+      }
+      return -1;
+  }
 
   private getExtremes(): string | undefined {
     if (this.selectedStepIndex.value === 0) return 'start';
@@ -280,7 +352,8 @@ export default class NveStepper extends LitElement {
                 .readyForEntrance=${step.readyForEntrance}
                 .orientation=${this.orientation}
                 .hideStateText=${this.hideStateText}
-                .hideDescriptions=${this.hideDescriptions}
+                .hideDescription=${this.hideDescriptions}
+                .hideStep=${step.hideStep}
               >
               </nve-step>
             `
