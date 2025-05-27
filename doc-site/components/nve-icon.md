@@ -16,21 +16,21 @@ Her er [oversikt over ikoner i Material Symbols](https://fonts.google.com/icons)
 
 ### Størrelse
 
-For å endre størrelsen, bruk `--icon-size` css custom property;
+For å endre størrelsen, bruk `--icon-size` css custom property.
 
 Man kan fortsatt bruke bare `font-size` css property (se siste eksempel), men man må huske å endre `line-height` også så at den stemmer med valgte `font-size`.
 
-16px er standard.
+24px er standard.
 <CodeExamplePreview>
 
 ```html
-<nve-icon name="Rocket"></nve-icon>
-
 <nve-icon name="Rocket" style="--icon-size: 20px;"></nve-icon>
 
-<nve-icon name="Rocket" style="--icon-size: 24px;"></nve-icon>
+<nve-icon name="Rocket"></nve-icon>
 
-<nve-icon name="Rocket" style="font-size: 24px; line-height: 24px;"></nve-icon>
+<nve-icon name="Rocket" style="--icon-size: 28px;"></nve-icon>
+
+<nve-icon name="Rocket" style="font-size: 28px; line-height: 28px;"></nve-icon>
 ```
 
 </CodeExamplePreview>
