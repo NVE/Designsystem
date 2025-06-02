@@ -2,7 +2,7 @@ import * as path from 'path';
 import { customElementJetBrainsPlugin } from 'custom-element-jet-brains-integration';
 import { customElementVsCodePlugin } from 'custom-element-vs-code-integration';
 import { customElementVuejsPlugin } from 'custom-element-vuejs-integration';
-import { cemInheritancePlugin } from 'custom-elements-manifest-inheritance';
+import { cemInheritancePlugin } from '@wc-toolkit/cem-inheritance';
 import { parse } from 'comment-parser';
 import { pascalCase } from 'pascal-case';
 import commandLineArgs from 'command-line-args';
