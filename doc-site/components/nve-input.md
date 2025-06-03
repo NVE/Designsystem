@@ -21,30 +21,7 @@ Bruk `filled` for mørk bakgrunnsfarge
 ```html
 <nve-input value="filled" filled></nve-input>
 
-<nve-input value="ikke filled">
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <div slot="prefix">bingo</div>
-  <input slot="prefix" />
-</nve-input>
+<nve-input value="ikke filled"></nve-input>
 ```
 
 </CodeExamplePreview>
@@ -70,7 +47,10 @@ Bruk `clearable` for å vise en sletteknapp bak teksten
 <CodeExamplePreview arrangeComponentsVertically>
 
 ```html
-<nve-input value="Slett dette ved trykke ikonet til høyre" clearable></nve-input>
+<nve-input
+  value="Slett dette ved trykke ikonet til høyre"
+  clearable
+></nve-input>
 ```
 
 </CodeExamplePreview>
@@ -100,7 +80,11 @@ Bruk `readonly` for å stenge mulighet for å endre innholdet. Input-feltet får
 
 ```html
 <nve-input id="in1" readonly value="Dette får du ikke endret"></nve-input>
-<nve-input id="in2" readonly value="Dette får du heller ikke endret, og vi har lagt på et ikon spesifikt her">
+<nve-input
+  id="in2"
+  readonly
+  value="Dette får du heller ikke endret, og vi har lagt på et ikon spesifikt her"
+>
   <nve-icon slot="suffix" name="asterisk" />
 </nve-input>
 <nve-input id="in3" value="men dette kan du endre"></nve-input>
@@ -118,8 +102,17 @@ Bruk `requiredlabel` hvis du vil vise noe annet enn `*Obligatorisk`. Feltet må 
 ```html
 <!-- Bruker preventDefault så ikke sida lastes på nytt når du trykker på knappen -->
 <form onsubmit="event.preventDefault();">
-  <nve-input label="Hva synes du?" required errorMessage="Her må du skrive noe"></nve-input>
-  <nve-input label="What do you think?" required requiredLabel="*Required" errorMessage="Please answer"></nve-input>
+  <nve-input
+    label="Hva synes du?"
+    required
+    errorMessage="Her må du skrive noe"
+  ></nve-input>
+  <nve-input
+    label="What do you think?"
+    required
+    requiredLabel="*Required"
+    errorMessage="Please answer"
+  ></nve-input>
   <nve-button type="submit">Submit</nve-button>
 </form>
 ```
@@ -219,7 +212,11 @@ const numberInputValue = ref(0);
 ```html
 <nve-input type="number" label="Kun heltall"></nve-input>
 <nve-input type="number" step="0.1" label="Maks en desimal"></nve-input>
-<nve-input type="number" step="any" label="Bruk så mange desimaler du vil"></nve-input>
+<nve-input
+  type="number"
+  step="any"
+  label="Bruk så mange desimaler du vil"
+></nve-input>
 ```
 
 </CodeExamplePreview>
@@ -233,15 +230,24 @@ Det finnes ikke en egen type for å velge kun år, men du kan sette type til `nu
 <CodeExamplePreview>
 
 ```html
-<nve-input type="datetime-local" label="Skriv inn eller velg dato og tidspunkt"></nve-input>
+<nve-input
+  type="datetime-local"
+  label="Skriv inn eller velg dato og tidspunkt"
+></nve-input>
 <nve-input type="date" label="Skriv inn eller velg dato"></nve-input>
 <nve-input type="time" label="Skriv inn eller velg tidspunkt"></nve-input>
 <nve-input type="month" label="Skriv inn eller velg måned og år"></nve-input>
-<nve-input type="number" label="Skriv inn eller velg år" min="1900" max="2100" class="year-input"> </nve-input>
+<nve-input
+  type="number"
+  label="Skriv inn eller velg år"
+  min="1900"
+  max="2100"
+  class="year-input"
+></nve-input>
 
 <script>
   // setter dette året som standard-valg i år-input'en
-  const yearInput = document.querySelector('.year-input');
+  const yearInput = document.querySelector(".year-input");
   yearInput.value = new Date().getFullYear();
 </script>
 ```
@@ -270,7 +276,12 @@ Bruk `autocomplete` for å slå av autocomplete-funksjonalitet i browser. Denne 
 
 ```html
 <nve-input value="" name="firstname" label="Autocomplete: på"></nve-input>
-<nve-input value="" autocomplete="false" name="firstname" label="Autocomplete: av"></nve-input>
+<nve-input
+  value=""
+  autocomplete="false"
+  name="firstname"
+  label="Autocomplete: av"
+></nve-input>
 ```
 
 </CodeExamplePreview>

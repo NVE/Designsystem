@@ -1,4 +1,4 @@
-import { css } from "lit";
+import { css } from 'lit';
 
 export default css`
   nve-input::part(input) {
@@ -18,11 +18,11 @@ export default css`
     flex-grow: 1;
   }
 
-  nve-tag[slot="prefix"] {
+  nve-tag[slot='prefix'] {
     margin: 8px;
   }
 
-  .input-prefix[slot="prefix"] {
+  .input-prefix[slot='prefix'] {
     border: none;
     min-height: var(--sl-input-height-medium);
     font-size: 16px;
