@@ -2,7 +2,7 @@
 layout: component
 ---
 
-<nve-message-card title="Tips">
+<nve-message-card label="Tips">
 <span>For nedtrekksliste/"rullgardin"/dropdown-list, bruk <a href="/components/nve-select.html">nve-select</a></span>
 </nve-message-card>
 

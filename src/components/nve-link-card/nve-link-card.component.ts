@@ -9,9 +9,9 @@ import styles from './nve-link-card.styles';
 @customElement('nve-link-card')
 export default class NveLinkCard extends LitElement implements INveComponent {
   /** Tittel som vises øverst på kortet */
-  @property({ reflect: true }) title: string = "";
+  @property({ reflect: true }) label: string = '';
 
-   /** Tilleggsbeskrivelse som vises under tittelen */
+  /** Tilleggsbeskrivelse som vises under tittelen */
   @property({ reflect: true }) additionalText?: string;
 
   /** Størrelse på kortet, kan være 'small', 'medium' eller 'large' */
@@ -34,11 +34,10 @@ export default class NveLinkCard extends LitElement implements INveComponent {
   /** Tilpasset klikk-handler som kan brukes til å overstyre standard atferd (f.eks. i Vue med vue-router) */
   @property() customClickHandler?: (event: MouseEvent) => void;
 
-
   static styles = [styles];
 
   /**
-   * Standard nedlastingsfunksjon som brukes hvis downloadHandler ikke er overstyrt. 
+   * Standard nedlastingsfunksjon som brukes hvis downloadHandler ikke er overstyrt.
    * Bruker lenken (href) til å laste ned en fil.
    */
   private async defaultDownloadHandler() {
@@ -107,9 +106,9 @@ export default class NveLinkCard extends LitElement implements INveComponent {
     }
   }
 
-/**
- * Denne er lagt til slik man klikke på cardet ved bruk av tastaturet.
- */
+  /**
+   * Denne er lagt til slik man klikke på cardet ved bruk av tastaturet.
+   */
   private handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'Enter') {
       this.handleClick(event);
@@ -121,20 +120,33 @@ export default class NveLinkCard extends LitElement implements INveComponent {
    */
   private getIconName() {
     switch (this.clickAction) {
-      case 'internal': return 'arrow_forward';
-      case 'download': return 'download';
-      case 'external': return 'open_in_new';
-      case 'mail': return 'mail';
-      default: return 'arrow_forward';
+      case 'internal':
+        return 'arrow_forward';
+      case 'download':
+        return 'download';
+      case 'external':
+        return 'open_in_new';
+      case 'mail':
+        return 'mail';
+      default:
+        return 'arrow_forward';
     }
   }
 
   render() {
     return html`
-    <a part="link-card" class="link-card link-card--${this.size} link-card--${this.variant}" tabindex="0" @click="${this.handleClick}" @keydown="${this.handleKeyDown}">
+      <a
+        part="link-card"
+        class="link-card link-card--${this.size} link-card--${this.variant}"
+        tabindex="0"
+        @click="${this.handleClick}"
+        @keydown="${this.handleKeyDown}"
+      >
         <div class="link-card__content">
-          <div part="title" class="link-card__title">${this.title}</div>
-          ${this.additionalText ? html`<div part="additional-text" class="link-card__additional-text">${this.additionalText}</div>` : nothing }
+          <div part="label" class="link-card__label">${this.label}</div>
+          ${this.additionalText
+            ? html`<div part="additional-text" class="link-card__additional-text">${this.additionalText}</div>`
+            : nothing}
         </div>
         <div>
           <nve-icon slot="suffix" name="${this.getIconName()}" style="font-size: 1.5rem;"></nve-icon>

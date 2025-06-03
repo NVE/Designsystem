@@ -13,7 +13,7 @@
     komponentene ved å bruke komponentnavnet som tag i GitHub.
   </p>
   <nve-message-card
-    title="Merk saker og PR'er i Github med komponentnavn for å se dem her"
+    label="Merk saker og PR'er i Github med komponentnavn for å se dem her"
     size="simple"
   ></nve-message-card>
 

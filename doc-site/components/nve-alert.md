@@ -10,7 +10,7 @@ layout: component
 
 </CodeExamplePreview>
 
-<nve-message-card title="Tips">
+<nve-message-card label="Tips">
 Bruk `open` for å vise en alert. Hvis ikke `open` er satt, vises den ikke.
 </nve-message-card>
 
@@ -108,18 +108,18 @@ Bruk `saturation="emphasized"` for å få litt mørkere bakgrunnsfarge.
 
 ### Tittel og tekst
 
-Du kan bruke `title` for å lage en slags overskrift. Resten av teksten kan enten ligge i `text` eller inni elementet.
+Du kan bruke `label` for å lage en slags overskrift. Resten av teksten kan enten ligge i `text` eller inni elementet.
 
 <CodeExamplePreview arrangeComponentsVertically>
 
 ```html
-<nve-alert text="og tekst" title="Tittel" open></nve-alert>
+<nve-alert text="og tekst" label="Tittel" open></nve-alert>
 
-<nve-alert title="Kun tittel" open></nve-alert>
+<nve-alert label="Kun tittel" open></nve-alert>
 
 <nve-alert text="kun tekst" open></nve-alert>
 
-<nve-alert title="Tittel" text="og tekst som ikke vises" open>
+<nve-alert label="Tittel" text="og tekst som ikke vises" open>
   Dersom en alert har både text-egenskap og tekst i selve elementet så skjuler vi teksten i egenskapen
 </nve-alert>
 ```

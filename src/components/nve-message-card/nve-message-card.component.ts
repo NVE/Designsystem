@@ -23,7 +23,7 @@ Brukes som veiledning i skjemaer eller som en informasjon til brukere.
 * @csspart base - hoved komponent kontainer.
 * @csspart header - header seksjonen.
 * @csspart subheader - subheader seksjonen.
-* @csspart title - tittel i header seksjonen.
+* @csspart label - tittel i header seksjonen.
 * @csspart footer - footer seksjonen.
 */
 @customElement('nve-message-card')
@@ -38,7 +38,7 @@ export default class NveMessageCard extends LitElement implements INveComponent 
   /** Viser ikonen ved siden i header seksjonen */
   @property({ reflect: true }) showIcon: 'true' | 'false' = 'true';
   /** Tittel i header seksjonen */
-  @property({ reflect: true }) title: string = '';
+  @property({ reflect: true }) label: string = '';
   /** Beskrivelse tekst under tittelen */
   @property({ reflect: true }) text: string = '';
   /** Man kan velge ikon i headeren, enten kommer en default en */
@@ -108,9 +108,9 @@ export default class NveMessageCard extends LitElement implements INveComponent 
         <div class="message-card__header-container">
           <div part="header" class="message-card__header">
             <slot part="subheader" name="subheader" class="message-card__subheader"></slot>
-            <div part="title" class="message-card__header-title">
+            <div part="label" class="message-card__header-label">
               ${this.showIcon === 'true' ? html`<nve-icon name=${this.determineIcon()}></nve-icon>` : null}
-              ${this.title ? html`<span>${this.title}</span>` : null}
+              ${this.label ? html`<span>${this.label}</span>` : null}
             </div>
           </div>
           ${this.closable

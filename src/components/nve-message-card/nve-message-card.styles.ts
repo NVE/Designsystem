@@ -36,7 +36,7 @@ export default css`
   }
 
   /* tittelen blir kuttet hvis for langt i utgangspunktet */
-  .message-card__header-title {
+  .message-card__header-label {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -77,7 +77,7 @@ export default css`
 
   nve-icon::part(icon) {
     display: unset;
-    font-size: 22px
+    font-size: 22px;
   }
 
   /** Varianter */
@@ -168,13 +168,11 @@ export default css`
     gap: var(--spacing-x-small);
   }
 
-
-
-  :host([size='compact']) .message-card__header-title {
+  :host([size='compact']) .message-card__header-label {
     font: var(--label-medium);
   }
 
-  :host([size='simple']) .message-card__header-title {
+  :host([size='simple']) .message-card__header-label {
     font: var(--label-medium-light);
   }
 
