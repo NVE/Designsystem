@@ -10,6 +10,8 @@ const targetPath = './dist/package.json';
 
 let currentBuildProcess = null;
 let hasLinked = false;
+let isBuilding = false;
+let buildQueued = false;
 
 const cleanDist = async () => {
   await fs.ensureDir(distPath);
@@ -18,9 +20,19 @@ const cleanDist = async () => {
 };
 
 const runBuild = async () => {
+  if (isBuilding) {
+    buildQueued = true;
+    return;
+  }
+
+  isBuilding = true;
+
   if (currentBuildProcess) {
     console.log(chalk.yellow('⚠️  Killing previous build process...'));
     currentBuildProcess.kill('SIGTERM');
+    await new Promise((resolve) => {
+      currentBuildProcess.on('close', resolve);
+    });
   }
 
   await cleanDist();
@@ -58,11 +70,20 @@ const runBuild = async () => {
     process.stderr.write(data.toString());
   });
 
-  currentBuildProcess.on('close', (code) => {
+  currentBuildProcess.on('close', async (code) => {
     console.log(`Vite build process exited with code ${code}`);
     currentBuildProcess = null;
+    isBuilding = false;
+
+    if (buildQueued) {
+      buildQueued = false;
+      runBuild(); // Run the queued build
+    }
   });
 };
+
+// Debounced version of runBuild
+const debouncedBuild = debounce(runBuild, 300);
 
 // Watch for changes in src directory
 const watcher = chokidar.watch('./src', {
@@ -77,5 +98,14 @@ watcher.on('ready', () => {
 
 watcher.on('change', (filePath) => {
   console.log(chalk.magenta(`✏️  File changed: ${filePath}`));
-  runBuild();
+  debouncedBuild();
 });
+
+// Debounce helper
+function debounce(fn, delay) {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn(...args), delay);
+  };
+}
