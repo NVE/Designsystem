@@ -1,68 +1,68 @@
-import chokidar from "chokidar";
-import { exec } from "child_process";
-import nextTask from "./nextTask.js";
+import { exec, spawn } from 'child_process';
+import nextTask from './nextTask.js';
 
-const watcher = chokidar.watch(["src", "components", "css"], {
-  ignored: /(^|[\/\\])\../,
-  persistent: true,
-});
+import fs from 'fs-extra';
+import path from 'path';
+import chalk from 'chalk';
 
-let isBuilding = false;
-let hasBeenLinked = false;
-let rebuildQueued = false;
-let debounceTimer = null;
+const distPath = path.resolve('./dist');
+const sourcePath = './package.json';
+const targetPath = './dist/package.json';
 
-await nextTask("Running the TypeScript compiler", () => {
-  return exec("tsc");
-});
+let hasLinked = false;
 
-const runBuild = () => {
-  if (isBuilding) {
-    rebuildQueued = true;
-    return;
-  }
+// Clean dist folder before starting
+await fs.ensureDir(distPath);
+await fs.emptyDir(distPath);
+console.log(`${chalk.green('✔')} Cleaned dist folder`);
 
-  isBuilding = true;
-  console.log("🔄 Rebuilding...");
-  const build = exec("node scripts/build.js -- --watch");
+// Start the Vite build process in watch mode directly to dist
+await nextTask('Starting Vite build in watch mode (to dist)', () => {
+  const build = spawn('npx', ['vite', 'build', '--watch', '--outDir', 'dist'], {
+    stdio: ['inherit', 'pipe', 'pipe'],
+    shell: true,
+  });
 
-  build.stdout.on("data", (data) => process.stdout.write(data));
-  build.stderr.on("data", (data) => process.stderr.write(data));
+  build.stdout.on('data', async (data) => {
+    const output = data.toString();
+    process.stdout.write(output);
 
-  build.on("exit", () => {
-    console.log("✅ Build complete.\n");
+    if (output.includes('built in')) {
+      console.log(chalk.green('\n✅ Build completed\n'));
 
-    if (!hasBeenLinked) {
-      console.log("🔗 Linking the package...");
-      const link = exec("cd dist && npm link");
+      try {
+        // Run npm link
+        if (!hasLinked) {
+          hasLinked = true;
 
-      link.stdout.on("data", (data) => process.stdout.write(data));
-      link.stderr.on("data", (data) => process.stderr.write(data));
-
-      link.on("exit", () => {
-        console.log("✅ Package linked successfully.\n");
-        hasBeenLinked = true;
-        finishBuild();
-      });
-    } else {
-      finishBuild();
+          // Write cleaned package.json
+          const source = await fs.readFile(sourcePath, 'utf-8');
+          const sourceObj = JSON.parse(source);
+          sourceObj.scripts = {};
+          sourceObj.devDependencies = {};
+          await fs.writeFile(targetPath, JSON.stringify(sourceObj, null, 2), 'utf-8');
+          console.log(`${chalk.green('✍')} package.json written to dist`);
+          console.log(chalk.cyan('\n🔗 Running npm link from dist/\n'));
+          exec('npm link', { cwd: './dist' }, (error, stdout, stderr) => {
+            if (error) {
+              console.error(`npm link error: ${error.message}`);
+              return;
+            }
+            if (stderr) console.error(`npm link stderr: ${stderr}`);
+            if (stdout) console.log(`npm link stdout: ${stdout}`);
+          });
+        }
+      } catch (err) {
+        console.error(chalk.red('❌ Error during post-build steps:'), err);
+      }
     }
   });
-};
 
-const finishBuild = () => {
-  isBuilding = false;
-  if (rebuildQueued) {
-    rebuildQueued = false;
-    runBuild();
-  }
-};
+  build.stderr.on('data', (data) => {
+    process.stderr.write(data.toString());
+  });
 
-const scheduleBuild = () => {
-  clearTimeout(debounceTimer);
-  debounceTimer = setTimeout(runBuild, 100);
-};
-
-watcher.on("change", scheduleBuild);
-watcher.on("add", scheduleBuild);
-watcher.on("unlink", scheduleBuild);
+  build.on('close', (code) => {
+    console.log(`Vite build process exited with code ${code}`);
+  });
+});
