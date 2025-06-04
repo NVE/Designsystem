@@ -23,7 +23,7 @@ await cleanDist();
 
 const runBuild = async () => {
   if (currentBuildProcess) {
-    console.log(chalk.yellow('\n⚠️ Killing previous build process...'));
+    console.log(chalk.yellow('\n⚠️  Killing previous build process...'));
     currentBuildProcess.kill('SIGTERM');
 
     await new Promise((resolve) => {
@@ -37,7 +37,6 @@ const runBuild = async () => {
     currentBuildProcess = null;
   }
   if (isBuilding) {
-    console.log(chalk.yellow('\n⚠️ Build already in progress, queuing next build...\n'));
     buildQueued = true;
     return;
   }
@@ -53,20 +52,28 @@ const runBuild = async () => {
     const output = data.toString();
     process.stdout.write(output);
 
+    // Printed in the console when the build is successful, example: ✓ built in 3.39s
     if (output.includes('built in')) {
       if (!hasLinked) {
         hasLinked = true;
 
-        const source = await fs.readFile(sourcePath, 'utf-8');
-        const sourceObj = JSON.parse(source);
-        sourceObj.scripts = {};
-        sourceObj.devDependencies = {};
-
-        await fs.writeFile(targetPath, JSON.stringify(sourceObj, null, 2), 'utf-8');
-        console.log(chalk.green('\n✍  package.json written to dist\n'));
-        console.log(chalk.cyan('\n🔗 Running npm link from dist/\n'));
-
-        spawn('npm', ['link'], { cwd: './dist', stdio: 'inherit', shell: true });
+        try {
+          const source = await fs.readFile(sourcePath, 'utf-8');
+          const sourceObj = JSON.parse(source);
+          sourceObj.scripts = {};
+          sourceObj.devDependencies = {};
+          await fs.writeFile(targetPath, JSON.stringify(sourceObj, null, 2), 'utf-8');
+          console.log(chalk.green('\n✍  package.json written to ./dist\n'));
+        } catch (error) {
+          console.error(chalk.red('✘ Failed to write package.json to ./dist'));
+          console.error(error);
+        }
+        try {
+          spawn('npm', ['link'], { cwd: './dist', stdio: 'inherit', shell: true });
+          console.log(chalk.cyan('\n🔗 npm link was successful \n'));
+        } catch (error) {
+          console.error(chalk.red('✘ Failed to run npm link on ./dist ' + error));
+        }
       }
     }
   });
@@ -108,6 +115,6 @@ watcher.on('ready', () => {
 });
 
 watcher.on('change', (filePath) => {
-  console.log(chalk.magenta(`\n ✏️  File changed: ${filePath} \n`));
-  debounce(runBuild, 300);
+  console.log(chalk.magenta(`\n✏️  File changed: ${filePath} \n`));
+  debounce(runBuild, 300)();
 });
