@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/NVE/Designsystem/compare/v1.6.6...v1.7.0) (2025-06-04)
+
+
+### Features
+
+* Oppdaterade eslint til v9 og la til Husky for auto lint vid commit ([#521](https://github.com/NVE/Designsystem/issues/521)) ([325893d](https://github.com/NVE/Designsystem/commit/325893dbf4a1c3566e787cd68ac12341f565eb1f))
+
 ## [1.6.6](https://github.com/NVE/Designsystem/compare/v1.6.5...v1.6.6) (2025-05-21)
 
 
