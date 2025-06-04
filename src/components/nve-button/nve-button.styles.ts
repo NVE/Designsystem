@@ -216,4 +216,8 @@ export default css`
   .button--loading .button__caret {
     visibility: unset;
   }
+
+  :host([has-icon-only][loading])::part(label) {
+    display: none;
+  }
 `;
