@@ -96,25 +96,28 @@ Merk at `semantic-release` stiller visse betingelser før oppdatering av changel
   - `public/css/**`
 
 ## Automatiske oppdateringer med Dependabot
+
 Vi bruker **Dependabot** for å automatisk opprette pull requests når det finnes oppdateringer av avhengigheter eller sikkerhetsfikser i vår `package.json`.  
 Konfigurasjonen for Dependabot ligger i: .github/dependabot.yml
 
 Når Dependabot oppretter en pull request, genereres det automatisk et **forhåndsvisningsmiljø** av nettsiden via **Azure Static Web Apps**. Dette lar deg enkelt sjekke hvordan endringene påvirker dokumentasjonsappen.
 
 ### Slik finner du lenken til forhåndsvisningen:
+
 1. Gå inn i den aktuelle pull requesten.
 2. Klikk på fanen **Checks**.
 3. Velg jobben **"Bygg og installasjon av dok-app i skyen"**.
 4. Gå til steget **"Installer dokumentasjons-nettsted"**.
-5. Se etter linjen som inneholder:  Visit your site at: https://...
+5. Se etter linjen som inneholder: Visit your site at: https://...
 6. Klikk på lenken for å åpne den midlertidige versjonen av nettstedet.
 
 Merk: Lenken vises **ikke automatisk som en kommentar** i PR-en.  
 Dette skyldes at Dependabot, av sikkerhetsgrunner, ikke har tillatelse til å poste kommentarer via GitHub Actions. Derfor kan du se følgende feilmelding i loggene:
+
 ```
 Unexpectedly failed to add GitHub comment.
 ```
-   
+
 ## Oppretting av en ny komponent og mappestruktur
 
 <em>Alle komponenters navn skal starte med `nve-`. Bruk det samme navnet som komponenten får i html. Kun små bokstaver og bindestrek er tillatt i navnet.</em>
@@ -308,7 +311,40 @@ Publisering til npm skjer ved hjelp av Github actions. Når man pusher til `main
 
 ## Test pakke lokalt
 
-Før man lager en PR eller er det lurt å teste pakke lokalt. Med `npm run pack` kan man teste hvordan pakka oppfører seg akkurat på samme måte som etter publisering. For å teste nve-designsystem-pakka lokalt:
+Før man lager en PR eller er det lurt å teste pakke lokalt. Vi har to måter å gjøre dette på:
+
+##### Med `npm run link` (med reloading)
+
+1. Kjør `npm run link`
+   Dette starter chokidar som følger med på endringer i ./src mappen og bygger prosjektet ved en endring.
+   Etter at prosjektet har bygget ferdig først gang kjører den npm link på dist mappen til bygget.
+
+2) Åpne et annet prosjekt som benytter seg av NVE-DS å kjør `npm link nve-designsystem`
+
+3) Start prosjektet ditt, å se om en endring i DS fører til endring i din klient.
+
+`NB`
+
+- Det kan hende at du må konfigurere prosjektet ditt litt for at den skal plukke opp endringer i node_modules og reloade prosjektet ditt.
+  I vårt vue prosjekt fungerte det å legge til usePolling med interval i vite-config.ts men basert på hvordan ditt prosjekt er satt opp kan dette være annerledes hos dere.
+
+```script
+    server: {
+      watch: {
+        usePolling: true,
+        interval: 100,
+      },
+    },
+```
+
+- Nyttige kommandoer
+  1. `npm unlink -g` nve-designsystem (fjerner npm link for NVE-DS globalt)
+  2. `npm prefix -g` viser deg hvor mappen som alle `npm link` 'lenkede' pakker er
+  3. `npm ls nve-designsystem` viser deg dependency treet og kan foreksempel være sjekk hvis du mistenker at prosjektet ikke har blitt lenket riktig.
+- Annet
+  1. Du vil kunne se et ikon i node_moduels på mappen som har blitt lenket med npm link nve-designsystem. Her kan du forksempel også se om filen(e) du har endret i DS har blitt reflektert inn i ditt prosjekt.
+
+##### Med `npm run pack` (uten reloading)
 
 1. Kjør `npm run build` (du kan også kjøre `npm run build:dev` om du ønsker å få tilgang til sourcemaps)
 2. Kjør `npm run pack`. `<nve-designsystem-x.y.z.tgz` blir generert i mappa `dist`
