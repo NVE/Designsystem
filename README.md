@@ -244,7 +244,7 @@ Skriv litt øverst i `.component.ts`-fila om hva komponenten skal brukes til. Om
 
 Brukerveiledning med kodeeksempler skriver du i markdown-fila til komponenten. Dokumentasjons-applikasjonen viser denne markdown-fila sammen med info fra `custom-elements.json`. Fila skal hete det samme som komponenten, men med .md som etternavn, og legges her: `doc-site/components`. Eksempel: `doc-site/components/nve-button.md`
 
-Lag kodeeksempler både for å teste at komponenten funker som forventet <em>og</em> for å vise hvordan komponenten funker.
+Lag kodeeksempler både for å teste at komponenten funker som forventet <em>og</em> for å vise hvordan komponenten funker. Koden skal være enklest mulig. Ta kun med kode som er relevant for eksemplet du ønsker å vise. Unngå styling i koden.
 
 Markdown-fila skal ha denne strukturen:
 
