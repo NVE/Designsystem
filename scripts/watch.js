@@ -19,25 +19,31 @@ const cleanDist = async () => {
   console.log(`${chalk.green('✔')} Cleaned dist folder`);
 };
 
+await cleanDist();
+
 const runBuild = async () => {
+  if (currentBuildProcess) {
+    console.log(chalk.yellow('\n⚠️ Killing previous build process...'));
+    currentBuildProcess.kill('SIGTERM');
+
+    await new Promise((resolve) => {
+      const timeout = setTimeout(resolve, 3000); // fallback timeout
+      currentBuildProcess.on('close', () => {
+        clearTimeout(timeout);
+        resolve(true);
+      });
+    });
+
+    currentBuildProcess = null;
+  }
   if (isBuilding) {
+    console.log(chalk.yellow('\n⚠️ Build already in progress, queuing next build...\n'));
     buildQueued = true;
     return;
   }
 
   isBuilding = true;
 
-  if (currentBuildProcess) {
-    console.log(chalk.yellow('⚠️  Killing previous build process...'));
-    currentBuildProcess.kill('SIGTERM');
-    await new Promise((resolve) => {
-      currentBuildProcess.on('close', resolve);
-    });
-  }
-
-  await cleanDist();
-
-  console.log(chalk.blue('🔨 Starting Vite build...'));
   currentBuildProcess = spawn('npx', ['vite', 'build', '--outDir', 'dist'], {
     stdio: ['inherit', 'pipe', 'pipe'],
     shell: true,
@@ -48,8 +54,6 @@ const runBuild = async () => {
     process.stdout.write(output);
 
     if (output.includes('built in')) {
-      console.log(chalk.green('\n✅ Build completed\n'));
-
       if (!hasLinked) {
         hasLinked = true;
 
@@ -57,8 +61,9 @@ const runBuild = async () => {
         const sourceObj = JSON.parse(source);
         sourceObj.scripts = {};
         sourceObj.devDependencies = {};
+
         await fs.writeFile(targetPath, JSON.stringify(sourceObj, null, 2), 'utf-8');
-        console.log(`${chalk.green('✍')} package.json written to dist`);
+        console.log(chalk.green('\n✍  package.json written to dist\n'));
         console.log(chalk.cyan('\n🔗 Running npm link from dist/\n'));
 
         spawn('npm', ['link'], { cwd: './dist', stdio: 'inherit', shell: true });
@@ -70,36 +75,17 @@ const runBuild = async () => {
     process.stderr.write(data.toString());
   });
 
-  currentBuildProcess.on('close', async (code) => {
-    console.log(`Vite build process exited with code ${code}`);
+  currentBuildProcess.on('close', (code) => {
+    console.log(chalk.green('\n✅ Build completed') + ' - enjoy live rebuilds on file changes 🔥 \n');
     currentBuildProcess = null;
     isBuilding = false;
 
     if (buildQueued) {
       buildQueued = false;
-      runBuild(); // Run the queued build
+      runBuild();
     }
   });
 };
-
-// Debounced version of runBuild
-const debouncedBuild = debounce(runBuild, 300);
-
-// Watch for changes in src directory
-const watcher = chokidar.watch('./src', {
-  ignored: /(^|[\/\\])\../,
-  persistent: true,
-});
-
-watcher.on('ready', () => {
-  console.log(chalk.cyan('👀 Watching for file changes...'));
-  runBuild(); // Initial build
-});
-
-watcher.on('change', (filePath) => {
-  console.log(chalk.magenta(`✏️  File changed: ${filePath}`));
-  debouncedBuild();
-});
 
 // Debounce helper
 function debounce(fn, delay) {
@@ -109,3 +95,19 @@ function debounce(fn, delay) {
     timeout = setTimeout(() => fn(...args), delay);
   };
 }
+
+// Watch for changes in src directory
+const watcher = chokidar.watch('./src', {
+  ignored: /(^|[\/\\])\../,
+  persistent: true,
+});
+
+watcher.on('ready', () => {
+  console.log(chalk.cyan('\n👀  Watching for file changes...\n'));
+  runBuild();
+});
+
+watcher.on('change', (filePath) => {
+  console.log(chalk.magenta(`\n ✏️  File changed: ${filePath} \n`));
+  debounce(runBuild, 300);
+});
