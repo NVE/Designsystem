@@ -28,13 +28,13 @@ export default class NveDialog extends SlDialog {
   /**
    * Stjålet fra shoelace eksempel. Hindrer at man lukker dialogen ved å trykke utenfor
    */
-  handleRequestClose(event: any) {
+  handleRequestClose(event: CustomEvent) {
     if (this.disableBackground && event.detail.source === 'overlay') {
       event.preventDefault();
     }
   }
 
-  updated(changedProperties: any) {
+  updated(changedProperties: Map<string | number | symbol, unknown>) {
     super.updated(changedProperties);
     if (changedProperties.has('disableBackground')) {
       this.addEventListener('sl-request-close', this.handleRequestClose);
