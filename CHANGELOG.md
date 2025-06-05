@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/NVE/Designsystem/compare/v1.7.0...v1.8.0) (2025-06-05)
+
+
+### Features
+
+* **npm-link:** legge til npm-link med auto reload ([#531](https://github.com/NVE/Designsystem/issues/531)) ([80f1b4c](https://github.com/NVE/Designsystem/commit/80f1b4ccec7d7d7f4162724ec93afe4d028745d5))
+
 # [1.7.0](https://github.com/NVE/Designsystem/compare/v1.6.6...v1.7.0) (2025-06-04)
 
 
