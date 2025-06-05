@@ -1,3 +1,13 @@
+# [2.0.0](https://github.com/NVE/Designsystem/compare/v1.9.0...v2.0.0) (2025-06-05)
+
+
+* feat!: fjerne title attribute i komponenter ([#542](https://github.com/NVE/Designsystem/issues/542)) ([6d6ebdb](https://github.com/NVE/Designsystem/commit/6d6ebdb3d25213f755546ee70656674bbfafa9fb))
+
+
+### BREAKING CHANGES
+
+* Fjerne title attribtue fra komponenter. Dette er et reservert ord.
+
 # [1.9.0](https://github.com/NVE/Designsystem/compare/v1.8.0...v1.9.0) (2025-06-05)
 
 
