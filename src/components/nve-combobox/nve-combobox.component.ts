@@ -28,6 +28,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   @property({ type: Array<Option> }) values: Option[] = []; // Liste med verdier som kan velges
 
   @property({ reflect: true, type: Boolean }) singular: boolean = false;
+  @property({ reflect: true, type: Number }) multiple: number = 1;
   @property({ reflect: true, type: Boolean }) disabled: boolean = false;
   @property({ reflect: true, type: Boolean }) filled: boolean = false;
   @property({ reflect: true, type: Boolean }) required: boolean = false;
@@ -54,6 +55,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     this.selectedOptions = this.values.filter((value) => value?.selected);
   }
 
+  // Binder boundHandleOutsideClick til klasseinstansen slik at den kan brukes som en event listener
   private boundHandleOutsideClick = this.handleOutsideClick.bind(this);
 
   connectedCallback() {
@@ -66,6 +68,16 @@ export default class NveCombobox extends LitElement implements INveComponent {
     super.disconnectedCallback();
   }
 
+  // Laget grunnet race problem med blur event
+  private handleOutsideClick(event: MouseEvent) {
+    if (!this.shadowRoot?.contains(event.target as Node) && !this.contains(event.target as Node)) {
+      this.isPopupActive = false;
+      this.listWithSearchHits = [];
+      this.inputValue = '';
+      this.displaySearchResult = false;
+    }
+  }
+
   private emit(eventname: string, value: Option[]): void {
     const event = new CustomEvent(eventname, {
       bubbles: true,
@@ -76,15 +88,6 @@ export default class NveCombobox extends LitElement implements INveComponent {
       },
     });
     this.dispatchEvent(event);
-  }
-
-  private handleOutsideClick(event: MouseEvent) {
-    if (!this.shadowRoot?.contains(event.target as Node) && !this.contains(event.target as Node)) {
-      this.isPopupActive = false;
-      this.listWithSearchHits = [];
-      this.inputValue = '';
-      this.displaySearchResult = false;
-    }
   }
 
   handleFocus() {
@@ -111,10 +114,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     }
   }
 
-  // Handles keyboard navigation within the combobox
   handleKeyboardNavigation(event: KeyboardEvent) {
-    // handleKeyboardNavigation logic
-
     if (this.disabled) return;
     if (event.key === 'Enter' || event.key === 'ArrowUp' || event.key === 'ArrowDown') {
       event.preventDefault();
@@ -150,15 +150,10 @@ export default class NveCombobox extends LitElement implements INveComponent {
     const indexInValues = copyOfValues.findIndex((optionValue) => optionValue.value === option.value);
     if (indexInValues === -1) return;
 
-    if (this.singular && this.selectedOptions.length === 1) {
-      for (let i = 0; i < copyOfValues.length; i++) {
-        const option = copyOfValues[i];
-        if (option?.selected) {
-          option.selected = false;
-          break;
-        }
-      }
-      this.selectedOptions = [];
+    if (this.multiple && this.selectedOptions.length === this.multiple) {
+      // Burde jeg her lage en "shake på comboboxen?"
+      console.log(`Du kan kun velge ${this.multiple} alternativer. `);
+      return;
     }
 
     copyOfValues[indexInValues].selected = true;
@@ -201,14 +196,9 @@ export default class NveCombobox extends LitElement implements INveComponent {
     const previousValue = copyOfListWithPossibleSearchHits[index].selected;
     copyOfListWithPossibleSearchHits[index].selected = !copyOfListWithPossibleSearchHits[index].selected;
 
-    if (this.singular) {
-      for (let i = 0; i < copyOfListWithPossibleSearchHits.length; i++) {
-        const option = copyOfListWithPossibleSearchHits[i];
-        if (option?.selected && i !== index) {
-          option.selected = false;
-          break;
-        }
-      }
+    if (this.multiple && this.selectedOptions.length === this.multiple) {
+      console.log(`Du kan kun velge ${this.multiple} alternativer. `);
+      return;
     }
 
     this.listWithSearchHits = copyOfListWithPossibleSearchHits;

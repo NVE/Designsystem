@@ -8,6 +8,7 @@ layout: component
 <div style="height:20vh">
   <nve-combobox
     label="Velg et dyr"
+    multiple="3"
     values='[
         { "label": "Cat", "value": "cat" },
         { "label": "Dog", "value": "dog" },
