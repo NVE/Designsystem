@@ -21,8 +21,8 @@ export default css`
   }
 
   .badge--neutral {
-    background-color: var(--feedback-background-default-neutral, #e4e5e7);
-    color: var(--feedback-foreground-default-neutral, #00131c);
+    background-color: green;
+    color: red;
   }
 
   .badge--primary {

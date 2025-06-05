@@ -6,15 +6,26 @@
 
 */
 
-import { spawn } from 'child_process';
+import { exec, spawn } from 'child_process';
 import chokidar from 'chokidar';
 import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
+import util from 'util';
+
+const execPromise = util.promisify(exec);
 
 const distPath = path.resolve('./dist');
 const sourcePath = './package.json';
 const targetPath = './dist/package.json';
+
+let hasLinked = false;
+let hasBuiltPackageJson = false;
+let hasCreatedCustomElementsManifest = false;
+let currentBuildProcess = null;
+let isBuilding = false;
+let buildRequested = false;
+let buildCancelled = false;
 
 const cleanDist = async () => {
   await fs.ensureDir(distPath);
@@ -23,12 +34,6 @@ const cleanDist = async () => {
 };
 
 await cleanDist();
-
-let hasLinked = false;
-let currentBuildProcess = null;
-let isBuilding = false;
-let buildRequested = false;
-let buildCancelled = false;
 
 const runBuild = async () => {
   if (isBuilding) {
@@ -57,25 +62,36 @@ const runBuild = async () => {
 
     // Ser om bygget var vellykket ved å sjekke etter "✓ built in"
     if (output.includes('✓ built in')) {
-      if (!hasLinked) {
+      if (!hasBuiltPackageJson) {
         try {
           const source = await fs.readFile(sourcePath, 'utf-8');
           const sourceObj = JSON.parse(source);
           sourceObj.scripts = {};
           sourceObj.devDependencies = {};
-          await fs.writeFile(targetPath, JSON.stringify(sourceObj, null, 2), 'utf-8');
+          fs.writeFile(targetPath, JSON.stringify(sourceObj, null, 2), 'utf-8');
           console.log(chalk.green('\n✍  package.json written to ./dist\n'));
+          hasBuiltPackageJson = true;
         } catch (error) {
-          console.error(chalk.red('✘ Failed to write package.json to ./dist'));
-          console.error(error);
+          console.error(chalk.red('✘ Failed to write package.json to ./dist ' + error));
         }
+      }
 
+      if (!hasLinked) {
         try {
           spawn('npm', ['link'], { cwd: './dist', stdio: 'inherit', shell: true });
           console.log(chalk.cyan('\n🔗 npm link was successful \n'));
           hasLinked = true;
         } catch (error) {
           console.error(chalk.red('✘ Failed to run npm link on ./dist ' + error));
+        }
+      }
+      if (!hasCreatedCustomElementsManifest) {
+        try {
+          execPromise('npm run manifest');
+          console.log(chalk.green('\n📃 custom-elements-manifest was successfully written to ./dist \n'));
+          hasCreatedCustomElementsManifest = true;
+        } catch (error) {
+          console.error(chalk.red('✘ Failed to run npm manifest ' + error));
         }
       }
     }
@@ -93,7 +109,7 @@ const runBuild = async () => {
       buildCancelled = false;
       await runBuild();
     } else {
-      console.log(chalk.green('\n✅ Build completed') + ' - 👀  Watching for file changes \n');
+      console.log(chalk.green('\n✅ Build completed') + ' - 👀  Watching for file changes \n');
     }
   });
 };
@@ -120,6 +136,6 @@ watcher.on('ready', () => {
 });
 
 watcher.on('change', (filePath) => {
-  console.log(chalk.magenta(`\n✏️  File changed: ${filePath} \n`));
+  console.log(chalk.magenta(`\n✏️  File changed: ${filePath} \n`));
   debouncedRunBuild();
 });

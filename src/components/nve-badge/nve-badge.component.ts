@@ -44,7 +44,7 @@ export default class NveBadge extends LitElement {
         role="status"
       >
         <slot></slot>
-        <p>12345</p>
+        <p>12345 6</p>
       </span>
     `;
   }
