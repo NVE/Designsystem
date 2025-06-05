@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/NVE/Designsystem/compare/v2.0.0...v2.0.1) (2025-06-05)
+
+
+### Bug Fixes
+
+* **nve-alert:** fikse kommentar for å publisere riktig versjon 2.0.1 siden 2.0.0 feiler ([90dfb3b](https://github.com/NVE/Designsystem/commit/90dfb3bbf853e0c74b69188ea50208cdef5d9ae3))
+
 # [2.0.0](https://github.com/NVE/Designsystem/compare/v1.9.0...v2.0.0) (2025-06-05)
 
 
