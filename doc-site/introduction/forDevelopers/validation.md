@@ -2,7 +2,7 @@
 
 # Validering av input
 
-<nve-message-card title="Tips">
+<nve-message-card label="Tips">
   Komponentene du skal validere må ligge inni en &lt;form&gt;, fordi validering utføres når submit-eventet fyres av.
 </nve-message-card>
 

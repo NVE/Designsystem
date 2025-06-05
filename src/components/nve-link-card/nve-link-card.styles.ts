@@ -13,15 +13,15 @@ export default css`
   }
 
   .link-card:focus {
-    outline: var(--interactive-primary-foreground-border-focus, #008FFB) solid 2px;
+    outline: var(--interactive-primary-foreground-border-focus, #008ffb) solid 2px;
   }
 
-  .link-card:hover .link-card__title {
+  .link-card:hover .link-card__label {
     text-decoration: underline;
   }
 
   .link-card:active {
-    outline: var(--interactive-primary-foreground-border-focus, #008FFB) solid 2px;
+    outline: var(--interactive-primary-foreground-border-focus, #008ffb) solid 2px;
   }
 
   .link-card--small {
@@ -37,20 +37,20 @@ export default css`
     min-height: 70px;
   }
 
-  .link-card__title {
+  .link-card__label {
     font-size: 1rem;
-    color: var(--neutrals-foreground-primary, #0D0D0E);
-    font-family: "Source Sans Pro";
+    color: var(--neutrals-foreground-primary, #0d0d0e);
+    font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
   }
 
-  .link-card__title--small {
+  .link-card__label--small {
     font-size: 0.875rem;
   }
 
-  .link-card__title--large {
+  .link-card__label--large {
     font-size: 1.125rem;
   }
 
@@ -61,8 +61,8 @@ export default css`
   }
 
   .link-card__additional-text {
-    color: var(--neutrals-foreground-primary, #0D0D0E);
-    font-family: "Source Sans Pro";
+    color: var(--neutrals-foreground-primary, #0d0d0e);
+    font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
@@ -71,27 +71,27 @@ export default css`
   }
 
   .link-card--primary {
-    background: var(--neutrals-background-primary, #FFF);
+    background: var(--neutrals-background-primary, #fff);
   }
 
   .link-card--primary:hover {
-    background: var(--neutrals-background-secondary, #E4E5E7);  
+    background: var(--neutrals-background-secondary, #e4e5e7);
   }
 
   .link-card--contrast {
-    background: var(--neutrals-background-primary-contrast, #F7F7F8);  
+    background: var(--neutrals-background-primary-contrast, #f7f7f8);
   }
 
   .link-card--contrast:hover {
-    background: var(--neutrals-background-secondary, #E4E5E7);  
+    background: var(--neutrals-background-secondary, #e4e5e7);
   }
 
   .link-card--secondary {
-    background: var(--neutrals-background-secondary, #E4E5E7);  
+    background: var(--neutrals-background-secondary, #e4e5e7);
   }
 
   .link-card--secondary:hover {
     border-radius: var(--borderRadius-large, 6px);
-    border: 2px solid var(--neutrals-foreground-primary, #0D0D0E);
+    border: 2px solid var(--neutrals-foreground-primary, #0d0d0e);
   }
 `;
