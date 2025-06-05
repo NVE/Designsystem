@@ -31,6 +31,7 @@
     "build": "node scripts/build.js",
     "build:dev": "node scripts/build.js dev",
     "build:doc": "node scripts/build.js && cd doc-site && npm run build",
+    "link": "node scripts/npmLink.js",
     "preview": "vite preview",
     "lint": "eslint \"**/*.{js,ts,vue}\"",
     "manifest": "npx  @custom-elements-manifest/analyzer analyze --outdir dist",
@@ -44,6 +45,7 @@
     "lit": "^3.3.0"
   },
   "devDependencies": {
+    "fs-extra": "^11.3.0",
     "@custom-elements-manifest/analyzer": "^0.10.4",
     "@rollup/plugin-alias": "^5.1.1",
     "@semantic-release/changelog": "^6.0.3",
@@ -54,6 +56,8 @@
     "@typescript-eslint/eslint-plugin": "^8.33.0",
     "@typescript-eslint/parser": "^8.6.0",
     "@vue/eslint-config-typescript": "^14.5.0",
+    "@wc-toolkit/cem-inheritance": "^1.0.4",
+    "chokidar": "^4.0.3",
     "command-line-args": "^6.0.1",
     "comment-parser": "^1.4.1",
     "commitizen": "^4.3.1",
@@ -65,7 +69,6 @@
     "custom-element-vs-code-integration": "^1.5.0",
     "custom-element-vuejs-integration": "^1.4.0",
     "custom-elements-manifest": "^2.1.0",
-    "@wc-toolkit/cem-inheritance": "^1.0.4",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
