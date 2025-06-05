@@ -34,36 +34,35 @@ Ikke push endringer direkte i `main`. Lag en pull request.
 
 ### Conventional Commits
 
-Vi har innført **Conventional Commits**-standarden i vårt prosjekt for å automatisere oppdatering av versjonsnummer og generering av changelog-filer. Når du lager en pull request (PR) som skal merges til `main`-branchen, må tittelen på PR-en følge denne standarden for at den skal bli godkjent.
+Vi har innført **Conventional Commits**-standarden i vårt prosjekt for å automatisere oppdatering av versjonsnummer og generering av versjonslogg. Når du lager en pull request (PR) som skal flettes inn i `main`-branchen, må tittelen på PR-en følge denne standarden for at den skal bli godkjent.
+Tittelen på PR-en blir generert på bakgrunn av første commit i branchen som PR'en er basert på.
 
 #### Standardformatet er som følger
 
 `<type>(<scope>): <beskrivelse>`
 
-- **type**: Definerer hvilken type endring det er. Eksempler:
+- **type**: Hvilken type endring det er. Disse er tillatt:
 
-  - `feat`: Legger til ny funksjonalitet
+  - `feat`: Ny funksjonalitet
   - `fix`: Fikser en feil
   - `chore`: Oppgaver som ikke endrer kode (f.eks. oppdatering av verktøy)
   - `docs`: Endringer i dokumentasjon
 
-- **scope** (valgfritt): Beskriver hvor i prosjektet endringen er gjort. Eksempler:
+- **scope**: Beskriver hvor i prosjektet endringen er gjort. Valgfri.
 
-  - `auth`: Endringer relatert til autentisering
-  - `ui`: Endringer i brukergrensesnittet
-
-- **beskrivelse**: En kortfattet, imperativ beskrivelse av hva endringen gjør. Den skal være på én linje og beskrive hva koden gjør etter endringen. For eksempel: "Legg til validering for e-postadresse."
+- **beskrivelse**: En kortfattet, imperativ beskrivelse av hva endringen gjør. Den skal være på én linje og beskrive hva koden gjør etter endringen.
 
 #### Eksempler på commit-meldinger
 
-- feat(auth): legg til støtte for 2-faktor autentisering fix(ui): rettet layout-feil på forsiden
-- docs: oppdatert README med nye installasjonsinstruksjoner
+- fix(nve-icon): Standardstørrelse satt til 24px
+- feat(nve-step): Nytt attributt, hideStep for å skjule et steg
+- docs: Nye installasjonsinstruksjoner i README
 
 For mer informasjon om standarden, kan du lese mer på [Conventional Commits.](https://www.conventionalcommits.org/en/v1.0.0/)
 
 #### PR-sjekk før merging til main
 
-Tittelen på PR-en må oppfylle **Conventional Commits**-standarden. Dette blir automatisk validert som en del av en PR-sjekk.
+Tittelen blir automatisk validert som en del av en PR-sjekk.
 
 #### Verktøy for å følge standarden
 
@@ -77,44 +76,50 @@ npx cz
 
 2. VS Code-utvidelse: Hvis du bruker Visual Studio Code, kan du installere utvidelsen [VS Code Conventional Commits](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits) for å sikre at commit-meldinger følger standarden. Etter at du har installert tillegget, kan du klikke på den runde sirkelen til høyre for Source Control for att gjøre en commit.
 
-## Changelog
+## Versjonslogg
 
-Changelog-filene genereres automatisk basert på commit-meldingene dine og blir synlige i [release-notatene](https://github.com/NVE/Designsystem/releases) på GitHub.
+`CHANGELOG.md` genereres automatisk basert på commit-meldingene som går inn main-branchen og blir synlige i [versjonsloggen](https://github.com/NVE/Designsystem/releases) på GitHub.
 
 ### Betingelser for Semantic Release
 
-Merk at `semantic-release` stiller visse betingelser før oppdatering av changeloggen. For at en endring skal registreres i changelogen, må følgende krav være oppfylt:
+Merk at `semantic-release` stiller visse betingelser før oppdatering av versjonsloggen. For at en endring skal registreres i versjonsloggen, må følgende krav være oppfylt:
 
 - Commit-typen må være en av følgende:
+
   - `BREAKING CHANGE`: Introduserer en endring som bryter bakoverkompatibiliteten
-  - `feat`: Legger til en ny funksjonalitet
-  - `fix`: Retter en feil
-  - `perf`: Forbedrer ytelsen
+  - `feat`: Ny funksjonalitet
+  - `fix`: Fikser en feil
+  - `chore`: Oppgaver som ikke endrer kode (f.eks. oppdatering av verktøy)
+  - `docs`: Endringer i dokumentasjon
+
 - Endringen må ha skjedd i en av følgende mappespesifikasjoner:
   - `src/**`
   - `build/**`
   - `public/css/**`
 
 ## Automatiske oppdateringer med Dependabot
+
 Vi bruker **Dependabot** for å automatisk opprette pull requests når det finnes oppdateringer av avhengigheter eller sikkerhetsfikser i vår `package.json`.  
 Konfigurasjonen for Dependabot ligger i: .github/dependabot.yml
 
 Når Dependabot oppretter en pull request, genereres det automatisk et **forhåndsvisningsmiljø** av nettsiden via **Azure Static Web Apps**. Dette lar deg enkelt sjekke hvordan endringene påvirker dokumentasjonsappen.
 
 ### Slik finner du lenken til forhåndsvisningen:
+
 1. Gå inn i den aktuelle pull requesten.
 2. Klikk på fanen **Checks**.
 3. Velg jobben **"Bygg og installasjon av dok-app i skyen"**.
 4. Gå til steget **"Installer dokumentasjons-nettsted"**.
-5. Se etter linjen som inneholder:  Visit your site at: https://...
+5. Se etter linjen som inneholder: Visit your site at: https://...
 6. Klikk på lenken for å åpne den midlertidige versjonen av nettstedet.
 
 Merk: Lenken vises **ikke automatisk som en kommentar** i PR-en.  
 Dette skyldes at Dependabot, av sikkerhetsgrunner, ikke har tillatelse til å poste kommentarer via GitHub Actions. Derfor kan du se følgende feilmelding i loggene:
+
 ```
 Unexpectedly failed to add GitHub comment.
 ```
-   
+
 ## Oppretting av en ny komponent og mappestruktur
 
 <em>Alle komponenters navn skal starte med `nve-`. Bruk det samme navnet som komponenten får i html. Kun små bokstaver og bindestrek er tillatt i navnet.</em>
