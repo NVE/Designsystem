@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeMount, onMounted, ref, watch } from 'vue';
+import { onBeforeMount, ref, watch } from 'vue';
 import { useCurrentTheme, Theme, themeLocalStorageVariable } from '../composables/useCurrentTheme';
 import useClickOutside from '../composables/useClickOutside';
 
@@ -62,7 +62,7 @@ watch(isClickOutside, (newValue) => {
   }
 });
 
-watch(currentTheme, (newValue, oldValue) => {
+watch(currentTheme, (newValue) => {
   image.value = `/assets/${newValue}-logo.svg`;
 });
 
