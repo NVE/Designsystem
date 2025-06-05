@@ -106,9 +106,9 @@ Bruk `saturation="emphasized"` for å få litt mørkere bakgrunnsfarge.
 
 </CodeExamplePreview>
 
-### Tittel og tekst
+### Overskrift og tekst
 
-Du kan bruke `label` for å lage en slags overskrift. Resten av teksten kan enten ligge i `text` eller inni elementet.
+Du kan bruke `label` for å lage en overskrift. Resten av teksten kan enten ligge i `text` eller inni elementet.
 
 <CodeExamplePreview arrangeComponentsVertically>
 
