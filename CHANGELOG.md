@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/NVE/Designsystem/compare/v1.8.0...v1.9.0) (2025-06-05)
+
+
+### Features
+
+* **mange-elementer:** fjern titel property i nve-alert, nve-stepper, nve-message-card,nve-link-card ([#541](https://github.com/NVE/Designsystem/issues/541)) ([c6eaad4](https://github.com/NVE/Designsystem/commit/c6eaad4abe86b9ab834adeb9d62fcf761477af3f))
+
 # [1.8.0](https://github.com/NVE/Designsystem/compare/v1.7.0...v1.8.0) (2025-06-05)
 
 
