@@ -13,5 +13,8 @@
   "devDependencies": {
     "@octokit/request": "^9.2.0",
     "vitepress": "^1.6.1"
+  },
+  "dependencies": {
+    "@nve-org/vue-components": "^1.5.0"
   }
 }

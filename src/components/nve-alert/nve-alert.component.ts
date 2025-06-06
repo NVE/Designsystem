@@ -13,8 +13,10 @@ export default class NveAlert extends SlAlert {
   constructor() {
     super();
   }
-  /** Tykk tekst, vises helt til venstre */
-  @property({ reflect: true }) title: string = '';
+  /**
+   * Tykk tekst, vises helt til venstre¨
+   *  */
+  @property({ reflect: true }) label: string = '';
   /** Tynnere beskrivelse tekst */
   @property({ reflect: true }) text: string = '';
   /** Bestemmer sterkere bakgrunnsfarge */
@@ -29,11 +31,24 @@ export default class NveAlert extends SlAlert {
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    if (changedProperties.has('title')) {
-      this.style.setProperty('--nve-alert-title', `"${this.title}"`);
+    if (changedProperties.has('label')) {
+      this.style.setProperty('--nve-alert-label', `"${this.label}"`);
     }
     if (changedProperties.has('text')) {
-      this.style.setProperty('--nve-alert-text', `"${this.text}"`);
+      const hasContentInSlot =
+        (this.base.querySelector('.alert__message slot') as HTMLSlotElement)
+          ?.assignedNodes()
+          .map((n) => n.textContent?.trim())
+          .filter((n) => (n ?? '')?.length > 0).length > 0;
+      const hasHtmlNodesInSlot =
+        (this.base.querySelector('.alert__message slot') as HTMLSlotElement)
+          ?.assignedNodes()
+          .filter((n) => n.childNodes.length > 0).length > 0;
+      if (hasContentInSlot || hasHtmlNodesInSlot) {
+        this.style.setProperty('--nve-alert-text', '""');
+      } else {
+        this.style.setProperty('--nve-alert-text', `"${this.text}"`);
+      }
     }
   }
 }

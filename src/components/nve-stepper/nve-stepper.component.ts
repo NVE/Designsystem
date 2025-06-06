@@ -39,6 +39,9 @@ export interface INveStepper {
 
   /** Angir om stateText skal skjules for alle trinn */
   hideStateText?: boolean;
+
+  /** Skjuler beskrivelser for alle trinn */
+  hideDescriptions?: boolean;
 }
 
 /** Funksjon for å sjekke om enheten er en mobil enhet */
@@ -47,8 +50,8 @@ function isMobileDevice(): boolean {
 }
 /**
  * En stepper-komponent brukes for å bryte ned en kompleks prosess i flere mindre, håndterbare trinn.
- * Hver trinn representerer en del av prosessen og brukeren kan navigere frem og tilbake mellom trinnene. 
- * Dette gir en strukturert og intuitiv måte å fullføre flertrinnsoppgaver på, som for eksempel skjemaer eller registreringsprosesser. 
+ * Hver trinn representerer en del av prosessen og brukeren kan navigere frem og tilbake mellom trinnene.
+ * Dette gir en strukturert og intuitiv måte å fullføre flertrinnsoppgaver på, som for eksempel skjemaer eller registreringsprosesser.
  * Steppers kan være enten horisontale eller vertikale, og kan tilpasses med valideringslogikk og egne knapper.
  */
 @customElement('nve-stepper')
@@ -79,12 +82,15 @@ export default class NveStepper extends LitElement {
   @property({ type: Boolean })
   displayMobileVersion: boolean = false;
 
-   /** Angir om stateText skal skjules for alle trinn */
+  /** Angir om stateText skal skjules for alle trinn */
   @property({ type: Boolean })
   hideStateText: boolean = false;
 
-  private selectedStepIndex: { value: number } = { value: 0 };
+  /** Skjuler beskrivelser for alle trinn */
+  @property({ type: Boolean })
+  hideDescriptions: boolean = false;
 
+  private selectedStepIndex: { value: number } = { value: 0 };
 
   /**
    * Ved endring av props, re-render komponenten eksternt med document.querySelector("nve-stepper")?.reRender();
@@ -95,8 +101,6 @@ export default class NveStepper extends LitElement {
   reRender(): void {
     this.requestUpdate();
   }
-
-
 
   /** Metode som kjøres første gang komponenten er lagt til i DOM */
   firstUpdated(): void {
@@ -137,35 +141,33 @@ export default class NveStepper extends LitElement {
   }
 
   /** Metode for å hente den gjeldende indeksen */
-    getCurrentIndex(): number {
-      return this.selectedStepIndex.value;
+  getCurrentIndex(): number {
+    return this.selectedStepIndex.value;
   }
-  
 
   private setStep(index: number): void {
-
     if (this.steps[index].readyForEntrance) {
-        this.selectedStepIndex.value = index;
+      this.selectedStepIndex.value = index;
 
-       // Oppdater status og valg for alle trinn
-        for (let i = 0; i < this.steps.length; i++) {
-            if (i < index) {
-                // Alle trinn under indeks er satt til Done
-                this.steps[i].state = StepState.Done;
-            } else if (i === index) {
-                // Steget ved indeks er satt til Active
-                this.steps[i].state = StepState.Active;
-            } else if (this.steps[i].state !== StepState.NotStarted) {
-                // Alle trinn over indeksen som ikke er NotStarted er satt til Started
-                this.steps[i].state = StepState.Started;
-            }
-
-            this.steps[i].isSelected = i === index;
+      // Oppdater status og valg for alle trinn
+      for (let i = 0; i < this.steps.length; i++) {
+        if (i < index) {
+          // Alle trinn under indeks er satt til Done
+          this.steps[i].state = StepState.Done;
+        } else if (i === index) {
+          // Steget ved indeks er satt til Active
+          this.steps[i].state = StepState.Active;
+        } else if (this.steps[i].state !== StepState.NotStarted) {
+          // Alle trinn over indeksen som ikke er NotStarted er satt til Started
+          this.steps[i].state = StepState.Started;
         }
 
-        this.steps = [...this.steps];
+        this.steps[i].isSelected = i === index;
+      }
+
+      this.steps = [...this.steps];
     }
-}
+  }
 
   private getExtremes(): string | undefined {
     if (this.selectedStepIndex.value === 0) return 'start';
@@ -182,51 +184,42 @@ export default class NveStepper extends LitElement {
     }
   }
 
-
   private handleMobilePrevStep(): void {
     this.prevStep();
   }
 
   private renderBackButton(): TemplateResult | string {
-    return this.hideStepButtons ? '' : html`
-      <nve-button
-        .disabled=${this.getExtremes() === 'start'}
-        size="medium"
-        variant="primary"
-        @click=${this.prevStep}
-      >
-        <nve-icon slot="prefix" name="navigate_before"></nve-icon>
-        Forrige
-      </nve-button>
-    `;
+    return this.hideStepButtons
+      ? ''
+      : html`
+          <nve-button
+            .disabled=${this.getExtremes() === 'start'}
+            size="medium"
+            variant="primary"
+            @click=${this.prevStep}
+          >
+            <nve-icon slot="prefix" name="navigate_before"></nve-icon>
+            Forrige
+          </nve-button>
+        `;
   }
 
   private isOrientationVertical(): boolean {
     return this.orientation === 'vertical';
   }
 
-
   private renderForwardButton(): TemplateResult | string {
     if (this.hideStepButtons) return '';
     if (this.getExtremes() === 'end') {
       return html`
-        <nve-button
-          size="medium"
-          variant="primary"
-          @click=${this.finishSteps}
-        >
+        <nve-button size="medium" variant="primary" @click=${this.finishSteps}>
           <nve-icon slot="suffix" name="done"></nve-icon>
           ${this.endButtonText}
         </nve-button>
       `;
     }
     return html`
-      <nve-button
-        .disabled=${this.getExtremes() === 'end'}
-        size="medium"
-        variant="primary"
-        @click=${this.nextStep}
-      >
+      <nve-button .disabled=${this.getExtremes() === 'end'} size="medium" variant="primary" @click=${this.nextStep}>
         <nve-icon slot="suffix" name="navigate_next"></nve-icon>
         Neste
       </nve-button>
@@ -234,12 +227,9 @@ export default class NveStepper extends LitElement {
   }
 
   private renderVerticalButtons(): TemplateResult | string {
-    return this.hideStepButtons ? '' : html`
-      <div class="vertical-btn-container">
-        ${this.renderBackButton()}
-        ${this.renderForwardButton()}
-      </div>
-    `;
+    return this.hideStepButtons
+      ? ''
+      : html` <div class="vertical-btn-container">${this.renderBackButton()} ${this.renderForwardButton()}</div> `;
   }
 
   /** Hoved render-metode */
@@ -258,12 +248,12 @@ export default class NveStepper extends LitElement {
 
     return html`
       <div class="stepper ${this.orientation}">
-        ${this.isOrientationVertical() ? "" : this.renderBackButton()}
+        ${this.isOrientationVertical() ? '' : this.renderBackButton()}
         <div class="steps-container ${this.orientation}  ${this.hideStepButtons ? '' : 'steps-container-with-buttons'}">
           ${this.steps.map(
             (step, index) => html`
               <nve-step
-                .title=${step.title}
+                .label=${step.label}
                 .description=${step.description}
                 .state=${step.state}
                 .selectedStepIndex=${this.selectedStepIndex.value}
@@ -273,13 +263,14 @@ export default class NveStepper extends LitElement {
                 .readyForEntrance=${step.readyForEntrance}
                 .orientation=${this.orientation}
                 .hideStateText=${this.hideStateText}
+                .hideDescriptions=${this.hideDescriptions}
               >
               </nve-step>
             `
           )}
         </div>
-        ${this.isOrientationVertical() ? "" : this.renderForwardButton()}
-        ${this.isOrientationVertical() ? this.renderVerticalButtons() : ""}
+        ${this.isOrientationVertical() ? '' : this.renderForwardButton()}
+        ${this.isOrientationVertical() ? this.renderVerticalButtons() : ''}
       </div>
     `;
   }

@@ -54,7 +54,7 @@ Man kan bruke `src`. Med definert `src` vil `nve-icon` bruke `<img>-taggen` bak 
 
 `name` og `library` brukes ikke når `src` er definert. Man kan fortsatt bruke `--icon-size`, men bruk av `font-size` css property skal ikke fungere.
 
-<nve-message-card variant="warning" title="Obs!">
+<nve-message-card variant="warning" label="Obs!">
 Selv om vi støtter bruk av ikoner direkte fra egen repo, det anbefales sterkt å bruke Material Symboler der
 hvor det er mulig. 
 </nve-message-card>

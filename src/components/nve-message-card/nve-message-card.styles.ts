@@ -36,12 +36,14 @@ export default css`
   }
 
   /* tittelen blir kuttet hvis for langt i utgangspunktet */
-  .message-card__header-title {
+  .message-card__header-label {
     display: flex;
     align-items: center;
     gap: 8px;
     width: 100%;
-    font: var(--label-large);
+    padding: 2px 0;
+    font: var(--header-small);
+    line-height: 140%;
     :is(span) {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -50,7 +52,7 @@ export default css`
   }
 
   .message-card__body {
-    font: var(--body-medium);
+    font: var(--body-large);
   }
 
   .message-card__close-btn {
@@ -75,7 +77,7 @@ export default css`
 
   nve-icon::part(icon) {
     display: unset;
-    font-size: 24px;
+    font-size: 22px;
   }
 
   /** Varianter */
@@ -166,11 +168,20 @@ export default css`
     gap: var(--spacing-x-small);
   }
 
-  :host([size='simple']) .message-card__header-title {
-    font: var(--label-small-light);
+  :host([size='compact']) .message-card__header-label {
+    font: var(--label-medium);
   }
 
-  :host([size='simple']) nve-icon::part(icon) {
+  :host([size='simple']) .message-card__header-label {
+    font: var(--label-medium-light);
+  }
+
+  :host([size='compact']) .message-card__body {
+    font: var(--body-small);
+  }
+
+  :host([size='simple']) nve-icon::part(icon),
+  :host([size='compact']) nve-icon::part(icon) {
     font-size: 20px;
   }
 `;

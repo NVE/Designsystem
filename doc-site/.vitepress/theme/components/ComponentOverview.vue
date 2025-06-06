@@ -3,7 +3,7 @@
   <div style="padding-top: 2rem"></div>
 
   <nve-message-card
-    title="Merk saker og PR'er i Github med komponentnavn for å se dem her"
+    label="Merk saker og PR'er i Github med komponentnavn for å se dem her"
     size="simple"
   ></nve-message-card>
 
@@ -132,9 +132,10 @@ const props = defineProps<{
   componentStatuses: ComponentStatus[];
 }>();
 
-props.componentStatuses.sort((a, b) => a.name.localeCompare(b.name));
-
 const searchQuery = ref('');
+const sortedComponentStatuses = computed(() =>
+  [...props.componentStatuses].sort((a, b) => a.name.localeCompare(b.name))
+);
 
 const onInput = (event: Event) => {
   const target = event.target as HTMLInputElement;
@@ -143,7 +144,7 @@ const onInput = (event: Event) => {
 
 const filteredComponents = computed(() => {
   const searchLower = searchQuery.value.toLowerCase();
-  return props.componentStatuses.filter((component) => component.name.toLowerCase().includes(searchLower));
+  return sortedComponentStatuses.value.filter((component) => component.name.toLowerCase().includes(searchLower));
 });
 
 const linkToFigmaComponent = (figmaId: string) => {

@@ -1,13 +1,12 @@
 import * as path from 'path';
-import { customElementJetBrainsPlugin } from 'custom-element-jet-brains-integration';
 import { customElementVsCodePlugin } from 'custom-element-vs-code-integration';
 import { customElementVuejsPlugin } from 'custom-element-vuejs-integration';
-import { cemInheritancePlugin } from 'custom-elements-manifest-inheritance';
+import { cemInheritancePlugin } from '@wc-toolkit/cem-inheritance';
 import { parse } from 'comment-parser';
 import { pascalCase } from 'pascal-case';
 import commandLineArgs from 'command-line-args';
 import fs from 'fs';
-import externalCEM from '@shoelace-style/shoelace/dist/custom-elements.json' assert { type: 'json' };
+import externalCEM from '@shoelace-style/shoelace/dist/custom-elements.json' with { type: 'json' };
 
 const packageData = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const { name, description, version, author, homepage, license } = packageData;
@@ -197,20 +196,7 @@ export default {
     //     },
     //   ],
     // }),
-    // TODO: Kommentert ut fordi vi får denne feilen:
-    // [custom-element-jet-brains-integration]: Looks like you've hit an error in third party plugin: custom-element-jet-brains-integration. Please try to create a minimal reproduction and inform the author of the custom-element-jet-brains-integration plugin.
-    // TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of Promise
-    // customElementJetBrainsPlugin({
-    //   outdir: './dist',
-    //   excludeCss: true,
-    //   packageJson: false,
-    //   referencesTemplate: (_, tag) => {
-    //     return {
-    //       name: 'Documentation',
-    //       url: `https://designsystem.nve.no/components/${tag}`,
-    //     };
-    //   },
-    // }),
+
     // TODO: Kommentert ut fordi vi får denne feilen:
     // TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of Promise
     // customElementVuejsPlugin({

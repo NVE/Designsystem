@@ -13,14 +13,14 @@ export enum StepState {
 
 /** Interface for å definere egenskapene til et steg */
 export interface StepProps {
-  title: string;
+  label: string;
   description?: string;
   state: StepState;
   isSelected: boolean;
   readyForEntrance: boolean;
   orientation?: string;
   hideStateText?: boolean;
-  
+  hideDescriptions?: boolean;
 }
 
 /** Komponent for et enkelt steg i en stepper */
@@ -28,8 +28,7 @@ export interface StepProps {
 export default class NveStep extends LitElement {
   /** Tittel på steget */
   @property({ reflect: true })
-  title: string = '';
-
+  label: string = '';
 
   /** Indeks for steget */
   @property({ type: Number })
@@ -37,7 +36,7 @@ export default class NveStep extends LitElement {
 
   /** Beskrivelse av steget */
   @property({ type: String })
-  description: string = '';
+  description?: string;
 
   /**
    * Stegets tilstand: Ikke startet, påbegynt, fullført eller feilet
@@ -62,7 +61,6 @@ export default class NveStep extends LitElement {
   @property({ type: Boolean })
   entranceAllowed: boolean = false;
 
-
   /** Retningen stegene skal gå i: horisontal eller vertikal */
   @property()
   orientation: 'horizontal' | 'vertical' = 'horizontal';
@@ -70,6 +68,10 @@ export default class NveStep extends LitElement {
   /** Angir om stateText skal skjules */
   @property({ type: Boolean })
   hideStateText: boolean = false;
+
+  /** Angir om beskrivelser skal skjules */
+  @property({ type: Boolean })
+  hideDescriptions: boolean = false;
 
   /** Brukes for å justere høyden for den vertikale skilleveggen blir så høy som nær Step har en description. */
   @query('.step-description')
@@ -82,7 +84,6 @@ export default class NveStep extends LitElement {
 
   /** Metode som kjøres hver gang komponentens oppdateres */
   updated(): void {
-
     if (this.isOrientationVertical()) {
       this.updateVerticalDividerHeight();
     }
@@ -96,7 +97,6 @@ export default class NveStep extends LitElement {
     return this.orientation === 'vertical';
   }
 
-
   private iconForState(state: StepState): string {
     let icon = '';
     switch (state) {
@@ -106,7 +106,7 @@ export default class NveStep extends LitElement {
       case StepState.Active:
         icon = 'radio_button_checked';
         break;
-        
+
       case StepState.Started:
         icon = 'trip_origin';
         break;
@@ -140,7 +140,6 @@ export default class NveStep extends LitElement {
     }
   }
 
-
   private getStateColorClass(state: StepState): string {
     switch (state) {
       case StepState.NotStarted:
@@ -156,7 +155,7 @@ export default class NveStep extends LitElement {
     }
   }
 
-  private getTitleClass(state: StepState): string {
+  private getLabelClass(state: StepState): string {
     switch (state) {
       case StepState.NotStarted:
         return 'state-not-started-color';
@@ -184,32 +183,52 @@ export default class NveStep extends LitElement {
     return this.index < this.selectedStepIndex ? 'divider-reached-color' : 'divider-not-reached-color';
   }
 
-
   private renderDivider(): TemplateResult | string {
     const dividerClass = this.isOrientationVertical() ? 'divider-vertical' : 'divider-horizontal';
     return this.isLast
       ? ''
-      : html`
-          <div class="vertical-divider-container">
-          <div
-          class="${dividerClass} ${this.getDividerColorClass()}"
-        ></div>
+      : html` <div class="vertical-divider-container">
+          <div class="${dividerClass} ${this.getDividerColorClass()}"></div>
         </div>`;
   }
 
   private renderDescription(): TemplateResult | string {
-    return this.isDescriptionValid(this.description) ? html`<div class="step-description ${this.orientation === 'vertical' ? 'step-description-max-width-vertical' : 'step-description-max-width-horizontal'}">${this.description}</div>` : '';
+    if (!this.isDescriptionValid(this.description)) {
+      // Return an empty div with min-height to maintain spacing when no description
+      return html`<div
+        class="step-description empty-description ${this.orientation === 'vertical'
+          ? 'step-description-max-width-vertical'
+          : 'step-description-max-width-horizontal'}"
+      ></div>`;
+    }
+    return html`<div
+      class="step-description ${this.orientation === 'vertical'
+        ? 'step-description-max-width-vertical'
+        : 'step-description-max-width-horizontal'}"
+    >
+      ${this.description}
+    </div>`;
   }
 
-  private isDescriptionValid(description:string): boolean { 
-    return description.trim().length > 0;
+  private isDescriptionValid(description: string | undefined): boolean {
+    // Simplify this expression for clarity
+    return !!description && description?.trim().length > 0 === true;
   }
 
   /** Brukes for beregning av riktig høyde før divider. Description elementet har padding, så høyden før divider var for kort, så bruk denne funksjonen for regner ut riktig høyde. */
   private updateVerticalDividerHeight(): void {
-    const TRIP_ORIGIN_ICON_HEIGHT = 24; 
-    const descriptionHeight = this.descriptionElement.offsetHeight + TRIP_ORIGIN_ICON_HEIGHT;
-    const dividerElement = this.shadowRoot!.querySelector('.vertical-divider-container .divider-vertical') as HTMLElement;
+    const TRIP_ORIGIN_ICON_HEIGHT = 24;
+    const DEFAULT_HEIGHT = TRIP_ORIGIN_ICON_HEIGHT + 10; // Default height if no description
+
+    let descriptionHeight = DEFAULT_HEIGHT;
+    // Only then try to access the element in the DOM
+    if (this.descriptionElement) {
+      descriptionHeight = this.descriptionElement.offsetHeight + TRIP_ORIGIN_ICON_HEIGHT;
+    }
+
+    const dividerElement = this.shadowRoot!.querySelector(
+      '.vertical-divider-container .divider-vertical'
+    ) as HTMLElement;
     if (dividerElement) {
       dividerElement.style.height = `${descriptionHeight}px`;
     }
@@ -219,44 +238,40 @@ export default class NveStep extends LitElement {
     return html`
       <div class="vertical-container">
         <div class="step-figure-vertical">
-          <div
-            class=" ${this.getIconClass(this.state)}"
-          >
+          <div class=" ${this.getIconClass(this.state)}">
             <nve-icon slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
           </div>
           ${this.renderDivider()}
         </div>
         <div class="text-container-vertical">
-          <div class="step-title step-title-vertical ${this.getTitleClass(this.state)}">${this.title}</div>
+          <div class="step-label step-label-vertical ${this.getLabelClass(this.state)}">${this.label}</div>
           <div class="step-state ${this.getStateColorClass(this.state)}">
             ${this.hideStateText ? '' : this.getStateText(this.state)}
           </div>
-          <div>       
-          ${this.renderDescription()}
-          </div>
+          <div>${this.hideDescriptions ? '' : this.renderDescription()}</div>
         </div>
       </div>
     `;
   }
 
   render(): TemplateResult {
-    return this.isOrientationVertical() ? this.renderVerticalStep() : html`
-        <div class="step-figure">
-          <span
-            class=" ${this.getIconClass(this.state)}"
-          >
-            <nve-icon  slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
-          </span>
-          ${this.renderDivider()}
-        </div>
-        <div class="${this.isLast ? "" : "text-container"}">
-          <div class="step-title ${this.getTitleClass(this.state)}">${this.title}</div>
-          <div class="step-state ${this.getStateColorClass(this.state)}">
-          ${this.hideStateText ? '' : this.getStateText(this.state)}
-          </div>       
-          ${this.renderDescription()}
-        </div>
-    `;
+    return this.isOrientationVertical()
+      ? this.renderVerticalStep()
+      : html`
+          <div class="step-figure">
+            <span class=" ${this.getIconClass(this.state)}">
+              <nve-icon slot="suffix" name="${this.iconForState(this.state)}"></nve-icon>
+            </span>
+            ${this.renderDivider()}
+          </div>
+          <div class="${this.isLast ? '' : 'text-container'}">
+            <div class="step-label ${this.getLabelClass(this.state)}">${this.label}</div>
+            <div class="step-state ${this.getStateColorClass(this.state)}">
+              ${this.hideStateText ? '' : this.getStateText(this.state)}
+            </div>
+            ${this.hideDescriptions ? '' : this.renderDescription()}
+          </div>
+        `;
   }
 }
 

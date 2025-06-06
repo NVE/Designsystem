@@ -44,7 +44,7 @@ export default css`
     width: 100%;
   }
 
-  .step-title {
+  .step-label {
     color: var(--neutrals-foreground-primary, #0d0d0e);
 
     /* Label/medium */
@@ -76,6 +76,11 @@ export default css`
     font-weight: 400;
     line-height: 110%;
     padding-top: 0.625rem; /*10px; */
+  }
+
+  .empty-description {
+    min-height: 1rem; /* Set a minimum height for empty descriptions */
+    padding-top: 0.625rem; /* Match the padding of regular descriptions */
   }
 
   .step-description-max-width-vertical {
@@ -163,7 +168,7 @@ export default css`
     flex: 10;
   }
 
-  .step-title-vertical {
+  .step-label-vertical {
     padding-top: 0;
     align-self: flex-start;
   }

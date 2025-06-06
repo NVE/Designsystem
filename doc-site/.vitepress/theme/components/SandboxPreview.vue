@@ -20,7 +20,7 @@ watch(
   [() => slot.value?.textContent, () => currentTheme.value],
   async ([newVal, newTheme]) => {
     if (!newVal) return;
-    const text = newVal.replace('vue', '').replace(/\n/g, '\\n').replace(/\t/g, '\\t');
+
     await fetch('https://codesandbox.io/api/v1/sandboxes/define?json=1', {
       method: 'POST',
       headers: {
@@ -43,6 +43,7 @@ const sandboxUrl = computed(() => {
 
 // Codesandbox vue prosjekt oppsette. Kjøres via vue cli. Klarte ikke å kjøre vite script setup malen i codesandbox.
 // TODO: Ikke hardkode versjonsnummer til nve-designsystem
+// eslint-disable-next-line max-lines-per-function
 const sandboxDefinition = (content: string, theme: Theme) => ({
   files: {
     'package.json': {

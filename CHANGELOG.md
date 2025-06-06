@@ -1,3 +1,73 @@
+## [2.0.1](https://github.com/NVE/Designsystem/compare/v2.0.0...v2.0.1) (2025-06-05)
+
+
+### Bug Fixes
+
+* **nve-alert:** fikse kommentar for å publisere riktig versjon 2.0.1 siden 2.0.0 feiler ([90dfb3b](https://github.com/NVE/Designsystem/commit/90dfb3bbf853e0c74b69188ea50208cdef5d9ae3))
+
+# [2.0.0](https://github.com/NVE/Designsystem/compare/v1.9.0...v2.0.0) (2025-06-05)
+
+
+* feat!: fjerne title attribute i komponenter ([#542](https://github.com/NVE/Designsystem/issues/542)) ([6d6ebdb](https://github.com/NVE/Designsystem/commit/6d6ebdb3d25213f755546ee70656674bbfafa9fb))
+
+
+### BREAKING CHANGES
+
+* Fjerne title attribtue fra komponenter. Dette er et reservert ord.
+
+# [1.9.0](https://github.com/NVE/Designsystem/compare/v1.8.0...v1.9.0) (2025-06-05)
+
+
+### Features
+
+* **mange-elementer:** fjern titel property i nve-alert, nve-stepper, nve-message-card,nve-link-card ([#541](https://github.com/NVE/Designsystem/issues/541)) ([c6eaad4](https://github.com/NVE/Designsystem/commit/c6eaad4abe86b9ab834adeb9d62fcf761477af3f))
+
+# [1.8.0](https://github.com/NVE/Designsystem/compare/v1.7.0...v1.8.0) (2025-06-05)
+
+
+### Features
+
+* **npm-link:** legge til npm-link med auto reload ([#531](https://github.com/NVE/Designsystem/issues/531)) ([80f1b4c](https://github.com/NVE/Designsystem/commit/80f1b4ccec7d7d7f4162724ec93afe4d028745d5))
+
+# [1.7.0](https://github.com/NVE/Designsystem/compare/v1.6.6...v1.7.0) (2025-06-04)
+
+
+### Features
+
+* Oppdaterade eslint til v9 og la til Husky for auto lint vid commit ([#521](https://github.com/NVE/Designsystem/issues/521)) ([325893d](https://github.com/NVE/Designsystem/commit/325893dbf4a1c3566e787cd68ac12341f565eb1f))
+
+## [1.6.6](https://github.com/NVE/Designsystem/compare/v1.6.5...v1.6.6) (2025-05-21)
+
+
+### Bug Fixes
+
+* En del småendringer og bugfikser på nve-alert ([#519](https://github.com/NVE/Designsystem/issues/519)) ([c8df7e7](https://github.com/NVE/Designsystem/commit/c8df7e7c5fb7e5d7917259d50255c3041fc67eb9))
+* Kan nå bygge med node 22 ([#514](https://github.com/NVE/Designsystem/issues/514)) ([a793de5](https://github.com/NVE/Designsystem/commit/a793de50369312297e51352956c6f31c6b8e3883))
+
+## [1.6.5](https://github.com/NVE/Designsystem/compare/v1.6.4...v1.6.5) (2025-05-21)
+
+
+### Bug Fixes
+
+* **stepper:** 511 stepper skjuling av description for et steg fungerer ikke ([#512](https://github.com/NVE/Designsystem/issues/512)) ([0586dc8](https://github.com/NVE/Designsystem/commit/0586dc820a71faa612783ac7db5d34e9f858854e))
+
+## [1.6.4](https://github.com/NVE/Designsystem/compare/v1.6.3...v1.6.4) (2025-04-28)
+
+
+### Bug Fixes
+
+* **nve-message-card:** endret tekststørrelse slik de matcher designskisser ([#500](https://github.com/NVE/Designsystem/issues/500)) ([68b2eb9](https://github.com/NVE/Designsystem/commit/68b2eb919c1ad29fada6e21fc0e5e494a17eb6ca))
+* **vite:** Bump vite from 5.4.16 to 5.4.18 in /doc-site ([#498](https://github.com/NVE/Designsystem/issues/498)) ([e6e1ca2](https://github.com/NVE/Designsystem/commit/e6e1ca232c90ab32aa542e99e6de36cbf26aa0be))
+* **vite:** Bump vite from 6.2.4 to 6.2.5 ([#493](https://github.com/NVE/Designsystem/issues/493)) ([853b959](https://github.com/NVE/Designsystem/commit/853b959e3adfd2c662792ff41a6c33f8fc50735a))
+
+## [1.6.3](https://github.com/NVE/Designsystem/compare/v1.6.2...v1.6.3) (2025-04-10)
+
+
+### Bug Fixes
+
+* Bump vite to 6.2.4 ([#489](https://github.com/NVE/Designsystem/issues/489)) ([cf579f4](https://github.com/NVE/Designsystem/commit/cf579f4ba626f19e220c8c0d0cd382e0f142b59c))
+* Oppgradert esbuild og vite ([#486](https://github.com/NVE/Designsystem/issues/486)) ([4a5bda2](https://github.com/NVE/Designsystem/commit/4a5bda2578f069f08c263fdcb7b09fa51990c2de))
+
 ## [1.6.2](https://github.com/NVE/Designsystem/compare/v1.6.1...v1.6.2) (2025-03-24)
 
 

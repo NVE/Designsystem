@@ -5,8 +5,8 @@ layout: component
 <CodeExamplePreview>
 
 ```html
-<nve-message-card title="Dette er et kort">Bruk meg med glede</nve-message-card>
-<nve-message-card title="NVE avdelinger">
+<nve-message-card label="Dette er et kort">Bruk meg med glede</nve-message-card>
+<nve-message-card label="NVE avdelinger">
   <ul>
     <li>RME</li>
     <li>EK</li>
@@ -30,12 +30,12 @@ Bruk `variant` for å velge farge. `primary` er standard.
 <CodeExamplePreview>
 
 ```html
-<nve-message-card title="Tittel">Primary</nve-message-card>
+<nve-message-card label="Tittel">Primary</nve-message-card>
 <!-- Box-shadow stil på den nøytrale varianten på grunn av lik farger med bakgrunnen i kodeforhåndsvisningen -->
-<nve-message-card style="box-shadow:var(--dropdown)" variant="neutral" title="Tittel">Neutral</nve-message-card>
-<nve-message-card variant="warning" title="Tittel">Warning</nve-message-card>
-<nve-message-card variant="danger" title="Tittel">Danger</nve-message-card>
-<nve-message-card variant="success" title="Tittel">Success</nve-message-card>
+<nve-message-card style="box-shadow:var(--dropdown)" variant="neutral" label="Tittel">Neutral</nve-message-card>
+<nve-message-card variant="warning" label="Tittel">Warning</nve-message-card>
+<nve-message-card variant="danger" label="Tittel">Danger</nve-message-card>
+<nve-message-card variant="success" label="Tittel">Success</nve-message-card>
 ```
 
 </CodeExamplePreview>
@@ -48,9 +48,9 @@ Forskjellen mellom `compact` og `simple` er at `simple` viser kun tittel og ikon
 <CodeExamplePreview>
 
 ```html
-<nve-message-card title="Default">Størrelsen på kortet</nve-message-card>
-<nve-message-card size="compact" title="Compact">Størrelsen på kortet</nve-message-card>
-<nve-message-card size="simple" title="Simple">Størrelsen på kortet</nve-message-card>
+<nve-message-card label="Default">Størrelsen på kortet</nve-message-card>
+<nve-message-card size="compact" label="Compact">Størrelsen på kortet</nve-message-card>
+<nve-message-card size="simple" label="Simple">Størrelsen på kortet</nve-message-card>
 ```
 
 </CodeExamplePreview>
@@ -62,11 +62,11 @@ Bruk `saturation="emphasized"` for å vise sterkere bakgrunnsfarge.
 <CodeExamplePreview>
 
 ```html
-<nve-message-card saturation="emphasized" title="Tittel">Primary</nve-message-card>
-<nve-message-card saturation="emphasized" variant="neutral" title="Tittel">Neutral</nve-message-card>
-<nve-message-card saturation="emphasized" variant="warning" title="Tittel">Warning</nve-message-card>
-<nve-message-card saturation="emphasized" variant="danger" title="Tittel">Danger</nve-message-card>
-<nve-message-card saturation="emphasized" variant="success" title="Tittel">Success</nve-message-card>
+<nve-message-card saturation="emphasized" label="Tittel">Primary</nve-message-card>
+<nve-message-card saturation="emphasized" variant="neutral" label="Tittel">Neutral</nve-message-card>
+<nve-message-card saturation="emphasized" variant="warning" label="Tittel">Warning</nve-message-card>
+<nve-message-card saturation="emphasized" variant="danger" label="Tittel">Danger</nve-message-card>
+<nve-message-card saturation="emphasized" variant="success" label="Tittel">Success</nve-message-card>
 ```
 
 </CodeExamplePreview>
@@ -79,7 +79,7 @@ Bruk `closable` for å vise lukk-knappen i tittel.
 
 ```html
 <div class="closable-example-container">
-  <nve-message-card closable class="message-card-closable" title="Tittel "> </nve-message-card>
+  <nve-message-card closable class="message-card-closable" label="Tittel "> </nve-message-card>
 </div>
 
 <script>
@@ -99,7 +99,7 @@ Bruk `closable` for å vise lukk-knappen i tittel.
     newMessageCard.setAttribute('closable', '');
     newMessageCard.classList.add('message-card-closable');
     newMessageCard.setAttribute('variant', 'primary');
-    newMessageCard.setAttribute('title', 'Tittel');
+    newMessageCard.setAttribute('label', 'Tittel');
 
     newMessageCard.addEventListener('nve-hide', () => {
       handleHideEvent();
@@ -125,7 +125,7 @@ Du kan bruke `footer`spor til å vise f.eks. en knapp.
 <CodeExamplePreview>
 
 ```html
-<nve-message-card variant="warning" title="Ingen støtte">
+<nve-message-card variant="warning" label="Ingen støtte">
   Vi støtter ikke denne funksjonen.
   <slot name="footer">
     <nve-button variant="neutral">Les mer</nve-button>
@@ -142,7 +142,7 @@ Slot `subheader` brukes til å vise en ekstra tekst over tittelen.
 <CodeExamplePreview>
 
 ```html
-<nve-message-card title="Tittel">
+<nve-message-card label="Tittel">
   <div slot="subheader">Varsel | 21.08.2024</slot>
 </nve-message-card
 >
@@ -157,7 +157,7 @@ Som default ikon vises ved tittelen. Ikon kan slås av ved ønske.
 <CodeExamplePreview>
 
 ```html
-<nve-message-card showIcon="false" title="Ingen ikon"> Ikon skal ikke vises </nve-message-card>
+<nve-message-card showIcon="false" label="Ingen ikon"> Ikon skal ikke vises </nve-message-card>
 ```
 
 </CodeExamplePreview>
@@ -169,10 +169,10 @@ Ikon er tilpasset varianten i utgangspunktet, men du kan velge ditt eget ikon ve
 <CodeExamplePreview>
 
 ```html
-<nve-message-card iconTitle="pets" title="Hunden sier voff voff">
+<nve-message-card iconTitle="pets" label="Hunden sier voff voff">
   Du kan velge et ikon i headeren selv
 </nve-message-card>
-<nve-message-card variant="warning" title="Katten liker ikke voff voff"> Vær forsiktig </nve-message-card>
+<nve-message-card variant="warning" label="Katten liker ikke voff voff"> Vær forsiktig </nve-message-card>
 ```
 
 </CodeExamplePreview>

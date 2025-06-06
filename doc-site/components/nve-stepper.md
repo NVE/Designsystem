@@ -22,9 +22,9 @@ Se Vue eksempel [her](#stepper-uten-standardknapper) hvordan du bruker metoderna
   endButtonText="Klar"
   steps='
   [
-  {"title":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
-  {"title":"Steg 2","description":"Beskrivelse av steg 2","state":0,"isSelected":false,"readyForEntrance":true},
-  {"title":"Steg 3","description":"Beskrivelse av steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
+  {"label":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 2","description":"Beskrivelse av steg 2","state":0,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3","description":"Beskrivelse av steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
 >
 </nve-stepper>
 
@@ -34,9 +34,9 @@ Se Vue eksempel [her](#stepper-uten-standardknapper) hvordan du bruker metoderna
   hideStepButtons
   steps='
   [
-  {"title":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
-  {"title":"Steg 2","description":"Beskrivelse av steg 2","state":0,"isSelected":false,"readyForEntrance":true},
-  {"title":"Steg 3","description":"Beskrivelse av steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
+  {"label":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 2","description":"Beskrivelse av steg 2","state":0,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3","description":"Beskrivelse av steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
 >
 </nve-stepper>
 ```
@@ -52,9 +52,9 @@ Se Vue eksempel [her](#stepper-uten-standardknapper) hvordan du bruker metoderna
 <nve-stepper
   steps='
   [
-  {"title":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
-  {"title":"Steg 2","description":"Beskrivelse av steg 2","state":0,"isSelected":false,"readyForEntrance":true},
-  {"title":"Steg 3","description":"Beskrivelse av steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
+  {"label":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 2","description":"Beskrivelse av steg 2","state":0,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3","description":"Beskrivelse av steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
 >
 </nve-stepper>
 
@@ -64,9 +64,9 @@ Se Vue eksempel [her](#stepper-uten-standardknapper) hvordan du bruker metoderna
   orientation="vertical"
   steps='
   [
-  {"title":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
-  {"title":"Steg 2","description":"Beskrivelse av steg 2","state":0,"isSelected":false,"readyForEntrance":true},
-  {"title":"Steg 3","description":"Beskrivelse av steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
+  {"label":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 2","description":"Beskrivelse av steg 2","state":0,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3","description":"Beskrivelse av steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
 >
 </nve-stepper>
 ```
@@ -78,13 +78,92 @@ Se Vue eksempel [her](#stepper-uten-standardknapper) hvordan du bruker metoderna
 <CodeExamplePreview>
 
 ```html
+<nve-label>horizontal</nve-label>
 <nve-stepper
   hideStateText
   steps='
   [
-  {"title":"Steg 1","description":"","state":1,"isSelected":false,"readyForEntrance":true},
-  {"title":"Steg 2","description":"","state":0,"isSelected":false,"readyForEntrance":true},
-  {"title":"Steg 3","description":"","state":0,"isSelected":false,"readyForEntrance":true}]'
+  {"label":"Steg 1","description":"","state":1,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 2","description":"","state":0,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3","description":"","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+
+<nve-label>vertical</nve-label>
+<nve-stepper
+  hideStateText
+  orientation="vertical"
+  steps='
+  [
+  {"label":"Steg 1","description":"","state":1,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 2","description":"","state":0,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3","description":"","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+```
+
+</CodeExamplePreview>
+
+### Kompakt stepper uten beskrivelser
+
+Bruk `hideDescriptions` for å skjule alle beskrivelser og få en mer kompakt visning. Dette er nyttig når du har begrenset plass eller når beskrivelsene ikke er nødvendige for brukeren.
+
+Selv om du setter `hideDescriptions=true`, kan du fortsatt definere beskrivelser i step-objektene. Disse vil bli skjult i grensesnittet men kan brukes i andre sammenhenger eller vises senere om nødvendig.
+
+<CodeExamplePreview>
+
+```html
+<nve-label>Kompakt horizontal</nve-label>
+<nve-stepper
+  hideDescriptions
+  steps='
+  [
+  {"label":"Steg 1","description":"Denne beskrivelsen vises ikke","state":1,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 2","description":"Denne beskrivelsen vises ikke","state":0,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3","description":"Denne beskrivelsen vises ikke","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+
+<nve-label>Kompakt vertical</nve-label>
+<nve-stepper
+  hideDescriptions
+  orientation="vertical"
+  steps='
+  [
+  {"label":"Steg 1","description":"Denne beskrivelsen vises ikke","state":1,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 2","description":"Denne beskrivelsen vises ikke","state":0,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3","description":"Denne beskrivelsen vises ikke","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+```
+
+</CodeExamplePreview>
+
+### Skjul description for steg 2
+
+Dette eksempelet viser at `description` er en valgfri egenskap. Steg 2 har ingen beskrivelse, mens steg 1 og 3 har beskrivelser.
+
+<CodeExamplePreview>
+
+```html
+<nve-label>horizontal</nve-label>
+<nve-stepper
+  steps='
+  [
+  {"label":"Steg 1","description":"Beskrivelse steg 1","state":1,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 2","state":0,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3","description":"Beskrivelse steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+
+<nve-label>vertical</nve-label>
+<nve-stepper
+  orientation="vertical"
+  steps='
+    [
+  {"label":"Steg 1","description":"Beskrivelse steg 1","state":1,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 2","state":0,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3","description":"Beskrivelse steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
 >
 </nve-stepper>
 ```
@@ -106,9 +185,9 @@ Bruk `hideMobileStepButtons` for å skjule knappene i mobil-versjon.
   displayMobileVersion
   steps='
   [
-  {"title":"Steg 1", "state":2,"isSelected":true,"readyForEntrance":true},
-  {"title":"Steg 2", "state":2,"isSelected":false,"readyForEntrance":true},
-  {"title":"Steg 3", "state":2,"isSelected":false,"readyForEntrance":true}]'
+  {"label":"Steg 1", "state":2,"isSelected":true,"readyForEntrance":true},
+  {"label":"Steg 2", "state":2,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3", "state":2,"isSelected":false,"readyForEntrance":true}]'
 >
 </nve-stepper>
 
@@ -118,9 +197,9 @@ Bruk `hideMobileStepButtons` for å skjule knappene i mobil-versjon.
   hideMobileStepButtons
   steps='
   [
-  {"title":"Steg 1", "state":2,"isSelected":true,"readyForEntrance":true},
-  {"title":"Steg 2", "state":2,"isSelected":false,"readyForEntrance":true},
-  {"title":"Steg 3", "state":2,"isSelected":false,"readyForEntrance":true}]'
+  {"label":"Steg 1", "state":2,"isSelected":true,"readyForEntrance":true},
+  {"label":"Steg 2", "state":2,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3", "state":2,"isSelected":false,"readyForEntrance":true}]'
 >
 </nve-stepper>
 ```
@@ -139,7 +218,7 @@ Eksemplet viser hvordan du bruker nve-stepper med standardinnstillinger.
 
 For å legge til valideringslogikk før du går til neste trinn, kan du skrive over komponentens nextStep-funksjon. Dette gjør det mulig å kontrollere om gjeldende trinn er gyldig før du går videre. Nedenfor finner du et eksempel på hvordan du kan skrive over nextStep-funksjonen og inkludere egen valideringslogikk.
 
-<nve-message-card title="Tips">
+<nve-message-card label="Tips">
 Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes</nve-message-card>
 <div style="height: 20px;"></div>
 
@@ -175,28 +254,28 @@ import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-
 
 const steps: StepProps[] = [
   {
-    title: 'Kategorisering',
+    label: 'Kategorisering',
     description: 'Lorem Ipsum',
     state: StepState.Started,
     isSelected: true,
     readyForEntrance: true,
   },
   {
-    title: 'Beskrivelse',
+    label: 'Beskrivelse',
     description: 'Lorem Ipsum',
     state: StepState.NotStarted,
     isSelected: false,
     readyForEntrance: true,
   },
   {
-    title: 'Kontakt info',
+    label: 'Kontakt info',
     description: 'Lorem Ipsum',
     state: StepState.NotStarted,
     isSelected: false,
     readyForEntrance: true,
   },
   {
-    title: 'Oppsumering',
+    label: 'Oppsumering',
     description: 'Lorem Ipsum',
     state: StepState.NotStarted,
     isSelected: false,
@@ -285,28 +364,28 @@ import { StepProps } from "nve-designsystem/components/nve-stepper/nve-step/nve-
 import { StepState } from "nve-designsystem/components/nve-stepper/nve-step/nve-step.component.js";
 const steps: StepProps[] = [
   {
-    title: 'Kategorisering',
+    label: 'Kategorisering',
     description: 'Lorem Ipsum',
     state: StepState.Started,
     isSelected: true,
     readyForEntrance: true,
   },
   {
-    title: 'Beskrivelse',
+    label: 'Beskrivelse',
     description: 'Lorem Ipsum',
     state: StepState.NotStarted,
     isSelected: false,
     readyForEntrance: true,
   },
   {
-    title: 'Kontakt info',
+    label: 'Kontakt info',
     description: 'Lorem Ipsum',
     state: StepState.NotStarted,
     isSelected: false,
     readyForEntrance: true,
   },
   {
-    title: 'Oppsumering',
+    label: 'Oppsumering',
     description: 'Lorem Ipsum',
     state: StepState.NotStarted,
     isSelected: false,
@@ -392,7 +471,7 @@ Du kan skrive over prevStep-funksjonen.
 
 For å legge til valideringslogikk før du går til neste trinn, kan du skrive over komponentens nextStep-funksjon. Dette gjør det mulig å kontrollere om gjeldende trinn er gyldig før du går videre. Nedenfor finner du et eksempel på hvordan du kan skrive over nextStep-funksjonen og inkludere egen valideringslogikk.
 
-<nve-message-card title="Tips">
+<nve-message-card label="Tips">
 Merk at du bør lage en kopi av den originale funksjonen slik at du kan bruke den dersom valideringen lykkes</nve-message-card>
 <div style="height: 20px;"></div>
 
@@ -450,28 +529,28 @@ import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-
 
 const steps: StepProps[] = [
   {
-    title: 'Kategorisering',
+    label: 'Kategorisering',
     description: 'Lorem Ipsum',
     state: StepState.Started,
     isSelected: true,
     readyForEntrance: true,
   },
   {
-    title: 'Beskrivelse',
+    label: 'Beskrivelse',
     description: '',
     state: StepState.NotStarted,
     isSelected: false,
     readyForEntrance: true,
   },
   {
-    title: 'Kontakt info',
+    label: 'Kontakt info',
     description: '',
     state: StepState.NotStarted,
     isSelected: false,
     readyForEntrance: true,
   },
   {
-    title: 'Oppsumering',
+    label: 'Oppsumering',
     description: 'Lorem Ipsum',
     state: StepState.NotStarted,
     isSelected: false,
@@ -593,28 +672,28 @@ import { StepState } from 'nve-designsystem/components/nve-stepper/nve-step/nve-
 
 const steps: StepProps[] = [
   {
-    title: 'Kategorisering',
+    label: 'Kategorisering',
     description: 'Lorem Ipsum',
     state: StepState.Started,
     isSelected: true,
     readyForEntrance: true,
   },
   {
-    title: 'Beskrivelse',
+    label: 'Beskrivelse',
     description: '',
     state: StepState.NotStarted,
     isSelected: false,
     readyForEntrance: true,
   },
   {
-    title: 'Kontakt info',
+    label: 'Kontakt info',
     description: '',
     state: StepState.NotStarted,
     isSelected: false,
     readyForEntrance: true,
   },
   {
-    title: 'Oppsumering',
+    label: 'Oppsumering',
     description: 'Lorem Ipsum',
     state: StepState.NotStarted,
     isSelected: false,

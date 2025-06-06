@@ -19,6 +19,7 @@ import ColorList from './components/ColorList.vue';
 import TypographyTable from './components/TypographyTable.vue';
 import { cssTokenState } from './cssTokenState';
 import { useCurrentTheme, Theme } from './composables/useCurrentTheme';
+import NveTableDemo from './components/NveTableDemo.vue';
 
 export default {
   extends: DefaultTheme,
@@ -54,14 +55,14 @@ export default {
     }
     return h(DefaultTheme.Layout, null, {});
   },
-  async enhanceApp({ app, router, siteData }) {
+  async enhanceApp({ app }) {
     if (!import.meta.env.SSR) {
       // siden VitePress bygges via SSR, vi må sikre at våre web komponenter lastes ned i nettleseren bare
       // derfor importerer vi alle komponenter når miljø ikke er SSR
       const components = import.meta.glob('../../../src/components/*/*.component.ts');
 
       // Lese inn nve_theme.css for å hente ut css variabler
-      const styles = import.meta.glob('./styles/nve_theme.css', { as: 'raw' });
+      const styles = import.meta.glob('./styles/nve_theme.css', { query: '?raw', import: 'default' });
       (async () => {
         const importPromises = Object.values(styles).map((importFunc) =>
           typeof importFunc === 'function' ? importFunc() : Promise.resolve(null)
@@ -87,6 +88,8 @@ export default {
     app.component('ThemeSelect', ThemeSelect);
     app.component('ColorList', ColorList);
     app.component('TypographyTable', TypographyTable);
+    app.component('NveTableDemo', NveTableDemo);
+
     registerIconLibrary('system', {
       resolver: (name) => {
         return `data:image/svg+xml,${encodeURIComponent(icons[name])}`;

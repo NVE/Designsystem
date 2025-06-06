@@ -157,14 +157,14 @@ export default class NveRadioGroup extends SlRadioGroup {
   };
 
   // TODO: Sjekk generert API-dokumentasjon, ser ut som koden blir vist i dokumentasjonen
-  // @ts-ignore
-  private handleRadioClick = function (event) {
+// @ts-expect-error: overskriving av privat metode i superklassen (SlRadioGroup)
+private handleRadioClick = function (event) {
     // Lagt til nve-radio og nve-radio-button
     const target = event.target.closest('sl-radio, sl-radio-button, nve-radio, nve-radio-button');
-    // @ts-ignore
-    const radios = this.getAllRadios();
-    // @ts-ignore
-    const oldValue = this.value;
+  // @ts-expect-error: bruker privat metode i superklassen (getAllRadios)
+  const radios = this.getAllRadios();
+  // @ts-expect-error: tilgang til privat egenskap this.value i superklassen
+  const oldValue = this.value;
     if (!target || target.disabled) {
       return;
     }
@@ -173,45 +173,40 @@ export default class NveRadioGroup extends SlRadioGroup {
     if (controls.length > 0) {
       controls[0].focus();
     }
-    // @ts-ignore
-    this.value = target.value;
+  // @ts-expect-error: setter privat egenskap this.value i superklassen
+  this.value = target.value;
     radios.forEach((radio: { checked: boolean }) => (radio.checked = radio === target));
-    // @ts-ignore
-    if (this.value !== oldValue) {
-      // @ts-ignore
-      this.emit('sl-change');
-      // @ts-ignore
-      this.emit('sl-input');
+  // @ts-expect-error: tilgang til privat metode emit i superklassen
+  if (this.value !== oldValue) {
+    // @ts-expect-error: kaller privat metode emit i superklassen
+    this.emit('sl-change');
+    // @ts-expect-error: kaller privat metode emit i superklassen
+    this.emit('sl-input');
     }
   };
 
-  // @ts-ignore
-  private syncRadioElements = async function () {
-    // @ts-ignore
-    const radios = this.getAllRadios();
+// @ts-expect-error: overskriver og utvider privat metode fra SlRadioGroup
+private syncRadioElements = async  () => {
+  const radios = this.getAllRadios();
 
     await Promise.all(
       // Sync the checked state and size
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       radios.map(async (radio: { updateComplete: any; checked: boolean; value: any; size: any }) => {
         await radio.updateComplete;
-        // @ts-ignore
-        radio.checked = radio.value === this.value;
-        // @ts-ignore
-        radio.size = this.size;
+      radio.checked = radio.value === this.value;
+      radio.size = this.size;
       })
     );
 
     // lagt til nve-radio-button
-    // @ts-ignore
-    this.hasButtonGroup = radios.some(
-      // @ts-ignore
-      (radio) => radio.tagName.toLowerCase() === 'sl-radio-button' || radio.tagName.toLowerCase() === 'nve-radio-button'
+  // @ts-expect-error: bruker privat egenskap hasButtonGroup
+  this.hasButtonGroup = radios.some(
+      (radio: { tagName: string; }) => radio.tagName.toLowerCase() === 'sl-radio-button' || radio.tagName.toLowerCase() === 'nve-radio-button'
     );
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if (!radios.some((radio: { checked: any }) => radio.checked)) {
-      // @ts-ignore
+  if (!radios.some((radio: { checked: boolean }) => radio.checked)) {
+      // @ts-expect-error: bruker privat egenskap hasButtonGroup
       if (this.hasButtonGroup) {
         const buttonRadio = radios[0].shadowRoot?.querySelector('button');
 
@@ -223,12 +218,11 @@ export default class NveRadioGroup extends SlRadioGroup {
       }
     }
 
-    // @ts-ignore
-    if (this.hasButtonGroup) {
+  // @ts-expect-error: tilgang til privat egenskap hasButtonGroup
+  if (this.hasButtonGroup) {
       // lagt til nve-button-group
       const buttonGroup =
-        // @ts-ignore
-        this.shadowRoot?.querySelector('sl-button-group') || this.shadowRoot?.querySelector('nve-button-group');
+      this.shadowRoot?.querySelector('sl-button-group') || this.shadowRoot?.querySelector('nve-button-group');
 
       if (buttonGroup) {
         buttonGroup.disableRole = true;
@@ -236,37 +230,37 @@ export default class NveRadioGroup extends SlRadioGroup {
     }
   };
 
-  // @ts-ignore
-  private syncRadios = function () {
+// @ts-expect-error: utvider privat metode fra superklassen for å støtte egne elementer
+private syncRadios = function () {
     if (
       (customElements.get('sl-radio') && customElements.get('sl-radio-button')) ||
       // lagt til nve-radio og nve-radio-button
       (customElements.get('nve-radio') && customElements.get('nve-radio-button'))
     ) {
-      // @ts-ignore
-      this.syncRadioElements();
+    // @ts-expect-error: kaller privat metode
+    this.syncRadioElements();
       return;
     }
 
     if (customElements.get('sl-radio') || customElements.get('nve-radio')) {
-      // @ts-ignore
-      this.syncRadioElements();
+    // @ts-expect-error: kaller privat metode
+    this.syncRadioElements();
     } else {
-      // @ts-ignore
-      customElements.whenDefined('sl-radio').then(() => this.syncRadios());
+    // @ts-expect-error: definerer callback for privat metode
+    customElements.whenDefined('sl-radio').then(() => this.syncRadios());
     }
 
     // lagt til nve-radio-button
     if (customElements.get('sl-radio-button') || customElements.get('nve-radio-button')) {
-      // @ts-ignore
-      this.syncRadioElements();
+    // @ts-expect-error: kaller privat metode
+    this.syncRadioElements();
     } else {
       // Rerun this handler when <sl-radio> or <sl-radio-button> is registered
-      // @ts-ignore
-      customElements.whenDefined('sl-radio-button').then(() => this.syncRadios());
+    // @ts-expect-error: definerer callback for privat metode
+    customElements.whenDefined('sl-radio-button').then(() => this.syncRadios());
       // lagt til nve-radio-button
-      // @ts-ignore
-      customElements.whenDefined('nve-radio-button').then(() => this.syncRadios());
+    // @ts-expect-error: definerer callback for privat metode
+    customElements.whenDefined('nve-radio-button').then(() => this.syncRadios());
     }
   };
 }
