@@ -30,3 +30,7 @@ updates:
       - 'amish1188'
       - 'NVEJoel'
       - 'tomapedersen'
+      
+    ignore:
+      - dependency-name: "style-dictionary"
+        versions: ["*"]
