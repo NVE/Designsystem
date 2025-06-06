@@ -77,7 +77,8 @@ export default css`
 
   nve-icon::part(icon) {
     display: unset;
-    font-size: 22px;
+    font-size: var(--font-size-medium);
+    line-height: 1;
   }
 
   /** Varianter */

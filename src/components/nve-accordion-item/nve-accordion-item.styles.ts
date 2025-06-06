@@ -14,14 +14,17 @@ export default css`
     order: 1;
     margin-inline-start: var(--spacing-xx-small);
   }
+
   .details__header {
     padding: 0;
     font: var(--label-large);
   }
+
   .details__content {
     padding: 0;
     padding-top: var(--spacing-small);
   }
+
   .details:not(.details--disabled) {
     .details__summary-icon:hover {
       background: var(--_hover-bg-color);
@@ -33,9 +36,10 @@ export default css`
     /* Overstyrer shoelace sin animasjon. */
     rotate: 90deg;
     border-radius: var(--border-radius-small);
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-large);
     fill: currentColor;
   }
+
   .details--open .details__summary-icon {
     rotate: 270deg;
   }
@@ -68,6 +72,7 @@ export default css`
     --_hover-text-color: var(--feedback-foreground-default-neutral);
     --_border-color: var(--feedback-background-emphasized-neutral);
   }
+
   :host([variant='success']) {
     --_bg-color: var(--feedback-background-subtle-success);
     --_text-color: var(--feedback-foreground-subtle-success);
@@ -75,6 +80,7 @@ export default css`
     --_hover-text-color: var(--feedback-foreground-default-success);
     --_border-color: var(--feedback-background-emphasized-success);
   }
+
   :host([variant='info']) {
     --_bg-color: var(--feedback-background-subtle-info);
     --_text-color: var(--feedback-foreground-subtle-info);
@@ -82,6 +88,7 @@ export default css`
     --_hover-text-color: var(--feedback-foreground-default-info);
     --_border-color: var(--feedback-background-emphasized-info);
   }
+
   :host([variant='warning']) {
     --_bg-color: var(--feedback-background-subtle-warning);
     --_text-color: var(--feedback-foreground-subtle-warning);
@@ -89,6 +96,7 @@ export default css`
     --_hover-text-color: var(--feedback-foreground-default-warning);
     --_border-color: var(--feedback-background-emphasized-warning);
   }
+
   :host([variant='error']) {
     --_bg-color: var(--feedback-background-subtle-error);
     --_text-color: var(--feedback-foreground-subtle-error);
