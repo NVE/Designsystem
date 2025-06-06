@@ -114,8 +114,12 @@ Sporet `subheader` brukes til å vise en ekstra tekst over tittelen.
 <CodeExamplePreview>
 
 ```html
-<nve-message-card label="Tittel">
-  <div slot="subheader">Varsel | 21.08.2024</div>
+<nve-message-card label="Standard størrelse">
+  <div slot="subheader">Subheader</div>
+</nve-message-card>
+
+<nve-message-card size="compact" label="Kompakt">
+  <div slot="subheader">Subheader</div>
 </nve-message-card>
 ```
 
