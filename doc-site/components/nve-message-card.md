@@ -147,3 +147,22 @@ Ikon er tilpasset varianten i utgangspunktet, men du kan velge ditt eget ikon me
 ```
 
 </CodeExamplePreview>
+
+### Html i brødtekst
+
+Du kan bruke html i brødteksten om du trenger mer struktur.
+
+<CodeExamplePreview>
+
+```html
+<nve-message-card label="Husk">
+  <ul>
+    <li>Frokost</li>
+    <li>Pusse tenna</li>
+    <li>Adgangskort</li>
+    <li>Paraply</li>
+  </ul>
+</nve-message-card>
+```
+
+</CodeExamplePreview>
