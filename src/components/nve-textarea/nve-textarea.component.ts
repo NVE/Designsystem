@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import styles from './nve-textarea.styles';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -121,6 +121,10 @@ export default class NveTextarea extends LitElement implements INveComponent {
   }
   private resizeObserver: ResizeObserver | null = null;
   firstUpdated() {
+    if (this.requiredLabel) {
+      this.style.setProperty('--textarea-required-content', `"${this.requiredLabel}"`);
+    }
+
     // Sjekker om data-valid når komponenten først lastes
     if (this.required) {
       const isValid = this.input.checkValidity();
@@ -224,20 +228,11 @@ export default class NveTextarea extends LitElement implements INveComponent {
   render() {
     return html`
       <div part="form-control" class=${classMap({ 'form-control': true, 'form-control--has-label': this.label })}>
-        <div part="textarea-label" class="textarea__label">
-          ${this.label
-            ? html`
-                <nve-label
-                  aria-hidden=${this.label ? 'false' : 'true'}
-                  value=${this.label}
-                  tooltip=${ifDefined(this.tooltip)}
-                ></nve-label>
-              `
-            : null}
-          ${this.required && this.label
-            ? html`<span class="textarea__required-label">${this.requiredLabel}</span>`
-            : null}
-        </div>
+        ${this.label
+          ? html`<div class="textarea__label">
+              <nve-label id="label" value=${this.label} size="small" tooltip=${ifDefined(this.tooltip)}></nve-label>
+            </div>`
+          : nothing}
         <div part="base" class="textarea__base">
           <textarea
             part="textarea"
@@ -271,7 +266,7 @@ export default class NveTextarea extends LitElement implements INveComponent {
                 ${this.disabled ? html`<nve-icon name="lock"></nve-icon>` : null}
                 ${this.showErrorMessage ? html`<nve-icon class="textarea__icon--error" name="error"></nve-icon>` : null}
               </div>`
-            : null}
+            : nothing}
         </div>
         <div part="help-text-container" class="textarea__help-text__container">
           <!-- Ikke vis hjelpe tekst mens feil -->
@@ -279,10 +274,10 @@ export default class NveTextarea extends LitElement implements INveComponent {
             ? html`<span class="textarea__help-text" aria-hidden=${this.helpText ? 'false' : 'true'}
                 >${this.helpText}</span
               >`
-            : null}
+            : nothing}
           ${this.showErrorMessage
             ? html`<span class="textarea__help-text textarea__help-text--error">${this.errorMessage}</span>`
-            : null}
+            : nothing}
         </div>
       </div>
     `;
