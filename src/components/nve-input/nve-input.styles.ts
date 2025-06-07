@@ -88,11 +88,11 @@ export default css`
     border-color: var(--feedback-background-emphasized-error);
   }
 
-  /* Formaterer "*Obligatorisk" over input-felt og til høyre riktig når required er satt */
+  /* Formaterer "*Obligatorisk" over input-felt når required er satt */
   .form-control--has-label .form-control__label {
     display: flex;
-    width: 100%;
-    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-xx-small);
     margin-inline-start: unset;
   }
 `;

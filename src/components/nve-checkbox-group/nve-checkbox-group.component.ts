@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import '../nve-label/nve-label.component';
 import styles from './nve-checkbox-group.styles';
@@ -7,9 +7,9 @@ import deepCompare from '../../utils/deepCompare';
 
 /**
  * Bruk denne for å håndtere flere avkrysningsbokser (nve-checkbox) som hører sammen.
- * selectedValues inneholder `value` til hver av avkrysningsboksene som er valgt i gruppa. 
- * Gruppa oppdaterer seg automatisk når man klikker på en avkrysningsboks. 
- * Støtter både constraint validation (kun `required`) og tilpasset validering. 
+ * selectedValues inneholder `value` til hver av avkrysningsboksene som er valgt i gruppa.
+ * Gruppa oppdaterer seg automatisk når man klikker på en avkrysningsboks.
+ * Støtter både constraint validation (kun `required`) og tilpasset validering.
  * Tilpasset validering prioriteres foran `required`.
  * @slot default - legg avkrysningsboksene inni denne.
  * */
@@ -35,7 +35,7 @@ export default class NveCheckboxGroup extends LitElement {
   @property() requiredLabel = '*Obligatorisk';
   /** Returnerer en tabell av value-attributet til alle sjekkbokser som er valgt. Man kan lagre både primitiver og objekter i selectedValues. */
   @property({ type: Array }) selectedValues?: string[];
-   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @query('slot') slot: any;
   /** Bestemmer om feilmelding skal vises når validering feiler  */
   @state() protected showErrorMessage = false;
@@ -190,16 +190,16 @@ export default class NveCheckboxGroup extends LitElement {
         aria-errormessage="error-message"
       >
         ${this.label
-        ? html`<div class="checkbox-group__label">
+          ? html`<div class="checkbox-group__label">
               <nve-label id="label" value=${this.label} size="small" tooltip=${this.tooltip!}></nve-label>
             </div>`
-        : null}
+          : nothing}
         <slot class="checkbox-group__checkboxes"></slot>
         ${this.showErrorMessage
-        ? html`<span role="alert" id="error-message" class="checkbox-group__error-message"
-              >${this.errorMessage || null}</span
+          ? html`<span role="alert" id="error-message" class="checkbox-group__error-message"
+              >${this.errorMessage || nothing}</span
             >`
-        : null}
+          : nothing}
       </fieldset>
     `;
   }

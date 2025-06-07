@@ -3,6 +3,7 @@ import { css } from 'lit';
 export default css`
   :host {
     display: flex;
+    --textarea-required-content: '*Obligatorisk';
   }
 
   .form-control {
@@ -71,8 +72,10 @@ export default css`
     align-items: center;
   }
 
-  .textarea__required-label {
+  :host([required]) nve-label::after {
+    content: var(--textarea-required-content);
     font: var(--label-x-small-light);
+    margin-left: auto;
     color: var(--feedback-background-emphasized-error);
   }
 
@@ -100,5 +103,9 @@ export default css`
     left: -24px;
     top: 10px;
     color: var(--feedback-background-emphasized-error);
+  }
+
+  nve-label {
+    width: unset;
   }
 `;
