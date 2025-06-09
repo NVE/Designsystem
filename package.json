@@ -56,7 +56,7 @@
     "@typescript-eslint/eslint-plugin": "^8.33.0",
     "@typescript-eslint/parser": "^8.6.0",
     "@vue/eslint-config-typescript": "^14.5.0",
-    "@wc-toolkit/cem-inheritance": "^1.0.4",
+    "@wc-toolkit/cem-inheritance": "^1.1.0",
     "chokidar": "^4.0.3",
     "command-line-args": "^6.0.1",
     "comment-parser": "^1.4.1",
@@ -73,7 +73,7 @@
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-lit": "^2.1.1",
-    "eslint-plugin-vue": "^10.1.0",
+    "eslint-plugin-vue": "^10.2.0",
     "glob": "^11.0.2",
     "ora": "^8.2.0",
     "pascal-case": "^4.0.0",
@@ -92,7 +92,7 @@
     "custom-elements-manifest-inheritance": "1.1.1"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.41.1"
+    "@rollup/rollup-linux-x64-gnu": "^4.42.0"
   },
   "config": {
     "commitizen": {
