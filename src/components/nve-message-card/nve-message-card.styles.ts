@@ -56,6 +56,9 @@ export default css`
   }
 
   .message-card__close-btn {
+    display:flex;
+    justify-content:center;
+    align-items:center;
     border: none;
     background: none;
     width: 28px;
