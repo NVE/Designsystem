@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { NveTable, sortByProperty, sortByFunction } from '@nve-org/vue-components';
-('@nve-org/vue-components');
 import type { TableHeader } from '@nve-org/vue-components';
 import { ref, type Ref, useTemplateRef } from 'vue';
 type Country = {

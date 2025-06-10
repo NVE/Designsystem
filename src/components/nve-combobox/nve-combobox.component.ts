@@ -8,76 +8,164 @@ import '../nve-popup/nve-popup.component';
 import '../nve-input/nve-input.component';
 import '../nve-tag/nve-tag.component';
 import '../nve-menu/nve-menu.component';
-import '../nve-menu-item/nve-menu-item.component';
 import '../nve-option/nve-option.component';
 import '../nve-icon/nve-icon.component';
 
-interface Option {
+export interface Option {
   label: string;
   value: string | number;
   selected?: boolean;
 }
-
+/**
+ * En combobox komponent som lar brukeren velge ett eller flere alternativer fra en liste eller søke etter alternativer.
+ */
 @customElement('nve-combobox')
 export default class NveCombobox extends LitElement implements INveComponent {
+  /**
+   * Tekst som vises over input feltet.
+   */
   @property() label?: string;
+
+  /**
+   * Placeholder som vises inn i input feltet.
+   */
   @property() placeholder?: string;
+
+  /**
+   * Teksten på høyre side som forteller at feltet er obligatorisk.
+   */
   @property() requiredLabel?: string = '*Obligatorisk';
+
+  /**
+   * Teksten som vises ved en feil i validering.
+   */
   @property() errorMessage?: string = '-!ERROR!-';
 
-  @property({ type: Array<Option> }) values: Option[] = []; // Liste med verdier som kan velges
+  /**
+   * Alle mulige valgene som kan velges i comboboxen, bruk selected:true på verdier som er valgt fra start.
+   */
+  @property({ type: Array<Option> }) options: Option[] = [];
 
-  @property({ reflect: true, type: Boolean }) singular: boolean = false;
-  @property({ reflect: true, type: Number }) multiple: number = 1;
-  @property({ reflect: true, type: Boolean }) disabled: boolean = false;
-  @property({ reflect: true, type: Boolean }) filled: boolean = false;
-  @property({ reflect: true, type: Boolean }) required: boolean = false;
-  @property({ reflect: true, type: String }) testId: string | undefined = undefined;
+  /**
+   * Antall valg som kan velges i comboboxen. Default er 1.
+   */
+  @property({ type: Number }) multiple: number = 1;
 
-  @state() listWithSearchHits: Option[] = []; // Listen som vises inne i popupen når man har skrevet i input feltet
-  @state() displaySearchResult: boolean = false; // Skal listWithSearchHits vises eller ikke
+  /**
+   * Er comboboxen deaktivert.
+   */
+  @property({ type: Boolean }) disabled: boolean = false;
 
-  @state() selectedOptions: Option[] = []; // Valgte alternativer
+  /**
+   * Skal den ha filled utseende (dvs. at den har en bakgrunnsfarge).
+   */
+  @property({ type: Boolean }) filled: boolean = false;
+
+  /**
+   * Skal den være påkrevd.
+   */
+  @property({ type: Boolean }) required: boolean = false;
+
+  /**
+   * Test-id for enklere testing.
+   */
+  @property({ type: String }) testId: string | undefined = undefined;
+
+  /**
+   * Listen som vises inne i popupen når man har skrevet i input feltet.
+   */
+  @state() listWithSearchHits: Option[] = [];
+
+  /**
+   * Skal listWithSearchHits vises eller ikke.
+   */
+  @state() displaySearchResult: boolean = false;
+
+  /**
+   * Valgte alternativer.
+   */
+  @state() selectedOptions: Option[] = [];
+
+  /**
+   * Verdien som er skrevet inn i input feltet.
+   */
   @state() inputValue: string = '';
+
+  /**
+   * Er popupen aktiv?
+   */
   @state() isPopupActive: boolean = false;
 
+  /**
+   * Er det noe feil?
+   */
   @state() error?: boolean = false;
 
+  /**
+   * Referanse til input feltet som er inne i prefix slotten.
+   */
   private prefixInputRef = createRef<HTMLInputElement>();
 
   static styles = [styles];
 
+  /**
+   * Oppretter en ny instans av NveCombobox.
+   */
   constructor() {
     super();
   }
 
+  /**
+   * Kalles første gang komponenten er rendret.
+   * Setter selectedOptions basert på options med selected=true.
+   */
   firstUpdated() {
-    this.selectedOptions = this.values.filter((value) => value?.selected);
+    this.selectedOptions = this.options.filter((value) => value?.selected);
   }
 
-  // Binder boundHandleOutsideClick til klasseinstansen slik at den kan brukes som en event listener
+  /**
+   * Binder boundHandleOutsideClick til klasseinstansen slik at den kan brukes som en event listener.
+   */
   private boundHandleOutsideClick = this.handleOutsideClick.bind(this);
 
+  /**
+   * Legger til event listener for å håndtere klikk utenfor komponenten.
+   */
   connectedCallback() {
     super.connectedCallback();
     document.addEventListener('click', this.boundHandleOutsideClick, true);
   }
 
+  /**
+   * Fjerner event listener når komponenten fjernes fra DOM.
+   */
   disconnectedCallback() {
     document.removeEventListener('click', this.boundHandleOutsideClick, true);
     super.disconnectedCallback();
   }
 
-  // Laget grunnet race problem med blur event
+  /**
+   * Håndterer klikk utenfor komponenten for å lukke popupen.
+   * @param event MouseEvent
+   */
   private handleOutsideClick(event: MouseEvent) {
-    if (!this.shadowRoot?.contains(event.target as Node) && !this.contains(event.target as Node)) {
-      this.isPopupActive = false;
+    if (
+      !this.shadowRoot?.contains(event.target as Node) &&
+      !this.contains(event.target as Node) &&
+      this.isPopupActive
+    ) {
+      this.setPopupActive(false);
       this.listWithSearchHits = [];
       this.inputValue = '';
       this.displaySearchResult = false;
     }
   }
 
+  /**
+   * Sender et custom event med valgt(e) option(s).
+   * @param eventname Navn på eventet
+   * @param value Valgte alternativer
+   */
   private emit(eventname: string, value: Option[]): void {
     const event = new CustomEvent(eventname, {
       bubbles: true,
@@ -90,20 +178,33 @@ export default class NveCombobox extends LitElement implements INveComponent {
     this.dispatchEvent(event);
   }
 
-  handleFocus() {
+  /**
+   * Setter fokus på input feltet som er inne i prefix slotten
+   * og oppdaterer listen med søketreff.
+   * @returns {void}
+   */
+  handleFocus(): void {
     this.displaySearchResult = false;
-    // Setter fokus på input feltet som er inne i prefix slotten
     this.prefixInputRef.value?.focus();
     this.handleInput();
-    this.isPopupActive = true;
+    this.setPopupActive(true);
   }
 
-  togglePopupActive(event: Event) {
+  /**
+   * Toggle for å aktivere eller deaktivere popupen.
+   * @param event Event
+   * @returns {void}
+   */
+  togglePopupActive(event: Event): void {
     event.stopPropagation();
-    this.isPopupActive = !this.isPopupActive;
+    this.setPopupActive(!this.isPopupActive);
   }
 
-  handleInput() {
+  /**
+   * Håndterer input i søkefeltet og oppdaterer søkeresultater.
+   * @returns {void}
+   */
+  handleInput(): void {
     const inputElement = this.prefixInputRef.value;
     if (inputElement && inputElement.value) {
       this.inputValue = inputElement.value;
@@ -114,25 +215,59 @@ export default class NveCombobox extends LitElement implements INveComponent {
     }
   }
 
-  handleKeyboardNavigation(event: KeyboardEvent) {
-    if (this.disabled) return;
+  /**
+   * Håndterer tastaturnavigasjon i inputfeltet.
+   * @param event KeyboardEvent
+   * @returns {void}
+   */
+  handleKeyboardNavigation(event: KeyboardEvent): void {
+    if (event.key === 'Escape') {
+      this.setPopupActive(false);
+      return;
+    }
+
     if (event.key === 'Enter' || event.key === 'ArrowUp' || event.key === 'ArrowDown') {
       event.preventDefault();
-      this.isPopupActive = !this.isPopupActive;
-    } else if (event.key === 'Tab') {
-      this.isPopupActive = true;
+      this.setPopupActive(true);
+
+      if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        const firstOption = this.shadowRoot?.querySelector('nve-option');
+        firstOption?.focus();
+        console.log('firstOption ', firstOption);
+      } // this.focusNextOption(event.key);
+
+      return;
     }
+
+    if (event.key === 'Tab') {
+      this.setPopupActive(true);
+      return;
+    }
+
+    if (this.disabled) return;
+
+    if (this.isALetterPressed(event)) this.prefixInputRef.value?.focus();
   }
 
-  private updateListWithSearchHits(options: Option[]) {
+  /**
+   * Oppdaterer listen med søkeresultater og viser popupen.
+   * @param options Liste med søkeresultater
+   * @returns {void}
+   */
+  private updateListWithSearchHits(options: Option[]): void {
     this.listWithSearchHits = [...options];
     this.displaySearchResult = true;
-    this.isPopupActive = true;
+    this.setPopupActive(true);
   }
 
-  private searchForOptions(searchString: string) {
+  /**
+   * Søker etter alternativer som matcher søketeksten.
+   * @param searchString Søketekst
+   * @returns {Option[]} Liste med alternativer som matcher søket
+   */
+  private searchForOptions(searchString: string): Option[] {
     const searchTextLowerCase = searchString.toLowerCase();
-    return this.values
+    return this.options
       .filter((option) => option.label.toLowerCase().includes(searchTextLowerCase))
       .sort((a, b) => {
         const aStartsWith = a.label.toLowerCase().startsWith(searchTextLowerCase);
@@ -143,63 +278,167 @@ export default class NveCombobox extends LitElement implements INveComponent {
       });
   }
 
-  selectOption(option: Option) {
+  /**
+   * Velger et alternativ.
+   * @param option Alternativet som skal velges
+   * @returns {void}
+   */
+  selectOption(option: Option): void {
     if (this.disabled) return;
 
-    const copyOfValues = [...this.values];
-    const indexInValues = copyOfValues.findIndex((optionValue) => optionValue.value === option.value);
-    if (indexInValues === -1) return;
+    const copyOfOptions = [...this.options];
+    const indexInOptions = copyOfOptions.findIndex((optionValue) => optionValue.value === option.value);
+    if (indexInOptions === -1) return;
 
-    if (this.multiple && this.selectedOptions.length === this.multiple) {
-      // Burde jeg her lage en "shake på comboboxen?"
-      console.log(`Du kan kun velge ${this.multiple} alternativer. `);
+    if (this.isMaxNumberOfOptionsSelected()) {
       return;
     }
 
-    copyOfValues[indexInValues].selected = true;
+    copyOfOptions[indexInOptions].selected = true;
     this.selectedOptions.push(option);
-    this.values = copyOfValues;
-    this.emit('nve-combobox-selected-options', this.selectedOptions); // ikke testet
+    this.options = copyOfOptions;
+
+    this.inputValue = '';
+    this.displaySearchResult = false;
+
+    this.emit('value', this.selectedOptions); // ikke testet
   }
 
-  selectOptionKeyDown(option: Option, event: KeyboardEvent) {
-    if (event instanceof KeyboardEvent && event.key !== 'Enter') return;
-    this.selectOption(option);
+  /**
+   * Velger et alternativ med tastatur.
+   * @param option Alternativet som skal velges
+   * @param event KeyboardEvent
+   * @returns {void}
+   */
+  selectOptionKeyDown(option: Option, event: KeyboardEvent): void {
+    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      this.focusNextOption(event.key);
+      event.preventDefault();
+      return;
+    }
+
+    if (event.key === 'Enter') {
+      this.selectOption(option);
+      return;
+    }
+
+    if (this.isALetterPressed(event)) this.prefixInputRef.value?.focus();
   }
 
-  unSelectOption(option: Option) {
+  /**
+   * Fjerner et valgt alternativ.
+   * @param option Alternativet som skal fjernes
+   * @returns {void}
+   */
+  unSelectOption(option: Option): void {
     if (this.disabled) return;
-    const copyOfValues = [...this.values];
+    const copyOfOptions = [...this.options];
     const copyOfSelectedOptions = [...this.selectedOptions];
 
-    const indexOfOptionInValues = copyOfValues.findIndex((selectedOption) => selectedOption.value === option.value);
+    const indexOfOptionInOptions = copyOfOptions.findIndex((selectedOption) => selectedOption.value === option.value);
     const indexOfOptionInSelectedValues = copyOfSelectedOptions.findIndex(
       (selectedOption) => selectedOption.value === option.value
     );
 
-    if (indexOfOptionInValues !== -1) copyOfValues[indexOfOptionInValues].selected = false;
+    if (indexOfOptionInOptions !== -1) copyOfOptions[indexOfOptionInOptions].selected = false;
     if (indexOfOptionInSelectedValues !== -1) copyOfSelectedOptions.splice(indexOfOptionInSelectedValues, 1);
 
     this.selectedOptions = copyOfSelectedOptions;
-    this.values = copyOfValues;
-    this.emit('nve-combobox-selected-options', copyOfSelectedOptions);
+    this.options = copyOfOptions;
+    this.emit('value', copyOfSelectedOptions);
   }
 
-  unSelectOptionKeyDown(option: Option, event: KeyboardEvent) {
-    if (event instanceof KeyboardEvent && event.key !== 'Enter') return;
+  /**
+   * Fjerner et valgt alternativ med tastatur.
+   * @param option Alternativet som skal fjernes
+   * @param event KeyboardEvent
+   * @returns {void}
+   */
+  unSelectOptionKeyDown(option: Option, event: KeyboardEvent): void {
+    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      this.focusNextOption(event.key);
+      event.preventDefault();
+      return;
+    }
+
+    if (event.key === 'Backspace') {
+      this.unSelectOption(option);
+      return;
+    }
+
+    if (this.isALetterPressed(event)) this.prefixInputRef.value?.focus();
+  }
+
+  /**
+   * Fjerner et valgt tag alternativ med tastatur.
+   * @param option Alternativet som skal fjernes
+   * @param event KeyboardEvent
+   * @returns {void}
+   */
+  unSelectOptionKeyDownTag(option: Option, event: KeyboardEvent): void {
+    if (event instanceof KeyboardEvent && event.key !== 'Backspace') return;
+
+    // Lager en kopi av selectedOptions for å finne riktig tag å sette fokus på etter sletting.
+    const copyOfSelectedOptions = [...this.selectedOptions];
+
     this.unSelectOption(option);
+
+    // Har vi ikke har en tag å sette fokus på, sett fokus på input feltet.
+    if (this.selectedOptions.length === 0) {
+      this.prefixInputRef.value?.focus();
+      return;
+    }
+
+    const indexOfDeletedOption = copyOfSelectedOptions.findIndex(
+      (selectedOption) => selectedOption.value === option.value
+    );
+
+    // Velger hvilken tag som skal få fokus etter sletting, enten den før eller den etter.
+    if (indexOfDeletedOption > 0) {
+      const previousOptionElement = this.shadowRoot?.querySelector(`nve-tag:nth-child(${indexOfDeletedOption})`);
+      if (previousOptionElement) {
+        (previousOptionElement as HTMLElement)?.focus();
+      } else {
+        const nextOptionElement = this.shadowRoot?.querySelector(`nve-tag:nth-child(${indexOfDeletedOption + 1})`);
+        if (nextOptionElement) {
+          (nextOptionElement as HTMLElement)?.focus();
+        }
+      }
+    }
   }
 
-  toggleOptionInListWithSearchHits(option: Option, index: number) {
+  /**
+   *  Basert på om brukeren presser ArrowDown eller ArrowUp, fokuser på riktig element
+   *  @param option Event.key string ArrowDown || ArrowUp
+   */
+  private focusNextOption(eventKey: string): void {
+    const options = Array.from(this.shadowRoot?.querySelectorAll('nve-option') || []);
+    const currentIndex = options.findIndex((el) => el === this.shadowRoot?.activeElement);
+
+    let nextIndex = currentIndex;
+
+    if (eventKey === 'ArrowDown') {
+      nextIndex = currentIndex < options.length - 1 ? currentIndex + 1 : 0;
+    } else if (eventKey === 'ArrowUp') {
+      nextIndex = currentIndex > 0 ? currentIndex - 1 : options.length - 1;
+    }
+
+    if (options[nextIndex]) {
+      (options[nextIndex] as HTMLElement).focus();
+    }
+  }
+
+  /**
+   * Toggle valg av alternativ i søkeresultatlisten.
+   * @param option Alternativet som skal toggles
+   * @param index Indeks i søkeresultatlisten
+   * @returns {void}
+   */
+  toggleOptionInListWithSearchHits(option: Option, index: number): void {
     if (this.disabled) return;
     const copyOfListWithPossibleSearchHits = [...this.listWithSearchHits];
     const previousValue = copyOfListWithPossibleSearchHits[index].selected;
     copyOfListWithPossibleSearchHits[index].selected = !copyOfListWithPossibleSearchHits[index].selected;
-
-    if (this.multiple && this.selectedOptions.length === this.multiple) {
-      console.log(`Du kan kun velge ${this.multiple} alternativer. `);
-      return;
-    }
 
     this.listWithSearchHits = copyOfListWithPossibleSearchHits;
     // Hvis valgte valg var true tidligere, unselect valget.
@@ -210,24 +449,71 @@ export default class NveCombobox extends LitElement implements INveComponent {
     }
   }
 
-  toggleOptionInListWithSearchHitsKeyDown(option: Option, index: number, event: KeyboardEvent) {
+  /**
+   * Toggle valg av alternativ i søkeresultatlisten med tastatur (kun Enter).
+   * @param option Alternativet som skal toggles
+   * @param index i søkeresultatlisten
+   * @param event KeyboardEvent
+   * @returns {void}
+   */
+  toggleOptionInListWithSearchHitsKeyDown(option: Option, index: number, event: KeyboardEvent): void {
     if (event instanceof KeyboardEvent && event.key !== 'Enter') return;
+    console.log('dsfsdfsdf');
+
     this.toggleOptionInListWithSearchHits(option, index);
   }
 
-  addHighlightingToSearchResult(label: string) {
+  /**
+   * Legger til utheving av søketreff i label.
+   * @param label Label til alternativet
+   * @returns {TemplateResult} HTML med uthevet søketreff
+   */
+  addHighlightingToSearchResult(label: string): unknown {
     const matched = label.replace(new RegExp(this.inputValue, 'i'), (match) => `<b>${match}</b>`);
     return html` ${unsafeHTML(matched)} `;
   }
 
-  shouldDisplayCounter() {
-    return !this.isPopupActive && this.selectedOptions?.length;
+  /**
+   * Sjekker om maksimalt antall alternativer er valgt.
+   */
+  private isMaxNumberOfOptionsSelected(): boolean {
+    return this.selectedOptions.length === this.multiple;
+  }
+
+  /**
+   *  Sjekker om et alternativ skal vises som deaktivert.
+   *  Hvis disabled er true, vises alle alternativer som deaktivert.
+   *  Hvis maksimalt antall alternativer er valgt, vises alle alternativer som ikke er valgt som deaktivert.
+   */
+  shouldDisplayOptionAsDisabled(option: Option): boolean {
+    return this.disabled ? true : this.isMaxNumberOfOptionsSelected() ? !option?.selected : false;
+  }
+
+  /**
+   * Setter popupens aktive tilstand.
+   * @param active true for å åpne popup, false for å lukke
+   */
+  private setPopupActive(active: boolean): void {
+    if (this.isPopupActive === active) return; // Unngå unødvendig oppdatering
+    this.isPopupActive = active;
+    this.shadowRoot?.querySelector('.open-icon')?.classList?.toggle('active');
+  }
+
+  /**
+   *    Sjekker om en bokstav er trykket på tastaturet.
+   *    @param event KeyboardEvent
+   *    @returns {boolean} true hvis en bokstav er trykket
+   */
+  private isALetterPressed(event: KeyboardEvent): boolean {
+    // Alle event koder starter med Key. Eksempel k || K = KeyK
+    return event.code.startsWith('Key');
   }
 
   render() {
     return html`
       <nve-popup placement="bottom" sync="width" .active="${this.isPopupActive}" distance="8">
         <nve-input
+          tabindex="0"
           aria-controls="listbox"
           aria-expanded="${this.isPopupActive}"
           aria-haspopup="listbox"
@@ -251,15 +537,14 @@ export default class NveCombobox extends LitElement implements INveComponent {
                 tabindex="0"
                 size="small"
                 @nve-close="${() => this.unSelectOption(option)}"
-                @keydown="${(event: KeyboardEvent) => this.unSelectOptionKeyDown(option, event)}"
+                @keydown="${(event: KeyboardEvent) => this.unSelectOptionKeyDownTag(option, event)}"
                 .closeable=${!this.disabled}
               >
                 ${option.label}
               </nve-tag>
             `;
           })}
-          ${this.shouldDisplayCounter() &&
-          html` <nve-tag slot="prefix" size="small"> ${this.selectedOptions.length} </nve-tag> `}
+
           <input
             placeholder="${this.placeholder}"
             slot="prefix"
@@ -273,9 +558,10 @@ export default class NveCombobox extends LitElement implements INveComponent {
 
           ${html`
             <nve-icon
+              class="open-icon"
               tabindex="0"
               slot="suffix"
-              name="keyboard_arrow_${this.isPopupActive ? 'up' : 'down'}"
+              name="keyboard_arrow_down"
               style="font-size: 1.5rem;"
               @click="${this.togglePopupActive}"
             ></nve-icon>
@@ -307,7 +593,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
                       @keydown="${(e: KeyboardEvent) => this.toggleOptionInListWithSearchHitsKeyDown(option, i, e)}"
                       @click="${() => this.toggleOptionInListWithSearchHits(option, i)}"
                       value="${option.value}"
-                      ?disabled=${this.disabled}
+                      ?disabled=${this.shouldDisplayOptionAsDisabled(option)}
                       .selected="${option.selected}"
                     >
                       ${option.selected
@@ -322,7 +608,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
               : html` <nve-option disabled>Ingen resultater</nve-option> `
             : ''}
           ${this.displaySearchResult === false
-            ? this.values.map(
+            ? this.options.map(
                 (option) => html`
                   <nve-option
                     tabindex="0"
@@ -330,7 +616,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
                     @keydown="${(e: KeyboardEvent) =>
                       option.selected ? this.unSelectOptionKeyDown(option, e) : this.selectOptionKeyDown(option, e)}"
                     @click="${() => (option.selected ? this.unSelectOption(option) : this.selectOption(option))}"
-                    ?disabled=${this.disabled}
+                    ?disabled=${this.shouldDisplayOptionAsDisabled(option)}
                     .selected="${option.selected}"
                   >
                     ${option.selected

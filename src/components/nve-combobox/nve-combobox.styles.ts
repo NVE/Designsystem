@@ -54,4 +54,13 @@ export default css`
   .select__listbox[filled] {
     background-color: var(--neutrals-background-primary-contrast, #eff8fc);
   }
+
+  .open-icon {
+    transition:
+      transform 0.1s ease-in-out,
+      color 0.1s ease-in-out;
+  }
+  .open-icon.active {
+    transform: rotate(-180deg);
+  }
 `;
