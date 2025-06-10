@@ -7,11 +7,11 @@ import { animateTo } from '../../utils/animation';
 import '../nve-icon/nve-icon.component';
 
 /**
- * Brukes til å vise viktige beskjeder som popup toast.
- * Hvis du trenger å vise en statisk varsling med mer informasjon, du må bruke nve-message-card.
- * Les mer under universel utforming seksjonen.
+ * Brukes til å vise viktige beskjeder som toast. Dette er en komponent som bruker alert-rollen.
+ * Hvis du trenger å vise en statisk varsling med mer informasjon, bruk nve-message-card.
+ * Les mer i seksjonen om universel utforming.
  *
- * @slot - Tekst
+ * @slot - tekst - Hoved teksten i alerten.
  * @slot icon - Det første ikonet (til venstre).
  * @slot label - Overskriften for alerten.
  *
@@ -41,7 +41,7 @@ export default class NveAlert extends LitElement implements INveComponent {
   @property() variant: 'primary' | 'success' | 'neutral' | 'warning' | 'danger' = 'primary';
   /** Om lukk knapp skal vises */
   @property({ type: Boolean }) closable = false;
-  /** Om alerten er åpen eller lukket */
+  /** Om alerten er åpen. Hvis sant alerten vises, ellers er den skjult. */
   @property({ type: Boolean, reflect: true }) open = false;
   /** Hvor lenge alerten skal være åpen før den lukkes automatisk, i millisekunder. Altid er standard */
   @property({ type: Number }) duration = Infinity;

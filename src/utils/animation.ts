@@ -23,8 +23,10 @@ export function animateTo(el: HTMLElement, keyframes: Keyframe[], options?: Keyf
   });
 }
 
-/** Sjekker om bruker foretrekker redusert bevegelse så at vi ikke viser raske animasjoner på skjermen */
-export function prefersReducedMotion() {
+/** Sjekker om bruker foretrekker redusert bevegelse så at vi ikke viser raske animasjoner på skjermen
+ * @returns Sant om bruker foretrekker redusert bevegelse, ellers usant hvis ikke.
+ */
+export function prefersReducedMotion(): boolean {
   const query = window.matchMedia('(prefers-reduced-motion: reduce)');
   return query.matches;
 }

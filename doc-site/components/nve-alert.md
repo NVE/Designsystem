@@ -10,7 +10,7 @@ outline: [2, 3]
   open
   iconName="info"
   label="Info"
-  text="Detter er alert komponent. Den har ventet hele livet på å varsle deg!"
+  text="Dette er alert komponent. Den har ventet hele livet på å varsle deg!"
 ></nve-alert>
 ```
 
@@ -24,7 +24,7 @@ outline: [2, 3]
 
 ### Styr innhold
 
-Du kan bruke slots for å vise innhold i alerten. Standard-slotten er hovedteksten. Du kan også bruke egne slots for ikon og overskrift (label).
+Du kan bruke spor for å vise innhold i alerten. Standard-spor er hovedteksten. Du kan også bruke egne spor for ikon (icon) og overskrift (label).
 
 <CodeExamplePreview>
 
@@ -38,12 +38,12 @@ Du kan bruke slots for å vise innhold i alerten. Standard-slotten er hovedtekst
 
 </CodeExamplePreview>
 
-Som alternativ kan du bruke attributer ikon, label og text.
+Som alternativ kan du bruke attributer iconName, label og text.
 
 <CodeExamplePreview>
 
 ```html
-<nve-alert open variant="warning" iconName="info" label="Label" text="Bruk av attributer"></nve-alert>
+<nve-alert open iconName="info" label="Label" text="Bruk av attributer"></nve-alert>
 ```
 
 </CodeExamplePreview>
