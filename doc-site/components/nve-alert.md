@@ -6,12 +6,7 @@ outline: [2, 3]
 <CodeExamplePreview>
 
 ```html
-<nve-alert
-  open
-  iconName="info"
-  label="Info"
-  text="Dette er alert komponent. Den har ventet hele livet på å varsle deg!"
-></nve-alert>
+<nve-alert open label="Info" text="Dette er alert komponent. Den har ventet hele livet på å varsle deg!"></nve-alert>
 ```
 
 </CodeExamplePreview>
@@ -43,7 +38,7 @@ Som alternativ kan du bruke attributer iconName, label og text.
 <CodeExamplePreview>
 
 ```html
-<nve-alert open iconName="info" label="Label" text="Bruk av attributer"></nve-alert>
+<nve-alert open label="Label" text="Bruk av attributer"></nve-alert>
 ```
 
 </CodeExamplePreview>
@@ -55,15 +50,33 @@ Bruk `variant` for å styre farger. `primary` er standard og trenger ikke spesif
 <CodeExamplePreview arrangeComponentsVertically>
 
 ```html
-<nve-alert open iconName="info" text="primary"></nve-alert>
+<nve-alert open text="primary"></nve-alert>
 
-<nve-alert variant="success" open iconName="check_circle" text="success"></nve-alert>
+<nve-alert variant="success" open text="success"></nve-alert>
 
-<nve-alert variant="warning" open iconName="warning" text="warning"></nve-alert>
+<nve-alert variant="warning" open text="warning"></nve-alert>
 
-<nve-alert variant="neutral" open iconName="help" text="neutral"></nve-alert>
+<nve-alert variant="neutral" open text="neutral"></nve-alert>
 
-<nve-alert variant="danger" open iconName="error" text="danger"></nve-alert>
+<nve-alert variant="danger" open text="danger"></nve-alert>
+```
+
+</CodeExamplePreview>
+
+### Ikon
+
+Velger du variant kommer det en bestemt ikone som standard. Du kan overstyre ikone med `iconName` property.
+Du kan skjule ikonen med `showIcon=false`
+
+<CodeExamplePreview arrangeComponentsVertically>
+
+```html
+<nve-alert open>Standard ikone på info variant</nve-alert>
+<nve-alert open variant="danger">Standard ikone på fare variant</nve-alert>
+
+<nve-alert variant="success" open iconName="house">Annen ikon</nve-alert>
+
+<nve-alert variant="warning" open showIcon="false">Ingen ikon</nve-alert>
 ```
 
 </CodeExamplePreview>
@@ -88,16 +101,16 @@ Bruk `saturation="emphasized"` for å få litt mørkere bakgrunnsfarge.
 
 ```html
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem">
-  <nve-alert variant="warning" text="Emphasized" saturation="emphasized" iconName="info" open> </nve-alert>
-  <nve-alert variant="warning" text="Ikke emphasized" iconName="info" open> </nve-alert>
-  <nve-alert variant="success" text="Emphasized" saturation="emphasized" iconName="info" open> </nve-alert>
-  <nve-alert variant="success" text="Ikke emphasized" iconName="info" open> </nve-alert>
-  <nve-alert variant="neutral" text="Emphasized" saturation="emphasized" iconName="info" open> </nve-alert>
-  <nve-alert variant="neutral" text="Ikke emphasized" iconName="info" open> </nve-alert>
-  <nve-alert variant="danger" text="Emphasized" saturation="emphasized" iconName="info" open> </nve-alert>
-  <nve-alert variant="danger" text="Ikke emphasized" iconName="info" open> </nve-alert>
-  <nve-alert text="Emphasized" saturation="emphasized" iconName="info" open> </nve-alert>
-  <nve-alert text="Ikke emphasized" iconName="info" open> </nve-alert>
+  <nve-alert variant="warning" text="Emphasized" saturation="emphasized" open> </nve-alert>
+  <nve-alert variant="warning" text="Ikke emphasized" open> </nve-alert>
+  <nve-alert variant="success" text="Emphasized" saturation="emphasized" open> </nve-alert>
+  <nve-alert variant="success" text="Ikke emphasized" open> </nve-alert>
+  <nve-alert variant="neutral" text="Emphasized" saturation="emphasized" open> </nve-alert>
+  <nve-alert variant="neutral" text="Ikke emphasized" open> </nve-alert>
+  <nve-alert variant="danger" text="Emphasized" saturation="emphasized" open> </nve-alert>
+  <nve-alert variant="danger" text="Ikke emphasized" open> </nve-alert>
+  <nve-alert text="Emphasized" saturation="emphasized" open> </nve-alert>
+  <nve-alert text="Ikke emphasized" open> </nve-alert>
 </div>
 ```
 
@@ -108,7 +121,7 @@ Bruk `saturation="emphasized"` for å få litt mørkere bakgrunnsfarge.
 Bruk `closable` for å vise en lukke-knapp på høyre side, som skjuler komponenten.
 
 <nve-message-card variant="warning" label="Viktig!" size="compact">
-<p>Når du bruker <b>closable</b> vises det en knapp med kun ikon. <br>Siden det ikke finnes noe tekst på knappen, må vi informere skjermleser-brukere om hva knappen gjør. Derfor har knappen et <b>aria-label</b>-attributt. Dette styres via <b>buttonLabel</b>-egenskapen i alert-komponenten. Standardverdien er <b>"Lukk"</b>, men det er viktig å oppdatere denne hvis dere bruker et annet språk.</p>
+<p>Når du bruker <b>closable</b> vises det en knapp med kun ikon. <br>Siden det ikke finnes noe tekst på knappen, må vi informere skjermleser-brukere om hva knappen gjør. Derfor har knappen et <b>aria-label</b>-attributt. Dette styres via <b>buttonLabel</b>-egenskapen i alert-komponenten. Standardverdien er <b>"Lukk"</b>, men det er viktig å oppdatere denne hvis du bruker et annet språk.</p>
 </nve-message-card>
 
 <CodeExamplePreview arrangeComponentsVertically>
@@ -134,7 +147,7 @@ Du kan bruke `duration` for å lukke alerten automatisk. Verdien er gitt i milli
 <CodeExamplePreview arrangeComponentsVertically>
 
 ```html
-<nve-alert class="alert-duration" duration="2000"> Den skal forsvinne etter 2 sekunder. </nve-alert>
+<nve-alert class="alert-duration" duration="2000"> Denne skal forsvinne etter 2 sekunder. </nve-alert>
 <nve-button class="show-alert">Vis alerten</nve-button>
 <script>
   // Denne snutten vil åpne alerten når man klikker på knappen.
@@ -152,19 +165,29 @@ Du kan selv bestemme hvordan du vil vise alerten i løsningen din. Når du legge
 
 Ofte ønsker man å skjule slike komponenter i SPA-applikasjoner uansett. Vi tilbyr derfor også `toast`-funksjonalitet som gjør dette for deg. Som standard vises toast øverst i høyre hjørne. For å vise en alert som toast, må du wrappe `nve-alert` i en `div` med klassen `toast-stack`. Denne blir injisert i DOM-en utenfor hovedinnholdet. Når alerten lukkes, forsvinner også `toast-stack` sammen med alle `nve-alert`-komponentene. Vi anbefaler ikke å vise mer enn én alert samtidig. Les mer i seksjonen om universell utforming. Den er ikke justbar. Per i dag støttes det kun en animasjon, men kan sikkert prate med designere hvis det er behov for flere typer animasjoner.
 
+<nve-message-card label="Vær oppmerksom" size="compact" variant="warning">
+<p>I dette eksemplet vises det to alert meldinger samtidig når man klikker på begge knappene. Husk at det ikke er best praksis å vise flere alert meldinger samtidig. Bruk det med omhu, og les mer om det i <a href="#universell-utforming">universel utforming</a> seksjonen.</p>
+</nve-message-card>
+
 <CodeExamplePreview arrangeComponentsVertically>
 
 ```html
 <div class="toast-container">
-  <nve-alert class="alert-toast" closable iconName="info" label="Toast" text="Dette er en toast."> </nve-alert>
-  <nve-button class="show-alert">Vis toast alerten</nve-button>
+  <nve-alert class="alert-toast" variant="warning" closable label="Toast" text="Obs! Dette er en toast."> </nve-alert>
+  <nve-alert class="alert-toast" variant="success" closable label="Toast" text="Gratulerer! Dette er en toast">
+  </nve-alert>
+  <nve-button class="show-alert-warning">Vis varsel toast</nve-button>
+  <nve-button class="show-alert-success" variant="neutral">Vis suksess toast</nve-button>
 </div>
 <script>
-  // Denne snutten vil åpne alerten når man klikker på knappen.
+  // Denne snutten vil åpne alert meldinger når man klikker på knapper.
   const container = document.querySelector('.toast-container');
-  const button = container.querySelector('.show-alert');
-  const alert = container.querySelector('.alert-toast');
-  button.addEventListener('click', () => alert.toast());
+  const buttonWarning = container.querySelector('.show-alert-warning');
+  const buttonSuccsess = container.querySelector('.show-alert-success');
+  const warningAlert = container.querySelector('nve-alert[variant="warning"]');
+  const successAlert = container.querySelector('nve-alert[variant="success"]');
+  buttonWarning.addEventListener('click', () => warningAlert.toast());
+  buttonSuccsess.addEventListener('click', () => successAlert.toast());
 </script>
 ```
 

@@ -49,6 +49,8 @@ export default class NveAlert extends LitElement implements INveComponent {
   @property({ type: String }) buttonLabel?: string = 'Lukk';
   /** Navnet på ikonet som skal vises til venstre siden av alerten.*/
   @property({ type: String }) iconName?: string;
+  /** Om variant ikonen skal vises*/
+  @property({ type: String }) showIcon: 'true' | 'false' = 'true';
 
   /**
    * @internal
@@ -195,6 +197,27 @@ export default class NveAlert extends LitElement implements INveComponent {
     });
   }
 
+  private getVariantIconName() {
+    if (this.showIcon === 'false') return '';
+    if (this.iconName) {
+      return this.iconName;
+    }
+    switch (this.variant) {
+      case 'primary':
+        return 'info';
+      case 'success':
+        return 'check_circle';
+      case 'neutral':
+        return 'info';
+      case 'warning':
+        return 'warning';
+      case 'danger':
+        return 'error';
+      default:
+        return '';
+    }
+  }
+
   /**
    * Returnerer keyframes for visnings- og skjuleanimasjoner.
    * Kan utvides med flere animasjoner hvis det trengs.
@@ -232,7 +255,15 @@ export default class NveAlert extends LitElement implements INveComponent {
         })}
       >
         <div part="icon" class="alert__icon">
-          ${!this.iconName ? html`<slot name="icon"></slot>` : html`<nve-icon name="${this.iconName}"></nve-icon>`}
+          ${this.showIcon === 'true'
+            ? html`
+                <div part="icon" class="alert__icon">
+                  ${!this.getVariantIconName()
+                    ? html`<slot name="icon"></slot>`
+                    : html`<nve-icon name="${this.getVariantIconName()}"></nve-icon>`}
+                </div>
+              `
+            : nothing}
         </div>
         <div part="label">
           ${this.label ? html` <label part="label">${this.label}</label>` : html`<slot name="label"></slot>`}
