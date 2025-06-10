@@ -49,4 +49,8 @@ export default css`
     font: var(--body-xsmall);
     color: var(--feedback-background-emphasized-error);
   }
+
+  nve-label {
+    width: unset;
+  }
 `;
