@@ -49,6 +49,30 @@ export default defineConfig(({ mode }) => {
       }) as Plugin,
       replaceImportAfterBuild(),
     ],
+    test: {
+      browser: {
+        enabled: true,
+        headless: true,
+        provider: 'playwright',
+        screenshotFailures: false,
+        viewport: { width: 1920, height: 1080 },
+        instances: [
+          {
+            browser: 'chromium',
+            launch: {
+              devtools: true,
+              args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
+            },
+            context: {},
+          },
+          {
+            browser: 'webkit',
+            launch: {},
+            context: {},
+          },
+        ],
+      },
+    },
     build: {
       sourcemap: mode === 'development' ? true : false,
       lib: {
