@@ -1,3 +1,11 @@
+## [2.0.2](https://github.com/NVE/Designsystem/compare/v2.0.1...v2.0.2) (2025-06-10)
+
+
+### Bug Fixes
+
+* **form:** flytte obligatorisk tekst etter overskrift ([#550](https://github.com/NVE/Designsystem/issues/550)) ([d077f9a](https://github.com/NVE/Designsystem/commit/d077f9af8f29ea1795f3939164a70cc26ffac48d))
+* **nve-alert:** fikse kommentar for å publisere riktig versjon 2.0.1 siden 2.0.0 feiler ([#543](https://github.com/NVE/Designsystem/issues/543)) ([7a2f738](https://github.com/NVE/Designsystem/commit/7a2f73883d7cec88ccae838e3a5b3cd6a229ef55))
+
 ## [2.0.1](https://github.com/NVE/Designsystem/compare/v2.0.0...v2.0.1) (2025-06-05)
 
 
