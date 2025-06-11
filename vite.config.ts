@@ -49,6 +49,11 @@ export default defineConfig(({ mode }) => {
       }) as Plugin,
       replaceImportAfterBuild(),
     ],
+    test: {
+      globals: true,
+      environment: 'happy-dom',
+      include: ['src/components/*/*.test.ts'],
+    },
     build: {
       sourcemap: mode === 'development' ? true : false,
       lib: {
