@@ -19,13 +19,12 @@ outline: [2, 3]
 
 ### Styr innhold
 
-Du kan bruke spor for å vise innhold i alerten. Standard-spor er hovedteksten. Du kan også bruke egne spor for ikon (icon) og overskrift (label).
+Du kan bruke spor for å vise innhold i alerten. Standard-spor er hovedteksten. Du kan også bruke egne spor for overskrift (label).
 
 <CodeExamplePreview>
 
 ```html
 <nve-alert open>
-  <nve-icon slot="icon" name="info"></nve-icon>
   <nve-label slot="label">Label</nve-label>
   Bruk av slots i alerten.
 </nve-alert>
@@ -65,16 +64,16 @@ Bruk `variant` for å styre farger. `primary` er standard og trenger ikke spesif
 
 ### Ikon
 
-Velger du variant kommer det en bestemt ikone som standard. Du kan overstyre ikone med `iconName` property.
-Du kan skjule ikonen med `showIcon=false`
+Velger du variant, kommer det et bestemt ikon som standard. Du kan overstyre ikonet med `iconName`-egenskapen.
+Du kan skjule ikonet med `showIcon="false"`.
 
 <CodeExamplePreview arrangeComponentsVertically>
 
 ```html
-<nve-alert open>Standard ikone på info variant</nve-alert>
-<nve-alert open variant="danger">Standard ikone på fare variant</nve-alert>
+<nve-alert open>Standard ikon på info variant</nve-alert>
+<nve-alert open variant="danger">Standard ikon på fare variant</nve-alert>
 
-<nve-alert variant="success" open iconName="house">Annen ikon</nve-alert>
+<nve-alert variant="success" open iconName="house">Annet ikon</nve-alert>
 
 <nve-alert variant="warning" open showIcon="false">Ingen ikon</nve-alert>
 ```
@@ -163,7 +162,9 @@ Du kan bruke `duration` for å lukke alerten automatisk. Verdien er gitt i milli
 
 Du kan selv bestemme hvordan du vil vise alerten i løsningen din. Når du legger til `nve-alert` i DOM-en, er den alltid der selv om `open` er satt til false. `display: none` gjør at skjermlesere ignorerer komponenten, så det er ingen fare ved å ha den i DOM-en hele tiden.
 
-Ofte ønsker man å skjule slike komponenter i SPA-applikasjoner uansett. Vi tilbyr derfor også `toast`-funksjonalitet som gjør dette for deg. Som standard vises toast øverst i høyre hjørne. For å vise en alert som toast, må du wrappe `nve-alert` i en `div` med klassen `toast-stack`. Denne blir injisert i DOM-en utenfor hovedinnholdet. Når alerten lukkes, forsvinner også `toast-stack` sammen med alle `nve-alert`-komponentene. Vi anbefaler ikke å vise mer enn én alert samtidig. Les mer i seksjonen om universell utforming. Den er ikke justbar. Per i dag støttes det kun en animasjon, men kan sikkert prate med designere hvis det er behov for flere typer animasjoner.
+Ofte ønsker man å skjule slike komponenter i SPA-applikasjoner uansett. Vi tilbyr derfor også `toast`-funksjonalitet som gjør dette for deg. Du skal åpne alerten med `toast()` metoden som kalles på den.
+
+Som standard vises toast øverst i høyre hjørne. For å vise en alert som toast, må du wrappe `nve-alert` i en `div` med klassen `toast-stack`. Denne blir injisert i DOM-en utenfor hovedinnholdet. Når alerten lukkes, forsvinner også `toast-stack` sammen med alle `nve-alert`-komponentene. Vi anbefaler ikke å vise mer enn én alert samtidig. Les mer i seksjonen om universell utforming. Den er ikke justbar. Per i dag støttes det kun en animasjon, men kan sikkert prate med designere hvis det er behov for flere typer animasjoner.
 
 <nve-message-card label="Vær oppmerksom" size="compact" variant="warning">
 <p>I dette eksemplet vises det to alert meldinger samtidig når man klikker på begge knappene. Husk at det ikke er best praksis å vise flere alert meldinger samtidig. Bruk det med omhu, og les mer om det i <a href="#universell-utforming">universel utforming</a> seksjonen.</p>
