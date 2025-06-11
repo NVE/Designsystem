@@ -51,6 +51,18 @@
   --sl-input-letter-spacing: var(--sl-letter-spacing-normal);
 }
 
+/* Brukes i nve-alert for å vise toast*/
+.toast-stack {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
 /*
 focus ring color is the same all over the application.
 we use only border-radius-small size on all shoelace border radius tokens. (--sl-border-radius-large and --sl-border-radius-x-large are 
