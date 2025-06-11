@@ -6,44 +6,40 @@ import { INveComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-message-card.styles';
 import '../nve-icon/nve-icon.component';
 
-/** 
-Brukes som veiledning i skjemaer eller som en informasjon til brukere. 
-*
-*
-* Hvis du skal vise en popup som er et resultat av brukerinteraksjon (som for eksempel varsler, feil, osv.), 
-* bør du gjerne bruke nve-alert. Nve-message-card skal inneholde mer informasjon og skal i utgangspunktet være 
-* en statisk komponent. Den er ment for å hjelpe brukere, for eksempel i skjemaer.
-* @dependency nve-icon
-*
-* @slot subheader - Ekstra informasjon i header seksjonen
-* @slot footer - Ekstra informasjon i footer seksjonen
-*
-* @event nve-hide - Emittes når kortet lukkes.
-*
-* @csspart base - hoved komponent kontainer.
-* @csspart header - header seksjonen.
-* @csspart subheader - subheader seksjonen.
-* @csspart label - tittel i header seksjonen.
-* @csspart footer - footer seksjonen.
-*/
+/**
+ * Minner om en nve-alert, men skal fortrinnsvis vises hele tiden, ikke bare som et resultat av en hendelse.
+ * Nve-message-card inneholder gjerne mer informasjon enn nve-alert.
+ * Den er ment for å hjelpe brukere, for eksempel i skjemaer.
+ *
+ * @dependency nve-icon
+ *
+ * @slot subheader - brukes til ekstra tekst over label.
+ * @slot footer - brukes til evt. knapperad nederst.
+ *
+ * @event nve-hide - Emittes når kortet lukkes.
+ *
+ * @csspart base - hele komponenten.
+ * @csspart header - alt som er over brødteksten
+ * @csspart subheader - ekstra tekst over label
+ * @csspart label - tittel i header-seksjonen.
+ * @csspart footer - evt. knapperad nederst.
+ */
 @customElement('nve-message-card')
 export default class NveMessageCard extends LitElement implements INveComponent {
   @property({ reflect: true, type: String }) testId: string = '';
-  /** Bestemmer sterkere bakgrunnsfarge */
+  /** Sett denne for sterkere bakgrunnsfarge */
   @property({ type: String, reflect: false }) saturation: 'emphasized' | null = null;
-  /** Bestemmer om størrelsen */
+  /** Sett størrelse på kortet */
   @property({ reflect: true }) size: 'default' | 'compact' | 'simple' = 'default';
-  /** Bestemmer om kort skal vise lukk knappen i høyre hjørnet */
+  /** Bruk denne for å lukk-knappen i høyre hjørne */
   @property({ type: Boolean, reflect: true }) closable: boolean = false;
-  /** Viser ikonen ved siden i header seksjonen */
+  /** Styrer visning av ikon foran label */
   @property({ reflect: true }) showIcon: 'true' | 'false' = 'true';
-  /** Tittel i header seksjonen */
+  /** Tittel / overskrift */
   @property({ reflect: true }) label: string = '';
-  /** Beskrivelse tekst under tittelen */
-  @property({ reflect: true }) text: string = '';
-  /** Man kan velge ikon i headeren, enten kommer en default en */
+  /** Bruk denne til å overstyre standard-ikonet foran label */
   @property({ reflect: true }) iconTitle: string = '';
-  /** Bestemmer variant farge */
+  /** Bestemmer farge */
   @property({ reflect: true }) variant: 'neutral' | 'primary' | 'warning' | 'danger' | 'success' = 'primary';
   //vurdere showheader
   static styles = [styles];

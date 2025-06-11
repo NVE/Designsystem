@@ -31,11 +31,11 @@ export default css`
     display: flex;
     flex-direction: column;
     flex: 1;
-    gap: var(--spacing-small);
+    gap: var(--spacing-x-small);
     overflow: hidden;
   }
 
-  /* tittelen blir kuttet hvis for langt i utgangspunktet */
+  /* tittel blir kuttet hvis den er for lang */
   .message-card__header-label {
     display: flex;
     align-items: center;
@@ -56,6 +56,9 @@ export default css`
   }
 
   .message-card__close-btn {
+    display:flex;
+    justify-content:center;
+    align-items:center;
     border: none;
     background: none;
     width: 28px;
@@ -65,9 +68,6 @@ export default css`
     color: inherit;
     border-radius: 50%;
     transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   /* brukes når man lukker kortet*/
@@ -75,9 +75,8 @@ export default css`
     opacity: 0;
   }
 
-  nve-icon::part(icon) {
-    display: unset;
-    font-size: 22px;
+  nve-icon {
+    --icon-size: 24px;
   }
 
   /** Varianter */
@@ -173,7 +172,7 @@ export default css`
   }
 
   :host([size='simple']) .message-card__header-label {
-    font: var(--label-medium-light);
+    font: var(--label-small-light);
   }
 
   :host([size='compact']) .message-card__body {
