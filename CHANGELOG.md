@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/NVE/Designsystem/compare/v2.0.2...v2.1.0) (2025-06-11)
+
+
+### Features
+
+* **nve-message-card:** Flere eksempler i dokumentasjon, samt justert litt på skrifttyper og ikon-størrelse ([#549](https://github.com/NVE/Designsystem/issues/549)) ([07c8626](https://github.com/NVE/Designsystem/commit/07c86260013372955984cb73411b77e8b03e97d7))
+
 ## [2.0.2](https://github.com/NVE/Designsystem/compare/v2.0.1...v2.0.2) (2025-06-10)
 
 
