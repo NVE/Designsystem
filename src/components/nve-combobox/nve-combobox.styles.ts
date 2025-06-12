@@ -1,18 +1,9 @@
 import { css } from 'lit';
-
+// focus error
+// nve-tag linjehøyde er feil
+// avstand mellom nve-tag
+//
 export default css`
-  :host nve-input::part(base):focus-within {
-    border: 1px solid var(--interactive-links-default);
-  }
-
-  :host([data-user-invalid]) nve-input::part(base) {
-    border-color: var(--feedback-background-emphasized-error);
-  }
-
-  :host([data-user-invalid]) .text--error {
-    color: var(--feedback-background-emphasized-error);
-  }
-
   nve-input::part(input) {
     display: none;
   }
@@ -31,7 +22,19 @@ export default css`
   }
 
   nve-tag[slot='prefix'] {
-    margin: 8px;
+    margin-left: var(--spacing-xx-small);
+  }
+
+  :host nve-input::part(base):focus-within {
+    border: 1px solid var(--interactive-links-default);
+  }
+
+  :host([data-user-invalid]) nve-input::part(base) {
+    border-color: var(--feedback-background-emphasized-error);
+  }
+
+  :host([data-user-invalid]) .text--error {
+    color: var(--feedback-background-emphasized-error);
   }
 
   .input-prefix[slot='prefix'] {
@@ -74,5 +77,9 @@ export default css`
   }
   .open-icon.active {
     transform: rotate(-180deg);
+  }
+
+  .text-help {
+    font: var(--detailtext-caption) !important;
   }
 `;
