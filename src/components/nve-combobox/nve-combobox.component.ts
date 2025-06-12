@@ -11,6 +11,12 @@ import '../nve-menu/nve-menu.component';
 import '../nve-option/nve-option.component';
 import '../nve-icon/nve-icon.component';
 
+/*
+
+Error, hvordan legge inn errro håndetering ? ??? 
+
+
+*/
 export interface Option {
   label: string;
   value: string | number;
@@ -30,6 +36,11 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * Placeholder som vises inn i input feltet.
    */
   @property() placeholder?: string;
+
+  /**
+   * Teksten som vises inder input feltet, byttes ut med errorMessage hvis det er en feil
+   */
+  @property() helpText?: string | undefined = undefined;
 
   /**
    * Teksten på høyre side som forteller at feltet er obligatorisk.
@@ -65,6 +76,8 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * Skal den være påkrevd.
    */
   @property({ type: Boolean }) required: boolean = false;
+
+  @property({ type: String }) min: number | undefined = undefined;
 
   /**
    * Test-id for enklere testing.
@@ -134,6 +147,8 @@ export default class NveCombobox extends LitElement implements INveComponent {
   connectedCallback() {
     super.connectedCallback();
     document.addEventListener('click', this.boundHandleOutsideClick, true);
+    const formElement = this.closest('form');
+    formElement?.addEventListener('submit', this.handleSubmit.bind(this));
   }
 
   /**
@@ -141,6 +156,8 @@ export default class NveCombobox extends LitElement implements INveComponent {
    */
   disconnectedCallback() {
     document.removeEventListener('click', this.boundHandleOutsideClick, true);
+    const formElement = this.closest('form');
+    formElement?.removeEventListener('submit', this.handleSubmit.bind(this));
     super.disconnectedCallback();
   }
 
@@ -166,7 +183,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * @param eventname Navn på eventet
    * @param value Valgte alternativer
    */
-  private emit(eventname: string, value: Option[]): void {
+  private emit(eventname: string, value?: Option[]): void {
     const event = new CustomEvent(eventname, {
       bubbles: true,
       cancelable: false,
@@ -198,6 +215,49 @@ export default class NveCombobox extends LitElement implements INveComponent {
   togglePopupActive(event: Event): void {
     event.stopPropagation();
     this.setPopupActive(!this.isPopupActive);
+  }
+
+  private handleSubmit(e: SubmitEvent) {
+    e.preventDefault();
+    console.log('Form submitted');
+
+    this.checkValidity();
+  }
+  private checkValidity() {
+    const selectedOptionsLength: number = this.selectedOptions.length;
+    const min: number = this.min !== undefined ? this.min : 0;
+    const isValid = selectedOptionsLength >= min && selectedOptionsLength <= this.multiple;
+    if (!isValid) {
+      this.makeInvalid();
+    } else {
+      this.resetValidation();
+    }
+  }
+
+  private makeInvalid() {
+    console.log('makeInvalid ');
+
+    this.errorMessage = this.errorMessage;
+    this.error = true;
+    this.emit('invalid');
+    this.toggleValidationAttributes(false);
+  }
+
+  private resetValidation() {
+    console.log('resetValidation ');
+    this.error = false;
+    this.toggleValidationAttributes(true);
+  }
+
+  private toggleValidationAttributes(isValid: boolean) {
+    console.log('toggleValidationAttributes ');
+
+    // Koble disse på farge
+    this.toggleAttribute('data-valid', isValid);
+    this.toggleAttribute('data-user-valid', isValid);
+    //Kolbe disse på farge
+    this.toggleAttribute('data-invalid', !isValid);
+    this.toggleAttribute('data-user-invalid', !isValid);
   }
 
   /**
@@ -286,6 +346,8 @@ export default class NveCombobox extends LitElement implements INveComponent {
   selectOption(option: Option): void {
     if (this.disabled) return;
 
+    console.log('selectOption');
+
     const copyOfOptions = [...this.options];
     const indexInOptions = copyOfOptions.findIndex((optionValue) => optionValue.value === option.value);
     if (indexInOptions === -1) return;
@@ -301,7 +363,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     this.inputValue = '';
     this.displaySearchResult = false;
 
-    this.emit('value', this.selectedOptions); // ikke testet
+    this.emit('value', this.selectedOptions);
   }
 
   /**
@@ -521,7 +583,6 @@ export default class NveCombobox extends LitElement implements INveComponent {
           autocomplete="off"
           label="${this.label}"
           requiredLabel="${this.requiredLabel}"
-          errorMessage="${this.errorMessage}"
           @focus="${this.handleFocus}"
           @click="${this.handleFocus}"
           @keydown="${this.handleKeyboardNavigation}"
@@ -534,6 +595,8 @@ export default class NveCombobox extends LitElement implements INveComponent {
             return html`
               <nve-tag
                 slot="prefix"
+                saturation="default"
+                variant="neutral"
                 tabindex="0"
                 size="small"
                 @nve-close="${() => this.unSelectOption(option)}"
@@ -547,6 +610,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
 
           <input
             placeholder="${this.placeholder}"
+            autocomplete="off"
             slot="prefix"
             class="input-prefix"
             @input="${this.handleInput}"
@@ -568,11 +632,14 @@ export default class NveCombobox extends LitElement implements INveComponent {
           `}
           ${this.error &&
           html`
-            <nve-icon slot="suffix" size="small" name="error" style="font-size: 1.5rem; color: rgb(204, 0, 0)">
-              ${this.selectedOptions.length}
-            </nve-icon>
+            <nve-icon slot="suffix" size="small" name="error" style="font-size: 1.5rem; color: #cc0000"> </nve-icon>
           `}
         </nve-input>
+
+        ${this.error && this.errorMessage
+          ? html`<span slot="anchor" class="text--error">${this.errorMessage}</span>`
+          : this.helpText && html`<span slot="anchor">${this.helpText}</span>`}
+
         <div
           id="listbox"
           role="listbox"

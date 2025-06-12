@@ -1,6 +1,18 @@
 import { css } from 'lit';
 
 export default css`
+  :host nve-input::part(base):focus-within {
+    border: 1px solid var(--interactive-links-default);
+  }
+
+  :host([data-user-invalid]) nve-input::part(base) {
+    border-color: var(--feedback-background-emphasized-error);
+  }
+
+  :host([data-user-invalid]) .text--error {
+    color: var(--feedback-background-emphasized-error);
+  }
+
   nve-input::part(input) {
     display: none;
   }
