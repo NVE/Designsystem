@@ -26,11 +26,14 @@ export default css`
   }
 
   nve-tag[slot='prefix'] {
-    margin-left: var(--spacing-xx-small);
+    margin: var(--spacing-xx-small);
   }
 
   :host nve-input::part(base):focus-within {
     border: 1px solid var(--interactive-links-default);
+  }
+
+  :host nve-input:not(disabled)::part(base):focus-within {
   }
 
   :host([data-user-invalid]) nve-input::part(base) {
@@ -82,7 +85,9 @@ export default css`
   .open-icon.active {
     transform: rotate(-180deg);
   }
-
+  .open-icon.disabled {
+    pointer-events: none;
+  }
   .text-help {
     font: var(--detailtext-caption) !important;
   }

@@ -187,15 +187,16 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * @param value Valgte alternativer
    */
   private emit(eventname: string, value?: Option[]): void {
-    const event = new CustomEvent(eventname, {
-      bubbles: true,
-      cancelable: false,
-      composed: true,
-      detail: {
-        value,
-      },
-    });
-    this.dispatchEvent(event);
+    this.dispatchEvent(
+      new CustomEvent(eventname, {
+        bubbles: true,
+        cancelable: false,
+        composed: true,
+        detail: {
+          value,
+        },
+      })
+    );
   }
 
   /**
@@ -205,9 +206,12 @@ export default class NveCombobox extends LitElement implements INveComponent {
    */
   handleFocus(): void {
     this.displaySearchResult = false;
-    this.prefixInputRef.value?.focus();
     this.handleInput();
     this.setPopupActive(true);
+  }
+
+  handleClick(): void {
+    this.prefixInputRef.value?.focus();
   }
 
   /**
@@ -276,6 +280,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * @returns {void}
    */
   handleKeyboardNavigation(event: KeyboardEvent): void {
+
     if (event.key === 'Escape') {
       this.setPopupActive(false);
       return;
@@ -361,6 +366,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * @returns {void}
    */
   selectOptionKeyDown(option: Option, event: KeyboardEvent): void {
+
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
       this.focusNextOption(event.key);
       event.preventDefault();
@@ -405,6 +411,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * @returns {void}
    */
   unSelectOptionKeyDown(option: Option, event: KeyboardEvent): void {
+
     if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
       this.focusNextOption(event.key);
       event.preventDefault();
@@ -426,6 +433,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * @returns {void}
    */
   unSelectOptionKeyDownTag(option: Option, event: KeyboardEvent): void {
+
     if (event instanceof KeyboardEvent && event.key !== 'Backspace') return;
 
     // Lager en kopi av selectedOptions for å finne riktig tag å sette fokus på etter sletting.
@@ -485,7 +493,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * @returns {void}
    */
   toggleOptionInListWithSearchHits(option: Option, index: number): void {
-    if (this.disabled) return;
+    if (this.disabled || this.shouldDisplayOptionAsDisabled(option)) return;
     const copyOfListWithPossibleSearchHits = [...this.listWithSearchHits];
     const previousValue = copyOfListWithPossibleSearchHits[index].selected;
     copyOfListWithPossibleSearchHits[index].selected = !copyOfListWithPossibleSearchHits[index].selected;
@@ -542,7 +550,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * @param active true for å åpne popup, false for å lukke
    */
   private setPopupActive(active: boolean): void {
-    if (this.isPopupActive === active) return; // Unngå unødvendig oppdatering
+    if (this.isPopupActive === active || this.disabled) return; // Unngår unødvendig oppdatering og hindrer at dropdown åpnes
     this.isPopupActive = active;
     this.shadowRoot?.querySelector('.open-icon')?.classList?.toggle('active');
   }
@@ -570,7 +578,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
           autocomplete="off"
           requiredLabel="${this.requiredLabel}"
           @focus="${this.handleFocus}"
-          @click="${this.handleFocus}"
+          @click="${this.handleClick}"
           @keydown="${this.handleKeyboardNavigation}"
           .value="${this.inputValue}"
           ?disabled=${this.disabled}
@@ -583,7 +591,6 @@ export default class NveCombobox extends LitElement implements INveComponent {
                 slot="prefix"
                 saturation="default"
                 variant="neutral"
-                tabindex="0"
                 size="small"
                 @nve-close="${() => this.unSelectOption(option)}"
                 @keydown="${(event: KeyboardEvent) => this.unSelectOptionKeyDownTag(option, event)}"
@@ -608,7 +615,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
 
           ${html`
             <nve-icon
-              class="open-icon"
+              class="open-icon ${this.disabled && 'disabled'}"
               tabindex="0"
               slot="suffix"
               name="keyboard_arrow_down"
