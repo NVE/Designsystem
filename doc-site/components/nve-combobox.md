@@ -5,7 +5,7 @@ layout: component
 <CodeExamplePreview>
 
 ```html
-<div style="height:20vh">
+<div style="height:40vh">
   <nve-combobox
     label="Velg et dyr"
     options='[
