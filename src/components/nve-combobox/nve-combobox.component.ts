@@ -205,15 +205,17 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * @returns {void}
    */
   handleFocus(): void {
-    console.log('handleFocus');
-
     this.displaySearchResult = false;
     this.handleInput();
     this.setPopupActive(true);
   }
 
+  /**
+   * Setter fokus på input feltet som er inne i prefix slotten
+   * og åpner popupen.
+   * @returns {void}
+   */
   handleClick(): void {
-    console.log('handleClick');
     this.focusPrefixInputField();
     this.setPopupActive(true);
   }
@@ -232,6 +234,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     e.preventDefault();
     this.checkValidity();
   }
+
   private checkValidity() {
     const selectedOptionsLength: number = this.selectedOptions.length;
     const min: number = this.min !== undefined ? this.min : 0;
@@ -469,6 +472,16 @@ export default class NveCombobox extends LitElement implements INveComponent {
   }
 
   /**
+   * Setter popupens aktive tilstand.
+   * @param active true for å åpne popup, false for å lukke
+   */
+  private setPopupActive(active: boolean): void {
+    if (this.isPopupActive === active || this.disabled) return; // Unngår unødvendig oppdatering og hindrer at dropdown åpnes
+    this.isPopupActive = active;
+    this.shadowRoot?.querySelector('.open-icon')?.classList?.toggle('active');
+  }
+
+  /**
    *  Basert på om brukeren presser ArrowDown eller ArrowUp, fokuser på riktig element
    *  @param option Event.key string ArrowDown || ArrowUp
    */
@@ -561,25 +574,19 @@ export default class NveCombobox extends LitElement implements INveComponent {
   }
 
   /**
-   * Setter popupens aktive tilstand.
-   * @param active true for å åpne popup, false for å lukke
-   */
-  private setPopupActive(active: boolean): void {
-    if (this.isPopupActive === active || this.disabled) return; // Unngår unødvendig oppdatering og hindrer at dropdown åpnes
-    this.isPopupActive = active;
-    this.shadowRoot?.querySelector('.open-icon')?.classList?.toggle('active');
-  }
-
-  /**
-   *    Sjekker om en bokstav er trykket på tastaturet.
-   *    @param event KeyboardEvent
-   *    @returns {boolean} true hvis en bokstav er trykket
+   *  Sjekker om en bokstav er trykket på tastaturet.
+   *  @param event KeyboardEvent
+   *  @returns {boolean} true hvis en bokstav er trykket
    */
   private isAPrintableCharacterPressed(event: KeyboardEvent): boolean {
     // Alle event koder starter med Key. Eksempel k || K = KeyK
     return event.code.startsWith('Key');
   }
 
+  /**
+   * Setter fokus på prefix input ref
+   * @returns {void}
+   */
   private focusPrefixInputField(): void {
     this.prefixInputRef.value?.focus();
   }
