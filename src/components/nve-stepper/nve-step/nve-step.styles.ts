@@ -44,7 +44,7 @@ export default css`
     width: 100%;
   }
 
-  .step-title {
+  .step-label {
     color: var(--neutrals-foreground-primary, #0d0d0e);
 
     /* Label/medium */
@@ -168,7 +168,7 @@ export default css`
     flex: 10;
   }
 
-  .step-title-vertical {
+  .step-label-vertical {
     padding-top: 0;
     align-self: flex-start;
   }

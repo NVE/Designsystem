@@ -35,7 +35,7 @@ Device - Kan du bytte mellom forskjellige skjermstørrelser. Da vil innholdet ju
 
 <img src="../../assets/images/get-started-2.png" width="auto">
 
-<nve-message-card title="Tips">For at dette skal funke utmerket må du huske å bruke variablene som er fastsatt og ikke løse designverdier. Da vil ikke alt av innholdet endres i forhold til hva slags variabler/tokens du bruker.</nve-message-card>
+<nve-message-card label="Tips">For at dette skal funke utmerket må du huske å bruke variablene som er fastsatt og ikke løse designverdier. Da vil ikke alt av innholdet endres i forhold til hva slags variabler/tokens du bruker.</nve-message-card>
 
 ## Bestanddeler
 

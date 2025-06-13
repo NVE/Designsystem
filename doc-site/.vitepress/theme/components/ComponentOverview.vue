@@ -1,19 +1,9 @@
 <!-- Viser liste over alle komponenter med status på design og utvikling -->
 <template>
-  <h6>Vue-komponentbibliotek</h6>
-  <p>
-    Enkelte komponenter i designsystemet er for komplekse for rene webkomponenter. Disse er samlet i et eget Vue
-    3-bibliotek som bygger videre på nve-designsystemet.
-    <a href="/introduction/forDevelopers/vueLibrary.html">Les mer her.</a>
-  </p>
-  <h6 style="padding-top: 1rem">nve-designsystem komponenter</h6>
-  <p>
-    Nedenfor finner du en oversikt over alle komponentene i NVE sitt designsystem – både de som er ferdige, under
-    arbeid, og planlagt. Du kan se status for design og kode, samt knytte saker og pull requests til de ulike
-    komponentene ved å bruke komponentnavnet som tag i GitHub.
-  </p>
+  <div style="padding-top: 2rem"></div>
+
   <nve-message-card
-    title="Merk saker og PR'er i Github med komponentnavn for å se dem her"
+    label="Merk saker og PR'er i Github med komponentnavn for å se dem her"
     size="simple"
   ></nve-message-card>
 
@@ -142,9 +132,10 @@ const props = defineProps<{
   componentStatuses: ComponentStatus[];
 }>();
 
-props.componentStatuses.sort((a, b) => a.name.localeCompare(b.name));
-
 const searchQuery = ref('');
+const sortedComponentStatuses = computed(() =>
+  [...props.componentStatuses].sort((a, b) => a.name.localeCompare(b.name))
+);
 
 const onInput = (event: Event) => {
   const target = event.target as HTMLInputElement;
@@ -153,7 +144,7 @@ const onInput = (event: Event) => {
 
 const filteredComponents = computed(() => {
   const searchLower = searchQuery.value.toLowerCase();
-  return props.componentStatuses.filter((component) => component.name.toLowerCase().includes(searchLower));
+  return sortedComponentStatuses.value.filter((component) => component.name.toLowerCase().includes(searchLower));
 });
 
 const linkToFigmaComponent = (figmaId: string) => {

@@ -53,7 +53,7 @@ export default css`
   }
 
   .alert__message::before {
-    content: var(--nve-alert-title);
+    content: var(--nve-alert-label);
     font: var(--label-large);
     white-space: nowrap;
   }

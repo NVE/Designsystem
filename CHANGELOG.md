@@ -1,3 +1,56 @@
+# [2.1.0](https://github.com/NVE/Designsystem/compare/v2.0.2...v2.1.0) (2025-06-11)
+
+
+### Features
+
+* **nve-message-card:** Flere eksempler i dokumentasjon, samt justert litt på skrifttyper og ikon-størrelse ([#549](https://github.com/NVE/Designsystem/issues/549)) ([07c8626](https://github.com/NVE/Designsystem/commit/07c86260013372955984cb73411b77e8b03e97d7))
+
+## [2.0.2](https://github.com/NVE/Designsystem/compare/v2.0.1...v2.0.2) (2025-06-10)
+
+
+### Bug Fixes
+
+* **form:** flytte obligatorisk tekst etter overskrift ([#550](https://github.com/NVE/Designsystem/issues/550)) ([d077f9a](https://github.com/NVE/Designsystem/commit/d077f9af8f29ea1795f3939164a70cc26ffac48d))
+* **nve-alert:** fikse kommentar for å publisere riktig versjon 2.0.1 siden 2.0.0 feiler ([#543](https://github.com/NVE/Designsystem/issues/543)) ([7a2f738](https://github.com/NVE/Designsystem/commit/7a2f73883d7cec88ccae838e3a5b3cd6a229ef55))
+
+## [2.0.1](https://github.com/NVE/Designsystem/compare/v2.0.0...v2.0.1) (2025-06-05)
+
+
+### Bug Fixes
+
+* **nve-alert:** fikse kommentar for å publisere riktig versjon 2.0.1 siden 2.0.0 feiler ([90dfb3b](https://github.com/NVE/Designsystem/commit/90dfb3bbf853e0c74b69188ea50208cdef5d9ae3))
+
+# [2.0.0](https://github.com/NVE/Designsystem/compare/v1.9.0...v2.0.0) (2025-06-05)
+
+
+* feat!: fjerne title attribute i komponenter ([#542](https://github.com/NVE/Designsystem/issues/542)) ([6d6ebdb](https://github.com/NVE/Designsystem/commit/6d6ebdb3d25213f755546ee70656674bbfafa9fb))
+
+
+### BREAKING CHANGES
+
+* Fjerne title attribtue fra komponenter. Dette er et reservert ord.
+
+# [1.9.0](https://github.com/NVE/Designsystem/compare/v1.8.0...v1.9.0) (2025-06-05)
+
+
+### Features
+
+* **mange-elementer:** fjern titel property i nve-alert, nve-stepper, nve-message-card,nve-link-card ([#541](https://github.com/NVE/Designsystem/issues/541)) ([c6eaad4](https://github.com/NVE/Designsystem/commit/c6eaad4abe86b9ab834adeb9d62fcf761477af3f))
+
+# [1.8.0](https://github.com/NVE/Designsystem/compare/v1.7.0...v1.8.0) (2025-06-05)
+
+
+### Features
+
+* **npm-link:** legge til npm-link med auto reload ([#531](https://github.com/NVE/Designsystem/issues/531)) ([80f1b4c](https://github.com/NVE/Designsystem/commit/80f1b4ccec7d7d7f4162724ec93afe4d028745d5))
+
+# [1.7.0](https://github.com/NVE/Designsystem/compare/v1.6.6...v1.7.0) (2025-06-04)
+
+
+### Features
+
+* Oppdaterade eslint til v9 og la til Husky for auto lint vid commit ([#521](https://github.com/NVE/Designsystem/issues/521)) ([325893d](https://github.com/NVE/Designsystem/commit/325893dbf4a1c3566e787cd68ac12341f565eb1f))
+
 ## [1.6.6](https://github.com/NVE/Designsystem/compare/v1.6.5...v1.6.6) (2025-05-21)
 
 

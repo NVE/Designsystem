@@ -1,5 +1,4 @@
 import * as path from 'path';
-import { customElementJetBrainsPlugin } from 'custom-element-jet-brains-integration';
 import { customElementVsCodePlugin } from 'custom-element-vs-code-integration';
 import { customElementVuejsPlugin } from 'custom-element-vuejs-integration';
 import { cemInheritancePlugin } from '@wc-toolkit/cem-inheritance';
@@ -15,7 +14,7 @@ const { name, description, version, author, homepage, license } = packageData;
 const { outdir } = commandLineArgs([
   { name: 'litelement', type: String },
   { name: 'analyze', defaultOption: true },
-  { name: 'outdir', type: String },
+  { name: 'outdir', type: String, defaultValue: 'dist' },
 ]);
 
 function noDash(string) {
@@ -39,7 +38,48 @@ export default {
   exclude: ['**/*.styles.ts', '**/*.demo.ts'],
   plugins: [
     cemInheritancePlugin(cemInheritancePluginOptions),
+    {
+      // Legg properties som er dekorert med @property til attributes-delen i manifest-fila
+      name: 'add-attributes-with-jsdoc',
+      analyzePhase({ ts, node, moduleDoc }) {
+        if (node.kind === ts.SyntaxKind.ClassDeclaration) {
+          const className = node.name.getText();
+          const classDoc = moduleDoc.declarations.find((declaration) => declaration.name === className);
 
+          node.members.forEach((member) => {
+            if (member.kind === ts.SyntaxKind.PropertyDeclaration) {
+              const decorators = ts.getDecorators(member);
+
+              // Sjekk om felt har @property-taggen
+              const hasPropertyDecorator = decorators?.some((decorator) => {
+                const expression = decorator.expression;
+                return ts.isCallExpression(expression) && expression.expression.getText() === 'property';
+              });
+
+              if (hasPropertyDecorator) {
+                const name = member.name.getText();
+                const type = member.type?.getText() || 'any';
+
+                // Les JsDoc-kommentaren og legg i description-feltet
+                const jsDocComment = ts.getJSDocCommentsAndTags(member);
+                let description = '';
+                if (jsDocComment.length > 0) {
+                  const parsedComment = parse(jsDocComment[0].getFullText());
+                  description = parsedComment[0]?.description || '';
+                }
+
+                classDoc.attributes = classDoc.attributes || [];
+                classDoc.attributes.push({
+                  name,
+                  type: { text: type },
+                  description: description,
+                });
+              }
+            }
+          });
+        }
+      },
+    },
     // Append package data
     {
       name: 'shoelace-package-data',
@@ -183,40 +223,22 @@ export default {
         });
       },
     },
-    // Generate custom VS Code data
-    // TODO: Kommentert ut fordi jeg får denne feilen:
-    // [custom-element-vs-code-integration]: Looks like you've hit an error in third party plugin: custom-element-vs-code-integration. Please try to create a minimal reproduction and inform the author of the custom-element-vs-code-integration plugin.
-    // TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
-    // customElementVsCodePlugin({
-    //   outdir,
-    //   cssFileName: null,
-    //   referencesTemplate: (_, tag) => [
-    //     {
-    //       name: 'Documentation',
-    //       url: `https://designsystem.nve.no/components/${tag}`,
-    //     },
-    //   ],
-    // }),
-    // TODO: Kommentert ut fordi vi får denne feilen:
-    // [custom-element-jet-brains-integration]: Looks like you've hit an error in third party plugin: custom-element-jet-brains-integration. Please try to create a minimal reproduction and inform the author of the custom-element-jet-brains-integration plugin.
-    // TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of Promise
-    // customElementJetBrainsPlugin({
-    //   outdir: './dist',
-    //   excludeCss: true,
-    //   packageJson: false,
-    //   referencesTemplate: (_, tag) => {
-    //     return {
-    //       name: 'Documentation',
-    //       url: `https://designsystem.nve.no/components/${tag}`,
-    //     };
-    //   },
-    // }),
-    // TODO: Kommentert ut fordi vi får denne feilen:
-    // TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received an instance of Promise
-    // customElementVuejsPlugin({
-    //   outdir: './dist/types/vue',
-    //   fileName: 'index.d.ts',
-    //   componentTypePath: (_, tag) => `../../components/${tag}/${tag}.component.js`,
-    // }),
+    // Generer metadata til VS Code for dokumentasjon og autofullføring av attributt-verdier
+    customElementVsCodePlugin({
+      outdir: outdir || 'dist',
+      referencesTemplate: (_, tag) => [
+        {
+          name: 'Mer info',
+          url: `https://designsystem.nve.no/components/${tag}`,
+        },
+      ],
+      labels: {
+        slots: 'Spor',
+        methods: 'Metoder',
+        events: 'Hendelser',
+        cssProperties: 'CSS-variabler',
+        cssParts: 'Deler',
+      },
+    }),
   ],
 };

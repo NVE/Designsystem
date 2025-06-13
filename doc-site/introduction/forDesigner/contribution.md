@@ -92,7 +92,7 @@ Designsystemet er en felles dugnad fra og for alle prosjekter i NVE. Derfor er v
 4. **Løs oppgaven i Figma eller i kode**  
    Løs oppgaven du har fått tildelt i Figma eller i kode avhengig av oppgave. Sørg for at du forholder deg til retningslinjene satt i profilmanualen og i designsystemet, og sørg for at løsningen din oppfyller kravene til universell utforming.
 
-<nve-message-card title="Krav">
+<nve-message-card label="Krav">
   <ul>
     <li class="list-item">Gi komponenten et navn som er fornuftig. Det skal være lett å finne for folk som ikke vet om det. Navnet skal være beskrivende for hva det er eller hva det gjør.</li>
     <li class="list-item">Gjør komponenten enkel å bruke for andre ved å sørge for at den fungerer bra i andre sammenhenger enn den du designet den for: Ulike størrelser, med ulik mengde innhold osv.</li>

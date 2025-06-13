@@ -7,7 +7,7 @@
     </h2>
   </div>
   <ul v-if="issues?.length">
-    <li v-for="issue of issues">
+    <li v-for="issue of issues" :key="issue.title">
       <a :href="issue.url" target="_blank">{{ issue.title }} <span v-if="issue.isPullRequest"> (PR) </span> </a>
       <span v-if="issue.assigneeLogins.length">
         <nve-badge v-for="user in issue.assigneeLogins" :key="user" variant="neutral" size="small">{{
@@ -16,7 +16,7 @@
       </span>
     </li>
   </ul>
-  <p v-else v-if="showHeader">
+  <p v-else-if="showHeader">
     Ingen som vi vet om. Hvis du finner noe muffens, registrer en feil under
     <a href="https://github.com/NVE/Designsystem/issues" target="_blank">Issues i Github</a> og merk den med
     <span class="code">{{ componentName }}</span

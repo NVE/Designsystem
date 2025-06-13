@@ -29,8 +29,6 @@ export default defineConfig({
 });
 ```
 
-TODO: BUrde vi også inkludert type-info? Se <https://shoelace.style/frameworks/vue#types>
-
 ## Stiler
 
 Importer <em>en</em> .css-fil for farge-tema i `main.ts`. Filene finnes i mappa `nve-designsystem/css/`.
@@ -106,3 +104,19 @@ const count = ref(0);
 Hvis du ikke ser komponenten når du kjører sida, sjekk om du har importert den riktig.
 
 Les også om [bruk av Shoelace-komponenter i Vue](https://shoelace.style/frameworks/vue). Det meste der gjelder for Nve-komponenter også.
+
+## Mer hjelp i VS Code
+
+Vi bruker [Custom Element VS Code Integration](https://github.com/break-stuff/cem-tools/tree/main/packages/vs-code-integration) til å generere hjelpedokumentasjon til VS Code.
+
+Legg denne inn i `.vscode/settings.json`, for få dokumentasjon og autofullføring av attributt-verdier i VS Code:
+
+```json
+"html.customData": ["./node_modules/nve-designsystem/vscode.html-custom-data.json"],
+"css.customData": ["./node_modules/nve-designsystem/vscode.css-custom-data.json"]
+```
+
+Da får du disse funksjonene:
+
+- Hold muspeker over komponentnavnet i html-malen for å se dokumentasjon på komponenten
+- Bruk Ctrl-space for hjelp til å fullføre attributtnavn og for å vise tilgjengelige valg der et attributt har et begrenset sett av lovlige valg.
