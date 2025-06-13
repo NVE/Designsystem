@@ -21,6 +21,10 @@ export default css`
     flex-grow: 1;
   }
 
+  nve-input::part(form-control-label) {
+    justify-content: space-between;
+  }
+
   nve-tag[slot='prefix'] {
     margin-left: var(--spacing-xx-small);
   }
