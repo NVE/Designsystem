@@ -31,7 +31,7 @@ function replaceImportAfterBuild() {
         let content = fs.readFileSync(globalCssPath, 'utf8');
         content = content.replace('../../dist/nve-designsystem.css', '../nve-designsystem.css');
         fs.writeFileSync(globalCssPath, content, 'utf8');
-        console.log('✅ Fixed import path in global.css \n');
+        console.log('✅ Fixed import path in global.css');
       }
     },
   };
