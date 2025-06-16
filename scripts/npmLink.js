@@ -51,7 +51,7 @@ const runBuild = async () => {
   isBuilding = true;
   buildCancelled = false;
 
-  currentBuildProcess = spawn('npx', ['vite', 'build', '--outDir', 'dist'], {
+  currentBuildProcess = spawn('npx', ['vite', 'build', '--outDir', 'dist', '--emptyOutDir=false'], {
     stdio: ['inherit', 'pipe', 'pipe'],
     shell: true,
   });
