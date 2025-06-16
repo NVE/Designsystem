@@ -17,6 +17,7 @@ const figmaIcon = {
 };
 
 export default defineConfig({
+  lang: 'nb',
   title: 'NVE Designsystem',
   head: [['link', { rel: 'icon', href: '/assets/nve-logo.svg' }]],
   themeConfig: {
