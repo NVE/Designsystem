@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/NVE/Designsystem/compare/v2.1.0...v2.2.0) (2025-06-16)
+
+
+### Features
+
+* **nve-alert:** legge til toast i alert, gjøre alert lesbar av skjerm lesere ([#548](https://github.com/NVE/Designsystem/issues/548)) ([0f0f78c](https://github.com/NVE/Designsystem/commit/0f0f78cae30c82db57b1d3aa96fd5e06dbf696b0))
+
 # [2.1.0](https://github.com/NVE/Designsystem/compare/v2.0.2...v2.1.0) (2025-06-11)
 
 
