@@ -4,6 +4,8 @@ import { css } from 'lit';
 // avstand mellom nve-tag
 //
 export default css`
+  nve-input:focus-visible {
+  }
   nve-input::part(input) {
     display: none;
   }
@@ -56,6 +58,10 @@ export default css`
     }
   }
 
+  nve-popup::part(popup) {
+    z-index: var(--sl-z-index-dropdown);
+  }
+
   .select__listbox {
     display: block;
     position: relative;
@@ -71,6 +77,7 @@ export default css`
     overflow: auto;
     overscroll-behavior: none;
     max-height: 200px;
+    z-index: var(--sl-z-index-dropdown);
   }
 
   .select__listbox[filled] {

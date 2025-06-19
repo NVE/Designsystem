@@ -11,12 +11,6 @@ import '../nve-menu/nve-menu.component';
 import '../nve-option/nve-option.component';
 import '../nve-icon/nve-icon.component';
 
-/*
-
-Error, hvordan legge inn errro håndetering ? ??? 
-
-
-*/
 export interface Option {
   label: string;
   value: string | number;
@@ -24,6 +18,7 @@ export interface Option {
 }
 /**
  * En combobox komponent som lar brukeren velge ett eller flere alternativer fra en liste eller søke etter alternativer.
+ 
  */
 @customElement('nve-combobox')
 export default class NveCombobox extends LitElement implements INveComponent {
@@ -58,9 +53,9 @@ export default class NveCombobox extends LitElement implements INveComponent {
   @property({ type: Array<Option> }) options: Option[] = [];
 
   /**
-   * Antall valg som kan velges i comboboxen. Default er 1.
+   * Antall valg som kan velges i comboboxen, hvis ikke spesifisert kan man velge så mange man ønsker.
    */
-  @property({ type: Number }) multiple: number = 1;
+  @property({ type: Number }) max: number = Infinity;
 
   /**
    * Minimum valg som skal være valgt, bruk multiple som max.
@@ -182,23 +177,36 @@ export default class NveCombobox extends LitElement implements INveComponent {
   }
 
   /**
-   * Sender et custom event med valgt(e) option(s).
-   * @param eventname Navn på eventet
-   * @param value Valgte alternativer
+   * Sender et custom event med de valgte alternativene.
+   * @param options Valgte alternativer som skal sendes med eventet
+   * @event value Returnerer de valgte alternativene
    */
-  private emit(eventname: string, value?: Option[]): void {
+  private emitValueEvent(options: Option[]): void {
     this.dispatchEvent(
-      new CustomEvent(eventname, {
+      new CustomEvent('value', {
         bubbles: true,
         cancelable: false,
         composed: true,
         detail: {
-          value,
+          value: options,
         },
       })
     );
   }
 
+  /**
+   * Sender et custom event som indikerer valideringsfeil.
+   * @event invalid Indikerer at validering har feilet
+   */
+  private emitInvalidEvent(): void {
+    this.dispatchEvent(
+      new CustomEvent('invalid', {
+        bubbles: true,
+        cancelable: false,
+        composed: true,
+      })
+    );
+  }
   /**
    * Setter fokus på input feltet som er inne i prefix slotten
    * og oppdaterer listen med søketreff.
@@ -206,6 +214,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
    */
   handleFocus(): void {
     this.displaySearchResult = false;
+    this.focusPrefixInputField();
     this.handleInput();
     this.setPopupActive(true);
   }
@@ -238,7 +247,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   private checkValidity() {
     const selectedOptionsLength: number = this.selectedOptions.length;
     const min: number = this.min !== undefined ? this.min : 0;
-    const isValid = selectedOptionsLength >= min && selectedOptionsLength <= this.multiple;
+    const isValid = selectedOptionsLength >= min && selectedOptionsLength <= this.max;
     if (!isValid) {
       this.makeInvalid();
     } else {
@@ -249,7 +258,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   private makeInvalid() {
     this.errorMessage = this.errorMessage;
     this.error = true;
-    this.emit('invalid');
+    this.emitInvalidEvent();
     this.toggleValidationAttributes(false);
   }
 
@@ -288,7 +297,6 @@ export default class NveCombobox extends LitElement implements INveComponent {
    */
   handleKeyboardNavigationInput(event: KeyboardEvent): void {
     if (this.disabled) return;
-    // event.preventDefault();
     switch (event.key) {
       case 'ArrowDown':
         event.preventDefault();
@@ -298,7 +306,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
       case 'ArrowUp':
         event.preventDefault();
         this.setPopupActive(true);
-        // When popup is not opened, .focus is having issues focusing the element.
+        // Når popupen ikke er åpen, har .focus problemer med å fokusere elementet.
         const options = this.shadowRoot?.querySelectorAll('nve-option');
         if (options) {
           setTimeout(() => {
@@ -402,7 +410,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     this.displaySearchResult = false;
     this.setPopupActive(false);
     this.focusPrefixInputField();
-    this.emit('value', this.selectedOptions);
+    this.emitValueEvent(this.selectedOptions);
   }
 
   /**
@@ -437,7 +445,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
 
     this.selectedOptions = copyOfSelectedOptions;
     this.options = copyOfOptions;
-    this.emit('value', copyOfSelectedOptions);
+    this.emitValueEvent(copyOfSelectedOptions);
   }
 
   /**
@@ -561,7 +569,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * Sjekker om maksimalt antall alternativer er valgt.
    */
   private isMaxNumberOfOptionsSelected(): boolean {
-    return this.selectedOptions.length === this.multiple;
+    return this.selectedOptions.length === this.max;
   }
 
   /**
