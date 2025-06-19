@@ -11,6 +11,10 @@ import '../nve-menu/nve-menu.component';
 import '../nve-option/nve-option.component';
 import '../nve-icon/nve-icon.component';
 
+/**
+ * Interfacet for alternativene i comboboxen.
+ * @interface Option
+ */
 export interface Option {
   label: string;
   value: string | number;
@@ -18,7 +22,6 @@ export interface Option {
 }
 /**
  * En combobox komponent som lar brukeren velge ett eller flere alternativer fra en liste eller søke etter alternativer.
- 
  */
 @customElement('nve-combobox')
 export default class NveCombobox extends LitElement implements INveComponent {
