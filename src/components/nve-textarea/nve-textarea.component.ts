@@ -135,11 +135,11 @@ export default class NveTextarea extends LitElement implements INveComponent {
     // for å endre bredde på label container når textarea endrer størrelse, må vi bruke ResizeObserver.
     // den observerer endringer i størrelse på textarea og endrer bredden på label container + padding
     const textarea = this.shadowRoot?.querySelector('.textarea__control');
-    const formControl = this.shadowRoot?.querySelector('.textarea__label') as HTMLElement;
-    if (textarea) {
+    const formControlLabel = this.shadowRoot?.querySelector('.textarea__label') as HTMLElement;
+    if (textarea && formControlLabel) {
       this.resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
-          formControl.style.width = `${entry.contentRect.width + 32}px`;
+          formControlLabel.style.width = `${entry.contentRect.width + 32}px`;
         }
       });
 
