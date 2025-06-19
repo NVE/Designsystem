@@ -4,8 +4,6 @@ import { css } from 'lit';
 // avstand mellom nve-tag
 //
 export default css`
-  nve-input:focus-visible {
-  }
   nve-input::part(input) {
     display: none;
   }
@@ -16,10 +14,14 @@ export default css`
     height: unset;
   }
 
+  :host([disabled]) nve-input::part(prefix) {
+    cursor: not-allowed;
+  }
   nve-input::part(prefix) {
     width: 88%;
     display: flex;
     flex-wrap: wrap;
+    cursor: text;
     flex-grow: 1;
   }
 
@@ -27,15 +29,12 @@ export default css`
     justify-content: space-between;
   }
 
-  nve-tag[slot='prefix'] {
-    margin: var(--spacing-xx-small);
+  sl-tag[slot='prefix'] {
+    margin-left: 3px;
   }
 
   :host nve-input::part(base):focus-within {
     border: 1px solid var(--interactive-links-default);
-  }
-
-  :host nve-input:not(disabled)::part(base):focus-within {
   }
 
   :host([data-user-invalid]) nve-input::part(base) {
@@ -48,10 +47,13 @@ export default css`
 
   .input-prefix[slot='prefix'] {
     border: none;
-    min-height: var(--sl-input-height-medium);
+    min-height: var(--sl-input-height-medium); // endre input felt størrelse
     font-size: 16px;
     &[filled] {
       background-color: var(--sl-input-filled-background-color);
+    }
+    &[disabled] {
+      cursor: not-allowed;
     }
     &:focus-visible {
       outline: none;
@@ -83,8 +85,11 @@ export default css`
   .select__listbox[filled] {
     background-color: var(--neutrals-background-primary-contrast, #eff8fc);
   }
-
+  .open-icon-wrapper {
+    margin-right: 18px;
+  }
   .open-icon {
+    cursor: pointer;
     transition:
       transform 0.1s ease-in-out,
       color 0.1s ease-in-out;
@@ -93,9 +98,9 @@ export default css`
     transform: rotate(-180deg);
   }
   .open-icon.disabled {
-    pointer-events: none;
+    cursor: not-allowed;
   }
   .text-help {
-    font: var(--detailtext-caption) !important;
+    font: var(--detailtext-caption);
   }
 `;

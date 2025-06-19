@@ -5,8 +5,12 @@ layout: component
 <CodeExamplePreview>
 
 ```html
+<nve-select multiple
+  ><nve-option value="valg1">Valg 1</nve-option>
+  <nve-option value="valg2">Valg 2</nve-option>
+  <nve-option value="valg3">Valg 3</nve-option></nve-select
+>
 <nve-combobox
-  label="Velg et dyr"
   options='[
         { "label": "Cat", "value": "cat" },
         { "label": "Dog", "value": "dog" },
@@ -52,7 +56,7 @@ Bruk attributtet `disabled` for å hindre muligheten for å endre verdier.
   disabled
   label="Disabled felt"
   options='[
-        { "label": "Cat", "value": "cat" },
+        { "label": "Cat", "value": "cat", "selected": true},
         { "label": "Dog", "value": "dog" },
         { "label": "Bird", "value": "bird" },
         { "label": "Fish", "value": "fish" },
@@ -70,7 +74,7 @@ Bruk attributtet `disabled` for å hindre muligheten for å endre verdier.
 
 ### Forhåndsvalgte verdier
 
-Bruk `selected` på option objected får å forhåndsvelge verider.
+Bruk `selected` på option objektet får å forhåndsvelge verdier.
 <CodeExamplePreview>
 
 ```html
@@ -109,7 +113,7 @@ Bruk min for å sette minimum valgbare alternativer, i dette eksempelet 2.
     required
     min="2"
     max="3"
-    errorMessage="Du må minimum velge 2 dyr og maksimalt 3"
+    errorMessage="Du må minimum velge 2 og maksimalt 3 dyr"
     helpText="Velg dine favoritter"
     options='[
         { "label": "Cat", "value": "cat", "selected":true},

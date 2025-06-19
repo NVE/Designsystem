@@ -6,7 +6,6 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { customElement, property, state } from 'lit/decorators.js';
 import '../nve-popup/nve-popup.component';
 import '../nve-input/nve-input.component';
-import '../nve-tag/nve-tag.component';
 import '../nve-menu/nve-menu.component';
 import '../nve-option/nve-option.component';
 import '../nve-icon/nve-icon.component';
@@ -516,10 +515,10 @@ export default class NveCombobox extends LitElement implements INveComponent {
   }
 
   /**
-   * Focuserer den siste nve-tagen i prefix slotten
+   * Focuserer den siste sl-taggen i prefix slotten
    */
   private focusLastTag(): void {
-    const tags = Array.from(this.shadowRoot?.querySelectorAll('nve-tag') || []);
+    const tags = Array.from(this.shadowRoot?.querySelectorAll('sl-tag') || []);
     const lastTag = tags[tags.length - 1];
 
     if (lastTag) lastTag.focus();
@@ -624,18 +623,19 @@ export default class NveCombobox extends LitElement implements INveComponent {
         >
           ${this.selectedOptions.map((option) => {
             return html`
-              <nve-tag
+              <sl-tag
+                variant="neutral"
                 tabindex="-1"
                 slot="prefix"
                 saturation="default"
                 variant="neutral"
-                size="small"
-                @nve-close="${() => this.unSelectOption(option)}"
+                size="medium"
+                @sl-remove="${() => this.unSelectOption(option)}"
                 @keydown="${(event: KeyboardEvent) => this.unSelectOptionKeyDownTag(option, event)}"
-                .closeable=${!this.disabled}
+                .removable=${!this.disabled}
               >
                 ${option.label}
-              </nve-tag>
+              </sl-tag>
             `;
           })}
 
@@ -652,14 +652,15 @@ export default class NveCombobox extends LitElement implements INveComponent {
           />
 
           ${html`
-            <nve-icon
-              class="open-icon ${this.disabled && 'disabled'}"
-              tabindex="-1"
-              slot="suffix"
-              name="keyboard_arrow_down"
-              style="font-size: 1.5rem;"
-              @click="${this.togglePopupActive}"
-            ></nve-icon>
+            <span class="open-icon-wrapper" slot="suffix">
+              <nve-icon
+                class="open-icon ${this.disabled && 'disabled'}"
+                tabindex="-1"
+                name="keyboard_arrow_down"
+                style="font-size: 19px;"
+                @click="${this.togglePopupActive}"
+              ></nve-icon>
+            </span>
           `}
           ${this.error &&
           html`
