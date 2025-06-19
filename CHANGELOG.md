@@ -1,3 +1,11 @@
+## [2.2.1](https://github.com/NVE/Designsystem/compare/v2.2.0...v2.2.1) (2025-06-19)
+
+
+### Bug Fixes
+
+* **npm-link:** dist mappe overskrevet ([#560](https://github.com/NVE/Designsystem/issues/560)) ([c18da17](https://github.com/NVE/Designsystem/commit/c18da17f772a252006db0808f32685412b978f4c))
+* **nve-textarea:** Fixes 561 : Gjør en null-sjekk på om label eksisterer på textarea ([#562](https://github.com/NVE/Designsystem/issues/562)) ([fcff167](https://github.com/NVE/Designsystem/commit/fcff1677788f45725f3b46b6d6c418e034e97421))
+
 # [2.2.0](https://github.com/NVE/Designsystem/compare/v2.1.0...v2.2.0) (2025-06-16)
 
 
