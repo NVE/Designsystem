@@ -80,6 +80,11 @@ export default class NveCombobox extends LitElement implements INveComponent {
   @property({ type: Boolean }) required: boolean = false;
 
   /**
+   * Inputfeltets størrelse.
+   */
+  @property({ type: String, reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+
+  /**
    * Test-id for enklere testing.
    */
   @property({ type: String }) testId: string | undefined = undefined;
@@ -609,6 +614,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
           aria-controls="listbox"
           aria-expanded="${this.isPopupActive}"
           aria-haspopup="listbox"
+          size="${this.size}"
           label="${this.label}"
           slot="anchor"
           autocomplete="off"
@@ -624,12 +630,12 @@ export default class NveCombobox extends LitElement implements INveComponent {
           ${this.selectedOptions.map((option) => {
             return html`
               <sl-tag
+                size="${this.size}"
                 variant="neutral"
                 tabindex="-1"
                 slot="prefix"
                 saturation="default"
                 variant="neutral"
-                size="medium"
                 @sl-remove="${() => this.unSelectOption(option)}"
                 @keydown="${(event: KeyboardEvent) => this.unSelectOptionKeyDownTag(option, event)}"
                 .removable=${!this.disabled}
