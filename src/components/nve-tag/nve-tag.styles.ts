@@ -107,9 +107,13 @@ export default css`
 
   :host::part(text) {
     font: var(--label-x-small);
+    display: flex;
+    align-items: center;
   }
   :host::part(extra) {
     font: var(--label-x-small-light);
+    display: flex;
+    align-items: center;
   }
   ::slotted(nve-icon) {
     font-size: var(--font-size-small);
