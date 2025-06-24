@@ -6,8 +6,7 @@ layout: component
 
 ```html
 <nve-combobox
-  disabled
-  label="Velg ett dyr"
+  label="Velg ett eller flere dyr"
   options='[
         { "label": "Cat", "value": "cat"},
         { "label": "Dog", "value": "dog" },
@@ -29,7 +28,7 @@ layout: component
 
 ### Velge flere verdier
 
-Ønsker man at det skal være mulig å velge flere verdier, kan man legge på `max="number"`. I dette tilfellet `5`.
+Ønsker man at det skal være mulig å bare velge x antall verdier, kan man legge på `max="number"`. I dette tilfellet `5`.
 <CodeExamplePreview>
 
 ```html
@@ -50,7 +49,7 @@ Bruk attributtet `disabled` for å hindre muligheten for å endre verdier.
 ```html
 <nve-combobox
   disabled
-  label="Disabled felt"
+  label="Velg ett dyr"
   options='[
         { "label": "Cat", "value": "cat"},
         { "label": "Dog", "value": "dog" },
@@ -75,13 +74,12 @@ Bruk `selected` på option objektet får å forhåndsvelge verdier.
 
 ```html
 <nve-combobox
-  label="Velg ett dyr"
   options='[
         { "label": "Cat", "value": "cat", "selected":true},
         { "label": "Dog", "value": "dog" },
         { "label": "Bird", "value": "bird" },
         { "label": "Fish", "value": "fish" },
-        { "label": "Rabbit", "value": "rabbit" },
+        { "label": "Rabbit", "value": "rabbit","selected":true },
         { "label": "Horse", "value": "horse" },
         { "label": "Snake", "value": "snake" },
         { "label": "Turtle", "value": "turtle" },
@@ -97,7 +95,7 @@ Bruk `selected` på option objektet får å forhåndsvelge verdier.
 
 Bruk attributtet `required` for å gjøre komponenten påkrevd, legg inn en feilmelding i `errorMessage` om du ikke vil ha standard-feilmeldingen.
 Bruk attributtet `requiredlabel` hvis du vil vise noe annet enn \*Obligatorisk.
-Bruk min for å sette minimum valgbare alternativer, i dette eksempelet 2.
+Bruk min for å sette minimum valgbare alternativer, i dette eksempelet 2. Bruk max for å sette maks valgbare alternativer.
 `nve-combobox` må ligge i en `<form>` for at validering skal fungere.
 
 <CodeExamplePreview>
@@ -157,7 +155,7 @@ Bruk attributtet `helpText` for å vise tekst under input feltet
 ```html
 <nve-combobox
   size="medium"
-  label="Velg et dyr"
+  label="Velg ett dyr"
   placeholder="Eksempel med placeholder"
   options='[
         { "label": "Cat", "value": "cat" }
@@ -178,16 +176,7 @@ Bruk attributtet `filled` for mørkere bakgrunn
   filled
   size="medium"
   options='[
-        { "label": "Cat", "value": "cat" },
-        { "label": "Dog", "value": "dog" },
-        { "label": "Bird", "value": "bird" },
-        { "label": "Fish", "value": "fish" },
-        { "label": "Rabbit", "value": "rabbit" },
-        { "label": "Horse", "value": "horse" },
-        { "label": "Snake", "value": "snake" },
-        { "label": "Turtle", "value": "turtle" },
-        { "label": "Hamster", "value": "hamster" },
-        { "label": "Frog", "value": "frog" }
+        { "label": "Cat", "value": "cat" }
     ]'
 ></nve-combobox>
 ```
