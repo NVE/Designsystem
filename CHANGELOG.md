@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/NVE/Designsystem/compare/v2.2.1...v2.3.0) (2025-06-24)
+
+
+### Features
+
+* Fikset disabled-styling på nve-switch, la til mulighet for egendefinerte på- og av-farger på nve-switch ([#566](https://github.com/NVE/Designsystem/issues/566)) ([f3eca3a](https://github.com/NVE/Designsystem/commit/f3eca3aeace03fde4d56574bffb141c6300f226b))
+
 ## [2.2.1](https://github.com/NVE/Designsystem/compare/v2.2.0...v2.2.1) (2025-06-19)
 
 
