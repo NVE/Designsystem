@@ -9,7 +9,7 @@ export default css`
     cursor: pointer;
   }
   .switch.switch--disabled {
-    cursor: default;
+    cursor: not-allowed;
   }
 
   .switch__control {

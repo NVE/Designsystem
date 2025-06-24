@@ -71,7 +71,7 @@ function changehandler(event) {
 
 Du kan også bruke attributten `checked` på `nve-switch` for å sette verdien via lytting på change, tilsvarende som for en checkbox
 
-### Egendefinerte farger for "på" og "av"
+### Egne farger for "på" og "av"
 
 Ved hjelp av variabler så kan du sette egne farger for "på" og "av" på bryteren. Markøren (thumb) har motsatt farge av bakgrunnen dersom det ikke settes spesifikt
 <CodeExamplePreview>
