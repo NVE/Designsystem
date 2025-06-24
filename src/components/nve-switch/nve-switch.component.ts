@@ -23,6 +23,10 @@ import styles from './nve-switch.styles';
  * @csspart thumb Bryter-indikatoren
  * @csspart label Tekst bak bryteren
  *
+ * @cssproperty --nve-switch-on-color - Bakgrunnsfarge når switch er PÅ
+ * @cssproperty --nve-switch-off-color - Bakgrunnsfarge når switch er AV
+ * @cssproperty --nve-switch-thumb-on-color- Farge på bryter når switch er PÅ
+ * @cssproperty --nve-switch-thumb-off-color - Farge på bryter når switch er AV
  */
 @customElement('nve-switch')
 export default class NveSwitch extends LitElement implements INveComponent {
