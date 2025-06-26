@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/NVE/Designsystem/compare/v2.3.0...v2.3.1) (2025-06-26)
+
+
+### Bug Fixes
+
+* sentrere tekst i NVE-tag ([#569](https://github.com/NVE/Designsystem/issues/569)) ([9825cb1](https://github.com/NVE/Designsystem/commit/9825cb18e649323d1f50470b5bcfaecadff22cd6))
+
 # [2.3.0](https://github.com/NVE/Designsystem/compare/v2.2.1...v2.3.0) (2025-06-24)
 
 
