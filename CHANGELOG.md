@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/NVE/Designsystem/compare/v2.3.1...v2.4.0) (2025-06-27)
+
+
+### Features
+
+* **nve-combobox:** legge til combobox i designsystemet ([#527](https://github.com/NVE/Designsystem/issues/527)) ([d103885](https://github.com/NVE/Designsystem/commit/d1038853c6a7dff7ca1f7798b04d7203558fb114))
+
 ## [2.3.1](https://github.com/NVE/Designsystem/compare/v2.3.0...v2.3.1) (2025-06-26)
 
 
