@@ -91,31 +91,33 @@ export default class NveCombobox extends LitElement implements INveComponent {
    */
   @property({ type: String }) testId: string | undefined = undefined;
 
-  // Listen som vises inne i popupen når man har skrevet i input feltet.
+  /**
+   * private: Listen som vises inne i popupen når man har skrevet i input feltet.
+   */
   @state() private listWithSearchHits: Option[] = [];
 
   /**
-   * Skal listWithSearchHits vises eller ikke.
+   * private: Skal listWithSearchHits vises eller ikke.
    */
   @state() private displaySearchResult: boolean = false;
 
   /**
-   * Valgte alternativer.
+   * private: Valgte alternativer.
    */
   @state() private selectedOptions: Option[] = [];
 
   /**
-   * Verdien som er skrevet inn i input feltet.
+   * private: Verdien som er skrevet inn i input feltet.
    */
   @state() private inputValue: string = '';
 
   /**
-   * Er popupen aktiv?
+   * private: Er popupen aktiv?
    */
   @state() private isPopupActive: boolean = false;
 
   /**
-   * Er det noe feil?
+   * private: Er det noe feil?
    */
   @state() private error?: boolean = false;
 
