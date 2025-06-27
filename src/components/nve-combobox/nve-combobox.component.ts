@@ -92,32 +92,32 @@ export default class NveCombobox extends LitElement implements INveComponent {
   @property({ type: String }) testId: string | undefined = undefined;
 
   /**
-   * private: Listen som vises inne i popupen når man har skrevet i input feltet.
+   * Listen som vises inne i popupen når man har skrevet i input feltet.
    */
   @state() private listWithSearchHits: Option[] = [];
 
   /**
-   * private: Skal listWithSearchHits vises eller ikke.
+   * Skal listWithSearchHits vises eller ikke.
    */
   @state() private displaySearchResult: boolean = false;
 
   /**
-   * private: Valgte alternativer.
+   * Valgte alternativer.
    */
   @state() private selectedOptions: Option[] = [];
 
   /**
-   * private: Verdien som er skrevet inn i input feltet.
+   *  Verdien som er skrevet inn i input feltet.
    */
   @state() private inputValue: string = '';
 
   /**
-   * private: Er popupen aktiv?
+   * Er popupen aktiv?
    */
   @state() private isPopupActive: boolean = false;
 
   /**
-   * private: Er det noe feil?
+   * Er det noe feil?
    */
   @state() private error?: boolean = false;
 
@@ -527,7 +527,6 @@ export default class NveCombobox extends LitElement implements INveComponent {
   private focusLastTag(): void {
     const tags = Array.from(this.shadowRoot?.querySelectorAll('sl-tag') || []);
     const lastTag = tags[tags.length - 1];
-
     if (lastTag) lastTag.focus();
   }
 
