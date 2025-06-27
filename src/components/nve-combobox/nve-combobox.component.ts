@@ -21,6 +21,8 @@ export interface Option {
 }
 /**
  * En combobox komponent som lar brukeren velge ett eller flere alternativer fra en liste eller søke etter alternativer.
+ * @event invalid Indikerer at validering har feilet ved form submit
+ * @event value Returnerer de valgte alternativene etter at man har valgt / fjernet ett alternativ
  */
 @customElement('nve-combobox')
 export default class NveCombobox extends LitElement implements INveComponent {
@@ -60,7 +62,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   @property({ type: Number }) max: number = Infinity;
 
   /**
-   * Minimum valg som skal være valgt, bruk multiple som max.
+   * Minimum valg som skal være valgt.
    */
   @property({ type: String }) min: number | undefined = undefined;
 
@@ -89,35 +91,33 @@ export default class NveCombobox extends LitElement implements INveComponent {
    */
   @property({ type: String }) testId: string | undefined = undefined;
 
-  /**
-   * Listen som vises inne i popupen når man har skrevet i input feltet.
-   */
-  @state() listWithSearchHits: Option[] = [];
+  // Listen som vises inne i popupen når man har skrevet i input feltet.
+  @state() private listWithSearchHits: Option[] = [];
 
   /**
    * Skal listWithSearchHits vises eller ikke.
    */
-  @state() displaySearchResult: boolean = false;
+  @state() private displaySearchResult: boolean = false;
 
   /**
    * Valgte alternativer.
    */
-  @state() selectedOptions: Option[] = [];
+  @state() private selectedOptions: Option[] = [];
 
   /**
    * Verdien som er skrevet inn i input feltet.
    */
-  @state() inputValue: string = '';
+  @state() private inputValue: string = '';
 
   /**
    * Er popupen aktiv?
    */
-  @state() isPopupActive: boolean = false;
+  @state() private isPopupActive: boolean = false;
 
   /**
    * Er det noe feil?
    */
-  @state() error?: boolean = false;
+  @state() private error?: boolean = false;
 
   /**
    * Referanse til input feltet som er inne i prefix slotten.
