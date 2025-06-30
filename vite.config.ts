@@ -19,6 +19,7 @@ const excludedPaths = [
   'src/styles/**',
   'src/utils/**',
   'src/main.ts',
+  'src/**/*.test.ts',
 ];
 
 // Sikre at vi henter riktig css fil i global.css etter build
