@@ -34,6 +34,9 @@ jobs:
       - name: Installer avhengigheter
         run: npm install
 
+      - name: Kjør tester
+        run: npm run test
+
       - name: Bygg både nve-komponenter og dokumentasjons-nettsted
         run: npm run build:doc
 

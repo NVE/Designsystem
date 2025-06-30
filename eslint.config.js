@@ -58,6 +58,12 @@ export default [
       'max-lines-per-function': ['warn', { max: 50, skipBlankLines: true, skipComments: true }],
     },
   },
+  {
+    files: ['src/components/**/*.test.ts'],
+    rules: {
+      'max-lines-per-function': 'off',
+    },
+  },
 
   prettier,
 ];
