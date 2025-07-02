@@ -20,7 +20,7 @@ export default css`
     font: var(--body-medium);
   }
   :host::part(--sl-input-icon-color-hover) {
-    font-size: 24px;
+    font-size: var(--font-size-large);
     font-weight: 300;
     padding-inline-start: unset;
     display: flex;

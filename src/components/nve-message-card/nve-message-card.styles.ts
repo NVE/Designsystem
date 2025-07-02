@@ -183,6 +183,6 @@ export default css`
 
   :host([size='simple']) nve-icon::part(icon),
   :host([size='compact']) nve-icon::part(icon) {
-    font-size: 20px;
+    font-size: var(--font-size-medium);
   }
 `;
