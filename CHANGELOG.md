@@ -1,3 +1,54 @@
+# [2.4.0](https://github.com/NVE/Designsystem/compare/v2.3.1...v2.4.0) (2025-06-27)
+
+
+### Features
+
+* **nve-combobox:** legge til combobox i designsystemet ([#527](https://github.com/NVE/Designsystem/issues/527)) ([d103885](https://github.com/NVE/Designsystem/commit/d1038853c6a7dff7ca1f7798b04d7203558fb114))
+
+## [2.3.1](https://github.com/NVE/Designsystem/compare/v2.3.0...v2.3.1) (2025-06-26)
+
+
+### Bug Fixes
+
+* sentrere tekst i NVE-tag ([#569](https://github.com/NVE/Designsystem/issues/569)) ([9825cb1](https://github.com/NVE/Designsystem/commit/9825cb18e649323d1f50470b5bcfaecadff22cd6))
+
+# [2.3.0](https://github.com/NVE/Designsystem/compare/v2.2.1...v2.3.0) (2025-06-24)
+
+
+### Features
+
+* Fikset disabled-styling på nve-switch, la til mulighet for egendefinerte på- og av-farger på nve-switch ([#566](https://github.com/NVE/Designsystem/issues/566)) ([f3eca3a](https://github.com/NVE/Designsystem/commit/f3eca3aeace03fde4d56574bffb141c6300f226b))
+
+## [2.2.1](https://github.com/NVE/Designsystem/compare/v2.2.0...v2.2.1) (2025-06-19)
+
+
+### Bug Fixes
+
+* **npm-link:** dist mappe overskrevet ([#560](https://github.com/NVE/Designsystem/issues/560)) ([c18da17](https://github.com/NVE/Designsystem/commit/c18da17f772a252006db0808f32685412b978f4c))
+* **nve-textarea:** Fixes 561 : Gjør en null-sjekk på om label eksisterer på textarea ([#562](https://github.com/NVE/Designsystem/issues/562)) ([fcff167](https://github.com/NVE/Designsystem/commit/fcff1677788f45725f3b46b6d6c418e034e97421))
+
+# [2.2.0](https://github.com/NVE/Designsystem/compare/v2.1.0...v2.2.0) (2025-06-16)
+
+
+### Features
+
+* **nve-alert:** legge til toast i alert, gjøre alert lesbar av skjerm lesere ([#548](https://github.com/NVE/Designsystem/issues/548)) ([0f0f78c](https://github.com/NVE/Designsystem/commit/0f0f78cae30c82db57b1d3aa96fd5e06dbf696b0))
+
+# [2.1.0](https://github.com/NVE/Designsystem/compare/v2.0.2...v2.1.0) (2025-06-11)
+
+
+### Features
+
+* **nve-message-card:** Flere eksempler i dokumentasjon, samt justert litt på skrifttyper og ikon-størrelse ([#549](https://github.com/NVE/Designsystem/issues/549)) ([07c8626](https://github.com/NVE/Designsystem/commit/07c86260013372955984cb73411b77e8b03e97d7))
+
+## [2.0.2](https://github.com/NVE/Designsystem/compare/v2.0.1...v2.0.2) (2025-06-10)
+
+
+### Bug Fixes
+
+* **form:** flytte obligatorisk tekst etter overskrift ([#550](https://github.com/NVE/Designsystem/issues/550)) ([d077f9a](https://github.com/NVE/Designsystem/commit/d077f9af8f29ea1795f3939164a70cc26ffac48d))
+* **nve-alert:** fikse kommentar for å publisere riktig versjon 2.0.1 siden 2.0.0 feiler ([#543](https://github.com/NVE/Designsystem/issues/543)) ([7a2f738](https://github.com/NVE/Designsystem/commit/7a2f73883d7cec88ccae838e3a5b3cd6a229ef55))
+
 ## [2.0.1](https://github.com/NVE/Designsystem/compare/v2.0.0...v2.0.1) (2025-06-05)
 
 

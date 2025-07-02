@@ -6,7 +6,12 @@ export default css`
     align-items: center;
     gap: var(--spacing-x-small);
     --hover-offset: 0px;
+    cursor: pointer;
   }
+  .switch.switch--disabled {
+    cursor: not-allowed;
+  }
+
   .switch__control {
     display: flex;
     align-items: center;
@@ -16,17 +21,23 @@ export default css`
     position: relative;
     --left: calc(0% + 4px);
     width: 48px;
-    --on-color: var(--neutrals-foreground-subtle);
-    --off-color: var(--neutrals-background-secondary);
     --label-color: var(--neutrals-foreground-primary);
+    --on-color: var(--nve-switch-on-color, var(--neutrals-foreground-subtle));
+    --off-color: var(--nve-switch-off-color, var(--neutrals-background-secondary));
+    --thumb-color: var(--nve-switch-thumb-off-color, var(--on-color));
     background-color: var(--off-color);
     transition: background-color 0.3s ease-in-out;
   }
+
+  .switch.switch--disabled .switch__control {
+    opacity: 0.38;
+  }
+
   .switch--checked .switch__control {
     /* 100% - bredde på thumb + 4px */
     --left: calc(100% - var(--font-size-xsmall) - 4px);
-    --on-color: var(--neutrals-background-secondary);
-    --off-color: var(--neutrals-foreground-subtle);
+    --thumb-color: var(--nve-switch-thumb-on-color, var(--off-color));
+    background-color: var(--on-color);
   }
   .switch__thumb {
     position: absolute;
@@ -36,7 +47,7 @@ export default css`
     border-radius: 2rem;
     translate: var(--hover-offset, 0);
     z-index: 1;
-    background-color: var(--on-color);
+    background-color: var(--thumb-color);
     transition:
       left 0.3s ease-in-out,
       translate 0.1s,

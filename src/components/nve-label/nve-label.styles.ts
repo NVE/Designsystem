@@ -11,6 +11,7 @@ export const styles = css`
     display: flex;
     align-items: center;
     gap: var(--spacing-xx-small);
+    position: relative;
   }
 
   /* skriftstørrelser */
