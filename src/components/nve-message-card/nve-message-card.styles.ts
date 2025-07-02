@@ -56,9 +56,9 @@ export default css`
   }
 
   .message-card__close-btn {
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     background: none;
     width: 28px;
@@ -75,8 +75,10 @@ export default css`
     opacity: 0;
   }
 
-  nve-icon {
-    --icon-size: 24px;
+  nve-icon::part(icon) {
+    display: unset;
+    font-size: var(--font-size-medium);
+    line-height: 1;
   }
 
   /** Varianter */
@@ -181,6 +183,6 @@ export default css`
 
   :host([size='simple']) nve-icon::part(icon),
   :host([size='compact']) nve-icon::part(icon) {
-    font-size: 20px;
+    font-size: var(--font-size-medium);
   }
 `;

@@ -54,9 +54,6 @@ export default css`
       background-color 0.3s ease-in-out;
   }
   .switch__icon {
-    height: var(--font-size-2xsmall);
-    width: var(--font-size-2xsmall);
-    font-size: var(--font-size-2xsmall);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,6 +61,12 @@ export default css`
     color: var(--on-color);
     transition: color 0.3s ease-in-out;
   }
+
+  ::slotted(nve-icon) {
+    line-height: 1;
+    font-size: var(--font-size-small);
+  }
+
   .switch__icon.switch__onicon {
     left: calc(0% + 6px);
   }
