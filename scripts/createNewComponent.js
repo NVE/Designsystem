@@ -93,6 +93,31 @@ export default css\`\``;
   fs.writeFileSync(`src/components/${folderName}/${componentName}.styles.ts`, stylesContent);
 };
 
+const createTestFiles = () => {
+  const testContent = `import { afterAll, describe, expect, it, } from 'vitest';
+import { fixture, fixtureCleanup } from '@open-wc/testing';
+import { html } from 'lit';
+import ${className} from './${componentName}.component';
+  
+if (!customElements.get('${componentName}')) {
+  customElements.define('${componentName}', ${className});
+}
+
+describe('${componentName}', () => {
+  afterAll(() => {
+    fixtureCleanup();
+  });
+  
+  it('is attached to the DOM', async () => {
+    const el = await fixture<${className}>(html\`<${componentName}></${componentName}>\`);
+    expect(document.body.contains(el)).toBe(true);
+  });
+});
+  `;
+
+  fs.writeFileSync(`src/components/${folderName}/${componentName}.test.ts`, testContent);
+};
+
 const addComponentToExports = () => {
   const existingComponentFile = fs.readFileSync('src/nve-designsystem.ts', { encoding: 'utf8', flag: 'r' });
   const lines = existingComponentFile.split(/\r?\n/);
@@ -110,6 +135,7 @@ const createFiles = () => {
   createComponentFile();
   createDemoFile();
   createStylesFile();
+  createTestFiles();
 };
 
 await nextTask(`Creating folder ${componentName}`, () => createFolder());
