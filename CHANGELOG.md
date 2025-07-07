@@ -1,3 +1,10 @@
+## [2.4.2](https://github.com/NVE/Designsystem/compare/v2.4.1...v2.4.2) (2025-07-07)
+
+
+### Bug Fixes
+
+* **test:** lagt til test rammeverk ([#575](https://github.com/NVE/Designsystem/issues/575)) ([a580fb1](https://github.com/NVE/Designsystem/commit/a580fb1210f31c29a1c442e919934926fc362991))
+
 ## [2.4.1](https://github.com/NVE/Designsystem/compare/v2.4.0...v2.4.1) (2025-07-07)
 
 
