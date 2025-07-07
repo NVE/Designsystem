@@ -232,9 +232,9 @@ Vi trenger <em>ikke</em> å style:
 
 ## Testing
 
-Alle nye webkomponenter skal ha tilhørende tester som dekker både visuelle endringer (UI) og logikk. Det er viktig å teste at komponentene reagerer riktig på ulike props og hendelser, og at de sender ut forventede events. Vi bruker Vitest sammen med Happy DOM for å kjøre testene våre. open-wc/testing brukes for å registrere komponent å få taket i det i test specene. Denne kombinasjon gir et raskt og fleksibelt testmiljø som støtter moderne webkomponenter og gjør det enkelt å verifisere både utseende og funksjonalitet.
+Alle nye webkomponenter skal ha tester som dekker både visuelle endringer (UI) og logikk. Det er viktig å teste at komponentene reagerer riktig på ulike props og hendelser, og at de sender ut forventede events. Vi bruker Vitest sammen med Happy DOM for å kjøre testene våre. open-wc/testing brukes for å registrere komponent og få tak i den i testene.
 
-Test filer skal ligge under komponent mappe og må ha `.test.ts` som filutvidelse.
+Testfiler skal ligge i komponent-mappa og skal ha `.test.ts` som filutvidelse.
 
 Hvis komponent ikke er definert i testfilen, må du registrere den slik:
 
@@ -259,7 +259,7 @@ it('has correct primary variant class', async () => {
 For å teste lokalt kjør gjerne `npm run test:ui` - den skal åpne en fane i nettleseren med alle tester.
 I pipelinen brukes det kun `vitest` siden vi ikke skal bruke nettleseren. Den kan du også bruke lokalt hvis du ikke ønsker en testrapport i nettleseren.
 
-For å debugge i VS Code bare åpen vanlig `JavaScript Debug Terminal` og kjør test scriptet. Les mer [her](https://vitest.dev/guide/debugging.html#debugging)
+For å debugge i VS Code åpne vanlig `JavaScript Debug Terminal` og kjør `npm run test`. Les mer [her](https://vitest.dev/guide/debugging.html#debugging)
 
 ## Dokumentasjon
 

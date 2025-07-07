@@ -71,7 +71,6 @@
     "custom-element-vs-code-integration": "^1.5.0",
     "custom-element-vuejs-integration": "^1.4.0",
     "custom-elements-manifest": "^2.1.0",
-    "custom-elements-manifest-inheritance": "1.1.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
@@ -92,8 +91,8 @@
     "typescript": "^5.8.3",
     "vite": "^7.0.0",
     "vite-plugin-dts": "^4.5.4",
-    "vue-eslint-parser": "^10.1.4",
-    "vitest": "^3.2.3"
+    "vitest": "^3.2.3",
+    "vue-eslint-parser": "^10.1.4"
   },
   "overrides": {
     "custom-elements-manifest-inheritance": "1.1.1"
