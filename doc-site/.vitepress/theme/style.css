@@ -152,6 +152,11 @@
   gap: 1rem;
 }
 
+html,
+body {
+  font-size: unset;
+}
+
 th {
   text-align: left;
 }

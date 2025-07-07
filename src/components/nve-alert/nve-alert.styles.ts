@@ -22,15 +22,15 @@ export default css`
     color: inherit;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
+    width: var(--font-size-large);
+    height: var(--font-size-large);
     border-radius: var(--border-radius-small);
     border: none;
     cursor: pointer;
     margin-left: var(--spacing-x-small);
     transition: background 0.3s ease;
     nve-icon {
-      --icon-size: 24px;
+      --icon-size: var(--font-size-large);
     }
   }
 
@@ -50,7 +50,7 @@ export default css`
 
   ::slotted(nve-icon),
   nve-icon:not(.alert__button nve-icon) {
-    --icon-size: 24px;
+    --icon-size: var(--font-size-large);
     margin-right: var(--spacing-x-small);
   }
 

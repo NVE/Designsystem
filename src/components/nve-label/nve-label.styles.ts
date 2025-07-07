@@ -18,9 +18,11 @@ export const styles = css`
   :host([size='x-small']) {
     font: var(--label-x-small);
   }
+
   :host([size='medium']) {
     font: var(--label-medium);
   }
+
   :host([size='large']) {
     font: var(--label-large);
   }
@@ -34,9 +36,11 @@ export const styles = css`
   :host([light][size='x-small']) {
     font: var(--label-x-small-light);
   }
+
   :host([light][size='medium']) {
     font: var(--label-medium-light);
   }
+
   :host([light][size='large']) {
     font: var(--label-large-light);
   }
@@ -46,6 +50,8 @@ export const styles = css`
     align-items: center;
     vertical-align: bottom;
     cursor: pointer;
+    font-size: var(--font-size-medium);
+    line-height: 1;
   }
 
   :host([iconColor='black']) .nve-info-icon {
