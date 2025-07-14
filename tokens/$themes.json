@@ -130,8 +130,7 @@
       "dropdown": "S:9712b7529601aad2ad212fdf85734a75970dfa91,"
     },
     "selectedTokenSets": {
-      "brand/nve": "enabled",
-      "brand/rme": "disabled"
+      "brand/nve": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1972:336",
     "$figmaModeId": "1972:8",
@@ -346,8 +345,7 @@
     },
     "selectedTokenSets": {
       "brand/nve": "enabled",
-      "brand/varsom": "enabled",
-      "brand/rme": "disabled"
+      "brand/varsom": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1972:336",
     "$figmaModeId": "1972:9",
@@ -702,8 +700,7 @@
       "Supplemental.Emphasized.Red.bACKGROUND": "S:66511ba1ce0b12ba8f17009c80bb2dfd9b0c2f1f,"
     },
     "selectedTokenSets": {
-      "public/theme/light": "enabled",
-      "brand/rme": "disabled"
+      "public/theme/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1986:10",
     "$figmaModeId": "1986:0",
@@ -1011,8 +1008,7 @@
       "Supplemental.Emphasized.Red.Background": "S:9868823e5182ed915f155bb1180a49b637a8e4f6,"
     },
     "selectedTokenSets": {
-      "public/theme/dark": "enabled",
-      "brand/rme": "disabled"
+      "public/theme/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1986:10",
     "$figmaModeId": "1986:1",
@@ -1230,8 +1226,7 @@
       "dropdown": "S:9712b7529601aad2ad212fdf85734a75970dfa91,"
     },
     "selectedTokenSets": {
-      "public/device/desktop": "enabled",
-      "brand/rme": "disabled"
+      "public/device/desktop": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1972:338",
     "$figmaModeId": "1972:12",
@@ -1326,8 +1321,7 @@
     },
     "selectedTokenSets": {
       "public/device/desktop-large": "enabled",
-      "public/device/desktop": "enabled",
-      "brand/rme": "disabled"
+      "public/device/desktop": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1972:338",
     "$figmaModeId": "1972:13",
@@ -1422,8 +1416,7 @@
     },
     "selectedTokenSets": {
       "public/device/desktop-small": "enabled",
-      "public/device/desktop": "enabled",
-      "brand/rme": "disabled"
+      "public/device/desktop": "enabled"
     },
     "$figmaVariableReferences": {
       "spacing.xx-small": "d36759f09d7c7d3105c644067156c2938ade8d99",
@@ -1518,8 +1511,7 @@
     },
     "selectedTokenSets": {
       "public/device/mobile": "enabled",
-      "public/device/desktop": "enabled",
-      "brand/rme": "disabled"
+      "public/device/desktop": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1972:338",
     "$figmaModeId": "1972:15",
@@ -1769,10 +1761,8 @@
     },
     "selectedTokenSets": {
       "brand/nve": "enabled",
-      "brand/varsom": "enabled",
       "brand/rme": "enabled"
     },
-    "group": "Brand",
     "$figmaCollectionId": "VariableCollectionId:1972:336",
     "$figmaModeId": "2268:0",
     "$figmaVariableReferences": {
@@ -1971,6 +1961,7 @@
       "neutralgrey.999": "4978e6f7f004af83b6a9270d88ece9441596bf7e",
       "neutralgrey.000": "8367a465eaac3314aef8655ebf0e729a722f9d02",
       "neutralgrey.050": "b5d0276e6fb63ba300fd54b4ceeea3f3229e3ff7"
-    }
+    },
+    "group": "Brand"
   }
 ]
