@@ -1155,14 +1155,14 @@
       "Supplemental.Emphasized.Red.Foreground": "73fb5436467c16118707bc80f9d50bc6500c48d2",
       "Supplemental.Emphasized.Blue.Background": "ee96fb1be66cef722245c1bbc5e70d79289a68e8",
       "Supplemental.Emphasized.Blue.Foreground": "11ac12d4268f7add230a431dba318aaeb1332025",
-      "Dangerlevel.Foreground.Yellow.Background": "bec4769bed135bfac6fb609ffa106b28a94c66f7",
-      "Dangerlevel.Foreground.Yellow.Foreground": "b2136f83a6dd56027c73c2904afc1bf178f3a794",
-      "Dangerlevel.Foreground.Grey.Background": "02df4e305ef118e134eb63625075fdbc1511000c",
-      "Dangerlevel.Foreground.Grey.Foreground": "978a49592519ad48d51a67a852c02b5fa14a8bde",
-      "Dangerlevel.Foreground.Red.Background": "d0e7e33139d3147e589328b455d6fdb41e96aa43",
-      "Dangerlevel.Foreground.Red.Foreground": "e8555a307278a234956d3296f96bc94fd73e6337",
-      "Dangerlevel.Foreground.Blue.Background": "cd52dcc70160fd839b33df047db0a7704cf16904",
-      "Dangerlevel.Foreground.Blue.Foreground": "ca7120e3f56b5cab8ad460122f9514b51ee5f3d2",
+      "Dangerlevel.Foreground.Yellow.Background": "21753e6ddde3e60373588923824c4d78233a3657",
+      "Dangerlevel.Foreground.Yellow.Foreground": "7277d76460faca5e0de43dd99e792b7f0e87b2a3",
+      "Dangerlevel.Foreground.Grey.Background": "f626441c7f2a07224808d18a6516fe9cb7eb6292",
+      "Dangerlevel.Foreground.Grey.Foreground": "25c8cf3d3e2f1818250196e626e9e24f381973db",
+      "Dangerlevel.Foreground.Red.Background": "0ebe7a0e74298e629baa1d4482c55450a4fb889b",
+      "Dangerlevel.Foreground.Red.Foreground": "4ccac761eedd0f4bfe24ffba6cac487ed397a9b0",
+      "Dangerlevel.Foreground.Blue.Background": "89fec7e522353e5ca83e6b42540230a0d1b78092",
+      "Dangerlevel.Foreground.Blue.Foreground": "a625c181ce820db5edf81cf609127f2568783589",
       "Supplemental.Emphasized.Red.Background": "9808092f6f5194a79b7244bc344a9bacab86490d"
     },
     "group": "Theme"
@@ -1764,7 +1764,7 @@
       "brand/rme": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:1972:336",
-    "$figmaModeId": "2268:0",
+    "$figmaModeId": "2273:0",
     "$figmaVariableReferences": {
       "brand.100": "d5e9f67f8d4e1f95f9fdbb0fd41d875f8a0834b0",
       "brand.150": "9c063db266b79d5336efd3d7249ae7a6cd200a28",
