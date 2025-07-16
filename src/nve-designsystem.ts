@@ -40,3 +40,5 @@ export { default as NveSwitch } from './components/nve-switch/nve-switch.compone
 export { default as NveTag } from './components/nve-tag/nve-tag.component';
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
+export { default as NveWarningLevel } from './components/nve-warning-level/nve-warning-level.component';
+  
