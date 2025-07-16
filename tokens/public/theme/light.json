@@ -61,16 +61,7 @@
       },
       "Disabled": {
         "value": "{grey.500}",
-        "type": "color",
-        "$extensions": {
-          "studio.tokens": {
-            "modify": {
-              "type": "alpha",
-              "value": "0.5",
-              "space": "lch"
-            }
-          }
-        }
+        "type": "color"
       }
     }
   },

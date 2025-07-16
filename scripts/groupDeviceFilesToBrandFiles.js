@@ -16,9 +16,11 @@ const deviceCssFiles = [
 
 const varsomFile = path.resolve('./public/css/varsom.css');
 const nveFile = path.resolve('./public/css/nve.css');
+const rmeFile = path.resolve('./public/css/rme.css');
 
 let varsomFileContent = fs.readFileSync(varsomFile, 'utf8');
 let nveFileContent = fs.readFileSync(nveFile, 'utf8');
+let rmeFileContent = fs.readFileSync(rmeFile, 'utf8');
 
 // Legger til innholdet fra en gjwnstand CSS-fil til hoved CSS-filen og sletter gjestandsfilen.
 const addDeviceToMainAndDelete = (deviceCssFile) => {
@@ -28,9 +30,11 @@ const addDeviceToMainAndDelete = (deviceCssFile) => {
   if (deviceCssFile.includes('desktop.css')) {
     varsomFileContent = varsomFileContent.replace(/:root\s*{([^}]*)}/, `:root { $1 ${deviceCssFileContent} }`);
     nveFileContent = nveFileContent.replace(/:root\s*{([^}]*)}/, `:root { $1 ${deviceCssFileContent} }`);
+    rmeFileContent = rmeFileContent.replace(/:root\s*{([^}]*)}/, `:root { $1 ${deviceCssFileContent} }`);
   } else {
     varsomFileContent += deviceCssFileContent;
     nveFileContent += deviceCssFileContent;
+    rmeFileContent += deviceCssFileContent;
   }
 
   // Slett gjestandsfilen
@@ -43,5 +47,6 @@ deviceCssFiles.forEach(addDeviceToMainAndDelete);
 // Skriv den oppdaterte innholdet til hovedfilene
 fs.writeFileSync(nveFile, nveFileContent, 'utf8');
 fs.writeFileSync(varsomFile, varsomFileContent, 'utf8');
+fs.writeFileSync(rmeFile, rmeFileContent, 'utf8');
 
 console.log(`${chalk.green('✔')} Device css files injected successfully`);

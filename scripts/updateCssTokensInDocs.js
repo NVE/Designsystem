@@ -37,3 +37,4 @@ const updateCssTokensInDocs = (docsFileName, theme) => {
 
 updateCssTokensInDocs('nve_theme', 'nve');
 updateCssTokensInDocs('varsom_theme', 'varsom');
+updateCssTokensInDocs('rme_theme', 'rme');

@@ -30,8 +30,18 @@
         class="menu-drop__button"
         role="button"
       >
-        <img src="/assets/varsom-logo.svg" alt="nve-logo" />
+        <img src="/assets/varsom-logo.svg" alt="varsom-logo" />
         <p>Varsom</p>
+      </div>
+      <div
+        tabindex="0"
+        @click.stop="changeThemeAndCloseMenu(Theme.RME)"
+        @keyup.enter.stop="changeThemeAndCloseMenu(Theme.RME)"
+        class="menu-drop__button"
+        role="button"
+      >
+        <img src="/assets/rme-logo.svg" alt="rme-logo" />
+        <p>RME</p>
       </div>
     </div>
   </div>

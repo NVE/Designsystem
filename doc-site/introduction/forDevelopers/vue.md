@@ -44,6 +44,12 @@ For Varsom-tema, bruk:
 import 'nve-designsystem/css/varsom.css';
 ```
 
+For RME-tema, bruk
+
+```js
+import 'nve-designsystem/css/rme.css';
+```
+
 Det finnes også varianter av disse to filene med mørkt tema.
 
 ## Ikoner
