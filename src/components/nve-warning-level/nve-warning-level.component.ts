@@ -40,7 +40,10 @@ export default class NveWarningLevel extends LitElement implements INveComponent
     super();
   }
 
-  /** Sjekker om komponent er plassert innen en knapp eller lenke. */
+  /**
+   * @internal
+   * Sjekker om komponent er plassert innen en knapp eller lenke.
+   */
   private get isInsideButton(): boolean {
     const parent = this.parentElement;
     if (!parent) return false;
