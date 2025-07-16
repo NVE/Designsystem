@@ -185,7 +185,50 @@ const varsomTokensDark = await myStyleDictionary.extend({
   },
 });
 
+const rmeTokensLight = await myStyleDictionary.extend({
+  source: ['tokens/brand/nve.json', 'tokens/brand/rme.json', 'tokens/*json', 'tokens/public/theme/light.json'],
+  platforms: {
+    varsom: {
+      transformGroup: 'css',
+      buildPath: 'public/css/',
+      transforms,
+      files: [
+        {
+          destination: 'rme.css',
+          format: 'css/variables',
+          options: {
+            outputReferences: true,
+          },
+        },
+      ],
+    },
+  },
+});
+
+const rmeTokensDark = await myStyleDictionary.extend({
+  source: ['tokens/brand/nve.json', 'tokens/brand/rme.json', 'tokens/*json', 'tokens/public/theme/dark.json'],
+  platforms: {
+    varsomDark: {
+      transformGroup: 'css',
+      buildPath: 'public/css/',
+      transforms,
+      files: [
+        {
+          destination: 'rme_dark.css',
+          format: 'css/variables',
+          options: {
+            outputReferences: true,
+            theme: 'darkmode',
+          },
+        },
+      ],
+    },
+  },
+});
+
 nveTokensLight.buildAllPlatforms();
 nveTokensDark.buildAllPlatforms();
 varsomTokensLight.buildAllPlatforms();
 varsomTokensDark.buildAllPlatforms();
+rmeTokensLight.buildAllPlatforms();
+rmeTokensDark.buildAllPlatforms();
