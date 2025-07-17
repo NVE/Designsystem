@@ -75,14 +75,14 @@ describe('nve-warning-level', () => {
   it('is triangle badge present', async () => {
     const el = await fixture<NveWarningLevel>(html`<nve-warning-level warningBadge="triangle"></nve-warning-level>`);
     const div = el.shadowRoot?.querySelector('div[part="base"]');
-    const img = div?.querySelector('img.warning-leve-badge--triangle');
+    const img = div?.querySelector('img.warning-level-badge--triangle');
     expect(img).toBeTruthy();
   });
 
   it('is circle badge present', async () => {
     const el = await fixture<NveWarningLevel>(html`<nve-warning-level warningBadge="circle"></nve-warning-level>`);
     const div = el.shadowRoot?.querySelector('div[part="base"]');
-    const img = div?.querySelector('img.warning-leve-badge--circle');
+    const img = div?.querySelector('img.warning-level-badge--circle');
     expect(img).toBeTruthy();
   });
 
