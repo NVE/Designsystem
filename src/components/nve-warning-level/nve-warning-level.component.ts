@@ -44,7 +44,7 @@ export default class NveWarningLevel extends LitElement implements INveComponent
    * @internal
    * Sjekker om komponent er plassert innen en knapp eller lenke.
    */
-  private get isInsideButton(): boolean {
+  private get isDirectParentButton(): boolean {
     const parent = this.parentElement;
     if (!parent) return false;
     const tag = parent.tagName.toLowerCase();
@@ -58,7 +58,7 @@ export default class NveWarningLevel extends LitElement implements INveComponent
           'warning-level': true,
           [`warning-level--${this.level}`]: true,
           border: this.border,
-          'inside-button': this.isInsideButton,
+          'inside-button': this.isDirectParentButton,
         })}
         part="base"
         role="img"
@@ -73,8 +73,8 @@ export default class NveWarningLevel extends LitElement implements INveComponent
                 alt=""
                 class=${classMap({
                   'warning-level-badge': true,
-                  'warning-leve-badge--circle': this.warningBadge === 'circle',
-                  'warning-leve-badge--triangle': this.warningBadge === 'triangle',
+                  'warning-level-badge--circle': this.warningBadge === 'circle',
+                  'warning-level-badge--triangle': this.warningBadge === 'triangle',
                 })}
                 src=${this.warningBadge === 'triangle' ? triangleIcon : circleIcon}
               />

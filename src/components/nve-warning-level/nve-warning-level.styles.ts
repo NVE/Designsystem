@@ -2,8 +2,7 @@ import { css } from 'lit';
 
 export default css`
   :host {
-    --height: 34px;
-    --width: 34px;
+    --size: 34px;
     --font-size: 20px;
     width: fit-content;
     display: block;
@@ -15,8 +14,12 @@ export default css`
     --border-width: 2px;
     display: flex;
     position: relative;
-    width: calc(var(--width) - (var(--border-width) * 2));
-    height: calc(var(--height) - (var(--border-width) * 2));
+    width: calc(var(--size) - (var(--border-width) * 2));
+    height: calc(var(--size) - (var(--border-width) * 2));
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 36px;
+    max-height: 36px;
     justify-content: center;
     align-items: center;
     color: var(--dangerlevel-foreground-default-level1);
@@ -91,13 +94,21 @@ export default css`
     right: -9px;
   }
 
-  .warning-leve-badge--circle {
-    width: 20px;
-    height: 20px;
+  .warning-level-badge--circle {
+    width: calc(var(--size) / 2);
+    height: calc(var(--size) / 2);
+    max-width: 20px;
+    max-height: 20px;
+    min-width: 15px;
+    min-height: 15px;
   }
 
-  .warning-leve-badge--triangle {
-    width: 22px;
-    height: 22px;
+  .warning-level-badge--triangle {
+    width: calc(var(--size) / 2 + 2px);
+    height: calc(var(--size) / 2 + 2px);
+    max-width: 22px;
+    max-height: 22px;
+    min-width: 17px;
+    min-height: 17px;
   }
 `;

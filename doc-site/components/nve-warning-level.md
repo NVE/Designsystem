@@ -50,8 +50,24 @@ Denne finnes i to varianter: `circle` eller `triangle`.
 <CodeExamplePreview>
 
 ```html
-<nve-warning-level level="2" warningBadge="circle"></nve-warning-level>
-<nve-warning-level level="2" warningBadge="triangle"></nve-warning-level>
+<nve-warning-level warningBadge="circle"></nve-warning-level>
+<nve-warning-level warningBadge="triangle"></nve-warning-level>
+```
+
+</CodeExamplePreview>
+
+### Størrelse
+
+Standardstørrelsen er 34px. Du kan endre størrelsen ved å sette CSS-variabelen `--size` på nve-warning-level. Minimumsstørrelsen er 24px, og maksimum er 40px. Badgen justeres automatisk.
+
+<CodeExamplePreview>
+
+```html
+<nve-warning-level style="--size: 40px"></nve-warning-level>
+<nve-warning-level></nve-warning-level>
+<nve-warning-level style="--size: 24px"></nve-warning-level>
+<nve-warning-level style="--size: 24px" warningBadge="circle"></nve-warning-level>
+<nve-warning-level style="--size: 24px" warningBadge="triangle"></nve-warning-level>
 ```
 
 </CodeExamplePreview>
