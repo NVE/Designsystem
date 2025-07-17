@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/NVE/Designsystem/compare/v2.4.2...v2.5.0) (2025-07-17)
+
+
+### Features
+
+* **nve-warning-level:** add warning level component ([#588](https://github.com/NVE/Designsystem/issues/588)) ([fb584fc](https://github.com/NVE/Designsystem/commit/fb584fce42a9a148a759c6c6c57a4f5fe33cf2fc))
+
 ## [2.4.2](https://github.com/NVE/Designsystem/compare/v2.4.1...v2.4.2) (2025-07-07)
 
 
