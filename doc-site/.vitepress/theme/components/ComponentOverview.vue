@@ -42,7 +42,7 @@
             <a
               v-if="component.nodeId"
               title="Åpne i Figma"
-              :href="linkToFigmaComponent(component.nodeId)"
+              :href="linkToFigmaComponent(component.nodeId, component.pattern)"
               target="_blank"
               class="figma-link"
             >
@@ -126,6 +126,9 @@ interface ComponentStatus {
 
   /** Status på komponenten. Bruk en av disse: 'Ferdig', 'Ikke påbegynt', 'Revideres', 'Skal revideres', 'Under arbeid', 'Trenger kvalitetssjekk'. Sett undefined hvis ukjent */
   statusCode: string;
+
+  /** Om komponent ligger under mønstre mappa i figma */
+  pattern?: boolean;
 }
 
 const props = defineProps<{
@@ -147,7 +150,10 @@ const filteredComponents = computed(() => {
   return sortedComponentStatuses.value.filter((component) => component.name.toLowerCase().includes(searchLower));
 });
 
-const linkToFigmaComponent = (figmaId: string) => {
+const linkToFigmaComponent = (figmaId: string, pattern?: boolean) => {
+  if (pattern) {
+    return `https://www.figma.com/design/HiwQ9UOjOPvrhaEOwdjZEu/05---%E2%9D%96-M%C3%B8nstre?node-id=${figmaId}&m=dev`;
+  }
   return `https://www.figma.com/file/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?node-id=${figmaId}`;
 };
 
