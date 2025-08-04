@@ -12,7 +12,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * Håndterer navigasjon mellom faner, synkronisering av aktive faner og paneler, samt tilgjengelighetsegenskaper.
  * Sporet 'nav' brukes for å legge til faner, og standardsporet brukes for innholdspaneler. Foreløpig støttes kun horisontal retning på fanene.
  * Automatisk aktivering av faner (når man blar mellom fanene med tastatur) støttes ikke – det kan være uheldig fra et tilgjengelighetsperspektiv.
- * Panelet har ingen spacing som standard, siden dette ofte varierer basert på behov. Dette kan justeres enkelt ved bruk av `part="body"`.
  * For beste praksis, les mer i seksjonen om universell utforming.
  *
  * @event nve-tab-change Når aktiv fane endres.
@@ -58,6 +57,8 @@ export default class NveTabGroup extends LitElement implements INveComponent {
   private panels: NveTabPanel[] = [];
   /** @internal */
   private resizeObserver?: ResizeObserver;
+  /** @internal */
+  private buttonContainerWidth = 40; // bredde på tab-group__nav-button
 
   static styles = [styles];
 
@@ -73,6 +74,7 @@ export default class NveTabGroup extends LitElement implements INveComponent {
 
   connectedCallback() {
     super.connectedCallback();
+    this.style.setProperty('--button-container-width', `${this.buttonContainerWidth}px`);
     // setter tablist role for tilgjengelighet. Den må settes på hostelementet derfor settes via 'this'.
     this.setAttribute('role', 'tablist');
     if (this.ariaLabelId) {
@@ -231,11 +233,11 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     const nav = this.shadowRoot?.querySelector('.tab-group__nav') as HTMLElement;
     const activeTab = this.tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') as HTMLElement;
     if (nav && activeTab) {
-      const navRect = nav.getBoundingClientRect();
-      const tabRect = activeTab.getBoundingClientRect();
-      const offset = tabRect.left - navRect.left;
+      const offset = activeTab.offsetLeft - activeTab.parentElement!.offsetLeft;
+      const width = activeTab.offsetWidth;
+
       nav.style.setProperty('--indicator-x', `${offset}px`);
-      nav.style.setProperty('--indicator-width', `${activeTab.offsetWidth}px`);
+      nav.style.setProperty('--indicator-width', `${width}px`);
     }
   }
 
@@ -332,76 +334,51 @@ export default class NveTabGroup extends LitElement implements INveComponent {
   }
 
   /**
-   * Ruller navigasjonslisten fremover. Flytter den første fanen som er delvis eller helt utenfor synsfeltet til venstre.
+   * Ruller navigasjonslisten fremover. Flytter den siste fanen som er full synlig (den blir den første nå).
    */
   private scrollNavForward() {
     const nav = this.shadowRoot?.querySelector('.tab-group__nav');
     if (!nav || !this.tabs.length) return;
+    const navScrollLeft = nav.scrollLeft;
+    const navVisibleWidth = nav.clientWidth;
+    const navRightEdge = navScrollLeft + navVisibleWidth;
 
-    const { scrollLeft, clientWidth, scrollWidth } = nav;
-    // Finner den første fanen som er delvis eller helt utenfor synsfeltet til høyre
-    let nextTab: HTMLElement | undefined;
-    for (const tab of this.tabs) {
-      const tabRight = (tab as HTMLElement).offsetLeft + (tab as HTMLElement).offsetWidth;
-      if (tabRight > scrollLeft + clientWidth) {
-        nextTab = tab as HTMLElement;
-        break;
+    for (let tab of this.tabs) {
+      const tabLeft = tab.offsetLeft;
+      const tabRight = tabLeft + tab.offsetWidth;
+      const isTabCut = tabRight > navRightEdge;
+
+      if (isTabCut) {
+        const prevTab = this.tabs[this.tabs.indexOf(tab) - 1];
+        const prevTabLeft = prevTab ? prevTab.offsetLeft : 0;
+        nav.scrollTo({
+          left: prevTabLeft - this.buttonContainerWidth * 2,
+          behavior: 'smooth',
+        });
+        return;
       }
-    }
-
-    if (nextTab) {
-      // Scroller slik at neste fane er synlig og er den første i synsfeltet
-      nav.scrollTo({
-        left: nextTab.offsetLeft - 36, // 36 er bredde for en scroll knapp
-        behavior: 'smooth',
-      });
-    } else {
-      // Hvis neste delvis synlige fane er den siste, ruller vi til slutten av listen
-      nav.scrollTo({
-        left: scrollWidth - clientWidth,
-        behavior: 'smooth',
-      });
     }
   }
 
   /**
-   * Ruller navigasjonslisten bakover. Flytter den siste fanen som er delvis eller helt utenfor synsfeltet til høyre.
+   * Ruller navigasjonslisten bakover. Flytter den første fanen som er full synlig (den blir den første nå).
    */
   private scrollNavBackward() {
     const nav = this.shadowRoot?.querySelector('.tab-group__nav');
     if (!nav || !this.tabs.length) return;
-
-    const { scrollLeft, clientWidth } = nav;
-    let candidateTab: HTMLElement | undefined;
-
-    for (let i = 0; i < this.tabs.length; i++) {
-      const tab = this.tabs[i] as HTMLElement;
-      //offsetLeft avstand mellom venstra kant av tab-group__nav og venstre kant av tab
-      //offsetWidth er bredde på tab
-      //position of the tab’s right edge in pixels — again, measured from the start of the scrollable content, not the screen or visible area.
-      const tabRight = tab.offsetLeft + tab.offsetWidth;
-
-      if (tabRight <= scrollLeft + 36) {
-        candidateTab = tab;
-      } else if (tab.offsetLeft < scrollLeft + 36) {
-        candidateTab = tab;
-      } else {
-        break;
+    const navVisibleWidth = nav.clientWidth;
+    const navScrollLeft = nav.scrollLeft;
+    for (let tab of this.tabs) {
+      const tabLeft = tab.offsetLeft;
+      const tabRight = tabLeft + tab.offsetWidth;
+      const isFirstVisible = tabLeft > navScrollLeft;
+      if (isFirstVisible) {
+        nav.scrollTo({
+          left: tabRight - navVisibleWidth + this.buttonContainerWidth,
+          behavior: 'smooth',
+        });
+        return;
       }
-    }
-
-    if (candidateTab) {
-      const scrollTo = candidateTab.offsetLeft + candidateTab.offsetWidth - clientWidth;
-
-      nav.scrollTo({
-        left: scrollTo,
-        behavior: 'smooth',
-      });
-    } else {
-      nav.scrollTo({
-        left: 0,
-        behavior: 'smooth',
-      });
     }
   }
 

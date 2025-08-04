@@ -6,10 +6,9 @@ let id = 0;
 
 /**
  * En panel som brukes i en nve-tab-group for å vise innhold relatert til en fane.
- * Panelet har ingen egen utforming, det viser kun det som er inni.
  * Hvis ikke angitt får panelet en unik id som kan brukes for å referere til det automatisk.
  * @slot (default) - legg inn innholdet som skal vises
- * @csspart base - Topp-element
+ * @csspart base - hoved kontainer
  */
 
 @customElement('nve-tab-panel')
@@ -39,7 +38,9 @@ export default class NveTabPanel extends LitElement implements INveComponent {
   }
 
   render() {
-    return html` <slot part="base"></slot> `;
+    return html`<div class="tab-panel" part="base">
+      <slot></slot>
+    </div> `;
   }
 }
 

@@ -47,6 +47,7 @@ export default css`
   .tab-group__nav-button {
     position: absolute;
     background: white;
+    width: var(--button-container-width);
     visibility: visible;
     transition: visibility 0.3s ease-in-out;
   }
@@ -63,9 +64,13 @@ export default css`
 
   .tab-group__nav-button--forward {
     right: 0;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .tab-group__nav-button--backward {
+    display: flex;
+    justify-content: flex-start;
     left: 0;
   }
 `;

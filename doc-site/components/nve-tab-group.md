@@ -55,13 +55,15 @@ Ingen bakgrunn er standard.
 <CodeExamplePreview>
 
 ```html
-<nve-tab-group background>
-  <nve-tab slot="nav" panel="panel-1">Fane 1</nve-tab>
-  <nve-tab slot="nav" panel="panel-2">Fane 2</nve-tab>
+<div style="padding:20px; background: #e8e4e4">
+  <nve-tab-group background>
+    <nve-tab slot="nav" panel="panel-1">Fane 1</nve-tab>
+    <nve-tab slot="nav" panel="panel-2">Fane 2</nve-tab>
 
-  <nve-tab-panel name="panel-1">Dette er innholdspanel for fane 1</nve-tab-panel>
-  <nve-tab-panel name="panel-2">Dette er innholdspanel for fane 2</nve-tab-panel>
-</nve-tab-group>
+    <nve-tab-panel style="background: #fff" name="panel-1">Dette er innholdspanel for fane 1</nve-tab-panel>
+    <nve-tab-panel style="background: #fff" name="panel-2">Dette er innholdspanel for fane 2</nve-tab-panel>
+  </nve-tab-group>
+</div>
 ```
 
 </CodeExamplePreview>
@@ -71,14 +73,13 @@ Ingen bakgrunn er standard.
 Hvis det er flere faner i gruppen enn det som vises på skjermen, blir kontrollknappene synlige. Knappene flytter til neste usynlige fane. Kontrollknappene vises både til høyre og venstre så lenge det fortsatt er faner skjult i noen av retningene.
 På mobil kan man også bruke fingeren til å flytte fanene.
 <nve-message-card variant="warning" label="Obs!" size="compact">
-
-<p style="margin:0">Kontrollknappene er kun tilgjengelige for musbrukere. Tastaturbrukere skal ikke kunne tabbe til knappene for å unngå forvirring og for å bevare vanlig tab-navigasjon i tab-funksjonaliteten.</p>
+Kontrollknappene er kun tilgjengelige for musbrukere. Tastaturbrukere skal ikke kunne tabbe til knappene for å unngå forvirring og for å bevare vanlig tab-navigasjon i tab-funksjonaliteten.
 </nve-message-card>
 
 <CodeExamplePreview>
 
 ```html
-<nve-tab-group background>
+<nve-tab-group>
   <nve-tab slot="nav" panel="panel-1">Fane 1</nve-tab>
   <nve-tab slot="nav" panel="panel-2">Fane 2</nve-tab>
   <nve-tab slot="nav" panel="panel-3">Fane 3</nve-tab>
@@ -187,12 +188,11 @@ Når fokus er på en fane i en horisontal faneliste:
 - `End` flytter fokus til siste fane.
 
 <nve-message-card variant="warning" label="Din innsats er også viktig!" size="compact">
+<span>Når fokus er på en fane og brukeren trykker <b>Tab</b> for å navigere videre i tabulatorrekkefølgen, flyttes fokus som regel til det tilhørende innholdspanelet <em>(nve-tab-panel)</em>. Dersom dette panelet inneholder fokuserbare elementer som knapper eller lenker, vil fokus automatisk gå til det første tilgjengelige elementet.</span>
 
-<p style="margin:0">Når fokus er på en fane og brukeren trykker <b>Tab</b> for å navigere videre i tabulatorrekkefølgen, flyttes fokus som regel til det tilhørende innholdspanelet <em>(nve-tab-panel)</em>. Dersom dette panelet inneholder fokuserbare elementer som knapper eller lenker, vil fokus automatisk gå til det første tilgjengelige elementet.
+<span>Men dersom innholdet i nve-tab-panel ikke har noen naturlige fokusmål, er det viktig at selve panelet gjøres fokusbart ved å sette <b>tabindex="0"</b>. Dette sikrer at brukeren ikke "hopper over" innholdet i panelet ved tastaturnavigasjon.</span>
 
-Men dersom innholdet i nve-tab-panel ikke har noen naturlige fokusmål, er det viktig at selve panelet gjøres fokusbart ved å sette <b>tabindex="0"</b>. Dette sikrer at brukeren ikke "hopper over" innholdet i panelet ved tastaturnavigasjon.
-
-Vi har valgt å ikke implementere automatisk håndtering av dette i komponenten, da det ville krevd omfattende og ytelseskrevende DOM-inspeksjon. I stedet forventer vi at utviklere selv vurderer behovet og legger til <b>tabindex="0"</b> der det er hensiktsmessig.</p>
+<span>Vi har valgt å ikke implementere automatisk håndtering av dette i komponenten, da det ville krevd omfattende og ytelseskrevende DOM-inspeksjon. I stedet forventer vi at utviklere selv vurderer behovet og legger til <b>tabindex="0"</b> der det er hensiktsmessig.</span>
 </nve-message-card>
 
 ### Støtte for redusert bevegelse
@@ -205,6 +205,4 @@ Det er bevisst valgt ikke å aktivere faner automatisk når man navigerer mellom
 
 Det er bevisst valgt å ikke bruke `disabled`-faner i komponenten. Begrunnelsen er at deaktiverte faner ikke gir brukeren tilstrekkelig informasjon om hvorfor fanen ikke er tilgjengelig. Deaktiverte elementer kan ikke motta fokus, noe som medfører at skjermlesere ofte hopper over disse, slik at brukere aldri blir oppmerksomme på deres eksistens. I tillegg kan det for enkelte brukere være uklart at en fane er deaktivert, noe som kan føre til frustrasjon dersom de forsøker å aktivere fanen uten respons.
 <nve-message-card label="Tips!" size="compact">
-
-<p style="margin:0">
-Vi anbefaler derfor at alle faner holdes aktive. Dersom en fane ikke skal vise innhold — eller det foreligger annen grunn til at en fane ikke skal kunne brukes — er det bedre å la fanen være aktiv, men vise en tydelig melding i det tilhørende innholdspanelet som forklarer situasjonen for brukeren.</p></nve-message-card>
+Vi anbefaler derfor at alle faner holdes aktive. Dersom en fane ikke skal vise innhold — eller det foreligger annen grunn til at en fane ikke skal kunne brukes — er det bedre å la fanen være aktiv, men vise en tydelig melding i det tilhørende innholdspanelet som forklarer situasjonen for brukeren.</nve-message-card>
