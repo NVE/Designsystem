@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-tab-group.styles';
@@ -18,9 +18,12 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  *
  * @csspart base Topp-element
  * @csspart body Innholdet i tab gruppen
+ * @csspart button-backward-base Bakoverknapp kontainer
+ * @csspart button-forward-base Fremoverknapp kontainer
  *
  * @slot (nav) - legg inn faner her.
  * @slot (standard) - legg inn paneler her.
+ *  @cssproperty --scroll-button-background - farge på bakover og fremoverknappene. Standard er #fff og #1b1b1f for dark modus.
  */
 @customElement('nve-tab-group')
 export default class NveTabGroup extends LitElement implements INveComponent {
@@ -63,6 +66,7 @@ export default class NveTabGroup extends LitElement implements INveComponent {
   static styles = [styles];
 
   firstUpdated() {
+    this.syncTabsAndPanels();
     const nav = this.shadowRoot?.querySelector('.tab-group__nav');
     if (nav && this.resizeObserver) {
       // setter resizeObserver på tab-group__nav for å oppdatere isOverflow
@@ -233,7 +237,7 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     const nav = this.shadowRoot?.querySelector('.tab-group__nav') as HTMLElement;
     const activeTab = this.tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') as HTMLElement;
     if (nav && activeTab) {
-      const offset = activeTab.offsetLeft - activeTab.parentElement!.offsetLeft;
+      const offset = activeTab.offsetLeft - nav.offsetLeft - 25; //aner ikke hvor 25px kommer fra, men det er alltid 25px for mye;
       const width = activeTab.offsetWidth;
 
       nav.style.setProperty('--indicator-x', `${offset}px`);
@@ -393,32 +397,38 @@ export default class NveTabGroup extends LitElement implements INveComponent {
       >
         <div class="tab-group__nav-container">
           <div class=${classMap({ 'tab-group__nav': true, 'tab-group__nav--background': this.isBackground })}>
-            <slot name="nav" @slotchange=${this.syncTabsAndPanels}></slot>
+            <slot name="nav"></slot>
           </div>
-          <div
-            aria-hidden="true"
-            class=${classMap({
-              'tab-group__nav-button tab-group__nav-button--backward': true,
-              'tab-group__nav-button--hidden': !this.canScrollBack || !this.isOverflow,
-            })}
-          >
-            <nve-button @click=${this.scrollNavBackward} variant="text"
-              ><nve-icon name="chevron_backward"></nve-icon
-            ></nve-button>
-          </div>
-          <div
-            aria-hidden="true"
-            class=${classMap({
-              'tab-group__nav-button tab-group__nav-button--forward': true,
-              'tab-group__nav-button--hidden': !this.canScrollForward || !this.isOverflow,
-            })}
-          >
-            <nve-button variant="text" @click=${this.scrollNavForward}
-              ><nve-icon name="chevron_forward"></nve-icon
-            ></nve-button>
-          </div>
+          ${this.canScrollBack && this.isOverflow
+            ? html`
+                <div
+                  aria-hidden="true"
+                  part="button-backward-base"
+                  class="tab-group__nav-button tab-group__nav-button--backward"
+                >
+                  <nve-button @click=${this.scrollNavBackward} variant="text">
+                    <nve-icon name="chevron_backward"></nve-icon>
+                  </nve-button>
+                </div>
+              `
+            : nothing}
+          ${this.canScrollForward && this.isOverflow
+            ? html`
+                <div
+                  part="button-forward-base"
+                  aria-hidden="true"
+                  class=${classMap({
+                    'tab-group__nav-button tab-group__nav-button--forward': true,
+                  })}
+                >
+                  <nve-button variant="text" @click=${this.scrollNavForward}
+                    ><nve-icon name="chevron_forward"></nve-icon
+                  ></nve-button>
+                </div>
+              `
+            : nothing}
         </div>
-        <slot part="body" @slotchange=${this.syncTabsAndPanels}></slot>
+        <slot part="body"></slot>
       </div>
     `;
   }

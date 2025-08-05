@@ -76,6 +76,8 @@ På mobil kan man også bruke fingeren til å flytte fanene.
 Kontrollknappene er kun tilgjengelige for musbrukere. Tastaturbrukere skal ikke kunne tabbe til knappene for å unngå forvirring og for å bevare vanlig tab-navigasjon i tab-funksjonaliteten.
 </nve-message-card>
 
+Vi bruker nve-button med text-variant som skrollknapper. Siden denne varianten ikke har noen bakgrunnsfarge, wrapper vi den med en tab-group\_\_nav-button-div. Fargen på denne kan settes via CSS-variabelen `--scroll-button-background`. Den bør ha samme farge som bakgrunnen til containeren der du plasserer fanene.
+
 <CodeExamplePreview>
 
 ```html

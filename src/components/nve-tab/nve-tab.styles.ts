@@ -19,6 +19,7 @@ export default css`
     display: flex;
     min-width: 100px;
     padding: 11px 0px;
+    text-align: center;
     width: fit-content;
     flex-direction: row;
     align-items: center;

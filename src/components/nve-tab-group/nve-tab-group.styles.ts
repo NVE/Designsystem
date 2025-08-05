@@ -1,6 +1,10 @@
 import { css } from 'lit';
 
 export default css`
+  :host {
+    --scroll-button-background: #fff;
+  }
+
   .tab-group__nav-container {
     display: flex;
     position: relative;
@@ -46,14 +50,16 @@ export default css`
 
   .tab-group__nav-button {
     position: absolute;
-    background: white;
+    background: var(--scroll-button-background);
     width: var(--button-container-width);
     visibility: visible;
     transition: visibility 0.3s ease-in-out;
   }
 
-  .tab-group__nav-button--hidden {
-    visibility: hidden;
+  @media (prefers-color-scheme: dark) {
+    :host {
+      --scroll-button-background: #1b1b1f;
+    }
   }
 
   .tab-group__nav-button,
