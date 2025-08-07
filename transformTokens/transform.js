@@ -103,89 +103,71 @@ const devices = [
 // transform alle tilgjengelige gjenstander
 devices.forEach(async ({ name, minWidth, maxWidth }) => await transformDeviceTokens(name, minWidth, maxWidth));
 
-const nveTokensLight = await myStyleDictionary.extend({
-  source: ['tokens/brand/nve.json', 'tokens/*json', 'tokens/public/theme/light.json'],
-  platforms: {
-    nve: {
-      transformGroup: 'css',
-      buildPath: 'public/css/',
-      transforms,
-      files: [
-        {
-          destination: 'nve.css',
-          format: 'css/variables',
-          options: {
-            outputReferences: true,
+async function buildThemeTokens(source, platformName, destination, themeOption) {
+  return await myStyleDictionary.extend({
+    source: source,
+    platforms: {
+      [platformName]: {
+        transformGroup: 'css',
+        buildPath: 'public/css/',
+        transforms,
+        files: [
+          {
+            destination: destination,
+            format: 'css/variables',
+            options: {
+              outputReferences: true,
+              ...(themeOption ? { theme: themeOption } : {}),
+            },
           },
-        },
-      ],
+        ],
+      },
     },
-  },
-});
+  });
+}
 
-const nveTokensDark = await myStyleDictionary.extend({
-  source: ['tokens/brand/nve.json', 'tokens/*json', 'tokens/public/theme/dark.json'],
-  platforms: {
-    nveDark: {
-      transformGroup: 'css',
-      buildPath: 'public/css/',
-      transforms,
-      files: [
-        {
-          destination: 'nve_dark.css',
-          format: 'css/variables',
-          options: {
-            outputReferences: true,
-            theme: 'darkmode',
-          },
-        },
-      ],
-    },
-  },
-});
+const nveTokensLight = await buildThemeTokens(
+  ['tokens/brand/nve.json', 'tokens/*json', 'tokens/public/theme/light.json'],
+  'nve',
+  'nve.css'
+);
 
-const varsomTokensLight = await myStyleDictionary.extend({
-  source: ['tokens/brand/nve.json', 'tokens/brand/varsom.json', 'tokens/*json', 'tokens/public/theme/light.json'],
-  platforms: {
-    varsom: {
-      transformGroup: 'css',
-      buildPath: 'public/css/',
-      transforms,
-      files: [
-        {
-          destination: 'varsom.css',
-          format: 'css/variables',
-          options: {
-            outputReferences: true,
-          },
-        },
-      ],
-    },
-  },
-});
+const nveTokensDark = await buildThemeTokens(
+  ['tokens/brand/nve.json', 'tokens/*json', 'tokens/public/theme/dark.json'],
+  'nveDark',
+  'nve_dark.css',
+  'darkmode'
+);
 
-const varsomTokensDark = await myStyleDictionary.extend({
-  source: ['tokens/brand/nve.json', 'tokens/brand/varsom.json', 'tokens/*json', 'tokens/public/theme/dark.json'],
-  platforms: {
-    varsomDark: {
-      transformGroup: 'css',
-      buildPath: 'public/css/',
-      transforms,
-      files: [
-        {
-          destination: 'varsom_dark.css',
-          format: 'css/variables',
-          options: {
-            outputReferences: true,
-            theme: 'darkmode',
-          },
-        },
-      ],
-    },
-  },
-});
+const varsomTokensLight = await buildThemeTokens(
+  ['tokens/brand/nve.json', 'tokens/brand/varsom.json', 'tokens/*json', 'tokens/public/theme/light.json'],
+  'varsom',
+  'varsom.css'
+);
+
+const varsomTokensDark = await buildThemeTokens(
+  ['tokens/brand/nve.json', 'tokens/brand/varsom.json', 'tokens/*json', 'tokens/public/theme/dark.json'],
+  'varsomDark',
+  'varsom_dark.css',
+  'darkmode'
+);
+
+const rmeTokensLight = await buildThemeTokens(
+  ['tokens/brand/nve.json', 'tokens/brand/rme.json', 'tokens/*json', 'tokens/public/theme/light.json'],
+  'rme',
+  'rme.css'
+);
+
+const rmeTokensDark = await buildThemeTokens(
+  ['tokens/brand/nve.json', 'tokens/brand/rme.json', 'tokens/*json', 'tokens/public/theme/dark.json'],
+  'rmeDark',
+  'rme_dark.css',
+  'darkmode'
+);
 
 nveTokensLight.buildAllPlatforms();
 nveTokensDark.buildAllPlatforms();
 varsomTokensLight.buildAllPlatforms();
 varsomTokensDark.buildAllPlatforms();
+rmeTokensLight.buildAllPlatforms();
+rmeTokensDark.buildAllPlatforms();

@@ -6,6 +6,7 @@ import './style.css';
 import '../../../public/css/global.css';
 import '../theme/styles/nve_theme.css';
 import '../theme/styles/varsom_theme.css';
+import '../theme/styles/rme_theme.css';
 import { icons, registerIconLibrary } from '../../../src/registerIcons/systemLibraryCustomization';
 import ComponentLayout from './components/ComponentLayout.vue';
 import CodeExamplePreview from './components/CodeExamplePreview.vue';
@@ -32,11 +33,21 @@ export default {
       if (currentTheme.value === Theme.NVE) {
         document.documentElement.classList.remove('varsom');
         document.documentElement.classList.remove('varsom_darkmode');
+        document.documentElement.classList.remove('rme');
+        document.documentElement.classList.remove('rme_darkmode');
         document.documentElement.classList.add('nve');
+      } else if (currentTheme.value === Theme.VARSOM) {
+        document.documentElement.classList.remove('nve');
+        document.documentElement.classList.remove('nve_darkmode');
+        document.documentElement.classList.remove('rme');
+        document.documentElement.classList.remove('rme_darkmode');
+        document.documentElement.classList.add('varsom');
       } else {
         document.documentElement.classList.remove('nve');
         document.documentElement.classList.remove('nve_darkmode');
-        document.documentElement.classList.add('varsom');
+        document.documentElement.classList.remove('varsom');
+        document.documentElement.classList.remove('varsom_darkmode');
+        document.documentElement.classList.add('rme');
       }
 
       // Setter darkmode må sikkert trigge det en gang til når jeg bytter tema
