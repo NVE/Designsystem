@@ -567,6 +567,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
    * Legger til utheving av søketreff i label.
    * @param label Label til alternativet
    * @returns {TemplateResult} HTML med uthevet søketreff
+   * 
    */
   addHighlightingToSearchResult(label: string): unknown {
     const matched = label.replace(new RegExp(this.inputValue, 'i'), (match) => `<b>${match}</b>`);
