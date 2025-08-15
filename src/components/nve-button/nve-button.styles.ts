@@ -156,14 +156,12 @@ export default css`
   }
 
   /* DEFAULT, aka SECONDARY */
-  :host:not([variant]) .button--standard.button,
   :host([variant='secondary']) .button--standard.button,
   :host([variant='default']) .button--standard.button {
     background: var(--interactive-secondary-background-default);
     color: var(--interactive-secondary-foreground-default);
     border: none;
   }
-  :host:not([variant]) .button--standard.button:hover:not(.button--disabled),
   :host([variant='secondary']) .button--standard.button:hover:not(.button--disabled),
   :host([variant='default']) .button--standard.button:hover:not(.button--disabled) {
     background: var(--interactive-secondary-background-hover);
