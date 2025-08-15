@@ -3,6 +3,7 @@ import { ref } from 'vue';
 export enum Theme {
   NVE = 'nve',
   VARSOM = 'varsom',
+  RME = 'rme',
 }
 export const currentTheme = ref<Theme>(Theme.NVE);
 export const themeLocalStorageVariable = 'currenttheme';

@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/NVE/Designsystem/compare/v2.5.0...v2.6.0) (2025-08-07)
+
+
+### Features
+
+* legge til rme tema ([#589](https://github.com/NVE/Designsystem/issues/589)) ([a51533e](https://github.com/NVE/Designsystem/commit/a51533e9c827c138944780de477b87edf0de679e))
+
 # [2.5.0](https://github.com/NVE/Designsystem/compare/v2.4.2...v2.5.0) (2025-07-17)
 
 
