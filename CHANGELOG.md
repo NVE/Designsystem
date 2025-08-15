@@ -1,3 +1,11 @@
+# [2.7.0](https://github.com/NVE/Designsystem/compare/v2.6.0...v2.7.0) (2025-08-15)
+
+
+### Features
+
+* Trigger a release because we get npm error for 2.6.0 ([#604](https://github.com/NVE/Designsystem/issues/604)) ([2150c9c](https://github.com/NVE/Designsystem/commit/2150c9c5e27375476788847e6226389e0e437ce5))
+* trigger release ([02a91e2](https://github.com/NVE/Designsystem/commit/02a91e26c5e9dbb343dd90e30b3998ddd8910a9a))
+
 # [2.6.0](https://github.com/NVE/Designsystem/compare/v2.5.0...v2.6.0) (2025-08-07)
 
 
