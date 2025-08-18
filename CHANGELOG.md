@@ -1,3 +1,10 @@
+## [2.7.1](https://github.com/NVE/Designsystem/compare/v2.7.0...v2.7.1) (2025-08-18)
+
+
+### Bug Fixes
+
+* **nve-checkbox:** fikse deaktivert styling ([#605](https://github.com/NVE/Designsystem/issues/605)) ([ef08e8d](https://github.com/NVE/Designsystem/commit/ef08e8d0d1b6fa95ed38ef24231339192a5d75b2))
+
 # [2.7.0](https://github.com/NVE/Designsystem/compare/v2.6.0...v2.7.0) (2025-08-15)
 
 
