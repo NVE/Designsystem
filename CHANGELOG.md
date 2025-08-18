@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/NVE/Designsystem/compare/v2.7.1...v2.8.0) (2025-08-18)
+
+
+### Features
+
+* **nve-textarea:** add label slot ([#607](https://github.com/NVE/Designsystem/issues/607)) ([f0467ee](https://github.com/NVE/Designsystem/commit/f0467eee4e9050a77cb9fb14b1cfd920237ec53e))
+
 ## [2.7.1](https://github.com/NVE/Designsystem/compare/v2.7.0...v2.7.1) (2025-08-18)
 
 
