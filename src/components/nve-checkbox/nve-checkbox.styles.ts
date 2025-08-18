@@ -17,15 +17,6 @@ export default css`
     transition: all var(--transition-time) ease-in;
   }
 
-  :host([disabled])::part(control) {
-    border-color: var(--neutrals-border-disabled);
-  }
-
-  :host([disabled])::part(form-control-help-text),
-  :host([disabled])::part(label) {
-    color: var(--interactive-primary-background-disabled);
-  }
-
   :host::part(control control--checked),
   :host::part(control control--indeterminate) {
     background: var(--neutrals-foreground-primary) !important;
