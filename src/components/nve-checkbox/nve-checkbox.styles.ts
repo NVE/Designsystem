@@ -9,8 +9,7 @@ export default css`
     }
   }
 
-  :host::part(control),
-  :host([disabled]:hover)::part(control) {
+  :host::part(control) {
     border: var(--border-width-strong) solid var(--neutrals-foreground-primary);
     border-radius: var(--border-radius-small);
     width: 1.1rem;
@@ -18,26 +17,30 @@ export default css`
     transition: all var(--transition-time) ease-in;
   }
 
+  :host([disabled])::part(control) {
+    border-color: var(--neutrals-border-disabled);
+  }
+
+  :host([disabled])::part(form-control-help-text),
+  :host([disabled])::part(label) {
+    color: var(--interactive-primary-background-disabled);
+  }
+
   :host::part(control control--checked),
-  :host::part(control control--indeterminate),
-  :host([disabled]:hover)::part(control control--checked),
-  :host([disabled]:hover)::part(control control--indeterminate) {
+  :host::part(control control--indeterminate) {
     background: var(--neutrals-foreground-primary) !important;
     border-color: var(--neutrals-foreground-primary) !important;
   }
 
-  :host([data-invalid])::part(control),
-  :host([disabled][data-user-invalid]:hover)::part(control) {
+  :host([data-invalid])::part(control) {
     border-color: var(--feedback-background-emphasized-error);
   }
   :host([data-invalid])::part(control control--checked),
-  :host([data-user-invalid])::part(control control--indeterminate),
-  :host([disabled][data-user-invalid]:hover)::part(control control--checked),
-  :host([disabled][data-user-invalid]:hover)::part(control control--indeterminate) {
+  :host([data-user-invalid])::part(control control--indeterminate) {
     background: var(--feedback-background-emphasized-error);
   }
 
-  :host(:hover)::part(control) {
+  :host(:not([disabled]):hover)::part(control) {
     border-color: var(--neutrals-foreground-subtle, #006b99) !important;
   }
 
@@ -51,9 +54,6 @@ export default css`
     background: var(--neutrals-foreground-subtle, #006b99);
   }
 
-  .checkbox--disabled {
-    opacity: var(--disabled);
-  }
   .checkbox {
     align-items: center;
   }
