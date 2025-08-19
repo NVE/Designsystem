@@ -16,8 +16,7 @@ export default css`
     color: var(--neutrals-foreground-primary, #0d0d0e);
   }
 
-  /* fjerner checkmark siden den er hvit */
-  :host::part(checked-icon) {
+  :host([hide-checkmark])::part(checked-icon) {
     display: none !important;
   }
 
@@ -39,8 +38,7 @@ export default css`
     background-color: var(--neutrals-background-primary, #fff);
   }
 
-  :host([filled]) .option{
+  :host([filled]) .option {
     color: var(--neutrals-foreground-primary, #0d0d0e);
   }
-
 `;

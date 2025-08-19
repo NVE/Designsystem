@@ -18,6 +18,12 @@ export default class NveSelect extends SlSelect {
    * Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard.
    */
   @property() requiredLabel = '*Obligatorisk';
+
+  /**
+   * Settes dersom man ikke ønsker å ha checkmark på valgte options i dropdown
+   */
+  @property({ type: Boolean }) hideCheckmark: boolean = false;
+
   /**
    * Brukes til enkel constraint validation til å overskrive default nettleser-melding
    */
