@@ -150,3 +150,25 @@ Bruk `textLabel` i `nve-option` dersom du ønsker at teksten som vises i selve s
 ```
 
 </CodeExamplePreview>
+
+### Markering av valgte elementer
+
+Valgte elementer får et ikon for markering i dropdown. Dette kan slås av med `hide-checkmark` på både vanlig og flervalg-variantene
+
+<CodeExamplePreview>
+
+```html
+<nve-select multiple clearable hide-checkmark value="valg1 valg2" label="Her kan du velge flere">
+  <nve-option value="valg1">Valg 1</nve-option>
+  <nve-option value="valg2">Valg 2</nve-option>
+  <nve-option value="valg3">Valg 3</nve-option>
+</nve-select>
+
+<nve-select value="valg2" hide-checkmark label="Her kan du velge kun én">
+  <nve-option value="valg1">Valg 1</nve-option>
+  <nve-option value="valg2">Valg 2</nve-option>
+  <nve-option value="valg3">Valg 3</nve-option>
+</nve-select>
+```
+
+</CodeExamplePreview>

@@ -16,14 +16,25 @@ export default class NveOption extends SlOption {
    */
   @property() textLabel: string | undefined = undefined;
 
-  /* Setter filled attributt på option når parent-select er filled, for å få annen hover-farge*/
+  /**
+   * Setter filled attributt på option når parent-select er filled, for å få annen hover-farge
+   * Setter så hide-checkmark basert på samme logikk
+   */
   firstUpdated(changedProperties: PropertyValues): void {
     super.firstUpdated(changedProperties);
     const select = this.closest('nve-select');
-    if (select?.hasAttribute('filled')) {
+    if (!select) {
+      return;
+    }
+    if (select.hasAttribute('filled')) {
       this.toggleAttribute('filled', true);
     } else {
       this.toggleAttribute('filled', false);
+    }
+    if (select.hasAttribute('hide-checkmark')) {
+      this.toggleAttribute('hide-checkmark', true);
+    } else {
+      this.toggleAttribute('hide-checkmark', false);
     }
   }
 
