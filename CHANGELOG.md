@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/NVE/Designsystem/compare/v2.8.0...v2.9.0) (2025-08-21)
+
+
+### Features
+
+* **nve-select:** Legg inn checkmark på valgte options i nve-select ([#609](https://github.com/NVE/Designsystem/issues/609)) ([00032db](https://github.com/NVE/Designsystem/commit/00032db85515d1f9edda4493ace8e71027eaec98))
+
 # [2.8.0](https://github.com/NVE/Designsystem/compare/v2.7.1...v2.8.0) (2025-08-18)
 
 
