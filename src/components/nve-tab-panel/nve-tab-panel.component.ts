@@ -6,6 +6,7 @@ let id = 0;
 
 /**
  * En panel som brukes i en nve-tab-group for å vise innhold relatert til en fane.
+ * Kan ikke brukes utenfor en nve-tab-group.
  * Hvis ikke angitt får panelet en unik id som kan brukes for å referere til det automatisk.
  * @slot (default) - legg inn innholdet som skal vises
  * @csspart base - hoved kontainer

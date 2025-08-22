@@ -93,7 +93,7 @@ describe('nve-tab-group', () => {
     const wrapper = await fixture(
       html`<div>
         <span id="label">Tab group 1</span>
-        <nve-tab-group ariaLabelId="label"></nve-tab-group>
+        <nve-tab-group aria-labelledby="label"></nve-tab-group>
       </div>`
     );
     const tabGroup = wrapper.querySelector('nve-tab-group');

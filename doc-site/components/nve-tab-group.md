@@ -19,11 +19,11 @@ outline: [2, 3]
 
 ## Eksempler
 
-### Størrelsen
+### Størrelse
 
-Størrelsen kan settes enten direkte på hver `nve-tab` eller kan man sette en global størrelsen på `nve-tab-group`.
-Unngå å bruke forksjelige størrelser på fanene i samme gruppen. Små faner er mer kompakt (mindre padding).
-`Large` er standard.
+Størrelse kan settes enten direkte på hver `nve-tab` eller kan man sette en global størrelse på `nve-tab-group`.
+Unngå å bruke forskjelige størrelser på fanene i samme gruppe. Små faner har mindre padding.
+`large` er standard.
 
 <CodeExamplePreview>
 
@@ -70,7 +70,7 @@ Ingen bakgrunn er standard.
 
 ### Skroll ved flere faner (og mobil støtte)
 
-Hvis det er flere faner i gruppen enn det som vises på skjermen, blir kontrollknappene synlige. Knappene flytter til neste usynlige fane. Kontrollknappene vises både til høyre og venstre så lenge det fortsatt er faner skjult i noen av retningene.
+Hvis det er flere faner i gruppe enn det som vises på skjermen, blir kontrollknappene synlige. Knappene flytter til neste usynlige fane. Kontrollknappene vises både til høyre og venstre så lenge det fortsatt er faner skjult i noen av retningene.
 På mobil kan man også bruke fingeren til å flytte fanene.
 <nve-message-card variant="warning" label="Obs!" size="compact">
 Kontrollknappene er kun tilgjengelige for musbrukere. Tastaturbrukere skal ikke kunne tabbe til knappene for å unngå forvirring og for å bevare vanlig tab-navigasjon i tab-funksjonaliteten.
@@ -114,8 +114,7 @@ Vi bruker nve-button med text-variant som skrollknapper. Siden denne varianten i
 
 ### Bestemme aktiv fane på forhånd
 
-`activeTab`-attributtet bestemmer hvilken fane er aktiv ved oppstart. Hvis den ikke er satt av en bruker, blir den første
-fanen aktiv som standard.
+`activeTab`-attributtet bestemmer hvilken fane som er aktiv ved oppstart. Hvis den ikke er satt, blir den første fanen aktiv.
 
 <CodeExamplePreview>
 
@@ -133,15 +132,14 @@ fanen aktiv som standard.
 
 ### Synlig ledetekst for fanegruppe
 
-Hvis fanegruppe har en synlig ledetekst som beskriver hva gruppen inneholder er det anbefalt å bruke `aria-labelledby` på diven med `tablist` rollen. For å sikre at det er gjort riktig og at `aria` leses av skjermleser kan vi ta i bruk `ariaLabelId`-attributtet. Husk å legge til kun `id` på selve ledetekst. Hvis det ikke finnes noe ledetekst bruk gjerne vanlig
-`aria-label` på selve `nve-tab-group`-elementet.
+Hvis fanegruppe har en synlig ledetekst som beskriver hva gruppe inneholder er det anbefalt å bruke `aria-labelledby` på diven med `tablist` rollen. Bruk `aria-labelledby` direkte på `nve-tab-group`. Husk å legge til kun `id` på selve ledetekst. Hvis det ikke finnes noe ledetekst bruk gjerne vanlig `aria-label` på selve `nve-tab-group`-elementet.
 
 <CodeExamplePreview>
 
 ```html
 <div>
-  <span style="font-weight:600;" id="inventors-header">Oppfinnere</span>
-  <nve-tab-group ariaLabelId="inventors-header">
+  <span id="inventors-header"><b>Oppfinnere</b></span>
+  <nve-tab-group aria-labelledby="inventors-header">
     <nve-tab slot="nav" panel="panel-1">Benjamin Franklin</nve-tab>
     <nve-tab slot="nav" panel="panel-2">Maria Sklodowska-Curie</nve-tab>
 
@@ -171,10 +169,13 @@ Fanekomponenten følger [WAI-ARIA sine retningslinjer](https://www.w3.org/WAI/AR
 - Elementet som fungerer som container for fanene har `role="tablist"` for å identifisere det som et fanesett.
 - Hver fane har `role="tab"` og ligger inne i tablist-elementet.
 - Hvert tilhørende innholdspanel har `role="tabpanel"`.
-- Dersom fanesettet har en [synlig tittel](#synlig-ledetekst-for-fanegruppe), brukes aria-labelledby på tablist-elementet for å referere til tittel-elementet. Hvis ikke, brukes aria-label for å gi en programmatisk tittel.
 - Hver fane har aria-controls som refererer til id-en til det tilknyttede tabpanel-elementet.
 - Den aktive fanen har aria-selected="true", mens alle inaktive faner har aria-selected="false".
 - Hvert tabpanel har aria-labelledby som refererer til tilhørende fane, slik at skjermlesere kan forstå sammenhengen mellom fane og panel.
+
+Denne funksjonen må man huske på å implementere selv:
+
+- Dersom fanesettet har en [synlig tittel](#synlig-ledetekst-for-fanegruppe), brukes aria-labelledby på tablist-elementet for å referere til tittel-elementet. Dette må settes på nve-tab-group komponent ved bruk av `aaria-labelledby`-attributet. Hvis synlig tittel finnes ikke, bruk `aria-label` på nve-tab-group for å gi en programmatisk tittel.
 
 Disse rollene og attributtene sikrer at brukere med hjelpemiddelteknologi kan navigere og forstå grensesnittet på en trygg og forutsigbar måte.
 

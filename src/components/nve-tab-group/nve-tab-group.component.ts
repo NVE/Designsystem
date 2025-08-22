@@ -28,8 +28,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 @customElement('nve-tab-group')
 export default class NveTabGroup extends LitElement implements INveComponent {
   @property({ type: String }) testId: string | undefined = undefined;
-  /** Brukes til å sette aria-labelledby på tab gruppe hvis en tittel på tab gruppen finnes. */
-  @property({ type: String }) ariaLabelId: string | null = null;
   /** Om tab gruppen skal ha bakgrunnsfarge */
   @property({ type: Boolean }) background: boolean = false;
   /** Størrelse på tab gruppen */
@@ -76,14 +74,21 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     }
   }
 
+  async updated(changedProps: Map<string, unknown>) {
+    super.updated?.(changedProps);
+    if (changedProps.has('canScrollBack') || changedProps.has('isOverflow')) {
+      await this.removeTabIndexFromBackwardScrollButton();
+    }
+    if (changedProps.has('canScrollForward') || changedProps.has('isOverflow')) {
+      await this.removeTabIndexFromForwardScrollButton();
+    }
+  }
+
   connectedCallback() {
     super.connectedCallback();
     this.style.setProperty('--button-container-width', `${this.buttonContainerWidth}px`);
     // setter tablist role for tilgjengelighet. Den må settes på hostelementet derfor settes via 'this'.
     this.setAttribute('role', 'tablist');
-    if (this.ariaLabelId) {
-      this.setAttribute('aria-labelledby', this.ariaLabelId);
-    }
     this.resizeObserver = new ResizeObserver(() => this.checkOverflow());
     this.addEventListener('click', this.handleClick);
     this.addEventListener('keydown', this.handleKeyDown);
@@ -269,7 +274,6 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     this.tabs = this.getTabs();
     this.panels = this.getPanels();
     this.setAriaLabels();
-    this.removeTabIndexFromScrollButtons();
     this.tabs.forEach((tab) => {
       tab.background = tab.background ? tab.background : this.background;
     });
@@ -292,27 +296,34 @@ export default class NveTabGroup extends LitElement implements INveComponent {
   }
 
   /**
-   * Fjerner tabindex fra scroll knappene. Scroll knappene gir mening kun til mus brukere. Derfor for å unngå
-   * forvirring av tastatur brukere, fjerner vi tabindex fra knappene. Tastatur brukere kan bruke piltaster for å navigere mellom faner.
+   * Fjerner tabindex fra fremover scroll-knappen.
    */
-  private removeTabIndexFromScrollButtons() {
-    const backButton = this.shadowRoot?.querySelector('.tab-group__nav-button--backward');
+  private async removeTabIndexFromForwardScrollButton() {
     const forwardButton = this.shadowRoot?.querySelector('.tab-group__nav-button--forward');
-
-    const backNveButton = backButton?.querySelector('nve-button');
     const forwardNveButton = forwardButton?.querySelector('nve-button');
-
-    const backBase = backNveButton?.shadowRoot?.querySelector('[part="base"]');
-    const forwardBase = forwardNveButton?.shadowRoot?.querySelector('[part="base"]');
-
-    if (backBase) {
-      backBase.setAttribute('tabindex', '-1');
-    }
-    if (forwardBase) {
-      forwardBase.setAttribute('tabindex', '-1');
+    if (forwardNveButton) {
+      await forwardNveButton.updateComplete;
+      const forwardBase = forwardNveButton.shadowRoot?.querySelector('[part="base"]');
+      if (forwardBase) {
+        forwardBase.setAttribute('tabindex', '-1');
+      }
     }
   }
 
+  /**
+   * Fjerner tabindex fra bakover scroll-knappen.
+   */
+  private async removeTabIndexFromBackwardScrollButton() {
+    const backButton = this.shadowRoot?.querySelector('.tab-group__nav-button--backward');
+    const backNveButton = backButton?.querySelector('nve-button');
+    if (backNveButton) {
+      await backNveButton.updateComplete;
+      const backBase = backNveButton.shadowRoot?.querySelector('[part="base"]');
+      if (backBase) {
+        backBase.setAttribute('tabindex', '-1');
+      }
+    }
+  }
   /**
    * Sjekker om tab gruppen har overflow og oppdaterer tilstanden for scroll knappene.
    * Kalles ved endring av størrelse på tab gruppen.
