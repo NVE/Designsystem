@@ -356,7 +356,7 @@ export default class NveTabGroup extends LitElement implements INveComponent {
         const prevTab = this.tabs[this.tabs.indexOf(tab) - 1];
         const prevTabLeft = prevTab ? prevTab.offsetLeft : 0;
         nav.scrollTo({
-          left: prevTabLeft - this.buttonContainerWidth * 2,
+          left: prevTabLeft - this.buttonContainerWidth,
           behavior: 'smooth',
         });
         return;
