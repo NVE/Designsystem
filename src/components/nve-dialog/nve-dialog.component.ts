@@ -47,13 +47,13 @@ export default class NveDialog extends SlDialog {
    * Metoden søker først etter tittel-elementet i komponentens skygge-DOM.
    * Hvis tittel-elementet finnes og `icon`-egenskapen er satt, oppdateres
    * tittel-elementets stil for å inkludere det angitte ikonet.
-   * Hvis `icon`-egenskapen ikke er satt, settes ikoninnholdet til 'none'
+   * Hvis `icon`-egenskapen ikke er satt, settes ikoninnholdet til ''
    * for å unngå å skape unødvendig mellomrom i layouten.
    */
   updateIcon() {
     const titleElement = this.shadowRoot?.querySelector('.dialog__title');
     if (titleElement instanceof HTMLElement) {
-      const iconContent = this.icon ? `"${this.icon}"` : 'none';
+      const iconContent = this.icon ? `"${this.icon}"` : null;
       titleElement.style.setProperty('--title-icon', iconContent);
     }
   }
