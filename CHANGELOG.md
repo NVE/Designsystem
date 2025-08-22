@@ -1,3 +1,10 @@
+## [2.9.1](https://github.com/NVE/Designsystem/compare/v2.9.0...v2.9.1) (2025-08-22)
+
+
+### Bug Fixes
+
+* **nve-dialog:** Fikset ikon-visning ved label, la til mer dokumentasjon ([#611](https://github.com/NVE/Designsystem/issues/611)) ([6d8fe95](https://github.com/NVE/Designsystem/commit/6d8fe95f39514c7503ddef5b2a717dac686be30b))
+
 # [2.9.0](https://github.com/NVE/Designsystem/compare/v2.8.0...v2.9.0) (2025-08-21)
 
 
