@@ -1,3 +1,10 @@
+## [2.10.1](https://github.com/NVE/Designsystem/compare/v2.10.0...v2.10.1) (2025-08-28)
+
+
+### Bug Fixes
+
+* **nve-tab:** fikse visning av faner i eksterne prosjekter ([#612](https://github.com/NVE/Designsystem/issues/612)) ([dee25ed](https://github.com/NVE/Designsystem/commit/dee25eda5a0d81f6ea5fd9074fa96e9e3858d1b0))
+
 # [2.10.0](https://github.com/NVE/Designsystem/compare/v2.9.1...v2.10.0) (2025-08-28)
 
 
