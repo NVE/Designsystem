@@ -1,3 +1,10 @@
+# [2.10.0](https://github.com/NVE/Designsystem/compare/v2.9.1...v2.10.0) (2025-08-28)
+
+
+### Features
+
+* **nve-tab-group:** add nve-tab, nve-tab-group and nve-tab-panel ([#593](https://github.com/NVE/Designsystem/issues/593)) ([51d85e6](https://github.com/NVE/Designsystem/commit/51d85e69926e1b5b9b501285f3422d29e181aed4))
+
 ## [2.9.1](https://github.com/NVE/Designsystem/compare/v2.9.0...v2.9.1) (2025-08-22)
 
 
