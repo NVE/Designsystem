@@ -160,6 +160,49 @@ Hvis fanegruppe har en synlig ledetekst som beskriver hva gruppe inneholder er d
 
 </CodeExamplePreview>
 
+### Dynamisk visning av fane innhold med `nve-tab-change`-eventet
+
+Ofte ønsker man at innholdet i en fane ikke skal rendres før den er aktivert. Dette gjelder spesielt når innholdet kommer fra API-kall, og man kun ønsker å hente data når fanen er aktiv. I slike tilfeller anbefales det å vise innholdet kun når fanen er aktiv. For å sjekke hvilken fane som er aktiv og hvilket innhold som skal vises, kan man bruke `nve-tab-change`-eventet. Dette trigges hver gang man bytter fane og returnerer navnet på det aktive fanepanelet. Under kan du se hvordan dette fungerer i en VUE-app:
+
+<SandboxPreview>
+
+```
+
+<template>
+  <nve-tab-group aria-label="joga posisjoner" @nve-tab-change="changeActiveTab">
+    <nve-tab slot="nav" panel="savasana">Savasana</nve-tab>
+    <nve-tab slot="nav" panel="tadasana">Tadasana</nve-tab>
+    <nve-tab-panel name="savasana">
+      <div v-if="activeTab==='savasana'">
+      Savasana, also known as the Corpse Pose, is a restorative posture practiced at the end of a yoga session. In this position, you lie flat on your back with your arms relaxed at your sides, palms facing upward, and your legs slightly apart. The purpose of Savasana is deep relaxation, allowing the body and mind to integrate the benefits of the practice. It calms the nervous system, reduces stress, and promotes mental clarity.
+      </div>
+    </nve-tab-panel>
+    <nve-tab-panel name="tadasana">
+       <div v-if="activeTab==='tadasana'">
+       Tadasana, or Mountain Pose, is a foundational standing posture that emphasizes alignment and stability. To practice it, you stand upright with your feet together or hip-width apart, press your feet firmly into the ground, lengthen your spine, and roll your shoulders back and down while keeping your gaze forward. Tadasana improves posture, strengthens the legs, and enhances balance and body awareness, serving as a starting point for many standing poses.
+       </div>
+    </nve-tab-panel>
+  </nve-tab-group>
+</template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import "nve-designsystem/components/nve-tab-group/nve-tab-group.component.js";
+import "nve-designsystem/components/nve-tab/nve-tab.component.js";
+import "nve-designsystem/components/nve-tab-panel/nve-tab-panel.component.js";
+
+const activeTab = ref<'savasana' | 'tadasana'>('savasana');
+
+const changeActiveTab = (event: CustomEvent) => {
+  const panelName = event.detail;
+  activeTab.value = panelName;
+}
+</script>
+
+```
+
+</SandboxPreview>
+
 ## Universell utforming
 
 ### Aria-roller, og attributter
@@ -208,4 +251,4 @@ Det er bevisst valgt ikke å aktivere faner automatisk når man navigerer mellom
 
 Det er bevisst valgt å ikke bruke `disabled`-faner i komponenten. Begrunnelsen er at deaktiverte faner ikke gir brukeren tilstrekkelig informasjon om hvorfor fanen ikke er tilgjengelig. Deaktiverte elementer kan ikke motta fokus, noe som medfører at skjermlesere ofte hopper over disse, slik at brukere aldri blir oppmerksomme på deres eksistens. I tillegg kan det for enkelte brukere være uklart at en fane er deaktivert, noe som kan føre til frustrasjon dersom de forsøker å aktivere fanen uten respons.
 <nve-message-card label="Tips!" size="compact">
-Vi anbefaler derfor at alle faner holdes aktive. Dersom en fane ikke skal vise innhold — eller det foreligger annen grunn til at en fane ikke skal kunne brukes — er det bedre å la fanen være aktiv, men vise en tydelig melding i det tilhørende innholdspanelet som forklarer situasjonen for brukeren.</nve-message-card>
+Vi anbefaler derfor at alle faner holdes aktiverte. Dersom en fane ikke skal vise innhold — eller det foreligger annen grunn til at en fane ikke skal kunne brukes — er det bedre å la fanen være aktiv, men vise en tydelig melding i det tilhørende innholdspanelet som forklarer situasjonen for brukeren.</nve-message-card>
