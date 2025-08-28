@@ -242,7 +242,9 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     const nav = this.shadowRoot?.querySelector('.tab-group__nav') as HTMLElement;
     const activeTab = this.tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') as HTMLElement;
     if (nav && activeTab) {
-      const offset = activeTab.offsetLeft - nav.offsetLeft - 25; //aner ikke hvor 25px kommer fra, men det er alltid 25px for mye;
+      const navRect = nav.getBoundingClientRect();
+      const tabRect = activeTab.getBoundingClientRect();
+      const offset = tabRect.left - navRect.left + nav.scrollLeft;
       const width = activeTab.offsetWidth;
 
       nav.style.setProperty('--indicator-x', `${offset}px`);

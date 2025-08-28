@@ -35,10 +35,10 @@ export default class NveTabPanel extends LitElement implements INveComponent {
 
   constructor() {
     super();
-    this.id = this.id.length > 0 ? this.id : this.componentId;
   }
 
   render() {
+    this.id = this.id.length > 0 ? this.id : this.componentId;
     return html`<div class="tab-panel" part="base">
       <slot></slot>
     </div> `;
