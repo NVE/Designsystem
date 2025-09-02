@@ -152,6 +152,11 @@
   gap: 1rem;
 }
 
+html,
+body {
+  font-size: unset;
+}
+
 th {
   text-align: left;
 }
@@ -195,4 +200,11 @@ th {
   .VPContent.is-home {
     background-image: none;
   }
+}
+
+html.nve_darkmode nve-tab-group::part(button-forward-base),
+html.nve_darkmode nve-tab-group::part(button-backward-base),
+html.varsom_darkmode nve-tab-group::part(button-forward-base),
+html.varsom_darkmode nve-tab-group::part(button-backward-base) {
+  --scroll-button-background: #1b1b1f;
 }

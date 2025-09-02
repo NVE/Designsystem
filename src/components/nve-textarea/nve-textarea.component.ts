@@ -226,13 +226,19 @@ export default class NveTextarea extends LitElement implements INveComponent {
 
   // eslint-disable-next-line max-lines-per-function
   render() {
+    const hasLabelSlot = !!this.querySelector('[slot="label"]');
     return html`
       <div part="form-control" class=${classMap({ 'form-control': true, 'form-control--has-label': this.label })}>
-        ${this.label
-          ? html`<div class="textarea__label">
-              <nve-label id="label" value=${this.label} size="small" tooltip=${ifDefined(this.tooltip)}></nve-label>
-            </div>`
-          : nothing}
+        ${hasLabelSlot
+          ? html`<slot name="label"></slot>`
+          : this.label
+            ? html`<nve-label
+                id="label"
+                value=${this.label}
+                size="small"
+                tooltip=${ifDefined(this.tooltip)}
+              ></nve-label>`
+            : nothing}
         <div part="base" class="textarea__base">
           <textarea
             part="textarea"

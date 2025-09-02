@@ -19,6 +19,7 @@ const excludedPaths = [
   'src/styles/**',
   'src/utils/**',
   'src/main.ts',
+  'src/**/*.test.ts',
 ];
 
 // Sikre at vi henter riktig css fil i global.css etter build
@@ -49,6 +50,11 @@ export default defineConfig(({ mode }) => {
       }) as Plugin,
       replaceImportAfterBuild(),
     ],
+    test: {
+      globals: true,
+      environment: 'happy-dom',
+      include: ['src/components/*/*.test.ts'],
+    },
     build: {
       sourcemap: mode === 'development' ? true : false,
       lib: {

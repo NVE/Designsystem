@@ -1,5 +1,6 @@
 ---
 layout: component
+outline: [2, 3]
 ---
 
 <CodeExamplePreview>
@@ -11,6 +12,24 @@ layout: component
 </CodeExamplePreview>
 
 ## Eksempler
+
+### Ledetekst
+
+En ledetekst kan legges til på to måter. Ved å bruke `label`-egenskapen – enklest når du kun trenger tekst eller ved å bruke `label`-sporet – som gir mer fleksibilitet, f.eks. hvis du vil inkludere HTML eller egne komponenter sammen med teksten.
+
+<CodeExamplePreview>
+
+```html
+<nve-textarea>
+  <nve-label value="Ledeteksten spor" slot="label">
+    <nve-spinner slot="suffix"></nve-spinner>
+  </nve-label>
+</nve-textarea>
+
+<nve-textarea label="Ledetekst egenskap"></nve-textarea>
+```
+
+</CodeExamplePreview>
 
 ### Mørk bakgrunn
 

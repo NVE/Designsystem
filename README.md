@@ -230,6 +230,37 @@ Vi trenger <em>ikke</em> å style:
 - border-radius på alle komponenter (med mindre border radius mangler på en Shoelace-komponent, men designsystemet spesifiserer border-radius)
 - bakgrunn, font-farge, font-størrelse, ikon-farge, ramme i input, select og textarea i både variantene filled og not filled
 
+## Testing
+
+Alle nye webkomponenter skal ha tester som dekker både visuelle endringer (UI) og logikk. Det er viktig å teste at komponentene reagerer riktig på ulike props og hendelser, og at de sender ut forventede events. Vi bruker Vitest sammen med Happy DOM for å kjøre testene våre. open-wc/testing brukes for å registrere komponent og få tak i den i testene.
+
+Testfiler skal ligge i komponent-mappa og skal ha `.test.ts` som filutvidelse.
+
+Hvis komponent ikke er definert i testfilen, må du registrere den slik:
+
+```js
+if (!customElements.get('nve-button')) {
+  customElements.define('nve-button', NveButton);
+}
+```
+
+Enkel test ser slik ut:
+
+```js
+it('has correct primary variant class', async () => {
+  const el = (await fixture) < NveButton > html`<nve-button variant="primary"></nve-button>`;
+  const button = el.shadowRoot?.querySelector('button[part="base"]');
+  expect(button?.classList.contains('button--primary')).toBe(true);
+});
+```
+
+`fixture` fra @open-wc/testing brukes for å opprette komponenten med attributter. Det er ofte lurt å finne hoveddelen i shadowRoot for å kunne teste endringer som CSS-klasser eller hendelser. For mer informasjon om testsyntaks, se gjerne Vitest-[dokumentasjonen](https://vitest.dev/guide/). Du kan også hente inspirasjon fra eksisterende tester i prosjektet.
+
+For å teste lokalt kjør gjerne `npm run test:ui` - den skal åpne en fane i nettleseren med alle tester.
+I pipelinen brukes det kun `vitest` siden vi ikke skal bruke nettleseren. Den kan du også bruke lokalt hvis du ikke ønsker en testrapport i nettleseren.
+
+For å debugge i VS Code åpne vanlig `JavaScript Debug Terminal` og kjør `npm run test`. Les mer [her](https://vitest.dev/guide/debugging.html#debugging)
+
 ## Dokumentasjon
 
 **Vi dokumenterer på norsk**

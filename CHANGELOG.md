@@ -1,3 +1,102 @@
+## [2.10.1](https://github.com/NVE/Designsystem/compare/v2.10.0...v2.10.1) (2025-08-28)
+
+
+### Bug Fixes
+
+* **nve-tab:** fikse visning av faner i eksterne prosjekter ([#612](https://github.com/NVE/Designsystem/issues/612)) ([dee25ed](https://github.com/NVE/Designsystem/commit/dee25eda5a0d81f6ea5fd9074fa96e9e3858d1b0))
+
+# [2.10.0](https://github.com/NVE/Designsystem/compare/v2.9.1...v2.10.0) (2025-08-28)
+
+
+### Features
+
+* **nve-tab-group:** add nve-tab, nve-tab-group and nve-tab-panel ([#593](https://github.com/NVE/Designsystem/issues/593)) ([51d85e6](https://github.com/NVE/Designsystem/commit/51d85e69926e1b5b9b501285f3422d29e181aed4))
+
+## [2.9.1](https://github.com/NVE/Designsystem/compare/v2.9.0...v2.9.1) (2025-08-22)
+
+
+### Bug Fixes
+
+* **nve-dialog:** Fikset ikon-visning ved label, la til mer dokumentasjon ([#611](https://github.com/NVE/Designsystem/issues/611)) ([6d8fe95](https://github.com/NVE/Designsystem/commit/6d8fe95f39514c7503ddef5b2a717dac686be30b))
+
+# [2.9.0](https://github.com/NVE/Designsystem/compare/v2.8.0...v2.9.0) (2025-08-21)
+
+
+### Features
+
+* **nve-select:** Legg inn checkmark på valgte options i nve-select ([#609](https://github.com/NVE/Designsystem/issues/609)) ([00032db](https://github.com/NVE/Designsystem/commit/00032db85515d1f9edda4493ace8e71027eaec98))
+
+# [2.8.0](https://github.com/NVE/Designsystem/compare/v2.7.1...v2.8.0) (2025-08-18)
+
+
+### Features
+
+* **nve-textarea:** add label slot ([#607](https://github.com/NVE/Designsystem/issues/607)) ([f0467ee](https://github.com/NVE/Designsystem/commit/f0467eee4e9050a77cb9fb14b1cfd920237ec53e))
+
+## [2.7.1](https://github.com/NVE/Designsystem/compare/v2.7.0...v2.7.1) (2025-08-18)
+
+
+### Bug Fixes
+
+* **nve-checkbox:** fikse deaktivert styling ([#605](https://github.com/NVE/Designsystem/issues/605)) ([ef08e8d](https://github.com/NVE/Designsystem/commit/ef08e8d0d1b6fa95ed38ef24231339192a5d75b2))
+
+# [2.7.0](https://github.com/NVE/Designsystem/compare/v2.6.0...v2.7.0) (2025-08-15)
+
+
+### Features
+
+* Trigger a release because we get npm error for 2.6.0 ([#604](https://github.com/NVE/Designsystem/issues/604)) ([2150c9c](https://github.com/NVE/Designsystem/commit/2150c9c5e27375476788847e6226389e0e437ce5))
+* trigger release ([02a91e2](https://github.com/NVE/Designsystem/commit/02a91e26c5e9dbb343dd90e30b3998ddd8910a9a))
+
+# [2.6.0](https://github.com/NVE/Designsystem/compare/v2.5.0...v2.6.0) (2025-08-07)
+
+
+### Features
+
+* legge til rme tema ([#589](https://github.com/NVE/Designsystem/issues/589)) ([a51533e](https://github.com/NVE/Designsystem/commit/a51533e9c827c138944780de477b87edf0de679e))
+
+# [2.5.0](https://github.com/NVE/Designsystem/compare/v2.4.2...v2.5.0) (2025-07-17)
+
+
+### Features
+
+* **nve-warning-level:** add warning level component ([#588](https://github.com/NVE/Designsystem/issues/588)) ([fb584fc](https://github.com/NVE/Designsystem/commit/fb584fce42a9a148a759c6c6c57a4f5fe33cf2fc))
+
+## [2.4.2](https://github.com/NVE/Designsystem/compare/v2.4.1...v2.4.2) (2025-07-07)
+
+
+### Bug Fixes
+
+* **test:** lagt til test rammeverk ([#575](https://github.com/NVE/Designsystem/issues/575)) ([a580fb1](https://github.com/NVE/Designsystem/commit/a580fb1210f31c29a1c442e919934926fc362991))
+
+## [2.4.1](https://github.com/NVE/Designsystem/compare/v2.4.0...v2.4.1) (2025-07-07)
+
+
+### Bug Fixes
+
+* **nve-icon:** rettet standardstørrelse fra 16px til 24px ([#492](https://github.com/NVE/Designsystem/issues/492)) ([9f1aa66](https://github.com/NVE/Designsystem/commit/9f1aa6696c129062b1b771d6693289b13f3648c7))
+
+# [2.4.0](https://github.com/NVE/Designsystem/compare/v2.3.1...v2.4.0) (2025-06-27)
+
+
+### Features
+
+* **nve-combobox:** legge til combobox i designsystemet ([#527](https://github.com/NVE/Designsystem/issues/527)) ([d103885](https://github.com/NVE/Designsystem/commit/d1038853c6a7dff7ca1f7798b04d7203558fb114))
+
+## [2.3.1](https://github.com/NVE/Designsystem/compare/v2.3.0...v2.3.1) (2025-06-26)
+
+
+### Bug Fixes
+
+* sentrere tekst i NVE-tag ([#569](https://github.com/NVE/Designsystem/issues/569)) ([9825cb1](https://github.com/NVE/Designsystem/commit/9825cb18e649323d1f50470b5bcfaecadff22cd6))
+
+# [2.3.0](https://github.com/NVE/Designsystem/compare/v2.2.1...v2.3.0) (2025-06-24)
+
+
+### Features
+
+* Fikset disabled-styling på nve-switch, la til mulighet for egendefinerte på- og av-farger på nve-switch ([#566](https://github.com/NVE/Designsystem/issues/566)) ([f3eca3a](https://github.com/NVE/Designsystem/commit/f3eca3aeace03fde4d56574bffb141c6300f226b))
+
 ## [2.2.1](https://github.com/NVE/Designsystem/compare/v2.2.0...v2.2.1) (2025-06-19)
 
 

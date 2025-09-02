@@ -50,7 +50,7 @@ const sandboxDefinition = (content: string, theme: Theme) => ({
       content: {
         dependencies: {
           vue: '^3.2.0',
-          'nve-designsystem': '^0.1.85',
+          'nve-designsystem': '^2.10.1',
           '@vue/cli-plugin-babel': '~4.5.0',
           '@vue/cli-service': '~4.5.0',
           '@vue/compiler-sfc': '^3.0.0-0',
