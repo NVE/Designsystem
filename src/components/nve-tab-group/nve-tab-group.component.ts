@@ -18,6 +18,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  *
  * @csspart base Topp-element
  * @csspart body Innholdet i tab gruppen
+ * @csspart nav hoved kontainer for fanene
  * @csspart button-backward-base Bakoverknapp kontainer
  * @csspart button-forward-base Fremoverknapp kontainer
  *
@@ -409,7 +410,10 @@ export default class NveTabGroup extends LitElement implements INveComponent {
         testId=${ifDefined(this.testId)}
       >
         <div class="tab-group__nav-container">
-          <div class=${classMap({ 'tab-group__nav': true, 'tab-group__nav--background': this.isBackground })}>
+          <div
+            part="nav"
+            class=${classMap({ 'tab-group__nav': true, 'tab-group__nav--background': this.isBackground })}
+          >
             <slot name="nav"></slot>
           </div>
           ${this.canScrollBack && this.isOverflow
