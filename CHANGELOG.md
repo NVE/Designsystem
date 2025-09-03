@@ -1,3 +1,10 @@
+## [2.10.2](https://github.com/NVE/Designsystem/compare/v2.10.1...v2.10.2) (2025-09-03)
+
+
+### Bug Fixes
+
+* **nve-tab-group:** legge til part på nav i nve-tab-group for bedre kontroll i eksterne prosjekter ([0d05931](https://github.com/NVE/Designsystem/commit/0d059312a81cbcd43637ee408968bf66617fdc90))
+
 ## [2.10.1](https://github.com/NVE/Designsystem/compare/v2.10.0...v2.10.1) (2025-08-28)
 
 
