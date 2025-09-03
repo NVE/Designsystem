@@ -1,3 +1,10 @@
+## [2.10.3](https://github.com/NVE/Designsystem/compare/v2.10.2...v2.10.3) (2025-09-03)
+
+
+### Bug Fixes
+
+* **nve-select:** Endret plassering på *obligatorisk label på nve-select ([#616](https://github.com/NVE/Designsystem/issues/616)) ([4c8f594](https://github.com/NVE/Designsystem/commit/4c8f5946b31a81fb470cc97cd7286cc9b3220cd2))
+
 ## [2.10.2](https://github.com/NVE/Designsystem/compare/v2.10.1...v2.10.2) (2025-09-03)
 
 
