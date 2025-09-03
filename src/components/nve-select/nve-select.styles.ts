@@ -27,6 +27,7 @@ export default css`
     content: var(--sl-input-required-content);
     font: var(--label-x-small-light);
     color: var(--feedback-background-emphasized-error);
+    padding-left: var(--spacing-xx-small);
   }
 
   :host(:focus-visible)::part(form-control-input) {
