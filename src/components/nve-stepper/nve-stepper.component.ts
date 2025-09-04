@@ -145,6 +145,17 @@ export default class NveStepper extends LitElement {
     return this.selectedStepIndex.value;
   }
 
+  handleStepClick(step: StepProps, index: number): void {
+    /** Emittes når et steg blir klikket på. Sender step og index som ligger på event.detail */
+    this.dispatchEvent(
+      new CustomEvent('step-click', {
+        detail: { step, index },
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
+
   private setStep(index: number): void {
     if (this.steps[index].readyForEntrance) {
       this.selectedStepIndex.value = index;
@@ -264,6 +275,7 @@ export default class NveStepper extends LitElement {
                 .orientation=${this.orientation}
                 .hideStateText=${this.hideStateText}
                 .hideDescriptions=${this.hideDescriptions}
+                @click=${() => this.handleStepClick(step, index)}
               >
               </nve-step>
             `
