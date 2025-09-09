@@ -89,7 +89,7 @@
     "style-dictionary": "4.4.0",
     "style-dictionary-utils": "^4.1.0",
     "typescript": "^5.8.3",
-    "vite": "^7.0.2",
+    "vite": "^7.1.5",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.2.4",
     "vue-eslint-parser": "^10.1.4"
