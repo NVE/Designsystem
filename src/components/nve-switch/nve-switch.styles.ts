@@ -22,9 +22,9 @@ export default css`
     --left: calc(0% + 4px);
     width: 48px;
     --label-color: var(--neutrals-foreground-primary);
-    --on-color: var(--nve-switch-on-color, var(--neutrals-foreground-subtle));
-    --off-color: var(--nve-switch-off-color, var(--neutrals-background-secondary));
-    --thumb-color: var(--nve-switch-thumb-off-color, var(--on-color));
+    --on-color: var(--neutrals-foreground-subtle);
+    --off-color:  var(--neutrals-background-secondary);
+    --thumb-color:  var(--on-color);
     background-color: var(--off-color);
     transition: background-color 0.3s ease-in-out;
   }
@@ -36,7 +36,7 @@ export default css`
   .switch--checked .switch__control {
     /* 100% - bredde på thumb + 4px */
     --left: calc(100% - var(--font-size-xsmall) - 4px);
-    --thumb-color: var(--nve-switch-thumb-on-color, var(--off-color));
+    --thumb-color:  var(--off-color);
     background-color: var(--on-color);
   }
   .switch__thumb {
@@ -94,5 +94,17 @@ export default css`
   }
   .switch.switch--disabled {
     opacity: var(--disabled);
+  } 
+    
+ .switch--label-start {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+  }
+ 
+  .switch--primary {
+    &.switch--checked .switch__control {
+      --on-color: var(--feedback-background-emphasized-info);
+      --off-color: var(--neutrals-background-secondary);
+    }
   }
 `;

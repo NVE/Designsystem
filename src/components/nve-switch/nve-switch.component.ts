@@ -22,11 +22,6 @@ import styles from './nve-switch.styles';
  * @csspart control Element rundt bryteren
  * @csspart thumb Bryter-indikatoren
  * @csspart label Tekst bak bryteren
- *
- * @cssproperty --nve-switch-on-color - Bakgrunnsfarge når switch er PÅ
- * @cssproperty --nve-switch-off-color - Bakgrunnsfarge når switch er AV
- * @cssproperty --nve-switch-thumb-on-color- Farge på bryter når switch er PÅ
- * @cssproperty --nve-switch-thumb-off-color - Farge på bryter når switch er AV
  */
 @customElement('nve-switch')
 export default class NveSwitch extends LitElement implements INveComponent {
@@ -49,6 +44,13 @@ export default class NveSwitch extends LitElement implements INveComponent {
 
   /** Verdien til switchen. */
   @property({ type: Boolean, reflect: true }) checked = false;
+
+  /** Bestemmer fargevariant */
+  @property({ reflect: true }) variant: 'primary' | 'default' = 'default';
+
+  /** Plassering av label-tekst i forhold til bryteren */
+  @property({ reflect: true, attribute: 'label-position' }) labelPosition: 'start' | 'end' = 'end';
+
   static styles: CSSResultArray = [styles];
   private emit(eventname: string): void {
     const event = new CustomEvent(eventname, {
@@ -115,8 +117,10 @@ export default class NveSwitch extends LitElement implements INveComponent {
           switch: true,
           'switch--checked': this.checked,
           'switch--disabled': this.disabled,
-          'switch--focused': this.hasFocus,
-        })}
+          'switch--focused': this.hasFocus, 
+          [`switch--${this.variant}`]: true,
+          [`switch--label-${this.labelPosition}`]: true
+        })} 
       >
         <input
           class="switch__input"
@@ -141,7 +145,7 @@ export default class NveSwitch extends LitElement implements INveComponent {
           <span class="switch__icon switch__onicon"><slot name="onicon"></slot></span>
         </span>
 
-        <div part="label" class="">
+        <div part="label">
           <slot></slot>
         </div>
       </label>

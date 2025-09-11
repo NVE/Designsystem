@@ -12,6 +12,31 @@ layout: component
 
 ## Eksempler
 
+### Varianter
+Bruk variant for å velge farge, default er standard.
+
+
+<CodeExamplePreview>
+
+```html
+<div style="display: flex; flex-direction: row; justify-content: space-evenly ">
+        <div style="display: flex; flex-direction: column; gap: 1rem">
+        På
+        <nve-switch checked>Default</nve-switch>
+        <nve-switch variant="primary" checked>Primary</nve-switch>
+    </div>
+    
+    <div style="display: flex; flex-direction: column; gap: 1rem">
+        Av
+        <nve-switch>Default</nve-switch>
+        <nve-switch variant="primary"  >Primary</nve-switch>
+    </div>
+</div>
+```
+
+</CodeExamplePreview>
+ 
+
 ### Med ikoner
 
 <CodeExamplePreview>
@@ -27,12 +52,13 @@ layout: component
 
 Se også [nve-darkmode-switch](/components/nve-darkmode-switch)
 
-### Label, vises bak bryter
-
+### Label plassering
+For å sette label foran switchen bruk `label-position="start"`. `end` er default. 
 <CodeExamplePreview>
 
 ```html
-<nve-switch> Slå på </nve-switch>
+ 
+<nve-switch label-position="start"> Slå på </nve-switch>
 ```
 
 </CodeExamplePreview>
@@ -47,7 +73,7 @@ Se også [nve-darkmode-switch](/components/nve-darkmode-switch)
 
 </CodeExamplePreview>
 
-### Hent ut verdien
+## Hent ut verdien
 
 Du kan hente ut `checked`-verdien akkurat som med en vanlig html-checkbox, enten via elementet eller på en event
 
@@ -68,31 +94,3 @@ function changehandler(event) {
   const checked = event.target.checked;
 }
 ```
-
-Du kan også bruke attributten `checked` på `nve-switch` for å sette verdien via lytting på change, tilsvarende som for en checkbox
-
-### Egne farger for "på" og "av"
-
-Ved hjelp av variabler så kan du sette egne farger for "på" og "av" på bryteren. Markøren (thumb) har motsatt farge av bakgrunnen dersom det ikke settes spesifikt
-<CodeExamplePreview>
-
-```html
-<div style="--nve-switch-on-color: #FF0000; --nve-switch-off-color: #0000FF;">
-  <nve-switch>Denne har kun satt on/off, så markør er motsatt</nve-switch>
-</div>
-
-<div style="--nve-switch-thumb-on-color: #FF0000; --nve-switch-thumb-off-color: #0000FF;">
-  <nve-switch>Denne setter kun markørfarge, så bakgrunnen affekteres ikke</nve-switch>
-</div>
-
-<div
-  style="--nve-switch-thumb-on-color: var(--feedback-background-emphasized-info); 
-  --nve-switch-thumb-off-color: var(--feedback-background-subtle-error);
-  --nve-switch-off-color: var(--interactive-primary-background-default); 
-  --nve-switch-on-color: var(--interactive-secondary-background-default);"
->
-  <nve-switch>Her setter vi alle fire fargene separat</nve-switch>
-</div>
-```
-
-</CodeExamplePreview>
