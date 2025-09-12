@@ -52,12 +52,13 @@ Bruk variant for å velge farge, default er standard.
 
 Se også [nve-darkmode-switch](/components/nve-darkmode-switch)
 
-### Label plassering
+### Label
 For å sette label foran switchen bruk `label-position="start"`. `end` er default. 
 <CodeExamplePreview>
 
 ```html
  
+<nve-switch> Slå på </nve-switch>
 <nve-switch label-position="start"> Slå på </nve-switch>
 ```
 
@@ -73,7 +74,7 @@ For å sette label foran switchen bruk `label-position="start"`. `end` er defaul
 
 </CodeExamplePreview>
 
-## Hent ut verdien
+### Hent ut verdien
 
 Du kan hente ut `checked`-verdien akkurat som med en vanlig html-checkbox, enten via elementet eller på en event
 
@@ -94,3 +95,4 @@ function changehandler(event) {
   const checked = event.target.checked;
 }
 ```
+Du kan også bruke attributten `checked` på `nve-switch` for å sette verdien via lytting på change, tilsvarende som for en checkbox
