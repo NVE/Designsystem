@@ -707,7 +707,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
                       ${option.selected
                         ? html`
                             ${this.addHighlightingToSearchResult(option.label)}
-                            <nve-icon slot="prefix" name="check" style="font-size: 1.5rem;"></nve-icon>
+                            <nve-icon slot="checked-icon" name="check" ></nve-icon>
                           `
                         : this.addHighlightingToSearchResult(option.label)}
                     </nve-option>
@@ -730,7 +730,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
                     ${option.selected
                       ? html`
                           ${option.label}
-                          <nve-icon slot="prefix" name="check" style="font-size: 1.5rem;"></nve-icon>
+                          <nve-icon slot="checked-icon" name="check" ></nve-icon>
                         `
                       : option.label}
                   </nve-option>
