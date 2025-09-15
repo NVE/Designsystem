@@ -1,0 +1,33 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nve-designsystem
+  title: NVE Designsystem
+  description: 'Felles basis-komponentbibliotek for NVE sine webapplikasjoner'
+links:
+  - title: Kildekode
+    url: https://github.com/NVE/Designsystem/
+  - title: Nettside
+    url: https://designsystem.nve.no/
+spec:
+  type: library
+  lifecycle: production
+  owner: nve
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nve-vue-components
+  title: NVE Vue Components
+  description: 'Felles komponentbibliotek for NVE sine Vue-applikasjoner'
+links:
+  - title: Kildekode
+    url: https://github.com/NVE/nve-vue-components
+  - title: Nettside
+    url: https://designsystem.nve.no/
+spec:
+  type: library
+  lifecycle: production
+  owner: nve
+  dependsOn:
+    - component: nve-designsystem
