@@ -46,10 +46,10 @@ export default class NveSwitch extends LitElement implements INveComponent {
   @property({ type: Boolean, reflect: true }) checked = false;
 
   /** Bestemmer fargevariant */
-  @property({ reflect: true }) variant: 'primary' | 'default' = 'default';
+  @property() variant: 'primary' | 'default' = 'default';
 
   /** Plassering av label-tekst i forhold til bryteren */
-  @property({ reflect: true, attribute: 'label-position' }) labelPosition: 'start' | 'end' = 'end';
+  @property() labelPosition: 'start' | 'end' = 'end';
 
   static styles: CSSResultArray = [styles];
   private emit(eventname: string): void {

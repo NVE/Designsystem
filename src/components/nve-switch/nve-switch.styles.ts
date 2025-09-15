@@ -39,6 +39,7 @@ export default css`
     --thumb-color:  var(--off-color);
     background-color: var(--on-color);
   }
+    
   .switch__thumb {
     position: absolute;
     left: var(--left);
@@ -79,12 +80,10 @@ export default css`
     clip: rect(0, 0, 0, 0);
     position: absolute;
   }
-  .switch__label {
-    font: var(--label-medium-light);
-    color: var(--label-color);
-  }
+ 
   .switch.switch--focused:has(:focus-visible) .switch__control {
     outline: 2px solid var(--interactive-links-focus);
+    outline-offset: 1px;
   }
   .switch:not(.switch--disabled):hover {
     --hover-offset: 2px;
@@ -103,7 +102,7 @@ export default css`
  
   .switch--primary {
     &.switch--checked .switch__control {
-      --on-color: var(--feedback-background-emphasized-info);
+      --on-color: var(--interactive-primary-foreground-border-focus);
       --off-color: var(--neutrals-background-secondary);
     }
   }

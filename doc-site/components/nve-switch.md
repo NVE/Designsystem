@@ -19,18 +19,8 @@ Bruk variant for å velge farge, default er standard.
 <CodeExamplePreview>
 
 ```html
-<div style="display: flex; flex-direction: row; justify-content: space-evenly ">
-        <div style="display: flex; flex-direction: column; gap: 1rem">
-        På
         <nve-switch checked>Default</nve-switch>
         <nve-switch variant="primary" checked>Primary</nve-switch>
-    </div>
-    
-    <div style="display: flex; flex-direction: column; gap: 1rem">
-        Av
-        <nve-switch>Default</nve-switch>
-        <nve-switch variant="primary"  >Primary</nve-switch>
-    </div>
 </div>
 ```
 
