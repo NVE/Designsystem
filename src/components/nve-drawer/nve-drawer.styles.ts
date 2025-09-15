@@ -37,8 +37,15 @@ export default css`
     padding-top: var(--spacing-large);
   }
 
-  :host::part(footer),
-  ::slotted([slot='footer']) {
-    padding: 0;
+  :host::part(footer) {
+    display: flex;
+    gap: var(--spacing-small);
+    padding: var(--spacing-large) 0 0 0;
+  }
+  :host([placement='end'])::part(footer) {
+    justify-content: flex-start;
+  }
+  :host([placement='start'])::part(footer) {
+    justify-content: flex-end;
   }
 `;

@@ -15,6 +15,35 @@ export default class NveDrawer extends SlDrawer implements INveComponent {
   constructor() {
     super();
   }
+
+  firstUpdated() {
+    super.firstUpdated();
+    this.updateCloseIcon();
+  }
+
+  private updateCloseIcon() {
+    requestAnimationFrame(() => {
+      const closeButtonPart = this?.shadowRoot?.querySelector('[part="close-button"]');
+      const closeButton = closeButtonPart?.shadowRoot?.querySelector('button') as HTMLElement | null;
+
+      if (!closeButton) return;
+
+      closeButton.style.color = 'inherit';
+
+      const placementToIconNameMap: Record<string, string> = {
+        start: 'left_panel_close',
+        end: 'right_panel_close',
+        top: 'top_panel_close',
+        bottom: 'bottom_panel_close',
+      };
+
+      const nveIcon = document.createElement('nve-icon');
+
+      nveIcon.setAttribute('name', placementToIconNameMap[this.placement]);
+
+      closeButton.replaceChildren(nveIcon);
+    });
+  }
 }
 
 declare global {

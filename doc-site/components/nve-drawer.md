@@ -9,16 +9,13 @@ layout: component
   <nve-button>Åpne</nve-button>
   <nve-drawer label="Skuff" class="drawer-overview">
     Lorem ipsum dolor sit amet
-    <nve-button variant="primary" slot="footer"> Lukk </nve-button>
   </nve-drawer>
 </div>
 
 <script>
   const drawer = document.querySelector('.drawer-overview');
   const openButton = drawer.previousElementSibling;
-  const closeButton = drawer.querySelector('nve-button[variant="primary"]');
   openButton.addEventListener('click', () => drawer.show());
-  closeButton.addEventListener('click', () => drawer.hide());
 </script>
 ```
 
@@ -72,17 +69,21 @@ Bruk `placement="start"` for å åpne skuffen fra venstre side
 ```html
 <div>
   <nve-button>Åpne</nve-button>
-  <nve-drawer label="Skuff" placement="start" class="drawer-placement-start"> Lorem ipsum dolor sit amet </nve-drawer>
+      <nve-drawer label="Skuff" placement="start" class="drawer-placement-start1">
+          Lorem ipsum dolor sit amet 
+      </nve-drawer>
 </div>
 
 <script>
-  const drawer = document.querySelector('.drawer-placement-start');
+  const drawer = document.querySelector('.drawer-placement-start1');
   const openButton = drawer.previousElementSibling;
   openButton.addEventListener('click', () => drawer.show());
 </script>
 ```
 
+
 </CodeExamplePreview>
+
 
 ### Åpne fra toppen
 
@@ -92,7 +93,9 @@ Bruk `placement="top"` for å åpne skuffen fra toppen
 ```html
 <div>
   <nve-button>Åpne</nve-button>
-  <nve-drawer label="Skuff" placement="top" class="drawer-placement-top"> Lorem ipsum dolor sit amet </nve-drawer>
+  <nve-drawer label="Skuff" placement="top" class="drawer-placement-top">
+      Lorem ipsum dolor sit amet 
+  </nve-drawer>
 </div>
 
 <script>
@@ -112,7 +115,9 @@ Bruk `placement="bottom"` for å åpne skuffen fra bunn av siden
 ```html
 <div>
   <nve-button>Åpne</nve-button>
-  <nve-drawer label="Skuff" placement="bottom" class="drawer-placement-bottom"> Lorem ipsum dolor sit amet </nve-drawer>
+  <nve-drawer label="Skuff" placement="bottom" class="drawer-placement-bottom">
+      Lorem ipsum dolor sit amet 
+  </nve-drawer>
 </div>
 
 <script>
@@ -136,9 +141,9 @@ I motsetning til vanlige skuffer, er ikke inneholdte skuffer modale. Dette betyr
 <div
   style="position: relative; border: solid 2px var(--sl-panel-border-color); height: 300px; padding: 1rem; margin-bottom: 1rem;"
 >
-  <sl-drawer label="Skuff" contained class="drawer-contained" style="--size: 50%;">
+  <nve-drawer label="Skuff" contained class="drawer-contained" style="--size: 50%;">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  </sl-drawer>
+  </nve-drawer>
 </div>
 
 <nve-button>Åpne</nve-button>
@@ -151,4 +156,32 @@ I motsetning til vanlige skuffer, er ikke inneholdte skuffer modale. Dette betyr
 </script>
 ```
 
+</CodeExamplePreview>
+
+### Utfyllende eksempel
+
+Skuffen skal ikke ha en knapp i footer for å lukke draweren. Denne funksjonaliteten er dekket av lukke ikonet øverst vedsiden av label.
+<CodeExamplePreview>
+
+```html
+    <div>
+      <nve-button>Åpne</nve-button>
+      <nve-drawer label="Tittel" placement="bottom"  class="drawer-utfyllende-eksempel">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus velit a est placerat, in cursus urna varius. Pellentesque vestibulum enim in velit hendrerit feugiat. Morbi dapibus est lacus, nec blandit tortor feugiat et. Nulla tempus orci eget felis tempus interdum. Maecenas quis risus et sem ullamcorper pharetra. In hac habitasse platea dictumst. Integer a risus tincidunt, posuere nisi id, interdum augue. Pellentesque sagittis vulputate orci, vitae commodo elit porta ac. In laoreet eget diam aliquet pretium. Sed vel arcu commodo, auctor ex in, accumsan nisl. Maecenas varius, magna quis dignissim porta, dolor justo ullamcorper dui, non mollis augue nunc quis mi. Quisque in porttitor ligula. Vestibulum at ullamcorper nibh. In nisi quam, scelerisque at purus sit amet, congue molestie lectus. Curabitur dapibus rutrum mauris et luctus. Nulla efficitur, erat tincidunt posuere sagittis, sem massa tempus sem, id convallis magna augue eget libero. Morbi justo quam, imperdiet at porttitor blandit, semper et lectus. Pellentesque consectetur turpis eget libero pulvinar, id vehicula lorem dignissim. Proin nec mi bibendum, sagittis sapien at, fringilla arcu. Quisque pellentesque velit lectus, in sagittis odio auctor ut. Donec faucibus, nunc a interdum faucibus, purus nisi bibendum mi, non cursus enim libero sit amet nibh. Donec feugiat justo quis odio gravida, non mattis magna vehicula. Donec sagittis tincidunt diam quis porta. Nulla feugiat, est ut pharetra tempus, nibh turpis sollicitudin lacus, et pharetra elit orci elementum diam. Sed id egestas quam, sit amet tristique lacus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris eget lorem tempus, maximus lacus vel, sagittis felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer rhoncus nisl arcu, ut interdum nunc efficitur non. Etiam semper imperdiet suscipit. Nunc vehicula scelerisque tempus. Phasellus pharetra dignissim finibus. Vestibulum suscipit tortor eget magna feugiat consequat. Pellentesque eleifend neque vel lobortis consequat. Nam tellus leo, rutrum quis nunc sed, laoreet mattis lacus. Praesent euismod libero sit amet sapien volutpat rutrum. Aenean eget tempor magna. Vestibulum quis magna in erat facilisis convallis. Cras sit amet velit quis velit vehicula malesuada pharetra et nisi. Suspendisse potenti. Sed maximus id nunc sed rutrum. Integer in sapien vitae metus ultricies tempus nec dignissim elit. Etiam posuere, quam et accumsan vehicula, massa lectus iaculis augue, nec ultrices diam turpis ac tellus. Fusce tincidunt mi et quam pulvinar, vitae scelerisque ex efficitur. Fusce vel ligula a ipsum facilisis lacinia.
+          <nve-button variant="info" slot="footer"> Button text
+              <nve-icon slot="suffix" name="grid_guides">
+          </nve-button>
+          <nve-button variant="primary" slot="footer"> Button text
+              <nve-icon slot="suffix" name="grid_guides">
+          </nve-button> 
+      </nve-drawer>
+    </div>
+    
+    <script>
+      const drawer = document.querySelector('.drawer-utfyllende-eksempel');
+      const openButton = drawer.previousElementSibling;
+      
+      openButton.addEventListener('click', () => drawer.show());
+    </script>
+```
 </CodeExamplePreview>
