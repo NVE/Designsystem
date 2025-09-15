@@ -69,13 +69,13 @@ Bruk `placement="start"` for å åpne skuffen fra venstre side
 ```html
 <div>
   <nve-button>Åpne</nve-button>
-      <nve-drawer label="Skuff" placement="start" class="drawer-placement-start1">
+      <nve-drawer label="Skuff" placement="start" class="drawer-placement-start">
           Lorem ipsum dolor sit amet 
       </nve-drawer>
 </div>
 
 <script>
-  const drawer = document.querySelector('.drawer-placement-start1');
+  const drawer = document.querySelector('.drawer-placement-start');
   const openButton = drawer.previousElementSibling;
   openButton.addEventListener('click', () => drawer.show());
 </script>
