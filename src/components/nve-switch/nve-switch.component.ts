@@ -49,7 +49,7 @@ export default class NveSwitch extends LitElement implements INveComponent {
   @property() variant: 'primary' | 'default' = 'default';
 
   /** Plassering av label-tekst i forhold til bryteren */
-  @property() labelPosition: 'start' | 'end' = 'end';
+  @property({ attribute: 'label-position' }) labelPosition: 'start' | 'end' = 'end';
 
   static styles: CSSResultArray = [styles];
   private emit(eventname: string): void {
