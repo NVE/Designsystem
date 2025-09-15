@@ -28,6 +28,7 @@ export default class NveDrawer extends SlDrawer implements INveComponent {
 
       if (!closeButton) return;
 
+      closeButton.setAttribute("title", "Lukk");
       closeButton.style.color = 'inherit';
 
       const placementToIconNameMap: Record<string, string> = {
