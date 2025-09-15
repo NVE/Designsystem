@@ -4,11 +4,11 @@ metadata:
   name: nve-designsystem
   title: NVE Designsystem
   description: 'Felles basis-komponentbibliotek for NVE sine webapplikasjoner'
-links:
-  - title: Kildekode
-    url: https://github.com/NVE/Designsystem/
-  - title: Nettside
-    url: https://designsystem.nve.no/
+  links:
+    - title: Kildekode
+      url: https://github.com/NVE/Designsystem/
+    - title: Nettside
+      url: https://designsystem.nve.no/
 spec:
   type: library
   lifecycle: production
@@ -20,11 +20,11 @@ metadata:
   name: nve-vue-components
   title: NVE Vue Components
   description: 'Felles komponentbibliotek for NVE sine Vue-applikasjoner'
-links:
-  - title: Kildekode
-    url: https://github.com/NVE/nve-vue-components
-  - title: Nettside
-    url: https://designsystem.nve.no/
+  links:
+    - title: Kildekode
+      url: https://github.com/NVE/nve-vue-components
+    - title: Nettside
+      url: https://designsystem.nve.no/
 spec:
   type: library
   lifecycle: production
