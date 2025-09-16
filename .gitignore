@@ -11,3 +11,4 @@ dist/
 *.tgz
 doc-site/.vitepress/cache
 doc-site/.vitepress/dist
+.idea/
