@@ -1,3 +1,10 @@
+# [2.11.0](https://github.com/NVE/Designsystem/compare/v2.10.4...v2.11.0) (2025-09-16)
+
+
+### Features
+
+* **nve-switch:** legge til primary color og label-position ([#622](https://github.com/NVE/Designsystem/issues/622)) ([ba2b8aa](https://github.com/NVE/Designsystem/commit/ba2b8aae7295f62bd7bbfbad1101e362df8a15e2))
+
 ## [2.10.4](https://github.com/NVE/Designsystem/compare/v2.10.3...v2.10.4) (2025-09-16)
 
 
