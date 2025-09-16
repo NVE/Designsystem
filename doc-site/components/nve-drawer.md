@@ -131,7 +131,7 @@ Bruk `placement="bottom"` for å åpne skuffen fra bunn av siden
 
 ### Bundet til et element
 
-Som standard glir skuffer ut av sin inneholdende blokk, som vanligvis er visningsporten. For å få en skuff til å gli ut av et overordnet element, legg til attributtet `placement="contained"` til skuffen og bruk `"position: relative"` på det overordnede elementet.
+Som standard glir skuffer ut av sin inneholdende blokk, som vanligvis er visningsporten. For å få en skuff til å gli ut av et overordnet element, legg til attributtet `contained` til skuffen og bruk `"position: relative"` på det overordnede elementet.
 
 I motsetning til vanlige skuffer, er ikke inneholdte skuffer modale. Dette betyr at de ikke viser et overlegg, de fanger ikke fokus, og de kan ikke lukkes med Escape. Dette er med vilje for å tillate brukere å samhandle med elementer utenfor skuffen.
 
@@ -158,15 +158,18 @@ I motsetning til vanlige skuffer, er ikke inneholdte skuffer modale. Dette betyr
 
 </CodeExamplePreview>
 
-### Utfyllende eksempel
+### Et vanlig scenario
 
-Skuffen skal ikke ha en knapp i footer for å lukke draweren. Denne funksjonaliteten er dekket av lukke ikonet øverst vedsiden av label.
+Dette er et vanlig scenario for bruk av skuffen der vi har en knapp for å åpne skuffen, label, innhold og to knapper i footeren. 
+I eksemplet under har vi lagt til litt ekstra tekst for å vise hvordan skuffen oppfører seg når vi har for mye innhold samt hvordan det ser ut med to knapper i footer.
+Man bør styre unna å benytte lukkeknapp i footer da skuffen har en egen lukkeknapp i headeren.
+
 <CodeExamplePreview>
 
 ```html
     <div>
       <nve-button>Åpne</nve-button>
-      <nve-drawer label="Tittel" placement="bottom"  class="drawer-utfyllende-eksempel">
+      <nve-drawer label="Tittel"  class="drawer-utfyllende-eksempel">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus velit a est placerat, in cursus urna varius. Pellentesque vestibulum enim in velit hendrerit feugiat. Morbi dapibus est lacus, nec blandit tortor feugiat et. Nulla tempus orci eget felis tempus interdum. Maecenas quis risus et sem ullamcorper pharetra. In hac habitasse platea dictumst. Integer a risus tincidunt, posuere nisi id, interdum augue. Pellentesque sagittis vulputate orci, vitae commodo elit porta ac. In laoreet eget diam aliquet pretium. Sed vel arcu commodo, auctor ex in, accumsan nisl. Maecenas varius, magna quis dignissim porta, dolor justo ullamcorper dui, non mollis augue nunc quis mi. Quisque in porttitor ligula. Vestibulum at ullamcorper nibh. In nisi quam, scelerisque at purus sit amet, congue molestie lectus. Curabitur dapibus rutrum mauris et luctus. Nulla efficitur, erat tincidunt posuere sagittis, sem massa tempus sem, id convallis magna augue eget libero. Morbi justo quam, imperdiet at porttitor blandit, semper et lectus. Pellentesque consectetur turpis eget libero pulvinar, id vehicula lorem dignissim. Proin nec mi bibendum, sagittis sapien at, fringilla arcu. Quisque pellentesque velit lectus, in sagittis odio auctor ut. Donec faucibus, nunc a interdum faucibus, purus nisi bibendum mi, non cursus enim libero sit amet nibh. Donec feugiat justo quis odio gravida, non mattis magna vehicula. Donec sagittis tincidunt diam quis porta. Nulla feugiat, est ut pharetra tempus, nibh turpis sollicitudin lacus, et pharetra elit orci elementum diam. Sed id egestas quam, sit amet tristique lacus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris eget lorem tempus, maximus lacus vel, sagittis felis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer rhoncus nisl arcu, ut interdum nunc efficitur non. Etiam semper imperdiet suscipit. Nunc vehicula scelerisque tempus. Phasellus pharetra dignissim finibus. Vestibulum suscipit tortor eget magna feugiat consequat. Pellentesque eleifend neque vel lobortis consequat. Nam tellus leo, rutrum quis nunc sed, laoreet mattis lacus. Praesent euismod libero sit amet sapien volutpat rutrum. Aenean eget tempor magna. Vestibulum quis magna in erat facilisis convallis. Cras sit amet velit quis velit vehicula malesuada pharetra et nisi. Suspendisse potenti. Sed maximus id nunc sed rutrum. Integer in sapien vitae metus ultricies tempus nec dignissim elit. Etiam posuere, quam et accumsan vehicula, massa lectus iaculis augue, nec ultrices diam turpis ac tellus. Fusce tincidunt mi et quam pulvinar, vitae scelerisque ex efficitur. Fusce vel ligula a ipsum facilisis lacinia.
           <nve-button variant="info" slot="footer"> Button text
               <nve-icon slot="suffix" name="grid_guides">
