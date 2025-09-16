@@ -1,3 +1,10 @@
+# [2.12.0](https://github.com/NVE/Designsystem/compare/v2.11.0...v2.12.0) (2025-09-16)
+
+
+### Features
+
+* **nve-drawer:** legge til ikon basert på plassering ([#627](https://github.com/NVE/Designsystem/issues/627)) ([84f8303](https://github.com/NVE/Designsystem/commit/84f8303111edae03b48f330436bf11f3baf9d92d))
+
 # [2.11.0](https://github.com/NVE/Designsystem/compare/v2.10.4...v2.11.0) (2025-09-16)
 
 
