@@ -1,3 +1,10 @@
+## [2.10.4](https://github.com/NVE/Designsystem/compare/v2.10.3...v2.10.4) (2025-09-16)
+
+
+### Bug Fixes
+
+* **nve-combobox:** fjernet ekstra icon ([#629](https://github.com/NVE/Designsystem/issues/629)) ([7a90c02](https://github.com/NVE/Designsystem/commit/7a90c02ae3775f27db76c4d1d4c8a1c9d9a5d89a))
+
 ## [2.10.3](https://github.com/NVE/Designsystem/compare/v2.10.2...v2.10.3) (2025-09-03)
 
 
