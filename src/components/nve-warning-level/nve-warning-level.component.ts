@@ -17,7 +17,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * Komponenten kan legges inni button- eller a-elementer for å gi ekstra hover-effekter.
  *
  * Tilgjengelighetsmerkingen (aria-label) kan variere ut fra behov, og det anbefales derfor at brukere selv setter verdiene for ariaLabel.
- * Les mer i seksjonen om universel utforming.
+ * Les mer i seksjonen om tilgjengelighet.
  * @csspart base - farenivå kontainer
  * @csspart warning-badge - støtte badge som vises nederst til høyre i faregradskomponenten
  *

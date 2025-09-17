@@ -203,7 +203,7 @@ const changeActiveTab = (event: CustomEvent) => {
 
 </SandboxPreview>
 
-## Universell utforming
+## Tilgjengelighet
 
 ### Aria-roller, og attributter
 

@@ -90,7 +90,7 @@ Du kan legge komponenten inni vanlige HTML-`<button>` eller `<a>`-elementer. Det
 
 </CodeExamplePreview>
 
-## Universell utforming
+## Tilgjengelighet
 
 Komponenten for varslingsnivå representerer farenivå ved hjelp av farge og en etikett som kun består av et siffer. Derfor kan det i en større sammenheng være at visningen alene ikke er tilstrekkelig for alle brukere. Vi tilbyr derfor en `ariaLabel`-egenskap som setter en `aria-label`-attributt på komponenten (settes på hoved div-en).
 
