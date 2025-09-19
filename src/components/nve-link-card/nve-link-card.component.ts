@@ -35,7 +35,7 @@ export default class NveLinkCard extends LitElement implements INveComponent {
   /** Lenken som brukes for handlinger som intern/ekstern navigering eller e-post */
   @property() href: string | undefined = undefined;
 
-  /** Brukes for å legge :visited style når lenken kommer fra ekstern rammeverk som f.eks RouterLink i Vue */
+  /** Brukes for å legge :visited style når lenken kommer fra eksternt rammeverk som f.eks RouterLink i Vue */
   @property({ type: Boolean }) visited: boolean = false;
   static styles = [styles];
 
@@ -65,11 +65,13 @@ export default class NveLinkCard extends LitElement implements INveComponent {
           ? html`<div part="additional-text" class="link-card__additional-text">${this.additionalText}</div>`
           : nothing}
       </div>
-      <nve-icon aria-hidden="true" slot="suffix" name="${this.getIconName()}" style="font-size: 1.5rem;"></nve-icon>
+      <nve-icon aria-hidden="true" slot="suffix" name="${this.getIconName()}"></nve-icon>
     `;
   }
 
   render() {
+    // Hvis komponenten er plassert inni en <a> tag, rendres det som en <div> for å unngå nestede lenker.
+    // Detter er vanlig i rammeverker som Vue og React hvor routing skjer på klient siden, med rammeverk dedikerte link-komponenter.
     const isParentLink =
       this.parentElement?.tagName.toLowerCase() === 'a' || this.parentElement?.getAttribute('role') === 'link';
 

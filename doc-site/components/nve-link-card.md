@@ -32,9 +32,9 @@ Bruk `size` for å endre størrelse. `medium` er standard.
 <CodeExamplePreview>
 
 ```html
-<nve-link-card label="Kommuneplan" additionalText="Additional text." variant="contrast" size="small"></nve-link-card>
-<nve-link-card label="Kommuneplan" additionalText="Additional text." variant="contrast" size="medium"></nve-link-card>
-<nve-link-card label="Kommuneplan" additionalText="Additional text." variant="contrast" size="large"></nve-link-card>
+<nve-link-card label="Kommuneplan" variant="contrast" size="small"></nve-link-card>
+<nve-link-card label="Kommuneplan" variant="contrast" size="medium"></nve-link-card>
+<nve-link-card label="Kommuneplan" variant="contrast" size="large"></nve-link-card>
 ```
 
 </CodeExamplePreview>
@@ -46,7 +46,7 @@ Du kan legge til en ekstra tekst under hovedlenkens overskrift ved å bruke `add
 <CodeExamplePreview>
 
 ```html
-<nve-link-card label="Hoved overskrift" additionalText="Ekstra tekst"></nve-link-card>
+<nve-link-card label="Overskrift" additionalText="Ekstra tekst"></nve-link-card>
 ```
 
 </CodeExamplePreview>
@@ -74,7 +74,7 @@ Man kan velge mellom fire klikk-handlinger ved bruk av `clickAction`-egenskapen.
 
 </CodeExamplePreview>
 
-### Eksternal
+### Ekstern
 
 `external` åpner en ekstern side. Automatisk settes `target="_blank"` på `<a>`-elementet.
 Se anbefalinger for eksterne lenker i seksjonen [Tilgjengelighet](#tilgjengelighet).
@@ -164,7 +164,7 @@ Dette er spesielt viktig for skjermleserbrukere, som da vet hva de kan forvente.
 
 For e-postlenker er det lurt å inkludere adressen direkte i lenketeksten, slik at brukeren forstår hva som skjer ved klikk.
 Eksempel: `Gi oss beskjed på support@nve.no`.
-Det kan være uønsket å bli tatt i en annen kontekst (epost appen) når man klikker på en epost lenke.
+Det kan være uønsket å bli tatt til en annen kontekst (e-post appen) når man klikker på en e-postlenke.
 
 ### Nedlastingslenker - best praksis
 
