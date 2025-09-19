@@ -1,117 +1,43 @@
 import { LitElement, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-link-card.styles';
+import '../nve-icon/nve-icon.component';
 
 /**
  * Komponent som brukes til å navigere til interne, eksterne sider, laste ned filer, eller sende e-post.
+ * For å bruke komponenten på best og tilgjengelig måte les mer i tilgjengelighet seksjonen.
+ *
+ * @csspart link-card Topp-element
+ * @csspart label Overskriften
  */
 @customElement('nve-link-card')
 export default class NveLinkCard extends LitElement implements INveComponent {
   /** Tittel som vises øverst på kortet */
-  @property({ reflect: true }) label: string = '';
+  @property() label: string = '';
 
   /** Tilleggsbeskrivelse som vises under tittelen */
-  @property({ reflect: true }) additionalText?: string;
+  @property() additionalText?: string;
 
   /** Størrelse på kortet, kan være 'small', 'medium' eller 'large' */
-  @property({ reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
+  @property() size: 'small' | 'medium' | 'large' = 'medium';
   /** Variant som bestemmer stilen på kortet: 'primary', 'contrast', eller 'secondary' */
-  @property({ reflect: true }) variant: 'primary' | 'contrast' | 'secondary' = 'primary';
+  @property() variant: 'primary' | 'contrast' | 'secondary' = 'primary';
 
   /** Test ID som kan brukes i testing og sporing */
-  @property({ reflect: true }) testId: string | undefined = undefined;
+  @property() testId: string | undefined = undefined;
 
   /** Definerer hva som skjer når kortet klikkes: 'internal' (intern lenke), 'download' (nedlasting), 'external' (ekstern lenke), eller 'mail' (e-post) */
-  @property({ reflect: true }) clickAction: 'internal' | 'download' | 'external' | 'mail' = 'internal';
+  @property({ type: String }) clickAction: 'internal' | 'download' | 'external' | 'mail' = 'internal';
 
   /** Lenken som brukes for handlinger som intern/ekstern navigering eller e-post */
-  @property({ reflect: true }) href: string | undefined = undefined;
+  @property() href: string | undefined = undefined;
 
-  /** Valgfri nedlastingsfunksjon som kan overstyres for å implementere spesifikk nedlastingslogikk */
-  @property() downloadHandler: () => void = this.defaultDownloadHandler;
-
-  /** Tilpasset klikk-handler som kan brukes til å overstyre standard atferd (f.eks. i Vue med vue-router) */
-  @property() customClickHandler?: (event: MouseEvent) => void;
-
+  /** Brukes for å legge :visited style når lenken kommer fra eksternt rammeverk som f.eks RouterLink i Vue */
+  @property({ type: Boolean }) visited: boolean = false;
   static styles = [styles];
-
-  /**
-   * Standard nedlastingsfunksjon som brukes hvis downloadHandler ikke er overstyrt.
-   * Bruker lenken (href) til å laste ned en fil.
-   */
-  private async defaultDownloadHandler() {
-    if (this.href) {
-      const fileUrl = this.href;
-      const fileName = fileUrl.split('/').pop() || 'download';
-      try {
-        const response = await fetch(fileUrl, { mode: 'cors' });
-        if (!response.ok) throw new Error(`Failed to fetch file: ${response.statusText}`);
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = fileName;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      } catch  {      }
-    }
-  }
-
-  /**
-   * Denne funksjonen bestemmer hva som skjer når kortet blir klikket, basert på verdien av clickAction.
-   * Hvis Ctrl, Shift, Alt eller Meta er trykket, følger vi standard bruksmønstre:
-   * Ctrl/Cmd + Klikk: Åpner lenken i en ny fane.
-   * Shift + Klikk: Åpner lenken i et nytt vindu.
-   * Alt + Klikk: Laster ned lenken (hvis det er en fil).
-   * Hvis customClickHandler er definert, overstyres standard klikkatferd.
-   */
-  private handleClick(event: MouseEvent | KeyboardEvent) {
-    // Overstyr standard klikkatferd med customClickHandler om den finnes
-    if (this.customClickHandler) {
-      if (event instanceof MouseEvent) {
-        this.customClickHandler(event);
-      }
-      return;
-    }
-    if (this.href && (event.ctrlKey || event.metaKey)) {
-      window.open(this.href, '_blank');
-      return;
-    }
-    if (this.href && event.shiftKey) {
-      window.open(this.href, '_blank', 'noopener,noreferrer');
-      return;
-    }
-    if (event.altKey && this.clickAction === 'download' && this.href) {
-      this.downloadHandler();
-      return;
-    }
-    switch (this.clickAction) {
-      case 'internal':
-        if (this.href) window.location.href = this.href;
-        break;
-      case 'download':
-        if (this.downloadHandler) this.downloadHandler();
-        break;
-      case 'external':
-        if (this.href) window.open(this.href, '_blank');
-        break;
-      case 'mail':
-        if (this.href) window.location.href = `mailto:${this.href}`;
-        break;
-    }
-  }
-
-  /**
-   * Denne er lagt til slik man klikke på cardet ved bruk av tastaturet.
-   */
-  private handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Enter') {
-      this.handleClick(event);
-    }
-  }
 
   /**
    * Returnerer ikonnavnet som vises på kortet basert på clickAction.
@@ -131,26 +57,49 @@ export default class NveLinkCard extends LitElement implements INveComponent {
     }
   }
 
-  render() {
+  private renderContent() {
     return html`
-      <a
-        part="link-card"
-        class="link-card link-card--${this.size} link-card--${this.variant}"
-        tabindex="0"
-        @click="${this.handleClick}"
-        @keydown="${this.handleKeyDown}"
-      >
-        <div class="link-card__content">
-          <div part="label" class="link-card__label">${this.label}</div>
-          ${this.additionalText
-            ? html`<div part="additional-text" class="link-card__additional-text">${this.additionalText}</div>`
-            : nothing}
-        </div>
-        <div>
-          <nve-icon slot="suffix" name="${this.getIconName()}" style="font-size: 1.5rem;"></nve-icon>
-        </div>
-      </a>
+      <div class="link-card__content">
+        <div part="label" class="link-card__label">${this.label}</div>
+        ${this.additionalText
+          ? html`<div part="additional-text" class="link-card__additional-text">${this.additionalText}</div>`
+          : nothing}
+      </div>
+      <nve-icon aria-hidden="true" slot="suffix" name="${this.getIconName()}"></nve-icon>
     `;
+  }
+
+  render() {
+    // Hvis komponenten er plassert inni en <a> tag, rendres det som en <div> for å unngå nestede lenker.
+    // Detter er vanlig i rammeverker som Vue og React hvor routing skjer på klient siden, med rammeverk dedikerte link-komponenter.
+    const isParentLink =
+      this.parentElement?.tagName.toLowerCase() === 'a' || this.parentElement?.getAttribute('role') === 'link';
+
+    if (isParentLink)
+      return html` <div
+        part="link-card"
+        testId="${ifDefined(this.testId)}"
+        class=${classMap({
+          'link-card': true,
+          'link-card--visited': this.visited,
+          [`link-card--${this.size}`]: true,
+          [`link-card--${this.variant}`]: true,
+        })}
+      >
+        ${this.renderContent()}
+      </div>`;
+    else
+      return html`
+        <a
+          testId="${ifDefined(this.testId)}"
+          ?download=${this.clickAction === 'download'}
+          part="link-card"
+          class="link-card link-card--${this.size} link-card--${this.variant}"
+          href=${ifDefined(this.clickAction === 'mail' ? `mailto:${this.href}` : this.href)}
+          target=${this.clickAction === 'external' ? '_blank' : nothing}
+          >${this.renderContent()}
+        </a>
+      `;
   }
 }
 

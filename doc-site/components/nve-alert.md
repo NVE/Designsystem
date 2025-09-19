@@ -164,10 +164,10 @@ Du kan selv bestemme hvordan du vil vise alerten i løsningen din. Når du legge
 
 Ofte ønsker man å skjule slike komponenter i SPA-applikasjoner uansett. Vi tilbyr derfor også `toast`-funksjonalitet som gjør dette for deg. Du skal åpne alerten med `toast()` metoden som kalles på den.
 
-Som standard vises toast øverst i høyre hjørne. For å vise en alert som toast, må du wrappe `nve-alert` i en `div` med klassen `toast-stack`. Denne blir injisert i DOM-en utenfor hovedinnholdet. Når alerten lukkes, forsvinner også `toast-stack` sammen med alle `nve-alert`-komponentene. Vi anbefaler ikke å vise mer enn én alert samtidig. Les mer i seksjonen om universell utforming. Den er ikke justbar. Per i dag støttes det kun en animasjon, men kan sikkert prate med designere hvis det er behov for flere typer animasjoner.
+Som standard vises toast øverst i høyre hjørne. For å vise en alert som toast, må du wrappe `nve-alert` i en `div` med klassen `toast-stack`. Denne blir injisert i DOM-en utenfor hovedinnholdet. Når alerten lukkes, forsvinner også `toast-stack` sammen med alle `nve-alert`-komponentene. Vi anbefaler ikke å vise mer enn én alert samtidig. Les mer i seksjonen om [tilgjengelighet](#tilgjengelighet). Den er ikke justbar. Per i dag støttes det kun en animasjon, men kan sikkert prate med designere hvis det er behov for flere typer animasjoner.
 
 <nve-message-card label="Vær oppmerksom" size="compact" variant="warning">
-<p>I dette eksemplet vises det to alert meldinger samtidig når man klikker på begge knappene. Husk at det ikke er best praksis å vise flere alert meldinger samtidig. Bruk det med omhu, og les mer om det i <a href="#universell-utforming">universel utforming</a> seksjonen.</p>
+<p>I dette eksemplet vises det to alert meldinger samtidig når man klikker på begge knappene. Husk at det ikke er best praksis å vise flere alert meldinger samtidig. Bruk det med omhu, og les mer om det i <a href="#tilgjengelighet">tilgjengelighet</a> seksjonen.</p>
 </nve-message-card>
 
 <CodeExamplePreview arrangeComponentsVertically>
@@ -194,7 +194,7 @@ Som standard vises toast øverst i høyre hjørne. For å vise en alert som toas
 
 </CodeExamplePreview>
 
-## Universell utforming
+## Tilgjengelighet
 
 `nve-alert` bruker `alert` live-region-rolle. Hovedoppgaven til alert-komponenten er å gi brukeren en umiddelbar og viktig beskjed. `alert` bruker derfor `aria-live="assertive"`, som betyr at når alerten vises i DOM-en (for eksempel med display:block), vil skjermlesere umiddelbart stoppe det de leser og fokusere på innholdet i alerten. Den har også `aria-atomic="true"`, som gjør at hvis innholdet i alerten endres mens den vises, vil skjermleseren lese opp hele innholdet på nytt. Vi har ikke endret noen av disse egenskapene, så de fungerer som standard for alert-rollen.
 

@@ -12,7 +12,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  * Håndterer navigasjon mellom faner, synkronisering av aktive faner og paneler, samt tilgjengelighetsegenskaper.
  * Sporet 'nav' brukes for å legge til faner, og standardsporet brukes for innholdspaneler. Foreløpig støttes kun horisontal retning på fanene.
  * Automatisk aktivering av faner (når man blar mellom fanene med tastatur) støttes ikke – det kan være uheldig fra et tilgjengelighetsperspektiv.
- * For beste praksis, les mer i seksjonen om universell utforming.
+ * For beste praksis, les mer i seksjonen om tilgjengelighet.
  *
  * @event nve-tab-change Når aktiv fane endres.
  *

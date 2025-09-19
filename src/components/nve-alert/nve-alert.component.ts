@@ -9,7 +9,7 @@ import '../nve-icon/nve-icon.component';
 /**
  * Brukes til å vise viktige beskjeder som toast. Dette er en komponent som bruker alert-rollen.
  * Hvis du trenger å vise en statisk varsling med mer informasjon, bruk nve-message-card.
- * Les mer i seksjonen om universel utforming.
+ * Les mer i seksjonen om tilgjengelighet.
  *
  * @slot - tekst - Hoved teksten i alerten.
  * @slot icon - Det første ikonet (til venstre).
