@@ -130,7 +130,7 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     nodeId: '4277-125162',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Under arbeid'
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-comment',
@@ -345,16 +345,30 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
   {
     name: 'nve-table',
     nodeId: '111-35',
-    description: undefined,
+    description: 'undefined',
     statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
+    statusCode: 'Ferdig'
   },
   {
-    name: 'nve-tabs',
+    name: 'nve-tab-group',
     nodeId: '383-21541',
     description: undefined,
     statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
+    statusCode: 'Ferdig'
+  },
+  {
+    name: 'nve-tab',
+    nodeId: '383-21541',
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
+  },
+  {
+    name: 'nve-tab-panel',
+    nodeId: '383-21541',
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-tag',
