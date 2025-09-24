@@ -1,3 +1,10 @@
+## [2.12.1](https://github.com/NVE/Designsystem/compare/v2.12.0...v2.12.1) (2025-09-24)
+
+
+### Bug Fixes
+
+* **nve-input:** noValidation ga rød border ([#638](https://github.com/NVE/Designsystem/issues/638)) ([ee994cd](https://github.com/NVE/Designsystem/commit/ee994cdd7e630f0950c039eecbe3ac6973864acd))
+
 # [2.12.0](https://github.com/NVE/Designsystem/compare/v2.11.0...v2.12.0) (2025-09-16)
 
 
