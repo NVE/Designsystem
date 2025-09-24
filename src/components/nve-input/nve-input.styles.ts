@@ -85,7 +85,7 @@ export default css`
   }
 
   /* Gir rød ramme ved valideringsfeil  */
-  :host([data-user-invalid])::part(base) {
+  :host([data-user-invalid]:not([noValidation]))::part(base) {
     border-color: var(--feedback-background-emphasized-error);
   }
 
