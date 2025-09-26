@@ -13,8 +13,8 @@ layout: component
 ## Eksempler
 
 ### Varianter
-Bruk variant for å velge farge, default er standard.
 
+Bruk variant for å velge farge, default er standard.
 
 <CodeExamplePreview>
 
@@ -25,7 +25,7 @@ Bruk variant for å velge farge, default er standard.
 ```
 
 </CodeExamplePreview>
- 
+
 
 ### Med ikoner
 
@@ -36,6 +36,10 @@ Bruk variant for å velge farge, default er standard.
   <nve-icon slot="officon" name="light_mode"></nve-icon>
   <nve-icon slot="onicon" name="dark_mode"></nve-icon>
 </nve-switch>
+<nve-switch variant="primary">
+  <nve-icon slot="officon" name="light_mode"></nve-icon>
+  <nve-icon slot="onicon" name="dark_mode"></nve-icon>
+</nve-switch>
 ```
 
 </CodeExamplePreview>
@@ -43,11 +47,11 @@ Bruk variant for å velge farge, default er standard.
 Se også [nve-darkmode-switch](/components/nve-darkmode-switch)
 
 ### Label
-For å sette label foran switchen bruk `label-position="start"`. `end` er default. 
+
+For å sette label foran switchen bruk `label-position="start"`. `end` er default.
 <CodeExamplePreview>
 
 ```html
- 
 <nve-switch> Slå på </nve-switch>
 <nve-switch label-position="start"> Slå på </nve-switch>
 ```
@@ -85,4 +89,5 @@ function changehandler(event) {
   const checked = event.target.checked;
 }
 ```
+
 Du kan også bruke attributten `checked` på `nve-switch` for å sette verdien via lytting på change, tilsvarende som for en checkbox
