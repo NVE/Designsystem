@@ -6,6 +6,8 @@ export default css`
     --body-spacing: var(--spacing-x-large, 2rem);
     --footer-spacing: var(--spacing-x-large, 2rem);
     --width: 40.625rem;
+    --sl-panel-background-color: var(--neutrals-background-primary);
+    --sl-shadow-x-large: var(--dropdown);
   }
 
   :host::part(footer),
@@ -64,5 +66,8 @@ export default css`
     .dialog__body {
       padding-bottom: var(--body-spacing);
     }
+  }
+  :host::part(header-actions) {
+    fill: var(--neutrals-foreground-primary);
   }
 `;
