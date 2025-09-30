@@ -1,3 +1,10 @@
+## [2.12.2](https://github.com/NVE/Designsystem/compare/v2.12.1...v2.12.2) (2025-09-30)
+
+
+### Bug Fixes
+
+* **darkmode:** Problemer med darakmode på nve-switch, nve-drawer og nve-dialog ([#644](https://github.com/NVE/Designsystem/issues/644)) ([29d2cc9](https://github.com/NVE/Designsystem/commit/29d2cc9d1422ce2c4d7543c1e7ac8712886eacc2))
+
 ## [2.12.1](https://github.com/NVE/Designsystem/compare/v2.12.0...v2.12.1) (2025-09-24)
 
 
