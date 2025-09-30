@@ -30,4 +30,4 @@ spec:
   lifecycle: production
   owner: nve
   dependsOn:
-    - component: nve-designsystem
+    - component:nve-designsystem
