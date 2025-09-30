@@ -51,6 +51,11 @@
   --sl-input-letter-spacing: var(--sl-letter-spacing-normal);
 }
 
+/* Brukes for å fjerne standard linje i <a> hvis man skal wrappe nve-link-card med routerLink component i SPA*/
+a:has(nve-link-card) {
+  text-decoration: unset;
+}
+
 /* Brukes i nve-alert for å vise toast*/
 .toast-stack {
   position: fixed;
