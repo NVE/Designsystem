@@ -1,3 +1,10 @@
+## [2.12.3](https://github.com/NVE/Designsystem/compare/v2.12.2...v2.12.3) (2025-10-02)
+
+
+### Bug Fixes
+
+* **nve-tab:** fikse padding, sette min-width til 40px ([#648](https://github.com/NVE/Designsystem/issues/648)) ([fd32b7f](https://github.com/NVE/Designsystem/commit/fd32b7f20d9c8ac5eb53f2f454de7b970b775de1))
+
 ## [2.12.2](https://github.com/NVE/Designsystem/compare/v2.12.1...v2.12.2) (2025-09-30)
 
 
