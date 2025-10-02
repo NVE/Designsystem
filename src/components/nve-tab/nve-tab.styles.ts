@@ -17,8 +17,9 @@ export default css`
 
   .tab {
     display: flex;
-    min-width: 100px;
-    padding: 11px 0px;
+    min-width: 40px;
+    padding: 11px;
+    white-space: nowrap;
     text-align: center;
     width: fit-content;
     flex-direction: row;
