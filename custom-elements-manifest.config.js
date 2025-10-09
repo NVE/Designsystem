@@ -31,11 +31,13 @@ function replace(string, terms) {
 
 const cemInheritancePluginOptions = {
   externalManifests: [externalCEM],
+  includeExternalManifests: true,
 };
 
 export default {
   globs: ['src/components/**/*.component.ts'],
-  exclude: ['**/*.styles.ts', '**/*.demo.ts'],
+  exclude: ['**/*.styles.ts', '**/*.test.ts'],
+  dependencies: true,
   plugins: [
     cemInheritancePlugin(cemInheritancePluginOptions),
     {
