@@ -114,5 +114,6 @@ export default css`
 
   nve-icon {
     --icon-size: 24px;
+    color: var(--neutrals-foreground-primary);
   }
 `;
