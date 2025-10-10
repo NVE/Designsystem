@@ -3,13 +3,20 @@ export default css`
   .link-card {
     border-radius: var(--borderRadius-large, 6px);
     padding: var(--spacing-medium, 16px) var(--spacing-large, 24px);
-    transition: all 0.3s ease;
+    transition: background 0.3s ease;
     border: 2px solid transparent;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    text-decoration: none;
+    color: var(--neutrals-foreground-primary, #0d0d0e);
+  }
+
+  .link-card--visited,
+  .link-card:visited {
+    color: var(--interactive-links-visited);
   }
 
   .link-card:focus {
@@ -39,11 +46,16 @@ export default css`
 
   .link-card__label {
     font-size: 1rem;
-    color: var(--neutrals-foreground-primary, #0d0d0e);
+    color: inherit;
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
+  }
+
+  .link-card--visited .link-card__label,
+  .link-card:visited .link-card__label {
+    color: var(--interactive-links-visited);
   }
 
   .link-card__label--small {
@@ -61,13 +73,18 @@ export default css`
   }
 
   .link-card__additional-text {
-    color: var(--neutrals-foreground-primary, #0d0d0e);
+    color: inherit;
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
     padding-top: 4px;
     font-size: 0.875rem;
+  }
+
+  .link-card--visited .link-card__additional-text,
+  .link-card:visited .link-card__additional-text {
+    color: var(--interactive-links-visited);
   }
 
   .link-card--primary {
@@ -93,5 +110,10 @@ export default css`
   .link-card--secondary:hover {
     border-radius: var(--borderRadius-large, 6px);
     border: 2px solid var(--neutrals-foreground-primary, #0d0d0e);
+  }
+
+  nve-icon {
+    --icon-size: 24px;
+    color: var(--neutrals-foreground-primary);
   }
 `;
