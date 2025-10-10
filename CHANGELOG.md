@@ -1,3 +1,10 @@
+# [2.13.0](https://github.com/NVE/Designsystem/compare/v2.12.3...v2.13.0) (2025-10-10)
+
+
+### Features
+
+* **nve-link-card:** riktig bruk av href attributtet og tilpassing til klient routing ([#633](https://github.com/NVE/Designsystem/issues/633)) ([247d744](https://github.com/NVE/Designsystem/commit/247d744416f768c01c59bd6f9e670825ea2ef693))
+
 ## [2.12.3](https://github.com/NVE/Designsystem/compare/v2.12.2...v2.12.3) (2025-10-02)
 
 
