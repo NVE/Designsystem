@@ -94,9 +94,6 @@
     "vitest": "^3.2.4",
     "vue-eslint-parser": "^10.1.4"
   },
-  "overrides": {
-    "custom-elements-manifest-inheritance": "1.1.1"
-  },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.44.2"
   },
