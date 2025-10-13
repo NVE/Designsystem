@@ -31,13 +31,33 @@ function replace(string, terms) {
 
 const cemInheritancePluginOptions = {
   externalManifests: [externalCEM],
+  includeExternalManifests: true,
 };
 
 export default {
   globs: ['src/components/**/*.component.ts'],
-  exclude: ['**/*.styles.ts', '**/*.demo.ts'],
+  exclude: ['**/*.styles.ts', '**/*.test.ts'],
+  dependencies: true,
   plugins: [
     cemInheritancePlugin(cemInheritancePluginOptions),
+    // Ekskluder interne metoder og properties fra manifestet (også arvet fra eksterne manifester)
+    {
+      name: 'exclude-internal-members',
+      packageLinkPhase({ customElementsManifest }) {
+        customElementsManifest.modules?.forEach((mod) => {
+          mod.declarations?.forEach((declaration) => {
+            if (declaration.members) {
+              declaration.members = declaration.members.filter(
+                (member) =>
+                  member.privacy !== 'private' && // TS private
+                  member.privacy !== 'protected' &&
+                  !member.name?.startsWith('#') // JS private
+              );
+            }
+          });
+        });
+      },
+    },
     {
       // Legg properties som er dekorert med @property til attributes-delen i manifest-fila
       name: 'add-attributes-with-jsdoc',
