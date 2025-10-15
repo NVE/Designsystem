@@ -1,4 +1,4 @@
-import { afterAll, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import { fixture, fixtureCleanup } from '@open-wc/testing';
 import { html } from 'lit';
 import NveLinkCard from './nve-link-card.component';
@@ -8,7 +8,7 @@ if (!customElements.get('nve-link-card')) {
 }
 
 describe('nve-link-card', () => {
-  afterAll(() => {
+  afterEach(() => {
     fixtureCleanup();
   });
   it('has default properties', async () => {
