@@ -1,3 +1,10 @@
+## [2.13.1](https://github.com/NVE/Designsystem/compare/v2.13.0...v2.13.1) (2025-10-15)
+
+
+### Bug Fixes
+
+* **nve-link-card:** fikse a styling ([#657](https://github.com/NVE/Designsystem/issues/657)) ([57cd340](https://github.com/NVE/Designsystem/commit/57cd340256fece0344f5e2257a5875eda17631d3))
+
 # [2.13.0](https://github.com/NVE/Designsystem/compare/v2.12.3...v2.13.0) (2025-10-10)
 
 
