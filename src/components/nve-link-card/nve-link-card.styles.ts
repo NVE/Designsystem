@@ -11,11 +11,16 @@ export default css`
     align-items: center;
     cursor: pointer;
     text-decoration: none;
+  }
+
+  /*bruker color på a, ikke på link-card fordi link-card overskriver standard lenke farge i remmeverker som next js som har sin egen
+  wrappar rundt lenke og som støtter :visited*/
+  a {
     color: var(--neutrals-foreground-primary, #0d0d0e);
   }
 
   .link-card--visited,
-  .link-card:visited {
+  .a:visited {
     color: var(--interactive-links-visited);
   }
 
@@ -46,7 +51,6 @@ export default css`
 
   .link-card__label {
     font-size: 1rem;
-    color: inherit;
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
