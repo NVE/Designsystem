@@ -1,3 +1,10 @@
+## [2.13.2](https://github.com/NVE/Designsystem/compare/v2.13.1...v2.13.2) (2025-10-16)
+
+
+### Bug Fixes
+
+* **nve-link-card:** flytter global a style til ([#658](https://github.com/NVE/Designsystem/issues/658)) ([0a31ac4](https://github.com/NVE/Designsystem/commit/0a31ac4f886937baf902e4ed50c7560872083a8c))
+
 ## [2.13.1](https://github.com/NVE/Designsystem/compare/v2.13.0...v2.13.1) (2025-10-15)
 
 
