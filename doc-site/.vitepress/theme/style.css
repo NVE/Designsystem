@@ -130,6 +130,10 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+.vp-doc a {
+  text-decoration: unset;
+}
+
 .vp-doc div[class*='language-'] {
   margin: 0;
   border-top-left-radius: 0px;
@@ -207,4 +211,18 @@ html.nve_darkmode nve-tab-group::part(button-backward-base),
 html.varsom_darkmode nve-tab-group::part(button-forward-base),
 html.varsom_darkmode nve-tab-group::part(button-backward-base) {
   --scroll-button-background: #1b1b1f;
+}
+
+a {
+  color: var(--neutrals-foreground-primary, #0d0d0e);
+}
+
+/* Brukes for å fjerne standard linje i <a> hvis man skal wrappe nve-link-card med routerLink component i SPA*/
+a:has(nve-link-card) {
+  text-decoration: unset;
+}
+
+/* Brukes for å overskrive standard lenke visited styling fra eksterne rammeverker. */
+a:visited {
+  color: var(--interactive-links-visited);
 }

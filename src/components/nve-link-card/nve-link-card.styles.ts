@@ -20,7 +20,7 @@ export default css`
   }
 
   .link-card--visited,
-  .a:visited {
+  a:visited {
     color: var(--interactive-links-visited);
   }
 
@@ -87,7 +87,7 @@ export default css`
   }
 
   .link-card--visited .link-card__additional-text,
-  .link-card:visited .link-card__additional-text {
+  a:visited .link-card__additional-text {
     color: var(--interactive-links-visited);
   }
 
