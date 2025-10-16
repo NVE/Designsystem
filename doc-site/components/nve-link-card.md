@@ -138,9 +138,54 @@ Se anbefalinger for e-postlenker i seksjonen [Tilgjengelighet](#tilgjengelighet)
 
 Når man benytter klientside-routing, for eksempel med `routerLink`, genereres et eget `<a>`-element av rammeverket. I disse tilfellene blir `nve-link-card` pakket inn i en `<a>`. For å unngå ugyldig HTML-struktur med `<a>`-elementer inni hverandre, sjekker `nve-link-card` derfor om dets direkte forelder er et `<a>`. Hvis dette er tilfelle, rendres kortet som et `<div>` i stedet for et `<a>`.
 
-På denne måten beholdes mest funksjonalitet og styling fra `nve-link-card`, samtidig som man unngår semantiske og tekniske problemer med nestede lenker. Eneste som mangler er style på besøket lenker. For det kan du benytte bolsk `visited`- egenskap i `nve-link-card`. Man må skrive en egen logikk for å sjekke hvilke lenker var allerede besøket i SPA-router.
+SKRIV HER AT NOEN RAMMEVERKER STØTTER VISITED!!! ser ut at next js og vue støtter det i spa applikasjoner. verdt å teste i safari tenker jeg
 
-Les mer i seksjonen [Tilgjengelighet](#tilgjengelighet).
+På denne måten beholdes mest funksjonalitet og styling fra `nve-link-card`, samtidig som man unngår semantiske og tekniske problemer med nestede lenker.
+
+Bruk av nve-link-card i Vue:
+
+```vue
+<RouterLink to="components/Komponentoversikt">
+  <nve-link-card
+    label="Gå til komponentoversikt"
+    variant="contrast"
+    clickAction="internal"
+  >
+  </nve-link-card>
+</RouterLink>
+```
+
+Bruk av nve-link-card i React:
+
+```jsx
+<Link to="/components/Komponentoversikt">
+  <nve-link-card
+    label="Gå til komponentoversikt"
+    variant="contrast"
+    clickAction="internal"
+  >
+</Link>
+```
+
+## Besøkt lenke
+
+I henhold til krav for universell utforming skal besøkte lenker ha `besøkt`-tilstand. De fleste nettlesere håndterer dette automatisk ved å bruke CSS-pseudoklassen `:visited` på lenker som er besøkt. Vi definerer egen styling for besøkte lenker i `global.css`, som hentes inn via tema-filer (for eksempel `varsom.css` eller `nve.css`) som bruker denne pseudoklassen.
+
+Ved bruk av lenkekomponenter fra JS-rammeverk, kan det i enkelte tilfeller forekomme at `:visited`-tilstanden ikke fungerer som forventet i noen nettlesere. Dersom du opplever dette, kan du aktivere `visited`-egenskapen på `nve-link-card` når den er pakket inn i en rammeverkslenke. ( Denne egenskapen har ingen effekt dersom `nve-link-card` brukes som en selvstendig lenke, ettersom den da støtter `:visited`-tilstanden direkte gjennom nettleseren.).
+
+For å bruke `visited`-egenskapen må du selv håndtere logikken for besøkte lenker — for eksempel ved å lagre besøkte URL-er i lokal lagring (localStorage).
+
+Dette er likevel en sjelden problemstilling. Lenkekomponentene i Vue, React og Next.js støtter `:visited` som forventet, og du trenger som regel ikke gjøre noe spesielt. Bruker du et annet rammeverk, anbefaler vi å teste om `:visited`-tilstanden settes korrekt i DevTools før du tar i bruk `visited`-egenskapen.
+
+<CodeExamplePreview>
+
+```html
+<a class="rammeverk-sin-lenke-komponent" href="/components/Komponentoversikt">
+  <nve-link-card label="Gå til komponentoversikt" variant="contrast" clickAction="internal" visited> </nve-link-card>
+</a>
+```
+
+</CodeExamplePreview>
 
 ## Tilgjengelighet
 

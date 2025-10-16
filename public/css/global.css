@@ -51,9 +51,19 @@
   --sl-input-letter-spacing: var(--sl-letter-spacing-normal);
 }
 
-/* Brukes for å fjerne standard linje i <a> hvis man skal wrappe nve-link-card med routerLink component i SPA*/
+/* Brukes på lenkene som ikke er i Shadow-DOMen som f.eks de som skal wrappe <nve-link-card> */
+a {
+  color: var(--neutrals-foreground-primary, #0d0d0e);
+}
+
+/* Brukes for å fjerne standard linje i <a>  som ikke er i Shadow-DOMen som f.eks de som skal wrappe <nve-link-card> */
 a:has(nve-link-card) {
   text-decoration: unset;
+}
+
+/* Brukes for å overskrive standard lenke visited styling som ikke er i Shadow-DOMen som f.eks de som skal wrappe <nve-link-card> */
+a:visited {
+  color: var(--interactive-links-visited);
 }
 
 /* Brukes i nve-alert for å vise toast*/
