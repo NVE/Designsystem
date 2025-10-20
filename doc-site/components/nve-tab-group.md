@@ -160,6 +160,26 @@ Hvis fanegruppe har en synlig ledetekst som beskriver hva gruppe inneholder er d
 
 </CodeExamplePreview>
 
+### Fane som er disabled
+
+Man kan ha tilfeller hvor man ønsker at en fane er synlig, men ikke klikkbar. Dette gjør man ved å sette `disabled` på den aktuelle fanen
+
+<CodeExamplePreview>
+
+```html
+<nve-tab-group>
+  <nve-tab slot="nav" panel="panel-1">Fane 1</nve-tab>
+  <nve-tab slot="nav" panel="panel-2" disabled>Fane 2</nve-tab>
+  <nve-tab slot="nav" panel="panel-3">Fane 3</nve-tab>
+
+  <nve-tab-panel name="panel-1">Dette er innholdspanel for fane 1</nve-tab-panel>
+  <nve-tab-panel name="panel-2">Dette er innholdspanel for fane 2</nve-tab-panel>
+  <nve-tab-panel name="panel-3">Dette er innholdspanel for fane 3</nve-tab-panel>
+</nve-tab-group>
+```
+
+</CodeExamplePreview>
+
 ### Dynamisk visning av fane innhold med `nve-tab-change`-eventet
 
 Ofte ønsker man at innholdet i en fane ikke skal rendres før den er aktivert. Dette gjelder spesielt når innholdet kommer fra API-kall, og man kun ønsker å hente data når fanen er aktiv. I slike tilfeller anbefales det å vise innholdet kun når fanen er aktiv. For å sjekke hvilken fane som er aktiv og hvilket innhold som skal vises, kan man bruke `nve-tab-change`-eventet. Dette trigges hver gang man bytter fane og returnerer navnet på det aktive fanepanelet. Under kan du se hvordan dette fungerer i en VUE-app:
@@ -252,3 +272,7 @@ Det er bevisst valgt ikke å aktivere faner automatisk når man navigerer mellom
 Det er bevisst valgt å ikke bruke `disabled`-faner i komponenten. Begrunnelsen er at deaktiverte faner ikke gir brukeren tilstrekkelig informasjon om hvorfor fanen ikke er tilgjengelig. Deaktiverte elementer kan ikke motta fokus, noe som medfører at skjermlesere ofte hopper over disse, slik at brukere aldri blir oppmerksomme på deres eksistens. I tillegg kan det for enkelte brukere være uklart at en fane er deaktivert, noe som kan føre til frustrasjon dersom de forsøker å aktivere fanen uten respons.
 <nve-message-card label="Tips!" size="compact">
 Vi anbefaler derfor at alle faner holdes aktiverte. Dersom en fane ikke skal vise innhold — eller det foreligger annen grunn til at en fane ikke skal kunne brukes — er det bedre å la fanen være aktiv, men vise en tydelig melding i det tilhørende innholdspanelet som forklarer situasjonen for brukeren.</nve-message-card>
+
+```
+
+```

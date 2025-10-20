@@ -2,7 +2,9 @@ import { html, LitElement, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-tab-group.styles';
-import { NveTab, NveTabPanel } from 'src/nve-designsystem';
+import NveTab from '../nve-tab/nve-tab.component';
+import NveTabPanel from '../nve-tab-panel/nve-tab-panel.component';
+import '../nve-icon/nve-icon.component';
 import '../nve-button/nve-button.component';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -129,7 +131,10 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     if (tabGroup !== this) {
       return;
     }
-
+    if (tab instanceof NveTab && tab.disabled) {
+      //fanen er disabled, gjør ingenting
+      return;
+    }
     if (tab && tab.panel) {
       this.setActiveTab(tab.panel);
     }
@@ -229,6 +234,23 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     requestAnimationFrame(() => {
       this.updateIndicator();
     });
+    // Etter at indikator er oppdatert, sørger vi for at den aktive fanen er synlig i viewet ved behov
+    requestAnimationFrame(() => {
+      const activeTab = this.tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') as HTMLElement;
+      if (activeTab) {
+        const nav = this.shadowRoot?.querySelector('.tab-group__nav') as HTMLElement;
+        if (nav) {
+          // Vi sjekker om aktiv fane er synlig. Hvis ikke, scroller vi den inn i viewet.
+          const left = activeTab.offsetLeft;
+          const right = activeTab.offsetLeft + activeTab.offsetWidth;
+          if (left < nav.scrollLeft) {
+            nav.scrollTo({ left: left, behavior: 'smooth' });
+          } else if (right > nav.scrollLeft + nav.clientWidth) {
+            nav.scrollTo({ left: left, behavior: 'smooth' });
+          }
+        }
+      }
+    });
     this.dispatchEvent(
       new CustomEvent('nve-tab-change', {
         detail: panelName,
@@ -286,7 +308,6 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     this.tabs.forEach((tab) => {
       tab.size = this.size;
     });
-
     // hvis activeTab er null, sett den første fanen som aktiv
     if (!this.activeTab) {
       const firstTabPanelId = this.tabs.length > 0 ? this.tabs[0].panel : null;
