@@ -170,22 +170,22 @@ export default class NveTabGroup extends LitElement implements INveComponent {
     if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {
       const activeTab = this.tabs.find((t) => t === tab);
       if (!activeTab) return;
-      const currentIdx = this.tabs.indexOf(activeTab);
       let nextTab: NveTab | undefined;
-
+      const notDisabledTabs = this.tabs.filter((t) => !t.disabled);
+      const currentIdx = notDisabledTabs.indexOf(activeTab);
       if (event.key === 'ArrowLeft') {
-        nextTab = currentIdx > 0 ? this.tabs[currentIdx - 1] : this.tabs[this.tabs.length - 1];
+        nextTab = currentIdx > 0 ? notDisabledTabs[currentIdx - 1] : notDisabledTabs[notDisabledTabs.length - 1];
       }
       if (event.key === 'ArrowRight') {
-        nextTab = currentIdx < this.tabs.length - 1 ? this.tabs[currentIdx + 1] : this.tabs[0];
+        nextTab = currentIdx < notDisabledTabs.length - 1 ? notDisabledTabs[currentIdx + 1] : notDisabledTabs[0];
       }
 
       if (event.key === 'Home') {
-        nextTab = this.tabs[0];
+        nextTab = notDisabledTabs[0];
       }
 
       if (event.key === 'End') {
-        nextTab = this.tabs[this.tabs.length - 1];
+        nextTab = notDisabledTabs[notDisabledTabs.length - 1];
       }
 
       if (nextTab) {

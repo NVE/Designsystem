@@ -171,10 +171,15 @@ Man kan ha tilfeller hvor man ønsker at en fane er synlig, men ikke klikkbar. D
   <nve-tab slot="nav" panel="panel-1">Fane 1</nve-tab>
   <nve-tab slot="nav" panel="panel-2" disabled>Fane 2</nve-tab>
   <nve-tab slot="nav" panel="panel-3">Fane 3</nve-tab>
+  <nve-tab slot="nav" panel="panel-4">Fane 4</nve-tab>
+  <nve-tab slot="nav" panel="panel-5">Fane 5</nve-tab><nve-tab slot="nav" panel="panel-6" disabled>Fane 6</nve-tab>
 
   <nve-tab-panel name="panel-1">Dette er innholdspanel for fane 1</nve-tab-panel>
   <nve-tab-panel name="panel-2">Dette er innholdspanel for fane 2</nve-tab-panel>
   <nve-tab-panel name="panel-3">Dette er innholdspanel for fane 3</nve-tab-panel>
+  <nve-tab-panel name="panel-4">Dette er innholdspanel for fane 4</nve-tab-panel>
+  <nve-tab-panel name="panel-5">Dette er innholdspanel for fane 5</nve-tab-panel>
+  <nve-tab-panel name="panel-6">Dette er innholdspanel for fane 6</nve-tab-panel>
 </nve-tab-group>
 ```
 
