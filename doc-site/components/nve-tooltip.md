@@ -124,15 +124,18 @@ Du kan også bruke ulike `trigger` for å si når tooltip skal åpnes
 
 ### Innhold i tooltip
 
-Du kan bruke `content`-sporet dersom du vil ha mer enn enkel tekst i tooltip
+Du kan bruke `content`-slotten dersom du vil ha mer enn enkel tekst i tooltip. Innholdet kan være HTML og bør være kort og lett å lese. Tooltipen må ikke inneholde interaktive elementer som knapper, lenker eller liknende.
 
 <CodeExamplePreview container-items-align="start">
 
 ```html
 <nve-tooltip trigger="click" placement="bottom">
   <div slot="content" style="display:flex; align-items: center; gap: 8px; justify-content: flex-start;">
-    <nve-icon style="font-size:24px;" name="info"></nve-icon>
-    <div style="max-width: 12ch;">Tooltip med ikon og tekst</div>
+    <nve-icon name="info"></nve-icon>
+    <div>
+      Dette er et <em>eksempel</em> på en tooltip med HTML. <br />
+      Teksten kan inneholde <u>linjeskift</u> for <strong>bedre</strong> lesbarhet! <br />
+    </div>
   </div>
   <nve-button>Klikk for å åpne</nve-button>
 </nve-tooltip>
