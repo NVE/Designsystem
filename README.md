@@ -47,10 +47,10 @@ Vi har innført **Conventional Commits**-standarden i vårt prosjekt for å auto
   - `chore`: Oppgaver som ikke endrer kode (f.eks. oppdatering av verktøy)
   - `docs`: Endringer i dokumentasjon
 
-- **scope** (valgfritt): Beskriver hvor i prosjektet endringen er gjort. Eksempler:
+- **scope** (valgfritt): Beskriver hvor i prosjektet endringen er gjort. Denne kommer på starten av linjen i Changelog, så bør alltid være med. Eksempler:
 
-  - `auth`: Endringer relatert til autentisering
-  - `ui`: Endringer i brukergrensesnittet
+  - `nve-button`: Endringer relatert til den spesifikke komponenten. Denne versjonen er som regel foretrukket
+  - `tokens`: Dersom tokens er oppdatert
 
 - **beskrivelse**: En kortfattet, imperativ beskrivelse av hva endringen gjør. Den skal være på én linje og beskrive hva koden gjør etter endringen. For eksempel: "Legg til validering for e-postadresse."
 
