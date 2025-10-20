@@ -1,3 +1,10 @@
+## [2.13.3](https://github.com/NVE/Designsystem/compare/v2.13.2...v2.13.3) (2025-10-20)
+
+
+### Bug Fixes
+
+* **nve-link-card:** Justerte størrelse på nve-link-card. Fikset også border-radius ([#661](https://github.com/NVE/Designsystem/issues/661)) ([037f712](https://github.com/NVE/Designsystem/commit/037f7126fc92bc7312e38b7f8d8de05d535dfefb))
+
 ## [2.13.2](https://github.com/NVE/Designsystem/compare/v2.13.1...v2.13.2) (2025-10-16)
 
 
