@@ -47,7 +47,7 @@ Vi har innført **Conventional Commits**-standarden i vårt prosjekt for å auto
   - `chore`: Oppgaver som ikke endrer kode (f.eks. oppdatering av verktøy)
   - `docs`: Endringer i dokumentasjon
 
-- **scope** (valgfritt): Beskriver hvor i prosjektet endringen er gjort. Denne kommer med i Changelog, så bør alltid være med. Eksempler:
+- **scope** (valgfritt): Beskriver hvor i prosjektet endringen er gjort. Denne kommer på starten av linjen i Changelog, så bør alltid være med. Eksempler:
 
   - `auth`: Endringer relatert til autentisering
   - `ui`: Endringer i brukergrensesnittet
