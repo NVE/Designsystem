@@ -1,3 +1,10 @@
+## [2.13.4](https://github.com/NVE/Designsystem/compare/v2.13.3...v2.13.4) (2025-10-20)
+
+
+### Bug Fixes
+
+* **nve-message-card:** label-tekst kan nå gå over flere linjer så en kan se hele teksten om den er lenger enn bredden på kortet. ([#665](https://github.com/NVE/Designsystem/issues/665)) ([0b2dfcc](https://github.com/NVE/Designsystem/commit/0b2dfccfdc7ca243deb7db7654c8110ee8743dbb))
+
 ## [2.13.3](https://github.com/NVE/Designsystem/compare/v2.13.2...v2.13.3) (2025-10-20)
 
 
