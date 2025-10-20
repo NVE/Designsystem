@@ -30,7 +30,7 @@ Applikasjonen er selve brukerveiledninga for komponentbiblioteket, så her ligge
 
 ## Pull requests
 
-Ikke push endringer direkte i `main`. Lag en pull request.
+Ikke push endringer direkte i `main`. Lag en pull request. Når du oppretter en pull request så skal du da også koble GitHub-issue ved å velge den under "Development" i høyre-kolonnen. Da blir issue lukket når Pull Requesten godkjennes.
 
 ### Conventional Commits
 
