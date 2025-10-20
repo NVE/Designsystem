@@ -114,17 +114,37 @@ Vi bruker nve-button med text-variant som skrollknapper. Siden denne varianten i
 
 ### Bestemme aktiv fane på forhånd
 
-`activeTab`-attributtet bestemmer hvilken fane som er aktiv ved oppstart. Hvis den ikke er satt, blir den første fanen aktiv.
+`activeTab`-attributtet bestemmer hvilken fane som er aktiv ved oppstart. Hvis den ikke er satt, blir den første fanen aktiv. Vi scroller automatisk slik at aktiv fane er synlig.
 
 <CodeExamplePreview>
 
 ```html
-<nve-tab-group activeTab="panel-2">
+<nve-tab-group activeTab="panel-10">
   <nve-tab slot="nav" panel="panel-1">Fane 1</nve-tab>
   <nve-tab slot="nav" panel="panel-2">Fane 2</nve-tab>
+  <nve-tab slot="nav" panel="panel-3">Fane 3</nve-tab>
+  <nve-tab slot="nav" panel="panel-4">Fane 4</nve-tab>
+  <nve-tab slot="nav" panel="panel-5">Fane 5</nve-tab>
+  <nve-tab slot="nav" panel="panel-6">Fane 6</nve-tab>
+  <nve-tab slot="nav" panel="panel-7">Fane 7</nve-tab>
+  <nve-tab slot="nav" panel="panel-8">Fane 8</nve-tab>
+  <nve-tab slot="nav" panel="panel-9">Fane 9</nve-tab>
+  <nve-tab slot="nav" panel="panel-10">Fane 10</nve-tab>
+  <nve-tab slot="nav" panel="panel-11">Fane 11</nve-tab>
+  <nve-tab slot="nav" panel="panel-12">Fane 12</nve-tab>
 
   <nve-tab-panel name="panel-1">Dette er innholdspanel for fane 1</nve-tab-panel>
   <nve-tab-panel name="panel-2">Dette er innholdspanel for fane 2</nve-tab-panel>
+  <nve-tab-panel name="panel-3">Dette er innholdspanel for fane 3</nve-tab-panel>
+  <nve-tab-panel name="panel-4">Dette er innholdspanel for fane 4</nve-tab-panel>
+  <nve-tab-panel name="panel-5">Dette er innholdspanel for fane 5</nve-tab-panel>
+  <nve-tab-panel name="panel-6">Dette er innholdspanel for fane 6</nve-tab-panel>
+  <nve-tab-panel name="panel-7">Dette er innholdspanel for fane 7</nve-tab-panel>
+  <nve-tab-panel name="panel-8">Dette er innholdspanel for fane 8</nve-tab-panel>
+  <nve-tab-panel name="panel-9">Dette er innholdspanel for fane 9</nve-tab-panel>
+  <nve-tab-panel name="panel-10">Dette er innholdspanel for fane 10</nve-tab-panel>
+  <nve-tab-panel name="panel-11">Dette er innholdspanel for fane 11</nve-tab-panel>
+  <nve-tab-panel name="panel-12">Dette er innholdspanel for fane 12</nve-tab-panel>
 </nve-tab-group>
 ```
 
@@ -160,9 +180,9 @@ Hvis fanegruppe har en synlig ledetekst som beskriver hva gruppe inneholder er d
 
 </CodeExamplePreview>
 
-### Fane som er disabled
+### Fane som er deaktivert
 
-Man kan ha tilfeller hvor man ønsker at en fane er synlig, men ikke klikkbar. Dette gjør man ved å sette `disabled` på den aktuelle fanen
+Man kan ha tilfeller hvor man ønsker at en fane er synlig, men ikke klikkbar. Dette gjør man ved å sette `disabled` på den aktuelle fanen. Men merk at dette kan være utfordrende WCAG-messig, se kommentar under.
 
 <CodeExamplePreview>
 
