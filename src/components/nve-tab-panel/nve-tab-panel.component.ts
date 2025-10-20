@@ -39,7 +39,7 @@ export default class NveTabPanel extends LitElement implements INveComponent {
 
   render() {
     this.id = this.id.length > 0 ? this.id : this.componentId;
-    return html`<div class="tab-panel" part="base">
+    return html`<div class="tab-panel" part="base" role="tabpanel">
       <slot></slot>
     </div> `;
   }

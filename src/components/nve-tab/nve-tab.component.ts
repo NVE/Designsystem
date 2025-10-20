@@ -49,6 +49,7 @@ export default class NveTab extends LitElement implements INveComponent {
       <div
         part="base"
         aria-disabled=${this.disabled ? 'true' : 'false'}
+        role="tab"
         disabled=${this.disabled ? 'true' : 'false'}
         class=${classMap({ tab: true, 'tab--large': this.size === 'large', 'tab--background': this.background })}
       >
