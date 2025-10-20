@@ -1,7 +1,7 @@
 import { css } from 'lit';
 export default css`
   .link-card {
-    border-radius: var(--borderRadius-large, 6px);
+    border-radius: var(--border-radius-small);
     padding: var(--spacing-medium, 16px) var(--spacing-large, 24px);
     transition: background 0.3s ease;
     border: 2px solid transparent;
@@ -37,16 +37,18 @@ export default css`
   }
 
   .link-card--small {
-    min-height: 40px;
-    padding: var(--spacing-small, 12px) var(--spacing-medium, 16px);
+    padding: var(--spacing-small) var(--spacing-medium) var(--spacing-small) var(--spacing-medium);
+    min-height: var(--sizing-2x-small);
   }
 
   .link-card--medium {
-    min-height: 60px;
+    padding: var(--spacing-medium) var(--spacing-medium) var(--spacing-medium) var(--spacing-large);
+    min-height: var(--sizing-2x-small);
   }
 
   .link-card--large {
-    min-height: 70px;
+    padding: var(--spacing-medium) var(--spacing-medium) var(--spacing-medium) var(--spacing-large);
+    min-height: var(--sizing-x-small);
   }
 
   .link-card__label {
@@ -112,7 +114,6 @@ export default css`
   }
 
   .link-card--secondary:hover {
-    border-radius: var(--borderRadius-large, 6px);
     border: 2px solid var(--neutrals-foreground-primary, #0d0d0e);
   }
 
