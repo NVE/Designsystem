@@ -432,7 +432,6 @@ export default class NveTabGroup extends LitElement implements INveComponent {
       >
         <div class="tab-group__nav-container">
           <div
-            role="tablist"
             part="nav"
             class=${classMap({ 'tab-group__nav': true, 'tab-group__nav--background': this.isBackground })}
           >
