@@ -96,4 +96,8 @@ export default css`
     gap: var(--spacing-xx-small);
     margin-inline-start: unset;
   }
+
+  :host::part(clear-button) {
+    font-size: var(--font-size-medium);
+  }
 `;
