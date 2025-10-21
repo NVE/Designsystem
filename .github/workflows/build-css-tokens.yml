@@ -1,0 +1,26 @@
+name: Bygg tokens ved PR-endringer
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'tokens/**'
+
+jobs:
+  build_tokens:
+    runs-on: ubuntu-latest
+    name: Bygg tokens ved endring i tokens-mappen
+    steps:
+      - name: Hent kode fra Github
+        uses: actions/checkout@v4
+
+      - name: Klargjør Node.js-miljø
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Installer avhengigheter
+        run: npm install
+
+      - name: Bygg tokens
+        run: npm run tokenbuild
