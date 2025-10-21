@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Hent kode fra Github
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
 
       - name: Klargjør Node.js-miljø
         uses: actions/setup-node@v4
@@ -33,4 +36,4 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git diff --cached --quiet || git commit -m "(tokens): oppdatert css basert på nye tokens"
-          git push
+          git push origin HEAD:${{ github.head_ref }}
