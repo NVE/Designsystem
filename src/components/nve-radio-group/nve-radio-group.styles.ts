@@ -30,6 +30,16 @@ export default css`
     color: var(--feedback-background-emphasized-error);
   }
 
+  :host([data-disabled]) {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  :host([data-disabled]) ::slotted(*) {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
   :host::part(form-control-input) {
     align-items: flex-start;
   }

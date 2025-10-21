@@ -104,18 +104,17 @@ Du kan også sette `value` selv.
 
 ### Deaktivering
 
-Bruk `disabled` for å deaktivere hele gruppa.
-TODO: Dette virker ikke, må fikses. Men du kan deaktivere enkelt-elementer i gruppa.
+Bruk `disabled` for deaktivering. Dette gjelder for enkelt-elementer og for hele radiogruppen.
 
 <CodeExamplePreview>
 
 ```html
-<nve-radio-group label="disabled" disabled>
-  <nve-radio value="valg1">1</nve-radio>
+<nve-radio-group label="Gruppe hvor én knapp er deaktivert">
+  <nve-radio value="valg1" disabled>1</nve-radio>
   <nve-radio value="valg2">2</nve-radio>
 </nve-radio-group>
 
-<nve-radio-group label="enabled">
+<nve-radio-group label="Gruppe som er helt deaktivert" disabled>
   <nve-radio value="valg1">1</nve-radio>
   <nve-radio value="valg2">2</nve-radio>
 </nve-radio-group>

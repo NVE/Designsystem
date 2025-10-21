@@ -12,7 +12,7 @@ import { PropertyValues } from 'lit';
 /**
  * Brukes til å gruppere radioknapper som hører sammen. Den kan inneholde både nve-radio og nve-radio-button.
  * Pass på at nve-radio eller nva-radio-button har en value, ellers vil ikke radiogruppa fungere som forventet.
- * 
+ *
  * @extends SlRadioGroup
  *
  * @dependency NveRadioButton, NveRadio
@@ -54,7 +54,7 @@ export default class NveRadioGroup extends SlRadioGroup {
    * Hjelpevariabel som sjekker om radio gruppe er allerede invalid
    */
 
-  @property({reflect: true, type: String}) testId: string = '';
+  @property({ reflect: true, type: String }) testId: string = '';
 
   @state() private alreadyInvalid = false;
   /**
@@ -63,13 +63,25 @@ export default class NveRadioGroup extends SlRadioGroup {
    * overskriver NveRadioGroup errorMessage prop når sl-input trigges, derfor må vi lagre den i staten når komponenten renderes første gang.
    */
   @state() private errorMessageCopy = '';
-  
 
   /* overvåker og setter disabled på under-radio-elementer når disabled endres */
-  @watch('disabled')
+
+  private preventInteraction = (event: Event) => {
+    if (this.disabled) {
+      event.stopImmediatePropagation();
+      event.preventDefault();
+    }
+  };
+
   connectedCallback() {
     super.connectedCallback();
     this.errorMessageCopy = this.errorMessage || '';
+
+    this.addEventListener('click', this.preventInteraction, true);
+    this.addEventListener('keydown', this.preventInteraction, true);
+    this.addEventListener('focus', this.preventInteraction, true);
+    this.addEventListener('mousedown', this.preventInteraction, true);
+
     this.addEventListener('sl-invalid', (e) => {
       // vi vil ikke at nettleseren viser feil meldingen til oss
       e.preventDefault();
@@ -82,6 +94,11 @@ export default class NveRadioGroup extends SlRadioGroup {
 
   disconnectedCallback() {
     super.disconnectedCallback();
+
+    this.removeEventListener('click', this.preventInteraction, true);
+    this.removeEventListener('keydown', this.preventInteraction, true);
+    this.removeEventListener('focus', this.preventInteraction, true);
+    this.removeEventListener('mousedown', this.preventInteraction, true);
     this.removeEventListener('sl-invalid', this.makeInvalid);
     this.removeEventListener('sl-change', this.resetValidation);
   }
@@ -100,32 +117,53 @@ export default class NveRadioGroup extends SlRadioGroup {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handlePropChange(oldValue: any, newValue: any): boolean {
+  @watch('disabled')
+  handlePropChange(oldValue: unknown, newValue: unknown): void {
     const radios = this.getAllRadios();
     const changed = newValue !== oldValue;
 
-    if (!changed) return false;
+    if (!changed) return;
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    radios.forEach((radio: any) => {
+    radios.forEach((radio: HTMLElement & { was_disabled?: boolean; disabled?: boolean }) => {
       if (radio.was_disabled === undefined) {
         radio.was_disabled = radio.disabled;
       } else {
         if (oldValue === true) {
-          // enabled
           radio.disabled = radio.was_disabled;
+          radio.tabIndex = 0;
+          radio.removeAttribute('aria-disabled');
+          radio.removeAttribute('data-disabled');
         } else {
-          // disabled
           radio.was_disabled = radio.disabled;
           radio.disabled = true;
+          radio.tabIndex = -1;
+          radio.setAttribute('aria-disabled', 'true');
+          radio.setAttribute('data-disabled', 'true');
         }
       }
     });
-    return true;
+
+    if (newValue) {
+      this.setAttribute('data-disabled', 'true');
+      this.setAttribute('aria-disabled', 'true');
+      this.tabIndex = -1;
+      this.addEventListener('click', this.preventInteraction, true);
+      this.addEventListener('keydown', this.preventInteraction, true);
+      this.addEventListener('focus', this.preventInteraction, true);
+      this.addEventListener('mousedown', this.preventInteraction, true);
+    } else {
+      this.removeAttribute('data-disabled');
+      this.removeAttribute('aria-disabled');
+      this.tabIndex = 0;
+      this.removeEventListener('click', this.preventInteraction, true);
+      this.removeEventListener('keydown', this.preventInteraction, true);
+      this.removeEventListener('focus', this.preventInteraction, true);
+      this.removeEventListener('mousedown', this.preventInteraction, true);
+    }
   }
 
   private makeInvalid() {
+    if (this.disabled) return;
     const nveRadios = this.getAllRadios();
     // toggler 'data-invalid' attribute på alle radio komponenter for å få riktig style
     toggleBooleanAttrOnListOfNodes(nveRadios, true, 'data-invalid');
@@ -137,6 +175,7 @@ export default class NveRadioGroup extends SlRadioGroup {
   }
 
   private resetValidation() {
+    if (this.disabled) return;
     const nveRadios = this.getAllRadios();
     this.errorMessageCopy = '';
     // toggler 'invalid' attribute på alle radio komponenter for å få riktig style
@@ -157,14 +196,14 @@ export default class NveRadioGroup extends SlRadioGroup {
   };
 
   // TODO: Sjekk generert API-dokumentasjon, ser ut som koden blir vist i dokumentasjonen
-// @ts-expect-error: overskriving av privat metode i superklassen (SlRadioGroup)
-private handleRadioClick = function (event) {
+  // @ts-expect-error: overskriving av privat metode i superklassen (SlRadioGroup)
+  private handleRadioClick = function (event) {
     // Lagt til nve-radio og nve-radio-button
     const target = event.target.closest('sl-radio, sl-radio-button, nve-radio, nve-radio-button');
-  // @ts-expect-error: bruker privat metode i superklassen (getAllRadios)
-  const radios = this.getAllRadios();
-  // @ts-expect-error: tilgang til privat egenskap this.value i superklassen
-  const oldValue = this.value;
+    // @ts-expect-error: bruker privat metode i superklassen (getAllRadios)
+    const radios = this.getAllRadios();
+    // @ts-expect-error: tilgang til privat egenskap this.value i superklassen
+    const oldValue = this.value;
     if (!target || target.disabled) {
       return;
     }
@@ -173,39 +212,40 @@ private handleRadioClick = function (event) {
     if (controls.length > 0) {
       controls[0].focus();
     }
-  // @ts-expect-error: setter privat egenskap this.value i superklassen
-  this.value = target.value;
+    // @ts-expect-error: setter privat egenskap this.value i superklassen
+    this.value = target.value;
     radios.forEach((radio: { checked: boolean }) => (radio.checked = radio === target));
-  // @ts-expect-error: tilgang til privat metode emit i superklassen
-  if (this.value !== oldValue) {
-    // @ts-expect-error: kaller privat metode emit i superklassen
-    this.emit('sl-change');
-    // @ts-expect-error: kaller privat metode emit i superklassen
-    this.emit('sl-input');
+    // @ts-expect-error: tilgang til privat metode emit i superklassen
+    if (this.value !== oldValue) {
+      // @ts-expect-error: kaller privat metode emit i superklassen
+      this.emit('sl-change');
+      // @ts-expect-error: kaller privat metode emit i superklassen
+      this.emit('sl-input');
     }
   };
 
-// @ts-expect-error: overskriver og utvider privat metode fra SlRadioGroup
-private syncRadioElements = async  () => {
-  const radios = this.getAllRadios();
+  // @ts-expect-error: overskriver og utvider privat metode fra SlRadioGroup
+  private syncRadioElements = async () => {
+    const radios = this.getAllRadios();
 
     await Promise.all(
       // Sync the checked state and size
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       radios.map(async (radio: { updateComplete: any; checked: boolean; value: any; size: any }) => {
         await radio.updateComplete;
-      radio.checked = radio.value === this.value;
-      radio.size = this.size;
+        radio.checked = radio.value === this.value;
+        radio.size = this.size;
       })
     );
 
     // lagt til nve-radio-button
-  // @ts-expect-error: bruker privat egenskap hasButtonGroup
-  this.hasButtonGroup = radios.some(
-      (radio: { tagName: string; }) => radio.tagName.toLowerCase() === 'sl-radio-button' || radio.tagName.toLowerCase() === 'nve-radio-button'
+    // @ts-expect-error: bruker privat egenskap hasButtonGroup
+    this.hasButtonGroup = radios.some(
+      (radio: { tagName: string }) =>
+        radio.tagName.toLowerCase() === 'sl-radio-button' || radio.tagName.toLowerCase() === 'nve-radio-button'
     );
 
-  if (!radios.some((radio: { checked: boolean }) => radio.checked)) {
+    if (!radios.some((radio: { checked: boolean }) => radio.checked)) {
       // @ts-expect-error: bruker privat egenskap hasButtonGroup
       if (this.hasButtonGroup) {
         const buttonRadio = radios[0].shadowRoot?.querySelector('button');
@@ -218,11 +258,11 @@ private syncRadioElements = async  () => {
       }
     }
 
-  // @ts-expect-error: tilgang til privat egenskap hasButtonGroup
-  if (this.hasButtonGroup) {
+    // @ts-expect-error: tilgang til privat egenskap hasButtonGroup
+    if (this.hasButtonGroup) {
       // lagt til nve-button-group
       const buttonGroup =
-      this.shadowRoot?.querySelector('sl-button-group') || this.shadowRoot?.querySelector('nve-button-group');
+        this.shadowRoot?.querySelector('sl-button-group') || this.shadowRoot?.querySelector('nve-button-group');
 
       if (buttonGroup) {
         buttonGroup.disableRole = true;
@@ -230,37 +270,37 @@ private syncRadioElements = async  () => {
     }
   };
 
-// @ts-expect-error: utvider privat metode fra superklassen for å støtte egne elementer
-private syncRadios = function () {
+  // @ts-expect-error: utvider privat metode fra superklassen for å støtte egne elementer
+  private syncRadios = function () {
     if (
       (customElements.get('sl-radio') && customElements.get('sl-radio-button')) ||
       // lagt til nve-radio og nve-radio-button
       (customElements.get('nve-radio') && customElements.get('nve-radio-button'))
     ) {
-    // @ts-expect-error: kaller privat metode
-    this.syncRadioElements();
+      // @ts-expect-error: kaller privat metode
+      this.syncRadioElements();
       return;
     }
 
     if (customElements.get('sl-radio') || customElements.get('nve-radio')) {
-    // @ts-expect-error: kaller privat metode
-    this.syncRadioElements();
+      // @ts-expect-error: kaller privat metode
+      this.syncRadioElements();
     } else {
-    // @ts-expect-error: definerer callback for privat metode
-    customElements.whenDefined('sl-radio').then(() => this.syncRadios());
+      // @ts-expect-error: definerer callback for privat metode
+      customElements.whenDefined('sl-radio').then(() => this.syncRadios());
     }
 
     // lagt til nve-radio-button
     if (customElements.get('sl-radio-button') || customElements.get('nve-radio-button')) {
-    // @ts-expect-error: kaller privat metode
-    this.syncRadioElements();
+      // @ts-expect-error: kaller privat metode
+      this.syncRadioElements();
     } else {
       // Rerun this handler when <sl-radio> or <sl-radio-button> is registered
-    // @ts-expect-error: definerer callback for privat metode
-    customElements.whenDefined('sl-radio-button').then(() => this.syncRadios());
+      // @ts-expect-error: definerer callback for privat metode
+      customElements.whenDefined('sl-radio-button').then(() => this.syncRadios());
       // lagt til nve-radio-button
-    // @ts-expect-error: definerer callback for privat metode
-    customElements.whenDefined('nve-radio-button').then(() => this.syncRadios());
+      // @ts-expect-error: definerer callback for privat metode
+      customElements.whenDefined('nve-radio-button').then(() => this.syncRadios());
     }
   };
 }
