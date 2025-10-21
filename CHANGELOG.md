@@ -1,3 +1,10 @@
+# [2.14.0](https://github.com/NVE/Designsystem/compare/v2.13.4...v2.14.0) (2025-10-21)
+
+
+### Features
+
+* **nve-tab-group:** Scroll til aktiv fane ([#664](https://github.com/NVE/Designsystem/issues/664)) ([c491823](https://github.com/NVE/Designsystem/commit/c4918239e0bc5051229d74d37c25ea7b745743e8))
+
 ## [2.13.4](https://github.com/NVE/Designsystem/compare/v2.13.3...v2.13.4) (2025-10-20)
 
 
