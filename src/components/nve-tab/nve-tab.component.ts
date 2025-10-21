@@ -24,6 +24,8 @@ export default class NveTab extends LitElement implements INveComponent {
   @property({ type: String }) size: 'large' | 'small' = 'large';
   /** Om fanen skal ha bakgrunn */
   @property({ type: Boolean }) background: boolean = false;
+  /** Faner kan være disabled */
+  @property({ type: Boolean, reflect: true }) disabled: boolean = false;
 
   /** @internal */
   private readonly attrId = ++id;
@@ -46,6 +48,8 @@ export default class NveTab extends LitElement implements INveComponent {
     return html`
       <div
         part="base"
+        aria-disabled=${this.disabled ? 'true' : 'false'}
+        disabled=${this.disabled ? 'true' : 'false'}
         class=${classMap({ tab: true, 'tab--large': this.size === 'large', 'tab--background': this.background })}
       >
         <slot name="prefix"></slot>
