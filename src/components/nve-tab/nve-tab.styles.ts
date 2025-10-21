@@ -73,4 +73,12 @@ export default css`
     font: var(--label-medium-light);
     color: var(--neutrals-foreground-muted);
   }
+  :host([disabled]) .tab {
+    cursor: not-allowed;
+    color: var(--neutrals-foreground-disabled);
+    opacity: var(--opacity-disabled);
+  }
+  :host([disabled]) .tab:hover {
+    border-bottom: var(--border-bottom) solid var(--neutrals-border-subtle);
+  }
 `;

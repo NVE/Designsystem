@@ -114,17 +114,37 @@ Vi bruker nve-button med text-variant som skrollknapper. Siden denne varianten i
 
 ### Bestemme aktiv fane på forhånd
 
-`activeTab`-attributtet bestemmer hvilken fane som er aktiv ved oppstart. Hvis den ikke er satt, blir den første fanen aktiv.
+`activeTab`-attributtet bestemmer hvilken fane som er aktiv ved oppstart. Hvis den ikke er satt, blir den første fanen aktiv. Vi scroller automatisk slik at aktiv fane er synlig.
 
 <CodeExamplePreview>
 
 ```html
-<nve-tab-group activeTab="panel-2">
+<nve-tab-group activeTab="panel-10">
   <nve-tab slot="nav" panel="panel-1">Fane 1</nve-tab>
   <nve-tab slot="nav" panel="panel-2">Fane 2</nve-tab>
+  <nve-tab slot="nav" panel="panel-3">Fane 3</nve-tab>
+  <nve-tab slot="nav" panel="panel-4">Fane 4</nve-tab>
+  <nve-tab slot="nav" panel="panel-5">Fane 5</nve-tab>
+  <nve-tab slot="nav" panel="panel-6">Fane 6</nve-tab>
+  <nve-tab slot="nav" panel="panel-7">Fane 7</nve-tab>
+  <nve-tab slot="nav" panel="panel-8">Fane 8</nve-tab>
+  <nve-tab slot="nav" panel="panel-9">Fane 9</nve-tab>
+  <nve-tab slot="nav" panel="panel-10">Fane 10</nve-tab>
+  <nve-tab slot="nav" panel="panel-11">Fane 11</nve-tab>
+  <nve-tab slot="nav" panel="panel-12">Fane 12</nve-tab>
 
   <nve-tab-panel name="panel-1">Dette er innholdspanel for fane 1</nve-tab-panel>
   <nve-tab-panel name="panel-2">Dette er innholdspanel for fane 2</nve-tab-panel>
+  <nve-tab-panel name="panel-3">Dette er innholdspanel for fane 3</nve-tab-panel>
+  <nve-tab-panel name="panel-4">Dette er innholdspanel for fane 4</nve-tab-panel>
+  <nve-tab-panel name="panel-5">Dette er innholdspanel for fane 5</nve-tab-panel>
+  <nve-tab-panel name="panel-6">Dette er innholdspanel for fane 6</nve-tab-panel>
+  <nve-tab-panel name="panel-7">Dette er innholdspanel for fane 7</nve-tab-panel>
+  <nve-tab-panel name="panel-8">Dette er innholdspanel for fane 8</nve-tab-panel>
+  <nve-tab-panel name="panel-9">Dette er innholdspanel for fane 9</nve-tab-panel>
+  <nve-tab-panel name="panel-10">Dette er innholdspanel for fane 10</nve-tab-panel>
+  <nve-tab-panel name="panel-11">Dette er innholdspanel for fane 11</nve-tab-panel>
+  <nve-tab-panel name="panel-12">Dette er innholdspanel for fane 12</nve-tab-panel>
 </nve-tab-group>
 ```
 
@@ -156,6 +176,31 @@ Hvis fanegruppe har en synlig ledetekst som beskriver hva gruppe inneholder er d
     >
   </nve-tab-group>
 </div>
+```
+
+</CodeExamplePreview>
+
+### Fane som er deaktivert
+
+Man kan ha tilfeller hvor man ønsker at en fane er synlig, men ikke klikkbar. Dette gjør man ved å sette `disabled` på den aktuelle fanen. Men merk at dette kan være utfordrende WCAG-messig, se kommentar under.
+
+<CodeExamplePreview>
+
+```html
+<nve-tab-group>
+  <nve-tab slot="nav" panel="panel-1">Fane 1</nve-tab>
+  <nve-tab slot="nav" panel="panel-2" disabled>Fane 2</nve-tab>
+  <nve-tab slot="nav" panel="panel-3">Fane 3</nve-tab>
+  <nve-tab slot="nav" panel="panel-4">Fane 4</nve-tab>
+  <nve-tab slot="nav" panel="panel-5">Fane 5</nve-tab><nve-tab slot="nav" panel="panel-6" disabled>Fane 6</nve-tab>
+
+  <nve-tab-panel name="panel-1">Dette er innholdspanel for fane 1</nve-tab-panel>
+  <nve-tab-panel name="panel-2">Dette er innholdspanel for fane 2</nve-tab-panel>
+  <nve-tab-panel name="panel-3">Dette er innholdspanel for fane 3</nve-tab-panel>
+  <nve-tab-panel name="panel-4">Dette er innholdspanel for fane 4</nve-tab-panel>
+  <nve-tab-panel name="panel-5">Dette er innholdspanel for fane 5</nve-tab-panel>
+  <nve-tab-panel name="panel-6">Dette er innholdspanel for fane 6</nve-tab-panel>
+</nve-tab-group>
 ```
 
 </CodeExamplePreview>
@@ -249,6 +294,10 @@ Komponenten tar hensyn til brukerens preferanser for redusert bevegelse ved å r
 
 Det er bevisst valgt ikke å aktivere faner automatisk når man navigerer mellom dem med tastatur. Dette valget er tatt for å unngå utilsiktet bruk som kan gå utover tilgjengelighet og brukeropplevelse. Les gjerne mer [her](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_selection_follows_focus) for utdyping. Dersom det likevel er et sterkt behov for slik funksjonalitet, kan det vurderes å introdusere en egenskap for å støtte dette.
 
-Det er bevisst valgt å ikke bruke `disabled`-faner i komponenten. Begrunnelsen er at deaktiverte faner ikke gir brukeren tilstrekkelig informasjon om hvorfor fanen ikke er tilgjengelig. Deaktiverte elementer kan ikke motta fokus, noe som medfører at skjermlesere ofte hopper over disse, slik at brukere aldri blir oppmerksomme på deres eksistens. I tillegg kan det for enkelte brukere være uklart at en fane er deaktivert, noe som kan føre til frustrasjon dersom de forsøker å aktivere fanen uten respons.
+Selv om det er støttet, så bør man sterkt vurdere å ikke bruke `disabled`-faner i komponenten. Begrunnelsen er at deaktiverte faner ikke gir brukeren tilstrekkelig informasjon om hvorfor fanen ikke er tilgjengelig. Deaktiverte elementer kan ikke motta fokus, noe som medfører at skjermlesere ofte hopper over disse, slik at brukere aldri blir oppmerksomme på deres eksistens. I tillegg kan det for enkelte brukere være uklart at en fane er deaktivert, noe som kan føre til frustrasjon dersom de forsøker å aktivere fanen uten respons.
 <nve-message-card label="Tips!" size="compact">
 Vi anbefaler derfor at alle faner holdes aktiverte. Dersom en fane ikke skal vise innhold — eller det foreligger annen grunn til at en fane ikke skal kunne brukes — er det bedre å la fanen være aktiv, men vise en tydelig melding i det tilhørende innholdspanelet som forklarer situasjonen for brukeren.</nve-message-card>
+
+```
+
+```

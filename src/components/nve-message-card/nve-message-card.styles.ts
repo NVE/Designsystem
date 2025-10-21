@@ -44,11 +44,6 @@ export default css`
     padding: 2px 0;
     font: var(--header-small);
     line-height: 140%;
-    :is(span) {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
   }
 
   .message-card__body {

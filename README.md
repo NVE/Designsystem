@@ -30,7 +30,7 @@ Applikasjonen er selve brukerveiledninga for komponentbiblioteket, så her ligge
 
 ## Pull requests
 
-Ikke push endringer direkte i `main`. Lag en pull request.
+Ikke push endringer direkte i `main`. Lag en pull request. Når du oppretter en pull request så skal du da også koble GitHub-issue ved å velge den under "Development" i høyre-kolonnen. Da blir issue lukket når Pull Requesten godkjennes.
 
 ### Conventional Commits
 
@@ -47,10 +47,10 @@ Vi har innført **Conventional Commits**-standarden i vårt prosjekt for å auto
   - `chore`: Oppgaver som ikke endrer kode (f.eks. oppdatering av verktøy)
   - `docs`: Endringer i dokumentasjon
 
-- **scope** (valgfritt): Beskriver hvor i prosjektet endringen er gjort. Eksempler:
+- **scope** (valgfritt): Beskriver hvor i prosjektet endringen er gjort. Denne kommer på starten av linjen i Changelog, så bør alltid være med. Eksempler:
 
-  - `auth`: Endringer relatert til autentisering
-  - `ui`: Endringer i brukergrensesnittet
+  - `nve-button`: Endringer relatert til den spesifikke komponenten. Denne versjonen er som regel foretrukket
+  - `tokens`: Dersom tokens er oppdatert
 
 - **beskrivelse**: En kortfattet, imperativ beskrivelse av hva endringen gjør. Den skal være på én linje og beskrive hva koden gjør etter endringen. For eksempel: "Legg til validering for e-postadresse."
 
