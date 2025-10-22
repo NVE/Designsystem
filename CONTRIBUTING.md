@@ -1,6 +1,6 @@
 # 🌟 Retningslinjer for bidrag - NVE Designsystem
 
-Hei, og takk for at du vurderer å bidra til NVE Designsystem! 🙌 Vi setter stor pris på alle bidrag som hjelper oss med å gjøre prosjektet enda bedre. For å gjøre prosessen enklere og hyggelig for alle, ber vi deg følge retningslinjene nedenfor 💙
+Hei, og takk for at du vurderer å bidra til NVE Designsystem! Vi setter stor pris på alle bidrag som hjelper oss med å gjøre prosjektet enda bedre. For å gjøre prosessen enklere og hyggelig for alle, ber vi deg følge retningslinjene nedenfor.
 
 ## 🐛 Rapportere feil
 
@@ -356,7 +356,7 @@ Her er [bakgrunn for en del valg vi har gjort](design-beslutninger.md) underveis
 
 ## 💬 Kommunikasjon
 
-- Vær respektfull og inkluderende i all kommunikasjon. 🤝
+- Vær respektfull og inkluderende i all kommunikasjon.
 - Bruk issues og pull requests til å diskutere endringer.
 
 _Vi forventer at alle bidragsytere opptrer respektfullt og inkluderende, og at de bidrar til et trygt og hyggelig miljø for alle!_
@@ -371,8 +371,8 @@ Når du sender inn et bidrag, bekrefter du følgende:
 - Bidraget ditt er ditt eget arbeid, eller du har fått nødvendig tillatelse til å inkludere det i prosjektet.
 - Bidraget ditt overholder prosjektets lisensvilkår.
 
-Hvis du er usikker på noe, ikke nøl med å kontakte prosjektets vedlikeholdere før du sender inn bidraget. Vi hjelper deg gjerne! 😊
+Hvis du er usikker på noe, ikke nøl med å kontakte prosjektets vedlikeholdere før du sender inn bidraget. Vi hjelper deg gjerne!
 
 ---
 
-Takk for at du bidrar til NVE Designsystem 💙 Vi gleder oss til å jobbe sammen med deg!
+Takk for at du bidrar til NVE Designsystem 🥳 Vi gleder oss til å jobbe sammen med deg!

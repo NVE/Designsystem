@@ -5,7 +5,7 @@ Skal du kun <i>bruke</i> designsystemet, finner du dokumentasjon og kodeeksemple
 
 Har du lyst til å bidra? [Her finner du informasjon om hvordan du kan komme i gang som bidragsyter](CONTRIBUTING.md)
 
-Repositoryet inneholder css generert fra Figma-tokens i Designsystemet. [Her finner du pakka i npm](https://www.npmjs.com/package/nve-designsystem).
+Repositoriumet inneholder css generert fra Figma-tokens i Designsystemet. [Her finner du pakka i npm](https://www.npmjs.com/package/nve-designsystem).
 
 [Her](https://www.figma.com/files/1033298377581647627/project/85006605/Public---Designsystem?fuid=854992400462434435) er skisser i Figma.
 
