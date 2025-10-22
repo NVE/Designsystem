@@ -1,3 +1,13 @@
+## [2.14.1](https://github.com/NVE/Designsystem/compare/v2.14.0...v2.14.1) (2025-10-22)
+
+
+### Bug Fixes
+
+* **nve-select, nve-input:** Clear-ikonet var ikke i henhold til skisse ([#671](https://github.com/NVE/Designsystem/issues/671)) ([21ac482](https://github.com/NVE/Designsystem/commit/21ac482649a3da4cb9d280dab5d58d5809bdc1c5))
+* **token:** fikse pipeline syntaksen ([#673](https://github.com/NVE/Designsystem/issues/673)) ([46538e9](https://github.com/NVE/Designsystem/commit/46538e9dacf0bee2f59d830cc68cfdb1be181140))
+* **tokens:** kjøre tokenbuild script på en PR oppretting ([#672](https://github.com/NVE/Designsystem/issues/672)) ([1e5bd66](https://github.com/NVE/Designsystem/commit/1e5bd66ded483a47444a0474730d3eea244df6fb))
+* **tokens:** legge til branch i build-css-tokens pipelinen ([#675](https://github.com/NVE/Designsystem/issues/675)) ([b53885a](https://github.com/NVE/Designsystem/commit/b53885a539c97ef67b4494337723131848b6b390))
+
 # [2.14.0](https://github.com/NVE/Designsystem/compare/v2.13.4...v2.14.0) (2025-10-21)
 
 
