@@ -9,6 +9,7 @@ layout: component
 ```
 
 </CodeExamplePreview>
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="688" height="450" src="https://embed.figma.com/design/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?m=auto&node-id=4313-167925&embed-host=share" allowfullscreen></iframe>
 
 ## Eksempler
 
