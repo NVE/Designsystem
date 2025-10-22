@@ -8,6 +8,7 @@ Hei, og takk for at du vurderer å bidra til NVE Designsystem! 🙌 Vi setter st
 - Beskriv feilen tydelig, inkludert hvordan man kan reprodusere den.
 - Legg gjerne ved skjermbilder, feilmeldinger eller annen nyttig informasjon.
 - Har du tilgang til Figmaskisser, legg disse ved slik at vi enkelt kan finne det igjen (Gjelder om feilen er UI).
+- Merk feilen med passende labels: `bug` og `<komponent-navn>`
 
 ## 💡 Foreslå ny funksjonalitet
 
@@ -44,7 +45,7 @@ Vi setter reflect: true på alle properties i komponenter for å kunne se proper
 
 ### INveComponent
 
-Alle komponenter skal implementere INveComponent
+Alle komponenter skal implementere INveComponent interface.
 
 ### Eksport
 
@@ -148,7 +149,7 @@ Vi har innført **Conventional Commits**-standarden i vårt prosjekt for å auto
   - `chore`: Oppgaver som ikke endrer kode (f.eks. oppdatering av verktøy)
   - `docs`: Endringer i dokumentasjon
 
-- **scope** (valgfritt): Beskriver hvor i prosjektet endringen er gjort. Denne kommer på starten av linjen i Changelog, så bør alltid være med. Eksempler:
+- **scope**: Beskriver hvor i prosjektet endringen er gjort. Denne kommer på starten av linjen i Changelog, så bør alltid være med. Eksempler:
   - `nve-button`: Endringer relatert til den spesifikke komponenten. Denne versjonen er som regel foretrukket
   - `tokens`: Dersom tokens er oppdatert
 
@@ -158,6 +159,7 @@ Vi har innført **Conventional Commits**-standarden i vårt prosjekt for å auto
 
 - feat(auth): legg til støtte for 2-faktor autentisering fix(ui): rettet layout-feil på forsiden
 - docs: oppdatert README med nye installasjonsinstruksjoner
+- fix(nve-button): fikset minimumshøyde
 
 For mer informasjon om standarden, kan du lese mer på [Conventional Commits.](https://www.conventionalcommits.org/en/v1.0.0/)
 
