@@ -96,4 +96,7 @@ export default css`
     font-size: var(--font-size-medium);
     fill: currentColor;
   }
+  :host::part(clear-button) {
+    font-size: var(--font-size-medium);
+  }
 `;
