@@ -21,7 +21,7 @@ For å kunne bruke designsystemet må du aktivere denne i Figma. Alle komponentn
 
 1. Trykk deg inn på library ikonet i en arbeidsfil <nve-icon name="import_contacts" style="display: inline; padding-left:8px;"></nve-icon>
 
-2. Der skal designsystem-filene ligge. Den er delt i 6 deler. Fil 01, 02 og 03 er grunnleggende om må aktiveres før bruk.
+2. Der skal designsystem-filene ligge. Den er delt i 6 deler. Fil 01, 02 og 03 er grunnleggende og må aktiveres før bruk.
    <img src="../../assets/images/get-started-1.png" width="auto">
 
 ## Bytte tema, brands og skjermstørrelse
