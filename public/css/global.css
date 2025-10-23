@@ -1,5 +1,41 @@
 @import '../../dist/nve-designsystem.css';
-@import url('https://fonts.cdnfonts.com/css/source-sans-pro');
+
+/* Skrifttyper som brukes internt i komponentene har vi lastet ned på forhånd for offline-støtte. 
+ Filene er lastet ned fra https://fontsource.org/fonts/source-sans-3
+ Source Sans 3 skal være kompatibel med Source Sans Pro 
+ For at fontene skal funke i brukerveiledninga også, må alle font-filer kopieres manuelt til /doc-site/fonts */
+@font-face {
+  font-family: 'Source Sans Pro';
+  src:
+    local('Source Sans Pro'),
+    url('/fonts/source-sans-3-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src:
+    local('Source Sans Pro'),
+    url('/fonts/source-sans-3-latin-400-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src:
+    local('Source Sans Pro'),
+    url('/fonts/source-sans-3-latin-600-normal.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src:
+    local('Source Sans Pro'),
+    url('/fonts/source-sans-3-latin-600-italic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+}
 
 :root {
   --transition-time: 0.3s;

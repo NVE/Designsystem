@@ -44,4 +44,8 @@ export default css`
   .material-sharp {
     font-family: 'Material Symbols Sharp';
   }
+  
+  svg {
+    fill: currentColor;
+  }
 `;
