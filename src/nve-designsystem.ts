@@ -21,6 +21,7 @@ export { default as NveDropdown } from './components/nve-dropdown/nve-dropdown.c
 export { default as NveForm } from './components/nve-form/nve-form.component';
 export { default as NveIcon } from './components/nve-icon/nve-icon.component';
 export { default as NveInput } from './components/nve-input/nve-input.component';
+export { default as NveInputDemo } from './components/nve-input-demo/nve-input-demo.component';
 export { default as NveLabel } from './components/nve-label/nve-label.component';
 export { default as NveLinkCard } from './components/nve-link-card/nve-link-card.component';
 export { default as NveMenu } from './components/nve-menu/nve-menu.component';

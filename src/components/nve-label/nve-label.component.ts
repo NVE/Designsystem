@@ -56,6 +56,7 @@ export default class NveLabel extends LitElement {
    * For-attributten legges på label, og brukes som html-standard. Sett til samme som id på elementet label tilhører
    */
   @property({ reflect: true }) for?: string = undefined;
+  @property({ type: String }) as: 'label' | 'span' = 'label';
 
   static styles = [styles];
 
@@ -78,24 +79,24 @@ export default class NveLabel extends LitElement {
     if (this.value.length) {
       // Vis value-property
       // For å vise label i slot INNI tooltip-slot, må label-slot ha et navn
-      return html` <label
-        part="form-control-label"
-        class="form-control__label"
-        aria-hidden="false"
-        for=${ifDefined(this.for)}
-      >
-        <slot name="label">${this.value}</slot>
-      </label>`;
+      if (this.as === 'span') {
+        return html` <span part="form-control-label" class="form-control__label"
+          ><slot name="label">${this.value}</slot></span
+        >`;
+      } else {
+        return html` <label part="form-control-label" class="form-control__label" for=${ifDefined(this.for)}>
+          <slot name="label">${this.value}</slot>
+        </label>`;
+      }
     } else {
-      // Vis evt. slot-innhold i stedet
-      return html` <label
-        part="form-control-label"
-        class="form-control__label"
-        aria-hidden="false"
-        for=${ifDefined(this.for)}
-      >
-        <slot></slot>
-      </label>`;
+      if (this.as === 'span') {
+        return html`<span part="form-control-label" class="form-control__label"> <slot></slot></span>`;
+      } else {
+        // Vis evt. slot-innhold i stedet
+        return html` <label part="form-control-label" class="form-control__label" for=${ifDefined(this.for)}>
+          <slot></slot>
+        </label>`;
+      }
     }
   }
 
