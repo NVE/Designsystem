@@ -1,7 +1,6 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av npm run add-component */
 import '../node_modules/@shoelace-style/shoelace/dist/themes/light.css';
-
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
@@ -31,6 +30,7 @@ export { default as NveOption } from './components/nve-option/nve-option.compone
 export { default as NvePopup } from './components/nve-popup/nve-popup.component';
 export { default as NveRadio } from './components/nve-radio/nve-radio.component';
 export { default as NveRadioButton } from './components/nve-radio-button/nve-radio-button.component';
+export { default as NveRadioDemo } from './components/nve-radio-demo/nve-radio-demo.component';
 export { default as NveRadioGroup } from './components/nve-radio-group/nve-radio-group.component';
 export { default as NveRelativeTime } from './components/nve-relative-time/nve-relative-time.component';
 export { default as NveSelect } from './components/nve-select/nve-select.component';
@@ -46,3 +46,4 @@ export { default as NveTag } from './components/nve-tag/nve-tag.component';
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
 export { default as NveWarningLevel } from './components/nve-warning-level/nve-warning-level.component';
+  
