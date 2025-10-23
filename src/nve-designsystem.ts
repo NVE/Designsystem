@@ -17,6 +17,7 @@ export { default as NveDialog } from './components/nve-dialog/nve-dialog.compone
 export { default as NveDivider } from './components/nve-divider/nve-divider.component';
 export { default as NveDrawer } from './components/nve-drawer/nve-drawer.component';
 export { default as NveDropdown } from './components/nve-dropdown/nve-dropdown.component';
+export { default as NveForm } from './components/nve-form/nve-form.component';
 export { default as NveIcon } from './components/nve-icon/nve-icon.component';
 export { default as NveInput } from './components/nve-input/nve-input.component';
 export { default as NveLabel } from './components/nve-label/nve-label.component';
