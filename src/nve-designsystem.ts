@@ -1,10 +1,7 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av npm run add-component */
 import '../node_modules/@shoelace-style/shoelace/dist/themes/light.css';
-  
-  
-  
-  
+
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
@@ -21,6 +18,7 @@ export { default as NveDialog } from './components/nve-dialog/nve-dialog.compone
 export { default as NveDivider } from './components/nve-divider/nve-divider.component';
 export { default as NveDrawer } from './components/nve-drawer/nve-drawer.component';
 export { default as NveDropdown } from './components/nve-dropdown/nve-dropdown.component';
+export { default as NveForm } from './components/nve-form/nve-form.component';
 export { default as NveIcon } from './components/nve-icon/nve-icon.component';
 export { default as NveInput } from './components/nve-input/nve-input.component';
 export { default as NveLabel } from './components/nve-label/nve-label.component';
@@ -47,4 +45,3 @@ export { default as NveTag } from './components/nve-tag/nve-tag.component';
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
 export { default as NveWarningLevel } from './components/nve-warning-level/nve-warning-level.component';
-  
