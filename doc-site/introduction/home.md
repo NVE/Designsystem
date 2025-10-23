@@ -29,7 +29,7 @@ Et designsystem handler, <em>til tross for sitt navn</em>, om mer enn bare desig
     variant="success"
     label="Åpent og transparent">Designsystemet er laget for alle brukere.</nve-message-card>
   <nve-message-card
-      class="card"
+    class="card"
     showIcon="false"
     variant="success"
     label="Fleksibilitet">Det inneholder byggeklosser som passer de fleste produkter.</nve-message-card>
