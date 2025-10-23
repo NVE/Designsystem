@@ -4,7 +4,7 @@
 
 ## Før du starter
 
-Før du starter å bruke et designsystem, er det flere viktige skritt og forberedelser du bør gjøre for å sikre en jevn og vellykket integrasjon av designsystemet i dine prosjekter.
+Før du starter å bruke designsystemet, er det flere viktige skritt og forberedelser du bør gjøre for å sikre en jevn og vellykket integrasjon av designsystemet i dine prosjekter.
 
 - Gjør deg kjent med NVE og Varsom sine profilmanualer
 - Sett deg inn i komponentbiblioteket i Figma
@@ -15,13 +15,13 @@ Før du starter å bruke et designsystem, er det flere viktige skritt og forbere
 
 Alle som er en del av prosjektet bør ha tilgang på Figma-filene. Derfor er det viktig å legge dem til i Teamet. Da kan alle kommentere, se status og hente ut kode. Det er derfor også viktig at du legger ting opp på en ryddig og organisert måte slik at det er mulig for andre å forstå.
 
-## Aktiver Designsystemet i Figma om du ikke finne NVE komponenter
+## Aktiver Designsystemet i Figma om du ikke finner NVE komponenter
 
 For å kunne bruke designsystemet må du aktivere denne i Figma. Alle komponentnavn har “NVE-” foran komponentnavnet. Hvis du ikke finner dette må du følge disse trinnene.
 
 1. Trykk deg inn på library ikonet i en arbeidsfil <nve-icon name="import_contacts" style="display: inline; padding-left:8px;"></nve-icon>
 
-2. Der skal designsystem filene ligge. Den er delt i 6 deler. Fil 01, 02 og 03 er grunnleggende om må aktiveres før bruk.
+2. Der skal designsystem-filene ligge. Den er delt i 6 deler. Fil 01, 02 og 03 er grunnleggende om må aktiveres før bruk.
    <img src="../../assets/images/get-started-1.png" width="auto">
 
 ## Bytte tema, brands og skjermstørrelse
@@ -35,7 +35,7 @@ Device - Kan du bytte mellom forskjellige skjermstørrelser. Da vil innholdet ju
 
 <img src="../../assets/images/get-started-2.png" width="auto">
 
-<nve-message-card label="Tips">For at dette skal funke utmerket må du huske å bruke variablene som er fastsatt og ikke løse designverdier. Da vil ikke alt av innholdet endres i forhold til hva slags variabler/tokens du bruker.</nve-message-card>
+<nve-message-card label="Tips">For at dette skal fungere sømløst må du huske på å bruke variablene som er fastsatt - ikke løse designverdier. Da vil ikke alt av innholdet endres i forhold til hva slags variabler/tokens du bruker.</nve-message-card>
 
 ## Bestanddeler
 
