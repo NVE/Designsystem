@@ -118,7 +118,22 @@ Kommentaren `/* Label/small */` betyr at vi skal bruke css-variabelen `--label-s
 }
 ```
 
-### Mapping av shoelace-tokens til NVE-tokens
+## Offline-støtte for ikoner
+
+For at designsystemet skal funke offline i f.eks. hybrid-applikasjoner, kan ikke NVE-komponentene laste ned ikoner eller skrifttyper fra nettet under kjøring.
+Derfor må ikoner og skrifttyper som designsystemet bruker internt være lastet ned på forhånd.
+
+Vi bruker `<nve-icon name="..."` for å vise et ikon fra Material Symbols. Dette bruker vi også internt i komponentene for å vise "innebygde" ikoner, men slike ikoner lastes fra [offline-icons.ts](\src\components\nve-icon\offline-icons.ts).
+
+`<nve-icon>` sjekker automatisk om ikonet finnes lokalt før den prøver å hente det fra nettet.
+
+Når du tar i bruk nye ikoner, pass på at de finnes i [offline-icons.ts](\src\components\nve-icon\offline-icons.ts).
+
+### Offline-skrifttyper
+
+Skrifttyper henter vi fortsatt fra nettet. Men du kan inkludere skrifttypene designsystemet trenger i ditt eget prosjekt, så vil det funke offline.
+
+## Mapping av shoelace-tokens til NVE-tokens
 
 Det hadde vært fint om vi kunne sette en NVE-verdi for alle Shoelace-tokens. Men dette går ikke fordi strukturen i Shoelace og NVE Designsystem er forskjellig.
 Vi har satt NVE-verdier for en del Shoelace-tokens, og disse ligger i `global.css`.
