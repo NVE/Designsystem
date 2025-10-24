@@ -1,4 +1,8 @@
 @import '../../dist/nve-designsystem.css';
+
+/* Hvis du ikke vil at applikasjonen henter fonter fra nettet under kjøring, kan du laste dem ned på forhånd og legge dem i prosjektet ditt.
+   Bytt ut linja under med @font-face for hver av fontene som du laster lokalt. 
+   Designsystemet bruker Source Sans Pro med font-vekt 400 og 600*/
 @import url('https://fonts.cdnfonts.com/css/source-sans-pro');
 
 :root {
