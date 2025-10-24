@@ -30,53 +30,6 @@ Ved å importere shoelace.css direkte i main.ts, sørger Vite for korrekt bundli
 
 Applikasjonen er selve brukerveiledninga for komponentbiblioteket, så her ligger api-dokumentasjon, beskrivelse av funksjonalitet og ikke minst kodeeksempler.
 
-## Pull requests
-
-Ikke push endringer direkte i `main`. Lag en pull request. Når du oppretter en pull request så skal du da også koble GitHub-issue ved å velge den under "Development" i høyre-kolonnen. Da blir issue lukket når Pull Requesten godkjennes.
-
-### Conventional Commits
-
-Vi har innført **Conventional Commits**-standarden i vårt prosjekt for å automatisere oppdatering av versjonsnummer og generering av changelog-filer. Når du lager en pull request (PR) som skal merges til `main`-branchen, må tittelen på PR-en følge denne standarden for at den skal bli godkjent.
-
-#### Standardformatet er som følger
-
-`<type>(<scope>): <beskrivelse>`
-
-- **type**: Definerer hvilken type endring det er. Eksempler:
-  - `feat`: Legger til ny funksjonalitet
-  - `fix`: Fikser en feil
-  - `chore`: Oppgaver som ikke endrer kode (f.eks. oppdatering av verktøy)
-  - `docs`: Endringer i dokumentasjon
-
-- **scope** (valgfritt): Beskriver hvor i prosjektet endringen er gjort. Denne kommer på starten av linjen i Changelog, så bør alltid være med. Eksempler:
-  - `nve-button`: Endringer relatert til den spesifikke komponenten. Denne versjonen er som regel foretrukket
-  - `tokens`: Dersom tokens er oppdatert
-
-- **beskrivelse**: En kortfattet, imperativ beskrivelse av hva endringen gjør. Den skal være på én linje og beskrive hva koden gjør etter endringen. For eksempel: "Legg til validering for e-postadresse."
-
-#### Eksempler på commit-meldinger
-
-- feat(auth): legg til støtte for 2-faktor autentisering fix(ui): rettet layout-feil på forsiden
-- docs: oppdatert README med nye installasjonsinstruksjoner
-
-For mer informasjon om standarden, kan du lese mer på [Conventional Commits.](https://www.conventionalcommits.org/en/v1.0.0/)
-
-#### PR-sjekk før merging til main
-
-Tittelen på PR-en må oppfylle **Conventional Commits**-standarden. Dette blir automatisk validert som en del av en PR-sjekk.
-
-#### Verktøy for å følge standarden
-
-Det er flere måter å sikre at du følger **Conventional Commits**-standarden:
-
-1. Commitizen: Du kan bruke Commitizen direkte i terminalen for å lage commits i riktig format. Bruke denne kommandoen for å lage en commit:
-
-```script
-npx cz
-```
-
-2. VS Code-utvidelse: Hvis du bruker Visual Studio Code, kan du installere utvidelsen [VS Code Conventional Commits](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits) for å sikre at commit-meldinger følger standarden. Etter at du har installert tillegget, kan du klikke på den runde sirkelen til høyre for Source Control for att gjøre en commit.
-
 ## Versjonslogg
 
 [CHANGELOG.md](CHANGELOG.md) genereres automatisk basert på commit-meldingene dine og vises i [versjons-notatene](https://github.com/NVE/Designsystem/releases) på GitHub.

@@ -1,6 +1,6 @@
 # 🌟 Retningslinjer for bidrag - NVE Designsystem
 
-Hei, og takk for at du vurderer å bidra til NVE Designsystem! Vi setter stor pris på alle bidrag som hjelper oss med å gjøre prosjektet enda bedre. For å gjøre prosessen enklere og hyggelig for alle, ber vi deg følge retningslinjene nedenfor.
+Hei, og takk for at du vurderer å bidra til NVE Designsystem! Vi setter stor pris på alle bidrag som hjelper oss med å gjøre designsystemet enda bedre. For å gjøre prosessen enklere og hyggelig for alle, ber vi deg følge retningslinjene nedenfor.
 
 ## 🐛 Rapportere feil
 
