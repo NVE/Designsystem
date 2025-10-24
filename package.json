@@ -19,8 +19,7 @@
     "./dist/vscode.css-custom-data.json": "./vscode.css-custom-data.json",
     "./components/*": "./components/*",
     "./registerIcons/*": "./registerIcons/*",
-    "./css/*": "./css/*",
-    "./fonts/*": "./fonts/*"
+    "./css/*": "./css/*"
   },
   "type": "module",
   "types": "nve-designsystem.d.ts",
