@@ -215,12 +215,10 @@ Kommentaren `/* Label/small */` betyr at vi skal bruke css-variabelen `--label-s
 }
 ```
 
-## Offline-støtte for ikoner og skrifttyper
+## Offline-støtte for ikoner
 
 For at designsystemet skal funke offline i f.eks. hybrid-applikasjoner, kan ikke NVE-komponentene laste ned ikoner eller skrifttyper fra nettet under kjøring.
 Derfor må ikoner og skrifttyper som designsystemet bruker internt være lastet ned på forhånd.
-
-### Offline-ikoner
 
 Vi bruker `<nve-icon name="..."` for å vise et ikon fra Material Symbols. Dette bruker vi også internt i komponentene for å vise "innebygde" ikoner, men slike ikoner lastes fra [offline-icons.ts](\src\components\nve-icon\offline-icons.ts).
 
@@ -230,7 +228,7 @@ Når du tar i bruk nye ikoner, pass på at de finnes i [offline-icons.ts](\src\c
 
 ### Offline-skrifttyper
 
-Skrifttypene komponentene trenger ligger lagret i prosjektet under `public\fonts`.
+Skrifttyper henter vi fortsatt fra nettet. Men du kan inkludere skrifttypene designsystemet trenger i ditt eget prosjekt, så vil det funke offline.
 
 ## Mapping av shoelace-tokens til NVE-tokens
 
