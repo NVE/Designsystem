@@ -16,7 +16,7 @@ Det finnes to måter å validere på, [Constraint Validation](https://developer.
 
 ## Constraint Validation
 
-hvor nettleser validerer skjema selv basert på hvilke validerings-attributer (`required`, `pattern`, `min`, `max`) komponenten har.
+Hvor nettleser validerer skjema selv basert på hvilke validerings-attributer (`required`, `pattern`, `min`, `max`) komponenten har.
 
 Du må ha en feilmelding i `errorMessage`, ellers vises nettleseren sin standard feilmelding. Hvis du har flere validerings-attributer i samme komponent, må du finne en felles feilmelding som dekker alle tilfeller. Hvis du vil tilpasse feilmeldinger til attributtet som feilet må du gjøre det selv - sjekk [validityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState).
 

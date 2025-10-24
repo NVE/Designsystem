@@ -31,7 +31,7 @@ export default defineConfig({
 
 ## Stiler
 
-Importer <em>en</em> .css-fil for farge-tema i `main.ts`. Filene finnes i mappa `nve-designsystem/css/`.
+Importer én `.css`-fil for fargetema i `main.ts`. Filene finnes i mappa `nve-designsystem/css/`.
 For NVE-tema, bruk:
 
 ```js
@@ -54,9 +54,9 @@ Det finnes også varianter av disse to filene med mørkt tema.
 
 ## Ikoner
 
-Fordi vi overstyrer Shoelace sine system-ikoner i våre komponenter må vi registrere disse manuelt.
-Her er [mer info](https://shoelace.style/components/icon#icon-libraries).
-Legg denne kodesnutten i main.ts eller App.vue:
+Fordi vi overstyrer Shoelace sine system-ikoner må vi registrere disse manuelt.
+Her er [mer informasjon om Shoelace sitt ikonbibliotek](https://shoelace.style/components/icon#icon-libraries).
+Legg denne kodesnutten i `main.ts` eller `App.vue`:
 
 ```js
 import { icons, registerIconLibrary } from 'nve-designsystem/registerIcons/systemLibraryCustomization.js';
@@ -67,9 +67,9 @@ registerIconLibrary('system', {
 });
 ```
 
-## Eslint-regler og VS Code
+## Eslint-regler og Visual Studio Code
 
-Hvis du bruker VS Code og starter et nytt prosjekt gjennom npm run create vue@latest og bruker standard eslint-regler, kan du få feil fra eslint-regler og automatisk retting fra VS-kode. Du kan legge til disse ESLint-reglene for å unngå dette:
+Hvis du bruker Visual Studio Code og starter et nytt prosjekt gjennom `npm run create vue@latest` og bruker standard eslint-regler, kan du få feil og automatisk retting. For å unngå dette, legg til følgende i din `eslint.config`:
 
 ```json
 "vue/no-deprecated-slot-attribute": "off",
@@ -111,11 +111,11 @@ Hvis du ikke ser komponenten når du kjører sida, sjekk om du har importert den
 
 Les også om [bruk av Shoelace-komponenter i Vue](https://shoelace.style/frameworks/vue). Det meste der gjelder for Nve-komponenter også.
 
-## Mer hjelp i VS Code
+## Mer hjelp i Visual Studio Code
 
-Vi bruker [Custom Element VS Code Integration](https://github.com/break-stuff/cem-tools/tree/main/packages/vs-code-integration) til å generere hjelpedokumentasjon til VS Code.
+Vi bruker [Custom Element VS Code Integration](https://github.com/break-stuff/cem-tools/tree/main/packages/vs-code-integration) til å generere hjelpedokumentasjon.
 
-Legg denne inn i `.vscode/settings.json`, for få dokumentasjon og autofullføring av attributt-verdier i VS Code:
+Legg denne inn i `.vscode/settings.json` for å få dokumentasjon og autofullføring av attributt-verdier i Visual Studio Code:
 
 ```json
 "html.customData": ["./node_modules/nve-designsystem/vscode.html-custom-data.json"],

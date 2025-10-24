@@ -4,7 +4,7 @@
 
 ## Import av komponenter
 
-Etter du har innstallert pakken komponentene kan enkelt importeres slik:
+Etter du har installert pakken kan komponentene enkelt importeres slik:
 
 ```js
 import 'nve-designsystem/components/nve-component/nve-component.component.js';
@@ -13,12 +13,12 @@ import 'nve-designsystem/components/nve-component/nve-component.component.js';
 Du kan velge om du vil importere en komponent der den brukes i koden eller på et globalt nivå (f.eks. i `main.js` eller `index.html`).
 Hvis du bruker mange designsystem-komponenter, anbefaler vi ikke å importere alle globalt, da dette kan føre til lengre lastetid.
 
-Dersom en parent-komponent i applikasjonen importerer en designsystem-komponent, trenger du ikke å importere den igjen i en child-komponent.
+Dersom en parent-komponent i applikasjonen importerer en designsystem-komponent, trenger du ikke å importere den igjen i child-komponentet.
 Web-komponenter blir registrert i nettleseren første gang de importeres. Det betyr at hvis du importerer en komponent flere steder, registreres den bare én gang, og du unngår duplikater.
 
 ## Import av stiler
 
-Importer <em>en</em> .css-fil for farge-tema i en hovedfil i applikasjonen (f.eks. `main.ts` eller `index.html`). Filene finnes i mappa `nve-designsystem/css/`.
+Importer én `.css`-fil for fargetema i en hovedfil i applikasjonen (f.eks. `main.ts` eller `index.html`). Filene finnes i mappa `nve-designsystem/css/`.
 For NVE-tema, bruk:
 
 ```js
@@ -70,7 +70,7 @@ Skal du bruke komponenter som inneholder ikoner (som f.eks nve-select, nve-check
 
 ### CSS via CDN
 
-Dersom du ikke trenger å innstallere (eller ikke kan bruke) hele nve-designsystem-pakken, men kun vil ha tilgang til CSS-variablene, anbefaler vi å bruke CDN.
+Dersom du ikke trenger å installere (eller ikke kan bruke) hele nve-designsystem-pakken, men kun vil ha tilgang til CSS-variablene, anbefaler vi å bruke CDN.
 
 Importer NVE-tema i `index.html` slik:
 
