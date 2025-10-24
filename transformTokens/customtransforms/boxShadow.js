@@ -3,11 +3,11 @@ export default {
   type: 'value',
   transitive: true,
   filter: function (token) {
-    const match = token.type === 'boxShadow';
+    const match = token.$type === 'boxShadow';
     return match;
   },
   transform: function (token) {
-    const vals = token.value;
+    const vals = token.$value;
     if (Array.isArray(vals)) {
       return vals.map((v) => transformSingleShadow(v)).join(', ');
     } else {

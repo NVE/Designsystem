@@ -3,10 +3,10 @@ export default {
   type: 'value',
   transitive: true,
   filter: function (token) {
-    const match = token.type === 'fontSizes';
+    const match = token.$type === 'fontSizes';
     return match;
   },
   transform: function (token) {
-    return token.value;
+    return token.$value;
   },
 };
