@@ -3,6 +3,7 @@ import fontWeight from './customtransforms/fontWeights.js';
 import boxShadow from './customtransforms/boxShadow.js';
 import fontSizes from './customtransforms/fontSizes.js';
 import fixZeroes from './customtransforms/fixZeroes.js';
+import mapDollarType from './customtransforms/mapDollarType.js';
 import { StyleDictionary } from 'style-dictionary-utils';
 import { fileHeader, formattedVariables } from 'style-dictionary/utils';
 
@@ -13,6 +14,7 @@ StyleDictionary.registerTransform(fontWeight);
 StyleDictionary.registerTransform(boxShadow);
 StyleDictionary.registerTransform(fontSizes);
 StyleDictionary.registerTransform(fixZeroes);
+StyleDictionary.registerTransform(mapDollarType);
 
 myStyleDictionary.registerFormat({
   name: 'css/variables',
@@ -44,30 +46,30 @@ myStyleDictionary.registerFormat({
 });
 
 const transforms = [
-  'attribute/cti',
+  'boxshadow/css',
   'name/kebab',
   'fixZeroes',
   'fontFamilies/css',
   'fontFamily/css',
   'fontWeight/number',
   'fontWeights/number',
-  'boxshadow/css',
   'shadow/css',
+  'custom/map-dollar-type',
 ];
 
 // vi trenger kun disse properties i gjenstand styling filene
 const filterDevicesTokens = (token) => {
   return (
-    token.type === 'typography' || token.type === 'spacing' || token.type === 'sizing' || token.type === 'fontSizes'
+    token.$type === 'typography' || token.$type === 'spacing' || token.$type === 'sizing' || token.$type === 'fontSizes'
   );
 };
 
 const transformDeviceTokens = async (device, minWidth, maxWidth) => {
   const deviceTokens = await myStyleDictionary.extend({
     source: [
+      `tokens/public/device/${device}.json`,
       'tokens/$metadata.json',
       'tokens/$themes.json',
-      `tokens/public/device/${device}.json`,
       'tokens/brand/nve.json',
     ],
     platforms: {

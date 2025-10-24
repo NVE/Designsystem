@@ -5,15 +5,15 @@ export default {
   type: 'value',
   transitive: true,
   filter: (token) => {
-    if (token.type === 'fontFamilies') {
+    if (token.$type === 'fontFamilies') {
       return true;
     }
     return false;
   },
   transform: (token) => {
-    if (Array.isArray(token.value)) {
-      return token.value.map((string) => (hasSpaceInName(string) ? `'${string}'` : string)).join(', ');
+    if (Array.isArray(token.$value)) {
+      return token.$value.map((string) => (hasSpaceInName(string) ? `'${string}'` : string)).join(', ');
     }
-    return hasSpaceInName(token.value) ? `'${token.value}'` : token.value;
+    return hasSpaceInName(token.$value) ? `'${token.$value}'` : token.$value;
   },
 };

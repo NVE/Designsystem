@@ -33,19 +33,19 @@ export default {
   type: 'value',
   transitive: true,
   filter: (token) => {
-    if (token.type === 'fontWeights') {
+    if (token.$type === 'fontWeights') {
       return true;
     }
     return false;
   },
   transform: (token) => {
     // check if value exists in matrix
-    const fromMatrix = fontWeights[token.value.toLowerCase()];
+    const fromMatrix = fontWeights[token.$value.toLowerCase()];
     if (fromMatrix !== undefined) return fromMatrix;
     // test if value is quoted int
-    const valueAsInt = parseInt(token.value.toLowerCase());
+    const valueAsInt = parseInt(token.$value.toLowerCase());
     if (Number.isInteger(valueAsInt)) return valueAsInt;
     //
-    return token.value;
+    return token.$value;
   },
 };
