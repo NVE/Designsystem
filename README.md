@@ -41,14 +41,12 @@ Vi har innført **Conventional Commits**-standarden i vårt prosjekt for å auto
 `<type>(<scope>): <beskrivelse>`
 
 - **type**: Definerer hvilken type endring det er. Eksempler:
-
   - `feat`: Legger til ny funksjonalitet
   - `fix`: Fikser en feil
   - `chore`: Oppgaver som ikke endrer kode (f.eks. oppdatering av verktøy)
   - `docs`: Endringer i dokumentasjon
 
 - **scope** (valgfritt): Beskriver hvor i prosjektet endringen er gjort. Denne kommer på starten av linjen i Changelog, så bør alltid være med. Eksempler:
-
   - `nve-button`: Endringer relatert til den spesifikke komponenten. Denne versjonen er som regel foretrukket
   - `tokens`: Dersom tokens er oppdatert
 
@@ -77,20 +75,20 @@ npx cz
 
 2. VS Code-utvidelse: Hvis du bruker Visual Studio Code, kan du installere utvidelsen [VS Code Conventional Commits](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits) for å sikre at commit-meldinger følger standarden. Etter at du har installert tillegget, kan du klikke på den runde sirkelen til høyre for Source Control for att gjøre en commit.
 
-## Changelog
+## Versjonslogg
 
-Changelog-filene genereres automatisk basert på commit-meldingene dine og blir synlige i [release-notatene](https://github.com/NVE/Designsystem/releases) på GitHub.
+[CHANGELOG.md](CHANGELOG.md) genereres automatisk basert på commit-meldingene dine og vises i [versjons-notatene](https://github.com/NVE/Designsystem/releases) på GitHub.
 
 ### Betingelser for Semantic Release
 
-Merk at `semantic-release` stiller visse betingelser før oppdatering av changeloggen. For at en endring skal registreres i changelogen, må følgende krav være oppfylt:
+Merk at `semantic-release` stiller visse betingelser før oppdatering av versjonsloggen. For at en endring skal registreres i versjonsloggen, må følgende krav være oppfylt:
 
 - Commit-typen må være en av følgende:
   - `BREAKING CHANGE`: Introduserer en endring som bryter bakoverkompatibiliteten
   - `feat`: Legger til en ny funksjonalitet
   - `fix`: Retter en feil
   - `perf`: Forbedrer ytelsen
-- Endringen må ha skjedd i en av følgende mappespesifikasjoner:
+- Endringen må ha skjedd i en av følgende mapper:
   - `src/**`
   - `build/**`
   - `public/css/**`
@@ -216,6 +214,21 @@ Kommentaren `/* Label/small */` betyr at vi skal bruke css-variabelen `--label-s
   font: var(--label-small);
 }
 ```
+
+## Offline-støtte for ikoner
+
+For at designsystemet skal funke offline i f.eks. hybrid-applikasjoner, kan ikke NVE-komponentene laste ned ikoner eller skrifttyper fra nettet under kjøring.
+Derfor må ikoner og skrifttyper som designsystemet bruker internt være lastet ned på forhånd.
+
+Vi bruker `<nve-icon name="..."` for å vise et ikon fra Material Symbols. Dette bruker vi også internt i komponentene for å vise "innebygde" ikoner, men slike ikoner lastes fra [offline-icons.ts](\src\components\nve-icon\offline-icons.ts).
+
+`<nve-icon>` sjekker automatisk om ikonet finnes lokalt før den prøver å hente det fra nettet.
+
+Når du tar i bruk nye ikoner, pass på at de finnes i [offline-icons.ts](\src\components\nve-icon\offline-icons.ts).
+
+### Offline-skrifttyper
+
+Skrifttyper henter vi fortsatt fra nettet. Men du kan inkludere skrifttypene designsystemet trenger i ditt eget prosjekt, så vil det funke offline.
 
 ## Mapping av shoelace-tokens til NVE-tokens
 

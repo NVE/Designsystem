@@ -1,3 +1,10 @@
+# [2.15.0](https://github.com/NVE/Designsystem/compare/v2.14.2...v2.15.0) (2025-10-23)
+
+
+### Features
+
+* **ikoner og fonter:** Offline-support ([#684](https://github.com/NVE/Designsystem/issues/684)) ([1a46046](https://github.com/NVE/Designsystem/commit/1a46046571ab97acd8ad30a12d4f2b3391daee5f))
+
 ## [2.14.2](https://github.com/NVE/Designsystem/compare/v2.14.1...v2.14.2) (2025-10-23)
 
 

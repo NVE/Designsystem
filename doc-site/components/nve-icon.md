@@ -46,24 +46,23 @@ Bruk `library="Outlined"` for myke kanter. `Sharp` er standard. `Outlined` skal 
 
 </CodeExamplePreview>
 
-### Offline støtte / Bruke ikoner direkte fra egen repo
+### Offline støtte / Bruke ikoner direkte fra eget repo
 
-Siden `nve-icon` med `name` (altså material symboler som lastes ned når komponent blir registrert første gang) ikke støtter offline-bruk, kan man i stedet bruke ikoner som er lagret i eget repo.
+Hvis du bruker `name`, lastes ikonet med aktuelt navn fra Material Symbols når komponenten blir registrert første gang. Dette funker ikke offline. Men med `src`, kan du bruke ikoner som er lagret i eget repo.
 
-Man kan bruke `src`. Med definert `src` vil `nve-icon` bruke `<img>-taggen` bak kulissene, derfor må man huske å legge til `alt` for tilgjengelighet.
+Hvis du bruker `src`, vil `nve-icon` bruke `<img>-taggen` bak kulissene, derfor må du huske å legge til `alt` for tilgjengelighet.
 
-`name` og `library` brukes ikke når `src` er definert. Man kan fortsatt bruke `--icon-size`, men bruk av `font-size` css property skal ikke fungere.
+`name` og `library` brukes ikke når `src` er definert. Man kan fortsatt bruke `--icon-size`, men `font-size` css property vil ikke funke.
 
 <nve-message-card variant="warning" label="Obs!">
-Selv om vi støtter bruk av ikoner direkte fra egen repo, det anbefales sterkt å bruke Material Symboler der
-hvor det er mulig. 
+Selv om vi støtter bruk av ikoner direkte fra eget repo, anbefaler vi å bruke Material Symbols der
+det er mulig. 
 </nve-message-card>
 
 <CodeExamplePreview>
 
 ```html
 <nve-icon src="/assets/home-icon.svg" alt="hjem"></nve-icon>
-
 <nve-icon src="/assets/home-icon.svg" alt="hjem" style="--icon-size:24px"></nve-icon>
 ```
 

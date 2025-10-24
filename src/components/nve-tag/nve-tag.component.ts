@@ -83,7 +83,7 @@ export default class NveTag extends LitElement {
               aria-label="${this['close-aria-label']}"
               @click=${this.closeButtonClick}
             >
-              <nve-icon name="close" library="Sharp"></nve-icon>
+              <nve-icon name="close"></nve-icon>
             </button>`
           : nothing}
       </span>

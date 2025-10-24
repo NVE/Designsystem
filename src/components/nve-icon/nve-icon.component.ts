@@ -4,10 +4,14 @@ import styles from './nve-icon.styles';
 import FontFaceObserver from 'fontfaceobserver';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { offlineIcons } from './offline-icons';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+
 
 /**
  * Et ikon.
- * Vi bruker ikoner fra Material Symbols, men det er også mulig å bruke ikoner fra egen repo. Det anbefales sterkt å bruke Material-ikonene.
+ * Vi bruker ikoner fra Material Symbols, men det er også mulig å bruke ikoner fra eget repo. 
+ * Vi anbefaler å bruke Material-ikonene.
  * Strektykkelsen skal være 400, uavhengig av ikonets størrelse, og kun stilene Sharp og Outlined skal brukes.
  * Fill-stilen bør unngås, da den fyller hele ikonet med farge i stedet for å bruke kun konturer
  * @see https://fonts.google.com/icons
@@ -24,7 +28,10 @@ export default class NveIcon extends LitElement {
   /** Navnet på ikonet i Material Symbols-biblioteket */
   @property({ type: String, reflect: true }) name: string = '';
 
+  /** Filnavn til ikonet om du velger å bruke et lokalt ikon */
   @property() src: string = '';
+
+  /** En beskrivelse av ikonet */
   @property() alt: string | undefined = undefined;
 
   /** Boolean som angir om ikonet har hatt tid til å laste. */
@@ -33,7 +40,12 @@ export default class NveIcon extends LitElement {
   protected firstUpdated() {
     // For å unngå å importere material ikoner i index.html, vi legger til ikoner programmatisk på den første oppdatering
     // hvis material-icons lenke ikke eksisterer allerede.
-    if (this.src) return;
+    
+    if (this.src) return; // vi trenger ikke laste material icons hvis vi bruker lokale ikoner
+    
+    const offlineIcon = offlineIcons[this.name];
+    if (offlineIcon) return; // vi trenger heller ikke laste material icons hvis vi bruker offline-ikoner
+    
     if (!document.getElementById(`material-icons-${this.library.toLowerCase()}`)) {
       const link = document.createElement('link');
       link.id = `material-icons-${this.library.toLowerCase()}`;
@@ -56,6 +68,12 @@ export default class NveIcon extends LitElement {
   render() {
     if (this.src) {
       return html`<img src=${this.src} alt=${ifDefined(this.alt)} />`;
+    }
+
+    // Bruk offline-ikon hvis det finnes
+    const offlineIcon = offlineIcons[this.name];
+    if (offlineIcon) {
+      return html`${unsafeHTML(offlineIcon)}`;
     }
 
     if (!this.src && this.iconLoaded) {
