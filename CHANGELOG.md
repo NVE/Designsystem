@@ -1,3 +1,11 @@
+## [2.15.1](https://github.com/NVE/Designsystem/compare/v2.15.0...v2.15.1) (2025-10-24)
+
+
+### Bug Fixes
+
+* **fonter:** Fjernet offline-fonter og bruk av disse ([#688](https://github.com/NVE/Designsystem/issues/688)) ([8afca71](https://github.com/NVE/Designsystem/commit/8afca7195e9dfe9434c69d0955bc2f353dec6b84))
+* **versjonering:** fikser publiserings versjon ([#689](https://github.com/NVE/Designsystem/issues/689)) ([d7b1c88](https://github.com/NVE/Designsystem/commit/d7b1c8811c767ae02b40e647cf6c566bc9ae14ab))
+
 # [2.15.0](https://github.com/NVE/Designsystem/compare/v2.14.2...v2.15.0) (2025-10-23)
 
 
