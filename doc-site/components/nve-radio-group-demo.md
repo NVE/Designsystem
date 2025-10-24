@@ -6,10 +6,7 @@ TODO: Start med et enklest mulig kodeeksempel i html for å kunne vise komponent
 <CodeExamplePreview>
 
 ```html
-<nve-radio-demo label="test1" id="test1" error></nve-radio-demo>
-<nve-radio-demo label="test4" id="test4" disabled></nve-radio-demo>
-<nve-radio-demo label="test2" id="test2" size="large"></nve-radio-demo>
-<nve-radio-demo label="test3" id="test3" size="small"></nve-radio-demo>
+<nve-radio-group-demo></nve-radio-group-demo>
 ```
 
 </CodeExamplePreview>
@@ -21,7 +18,5 @@ TODO: Skriv evt. generelle tips som ikke passer å ha i @JsDoc. Pass på at det 
 Legg eksempler på funksjonalitet her. Hvert tema skal ha egen overskrift på nivå 3.
 
 ### TODO: Eksempel 1
-
 ### TODO: Eksempel 2
-
 osv..:)

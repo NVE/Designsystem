@@ -117,7 +117,7 @@ export default class NveInputDemo extends LitElement implements INveComponent {
   private readonly componentId = `input-${++id}`;
 
   /** @internal */
-  private readonly componentErrorId = `error-${++id}`;
+  private readonly componentErrorId = `error-input-${++id}`;
   /** @internal */
   @state() private error = '';
   @query('input') input: HTMLInputElement | undefined;
