@@ -145,6 +145,17 @@ export default class NveStepper extends LitElement {
     return this.selectedStepIndex.value;
   }
 
+  handleStepClick(step: StepProps, index: number): void {
+    /** Emittes når et steg blir klikket på. Sender step og index som ligger på event.detail */
+    this.dispatchEvent(
+      new CustomEvent('step-click', {
+        detail: { step, index },
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
+
   private setStep(index: number): void {
     if (this.steps[index].readyForEntrance) {
       this.selectedStepIndex.value = index;
@@ -176,16 +187,17 @@ export default class NveStepper extends LitElement {
     }
   }
 
-  private handleMobileNextStep(): void {
-    if (this.selectedStepIndex.value < this.steps.length - 1) {
-      this.nextStep();
-    } else {
-      this.finishSteps();
+  private handleMobileStepClick(event: CustomEvent) {
+    const action = event.detail?.action;
+    if (action === 'next') {
+      if (this.selectedStepIndex.value < this.steps.length - 1) {
+        this.nextStep();
+      } else {
+        this.finishSteps();
+      }
+    } else if (action === 'prev') {
+      this.prevStep();
     }
-  }
-
-  private handleMobilePrevStep(): void {
-    this.prevStep();
   }
 
   private renderBackButton(): TemplateResult | string {
@@ -240,8 +252,7 @@ export default class NveStepper extends LitElement {
           .steps=${this.steps}
           .selectedStepIndex=${this.selectedStepIndex}
           .hideStepButtons=${this.hideMobileStepButtons}
-          @next-step=${this.handleMobileNextStep}
-          @prev-step=${this.handleMobilePrevStep}
+          @step-click=${this.handleMobileStepClick}
         ></nve-stepper-mobile>
       `;
     }
@@ -264,6 +275,7 @@ export default class NveStepper extends LitElement {
                 .orientation=${this.orientation}
                 .hideStateText=${this.hideStateText}
                 .hideDescriptions=${this.hideDescriptions}
+                @click=${() => this.handleStepClick(step, index)}
               >
               </nve-step>
             `

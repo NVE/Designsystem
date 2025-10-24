@@ -15,20 +15,20 @@ export default class NveStepperMobile extends LitElement {
   @property({ type: Boolean })
   hideStepButtons: boolean = false;
 
-  private handleNextStep() {
-    const event = new CustomEvent('next-step', {
-      bubbles: true,
-      composed: true,
-    });
-    this.dispatchEvent(event);
-  }
-
-  private handlePrevStep() {
-    const event = new CustomEvent('prev-step', {
-      bubbles: true,
-      composed: true,
-    });
-    this.dispatchEvent(event);
+  private handleStepClick(action: 'next' | 'prev') {
+    this.dispatchEvent(
+      new CustomEvent('step-click', {
+        detail: {
+          action,
+          currentIndex: this.selectedStepIndex.value,
+          step: this.steps[this.selectedStepIndex.value],
+          nextIndex: action === 'next' ? this.selectedStepIndex.value + 1 : this.selectedStepIndex.value - 1,
+          nextStep: this.steps[action === 'next' ? this.selectedStepIndex.value + 1 : this.selectedStepIndex.value - 1],
+        },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   selectedStepIndex: { value: number } = { value: 0 };
@@ -46,11 +46,13 @@ export default class NveStepperMobile extends LitElement {
           ${!this.hideStepButtons
             ? html` <div>
                 ${!isLastStep
-                  ? html` <div class="step-buttons next-button" @click=${this.handleNextStep}>
+                  ? html` <div class="step-buttons next-button" @click=${() => this.handleStepClick('next')}>
                       Neste: ${nextStep.label}
                     </div>`
-                  : html` <div class="step-buttons next-button" @click=${this.handleNextStep}>Finish</div>`}
-                <div class="step-buttons back-button" @click=${this.handlePrevStep}>Forrige</div>
+                  : html` <div class="step-buttons next-button" @click=${() => this.handleStepClick('next')}>
+                      Finish
+                    </div>`}
+                <div class="step-buttons back-button" @click=${() => this.handleStepClick('prev')}>Forrige</div>
               </div>`
             : ''}
         </div>
