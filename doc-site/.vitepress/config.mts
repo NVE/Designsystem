@@ -56,14 +56,14 @@ export default defineConfig({
             text: 'For designere',
             items: [
               { text: 'Design', link: '/introduction/forDesigner/design' },
-              { text: 'Kom igang', link: '/introduction/forDesigner/getStarted' },
+              { text: 'Kom i gang', link: '/introduction/forDesigner/getStarted' },
               { text: 'Bidrag', link: '/introduction/forDesigner/contribution' },
             ],
           },
           {
             text: 'For utviklere',
             items: [
-              { text: 'Les dette først', link: '/introduction/forDevelopers/development' },
+              { text: 'Kom i gang', link: '/introduction/forDevelopers/development' },
               { text: 'Importering av filer', link: '/introduction/forDevelopers/import' },
               { text: 'Bruk i Vue', link: '/introduction/forDevelopers/vue' },
               { text: 'Validering', link: '/introduction/forDevelopers/validation' },
