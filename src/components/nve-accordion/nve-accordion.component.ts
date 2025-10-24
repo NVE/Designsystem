@@ -6,7 +6,7 @@ import { INveComponent } from '@interfaces/NveComponent.interface';
  * En gruppering av nve-accordion-item slik at de sammen fungerer som et accordion.
  * Komponenten vil sørge for at kun en nve-accordion-item kan være åpen om gangen.
  * Komponenten har ingen egen utforming, den viser kun det som er inni.
- * @slot (default) - legg alle nve-accordion-item inne denne for å kontrollere dem
+ * @slot (default) - legg alle nve-accordion-item inne denne for å kunne kontrollere dem
  */
 @customElement('nve-accordion')
 export default class NveAccordion extends LitElement implements INveComponent {
