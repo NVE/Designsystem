@@ -1,6 +1,7 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av npm run add-component */
 import '../node_modules/@shoelace-style/shoelace/dist/themes/light.css';
+  
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
@@ -32,6 +33,7 @@ export { default as NveRadio } from './components/nve-radio/nve-radio.component'
 export { default as NveRadioButton } from './components/nve-radio-button/nve-radio-button.component';
 export { default as NveRadioDemo } from './components/nve-radio-demo/nve-radio-demo.component';
 export { default as NveRadioGroup } from './components/nve-radio-group/nve-radio-group.component';
+export { default as NveRadioGroupDemo } from './components/nve-radio-group-demo/nve-radio-group-demo.component';
 export { default as NveRelativeTime } from './components/nve-relative-time/nve-relative-time.component';
 export { default as NveSelect } from './components/nve-select/nve-select.component';
 export { default as NveSkeleton } from './components/nve-skeleton/nve-skeleton.component';

@@ -3,7 +3,9 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-radio-demo.styles';
 import { classMap } from 'lit/directives/class-map.js';
-
+import '../nve-label/nve-label.component';
+import { ifDefined } from 'lit/directives/if-defined.js';
+let id = 0;
 @customElement('nve-radio-demo')
 export default class NveRadioDemo extends LitElement implements INveComponent {
   @property({ type: String }) testId: string | undefined = undefined;
@@ -20,33 +22,56 @@ export default class NveRadioDemo extends LitElement implements INveComponent {
   //@property({ reflect: true }) appearance: 'default' | 'button' = 'default';
   @property() size: 'small' | 'medium' | 'large' = 'medium';
   @property({ type: Boolean }) disabled = false;
+  @property({ type: String }) label = '';
   @property() name = '';
+  @property({ type: String }) id = '';
+  @property({ type: Boolean }) error = false;
+  /** @internal */
+  private readonly componentId = `checkbox-${++id}`;
+
   constructor() {
     super();
   }
-  private onChange(e: Event) {
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    if (!this.label) {
+      console.warn(
+        'nve-input-demo: label is not set. It is recommended to set a label for each input component for better accessibility.'
+      );
+    }
+
+    if (!this.id) {
+      console.warn(
+        'nve-input-demo: id is not set. It is recommended to set a unique id for each input component. Otherwise, a default id is set, which does not necessarily provide meaningful context for screen reader users.'
+      );
+    }
+  }
+
+  /*private onChange(e: Event) {
     const input = e.target as HTMLInputElement;
     this.checked = input.checked;
     this.dispatchEvent(new CustomEvent('change', { detail: { value: this.value } }));
-  }
+  }*/
   render() {
     const classes = {
       radio: true,
       [`radio--${this.size}`]: true,
+      'radio--disabled': this.disabled,
+      'radio--error': this.error,
     };
     return html`
-      <label class="radio-wrapper">
+      <div class=${classMap(classes)}>
         <input
           type="radio"
-          name=${this.name}
-          .value=${this.value}
-          ?checked=${this.checked}
-          ?disabled=${this.disabled}
-          @change=${this.onChange}
+          id=${this.id || this.componentId}
+          value=${this.label}
+          name="option"
+          ?disabled=${ifDefined(this.disabled)}
         />
-        <span class=${classMap(classes)}></span>
-        <span class="label"><slot></slot></span>
-      </label>
+        <label class=${classMap(classes)} for=${this.id || this.componentId}> ${this.label} </label>
+      </div>
     `;
   }
 }
