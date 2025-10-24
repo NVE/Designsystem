@@ -1,3 +1,10 @@
+## [2.15.2](https://github.com/NVE/Designsystem/compare/v2.15.1...v2.15.2) (2025-10-24)
+
+
+### Bug Fixes
+
+* **rme:** fikse RME farger ([#669](https://github.com/NVE/Designsystem/issues/669)) ([b0c2228](https://github.com/NVE/Designsystem/commit/b0c2228e198398f3f85d3bd2cc0c17726444f0d3))
+
 ## [2.15.1](https://github.com/NVE/Designsystem/compare/v2.15.0...v2.15.1) (2025-10-24)
 
 
