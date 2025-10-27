@@ -1,5 +1,5 @@
 {
-  "color": {
+  "color-shades": {
     "brand": {
       "100": {
         "$type": "color",
