@@ -1,26 +1,29 @@
 {
   "color": {
     "brand": {
-      "primary": {
-        "$type": "color",
-        "$value": "{color-shades.brand.200}"
-      },
-      "light": {
-        "$type": "color",
-        "$value": "{color-shades.brand.800}"
-      },
-      "deep": {
-        "$type": "color",
-        "$value": "{color-shades.brand.700}"
+      "background": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.250}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.800}"
+        }
       },
       "foreground": {
         "primary": {
           "$type": "color",
-          "$value": "{color-shades.brand.950}"
+          "$value": "{color-shades.brand.999}"
         },
         "secondary": {
           "$type": "color",
           "$value": "{color-shades.grey.000}"
+        },
+        "tertiary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.250}",
+          "$description": "was 300"
         }
       }
     },
@@ -51,11 +54,6 @@
         "subtle": {
           "$type": "color",
           "$value": "{color-shades.grey.200}"
-        },
-        "colored": {
-          "$type": "color",
-          "$value": "{color-shades.brand.200}",
-          "$description": "was 300"
         }
       },
       "border": {

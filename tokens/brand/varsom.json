@@ -3,13 +3,17 @@
     "brand": {
       "100": {
         "$type": "color",
-        "$value": "#fabf82"
+        "$value": "#fbc792"
       },
       "150": {
         "$type": "color",
-        "$value": "#f8b673"
+        "$value": "#fabf82"
       },
       "200": {
+        "$type": "color",
+        "$value": "#f8b673"
+      },
+      "250": {
         "$type": "color",
         "$value": "#f7ae63"
       },
@@ -53,17 +57,13 @@
         "$type": "color",
         "$value": "#432301"
       },
-      "white": {
+      "000": {
         "$type": "color",
         "$value": "#fffffff"
       },
-      "000": {
-        "$type": "color",
-        "$value": "#ffdfba"
-      },
       "050": {
         "$type": "color",
-        "$value": "#fbc792"
+        "$value": "#ffdfba"
       }
     },
     "grey": {

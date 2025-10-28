@@ -1,27 +1,29 @@
 {
   "color": {
     "brand": {
-      "primary": {
-        "$type": "color",
-        "$value": "{color-shades.brand.500}"
-      },
-      "light": {
-        "$type": "color",
-        "$value": "{color-shades.brand.100}"
-      },
-      "deep": {
-        "$type": "color",
-        "$value": "{color-shades.brand.700}",
-        "$description": "delete, replace with brand.foreground.colored"
+      "background": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.500}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.150}"
+        }
       },
       "foreground": {
         "primary": {
           "$type": "color",
-          "$value": "{color-shades.brand.white}"
+          "$value": "{color-shades.brand.000}"
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.brand.950}"
+          "$value": "{color-shades.brand.999}"
+        },
+        "tertiary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.700}",
+          "$description": "was 500"
         }
       }
     },
@@ -52,11 +54,6 @@
         "subtle": {
           "$type": "color",
           "$value": "{color-shades.grey.600}"
-        },
-        "colored": {
-          "$type": "color",
-          "$value": "{color-shades.brand.700}",
-          "$description": "was 500\nmove to brand.foreground"
         }
       },
       "border": {

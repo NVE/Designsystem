@@ -3,13 +3,17 @@
     "brand": {
       "100": {
         "$type": "color",
-        "$value": "#fb3744"
+        "$value": "#ff4d52"
       },
       "150": {
         "$type": "color",
-        "$value": "#f8253a"
+        "$value": "#fb3744"
       },
       "200": {
+        "$type": "color",
+        "$value": "#f8253a"
+      },
+      "250": {
         "$type": "color",
         "$value": "#f3203c"
       },
@@ -51,20 +55,16 @@
       },
       "999": {
         "$type": "color",
-        "$value": "#42050f"
+        "$value": "#2B030A"
       },
-      "white": {
+      "000": {
         "$type": "color",
         "$value": "#fffffff",
         "$description": "This token has a dark color on Varsom"
       },
-      "000": {
-        "$type": "color",
-        "$value": "#ff5c61"
-      },
       "050": {
         "$type": "color",
-        "$value": "#ff4d52"
+        "$value": "#ff5c61"
       }
     },
     "grey": {
