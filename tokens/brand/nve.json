@@ -53,6 +53,11 @@
         "$type": "color",
         "$value": "#42050f"
       },
+      "white": {
+        "$type": "color",
+        "$value": "#fffffff",
+        "$description": "This token has a dark color on Varsom"
+      },
       "000": {
         "$type": "color",
         "$value": "#ff5c61"

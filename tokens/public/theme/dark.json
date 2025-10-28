@@ -12,6 +12,16 @@
       "deep": {
         "$type": "color",
         "$value": "{color-shades.brand.700}"
+      },
+      "foreground": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.950}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color-shades.grey.000}"
+        }
       }
     },
     "neutrals": {
@@ -44,7 +54,8 @@
         },
         "colored": {
           "$type": "color",
-          "$value": "{color-shades.brand.300}"
+          "$value": "{color-shades.brand.200}",
+          "$description": "was 300"
         }
       },
       "border": {

@@ -11,7 +11,18 @@
       },
       "deep": {
         "$type": "color",
-        "$value": "{color-shades.brand.700}"
+        "$value": "{color-shades.brand.700}",
+        "$description": "delete, replace with brand.foreground.colored"
+      },
+      "foreground": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.white}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.950}"
+        }
       }
     },
     "neutrals": {
@@ -44,7 +55,8 @@
         },
         "colored": {
           "$type": "color",
-          "$value": "{color-shades.brand.500}"
+          "$value": "{color-shades.brand.700}",
+          "$description": "was 500\nmove to brand.foreground"
         }
       },
       "border": {

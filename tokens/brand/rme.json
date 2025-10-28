@@ -53,6 +53,10 @@
         "$type": "color",
         "$value": "#0B1128"
       },
+      "white": {
+        "$type": "color",
+        "$value": "#fffffff"
+      },
       "050": {
         "$type": "color",
         "$value": "#ECEFFE"
