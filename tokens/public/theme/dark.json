@@ -3,11 +3,11 @@
     "brand": {
       "primary": {
         "$type": "color",
-        "$value": "{color-shades.brand.500}"
+        "$value": "{color-shades.brand.200}"
       },
       "light": {
         "$type": "color",
-        "$value": "{color-shades.brand.300}"
+        "$value": "{color-shades.brand.800}"
       },
       "deep": {
         "$type": "color",
