@@ -43,7 +43,7 @@
         },
         "primary-contrast": {
           "$type": "color",
-          "$value": "{color-shades.grey.050}"
+          "$value": "{color-shades.grey.100}"
         },
         "secondary": {
           "$type": "color",

@@ -36,15 +36,15 @@
       "background": {
         "canvas": {
           "$type": "color",
-          "$value": "{color-shades.grey.850}"
+          "$value": "{color-shades.grey.950}"
         },
         "primary": {
           "$type": "color",
-          "$value": "{color-shades.grey.950}"
+          "$value": "{color-shades.grey.850}"
         },
         "primary-contrast": {
           "$type": "color",
-          "$value": "{color-shades.grey.850}"
+          "$value": "{color-shades.grey.800}"
         },
         "secondary": {
           "$type": "color",
