@@ -8,6 +8,10 @@
         },
         "secondary": {
           "$type": "color",
+          "$value": "{color-shades.brand.500}"
+        },
+        "tertiary": {
+          "$type": "color",
           "$value": "{color-shades.brand.150}"
         }
       },

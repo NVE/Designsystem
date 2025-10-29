@@ -845,7 +845,12 @@
     "$figmaCollectionId": "VariableCollectionId:1986:10",
     "$figmaModeId": "1986:0",
     "$figmaVariableReferences": {
+      "color.brand.background.primary": "910d9813e760ac89fdaf94bc2d748d88c9d7743d",
+      "color.brand.background.secondary": "312f97a0b978df6bfefba2ead92cde44acc192cb",
+      "color.brand.background.tertiary": "b8b8bf2fd3e2b93534099ed936d380fd67e9db6a",
       "color.brand.foreground.primary": "01ac9c70aaba0f8d0345be7ef55b8a9f42bc2ee9",
+      "color.brand.foreground.secondary": "256a1c419dc223315f819dbc423ddab06c058572",
+      "color.brand.foreground.tertiary": "45d6e821af5e9a9e2e4f33525bea804fd89ce791",
       "color.neutrals.background.canvas": "98a063add0686404a57aafebf42ffbc09ef05d7e",
       "color.neutrals.background.primary": "c4b12b39bcdeb1604b71bdf457a6794a35a6d0ef",
       "color.neutrals.background.primary-contrast": "71d4634f713a2965056809c40d92c03aa39f6bbc",
@@ -984,11 +989,7 @@
       "color.supplemental.emphasized.red.background": "9808092f6f5194a79b7244bc344a9bacab86490d",
       "color.supplemental.emphasized.red.foreground": "73fb5436467c16118707bc80f9d50bc6500c48d2",
       "color.supplemental.emphasized.blue.background": "ee96fb1be66cef722245c1bbc5e70d79289a68e8",
-      "color.supplemental.emphasized.blue.foreground": "11ac12d4268f7add230a431dba318aaeb1332025",
-      "color.brand.foreground.secondary": "256a1c419dc223315f819dbc423ddab06c058572",
-      "color.brand.background.primary": "312f97a0b978df6bfefba2ead92cde44acc192cb",
-      "color.brand.background.secondary": "b8b8bf2fd3e2b93534099ed936d380fd67e9db6a",
-      "color.brand.foreground.tertiary": "45d6e821af5e9a9e2e4f33525bea804fd89ce791"
+      "color.supplemental.emphasized.blue.foreground": "11ac12d4268f7add230a431dba318aaeb1332025"
     },
     "group": "Theme"
   },
@@ -1154,6 +1155,12 @@
     "$figmaCollectionId": "VariableCollectionId:1986:10",
     "$figmaModeId": "1986:1",
     "$figmaVariableReferences": {
+      "color.brand.background.primary": "910d9813e760ac89fdaf94bc2d748d88c9d7743d",
+      "color.brand.background.secondary": "312f97a0b978df6bfefba2ead92cde44acc192cb",
+      "color.brand.background.tertiary": "b8b8bf2fd3e2b93534099ed936d380fd67e9db6a",
+      "color.brand.foreground.primary": "01ac9c70aaba0f8d0345be7ef55b8a9f42bc2ee9",
+      "color.brand.foreground.secondary": "256a1c419dc223315f819dbc423ddab06c058572",
+      "color.brand.foreground.tertiary": "45d6e821af5e9a9e2e4f33525bea804fd89ce791",
       "color.neutrals.background.canvas": "98a063add0686404a57aafebf42ffbc09ef05d7e",
       "color.neutrals.background.primary": "c4b12b39bcdeb1604b71bdf457a6794a35a6d0ef",
       "color.neutrals.background.primary-contrast": "71d4634f713a2965056809c40d92c03aa39f6bbc",
@@ -1292,12 +1299,7 @@
       "color.supplemental.emphasized.red.background": "9808092f6f5194a79b7244bc344a9bacab86490d",
       "color.supplemental.emphasized.red.foreground": "73fb5436467c16118707bc80f9d50bc6500c48d2",
       "color.supplemental.emphasized.blue.background": "ee96fb1be66cef722245c1bbc5e70d79289a68e8",
-      "color.supplemental.emphasized.blue.foreground": "11ac12d4268f7add230a431dba318aaeb1332025",
-      "color.brand.foreground.primary": "01ac9c70aaba0f8d0345be7ef55b8a9f42bc2ee9",
-      "color.brand.foreground.secondary": "256a1c419dc223315f819dbc423ddab06c058572",
-      "color.brand.background.primary": "312f97a0b978df6bfefba2ead92cde44acc192cb",
-      "color.brand.background.secondary": "b8b8bf2fd3e2b93534099ed936d380fd67e9db6a",
-      "color.brand.foreground.tertiary": "45d6e821af5e9a9e2e4f33525bea804fd89ce791"
+      "color.supplemental.emphasized.blue.foreground": "11ac12d4268f7add230a431dba318aaeb1332025"
     },
     "group": "Theme"
   },

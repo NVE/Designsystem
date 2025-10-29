@@ -4,9 +4,14 @@
       "background": {
         "primary": {
           "$type": "color",
-          "$value": "{color-shades.brand.250}"
+          "$value": "{color-shades.brand.500}",
+          "$description": "Primarily used on logo backgrounds"
         },
         "secondary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.250}"
+        },
+        "tertiary": {
           "$type": "color",
           "$value": "{color-shades.brand.800}"
         }
