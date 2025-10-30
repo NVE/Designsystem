@@ -1,3 +1,10 @@
+# [2.16.0](https://github.com/NVE/Designsystem/compare/v2.15.2...v2.16.0) (2025-10-30)
+
+
+### Features
+
+* La til click event for step i stepper ([#618](https://github.com/NVE/Designsystem/issues/618)) ([cf1dcdf](https://github.com/NVE/Designsystem/commit/cf1dcdf097eab000959aab9ac44bea7b3ea0325f))
+
 ## [2.15.2](https://github.com/NVE/Designsystem/compare/v2.15.1...v2.15.2) (2025-10-24)
 
 
