@@ -710,6 +710,16 @@
             "$value": "{color-shades.grey.999}"
           }
         }
+      },
+      "charts": {
+        "primary-brand": {
+          "$type": "color",
+          "$value": "{color-shades.data.300}"
+        },
+        "secondary-brand": {
+          "$type": "color",
+          "$value": "{color-shades.data.850}"
+        }
       }
     }
   }

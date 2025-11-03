@@ -129,6 +129,73 @@
         "$value": "#f7f7f8"
       }
     },
+    "data": {
+      "100": {
+        "$type": "color",
+        "$value": "#FF666B"
+      },
+      "150": {
+        "$type": "color",
+        "$value": "#FF525D"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#f8253a"
+      },
+      "250": {
+        "$type": "color",
+        "$value": "#f3203c"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#e61335"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#d91232"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#c8102e"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#a40d26"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#880b1f"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#760a1c"
+      },
+      "850": {
+        "$type": "color",
+        "$value": "#6d0919"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#5e0816"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#500713"
+      },
+      "999": {
+        "$type": "color",
+        "$value": "#2B030A"
+      },
+      "000": {
+        "$type": "color",
+        "$value": "#ffffff",
+        "$description": "This token has a dark color on Varsom"
+      },
+      "050": {
+        "$type": "color",
+        "$value": "#FF8083"
+      }
+    },
     "red": {
       "100": {
         "$type": "color",
