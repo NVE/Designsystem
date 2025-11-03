@@ -132,11 +132,11 @@
     "data": {
       "100": {
         "$type": "color",
-        "$value": "#FF666B"
+        "$value": "#FF999C"
       },
       "150": {
         "$type": "color",
-        "$value": "#FF525D"
+        "$value": "#FF6670"
       },
       "200": {
         "$type": "color",
@@ -186,6 +186,14 @@
         "$type": "color",
         "$value": "#2B030A"
       },
+      "300-005": {
+        "$type": "color",
+        "$value": "rgba(231,19,54,0.05)"
+      },
+      "300-015": {
+        "$type": "color",
+        "$value": "rgba(231,19,54,0.15)"
+      },
       "000": {
         "$type": "color",
         "$value": "#ffffff",
@@ -193,7 +201,7 @@
       },
       "050": {
         "$type": "color",
-        "$value": "#FF8083"
+        "$value": "#FFB2B4"
       }
     },
     "red": {

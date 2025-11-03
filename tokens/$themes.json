@@ -171,6 +171,8 @@
       "color-shades.data.200": "bfa4588dc1b12ccbbb4b48bfced663e34c8c9113",
       "color-shades.data.250": "ceba761e5a62843b06c36d50a3d31ba6b9124776",
       "color-shades.data.300": "c160b556366b83530b68dd5ac120a061894b35ca",
+      "color-shades.data.300-005": "b6514971e58d73677311a83a89ea634514f1982a",
+      "color-shades.data.300-015": "992c39246edb8782b1db540583dfefde2cacd204",
       "color-shades.data.400": "fccf52d7c9439219430d60a4eb0d9c81c847297e",
       "color-shades.data.500": "bd79d8c3f802b4f53eb88c5f293444da4237bdff",
       "color-shades.data.600": "071da938e3e8d88825be4ae13ab59ae65c42c81e",
@@ -403,6 +405,8 @@
       "color-shades.data.200": "bfa4588dc1b12ccbbb4b48bfced663e34c8c9113",
       "color-shades.data.250": "ceba761e5a62843b06c36d50a3d31ba6b9124776",
       "color-shades.data.300": "c160b556366b83530b68dd5ac120a061894b35ca",
+      "color-shades.data.300-005": "b6514971e58d73677311a83a89ea634514f1982a",
+      "color-shades.data.300-015": "992c39246edb8782b1db540583dfefde2cacd204",
       "color-shades.data.400": "fccf52d7c9439219430d60a4eb0d9c81c847297e",
       "color-shades.data.500": "bd79d8c3f802b4f53eb88c5f293444da4237bdff",
       "color-shades.data.600": "071da938e3e8d88825be4ae13ab59ae65c42c81e",
@@ -888,8 +892,9 @@
       "color.brand.border.primary": "4d2d826be2e55faa7c70e2c68aa7c97c2e9b4eae",
       "color.brand.border.secondary": "df5afa6d4159cca2212e0bae2c9ba44307559020",
       "color.brand.border.tertiary": "041533c02e08198b5b1b1ae1c8a30ae6305e1964",
-      "color.supplemental.charts.primary-brand": "43b3c5d1422787d780a79ffd16c8ba5097116e85",
-      "color.supplemental.charts.secondary-brand": "682ea5c4552392a49af15970daf40638a229ff75"
+      "color.supplemental.charts.background.primary-transparent": "a1173cb84407fdf67ff2df033650eee88955a98a",
+      "color.supplemental.charts.foreground.primary-brand": "43b3c5d1422787d780a79ffd16c8ba5097116e85",
+      "color.supplemental.charts.foreground.secondary-brand": "682ea5c4552392a49af15970daf40638a229ff75"
     },
     "group": "Theme"
   },
@@ -1062,6 +1067,9 @@
       "color.brand.foreground.primary": "01ac9c70aaba0f8d0345be7ef55b8a9f42bc2ee9",
       "color.brand.foreground.secondary": "256a1c419dc223315f819dbc423ddab06c058572",
       "color.brand.foreground.tertiary": "45d6e821af5e9a9e2e4f33525bea804fd89ce791",
+      "color.brand.border.primary": "4d2d826be2e55faa7c70e2c68aa7c97c2e9b4eae",
+      "color.brand.border.secondary": "df5afa6d4159cca2212e0bae2c9ba44307559020",
+      "color.brand.border.tertiary": "041533c02e08198b5b1b1ae1c8a30ae6305e1964",
       "color.neutrals.background.canvas": "98a063add0686404a57aafebf42ffbc09ef05d7e",
       "color.neutrals.background.primary": "c4b12b39bcdeb1604b71bdf457a6794a35a6d0ef",
       "color.neutrals.background.primary-contrast": "71d4634f713a2965056809c40d92c03aa39f6bbc",
@@ -1201,9 +1209,9 @@
       "color.supplemental.emphasized.red.foreground": "73fb5436467c16118707bc80f9d50bc6500c48d2",
       "color.supplemental.emphasized.blue.background": "ee96fb1be66cef722245c1bbc5e70d79289a68e8",
       "color.supplemental.emphasized.blue.foreground": "11ac12d4268f7add230a431dba318aaeb1332025",
-      "color.brand.border.primary": "4d2d826be2e55faa7c70e2c68aa7c97c2e9b4eae",
-      "color.brand.border.secondary": "df5afa6d4159cca2212e0bae2c9ba44307559020",
-      "color.brand.border.tertiary": "041533c02e08198b5b1b1ae1c8a30ae6305e1964"
+      "color.supplemental.charts.background.primary-transparent": "a1173cb84407fdf67ff2df033650eee88955a98a",
+      "color.supplemental.charts.foreground.primary-brand": "43b3c5d1422787d780a79ffd16c8ba5097116e85",
+      "color.supplemental.charts.foreground.secondary-brand": "682ea5c4552392a49af15970daf40638a229ff75"
     },
     "group": "Theme"
   },
@@ -1842,6 +1850,8 @@
       "color-shades.data.200": "bfa4588dc1b12ccbbb4b48bfced663e34c8c9113",
       "color-shades.data.250": "ceba761e5a62843b06c36d50a3d31ba6b9124776",
       "color-shades.data.300": "c160b556366b83530b68dd5ac120a061894b35ca",
+      "color-shades.data.300-005": "b6514971e58d73677311a83a89ea634514f1982a",
+      "color-shades.data.300-015": "992c39246edb8782b1db540583dfefde2cacd204",
       "color-shades.data.400": "fccf52d7c9439219430d60a4eb0d9c81c847297e",
       "color-shades.data.500": "bd79d8c3f802b4f53eb88c5f293444da4237bdff",
       "color-shades.data.600": "071da938e3e8d88825be4ae13ab59ae65c42c81e",

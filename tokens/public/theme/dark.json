@@ -38,15 +38,15 @@
       "border": {
         "primary": {
           "$type": "color",
-          "$value": "{color-shades.brand.500}"
+          "$value": "{color-shades.brand.100}"
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.brand.600}"
+          "$value": "{color-shades.brand.200}"
         },
         "tertiary": {
           "$type": "color",
-          "$value": "{color-shades.brand.700}"
+          "$value": "{color-shades.brand.300}"
         }
       }
     },
@@ -726,6 +726,24 @@
           "foreground": {
             "$type": "color",
             "$value": "{color-shades.grey.999}"
+          }
+        }
+      },
+      "charts": {
+        "background": {
+          "primary-transparent": {
+            "$type": "color",
+            "$value": "{color-shades.data.300-015}"
+          }
+        },
+        "foreground": {
+          "primary-brand": {
+            "$type": "color",
+            "$value": "{color-shades.data.050}"
+          },
+          "secondary-brand": {
+            "$type": "color",
+            "$value": "{color-shades.data.150}"
           }
         }
       }

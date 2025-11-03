@@ -730,13 +730,21 @@
         }
       },
       "charts": {
-        "primary-brand": {
-          "$type": "color",
-          "$value": "{color-shades.data.300}"
+        "background": {
+          "primary-transparent": {
+            "$type": "color",
+            "$value": "{color-shades.data.300-005}"
+          }
         },
-        "secondary-brand": {
-          "$type": "color",
-          "$value": "{color-shades.data.850}"
+        "foreground": {
+          "primary-brand": {
+            "$type": "color",
+            "$value": "{color-shades.data.300}"
+          },
+          "secondary-brand": {
+            "$type": "color",
+            "$value": "{color-shades.data.850}"
+          }
         }
       }
     }
