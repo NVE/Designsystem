@@ -14,6 +14,10 @@
         "tertiary": {
           "$type": "color",
           "$value": "{color-shades.brand.800}"
+        },
+        "deep": {
+          "$type": "color",
+          "$value": "{color-shades.brand.700}"
         }
       },
       "foreground": {

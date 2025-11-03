@@ -884,6 +884,7 @@
       "color.supplemental.emphasized.red.foreground": "73fb5436467c16118707bc80f9d50bc6500c48d2",
       "color.supplemental.emphasized.blue.background": "ee96fb1be66cef722245c1bbc5e70d79289a68e8",
       "color.supplemental.emphasized.blue.foreground": "11ac12d4268f7add230a431dba318aaeb1332025",
+      "color.brand.background.deep": "e3927c6ed327c1b085cf5649b5ccaf082a6e73b8",
       "color.supplemental.charts.primary-brand": "43b3c5d1422787d780a79ffd16c8ba5097116e85",
       "color.supplemental.charts.secondary-brand": "682ea5c4552392a49af15970daf40638a229ff75"
     },
@@ -1054,6 +1055,7 @@
       "color.brand.background.primary": "910d9813e760ac89fdaf94bc2d748d88c9d7743d",
       "color.brand.background.secondary": "312f97a0b978df6bfefba2ead92cde44acc192cb",
       "color.brand.background.tertiary": "b8b8bf2fd3e2b93534099ed936d380fd67e9db6a",
+      "color.brand.background.deep": "e3927c6ed327c1b085cf5649b5ccaf082a6e73b8",
       "color.brand.foreground.primary": "01ac9c70aaba0f8d0345be7ef55b8a9f42bc2ee9",
       "color.brand.foreground.secondary": "256a1c419dc223315f819dbc423ddab06c058572",
       "color.brand.foreground.tertiary": "45d6e821af5e9a9e2e4f33525bea804fd89ce791",
