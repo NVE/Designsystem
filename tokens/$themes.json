@@ -885,6 +885,9 @@
       "color.supplemental.emphasized.blue.background": "ee96fb1be66cef722245c1bbc5e70d79289a68e8",
       "color.supplemental.emphasized.blue.foreground": "11ac12d4268f7add230a431dba318aaeb1332025",
       "color.brand.background.deep": "e3927c6ed327c1b085cf5649b5ccaf082a6e73b8",
+      "color.brand.border.primary": "4d2d826be2e55faa7c70e2c68aa7c97c2e9b4eae",
+      "color.brand.border.secondary": "df5afa6d4159cca2212e0bae2c9ba44307559020",
+      "color.brand.border.tertiary": "041533c02e08198b5b1b1ae1c8a30ae6305e1964",
       "color.supplemental.charts.primary-brand": "43b3c5d1422787d780a79ffd16c8ba5097116e85",
       "color.supplemental.charts.secondary-brand": "682ea5c4552392a49af15970daf40638a229ff75"
     },
@@ -1197,7 +1200,10 @@
       "color.supplemental.emphasized.red.background": "9808092f6f5194a79b7244bc344a9bacab86490d",
       "color.supplemental.emphasized.red.foreground": "73fb5436467c16118707bc80f9d50bc6500c48d2",
       "color.supplemental.emphasized.blue.background": "ee96fb1be66cef722245c1bbc5e70d79289a68e8",
-      "color.supplemental.emphasized.blue.foreground": "11ac12d4268f7add230a431dba318aaeb1332025"
+      "color.supplemental.emphasized.blue.foreground": "11ac12d4268f7add230a431dba318aaeb1332025",
+      "color.brand.border.primary": "4d2d826be2e55faa7c70e2c68aa7c97c2e9b4eae",
+      "color.brand.border.secondary": "df5afa6d4159cca2212e0bae2c9ba44307559020",
+      "color.brand.border.tertiary": "041533c02e08198b5b1b1ae1c8a30ae6305e1964"
     },
     "group": "Theme"
   },

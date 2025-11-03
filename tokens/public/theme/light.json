@@ -8,7 +8,7 @@
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.brand.500}"
+          "$value": "{color-shades.brand.400}"
         },
         "tertiary": {
           "$type": "color",
@@ -32,6 +32,20 @@
           "$type": "color",
           "$value": "{color-shades.brand.700}",
           "$description": "was 500"
+        }
+      },
+      "border": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.500}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.600}"
+        },
+        "tertiary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.700}"
         }
       }
     },
