@@ -768,6 +768,10 @@
           "data-08": {
             "$type": "color",
             "$value": "{color-shades.data.color-08.600}"
+          },
+          "data-09": {
+            "$type": "color",
+            "$value": "{color-shades.data.color-09.600}"
           }
         }
       }

@@ -743,7 +743,7 @@
           },
           "data-02-secondary": {
             "$type": "color",
-            "$value": "{color-shades.data.brand.850}"
+            "$value": "{color-shades.data.brand.600}"
           },
           "data-03-tertiary": {
             "$type": "color",
@@ -751,7 +751,7 @@
           },
           "data-04": {
             "$type": "color",
-            "$value": "{color-shades.data.color-04.600}"
+            "$value": "{color-shades.data.color-04.500}"
           },
           "data-05": {
             "$type": "color",
@@ -768,6 +768,10 @@
           "data-08": {
             "$type": "color",
             "$value": "{color-shades.data.color-08.600}"
+          },
+          "data-09": {
+            "$type": "color",
+            "$value": "{color-shades.data.color-09.850}"
           }
         }
       }

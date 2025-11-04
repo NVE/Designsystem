@@ -290,11 +290,11 @@
         },
         "500": {
           "$type": "color",
-          "$value": "#94C748"
+          "$value": "#87bb3a"
         },
         "600": {
           "$type": "color",
-          "$value": "#769F3A"
+          "$value": "#709636"
         },
         "700": {
           "$type": "color",
@@ -418,7 +418,7 @@
         },
         "600": {
           "$type": "color",
-          "$value": "#C25E9C"
+          "$value": "#c76ba4"
         },
         "700": {
           "$type": "color",
@@ -480,11 +480,11 @@
         },
         "600": {
           "$type": "color",
-          "$value": "#58A1B9"
+          "$value": "#4893ad"
         },
         "700": {
           "$type": "color",
-          "$value": "#437F92"
+          "$value": "#407a8c"
         },
         "800": {
           "$type": "color",
@@ -513,6 +513,16 @@
         "050": {
           "$type": "color",
           "$value": "#F0F9FC"
+        }
+      },
+      "color-09": {
+        "600": {
+          "$type": "color",
+          "$value": "#F89F22"
+        },
+        "850": {
+          "$type": "color",
+          "$value": "#c70"
         }
       }
     },
@@ -826,68 +836,6 @@
           "$type": "color",
           "$value": "#f0fef5"
         }
-      }
-    },
-    "varsom-blue": {
-      "100": {
-        "$type": "color",
-        "$value": "#a6d8ee"
-      },
-      "150": {
-        "$type": "color",
-        "$value": "#7ec4e2"
-      },
-      "200": {
-        "$type": "color",
-        "$value": "#43a9d5"
-      },
-      "300": {
-        "$type": "color",
-        "$value": "#2c96c4"
-      },
-      "400": {
-        "$type": "color",
-        "$value": "#0E89BE"
-      },
-      "500": {
-        "$type": "color",
-        "$value": "#006b99"
-      },
-      "600": {
-        "$type": "color",
-        "$value": "#005c85"
-      },
-      "700": {
-        "$type": "color",
-        "$value": "#005175"
-      },
-      "800": {
-        "$type": "color",
-        "$value": "#00425F"
-      },
-      "850": {
-        "$type": "color",
-        "$value": "#00364e"
-      },
-      "900": {
-        "$type": "color",
-        "$value": "#003147"
-      },
-      "950": {
-        "$type": "color",
-        "$value": "#002738"
-      },
-      "999": {
-        "$type": "color",
-        "$value": "#00131c"
-      },
-      "000": {
-        "$type": "color",
-        "$value": "#eff8fc"
-      },
-      "050": {
-        "$type": "color",
-        "$value": "#c8eaf9"
       }
     },
     "neutralgrey": {
