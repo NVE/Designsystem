@@ -1,3 +1,10 @@
+## [2.16.1](https://github.com/NVE/Designsystem/compare/v2.16.0...v2.16.1) (2025-11-12)
+
+
+### Bug Fixes
+
+* **tokens:** Konvertere til W3C DTCG format, les mer https://docs.tokens.studio/convert-to-dtcg-format ([#690](https://github.com/NVE/Designsystem/issues/690)) ([d6ba1a0](https://github.com/NVE/Designsystem/commit/d6ba1a080871c0d7f9be2ef52490a8af650adea9))
+
 # [2.16.0](https://github.com/NVE/Designsystem/compare/v2.15.2...v2.16.0) (2025-10-30)
 
 
