@@ -118,94 +118,27 @@
   --varsom-blue-999: #00131c;
   --varsom-blue-000: #eff8fc;
   --varsom-blue-050: #c8eaf9;
-  --opacity-disabled: 38%;
-  --dimension-025x: 0.0625rem;
-  --dimension-05x: 0.125rem;
-  --dimension-1x: 0.25rem;
-  --dimension-2x: 0.5rem;
-  --dimension-3x: 0.75rem;
-  --dimension-3-5x: 0.875rem;
-  --dimension-4x: 1rem;
-  --dimension-4-5x: 1.125rem;
-  --dimension-5x: 1.25rem;
-  --dimension-6x: 1.5rem;
-  --dimension-7x: 1.75rem;
-  --dimension-8x: 2rem;
-  --dimension-9x: 2.25rem;
-  --dimension-10x: 2.5rem;
-  --dimension-11x: 2.75rem;
-  --dimension-12x: 3rem;
-  --dimension-13x: 3.25rem;
-  --dimension-14x: 3.5rem;
-  --dimension-15x: 3.75rem;
-  --dimension-16x: 4rem;
-  --dimension-17x: 4.25rem;
-  --dimension-18x: 4.5rem;
-  --dimension-19x: 4.75rem;
-  --dimension-20x: 5rem;
-  --dimension-21x: 5.25rem;
-  --dimension-22x: 5.5rem;
-  --dimension-23x: 5.75rem;
-  --dimension-24x: 6rem;
-  --dimension-25x: 6.25rem;
-  --dimension-26x: 6.5rem;
-  --dimension-27x: 6.75rem;
-  --dimension-28x: 7rem;
-  --dimension-29x: 7.25rem;
-  --dimension-30x: 7.5rem;
+  --opacity-disabled: 0.38;
   --font-families-source-sans-pro: 'Source Sans Pro';
-  --line-heights-zero: 115%;
-  --line-heights-1: 120%;
-  --line-heights-2: 125%;
-  --line-heights-3: 130%;
-  --line-heights-4: 140%;
-  --line-heights-5: 150%;
-  --line-heights-6: 110%;
-  --letter-spacing-zero: 0%;
-  --letter-spacing-1: 5%;
-  --paragraph-spacing-zero: 0;
-  --paragraph-spacing-1: 12;
-  --paragraph-spacing-2: 16;
-  --paragraph-spacing-3: 24;
-  --paragraph-spacing-4: 32;
-  --paragraph-spacing-5: 40;
+  --line-heights-0: 1.15;
+  --line-heights-1: 1.20;
+  --line-heights-2: 1.25;
+  --line-heights-3: 1.30;
+  --line-heights-4: 1.40;
+  --line-heights-5: 1.50;
+  --line-heights-6: 1.10;
   --text-case-capitalize: capitalize;
   --text-case-none: none;
   --text-case-uppercase: uppercase;
   --text-decoration-none: none;
   --text-decoration-underline: underline;
-  --paragraph-indent-zero: 0px;
-  --content-margin-top-bottom-mobile: 24px;
-  --content-margin-top-bottom-desktop: 40px;
-  --content-margin-top-bottom-desktop-small: 32px;
-  --content-margin-top-bottom-desktop-large: 40px;
-  --content-margin-left-right-mobile: 24px;
-  --content-margin-left-right-desktop-small: 50px;
-  --content-margin-left-right-desktop: 220px;
-  --content-margin-left-right-desktop-large: 620px;
-  --border-radius-none: 0px;
-  --border-radius-small: 4px;
-  --border-radius-large: 6px;
-  --border-radius-circle: 50px;
-  --border-radius-pill: 9999px;
-  --border-width-none: 0px;
-  --border-width-default: 1px;
-  --border-width-strong: 2px;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
-  --none: 0px 0px 0px 0px rgba(0,0,0,0);
-  --soft: -59px 104px 33px 0px rgba(0,0,0,0.00), -38px 67px 31px 0px rgba(0,0,0,0.00), -21px 37px 26px 0px rgba(0,0,0,0.01), -9px 17px 19px 0px rgba(0,0,0,0.02), -2px 4px 11px 0px rgba(0,0,0,0.03);
-  --hard: -45px 80px 26px 0px rgba(0,0,0,0.00), -29px 51px 23px 0px rgba(0,0,0,0.01), -16px 29px 20px 0px rgba(0,0,0,0.02), -7px 13px 15px 0px rgba(0,0,0,0.03), -2px 3px 8px 0px rgba(0,0,0,0.04);
-  --header: 0px 4px 032px 0px rgba(0,0,0,0.02);
-  --dropdown: 0px 54px 15px 0px rgba(0,0,0,0.00), 0px 35px 14px 0px rgba(0,0,0,0.00), 0px 19px 12px 0px rgba(0,0,0,0.02), 0px 9px 9px 0px rgba(0,0,0,0.03), 0px 2px 5px 0px rgba(0,0,0,0.03);
-  --content-area-mobile: 366px;
-  --content-area-desktop-small: 700px;
-  --content-area-desktop: 1000px;
-  --content-area-desktop-large: 1200px;
-  --device-width-mobile: 390px;
-  --device-width-desktop-small: 800px;
-  --device-width-desktop: 1440px;
-  --device-width-desktop-large: 2440px;
+  --none: 0 0 0 0 rgba(0,0,0,0);
+  --soft: -59px 104px 33px 0 rgba(0,0,0,0.00), -38px 67px 31px 0 rgba(0,0,0,0.00), -21px 37px 26px 0 rgba(0,0,0,0.01), -9px 17px 19px 0 rgba(0,0,0,0.02), -2px 4px 11px 0 rgba(0,0,0,0.03);
+  --hard: -45px 80px 26px 0 rgba(0,0,0,0.00), -29px 51px 23px 0 rgba(0,0,0,0.01), -16px 29px 20px 0 rgba(0,0,0,0.02), -7px 13px 15px 0 rgba(0,0,0,0.03), -2px 3px 8px 0 rgba(0,0,0,0.04);
+  --header: 0 4px 032px 0 rgba(0,0,0,0.02);
+  --dropdown: 0 54px 15px 0 rgba(0,0,0,0.00), 0 35px 14px 0 rgba(0,0,0,0.00), 0 19px 12px 0 rgba(0,0,0,0.02), 0 9px 9px 0 rgba(0,0,0,0.03), 0 2px 5px 0 rgba(0,0,0,0.03);
   --teal-100: #e2f3f9;
   --teal-150: #d3edf6;
   --teal-200: #c4e7f3;
@@ -336,7 +269,7 @@
   --feedback-background-default-error: var(--red-050);
   --feedback-background-default-warning: var(--yellow-200);
   --feedback-background-default-success: var(--green-150);
-  --feedback-background-default-neutral: var(--neutralgrey-150);
+  --feedback-background-default-neutral: var(--neutralgrey-150); /** For neutral messages */
   --feedback-background-subtle-info: var(--blue-000);
   --feedback-background-subtle-error: var(--red-000);
   --feedback-background-subtle-warning: var(--yellow-100);
@@ -424,7 +357,50 @@
   --supplemental-emphasized-red-foreground: var(--grey-999);
   --supplemental-emphasized-blue-background: var(--blue-400);
   --supplemental-emphasized-blue-foreground: var(--grey-999);
-   --spacing-none: 0;
+ --spacing-none: 0;
+  --dimension-025x: 0.0625rem; /** 1px */
+  --dimension-05x: 0.125rem; /** 2px */
+  --dimension-1x: 0.25rem; /** 4px */
+  --dimension-2x: 0.5rem; /** 8px */
+  --dimension-3x: 0.75rem; /** 12px */
+  --dimension-3-5x: 0.875rem; /** 14px */
+  --dimension-4x: 1rem; /** 16px */
+  --dimension-4-5x: 1.125rem; /** 18px */
+  --dimension-5x: 1.25rem; /** 20px */
+  --dimension-6x: 1.5rem; /** 24px */
+  --dimension-7x: 1.75rem; /** 28px */
+  --dimension-8x: 2rem; /** 32px */
+  --dimension-9x: 2.25rem; /** 36px */
+  --dimension-10x: 2.5rem; /** 40px */
+  --dimension-11x: 2.75rem; /** 44px */
+  --dimension-12x: 3rem; /** 48px */
+  --dimension-13x: 3.25rem; /** 52px */
+  --dimension-14x: 3.5rem; /** 56px */
+  --dimension-15x: 3.75rem; /** 60px */
+  --dimension-16x: 4rem; /** 64px */
+  --dimension-17x: 4.25rem; /** 68px */
+  --dimension-18x: 4.5rem; /** 72px */
+  --dimension-19x: 4.75rem; /** 76px */
+  --dimension-20x: 5rem; /** 80px */
+  --dimension-21x: 5.25rem; /** 84px */
+  --dimension-22x: 5.5rem; /** 88px */
+  --dimension-23x: 5.75rem; /** 92px */
+  --dimension-24x: 6rem; /** 96px */
+  --dimension-25x: 6.25rem; /** 100px */
+  --dimension-26x: 6.5rem; /** 104px */
+  --dimension-27x: 6.75rem; /** 108px */
+  --dimension-28x: 7rem; /** 112px */
+  --dimension-29x: 7.25rem; /** 116px */
+  --dimension-30x: 7.5rem; /** 120px */
+  --letter-spacing-0: 0em;
+  --letter-spacing-1: 0.05em;
+  --paragraph-spacing-0: 0;
+  --paragraph-spacing-1: 12px;
+  --paragraph-spacing-2: 16px;
+  --paragraph-spacing-3: 24px;
+  --paragraph-spacing-4: 32px;
+  --paragraph-spacing-5: 40px;
+  --paragraph-indent-0: 0px;
   --content-margin-top-bottom-mobile: 24px;
   --content-margin-top-bottom-desktop: 40px;
   --content-margin-top-bottom-desktop-small: 32px;
@@ -433,6 +409,14 @@
   --content-margin-left-right-desktop-small: 50px;
   --content-margin-left-right-desktop: 220px;
   --content-margin-left-right-desktop-large: 620px;
+  --border-radius-none: 0px;
+  --border-radius-small: 4px;
+  --border-radius-large: 6px;
+  --border-radius-circle: 50px;
+  --border-radius-pill: 9999px;
+  --border-width-none: 0px;
+  --border-width-default: 1px;
+  --border-width-strong: 2px;
   --content-area-mobile: 366px;
   --content-area-desktop-small: 700px;
   --content-area-desktop: 1000px;
@@ -441,7 +425,7 @@
   --device-width-desktop-small: 800px;
   --device-width-desktop: 1440px;
   --device-width-desktop-large: 2440px;
-  --header-x-large: var(--font-weight-semibold) var(--font-size-3xlarge)/var(--line-heights-zero) var(--font-families-source-sans-pro);
+  --header-x-large: var(--font-weight-semibold) var(--font-size-3xlarge)/var(--line-heights-0) var(--font-families-source-sans-pro);
   --header-large: var(--font-weight-semibold) var(--font-size-2xlarge)/var(--line-heights-1) var(--font-families-source-sans-pro);
   --header-medium: var(--font-weight-semibold) var(--font-size-xlarge)/var(--line-heights-2) var(--font-families-source-sans-pro);
   --header-small: var(--font-weight-semibold) var(--font-size-large)/var(--line-heights-3) var(--font-families-source-sans-pro);
@@ -504,14 +488,14 @@
   --sizing-2x-large: var(--dimension-24x);
   --content-margin-top-bottom: var(--content-margin-top-bottom-desktop);
   --content-margin-left-right: var(--content-margin-left-right-desktop);
-  --font-size-2xsmall: var(--dimension-3-5x);
-  --font-size-xsmall: var(--dimension-4x);
-  --font-size-small: var(--dimension-4-5x);
-  --font-size-medium: var(--dimension-5x);
-  --font-size-large: var(--dimension-6x);
-  --font-size-xlarge: var(--dimension-8x);
-  --font-size-2xlarge: var(--dimension-10x);
-  --font-size-3xlarge: var(--dimension-12x);
+  --font-size-2xsmall: var(--dimension-3-5x); /** 12 px */
+  --font-size-xsmall: var(--dimension-4x); /** 14 px */
+  --font-size-small: var(--dimension-4-5x); /** 16 px */
+  --font-size-medium: var(--dimension-5x); /** 18 px */
+  --font-size-large: var(--dimension-6x); /** 20 px */
+  --font-size-xlarge: var(--dimension-8x); /** 24 px */
+  --font-size-2xlarge: var(--dimension-10x); /** 32 px */
+  --font-size-3xlarge: var(--dimension-12x); /** 40 px */
   --fixed-sizing-x-small: var(--dimension-5x);
   --fixed-sizing-small: var(--dimension-6x);
   --fixed-sizing-xx-small: var(--dimension-4x);
@@ -640,94 +624,27 @@
   --varsom-blue-999: #00131c;
   --varsom-blue-000: #eff8fc;
   --varsom-blue-050: #c8eaf9;
-  --opacity-disabled: 38%;
-  --dimension-025x: 0.0625rem;
-  --dimension-05x: 0.125rem;
-  --dimension-1x: 0.25rem;
-  --dimension-2x: 0.5rem;
-  --dimension-3x: 0.75rem;
-  --dimension-3-5x: 0.875rem;
-  --dimension-4x: 1rem;
-  --dimension-4-5x: 1.125rem;
-  --dimension-5x: 1.25rem;
-  --dimension-6x: 1.5rem;
-  --dimension-7x: 1.75rem;
-  --dimension-8x: 2rem;
-  --dimension-9x: 2.25rem;
-  --dimension-10x: 2.5rem;
-  --dimension-11x: 2.75rem;
-  --dimension-12x: 3rem;
-  --dimension-13x: 3.25rem;
-  --dimension-14x: 3.5rem;
-  --dimension-15x: 3.75rem;
-  --dimension-16x: 4rem;
-  --dimension-17x: 4.25rem;
-  --dimension-18x: 4.5rem;
-  --dimension-19x: 4.75rem;
-  --dimension-20x: 5rem;
-  --dimension-21x: 5.25rem;
-  --dimension-22x: 5.5rem;
-  --dimension-23x: 5.75rem;
-  --dimension-24x: 6rem;
-  --dimension-25x: 6.25rem;
-  --dimension-26x: 6.5rem;
-  --dimension-27x: 6.75rem;
-  --dimension-28x: 7rem;
-  --dimension-29x: 7.25rem;
-  --dimension-30x: 7.5rem;
+  --opacity-disabled: 0.38;
   --font-families-source-sans-pro: 'Source Sans Pro';
-  --line-heights-zero: 115%;
-  --line-heights-1: 120%;
-  --line-heights-2: 125%;
-  --line-heights-3: 130%;
-  --line-heights-4: 140%;
-  --line-heights-5: 150%;
-  --line-heights-6: 110%;
-  --letter-spacing-zero: 0%;
-  --letter-spacing-1: 5%;
-  --paragraph-spacing-zero: 0;
-  --paragraph-spacing-1: 12;
-  --paragraph-spacing-2: 16;
-  --paragraph-spacing-3: 24;
-  --paragraph-spacing-4: 32;
-  --paragraph-spacing-5: 40;
+  --line-heights-0: 1.15;
+  --line-heights-1: 1.20;
+  --line-heights-2: 1.25;
+  --line-heights-3: 1.30;
+  --line-heights-4: 1.40;
+  --line-heights-5: 1.50;
+  --line-heights-6: 1.10;
   --text-case-capitalize: capitalize;
   --text-case-none: none;
   --text-case-uppercase: uppercase;
   --text-decoration-none: none;
   --text-decoration-underline: underline;
-  --paragraph-indent-zero: 0px;
-  --content-margin-top-bottom-mobile: 24px;
-  --content-margin-top-bottom-desktop: 40px;
-  --content-margin-top-bottom-desktop-small: 32px;
-  --content-margin-top-bottom-desktop-large: 40px;
-  --content-margin-left-right-mobile: 24px;
-  --content-margin-left-right-desktop-small: 50px;
-  --content-margin-left-right-desktop: 220px;
-  --content-margin-left-right-desktop-large: 620px;
-  --border-radius-none: 0px;
-  --border-radius-small: 4px;
-  --border-radius-large: 6px;
-  --border-radius-circle: 50px;
-  --border-radius-pill: 9999px;
-  --border-width-none: 0px;
-  --border-width-default: 1px;
-  --border-width-strong: 2px;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
-  --none: 0px 0px 0px 0px rgba(0,0,0,0);
-  --soft: -59px 104px 33px 0px rgba(0,0,0,0.00), -38px 67px 31px 0px rgba(0,0,0,0.00), -21px 37px 26px 0px rgba(0,0,0,0.01), -9px 17px 19px 0px rgba(0,0,0,0.02), -2px 4px 11px 0px rgba(0,0,0,0.03);
-  --hard: -45px 80px 26px 0px rgba(0,0,0,0.00), -29px 51px 23px 0px rgba(0,0,0,0.01), -16px 29px 20px 0px rgba(0,0,0,0.02), -7px 13px 15px 0px rgba(0,0,0,0.03), -2px 3px 8px 0px rgba(0,0,0,0.04);
-  --header: 0px 4px 032px 0px rgba(0,0,0,0.02);
-  --dropdown: 0px 54px 15px 0px rgba(0,0,0,0.00), 0px 35px 14px 0px rgba(0,0,0,0.00), 0px 19px 12px 0px rgba(0,0,0,0.02), 0px 9px 9px 0px rgba(0,0,0,0.03), 0px 2px 5px 0px rgba(0,0,0,0.03);
-  --content-area-mobile: 366px;
-  --content-area-desktop-small: 700px;
-  --content-area-desktop: 1000px;
-  --content-area-desktop-large: 1200px;
-  --device-width-mobile: 390px;
-  --device-width-desktop-small: 800px;
-  --device-width-desktop: 1440px;
-  --device-width-desktop-large: 2440px;
+  --none: 0 0 0 0 rgba(0,0,0,0);
+  --soft: -59px 104px 33px 0 rgba(0,0,0,0.00), -38px 67px 31px 0 rgba(0,0,0,0.00), -21px 37px 26px 0 rgba(0,0,0,0.01), -9px 17px 19px 0 rgba(0,0,0,0.02), -2px 4px 11px 0 rgba(0,0,0,0.03);
+  --hard: -45px 80px 26px 0 rgba(0,0,0,0.00), -29px 51px 23px 0 rgba(0,0,0,0.01), -16px 29px 20px 0 rgba(0,0,0,0.02), -7px 13px 15px 0 rgba(0,0,0,0.03), -2px 3px 8px 0 rgba(0,0,0,0.04);
+  --header: 0 4px 032px 0 rgba(0,0,0,0.02);
+  --dropdown: 0 54px 15px 0 rgba(0,0,0,0.00), 0 35px 14px 0 rgba(0,0,0,0.00), 0 19px 12px 0 rgba(0,0,0,0.02), 0 9px 9px 0 rgba(0,0,0,0.03), 0 2px 5px 0 rgba(0,0,0,0.03);
   --teal-100: #e2f3f9;
   --teal-150: #d3edf6;
   --teal-200: #c4e7f3;
@@ -956,8 +873,55 @@
   --supplemental-emphasized-blue-foreground: var(--grey-999); }
 
 @media (min-width: 1400px) {
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
 :root.rme, :root.rme_darkmode {
   --spacing-none: 0;
+  --dimension-025x: 0.0625rem; /** 1px */
+  --dimension-05x: 0.125rem; /** 2px */
+  --dimension-1x: 0.25rem; /** 4px */
+  --dimension-2x: 0.5rem; /** 8px */
+  --dimension-3x: 0.75rem; /** 12px */
+  --dimension-3-5x: 0.875rem; /** 14px */
+  --dimension-4x: 1rem; /** 16px */
+  --dimension-4-5x: 1.125rem; /** 18px */
+  --dimension-5x: 1.25rem; /** 20px */
+  --dimension-6x: 1.5rem; /** 24px */
+  --dimension-7x: 1.75rem; /** 28px */
+  --dimension-8x: 2rem; /** 32px */
+  --dimension-9x: 2.25rem; /** 36px */
+  --dimension-10x: 2.5rem; /** 40px */
+  --dimension-11x: 2.75rem; /** 44px */
+  --dimension-12x: 3rem; /** 48px */
+  --dimension-13x: 3.25rem; /** 52px */
+  --dimension-14x: 3.5rem; /** 56px */
+  --dimension-15x: 3.75rem; /** 60px */
+  --dimension-16x: 4rem; /** 64px */
+  --dimension-17x: 4.25rem; /** 68px */
+  --dimension-18x: 4.5rem; /** 72px */
+  --dimension-19x: 4.75rem; /** 76px */
+  --dimension-20x: 5rem; /** 80px */
+  --dimension-21x: 5.25rem; /** 84px */
+  --dimension-22x: 5.5rem; /** 88px */
+  --dimension-23x: 5.75rem; /** 92px */
+  --dimension-24x: 6rem; /** 96px */
+  --dimension-25x: 6.25rem; /** 100px */
+  --dimension-26x: 6.5rem; /** 104px */
+  --dimension-27x: 6.75rem; /** 108px */
+  --dimension-28x: 7rem; /** 112px */
+  --dimension-29x: 7.25rem; /** 116px */
+  --dimension-30x: 7.5rem; /** 120px */
+  --letter-spacing-0: 0em;
+  --letter-spacing-1: 0.05em;
+  --paragraph-spacing-0: 0;
+  --paragraph-spacing-1: 12px;
+  --paragraph-spacing-2: 16px;
+  --paragraph-spacing-3: 24px;
+  --paragraph-spacing-4: 32px;
+  --paragraph-spacing-5: 40px;
+  --paragraph-indent-0: 0px;
   --content-margin-top-bottom-mobile: 24px;
   --content-margin-top-bottom-desktop: 40px;
   --content-margin-top-bottom-desktop-small: 32px;
@@ -966,6 +930,14 @@
   --content-margin-left-right-desktop-small: 50px;
   --content-margin-left-right-desktop: 220px;
   --content-margin-left-right-desktop-large: 620px;
+  --border-radius-none: 0px;
+  --border-radius-small: 4px;
+  --border-radius-large: 6px;
+  --border-radius-circle: 50px;
+  --border-radius-pill: 9999px;
+  --border-width-none: 0px;
+  --border-width-default: 1px;
+  --border-width-strong: 2px;
   --content-area-mobile: 366px;
   --content-area-desktop-small: 700px;
   --content-area-desktop: 1000px;
@@ -997,19 +969,67 @@
   --sizing-2x-large: var(--dimension-24x);
   --content-margin-top-bottom: var(--content-margin-top-bottom-desktop-large);
   --content-margin-left-right: var(--content-margin-left-right-desktop-large);
-  --font-size-2xsmall: var(--dimension-3-5x);
-  --font-size-xsmall: var(--dimension-4x);
-  --font-size-small: var(--dimension-4-5x);
-  --font-size-medium: var(--dimension-5x);
-  --font-size-large: var(--dimension-6x);
-  --font-size-xlarge: var(--dimension-8x);
-  --font-size-2xlarge: var(--dimension-10x);
-  --font-size-3xlarge: var(--dimension-12x);
+  --font-size-2xsmall: var(--dimension-3-5x); /** 12 px */
+  --font-size-xsmall: var(--dimension-4x); /** 14 px */
+  --font-size-small: var(--dimension-4-5x); /** 16 px */
+  --font-size-medium: var(--dimension-5x); /** 18 px */
+  --font-size-large: var(--dimension-6x); /** 20 px */
+  --font-size-xlarge: var(--dimension-8x); /** 24 px */
+  --font-size-2xlarge: var(--dimension-10x); /** 32 px */
+  --font-size-3xlarge: var(--dimension-12x); /** 40 px */
 }
+
 }
 @media (max-width: 1200px) {
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
 :root.rme, :root.rme_darkmode {
   --spacing-none: 0;
+  --dimension-025x: 0.0625rem; /** 1px */
+  --dimension-05x: 0.125rem; /** 2px */
+  --dimension-1x: 0.25rem; /** 4px */
+  --dimension-2x: 0.5rem; /** 8px */
+  --dimension-3x: 0.75rem; /** 12px */
+  --dimension-3-5x: 0.875rem; /** 14px */
+  --dimension-4x: 1rem; /** 16px */
+  --dimension-4-5x: 1.125rem; /** 18px */
+  --dimension-5x: 1.25rem; /** 20px */
+  --dimension-6x: 1.5rem; /** 24px */
+  --dimension-7x: 1.75rem; /** 28px */
+  --dimension-8x: 2rem; /** 32px */
+  --dimension-9x: 2.25rem; /** 36px */
+  --dimension-10x: 2.5rem; /** 40px */
+  --dimension-11x: 2.75rem; /** 44px */
+  --dimension-12x: 3rem; /** 48px */
+  --dimension-13x: 3.25rem; /** 52px */
+  --dimension-14x: 3.5rem; /** 56px */
+  --dimension-15x: 3.75rem; /** 60px */
+  --dimension-16x: 4rem; /** 64px */
+  --dimension-17x: 4.25rem; /** 68px */
+  --dimension-18x: 4.5rem; /** 72px */
+  --dimension-19x: 4.75rem; /** 76px */
+  --dimension-20x: 5rem; /** 80px */
+  --dimension-21x: 5.25rem; /** 84px */
+  --dimension-22x: 5.5rem; /** 88px */
+  --dimension-23x: 5.75rem; /** 92px */
+  --dimension-24x: 6rem; /** 96px */
+  --dimension-25x: 6.25rem; /** 100px */
+  --dimension-26x: 6.5rem; /** 104px */
+  --dimension-27x: 6.75rem; /** 108px */
+  --dimension-28x: 7rem; /** 112px */
+  --dimension-29x: 7.25rem; /** 116px */
+  --dimension-30x: 7.5rem; /** 120px */
+  --letter-spacing-0: 0em;
+  --letter-spacing-1: 0.05em;
+  --paragraph-spacing-0: 0;
+  --paragraph-spacing-1: 12px;
+  --paragraph-spacing-2: 16px;
+  --paragraph-spacing-3: 24px;
+  --paragraph-spacing-4: 32px;
+  --paragraph-spacing-5: 40px;
+  --paragraph-indent-0: 0px;
   --content-margin-top-bottom-mobile: 24px;
   --content-margin-top-bottom-desktop: 40px;
   --content-margin-top-bottom-desktop-small: 32px;
@@ -1018,6 +1038,14 @@
   --content-margin-left-right-desktop-small: 50px;
   --content-margin-left-right-desktop: 220px;
   --content-margin-left-right-desktop-large: 620px;
+  --border-radius-none: 0px;
+  --border-radius-small: 4px;
+  --border-radius-large: 6px;
+  --border-radius-circle: 50px;
+  --border-radius-pill: 9999px;
+  --border-width-none: 0px;
+  --border-width-default: 1px;
+  --border-width-strong: 2px;
   --content-area-mobile: 366px;
   --content-area-desktop-small: 700px;
   --content-area-desktop: 1000px;
@@ -1049,19 +1077,67 @@
   --sizing-2x-large: var(--dimension-23x);
   --content-margin-top-bottom: var(--content-margin-top-bottom-desktop-small);
   --content-margin-left-right: var(--content-margin-left-right-desktop-small);
-  --font-size-2xsmall: var(--dimension-3x);
-  --font-size-xsmall: var(--dimension-3-5x);
-  --font-size-small: var(--dimension-4x);
-  --font-size-medium: var(--dimension-4-5x);
-  --font-size-large: var(--dimension-5x);
-  --font-size-xlarge: var(--dimension-7x);
-  --font-size-2xlarge: var(--dimension-9x);
-  --font-size-3xlarge: var(--dimension-11x);
+  --font-size-2xsmall: var(--dimension-3x); /** 12 px */
+  --font-size-xsmall: var(--dimension-3-5x); /** 14 px */
+  --font-size-small: var(--dimension-4x); /** 16 px */
+  --font-size-medium: var(--dimension-4-5x); /** 18 px */
+  --font-size-large: var(--dimension-5x); /** 20 px */
+  --font-size-xlarge: var(--dimension-7x); /** 24 px */
+  --font-size-2xlarge: var(--dimension-9x); /** 32 px */
+  --font-size-3xlarge: var(--dimension-11x); /** 40 px */
 }
+
 }
 @media (max-width: 600px) {
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
 :root.rme, :root.rme_darkmode {
   --spacing-none: 0;
+  --dimension-025x: 0.0625rem; /** 1px */
+  --dimension-05x: 0.125rem; /** 2px */
+  --dimension-1x: 0.25rem; /** 4px */
+  --dimension-2x: 0.5rem; /** 8px */
+  --dimension-3x: 0.75rem; /** 12px */
+  --dimension-3-5x: 0.875rem; /** 14px */
+  --dimension-4x: 1rem; /** 16px */
+  --dimension-4-5x: 1.125rem; /** 18px */
+  --dimension-5x: 1.25rem; /** 20px */
+  --dimension-6x: 1.5rem; /** 24px */
+  --dimension-7x: 1.75rem; /** 28px */
+  --dimension-8x: 2rem; /** 32px */
+  --dimension-9x: 2.25rem; /** 36px */
+  --dimension-10x: 2.5rem; /** 40px */
+  --dimension-11x: 2.75rem; /** 44px */
+  --dimension-12x: 3rem; /** 48px */
+  --dimension-13x: 3.25rem; /** 52px */
+  --dimension-14x: 3.5rem; /** 56px */
+  --dimension-15x: 3.75rem; /** 60px */
+  --dimension-16x: 4rem; /** 64px */
+  --dimension-17x: 4.25rem; /** 68px */
+  --dimension-18x: 4.5rem; /** 72px */
+  --dimension-19x: 4.75rem; /** 76px */
+  --dimension-20x: 5rem; /** 80px */
+  --dimension-21x: 5.25rem; /** 84px */
+  --dimension-22x: 5.5rem; /** 88px */
+  --dimension-23x: 5.75rem; /** 92px */
+  --dimension-24x: 6rem; /** 96px */
+  --dimension-25x: 6.25rem; /** 100px */
+  --dimension-26x: 6.5rem; /** 104px */
+  --dimension-27x: 6.75rem; /** 108px */
+  --dimension-28x: 7rem; /** 112px */
+  --dimension-29x: 7.25rem; /** 116px */
+  --dimension-30x: 7.5rem; /** 120px */
+  --letter-spacing-0: 0em;
+  --letter-spacing-1: 0.05em;
+  --paragraph-spacing-0: 0;
+  --paragraph-spacing-1: 12px;
+  --paragraph-spacing-2: 16px;
+  --paragraph-spacing-3: 24px;
+  --paragraph-spacing-4: 32px;
+  --paragraph-spacing-5: 40px;
+  --paragraph-indent-0: 0px;
   --content-margin-top-bottom-mobile: 24px;
   --content-margin-top-bottom-desktop: 40px;
   --content-margin-top-bottom-desktop-small: 32px;
@@ -1070,6 +1146,14 @@
   --content-margin-left-right-desktop-small: 50px;
   --content-margin-left-right-desktop: 220px;
   --content-margin-left-right-desktop-large: 620px;
+  --border-radius-none: 0px;
+  --border-radius-small: 4px;
+  --border-radius-large: 6px;
+  --border-radius-circle: 50px;
+  --border-radius-pill: 9999px;
+  --border-width-none: 0px;
+  --border-width-default: 1px;
+  --border-width-strong: 2px;
   --content-area-mobile: 366px;
   --content-area-desktop-small: 700px;
   --content-area-desktop: 1000px;
@@ -1101,13 +1185,14 @@
   --sizing-2x-large: var(--dimension-22x);
   --content-margin-top-bottom: var(--content-margin-top-bottom-mobile);
   --content-margin-left-right: var(--content-margin-left-right-mobile);
-  --font-size-2xsmall: var(--dimension-3x);
-  --font-size-xsmall: var(--dimension-3-5x);
-  --font-size-small: var(--dimension-4x);
-  --font-size-medium: var(--dimension-4-5x);
-  --font-size-large: var(--dimension-5x);
-  --font-size-xlarge: var(--dimension-7x);
-  --font-size-2xlarge: var(--dimension-9x);
-  --font-size-3xlarge: var(--dimension-11x);
+  --font-size-2xsmall: var(--dimension-3x); /** 12 px */
+  --font-size-xsmall: var(--dimension-3-5x); /** 14 px */
+  --font-size-small: var(--dimension-4x); /** 16 px */
+  --font-size-medium: var(--dimension-4-5x); /** 18 px */
+  --font-size-large: var(--dimension-5x); /** 20 px */
+  --font-size-xlarge: var(--dimension-7x); /** 24 px */
+  --font-size-2xlarge: var(--dimension-9x); /** 32 px */
+  --font-size-3xlarge: var(--dimension-11x); /** 40 px */
 }
+
 }
