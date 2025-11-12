@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.20.1",
+    "@tokens-studio/sd-transforms": "^2.0.1",
     "fontfaceobserver": "^2.3.0",
     "lit": "^3.3.0"
   },
@@ -86,8 +87,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "semantic-release": "^24.2.6",
-    "style-dictionary": "4.4.0",
-    "style-dictionary-utils": "^4.1.0",
+    "style-dictionary": "^5.1.1",
     "typescript": "^5.8.3",
     "vite": "^7.1.5",
     "vite-plugin-dts": "^4.5.4",
