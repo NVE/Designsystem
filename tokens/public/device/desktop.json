@@ -623,11 +623,11 @@
     "content": {
       "margin-top-bottom": {
         "$type": "spacing",
-        "$value": "{spacing.content.margin-top-bottom.desktop}"
+        "$value": "{spacing.40x}"
       },
       "margin-left-right": {
         "$type": "spacing",
-        "$value": "{spacing.content.margin-left-right.desktop}"
+        "$value": "{spacing.220x}"
       }
     }
   },
