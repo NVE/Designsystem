@@ -569,41 +569,41 @@
         "teal": {
           "background": {
             "$type": "color",
-            "$value": "{color-shades.data.color-08.850}"
+            "$value": "{color-shades.additional.teal.850}"
           },
           "foreground": {
             "$type": "color",
-            "$value": "{color-shades.data.color-08.150}"
+            "$value": "{color-shades.additional.teal.150}"
           }
         },
         "purple": {
           "background": {
             "$type": "color",
-            "$value": "{color-shades.data.color-06.950}"
+            "$value": "{color-shades.additional.purple.950}"
           },
           "foreground": {
             "$type": "color",
-            "$value": "{color-shades.data.color-06.150}"
+            "$value": "{color-shades.additional.purple.150}"
           }
         },
         "lime": {
           "background": {
             "$type": "color",
-            "$value": "{color-shades.data.color-05.850}"
+            "$value": "{color-shades.additional.lime.850}"
           },
           "foreground": {
             "$type": "color",
-            "$value": "{color-shades.data.color-05.150}"
+            "$value": "{color-shades.additional.lime.150}"
           }
         },
         "magenta": {
           "background": {
             "$type": "color",
-            "$value": "{color-shades.data.color-07.850}"
+            "$value": "{color-shades.additional.magenta.850}"
           },
           "foreground": {
             "$type": "color",
-            "$value": "{color-shades.data.color-07.100}"
+            "$value": "{color-shades.additional.magenta.100}"
           }
         },
         "yellow": {
@@ -651,41 +651,41 @@
         "teal": {
           "background": {
             "$type": "color",
-            "$value": "{color-shades.data.color-08.400}"
+            "$value": "{color-shades.additional.teal.400}"
           },
           "foreground": {
             "$type": "color",
-            "$value": "{color-shades.data.color-08.950}"
+            "$value": "{color-shades.additional.teal.950}"
           }
         },
         "purple": {
           "background": {
             "$type": "color",
-            "$value": "{color-shades.data.color-06.150}"
+            "$value": "{color-shades.additional.purple.150}"
           },
           "foreground": {
             "$type": "color",
-            "$value": "{color-shades.data.color-06.950}"
+            "$value": "{color-shades.additional.purple.950}"
           }
         },
         "lime": {
           "background": {
             "$type": "color",
-            "$value": "{color-shades.data.color-05.300}"
+            "$value": "{color-shades.additional.lime.300}"
           },
           "foreground": {
             "$type": "color",
-            "$value": "{color-shades.data.color-05.950}"
+            "$value": "{color-shades.additional.lime.950}"
           }
         },
         "magenta": {
           "background": {
             "$type": "color",
-            "$value": "{color-shades.data.color-07.300}"
+            "$value": "{color-shades.additional.magenta.300}"
           },
           "foreground": {
             "$type": "color",
-            "$value": "{color-shades.data.color-07.950}"
+            "$value": "{color-shades.additional.magenta.950}"
           }
         },
         "yellow": {
@@ -739,19 +739,19 @@
         "foreground": {
           "data-01-primary": {
             "$type": "color",
-            "$value": "{color-shades.data.brand.050}"
+            "$value": "{color-shades.data.brand.250}"
           },
           "data-02-secondary": {
             "$type": "color",
-            "$value": "{color-shades.data.brand.150}"
+            "$value": "{color-shades.data.brand.200}"
           },
           "data-03-tertiary": {
             "$type": "color",
-            "$value": "{color-shades.data.brand.000}"
+            "$value": "{color-shades.data.brand.100}"
           },
           "data-04": {
             "$type": "color",
-            "$value": "{color-shades.functional.blue.700}"
+            "$value": "{color-shades.data.color-04.600}"
           },
           "data-05": {
             "$type": "color",
@@ -772,6 +772,10 @@
           "data-09": {
             "$type": "color",
             "$value": "{color-shades.data.color-09.600}"
+          },
+          "data-10": {
+            "$type": "color",
+            "$value": "{color-shades.data.brand.000}"
           }
         }
       }
