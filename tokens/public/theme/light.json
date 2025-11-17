@@ -733,49 +733,81 @@
         "background": {
           "primary-transparent": {
             "$type": "color",
-            "$value": "{color-shades.data.brand.300-005}"
+            "$value": "{color-shades.data.color-a.300-005}"
           }
         },
         "foreground": {
           "data-01": {
             "$type": "color",
-            "$value": "{color-shades.data.brand.300}"
+            "$value": "{color-shades.data.color-a.300}"
           },
           "data-02": {
             "$type": "color",
-            "$value": "{color-shades.data.brand.600}"
+            "$value": "{color-shades.data.color-a.600}"
           },
           "data-03": {
             "$type": "color",
-            "$value": "{color-shades.data.brand.800}"
+            "$value": "{color-shades.data.color-a.800}"
           },
           "data-04": {
             "$type": "color",
-            "$value": "{color-shades.data.color-04.800}"
+            "$value": "{color-shades.data.color-a.950}"
           },
           "data-05": {
             "$type": "color",
-            "$value": "{color-shades.data.color-05.800}"
+            "$value": "{color-shades.data.color-b.900}"
           },
           "data-06": {
             "$type": "color",
-            "$value": "{color-shades.data.color-06.800}"
+            "$value": "{color-shades.data.color-b.800}"
           },
           "data-07": {
             "$type": "color",
-            "$value": "{color-shades.data.color-07.800}"
+            "$value": "{color-shades.data.color-b.500}"
           },
           "data-08": {
             "$type": "color",
-            "$value": "{color-shades.data.color-08.800}"
+            "$value": "{color-shades.data.color-c.600}"
           },
           "data-09": {
             "$type": "color",
-            "$value": "{color-shades.data.color-09.800}"
+            "$value": "{color-shades.data.color-c.800}"
           },
           "data-10": {
             "$type": "color",
-            "$value": "{color-shades.data.brand.999}"
+            "$value": "{color-shades.data.color-c.900}"
+          },
+          "data-11": {
+            "$type": "color",
+            "$value": "{color-shades.data.color-d.900}"
+          },
+          "data-12": {
+            "$type": "color",
+            "$value": "{color-shades.data.color-d.800}"
+          },
+          "data-13": {
+            "$type": "color",
+            "$value": "{color-shades.data.color-d.600}"
+          },
+          "data-14": {
+            "$type": "color",
+            "$value": "{color-shades.data.color-e.300}"
+          },
+          "data-15": {
+            "$type": "color",
+            "$value": "{color-shades.data.color-e.400}"
+          },
+          "data-16": {
+            "$type": "color",
+            "$value": "{color-shades.data.color-e.500}"
+          },
+          "data-17": {
+            "$type": "color",
+            "$value": "{color-shades.data.color-f.800}"
+          },
+          "data-18": {
+            "$type": "color",
+            "$value": "{color-shades.data.color-g.800}"
           }
         }
       }
