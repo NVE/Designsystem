@@ -146,7 +146,7 @@ export default class NveInput extends SlInput implements INveComponent {
     nveIcon.setAttribute('slot', 'suffix');
     // ikone farge
     const variableValue = getComputedStyle(document.documentElement).getPropertyValue(
-      '--feedback-background-emphasized-error'
+      '--color-feedback-background-emphasized-error'
     );
     nveIcon.style.color = variableValue.trim();
     this.appendChild(nveIcon);

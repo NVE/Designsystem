@@ -11,7 +11,7 @@ export default css`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 3px solid var(--feeedback-foreground-emphasized-success, #00814b);
+    border: 3px solid var(--color-feeedback-foreground-emphasized-success, #00814b);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,7 +31,7 @@ export default css`
   }
 
   .step-description {
-    color: var(--neutrals-foreground-primary, #0d0d0e);
+    color: var(--color-neutrals-foreground-primary, #0d0d0e);
 
     /* Label/medium */
     font-family: 'Source Sans Pro';
@@ -43,11 +43,11 @@ export default css`
   }
 
   .next-button {
-    color: var(--neutrals-foreground-primary, #0d0d0e);
+    color: var(--color-neutrals-foreground-primary, #0d0d0e);
   }
 
   .back-button {
-    color: var(--neutrals-foreground-subtle, #60656c);
+    color: var(--color-neutrals-foreground-subtle, #60656c);
   }
 
   .step-buttons {

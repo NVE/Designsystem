@@ -13,7 +13,7 @@ export default css`
     padding: var(--spacing-large);
     gap: var(--spacing-small);
     align-self: stretch;
-    color: var(--neutrals-foreground-primary, #0d0d0e);
+    color: var(--color-neutrals-foreground-primary, #0d0d0e);
     opacity: 1;
     transition: opacity 0.3s 0s;
   }
@@ -24,7 +24,7 @@ export default css`
   }
 
   .message-card__subheader {
-    font: var(--label-x-small-light);
+    font: var(--typography-label-x-small-light);
   }
 
   .message-card__header {
@@ -42,12 +42,12 @@ export default css`
     gap: 8px;
     width: 100%;
     padding: 2px 0;
-    font: var(--header-small);
+    font: var(--typography-heading-small);
     line-height: 140%;
   }
 
   .message-card__body {
-    font: var(--body-large);
+    font: var(--typography-body-large);
   }
 
   .message-card__close-btn {
@@ -79,35 +79,35 @@ export default css`
   /** Varianter */
 
   .message-card--neutral {
-    background: var(--neutrals-background-primary, #fff);
+    background: var(--color-neutrals-background-primary, #fff);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
   }
 
   .message-card--danger {
-    background: var(--feedback-background-default-error);
+    background: var(--color-feedback-background-default-error);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
   }
 
   .message-card--warning {
-    background: var(--feedback-background-default-warning);
+    background: var(--color-feedback-background-default-warning);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
   }
 
   .message-card--success {
-    background: var(--feedback-background-default-success);
+    background: var(--color-feedback-background-default-success);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
   }
 
   .message-card--primary {
-    background: var(--feedback-background-subtle-info);
+    background: var(--color-feedback-background-subtle-info);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
@@ -116,41 +116,41 @@ export default css`
   /** Sterkere farger */
 
   :host([saturation='emphasized']) .message-card--neutral {
-    background: var(--neutrals-background-secondary);
+    background: var(--color-neutrals-background-secondary);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
   }
 
   :host([saturation='emphasized']) .message-card--danger {
-    color: var(--feedback-foreground-emphasized-error);
-    background: var(--feedback-background-emphasized-error);
+    color: var(--color-feedback-foreground-emphasized-error);
+    background: var(--color-feedback-background-emphasized-error);
     .message-card__close-btn:hover {
-      background-color: var(--feedback-background-default-error);
-      color: var(--neutrals-foreground-primary);
+      background-color: var(--color-feedback-background-default-error);
+      color: var(--color-neutrals-foreground-primary);
     }
   }
 
   :host([saturation='emphasized']) .message-card--warning {
-    color: var(--feedback-foreground-emphasized-warning);
-    background: var(--feedback-background-emphasized-warning);
+    color: var(--color-feedback-foreground-emphasized-warning);
+    background: var(--color-feedback-background-emphasized-warning);
     .message-card__close-btn:hover {
-      background-color: var(--feedback-background-default-warning);
+      background-color: var(--color-feedback-background-default-warning);
     }
   }
 
   :host([saturation='emphasized']) .message-card--success {
-    color: var(--feedback-foreground-emphasized-success);
-    background: var(--feedback-background-emphasized-success);
+    color: var(--color-feedback-foreground-emphasized-success);
+    background: var(--color-feedback-background-emphasized-success);
     .message-card__close-btn:hover {
-      background-color: var(--feedback-background-default-success);
-      color: var(--neutrals-foreground-primary);
+      background-color: var(--color-feedback-background-default-success);
+      color: var(--color-neutrals-foreground-primary);
     }
   }
 
   :host([saturation='emphasized']) .message-card--primary {
-    color: var(--feedback-foreground-emphasized-info);
-    background: var(--feedback-background-emphasized-info);
+    color: var(--color-feedback-foreground-emphasized-info);
+    background: var(--color-feedback-background-emphasized-info);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
@@ -165,15 +165,15 @@ export default css`
   }
 
   :host([size='compact']) .message-card__header-label {
-    font: var(--label-medium);
+    font: var(--typography-label-medium);
   }
 
   :host([size='simple']) .message-card__header-label {
-    font: var(--label-small-light);
+    font: var(--typography-label-small-light);
   }
 
   :host([size='compact']) .message-card__body {
-    font: var(--body-small);
+    font: var(--typography-body-small);
   }
 
   :host([size='simple']) nve-icon::part(icon),

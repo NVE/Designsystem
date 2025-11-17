@@ -7,16 +7,16 @@ export default css`
 
   /* Endrer farge på checkbox ikonet til sl-icon */
   :host([type='checkbox'][checked]) sl-icon {
-    color: var(--neutrals-background-primary, #fff);
+    color: var(--color-neutrals-background-primary, #fff);
     opacity: 1;
-    background-color: var(--neutrals-foreground-primary, #00131c);
+    background-color: var(--color-neutrals-foreground-primary, #00131c);
   }
 
   /* Sørger for at checkbox borderen alltid blir vist */
   :host([type='checkbox']) .menu-item__check {
     display: flex;
-    color: var(--neutrals-background-primary, #fff);
-    border: 2px solid var(--neutrals-foreground-primary, #00131c);
+    color: var(--color-neutrals-background-primary, #fff);
+    border: 2px solid var(--color-neutrals-foreground-primary, #00131c);
     border-radius: 4px;
     width: 1.125rem;
     visibility: visible;
@@ -40,11 +40,11 @@ export default css`
     height: 2.625rem;
     align-items: center;
     justify-items: flex-start;
-    background: var(--neutrals-background-primary, #fff);
+    background: var(--color-neutrals-background-primary, #fff);
     padding: var(--spacing-small, 0.75rem) 0px var(--spacing-small, 0.75rem) var(--spacing-small, 0.75rem);
-    color: var(--neutrals-foreground-primary, #00131c);
-    font: var(--label-small-light);
-    fill: var(--neutrals-foreground-primary, #00131c);
+    color: var(--color-neutrals-foreground-primary, #00131c);
+    font: var(--typography-label-small-light);
+    fill: var(--color-neutrals-foreground-primary, #00131c);
   }
 
   .menu-item .menu-item__prefix::slotted(*) {
@@ -55,8 +55,8 @@ export default css`
   .menu-item__label::after {
     content: var(--nve-menu-item-subtext);
     display: block;
-    color: var(--neutrals-foreground-subtle, #006b99);
-    font: var(--body-compact-xsmall-compact);
+    color: var(--color-neutrals-foreground-subtle, #006b99);
+    font: var(--typography-body-compact-x-small-compact);
   }
 
   /* Gjør item unclickable når category property er på */
@@ -65,12 +65,12 @@ export default css`
   }
 
   :host([category]) .menu-item__label {
-    color: var(--neutrals-foreground-subtle, #006b99);
-    font: var(--label-x-small);
+    color: var(--color-neutrals-foreground-subtle, #006b99);
+    font: var(--typography-label-x-small);
   }
 
   :host([indent]) .menu-item__label {
-    color: var(--neutrals-foreground-primary);
+    color: var(--color-neutrals-foreground-primary);
   }
 
   :host([indent]) .menu-item {
@@ -79,20 +79,20 @@ export default css`
 
   :host(:hover:not([aria-disabled='true'], :focus-visible)) .menu-item,
   .menu-item--submenu-expanded {
-    background-color: var(--neutrals-background-secondary);
-    color: var(--neutrals-foreground-primary, #00131c);
+    background-color: var(--color-neutrals-background-secondary);
+    color: var(--color-neutrals-foreground-primary, #00131c);
   }
 
   /* Disabled fargen  */
   .menu-item.menu-item--disabled {
     opacity: 0.38;
-    border-radius: var(--borderRadius-none, 0rem);
+    border-radius: var(--border-radius-none, 0rem);
   }
 
   :host(:focus-visible) .menu-item {
-    box-shadow: inset 0 0 0 var(--border-width-strong, 2px) var(--Interactive-Primary-Foreground-Border-Focus, #008ffb);
-    opacity: var(--borderWidth-default, 1);
-    color: var(--interactive-outlined-foreground-default);
+    box-shadow: inset 0 0 0 var(--border-width-strong, 2px) var(--color-interactive-primary-border-focus, #008ffb);
+    opacity: var(--border-width-default, 1);
+    color: var(--color-interactive-outlined-foreground-default);
     background-color: transparent;
   }
 `;

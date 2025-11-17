@@ -132,7 +132,7 @@ const initGlobalState = (cssFileContent: string) => {
 
   stateInitialized.value = true;
 
-  // returnerer {--font-size-2xsmall: '0.875rem}
+  // returnerer {--font-size-2x-small: '0.875rem}
   function getFontSizeDimension(fontTokens: string[]): Record<string, string> {
     return Object.fromEntries(
       fontTokens.map((entry) => {
@@ -145,7 +145,7 @@ const initGlobalState = (cssFileContent: string) => {
     );
   }
 
-  //returnerer --header-large: {size: --font-size}
+  //returnerer --typography-heading-large: {size: --font-size}
   function getFontVariables(cssContent: string[]): (FontVariables | null)[] {
     return cssContent.map((entry) => {
       const keyMatch = entry.match(/(--[\w-]+):/);

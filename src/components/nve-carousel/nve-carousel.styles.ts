@@ -11,7 +11,7 @@ export default css`
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: var(--spacing-xx-small) var(--spacing-x-small);
+    padding: var(--spacing-2x-small) var(--spacing-x-small);
     border-radius: var(--border-radius-small);
     color: var(--pagination-counter-color, inherit);
     background-color: var(--pagination-counter-bg-color, inherit);
@@ -23,17 +23,17 @@ export default css`
   }
 
   :host::part(navigation-button) {
-    background-color: var(--neutrals-background-secondary);
+    background-color: var(--color-neutrals-background-secondary);
     opacity: 70%;
     padding: var(--spacing-x-small);
     border-radius: var(--dimension-25x);
   }
 
   :host::part(navigation-button):hover {
-    background-color: var(--interactive-secondary-background-hover);
+    background-color: var(--color-interactive-secondary-background-hover);
     opacity: 70%;
     transition: 0.3s;
-    color: var(--neutrals-background-primary);
+    color: var(--color-neutrals-background-primary);
   }
 
   :host::part(pagination) {
@@ -44,24 +44,24 @@ export default css`
   }
 
   :host::part(pagination-item) {
-    background-color: var(--neutrals-border-mute);
+    background-color: var(--color-neutrals-border-mute);
     width: var(--spacing-x-small);
     height: var(--spacing-x-small);
   }
 
   :host::part(pagination-item):hover {
-    background-color: var(--neutrals-border-default);
+    background-color: var(--color-neutrals-border-default);
     transition: 0.3s;
   }
 
   :host::part(pagination-item--active) {
-    background-color: var(--neutrals-background-primary);
-    border: 3px solid var(--neutrals-border-mute);
+    background-color: var(--color-neutrals-background-primary);
+    border: 3px solid var(--color-neutrals-border-mute);
     width: var(--spacing-small);
     height: var(--spacing-small);
   }
 
   :host::part(pagination-item--active):hover {
-    background-color: var(--neutrals-background-primary);
+    background-color: var(--color-neutrals-background-primary);
   }
 `;

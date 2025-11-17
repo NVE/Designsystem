@@ -2,9 +2,9 @@ import { css } from 'lit';
 
 export default css`
   :host {
-    --_active-color: var(--brand-primary);
-    --_active-text-color: var(--neutrals-background-primary);
-    --_border-color: var(--neutrals-border-subtle);
+    --_active-color: var(--color-brand-background-primary);
+    --_active-text-color: var(--color-neutrals-background-primary);
+    --_border-color: var(--color-neutrals-border-subtle);
     --_border-radius: var(--border-radius-small);
     --sl-spacing-small: var(--spacing-x-small);
     --sl-spacing-medium: var(--spacing-small);

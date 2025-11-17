@@ -88,8 +88,8 @@ safari (liten forbokstav med vilje) sliter med å håndtere parts med denne synt
 
 ```css
 :host([disabled]:hover)::part(control control--indeterminate) {
-  background: var(--neutrals-foreground-primary) !important;
-  border-color: var(--neutrals-foreground-primary) !important;
+  background: var(--color-neutrals-foreground-primary) !important;
+  border-color: var(--color-neutrals-foreground-primary) !important;
 }
 ```
 
@@ -100,7 +100,7 @@ Sett Figma i utviklermodus og klikk på en tekst.
 I typografi-seksjonen til høyre ser vi css'en som er generert. Vi skal ikke bruke selve css'en, men <b>kommentaren</b> over css'en gir et hint om navnet på tokenet. Eksempel i Figma:
 
 ```css
-color: var(--neutrals-foreground-mute, #3c3f44);
+color: var(--color-neutrals-foreground-mute, #3c3f44);
 
 /* Label/small */
 font-family: Source Sans Pro;
@@ -110,11 +110,11 @@ font-weight: 600;
 line-height: 110%; /* 1.1rem */
 ```
 
-Kommentaren `/* Label/small */` betyr at vi skal bruke css-variabelen `--label-small`, f.eks. slik:
+Kommentaren `/* Label/small */` betyr at vi skal bruke css-variabelen `--typography-label-small`, f.eks. slik:
 
 ```css
 .button-label {
-  font: var(--label-small);
+  font: var(--typography-label-small);
 }
 ```
 
