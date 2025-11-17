@@ -19,12 +19,12 @@ const lineHeightsObject = ref<Record<string, string>>({});
 /** Objekt med font-weight-token-navn som nøkkel og token-verdi som verdi */
 const fontWeightsObject = ref<Record<string, string>>({});
 
-/** Objekt med header-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde faktiske verdier som verdi. */
-const headers = ref<Record<string, FontValues>>({});
-/** Objekt med subheader-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde faktiske verdier som verdi. */
-const subHeaders = ref<Record<string, FontValues>>({});
-/** Objekt med ingress-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde faktiske verdier som verdi. */
-const ingress = ref<Record<string, FontValues>>({});
+/** Objekt med heading-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde faktiske verdier som verdi. */
+const headings = ref<Record<string, FontValues>>({});
+/** Objekt med subheading-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde faktiske verdier som verdi. */
+const subHeadings = ref<Record<string, FontValues>>({});
+/** Objekt med lead-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde faktiske verdier som verdi. */
+const lead = ref<Record<string, FontValues>>({});
 /** Objekt med body-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde faktiske verdier som verdi. */
 const body = ref<Record<string, FontValues>>({});
 /** Objekt med body-compact-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde faktiske verdier som verdi. */
@@ -34,12 +34,12 @@ const detailText = ref<Record<string, FontValues>>({});
 /** Objekt med label-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde faktiske verdier som verdi. */
 const label = ref<Record<string, FontValues>>({});
 
-/** Objekt med header-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde token-navn som verdi. */
-const headersVariables: (FontVariables | null)[] = [];
-/** Objekt med subheader-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde token-navn som verdi. */
-const subheadersVariables: (FontVariables | null)[] = [];
-/** Objekt med ingress-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde token-navn som verdi. */
-const ingressVariables: (FontVariables | null)[] = [];
+/** Objekt med heading-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde token-navn som verdi. */
+const headingsVariables: (FontVariables | null)[] = [];
+/** Objekt med subheading-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde token-navn som verdi. */
+const subheadingsVariables: (FontVariables | null)[] = [];
+/** Objekt med lead-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde token-navn som verdi. */
+const leadVariables: (FontVariables | null)[] = [];
 /** Objekt med body-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde token-navn som verdi. */
 const bodyVariables: (FontVariables | null)[] = [];
 /** Objekt med body-compact-font-token-navn som nøkkel og font-vekt, font-størrelsen og linje høyde token-navn som verdi. */
@@ -68,15 +68,16 @@ const initGlobalState = (cssFileContent: string) => {
   const cssFontTokensDefault: string[] = cssContentDefault[1].match(/--font-size-[a-z0-9-]+:\s*[^;]+;/g) || [];
   const fontWeights: string[] = cssFileContent.match(/--font-weight-[a-z0-9-]+:\s*[^;]+;/g) || [];
 
-  const lineHeights: string[] = cssFileContent.match(/--line-heights-[\d\w]+:\s*[^;]+;/g) || [];
+  const lineHeights: string[] = cssFileContent.match(/--line-height-[\d\w]+:\s*[^;]+;/g) || [];
 
-  const cssHeaderFonts: string[] = cssFileContent.match(/--header-[a-z0-9-]+:\s*[^;]+;/g) || [];
-  const cssSubHeaderFonts: string[] = cssFileContent.match(/--subheading-[a-z0-9-]+:\s*[^;]+;/g) || [];
-  const ingressFonts: string[] = cssFileContent.match(/--ingress-[a-z0-9-]+:\s*[^;]+;/g) || [];
-  const bodyFonts: string[] = cssFileContent.match(/--body-(?!.*(?:-underline|-compact))[^;]+;\s*/g) || [];
-  const bodyCompactFonts: string[] = cssFileContent.match(/--body-compact(?!.*(?:-underline))[^;]+;\s*/g) || [];
-  const detailTextFonts: string[] = cssFileContent.match(/--detailtext-[a-z0-9-]+:\s*[^;]+;/g) || [];
-  const labelFonts: string[] = cssFileContent.match(/--label-[a-z0-9-]+:\s*[^;]+;/g) || [];
+  const cssHeadingFonts: string[] = cssFileContent.match(/--typography-heading-[a-z0-9-]+:\s*[^;]+;/g) || [];
+  const cssSubHeadingFonts: string[] = cssFileContent.match(/--typography-subheading-[a-z0-9-]+:\s*[^;]+;/g) || [];
+  const leadFonts: string[] = cssFileContent.match(/--typography-lead-[a-z0-9-]+:\s*[^;]+;/g) || [];
+  const bodyFonts: string[] = cssFileContent.match(/--typography-body-(?!.*(?:-underline|-compact))[^;]+;\s*/g) || [];
+  const bodyCompactFonts: string[] =
+    cssFileContent.match(/--typography-body-compact(?!.*(?:-underline))[^;]+;\s*/g) || [];
+  const detailTextFonts: string[] = cssFileContent.match(/--typography-detailtext-[a-z0-9-]+:\s*[^;]+;/g) || [];
+  const labelFonts: string[] = cssFileContent.match(/--typography-label-[a-z0-9-]+:\s*[^;]+;/g) || [];
 
   // returnerer {--dimension-1x: "0.25rem"}
   const dimensions = Object.fromEntries(
@@ -114,17 +115,17 @@ const initGlobalState = (cssFileContent: string) => {
     })
   );
 
-  headersVariables.push(...getFontVariables(cssHeaderFonts));
-  subheadersVariables.push(...getFontVariables(cssSubHeaderFonts));
-  ingressVariables.push(...getFontVariables(ingressFonts));
+  headingsVariables.push(...getFontVariables(cssHeadingFonts));
+  subheadingsVariables.push(...getFontVariables(cssSubHeadingFonts));
+  leadVariables.push(...getFontVariables(leadFonts));
   bodyVariables.push(...getFontVariables(bodyFonts));
   bodyCompactVariables.push(...getFontVariables(bodyCompactFonts));
   detailTextVariables.push(...getFontVariables(detailTextFonts));
   labelVariables.push(...getFontVariables(labelFonts));
 
-  headers.value = getFontValues(headersVariables, fontTokensDefault.value);
-  subHeaders.value = getFontValues(subheadersVariables, fontTokensDefault.value);
-  ingress.value = getFontValues(ingressVariables, fontTokensDefault.value);
+  headings.value = getFontValues(headingsVariables, fontTokensDefault.value);
+  subHeadings.value = getFontValues(subheadingsVariables, fontTokensDefault.value);
+  lead.value = getFontValues(leadVariables, fontTokensDefault.value);
   body.value = getFontValues(bodyVariables, fontTokensDefault.value);
   bodyCompact.value = getFontValues(bodyCompactVariables, fontTokensDefault.value);
   detailText.value = getFontValues(detailTextVariables, fontTokensDefault.value);
@@ -151,7 +152,7 @@ const initGlobalState = (cssFileContent: string) => {
       const keyMatch = entry.match(/(--[\w-]+):/);
       const weightMatch = entry.match(/var\((--font-weight-[\w-]+)\)/);
       const sizeMatch = entry.match(/var\((--font-size-[\w-]+)\)/);
-      const lineHeightMatch = entry.match(/var\((--line-heights-[\w-]+)\)/);
+      const lineHeightMatch = entry.match(/var\((--line-height-[\w-]+)\)/);
       if (!weightMatch || !sizeMatch || !lineHeightMatch || !keyMatch) {
         return null;
       }
@@ -193,14 +194,14 @@ const getFontValues = (
  */
 const updateFontValuesPerTableContent = (tableContent: TableContent, newResolutionValues: Record<string, string>) => {
   switch (tableContent) {
-    case 'headers':
-      headers.value = getFontValues(headersVariables, newResolutionValues);
+    case 'headings':
+      headings.value = getFontValues(headingsVariables, newResolutionValues);
       break;
-    case 'subheaders':
-      subHeaders.value = getFontValues(subheadersVariables, newResolutionValues);
+    case 'subheadings':
+      subHeaddings.value = getFontValues(subheadingsVariables, newResolutionValues);
       break;
-    case 'ingress':
-      ingress.value = getFontValues(ingressVariables, newResolutionValues);
+    case 'lead':
+      lead.value = getFontValues(leadVariables, newResolutionValues);
       break;
     case 'body':
       body.value = getFontValues(bodyVariables, newResolutionValues);
@@ -222,9 +223,9 @@ export const cssTokenState = reactive({
   fontTokens1400,
   fontTokens1200,
   fontTokens600,
-  headers,
-  subHeaders,
-  ingress,
+  headings,
+  subHeadings,
+  lead,
   body,
   bodyCompact,
   detailText,

@@ -106,9 +106,9 @@ watch(
 
 watch(
   () => [
-    cssTokenState.headers,
-    cssTokenState.subHeaders,
-    cssTokenState.ingress,
+    cssTokenState.headings,
+    cssTokenState.subHeadings,
+    cssTokenState.lead,
     cssTokenState.body,
     cssTokenState.bodyCompact,
     cssTokenState.detailText,
@@ -117,16 +117,16 @@ watch(
   () => {
     switch (props.tableContentType) {
       case 'default':
-        tableContent.value = cssTokenState.headers;
+        tableContent.value = cssTokenState.headings;
         break;
-      case 'headers':
-        tableContent.value = cssTokenState.headers;
+      case 'headings':
+        tableContent.value = cssTokenState.headings;
         break;
-      case 'subheaders':
-        tableContent.value = cssTokenState.subHeaders;
+      case 'subheadings':
+        tableContent.value = cssTokenState.subHeadings;
         break;
-      case 'ingress':
-        tableContent.value = cssTokenState.ingress;
+      case 'lead':
+        tableContent.value = cssTokenState.lead;
         break;
       case 'body':
         tableContent.value = cssTokenState.body;
