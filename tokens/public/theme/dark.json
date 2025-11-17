@@ -737,15 +737,15 @@
           }
         },
         "foreground": {
-          "data-01-primary": {
+          "data-01": {
             "$type": "color",
             "$value": "{color-shades.data.brand.250}"
           },
-          "data-02-secondary": {
+          "data-02": {
             "$type": "color",
             "$value": "{color-shades.data.brand.200}"
           },
-          "data-03-tertiary": {
+          "data-03": {
             "$type": "color",
             "$value": "{color-shades.data.brand.100}"
           },

@@ -148,15 +148,15 @@
         },
         "600": {
           "$type": "color",
-          "$value": "#2B4399"
+          "$value": "#2e47a3"
         },
         "800": {
           "$type": "color",
-          "$value": "#1D2D67"
+          "$value": "#223477"
         },
         "999": {
           "$type": "color",
-          "$value": "#0B1128"
+          "$value": "#141e48"
         },
         "300-005": {
           "$type": "color",
