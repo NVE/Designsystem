@@ -308,7 +308,7 @@
           },
           "neutral": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.150}",
+            "$value": "{color-shades.functional.neutralgrey.150}",
             "$description": "For neutral messages"
           }
         },
@@ -331,7 +331,7 @@
           },
           "neutral": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.050}"
+            "$value": "{color-shades.functional.neutralgrey.050}"
           }
         },
         "emphasized": {
@@ -353,7 +353,7 @@
           },
           "neutral": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.800}"
+            "$value": "{color-shades.functional.neutralgrey.800}"
           }
         }
       },
@@ -361,45 +361,45 @@
         "default": {
           "info": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "error": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "warning": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "success": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "neutral": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           }
         },
         "subtle": {
           "info": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "error": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "warning": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "success": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "neutral": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           }
         },
         "emphasized": {
@@ -413,7 +413,7 @@
           },
           "warning": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "success": {
             "$type": "color",
@@ -447,7 +447,7 @@
           },
           "level5": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.200}"
+            "$value": "{color-shades.functional.neutralgrey.200}"
           }
         },
         "subtle": {
@@ -469,7 +469,7 @@
           },
           "level5": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.150}"
+            "$value": "{color-shades.functional.neutralgrey.150}"
           }
         },
         "default": {
@@ -491,7 +491,7 @@
           },
           "level5": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.950}"
+            "$value": "{color-shades.functional.neutralgrey.950}"
           }
         }
       },
@@ -499,67 +499,67 @@
         "default": {
           "level1": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "level2": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "level3": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "level4": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "level5": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.000}"
+            "$value": "{color-shades.functional.neutralgrey.000}"
           }
         },
         "mute": {
           "level1": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "level2": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "level3": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "level4": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "level5": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           }
         },
         "subtle": {
           "level1": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "level2": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "level3": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "level4": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           },
           "level5": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           }
         }
       }
@@ -619,11 +619,11 @@
         "grey": {
           "background": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.150}"
+            "$value": "{color-shades.functional.neutralgrey.150}"
           },
           "foreground": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.850}"
+            "$value": "{color-shades.functional.neutralgrey.850}"
           }
         },
         "red": {
@@ -701,11 +701,11 @@
         "grey": {
           "background": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.400}"
+            "$value": "{color-shades.functional.neutralgrey.400}"
           },
           "foreground": {
             "$type": "color",
-            "$value": "{color-shades.neutralgrey.999}"
+            "$value": "{color-shades.functional.neutralgrey.999}"
           }
         },
         "red": {
