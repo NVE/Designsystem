@@ -17,12 +17,12 @@ export default css`
 
   .details__header {
     padding: 0;
-    font: var(--label-large);
   }
 
   .details__content {
     padding: 0;
     padding-top: var(--spacing-small);
+    font-size: var(--font-size-xsmall);
   }
 
   .details:not(.details--disabled) {
@@ -30,18 +30,6 @@ export default css`
       background: var(--_hover-bg-color);
       color: var(--_hover-text-color);
     }
-  }
-
-  .details__summary-icon {
-    /* Overstyrer shoelace sin animasjon. */
-    rotate: 90deg;
-    border-radius: var(--border-radius-small);
-    font-size: var(--font-size-large);
-    fill: currentColor;
-  }
-
-  .details--open .details__summary-icon {
-    rotate: 270deg;
   }
 
   :host([variant='none']) {
@@ -105,11 +93,6 @@ export default css`
     --_border-color: var(--feedback-background-emphasized-error);
   }
 
-  :host([border]) .details {
-    border: 1px solid var(--_border-color, var(--_text-color));
-    padding-inline: var(--spacing-large);
-  }
-
   :host([leftStroke]) .details {
     border-left: 5px solid var(--_left_border-color, var(--_border-color, var(--_text-color)));
     padding-inline: var(--spacing-medium);
@@ -119,5 +102,23 @@ export default css`
     padding-inline: 0;
     border-radius: 0;
     border-bottom: 1px solid var(--_border-color, var(--_text-color));
+  }
+
+  :host([bold]) .details__header {
+    font-weight: 600;
+  }
+
+  :host([size='medium']) .details {
+    font-size: var(--font-size-small);
+  }
+
+  :host([size='large']) .details .details__header {
+    font-size: var(--font-size-small);
+    padding: var(--spacing-small) 0; // Du er her
+  }
+
+  :host([size='x-large']) .details .details__header {
+    font-size: var(--font-size-medium);
+    padding: var(--spacing-medium) 0;
   }
 `;

@@ -18,11 +18,13 @@ export default class NveAccordionItem extends SlDetails implements INveComponent
   @property({ type: String, reflect: true }) variant: 'none' | 'neutral' | 'info' | 'success' | 'warning' | 'error' =
     'none';
 
-  /** Vis en ramme rundt hele komponenten */
-  @property({ type: Boolean, reflect: true }) border: boolean = false;
-
   /** Kompakt visning uten luft på sidene. En strek vil vises under for å skille komponenter fra hverandre */
   @property({ type: Boolean, reflect: true }) compact: boolean = false;
+
+  /** Fet skrift i tittel-sporet */
+  @property({ type: Boolean, reflect: true }) bold: boolean = false;
+
+  @property({ type: String, reflect: true }) size: 'medium' | 'large' | 'x-large' = 'large';
 
   static styles = [SlDetails.styles, styles];
 
