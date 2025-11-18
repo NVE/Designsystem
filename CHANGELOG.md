@@ -1,3 +1,45 @@
+# [3.0.0](https://github.com/NVE/Designsystem/compare/v2.16.1...v3.0.0) (2025-11-18)
+
+
+* feat(tokens)!: change token naming convention ([#692](https://github.com/NVE/Designsystem/issues/692)) ([3be2ef6](https://github.com/NVE/Designsystem/commit/3be2ef643a6eb752d8ae1868305e0553e9158bbe))
+
+
+### BREAKING CHANGES
+
+* Token names are now lowercase and follow W3C format.Convert to W3C DTCG format, read more at https://docs.tokens.studio/convert-to-dtcg-format
+
+changed to lowercase + other changes:
+2xsmall -> 2x-small etc
+header -> heading
+ingress -> lead
+color.neutrals etc (in theme)
+color-shades.brand etc (in brand)
+
+error in brand colors (name color-shades)
+
+color adjustments NVE brand (red)
+
+color adjustments
+
+color adjustments brand
+
+* adjustments brand colors and added colors
+
+Ready to merge
+Renamed colors in brand and theme (background/foreground categories)
+
+one color changed in color-shades
+
+* changed spacing names in brand and redirected spacing in device
+
+* updated css files
+
+* updated typography in docs
+
+* config for FigmaStylesRef updated
+
+* FigmaStylesRef should work now
+
 ## [2.16.1](https://github.com/NVE/Designsystem/compare/v2.16.0...v2.16.1) (2025-11-12)
 
 
