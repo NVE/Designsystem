@@ -12,12 +12,12 @@ export default css`
   .details__summary {
     padding: 0;
     order: 1;
-    margin-inline-start: var(--spacing-xx-small);
+    margin-inline-start: var(--spacing-2x-small);
   }
 
   .details__header {
     padding: 0;
-    font: var(--label-large);
+    font: var(--typography-label-large);
   }
 
   .details__content {
@@ -46,63 +46,63 @@ export default css`
 
   :host([variant='none']) {
     --_bg-color: transparent;
-    --_text-color: var(--neutrals-foreground-primary);
-    --_hover-bg-color: var(--neutrals-background-secondary);
-    --_hover-text-color: var(--neutrals-foreground-primary);
-    --_border-color: var(--neutrals-border-default);
-    --_left_border-color: var(--brand-primary);
+    --_text-color: var(--color-neutrals-foreground-primary);
+    --_hover-bg-color: var(--color-neutrals-background-secondary);
+    --_hover-text-color: var(--color-neutrals-foreground-primary);
+    --_border-color: var(--color-neutrals-border-default);
+    --_left_border-color: var(--color-brand-background-primary);
     .details {
       padding-inline: 0;
     }
   }
 
   :host([variant='neutral']) {
-    --_bg-color: var(--neutrals-background-primary);
-    --_text-color: var(--neutrals-foreground-primary);
-    --_hover-bg-color: var(--feedback-background-default-neutral);
-    --_hover-text-color: var(--neutrals-foreground-primary);
-    --_border-color: var(--neutrals-border-default);
-    --_left_border-color: var(--brand-primary);
+    --_bg-color: var(--color-neutrals-background-primary);
+    --_text-color: var(--color-neutrals-foreground-primary);
+    --_hover-bg-color: var(--color-feedback-background-default-neutral);
+    --_hover-text-color: var(--color-neutrals-foreground-primary);
+    --_border-color: var(--color-neutrals-border-default);
+    --_left_border-color: var(--color-brand-background-primary);
   }
 
   :host([variant='secondary']) {
-    --_bg-color: var(--feedback-background-subtle-neutral);
-    --_text-color: var(--feedback-foreground-subtle-neutral);
-    --_hover-bg-color: var(--feedback-background-default-neutral);
-    --_hover-text-color: var(--feedback-foreground-default-neutral);
-    --_border-color: var(--feedback-background-emphasized-neutral);
+    --_bg-color: var(--color-feedback-background-subtle-neutral);
+    --_text-color: var(--color-feedback-foreground-subtle-neutral);
+    --_hover-bg-color: var(--color-feedback-background-default-neutral);
+    --_hover-text-color: var(--color-feedback-foreground-default-neutral);
+    --_border-color: var(--color-feedback-background-emphasized-neutral);
   }
 
   :host([variant='success']) {
-    --_bg-color: var(--feedback-background-subtle-success);
-    --_text-color: var(--feedback-foreground-subtle-success);
-    --_hover-bg-color: var(--feedback-background-default-success);
-    --_hover-text-color: var(--feedback-foreground-default-success);
-    --_border-color: var(--feedback-background-emphasized-success);
+    --_bg-color: var(--color-feedback-background-subtle-success);
+    --_text-color: var(--color-feedback-foreground-subtle-success);
+    --_hover-bg-color: var(--color-feedback-background-default-success);
+    --_hover-text-color: var(--color-feedback-foreground-default-success);
+    --_border-color: var(--color-feedback-background-emphasized-success);
   }
 
   :host([variant='info']) {
-    --_bg-color: var(--feedback-background-subtle-info);
-    --_text-color: var(--feedback-foreground-subtle-info);
-    --_hover-bg-color: var(--feedback-background-default-info);
-    --_hover-text-color: var(--feedback-foreground-default-info);
-    --_border-color: var(--feedback-background-emphasized-info);
+    --_bg-color: var(--color-feedback-background-subtle-info);
+    --_text-color: var(--color-feedback-foreground-subtle-info);
+    --_hover-bg-color: var(--color-feedback-background-default-info);
+    --_hover-text-color: var(--color-feedback-foreground-default-info);
+    --_border-color: var(--color-feedback-background-emphasized-info);
   }
 
   :host([variant='warning']) {
-    --_bg-color: var(--feedback-background-subtle-warning);
-    --_text-color: var(--feedback-foreground-subtle-warning);
-    --_hover-bg-color: var(--feedback-background-default-warning);
-    --_hover-text-color: var(--feedback-foreground-default-warning);
-    --_border-color: var(--feedback-background-emphasized-warning);
+    --_bg-color: var(--color-feedback-background-subtle-warning);
+    --_text-color: var(--color-feedback-foreground-subtle-warning);
+    --_hover-bg-color: var(--color-feedback-background-default-warning);
+    --_hover-text-color: var(--color-feedback-foreground-default-warning);
+    --_border-color: var(--color-feedback-background-emphasized-warning);
   }
 
   :host([variant='error']) {
-    --_bg-color: var(--feedback-background-subtle-error);
-    --_text-color: var(--feedback-foreground-subtle-error);
-    --_hover-bg-color: var(--feedback-background-default-error);
-    --_hover-text-color: var(--feedback-foreground-default-error);
-    --_border-color: var(--feedback-background-emphasized-error);
+    --_bg-color: var(--color-feedback-background-subtle-error);
+    --_text-color: var(--color-feedback-foreground-subtle-error);
+    --_hover-bg-color: var(--color-feedback-background-default-error);
+    --_hover-text-color: var(--color-feedback-foreground-default-error);
+    --_border-color: var(--color-feedback-background-emphasized-error);
   }
 
   :host([border]) .details {

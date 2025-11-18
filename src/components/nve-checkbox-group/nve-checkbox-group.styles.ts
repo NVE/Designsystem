@@ -18,16 +18,16 @@ export default css`
   }
 
   .checkbox-group__label {
-    font: var(--label-small);
+    font: var(--typography-label-small);
     display: flex;
     gap: var(--spacing-x-small);
   }
 
   :host([required]) nve-label::after {
     content: var(--sl-checkbox-required-content);
-    font: var(--label-x-small-light);
+    font: var(--typography-label-x-small-light);
     margin-left: auto;
-    color: var(--feedback-background-emphasized-error);
+    color: var(--color-feedback-background-emphasized-error);
   }
 
   /* shoelace legger til styling når hele gruppa er disabled, så må overskrive den her */
@@ -46,8 +46,8 @@ export default css`
   }
 
   .checkbox-group__error-message {
-    font: var(--body-xsmall);
-    color: var(--feedback-background-emphasized-error);
+    font: var(--typography-body-x-small);
+    color: var(--color-feedback-background-emphasized-error);
   }
 
   nve-label {

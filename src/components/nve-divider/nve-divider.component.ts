@@ -14,9 +14,9 @@ export default class NveDivider extends SlDivider {
     SlDivider.styles,
     css`
       :host {
-        --color: var(--neutrals-border-subtle);
+        --color: var(--color-neutrals-border-subtle);
         --width: var(--border-width-default, 1px);
-        --spacing: var(--spacing-xx-small, 0.25rem);
+        --spacing: var(--spacing-2x-small, 0.25rem);
       }
     `,
   ];

@@ -19,7 +19,7 @@ export default css`
     right: 0;
     bottom: 0;
     height: 2px;
-    background: var(--brand-primary);
+    background: var(--color-brand-background-primary);
     width: var(--indicator-width, 0px);
     transform: translateX(var(--indicator-x, 0px)) scaleX(var(--indicator-scale, 1));
     transition:
@@ -35,7 +35,7 @@ export default css`
   }
 
   .tab-group__nav--background {
-    gap: var(--spacing-xx-small);
+    gap: var(--spacing-2x-small);
   }
 
   @media (max-width: 600px) {

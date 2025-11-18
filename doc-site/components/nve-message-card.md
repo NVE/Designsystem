@@ -27,7 +27,7 @@ Bruk `variant` for å velge farge. `primary` er standard. Noen varianter har spe
 ```html
 <nve-message-card label="primary"></nve-message-card>
 <!-- Box-shadow stil på den nøytrale varianten på grunn av lik farger med bakgrunnen i kodeforhåndsvisningen -->
-<nve-message-card style="box-shadow:var(--dropdown)" variant="neutral" label="neutral"></nve-message-card>
+<nve-message-card style="box-shadow:var(--box-shadow-dropdown)" variant="neutral" label="neutral"></nve-message-card>
 <nve-message-card variant="warning" label="warning"></nve-message-card>
 <nve-message-card variant="danger" label="danger"></nve-message-card>
 <nve-message-card variant="success" label="success"></nve-message-card>

@@ -16,16 +16,16 @@ export default css`
   /*bruker color på a, ikke på link-card fordi link-card overskriver standard lenke farge i remmeverker som next js som har sin egen
   wrappar rundt lenke og som støtter :visited*/
   a {
-    color: var(--neutrals-foreground-primary, #0d0d0e);
+    color: var(--color-neutrals-foreground-primary, #0d0d0e);
   }
 
   .link-card--visited,
   a:visited {
-    color: var(--interactive-links-visited);
+    color: var(--color-interactive-links-visited);
   }
 
   .link-card:focus {
-    outline: var(--interactive-primary-foreground-border-focus, #008ffb) solid 2px;
+    outline: var(--color-interactive-primary-foreground-border-focus, #008ffb) solid 2px;
   }
 
   .link-card:hover .link-card__label {
@@ -33,7 +33,7 @@ export default css`
   }
 
   .link-card:active {
-    outline: var(--interactive-primary-foreground-border-focus, #008ffb) solid 2px;
+    outline: var(--color-interactive-primary-foreground-border-focus, #008ffb) solid 2px;
   }
 
   .link-card--small {
@@ -61,7 +61,7 @@ export default css`
 
   .link-card--visited .link-card__label,
   .link-card:visited .link-card__label {
-    color: var(--interactive-links-visited);
+    color: var(--color-interactive-links-visited);
   }
 
   .link-card__label--small {
@@ -90,35 +90,35 @@ export default css`
 
   .link-card--visited .link-card__additional-text,
   a:visited .link-card__additional-text {
-    color: var(--interactive-links-visited);
+    color: var(--color-interactive-links-visited);
   }
 
   .link-card--primary {
-    background: var(--neutrals-background-primary, #fff);
+    background: var(--color-neutrals-background-primary, #fff);
   }
 
   .link-card--primary:hover {
-    background: var(--neutrals-background-secondary, #e4e5e7);
+    background: var(--color-neutrals-background-secondary, #e4e5e7);
   }
 
   .link-card--contrast {
-    background: var(--neutrals-background-primary-contrast, #f7f7f8);
+    background: var(--color-neutrals-background-primary-contrast, #f7f7f8);
   }
 
   .link-card--contrast:hover {
-    background: var(--neutrals-background-secondary, #e4e5e7);
+    background: var(--color-neutrals-background-secondary, #e4e5e7);
   }
 
   .link-card--secondary {
-    background: var(--neutrals-background-secondary, #e4e5e7);
+    background: var(--color-neutrals-background-secondary, #e4e5e7);
   }
 
   .link-card--secondary:hover {
-    border: 2px solid var(--neutrals-foreground-primary, #0d0d0e);
+    border: 2px solid var(--color-neutrals-foreground-primary, #0d0d0e);
   }
 
   nve-icon {
     --icon-size: 24px;
-    color: var(--neutrals-foreground-primary);
+    color: var(--color-neutrals-foreground-primary);
   }
 `;

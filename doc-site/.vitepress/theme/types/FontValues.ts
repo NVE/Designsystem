@@ -8,9 +8,9 @@ export type FontValues = {
 // Definerer hvilken typografi innhold skal vises i TypographyTable.vue
 export type TableContent =
   | 'default'
-  | 'headers'
-  | 'subheaders'
-  | 'ingress'
+  | 'headings'
+  | 'subheadings'
+  | 'lead'
   | 'body'
   | 'body-compact'
   | 'detail-text'

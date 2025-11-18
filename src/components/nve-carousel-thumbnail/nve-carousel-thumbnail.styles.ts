@@ -1,27 +1,27 @@
 import { css } from 'lit';
 
 export default css`
-.thumbnail {
+  .thumbnail {
     display: flex;
     justify-content: center;
     align-items: center;
     height: auto;
-}
+  }
 
-.thumbnail__scroller {
+  .thumbnail__scroller {
     display: flex;
     justify-content: center;
     alight-items: center;
-    gap: var(--spacing-xx-small);
+    gap: var(--spacing-2x-small);
     overflow-x: auto;
     scrollbar-width: none;
     scroll-behavior: smooth;
     scroll-padding: var(spacing-xx-small);
     height: auto;
-    width: 85%
-}
+    width: 85%;
+  }
 
-::slotted(.thumbnail__image) {
+  ::slotted(.thumbnail__image) {
     height: var(--spacing-3x-large) !important;
     aspect-ratio: 3/2;
     object-fit: cover;
@@ -29,9 +29,9 @@ export default css`
     will-change: opacity;
     transition: 250ms opacity;
     cursor: pointer;
-}
+  }
 
-::slotted(.thumbnail__image--active) {
+  ::slotted(.thumbnail__image--active) {
     opacity: 1;
-}
-`
+  }
+`;

@@ -21,9 +21,9 @@ export default css`
     position: relative;
     --left: calc(0% + 4px);
     width: 48px;
-    --label-color: var(--neutrals-foreground-primary);
-    --on-color: var(--neutrals-foreground-subtle);
-    --off-color: var(--neutrals-background-secondary);
+    --label-color: var(--color-neutrals-foreground-primary);
+    --on-color: var(--color-neutrals-foreground-subtle);
+    --off-color: var(--color-neutrals-background-secondary);
     --thumb-color: var(--on-color);
     background-color: var(--off-color);
     transition: background-color 0.3s ease-in-out;
@@ -35,7 +35,7 @@ export default css`
 
   .switch--checked .switch__control {
     /* 100% - bredde på thumb + 4px */
-    --left: calc(100% - var(--font-size-xsmall) - 4px);
+    --left: calc(100% - var(--font-size-x-small) - 4px);
     --thumb-color: var(--off-color);
     background-color: var(--on-color);
   }
@@ -75,7 +75,7 @@ export default css`
   }
 
   .switch__icon.switch__officon {
-    left: calc(100% - var(--font-size-2xsmall) - 6px);
+    left: calc(100% - var(--font-size-2x-small) - 6px);
     color: var(--on-color);
   }
 
@@ -85,7 +85,7 @@ export default css`
   }
 
   .switch.switch--focused:has(:focus-visible) .switch__control {
-    outline: 2px solid var(--interactive-links-focus);
+    outline: 2px solid var(--color-interactive-links-focus);
     outline-offset: 1px;
   }
   .switch:not(.switch--disabled):hover {
@@ -105,8 +105,8 @@ export default css`
 
   .switch--primary {
     &.switch--checked .switch__control {
-      --on-color: var(--interactive-primary-foreground-border-focus);
-      --off-color: var(--neutrals-background-secondary);
+      --on-color: var(--color-interactive-primary-border-focus);
+      --off-color: var(--color-neutrals-background-secondary);
     }
   }
 `;

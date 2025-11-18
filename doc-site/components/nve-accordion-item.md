@@ -83,7 +83,7 @@ Som standard har accordion ikke ramme rundt, men du kan sette det ved å sette `
 
 ### Tykk linje til venstre
 
-Bruk `leftStroke` for å sette en tykk strek til venstre for komponenten. Denne er i samme farge som `border`, med unntak av `none` og `neutral`-variantene, som har fargen `brand-primary`
+Bruk `leftStroke` for å sette en tykk strek til venstre for komponenten. Denne er i samme farge som `border`, med unntak av `none` og `neutral`-variantene, som har fargen `--color-brand-background-primary`
 
 <CodeExamplePreview>
 
@@ -131,7 +131,7 @@ Man kan bruke `summary` for å sette tittel, men kan også angi det som et eget 
 <nve-accordion-item>
   <div slot="summary" class="customheader" style="display: flex; gap: var(--spacing-small); align-items: center;">
     <div>Her er litt tekst</div>
-    <div style="color: var(--brand-primary); font-size: 0.8em; font-weight: 400;">Annen tekst</div>
+    <div style="color: var(--color-brand-background-primary); font-size: 0.8em; font-weight: 400;">Annen tekst</div>
     <nve-icon name="home"></nve-icon>
   </div>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna

@@ -5,7 +5,7 @@ export default css`
   :host {
     /* Brukt for å gjøre feltet like høyt som nve-select */
     --input-size-offset: 4px;
-    --input-part-base-border: 1px solid var(--interactive-links-default);
+    --input-part-base-border: 1px solid var(--color-interactive-links-default);
   }
 
   :host([disabled]) {
@@ -38,11 +38,11 @@ export default css`
   }
 
   :host([data-user-invalid]) nve-input::part(base) {
-    border-color: var(--feedback-background-emphasized-error);
+    border-color: var(--color-feedback-background-emphasized-error);
   }
 
   :host([data-user-invalid]) .text--error {
-    color: var(--feedback-background-emphasized-error);
+    color: var(--color-feedback-background-emphasized-error);
   }
 
   nve-input::part(base) {
@@ -111,7 +111,7 @@ export default css`
     display: block;
     position: relative;
     font-family: var(--sl-font-sans);
-    font: var(--body-small);
+    font: var(--typography-body-small);
     box-shadow: var(--sl-shadow-large);
     background: var(--sl-panel-background-color);
     border: solid var(--sl-panel-border-width) var(--sl-panel-border-color);
@@ -125,7 +125,7 @@ export default css`
   }
 
   .select__listbox[filled] {
-    background-color: var(--neutrals-background-primary-contrast, #eff8fc);
+    background-color: var(--color-neutrals-background-primary-contrast, #eff8fc);
   }
   .open-icon-wrapper {
     margin-right: var(--sl-spacing-small);
@@ -143,6 +143,6 @@ export default css`
     cursor: not-allowed;
   }
   .text-help {
-    font: var(--detailtext-caption);
+    font: var(--typography-detailtext-caption);
   }
 `;

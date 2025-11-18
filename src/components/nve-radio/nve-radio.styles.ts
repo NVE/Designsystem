@@ -3,18 +3,18 @@ import { css } from 'lit';
 export default css`
   /* Vis hover effekt på control-delen */
   :host(:hover)::part(control) {
-    color: var(--neutrals-foreground-subtle);
+    color: var(--color-neutrals-foreground-subtle);
   }
 
   /* Sett "ring" og fjern default blå bakgrunn fra shoelace */
   :host(:hover)::part(control) {
-    border: solid var(--border-width-strong) var(--neutrals-foreground-subtle) !important;
-    background-color: var(--neutrals-background-primary) !important;
+    border: solid var(--border-width-strong) var(--color-neutrals-foreground-subtle) !important;
+    background-color: var(color-) !important;
   }
 
   :host([data-invalid])::part(control) {
-    color: var(--feedback-background-emphasized-error);
-    border-color: var(--feedback-background-emphasized-error);
+    color: var(--color-feedback-background-emphasized-error);
+    border-color: var(--color-feedback-background-emphasized-error);
   }
 
   /* overstyr opacity på disabled */
@@ -29,8 +29,8 @@ export default css`
 
   /* Overstyr styling på control, label og radio */
   .radio__control {
-    color: var(--neutrals-foreground-primary);
-    border: solid var(--border-width-strong) var(--neutrals-foreground-primary);
+    color: var(--color-neutrals-foreground-primary);
+    border: solid var(--border-width-strong) var(--color-neutrals-foreground-primary);
   }
 
   .radio__label {
@@ -41,23 +41,23 @@ export default css`
 
   .radio--small .radio__label,
   .radio--medium .radio__label {
-    font: var(--label-x-small-light);
+    font: var(--typography-label-x-small-light);
     line-height: var(--toggle-size);
     gap: var(--spacing-x-small, 0.5rem); /* sett gap */
   }
 
   .radio {
     display: flex;
-    font: var(--label-small-light);
-    color: var(--neutrals-foreground-primary);
-    background-color: var(--neutrals-background-primary);
+    font: var(--typography-label-small-light);
+    color: var(--color-neutrals-foreground-primary);
+    background-color: var(--color-neutrals-background-primary);
     gap: var(--spacing-x-small, 0.5rem); /* sett gap */
   }
 
   .radio--checked .radio__control {
-    color: var(--neutrals-foreground-primary);
-    border-color: var(--neutrals-foreground-primary);
-    background-color: var(--neutrals-background-primary);
+    color: var(--color-neutrals-foreground-primary);
+    border-color: var(--color-neutrals-foreground-primary);
+    background-color: var(--color-neutrals-background-primary);
   }
 
   /* overstyr størrelse på check-elementet */

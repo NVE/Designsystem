@@ -41,22 +41,22 @@ Under kan du teste hvordan fontene endres på ulike skjermbredder.
 
 <TypographyTable tableContentType="default"></TypographyTable>
 
-Basert på fontstørrelsevariablene har vi laget fontvariabler for bestemte formål: Overskrift, ingress, brødtekst, samt et par andre spesielle formål. Disse fontvariablene er grupperte CSS-`font` -egenskaper som kombinerer `font-weight`, `font-size`, `line-height` og `font-family` til en enkelt enhet. Ved å bruke disse variablene, sikrer vi at riktig linjehøyde og fontstørrelse benyttes, i tråd med prinsipper for universell utforming og beste praksis.
+Basert på fontstørrelsevariablene har vi laget fontvariabler for bestemte formål: Overskrift, lead, brødtekst, samt et par andre spesielle formål. Disse fontvariablene er grupperte CSS-`font` -egenskaper som kombinerer `font-weight`, `font-size`, `line-height` og `font-family` til en enkelt enhet. Ved å bruke disse variablene, sikrer vi at riktig linjehøyde og fontstørrelse benyttes, i tråd med prinsipper for universell utforming og beste praksis.
 
 I Figma-skisser blir disse font-egenskapene typisk brukt på ulike tekststiler og komponenter. For eksempel, header-stiler blir definert ved å bruke --heading- variabler, noe som sikrer en sammenhengende og standardisert tilnærming til typografi på tvers av design-systemet.
 
 ### Header
 
-Header typografi variabler skal vanligvis brukes på html header-tagene som `<h1>`, `<h2>` osv.
-<TypographyTable tableContentType="headers"></TypographyTable>
+Header typografi variabler skal vanligvis brukes på html heading-tagene som `<h1>`, `<h2>` osv.
+<TypographyTable tableContentType="headings"></TypographyTable>
 
 ### Subheader
 
-<TypographyTable tableContentType="subheaders"></TypographyTable>
+<TypographyTable tableContentType="subheadings"></TypographyTable>
 
-### Ingress
+### Lead
 
-<TypographyTable tableContentType="ingress"></TypographyTable>
+<TypographyTable tableContentType="lead"></TypographyTable>
 
 ### Body
 
