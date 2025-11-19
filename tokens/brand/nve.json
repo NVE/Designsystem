@@ -1191,43 +1191,29 @@
     }
   },
   "spacing": {
-    "content": {
-      "margin-top-bottom": {
-        "mobile": {
-          "$type": "spacing",
-          "$value": "24px"
-        },
-        "desktop": {
-          "$type": "spacing",
-          "$value": "40px"
-        },
-        "desktop-small": {
-          "$type": "spacing",
-          "$value": "32px"
-        },
-        "desktop-large": {
-          "$type": "spacing",
-          "$value": "40px"
-        }
-      },
-      "margin-left-right": {
-        "mobile": {
-          "$type": "spacing",
-          "$value": "24px"
-        },
-        "desktop-small": {
-          "$type": "spacing",
-          "$value": "50px"
-        },
-        "desktop": {
-          "$type": "spacing",
-          "$value": "220px"
-        },
-        "desktop-large": {
-          "$type": "spacing",
-          "$value": "620px"
-        }
-      }
+    "24x": {
+      "$type": "spacing",
+      "$value": "24px"
+    },
+    "32x": {
+      "$type": "spacing",
+      "$value": "32px"
+    },
+    "40x": {
+      "$type": "spacing",
+      "$value": "40px"
+    },
+    "50x": {
+      "$type": "spacing",
+      "$value": "50px"
+    },
+    "220x": {
+      "$type": "spacing",
+      "$value": "220px"
+    },
+    "620x": {
+      "$type": "spacing",
+      "$value": "620px"
     }
   },
   "border-radius": {
