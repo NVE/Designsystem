@@ -47,11 +47,11 @@
     "content": {
       "margin-top-bottom": {
         "$type": "spacing",
-        "$value": "{spacing.content.margin-top-bottom.desktop-small}"
+        "$value": "{spacing.32x}"
       },
       "margin-left-right": {
         "$type": "spacing",
-        "$value": "{spacing.content.margin-left-right.desktop-small}"
+        "$value": "{spacing.50x}"
       }
     }
   },

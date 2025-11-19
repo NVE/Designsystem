@@ -47,7 +47,7 @@
     "content": {
       "margin-top-bottom": {
         "$type": "spacing",
-        "$value": "{spacing.content.margin-top-bottom.mobile}"
+        "$value": "{spacing.24x}"
       },
       "margin-left-right": {
         "$type": "spacing",
