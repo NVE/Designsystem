@@ -14,25 +14,25 @@
         "tertiary": {
           "$type": "color",
           "$value": "{color-shades.brand.800}"
-        },
-        "deep": {
-          "$type": "color",
-          "$value": "{color-shades.brand.700}"
         }
       },
       "foreground": {
         "primary": {
           "$type": "color",
-          "$value": "{color-shades.brand.999}"
+          "$value": "{color-shades.brand.500}"
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.grey.000}"
-        },
-        "tertiary": {
-          "$type": "color",
           "$value": "{color-shades.brand.250}",
           "$description": "was 300"
+        },
+        "primary-on-bg": {
+          "$type": "color",
+          "$value": "{color-shades.brand.999}"
+        },
+        "secondary-on-bg": {
+          "$type": "color",
+          "$value": "{color-shades.grey.000}"
         }
       },
       "border": {

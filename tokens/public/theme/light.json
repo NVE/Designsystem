@@ -18,16 +18,20 @@
       "foreground": {
         "primary": {
           "$type": "color",
-          "$value": "{color-shades.brand.000}"
+          "$value": "{color-shades.brand.500}"
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.brand.999}"
-        },
-        "tertiary": {
-          "$type": "color",
           "$value": "{color-shades.brand.700}",
           "$description": "was 500"
+        },
+        "primary-on-bg": {
+          "$type": "color",
+          "$value": "{color-shades.brand.000}"
+        },
+        "secondary-on-bg": {
+          "$type": "color",
+          "$value": "{color-shades.brand.999}"
         }
       },
       "border": {
