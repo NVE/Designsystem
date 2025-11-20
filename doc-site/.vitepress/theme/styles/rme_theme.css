@@ -216,13 +216,14 @@
   --box-shadow-header: 0 4px 032px 0 rgba(0,0,0,0.02);
   --box-shadow-dropdown: 0 54px 15px 0 rgba(0,0,0,0.00), 0 35px 14px 0 rgba(0,0,0,0.00), 0 19px 12px 0 rgba(0,0,0,0.02), 0 9px 9px 0 rgba(0,0,0,0.03), 0 2px 5px 0 rgba(0,0,0,0.03);
   --color-brand-background-primary: var(--color-shades-brand-500);
-  --color-brand-background-secondary: var(--color-shades-brand-150);
+  --color-brand-background-secondary: var(--color-shades-brand-500);
+  --color-brand-background-tertiary: var(--color-shades-brand-150);
   --color-brand-foreground-primary: var(--color-shades-brand-000);
   --color-brand-foreground-secondary: var(--color-shades-brand-999);
   --color-brand-foreground-tertiary: var(--color-shades-brand-700); /** was 500 */
   --color-neutrals-background-canvas: var(--color-shades-grey-050);
   --color-neutrals-background-primary: var(--color-shades-grey-000);
-  --color-neutrals-background-primary-contrast: var(--color-shades-grey-050);
+  --color-neutrals-background-primary-contrast: var(--color-shades-grey-100);
   --color-neutrals-background-secondary: var(--color-shades-grey-150);
   --color-neutrals-foreground-primary: var(--color-shades-grey-999);
   --color-neutrals-foreground-subtle: var(--color-shades-grey-600);
@@ -721,14 +722,15 @@
   --box-shadow-hard: -45px 80px 26px 0 rgba(0,0,0,0.00), -29px 51px 23px 0 rgba(0,0,0,0.01), -16px 29px 20px 0 rgba(0,0,0,0.02), -7px 13px 15px 0 rgba(0,0,0,0.03), -2px 3px 8px 0 rgba(0,0,0,0.04);
   --box-shadow-header: 0 4px 032px 0 rgba(0,0,0,0.02);
   --box-shadow-dropdown: 0 54px 15px 0 rgba(0,0,0,0.00), 0 35px 14px 0 rgba(0,0,0,0.00), 0 19px 12px 0 rgba(0,0,0,0.02), 0 9px 9px 0 rgba(0,0,0,0.03), 0 2px 5px 0 rgba(0,0,0,0.03);
-  --color-brand-background-primary: var(--color-shades-brand-250);
-  --color-brand-background-secondary: var(--color-shades-brand-800);
+  --color-brand-background-primary: var(--color-shades-brand-500); /** Primarily used on logo backgrounds */
+  --color-brand-background-secondary: var(--color-shades-brand-250);
+  --color-brand-background-tertiary: var(--color-shades-brand-800);
   --color-brand-foreground-primary: var(--color-shades-brand-999);
   --color-brand-foreground-secondary: var(--color-shades-grey-000);
   --color-brand-foreground-tertiary: var(--color-shades-brand-250); /** was 300 */
-  --color-neutrals-background-canvas: var(--color-shades-grey-850);
-  --color-neutrals-background-primary: var(--color-shades-grey-950);
-  --color-neutrals-background-primary-contrast: var(--color-shades-grey-850);
+  --color-neutrals-background-canvas: var(--color-shades-grey-950);
+  --color-neutrals-background-primary: var(--color-shades-grey-850);
+  --color-neutrals-background-primary-contrast: var(--color-shades-grey-800);
   --color-neutrals-background-secondary: var(--color-shades-grey-700);
   --color-neutrals-foreground-primary: var(--color-shades-grey-000);
   --color-neutrals-foreground-subtle: var(--color-shades-grey-200);

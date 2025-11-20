@@ -4,9 +4,14 @@
       "background": {
         "primary": {
           "$type": "color",
-          "$value": "{color-shades.brand.250}"
+          "$value": "{color-shades.brand.500}",
+          "$description": "Primarily used on logo backgrounds"
         },
         "secondary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.250}"
+        },
+        "tertiary": {
           "$type": "color",
           "$value": "{color-shades.brand.800}"
         }
@@ -31,15 +36,15 @@
       "background": {
         "canvas": {
           "$type": "color",
-          "$value": "{color-shades.grey.850}"
+          "$value": "{color-shades.grey.950}"
         },
         "primary": {
           "$type": "color",
-          "$value": "{color-shades.grey.950}"
+          "$value": "{color-shades.grey.850}"
         },
         "primary-contrast": {
           "$type": "color",
-          "$value": "{color-shades.grey.850}"
+          "$value": "{color-shades.grey.800}"
         },
         "secondary": {
           "$type": "color",
