@@ -75,7 +75,7 @@
         },
         "subtle": {
           "$type": "color",
-          "$value": "{color-shades.grey.600}"
+          "$value": "{color-shades.functional.neutralgrey.600}"
         }
       },
       "border": {
