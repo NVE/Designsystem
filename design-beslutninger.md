@@ -65,3 +65,16 @@ TODO: Skriv hvorfor vi valgte dette
 ## Eget designsystem eller ikke? (når bestemte vi dette?)
 
 TODO: Skriv hvorfor vi valgte dette
+
+## Felleskomponent for filopplasting
+
+Vi valgte å ikke lage en felles filopplasting-komponent i designsystemet på grunn av kompleksiteten og de forskjellige behovene teamene har.
+
+En slik komponent ville hovedsakelig være en wrapper rundt en input med `type="file"`. Utfordringen ligger ikke i selve UI-en, men i all logikken som må håndteres etter at filer er valgt:
+
+- Validering (filtype, størrelse, antall filer)
+- Opplasting til forskjellige endepunkter
+- Progresjonsvisning og feilhåndtering
+- Forskjellige krav til metadata og beskrivelser
+
+Siden hver applikasjon og team har unike krav til disse aspektene, bestemte vi at teamene selv implementerer filopplasting-funksjonaliteten tilpasset sine behov, fremfor å lage en generisk komponent som ville blitt for kompleks eller for begrenset. Designet skal likevel være likt på tvers av applikasjonene.
