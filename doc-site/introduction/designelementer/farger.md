@@ -12,13 +12,11 @@ I designsystemet har farger kontekstbaserte roller. Det vil si at når du bruker
 
 Vi har fire hovedkategorier:
 
-TODO: Fikse disse kortene
-
-<div class="two-card-container"> 
-    <Card variant="subtle-card" title="Neutrals">Farger som er veldig nøytrale og kategorisert med bruksnivå (primary, secondary). Det gir deg fleksibilitet i å velge mellom farger, samtidig som det er tydelig hvilke farge som er default.</Card>
-    <Card variant="subtle-card" title="Interactive">Farger som brukes på interaktive handlinger. Knappene og linker bruker blandt annet disse fargene.</Card>
-    <Card variant="subtle-card" title="Feedback">Feedback-farger som brukes i varslinger, status og tilbakemeldinger i grensesnittet.</Card>
-    <Card variant="subtle-card" title="Danger level">Er den unike faregradskalaen som brukes for å varsle faregradene hos NVE og Varsom.</Card>
+   <div class="two-card-container"> 
+    <nve-message-card showIcon="false" variant="primary" label="Neutrals">Farger som er veldig nøytrale og kategorisert med bruksnivå (primary, secondary). </nve-message-card>
+    <nve-message-card showIcon="false" variant="primary" label="Interactive">Farger som brukes på interaktive handlinger. Knappene og linker bruker blandt annet disse fargene.</nve-message-card>
+    <nve-message-card showIcon="false" variant="primary" label="Feedback">Feedback-farger som brukes i varslinger, status og tilbakemeldinger i grensesnittet.</nve-message-card>
+    <nve-message-card showIcon="false" variant="primary" label="Danger level">Er den unike faregradskalaen som brukes for å varsle faregradene hos NVE og Varsom.</nve-message-card>
 </div>
 
 ### Farger i designsystemet
@@ -29,4 +27,4 @@ Man skal ikke bruke disse variablene direkte, men heller bruke andre variabler s
 
 <ColorList></ColorList>
 
-Se også <br/> https://www.designsystemet.no/grunnleggende/designelementer/farger
+Se også https://designsystemet.no/no/fundamentals/design-tokens/colors/
