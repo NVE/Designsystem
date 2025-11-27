@@ -16,6 +16,9 @@ on:
 
 jobs:
   build_and_deploy_job:
+    permissions:
+      contents: read
+      pull-requests: write
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Bygg og installer
@@ -54,6 +57,8 @@ jobs:
           skip_api_build: true # Dette nettstedet trenger ikke noe API
 
   close_pull_request_job:
+    permissions:
+      contents: read
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     name: Lukker pull request og fjerner testmiljø for denne PR
