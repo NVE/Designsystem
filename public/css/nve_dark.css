@@ -4,8 +4,8 @@
 
 @import './global.css';
 :root.darkmode { 
-  --color-shades-brand-100: #ff4d52;
-  --color-shades-brand-150: #fb3744;
+  --color-shades-brand-100: #ff666b;
+  --color-shades-brand-150: #ff525d;
   --color-shades-brand-200: #f8253a;
   --color-shades-brand-250: #f3203c;
   --color-shades-brand-300: #e61335;
@@ -19,15 +19,15 @@
   --color-shades-brand-950: #500713;
   --color-shades-brand-999: #2b030a;
   --color-shades-brand-000: #fffffff; /** This token has a dark color on Varsom */
-  --color-shades-brand-050: #ff5c61;
+  --color-shades-brand-050: #ff8083;
   --color-shades-grey-100: #efeff1;
   --color-shades-grey-150: #e4e5e7;
   --color-shades-grey-200: #c9cbcf;
   --color-shades-grey-300: #b6b9be;
   --color-shades-grey-400: #9ea2a9;
-  --color-shades-grey-500: #878c94;
+  --color-shades-grey-500: #858b93;
   --color-shades-grey-600: #60656c;
-  --color-shades-grey-700: #50545a;
+  --color-shades-grey-700: #484c51;
   --color-shades-grey-800: #3c3f44;
   --color-shades-grey-850: #292b2e;
   --color-shades-grey-900: #1b1c1e;
@@ -221,14 +221,15 @@
   --box-shadow-hard: -45px 80px 26px 0 rgba(0,0,0,0.00), -29px 51px 23px 0 rgba(0,0,0,0.01), -16px 29px 20px 0 rgba(0,0,0,0.02), -7px 13px 15px 0 rgba(0,0,0,0.03), -2px 3px 8px 0 rgba(0,0,0,0.04);
   --box-shadow-header: 0 4px 032px 0 rgba(0,0,0,0.02);
   --box-shadow-dropdown: 0 54px 15px 0 rgba(0,0,0,0.00), 0 35px 14px 0 rgba(0,0,0,0.00), 0 19px 12px 0 rgba(0,0,0,0.02), 0 9px 9px 0 rgba(0,0,0,0.03), 0 2px 5px 0 rgba(0,0,0,0.03);
-  --color-brand-background-primary: var(--color-shades-brand-250);
-  --color-brand-background-secondary: var(--color-shades-brand-800);
+  --color-brand-background-primary: var(--color-shades-brand-500); /** Primarily used on logo backgrounds */
+  --color-brand-background-secondary: var(--color-shades-brand-250);
+  --color-brand-background-tertiary: var(--color-shades-brand-800);
   --color-brand-foreground-primary: var(--color-shades-brand-999);
   --color-brand-foreground-secondary: var(--color-shades-grey-000);
   --color-brand-foreground-tertiary: var(--color-shades-brand-250); /** was 300 */
-  --color-neutrals-background-canvas: var(--color-shades-grey-850);
-  --color-neutrals-background-primary: var(--color-shades-grey-950);
-  --color-neutrals-background-primary-contrast: var(--color-shades-grey-850);
+  --color-neutrals-background-canvas: var(--color-shades-grey-950);
+  --color-neutrals-background-primary: var(--color-shades-grey-850);
+  --color-neutrals-background-primary-contrast: var(--color-shades-grey-800);
   --color-neutrals-background-secondary: var(--color-shades-grey-700);
   --color-neutrals-foreground-primary: var(--color-shades-grey-000);
   --color-neutrals-foreground-subtle: var(--color-shades-grey-200);
