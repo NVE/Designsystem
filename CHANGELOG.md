@@ -1,3 +1,11 @@
+## [3.0.1](https://github.com/NVE/Designsystem/compare/v3.0.0...v3.0.1) (2025-12-02)
+
+
+### Bug Fixes
+
+* **designelementer-farger:** oppdaterte død lenke og fjernet TODO ([#712](https://github.com/NVE/Designsystem/issues/712)) ([a349646](https://github.com/NVE/Designsystem/commit/a349646c970f29db60f93427ef7df9335cfad80f))
+* **tokens:** endre varsom brans shades-farger ([#710](https://github.com/NVE/Designsystem/issues/710)) ([830caee](https://github.com/NVE/Designsystem/commit/830caee5539418fdc7ca174ba82225976aff0371))
+
 # [3.0.0](https://github.com/NVE/Designsystem/compare/v2.16.1...v3.0.0) (2025-11-18)
 
 
