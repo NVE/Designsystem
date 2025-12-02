@@ -150,5 +150,25 @@
       "$value": "{dimension.11x}",
       "$description": "40 px"
     }
+  },
+  "boolean": {
+    "device": {
+      "desktop": {
+        "$type": "boolean",
+        "$value": "false"
+      },
+      "tablet": {
+        "$type": "boolean",
+        "$value": "false"
+      },
+      "tablet-mobile": {
+        "$type": "boolean",
+        "$value": "true"
+      },
+      "mobile": {
+        "$type": "boolean",
+        "$value": "true"
+      }
+    }
   }
 }
