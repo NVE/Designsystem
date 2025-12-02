@@ -85,7 +85,7 @@ const createDeviceCssFiles = async (device) => {
   await config.buildAllPlatforms();
 };
 
-const devices = ['desktop', 'desktop-large', 'desktop-small', 'mobile'];
+const devices = ['desktop', 'desktop-large', 'tablet', 'mobile', 'mobile-small'];
 
 for (const device of devices) {
   await createDeviceCssFiles(device);

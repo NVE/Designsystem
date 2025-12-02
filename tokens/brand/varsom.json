@@ -258,5 +258,25 @@
         }
       }
     }
+  },
+  "boolean": {
+    "brand": {
+      "NVE": {
+        "$type": "boolean",
+        "$value": "false"
+      },
+      "Varsom": {
+        "$type": "boolean",
+        "$value": "true"
+      },
+      "RME": {
+        "$type": "boolean",
+        "$value": "false"
+      },
+      "NVE_RME": {
+        "$type": "boolean",
+        "$value": "false"
+      }
+    }
   }
 }

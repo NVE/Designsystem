@@ -45,13 +45,17 @@
       "$value": "{dimension.22x}"
     },
     "content": {
-      "margin-top-bottom": {
+      "margin-top": {
         "$type": "spacing",
         "$value": "{spacing.32x}"
       },
+      "margin-bottom": {
+        "$type": "spacing",
+        "$value": "{spacing.56x}"
+      },
       "margin-left-right": {
         "$type": "spacing",
-        "$value": "{spacing.50x}"
+        "$value": "{spacing.40x}"
       }
     }
   },
@@ -93,17 +97,57 @@
       "$value": "{dimension.23x}"
     },
     "device": {
-      "width": {
-        "$type": "sizing",
-        "$value": "{sizing.device-width.desktop-small}"
+      "page": {
+        "min-width": {
+          "$type": "sizing",
+          "$value": "{sizing.764x}"
+        },
+        "max-width": {
+          "$type": "sizing",
+          "$value": "{sizing.1023x}"
+        }
       },
       "content": {
+        "max-width-large": {
+          "$type": "sizing",
+          "$value": "{sizing.1800x}"
+        },
+        "max-width-medium": {
+          "$type": "sizing",
+          "$value": "{sizing.800x}"
+        },
+        "max-width-small": {
+          "$type": "sizing",
+          "$value": "{sizing.544x}"
+        },
+        "max-width-x-small": {
+          "$type": "sizing",
+          "$value": "{sizing.216x}"
+        }
+      }
+    },
+    "brand": {
+      "logo": {
+        "medium": {
+          "$type": "sizing",
+          "$value": "{sizing.64x}"
+        }
+      },
+      "illustration": {
+        "medium": {
+          "$type": "sizing",
+          "$value": "{sizing.40x}"
+        }
+      }
+    },
+    "image": {
+      "large": {
         "$type": "sizing",
-        "$value": "{sizing.content-area.desktop-small}"
+        "$value": "{sizing.750x}"
       }
     }
   },
-  "fontSize": {
+  "font-size": {
     "2x-small": {
       "$type": "fontSizes",
       "$value": "{dimension.3x}",
@@ -143,6 +187,30 @@
       "$type": "fontSizes",
       "$value": "{dimension.11x}",
       "$description": "40 px"
+    }
+  },
+  "boolean": {
+    "device": {
+      "desktop": {
+        "$type": "boolean",
+        "$value": "false"
+      },
+      "desktop-tablet": {
+        "$type": "boolean",
+        "$value": "true"
+      },
+      "tablet": {
+        "$type": "boolean",
+        "$value": "true"
+      },
+      "tablet-mobile": {
+        "$type": "boolean",
+        "$value": "true"
+      },
+      "mobile": {
+        "$type": "boolean",
+        "$value": "false"
+      }
     }
   }
 }
