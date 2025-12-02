@@ -128,5 +128,21 @@
         "$value": "#EAF6FB"
       }
     }
+  },
+  "boolean": {
+    "brand": {
+      "NVE": {
+        "$type": "boolean",
+        "$value": "false"
+      },
+      "Varsom": {
+        "$type": "boolean",
+        "$value": "true"
+      },
+      "RME": {
+        "$type": "boolean",
+        "$value": "false"
+      }
+    }
   }
 }

@@ -1324,40 +1324,76 @@
     }
   },
   "sizing": {
-    "content-area": {
-      "mobile": {
-        "$type": "sizing",
-        "$value": "366px"
-      },
-      "desktop-small": {
-        "$type": "sizing",
-        "$value": "700px"
-      },
-      "desktop": {
-        "$type": "sizing",
-        "$value": "1000px"
-      },
-      "desktop-large": {
-        "$type": "sizing",
-        "$value": "1200px"
-      }
+    "320x": {
+      "$type": "sizing",
+      "$value": "320px"
     },
-    "device-width": {
-      "mobile": {
-        "$type": "sizing",
-        "$value": "390px"
+    "366x": {
+      "$type": "sizing",
+      "$value": "366px"
+    },
+    "389x": {
+      "$type": "sizing",
+      "$value": "389px"
+    },
+    "390x": {
+      "$type": "sizing",
+      "$value": "390px"
+    },
+    "700x": {
+      "$type": "sizing",
+      "$value": "700px"
+    },
+    "799x": {
+      "$type": "sizing",
+      "$value": "799px"
+    },
+    "800x": {
+      "$type": "sizing",
+      "$value": "800px"
+    },
+    "1000x": {
+      "$type": "sizing",
+      "$value": "1000px"
+    },
+    "1200x": {
+      "$type": "sizing",
+      "$value": "1200px"
+    },
+    "1439x": {
+      "$type": "sizing",
+      "$value": "1439px"
+    },
+    "1440x": {
+      "$type": "sizing",
+      "$value": "1440px"
+    },
+    "2439x": {
+      "$type": "sizing",
+      "$value": "2439px"
+    },
+    "2440x": {
+      "$type": "sizing",
+      "$value": "2440px"
+    },
+    "2560x": {
+      "$type": "sizing",
+      "$value": "2560px"
+    }
+  },
+  "boolean": {
+    "brand": {
+      "NVE": {
+        "$type": "boolean",
+        "$value": "true"
       },
-      "desktop-small": {
-        "$type": "sizing",
-        "$value": "800px"
+      "Varsom": {
+        "$type": "boolean",
+        "$value": "false"
       },
-      "desktop": {
-        "$type": "sizing",
-        "$value": "1440px"
-      },
-      "desktop-large": {
-        "$type": "sizing",
-        "$value": "2440px"
+      "RME": {
+        "$type": "boolean",
+        "$value": "false"
       }
     }
   }

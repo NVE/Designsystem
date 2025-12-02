@@ -93,13 +93,19 @@
       "$value": "{dimension.23x}"
     },
     "device": {
+      "minWidth": {
+        "$type": "sizing",
+        "$value": "{sizing.800x}"
+      },
       "maxWidth": {
         "$type": "sizing",
-        "$value": "{sizing.device-width.desktop-small}"
+        "$value": "{sizing.1439x}"
       },
       "content": {
-        "$type": "sizing",
-        "$value": "{sizing.content-area.desktop-small}"
+        "maxWidth": {
+          "$type": "sizing",
+          "$value": "{sizing.700x}"
+        }
       }
     }
   },

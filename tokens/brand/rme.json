@@ -128,5 +128,21 @@
         "$value": "#ffffff"
       }
     }
+  },
+  "boolean": {
+    "brand": {
+      "NVE": {
+        "$type": "boolean",
+        "$value": "false"
+      },
+      "Varsom": {
+        "$type": "boolean",
+        "$value": "false"
+      },
+      "RME": {
+        "$type": "boolean",
+        "$value": "true"
+      }
+    }
   }
 }

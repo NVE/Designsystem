@@ -669,13 +669,19 @@
       "$value": "{dimension.24x}"
     },
     "device": {
+      "minWidth": {
+        "$type": "sizing",
+        "$value": "{sizing.1440x}"
+      },
       "maxWidth": {
         "$type": "sizing",
-        "$value": "{sizing.device-width.desktop}"
+        "$value": "{sizing.2439x}"
       },
       "content": {
-        "$type": "sizing",
-        "$value": "{sizing.content-area.desktop}"
+        "maxWidth": {
+          "$type": "sizing",
+          "$value": "{sizing.1000x}"
+        }
       }
     },
     "fixed-sizing": {
