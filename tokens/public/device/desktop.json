@@ -669,7 +669,7 @@
       "$value": "{dimension.24x}"
     },
     "device": {
-      "width": {
+      "maxWidth": {
         "$type": "sizing",
         "$value": "{sizing.device-width.desktop}"
       },

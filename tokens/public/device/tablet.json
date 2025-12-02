@@ -6,100 +6,100 @@
     },
     "2x-small": {
       "$type": "spacing",
-      "$value": "{dimension.05x}"
+      "$value": "{dimension.1x}"
     },
     "x-small": {
       "$type": "spacing",
-      "$value": "{dimension.1x}"
+      "$value": "{dimension.2x}"
     },
     "small": {
       "$type": "spacing",
-      "$value": "{dimension.2x}"
+      "$value": "{dimension.3x}"
     },
     "medium": {
       "$type": "spacing",
-      "$value": "{dimension.3x}"
+      "$value": "{dimension.4x}"
     },
     "large": {
       "$type": "spacing",
-      "$value": "{dimension.4x}"
+      "$value": "{dimension.5x}"
     },
     "x-large": {
       "$type": "spacing",
-      "$value": "{dimension.6x}"
+      "$value": "{dimension.7x}"
     },
     "2x-large": {
       "$type": "spacing",
-      "$value": "{dimension.8x}"
+      "$value": "{dimension.10x}"
     },
     "3x-large": {
       "$type": "spacing",
-      "$value": "{dimension.11x}"
+      "$value": "{dimension.14x}"
     },
     "4x-large": {
       "$type": "spacing",
-      "$value": "{dimension.16x}"
+      "$value": "{dimension.20x}"
     },
     "5x-large": {
       "$type": "spacing",
-      "$value": "{dimension.19x}"
+      "$value": "{dimension.22x}"
     },
     "content": {
       "margin-top-bottom": {
         "$type": "spacing",
-        "$value": "{spacing.24x}"
+        "$value": "{spacing.32x}"
       },
       "margin-left-right": {
         "$type": "spacing",
-        "$value": "{spacing.24x}"
+        "$value": "{spacing.50x}"
       }
     }
   },
   "sizing": {
     "4x-small": {
       "$type": "sizing",
-      "$value": "{dimension.05x}"
+      "$value": "{dimension.1x}"
     },
     "3x-small": {
       "$type": "sizing",
-      "$value": "{dimension.3x}"
+      "$value": "{dimension.3,5x}"
     },
     "2x-small": {
       "$type": "sizing",
-      "$value": "{dimension.4,5x}"
+      "$value": "{dimension.5x}"
     },
     "x-small": {
       "$type": "sizing",
-      "$value": "{dimension.7x}"
+      "$value": "{dimension.8x}"
     },
     "small": {
       "$type": "sizing",
-      "$value": "{dimension.10x}"
+      "$value": "{dimension.11x}"
     },
     "medium": {
       "$type": "sizing",
-      "$value": "{dimension.13x}"
+      "$value": "{dimension.14x}"
     },
     "large": {
       "$type": "sizing",
-      "$value": "{dimension.16x}"
+      "$value": "{dimension.17x}"
     },
     "x-large": {
       "$type": "sizing",
-      "$value": "{dimension.19x}"
+      "$value": "{dimension.20x}"
     },
     "2x-large": {
       "$type": "sizing",
-      "$value": "{dimension.22x}"
+      "$value": "{dimension.23x}"
     },
     "device": {
       "maxWidth": {
         "$type": "sizing",
-        "$value": "{sizing.device-width.mobile}"
+        "$value": "{sizing.device-width.desktop-small}"
       },
       "content": {
         "$type": "sizing",
-        "$value": "{sizing.content-area.mobile}"
+        "$value": "{sizing.content-area.desktop-small}"
       }
     }
   },

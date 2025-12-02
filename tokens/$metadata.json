@@ -5,8 +5,9 @@
     "brand/rme",
     "public/device/desktop",
     "public/device/desktop-large",
-    "public/device/desktop-small",
+    "public/device/tablet",
     "public/device/mobile",
+    "public/device/mobile-small",
     "public/theme/light",
     "public/theme/dark"
   ]
