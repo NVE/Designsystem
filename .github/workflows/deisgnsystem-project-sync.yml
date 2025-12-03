@@ -91,20 +91,20 @@ jobs:
             // Primært: prøv linjer som starter med "Figma:" / "VitePress:" / "Dokumentasjon:"
             function extractLabeledUrl(prefix) {
               const re = new RegExp(`^\\s*${prefix}\\s*:\\s*(https?://[^\\s]+)`, 'im');
-              const m = body.match(re);
-              return m ? m[1].trim() : null;
+              const externalUrl = body.match(re);
+              return externalUrl ? externalUrl[1].trim() : null;
             }
             let figmaUrl = extractLabeledUrl('Figma');
             let docUrl = extractLabeledUrl('VitePress') || extractLabeledUrl('Dokumentasjon');
 
             // Sekundært: fallback via domenesøk
             if (!figmaUrl) {
-              const m = body.match(/https?:\/\/(?:www\\.)?figma\\.com\\/[^\s)]+/i);
-              figmaUrl = m ? m[0] : null;
+              const externalUrl = body.match(/https?:\/\/(?:www\\.)?figma\\.com\\/[^\s)]+/i);
+              figmaUrl = externalUrl ? externalUrl[0] : null;
             }
             if (!docUrl) {
-              const m = body.match(/https?:\/\/[\\w.-]*designsystem\\.[\\w.-]+\\/[^\s)]+/i);
-              docUrl = m ? m[0] : null;
+              const externalUrl = body.match(/https?:\/\/[\\w.-]*designsystem\\.[\\w.-]+\\/[^\s)]+/i);
+              docUrl = externalUrl ? externalUrl[0] : null;
             }
 
             // 3) Parse org og project number fra URL
