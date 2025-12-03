@@ -1,4 +1,3 @@
-
 name: Designsystem Project Sync
 
 on:
@@ -90,7 +89,7 @@ jobs:
 
             // Primært: prøv linjer som starter med "Figma:" / "VitePress:" / "Dokumentasjon:"
             function extractLabeledUrl(prefix) {
-              const re = new RegExp(`^\\s*${prefix}\\s*:\\s*(https?://[^\\s]+)`, 'im');
+              const re = new RegExp(`^\\\\s*${prefix}\\\\s*:\\\\s*(https?://[^\\\\s]+)`, 'im');
               const externalUrl = body.match(re);
               return externalUrl ? externalUrl[1].trim() : null;
             }
@@ -99,11 +98,11 @@ jobs:
 
             // Sekundært: fallback via domenesøk
             if (!figmaUrl) {
-              const externalUrl = body.match(/https?:\/\/(?:www\\.)?figma\\.com\\/[^\s)]+/i);
+              const externalUrl = body.match(/https?:\\/\\/(?:www\\.)?figma\\.com\\/[^\s)]+/i);
               figmaUrl = externalUrl ? externalUrl[0] : null;
             }
             if (!docUrl) {
-              const externalUrl = body.match(/https?:\/\/[\\w.-]*designsystem\\.[\\w.-]+\\/[^\s)]+/i);
+              const externalUrl = body.match(/https?:\\/\\/[\\w.-]*designsystem\\.[\\w.-]+[^\\s)]+/i);
               docUrl = externalUrl ? externalUrl[0] : null;
             }
 
