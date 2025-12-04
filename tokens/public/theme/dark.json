@@ -14,20 +14,43 @@
         "tertiary": {
           "$type": "color",
           "$value": "{color-shades.brand.800}"
+        },
+        "quaternary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.200}"
         }
       },
       "foreground": {
         "primary": {
           "$type": "color",
-          "$value": "{color-shades.brand.999}"
+          "$value": "{color-shades.brand.150}"
+        },
+        "primary-on-bg": {
+          "$type": "color",
+          "$value": "{color-shades.brand.000}"
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.grey.000}"
+          "$value": "{color-shades.brand.050}"
         },
         "tertiary": {
           "$type": "color",
           "$value": "{color-shades.brand.250}",
+          "$description": "was 300"
+        }
+      },
+      "border": {
+        "primary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.100}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.200}"
+        },
+        "tertiary": {
+          "$type": "color",
+          "$value": "{color-shades.brand.300}",
           "$description": "was 300"
         }
       }

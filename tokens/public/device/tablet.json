@@ -93,16 +93,16 @@
       "$value": "{dimension.23x}"
     },
     "device": {
-      "minWidth": {
+      "min-width": {
         "$type": "sizing",
         "$value": "{sizing.800x}"
       },
-      "maxWidth": {
+      "max-width": {
         "$type": "sizing",
         "$value": "{sizing.1439x}"
       },
       "content": {
-        "maxWidth": {
+        "max-width": {
           "$type": "sizing",
           "$value": "{sizing.700x}"
         }

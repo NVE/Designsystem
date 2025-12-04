@@ -1368,6 +1368,10 @@
       "$type": "sizing",
       "$value": "1440px"
     },
+    "1600x": {
+      "$type": "sizing",
+      "$value": "1600px"
+    },
     "2439x": {
       "$type": "sizing",
       "$value": "2439px"

@@ -669,18 +669,22 @@
       "$value": "{dimension.24x}"
     },
     "device": {
-      "minWidth": {
+      "min-width": {
         "$type": "sizing",
         "$value": "{sizing.1440x}"
       },
-      "maxWidth": {
+      "max-width": {
         "$type": "sizing",
         "$value": "{sizing.2439x}"
       },
       "content": {
-        "maxWidth": {
+        "max-width": {
           "$type": "sizing",
           "$value": "{sizing.1000x}"
+        },
+        "header-max-width": {
+          "$type": "sizing",
+          "$value": "{sizing.1600x}"
         }
       }
     },
