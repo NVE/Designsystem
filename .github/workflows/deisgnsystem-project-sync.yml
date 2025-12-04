@@ -255,6 +255,6 @@ jobs:
                   docUrl ? `Doc='${docUrl}'` : null
                 ].filter(Boolean).join(', ')
               );
-           } catch (e) {
+            } catch (e) {
               core.setFailed(`Script failed: ${e.stack || e.message}`);
             }
