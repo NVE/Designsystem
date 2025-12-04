@@ -1,3 +1,16 @@
+# [3.1.0](https://github.com/NVE/Designsystem/compare/v3.0.1...v3.1.0) (2025-12-04)
+
+
+### Bug Fixes
+
+* **css:** Juster på plassering av font-import i global.css for å sikre riktig nedlasting av Source Sans Pro fontene ([#726](https://github.com/NVE/Designsystem/issues/726)) ([36511cf](https://github.com/NVE/Designsystem/commit/36511cf8ee5214ad52400e685c910efe9d6df76e))
+* **designsystem-catalog-yaml:** Fikset regex for URL-ekstraksjon i YAML-fil ([#725](https://github.com/NVE/Designsystem/issues/725)) ([5485bc3](https://github.com/NVE/Designsystem/commit/5485bc305dcdf777633df4b8eb0b62167f5e715d))
+
+
+### Features
+
+* **dokumentasjon:** Implementere designsystem-project-sync.yml ([#713](https://github.com/NVE/Designsystem/issues/713)) ([f3938ed](https://github.com/NVE/Designsystem/commit/f3938ed7533c65af89f0c0e52fc75abf0732531b))
+
 ## [3.0.1](https://github.com/NVE/Designsystem/compare/v3.0.0...v3.0.1) (2025-12-02)
 
 
