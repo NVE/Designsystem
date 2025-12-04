@@ -1,3 +1,15 @@
+# [3.2.0](https://github.com/NVE/Designsystem/compare/v3.1.0...v3.2.0) (2025-12-04)
+
+
+### Bug Fixes
+
+* **nve-select:** Lagt inn riktig margin -bottom token på label ([#728](https://github.com/NVE/Designsystem/issues/728)) ([c9e1063](https://github.com/NVE/Designsystem/commit/c9e106388e88f89a5997d59f20dae020ab217c88))
+
+
+### Features
+
+* bruker nå regex-literals [#727](https://github.com/NVE/Designsystem/issues/727) ([e0f692f](https://github.com/NVE/Designsystem/commit/e0f692f0c3eac1766cd62d86dc7d9cac72457384))
+
 # [3.1.0](https://github.com/NVE/Designsystem/compare/v3.0.1...v3.1.0) (2025-12-04)
 
 
