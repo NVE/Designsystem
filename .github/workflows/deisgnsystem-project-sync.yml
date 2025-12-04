@@ -52,11 +52,7 @@ jobs:
         with:
           project-url: ${{ env.PROJECT_URL }}
           github-token: ${{ secrets.PAT_TOKEN }}
-
-  sync-fields:
-    name: Sync Status + Figma + VitePress/Dokumentasjon
-    runs-on: ubuntu-latest
-    steps:
+          
       - name: Update Project fields from issue labels & body
         uses: actions/github-script@v7
         env:
@@ -67,56 +63,68 @@ jobs:
               const { graphql } = require('@octokit/graphql');
               const gql = graphql.defaults({ headers: { authorization: `token ${process.env.GH_TOKEN}` }});
 
+              // --- ENV / konfig ---
               const PROJECT_URL = process.env.PROJECT_URL;
               const STATUS_FIELD_NAME = process.env.PROJECT_STATUS_FIELD_NAME;
               const FIGMA_FIELD_NAME = process.env.FIGMA_FIELD_NAME;
-              const DOC_FIELD_CANDIDATES = process.env.DOC_FIELD_CANDIDATES.split(',').map(s=>s.trim());
-              const map = Object.fromEntries(
-                (process.env.MAP_STATUS_SYNCH || '')
-                  .split('\n')
-                  .filter(Boolean)
-                  .map(line => line.split('=>').map(s => s.trim()))
+              const DOC_FIELD_CANDIDATES = (process.env.DOC_FIELD_CANDIDATES || '').split(',').map(s => s.trim()).filter(Boolean);
+              const mapLines = (process.env.MAP_STATUS_SYNCH || '').split('\n').map(l => l.trim()).filter(Boolean);
+              const statusMap = Object.fromEntries(
+                mapLines.map(line => {
+                  const parts = line.split('=>');
+                  if (parts.length !== 2) return ['__INVALID__', ''];
+                  return [parts[0].trim(), parts[1].trim()];
+                }).filter(([k]) => k !== '__INVALID__')
               );
 
               const issue = context.payload.issue;
-              if (!issue) { core.info('No issue payload'); return; }
+              if (!issue) {
+                core.info('No issue in payload; skip');
+                return;
+              }
 
-              // 1) Finn ønsket Status-verdi ut fra labels
-              const labels = issue.labels.map(l => typeof l === 'string' ? l : l.name);
-              const statusLabel = Object.keys(map).find(k => labels.includes(k));
-              const desiredStatus = statusLabel ? map[statusLabel] : null;
+              // --- Status fra labels ---
+              const labels = (issue.labels || []).map(l => typeof l === 'string' ? l : l.name);
+              const statusLabel = Object.keys(statusMap).find(k => labels.includes(k)) || null;
+              const desiredStatus = statusLabel ? statusMap[statusLabel] : null;
 
-              // 2) Parse Figma- og VitePress-lenker fra issue-body
+              // --- Ekstraher Figma & Doc fra body ---
               const body = issue.body || '';
-
-              // Regex-literals (ingen new RegExp)
               const rFigma = /^\s*Figma\s*:\s*(https?:\/\/\S+)/im;
               const rDoc   = /^\s*(VitePress|Dokumentasjon)\s*:\s*(https?:\/\/\S+)/im;
+
+              let figmaUrl = null;
+              let docUrl   = null;
+
               const mF = body.match(rFigma);
+              if (mF) figmaUrl = (mF[1] || '').trim();
+
               const mD = body.match(rDoc);
+              if (mD) docUrl = (mD[2] || '').trim();
 
-              let figmaUrl = mF ? mF[1].trim() : null;
-              let docUrl   = mD ? mD[2].trim() : null;
-
-              // Fallback via domenesøk
               if (!figmaUrl) {
                 const dm = body.match(/https?:\/\/(?:www\.)?figma\.com\/\S+/i);
                 if (dm) figmaUrl = dm[0];
               }
               if (!docUrl) {
-                // Tilpass domenet under om dere bruker annet vertsnavn
                 const dm = body.match(/https?:\/\/[A-Za-z0-9._-]*designsystem\.[A-Za-z0-9._-]+\/\S+/i);
                 if (dm) docUrl = dm[0];
               }
 
-              // 3) Parse org og project number fra URL
-              const url = new URL(PROJECT_URL);
-              // /orgs/<org>/projects/<number>
-              const org = url.pathname.split('/')[2];
-              const projectNumber = parseInt(url.pathname.split('/')[4], 10);
+              // --- Parse org/prosjektnummer ---
+              const u = new URL(PROJECT_URL);
+              // Forventet: /orgs/<org>/projects/<number>
+              const pathParts = u.pathname.split('/').filter(Boolean);
+              const org = pathParts[1];
+              const projectNumber = parseInt(pathParts[3], 10);
+              if (!org || Number.isNaN(projectNumber)) {
+                core.setFailed(`Could not parse org/project from PROJECT_URL='${PROJECT_URL}'`);
+                return;
+              }
 
-              // 4) Hent Project, felt og options
-              const projRes = await gql(`
+              // --- Hent Project & felter ---
+              const projRes = await gql(
+                `
                 query($org: String!, $number: Int!) {
                   organization(login: $org) {
                     projectV2(number: $number) {
@@ -131,40 +139,55 @@ jobs:
                     }
                   }
                 }
-              `, { org, number: projectNumber });
+                `,
+                { org, number: projectNumber }
+              );
 
               const project = projRes.organization?.projectV2;
-              if (!project) { core.setFailed(`Project not found at ${PROJECT_URL}`); return; }
-
-              // Finn felter
-              const fields = project.fields.nodes;
-              const statusField = fields.find(f => f.name === STATUS_FIELD_NAME && f.options);
-              const figmaField  = fields.find(f => f.name === FIGMA_FIELD_NAME);
-              const docField    = DOC_FIELD_CANDIDATES.map(n => fields.find(f => f.name === n)).find(Boolean);
-
-              // Valider Status-opsjon om nødvendig
-              let statusOptionId = null;
-              if (desiredStatus && statusField) {
-                const opt = statusField.options.find(o => o.name === desiredStatus);
-                if (!opt) { core.setFailed(`Status option '${desiredStatus}' not found`); return; }
-                statusOptionId = opt.id;
-              } else if (desiredStatus && !statusField) {
-                core.setFailed(`Status field '${STATUS_FIELD_NAME}' not found or not single-select`);
+              if (!project) {
+                core.setFailed(`Project not found at ${PROJECT_URL}`);
                 return;
               }
 
-              // 5) Finn issue-id
-              const issueNode = await gql(`
+              const fields = project.fields.nodes || [];
+              const statusField = fields.find(f => f.name === STATUS_FIELD_NAME && Array.isArray(f.options));
+              const figmaField  = fields.find(f => f.name === FIGMA_FIELD_NAME);
+              const docField    = DOC_FIELD_CANDIDATES.map(n => fields.find(f => f.name === n)).find(Boolean);
+
+              let statusOptionId = null;
+              if (desiredStatus) {
+                if (!statusField) {
+                  core.setFailed(`Status field '${STATUS_FIELD_NAME}' not found or not single-select`);
+                  return;
+                }
+                const opt = statusField.options.find(o => o.name === desiredStatus);
+                if (!opt) {
+                  core.setFailed(`Status option '${desiredStatus}' not found in project`);
+                  return;
+                }
+                statusOptionId = opt.id;
+              }
+
+              // --- Finn Issue-ID ---
+              const issueNode = await gql(
+                `
                 query($owner:String!, $repo:String!, $number:Int!) {
                   repository(owner:$owner, name:$repo) {
                     issue(number:$number) { id }
                   }
                 }
-              `, { owner: context.repo.owner, repo: context.repo.repo, number: issue.number });
-              const issueId = issueNode.repository.issue.id;
+                `,
+                { owner: context.repo.owner, repo: context.repo.repo, number: issue.number }
+              );
+              const issueId = issueNode.repository?.issue?.id;
+              if (!issueId) {
+                core.setFailed(`Could not resolve issue id for #${issue.number}`);
+                return;
+              }
 
-              // 6) Sørg for at issue er i prosjektet
-              const itemsRes = await gql(`
+              // --- Finn/legg til Project Item ---
+              const itemsRes = await gql(
+                `
                 query($projectId:ID!) {
                   node(id:$projectId) {
                     ... on ProjectV2 {
@@ -174,11 +197,64 @@ jobs:
                     }
                   }
                 }
-              `, { projectId: project.id });
+                `,
+                { projectId: project.id }
+              );
 
-              let itemId = itemsRes.node.items.nodes.find(n => n.content?.id === issueId)?.id;
+              let itemId = itemsRes.node?.items?.nodes?.find(n => n.content?.id === issueId)?.id || null;
               if (!itemId) {
-                const addRes = await gql(`
+                const addRes = await gql(
+                  `
                   mutation($projectId:ID!, $contentId:ID!) {
                     addProjectV2ItemById(input:{projectId:$projectId, contentId:$contentId}) { item { id } }
                   }
+                  `,
+                  { projectId: project.id, contentId: issueId }
+                );
+                itemId = addRes.addProjectV2ItemById?.item?.id || null;
+                if (!itemId) {
+                  core.setFailed('Failed to add item to project');
+                  return;
+                }
+              }
+
+              // --- Samle oppdateringer ---
+              const updates = [];
+              if (statusOptionId) {
+                updates.push({ fieldId: statusField.id, value: { singleSelectOptionId: statusOptionId } });
+              }
+              if (figmaField && figmaUrl) {
+                updates.push({ fieldId: figmaField.id, value: { text: figmaUrl } });
+              }
+              if (docField && docUrl) {
+                updates.push({ fieldId: docField.id, value: { text: docUrl } });
+              }
+
+              // --- Kjør oppdateringer ---
+              for (const upd of updates) {
+                await gql(
+                  `
+                  mutation($projectId:ID!, $itemId:ID!, $fieldId:ID!, $value:ProjectV2FieldValue!) {
+                    updateProjectV2ItemFieldValue(input:{
+                      projectId:$projectId,
+                      itemId:$itemId,
+                      fieldId:$fieldId,
+                      value:$value
+                    }) { projectV2Item { id } }
+                  }
+                  `,
+                  { projectId: project.id, itemId, fieldId: upd.fieldId, value: upd.value }
+                );
+              }
+
+              core.info(
+                `Synced #${issue.number}: ` +
+                [
+                  statusOptionId ? `Status='${desiredStatus}'` : null,
+                  figmaUrl ? `Figma='${figmaUrl}'` : null,
+                  docUrl ? `Doc='${docUrl}'` : null
+                ].filter(Boolean).join(', ')
+              );
+           } catch (e) {
+              core.setFailed(`Script failed: ${e.stack || e.message}`);
+            }
