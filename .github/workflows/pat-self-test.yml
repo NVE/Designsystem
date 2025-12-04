@@ -1,0 +1,177 @@
+
+name: PAT Self-Test for Projects v2
+
+on:
+  workflow_dispatch:
+    inputs:
+      projectUrl:
+        description: "Org Project URL (https://github.com/orgs/<org>/projects/<nr>)"
+        required: true
+      dryRunIssueNumber:
+        description: "Issue number to attach temporarily (optional, leave blank to skip mutation)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  issues: read
+
+jobs:
+  test-pat:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate inputs
+        run: |
+          echo "PROJECT_URL=${{ github.event.inputs.projectUrl }}" >> $GITHUB_ENV
+          echo "ISSUE_NUM=${{ github.event.inputs.dryRunIssueNumber }}" >> $GITHUB_ENV
+
+      - name: PAT sanity check (masked)
+        run: |
+          if [ -z "${{ secrets.PAT_TOKEN }}" ]; then
+            echo "PAT_TOKEN secret is missing"; exit 1
+          fi
+          echo "PAT_TOKEN is present (value masked)."
+
+      - name: GraphQL: can read Project and fields
+        uses: actions/github-script@v7
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          PROJECT_URL: ${{ env.PROJECT_URL }}
+        with:
+          script: |
+            const { graphql } = require('@octokit/graphql');
+            const token = process.env.GH_TOKEN;
+            const projectUrl = process.env.PROJECT_URL;
+            if (!projectUrl) {
+              core.setFailed('Missing projectUrl input'); return;
+            }
+            const u = new URL(projectUrl);
+            // Expect: /orgs/<org>/projects/<nr>
+            const parts = u.pathname.split('/').filter(Boolean);
+            const org = parts[1];
+            const number = parseInt(parts[3], 10);
+
+            const gql = graphql.defaults({ headers: { authorization: `token ${token}` }});
+            try {
+              const res = await gql(`
+                query($org:String!, $number:Int!) {
+                  organization(login:$org) {
+                    projectV2(number:$number) {
+                      id
+                      title
+                      fields(first: 20) {
+                        nodes {
+                          __typename
+                          ... on ProjectV2FieldCommon { id name }
+                          ... on ProjectV2SingleSelectField { id name options { id name } }
+                        }
+                      }
+                    }
+                  }
+                }
+              `, { org, number });
+              const proj = res.organization?.projectV2;
+              if (!proj) {
+                core.setFailed(`PAT cannot read project at ${projectUrl}. Check Organization → Projects: Read & write.`);
+                return;
+              }
+              core.info(`READ OK: Project '${proj.title}' (${proj.id})`);
+              core.info(`Fields: ${proj.fields.nodes.map(f => f.name).join(', ') || '(none)'}`);
+            } catch (e) {
+              core.setFailed(`READ FAIL: ${e.message}`);
+            }
+
+      - name: Optional mutation: update a text field (dry-run style)
+        if: ${{ env.ISSUE_NUM != '' }}
+        uses: actions/github-script@v7
+        env:
+          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          PROJECT_URL: ${{ env.PROJECT_URL }}
+          ISSUE_NUM: ${{ env.ISSUE_NUM }}
+        with:
+          script: |
+            const { graphql } = require('@octokit/graphql');
+            const token = process.env.GH_TOKEN;
+            const projectUrl = process.env.PROJECT_URL;
+            const issueNumber = parseInt(process.env.ISSUE_NUM, 10);
+            if (!issueNumber) { core.info('No issue number provided; skipping'); return; }
+
+            const u = new URL(projectUrl);
+            const org = u.pathname.split('/').filter(Boolean)[1];
+            const number = parseInt(u.pathname.split('/').filter(Boolean)[3], 10);
+
+            const gql = graphql.defaults({ headers: { authorization: `token ${token}` }});
+
+            try {
+              // Resolve project + find a text field (Figma or Dokumentasjon)
+              const { organization } = await gql(`
+                query($org:String!, $number:Int!) {
+                  organization(login:$org) {
+                    projectV2(number:$number) {
+                      id
+                      fields(first: 50) {
+                        nodes {
+                          __typename
+                          ... on ProjectV2FieldCommon { id name }
+                          ... on ProjectV2Field { id name dataType }
+                        }
+                      }
+                    }
+                  }
+                }
+              `, { org, number });
+
+              const project = organization?.projectV2;
+              if (!project) { core.setFailed('Cannot read project for mutation'); return; }
+
+              const textField = project.fields.nodes.find(f => f.dataType === 'TEXT' && ['Figma','VitePress','Dokumentasjon'].includes(f.name));
+              if (!textField) { core.info('No text field named Figma/VitePress/Dokumentasjon; skipping'); return; }
+
+              // Resolve issue id
+              const { repository } = await gql(`
+                query($owner:String!, $repo:String!, $num:Int!) {
+                  repository(owner:$owner, name:$repo) {
+                    issue(number:$num) { id }
+                  }
+                }
+              `, { owner: context.repo.owner, repo: context.repo.repo, num: issueNumber });
+              const issueId = repository?.issue?.id;
+              if (!issueId) { core.setFailed('Cannot resolve issue id'); return; }
+
+              // Ensure item exists in project
+              const { node } = await gql(`
+                query($projectId:ID!) {
+                  node(id:$projectId) {
+                    ... on ProjectV2 {
+                      items(first: 50) { nodes { id content { __typename ... on Issue { id number } } } }
+                    }
+                  }
+                }
+              `, { projectId: project.id });
+
+              let item = node.items.nodes.find(n => n.content?.id === issueId);
+              if (!item) {
+                const add = await gql(`
+                  mutation($projectId:ID!, $contentId:ID!) {
+                    addProjectV2ItemById(input:{projectId:$projectId, contentId:$contentId}) { item { id } }
+                  }
+                `, { projectId: project.id, contentId: issueId });
+                item = add.addProjectV2ItemById.item;
+              }
+
+              // Try to update the text field
+              await gql(`
+                mutation($projectId:ID!, $itemId:ID!, $fieldId:ID!) {
+                  updateProjectV2ItemFieldValue(input:{
+                    projectId:$projectId,
+                    itemId:$itemId,
+                    fieldId:$fieldId,
+                    value:{ text: "PAT-SELF-TEST" }
+                  }) { projectV2Item { id } }
+                }
+              `, { projectId: project.id, itemId: item.id, fieldId: textField.id });
+
+              core.info('MUTATION OK: text field updated (PAT has write)');
+            } catch (e) {
+              core.setFailed(`MUTATION FAIL: ${e.message}`);
+            }
