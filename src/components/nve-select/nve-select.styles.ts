@@ -86,7 +86,7 @@ export default css`
   }
 
   .form-control--has-label .form-control__label {
-    margin-bottom: var(--spacing-x-small);
+    margin-bottom: var(--spacing-2x-small);
     font: var(--typography-label-small);
   }
 
