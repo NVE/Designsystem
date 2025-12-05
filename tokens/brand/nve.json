@@ -1152,6 +1152,10 @@
     "strong": {
       "$type": "borderWidth",
       "$value": "2px"
+    },
+    "stronger": {
+      "$type": "borderWidth",
+      "$value": "4px"
     }
   },
   "font-weight": {
@@ -1324,6 +1328,14 @@
     }
   },
   "sizing": {
+    "64x": {
+      "$type": "sizing",
+      "$value": "64px"
+    },
+    "88x": {
+      "$type": "sizing",
+      "$value": "88px"
+    },
     "320x": {
       "$type": "sizing",
       "$value": "320px"
@@ -1371,6 +1383,10 @@
     "1600x": {
       "$type": "sizing",
       "$value": "1600px"
+    },
+    "1800x": {
+      "$type": "sizing",
+      "$value": "1800px"
     },
     "2439x": {
       "$type": "sizing",

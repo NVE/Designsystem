@@ -684,8 +684,14 @@
         },
         "header-max-width": {
           "$type": "sizing",
-          "$value": "{sizing.1600x}"
+          "$value": "{sizing.1800x}"
         }
+      }
+    },
+    "header": {
+      "logo": {
+        "$type": "sizing",
+        "$value": "{sizing.64x}"
       }
     },
     "fixed-sizing": {

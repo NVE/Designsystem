@@ -107,6 +107,12 @@
           "$value": "{sizing.366x}"
         }
       }
+    },
+    "header": {
+      "logo": {
+        "$type": "sizing",
+        "$value": "{sizing.64x}"
+      }
     }
   },
   "fontSize": {
