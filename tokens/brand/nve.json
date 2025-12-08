@@ -165,7 +165,7 @@
         },
         "300-005": {
           "$type": "color",
-          "$value": "rgba(231,19,54,0.05)"
+          "$value": "rgba(231,19,54,0.02)"
         },
         "300-015": {
           "$type": "color",
@@ -175,19 +175,19 @@
       "color-b": {
         "200": {
           "$type": "color",
-          "$value": "#e6b370"
+          "$value": "#ffb657"
         },
         "400": {
           "$type": "color",
-          "$value": "#dc9538"
+          "$value": "#ff9914"
         },
         "500": {
           "$type": "color",
-          "$value": "#C37D23"
+          "$value": "#d67900"
         },
         "600": {
           "$type": "color",
-          "$value": "#b86c32"
+          "$value": "#bc6c2f"
         },
         "800": {
           "$type": "color",
