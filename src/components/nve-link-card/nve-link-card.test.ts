@@ -8,21 +8,28 @@ if (!customElements.get('nve-link-card')) {
 }
 
 describe('nve-link-card', () => {
-  afterEach(() => {
+  afterEach(async () => {
     fixtureCleanup();
+
+    // Vi må vente litt ettersom fontfaceobserver fortsetter å kjøre etter cleanup
+    await new Promise((resolve) => setTimeout(resolve, 100));
   });
+
   it('has default properties', async () => {
     const el = await fixture<NveLinkCard>(html`<nve-link-card label="Label"></nve-link-card>`);
     expect(el.variant).toBe('primary');
     expect(el.size).toBe('medium');
   });
+
   it('has correct label', async () => {
     const label = 'Example label';
     const el = await fixture<NveLinkCard>(html`<nve-link-card label=${label}></nve-link-card>`);
     const div = el.shadowRoot?.querySelector('div[part="label"]');
+
     expect(div).not.toBeNull();
     expect(div?.textContent).toContain(label);
   });
+
   it('has correct additional text', async () => {
     const label = 'Example label';
     const additionalText = 'Additional text';
@@ -30,9 +37,11 @@ describe('nve-link-card', () => {
       html`<nve-link-card label=${label} additionalText=${additionalText}></nve-link-card>`
     );
     const div = el.shadowRoot?.querySelector('div[part="additional-text"]');
+
     expect(div).not.toBeNull();
     expect(div?.textContent).toContain(additionalText);
   });
+
   it.each([
     ['secondary', 'large', 'link-card--secondary', 'link-card--large'],
     ['contrast', 'small', 'link-card--contrast', 'link-card--small'],
@@ -41,39 +50,50 @@ describe('nve-link-card', () => {
       html`<nve-link-card label="Label" variant=${variant} size=${size}></nve-link-card>`
     );
     const a = el.shadowRoot?.querySelector('a[part="link-card"]');
+
     expect(a?.classList.contains(classVariant)).toBe(true);
     expect(a?.classList.contains(classSize)).toBe(true);
   });
+
   it('has no href attribute when no href given', async () => {
     const el = await fixture<NveLinkCard>(html`<nve-link-card label="Label"></nve-link-card>`);
     const a = el.shadowRoot?.querySelector('a[part="link-card"]');
+
     expect(a?.hasAttribute('href')).toBe(false);
   });
+
   it('has mailto in href when clickAction mail', async () => {
     const el = await fixture<NveLinkCard>(
       html`<nve-link-card clickAction="mail" href="support@gmail.com" label="Label"></nve-link-card>`
     );
     const a = el.shadowRoot?.querySelector('a[part="link-card"]');
+
     expect(a?.getAttribute('href')).toContain('mailto:');
   });
+
   it('has target blank when clickAction external', async () => {
     const el = await fixture<NveLinkCard>(
       html`<nve-link-card clickAction="external" href="test.com" label="Label"></nve-link-card>`
     );
     const a = el.shadowRoot?.querySelector('a[part="link-card"]');
+
     expect(a?.getAttribute('target')).toContain('_blank');
   });
+
   it('has download property when clickAction download', async () => {
     const el = await fixture<NveLinkCard>(
       html`<nve-link-card clickAction="download" href="/assets/image.jpg" label="Label"></nve-link-card>`
     );
     const a = el.shadowRoot?.querySelector('a[part="link-card"]');
+
     expect(a?.hasAttribute('download')).toBe(true);
   });
+
   it('part="link-card" renders as <div> when parent is <a>', async () => {
     const wrapper = await fixture(html`<a><nve-link-card label="Label"></nve-link-card></a>`);
     const el = wrapper.querySelector('nve-link-card') as NveLinkCard;
     const linkCard = el.shadowRoot?.querySelector('[part="link-card"]');
+
     expect(linkCard?.tagName.toLowerCase()).toBe('div');
   });
 });
