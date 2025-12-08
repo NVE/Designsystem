@@ -119,7 +119,7 @@
       }
     }
   },
-  "fontSize": {
+  "font-size": {
     "2x-small": {
       "$type": "fontSizes",
       "$value": "{dimension.3,5x}",
