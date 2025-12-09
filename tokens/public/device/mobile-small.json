@@ -26,23 +26,23 @@
     },
     "x-large": {
       "$type": "spacing",
-      "$value": "{dimension.6x}"
+      "$value": "{dimension.4,5x}"
     },
     "2x-large": {
       "$type": "spacing",
-      "$value": "{dimension.8x}"
+      "$value": "{dimension.5x}"
     },
     "3x-large": {
       "$type": "spacing",
-      "$value": "{dimension.11x}"
+      "$value": "{dimension.6x}"
     },
     "4x-large": {
       "$type": "spacing",
-      "$value": "{dimension.16x}"
+      "$value": "{dimension.7x}"
     },
     "5x-large": {
       "$type": "spacing",
-      "$value": "{dimension.19x}"
+      "$value": "{dimension.10x}"
     },
     "content": {
       "margin-top-bottom": {
@@ -51,7 +51,7 @@
       },
       "margin-left-right": {
         "$type": "spacing",
-        "$value": "{spacing.24x}"
+        "$value": "{spacing.20x}"
       }
     }
   },
@@ -93,25 +93,63 @@
       "$value": "{dimension.22x}"
     },
     "device": {
-      "min-width": {
-        "$type": "sizing",
-        "$value": "{sizing.320x}"
-      },
-      "max-width": {
-        "$type": "sizing",
-        "$value": "{sizing.389x}"
+      "page": {
+        "min-width": {
+          "$type": "sizing",
+          "$value": "{sizing.320x}"
+        },
+        "max-width": {
+          "$type": "sizing",
+          "$value": "{sizing.389x}"
+        }
       },
       "content": {
-        "max-width": {
+        "max-width-large": {
+          "$type": "sizing",
+          "$value": "{sizing.1800x}"
+        },
+        "max-width-medium": {
+          "$type": "sizing",
+          "$value": "{sizing.366x}"
+        },
+        "max-width-small": {
           "$type": "sizing",
           "$value": "{sizing.366x}"
         }
+      },
+      "component": {
+        "min-width-large": {
+          "$type": "sizing",
+          "$value": "{sizing.256x}"
+        },
+        "min-width-medium": {
+          "$type": "sizing",
+          "$value": "{sizing.256x}"
+        },
+        "min-width-small": {
+          "$type": "sizing",
+          "$value": "{sizing.220x}"
+        }
       }
     },
-    "header": {
+    "brand": {
       "logo": {
+        "medium": {
+          "$type": "sizing",
+          "$value": "{sizing.64x}"
+        }
+      },
+      "illustration": {
+        "medium": {
+          "$type": "sizing",
+          "$value": "{sizing.24x}"
+        }
+      }
+    },
+    "image": {
+      "large": {
         "$type": "sizing",
-        "$value": "{sizing.64x}"
+        "$value": "{sizing.440x}"
       }
     }
   },

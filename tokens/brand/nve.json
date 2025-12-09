@@ -1093,6 +1093,10 @@
     }
   },
   "spacing": {
+    "20x": {
+      "$type": "spacing",
+      "$value": "20px"
+    },
     "24x": {
       "$type": "spacing",
       "$value": "24px"
@@ -1104,6 +1108,10 @@
     "40x": {
       "$type": "spacing",
       "$value": "40px"
+    },
+    "48x": {
+      "$type": "spacing",
+      "$value": "48px"
     },
     "50x": {
       "$type": "spacing",
@@ -1328,6 +1336,18 @@
     }
   },
   "sizing": {
+    "24x": {
+      "$type": "sizing",
+      "$value": "24px"
+    },
+    "32x": {
+      "$type": "sizing",
+      "$value": "32px"
+    },
+    "40x": {
+      "$type": "sizing",
+      "$value": "40px"
+    },
     "64x": {
       "$type": "sizing",
       "$value": "64px"
@@ -1335,6 +1355,14 @@
     "88x": {
       "$type": "sizing",
       "$value": "88px"
+    },
+    "220x": {
+      "$type": "sizing",
+      "$value": "220px"
+    },
+    "256x": {
+      "$type": "sizing",
+      "$value": "256px"
     },
     "320x": {
       "$type": "sizing",
@@ -1352,9 +1380,33 @@
       "$type": "sizing",
       "$value": "390px"
     },
+    "440x": {
+      "$type": "sizing",
+      "$value": "440px"
+    },
+    "520x": {
+      "$type": "sizing",
+      "$value": "520px"
+    },
+    "600x": {
+      "$type": "sizing",
+      "$value": "600px"
+    },
     "700x": {
       "$type": "sizing",
       "$value": "700px"
+    },
+    "750x": {
+      "$type": "sizing",
+      "$value": "750px"
+    },
+    "767x": {
+      "$type": "sizing",
+      "$value": "767px"
+    },
+    "768x": {
+      "$type": "sizing",
+      "$value": "768px"
     },
     "799x": {
       "$type": "sizing",
@@ -1368,6 +1420,18 @@
       "$type": "sizing",
       "$value": "1000px"
     },
+    "1023x": {
+      "$type": "sizing",
+      "$value": "1023px"
+    },
+    "1024x": {
+      "$type": "sizing",
+      "$value": "1024px"
+    },
+    "1140x": {
+      "$type": "sizing",
+      "$value": "1140px"
+    },
     "1200x": {
       "$type": "sizing",
       "$value": "1200px"
@@ -1379,6 +1443,10 @@
     "1440x": {
       "$type": "sizing",
       "$value": "1440px"
+    },
+    "1599x": {
+      "$type": "sizing",
+      "$value": "1599px"
     },
     "1600x": {
       "$type": "sizing",
@@ -1399,6 +1467,10 @@
     "2560x": {
       "$type": "sizing",
       "$value": "2560px"
+    },
+    "9999x": {
+      "$type": "sizing",
+      "$value": "9999px"
     }
   },
   "boolean": {
@@ -1414,6 +1486,10 @@
       "RME": {
         "$type": "boolean",
         "$value": "false"
+      },
+      "NVE_RME": {
+        "$type": "boolean",
+        "$value": "true"
       }
     }
   }

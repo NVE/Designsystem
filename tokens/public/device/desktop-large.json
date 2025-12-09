@@ -51,7 +51,7 @@
       },
       "margin-left-right": {
         "$type": "spacing",
-        "$value": "{spacing.620x}"
+        "$value": "{spacing.48x}"
       }
     }
   },
@@ -93,29 +93,63 @@
       "$value": "{dimension.24x}"
     },
     "device": {
-      "min-width": {
-        "$type": "sizing",
-        "$value": "{sizing.2440x}"
-      },
-      "max-width": {
-        "$type": "sizing",
-        "$value": "{sizing.2560x}"
+      "page": {
+        "min-width": {
+          "$type": "sizing",
+          "$value": "{sizing.1600x}"
+        },
+        "max-width": {
+          "$type": "sizing",
+          "$value": "{sizing.9999x}"
+        }
       },
       "content": {
-        "max-width": {
+        "max-width-large": {
+          "$type": "sizing",
+          "$value": "{sizing.1800x}"
+        },
+        "max-width-medium": {
           "$type": "sizing",
           "$value": "{sizing.1200x}"
         },
-        "header-max-width": {
+        "max-width-small": {
           "$type": "sizing",
-          "$value": "{sizing.1800x}"
+          "$value": "{sizing.800x}"
+        }
+      },
+      "component": {
+        "min-width-large": {
+          "$type": "sizing",
+          "$value": "{sizing.520x}"
+        },
+        "min-width-medium": {
+          "$type": "sizing",
+          "$value": "{sizing.520x}"
+        },
+        "min-width-small": {
+          "$type": "sizing",
+          "$value": "{sizing.220x}"
         }
       }
     },
-    "header": {
+    "brand": {
       "logo": {
+        "medium": {
+          "$type": "sizing",
+          "$value": "{sizing.88x}"
+        }
+      },
+      "illustration": {
+        "medium": {
+          "$type": "sizing",
+          "$value": "{sizing.40x}"
+        }
+      }
+    },
+    "image": {
+      "large": {
         "$type": "sizing",
-        "$value": "{sizing.88x}"
+        "$value": "{sizing.1200x}"
       }
     }
   },

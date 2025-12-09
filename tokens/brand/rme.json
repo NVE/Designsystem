@@ -142,6 +142,10 @@
       "RME": {
         "$type": "boolean",
         "$value": "true"
+      },
+      "NVE_RME": {
+        "$type": "boolean",
+        "$value": "true"
       }
     }
   }
