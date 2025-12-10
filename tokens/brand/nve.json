@@ -1117,6 +1117,14 @@
       "$type": "spacing",
       "$value": "50px"
     },
+    "56x": {
+      "$type": "spacing",
+      "$value": "56px"
+    },
+    "88x": {
+      "$type": "spacing",
+      "$value": "88px"
+    },
     "220x": {
       "$type": "spacing",
       "$value": "220px"

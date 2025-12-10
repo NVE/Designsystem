@@ -45,9 +45,13 @@
       "$value": "{dimension.19x}"
     },
     "content": {
-      "margin-top-bottom": {
+      "margin-top": {
         "$type": "spacing",
         "$value": "{spacing.24x}"
+      },
+      "margin-bottom": {
+        "$type": "spacing",
+        "$value": "{spacing.48x}"
       },
       "margin-left-right": {
         "$type": "spacing",
