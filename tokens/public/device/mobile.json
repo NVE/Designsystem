@@ -104,7 +104,7 @@
         },
         "max-width": {
           "$type": "sizing",
-          "$value": "{sizing.767x}"
+          "$value": "{sizing.763x}"
         }
       },
       "content": {
@@ -128,11 +128,11 @@
         },
         "min-width-medium": {
           "$type": "sizing",
-          "$value": "{sizing.320x}"
+          "$value": "{sizing.342x}"
         },
         "min-width-small": {
           "$type": "sizing",
-          "$value": "{sizing.220x}"
+          "$value": "{sizing.217x}"
         }
       }
     },

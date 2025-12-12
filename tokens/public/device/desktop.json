@@ -128,7 +128,7 @@
         },
         "min-width-medium": {
           "$type": "sizing",
-          "$value": "{sizing.390x}"
+          "$value": "{sizing.286x}"
         },
         "min-width-small": {
           "$type": "sizing",

@@ -1364,6 +1364,10 @@
       "$type": "sizing",
       "$value": "88px"
     },
+    "217x": {
+      "$type": "sizing",
+      "$value": "217px"
+    },
     "220x": {
       "$type": "sizing",
       "$value": "220px"
@@ -1372,9 +1376,17 @@
       "$type": "sizing",
       "$value": "256px"
     },
+    "286x": {
+      "$type": "sizing",
+      "$value": "286px"
+    },
     "320x": {
       "$type": "sizing",
       "$value": "320px"
+    },
+    "342x": {
+      "$type": "sizing",
+      "$value": "342px"
     },
     "366x": {
       "$type": "sizing",
@@ -1392,6 +1404,14 @@
       "$type": "sizing",
       "$value": "440px"
     },
+    "468x": {
+      "$type": "sizing",
+      "$value": "468px"
+    },
+    "480x": {
+      "$type": "sizing",
+      "$value": "480px"
+    },
     "520x": {
       "$type": "sizing",
       "$value": "520px"
@@ -1408,13 +1428,13 @@
       "$type": "sizing",
       "$value": "750px"
     },
-    "767x": {
+    "763x": {
       "$type": "sizing",
-      "$value": "767px"
+      "$value": "763px"
     },
-    "768x": {
+    "764x": {
       "$type": "sizing",
-      "$value": "768px"
+      "$value": "764px"
     },
     "799x": {
       "$type": "sizing",

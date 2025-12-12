@@ -100,7 +100,7 @@
       "page": {
         "min-width": {
           "$type": "sizing",
-          "$value": "{sizing.768x}"
+          "$value": "{sizing.764x}"
         },
         "max-width": {
           "$type": "sizing",
@@ -128,7 +128,7 @@
         },
         "min-width-medium": {
           "$type": "sizing",
-          "$value": "{sizing.320x}"
+          "$value": "{sizing.286x}"
         },
         "min-width-small": {
           "$type": "sizing",
