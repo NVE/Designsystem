@@ -174,23 +174,23 @@
       "color-e": {
         "100": {
           "$type": "color",
-          "$value": "#e9aa9b"
+          "$value": "#e99b9b"
         },
         "200": {
           "$type": "color",
-          "$value": "#e28e79"
+          "$value": "#e27979"
         },
         "300": {
           "$type": "color",
-          "$value": "#DA7258"
+          "$value": "#da5858"
         },
         "400": {
           "$type": "color",
-          "$value": "#C0482A"
+          "$value": "#c02a2a"
         },
         "500": {
           "$type": "color",
-          "$value": "#7D2F1C"
+          "$value": "#7d1c1c"
         }
       }
     }
