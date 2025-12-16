@@ -13,9 +13,9 @@ Hovedproblemet er kompleksiteten med vedlikehold. Å håndtere versjonering for 
 
 En annen utfordring er at team som bruker forskjellige versjoner av komponenter risikerer at designet blir inkonsistent på tvers av applikasjonene. Når det ikke lenger er press på å oppdatere hele pakken, reduseres også motivasjonen for å holde komponentene oppdatert, noe som fører til teknisk gjeld.
 
-Figma setter også naturlige begrensninger i og med at man kan ikke versjonere på enkeltsider eller enkeltkomponenter, men må versjonere på hele designsystemet. Endrer man én komponent må det lages ny versjon av alt.
+Figma setter også naturlige begrensninger i og med at man ikke kan versjonere på enkeltsider eller enkeltkomponenter, men må versjonere på hele designsystemet. Endrer man én komponent må det lages ny versjon av alt.
 
-Etter diskusjon ble det bestemt at vi å fortsetter med versjonering på pakkenivå. Dette er i tråd med hvordan de fleste andre designsystem håndterer versjonering.
+Etter diskusjon ble det bestemt at vi fortsetter med versjonering på pakkenivå. Dette er i tråd med hvordan de fleste andre designsystem håndterer versjonering.
 
 ## Felleskomponent for filopplasting
 
