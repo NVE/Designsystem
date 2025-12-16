@@ -12,15 +12,16 @@ permissions:
 
 env:
   # 🔗 Sett til riktig Organization Project (Project v2) URL
-  PROJECT_URL: "https://github.com/orgs/NVE/projects/1"
+  PROJECT_URL: "https://github.com/orgs/NVE/projects/6"
 
-  # Feltnavn slik de står i Project (case-sensitive)
+  # 📌 Feltnavn slik de står i Project (case-sensitive)
   PROJECT_STATUS_FIELD_NAME: "Status"
   FIGMA_FIELD_NAME: "Figma"
-  # Scriptet leter etter første felt som matcher en av disse
+  # Scriptet leter etter første felt som matcher en av disse navnene
   DOC_FIELD_CANDIDATES: "VitePress,Dokumentasjon"
 
-  # Mapping fra issue-labels -> Status-feltets verdier (single-select)
+  # 🔁 Mapping fra issue-labels -> Status-feltets verdier (single-select)
+  #   Venstre side er nøyaktig labelnavn; høyre side er nøyaktig option-verdi i Status-feltet.
   MAP_STATUS_SYNCH: |
     status: ✅ I synk=>I synk
     status: ✏️ Design-endring=>Design-endring
@@ -28,7 +29,7 @@ env:
     status: ⏳ I utvikling=>I utvikling
     status: 🚫 Deprecated=>Deprecated
 
-  # Hvilke labels identifiserer komponenter
+  # 🏷️ Hvilke labels identifiserer komponenter (prefiks)
   COMPONENT_LABEL_PREFIX: "nve-"
 
 jobs:
@@ -41,7 +42,8 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const labels = (context.payload.issue?.labels || []).map(l => typeof l === 'string' ? l : l.name);
+            const labels = (context.payload.issue?.labels || [])
+              .map(l => typeof l === 'string' ? l : l.name);
             const prefix = process.env.COMPONENT_LABEL_PREFIX;
             const match = labels.some(l => l?.startsWith(prefix));
             core.setOutput('matches', match ? 'true' : 'false');
@@ -52,209 +54,220 @@ jobs:
         with:
           project-url: ${{ env.PROJECT_URL }}
           github-token: ${{ secrets.PAT_TOKEN }}
-          
+
       - name: Update Project fields from issue labels & body
+        if: steps.comp.outputs.matches == 'true'
         uses: actions/github-script@v7
-        env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         with:
+          github-token: ${{ secrets.PAT_TOKEN }}
           script: |
-            try {
-              const { graphql } = require('@octokit/graphql');
-              const gql = graphql.defaults({ headers: { authorization: `token ${process.env.GH_TOKEN}` }});
+            // Ferdig autentisert GraphQL-klient er tilgjengelig via github.graphql
+            const gql = github.graphql;
 
-              // --- ENV / konfig ---
-              const PROJECT_URL = process.env.PROJECT_URL;
-              const STATUS_FIELD_NAME = process.env.PROJECT_STATUS_FIELD_NAME;
-              const FIGMA_FIELD_NAME = process.env.FIGMA_FIELD_NAME;
-              const DOC_FIELD_CANDIDATES = (process.env.DOC_FIELD_CANDIDATES || '').split(',').map(s => s.trim()).filter(Boolean);
-              const mapLines = (process.env.MAP_STATUS_SYNCH || '').split('\n').map(l => l.trim()).filter(Boolean);
-              const statusMap = Object.fromEntries(
-                mapLines.map(line => {
-                  const parts = line.split('=>');
-                  if (parts.length !== 2) return ['__INVALID__', ''];
-                  return [parts[0].trim(), parts[1].trim()];
-                }).filter(([k]) => k !== '__INVALID__')
-              );
+            // --- ENV / konfig ---
+            const PROJECT_URL = process.env.PROJECT_URL;
+            const STATUS_FIELD_NAME = process.env.PROJECT_STATUS_FIELD_NAME;
+            const FIGMA_FIELD_NAME = process.env.FIGMA_FIELD_NAME;
+            const DOC_FIELD_CANDIDATES = (process.env.DOC_FIELD_CANDIDATES || '')
+              .split(',')
+              .map(s => s.trim())
+              .filter(Boolean);
 
-              const issue = context.payload.issue;
-              if (!issue) {
-                core.info('No issue in payload; skip');
-                return;
-              }
+            const mapLines = (process.env.MAP_STATUS_SYNCH || '')
+              .split('\n')
+              .map(l => l.trim())
+              .filter(Boolean);
 
-              // --- Status fra labels ---
-              const labels = (issue.labels || []).map(l => typeof l === 'string' ? l : l.name);
-              const statusLabel = Object.keys(statusMap).find(k => labels.includes(k)) || null;
-              const desiredStatus = statusLabel ? statusMap[statusLabel] : null;
+            const statusMap = Object.fromEntries(
+              mapLines.map(line => {
+                const parts = line.split('=>');
+                if (parts.length !== 2) return ['__INVALID__', ''];
+                return [parts[0].trim(), parts[1].trim()];
+              }).filter(([k]) => k !== '__INVALID__')
+            );
 
-              // --- Ekstraher Figma & Doc fra body ---
-              const body = issue.body || '';
-              const rFigma = /^\s*Figma\s*:\s*(https?:\/\/\S+)/im;
-              const rDoc   = /^\s*(VitePress|Dokumentasjon)\s*:\s*(https?:\/\/\S+)/im;
-
-              let figmaUrl = null;
-              let docUrl   = null;
-
-              const mF = body.match(rFigma);
-              if (mF) figmaUrl = (mF[1] || '').trim();
-
-              const mD = body.match(rDoc);
-              if (mD) docUrl = (mD[2] || '').trim();
-
-              if (!figmaUrl) {
-                const dm = body.match(/https?:\/\/(?:www\.)?figma\.com\/\S+/i);
-                if (dm) figmaUrl = dm[0];
-              }
-              if (!docUrl) {
-                const dm = body.match(/https?:\/\/[A-Za-z0-9._-]*designsystem\.[A-Za-z0-9._-]+\/\S+/i);
-                if (dm) docUrl = dm[0];
-              }
-
-              // --- Parse org/prosjektnummer ---
-              const u = new URL(PROJECT_URL);
-              // Forventet: /orgs/<org>/projects/<number>
-              const pathParts = u.pathname.split('/').filter(Boolean);
-              const org = pathParts[1];
-              const projectNumber = parseInt(pathParts[3], 10);
-              if (!org || Number.isNaN(projectNumber)) {
-                core.setFailed(`Could not parse org/project from PROJECT_URL='${PROJECT_URL}'`);
-                return;
-              }
-
-              // --- Hent Project & felter ---
-              const projRes = await gql(
-                `
-                query($org: String!, $number: Int!) {
-                  organization(login: $org) {
-                    projectV2(number: $number) {
-                      id
-                      fields(first: 100) {
-                        nodes {
-                          ... on ProjectV2FieldCommon { id name }
-                          ... on ProjectV2SingleSelectField { id name options { id name } }
-                          ... on ProjectV2Field { id name dataType }
-                        }
-                      }
-                    }
-                  }
-                }
-                `,
-                { org, number: projectNumber }
-              );
-
-              const project = projRes.organization?.projectV2;
-              if (!project) {
-                core.setFailed(`Project not found at ${PROJECT_URL}`);
-                return;
-              }
-
-              const fields = project.fields.nodes || [];
-              const statusField = fields.find(f => f.name === STATUS_FIELD_NAME && Array.isArray(f.options));
-              const figmaField  = fields.find(f => f.name === FIGMA_FIELD_NAME);
-              const docField    = DOC_FIELD_CANDIDATES.map(n => fields.find(f => f.name === n)).find(Boolean);
-
-              let statusOptionId = null;
-              if (desiredStatus) {
-                if (!statusField) {
-                  core.setFailed(`Status field '${STATUS_FIELD_NAME}' not found or not single-select`);
-                  return;
-                }
-                const opt = statusField.options.find(o => o.name === desiredStatus);
-                if (!opt) {
-                  core.setFailed(`Status option '${desiredStatus}' not found in project`);
-                  return;
-                }
-                statusOptionId = opt.id;
-              }
-
-              // --- Finn Issue-ID ---
-              const issueNode = await gql(
-                `
-                query($owner:String!, $repo:String!, $number:Int!) {
-                  repository(owner:$owner, name:$repo) {
-                    issue(number:$number) { id }
-                  }
-                }
-                `,
-                { owner: context.repo.owner, repo: context.repo.repo, number: issue.number }
-              );
-              const issueId = issueNode.repository?.issue?.id;
-              if (!issueId) {
-                core.setFailed(`Could not resolve issue id for #${issue.number}`);
-                return;
-              }
-
-              // --- Finn/legg til Project Item ---
-              const itemsRes = await gql(
-                `
-                query($projectId:ID!) {
-                  node(id:$projectId) {
-                    ... on ProjectV2 {
-                      items(first: 200) {
-                        nodes { id content { ... on Issue { id number } } }
-                      }
-                    }
-                  }
-                }
-                `,
-                { projectId: project.id }
-              );
-
-              let itemId = itemsRes.node?.items?.nodes?.find(n => n.content?.id === issueId)?.id || null;
-              if (!itemId) {
-                const addRes = await gql(
-                  `
-                  mutation($projectId:ID!, $contentId:ID!) {
-                    addProjectV2ItemById(input:{projectId:$projectId, contentId:$contentId}) { item { id } }
-                  }
-                  `,
-                  { projectId: project.id, contentId: issueId }
-                );
-                itemId = addRes.addProjectV2ItemById?.item?.id || null;
-                if (!itemId) {
-                  core.setFailed('Failed to add item to project');
-                  return;
-                }
-              }
-
-              // --- Samle oppdateringer ---
-              const updates = [];
-              if (statusOptionId) {
-                updates.push({ fieldId: statusField.id, value: { singleSelectOptionId: statusOptionId } });
-              }
-              if (figmaField && figmaUrl) {
-                updates.push({ fieldId: figmaField.id, value: { text: figmaUrl } });
-              }
-              if (docField && docUrl) {
-                updates.push({ fieldId: docField.id, value: { text: docUrl } });
-              }
-
-              // --- Kjør oppdateringer ---
-              for (const upd of updates) {
-                await gql(
-                  `
-                  mutation($projectId:ID!, $itemId:ID!, $fieldId:ID!, $value:ProjectV2FieldValue!) {
-                    updateProjectV2ItemFieldValue(input:{
-                      projectId:$projectId,
-                      itemId:$itemId,
-                      fieldId:$fieldId,
-                      value:$value
-                    }) { projectV2Item { id } }
-                  }
-                  `,
-                  { projectId: project.id, itemId, fieldId: upd.fieldId, value: upd.value }
-                );
-              }
-
-              core.info(
-                `Synced #${issue.number}: ` +
-                [
-                  statusOptionId ? `Status='${desiredStatus}'` : null,
-                  figmaUrl ? `Figma='${figmaUrl}'` : null,
-                  docUrl ? `Doc='${docUrl}'` : null
-                ].filter(Boolean).join(', ')
-              );
-            } catch (e) {
-              core.setFailed(`Script failed: ${e.stack || e.message}`);
+            const issue = context.payload.issue;
+            if (!issue) {
+              core.info('No issue in payload; skip');
+              return;
             }
+
+            // --- Status fra labels ---
+            const labels = (issue.labels || []).map(l => typeof l === 'string' ? l : l.name);
+            const statusLabel = Object.keys(statusMap).find(k => labels.includes(k)) || null;
+            const desiredStatus = statusLabel ? statusMap[statusLabel] : null;
+
+            // --- Ekstraher Figma & Doc fra body ---
+            const body = issue.body || '';
+
+            const rFigma = /^\s*Figma\s*:\s*(https?:\/\/\S+)/im;
+            let figmaUrl = null;
+            let docUrl = null;
+
+            const mF = body.match(rFigma);
+            if (mF) figmaUrl = (mF[1] || '').trim();
+
+            if (DOC_FIELD_CANDIDATES.length > 0) {
+              // Bygg regex trygt (escape kandidatnavn)
+              const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+              const pattern = new RegExp(
+                `^\\s*(${DOC_FIELD_CANDIDATES.map(esc).join('|')})\\s*:\\s*(https?:\\/\\/\\S+)`,
+                'im'
+              );
+              const mD = body.match(pattern);
+              if (mD) docUrl = (mD[2] || '').trim();
+            }
+
+            // Fallback: finn første figma/dokumentasjons-URL i body
+            if (!figmaUrl) {
+              const dm = body.match(/https?:\/\/(?:www\.)?figma\.com\/\S+/i);
+              if (dm) figmaUrl = dm[0];
+            }
+            if (!docUrl) {
+              const dm = body.match(/https?:\/\/[A-Za-z0-9._-]*designsystem\.[A-Za-z0-9._-]+\/\S+/i);
+              if (dm) docUrl = dm[0];
+            }
+
+            // --- Parse org/prosjektnummer ---
+            const u = new URL(PROJECT_URL);
+            // Forventet: /orgs/<org>/projects/<number>
+            const parts = u.pathname.split('/').filter(Boolean);
+            const org = parts[1];
+            const projectNumber = parseInt(parts[3], 10);
+            if (!org || Number.isNaN(projectNumber)) {
+              core.setFailed(`Could not parse org/project from PROJECT_URL='${PROJECT_URL}'`);
+              return;
+            }
+
+            // --- Hent Project & felter ---
+            const projRes = await gql(
+              `
+              query($org: String!, $number: Int!) {
+                organization(login: $org) {
+                  projectV2(number: $number) {
+                    id
+                    fields(first: 100) {
+                      nodes {
+                        ... on ProjectV2FieldCommon { id name }
+                        ... on ProjectV2SingleSelectField { id name options { id name } }
+                        ... on ProjectV2Field { id name dataType }
+                      }
+                    }
+                  }
+                }
+              }`,
+              { org, number: projectNumber }
+            );
+
+            const project = projRes.organization?.projectV2;
+            if (!project) {
+              core.setFailed(`Project not found at ${PROJECT_URL}`);
+              return;
+            }
+
+            const fields = project.fields.nodes || [];
+            const statusField = fields.find(f => f.name === STATUS_FIELD_NAME && Array.isArray(f.options));
+            const figmaField = fields.find(f => f.name === FIGMA_FIELD_NAME);
+            const docField = DOC_FIELD_CANDIDATES.map(n => fields.find(f => f.name === n)).find(Boolean);
+
+            // --- Valider status-option ---
+            let statusOptionId = null;
+            if (desiredStatus) {
+              if (!statusField) {
+                core.setFailed(`Status field '${STATUS_FIELD_NAME}' not found or not single-select`);
+                return;
+              }
+              const opt = statusField.options.find(o => o.name === desiredStatus);
+              if (!opt) {
+                core.setFailed(`Status option '${desiredStatus}' not found in project`);
+                return;
+              }
+              statusOptionId = opt.id;
+            }
+
+            // --- Finn Issue-ID ---
+            const issueNode = await gql(
+              `
+              query($owner:String!, $repo:String!, $number:Int!) {
+                repository(owner:$owner, name:$repo) {
+                  issue(number:$number) { id }
+                }
+              }`,
+              { owner: context.repo.owner, repo: context.repo.repo, number: issue.number }
+            );
+
+            const issueId = issueNode.repository?.issue?.id;
+            if (!issueId) {
+              core.setFailed(`Could not resolve issue id for #${issue.number}`);
+              return;
+            }
+
+            // --- Finn/legg til Project Item ---
+            const itemsRes = await gql(
+              `
+              query($projectId:ID!) {
+                node(id:$projectId) {
+                  ... on ProjectV2 {
+                    items(first: 200) {
+                      nodes {
+                        id
+                        content { ... on Issue { id number } }
+                      }
+                    }
+                  }
+                }
+              }`,
+              { projectId: project.id }
+            );
+
+            let itemId = itemsRes.node?.items?.nodes?.find(n => n.content?.id === issueId)?.id || null;
+
+            if (!itemId) {
+              const addRes = await gql(
+                `
+                mutation($projectId:ID!, $contentId:ID!) {
+                  addProjectV2ItemById(input:{projectId:$projectId, contentId:$contentId}) {
+                    item { id }
+                  }
+                }`,
+                { projectId: project.id, contentId: issueId }
+              );
+              itemId = addRes.addProjectV2ItemById?.item?.id || null;
+              if (!itemId) {
+                core.setFailed('Failed to add item to project');
+                return;
+              }
+            }
+
+            // --- Samle oppdateringer ---
+            const updates = [];
+            if (statusOptionId) updates.push({ fieldId: statusField.id, value: { singleSelectOptionId: statusOptionId } });
+            if (figmaField && figmaUrl) updates.push({ fieldId: figmaField.id, value: { text: figmaUrl } });
+            if (docField && docUrl) updates.push({ fieldId: docField.id, value: { text: docUrl } });
+
+            // --- Utfør oppdateringer ---
+            for (const upd of updates) {
+              await gql(
+                `
+                mutation($projectId:ID!, $itemId:ID!, $fieldId:ID!, $value:ProjectV2FieldValue!) {
+                  updateProjectV2ItemFieldValue(input:{
+                    projectId:$projectId,
+                    itemId:$itemId,
+                    fieldId:$fieldId,
+                    value:$value
+                  }) {
+                    projectV2Item { id }
+                  }
+                }`,
+                { projectId: project.id, itemId, fieldId: upd.fieldId, value: upd.value }
+              );
+            }
+
+            core.info(
+              `Synced #${issue.number}: ` +
+              [
+                statusOptionId ? `Status='${desiredStatus}'` : null,
+                figmaUrl ? `Figma='${figmaUrl}'` : null,
+                docUrl ? `Doc='${docUrl}'` : null
+              ].filter(Boolean).join(', ')
+
