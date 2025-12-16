@@ -63,7 +63,7 @@ jobs:
           script: |
             // Ferdig autentisert GraphQL-klient er tilgjengelig via github.graphql
             const gql = github.graphql;
-
+            try {
             // --- ENV / konfig ---
             const PROJECT_URL = process.env.PROJECT_URL;
             const STATUS_FIELD_NAME = process.env.PROJECT_STATUS_FIELD_NAME;
@@ -263,11 +263,14 @@ jobs:
               );
             }
 
-            core.info(
-              `Synced #${issue.number}: ` +
-              [
-                statusOptionId ? `Status='${desiredStatus}'` : null,
-                figmaUrl ? `Figma='${figmaUrl}'` : null,
-                docUrl ? `Doc='${docUrl}'` : null
-              ].filter(Boolean).join(', ')
-
+              core.info(
+                `Synced #${issue.number}: ` +
+                [
+                  statusOptionId ? `Status='${desiredStatus}'` : null,
+                  figmaUrl ? `Figma='${figmaUrl}'` : null,
+                  docUrl ? `Doc='${docUrl}'` : null
+               ].filter(Boolean).join(', ')
+            );
+          } catch (e) {
+            core.setFailed(`Script failed: ${e.stack || e.message}`);
+          }
