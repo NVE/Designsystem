@@ -118,7 +118,11 @@
         },
         "max-width-small": {
           "$type": "sizing",
-          "$value": "{sizing.800x}"
+          "$value": "{sizing.588x}"
+        },
+        "max-width-x-small": {
+          "$type": "sizing",
+          "$value": "{sizing.282x}"
         }
       },
       "component": {
