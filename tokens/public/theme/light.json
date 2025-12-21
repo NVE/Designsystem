@@ -32,6 +32,10 @@
         "secondary-on-bg": {
           "$type": "color",
           "$value": "{color-shades.brand.999}"
+        },
+        "tertiary-on-bg": {
+          "$type": "color",
+          "$value": "{color-shades.brand.200}"
         }
       },
       "border": {
@@ -66,6 +70,14 @@
         "secondary": {
           "$type": "color",
           "$value": "{color-shades.grey.150}"
+        },
+        "secondary-dim": {
+          "$type": "color",
+          "$value": "{color-shades.grey.850}"
+        },
+        "tertiary-dim": {
+          "$type": "color",
+          "$value": "{color-shades.grey.700}"
         }
       },
       "foreground": {
@@ -73,9 +85,17 @@
           "$type": "color",
           "$value": "{color-shades.grey.999}"
         },
+        "secondary": {
+          "$type": "color",
+          "$value": "{color-shades.functional.neutralgrey.800}"
+        },
         "subtle": {
           "$type": "color",
           "$value": "{color-shades.functional.neutralgrey.600}"
+        },
+        "inverted": {
+          "$type": "color",
+          "$value": "{color-shades.functional.neutralgrey.000}"
         }
       },
       "border": {
