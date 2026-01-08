@@ -1,3 +1,10 @@
+# [3.3.0](https://github.com/NVE/Designsystem/compare/v3.2.0...v3.3.0) (2026-01-08)
+
+
+### Features
+
+* use github.graphql ([#730](https://github.com/NVE/Designsystem/issues/730)) ([2184ed9](https://github.com/NVE/Designsystem/commit/2184ed96ca752b66eb31dbf8b0bd7db79f1bac59))
+
 # [3.2.0](https://github.com/NVE/Designsystem/compare/v3.1.0...v3.2.0) (2025-12-04)
 
 
