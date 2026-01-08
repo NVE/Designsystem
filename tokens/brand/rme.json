@@ -3,27 +3,27 @@
     "brand": {
       "100": {
         "$type": "color",
-        "$value": "#ECEFFE"
+        "$value": "#CFD6FC"
       },
       "150": {
         "$type": "color",
-        "$value": "#DDE2F8"
+        "$value": "#BBC5F1"
       },
       "200": {
         "$type": "color",
-        "$value": "#C7CEEF"
+        "$value": "#A0ACE4"
       },
       "250": {
         "$type": "color",
-        "$value": "#AFBAE9"
+        "$value": "#8F9EE0"
       },
       "300": {
         "$type": "color",
-        "$value": "#8092DB"
+        "$value": "#7084D6"
       },
       "400": {
         "$type": "color",
-        "$value": "#5872D0"
+        "$value": "#546FCF"
       },
       "500": {
         "$type": "color",
@@ -63,7 +63,7 @@
       },
       "050": {
         "$type": "color",
-        "$value": "#F5F7FF"
+        "$value": "#D6DEFF"
       }
     },
     "grey": {
@@ -126,6 +126,72 @@
       "000": {
         "$type": "color",
         "$value": "#ffffff"
+      }
+    },
+    "data": {
+      "color-a": {
+        "100": {
+          "$type": "color",
+          "$value": "#c7cfef"
+        },
+        "150": {
+          "$type": "color",
+          "$value": "#90a0e0"
+        },
+        "250": {
+          "$type": "color",
+          "$value": "#788bd9"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#5870D0"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#2e47a3"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#223477"
+        },
+        "950": {
+          "$type": "color",
+          "$value": "#141e48"
+        },
+        "300-005": {
+          "$type": "color",
+          "$value": "rgba(88,112,208,0.02)"
+        },
+        "300-015": {
+          "$type": "color",
+          "$value": "rgba(88,112,208,0.15)"
+        },
+        "000": {
+          "$type": "color",
+          "$value": "#dfe4f6"
+        }
+      },
+      "color-e": {
+        "100": {
+          "$type": "color",
+          "$value": "#e99b9b"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#e27979"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#da5858"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#c02a2a"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "#7d1c1c"
+        }
       }
     }
   }
