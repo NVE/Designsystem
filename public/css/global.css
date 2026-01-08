@@ -1,51 +1,51 @@
 @import '../../dist/nve-designsystem.css';
 
+@import url('https://fonts.cdnfonts.com/css/source-sans-pro');
 /* Hvis du ikke vil at applikasjonen henter fonter fra nettet under kjøring, kan du laste dem ned på forhånd og legge dem i prosjektet ditt.
    Bytt ut linja under med @font-face for hver av fontene som du laster lokalt. 
    Designsystemet bruker Source Sans Pro med font-vekt 400 og 600*/
-@import url('https://fonts.cdnfonts.com/css/source-sans-pro');
 
 :root {
   --transition-time: 0.3s;
 
-  --sl-focus-ring-color: var(--interactive-links-focus);
+  --sl-focus-ring-color: var(--color-interactive-links-focus);
   --sl-focus-ring-style: solid;
   --sl-focus-ring-width: 2px;
   --sl-focus-ring-offset: -1px;
   --sl-border-radius-medium: var(--border-radius-small);
   --sl-border-radius-small: var(--border-radius-small);
-  --sl-input-height-small: var(--fixed-sizing-medium);
-  --sl-input-height-medium: var(--fixed-sizing-large);
-  --sl-input-height-large: var(--fixed-sizing-x-large);
+  --sl-input-height-small: var(--sizing-fixed-sizing-medium);
+  --sl-input-height-medium: var(--sizing-fixed-sizing-large);
+  --sl-input-height-large: var(--sizing-fixed-sizing-x-large);
 
-  --sl-input-background-color: var(--neutrals-background-primary, #fff);
-  --sl-input-background-color-focus: var(--neutrals-background-primary, #fff);
-  --sl-input-background-color-hover: var(--neutrals-background-primary, #fff);
-  --sl-input-background-color-disabled: var(--neutrals-background-primary, #fff);
-  --sl-input-color: var(--neutrals-foreground-primary, #00131c);
-  --sl-input-color-focus: var(--neutrals-foreground-primary, #00131c);
-  --sl-input-color-hover: var(--neutrals-foreground-primary, #00131c);
-  --sl-input-color-disabled: var(--interactive-secondary-foreground-disabled, #00131c);
-  --sl-input-icon-color: var(--neutrals-foreground-primary, #00131c);
-  --sl-input-icon-color-hover: var(--neutrals-foreground-primary, #00131c);
-  --sl-input-icon-color-focus: var(--neutrals-foreground-primary, #00131c);
+  --sl-input-background-color: var(--color-neutrals-background-primary, #fff);
+  --sl-input-background-color-focus: var(--color-neutrals-background-primary, #fff);
+  --sl-input-background-color-hover: var(--color-neutrals-background-primary, #fff);
+  --sl-input-background-color-disabled: var(--color-neutrals-background-primary, #fff);
+  --sl-input-color: var(--color-neutrals-foreground-primary, #00131c);
+  --sl-input-color-focus: var(--color-neutrals-foreground-primary, #00131c);
+  --sl-input-color-hover: var(--color-neutrals-foreground-primary, #00131c);
+  --sl-input-color-disabled: var(--color-interactive-secondary-foreground-disabled, #00131c);
+  --sl-input-icon-color: var(--color-neutrals-foreground-primary, #00131c);
+  --sl-input-icon-color-hover: var(--color-neutrals-foreground-primary, #00131c);
+  --sl-input-icon-color-focus: var(--color-neutrals-foreground-primary, #00131c);
   --sl-input-placeholder-color: var(--sl-color-neutral-500);
-  --sl-input-placeholder-color-disabled: var(--interactive-secondary-foreground-disabled, #00131c);
-  --sl-input-focus-ring-color: var(--interactive-links-focus);
-  --sl-input-border-color: var(--neutrals-border-default, #878c94);
-  --sl-input-border-color-focus: var(--interactive-links-focus);
-  --sl-input-border-color-hover: var(--neutrals-border-subtle, #c8eaf9);
-  --sl-input-border-color-disabled: var(--neutrals-border-disabled, #878c94);
+  --sl-input-placeholder-color-disabled: var(--color-interactive-secondary-foreground-disabled, #00131c);
+  --sl-input-focus-ring-color: var(--color-interactive-links-focus);
+  --sl-input-border-color: var(--color-neutrals-border-default, #878c94);
+  --sl-input-border-color-focus: var(--color-interactive-links-focus);
+  --sl-input-border-color-hover: var(--color-neutrals-border-subtle, #c8eaf9);
+  --sl-input-border-color-disabled: var(--color-neutrals-border-disabled, #878c94);
   --sl-input-focus-ring-offset: -1px;
 
-  --sl-input-filled-background-color: var(--neutrals-background-primary-contrast, #eff8fc);
-  --sl-input-filled-background-color-hover: var(--neutrals-background-primary-contrast, #eff8fc);
-  --sl-input-filled-background-color-focus: var(--neutrals-background-primary-contrast, #eff8fc);
-  --sl-input-filled-background-color-disabled: var(--neutrals-background-primary-contrast, #eff8fc);
-  --sl-input-filled-color: var(--neutrals-foreground-primary, #00131c);
-  --sl-input-filled-color-hover: var(--neutrals-foreground-primary, #00131c);
-  --sl-input-filled-color-focus: var(--neutrals-foreground-primary, #00131c);
-  --sl-input-filled-color-disabled: var(--interactive-secondary-foreground-disabled, #00131c);
+  --sl-input-filled-background-color: var(--color-neutrals-background-primary-contrast, #eff8fc);
+  --sl-input-filled-background-color-hover: var(--color-neutrals-background-primary-contrast, #eff8fc);
+  --sl-input-filled-background-color-focus: var(--color-neutrals-background-primary-contrast, #eff8fc);
+  --sl-input-filled-background-color-disabled: var(--color-neutrals-background-primary-contrast, #eff8fc);
+  --sl-input-filled-color: var(--color-neutrals-foreground-primary, #00131c);
+  --sl-input-filled-color-hover: var(--color-neutrals-foreground-primary, #00131c);
+  --sl-input-filled-color-focus: var(--color-neutrals-foreground-primary, #00131c);
+  --sl-input-filled-color-disabled: var(--color-interactive-secondary-foreground-disabled, #00131c);
 
   --sl-input-font-family: var(--sl-font-sans);
   --sl-input-font-weight: var(--sl-font-weight-normal);
@@ -57,7 +57,7 @@
 
 /* Brukes på lenkene som ikke er i Shadow-DOMen som f.eks de som skal wrappe <nve-link-card> */
 a {
-  color: var(--neutrals-foreground-primary, #0d0d0e);
+  color: var(--color-neutrals-foreground-primary, #0d0d0e);
 }
 
 /* Brukes for å fjerne standard linje i <a>  som ikke er i Shadow-DOMen som f.eks de som skal wrappe <nve-link-card> */
@@ -67,7 +67,7 @@ a:has(nve-link-card) {
 
 /* Brukes for å overskrive standard lenke visited styling som ikke er i Shadow-DOMen som f.eks de som skal wrappe <nve-link-card> */
 a:visited {
-  color: var(--interactive-links-visited);
+  color: var(--color-interactive-links-visited);
 }
 
 /* Brukes i nve-alert for å vise toast*/

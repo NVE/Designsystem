@@ -10,34 +10,33 @@ layout: component
 
 </CodeExamplePreview>
 
-Her er [oversikt over ikoner i Material Symbols](https://fonts.google.com/icons).
+Her er [oversikt over ikoner i Material Symbols](https://fonts.google.com/icons?icon.style=Sharp).
 
 ## Eksempler
 
 ### Størrelse
 
-For å endre størrelsen, bruk `--icon-size` css custom property.
+24px er standard. For å endre størrelse, bruk `--icon-size` css custom property.
 
-Man kan fortsatt bruke bare `font-size` css property (se siste eksempel), men man må huske å endre `line-height` også så at den stemmer med valgte `font-size`.
+`font-size` i kombinasjon med `line-height` kan også brukes. Begge må være like.
 
-24px er standard.
 <CodeExamplePreview>
 
 ```html
-<nve-icon name="Rocket" style="--icon-size: 20px;"></nve-icon>
+<nve-icon name="Rocket" style="--icon-size: 20px;"></nve-icon>20px
 
-<nve-icon name="Rocket"></nve-icon>
+<nve-icon name="Rocket"></nve-icon> 24px (standard størrelse)
 
-<nve-icon name="Rocket" style="--icon-size: 28px;"></nve-icon>
+<nve-icon name="Rocket" style="--icon-size: 28px;"></nve-icon> 28px med bruk av --icon-size
 
-<nve-icon name="Rocket" style="font-size: 28px; line-height: 28px;"></nve-icon>
+<nve-icon name="Rocket" style="font-size: 28px; line-height: 28px;"></nve-icon>28px med bruk av font-size og line-height
 ```
 
 </CodeExamplePreview>
 
 ### Skarpe eller mye kanter
 
-Bruk `library="Outlined"` for myke kanter. `Sharp` er standard. `Outlined` skal kun brukes hvis symbolet blir lettere å lese.
+Bruk `library="Outlined"` for myke kanter. `Sharp` er standard. `Outlined` skal kun brukes hvis symbolet blir lettere å lese. `Fill` skal ikke brukes.
 <CodeExamplePreview>
 
 ```html
@@ -46,7 +45,7 @@ Bruk `library="Outlined"` for myke kanter. `Sharp` er standard. `Outlined` skal 
 
 </CodeExamplePreview>
 
-### Offline støtte / Bruke ikoner direkte fra eget repo
+### Offline-støtte / Bruke ikoner direkte fra eget repo
 
 Hvis du bruker `name`, lastes ikonet med aktuelt navn fra Material Symbols når komponenten blir registrert første gang. Dette funker ikke offline. Men med `src`, kan du bruke ikoner som er lagret i eget repo.
 
@@ -62,8 +61,14 @@ det er mulig.
 <CodeExamplePreview>
 
 ```html
-<nve-icon src="/assets/home-icon.svg" alt="hjem"></nve-icon>
-<nve-icon src="/assets/home-icon.svg" alt="hjem" style="--icon-size:24px"></nve-icon>
+<nve-icon src="/assets/home-icon.svg" alt="hjemme"></nve-icon>
+<nve-icon src="/assets/home-icon.svg" alt="hytta" style="--icon-size:20px"></nve-icon>
 ```
 
 </CodeExamplePreview>
+
+#### Offline-støtte internt (kun relevant for utviklere av designsystemet)
+
+Noen av designsystem-komponentene viser også ikoner som en del av komponenten. Et eksempel er `nve-message-card`:
+<nve-message-card size="simple" label="Info-ikonet i dette kortet blir ikke lastet fra Material Symbols"/>
+Siden designsystemet skal kunne brukes også i applikasjoner uten nett, har vi kopiert de få ikonene vi trenger fra Material Symbols inn i designsystemet. Det står mer om hvordan du gjør dette i [CONTRIBUTING.md](https://github.com/NVE/Designsystem/blob/main/CONTRIBUTING.md).

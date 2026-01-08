@@ -6,8 +6,8 @@ export default css`
     --body-spacing: var(--spacing-x-large, 2rem);
     --footer-spacing: var(--spacing-x-large, 2rem);
     --width: 40.625rem;
-    --sl-panel-background-color: var(--neutrals-background-primary);
-    --sl-shadow-x-large: var(--dropdown);
+    --sl-panel-background-color: var(--color-neutrals-background-primary);
+    --sl-shadow-x-large: var(--box-shadow-dropdown);
   }
 
   :host::part(footer),
@@ -22,8 +22,8 @@ export default css`
     align-items: center;
     gap: 0.5rem;
     position: relative;
-    color: var(--neutrals-foreground-primary, #00131c);
-    font: var(--header-small);
+    color: var(--color-neutrals-foreground-primary, #00131c);
+    font: var(--typography-heading-small);
     line-height: 130%;
     padding: var(--spacing-x-large, 2rem);
   }
@@ -35,7 +35,7 @@ export default css`
 
   .dialog__header-actions sl-icon-button,
   .dialog__header-actions ::slotted(sl-icon-button) {
-    color: var(--neutrals-foreground-primary, #00131c);
+    color: var(--color-neutrals-foreground-primary, #00131c);
     font-family: Source Sans Pro;
     font-size: 1.3rem;
     font-style: normal;
@@ -44,8 +44,8 @@ export default css`
 
   :host::part(body),
   ::slotted([slot='body']) {
-    color: var(--neutrals-foreground-primary, #00131c);
-    font: var(--body-medium-default);
+    color: var(--color-neutrals-foreground-primary, #00131c);
+    font: var(--typography-body-medium);
     line-height: 150%;
     padding: 0 var(--spacing-x-large, 2rem) 0 var(--spacing-x-large, 2rem);
   }
@@ -68,6 +68,6 @@ export default css`
     }
   }
   :host::part(header-actions) {
-    fill: var(--neutrals-foreground-primary);
+    fill: var(--color-neutrals-foreground-primary);
   }
 `;

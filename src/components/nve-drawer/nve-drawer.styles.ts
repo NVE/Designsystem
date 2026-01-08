@@ -16,7 +16,7 @@ export default css`
 
   :host::part(header) {
     padding: var(--drawer-padding-block) var(--drawer-padding-inline);
-    border-bottom: 1px solid var(--neutrals-border-subtle);
+    border-bottom: 1px solid var(--color-neutrals-border-subtle);
   }
 
   :host::part(header-actions) {
@@ -26,8 +26,8 @@ export default css`
   }
 
   :host::part(panel) {
-    background-color: var(--neutrals-background-primary);
-    color: var(--neutrals-foreground-primary);
+    background-color: var(--color-neutrals-background-primary);
+    color: var(--color-neutrals-foreground-primary);
   }
 
   :host::part(body) {
@@ -41,10 +41,10 @@ export default css`
     justify-content: flex-start;
   }
   :host::part(close-button) {
-    color: var(--neutrals-foreground-primary);
+    color: var(--color-neutrals-foreground-primary);
   }
   :host::part(close-button):hover {
-    background-color: var(--interactive-ghost-background-hover);
+    background-color: var(--color-interactive-ghost-background-hover);
     border-radius: var(--border-radius-small, 4px);
     transition: background-color 0.3s ease;
   }

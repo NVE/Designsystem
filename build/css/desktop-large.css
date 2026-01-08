@@ -1,0 +1,105 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --spacing-none: 0;
+  --dimension-025x: 0.0625rem; /** 1px */
+  --dimension-05x: 0.125rem; /** 2px */
+  --dimension-1x: 0.25rem; /** 4px */
+  --dimension-2x: 0.5rem; /** 8px */
+  --dimension-3x: 0.75rem; /** 12px */
+  --dimension-3-5x: 0.875rem; /** 14px */
+  --dimension-4x: 1rem; /** 16px */
+  --dimension-4-5x: 1.125rem; /** 18px */
+  --dimension-5x: 1.25rem; /** 20px */
+  --dimension-6x: 1.5rem; /** 24px */
+  --dimension-7x: 1.75rem; /** 28px */
+  --dimension-8x: 2rem; /** 32px */
+  --dimension-9x: 2.25rem; /** 36px */
+  --dimension-10x: 2.5rem; /** 40px */
+  --dimension-11x: 2.75rem; /** 44px */
+  --dimension-12x: 3rem; /** 48px */
+  --dimension-13x: 3.25rem; /** 52px */
+  --dimension-14x: 3.5rem; /** 56px */
+  --dimension-15x: 3.75rem; /** 60px */
+  --dimension-16x: 4rem; /** 64px */
+  --dimension-17x: 4.25rem; /** 68px */
+  --dimension-18x: 4.5rem; /** 72px */
+  --dimension-19x: 4.75rem; /** 76px */
+  --dimension-20x: 5rem; /** 80px */
+  --dimension-21x: 5.25rem; /** 84px */
+  --dimension-22x: 5.5rem; /** 88px */
+  --dimension-23x: 5.75rem; /** 92px */
+  --dimension-24x: 6rem; /** 96px */
+  --dimension-25x: 6.25rem; /** 100px */
+  --dimension-26x: 6.5rem; /** 104px */
+  --dimension-27x: 6.75rem; /** 108px */
+  --dimension-28x: 7rem; /** 112px */
+  --dimension-29x: 7.25rem; /** 116px */
+  --dimension-30x: 7.5rem; /** 120px */
+  --letter-spacing-0: 0em;
+  --letter-spacing-1: 0.05em;
+  --paragraph-spacing-0: 0;
+  --paragraph-spacing-1: 12px;
+  --paragraph-spacing-2: 16px;
+  --paragraph-spacing-3: 24px;
+  --paragraph-spacing-4: 32px;
+  --paragraph-spacing-5: 40px;
+  --paragraph-indent-0: 0px;
+  --content-margin-top-bottom-mobile: 24px;
+  --content-margin-top-bottom-desktop: 40px;
+  --content-margin-top-bottom-desktop-small: 32px;
+  --content-margin-top-bottom-desktop-large: 40px;
+  --content-margin-left-right-mobile: 24px;
+  --content-margin-left-right-desktop-small: 50px;
+  --content-margin-left-right-desktop: 220px;
+  --content-margin-left-right-desktop-large: 620px;
+  --border-radius-none: 0px;
+  --border-radius-small: 4px;
+  --border-radius-large: 6px;
+  --border-radius-circle: 50px;
+  --border-radius-pill: 9999px;
+  --border-width-none: 0px;
+  --border-width-default: 1px;
+  --border-width-strong: 2px;
+  --content-area-mobile: 366px;
+  --content-area-desktop-small: 700px;
+  --content-area-desktop: 1000px;
+  --content-area-desktop-large: 1200px;
+  --device-width-mobile: 390px;
+  --device-width-desktop-small: 800px;
+  --device-width-desktop: 1440px;
+  --device-width-desktop-large: 2440px;
+  --spacing-xx-small: var(--dimension-1x);
+  --spacing-x-small: var(--dimension-2x);
+  --spacing-small: var(--dimension-3x);
+  --spacing-medium: var(--dimension-4x);
+  --spacing-large: var(--dimension-6x);
+  --spacing-x-large: var(--dimension-8x);
+  --spacing-2x-large: var(--dimension-12x);
+  --spacing-3x-large: var(--dimension-16x);
+  --spacing-4x-large: var(--dimension-20x);
+  --spacing-5x-large: var(--dimension-24x);
+  --device-width: var(--device-width-desktop-large);
+  --device-content: var(--content-area-desktop-large);
+  --sizing-2x-small: var(--dimension-6x);
+  --sizing-x-small: var(--dimension-9x);
+  --sizing-small: var(--dimension-12x);
+  --sizing-medium: var(--dimension-15x);
+  --sizing-large: var(--dimension-18x);
+  --sizing-x-large: var(--dimension-21x);
+  --sizing-3x-small: var(--dimension-4x);
+  --sizing-4x-small: var(--dimension-2x);
+  --sizing-2x-large: var(--dimension-24x);
+  --content-margin-top-bottom: var(--content-margin-top-bottom-desktop-large);
+  --content-margin-left-right: var(--content-margin-left-right-desktop-large);
+  --font-size-2xsmall: var(--dimension-3-5x); /** 12 px */
+  --font-size-xsmall: var(--dimension-4x); /** 14 px */
+  --font-size-small: var(--dimension-4-5x); /** 16 px */
+  --font-size-medium: var(--dimension-5x); /** 18 px */
+  --font-size-large: var(--dimension-6x); /** 20 px */
+  --font-size-xlarge: var(--dimension-8x); /** 24 px */
+  --font-size-2xlarge: var(--dimension-10x); /** 32 px */
+  --font-size-3xlarge: var(--dimension-12x); /** 40 px */
+}

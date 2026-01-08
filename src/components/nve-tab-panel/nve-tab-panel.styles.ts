@@ -10,7 +10,7 @@ export default css`
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    background: var(--neutrals-background-primary);
+    background: var(--color-neutrals-background-primary);
     padding: var(--spacing-small);
   }
 `;

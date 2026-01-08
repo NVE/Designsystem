@@ -88,8 +88,8 @@ safari (liten forbokstav med vilje) sliter med å håndtere parts med denne synt
 
 ```css
 :host([disabled]:hover)::part(control control--indeterminate) {
-  background: var(--neutrals-foreground-primary) !important;
-  border-color: var(--neutrals-foreground-primary) !important;
+  background: var(--color-neutrals-foreground-primary) !important;
+  border-color: var(--color-neutrals-foreground-primary) !important;
 }
 ```
 
@@ -100,7 +100,7 @@ Sett Figma i utviklermodus og klikk på en tekst.
 I typografi-seksjonen til høyre ser vi css'en som er generert. Vi skal ikke bruke selve css'en, men <b>kommentaren</b> over css'en gir et hint om navnet på tokenet. Eksempel i Figma:
 
 ```css
-color: var(--neutrals-foreground-mute, #3c3f44);
+color: var(--color-neutrals-foreground-mute, #3c3f44);
 
 /* Label/small */
 font-family: Source Sans Pro;
@@ -110,15 +110,30 @@ font-weight: 600;
 line-height: 110%; /* 1.1rem */
 ```
 
-Kommentaren `/* Label/small */` betyr at vi skal bruke css-variabelen `--label-small`, f.eks. slik:
+Kommentaren `/* Label/small */` betyr at vi skal bruke css-variabelen `--typography-label-small`, f.eks. slik:
 
 ```css
 .button-label {
-  font: var(--label-small);
+  font: var(--typography-label-small);
 }
 ```
 
-### Mapping av shoelace-tokens til NVE-tokens
+## Offline-støtte for ikoner
+
+For at designsystemet skal funke offline i f.eks. hybrid-applikasjoner, kan ikke NVE-komponentene laste ned ikoner eller skrifttyper fra nettet under kjøring.
+Derfor må ikoner og skrifttyper som designsystemet bruker internt være lastet ned på forhånd.
+
+Vi bruker `<nve-icon name="..."` for å vise et ikon fra Material Symbols. Dette bruker vi også internt i komponentene for å vise "innebygde" ikoner, men slike ikoner lastes fra [offline-icons.ts](\src\components\nve-icon\offline-icons.ts).
+
+`<nve-icon>` sjekker automatisk om ikonet finnes lokalt før den prøver å hente det fra nettet.
+
+Når du tar i bruk nye ikoner, pass på at de finnes i [offline-icons.ts](\src\components\nve-icon\offline-icons.ts).
+
+### Offline-skrifttyper
+
+Skrifttyper henter vi fortsatt fra nettet. Men du kan inkludere skrifttypene designsystemet trenger i ditt eget prosjekt, så vil det funke offline.
+
+## Mapping av shoelace-tokens til NVE-tokens
 
 Det hadde vært fint om vi kunne sette en NVE-verdi for alle Shoelace-tokens. Men dette går ikke fordi strukturen i Shoelace og NVE Designsystem er forskjellig.
 Vi har satt NVE-verdier for en del Shoelace-tokens, og disse ligger i `global.css`.

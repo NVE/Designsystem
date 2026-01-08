@@ -6,16 +6,16 @@ export default css`
 
     --sl-input-border-width: var(--border-width-default);
 
-    --sl-spacing-3x-small: var(--spacing-xx-small);
+    --sl-spacing-3x-small: var(--spacing-2x-small);
     --sl-input-spacing-small: var(--spacing-x-small);
     --sl-input-spacing-medium: var(--spacing-x-small);
     --sl-input-spacing-large: var(--spacing-x-small);
 
     --sl-input-required-content: '';
     --sl-input-required-content-offset: 0.25rem;
-    --sl-input-required-content-color: var(--brand-deep);
+    --sl-input-required-content-color: var(--color-brand-foreground-tertiary);
 
-    gap: var(--spacing-xx-small, 0.25rem);
+    gap: var(--spacing-2x-small, 0.25rem);
   }
 
   :host::part(form-control),
@@ -26,8 +26,8 @@ export default css`
   }
   :host([data-user-invalid])::after {
     content: var(--radio-group-error-message);
-    font: var(--detailtext-caption);
-    color: var(--feedback-background-emphasized-error);
+    font: var(--typography-detailtext-caption);
+    color: var(--color-feedback-background-emphasized-error);
   }
 
   :host([data-disabled]) {
@@ -46,8 +46,8 @@ export default css`
 
   :host::part(form-control-label) {
     display: flex;
-    color: var(--neutrals-foreground-primary);
-    font: var(--label-small);
+    color: var(--color-neutrals-foreground-primary);
+    font: var(--typography-label-small);
     margin-bottom: unset;
     text-align: left;
   }
@@ -55,14 +55,14 @@ export default css`
   :host([required]) .form-control--has-label .form-control__label::after,
   :host([requiredLabel])::part(form-control-label)::after {
     align-self: flex-end;
-    font: var(--label-x-small-light);
-    color: var(--feedback-background-emphasized-error);
+    font: var(--typography-label-x-small-light);
+    color: var(--color-feedback-background-emphasized-error);
   }
 
   :host([orientation='vertical'])::part(form-control),
   :host([vertical])::part(form-control) {
-    font: var(--label-x-small-light);
-    color: var(--neutrals-foreground-primary);
+    font: var(--typography-label-x-small-light);
+    color: var(--color-neutrals-foreground-primary);
     align-items: flex-start;
   }
 

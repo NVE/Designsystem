@@ -12,21 +12,19 @@ I designsystemet har farger kontekstbaserte roller. Det vil si at når du bruker
 
 Vi har fire hovedkategorier:
 
-TODO: Fikse disse kortene
-
 <div class="two-card-container"> 
-    <Card variant="subtle-card" title="Neutrals">Farger som er veldig nøytrale og kategorisert med bruksnivå (primary, secondary). Det gir deg fleksibilitet i å velge mellom farger, samtidig som det er tydelig hvilke farge som er default.</Card>
-    <Card variant="subtle-card" title="Interactive">Farger som brukes på interaktive handlinger. Knappene og linker bruker blandt annet disse fargene.</Card>
-    <Card variant="subtle-card" title="Feedback">Feedback-farger som brukes i varslinger, status og tilbakemeldinger i grensesnittet.</Card>
-    <Card variant="subtle-card" title="Danger level">Er den unike faregradskalaen som brukes for å varsle faregradene hos NVE og Varsom.</Card>
+    <nve-message-card class="card" showIcon="false" variant="primary" label="Neutrals">Nøytrale farger kategorisert med bruksnivå (som f.eks. primary, secondary). </nve-message-card>
+    <nve-message-card class="card" showIcon="false" variant="primary" label="Interactive">Brukes på interaktive handlinger som knapper og lenker.</nve-message-card>
+    <nve-message-card class="card" showIcon="false" variant="primary" label="Feedback">Brukes i varslinger, på statuser og i tilbakemeldinger.</nve-message-card>
+    <nve-message-card class="card"  showIcon="false" variant="primary" label="Danger level">Fargeskalaen som brukes i farevarsler, en farge for hvert farenivå.</nve-message-card>
 </div>
 
 ### Farger i designsystemet
 
 #### Dette er fargene slik de er definert.
 
-Man skal ikke bruke disse variablene direkte, men heller bruke andre variabler som bruker disse
+Man skal ikke bruke disse variablene direkte, men heller bruke andre variabler som bruker disse.
 
 <ColorList></ColorList>
 
-Se også <br/> https://www.designsystemet.no/grunnleggende/designelementer/farger
+Se også https://designsystemet.no/no/fundamentals/design-tokens/colors/

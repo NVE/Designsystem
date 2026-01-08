@@ -1,9 +1,34 @@
-# Design-beslutninger
+# 🎨 Designbeslutninger
 
-Hensikten med denne sida er å dokumentere hvilke større valg vi har gjort for komponentbiblioteket og _hvorfor_ vi har tatt akkurat de valgene.
+Hensikten med denne siden er å dokumentere hvilke større valg vi har gjort for komponentbiblioteket og _hvorfor_ vi har tatt akkurat de valgene.
 Vi skriver også om hvilke alternativer som ble vurdert og hvorfor enkelte alternativer ikke nådde opp.
 
 Vi sorterer valgene etter tidspunkt for når de ble gjort, med de siste valgene øverst.
+
+## Versjonering på pakkenivå fremfor komponentnivå (desember 2025)
+
+Versjonering på komponentnivå ville tillatt team å oppdatere kun de komponentene de trenger uten å måtte ta inn hele pakken. Dette kan virke attraktivt, men skaper flere utfordringer enn fordeler.
+
+Hovedproblemet er kompleksiteten med vedlikehold. Å håndtere versjonering for hver enkelt komponent ville blitt mye mer arbeidskrevende og tidskrevende enn vi har kapasitet til, siden vi må oppdatere og vedlikeholde hvert komponent separat. Dette kan også føre til kompatibilitetsproblemer når forskjellige versjoner av komponenter kommer i konflikt med hverandre, spesielt siden de deler designtokens og grunnleggende styling.
+
+En annen utfordring er at team som bruker forskjellige versjoner av komponenter risikerer at designet blir inkonsistent på tvers av applikasjonene. Når det ikke lenger er press på å oppdatere hele pakken, reduseres også motivasjonen for å holde komponentene oppdatert, noe som fører til teknisk gjeld.
+
+Figma setter også naturlige begrensninger i og med at man ikke kan versjonere på enkeltsider eller enkeltkomponenter, men må versjonere på hele designsystemet. Endrer man én komponent må det lages ny versjon av alt.
+
+Etter diskusjon ble det bestemt at vi fortsetter med versjonering på pakkenivå. Dette er i tråd med hvordan de fleste andre designsystem håndterer versjonering.
+
+## Felleskomponent for filopplasting
+
+Vi valgte å ikke lage en felles filopplasting-komponent i designsystemet på grunn av kompleksiteten og de forskjellige behovene teamene har.
+
+En slik komponent ville hovedsakelig være en wrapper rundt en input med `type="file"`. Utfordringen ligger ikke i selve UI-en, men i all logikken som må håndteres etter at filer er valgt:
+
+- Validering (filtype, størrelse, antall filer)
+- Opplasting til forskjellige endepunkter
+- Progresjonsvisning og feilhåndtering
+- Forskjellige krav til metadata og beskrivelser
+
+Siden hver applikasjon og team har unike krav til disse aspektene, bestemte vi at teamene selv implementerer filopplasting-funksjonaliteten tilpasset sine behov, fremfor å lage en generisk komponent som ville blitt for kompleks eller for begrenset. Designet skal likevel være likt på tvers av applikasjonene.
 
 ## Ny dokumentasjons-løsning (juli 2024)
 

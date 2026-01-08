@@ -1,9 +1,8 @@
 import { css } from 'lit';
 
 export default css`
-:host {
+  :host {
     border-radius: var(--border-radius-pill);
-    background: var(--grey-200);
-}
-
-`
+    background: var(--color-shades-grey-200);
+  }
+`;

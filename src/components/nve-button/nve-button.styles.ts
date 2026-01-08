@@ -25,7 +25,7 @@ export default css`
 
   :host([has-icon-only]) .button--small {
     gap: unset;
-    padding: var(--spacing-xx-small);
+    padding: var(--spacing-2x-small);
     min-width: unset;
   }
 
@@ -75,15 +75,15 @@ export default css`
   }
 
   :host::part(label) {
-    font: var(--label-medium);
+    font: var(--typography-label-medium);
   }
 
   :host([size='medium'])::part(label) {
-    font: var(--label-small);
+    font: var(--typography-label-small);
   }
 
   :host([size='small'])::part(label) {
-    font: var(--label-x-small);
+    font: var(--typography-label-x-small);
   }
 
   /** check if has loading if yes apply changes to has-suffix class it shouldnt be fire if loading is not here */
@@ -127,51 +127,51 @@ export default css`
   }
 
   .button--small {
-    height: var(--fixed-sizing-medium);
+    height: var(--sizing-fixed-sizing-medium);
     min-height: unset;
     padding: 0px;
   }
   .button--large {
-    height: var(--fixed-sizing-x-large);
+    height: var(--sizing-fixed-sizing-x-large);
     min-height: unset;
     padding: var(--spacing-medium, 1rem) calc(var(--spacing-medium, 1rem) - var(--spacing-x-small));
   }
   /* fjern gap forskjell på venstre og høyre */
   .button--medium {
-    height: var(--fixed-sizing-large);
+    height: var(--sizing-fixed-sizing-large);
     min-height: unset;
     padding: var(--spacing-medium, 1rem) calc(var(--spacing-medium, 1rem) - var(--spacing-x-small));
   }
 
   /* PRIMARY */
   :host([variant='primary']) .button--standard.button {
-    background-color: var(--interactive-primary-background-default);
-    color: var(--interactive-primary-foreground-default);
+    background-color: var(--color-interactive-primary-background-default);
+    color: var(--color-interactive-primary-foreground-default);
     border: none;
   }
   :host([variant='primary']) .button--standard.button:hover:not(.button--disabled),
   :host([variant='primary']) .button--standard.button:active:not(.button--disabled) {
-    background: var(--interactive-primary-background-hover);
-    color: var(--interactive-primary-foreground-default);
+    background: var(--color-interactive-primary-background-hover);
+    color: var(--color-interactive-primary-foreground-default);
   }
 
   /* DEFAULT, aka SECONDARY */
   :host([variant='secondary']) .button--standard.button,
   :host([variant='default']) .button--standard.button {
-    background: var(--interactive-secondary-background-default);
-    color: var(--interactive-secondary-foreground-default);
+    background: var(--color-interactive-secondary-background-default);
+    color: var(--color-interactive-secondary-foreground-default);
     border: none;
   }
   :host([variant='secondary']) .button--standard.button:hover:not(.button--disabled),
   :host([variant='default']) .button--standard.button:hover:not(.button--disabled) {
-    background: var(--interactive-secondary-background-hover);
-    color: var(--interactive-secondary-foreground-hover);
+    background: var(--color-interactive-secondary-background-hover);
+    color: var(--color-interactive-secondary-foreground-hover);
   }
 
   /* TEXT aka GHOST */
   :host([variant='text']) .button.button--standard,
   :host([variant='ghost']) .button.button--standard {
-    color: var(--interactive-ghost-foreground-default);
+    color: var(--color-interactive-ghost-foreground-default);
     background-color: transparent;
     border-radius: var(--border-radius-small, 4px);
     border: none;
@@ -184,16 +184,16 @@ export default css`
 
   :host([variant='text']) .button.button--standard:hover:not(.button--disabled),
   :host([variant='ghost']) .button.button--standard:hover:not(.button--disabled) {
-    background-color: var(--interactive-ghost-background-hover);
-    color: var(--interactive-ghost-foreground-hover);
+    background-color: var(--color-interactive-ghost-background-hover);
+    color: var(--color-interactive-ghost-foreground-hover);
   }
 
   /* NEUTRAL, aka OUTLINE */
   :host([variant='neutral']) .button.button--standard,
   :host([variant='outline']) .button.button--standard,
   :host([outline]) .button.button {
-    color: var(--interactive-outlined-foreground-default);
-    border-color: var(--interactive-outlined-border-default);
+    color: var(--color-interactive-outlined-foreground-default);
+    border-color: var(--color-interactive-outlined-border-default);
     border-width: var(--border-width-default);
     border-style: solid;
     background-color: transparent;
@@ -201,8 +201,8 @@ export default css`
   :host([variant='neutral']) .button.button--standard:hover:not(.button--disabled),
   :host([variant='outline']) .button.button--standard:hover:not(.button--disabled),
   :host([outline]) .button.button:hover:not(.button--disabled) {
-    border-color: var(--interactive-outlined-border-hover);
-    color: var(--interactive-outlined-foreground-hover);
+    border-color: var(--color-interactive-outlined-border-hover);
+    color: var(--color-interactive-outlined-foreground-hover);
     border-width: var(--border-width-default);
     border-style: solid;
     background-color: transparent;

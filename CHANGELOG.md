@@ -1,3 +1,92 @@
+# [3.2.0](https://github.com/NVE/Designsystem/compare/v3.1.0...v3.2.0) (2025-12-04)
+
+
+### Bug Fixes
+
+* **nve-select:** Lagt inn riktig margin -bottom token på label ([#728](https://github.com/NVE/Designsystem/issues/728)) ([c9e1063](https://github.com/NVE/Designsystem/commit/c9e106388e88f89a5997d59f20dae020ab217c88))
+
+
+### Features
+
+* bruker nå regex-literals [#727](https://github.com/NVE/Designsystem/issues/727) ([e0f692f](https://github.com/NVE/Designsystem/commit/e0f692f0c3eac1766cd62d86dc7d9cac72457384))
+
+# [3.1.0](https://github.com/NVE/Designsystem/compare/v3.0.1...v3.1.0) (2025-12-04)
+
+
+### Bug Fixes
+
+* **css:** Juster på plassering av font-import i global.css for å sikre riktig nedlasting av Source Sans Pro fontene ([#726](https://github.com/NVE/Designsystem/issues/726)) ([36511cf](https://github.com/NVE/Designsystem/commit/36511cf8ee5214ad52400e685c910efe9d6df76e))
+* **designsystem-catalog-yaml:** Fikset regex for URL-ekstraksjon i YAML-fil ([#725](https://github.com/NVE/Designsystem/issues/725)) ([5485bc3](https://github.com/NVE/Designsystem/commit/5485bc305dcdf777633df4b8eb0b62167f5e715d))
+
+
+### Features
+
+* **dokumentasjon:** Implementere designsystem-project-sync.yml ([#713](https://github.com/NVE/Designsystem/issues/713)) ([f3938ed](https://github.com/NVE/Designsystem/commit/f3938ed7533c65af89f0c0e52fc75abf0732531b))
+
+## [3.0.1](https://github.com/NVE/Designsystem/compare/v3.0.0...v3.0.1) (2025-12-02)
+
+
+### Bug Fixes
+
+* **designelementer-farger:** oppdaterte død lenke og fjernet TODO ([#712](https://github.com/NVE/Designsystem/issues/712)) ([a349646](https://github.com/NVE/Designsystem/commit/a349646c970f29db60f93427ef7df9335cfad80f))
+* **tokens:** endre varsom brans shades-farger ([#710](https://github.com/NVE/Designsystem/issues/710)) ([830caee](https://github.com/NVE/Designsystem/commit/830caee5539418fdc7ca174ba82225976aff0371))
+
+# [3.0.0](https://github.com/NVE/Designsystem/compare/v2.16.1...v3.0.0) (2025-11-18)
+
+
+* feat(tokens)!: change token naming convention ([#692](https://github.com/NVE/Designsystem/issues/692)) ([3be2ef6](https://github.com/NVE/Designsystem/commit/3be2ef643a6eb752d8ae1868305e0553e9158bbe))
+
+
+### BREAKING CHANGES
+
+* Token names are now lowercase and follow W3C format.Convert to W3C DTCG format, read more at https://docs.tokens.studio/convert-to-dtcg-format
+
+changed to lowercase + other changes:
+2xsmall -> 2x-small etc
+header -> heading
+ingress -> lead
+color.neutrals etc (in theme)
+color-shades.brand etc (in brand)
+
+error in brand colors (name color-shades)
+
+color adjustments NVE brand (red)
+
+color adjustments
+
+color adjustments brand
+
+* adjustments brand colors and added colors
+
+Ready to merge
+Renamed colors in brand and theme (background/foreground categories)
+
+one color changed in color-shades
+
+* changed spacing names in brand and redirected spacing in device
+
+* updated css files
+
+* updated typography in docs
+
+* config for FigmaStylesRef updated
+
+* FigmaStylesRef should work now
+
+## [2.16.1](https://github.com/NVE/Designsystem/compare/v2.16.0...v2.16.1) (2025-11-12)
+
+
+### Bug Fixes
+
+* **tokens:** Konvertere til W3C DTCG format, les mer https://docs.tokens.studio/convert-to-dtcg-format ([#690](https://github.com/NVE/Designsystem/issues/690)) ([d6ba1a0](https://github.com/NVE/Designsystem/commit/d6ba1a080871c0d7f9be2ef52490a8af650adea9))
+
+# [2.16.0](https://github.com/NVE/Designsystem/compare/v2.15.2...v2.16.0) (2025-10-30)
+
+
+### Features
+
+* La til click event for step i stepper ([#618](https://github.com/NVE/Designsystem/issues/618)) ([cf1dcdf](https://github.com/NVE/Designsystem/commit/cf1dcdf097eab000959aab9ac44bea7b3ea0325f))
+
 ## [2.15.2](https://github.com/NVE/Designsystem/compare/v2.15.1...v2.15.2) (2025-10-24)
 
 

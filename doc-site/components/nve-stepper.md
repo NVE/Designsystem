@@ -206,6 +206,40 @@ Bruk `hideMobileStepButtons` for å skjule knappene i mobil-versjon.
 
 </CodeExamplePreview>
 
+### Click-event
+
+Hvis man klikker på et steg vil en event sendes, `step-click`. Denne inneholder info om step og index på `event.detail`.
+Den kan f.eks. brukes med `selectStep` for å hoppe til steget som ble klikket: `selectStep(event.detail.index)`.
+Dette eksempelet logger bare til konsollen.
+
+<CodeExamplePreview>
+
+```html
+<nve-label>Click-event</nve-label>
+<nve-stepper
+  id="stepper-demo"
+  endButtonText="Klar"
+  steps='
+  [
+  {"label":"Steg 1","description":"Beskrivelse av steg 1","state":1,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 2","description":"Beskrivelse av steg 2","state":0,"isSelected":false,"readyForEntrance":true},
+  {"label":"Steg 3","description":"Beskrivelse av steg 3","state":0,"isSelected":false,"readyForEntrance":true}]'
+>
+</nve-stepper>
+<script>
+  const stepper = document.getElementById('stepper-demo');
+  if (stepper) {
+    stepper.addEventListener('step-click', function (event) {
+      console.log('step:', event.detail.step);
+      console.log('index:', event.detail.index);
+    });
+  }
+</script>
+</nve-stepper>
+```
+
+</CodeExamplePreview>
+
 ## Vue eksempler
 
 Her er eksempler på hvordan du bruker Nve-Stepper i Vue:

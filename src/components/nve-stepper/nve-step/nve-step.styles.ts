@@ -45,7 +45,7 @@ export default css`
   }
 
   .step-label {
-    color: var(--neutrals-foreground-primary, #0d0d0e);
+    color: var(--color-neutrals-foreground-primary, #0d0d0e);
 
     /* Label/medium */
     font-family: 'Source Sans Pro';
@@ -67,7 +67,7 @@ export default css`
   }
 
   .step-description {
-    color: var(--neutrals-foreground-primary, #0d0d0e);
+    color: var(--color-neutrals-foreground-primary, #0d0d0e);
 
     /* Label/small-light */
     font-family: 'Source Sans Pro';
@@ -93,32 +93,31 @@ export default css`
   }
 
   .divider-not-reached-color {
-    background: var(--neutrals-background-secondary, #e4e5e7);
+    background: var(--color-neutrals-background-secondary, #e4e5e7);
   }
 
   .divider-reached-color {
-    background: var(--neutrals-foreground-primary, #0d0d0e);
+    background: var(--color-neutrals-foreground-primary, #0d0d0e);
   }
 
   .state-not-started-icon-color {
-    color: var(--neutrals-background-secondary, #e4e5e7);
+    color: var(--color-neutrals-background-secondary, #e4e5e7);
   }
 
   .state-not-started-color {
-    color: var(--neutrals-foreground-subtle, #60656c);
+    color: var(--color-neutrals-foreground-subtle, #60656c);
   }
 
   .state-started-color {
-    color: var(--feedback-background-emphasized-info, #1e6fdc);
+    color: var(--color-feedback-background-emphasized-info, #1e6fdc);
   }
 
   .state-done-color {
-    /* TODO the token feeedback is misspelled, should be feedback but --feedback-foreground-emphasized-success gives color */
-    color: var(--feeedback-foreground-emphasized-success, #00814b);
+    color: var(--color-feeedback-foreground-emphasized-success, #00814b);
   }
 
   .state-error-color {
-    color: var(--feedback-background-emphasized-error, #cc0000);
+    color: var(--color-feedback-background-emphasized-error, #cc0000);
   }
 
   .vertical-container {

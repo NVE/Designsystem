@@ -5,48 +5,48 @@ import { css } from 'lit';
  */
 export const styles = css`
   :host {
-    color: var(--neutrals-foreground-primary);
-    font: var(--label-small);
+    color: var(--color-neutrals-foreground-primary);
+    font: var(--typography-label-small);
     width: 100%;
     display: flex;
     align-items: center;
-    gap: var(--spacing-xx-small);
+    gap: var(--spacing-2x-small);
     position: relative;
   }
 
   /* skriftstørrelser */
   :host([size='x-small']) {
-    font: var(--label-x-small);
+    font: var(--typography-label-x-small);
   }
 
   :host([size='medium']) {
-    font: var(--label-medium);
+    font: var(--typography-label-medium);
   }
 
   :host([size='large']) {
-    font: var(--label-large);
+    font: var(--typography-label-large);
   }
 
   /* light-variant i standard størrelse */
   :host([light]) {
-    font: var(--label-small-light);
+    font: var(--typography-label-small-light);
   }
 
   /* light-varianter for de andre størrelsene */
   :host([light][size='x-small']) {
-    font: var(--label-x-small-light);
+    font: var(--typography-label-x-small-light);
   }
 
   :host([light][size='medium']) {
-    font: var(--label-medium-light);
+    font: var(--typography-label-medium-light);
   }
 
   :host([light][size='large']) {
-    font: var(--label-large-light);
+    font: var(--typography-label-large-light);
   }
 
   .nve-info-icon {
-    color: var(--neutrals-foreground-subtle);
+    color: var(--color-neutrals-foreground-subtle);
     align-items: center;
     vertical-align: bottom;
     cursor: pointer;
@@ -55,6 +55,6 @@ export const styles = css`
   }
 
   :host([iconColor='black']) .nve-info-icon {
-    color: var(--grey-999, #000000);
+    color: var(--color-shades-grey-999, #000000);
   }
 `;

@@ -1,120 +1,32 @@
-import fontFamilies from './customtransforms/fontFamilies.js';
-import fontWeight from './customtransforms/fontWeights.js';
-import boxShadow from './customtransforms/boxShadow.js';
-import fontSizes from './customtransforms/fontSizes.js';
-import fixZeroes from './customtransforms/fixZeroes.js';
-import { StyleDictionary } from 'style-dictionary-utils';
-import { fileHeader, formattedVariables } from 'style-dictionary/utils';
+import StyleDictionary from 'style-dictionary';
+import { register } from '@tokens-studio/sd-transforms';
 
-const myStyleDictionary = new StyleDictionary();
+register(StyleDictionary);
 
-StyleDictionary.registerTransform(fontFamilies);
-StyleDictionary.registerTransform(fontWeight);
-StyleDictionary.registerTransform(boxShadow);
-StyleDictionary.registerTransform(fontSizes);
-StyleDictionary.registerTransform(fixZeroes);
-
-myStyleDictionary.registerFormat({
-  name: 'css/variables',
-  format: async ({ dictionary, file, options }) => {
-    const { outputReferences, theme } = options;
-    const header = await fileHeader({ file });
-    return (
-      header +
-      `@import './global.css'; \n` +
-      `:root${theme ? '.' + theme : ''} {\n` +
-      formattedVariables({ format: 'css', dictionary, outputReferences }) +
-      '\n}\n'
-    );
-  },
-});
-
-myStyleDictionary.registerFormat({
-  name: 'css/device',
-  format: ({ dictionary, options }) => {
-    const { outputReferences, minWidth, maxWidth } = options;
-    return minWidth || maxWidth
-      ? `@media (${maxWidth ? 'max-width' : 'min-width'}: ${maxWidth || minWidth}px) {\n` +
-          `:root {\n` +
-          formattedVariables({ format: 'css', dictionary, outputReferences }) +
-          '\n}\n' +
-          '}\n'
-      : formattedVariables({ format: 'css', dictionary, outputReferences });
-  },
-});
-
-const transforms = [
-  'attribute/cti',
-  'name/kebab',
-  'fixZeroes',
-  'fontFamilies/css',
-  'fontFamily/css',
-  'fontWeight/number',
-  'fontWeights/number',
-  'boxshadow/css',
-  'shadow/css',
-];
-
-// vi trenger kun disse properties i gjenstand styling filene
-const filterDevicesTokens = (token) => {
-  return (
-    token.type === 'typography' || token.type === 'spacing' || token.type === 'sizing' || token.type === 'fontSizes'
-  );
-};
-
-const transformDeviceTokens = async (device, minWidth, maxWidth) => {
-  const deviceTokens = await myStyleDictionary.extend({
-    source: [
-      'tokens/$metadata.json',
-      'tokens/$themes.json',
-      `tokens/public/device/${device}.json`,
-      'tokens/brand/nve.json',
-    ],
-    platforms: {
-      [device]: {
-        transformGroup: 'css',
-        buildPath: 'public/css/',
-        transforms,
-        files: [
-          {
-            filter: filterDevicesTokens,
-            destination: `${device}.css`,
-            format: 'css/device',
-            options: {
-              outputReferences: true,
-              minWidth: minWidth,
-              maxWidth: maxWidth,
-            },
-          },
-        ],
+const createBrandCssFiles = async (files, destination, themeOption) => {
+  const config = new StyleDictionary({
+    source: files,
+    log: {
+      verbosity: 'default',
+    },
+    preprocessors: ['tokens-studio'],
+    hooks: {
+      filters: {
+        'no-dimensions': (token) => {
+          return token.$type !== 'dimension'; //fjerner dimensions, de kommer i gjenstand tokene
+        },
       },
     },
-  });
-  deviceTokens.buildAllPlatforms();
-};
-
-const devices = [
-  { name: 'desktop' },
-  { name: 'desktop-large', minWidth: 1400 },
-  { name: 'desktop-small', maxWidth: 1200 },
-  { name: 'mobile', maxWidth: 600 },
-];
-
-// transform alle tilgjengelige gjenstander
-devices.forEach(async ({ name, minWidth, maxWidth }) => await transformDeviceTokens(name, minWidth, maxWidth));
-
-async function buildThemeTokens(source, platformName, destination, themeOption) {
-  return await myStyleDictionary.extend({
-    source: source,
     platforms: {
-      [platformName]: {
-        transformGroup: 'css',
+      css: {
+        transformGroup: 'tokens-studio',
+        transforms: ['name/kebab'],
         buildPath: 'public/css/',
-        transforms,
         files: [
           {
-            destination: destination,
+            destination: `${destination}.css`,
             format: 'css/variables',
+            filter: 'no-dimensions',
             options: {
               outputReferences: true,
               ...(themeOption ? { theme: themeOption } : {}),
@@ -124,50 +36,85 @@ async function buildThemeTokens(source, platformName, destination, themeOption) 
       },
     },
   });
+  await config.buildAllPlatforms();
+};
+
+const createDeviceCssFiles = async (device) => {
+  const config = new StyleDictionary({
+    source: [
+      `tokens/public/device/${device}.json`,
+      'tokens/$metadata.json',
+      'tokens/$themes.json',
+      'tokens/brand/nve.json',
+    ],
+    log: {
+      verbosity: 'default',
+    },
+    preprocessors: ['tokens-studio'],
+    hooks: {
+      filters: {
+        sizes: (token) => {
+          return (
+            token.$type === 'typography' ||
+            token.$type === 'dimension' ||
+            token.$type === 'sizing' ||
+            token.$type === 'fontSize'
+          );
+        },
+      },
+    },
+    platforms: {
+      css: {
+        transformGroup: 'tokens-studio',
+        transforms: ['name/kebab'],
+        buildPath: 'public/css/',
+        files: [
+          {
+            destination: `${device}.css`,
+            format: 'css/variables',
+            filter: 'sizes',
+            options: {
+              outputReferences: true,
+            },
+          },
+        ],
+      },
+    },
+  });
+
+  await config.buildAllPlatforms();
+};
+
+const devices = ['desktop', 'desktop-large', 'desktop-small', 'mobile'];
+
+for (const device of devices) {
+  await createDeviceCssFiles(device);
 }
 
-const nveTokensLight = await buildThemeTokens(
-  ['tokens/brand/nve.json', 'tokens/*json', 'tokens/public/theme/light.json'],
-  'nve',
-  'nve.css'
+await createBrandCssFiles(
+  ['tokens/brand/nve.json', 'tokens/public/theme/light.json', 'tokens/$metadata.json', 'tokens/$themes.json'],
+  'nve'
 );
-
-const nveTokensDark = await buildThemeTokens(
+await createBrandCssFiles(
   ['tokens/brand/nve.json', 'tokens/*json', 'tokens/public/theme/dark.json'],
-  'nveDark',
-  'nve_dark.css',
+  'nve_dark',
   'darkmode'
 );
-
-const varsomTokensLight = await buildThemeTokens(
+await createBrandCssFiles(
   ['tokens/brand/nve.json', 'tokens/brand/varsom.json', 'tokens/*json', 'tokens/public/theme/light.json'],
-  'varsom',
-  'varsom.css'
+  'varsom'
 );
-
-const varsomTokensDark = await buildThemeTokens(
+await createBrandCssFiles(
   ['tokens/brand/nve.json', 'tokens/brand/varsom.json', 'tokens/*json', 'tokens/public/theme/dark.json'],
-  'varsomDark',
-  'varsom_dark.css',
+  'varsom_dark',
   'darkmode'
 );
-
-const rmeTokensLight = await buildThemeTokens(
+await createBrandCssFiles(
   ['tokens/brand/nve.json', 'tokens/brand/rme.json', 'tokens/*json', 'tokens/public/theme/light.json'],
-  'rme',
-  'rme.css'
+  'rme'
 );
-
-const rmeTokensDark = await buildThemeTokens(
+await createBrandCssFiles(
   ['tokens/brand/nve.json', 'tokens/brand/rme.json', 'tokens/*json', 'tokens/public/theme/dark.json'],
-  'rmeDark',
-  'rme_dark.css',
+  'rme_dark',
   'darkmode'
 );
-
-nveTokensLight.buildAllPlatforms();
-nveTokensDark.buildAllPlatforms();
-varsomTokensLight.buildAllPlatforms();
-varsomTokensDark.buildAllPlatforms();
-rmeTokensLight.buildAllPlatforms();
-rmeTokensDark.buildAllPlatforms();

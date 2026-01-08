@@ -42,7 +42,7 @@ ul {
 }
 
 .code {
-  background-color: var(--neutrals-background-primary-contrast);
+  background-color: var(--color-neutrals-background-primary-contrast);
   padding: 2px 4px;
   border-radius: 4px;
 }

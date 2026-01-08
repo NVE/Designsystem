@@ -140,11 +140,11 @@
   border-top-right-radius: 0px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
-  border: solid 1px var(--grey-200);
+  border: solid 1px var(--color-shades-grey-200);
 }
 
 .slot-container {
-  border: solid 1px var(--grey-200);
+  border: solid 1px var(--color-shades-grey-200);
   border-bottom: none;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -214,7 +214,7 @@ html.varsom_darkmode nve-tab-group::part(button-backward-base) {
 }
 
 a {
-  color: var(--neutrals-foreground-primary, #0d0d0e);
+  color: var(--color-neutrals-foreground-primary, #0d0d0e);
 }
 
 /* Brukes for å fjerne standard linje i <a> hvis man skal wrappe nve-link-card med routerLink component i SPA*/
@@ -224,5 +224,5 @@ a:has(nve-link-card) {
 
 /* Brukes for å overskrive standard lenke visited styling fra eksterne rammeverker. */
 a:visited {
-  color: var(--interactive-links-visited);
+  color: var(--color-interactive-links-visited);
 }

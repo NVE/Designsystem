@@ -86,7 +86,7 @@ const maxColumns = computed(() => {
 
       <template v-if="varsomColors">
         <div class="row">
-          <div class="rowspan">Varsom overstyrer noen av disse fargene:</div>
+          <div class="rowspan">Varsom overstyrer noen av disse fargene</div>
         </div>
         <div v-for="(value, key) in varsomColors" :key="key" class="row">
           <div>{{ key }}</div>

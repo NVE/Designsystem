@@ -11,7 +11,7 @@ export default css`
   }
 
   :host(:focus-visible) .tab {
-    outline: 2px solid var(--interactive-outlined-border-focus);
+    outline: 2px solid var(--color-interactive-outlined-border-focus);
     outline-offset: -12px;
   }
 
@@ -25,12 +25,12 @@ export default css`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-xx-small);
+    gap: var(--spacing-2x-small);
     border-radius: var(--border-radius-small) var(--border-radius-small) var(--border-radius-none)
       var(--border-radius-none);
     border-bottom: 2px solid transparent;
-    color: var(--neutrals-foreground-primary);
-    font: var(--label-medium);
+    color: var(--color-neutrals-foreground-primary);
+    font: var(--typography-label-medium);
     cursor: pointer;
     transition:
       border-color 0.3s ease-in-out,
@@ -40,45 +40,45 @@ export default css`
 
   @media (prefers-reduced-motion: reduce) {
     .tab {
-      border-bottom: 2px solid var(--brand-primary);
+      border-bottom: 2px solid var(--color-brand-background-primary);
     }
   }
 
   .tab--large {
     padding: 18px 8px;
-    font: var(--label-medium);
+    font: var(--typography-label-medium);
   }
 
   .tab--background {
-    background: var(--neutrals-background-primary);
+    background: var(--color-neutrals-background-primary);
     border-bottom: var(--border-bottom) solid transparent;
   }
 
   :host([aria-selected='false']) .tab {
-    border-bottom: var(--border-bottom) solid var(--neutrals-border-subtle);
-    font: var(--label-medium-light);
-    color: var(--neutrals-foreground-muted);
+    border-bottom: var(--border-bottom) solid var(--color-neutrals-border-subtle);
+    font: var(--typography-label-medium-light);
+    color: var(--color-neutrals-foreground-muted);
   }
 
   :host([aria-selected='false']) .tab:hover {
-    border-bottom: var(--border-bottom) solid var(--neutrals-border-default);
+    border-bottom: var(--border-bottom) solid var(--color-neutrals-border-default);
   }
 
   :host([aria-selected='false']) .tab.tab--background:hover {
-    border-bottom: var(--border-bottom) solid var(--neutrals-border-default);
+    border-bottom: var(--border-bottom) solid var(--color-neutrals-border-default);
   }
 
   :host([aria-selected='false']) .tab.tab--background {
-    background: var(--neutrals-background-secondary);
-    font: var(--label-medium-light);
-    color: var(--neutrals-foreground-muted);
+    background: var(--color-neutrals-background-secondary);
+    font: var(--typography-label-medium-light);
+    color: var(--color-neutrals-foreground-muted);
   }
   :host([disabled]) .tab {
     cursor: not-allowed;
-    color: var(--neutrals-foreground-disabled);
+    color: var(--color-neutrals-foreground-disabled);
     opacity: var(--opacity-disabled);
   }
   :host([disabled]) .tab:hover {
-    border-bottom: var(--border-bottom) solid var(--neutrals-border-subtle);
+    border-bottom: var(--border-bottom) solid var(--color-neutrals-border-subtle);
   }
 `;

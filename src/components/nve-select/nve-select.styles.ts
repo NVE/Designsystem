@@ -7,27 +7,27 @@ export default css`
   :host {
     --sl-input-required-content: '*Obligatorisk';
     --sl-input-required-content-offset: -2px;
-    --sl-input-required-content-color: var(--brand-deep);
+    --sl-input-required-content-color: var(--color-brand-foreground-tertiary);
   }
 
   :host::part(combobox) {
-    font: var(--body-small);
-    color: var(--neutrals-foreground-primary, #0d0d0e);
+    font: var(--typography-body-small);
+    color: var(--color-neutrals-foreground-primary, #0d0d0e);
 
     border-radius: 0.25rem;
-    border: var(--border-width-default, 1px) solid var(--neutrals-border-default, #878c94);
+    border: var(--border-width-default, 1px) solid var(--color-neutrals-border-default, #878c94);
   }
 
   :host(:hover)::part(combobox) {
-    border-color: var(--neutrals-foreground-primary, #00131c);
+    border-color: var(--color-neutrals-foreground-primary, #00131c);
   }
 
   :host([required]) .form-control--has-label .form-control__label::after,
   :host([requiredLabel])::part(form-control-label)::after {
     content: var(--sl-input-required-content);
-    font: var(--label-x-small-light);
-    color: var(--feedback-background-emphasized-error);
-    padding-left: var(--spacing-xx-small);
+    font: var(--typography-label-x-small-light);
+    color: var(--color-feedback-background-emphasized-error);
+    padding-left: var(--spacing-2x-small);
   }
 
   :host(:focus-visible)::part(form-control-input) {
@@ -43,28 +43,28 @@ export default css`
 
   :host::part(popup) {
     border-radius: var(--border-radius-small, 0.25rem) !important;
-    border: 1px solid var(--neutrals-foreground-subtle, #006b99) !important;
+    border: 1px solid var(--color-neutrals-foreground-subtle, #006b99) !important;
   }
 
   /* filled*/
   :host([filled])::part(listbox) {
-    background-color: var(--neutrals-background-primary-contrast, #eff8fc);
+    background-color: var(--color-neutrals-background-primary-contrast, #eff8fc);
   }
 
   /* Gir rød ramme ved valideringsfeil  */
   :host([data-user-invalid])::part(combobox) {
-    border-color: var(--feedback-background-emphasized-error);
-    color: var(--feedback-background-emphasized-error);
+    border-color: var(--color-feedback-background-emphasized-error);
+    color: var(--color-feedback-background-emphasized-error);
   }
 
   :host::part(form-control-help-text) {
-    font: var(--detailtext-caption);
+    font: var(--typography-detailtext-caption);
   }
 
   :host::after {
     content: var(--nve-input-error-message);
-    font: var(--detailtext-caption);
-    color: var(--feedback-background-emphasized-error);
+    font: var(--typography-detailtext-caption);
+    color: var(--color-feedback-background-emphasized-error);
   }
 
   /** gjemmer hjelpe tekst om det finnes et feil og feilmelding skal vises */
@@ -86,8 +86,8 @@ export default css`
   }
 
   .form-control--has-label .form-control__label {
-    margin-bottom: var(--spacing-x-small);
-    font: var(--label-small);
+    margin-bottom: var(--spacing-2x-small);
+    font: var(--typography-label-small);
   }
 
   :host::part(expand-icon) {
