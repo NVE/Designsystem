@@ -26,23 +26,23 @@
     },
     "x-large": {
       "$type": "spacing",
-      "$value": "{dimension.6x}"
+      "$value": "{dimension.4,5x}"
     },
     "2x-large": {
       "$type": "spacing",
-      "$value": "{dimension.8x}"
+      "$value": "{dimension.5x}"
     },
     "3x-large": {
       "$type": "spacing",
-      "$value": "{dimension.11x}"
+      "$value": "{dimension.6x}"
     },
     "4x-large": {
       "$type": "spacing",
-      "$value": "{dimension.16x}"
+      "$value": "{dimension.7x}"
     },
     "5x-large": {
       "$type": "spacing",
-      "$value": "{dimension.19x}"
+      "$value": "{dimension.10x}"
     },
     "content": {
       "margin-top": {
@@ -51,11 +51,11 @@
       },
       "margin-bottom": {
         "$type": "spacing",
-        "$value": "{spacing.48x}"
+        "$value": "{spacing.40x}"
       },
       "margin-left-right": {
         "$type": "spacing",
-        "$value": "{spacing.24x}"
+        "$value": "{spacing.20x}"
       }
     }
   },
@@ -100,11 +100,11 @@
       "page": {
         "min-width": {
           "$type": "sizing",
-          "$value": "{sizing.390x}"
+          "$value": "{sizing.320x}"
         },
         "max-width": {
           "$type": "sizing",
-          "$value": "{sizing.763x}"
+          "$value": "{sizing.389x}"
         }
       },
       "content": {
@@ -114,7 +114,7 @@
         },
         "max-width-medium": {
           "$type": "sizing",
-          "$value": "{sizing.600x}"
+          "$value": "{sizing.366x}"
         },
         "max-width-small": {
           "$type": "sizing",
@@ -136,14 +136,14 @@
       "illustration": {
         "medium": {
           "$type": "sizing",
-          "$value": "{sizing.40x}"
+          "$value": "{sizing.24x}"
         }
       }
     },
     "image": {
       "large": {
         "$type": "sizing",
-        "$value": "{sizing.520x}"
+        "$value": "{sizing.440x}"
       }
     }
   },
@@ -175,17 +175,17 @@
     },
     "x-large": {
       "$type": "fontSizes",
-      "$value": "{dimension.7x}",
+      "$value": "{dimension.6x}",
       "$description": "24 px"
     },
     "2x-large": {
       "$type": "fontSizes",
-      "$value": "{dimension.9x}",
+      "$value": "{dimension.7x}",
       "$description": "32 px"
     },
     "3x-large": {
       "$type": "fontSizes",
-      "$value": "{dimension.11x}",
+      "$value": "{dimension.8x}",
       "$description": "40 px"
     }
   },

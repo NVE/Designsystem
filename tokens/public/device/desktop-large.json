@@ -45,13 +45,17 @@
       "$value": "{dimension.24x}"
     },
     "content": {
-      "margin-top-bottom": {
+      "margin-top": {
         "$type": "spacing",
         "$value": "{spacing.40x}"
       },
+      "margin-bottom": {
+        "$type": "spacing",
+        "$value": "{spacing.88x}"
+      },
       "margin-left-right": {
         "$type": "spacing",
-        "$value": "{spacing.620x}"
+        "$value": "{spacing.48x}"
       }
     }
   },
@@ -93,17 +97,57 @@
       "$value": "{dimension.24x}"
     },
     "device": {
-      "width": {
-        "$type": "sizing",
-        "$value": "{sizing.device-width.desktop-large}"
+      "page": {
+        "min-width": {
+          "$type": "sizing",
+          "$value": "{sizing.1600x}"
+        },
+        "max-width": {
+          "$type": "sizing",
+          "$value": "{sizing.9999x}"
+        }
       },
       "content": {
+        "max-width-large": {
+          "$type": "sizing",
+          "$value": "{sizing.1800x}"
+        },
+        "max-width-medium": {
+          "$type": "sizing",
+          "$value": "{sizing.1200x}"
+        },
+        "max-width-small": {
+          "$type": "sizing",
+          "$value": "{sizing.588x}"
+        },
+        "max-width-x-small": {
+          "$type": "sizing",
+          "$value": "{sizing.282x}"
+        }
+      }
+    },
+    "brand": {
+      "logo": {
+        "medium": {
+          "$type": "sizing",
+          "$value": "{sizing.88x}"
+        }
+      },
+      "illustration": {
+        "medium": {
+          "$type": "sizing",
+          "$value": "{sizing.40x}"
+        }
+      }
+    },
+    "image": {
+      "large": {
         "$type": "sizing",
-        "$value": "{sizing.content-area.desktop-large}"
+        "$value": "{sizing.1200x}"
       }
     }
   },
-  "fontSize": {
+  "font-size": {
     "2x-small": {
       "$type": "fontSizes",
       "$value": "{dimension.3,5x}",

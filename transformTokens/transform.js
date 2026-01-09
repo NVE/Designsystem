@@ -7,7 +7,11 @@ const createBrandCssFiles = async (files, destination, themeOption) => {
   const config = new StyleDictionary({
     source: files,
     log: {
-      verbosity: 'default',
+      warnings: 'warn',
+      verbosity: 'verbose',
+      errors: {
+        brokenReferences: 'console',
+      },
     },
     preprocessors: ['tokens-studio'],
     hooks: {
@@ -85,7 +89,7 @@ const createDeviceCssFiles = async (device) => {
   await config.buildAllPlatforms();
 };
 
-const devices = ['desktop', 'desktop-large', 'desktop-small', 'mobile'];
+const devices = ['desktop', 'desktop-large', 'tablet', 'mobile', 'mobile-small'];
 
 for (const device of devices) {
   await createDeviceCssFiles(device);

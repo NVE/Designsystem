@@ -17,9 +17,10 @@ import chalk from 'chalk';
 
 const deviceCssFiles = [
   { device: path.resolve('./public/css/desktop.css') },
-  { device: path.resolve('./public/css/desktop-large.css'), media: 'min-width: 1400px' },
-  { device: path.resolve('./public/css/desktop-small.css'), media: 'max-width: 1200px' },
-  { device: path.resolve('./public/css/mobile.css'), media: 'max-width: 600px' },
+  { device: path.resolve('./public/css/desktop-large.css'), media: 'min-width: 1600px' },
+  { device: path.resolve('./public/css/tablet.css'), media: '(min-width: 764px) and (max-width: 1023px)' },
+  { device: path.resolve('./public/css/mobile.css'), media: '(min-width: 390px) and (max-width: 763px)' },
+  { device: path.resolve('./public/css/mobile-small.css'), media: 'max-width: 389px' },
 ];
 
 const brandFiles = [

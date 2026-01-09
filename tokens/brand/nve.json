@@ -1191,6 +1191,10 @@
     }
   },
   "spacing": {
+    "20x": {
+      "$type": "spacing",
+      "$value": "20px"
+    },
     "24x": {
       "$type": "spacing",
       "$value": "24px"
@@ -1203,9 +1207,21 @@
       "$type": "spacing",
       "$value": "40px"
     },
+    "48x": {
+      "$type": "spacing",
+      "$value": "48px"
+    },
     "50x": {
       "$type": "spacing",
       "$value": "50px"
+    },
+    "56x": {
+      "$type": "spacing",
+      "$value": "56px"
+    },
+    "88x": {
+      "$type": "spacing",
+      "$value": "88px"
     },
     "220x": {
       "$type": "spacing",
@@ -1250,6 +1266,10 @@
     "strong": {
       "$type": "borderWidth",
       "$value": "2px"
+    },
+    "stronger": {
+      "$type": "borderWidth",
+      "$value": "4px"
     }
   },
   "font-weight": {
@@ -1422,40 +1442,216 @@
     }
   },
   "sizing": {
-    "content-area": {
-      "mobile": {
-        "$type": "sizing",
-        "$value": "366px"
-      },
-      "desktop-small": {
-        "$type": "sizing",
-        "$value": "700px"
-      },
-      "desktop": {
-        "$type": "sizing",
-        "$value": "1000px"
-      },
-      "desktop-large": {
-        "$type": "sizing",
-        "$value": "1200px"
-      }
+    "24x": {
+      "$type": "sizing",
+      "$value": "24px"
     },
-    "device-width": {
-      "mobile": {
-        "$type": "sizing",
-        "$value": "390px"
+    "32x": {
+      "$type": "sizing",
+      "$value": "32px"
+    },
+    "40x": {
+      "$type": "sizing",
+      "$value": "40px"
+    },
+    "64x": {
+      "$type": "sizing",
+      "$value": "64px"
+    },
+    "88x": {
+      "$type": "sizing",
+      "$value": "88px"
+    },
+    "200x": {
+      "$type": "sizing",
+      "$value": "200px"
+    },
+    "216x": {
+      "$type": "sizing",
+      "$value": "216px"
+    },
+    "217x": {
+      "$type": "sizing",
+      "$value": "217px"
+    },
+    "220x": {
+      "$type": "sizing",
+      "$value": "220px"
+    },
+    "232x": {
+      "$type": "sizing",
+      "$value": "232px"
+    },
+    "256x": {
+      "$type": "sizing",
+      "$value": "256px"
+    },
+    "282x": {
+      "$type": "sizing",
+      "$value": "282px"
+    },
+    "286x": {
+      "$type": "sizing",
+      "$value": "286px"
+    },
+    "320x": {
+      "$type": "sizing",
+      "$value": "320px"
+    },
+    "342x": {
+      "$type": "sizing",
+      "$value": "342px"
+    },
+    "366x": {
+      "$type": "sizing",
+      "$value": "366px"
+    },
+    "389x": {
+      "$type": "sizing",
+      "$value": "389px"
+    },
+    "390x": {
+      "$type": "sizing",
+      "$value": "390px"
+    },
+    "428x": {
+      "$type": "sizing",
+      "$value": "428px"
+    },
+    "440x": {
+      "$type": "sizing",
+      "$value": "440px"
+    },
+    "468x": {
+      "$type": "sizing",
+      "$value": "468px"
+    },
+    "480x": {
+      "$type": "sizing",
+      "$value": "480px"
+    },
+    "496x": {
+      "$type": "sizing",
+      "$value": "496px"
+    },
+    "520x": {
+      "$type": "sizing",
+      "$value": "520px"
+    },
+    "544x": {
+      "$type": "sizing",
+      "$value": "544px"
+    },
+    "572x": {
+      "$type": "sizing",
+      "$value": "572px"
+    },
+    "588x": {
+      "$type": "sizing",
+      "$value": "588px"
+    },
+    "600x": {
+      "$type": "sizing",
+      "$value": "600px"
+    },
+    "700x": {
+      "$type": "sizing",
+      "$value": "700px"
+    },
+    "750x": {
+      "$type": "sizing",
+      "$value": "750px"
+    },
+    "763x": {
+      "$type": "sizing",
+      "$value": "763px"
+    },
+    "764x": {
+      "$type": "sizing",
+      "$value": "764px"
+    },
+    "799x": {
+      "$type": "sizing",
+      "$value": "799px"
+    },
+    "800x": {
+      "$type": "sizing",
+      "$value": "800px"
+    },
+    "1000x": {
+      "$type": "sizing",
+      "$value": "1000px"
+    },
+    "1023x": {
+      "$type": "sizing",
+      "$value": "1023px"
+    },
+    "1024x": {
+      "$type": "sizing",
+      "$value": "1024px"
+    },
+    "1140x": {
+      "$type": "sizing",
+      "$value": "1140px"
+    },
+    "1200x": {
+      "$type": "sizing",
+      "$value": "1200px"
+    },
+    "1439x": {
+      "$type": "sizing",
+      "$value": "1439px"
+    },
+    "1440x": {
+      "$type": "sizing",
+      "$value": "1440px"
+    },
+    "1599x": {
+      "$type": "sizing",
+      "$value": "1599px"
+    },
+    "1600x": {
+      "$type": "sizing",
+      "$value": "1600px"
+    },
+    "1800x": {
+      "$type": "sizing",
+      "$value": "1800px"
+    },
+    "2439x": {
+      "$type": "sizing",
+      "$value": "2439px"
+    },
+    "2440x": {
+      "$type": "sizing",
+      "$value": "2440px"
+    },
+    "2560x": {
+      "$type": "sizing",
+      "$value": "2560px"
+    },
+    "9999x": {
+      "$type": "sizing",
+      "$value": "9999px"
+    }
+  },
+  "boolean": {
+    "brand": {
+      "NVE": {
+        "$type": "boolean",
+        "$value": "true"
       },
-      "desktop-small": {
-        "$type": "sizing",
-        "$value": "800px"
+      "Varsom": {
+        "$type": "boolean",
+        "$value": "false"
       },
-      "desktop": {
-        "$type": "sizing",
-        "$value": "1440px"
+      "RME": {
+        "$type": "boolean",
+        "$value": "false"
       },
-      "desktop-large": {
-        "$type": "sizing",
-        "$value": "2440px"
+      "NVE_RME": {
+        "$type": "boolean",
+        "$value": "true"
       }
     }
   }
