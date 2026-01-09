@@ -5,6 +5,10 @@
     "name": "NVE",
     "email": "nve@nve.no"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NVE/Designsystem"
+  },
   "license": "MIT",
   "homepage": "https://github.com/NVE/Designsystem/",
   "version": "3.3.0",
