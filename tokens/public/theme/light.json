@@ -53,8 +53,7 @@
         },
         "tertiary": {
           "$type": "color",
-          "$value": "{color-shades.brand.700}",
-          "$description": "was 500"
+          "$value": "{color-shades.brand.700}"
         }
       }
     },

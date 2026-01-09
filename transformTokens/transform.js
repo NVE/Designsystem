@@ -7,7 +7,11 @@ const createBrandCssFiles = async (files, destination, themeOption) => {
   const config = new StyleDictionary({
     source: files,
     log: {
-      verbosity: 'default',
+      warnings: 'warn',
+      verbosity: 'verbose',
+      errors: {
+        brokenReferences: 'console',
+      },
     },
     preprocessors: ['tokens-studio'],
     hooks: {

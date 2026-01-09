@@ -27,7 +27,8 @@
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.brand.050}"
+          "$value": "{color-shades.brand.250}",
+          "$description": "was 300"
         },
         "primary-on-bg": {
           "$type": "color",
@@ -92,7 +93,7 @@
         },
         "subtle": {
           "$type": "color",
-          "$value": "{color-shades.neutralgrey.200}"
+          "$value": "{color-shades.functional.neutralgrey.200}"
         },
         "secondary": {
           "$type": "color",

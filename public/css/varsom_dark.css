@@ -3,7 +3,7 @@
  */
 
 @import './global.css';
-:root.darkmode {
+:root.darkmode { 
   --color-shades-brand-100: #ffd1a3;
   --color-shades-brand-150: #ffc38f;
   --color-shades-brand-200: #ffb47a;
@@ -236,17 +236,11 @@
   --text-decoration-underline: underline;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
-  --box-shadow-none: 0 0 0 0 rgba(0, 0, 0, 0);
-  --box-shadow-soft:
-    -59px 104px 33px 0 rgba(0, 0, 0, 0), -38px 67px 31px 0 rgba(0, 0, 0, 0), -21px 37px 26px 0 rgba(0, 0, 0, 0.01),
-    -9px 17px 19px 0 rgba(0, 0, 0, 0.02), -2px 4px 11px 0 rgba(0, 0, 0, 0.03);
-  --box-shadow-hard:
-    -45px 80px 26px 0 rgba(0, 0, 0, 0), -29px 51px 23px 0 rgba(0, 0, 0, 0.01), -16px 29px 20px 0 rgba(0, 0, 0, 0.02),
-    -7px 13px 15px 0 rgba(0, 0, 0, 0.03), -2px 3px 8px 0 rgba(0, 0, 0, 0.04);
-  --box-shadow-header: 0 4px 032px 0 rgba(0, 0, 0, 0.02);
-  --box-shadow-dropdown:
-    0 54px 15px 0 rgba(0, 0, 0, 0), 0 35px 14px 0 rgba(0, 0, 0, 0), 0 19px 12px 0 rgba(0, 0, 0, 0.02),
-    0 9px 9px 0 rgba(0, 0, 0, 0.03), 0 2px 5px 0 rgba(0, 0, 0, 0.03);
+  --box-shadow-none: 0 0 0 0 rgba(0,0,0,0);
+  --box-shadow-soft: -59px 104px 33px 0 rgba(0,0,0,0.00), -38px 67px 31px 0 rgba(0,0,0,0.00), -21px 37px 26px 0 rgba(0,0,0,0.01), -9px 17px 19px 0 rgba(0,0,0,0.02), -2px 4px 11px 0 rgba(0,0,0,0.03);
+  --box-shadow-hard: -45px 80px 26px 0 rgba(0,0,0,0.00), -29px 51px 23px 0 rgba(0,0,0,0.01), -16px 29px 20px 0 rgba(0,0,0,0.02), -7px 13px 15px 0 rgba(0,0,0,0.03), -2px 3px 8px 0 rgba(0,0,0,0.04);
+  --box-shadow-header: 0 4px 032px 0 rgba(0,0,0,0.02);
+  --box-shadow-dropdown: 0 54px 15px 0 rgba(0,0,0,0.00), 0 35px 14px 0 rgba(0,0,0,0.00), 0 19px 12px 0 rgba(0,0,0,0.02), 0 9px 9px 0 rgba(0,0,0,0.03), 0 2px 5px 0 rgba(0,0,0,0.03);
   --boolean-brand-nve: false;
   --boolean-brand-varsom: true;
   --boolean-brand-rme: false;
@@ -256,9 +250,10 @@
   --color-brand-background-tertiary: var(--color-shades-brand-800);
   --color-brand-background-quaternary: var(--color-shades-brand-200);
   --color-brand-foreground-primary: var(--color-shades-brand-150);
+  --color-brand-foreground-secondary: var(--color-shades-brand-250); /** was 300 */
   --color-brand-foreground-primary-on-bg: var(--color-shades-brand-000);
-  --color-brand-foreground-secondary: var(--color-shades-brand-050);
-  --color-brand-foreground-tertiary: var(--color-shades-brand-250); /** was 300 */
+  --color-brand-foreground-secondary-on-bg: var(--color-shades-grey-000);
+  --color-brand-foreground-tertiary-on-bg: var(--color-shades-brand-200);
   --color-brand-border-primary: var(--color-shades-brand-100);
   --color-brand-border-secondary: var(--color-shades-brand-200);
   --color-brand-border-tertiary: var(--color-shades-brand-300); /** was 300 */
@@ -269,7 +264,9 @@
   --color-neutrals-background-secondary-dim: var(--color-shades-grey-850);
   --color-neutrals-background-tertiary-dim: var(--color-shades-grey-700);
   --color-neutrals-foreground-primary: var(--color-shades-grey-000);
-  --color-neutrals-foreground-subtle: var(--color-shades-neutralgrey-200);
+  --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-200);
+  --color-neutrals-foreground-secondary: var(--color-shades-functional-neutralgrey-100);
+  --color-neutrals-foreground-inverted: var(--color-shades-functional-neutralgrey-000);
   --color-neutrals-border-default: var(--color-shades-grey-300);
   --color-neutrals-border-mute: var(--color-shades-grey-600);
   --color-neutrals-border-subtle: var(--color-shades-grey-800);
@@ -422,4 +419,4 @@
   --color-supplemental-charts-foreground-data-16: var(--color-shades-data-color-e-300);
   --color-supplemental-charts-foreground-data-17: var(--color-shades-data-color-f-600);
   --color-supplemental-charts-foreground-data-18: var(--color-shades-data-color-g-600);
-}
+ }
