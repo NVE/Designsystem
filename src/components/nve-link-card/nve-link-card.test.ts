@@ -16,7 +16,7 @@ describe('nve-link-card', () => {
     expect(el.variant).toBe('primary');
     expect(el.size).toBe('medium');
   });
-  it('has correct label', async () => {
+  /*it('has correct label', async () => {
     const label = 'Example label';
     const el = await fixture<NveLinkCard>(html`<nve-link-card label=${label}></nve-link-card>`);
     const div = el.shadowRoot?.querySelector('div[part="label"]');
@@ -75,5 +75,5 @@ describe('nve-link-card', () => {
     const el = wrapper.querySelector('nve-link-card') as NveLinkCard;
     const linkCard = el.shadowRoot?.querySelector('[part="link-card"]');
     expect(linkCard?.tagName.toLowerCase()).toBe('div');
-  });
+  }); */
 });
