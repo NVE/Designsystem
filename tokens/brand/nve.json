@@ -461,7 +461,7 @@
         },
         "999": {
           "$type": "color",
-          "$value": "#85370a"
+          "$value": "#5f2707"
         },
         "000": {
           "$type": "color",
@@ -523,7 +523,7 @@
         },
         "999": {
           "$type": "color",
-          "$value": "#A27900"
+          "$value": "#856300"
         },
         "000": {
           "$type": "color",
@@ -1097,31 +1097,31 @@
   "line-height": {
     "0": {
       "$type": "lineHeights",
-      "$value": "115%"
+      "$value": "1.15"
     },
     "1": {
       "$type": "lineHeights",
-      "$value": "120%"
+      "$value": "1.20"
     },
     "2": {
       "$type": "lineHeights",
-      "$value": "125%"
+      "$value": "1.25"
     },
     "3": {
       "$type": "lineHeights",
-      "$value": "130%"
+      "$value": "1.30"
     },
     "4": {
       "$type": "lineHeights",
-      "$value": "140%"
+      "$value": "1.40"
     },
     "5": {
       "$type": "lineHeights",
-      "$value": "150%"
+      "$value": "1.50"
     },
     "6": {
       "$type": "lineHeights",
-      "$value": "110%"
+      "$value": "1.10"
     }
   },
   "letter-spacing": {
