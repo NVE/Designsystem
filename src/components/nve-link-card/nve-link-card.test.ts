@@ -1,11 +1,11 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { fixtureCleanup } from '@open-wc/testing';
 
-import NveLinkCard from './nve-link-card.component';
+//import NveLinkCard from './nve-link-card.component';
 
-if (!customElements.get('nve-link-card')) {
+/*if (!customElements.get('nve-link-card')) {
   customElements.define('nve-link-card', NveLinkCard);
-}
+}*/
 
 describe('nve-link-card', () => {
   afterEach(() => {
