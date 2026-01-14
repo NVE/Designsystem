@@ -5,13 +5,14 @@
       size="large"
       label="Skjermbredde:"
       orientation="horizontal"
-      value="default"
+      value="desktop"
       @sl-input="setResolution($event.target.value)"
     >
-      <nve-radio value="600">mindre enn 600 px</nve-radio>
-      <nve-radio value="1200">mindre enn 1200 px </nve-radio>
-      <nve-radio value="default"> Standard </nve-radio>
-      <nve-radio value="1400">større enn 1400 px </nve-radio>
+      <nve-radio value="mobileSmall">Liten mobil</nve-radio>
+      <nve-radio value="mobile">Mobil</nve-radio>
+      <nve-radio value="tablet">Tablet </nve-radio>
+      <nve-radio value="desktop"> Desktop </nve-radio>
+      <nve-radio value="desktopLarge">Stor desktop</nve-radio>
     </nve-radio-group>
 
     <ul v-if="tableContentType === 'default'" class="font-list font-list--border-top">
@@ -67,24 +68,31 @@ const componentRoot = ref<HTMLElement | null>(null);
 const tableContent = ref<Record<string, FontValues>>({});
 const screenSizeRadio = ref<string>('default');
 const currentResolutionValues = ref<Record<string, string>>(
-  Object.fromEntries(Object.entries(cssTokenState.fontTokensDefault).reverse())
+  Object.fromEntries(Object.entries(cssTokenState.fontTokensDesktop).reverse())
 );
 
-const setResolution = (resolution: 'default' | '1400' | '1200' | '600') => {
+const setResolution = (resolution: 'desktop' | 'desktopLarge' | 'tablet' | 'mobile' | 'mobileSmall') => {
   screenSizeRadio.value = resolution;
   let fontTokensObject: { [key: string]: string } = {};
   switch (resolution) {
-    case '1400':
-      fontTokensObject = cssTokenState.fontTokens1400;
+    case 'desktopLarge':
+      fontTokensObject = cssTokenState.fontTokensDesktopLarge;
       break;
-    case '1200':
-      fontTokensObject = cssTokenState.fontTokens1200;
+
+    case 'tablet':
+      fontTokensObject = cssTokenState.fontTokensTablet;
       break;
-    case '600':
-      fontTokensObject = cssTokenState.fontTokens600;
+    case 'mobile':
+      fontTokensObject = cssTokenState.fontTokensMobile;
+      break;
+    case 'mobileSmall':
+      fontTokensObject = cssTokenState.fontTokensMobileSmall;
+      break;
+    case 'desktop':
+      fontTokensObject = cssTokenState.fontTokensDesktop;
       break;
     default:
-      fontTokensObject = cssTokenState.fontTokensDefault;
+      fontTokensObject = cssTokenState.fontTokensDesktop;
   }
   const reversedFontTokensObject = Object.fromEntries(Object.entries(fontTokensObject).reverse()); //TODO: this doesnt work so well
   currentResolutionValues.value = reversedFontTokensObject;
