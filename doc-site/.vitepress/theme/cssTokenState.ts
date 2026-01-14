@@ -6,13 +6,15 @@ import { FontValues, FontVariables, TableContent } from './types/FontValues';
 const stateInitialized = ref(false);
 
 /** Objekt med font-token-navn som nøkkel og token-verdi som verdi for standard skjermstørrelsen */
-const fontTokensDefault = ref<Record<string, string>>({});
-/** Objekt med font-token-navn som nøkkel og token-verdi som verdi for skjermstørrelsen over 1400px */
-const fontTokens1400 = ref<Record<string, string>>({});
-/** Objekt med font-token-navn som nøkkel og token-verdi som verdi for skjermstørrelsen mindre enn 1200px */
-const fontTokens1200 = ref<Record<string, string>>({});
-/** Objekt med font-token-navn som nøkkel og token-verdi som verdi for skjermstørrelsen mindre enn 600px */
-const fontTokens600 = ref<Record<string, string>>({});
+const fontTokensDesktop = ref<Record<string, string>>({});
+/** Objekt med font-token-navn som nøkkel og token-verdi som verdi for stor skjerm */
+const fontTokensDesktopLarge = ref<Record<string, string>>({});
+/** Objekt med font-token-navn som nøkkel og token-verdi som verdi for tablet */
+const fontTokensTablet = ref<Record<string, string>>({});
+/** Objekt med font-token-navn som nøkkel og token-verdi som verdi for mobil */
+const fontTokensMobile = ref<Record<string, string>>({});
+/** Objekt med font-token-navn som nøkkel og token-verdi som verdi for liten mobil */
+const fontTokensMobileSmall = ref<Record<string, string>>({});
 
 /** Objekt med line-height-token-navn som nøkkel og token-verdi som verdi */
 const lineHeightsObject = ref<Record<string, string>>({});
@@ -55,17 +57,28 @@ const labelVariables: (FontVariables | null)[] = [];
  */
 // eslint-disable-next-line max-lines-per-function
 const initGlobalState = (cssFileContent: string) => {
-  const cssContentDefault: string[] = cssFileContent.match(/:root\.nve\s*\{([\s\S]*?)\}/) || [];
-  const cssContent1400px: string[] = cssFileContent.match(/@media\s*\(min-width:\s*1400px\)\s*\{([\s\S]*?)\}/) || [];
-  const cssContent1200px: string[] = cssFileContent.match(/@media\s*\(max-width:\s*1200px\)\s*\{([\s\S]*?)\}/) || [];
-  const cssContent600px: string[] = cssFileContent.match(/@media\s*\(max-width:\s*600px\)\s*\{([\s\S]*?)\}/) || [];
+  const cssContentDesktop: string[] = cssFileContent.match(/:root\.nve\s*\{([\s\S]*?)\}/) || [];
+  const cssContentDesktopLarge: string[] =
+    cssFileContent.match(/@media\s*\(min-width:\s*1600px\)\s*\{([\s\S]*?)\}/) || [];
+  const cssContentTablet =
+    cssFileContent.match(
+      /@media\s*\(\(\s*min-width:\s*764px\s*\)\s*and\s*\(\s*max-width:\s*1023px\s*\)\s*\)\s*\{([\s\S]*?)\}/
+    ) || [];
+  const cssContentMobile =
+    cssFileContent.match(
+      /@media\s*\(\(\s*min-width:\s*390px\s*\)\s*and\s*\(\s*max-width:\s*763px\s*\)\s*\)\s*\{([\s\S]*?)\}/
+    ) || [];
+  const cssContentMobileSmall: string[] =
+    cssFileContent.match(/@media\s*\(max-width:\s*389px\)\s*\{([\s\S]*?)\}/) || [];
 
   const dimensionsReg: string[] = cssFileContent.match(/(--dimension-[\d-]+x):\s*([^;]+);/g) || [];
 
-  const cssFontTokens1400px: string[] = cssContent1400px[1].match(/--font-size-[a-z0-9-]+:\s*[^;]+;/g) || [];
-  const cssFontTokens1200px: string[] = cssContent1200px[1].match(/--font-size-[a-z0-9-]+:\s*[^;]+;/g) || [];
-  const cssFontTokens600px: string[] = cssContent600px[1].match(/--font-size-[a-z0-9-]+:\s*[^;]+;/g) || [];
-  const cssFontTokensDefault: string[] = cssContentDefault[1].match(/--font-size-[a-z0-9-]+:\s*[^;]+;/g) || [];
+  const cssFontTokensDesktopLarge: string[] =
+    cssContentDesktopLarge[1].match(/--font-size-[a-z0-9-]+:\s*[^;]+;/g) || [];
+  const cssFontTokensTablet: string[] = cssContentTablet[1].match(/--font-size-[a-z0-9-]+:\s*[^;]+;/g) || [];
+  const cssFontTokensMobile: string[] = cssContentMobile[1].match(/--font-size-[a-z0-9-]+:\s*[^;]+;/g) || [];
+  const cssFontTokensMobileSmall: string[] = cssContentMobileSmall[1].match(/--font-size-[a-z0-9-]+:\s*[^;]+;/g) || [];
+  const cssFontTokensDesktop: string[] = cssContentDesktop[1].match(/--font-size-[a-z0-9-]+:\s*[^;]+;/g) || [];
   const fontWeights: string[] = cssFileContent.match(/--font-weight-[a-z0-9-]+:\s*[^;]+;/g) || [];
 
   const lineHeights: string[] = cssFileContent.match(/--line-height-[\d\w]+:\s*[^;]+;/g) || [];
@@ -90,10 +103,11 @@ const initGlobalState = (cssFileContent: string) => {
     })
   );
 
-  fontTokensDefault.value = getFontSizeDimension(cssFontTokensDefault);
-  fontTokens1400.value = getFontSizeDimension(cssFontTokens1400px);
-  fontTokens1200.value = getFontSizeDimension(cssFontTokens1200px);
-  fontTokens600.value = getFontSizeDimension(cssFontTokens600px);
+  fontTokensDesktop.value = getFontSizeDimension(cssFontTokensDesktop);
+  fontTokensDesktopLarge.value = getFontSizeDimension(cssFontTokensDesktopLarge);
+  fontTokensTablet.value = getFontSizeDimension(cssFontTokensTablet);
+  fontTokensMobile.value = getFontSizeDimension(cssFontTokensMobile);
+  fontTokensMobileSmall.value = getFontSizeDimension(cssFontTokensMobileSmall);
 
   lineHeightsObject.value = Object.fromEntries(
     lineHeights.map((entry) => {
@@ -123,13 +137,13 @@ const initGlobalState = (cssFileContent: string) => {
   detailTextVariables.push(...getFontVariables(detailTextFonts));
   labelVariables.push(...getFontVariables(labelFonts));
 
-  headings.value = getFontValues(headingsVariables, fontTokensDefault.value);
-  subHeadings.value = getFontValues(subheadingsVariables, fontTokensDefault.value);
-  lead.value = getFontValues(leadVariables, fontTokensDefault.value);
-  body.value = getFontValues(bodyVariables, fontTokensDefault.value);
-  bodyCompact.value = getFontValues(bodyCompactVariables, fontTokensDefault.value);
-  detailText.value = getFontValues(detailTextVariables, fontTokensDefault.value);
-  label.value = getFontValues(labelVariables, fontTokensDefault.value);
+  headings.value = getFontValues(headingsVariables, fontTokensDesktop.value);
+  subHeadings.value = getFontValues(subheadingsVariables, fontTokensDesktop.value);
+  lead.value = getFontValues(leadVariables, fontTokensDesktop.value);
+  body.value = getFontValues(bodyVariables, fontTokensDesktop.value);
+  bodyCompact.value = getFontValues(bodyCompactVariables, fontTokensDesktop.value);
+  detailText.value = getFontValues(detailTextVariables, fontTokensDesktop.value);
+  label.value = getFontValues(labelVariables, fontTokensDesktop.value);
 
   stateInitialized.value = true;
 
@@ -198,7 +212,7 @@ const updateFontValuesPerTableContent = (tableContent: TableContent, newResoluti
       headings.value = getFontValues(headingsVariables, newResolutionValues);
       break;
     case 'subheadings':
-      subHeaddings.value = getFontValues(subheadingsVariables, newResolutionValues);
+      subHeadings.value = getFontValues(subheadingsVariables, newResolutionValues);
       break;
     case 'lead':
       lead.value = getFontValues(leadVariables, newResolutionValues);
@@ -219,10 +233,11 @@ const updateFontValuesPerTableContent = (tableContent: TableContent, newResoluti
 };
 
 export const cssTokenState = reactive({
-  fontTokensDefault,
-  fontTokens1400,
-  fontTokens1200,
-  fontTokens600,
+  fontTokensDesktop,
+  fontTokensDesktopLarge,
+  fontTokensTablet,
+  fontTokensMobile,
+  fontTokensMobileSmall,
   headings,
   subHeadings,
   lead,
