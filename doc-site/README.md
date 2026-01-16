@@ -39,3 +39,7 @@ og deretter med:
 ```
 npm run doc:preview
 ```
+
+### Styles
+
+I styles-mappen finner du flere CSS-filer som tilsvarer de som ligger under src-mappen. Årsaken til at vi kopierer stilene hit er at nve-designsystem-pakken ikke installeres i dokumentasjonssiden; i stedet benyttes komponentene direkte fra repoet. Derfor importeres ikke CSS-stilene via varsom.css eller nve.css fra hovedpakken. Dette er i praksis en kopi for å sikre en konsistent opplevelse når nye komponenter legges til i dokumentasjonssiden. Filene burde ikke tas med mindre det ble innført endringene i original-filene. Tema filene generers automatisk når man kjører 'npm run tokenbuild'.

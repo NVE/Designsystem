@@ -43,6 +43,14 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./fonts/SourceSans3-VariableFont_wght.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+}
+
 :root {
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
