@@ -835,6 +835,11 @@
       "color.feedback.foreground.on-bg.subtle.error": "d104c1cd9dddf9b87aa459d106b7ebf84bc98e08",
       "color.feedback.foreground.on-bg.subtle.warning": "a7902040968d18a03d9bf0b5fc031bf7612ef290",
       "color.feedback.foreground.on-bg.subtle.success": "469481f3a8313fec09bd983962c82a8035282822",
+      "color.feedback.foreground.on-bg.emphasized.neutral": "779d83292c62963d711ba2bd11a54b24831a5041",
+      "color.feedback.foreground.on-bg.emphasized.info": "ca03bd1902e55052bbe146284a8dcdef6647a6bf",
+      "color.feedback.foreground.on-bg.emphasized.error": "3ca39558b9ed56b258e0558b42134e6223464836",
+      "color.feedback.foreground.on-bg.emphasized.warning": "b65122d666410ebbf5bd69741bf2d3c852102ea4",
+      "color.feedback.foreground.on-bg.emphasized.success": "cd07fe663b482b6271158aa67944df2cb01c9cda",
       "color.feedback.foreground.default.neutral": "afc3ece46af9074c68452864a6070ffc6a405cf2",
       "color.feedback.foreground.default.info": "ab56fa7e51abe5c6d26208f4b86634552a5dccb2",
       "color.feedback.foreground.default.error": "1a6d951e1d150303d1be9ef5bd0df4f0e28bc67d",
@@ -940,12 +945,7 @@
       "color.supplemental.charts.foreground.data-15": "668c11340044b4c6b3b44ab5943bad27c27fe765",
       "color.supplemental.charts.foreground.data-16": "97cb134a13566c031a9d135828921fd22a1f153a",
       "color.supplemental.charts.foreground.data-17": "7bd6a09ac6aa1e4abe25b9b2b94ca0fa7694975f",
-      "color.supplemental.charts.foreground.data-18": "7a132b9ef5600954c29d0570bc721468a30c4def",
-      "color.feedback.foreground.on-bg.emphasized.neutral": "779d83292c62963d711ba2bd11a54b24831a5041",
-      "color.feedback.foreground.on-bg.emphasized.info": "ca03bd1902e55052bbe146284a8dcdef6647a6bf",
-      "color.feedback.foreground.on-bg.emphasized.error": "3ca39558b9ed56b258e0558b42134e6223464836",
-      "color.feedback.foreground.on-bg.emphasized.warning": "b65122d666410ebbf5bd69741bf2d3c852102ea4",
-      "color.feedback.foreground.on-bg.emphasized.success": "cd07fe663b482b6271158aa67944df2cb01c9cda"
+      "color.supplemental.charts.foreground.data-18": "7a132b9ef5600954c29d0570bc721468a30c4def"
     },
     "group": "Theme"
   },
@@ -1199,6 +1199,11 @@
       "color.feedback.foreground.on-bg.subtle.error": "d104c1cd9dddf9b87aa459d106b7ebf84bc98e08",
       "color.feedback.foreground.on-bg.subtle.warning": "a7902040968d18a03d9bf0b5fc031bf7612ef290",
       "color.feedback.foreground.on-bg.subtle.success": "469481f3a8313fec09bd983962c82a8035282822",
+      "color.feedback.foreground.on-bg.emphasized.neutral": "779d83292c62963d711ba2bd11a54b24831a5041",
+      "color.feedback.foreground.on-bg.emphasized.info": "ca03bd1902e55052bbe146284a8dcdef6647a6bf",
+      "color.feedback.foreground.on-bg.emphasized.error": "3ca39558b9ed56b258e0558b42134e6223464836",
+      "color.feedback.foreground.on-bg.emphasized.warning": "b65122d666410ebbf5bd69741bf2d3c852102ea4",
+      "color.feedback.foreground.on-bg.emphasized.success": "cd07fe663b482b6271158aa67944df2cb01c9cda",
       "color.feedback.foreground.default.neutral": "afc3ece46af9074c68452864a6070ffc6a405cf2",
       "color.feedback.foreground.default.info": "ab56fa7e51abe5c6d26208f4b86634552a5dccb2",
       "color.feedback.foreground.default.error": "1a6d951e1d150303d1be9ef5bd0df4f0e28bc67d",
@@ -1304,12 +1309,7 @@
       "color.supplemental.charts.foreground.data-15": "668c11340044b4c6b3b44ab5943bad27c27fe765",
       "color.supplemental.charts.foreground.data-16": "97cb134a13566c031a9d135828921fd22a1f153a",
       "color.supplemental.charts.foreground.data-17": "7bd6a09ac6aa1e4abe25b9b2b94ca0fa7694975f",
-      "color.supplemental.charts.foreground.data-18": "7a132b9ef5600954c29d0570bc721468a30c4def",
-      "color.feedback.foreground.on-bg.emphasized.neutral": "779d83292c62963d711ba2bd11a54b24831a5041",
-      "color.feedback.foreground.on-bg.emphasized.info": "ca03bd1902e55052bbe146284a8dcdef6647a6bf",
-      "color.feedback.foreground.on-bg.emphasized.error": "3ca39558b9ed56b258e0558b42134e6223464836",
-      "color.feedback.foreground.on-bg.emphasized.warning": "b65122d666410ebbf5bd69741bf2d3c852102ea4",
-      "color.feedback.foreground.on-bg.emphasized.success": "cd07fe663b482b6271158aa67944df2cb01c9cda"
+      "color.supplemental.charts.foreground.data-18": "7a132b9ef5600954c29d0570bc721468a30c4def"
     },
     "group": "Theme"
   },

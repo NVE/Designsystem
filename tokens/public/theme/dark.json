@@ -348,7 +348,7 @@
           },
           "error": {
             "$type": "color",
-            "$value": "{color-shades.functional.red.950}"
+            "$value": "{color-shades.functional.red.900}"
           },
           "warning": {
             "$type": "color",
@@ -393,7 +393,7 @@
         },
         "error": {
           "$type": "color",
-          "$value": "{color-shades.functional.red.300}"
+          "$value": "{color-shades.functional.red.400}"
         },
         "warning": {
           "$type": "color",
@@ -550,7 +550,7 @@
           },
           "error": {
             "$type": "color",
-            "$value": "{color-shades.functional.red.300}"
+            "$value": "{color-shades.functional.red.400}"
           },
           "warning": {
             "$type": "color",
