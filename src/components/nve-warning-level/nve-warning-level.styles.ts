@@ -85,7 +85,7 @@ export default css`
   }
 
   .border {
-    border: var(--border-width) solid var(--color-Sdangerlevel-foreground-default-level1);
+    border: var(--border-width) solid var(--color-dangerlevel-foreground-default-level1);
   }
 
   .warning-level-badge {
