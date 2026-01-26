@@ -126,7 +126,7 @@
   --color-shades-functional-yellow-800: #bf9722;
   --color-shades-functional-yellow-850: #b08c21;
   --color-shades-functional-yellow-900: #a88324;
-  --color-shades-functional-yellow-950: #977726;
+  --color-shades-functional-yellow-950: #836721;
   --color-shades-functional-yellow-999: #7a5f29;
   --color-shades-functional-yellow-000: #fff9e9;
   --color-shades-functional-yellow-050: #fff5d9;
@@ -264,10 +264,12 @@
   --color-neutrals-background-secondary-dim: var(--color-shades-grey-850);
   --color-neutrals-background-tertiary-dim: var(--color-shades-grey-700);
   --color-neutrals-foreground-primary: var(--color-shades-grey-000);
-  --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-200);
   --color-neutrals-foreground-secondary: var(--color-shades-functional-neutralgrey-100);
-  --color-neutrals-foreground-inverted: var(--color-shades-functional-neutralgrey-000);
+  --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-200);
+  --color-neutrals-foreground-faint: var(--color-shades-functional-neutralgrey-800);
+  --color-neutrals-foreground-inverted: var(--color-shades-functional-neutralgrey-999);
   --color-neutrals-border-default: var(--color-shades-grey-300);
+  --color-neutrals-border-emphasized: var(--color-shades-grey-000);
   --color-neutrals-border-mute: var(--color-shades-grey-600);
   --color-neutrals-border-subtle: var(--color-shades-grey-800);
   --color-neutrals-border-disabled: var(--color-shades-grey-500);
@@ -309,12 +311,12 @@
   --color-interactive-danger-foreground-disabled: var(--color-shades-grey-950);
   --color-interactive-danger-border-focus: var(--color-shades-functional-blue-500);
   --color-feedback-background-default-neutral: var(--color-shades-functional-neutralgrey-800);
-  --color-feedback-background-default-info: var(--color-shades-functional-blue-950);
+  --color-feedback-background-default-info: var(--color-shades-functional-blue-850);
   --color-feedback-background-default-error: var(--color-shades-functional-red-850);
-  --color-feedback-background-default-warning: var(--color-shades-functional-yellow-999);
-  --color-feedback-background-default-success: var(--color-shades-functional-green-900);
+  --color-feedback-background-default-warning: var(--color-shades-functional-yellow-950);
+  --color-feedback-background-default-success: var(--color-shades-functional-green-850);
   --color-feedback-background-subtle-neutral: var(--color-shades-functional-neutralgrey-850);
-  --color-feedback-background-subtle-info: var(--color-shades-functional-blue-999);
+  --color-feedback-background-subtle-info: var(--color-shades-functional-blue-900);
   --color-feedback-background-subtle-error: var(--color-shades-functional-red-900);
   --color-feedback-background-subtle-warning: var(--color-shades-functional-yellow-999);
   --color-feedback-background-subtle-success: var(--color-shades-functional-green-900);
@@ -322,7 +324,7 @@
   --color-feedback-background-emphasized-info: var(--color-shades-functional-blue-800);
   --color-feedback-background-emphasized-error: var(--color-shades-functional-red-700);
   --color-feedback-background-emphasized-warning: var(--color-shades-functional-yellow-600);
-  --color-feedback-background-emphasized-success: var(--color-shades-functional-green-900);
+  --color-feedback-background-emphasized-success: var(--color-shades-functional-green-800);
   --color-feedback-foreground-neutral: var(--color-shades-functional-neutralgrey-000);
   --color-feedback-foreground-info: var(--color-shades-functional-blue-300);
   --color-feedback-foreground-error: var(--color-shades-functional-red-400);
@@ -362,7 +364,7 @@
   --color-feedback-border-emphasized-info: var(--color-shades-functional-blue-700);
   --color-feedback-border-emphasized-error: var(--color-shades-functional-red-400);
   --color-feedback-border-emphasized-warning: var(--color-shades-functional-yellow-700);
-  --color-feedback-border-emphasized-success: var(--color-shades-functional-green-800);
+  --color-feedback-border-emphasized-success: var(--color-shades-functional-green-700);
   --color-dangerlevel-background-mute-level1: var(--color-shades-functional-green-150);
   --color-dangerlevel-background-mute-level2: var(--color-shades-functional-yellow-200);
   --color-dangerlevel-background-mute-level3: var(--color-shades-functional-orange-150);

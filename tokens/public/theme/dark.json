@@ -91,23 +91,31 @@
           "$type": "color",
           "$value": "{color-shades.grey.000}"
         },
-        "subtle": {
-          "$type": "color",
-          "$value": "{color-shades.functional.neutralgrey.200}"
-        },
         "secondary": {
           "$type": "color",
           "$value": "{color-shades.functional.neutralgrey.100}"
         },
+        "subtle": {
+          "$type": "color",
+          "$value": "{color-shades.functional.neutralgrey.200}"
+        },
+        "faint": {
+          "$type": "color",
+          "$value": "{color-shades.functional.neutralgrey.800}"
+        },
         "inverted": {
           "$type": "color",
-          "$value": "{color-shades.functional.neutralgrey.000}"
+          "$value": "{color-shades.functional.neutralgrey.999}"
         }
       },
       "border": {
         "default": {
           "$type": "color",
           "$value": "{color-shades.grey.300}"
+        },
+        "emphasized": {
+          "$type": "color",
+          "$value": "{color-shades.grey.000}"
         },
         "mute": {
           "$type": "color",
@@ -322,7 +330,7 @@
           },
           "info": {
             "$type": "color",
-            "$value": "{color-shades.functional.blue.950}"
+            "$value": "{color-shades.functional.blue.850}"
           },
           "error": {
             "$type": "color",
@@ -330,11 +338,11 @@
           },
           "warning": {
             "$type": "color",
-            "$value": "{color-shades.functional.yellow.999}"
+            "$value": "{color-shades.functional.yellow.950}"
           },
           "success": {
             "$type": "color",
-            "$value": "{color-shades.functional.green.900}"
+            "$value": "{color-shades.functional.green.850}"
           }
         },
         "subtle": {
@@ -344,7 +352,7 @@
           },
           "info": {
             "$type": "color",
-            "$value": "{color-shades.functional.blue.999}"
+            "$value": "{color-shades.functional.blue.900}"
           },
           "error": {
             "$type": "color",
@@ -378,7 +386,7 @@
           },
           "success": {
             "$type": "color",
-            "$value": "{color-shades.functional.green.900}"
+            "$value": "{color-shades.functional.green.800}"
           }
         }
       },
@@ -558,7 +566,7 @@
           },
           "success": {
             "$type": "color",
-            "$value": "{color-shades.functional.green.800}"
+            "$value": "{color-shades.functional.green.700}"
           }
         }
       }
