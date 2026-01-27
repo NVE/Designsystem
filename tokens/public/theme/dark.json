@@ -23,11 +23,11 @@
       "foreground": {
         "primary": {
           "$type": "color",
-          "$value": "{color-shades.brand.150}"
+          "$value": "{color-shades.accent.200}"
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.brand.250}",
+          "$value": "{color-shades.accent.300}",
           "$description": "was 300"
         },
         "primary-on-bg": {
@@ -40,7 +40,7 @@
         },
         "tertiary-on-bg": {
           "$type": "color",
-          "$value": "{color-shades.brand.200}"
+          "$value": "{color-shades.accent.400}"
         }
       },
       "border": {
