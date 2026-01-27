@@ -66,6 +66,48 @@
         "$value": "#FFDEB8"
       }
     },
+    "accent": {
+      "100": {
+        "$type": "color",
+        "$value": "#FFA866"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#FF773D"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#FF5E1A"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#F05000"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#CC3D00"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#AD3400"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#8F2B00"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#6B2305"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#4C1B06"
+      },
+      "000": {
+        "$type": "color",
+        "$value": "#FFC38F"
+      }
+    },
     "grey": {
       "100": {
         "$type": "color",
