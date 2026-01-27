@@ -238,6 +238,20 @@
           "textCase": "{text-case.none}",
           "textDecoration": "{text-decoration.none}"
         }
+      },
+      "x-small": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{font-family.source-sans-pro}",
+          "fontWeight": "{font-weight.semibold}",
+          "lineHeight": "{line-height.3}",
+          "fontSize": "{font-size.medium}",
+          "letterSpacing": "{letter-spacing.0}",
+          "paragraphSpacing": "{paragraph-spacing.3}",
+          "paragraphIndent": "{paragraph-indent.0}",
+          "textCase": "{text-case.none}",
+          "textDecoration": "{text-decoration.none}"
+        }
       }
     },
     "subheading": {
