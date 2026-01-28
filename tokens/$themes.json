@@ -1461,11 +1461,6 @@
       "font-size.x-large": "b2e60ed156ea4d790cc5d3874bebc3831b14f81f",
       "font-size.2x-large": "57c5fd3483f53e9216f2ef925d8c545694e504cf",
       "font-size.3x-large": "9de2b4e936207b93e555c10df80ebb615928072f",
-      "boolean.device.desktop": "82addb6489d5c73c0609d74af78a10ab7bc1f2ca",
-      "boolean.device.desktop-tablet": "7c42ad69f1fb25ee2584c0552b71b9ce7130b885",
-      "boolean.device.tablet": "8e99228277dcf0a3dcc5a1ed7b1b3aca7d6f9df4",
-      "boolean.device.tablet-mobile": "55fff311064ab4693923a2809c5f89f4bb2f06f9",
-      "boolean.device.mobile": "475a4ca565edcce9f863fc68ec8d8cd17d5964f9",
       "sizing.fixed-sizing.2x-small": "6b177c77e5183b534bb72dfab5f45ef5cd644810",
       "sizing.fixed-sizing.x-small": "029d81c94816d1fe1c7c62612458a755164bed01",
       "sizing.fixed-sizing.small": "ccb1b8bc106ee99f753849cab9b92bb4d9d1d5a0",
@@ -1473,7 +1468,10 @@
       "sizing.fixed-sizing.large": "d181b13484bee88a4c3bbf785e1caa5e96a2bc77",
       "sizing.fixed-sizing.x-large": "94da23267f15dce2a2dafa56cb34f9b2a0a01e60",
       "sizing.fixed-sizing.2x-large": "af8713223ab2b8cfd820a64675ceeef93c670372",
-      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9"
+      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9",
+      "spacing.fixed-spacing.small": "c6a5f0d8c9f26e35bccd8e525c823a13309f2768",
+      "spacing.fixed-spacing.medium": "4ed1c642e2c89851e6f1776562f3110d35e01919",
+      "spacing.fixed-spacing.large": "eaa9c10a6ad463fb224a1d022df8d1ebc9cf81d9"
     },
     "group": "Device"
   },
@@ -1609,11 +1607,6 @@
       "font-size.x-large": "b2e60ed156ea4d790cc5d3874bebc3831b14f81f",
       "font-size.2x-large": "57c5fd3483f53e9216f2ef925d8c545694e504cf",
       "font-size.3x-large": "9de2b4e936207b93e555c10df80ebb615928072f",
-      "boolean.device.desktop": "82addb6489d5c73c0609d74af78a10ab7bc1f2ca",
-      "boolean.device.desktop-tablet": "7c42ad69f1fb25ee2584c0552b71b9ce7130b885",
-      "boolean.device.tablet": "8e99228277dcf0a3dcc5a1ed7b1b3aca7d6f9df4",
-      "boolean.device.tablet-mobile": "55fff311064ab4693923a2809c5f89f4bb2f06f9",
-      "boolean.device.mobile": "475a4ca565edcce9f863fc68ec8d8cd17d5964f9",
       "sizing.fixed-sizing.2x-small": "6b177c77e5183b534bb72dfab5f45ef5cd644810",
       "sizing.fixed-sizing.x-small": "029d81c94816d1fe1c7c62612458a755164bed01",
       "sizing.fixed-sizing.small": "ccb1b8bc106ee99f753849cab9b92bb4d9d1d5a0",
@@ -1621,7 +1614,10 @@
       "sizing.fixed-sizing.large": "d181b13484bee88a4c3bbf785e1caa5e96a2bc77",
       "sizing.fixed-sizing.x-large": "94da23267f15dce2a2dafa56cb34f9b2a0a01e60",
       "sizing.fixed-sizing.2x-large": "af8713223ab2b8cfd820a64675ceeef93c670372",
-      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9"
+      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9",
+      "spacing.fixed-spacing.small": "c6a5f0d8c9f26e35bccd8e525c823a13309f2768",
+      "spacing.fixed-spacing.medium": "4ed1c642e2c89851e6f1776562f3110d35e01919",
+      "spacing.fixed-spacing.large": "eaa9c10a6ad463fb224a1d022df8d1ebc9cf81d9"
     },
     "group": "Device"
   },
@@ -1755,11 +1751,6 @@
       "font-size.x-large": "b2e60ed156ea4d790cc5d3874bebc3831b14f81f",
       "font-size.2x-large": "57c5fd3483f53e9216f2ef925d8c545694e504cf",
       "font-size.3x-large": "9de2b4e936207b93e555c10df80ebb615928072f",
-      "boolean.device.desktop": "82addb6489d5c73c0609d74af78a10ab7bc1f2ca",
-      "boolean.device.desktop-tablet": "7c42ad69f1fb25ee2584c0552b71b9ce7130b885",
-      "boolean.device.tablet": "8e99228277dcf0a3dcc5a1ed7b1b3aca7d6f9df4",
-      "boolean.device.tablet-mobile": "55fff311064ab4693923a2809c5f89f4bb2f06f9",
-      "boolean.device.mobile": "475a4ca565edcce9f863fc68ec8d8cd17d5964f9",
       "sizing.fixed-sizing.2x-small": "6b177c77e5183b534bb72dfab5f45ef5cd644810",
       "sizing.fixed-sizing.x-small": "029d81c94816d1fe1c7c62612458a755164bed01",
       "sizing.fixed-sizing.small": "ccb1b8bc106ee99f753849cab9b92bb4d9d1d5a0",
@@ -1767,7 +1758,10 @@
       "sizing.fixed-sizing.large": "d181b13484bee88a4c3bbf785e1caa5e96a2bc77",
       "sizing.fixed-sizing.x-large": "94da23267f15dce2a2dafa56cb34f9b2a0a01e60",
       "sizing.fixed-sizing.2x-large": "af8713223ab2b8cfd820a64675ceeef93c670372",
-      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9"
+      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9",
+      "spacing.fixed-spacing.small": "c6a5f0d8c9f26e35bccd8e525c823a13309f2768",
+      "spacing.fixed-spacing.medium": "4ed1c642e2c89851e6f1776562f3110d35e01919",
+      "spacing.fixed-spacing.large": "eaa9c10a6ad463fb224a1d022df8d1ebc9cf81d9"
     },
     "$figmaCollectionId": "VariableCollectionId:1972:338",
     "$figmaModeId": "1972:14",
@@ -1865,11 +1859,6 @@
       "font-size.x-large": "b2e60ed156ea4d790cc5d3874bebc3831b14f81f",
       "font-size.2x-large": "57c5fd3483f53e9216f2ef925d8c545694e504cf",
       "font-size.3x-large": "9de2b4e936207b93e555c10df80ebb615928072f",
-      "boolean.device.desktop": "82addb6489d5c73c0609d74af78a10ab7bc1f2ca",
-      "boolean.device.desktop-tablet": "7c42ad69f1fb25ee2584c0552b71b9ce7130b885",
-      "boolean.device.tablet": "8e99228277dcf0a3dcc5a1ed7b1b3aca7d6f9df4",
-      "boolean.device.tablet-mobile": "55fff311064ab4693923a2809c5f89f4bb2f06f9",
-      "boolean.device.mobile": "475a4ca565edcce9f863fc68ec8d8cd17d5964f9",
       "sizing.fixed-sizing.2x-small": "6b177c77e5183b534bb72dfab5f45ef5cd644810",
       "sizing.fixed-sizing.x-small": "029d81c94816d1fe1c7c62612458a755164bed01",
       "sizing.fixed-sizing.small": "ccb1b8bc106ee99f753849cab9b92bb4d9d1d5a0",
@@ -1877,7 +1866,10 @@
       "sizing.fixed-sizing.large": "d181b13484bee88a4c3bbf785e1caa5e96a2bc77",
       "sizing.fixed-sizing.x-large": "94da23267f15dce2a2dafa56cb34f9b2a0a01e60",
       "sizing.fixed-sizing.2x-large": "af8713223ab2b8cfd820a64675ceeef93c670372",
-      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9"
+      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9",
+      "spacing.fixed-spacing.small": "c6a5f0d8c9f26e35bccd8e525c823a13309f2768",
+      "spacing.fixed-spacing.medium": "4ed1c642e2c89851e6f1776562f3110d35e01919",
+      "spacing.fixed-spacing.large": "eaa9c10a6ad463fb224a1d022df8d1ebc9cf81d9"
     },
     "group": "Device"
   },
@@ -2399,11 +2391,6 @@
       "font-size.x-large": "b2e60ed156ea4d790cc5d3874bebc3831b14f81f",
       "font-size.2x-large": "57c5fd3483f53e9216f2ef925d8c545694e504cf",
       "font-size.3x-large": "9de2b4e936207b93e555c10df80ebb615928072f",
-      "boolean.device.desktop": "82addb6489d5c73c0609d74af78a10ab7bc1f2ca",
-      "boolean.device.desktop-tablet": "7c42ad69f1fb25ee2584c0552b71b9ce7130b885",
-      "boolean.device.tablet": "8e99228277dcf0a3dcc5a1ed7b1b3aca7d6f9df4",
-      "boolean.device.tablet-mobile": "55fff311064ab4693923a2809c5f89f4bb2f06f9",
-      "boolean.device.mobile": "475a4ca565edcce9f863fc68ec8d8cd17d5964f9",
       "sizing.fixed-sizing.2x-small": "6b177c77e5183b534bb72dfab5f45ef5cd644810",
       "sizing.fixed-sizing.x-small": "029d81c94816d1fe1c7c62612458a755164bed01",
       "sizing.fixed-sizing.small": "ccb1b8bc106ee99f753849cab9b92bb4d9d1d5a0",
@@ -2411,7 +2398,10 @@
       "sizing.fixed-sizing.large": "d181b13484bee88a4c3bbf785e1caa5e96a2bc77",
       "sizing.fixed-sizing.x-large": "94da23267f15dce2a2dafa56cb34f9b2a0a01e60",
       "sizing.fixed-sizing.2x-large": "af8713223ab2b8cfd820a64675ceeef93c670372",
-      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9"
+      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9",
+      "spacing.fixed-spacing.small": "c6a5f0d8c9f26e35bccd8e525c823a13309f2768",
+      "spacing.fixed-spacing.medium": "4ed1c642e2c89851e6f1776562f3110d35e01919",
+      "spacing.fixed-spacing.large": "eaa9c10a6ad463fb224a1d022df8d1ebc9cf81d9"
     },
     "group": "Device"
   }
