@@ -600,6 +600,7 @@
   --typography-heading-large: var(--font-weight-semibold) var(--font-size-2x-large)/var(--line-height-1) var(--font-family-source-sans-pro);
   --typography-heading-medium: var(--font-weight-semibold) var(--font-size-x-large)/var(--line-height-2) var(--font-family-source-sans-pro);
   --typography-heading-small: var(--font-weight-semibold) var(--font-size-large)/var(--line-height-3) var(--font-family-source-sans-pro);
+  --typography-heading-x-small: var(--font-weight-semibold) var(--font-size-medium)/var(--line-height-3) var(--font-family-source-sans-pro);
   --typography-subheading-large: var(--font-weight-regular) var(--font-size-2x-large)/var(--line-height-1) var(--font-family-source-sans-pro);
   --typography-subheading-medium: var(--font-weight-regular) var(--font-size-x-large)/var(--line-height-2) var(--font-family-source-sans-pro);
   --typography-subheading-small: var(--font-weight-regular) var(--font-size-large)/var(--line-height-3) var(--font-family-source-sans-pro);
