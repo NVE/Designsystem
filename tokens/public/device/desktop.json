@@ -57,6 +57,20 @@
         "$type": "spacing",
         "$value": "{spacing.48x}"
       }
+    },
+    "fixed-spacing": {
+      "small": {
+        "$type": "spacing",
+        "$value": "{dimension.4x}"
+      },
+      "medium": {
+        "$type": "spacing",
+        "$value": "{dimension.6x}"
+      },
+      "large": {
+        "$type": "spacing",
+        "$value": "{dimension.10x}"
+      }
     }
   },
   "sizing": {
