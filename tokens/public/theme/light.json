@@ -104,6 +104,11 @@
         "inverted": {
           "$type": "color",
           "$value": "{color-shades.functional.neutralgrey.000}"
+        },
+        "white": {
+          "$type": "color",
+          "$value": "{color-shades.functional.neutralgrey.000}",
+          "$description": "Fargen forblir hvit i darkmode"
         }
       },
       "border": {
