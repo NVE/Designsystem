@@ -2350,7 +2350,8 @@
       "typography.label.small": "S:44a4ab678664513d4ee53bf9db562612a268b297,",
       "typography.label.small-light": "S:33d3f0b3e8f5566b9eae17794e21d480b3d041ac,",
       "typography.label.x-small": "S:5f282cf9e157160c2d30b5a55220f344e5f597d5,",
-      "typography.label.x-small-light": "S:cf711c9da84aee5812a1d93cb1f3df63ab111d81,"
+      "typography.label.x-small-light": "S:cf711c9da84aee5812a1d93cb1f3df63ab111d81,",
+      "typography.heading.x-small": "S:d8641abae23b0a4459715e37e839a6e63b01578e,"
     },
     "selectedTokenSets": {
       "public/device/desktop": "enabled",
