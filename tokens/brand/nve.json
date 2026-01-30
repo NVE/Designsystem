@@ -67,6 +67,48 @@
         "$value": "#FF8083"
       }
     },
+    "accent": {
+      "100": {
+        "$type": "color",
+        "$value": "#FF999B"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#FF7075"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#FF4754"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#EE2B41"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#C6102E"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#9C1128"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#821729"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#621825"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#45171F"
+      },
+      "000": {
+        "$type": "color",
+        "$value": "#FFB2B4"
+      }
+    },
     "grey": {
       "100": {
         "$type": "color",
@@ -110,15 +152,15 @@
       },
       "900": {
         "$type": "color",
-        "$value": "#1B1C1E"
+        "$value": "#222325"
       },
       "950": {
         "$type": "color",
-        "$value": "#0c0d0e"
+        "$value": "#171a1c"
       },
       "999": {
         "$type": "color",
-        "$value": "#050505"
+        "$value": "#141414"
       },
       "000": {
         "$type": "color",
@@ -519,7 +561,7 @@
         },
         "950": {
           "$type": "color",
-          "$value": "#836721"
+          "$value": "#977726"
         },
         "999": {
           "$type": "color",

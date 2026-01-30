@@ -14,6 +14,16 @@
   --color-shades-brand-999: #0b1128;
   --color-shades-brand-000: #fffffff;
   --color-shades-brand-050: #d6deff;
+  --color-shades-accent-100: #adbafb;
+  --color-shades-accent-200: #91a1f3;
+  --color-shades-accent-300: #768adb;
+  --color-shades-accent-400: #6079d2;
+  --color-shades-accent-500: #4461ca;
+  --color-shades-accent-600: #2f49a7;
+  --color-shades-accent-700: #213273;
+  --color-shades-accent-800: #1e2e66;
+  --color-shades-accent-900: #19254c;
+  --color-shades-accent-000: #bdc8ff;
   --color-shades-grey-100: #edeff3;
   --color-shades-grey-150: #e0e4eb;
   --color-shades-grey-200: #c2cad6;
@@ -120,7 +130,7 @@
   --color-shades-functional-yellow-800: #bf9722;
   --color-shades-functional-yellow-850: #b08c21;
   --color-shades-functional-yellow-900: #a88324;
-  --color-shades-functional-yellow-950: #836721;
+  --color-shades-functional-yellow-950: #977726;
   --color-shades-functional-yellow-999: #7a5f29;
   --color-shades-functional-yellow-000: #fff9e9;
   --color-shades-functional-yellow-050: #fff5d9;
@@ -243,11 +253,11 @@
   --color-brand-background-secondary: var(--color-shades-brand-400);
   --color-brand-background-tertiary: var(--color-shades-brand-150);
   --color-brand-background-quaternary: var(--color-shades-brand-700);
-  --color-brand-foreground-primary: var(--color-shades-brand-500);
+  --color-brand-foreground-primary: var(--color-shades-accent-500);
+  --color-brand-foreground-secondary: var(--color-shades-accent-700); /** was 500 */
   --color-brand-foreground-primary-on-bg: var(--color-shades-brand-000);
-  --color-brand-foreground-secondary: var(--color-shades-brand-700); /** was 500 */
   --color-brand-foreground-secondary-on-bg: var(--color-shades-brand-999);
-  --color-brand-foreground-tertiary-on-bg: var(--color-shades-brand-200);
+  --color-brand-foreground-tertiary-on-bg: var(--color-shades-accent-400);
   --color-brand-border-primary: var(--color-shades-brand-500);
   --color-brand-border-secondary: var(--color-shades-brand-600);
   --color-brand-border-tertiary: var(--color-shades-brand-700);
@@ -658,6 +668,16 @@
   --color-shades-brand-999: #0b1128;
   --color-shades-brand-000: #fffffff;
   --color-shades-brand-050: #d6deff;
+  --color-shades-accent-100: #adbafb;
+  --color-shades-accent-200: #91a1f3;
+  --color-shades-accent-300: #768adb;
+  --color-shades-accent-400: #6079d2;
+  --color-shades-accent-500: #4461ca;
+  --color-shades-accent-600: #2f49a7;
+  --color-shades-accent-700: #213273;
+  --color-shades-accent-800: #1e2e66;
+  --color-shades-accent-900: #19254c;
+  --color-shades-accent-000: #bdc8ff;
   --color-shades-grey-100: #edeff3;
   --color-shades-grey-150: #e0e4eb;
   --color-shades-grey-200: #c2cad6;
@@ -764,7 +784,7 @@
   --color-shades-functional-yellow-800: #bf9722;
   --color-shades-functional-yellow-850: #b08c21;
   --color-shades-functional-yellow-900: #a88324;
-  --color-shades-functional-yellow-950: #836721;
+  --color-shades-functional-yellow-950: #977726;
   --color-shades-functional-yellow-999: #7a5f29;
   --color-shades-functional-yellow-000: #fff9e9;
   --color-shades-functional-yellow-050: #fff5d9;
@@ -887,11 +907,11 @@
   --color-brand-background-secondary: var(--color-shades-brand-250);
   --color-brand-background-tertiary: var(--color-shades-brand-800);
   --color-brand-background-quaternary: var(--color-shades-brand-200);
-  --color-brand-foreground-primary: var(--color-shades-brand-150);
-  --color-brand-foreground-secondary: var(--color-shades-brand-250); /** was 300 */
+  --color-brand-foreground-primary: var(--color-shades-accent-200);
+  --color-brand-foreground-secondary: var(--color-shades-accent-300); /** was 300 */
   --color-brand-foreground-primary-on-bg: var(--color-shades-brand-000);
   --color-brand-foreground-secondary-on-bg: var(--color-shades-grey-000);
-  --color-brand-foreground-tertiary-on-bg: var(--color-shades-brand-200);
+  --color-brand-foreground-tertiary-on-bg: var(--color-shades-accent-400);
   --color-brand-border-primary: var(--color-shades-brand-100);
   --color-brand-border-secondary: var(--color-shades-brand-200);
   --color-brand-border-tertiary: var(--color-shades-brand-300); /** was 300 */
