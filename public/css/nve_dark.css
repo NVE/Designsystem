@@ -278,6 +278,7 @@
   --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-200);
   --color-neutrals-foreground-faint: var(--color-shades-functional-neutralgrey-800);
   --color-neutrals-foreground-inverted: var(--color-shades-functional-neutralgrey-999);
+  --color-neutrals-foreground-white: var(--color-shades-functional-neutralgrey-000); /** Fargen forblir hvit i darkmode */
   --color-neutrals-border-default: var(--color-shades-grey-300);
   --color-neutrals-border-emphasized: var(--color-shades-grey-000);
   --color-neutrals-border-mute: var(--color-shades-grey-600);
