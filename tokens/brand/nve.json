@@ -152,15 +152,15 @@
       },
       "900": {
         "$type": "color",
-        "$value": "#1B1C1E"
+        "$value": "#222325"
       },
       "950": {
         "$type": "color",
-        "$value": "#0c0d0e"
+        "$value": "#171a1c"
       },
       "999": {
         "$type": "color",
-        "$value": "#050505"
+        "$value": "#141414"
       },
       "000": {
         "$type": "color",
@@ -561,7 +561,7 @@
         },
         "950": {
           "$type": "color",
-          "$value": "#836721"
+          "$value": "#977726"
         },
         "999": {
           "$type": "color",
