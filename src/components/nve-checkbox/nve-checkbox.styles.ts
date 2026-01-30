@@ -24,7 +24,7 @@ export default css`
   }
 
   :host([data-invalid])::part(control) {
-    border-color: var(--color-feedback-background-emphasized-error);
+    border-color: var(--color-feedback-border-emphasized-error);
   }
   :host([data-invalid])::part(control control--checked),
   :host([data-user-invalid])::part(control control--indeterminate) {
@@ -32,7 +32,7 @@ export default css`
   }
 
   :host(:not([disabled]):hover)::part(control) {
-    border-color: var(--color-neutrals-foreground-subtle, #006b99) !important;
+    border-color: var(--color-neutrals-foreground-subtle) !important;
   }
 
   sl-icon {

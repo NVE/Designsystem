@@ -1,5 +1,3 @@
 {
-    "recommendations": [
-        "vivaxy.vscode-conventional-commits"
-    ]
+  "recommendations": ["vivaxy.vscode-conventional-commits", "runem.lit-plugin"]
 }

@@ -11,7 +11,6 @@ export default css`
     padding: var(--spacing-medium) var(--spacing-large) var(--spacing-medium)
       calc(var(--spacing-large) - var(--left-stroke-width));
     border-radius: var(--border-radius-small);
-    color: var(--color-feedback-foreground-default-info);
     font: var(--typography-body-medium);
     border-left: var(--left-stroke-width) solid transparent;
   }
@@ -28,7 +27,9 @@ export default css`
     border: none;
     cursor: pointer;
     margin-left: var(--spacing-x-small);
-    transition: background 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
     nve-icon {
       --icon-size: var(--font-size-large);
     }
@@ -57,18 +58,23 @@ export default css`
   /*variants */
   .alert--primary {
     background-color: var(--color-feedback-background-default-info);
+    color: var(--color-feedback-foreground-on-bg-subtle-info, #142843);
     .alert__button:hover {
       background: var(--color-feedback-background-subtle-info);
     }
   }
   .alert--danger {
     background-color: var(--color-feedback-background-default-error);
+    color: var(--color-feedback-foreground-on-bg-subtle-error, #581d1d);
+
     .alert__button:hover {
       background: var(--color-feedback-background-subtle-error);
     }
   }
   .alert--success {
     background-color: var(--color-feedback-background-default-success);
+    color: var(--color-feedback-foreground-on-bg-subtle-success, #122b21);
+
     .alert__button:hover {
       background: var(--color-feedback-background-subtle-success);
     }
@@ -76,12 +82,15 @@ export default css`
 
   .alert--neutral {
     background-color: var(--color-feedback-background-default-neutral);
+    color: var(--color-feedback-foreground-on-bg-subtle-neutral, #0d0d0e);
     .alert__button:hover {
       background: var(--color-feedback-background-subtle-neutral);
     }
   }
   .alert--warning {
     background-color: var(--color-feedback-background-default-warning);
+    color: var(--color-feedback-foreground-on-bg-subtle-warning, #54301c);
+
     .alert__button:hover {
       background: var(--color-feedback-background-subtle-warning);
     }
@@ -89,46 +98,55 @@ export default css`
 
   /* Styling for høyere metningsgrad */
 
-  .alert--emphasized {
-    color: var(--color-feedback-foreground-emphasized-neutral);
-  }
-
   .alert--emphasized.alert--primary {
     background-color: var(--color-feedback-background-emphasized-info);
+    color: var(--color-feedback-foreground-on-bg-emphasized-info, #fff);
+
     .alert__button:hover {
       background: var(--color-feedback-background-subtle-info);
-      color: var(--color-feedback-background-emphasized-info);
+      color: var(--color-feedback-foreground-on-bg-subtle-info);
     }
   }
   .alert--emphasized.alert--danger {
     background-color: var(--color-feedback-background-emphasized-error);
+    color: var(--color-feedback-foreground-on-bg-emphasized-error, #fff);
+
     .alert__button:hover {
       background: var(--color-feedback-background-subtle-error);
-      color: var(--color-feedback-background-emphasized-error);
+      color: var(--color-feedback-foreground-on-bg-subtle-error);
     }
   }
   .alert--emphasized.alert--success {
     background-color: var(--color-feedback-background-emphasized-success);
+    color: var(--color-feedback-foreground-on-bg-emphasized-success, #fff);
+
     .alert__button:hover {
-      background: var(--color-feedback-background-subtle-success);
-      color: var(--color-feedback-background-emphasized-success);
+      background: var(--color-feedback-background-default-success);
+      color: var(--color-feedback-foreground-on-bg-subtle-success,);
     }
   }
   .alert--emphasized.alert--neutral {
     background-color: var(--color-feedback-background-emphasized-neutral);
+    color: var(--color-feedback-foreground-on-bg-emphasized-neutral, #fff);
+
     .alert__button:hover {
       background: var(--color-feedback-background-subtle-neutral);
-      color: var(--color-feedback-background-emphasized-neutral);
+      color: var(--color-feedback-foreground-on-bg-subtle-neutral);
     }
   }
   .alert--emphasized.alert--warning {
-    color: var(--color-feedback-foreground-emphasized-warning);
+    color: var(--color-feedback-foreground-on-bg-emphasized-warning, #0d0d0e);
+
     background-color: var(--color-feedback-background-emphasized-warning);
     .alert__icon {
       color: var(--color-feedback-foreground-emphasized-warning) !important;
     }
     .alert__button {
       stroke: var(--color-feedback-foreground-emphasized-warning) !important;
+    }
+    .alert__button:hover {
+      background: var(--color-feedback-background-subtle-warning);
+      color: var(--color-feedback-foreground-on-bg-subtle-warning);
     }
   }
 
@@ -137,35 +155,35 @@ export default css`
     border-left: 6px solid;
   }
   .alert--left-stroke.alert--primary {
-    border-color: var(--color-feedback-background-emphasized-info);
+    border-color: var(--color-feedback-border-emphasized-info);
   }
   .alert--left-stroke.alert--danger {
-    border-color: var(--color-feedback-background-emphasized-error);
+    border-color: var(--color-feedback-border-emphasized-error);
   }
   .alert--left-stroke.alert--success {
-    border-color: var(--color-feedback-background-emphasized-success);
+    border-color: var(--color-feedback-border-emphasized-succ);
   }
   .alert--left-stroke.alert--neutral {
-    border-color: var(--color-feedback-foreground-default-neutral);
+    border-color: var(--color-feedback-border-emphasized-neutral);
   }
   .alert--left-stroke.alert--warning {
-    border-color: var(--color-feedback-background-emphasized-warning);
+    border-color: var(--color-feedback-border-emphasized-warning);
   }
 
   /* leftStroke and emphasized */
   .alert--left-stroke.alert--emphasized.alert--primary {
-    border-color: var(--color-feedback-background-default-info);
+    border-color: var(--color-feedback-border-subtle-info);
   }
   .alert--left-stroke.alert--emphasized.alert--danger {
-    border-color: var(--color-feedback-background-default-error);
+    border-color: var(--color-feedback-border-subtle-error);
   }
   .alert--left-stroke.alert--emphasized.alert--success {
-    border-color: var(--color-feedback-background-subtle-success);
+    border-color: var(--color-feedback-border-subtle-success);
   }
   .alert--left-stroke.alert--emphasized.alert--neutral {
-    border-color: var(--color-feedback-background-default-neutral);
+    border-color: var(--color-feedback-border-subtle-neutral);
   }
   .alert--left-stroke.alert--emphasized.alert--warning {
-    border-color: var(--color-feedback-background-default-warning);
+    border-color: var(--color-feedback-border-subtle-warning);
   }
 `;
