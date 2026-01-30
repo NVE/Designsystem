@@ -13,7 +13,6 @@ export default css`
     padding: var(--spacing-large);
     gap: var(--spacing-small);
     align-self: stretch;
-    color: var(--color-neutrals-foreground-primary, #0d0d0e);
     opacity: 1;
     transition: opacity 0.3s 0s;
   }
@@ -55,7 +54,7 @@ export default css`
     justify-content: center;
     align-items: center;
     border: none;
-    background: none;
+    background-color: none;
     width: 28px;
     height: 28px;
     font-size: unset;
@@ -70,44 +69,42 @@ export default css`
     opacity: 0;
   }
 
-  nve-icon::part(icon) {
-    display: unset;
-    font-size: var(--font-size-medium);
-    line-height: 1;
-  }
-
   /** Varianter */
 
   .message-card--neutral {
-    background: var(--color-neutrals-background-primary, #fff);
+    background-color: var(--color-neutrals-background-primary);
+    color: var(--color-neutrals-foreground-primary);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
   }
 
   .message-card--danger {
-    background: var(--color-feedback-background-default-error);
+    background-color: var(--color-feedback-background-default-error);
+    color: var(--color-feedback-foreground-on-bg-subtle-error);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
   }
 
   .message-card--warning {
-    background: var(--color-feedback-background-default-warning);
+    background-color: var(--color-feedback-background-default-warning);
+    color: var(--color-feedback-foreground-on-bg-subtle-warning);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
   }
 
   .message-card--success {
-    background: var(--color-feedback-background-default-success);
+    background-color: var(--color-feedback-background-default-success);
+    color: var(--color-feedback-foreground-on-bg-subtle-success);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
   }
 
   .message-card--primary {
-    background: var(--color-feedback-background-subtle-info);
+    background-color: var(--color-feedback-background-subtle-info);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
@@ -116,15 +113,15 @@ export default css`
   /** Sterkere farger */
 
   :host([saturation='emphasized']) .message-card--neutral {
-    background: var(--color-neutrals-background-secondary);
+    background-color: var(--color-neutrals-background-secondary);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
   }
 
   :host([saturation='emphasized']) .message-card--danger {
-    color: var(--color-feedback-foreground-emphasized-error);
-    background: var(--color-feedback-background-emphasized-error);
+    color: var(--color-feedback-foreground-on-bg-emphasized-error);
+    background-color: var(--color-feedback-background-emphasized-error);
     .message-card__close-btn:hover {
       background-color: var(--color-feedback-background-default-error);
       color: var(--color-neutrals-foreground-primary);
@@ -132,16 +129,16 @@ export default css`
   }
 
   :host([saturation='emphasized']) .message-card--warning {
-    color: var(--color-feedback-foreground-emphasized-warning);
-    background: var(--color-feedback-background-emphasized-warning);
+    color: var(--color-feedback-foreground-on-bg-emphasized-warning);
+    background-color: var(--color-feedback-background-emphasized-warning);
     .message-card__close-btn:hover {
       background-color: var(--color-feedback-background-default-warning);
     }
   }
 
   :host([saturation='emphasized']) .message-card--success {
-    color: var(--color-feedback-foreground-emphasized-success);
-    background: var(--color-feedback-background-emphasized-success);
+    color: var(--color-feedback-foreground-on-bg-emphasized-success);
+    background-color: var(--color-feedback-background-emphasized-success);
     .message-card__close-btn:hover {
       background-color: var(--color-feedback-background-default-success);
       color: var(--color-neutrals-foreground-primary);
@@ -149,8 +146,8 @@ export default css`
   }
 
   :host([saturation='emphasized']) .message-card--primary {
-    color: var(--color-feedback-foreground-emphasized-info);
-    background: var(--color-feedback-background-emphasized-info);
+    color: var(--color-feedback-foreground-on-bg-emphasized-info);
+    background-color: var(--color-feedback-background-emphasized-info);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
