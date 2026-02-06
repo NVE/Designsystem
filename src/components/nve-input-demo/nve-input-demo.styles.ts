@@ -72,6 +72,7 @@ export default css`
     gap: var(--spacing-x-small);
   }
 
+  /* endre til input[aria-invalid="true"]*/
   .input__error {
     color: var(--feedback-background-emphasized-error);
     font: var(--body-small);

@@ -1,10 +1,9 @@
 import { html, LitElement } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, query, state } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-radio-demo.styles';
 import { classMap } from 'lit/directives/class-map.js';
 import '../nve-label/nve-label.component';
-import { ifDefined } from 'lit/directives/if-defined.js';
 let id = 0;
 @customElement('nve-radio-demo')
 export default class NveRadioDemo extends LitElement implements INveComponent {
@@ -23,14 +22,23 @@ export default class NveRadioDemo extends LitElement implements INveComponent {
   @property() size: 'small' | 'medium' | 'large' = 'medium';
   @property({ type: Boolean }) disabled = false;
   @property({ type: String }) label = '';
+  @property({ type: Number, reflect: true }) tabIndex = 0;
   @property() name = '';
   @property({ type: String }) id = '';
-  @property({ type: Boolean }) error = false;
+  @property({ type: Boolean }) invalid = false; //TODO: dette kanskje burde vaere noe data-invalid eller noes
   /** @internal */
-  private readonly componentId = `checkbox-${++id}`;
-
+  private readonly componentId = `radio-${++id}`; // TODO: hvor skal vi sette den
+  @query('input') input!: HTMLInputElement;
   constructor() {
     super();
+    // Delegate focus from host to input
+    this.addEventListener('click', this.handleHostClick);
+  }
+
+  private handleHostClick() {
+    if (!this.disabled) {
+      this.input?.click();
+    }
   }
 
   connectedCallback() {
@@ -49,29 +57,45 @@ export default class NveRadioDemo extends LitElement implements INveComponent {
     }
   }
 
-  /*private onChange(e: Event) {
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('click', this.handleHostClick);
+  }
+
+  private handleChange(e: Event) {
     const input = e.target as HTMLInputElement;
     this.checked = input.checked;
-    this.dispatchEvent(new CustomEvent('change', { detail: { value: this.value } }));
-  }*/
+  }
+
+  /** Public method to focus the radio */
+  focus(options?: FocusOptions) {
+    super.focus(options);
+  }
+
   render() {
     const classes = {
       radio: true,
       [`radio--${this.size}`]: true,
       'radio--disabled': this.disabled,
-      'radio--error': this.error,
+      'radio--invalid': this.invalid,
     };
+    //TODO: should i keep input inside the label or otuside?
     return html`
-      <div class=${classMap(classes)}>
+      <label class=${classMap(classes)}>
         <input
+          class="radio__input"
           type="radio"
           id=${this.id || this.componentId}
+          .checked=${this.checked}
           value=${this.label}
           name="option"
-          ?disabled=${ifDefined(this.disabled)}
+          ?disabled=${this.disabled}
+          tabindex="-1"
+          @change=${this.handleChange}
         />
-        <label class=${classMap(classes)} for=${this.id || this.componentId}> ${this.label} </label>
-      </div>
+        <div class="radio__circle"></div>
+        ${this.label}
+      </label>
     `;
   }
 }

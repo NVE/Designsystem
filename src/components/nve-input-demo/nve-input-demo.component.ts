@@ -60,10 +60,10 @@ export default class NveInputDemo extends LitElement implements INveComponent {
   /** Label-tekst for inputfeltet */
   @property({ type: String }) label = '';
 
-  /** Skjuler label visuelt, men beholder den for skjermlesere */
+  /** Skjuler label visuelt, men beholder den for skjermlesere. Jeg tror ikke vi burde skjule label ever */
   @property({ type: Boolean }) hideLabel = false;
   /** Tooltip-tekst for label */
-  @property({ type: String }) labelTooltip = '';
+  @property({ type: String }) tooltip = '';
   /** Verdi i inputfeltet */
   @property({ type: String }) value: string = '';
   @property({ type: String }) testId: string | undefined = undefined;
@@ -105,7 +105,7 @@ export default class NveInputDemo extends LitElement implements INveComponent {
    */
   @property() inputmode: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url' = 'text';
   /** Feilmelding som vises ved valideringsfeil. Hvis den er satt blir input-felt ugyldig og feil melding vises. Burde ikke brukes hvis man bruker validate-metoden */
-  @property({ type: String, reflect: true }) errorMessage = '';
+  @property({ type: String, reflect: true }) errorMessage: string | undefined = undefined;
   /** Valideringsregler for inputfeltet. Bruker InputValidation modellen */
   @property({ type: Array }) validation: InputValidation[] = [];
   /** Om validering skal utføres ved blur (når feltet mister fokus). Krever regler i validation arrayet */
@@ -312,7 +312,7 @@ export default class NveInputDemo extends LitElement implements INveComponent {
       <div class="input__container" part="input-container">
         <label for=${this.id} class=${classMap({ label: true, 'label--hidden': this.hideLabel })} class="label">
           <nve-label as="span" value=${this.label}>
-            ${this.labelTooltip ? html`<div slot="tooltip">${unsafeHTML(this.labelTooltip)}</div>` : nothing}
+            ${this.tooltip ? html`<div slot="tooltip">${unsafeHTML(this.tooltip)}</div>` : nothing}
           </nve-label>
           <span class="label__required-text">* ${this.requiredLabel ? html`${this.requiredLabel}` : nothing}</span>
         </label>
