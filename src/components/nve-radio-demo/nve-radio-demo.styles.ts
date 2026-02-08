@@ -2,7 +2,7 @@ import { css } from 'lit';
 
 export default css`
   :host {
-    --radio-size: 18px;
+    --size: 18px;
   }
   .radio {
     display: flex;
@@ -15,15 +15,15 @@ export default css`
   }
 
   .radio--medium {
-    --radio-size: 18px;
+    --size: 18px;
   }
 
   .radio--small {
-    --radio-size: 14px;
+    --size: 14px;
   }
 
   .radio--large {
-    --radio-size: 22px;
+    --size: 22px;
   }
 
   .radio__input {
@@ -35,8 +35,8 @@ export default css`
   }
 
   .radio__circle {
-    width: var(--radio-size);
-    height: var(--radio-size);
+    width: var(--size);
+    height: var(--size);
     border: 2px solid var(--border-color);
     border-radius: 50%;
     box-sizing: border-box;

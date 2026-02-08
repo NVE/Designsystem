@@ -4,6 +4,7 @@ import { INveComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-radio-demo.styles';
 import { classMap } from 'lit/directives/class-map.js';
 import '../nve-label/nve-label.component';
+import { ifDefined } from 'lit/directives/if-defined.js';
 let id = 0;
 @customElement('nve-radio-demo')
 export default class NveRadioDemo extends LitElement implements INveComponent {
@@ -81,7 +82,7 @@ export default class NveRadioDemo extends LitElement implements INveComponent {
     };
     //TODO: should i keep input inside the label or otuside?
     return html`
-      <label class=${classMap(classes)}>
+      <label class=${classMap(classes)} testId=${ifDefined(this.testId)}>
         <input
           class="radio__input"
           type="radio"

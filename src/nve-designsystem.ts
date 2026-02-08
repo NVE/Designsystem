@@ -1,5 +1,6 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av npm run add-component */
+  
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
@@ -9,7 +10,9 @@ export { default as NveCarousel } from './components/nve-carousel/nve-carousel.c
 export { default as NveCarouselItem } from './components/nve-carousel-item/nve-carousel-item.component';
 export { default as NveCarouselThumbnail } from './components/nve-carousel-thumbnail/nve-carousel-thumbnail.component';
 export { default as NveCheckbox } from './components/nve-checkbox/nve-checkbox.component';
+export { default as NveCheckboxDemo } from './components/nve-checkbox-demo/nve-checkbox-demo.component';
 export { default as NveCheckboxGroup } from './components/nve-checkbox-group/nve-checkbox-group.component';
+export { default as NveCheckboxGroupDemo } from './components/nve-checkbox-group-demo/nve-checkbox-group-demo.component';
 export { default as NveCombobox } from './components/nve-combobox/nve-combobox.component';
 export { default as NveDarkmodeSwitch } from './components/nve-darkmode-switch/nve-darkmode-switch.component';
 export { default as NveDialog } from './components/nve-dialog/nve-dialog.component';
@@ -46,3 +49,4 @@ export { default as NveTag } from './components/nve-tag/nve-tag.component';
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
 export { default as NveWarningLevel } from './components/nve-warning-level/nve-warning-level.component';
+  
