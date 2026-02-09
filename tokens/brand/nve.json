@@ -1131,7 +1131,7 @@
     }
   },
   "font-family": {
-    "primaryFamily": {
+    "primary-family": {
       "$type": "fontFamilies",
       "$value": "Source Sans 3"
     }
