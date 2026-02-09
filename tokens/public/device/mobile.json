@@ -185,7 +185,7 @@
     },
     "3x-large": {
       "$type": "fontSizes",
-      "$value": "{dimension.11x}",
+      "$value": "{dimension.10x}",
       "$description": "40 px"
     }
   },
