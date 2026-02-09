@@ -45,13 +45,13 @@
   --color-shades-grey-999: #0d0d0e;
   --color-shades-grey-000: #ffffff;
   --color-shades-grey-050: #f6f7f9;
-  --color-shades-data-color-a-100: #c7cfef;
-  --color-shades-data-color-a-150: #90a0e0;
-  --color-shades-data-color-a-250: #788bd9;
-  --color-shades-data-color-a-300: #5870d0;
-  --color-shades-data-color-a-600: #2e47a3;
-  --color-shades-data-color-a-800: #223477;
-  --color-shades-data-color-a-950: #141e48;
+  --color-shades-data-color-a-100: #b0bbe8;
+  --color-shades-data-color-a-150: #8799de;
+  --color-shades-data-color-a-250: #7084d7;
+  --color-shades-data-color-a-300: #6077d2;
+  --color-shades-data-color-a-600: #3752b3;
+  --color-shades-data-color-a-800: #283a81;
+  --color-shades-data-color-a-950: #121936;
   --color-shades-data-color-a-000: #dfe4f6;
   --color-shades-data-color-a-300-005: rgba(88, 112, 208, 0.02);
   --color-shades-data-color-a-300-015: rgba(88, 112, 208, 0.15);
@@ -632,7 +632,6 @@
   --font-size-2x-small: var(--dimension-3-5x); /** 12 px */
   --typography-body-x-small: var(--font-weight-regular) var(--font-size-2x-small)/var(--line-height-5) var(--font-family-source-sans-pro);
   --typography-body-x-small-underline: var(--font-weight-regular) var(--font-size-2x-small)/var(--line-height-5) var(--font-family-source-sans-pro);
-  --font-size-medium: var(--dimension-5x); /** 18 px */
   --typography-body-compact-large-compact: var(--font-weight-regular) var(--font-size-medium)/var(--line-height-1) var(--font-family-source-sans-pro);
   --typography-body-compact-large-underline-compact: var(--font-weight-regular) var(--font-size-medium)/var(--line-height-1) var(--font-family-source-sans-pro);
   --typography-body-compact-medium-compact: var(--font-weight-regular) var(--font-size-small)/var(--line-height-1) var(--font-family-source-sans-pro);
@@ -654,6 +653,7 @@
   --typography-label-x-small-light: var(--font-weight-regular) var(--font-size-2x-small)/var(--line-height-6) var(--font-family-source-sans-pro);
   --font-size-x-small: var(--dimension-4x); /** 14 px */
   --font-size-small: var(--dimension-4-5x); /** 16 px */
+  --font-size-medium: var(--dimension-5x); /** 18 px */
   --font-size-large: var(--dimension-6x); /** 20 px */
   --font-size-x-large: var(--dimension-8x); /** 24 px */
   --font-size-2x-large: var(--dimension-10x); /** 32 px */

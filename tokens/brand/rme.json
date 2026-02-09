@@ -174,31 +174,31 @@
       "color-a": {
         "100": {
           "$type": "color",
-          "$value": "#c7cfef"
+          "$value": "#B0BBE8"
         },
         "150": {
           "$type": "color",
-          "$value": "#90a0e0"
+          "$value": "#8799DE"
         },
         "250": {
           "$type": "color",
-          "$value": "#788bd9"
+          "$value": "#7084D7"
         },
         "300": {
           "$type": "color",
-          "$value": "#5870D0"
+          "$value": "#6077D2"
         },
         "600": {
           "$type": "color",
-          "$value": "#2e47a3"
+          "$value": "#3752B3"
         },
         "800": {
           "$type": "color",
-          "$value": "#223477"
+          "$value": "#283A81"
         },
         "950": {
           "$type": "color",
-          "$value": "#141e48"
+          "$value": "#121936"
         },
         "300-005": {
           "$type": "color",
