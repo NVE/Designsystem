@@ -439,8 +439,6 @@
       "border-width.default": "26ddecf12bb0dbbc8d66c6ea018b4ebc9aeb7c53",
       "border-width.strong": "3cda4aa07a9f4d7b16f8b9a16b44727bde82475a",
       "border-width.stronger": "652a9c89bd0b9a2e389287b2928d6019de400eb7",
-      "font-weight.regular": "5931d66794fafc70684bdb65a70c08a1edbc9ce8",
-      "font-weight.semibold": "7be2e65e7c1242371cd25b4686e65b0fd23c7cf7",
       "sizing.24x": "2dd470c2f2b038fac57bfe2680795a2ab5c08701",
       "sizing.32x": "37487f561b853156cf6fd15d5e6900d23817ac3d",
       "sizing.40x": "fbd56e45c64451a35b33a60fb96eee20e63f8dae",
@@ -488,7 +486,10 @@
       "sizing.2439x": "24d437c972423855213ac5330fe63343b97f8b3a",
       "sizing.2440x": "55181fe068bdaf6d7bd5d218ab514203821569b4",
       "sizing.2560x": "5eaae51943b44038ad6519cc567dacdb147872a9",
-      "sizing.9999x": "a55e41be3866a881c38fa9a2948ee71fb9006d39"
+      "sizing.9999x": "a55e41be3866a881c38fa9a2948ee71fb9006d39",
+      "font-family.source-sans-3": "9ee630b6ad58c9eda976c9c61c1e1e34bef2bf85",
+      "font-weight.regular": "5931d66794fafc70684bdb65a70c08a1edbc9ce8",
+      "font-weight.semibold": "7be2e65e7c1242371cd25b4686e65b0fd23c7cf7"
     },
     "group": "Brand"
   },
@@ -808,8 +809,6 @@
       "border-width.default": "26ddecf12bb0dbbc8d66c6ea018b4ebc9aeb7c53",
       "border-width.strong": "3cda4aa07a9f4d7b16f8b9a16b44727bde82475a",
       "border-width.stronger": "652a9c89bd0b9a2e389287b2928d6019de400eb7",
-      "font-weight.regular": "5931d66794fafc70684bdb65a70c08a1edbc9ce8",
-      "font-weight.semibold": "7be2e65e7c1242371cd25b4686e65b0fd23c7cf7",
       "sizing.24x": "2dd470c2f2b038fac57bfe2680795a2ab5c08701",
       "sizing.32x": "37487f561b853156cf6fd15d5e6900d23817ac3d",
       "sizing.40x": "fbd56e45c64451a35b33a60fb96eee20e63f8dae",
@@ -857,7 +856,10 @@
       "sizing.2439x": "24d437c972423855213ac5330fe63343b97f8b3a",
       "sizing.2440x": "55181fe068bdaf6d7bd5d218ab514203821569b4",
       "sizing.2560x": "5eaae51943b44038ad6519cc567dacdb147872a9",
-      "sizing.9999x": "a55e41be3866a881c38fa9a2948ee71fb9006d39"
+      "sizing.9999x": "a55e41be3866a881c38fa9a2948ee71fb9006d39",
+      "font-family.source-sans-3": "9ee630b6ad58c9eda976c9c61c1e1e34bef2bf85",
+      "font-weight.regular": "5931d66794fafc70684bdb65a70c08a1edbc9ce8",
+      "font-weight.semibold": "7be2e65e7c1242371cd25b4686e65b0fd23c7cf7"
     },
     "group": "Brand"
   },
@@ -2666,8 +2668,6 @@
       "border-width.default": "26ddecf12bb0dbbc8d66c6ea018b4ebc9aeb7c53",
       "border-width.strong": "3cda4aa07a9f4d7b16f8b9a16b44727bde82475a",
       "border-width.stronger": "652a9c89bd0b9a2e389287b2928d6019de400eb7",
-      "font-weight.regular": "5931d66794fafc70684bdb65a70c08a1edbc9ce8",
-      "font-weight.semibold": "7be2e65e7c1242371cd25b4686e65b0fd23c7cf7",
       "sizing.24x": "2dd470c2f2b038fac57bfe2680795a2ab5c08701",
       "sizing.32x": "37487f561b853156cf6fd15d5e6900d23817ac3d",
       "sizing.40x": "fbd56e45c64451a35b33a60fb96eee20e63f8dae",
@@ -2715,7 +2715,10 @@
       "sizing.2439x": "24d437c972423855213ac5330fe63343b97f8b3a",
       "sizing.2440x": "55181fe068bdaf6d7bd5d218ab514203821569b4",
       "sizing.2560x": "5eaae51943b44038ad6519cc567dacdb147872a9",
-      "sizing.9999x": "a55e41be3866a881c38fa9a2948ee71fb9006d39"
+      "sizing.9999x": "a55e41be3866a881c38fa9a2948ee71fb9006d39",
+      "font-family.source-sans-3": "9ee630b6ad58c9eda976c9c61c1e1e34bef2bf85",
+      "font-weight.regular": "5931d66794fafc70684bdb65a70c08a1edbc9ce8",
+      "font-weight.semibold": "7be2e65e7c1242371cd25b4686e65b0fd23c7cf7"
     },
     "group": "Brand"
   },

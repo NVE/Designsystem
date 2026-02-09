@@ -1131,9 +1131,9 @@
     }
   },
   "font-family": {
-    "source-sans-pro": {
+    "source-sans-3": {
       "$type": "fontFamilies",
-      "$value": "Source Sans Pro"
+      "$value": "Source Sans 3"
     }
   },
   "line-height": {
@@ -1321,7 +1321,7 @@
     },
     "semibold": {
       "$type": "fontWeights",
-      "$value": "SemiBold"
+      "$value": "Semibold"
     }
   },
   "box-shadow": {
