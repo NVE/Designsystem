@@ -186,7 +186,7 @@
     "3x-large": {
       "$type": "fontSizes",
       "$value": "{dimension.8x}",
-      "$description": "40 px"
+      "$description": "32 px"
     }
   },
   "boolean": {
