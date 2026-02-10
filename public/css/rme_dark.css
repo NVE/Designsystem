@@ -275,7 +275,7 @@
   --color-neutrals-background-tertiary-dim: var(--color-shades-grey-700);
   --color-neutrals-foreground-primary: var(--color-shades-grey-000);
   --color-neutrals-foreground-secondary: var(--color-shades-functional-neutralgrey-200);
-  --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-500);
+  --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-400);
   --color-neutrals-foreground-faint: var(--color-shades-functional-neutralgrey-800);
   --color-neutrals-foreground-inverted: var(--color-shades-functional-neutralgrey-999);
   --color-neutrals-border-default: var(--color-shades-grey-300);
