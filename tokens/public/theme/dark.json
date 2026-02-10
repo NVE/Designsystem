@@ -93,11 +93,11 @@
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.functional.neutralgrey.100}"
+          "$value": "{color-shades.functional.neutralgrey.200}"
         },
         "subtle": {
           "$type": "color",
-          "$value": "{color-shades.functional.neutralgrey.200}"
+          "$value": "{color-shades.functional.neutralgrey.500}"
         },
         "faint": {
           "$type": "color",
