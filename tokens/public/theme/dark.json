@@ -83,7 +83,7 @@
         },
         "tertiary-dim": {
           "$type": "color",
-          "$value": "{color-shades.grey.700}"
+          "$value": "{color-shades.grey.800}"
         }
       },
       "foreground": {
