@@ -929,7 +929,7 @@
   --color-neutrals-border-default: var(--color-shades-grey-300);
   --color-neutrals-border-emphasized: var(--color-shades-grey-000);
   --color-neutrals-border-mute: var(--color-shades-grey-600);
-  --color-neutrals-border-subtle: var(--color-shades-grey-800);
+  --color-neutrals-border-subtle: var(--color-shades-grey-700);
   --color-neutrals-border-disabled: var(--color-shades-grey-500);
   --color-interactive-primary-background-default: var(--color-shades-grey-000);
   --color-interactive-primary-background-hover: var(--color-shades-grey-150);
