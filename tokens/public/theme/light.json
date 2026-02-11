@@ -54,6 +54,10 @@
         "tertiary": {
           "$type": "color",
           "$value": "{color-shades.brand.700}"
+        },
+        "emphasized": {
+          "$type": "color",
+          "$value": "{color-shades.accent.400}"
         }
       }
     },

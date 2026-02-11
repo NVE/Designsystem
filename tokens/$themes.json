@@ -1219,7 +1219,7 @@
       "color.supplemental.charts.foreground.data-16": "97cb134a13566c031a9d135828921fd22a1f153a",
       "color.supplemental.charts.foreground.data-17": "7bd6a09ac6aa1e4abe25b9b2b94ca0fa7694975f",
       "color.supplemental.charts.foreground.data-18": "7a132b9ef5600954c29d0570bc721468a30c4def",
-      "color.neutrals.foreground.white": "11168c53c24d9fed3af85c6d68a225dd9dc33f46"
+      "color.brand.border.emphasized": "3d9c7ee2e163d3f3a1051dd3a08fc37803c8ecf2"
     },
     "group": "Theme"
   },
@@ -1397,6 +1397,7 @@
       "color.brand.border.primary": "4d2d826be2e55faa7c70e2c68aa7c97c2e9b4eae",
       "color.brand.border.secondary": "df5afa6d4159cca2212e0bae2c9ba44307559020",
       "color.brand.border.tertiary": "041533c02e08198b5b1b1ae1c8a30ae6305e1964",
+      "color.brand.border.emphasized": "3d9c7ee2e163d3f3a1051dd3a08fc37803c8ecf2",
       "color.neutrals.background.canvas": "98a063add0686404a57aafebf42ffbc09ef05d7e",
       "color.neutrals.background.primary": "c4b12b39bcdeb1604b71bdf457a6794a35a6d0ef",
       "color.neutrals.background.primary-contrast": "71d4634f713a2965056809c40d92c03aa39f6bbc",

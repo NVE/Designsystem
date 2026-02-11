@@ -56,6 +56,10 @@
           "$type": "color",
           "$value": "{color-shades.brand.300}",
           "$description": "was 300"
+        },
+        "emphasized": {
+          "$type": "color",
+          "$value": "{color-shades.accent.400}"
         }
       }
     },
