@@ -376,6 +376,11 @@
   --color-feedback-border-emphasized-error: var(--color-shades-functional-red-400);
   --color-feedback-border-emphasized-warning: var(--color-shades-functional-yellow-700);
   --color-feedback-border-emphasized-success: var(--color-shades-functional-green-700);
+  --color-dangerlevel-background-default-level1: var(--color-shades-functional-green-500);
+  --color-dangerlevel-background-default-level2: var(--color-shades-functional-yellow-500);
+  --color-dangerlevel-background-default-level3: var(--color-shades-functional-orange-400);
+  --color-dangerlevel-background-default-level4: var(--color-shades-functional-red-500);
+  --color-dangerlevel-background-default-level5: var(--color-shades-functional-neutralgrey-950);
   --color-dangerlevel-background-mute-level1: var(--color-shades-functional-green-150);
   --color-dangerlevel-background-mute-level2: var(--color-shades-functional-yellow-200);
   --color-dangerlevel-background-mute-level3: var(--color-shades-functional-orange-150);
@@ -386,11 +391,6 @@
   --color-dangerlevel-background-subtle-level3: var(--color-shades-functional-orange-050);
   --color-dangerlevel-background-subtle-level4: var(--color-shades-functional-red-000);
   --color-dangerlevel-background-subtle-level5: var(--color-shades-functional-neutralgrey-150);
-  --color-dangerlevel-background-default-level1: var(--color-shades-functional-green-500);
-  --color-dangerlevel-background-default-level2: var(--color-shades-functional-yellow-500);
-  --color-dangerlevel-background-default-level3: var(--color-shades-functional-orange-400);
-  --color-dangerlevel-background-default-level4: var(--color-shades-functional-red-500);
-  --color-dangerlevel-background-default-level5: var(--color-shades-functional-neutralgrey-950);
   --color-dangerlevel-foreground-default-level1: var(--color-shades-functional-neutralgrey-999);
   --color-dangerlevel-foreground-default-level2: var(--color-shades-functional-neutralgrey-999);
   --color-dangerlevel-foreground-default-level3: var(--color-shades-functional-neutralgrey-999);
