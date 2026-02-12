@@ -36,7 +36,7 @@
         },
         "secondary-on-bg": {
           "$type": "color",
-          "$value": "{color-shades.grey.000}"
+          "$value": "{color-shades.brand.000}"
         },
         "tertiary-on-bg": {
           "$type": "color",
