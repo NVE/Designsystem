@@ -104,6 +104,11 @@
         "inverted": {
           "$type": "color",
           "$value": "{color-shades.functional.neutralgrey.000}"
+        },
+        "white": {
+          "$type": "color",
+          "$value": "{color-shades.functional.neutralgrey.000}",
+          "$description": "Fargen forblir hvit i darkmode"
         }
       },
       "border": {
@@ -572,6 +577,28 @@
     },
     "dangerlevel": {
       "background": {
+        "default": {
+          "level1": {
+            "$type": "color",
+            "$value": "{color-shades.functional.green.500}"
+          },
+          "level2": {
+            "$type": "color",
+            "$value": "{color-shades.functional.yellow.500}"
+          },
+          "level3": {
+            "$type": "color",
+            "$value": "{color-shades.functional.orange.400}"
+          },
+          "level4": {
+            "$type": "color",
+            "$value": "{color-shades.functional.red.500}"
+          },
+          "level5": {
+            "$type": "color",
+            "$value": "{color-shades.functional.neutralgrey.950}"
+          }
+        },
         "mute": {
           "level1": {
             "$type": "color",
@@ -614,28 +641,6 @@
           "level5": {
             "$type": "color",
             "$value": "{color-shades.functional.neutralgrey.150}"
-          }
-        },
-        "default": {
-          "level1": {
-            "$type": "color",
-            "$value": "{color-shades.functional.green.500}"
-          },
-          "level2": {
-            "$type": "color",
-            "$value": "{color-shades.functional.yellow.500}"
-          },
-          "level3": {
-            "$type": "color",
-            "$value": "{color-shades.functional.orange.400}"
-          },
-          "level4": {
-            "$type": "color",
-            "$value": "{color-shades.functional.red.500}"
-          },
-          "level5": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.950}"
           }
         }
       },

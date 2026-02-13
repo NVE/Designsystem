@@ -278,6 +278,7 @@
   --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-600);
   --color-neutrals-foreground-faint: var(--color-shades-functional-neutralgrey-150);
   --color-neutrals-foreground-inverted: var(--color-shades-functional-neutralgrey-000);
+  --color-neutrals-foreground-white: var(--color-shades-functional-neutralgrey-000); /** Fargen forblir hvit i darkmode */
   --color-neutrals-border-default: var(--color-shades-grey-500);
   --color-neutrals-border-emphasized: var(--color-shades-grey-999);
   --color-neutrals-border-mute: var(--color-shades-grey-300);
@@ -375,6 +376,11 @@
   --color-feedback-border-emphasized-error: var(--color-shades-functional-red-800);
   --color-feedback-border-emphasized-warning: var(--color-shades-functional-yellow-900);
   --color-feedback-border-emphasized-success: var(--color-shades-functional-green-800);
+  --color-dangerlevel-background-default-level1: var(--color-shades-functional-green-500);
+  --color-dangerlevel-background-default-level2: var(--color-shades-functional-yellow-500);
+  --color-dangerlevel-background-default-level3: var(--color-shades-functional-orange-400);
+  --color-dangerlevel-background-default-level4: var(--color-shades-functional-red-500);
+  --color-dangerlevel-background-default-level5: var(--color-shades-functional-neutralgrey-950);
   --color-dangerlevel-background-mute-level1: var(--color-shades-functional-green-150);
   --color-dangerlevel-background-mute-level2: var(--color-shades-functional-yellow-200);
   --color-dangerlevel-background-mute-level3: var(--color-shades-functional-orange-150);
@@ -385,11 +391,6 @@
   --color-dangerlevel-background-subtle-level3: var(--color-shades-functional-orange-050);
   --color-dangerlevel-background-subtle-level4: var(--color-shades-functional-red-000);
   --color-dangerlevel-background-subtle-level5: var(--color-shades-functional-neutralgrey-150);
-  --color-dangerlevel-background-default-level1: var(--color-shades-functional-green-500);
-  --color-dangerlevel-background-default-level2: var(--color-shades-functional-yellow-500);
-  --color-dangerlevel-background-default-level3: var(--color-shades-functional-orange-400);
-  --color-dangerlevel-background-default-level4: var(--color-shades-functional-red-500);
-  --color-dangerlevel-background-default-level5: var(--color-shades-functional-neutralgrey-950);
   --color-dangerlevel-foreground-default-level1: var(--color-shades-functional-neutralgrey-999);
   --color-dangerlevel-foreground-default-level2: var(--color-shades-functional-neutralgrey-999);
   --color-dangerlevel-foreground-default-level3: var(--color-shades-functional-neutralgrey-999);
@@ -632,7 +633,6 @@
   --font-size-2x-small: var(--dimension-3-5x); /** 12 px */
   --typography-body-x-small: var(--font-weight-regular) var(--font-size-2x-small)/var(--line-height-5) var(--font-family-source-sans-pro);
   --typography-body-x-small-underline: var(--font-weight-regular) var(--font-size-2x-small)/var(--line-height-5) var(--font-family-source-sans-pro);
-  --font-size-medium: var(--dimension-5x); /** 18 px */
   --typography-body-compact-large-compact: var(--font-weight-regular) var(--font-size-medium)/var(--line-height-1) var(--font-family-source-sans-pro);
   --typography-body-compact-large-underline-compact: var(--font-weight-regular) var(--font-size-medium)/var(--line-height-1) var(--font-family-source-sans-pro);
   --typography-body-compact-medium-compact: var(--font-weight-regular) var(--font-size-small)/var(--line-height-1) var(--font-family-source-sans-pro);
@@ -654,6 +654,7 @@
   --typography-label-x-small-light: var(--font-weight-regular) var(--font-size-2x-small)/var(--line-height-6) var(--font-family-source-sans-pro);
   --font-size-x-small: var(--dimension-4x); /** 14 px */
   --font-size-small: var(--dimension-4-5x); /** 16 px */
+  --font-size-medium: var(--dimension-5x); /** 18 px */
   --font-size-large: var(--dimension-6x); /** 20 px */
   --font-size-x-large: var(--dimension-8x); /** 24 px */
   --font-size-2x-large: var(--dimension-10x); /** 32 px */

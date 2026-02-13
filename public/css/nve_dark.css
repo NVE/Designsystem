@@ -262,7 +262,7 @@
   --color-brand-foreground-primary: var(--color-shades-accent-200);
   --color-brand-foreground-secondary: var(--color-shades-accent-300); /** was 300 */
   --color-brand-foreground-primary-on-bg: var(--color-shades-brand-000);
-  --color-brand-foreground-secondary-on-bg: var(--color-shades-grey-000);
+  --color-brand-foreground-secondary-on-bg: var(--color-shades-brand-000);
   --color-brand-foreground-tertiary-on-bg: var(--color-shades-accent-400);
   --color-brand-border-primary: var(--color-shades-brand-100);
   --color-brand-border-secondary: var(--color-shades-brand-200);
@@ -278,6 +278,7 @@
   --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-200);
   --color-neutrals-foreground-faint: var(--color-shades-functional-neutralgrey-800);
   --color-neutrals-foreground-inverted: var(--color-shades-functional-neutralgrey-999);
+  --color-neutrals-foreground-white: var(--color-shades-functional-neutralgrey-000); /** Fargen forblir hvit i darkmode */
   --color-neutrals-border-default: var(--color-shades-grey-300);
   --color-neutrals-border-emphasized: var(--color-shades-grey-000);
   --color-neutrals-border-mute: var(--color-shades-grey-600);
@@ -375,6 +376,11 @@
   --color-feedback-border-emphasized-error: var(--color-shades-functional-red-400);
   --color-feedback-border-emphasized-warning: var(--color-shades-functional-yellow-700);
   --color-feedback-border-emphasized-success: var(--color-shades-functional-green-700);
+  --color-dangerlevel-background-default-level1: var(--color-shades-functional-green-500);
+  --color-dangerlevel-background-default-level2: var(--color-shades-functional-yellow-500);
+  --color-dangerlevel-background-default-level3: var(--color-shades-functional-orange-400);
+  --color-dangerlevel-background-default-level4: var(--color-shades-functional-red-500);
+  --color-dangerlevel-background-default-level5: var(--color-shades-functional-neutralgrey-950);
   --color-dangerlevel-background-mute-level1: var(--color-shades-functional-green-150);
   --color-dangerlevel-background-mute-level2: var(--color-shades-functional-yellow-200);
   --color-dangerlevel-background-mute-level3: var(--color-shades-functional-orange-150);
@@ -385,11 +391,6 @@
   --color-dangerlevel-background-subtle-level3: var(--color-shades-functional-orange-050);
   --color-dangerlevel-background-subtle-level4: var(--color-shades-functional-red-000);
   --color-dangerlevel-background-subtle-level5: var(--color-shades-functional-neutralgrey-150);
-  --color-dangerlevel-background-default-level1: var(--color-shades-functional-green-500);
-  --color-dangerlevel-background-default-level2: var(--color-shades-functional-yellow-500);
-  --color-dangerlevel-background-default-level3: var(--color-shades-functional-orange-400);
-  --color-dangerlevel-background-default-level4: var(--color-shades-functional-red-500);
-  --color-dangerlevel-background-default-level5: var(--color-shades-functional-neutralgrey-950);
   --color-dangerlevel-foreground-default-level1: var(--color-shades-functional-neutralgrey-999);
   --color-dangerlevel-foreground-default-level2: var(--color-shades-functional-neutralgrey-999);
   --color-dangerlevel-foreground-default-level3: var(--color-shades-functional-neutralgrey-999);
