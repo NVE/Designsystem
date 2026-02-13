@@ -93,11 +93,11 @@
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.functional.neutralgrey.100}"
+          "$value": "{color-shades.functional.neutralgrey.200}"
         },
         "subtle": {
           "$type": "color",
-          "$value": "{color-shades.functional.neutralgrey.200}"
+          "$value": "{color-shades.functional.neutralgrey.400}"
         },
         "faint": {
           "$type": "color",
@@ -128,7 +128,7 @@
         },
         "subtle": {
           "$type": "color",
-          "$value": "{color-shades.grey.800}"
+          "$value": "{color-shades.grey.700}"
         },
         "disabled": {
           "$type": "color",
