@@ -147,7 +147,7 @@
     "image": {
       "large": {
         "$type": "sizing",
-        "$value": "{sizing.440x}"
+        "$value": "{sizing.320x}"
       }
     }
   },
