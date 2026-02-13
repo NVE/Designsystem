@@ -108,6 +108,10 @@
         }
       },
       "content": {
+        "max-width-x-large": {
+          "$type": "sizing",
+          "$value": "{sizing.2560x}"
+        },
         "max-width-large": {
           "$type": "sizing",
           "$value": "{sizing.1800x}"
@@ -143,7 +147,7 @@
     "image": {
       "large": {
         "$type": "sizing",
-        "$value": "{sizing.1200x}"
+        "$value": "{sizing.1024x}"
       }
     }
   },

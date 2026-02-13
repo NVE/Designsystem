@@ -38,7 +38,7 @@
   --color-shades-grey-500: #758ba3;
   --color-shades-grey-600: #516579;
   --color-shades-grey-700: #405163;
-  --color-shades-grey-800: #303d4c;
+  --color-shades-grey-800: #2b3445;
   --color-shades-grey-850: #1d2834;
   --color-shades-grey-900: #141e29;
   --color-shades-grey-950: #0f1926;
@@ -267,12 +267,13 @@
   --color-brand-border-primary: var(--color-shades-brand-100);
   --color-brand-border-secondary: var(--color-shades-brand-200);
   --color-brand-border-tertiary: var(--color-shades-brand-300); /** was 300 */
+  --color-brand-border-emphasized: var(--color-shades-accent-400);
   --color-neutrals-background-canvas: var(--color-shades-grey-950);
   --color-neutrals-background-primary: var(--color-shades-grey-850);
   --color-neutrals-background-primary-contrast: var(--color-shades-grey-800);
   --color-neutrals-background-secondary: var(--color-shades-grey-700);
   --color-neutrals-background-secondary-dim: var(--color-shades-grey-850);
-  --color-neutrals-background-tertiary-dim: var(--color-shades-grey-700);
+  --color-neutrals-background-tertiary-dim: var(--color-shades-grey-800);
   --color-neutrals-foreground-primary: var(--color-shades-grey-000);
   --color-neutrals-foreground-secondary: var(--color-shades-functional-neutralgrey-200);
   --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-400);
