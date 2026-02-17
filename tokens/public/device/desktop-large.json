@@ -149,6 +149,28 @@
         "$type": "sizing",
         "$value": "{sizing.1024x}"
       }
+    },
+    "card": {
+      "link-card": {
+        "height": {
+          "x-large": {
+            "$type": "sizing",
+            "$value": "{sizing.212x}"
+          },
+          "large": {
+            "$type": "sizing",
+            "$value": "{sizing.136x}"
+          },
+          "medium": {
+            "$type": "sizing",
+            "$value": "{sizing.112x}"
+          },
+          "small": {
+            "$type": "sizing",
+            "$value": "{sizing.88x}"
+          }
+        }
+      }
     }
   },
   "font-size": {

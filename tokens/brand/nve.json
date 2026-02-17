@@ -1496,17 +1496,65 @@
       "$type": "sizing",
       "$value": "40px"
     },
+    "62x": {
+      "$type": "sizing",
+      "$value": "62px"
+    },
     "64x": {
       "$type": "sizing",
       "$value": "64px"
+    },
+    "70x": {
+      "$type": "sizing",
+      "$value": "70px"
+    },
+    "84x": {
+      "$type": "sizing",
+      "$value": "84px"
     },
     "88x": {
       "$type": "sizing",
       "$value": "88px"
     },
+    "92x": {
+      "$type": "sizing",
+      "$value": "92px"
+    },
+    "108x": {
+      "$type": "sizing",
+      "$value": "108px"
+    },
+    "112x": {
+      "$type": "sizing",
+      "$value": "112px"
+    },
+    "118x": {
+      "$type": "sizing",
+      "$value": "118px"
+    },
+    "120x": {
+      "$type": "sizing",
+      "$value": "120px"
+    },
+    "124x": {
+      "$type": "sizing",
+      "$value": "124px"
+    },
+    "132x": {
+      "$type": "sizing",
+      "$value": "132px"
+    },
+    "136x": {
+      "$type": "sizing",
+      "$value": "136px"
+    },
     "200x": {
       "$type": "sizing",
       "$value": "200px"
+    },
+    "212x": {
+      "$type": "sizing",
+      "$value": "212px"
     },
     "216x": {
       "$type": "sizing",
