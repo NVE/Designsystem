@@ -154,22 +154,81 @@
       "link-card": {
         "height": {
           "x-large": {
-            "$type": "sizing",
-            "$value": "{sizing.132x}"
-          },
-          "large": {
-            "$type": "sizing",
-            "$value": "{sizing.118x}"
-          },
-          "medium": {
-            "$type": "sizing",
-            "$value": "{sizing.92x}"
-          },
-          "small": {
-            "$type": "sizing",
-            "$value": "{sizing.70x}"
+            "min-height": {
+              "$type": "sizing",
+              "$value": "{sizing.132x}"
+            },
+            "max-height": {
+              "$type": "sizing",
+              "$value": "{sizing.200x}"
+            }
           }
         }
+      }
+    },
+    "icon": {
+      "3x-large": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.56x}"
+      },
+      "2x-large": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.48x}"
+      },
+      "x-large": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.44x}"
+      },
+      "large": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.40x}"
+      },
+      "medium": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.32x}"
+      },
+      "small": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.24x}"
+      },
+      "x-small": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.20x}"
       }
     }
   },

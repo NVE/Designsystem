@@ -1484,17 +1484,45 @@
     }
   },
   "sizing": {
+    "18x": {
+      "$type": "sizing",
+      "$value": "18px"
+    },
+    "20x": {
+      "$type": "sizing",
+      "$value": "20px"
+    },
     "24x": {
       "$type": "sizing",
       "$value": "24px"
+    },
+    "28x": {
+      "$type": "sizing",
+      "$value": "28px"
     },
     "32x": {
       "$type": "sizing",
       "$value": "32px"
     },
+    "36x": {
+      "$type": "sizing",
+      "$value": "36px"
+    },
     "40x": {
       "$type": "sizing",
       "$value": "40px"
+    },
+    "44x": {
+      "$type": "sizing",
+      "$value": "44px"
+    },
+    "48x": {
+      "$type": "sizing",
+      "$value": "48px"
+    },
+    "56x": {
+      "$type": "sizing",
+      "$value": "56px"
     },
     "62x": {
       "$type": "sizing",
@@ -1548,6 +1576,14 @@
       "$type": "sizing",
       "$value": "136px"
     },
+    "160x": {
+      "$type": "sizing",
+      "$value": "160px"
+    },
+    "180x": {
+      "$type": "sizing",
+      "$value": "180px"
+    },
     "200x": {
       "$type": "sizing",
       "$value": "200px"
@@ -1571,6 +1607,10 @@
     "232x": {
       "$type": "sizing",
       "$value": "232px"
+    },
+    "246x": {
+      "$type": "sizing",
+      "$value": "246px"
     },
     "256x": {
       "$type": "sizing",
