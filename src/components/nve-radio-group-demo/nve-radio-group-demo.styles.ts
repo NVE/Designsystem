@@ -27,11 +27,11 @@ export default css`
     gap: var(--spacing-small);
   }
 
-  .radio-group--vertical {
+  .radio-group__radios--vertical {
     flex-direction: column;
   }
 
-  .radio-group--horizontal {
+  .radio-group__radios--horizontal {
     flex-direction: row;
     align-items: center;
   }
@@ -52,7 +52,7 @@ export default css`
     color: var(--color-brand-foreground-secondary);
   }
 
-  .radio-group--invalid {
+  .radio-group__error-msg {
     font: var(--typography-detailtext-caption);
     color: var(--color-feedback-foreground-error);
   }

@@ -80,7 +80,7 @@ export default class NveRadioDemo extends LitElement implements INveComponent {
       'radio--disabled': this.disabled,
       'radio--invalid': this.invalid,
     };
-    //TODO: should i keep input inside the label or otuside?
+    //TODO: should i keep input inside the label or otuside? do i even need id anymore?
     return html`
       <label class=${classMap(classes)} testId=${ifDefined(this.testId)}>
         <input

@@ -167,14 +167,14 @@ export default class NveRadioGroupDemo extends LitElement implements INveCompone
         <div
           class=${classMap({
             'radio-group__radios': true,
-            [`radio-group--${this.orientation}`]: true,
+            [`radio-group__radios--${this.orientation}`]: true,
           })}
         >
           <slot @slotchange=${this.updateTabIndexes}></slot>
         </div>
         <!-- Feilmelding - skal plassen vises alltid eller skal vi la komponenten sprer seg-->
         ${this.errorMessage
-          ? html`<span class="radio-group--invalid" id=${this.errorId}>${this.errorMessage}</span>`
+          ? html`<span class="radio-group__error-msg" id=${this.errorId}>${this.errorMessage}</span>`
           : nothing}
       </fieldset>
     `;
