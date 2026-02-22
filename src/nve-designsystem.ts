@@ -1,6 +1,7 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av npm run add-component */
   
+  
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
@@ -47,6 +48,7 @@ export { default as NveTabGroup } from './components/nve-tab-group/nve-tab-group
 export { default as NveTabPanel } from './components/nve-tab-panel/nve-tab-panel.component';
 export { default as NveTag } from './components/nve-tag/nve-tag.component';
 export { default as NveTextarea } from './components/nve-textarea/nve-textarea.component';
+export { default as NveTextareaDemo } from './components/nve-textarea-demo/nve-textarea-demo.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
 export { default as NveWarningLevel } from './components/nve-warning-level/nve-warning-level.component';
   
