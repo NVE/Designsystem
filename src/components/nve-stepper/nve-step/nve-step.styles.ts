@@ -105,19 +105,19 @@ export default css`
   }
 
   .state-not-started-color {
-    color: var(--color-neutrals-foreground-subtle, #60656c);
+    color: var(--color-neutrals-foreground-subtle);
   }
 
   .state-started-color {
-    color: var(--color-feedback-background-emphasized-info, #1e6fdc);
+    color: var(--color-feedback-foreground-info);
   }
 
   .state-done-color {
-    color: var(--color-feeedback-foreground-emphasized-success, #00814b);
+    color: var(--color-feedback-foreground-success);
   }
 
   .state-error-color {
-    color: var(--color-feedback-background-emphasized-error, #cc0000);
+    color: var(--color-feedback-foreground-error);
   }
 
   .vertical-container {

@@ -16,59 +16,61 @@ export default css`
 
   /* Variant modifiers */
   .badge--brand {
-    background-color: var(--color-brand-background-primary);
-    color: var(--color-interactive-primary-foreground-default);
+    background-color: var(--color-brand-background-secondary);
+    color: var(--color-brand-foreground-primary-on-bg);
   }
 
   .badge--neutral {
-    background-color: var(--color-feedback-background-default-neutral, #e4e5e7);
-    color: var(--color-feedback-foreground-default-neutral, #00131c);
+    background-color: var(--color-feedback-background-emphasized-neutral);
+    color: var(--color-feedback-foreground-on-bg-emphasized-neutral);
   }
 
   .badge--primary {
-    background-color: var(--color-feedback-background-emphasized-info, #1e6fdc);
-    color: var(--color-feedback-foreground-emphasized-info, #fff);
+    background-color: var(--color-feedback-background-emphasized-info);
+    color: var(--color-feedback-foreground-on-bg-emphasized-info);
   }
 
   .badge--success {
-    background-color: var(--color-feedback-background-emphasized-success, #00814b);
-    color: var(--color-feedback-foreground-emphasized-success, #fff);
-  }
-  .badge--warning {
-    background-color: var(--color-feedback-background-emphasized-warning, #ffd046);
-    color: var(--color-feedback-foreground-emphasized-warning, #0d0d0e);
+    background-color: var(--color-feedback-background-emphasized-success);
+    color: var(--color-feedback-foreground-on-bg-emphasized-success);
   }
 
   .badge--danger {
-    background-color: var(--color-feedback-background-emphasized-error, #c00);
-    color: var(--color-feedback-foreground-emphasized-error, #fff);
+    background-color: var(--color-feedback-background-emphasized-error);
+    color: var(--color-feedback-foreground-on-bg-emphasized-error);
+  }
+  .badge--warning {
+    background-color: var(--color-feedback-background-emphasized-warning);
+    color: var(--color-feedback-foreground-on-bg-emphasized-warning);
   }
 
   /* Lav metningsgrad */
-  .saturation--subtle {
-    color: var(--color-neutrals-foreground-primary, #00131c);
-  }
-
   .badge--brand.saturation--subtle {
     background-color: var(--color-brand-background-tertiary);
+    color: var(--color-brand-foreground-secondary-on-bg);
   }
 
   .badge--neutral.saturation--subtle {
-    background-color: var(--color-feedback-background-subtle-neutral, #f7f7f8);
+    background-color: var(--color-feedback-background-default-neutral);
+    color: var(--color-feedback-foreground-on-bg-subtle-neutral);
   }
 
   .badge--primary.saturation--subtle {
-    background-color: var(--color-feedback-background-default-info, #ceeaff);
+    background-color: var(--color-feedback-background-default-info);
+    color: var(--color-feedback-foreground-on-bg-subtle-info);
   }
 
   .badge--success.saturation--subtle {
-    background-color: var(--color-feedback-background-default-success, #cbf9cb);
-  }
-  .badge--warning.saturation--subtle {
-    background-color: var(--color-feedback-background-default-warning, #ffe8a5);
+    background-color: var(--color-feedback-background-default-success);
+    color: var(--color-feedback-foreground-on-bg-subtle-success);
   }
   .badge--danger.saturation--subtle {
-    background-color: var(--color-feedback-background-default-error, #ffd8de);
+    background-color: var(--color-feedback-background-default-error);
+    color: var(--color-feedback-foreground-on-bg-subtle-error);
+  }
+  .badge--warning.saturation--subtle {
+    background-color: var(--color-feedback-background-default-warning);
+    color: var(--color-feedback-foreground-on-bg-subtle-warning);
   }
 
   /* Sizing modifiers */
