@@ -103,7 +103,7 @@ I typografi-seksjonen til høyre ser vi css'en som er generert. Vi skal ikke bru
 color: var(--color-neutrals-foreground-mute, #3c3f44);
 
 /* Label/small */
-font-family: Source Sans Pro;
+font-family: Source Sans 3;
 font-size: 1rem;
 font-style: normal;
 font-weight: 600;

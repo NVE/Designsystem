@@ -74,7 +74,7 @@ export default css`
   /* Sizing modifiers */
   .badge--small {
     padding: var(--spacing-2x-small, 4px) 6px;
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-size: 12px;
     font-style: normal;
     font-weight: 600;

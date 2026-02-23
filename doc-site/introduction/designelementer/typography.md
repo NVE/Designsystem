@@ -18,7 +18,7 @@ Typografiske tokens brukes for å opprettholde en ensartet samling av fonter i h
 
 #### Typografi i Figma
 
-Fonten heter Source Sans Pro i Figma, og er tilgjenglig uten at du trenger å laste ned eller installere fonten selv.
+Fonten heter Source Sans 3 i Figma, og er tilgjenglig uten at du trenger å laste ned eller installere fonten selv.
 
 #### Har du ikke fonten på maskinen?
 
