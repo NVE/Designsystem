@@ -34,7 +34,7 @@ export default css`
     color: var(--color-neutrals-foreground-primary, #0d0d0e);
 
     /* Label/medium */
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-size: 1.125rem; /*18px; */
     font-style: normal;
     font-weight: 600;
@@ -52,7 +52,7 @@ export default css`
 
   .step-buttons {
     /* Label/small-light */
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-size: 1rem; /*16px; */
     font-style: normal;
     font-weight: 400;

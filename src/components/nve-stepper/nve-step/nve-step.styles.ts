@@ -48,7 +48,7 @@ export default css`
     color: var(--color-neutrals-foreground-primary, #0d0d0e);
 
     /* Label/medium */
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-size: 1.125rem; /*18px; */
     font-style: normal;
     font-weight: 600;
@@ -58,7 +58,7 @@ export default css`
 
   .step-state {
     /* Label/x-small-light */
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-size: 0.875rem; /*14px;*/
     font-style: normal;
     font-weight: 400;
@@ -70,7 +70,7 @@ export default css`
     color: var(--color-neutrals-foreground-primary, #0d0d0e);
 
     /* Label/small-light */
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-size: 1rem; /*16px; */
     font-style: normal;
     font-weight: 400;

@@ -53,7 +53,7 @@ export default css`
 
   .link-card__label {
     font-size: 1rem;
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
@@ -80,7 +80,7 @@ export default css`
 
   .link-card__additional-text {
     color: inherit;
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-style: normal;
     font-weight: 400;
     line-height: 120%;

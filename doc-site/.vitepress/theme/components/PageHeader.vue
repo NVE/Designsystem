@@ -51,7 +51,7 @@ const getImage = (imagePath: string) => {
 }
 
 .title {
-  font-family: Source Sans Pro;
+  font-family: Source Sans 3;
   font-size: 32px;
   font-weight: 600;
   line-height: 40px;
