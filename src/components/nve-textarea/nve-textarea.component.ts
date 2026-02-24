@@ -34,6 +34,7 @@ import '../nve-label/nve-label.component';
  * @csspart help-text-container - container for hjelpetekst
  *
  */
+// @ts-expect-error - SlInput has autocorrect as string type but type system expects boolean
 @customElement('nve-textarea')
 export default class NveTextarea extends LitElement implements INveComponent {
   static styles = [styles];
@@ -83,7 +84,8 @@ export default class NveTextarea extends LitElement implements INveComponent {
   @property() autocapitalize: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters' = 'off';
 
   /** Indikerer om nettleserens autokorrekturfunksjon er på eller av. */
-  @property() autocorrect?: string;
+   // @ts-expect-error - Lit tvinger boolean her, men den er ikke rikitg
+  @property() autocorrect: "on" | "off" = "off";
 
   /** Indikerer om nettleserens autokorrekturfunksjon er på eller av. */
   @property() tooltip?: string;
@@ -114,6 +116,7 @@ export default class NveTextarea extends LitElement implements INveComponent {
   @state() private touched = false;
 
   /** Hoved input felt i nve-textarea komponentet. Brukes til constraint validering */
+  // @ts-expect-error - Decorator typing issue with Lit query decorator
   @query('.textarea__control') input!: HTMLTextAreaElement;
 
   constructor() {
