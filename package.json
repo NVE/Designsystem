@@ -78,7 +78,7 @@
     "custom-element-vuejs-integration": "^1.4.0",
     "custom-elements-manifest": "^2.1.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^10.0.0",
+    "eslint": "^10.0.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-lit": "^2.2.1",
     "eslint-plugin-vue": "^10.8.0",
@@ -106,5 +106,11 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "overrides": {
+    "minimatch": ">=10.2.1",
+    "minimist": ">=1.2.6",
+    "lodash": ">=4.17.23",
+    "tmp": ">=0.2.4"
   }
 }
