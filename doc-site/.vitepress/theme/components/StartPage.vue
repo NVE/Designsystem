@@ -26,7 +26,7 @@ import LinkButton from './LinkButton.vue';
   padding-top: var(--sizing-x-large, 4rem);
 }
 .nve-hero-title {
-  font-family: Source Sans Pro;
+  font-family: Source Sans 3;
   font-size: 40px;
   font-weight: 600;
   line-height: 48px;
@@ -35,7 +35,7 @@ import LinkButton from './LinkButton.vue';
 
 .nve-hero-text {
   padding-top: 1rem;
-  font-family: Source Sans Pro;
+  font-family: Source Sans 3;
   font-size: 24px !important;
   font-weight: 400 !important;
   line-height: 31.2px !important;

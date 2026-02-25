@@ -16,104 +16,105 @@ export default css`
 
   :host([variant='neutral'][saturation='emphasized']) {
     --_bg-color: var(--color-feedback-background-emphasized-neutral);
-    --_text-color: var(--color-feedback-foreground-emphasized-neutral);
+    --_text-color: var(--color-feedback-foreground-on-bg-emphasized-neutral,);
     --_hover-bg-color: var(--color-feedback-background-default-neutral);
     --_hover-text-color: var(--color-feedback-foreground-default-neutral);
   }
 
   :host([variant='neutral'][saturation='default']) {
     --_bg-color: var(--color-feedback-background-default-neutral);
-    --_text-color: var(--color-feedback-foreground-default-neutral);
+    --_text-color: var(--color-feedback-foreground-on-bg-subtle-neutral);
     --_hover-bg-color: var(--color-feedback-background-subtle-neutral);
     --_hover-text-color: var(--color-feedback-foreground-subtle-neutral);
   }
-  color- :host([variant='neutral'][saturation='subtle']) {
+
+  :host([variant='neutral'][saturation='subtle']) {
     --_bg-color: var(--color-feedback-background-subtle-neutral);
-    --_text-color: var(--color-feedback-foreground-subtle-neutral);
+    --_text-color: var(--color-feedback-foreground-on-bg-subtle-neutral);
     --_hover-bg-color: var(--color-feedback-background-default-neutral);
     --_hover-text-color: var(--color-feedback-foreground-default-neutral);
   }
 
   :host([variant='success'][saturation='emphasized']) {
     --_bg-color: var(--color-feedback-background-emphasized-success);
-    --_text-color: var(--color-feedback-foreground-emphasized-success);
+    --_text-color: var(--color-feedback-foreground-on-bg-emphasized-success);
     --_hover-bg-color: var(--color-feedback-background-default-success);
     --_hover-text-color: var(--color-feedback-foreground-default-success);
   }
 
   :host([variant='success'][saturation='default']) {
     --_bg-color: var(--color-feedback-background-default-success);
-    --_text-color: var(--color-feedback-foreground-default-success);
+    --_text-color: var(--color-feedback-foreground-on-bg-subtle-success);
     --_hover-bg-color: var(--color-feedback-background-subtle-success);
     --_hover-text-color: var(--color-feedback-foreground-subtle-success);
   }
 
   :host([variant='success'][saturation='subtle']) {
     --_bg-color: var(--color-feedback-background-subtle-success);
-    --_text-color: var(--color-feedback-foreground-subtle-success);
+    --_text-color: var(--color-feedback-foreground-on-bg-subtle-success);
     --_hover-bg-color: var(--color-feedback-background-default-success);
     --_hover-text-color: var(--color-feedback-foreground-default-success);
   }
 
   :host([variant='info'][saturation='emphasized']) {
     --_bg-color: var(--color-feedback-background-emphasized-info);
-    --_text-color: var(--color-feedback-foreground-emphasized-info);
+    --_text-color: var(--color-feedback-foreground-on-bg-emphasized-info);
     --_hover-bg-color: var(--color-feedback-background-default-info);
     --_hover-text-color: var(--color-feedback-foreground-default-info);
   }
 
   :host([variant='info'][saturation='default']) {
     --_bg-color: var(--color-feedback-background-default-info);
-    --_text-color: var(--color-feedback-foreground-default-info);
+    --_text-color: var(--color-feedback-foreground-on-bg-subtle-info);
     --_hover-bg-color: var(--color-feedback-background-subtle-info);
     --_hover-text-color: var(--color-feedback-foreground-subtle-info);
   }
 
   :host([variant='info'][saturation='subtle']) {
     --_bg-color: var(--color-feedback-background-subtle-info);
-    --_text-color: var(--color-feedback-foreground-subtle-info);
+    --_text-color: var(--color-feedback-foreground-on-bg-subtle-info);
     --_hover-bg-color: var(--color-feedback-background-default-info);
     --_hover-text-color: var(--color-feedback-foreground-default-info);
   }
 
   :host([variant='warning'][saturation='emphasized']) {
     --_bg-color: var(--color-feedback-background-emphasized-warning);
-    --_text-color: var(--color-feedback-foreground-emphasized-warning);
+    --_text-color: var(--color-feedback-foreground-on-bg-emphasized-warning);
     --_hover-bg-color: var(--color-feedback-background-default-warning);
     --_hover-text-color: var(--color-feedback-foreground-default-warning);
   }
 
   :host([variant='warning'][saturation='default']) {
     --_bg-color: var(--color-feedback-background-default-warning);
-    --_text-color: var(--color-feedback-foreground-default-warning);
+    --_text-color: var(--color-feedback-foreground-on-bg-subtle-warning);
     --_hover-bg-color: var(--color-feedback-background-subtle-warning);
     --_hover-text-color: var(--color-feedback-foreground-subtle-warning);
   }
 
   :host([variant='warning'][saturation='subtle']) {
     --_bg-color: var(--color-feedback-background-subtle-warning);
-    --_text-color: var(--color-feedback-foreground-subtle-warning);
+    --_text-color: var(--color-feedback-foreground-on-bg-subtle-warning);
     --_hover-bg-color: var(--color-feedback-background-default-warning);
     --_hover-text-color: var(--color-feedback-foreground-default-warning);
   }
 
   :host([variant='error'][saturation='emphasized']) {
     --_bg-color: var(--color-feedback-background-emphasized-error);
-    --_text-color: var(--color-feedback-foreground-emphasized-error);
+    --_text-color: var(--color-feedback-foreground-on-bg-emphasized-error);
     --_hover-bg-color: var(--color-feedback-background-default-error);
     --_hover-text-color: var(--color-feedback-foreground-default-error);
   }
 
   :host([variant='error'][saturation='default']) {
     --_bg-color: var(--color-feedback-background-default-error);
-    --_text-color: var(--color-feedback-foreground-default-error);
+    --_text-color: var(--color-feedback-foreground-on-bg-subtle-error);
     --_hover-bg-color: var(--color-feedback-background-subtle-error);
     --_hover-text-color: var(--color-feedback-foreground-subtle-error);
   }
 
   :host([variant='error'][saturation='subtle']) {
     --_bg-color: var(--color-feedback-background-subtle-error);
-    --_text-color: var(--color-feedback-foreground-subtle-error);
+    --_text-color: var(--color-feedback-foreground-on-bg-subtle-error);
     --_hover-bg-color: var(--color-feedback-background-default-error);
     --_hover-text-color: var(--color-feedback-foreground-default-error);
   }

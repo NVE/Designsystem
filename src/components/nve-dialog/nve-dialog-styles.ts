@@ -36,7 +36,7 @@ export default css`
   .dialog__header-actions sl-icon-button,
   .dialog__header-actions ::slotted(sl-icon-button) {
     color: var(--color-neutrals-foreground-primary, #00131c);
-    font-family: Source Sans Pro;
+    font-family: Source Sans 3;
     font-size: 1.3rem;
     font-style: normal;
     font-weight: bold;

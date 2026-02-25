@@ -23,7 +23,7 @@ export default css`
     justify-content: center;
     align-items: center;
     color: var(--color-dangerlevel-foreground-default-level1);
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-size: var(--font-size);
     font-style: normal;
     font-weight: 600;
