@@ -733,10 +733,15 @@
   --typography-label-small-light: var(--font-weight-regular) var(--font-size-x-small)/var(--line-height-6)
     var(--font-family-primary-family);
   --font-size-2x-small: var(--dimension-3-5x); /** 12 px */
+<<<<<<< HEAD
   --typography-label-x-small: var(--font-weight-semibold) var(--font-size-2x-small)/var(--line-height-6)
     var(--font-family-primary-family);
   --typography-label-x-small-light: var(--font-weight-regular) var(--font-size-2x-small)/var(--line-height-6)
     var(--font-family-primary-family);
+=======
+  --typography-label-x-small: var(--font-weight-semibold) var(--font-size-2x-small)/var(--line-height-6) var(--font-family-primary-family);
+  --typography-label-x-small-light: var(--font-weight-regular) var(--font-size-2x-small)/var(--line-height-6) var(--font-family-primary-family);
+>>>>>>> 08cd713 ((tokens): oppdatert css basert på nye tokens)
   --font-size-x-small: var(--dimension-4x); /** 14 px */
   --font-size-medium: var(--dimension-5x); /** 18 px */
   --font-size-large: var(--dimension-6x); /** 20 px */
