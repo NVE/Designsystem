@@ -695,6 +695,14 @@
           "$type": "color",
           "$value": "#ffffff"
         },
+        "100-050": {
+          "$type": "color",
+          "$value": "rgba(238,239,241,0.5)"
+        },
+        "600-050": {
+          "$type": "color",
+          "$value": "rgba(96,101,108,0.5)"
+        },
         "050": {
           "$type": "color",
           "$value": "#f7f7f8"
