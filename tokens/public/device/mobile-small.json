@@ -108,6 +108,10 @@
         }
       },
       "content": {
+        "max-width-x-large": {
+          "$type": "sizing",
+          "$value": "{sizing.2560x}"
+        },
         "max-width-large": {
           "$type": "sizing",
           "$value": "{sizing.1800x}"
@@ -143,7 +147,88 @@
     "image": {
       "large": {
         "$type": "sizing",
-        "$value": "{sizing.440x}"
+        "$value": "{sizing.320x}"
+      }
+    },
+    "card": {
+      "link-card": {
+        "height": {
+          "x-large": {
+            "min-height": {
+              "$type": "sizing",
+              "$value": "{sizing.120x}"
+            },
+            "max-height": {
+              "$type": "sizing",
+              "$value": "{sizing.160x}"
+            }
+          }
+        }
+      }
+    },
+    "icon": {
+      "3x-large": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.48x}"
+      },
+      "2x-large": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.40x}"
+      },
+      "x-large": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.36x}"
+      },
+      "large": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.32x}"
+      },
+      "medium": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.28x}"
+      },
+      "small": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.24x}"
+      },
+      "x-small": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.20x}"
       }
     }
   },
@@ -186,7 +271,7 @@
     "3x-large": {
       "$type": "fontSizes",
       "$value": "{dimension.8x}",
-      "$description": "40 px"
+      "$description": "32 px"
     }
   },
   "boolean": {

@@ -186,19 +186,19 @@
         },
         "300": {
           "$type": "color",
-          "$value": "#0B7CAD"
+          "$value": "#0B83B6"
         },
         "600": {
           "$type": "color",
-          "$value": "#00557A"
+          "$value": "#00638F"
         },
         "800": {
           "$type": "color",
-          "$value": "#003D57"
+          "$value": "#0F4157"
         },
         "950": {
           "$type": "color",
-          "$value": "#002b3d"
+          "$value": "#0D1F26"
         },
         "300-005": {
           "$type": "color",

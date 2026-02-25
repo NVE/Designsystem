@@ -54,6 +54,10 @@
         "tertiary": {
           "$type": "color",
           "$value": "{color-shades.brand.700}"
+        },
+        "emphasized": {
+          "$type": "color",
+          "$value": "{color-shades.accent.400}"
         }
       }
     },
@@ -81,7 +85,7 @@
         },
         "tertiary-dim": {
           "$type": "color",
-          "$value": "{color-shades.grey.700}"
+          "$value": "{color-shades.grey.800}"
         }
       },
       "foreground": {

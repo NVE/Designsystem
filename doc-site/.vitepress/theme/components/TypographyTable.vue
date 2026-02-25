@@ -152,7 +152,7 @@ watch(
 
     Object.entries(tableContent.value).map((entry) => {
       const [key, value] = entry;
-      const a = `${value.weight} ${value.size} / ${value.lineHeight} 'Source Sans Pro'`;
+      const a = `${value.weight} ${value.size} / ${value.lineHeight} 'Source Sans 3'`;
       componentRoot.value?.style.setProperty(key, a);
     });
   },

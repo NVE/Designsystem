@@ -48,7 +48,7 @@ export default css`
     color: var(--color-neutrals-foreground-primary, #0d0d0e);
 
     /* Label/medium */
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-size: 1.125rem; /*18px; */
     font-style: normal;
     font-weight: 600;
@@ -58,7 +58,7 @@ export default css`
 
   .step-state {
     /* Label/x-small-light */
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-size: 0.875rem; /*14px;*/
     font-style: normal;
     font-weight: 400;
@@ -70,7 +70,7 @@ export default css`
     color: var(--color-neutrals-foreground-primary, #0d0d0e);
 
     /* Label/small-light */
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans 3';
     font-size: 1rem; /*16px; */
     font-style: normal;
     font-weight: 400;
@@ -105,19 +105,19 @@ export default css`
   }
 
   .state-not-started-color {
-    color: var(--color-neutrals-foreground-subtle, #60656c);
+    color: var(--color-neutrals-foreground-subtle);
   }
 
   .state-started-color {
-    color: var(--color-feedback-background-emphasized-info, #1e6fdc);
+    color: var(--color-feedback-foreground-info);
   }
 
   .state-done-color {
-    color: var(--color-feeedback-foreground-emphasized-success, #00814b);
+    color: var(--color-feedback-foreground-success);
   }
 
   .state-error-color {
-    color: var(--color-feedback-background-emphasized-error, #cc0000);
+    color: var(--color-feedback-foreground-error);
   }
 
   .vertical-container {
