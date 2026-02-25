@@ -11,6 +11,7 @@ import { PropertyValues } from 'lit';
  * pill skal ikke brukes.
  * TODO: Feltet blir bredere hvis validering feiler, fordi vi må ha plass til feil-ikonet.
  */
+// @ts-expect-error - SlInput has autocorrect as string type but type system expects boolean
 @customElement('nve-input')
 export default class NveInput extends SlInput implements INveComponent {
   /**
