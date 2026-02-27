@@ -23,6 +23,11 @@ export default css`
     height: var(--icon-size);
   }
 
+  :is(svg) {
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
+
   /* we need it to center the icon */
   :is(span) {
     display: inline-flex;
@@ -44,7 +49,7 @@ export default css`
   .material-sharp {
     font-family: 'Material Symbols Sharp';
   }
-  
+
   svg {
     fill: currentColor;
   }
