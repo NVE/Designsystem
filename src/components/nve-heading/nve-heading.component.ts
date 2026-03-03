@@ -10,7 +10,7 @@ export default class NveHeading extends LitElement implements INveComponent {
   /** Heading level - Hvilket nivå overskriften skal ha */
   @property({ type: Number, reflect: true }) level: 1 | 2 | 3 | 4 | 5 | 6 = 1;
 
-  /** Heading level - Hvilket nivå overskriften skal ha */
+  /** Typografitype - Kan overstyre det som er standard typografi basert på nivå */
   @property({ type: String, reflect: true }) typographyType?:
     | 'headingXlarge'
     | 'headingLarge'
