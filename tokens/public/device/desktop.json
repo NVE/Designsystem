@@ -159,6 +159,10 @@
       }
     },
     "image": {
+      "x-small": {
+        "$type": "sizing",
+        "$value": "{sizing.84x}"
+      },
       "large": {
         "$type": "sizing",
         "$value": "{sizing.750x}"
