@@ -625,6 +625,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-232x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
+  --sizing-image-x-small: var(--sizing-84x);
   --sizing-image-large: var(--sizing-750x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-212x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-246x);
@@ -678,7 +679,6 @@
   --typography-detailtext-caps-small: var(--font-weight-semibold) var(--font-size-x-small)/var(--line-height-5) var(--font-family-primary-family);
   --typography-label-large: var(--font-weight-semibold) var(--font-size-medium)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-large-light: var(--font-weight-regular) var(--font-size-medium)/var(--line-height-6) var(--font-family-primary-family);
-  --font-size-small: var(--dimension-4-5x); /** 16 px */
   --typography-label-medium: var(--font-weight-semibold) var(--font-size-small)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-medium-light: var(--font-weight-regular) var(--font-size-small)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-small: var(--font-weight-semibold) var(--font-size-x-small)/var(--line-height-6) var(--font-family-primary-family);
@@ -687,6 +687,7 @@
   --typography-label-x-small: var(--font-weight-semibold) var(--font-size-2x-small)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-x-small-light: var(--font-weight-regular) var(--font-size-2x-small)/var(--line-height-6) var(--font-family-primary-family);
   --font-size-x-small: var(--dimension-4x); /** 14 px */
+  --font-size-small: var(--dimension-4-5x); /** 16 px */
   --font-size-medium: var(--dimension-5x); /** 18 px */
   --font-size-large: var(--dimension-6x); /** 20 px */
   --font-size-x-large: var(--dimension-8x); /** 24 px */
@@ -862,6 +863,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-282x);
   --sizing-brand-logo-medium: var(--sizing-88x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
+  --sizing-image-x-small: var(--sizing-84x);
   --sizing-image-large: var(--sizing-1024x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-212x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-246x);
@@ -1053,6 +1055,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-216x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
+  --sizing-image-x-small: var(--sizing-48x);
   --sizing-image-large: var(--sizing-544x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-132x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-200x);
@@ -1244,6 +1247,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-496x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
+  --sizing-image-x-small: var(--sizing-48x);
   --sizing-image-large: var(--sizing-390x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-124x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-180x);
@@ -1435,6 +1439,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-496x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-24x);
+  --sizing-image-x-small: var(--sizing-84x);
   --sizing-image-large: var(--sizing-320x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-120x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-160x);
