@@ -12,11 +12,11 @@ import '../nve-icon/nve-icon.component';
  *
  * Ikon angis med `iconPath`-prop og rendres automatisk med aria-hidden. Bruk kun illustrasjonsikoner fra NVE.
  *
- * @csspart base Topp-elementet for kortet
+ * @csspart navigation-card Topp-elementet for kortet
  * @csspart title Tittel på kortet
- * @csspart icon Ikonet øverst i kortet
+ * @csspart leading-icon Ikonet øverst i kortet
  * @csspart content Innholdet i kortet
- * @csspart additionalText Ekstratekst under tittel
+ * @csspart additional-text Ekstratekst under tittel
  */
 @customElement('nve-navigation-card')
 export default class NveNavigationCard extends LitElement implements INveComponent {
@@ -35,10 +35,29 @@ export default class NveNavigationCard extends LitElement implements INveCompone
   /** Ekstratekst som vises under tittelen (maks 3 linjer, trunkeres) */
   @property({ type: String }) additionalText: string | undefined = undefined;
 
+  /** Definerer hva som skjer når kortet klikkes: 'internal' (intern lenke), 'download' (nedlasting), 'external' (ekstern lenke) */
+  @property({ type: String }) clickAction: 'internal' | 'download' | 'external' = 'internal';
+
   /** Path til ikon som vises øverst i kortet (dekorativt) */
   @property({ type: String }) iconPath: string | undefined = undefined;
 
   static styles = [styles];
+
+  /**
+   * Returnerer ikonnavnet som vises på kortet basert på clickAction.
+   */
+  private getIconName() {
+    switch (this.clickAction) {
+      case 'internal':
+        return 'arrow_forward';
+      case 'download':
+        return 'download';
+      case 'external':
+        return 'open_in_new';
+      default:
+        return 'arrow_forward';
+    }
+  }
 
   /**
    * Genererer innholdet i kortet.
@@ -48,14 +67,25 @@ export default class NveNavigationCard extends LitElement implements INveCompone
     return html`
       <div part="content" class="navigation-card__content">
         ${this.iconPath
-          ? html`<img part="icon" src="${this.iconPath}" alt="" aria-hidden="true" class="navigation-card__icon" />`
+          ? html`<img
+              part="leading-icon"
+              src="${this.iconPath}"
+              alt=""
+              aria-hidden="true"
+              class="navigation-card__icon"
+            />`
           : nothing}
         <h2 part="title" class="navigation-card__title">${this.title}</h2>
         ${!this.iconPath && this.additionalText
           ? html`<p part="additional-text" class="navigation-card__additional-text">${this.additionalText}</p>`
           : nothing}
       </div>
-      <nve-icon aria-hidden="true" name="arrow_forward" class="navigation-card__arrow" style="--icon-size: 24px;" />
+      <nve-icon
+        aria-hidden="true"
+        name="${this.getIconName()}"
+        class="navigation-card__arrow"
+        style="--icon-size: 24px;"
+      />
     `;
   }
 
@@ -69,12 +99,21 @@ export default class NveNavigationCard extends LitElement implements INveCompone
 
     if (isParentLink) {
       return html`
-        <div part="base" class="navigation-card" testid="${ifDefined(this.testId)}">${this.renderContent()}</div>
+        <div part="navigation-card" class="navigation-card" testid="${ifDefined(this.testId)}">
+          ${this.renderContent()}
+        </div>
       `;
     }
 
     return html`
-      <a part="base" class="navigation-card" href="${ifDefined(this.href)}" testid="${ifDefined(this.testId)}">
+      <a
+        testid="${ifDefined(this.testId)}"
+        ?download=${this.clickAction === 'download'}
+        part="navigation-card"
+        class="navigation-card"
+        href="${ifDefined(this.href)}"
+        target=${this.clickAction === 'external' ? '_blank' : nothing}
+      >
         ${this.renderContent()}
       </a>
     `;

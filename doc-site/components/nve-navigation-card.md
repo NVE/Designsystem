@@ -89,6 +89,57 @@ Ikonsettet som skal brukes er de som hos NVE kalles [Illustrasjonsikoner](https:
 
 </CodeExamplePreview>
 
+### Klikkhandlinger
+
+Man kan velge mellom 3 klikk-handlinger ved bruk av `clickAction`-egenskapen. Handlingen bestemmer både funksjonaliteten og hvilket ikon som vises i kortet. Standardverdi er `internal`.
+
+#### Intern
+
+`internal` håndterer intern routing. Brukes når brukeren skal navigere innenfor samme applikasjon. Sett `href` for å definere URL-en.
+
+<CodeExamplePreview>
+
+```html
+<nve-navigation-card
+  title="Intern"
+  additionalText="Klikk for å gå til intern linke"
+  clickAction="internal"
+  href="/components/nve-button.html"
+>
+</nve-navigation-card>
+```
+
+</CodeExamplePreview>
+
+#### Ekstern
+
+`external` åpner en ekstern side. Automatisk settes `target="_blank"` på `<a>`-elementet. Se anbefalinger for eksterne lenker i seksjonen [Tilgjengelighet](#tilgjengelighet).
+
+<CodeExamplePreview>
+
+```html
+<nve-navigation-card title="Ekstern (åpnes i en ny fane)" clickAction="external" href="https://www.nve.no/">
+</nve-navigation-card>
+```
+
+</CodeExamplePreview>
+
+#### Nedlasting
+
+`download` starter nedlasting av en fil. Legger til `download`-attributtet slik at nettleseren forstår at lenken ikke skal navigere videre. Dersom du ønsker spesifikk filhåndtering, kan du implementere det selv med en vanlig `onClick`-metode (avhengig av rammeverket du bruker).
+
+<nve-message-card variant="warning" label="Viktig!" size="compact">
+<p>Hvis filen ligger på en annen origin enn applikasjonen, vil lenken ikke laste ned filen, men i stedet åpne adressen fra <b>href</b>-attributtet. I slike tilfeller må du selv håndtere nedlastingen med onClick.</p>
+</nve-message-card>
+
+<CodeExamplePreview>
+
+```html
+<nve-navigation-card title="Last ned Mardalsfossen bilde (JPEG, 72 KB)" clickAction="download"> </nve-navigation-card>
+```
+
+</CodeExamplePreview>
+
 ## Bruk med klient-side routing i SPA-applikasjoner
 
 Når man benytter klientside-routing, for eksempel med `routerLink` (Vue) eller `Link` (React), genereres et eget `<a>`-element av rammeverket.  

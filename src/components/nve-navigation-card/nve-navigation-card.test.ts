@@ -37,7 +37,7 @@ describe('nve-navigation-card', () => {
     const el = await fixture<NveNavigationCard>(
       html`<nve-navigation-card title="Tittel" iconPath="test.svg" additionalText="Skjules"></nve-navigation-card>`
     );
-    const img = el.shadowRoot?.querySelector('img[part="icon"]');
+    const img = el.shadowRoot?.querySelector('img[part="leading-icon"]');
     const p = el.shadowRoot?.querySelector('p[part="additional-text"]');
     expect(img).not.toBeNull();
     expect(img?.getAttribute('src')).toBe('test.svg');
@@ -50,7 +50,7 @@ describe('nve-navigation-card', () => {
     const el = await fixture<NveNavigationCard>(
       html`<nve-navigation-card title="Tittel" href="/test"></nve-navigation-card>`
     );
-    const a = el.shadowRoot?.querySelector('a[part="base"]');
+    const a = el.shadowRoot?.querySelector('a[part="navigation-card"]');
     expect(a).not.toBeNull();
     expect(a?.getAttribute('href')).toBe('/test');
   });
@@ -58,7 +58,7 @@ describe('nve-navigation-card', () => {
   it('should render as <div> when parent is <a>', async () => {
     const wrapper = await fixture(html`<a><nve-navigation-card title="Tittel"></nve-navigation-card></a>`);
     const el = wrapper.querySelector('nve-navigation-card') as NveNavigationCard;
-    const div = el.shadowRoot?.querySelector('div[part="base"]');
+    const div = el.shadowRoot?.querySelector('div[part="navigation-card"]');
     expect(div).not.toBeNull();
   });
 
@@ -75,7 +75,7 @@ describe('nve-navigation-card', () => {
     const el = await fixture<NveNavigationCard>(
       html`<nve-navigation-card title="Tittel" testId="123"></nve-navigation-card>`
     );
-    const a = el.shadowRoot?.querySelector('[part="base"]');
+    const a = el.shadowRoot?.querySelector('[part="navigation-card"]');
     expect(a?.getAttribute('testid')).toBe('123');
   });
 
@@ -83,9 +83,50 @@ describe('nve-navigation-card', () => {
     const el = await fixture<NveNavigationCard>(
       html`<nve-navigation-card title="Tittel" iconPath="test.svg"></nve-navigation-card>`
     );
-    const img = el.shadowRoot?.querySelector('img[part="icon"]');
+    const img = el.shadowRoot?.querySelector('img[part="leading-icon"]');
     const p = el.shadowRoot?.querySelector('p[part="additional-text"]');
     expect(img).not.toBeNull();
     expect(p).toBeNull();
+  });
+
+  describe('clickAction', () => {
+    it('should render with clickAction="internal"', async () => {
+      const el = await fixture<NveNavigationCard>(
+        html`<nve-navigation-card title="Tittel" href="/intern" clickAction="internal"></nve-navigation-card>`
+      );
+      const a = el.shadowRoot?.querySelector('a.navigation-card');
+      expect(a).not.toBeNull();
+      expect(a?.getAttribute('href')).toBe('/intern');
+      expect(a?.hasAttribute('download')).toBe(false);
+      expect(a?.getAttribute('target')).toBeNull();
+      const icon = el.shadowRoot?.querySelector('nve-icon.navigation-card__arrow');
+      expect(icon?.getAttribute('name')).toBe('arrow_forward');
+    });
+
+    it('should render with clickAction="download"', async () => {
+      const el = await fixture<NveNavigationCard>(
+        html`<nve-navigation-card title="Last ned" href="/fil.pdf" clickAction="download"></nve-navigation-card>`
+      );
+      const a = el.shadowRoot?.querySelector('a.navigation-card');
+      expect(a).not.toBeNull();
+      expect(a?.getAttribute('href')).toBe('/fil.pdf');
+      expect(a?.hasAttribute('download')).toBe(true);
+      expect(a?.getAttribute('target')).toBeNull();
+      const icon = el.shadowRoot?.querySelector('nve-icon.navigation-card__arrow');
+      expect(icon?.getAttribute('name')).toBe('download');
+    });
+
+    it('should render with clickAction="external"', async () => {
+      const el = await fixture<NveNavigationCard>(
+        html`<nve-navigation-card title="Ekstern" href="https://nve.no" clickAction="external"></nve-navigation-card>`
+      );
+      const a = el.shadowRoot?.querySelector('a.navigation-card');
+      expect(a).not.toBeNull();
+      expect(a?.getAttribute('href')).toBe('https://nve.no');
+      expect(a?.hasAttribute('download')).toBe(false);
+      expect(a?.getAttribute('target')).toBe('_blank');
+      const icon = el.shadowRoot?.querySelector('nve-icon.navigation-card__arrow');
+      expect(icon?.getAttribute('name')).toBe('open_in_new');
+    });
   });
 });

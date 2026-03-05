@@ -54,6 +54,25 @@ export default css`
     flex-shrink: 0;
     color: var(--color-brand-foreground-primary);
     margin-right: var(--spacing-x-small);
+    transition:
+      margin-left 300ms cubic-bezier(0, 0, 0.2, 1),
+      margin-right 300ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .navigation-card:hover .navigation-card__arrow {
+    margin-left: var(--spacing-2x-small);
+    margin-right: var(--spacing-2x-small);
+    transition:
+      margin-left 300ms cubic-bezier(0, 0, 0.2, 1),
+      margin-right 300ms cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .navigation-card:active .navigation-card__arrow {
+    margin-left: var(--spacing-x-small);
+    margin-right: 0;
+    transition:
+      margin-left 100ms cubic-bezier(0, 0, 0.2, 1),
+      margin-right 100ms cubic-bezier(0, 0, 0.2, 1);
   }
 
   .navigation-card:hover {
