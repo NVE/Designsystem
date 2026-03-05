@@ -438,20 +438,20 @@
   --color-supplemental-charts-foreground-data-02: var(--color-shades-data-color-a-600);
   --color-supplemental-charts-foreground-data-03: var(--color-shades-data-color-a-800);
   --color-supplemental-charts-foreground-data-04: var(--color-shades-data-color-a-950);
-  --color-supplemental-charts-foreground-data-05: var(--color-shades-data-color-b-900);
-  --color-supplemental-charts-foreground-data-06: var(--color-shades-data-color-b-800);
-  --color-supplemental-charts-foreground-data-07: var(--color-shades-data-color-b-500);
-  --color-supplemental-charts-foreground-data-08: var(--color-shades-data-color-c-600);
-  --color-supplemental-charts-foreground-data-09: var(--color-shades-data-color-c-800);
-  --color-supplemental-charts-foreground-data-10: var(--color-shades-data-color-c-900);
-  --color-supplemental-charts-foreground-data-11: var(--color-shades-data-color-d-900);
-  --color-supplemental-charts-foreground-data-12: var(--color-shades-data-color-d-800);
-  --color-supplemental-charts-foreground-data-13: var(--color-shades-data-color-d-600);
-  --color-supplemental-charts-foreground-data-14: var(--color-shades-data-color-e-300);
-  --color-supplemental-charts-foreground-data-15: var(--color-shades-data-color-e-400);
-  --color-supplemental-charts-foreground-data-16: var(--color-shades-data-color-e-500);
-  --color-supplemental-charts-foreground-data-17: var(--color-shades-data-color-f-800);
-  --color-supplemental-charts-foreground-data-18: var(--color-shades-data-color-g-800);
+  --color-supplemental-charts-foreground-data-05: var(--color-shades-data-color-d-900);
+  --color-supplemental-charts-foreground-data-06: var(--color-shades-data-color-b-500);
+  --color-supplemental-charts-foreground-data-07: var(--color-shades-data-color-e-300);
+  --color-supplemental-charts-foreground-data-08: var(--color-shades-data-color-g-800);
+  --color-supplemental-charts-foreground-data-09: var(--color-shades-data-color-f-800);
+  --color-supplemental-charts-foreground-data-10: var(--color-shades-data-color-e-400);
+  --color-supplemental-charts-foreground-data-11: var(--color-shades-data-color-b-800);
+  --color-supplemental-charts-foreground-data-12: var(--color-shades-data-color-d-600);
+  --color-supplemental-charts-foreground-data-13: var(--color-shades-data-color-c-800);
+  --color-supplemental-charts-foreground-data-14: var(--color-shades-data-color-e-500);
+  --color-supplemental-charts-foreground-data-15: var(--color-shades-data-color-d-800);
+  --color-supplemental-charts-foreground-data-16: var(--color-shades-data-color-c-900);
+  --color-supplemental-charts-foreground-data-17: var(--color-shades-data-color-c-600);
+  --color-supplemental-charts-foreground-data-18: var(--color-shades-data-color-b-900);
  --spacing-none: 0;
   --spacing-20x: 20px;
   --spacing-24x: 24px;
@@ -1126,20 +1126,20 @@
   --color-supplemental-charts-foreground-data-02: var(--color-shades-data-color-a-150);
   --color-supplemental-charts-foreground-data-03: var(--color-shades-data-color-a-100);
   --color-supplemental-charts-foreground-data-04: var(--color-shades-data-color-a-000);
-  --color-supplemental-charts-foreground-data-05: var(--color-shades-data-color-b-500);
-  --color-supplemental-charts-foreground-data-06: var(--color-shades-data-color-b-400);
-  --color-supplemental-charts-foreground-data-07: var(--color-shades-data-color-b-200);
-  --color-supplemental-charts-foreground-data-08: var(--color-shades-data-color-c-400);
-  --color-supplemental-charts-foreground-data-09: var(--color-shades-data-color-c-500);
-  --color-supplemental-charts-foreground-data-10: var(--color-shades-data-color-c-600);
-  --color-supplemental-charts-foreground-data-11: var(--color-shades-data-color-d-400);
-  --color-supplemental-charts-foreground-data-12: var(--color-shades-data-color-d-500);
-  --color-supplemental-charts-foreground-data-13: var(--color-shades-data-color-d-600);
-  --color-supplemental-charts-foreground-data-14: var(--color-shades-data-color-e-100);
-  --color-supplemental-charts-foreground-data-15: var(--color-shades-data-color-e-200);
-  --color-supplemental-charts-foreground-data-16: var(--color-shades-data-color-e-300);
-  --color-supplemental-charts-foreground-data-17: var(--color-shades-data-color-f-600);
-  --color-supplemental-charts-foreground-data-18: var(--color-shades-data-color-g-600); }
+  --color-supplemental-charts-foreground-data-05: var(--color-shades-data-color-d-400);
+  --color-supplemental-charts-foreground-data-06: var(--color-shades-data-color-b-200);
+  --color-supplemental-charts-foreground-data-07: var(--color-shades-data-color-e-100);
+  --color-supplemental-charts-foreground-data-08: var(--color-shades-data-color-g-600);
+  --color-supplemental-charts-foreground-data-09: var(--color-shades-data-color-f-600);
+  --color-supplemental-charts-foreground-data-10: var(--color-shades-data-color-e-200);
+  --color-supplemental-charts-foreground-data-11: var(--color-shades-data-color-b-400);
+  --color-supplemental-charts-foreground-data-12: var(--color-shades-data-color-d-600);
+  --color-supplemental-charts-foreground-data-13: var(--color-shades-data-color-c-500);
+  --color-supplemental-charts-foreground-data-14: var(--color-shades-data-color-e-300);
+  --color-supplemental-charts-foreground-data-15: var(--color-shades-data-color-d-500);
+  --color-supplemental-charts-foreground-data-16: var(--color-shades-data-color-c-600);
+  --color-supplemental-charts-foreground-data-17: var(--color-shades-data-color-c-400);
+  --color-supplemental-charts-foreground-data-18: var(--color-shades-data-color-b-500); }
 
 @media (min-width: 1600px) {
 /**
