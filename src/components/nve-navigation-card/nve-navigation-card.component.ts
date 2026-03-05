@@ -1,0 +1,88 @@
+import { LitElement, html, nothing } from 'lit';
+import { customElement, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { INveComponent } from '@interfaces/NveComponent.interface';
+import styles from './nve-navigation-card.styles';
+import '../nve-icon/nve-icon.component';
+
+/**
+ * Denne komponenten er ment å brukes som hovednavigasjon på sider, for eksempel transportside (i motsetning til `nve-link-card`, som er mindre og brukes der navigasjonen ikke er hovedfokus).
+ *
+ * Komponenten brukes i grid-oppsett, har minimum og maksimum høyde, og støtter enten ikon (SVG/PNG, kun dekorativt, angis via path) eller tilleggstekst (maks 3 linjer, trunkeres automatisk) – aldri begge samtidig.
+ *
+ * Ikon angis med `iconPath`-prop og rendres automatisk med aria-hidden. Bruk kun illustrasjonsikoner fra NVE.
+ *
+ * @csspart base Topp-elementet for kortet
+ * @csspart title Tittel på kortet
+ * @csspart icon Ikonet øverst i kortet
+ * @csspart content Innholdet i kortet
+ * @csspart additionalText Ekstratekst under tittel
+ */
+@customElement('nve-navigation-card')
+export default class NveNavigationCard extends LitElement implements INveComponent {
+  /** Test ID som kan brukes i testing og sporing */
+  @property({ type: String }) testId = '';
+
+  /** Tittel som vises øverst på kortet (må settes) */
+  @property({ type: String }) title = '';
+
+  /**
+   * Lenke for navigasjon (må settes for at kortet skal være klikkbart).
+   * Hvis du bruker komponenten uten å wrappe den i et rammeverks-router-element (f.eks. Vue Router eller React Router), må `href` settes.
+   */
+  @property({ type: String }) href = '';
+
+  /** Ekstratekst som vises under tittelen (maks 3 linjer, trunkeres) */
+  @property({ type: String }) additionalText: string | undefined = undefined;
+
+  /** Path til ikon som vises øverst i kortet (dekorativt) */
+  @property({ type: String }) iconPath: string | undefined = undefined;
+
+  static styles = [styles];
+
+  /**
+   * Genererer innholdet i kortet.
+   * Viser ikon (hvis iconPath), tittel og ev. additionalText.
+   */
+  private renderContent() {
+    return html`
+      <div part="content" class="navigation-card__content">
+        ${this.iconPath
+          ? html`<img part="icon" src="${this.iconPath}" alt="" aria-hidden="true" class="navigation-card__icon" />`
+          : nothing}
+        <h2 part="title" class="navigation-card__title">${this.title}</h2>
+        ${!this.iconPath && this.additionalText
+          ? html`<p part="additional-text" class="navigation-card__additional-text">${this.additionalText}</p>`
+          : nothing}
+      </div>
+      <nve-icon aria-hidden="true" name="arrow_forward" class="navigation-card__arrow" style="--icon-size: 24px;" />
+    `;
+  }
+
+  /**
+   * Rendrer kortet som <a> hvis ikke parent er en lenke,
+   * ellers som <div> for å unngå nestede lenker (SPA-routing).
+   */
+  render() {
+    const isParentLink =
+      this.parentElement?.tagName.toLowerCase() === 'a' || this.parentElement?.getAttribute('role') === 'link';
+
+    if (isParentLink) {
+      return html`
+        <div part="base" class="navigation-card" testid="${ifDefined(this.testId)}">${this.renderContent()}</div>
+      `;
+    }
+
+    return html`
+      <a part="base" class="navigation-card" href="${ifDefined(this.href)}" testid="${ifDefined(this.testId)}">
+        ${this.renderContent()}
+      </a>
+    `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'nve-navigation-card': NveNavigationCard;
+  }
+}
