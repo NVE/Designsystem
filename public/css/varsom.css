@@ -342,11 +342,11 @@
   --color-feedback-foreground-error: var(--color-shades-functional-red-700);
   --color-feedback-foreground-warning: var(--color-shades-functional-orange-999);
   --color-feedback-foreground-success: var(--color-shades-functional-green-900);
-  --color-feedback-foreground-on-bg-subtle-neutral: var(--color-shades-functional-neutralgrey-999);
-  --color-feedback-foreground-on-bg-subtle-info: var(--color-shades-functional-blue-999);
-  --color-feedback-foreground-on-bg-subtle-error: var(--color-shades-functional-red-950);
+  --color-feedback-foreground-on-bg-subtle-neutral: var(--color-shades-functional-neutralgrey-800);
+  --color-feedback-foreground-on-bg-subtle-info: var(--color-shades-functional-blue-850);
+  --color-feedback-foreground-on-bg-subtle-error: var(--color-shades-functional-red-850);
   --color-feedback-foreground-on-bg-subtle-warning: var(--color-shades-functional-orange-999);
-  --color-feedback-foreground-on-bg-subtle-success: var(--color-shades-functional-green-999);
+  --color-feedback-foreground-on-bg-subtle-success: var(--color-shades-functional-green-900);
   --color-feedback-foreground-on-bg-emphasized-neutral: var(--color-shades-functional-neutralgrey-000);
   --color-feedback-foreground-on-bg-emphasized-info: var(--color-shades-functional-neutralgrey-000);
   --color-feedback-foreground-on-bg-emphasized-error: var(--color-shades-functional-neutralgrey-000);
