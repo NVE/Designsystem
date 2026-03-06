@@ -17,8 +17,9 @@ a {
   color: var(--color-neutrals-foreground-primary, #0d0d0e);
 }
 
-/* Brukes for å fjerne standard linje i <a>  som ikke er i Shadow-DOMen som f.eks de som skal wrappe <nve-link-card> */
-a:has(nve-link-card) {
+/* Brukes for å fjerne standard linje i <a>  som ikke er i Shadow-DOMen som f.eks de som skal wrappe <nve-link-card> og <nve-navigation-card> */
+a:has(nve-link-card),
+a:has(nve-navigation-card) {
   text-decoration: unset;
 }
 

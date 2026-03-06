@@ -24,6 +24,7 @@ export { default as NveLinkCard } from './components/nve-link-card/nve-link-card
 export { default as NveMenu } from './components/nve-menu/nve-menu.component';
 export { default as NveMenuItem } from './components/nve-menu-item/nve-menu-item.component';
 export { default as NveMessageCard } from './components/nve-message-card/nve-message-card.component';
+export { default as NveNavigationCard } from './components/nve-navigation-card/nve-navigation-card.component';
 export { default as NveOption } from './components/nve-option/nve-option.component';
 export { default as NvePopup } from './components/nve-popup/nve-popup.component';
 export { default as NveRadio } from './components/nve-radio/nve-radio.component';
