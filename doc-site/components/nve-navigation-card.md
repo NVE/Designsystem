@@ -7,15 +7,14 @@ layout: component
 ```html
 <nve-navigation-card
   href="#"
-  title="Om hydrologisk avdeling"
+  label="Om hydrologisk avdeling"
   additionalText="Norges vassdrags- og energidirektorat er nasjonal faginstitusjon i hydrologi."
 ></nve-navigation-card>
 <nve-navigation-card
   href="#"
-  title="Fakta om vannets kretsløp"
-  iconPath="../assets/images/nve-illustrasjoner-ikon-vannkraft.png"
- />
-</nve-navigation-card>
+  label="Fakta om vannets kretsløp"
+  iconPath="/assets/nve-illustrasjoner-ikon-vannkraft.png"
+></nve-navigation-card>
 ```
 
 </CodeExamplePreview>
@@ -29,7 +28,7 @@ Tittel vises alltid øverst i kortet, og under ikon dersom ikon er lagt inn med 
 <CodeExamplePreview>
 
 ```html
-<nve-navigation-card href="#" title="Tittel" />
+<nve-navigation-card href="#" label="Tittel" />
 ```
 
 </CodeExamplePreview>
@@ -43,7 +42,7 @@ Du kan legge til en ekstra tekst under hovedlenkens overskrift ved å bruke `add
 ```html
 <nve-navigation-card
   href="#"
-  title="Om hydrologisk avdeling"
+  label="Om hydrologisk avdeling"
   additionalText="Norges vassdrags- og energidirektorat er nasjonal faginstitusjon i hydrologi."
 />
 ```
@@ -59,7 +58,7 @@ Tilleggstekst vises maksimalt på 3 linjer. Dersom teksten er lengre, kuttes den
 ```html
 <nve-navigation-card
   href="#"
-  title="Vannkraft i Norge"
+  label="Vannkraft i Norge"
   additionalText="Norge er verdens sjette største produsent av vannkraft, og nesten all norsk strømproduksjon kommer fra vannkraftverk. Vannkraften utnytter høydeforskjeller i elver og innsjøer til å produsere ren og fornybar energi. NVE forvalter Norges vannressurser og har ansvar for å regulere og overvåke kraftproduksjonen i landet."
 />
 ```
@@ -75,15 +74,11 @@ Ikonsettet som skal brukes er de som hos NVE kalles [Illustrasjonsikoner](https:
 ```html
 <nve-navigation-card
   href="#"
-  title="Fakta om vannets kretsløp"
-  iconPath="../assets/images/nve-illustrasjoner-ikon-vannkraft.png"
+  label="Fakta om vannets kretsløp"
+  iconPath="/assets/nve-illustrasjoner-ikon-vannkraft.png"
 >
 </nve-navigation-card>
-<nve-navigation-card
-  href="#"
-  title="Fakta om flom og farer"
-  iconPath="../assets/images/nve-illustrasjoner-ikon-flom.png"
->
+<nve-navigation-card href="#" label="Fakta om flom og farer" iconPath="/assets/nve-illustrasjoner-ikon-flom.png">
 </nve-navigation-card>
 ```
 
@@ -101,7 +96,7 @@ Man kan velge mellom 3 klikk-handlinger ved bruk av `clickAction`-egenskapen. Ha
 
 ```html
 <nve-navigation-card
-  title="Intern"
+  label="Intern"
   additionalText="Klikk for å gå til intern linke"
   clickAction="internal"
   href="/components/nve-button.html"
@@ -118,7 +113,7 @@ Man kan velge mellom 3 klikk-handlinger ved bruk av `clickAction`-egenskapen. Ha
 <CodeExamplePreview>
 
 ```html
-<nve-navigation-card title="Ekstern (åpnes i en ny fane)" clickAction="external" href="https://www.nve.no/">
+<nve-navigation-card label="Ekstern (åpnes i en ny fane)" clickAction="external" href="https://www.nve.no/">
 </nve-navigation-card>
 ```
 
@@ -135,7 +130,7 @@ Man kan velge mellom 3 klikk-handlinger ved bruk av `clickAction`-egenskapen. Ha
 <CodeExamplePreview>
 
 ```html
-<nve-navigation-card title="Last ned Mardalsfossen bilde (JPEG, 72 KB)" clickAction="download"> </nve-navigation-card>
+<nve-navigation-card label="Last ned Mardalsfossen bilde (JPEG, 72 KB)" clickAction="download"> </nve-navigation-card>
 ```
 
 </CodeExamplePreview>
@@ -153,7 +148,7 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 <RouterLink to="components/Komponentoversikt">
   <nve-navigation-card
     href="#"
-    title="Om hydrologisk avdeling"
+    label="Om hydrologisk avdeling"
     additionalText="Tekst her skal ikke kombineres med ikon"
   />
 </RouterLink>
@@ -165,7 +160,7 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 <Link to="/components/Komponentoversikt">
   <nve-navigation-card
     href="#"
-    title="Om hydrologisk avdeling"
+    label="Om hydrologisk avdeling"
     additionalText="Tekst her skal ikke kombineres med ikon"
   />
 </Link>
@@ -183,7 +178,7 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 
 ## Tilgjengelighet
 
-- **Tittel (`title`-feltet) rendres som `<h2>`** for å sikre god semantikk og tilgjengelighet. Dette gjør det enklere for brukere med skjermleser å navigere mellom hovedseksjoner på siden. Hvis du har flere navigation-cards på samme side, vil de automatisk utgjøre en oversiktlig seksjonsstruktur.
+- **Tittel (`label`-feltet) rendres som `<h2>`** for å sikre god semantikk og tilgjengelighet. Dette gjør det enklere for brukere med skjermleser å navigere mellom hovedseksjoner på siden. Hvis du har flere navigation-cards på samme side, vil de automatisk utgjøre en oversiktlig seksjonsstruktur.
 - Komponentet rendres som `<a>` hvis det ikke ligger inni en lenke, og som `<div>` hvis det pakkes inn i en `<a>` (for å unngå nestede lenker).
 - Ikon og tilleggstekst skal **ikke** vises samtidig.
 - Ekstratekst trunkeres automatisk etter 3 linjer for å sikre at kortet ikke blir for høyt og at innholdet er lett å skanne.

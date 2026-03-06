@@ -1,6 +1,13 @@
 import { css } from 'lit';
 
 export default css`
+  :host {
+    --nav-card-arrow-transition:
+      margin-left 0.3s cubic-bezier(0, 0, 0.2, 1), margin-right 0.3s cubic-bezier(0, 0, 0.2, 1);
+    --nav-card-arrow-transition-fast:
+      margin-left 0.3s cubic-bezier(0, 0, 0.2, 1), margin-right 0.3s cubic-bezier(0, 0, 0.2, 1);
+  }
+
   .navigation-card {
     display: flex;
     flex-direction: row;
@@ -10,7 +17,6 @@ export default css`
     width: 100%;
     height: stretch;
     min-height: var(--sizing-card-link-card-height-x-large-min-height);
-    max-height: var(--sizing-card-link-card-height-x-large-max-height);
     padding: var(--spacing-2x-large);
     gap: var(--spacing-medium);
     border-radius: var(--border-radius-small);
@@ -18,7 +24,7 @@ export default css`
     background: var(--color-neutrals-background-primary);
     cursor: pointer;
     text-decoration: none;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.3s ease;
   }
 
   .navigation-card__content {
@@ -35,7 +41,7 @@ export default css`
   .navigation-card__title {
     font: var(--typography-heading-small);
     color: var(--color-neutrals-foreground-primary);
-    transition: color 0.2s ease;
+    transition: color 0.3s ease;
     margin: 0;
   }
 
@@ -54,25 +60,19 @@ export default css`
     flex-shrink: 0;
     color: var(--color-brand-foreground-primary);
     margin-right: var(--spacing-x-small);
-    transition:
-      margin-left 300ms cubic-bezier(0, 0, 0.2, 1),
-      margin-right 300ms cubic-bezier(0, 0, 0.2, 1);
+    transition: var(--nav-card-arrow-transition);
   }
 
   .navigation-card:hover .navigation-card__arrow {
     margin-left: var(--spacing-2x-small);
     margin-right: var(--spacing-2x-small);
-    transition:
-      margin-left 300ms cubic-bezier(0, 0, 0.2, 1),
-      margin-right 300ms cubic-bezier(0, 0, 0.2, 1);
+    transition: var(--nav-card-arrow-transition-fast);
   }
 
   .navigation-card:active .navigation-card__arrow {
     margin-left: var(--spacing-x-small);
     margin-right: 0;
-    transition:
-      margin-left 100ms cubic-bezier(0, 0, 0.2, 1),
-      margin-right 100ms cubic-bezier(0, 0, 0.2, 1);
+    transition: var(--nav-card-arrow-transition-fast);
   }
 
   .navigation-card:hover {
@@ -96,7 +96,7 @@ export default css`
     text-underline-offset: 16%;
   }
 
-  .navigation-card:focus {
+  .navigation-card:focus-visible {
     outline: var(--color-interactive-primary-border-focus) solid 2px;
   }
 `;

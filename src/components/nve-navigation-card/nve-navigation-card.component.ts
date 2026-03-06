@@ -13,18 +13,18 @@ import '../nve-icon/nve-icon.component';
  * Ikon angis med `iconPath`-prop og rendres automatisk med aria-hidden. Bruk kun illustrasjonsikoner fra NVE.
  *
  * @csspart navigation-card Topp-elementet for kortet
- * @csspart title Tittel på kortet
+ * @csspart label Overskriften på kortet
  * @csspart leading-icon Ikonet øverst i kortet
  * @csspart content Innholdet i kortet
- * @csspart additional-text Ekstratekst under tittel
+ * @csspart additional-text Ekstra tekst under overskriften
  */
 @customElement('nve-navigation-card')
 export default class NveNavigationCard extends LitElement implements INveComponent {
   /** Test ID som kan brukes i testing og sporing */
-  @property({ type: String }) testId = '';
+  @property({ type: String }) testId: string | undefined = undefined;
 
   /** Tittel som vises øverst på kortet (må settes) */
-  @property({ type: String }) title = '';
+  @property({ type: String }) label = '';
 
   /**
    * Lenke for navigasjon (må settes for at kortet skal være klikkbart).
@@ -75,7 +75,7 @@ export default class NveNavigationCard extends LitElement implements INveCompone
               class="navigation-card__icon"
             />`
           : nothing}
-        <h2 part="title" class="navigation-card__title">${this.title}</h2>
+        <h2 part="label" class="navigation-card__title">${this.label}</h2>
         ${!this.iconPath && this.additionalText
           ? html`<p part="additional-text" class="navigation-card__additional-text">${this.additionalText}</p>`
           : nothing}
@@ -99,7 +99,7 @@ export default class NveNavigationCard extends LitElement implements INveCompone
 
     if (isParentLink) {
       return html`
-        <div part="navigation-card" class="navigation-card" testid="${ifDefined(this.testId)}">
+        <div part="navigation-card" class="navigation-card" ${this.testId ? `testid="${this.testId}"` : ''}>
           ${this.renderContent()}
         </div>
       `;
@@ -107,7 +107,7 @@ export default class NveNavigationCard extends LitElement implements INveCompone
 
     return html`
       <a
-        testid="${ifDefined(this.testId)}"
+        ${this.testId ? `testid="${this.testId}"` : ''}
         ?download=${this.clickAction === 'download'}
         part="navigation-card"
         class="navigation-card"
