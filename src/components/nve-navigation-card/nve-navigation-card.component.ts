@@ -99,7 +99,7 @@ export default class NveNavigationCard extends LitElement implements INveCompone
 
     if (isParentLink) {
       return html`
-        <div part="navigation-card" class="navigation-card" ${this.testId ? `testid="${this.testId}"` : ''}>
+        <div part="navigation-card" class="navigation-card" testid=${ifDefined(this.testId)}>
           ${this.renderContent()}
         </div>
       `;
@@ -107,7 +107,7 @@ export default class NveNavigationCard extends LitElement implements INveCompone
 
     return html`
       <a
-        ${this.testId ? `testid="${this.testId}"` : ''}
+        testid=${ifDefined(this.testId)}
         ?download=${this.clickAction === 'download'}
         part="navigation-card"
         class="navigation-card"
