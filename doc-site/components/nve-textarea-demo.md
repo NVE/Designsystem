@@ -6,9 +6,11 @@ TODO: Start med et enklest mulig kodeeksempel i html for å kunne vise komponent
 <CodeExamplePreview>
 
 ```html
-<nve-textarea-demo></nve-textarea-demo>
+<nve-textarea-demo label="Some label"></nve-textarea-demo>
 
-<nve-textarea-demo errorMessage="so wrong"></nve-textarea-demo>
+<nve-textarea-demo label="Some label" errorMessage="So wrong"></nve-textarea-demo>
+
+<nve-textarea-demo label="Some label" disabled></nve-textarea-demo>
 ```
 
 </CodeExamplePreview>

@@ -18,7 +18,8 @@ export default css`
     line-height: var(--icon-size);
   }
 
-  :is(img) {
+  :is(img),
+  :is(svg) {
     width: var(--icon-size);
     height: var(--icon-size);
   }
@@ -44,7 +45,7 @@ export default css`
   .material-sharp {
     font-family: 'Material Symbols Sharp';
   }
-  
+
   svg {
     fill: currentColor;
   }

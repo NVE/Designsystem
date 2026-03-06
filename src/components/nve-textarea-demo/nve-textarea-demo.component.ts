@@ -1,18 +1,31 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-textarea-demo.styles';
 import '../nve-icon/nve-icon.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
+let errorId = 0;
 @customElement('nve-textarea-demo')
 export default class NveTextareaDemo extends LitElement implements INveComponent {
   @property({ type: String }) testId: string | undefined = undefined;
+  /** Om minst en sjekkboks er sjekket på */
+  @property({ type: Boolean, reflect: true }) required = false;
+  /** Ledetekst */
+  @property() label?: string;
   /** Feilmelding som vises ved valideringsfeil. Hvis den er satt blir input-felt ugyldig og feil melding vises. Burde ikke brukes hvis man bruker validate-metoden */
   @property({ type: String, reflect: true }) errorMessage: string | undefined = undefined;
+  /** Tekst som vises for å markere at et felt er obligatorisk */
+  @property() requiredLabel = '';
+  /** Tooltip-tekst for label */
+  @property({ type: String }) tooltip = '';
+  /** Om inputfeltet skal være deaktivert */
+  @property({ type: Boolean, reflect: true }) disabled = false;
   //autofocus kanskje burde ikke brukes?
   static styles = [styles];
-
+  private readonly errorId = `error-textarea-${++errorId}`;
   constructor() {
     super();
   }
@@ -91,21 +104,53 @@ export default class NveTextareaDemo extends LitElement implements INveComponent
   */
 
   // HUSK AT aria/described by can be combined both helpt text from the label and from under the input
+  // HUSK sjekk om textarea og input har samme hover style
+  // HUSK instead of a border i think i should maybe use outline or sth that doesnt collide with the layout
   render() {
     return html`
       <!--
      
       ></textarea>-->
-      <div class="textarea__control">
-        <textarea
-          @change=${this.handleChange}
-          @blur=${this.handleBlur}
-          @focus=${this.handleFocus}
-          @select=${this.handleSelect}
-          aria-describedby="help-text"
-          aria-invalid=${ifDefined(this.errorMessage ? 'true' : undefined)}
-        ></textarea>
-        ${this.errorMessage ? html` <nve-icon name="warning"></nve-icon>` : null}
+      <div
+        class=${classMap({
+          textarea__container: true,
+          'textarea__container--error': !!this.errorMessage,
+          'textarea__container--disabled': this.disabled,
+        })}
+      >
+        ${this.label
+          ? html`<label>
+              ${this.label}
+              ${this.tooltip
+                ? html`<nve-tooltip placement="top">
+                    <div slot="content">${unsafeHTML(this.tooltip)}</div>
+                    <nve-icon class="nve-info-icon" name="Info"></nve-icon>
+                  </nve-tooltip>`
+                : nothing}
+              ${this.required
+                ? html`<span class="label__required-text"
+                    >*${this.requiredLabel ? html`${this.requiredLabel}` : nothing}</span
+                  >`
+                : nothing}
+            </label>`
+          : nothing}
+        <div class="textarea__control">
+          <textarea
+            class="textarea"
+            @change=${this.handleChange}
+            @blur=${this.handleBlur}
+            ?disabled=${this.disabled}
+            @focus=${this.handleFocus}
+            @select=${this.handleSelect}
+            aria-describedby=${ifDefined(this.errorMessage ? this.errorId : undefined)}
+            aria-invalid=${ifDefined(this.errorMessage ? 'true' : undefined)}
+          ></textarea>
+          ${this.disabled ? html` <nve-icon name="lock"></nve-icon>` : null}
+          ${this.errorMessage ? html` <nve-icon name="error"></nve-icon>` : null}
+        </div>
+        ${this.errorMessage
+          ? html`<span class="textarea__error-msg" id=${this.errorId}>${this.errorMessage}</span>`
+          : nothing}
       </div>
     `;
   }
