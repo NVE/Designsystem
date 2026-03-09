@@ -7,8 +7,8 @@ export default css`
     align-items: center;
     box-sizing: border-box;
     width: 100%;
-    padding: var(--spacing-medium, 16px) var(--spacing-large, 24px);
-    gap: var(--spacing-medium, 16px);
+    padding: var(--spacing-medium) var(--spacing-large);
+    gap: var(--spacing-medium);
     border-radius: var(--border-radius-small);
     border: var(--border-width-stronger) solid transparent;
     background: var(--color-neutrals-background-primary);
@@ -21,12 +21,12 @@ export default css`
 
   /* Setter farge på <a> for å sikre riktig lenkefarge uansett rammeverk eller browser */
   a {
-    color: var(--color-neutrals-foreground-primary, #0d0d0e);
+    color: var(--color-neutrals-foreground-primary);
   }
 
   .link-card:hover {
     border-color: var(--color-neutrals-border-subtle);
-    background: var(--color-neutrals-background-primary, #fff);
+    background: var(--color-neutrals-background-primary);
   }
 
   .link-card:active {
@@ -39,7 +39,7 @@ export default css`
 
   .link-card--small {
     padding: var(--spacing-small) var(--spacing-medium);
-    gap: var(--spacing-x-small, 8px);
+    gap: var(--spacing-x-small);
     min-height: var(--sizing-2x-small);
   }
 
@@ -54,15 +54,15 @@ export default css`
   }
 
   .link-card--primary {
-    background: var(--color-neutrals-background-primary, #fff);
+    background: var(--color-neutrals-background-primary);
   }
 
   .link-card--contrast {
-    background: var(--color-neutrals-background-primary-contrast, #f7f7f8);
+    background: var(--color-neutrals-background-primary-contrast);
   }
 
   .link-card--secondary {
-    background: var(--color-neutrals-background-secondary, #e4e5e7);
+    background: var(--color-neutrals-background-secondary);
   }
 
   .link-card__content {
@@ -74,7 +74,7 @@ export default css`
 
   .link-card__label {
     font: var(--typography-heading-x-small);
-    color: var(--color-neutrals-foreground-primary, #141414);
+    color: var(--color-neutrals-foreground-primary);
     transition:
       color 0.3s ease,
       text-decoration-thickness 0.3s,
@@ -103,7 +103,7 @@ export default css`
   }
 
   .link-card__additional-text {
-    color: var(--color-neutrals-foreground-subtle, #60656c);
+    color: var(--color-neutrals-foreground-subtle);
     font: var(--typography-body-compact-x-small-compact);
     overflow: hidden;
     display: -webkit-box;
