@@ -169,6 +169,10 @@
             "$type": "color",
             "$value": "{color-shades.grey.600}"
           },
+          "pressed": {
+            "$type": "color",
+            "$value": "{color-shades.grey.500}"
+          },
           "disabled": {
             "$type": "color",
             "$value": "{color-shades.grey.700}"
@@ -178,6 +182,28 @@
           "hover": {
             "$type": "color",
             "$value": "{color-shades.grey.700}"
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{color-shades.grey.600}"
+          }
+        },
+        "danger": {
+          "enabled": {
+            "$type": "color",
+            "$value": "{color-shades.functional.red.500}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color-shades.functional.red.400}"
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{color-shades.functional.red.300}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color-shades.functional.red.500}"
           }
         }
       },
@@ -210,6 +236,16 @@
             "$value": "{color-shades.grey.000}"
           }
         },
+        "danger": {
+          "enabled": {
+            "$type": "color",
+            "$value": "{color-shades.grey.000}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color-shades.grey.000}"
+          }
+        },
         "link": {
           "enabled": {
             "$type": "color",
@@ -234,10 +270,6 @@
           "hover": {
             "$type": "color",
             "$value": "{color-shades.functional.neutralgrey.100-050}"
-          },
-          "pressed": {
-            "$type": "color",
-            "$value": "{color-shades.grey.000}"
           },
           "disabled": {
             "$type": "color",
