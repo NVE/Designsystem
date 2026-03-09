@@ -149,6 +149,10 @@
             "$type": "color",
             "$value": "{color-shades.grey.600}"
           },
+          "pressed": {
+            "$type": "color",
+            "$value": "{color-shades.grey.500}"
+          },
           "disabled": {
             "$type": "color",
             "$value": "{color-shades.grey.950}"
@@ -228,6 +232,10 @@
           "hover": {
             "$type": "color",
             "$value": "{color-shades.functional.neutralgrey.600-050}"
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{color-shades.grey.950}"
           },
           "disabled": {
             "$type": "color",
