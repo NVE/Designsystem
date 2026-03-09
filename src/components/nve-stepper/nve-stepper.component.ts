@@ -210,7 +210,7 @@ export default class NveStepper extends LitElement {
             variant="primary"
             @click=${this.prevStep}
           >
-            <nve-icon slot="prefix" name="navigate_before"></nve-icon>
+            <nve-icon slot="start" name="navigate_before"></nve-icon>
             Forrige
           </nve-button>
         `;
@@ -225,14 +225,14 @@ export default class NveStepper extends LitElement {
     if (this.getExtremes() === 'end') {
       return html`
         <nve-button size="medium" variant="primary" @click=${this.finishSteps}>
-          <nve-icon slot="suffix" name="done"></nve-icon>
+          <nve-icon slot="end" name="done"></nve-icon>
           ${this.endButtonText}
         </nve-button>
       `;
     }
     return html`
       <nve-button .disabled=${this.getExtremes() === 'end'} size="medium" variant="primary" @click=${this.nextStep}>
-        <nve-icon slot="suffix" name="navigate_next"></nve-icon>
+        <nve-icon slot="end" name="navigate_next"></nve-icon>
         Neste
       </nve-button>
     `;

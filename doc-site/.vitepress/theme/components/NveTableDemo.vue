@@ -187,21 +187,21 @@ const toggleColumn = (header: TableHeader<Country>) => {
 </script>
 
 <template>
-  <ClientOnly>
-    <div class="nve-table-demo">
-      <nve-accordion-item variant="secondary" :open="true">
-        <div slot="summary">Slå av og på kolonner</div>
-        <div class="column-toggles">
-          <nve-checkbox
-            v-for="col in tableHeaders"
-            :key="col.key"
-            :checked="!col.hidden"
-            @sl-change="() => toggleColumn(col)"
-          >
-            {{ col.title }}
-          </nve-checkbox>
-        </div>
-      </nve-accordion-item>
+  <div class="nve-table-demo">
+    <nve-accordion-item variant="secondary" :open="true">
+      <div slot="summary">Slå av og på kolonner</div>
+      <div class="column-toggles">
+        <nve-checkbox
+          v-for="col in tableHeaders"
+          :key="col.key"
+          :checked="!col.hidden"
+          @sl-change="() => toggleColumn(col)"
+        >
+          {{ col.title }}
+        </nve-checkbox>
+      </div>
+    </nve-accordion-item>
+    <ClientOnly>
       <NveTable
         :headers="tableHeaders"
         :data="countries"
@@ -213,7 +213,7 @@ const toggleColumn = (header: TableHeader<Country>) => {
       >
         <template #filterbutton>
           <nve-button variant="ghost" @click="filterOpen = !filterOpen">
-            <nve-icon slot="prefix" name="filter_alt" />
+            <nve-icon slot="start" name="filter_alt" />
             Filtrer
           </nve-button>
         </template>
@@ -242,8 +242,8 @@ const toggleColumn = (header: TableHeader<Country>) => {
           </span>
         </template>
       </NveTable>
-    </div>
-  </ClientOnly>
+    </ClientOnly>
+  </div>
 </template>
 
 <style scoped>

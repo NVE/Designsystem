@@ -15,8 +15,7 @@ export default class NveDropdown extends SlDropdown implements INveComponent {
     super();
   }
   static styles = [SlDropdown.styles, styles];
-  @property({reflect: true, type: String}) testId:string = '';
-
+  @property({ reflect: true, type: String }) testId: string = '';
 
   getMenu() {
     return this.panel.assignedElements({ flatten: true }).find((el) => el.tagName.toLowerCase() === 'nve-menu') as
@@ -24,6 +23,7 @@ export default class NveDropdown extends SlDropdown implements INveComponent {
       | undefined;
   }
 
+  //TODO: Dropdown viser aria-exoanded bare nar man forst apner dropdown, ikke bra. Burde vises hele tiden.
   updateAccessibleTrigger() {
     const assignedElements = this.trigger.assignedElements({ flatten: true }) as HTMLElement[];
     const accessibleTrigger = assignedElements.find((el) => getTabbableBoundary(el).start);

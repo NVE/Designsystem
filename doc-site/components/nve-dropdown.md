@@ -11,7 +11,7 @@ layout: component
 ```html
 <nve-dropdown>
   <nve-button variant="primary" slot="trigger">
-    <nve-icon name="expand_more" slot="suffix"></nve-icon>
+    <nve-icon name="expand_more" slot="end"></nve-icon>
     Dropdown
   </nve-button>
   <nve-menu>
