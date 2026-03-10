@@ -43,6 +43,9 @@ Bruk `size` for å endre størrelse. `medium` er standard.
 
 Du kan legge til en ekstra tekst under hovedlenkens overskrift ved å bruke `additionalText`-egenskapen. Både overskriften og den tilhørende teksten blir lest opp av skjermlesere, så sørg for at teksten er kortfattet og lett å forstå.
 
+**Merk:**  
+`additionalText` vises kun på én linje. Hvis teksten er for lang, blir den automatisk avkortet med `...`.
+
 <CodeExamplePreview>
 
 ```html
@@ -134,11 +137,38 @@ Se anbefalinger for e-postlenker i seksjonen [Tilgjengelighet](#tilgjengelighet)
 
 </CodeExamplePreview>
 
+## Ikon til venstre
+
+Du kan legge til et ikon helt til venstre i kortet ved å bruke slot med `slot="icon"`. Dette gir deg fleksibilitet til å vise hvilket som helst ikon først i kortet, uavhengig av hvilket ikon som vises til høyre (styrt av `clickAction`). Ikonet du setter med slot plasseres alltid ytterst til venstre, og får automatisk en størrelse på 24px. Du skal ikke endre størrelsen på dette ikonet med egne props eller CSS – kortet sørger for riktig størrelse og plassering.
+
+<CodeExamplePreview>
+
+```html
+<nve-link-card
+  label="Last ned høringsdokument"
+  variant="secondary"
+  size="large"
+  href="/assets/mardalsfossen.jpg"
+  clickAction="download"
+>
+  <nve-icon name="docs" slot="icon"></nve-icon>
+</nve-link-card>
+<nve-link-card
+  label="Varsom – vær og snøskred"
+  variant="secondary"
+  clickAction="external"
+  size="large"
+  href="https://www.varsom.no/"
+>
+  <nve-icon name="warning" slot="icon"></nve-icon>
+</nve-link-card>
+```
+
+</CodeExamplePreview>
+
 ## Bruk med klient side-routing i SPA-applikasjoner
 
 Når man benytter klientside-routing, for eksempel med `routerLink`, genereres et eget `<a>`-element av rammeverket. I disse tilfellene blir `nve-link-card` pakket inn i en `<a>`. For å unngå ugyldig HTML-struktur med `<a>`-elementer inni hverandre, sjekker `nve-link-card` derfor om dets direkte forelder er et `<a>`. Hvis dette er tilfelle, rendres kortet som et `<div>` i stedet for et `<a>`.
-
-SKRIV HER AT NOEN RAMMEVERKER STØTTER VISITED!!! ser ut at next js og vue støtter det i spa applikasjoner. verdt å teste i safari tenker jeg
 
 På denne måten beholdes mest funksjonalitet og styling fra `nve-link-card`, samtidig som man unngår semantiske og tekniske problemer med nestede lenker.
 
@@ -166,26 +196,6 @@ Bruk av nve-link-card i React:
   >
 </Link>
 ```
-
-## Besøkt lenke
-
-I henhold til krav for universell utforming skal besøkte lenker ha `besøkt`-tilstand. De fleste nettlesere håndterer dette automatisk ved å bruke CSS-pseudoklassen `:visited` på lenker som er besøkt. Vi definerer egen styling for besøkte lenker i `global.css`, som hentes inn via tema-filer (for eksempel `varsom.css` eller `nve.css`) som bruker denne pseudoklassen.
-
-Ved bruk av lenkekomponenter fra JS-rammeverk, kan det i enkelte tilfeller forekomme at `:visited`-tilstanden ikke fungerer som forventet i noen nettlesere. Dersom du opplever dette, kan du aktivere `visited`-egenskapen på `nve-link-card` når den er pakket inn i en rammeverkslenke. ( Denne egenskapen har ingen effekt dersom `nve-link-card` brukes som en selvstendig lenke, ettersom den da støtter `:visited`-tilstanden direkte gjennom nettleseren.).
-
-For å bruke `visited`-egenskapen må du selv håndtere logikken for besøkte lenker — for eksempel ved å lagre besøkte URL-er i lokal lagring (localStorage).
-
-Dette er likevel en sjelden problemstilling. Lenkekomponentene i Vue, React og Next.js støtter `:visited` som forventet, og du trenger som regel ikke gjøre noe spesielt. Bruker du et annet rammeverk, anbefaler vi å teste om `:visited`-tilstanden settes korrekt i DevTools før du tar i bruk `visited`-egenskapen.
-
-<CodeExamplePreview>
-
-```html
-<a class="rammeverk-sin-lenke-komponent" href="/components/Komponentoversikt">
-  <nve-link-card label="Gå til komponentoversikt" variant="contrast" clickAction="internal" visited> </nve-link-card>
-</a>
-```
-
-</CodeExamplePreview>
 
 ## Tilgjengelighet
 
