@@ -22,6 +22,8 @@ outline: [2, 3]
 
 ## Eksempler
 
+Under finner du eksempler på vanlige brukstilfeller for `nve-navigation-card`.
+
 ### Tittel
 
 Tittel vises alltid øverst i kortet, og under ikon dersom ikon er lagt inn med `iconPath`. Tittelen er det viktigste innholdet og bør være kort og beskrivende.
@@ -109,7 +111,7 @@ Man kan velge mellom 3 klikk-handlinger ved bruk av `clickAction`-egenskapen. Ha
 
 #### Ekstern
 
-`external` åpner en ekstern side. Automatisk settes `target="_blank"` på `<a>`-elementet.
+`external` åpner en ekstern side. Setter automatisk `target="_blank"` på `<a>`-elementet.
 
 <CodeExamplePreview>
 
@@ -175,6 +177,7 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 - Komponentet har minimumshøyde for konsistent layout, men ingen makshøyde. Kortet kan derfor vokse i høyden etter innhold, men tilleggstekst vises maks på 3 linjer.
 - **Ikon skal ikke kombineres med ekstratekst** (`additionalText`). Hvis `ikonPath` er lagt inn, vises ikke tilleggstekst.
 - **Kun illustrasjonsikoner skal brukes som ikon**. Disse finnes i [NVE Frontify – Illustrasjonsikoner](https://nve.frontify.com/d/n2ujvoktZ3dr/nve-profil#/ikoner-illustrasjoner/illustrasjonsikoner-1/nedlasting). Illustrasjonsikonene illustrerer NVEs virksomhetsområder og er detaljrike. De skal ikke brukes for å indikere navigasjon eller handling, og fungerer dårlig i små størrelser.
+- **`label` skal alltid være meningsfull og gi mening alene**, uten å være avhengig av omkringliggende kontekst. Skjermlesere kan presentere alle lenker på siden i en liste, og da må hver lenketekst være forståelig på egen hånd.
 - Bruk alltid komponenten i et grid- eller flex-oppsett for å sikre riktig spacing og responsivitet.
 
 ## Tilgjengelighet

@@ -8,7 +8,7 @@ import '../nve-icon/nve-icon.component';
 /**
  * Denne komponenten er ment å brukes som hovednavigasjon på sider, for eksempel transportside (i motsetning til `nve-link-card`, som er mindre og brukes der navigasjonen ikke er hovedfokus).
  *
- * Komponenten brukes i grid-oppsett, har minimum og maksimum høyde, og støtter enten ikon (SVG/PNG, kun dekorativt, angis via path) eller tilleggstekst (maks 3 linjer, trunkeres automatisk) – aldri begge samtidig.
+ * Komponenten brukes i grid-oppsett, har minimum høyde, og støtter enten dekorativt ikon (angis via path) eller tilleggstekst (maks 3 linjer, trunkeres automatisk) – aldri begge samtidig.
  *
  * Ikon angis med `iconPath`-prop og rendres automatisk med aria-hidden. Bruk kun illustrasjonsikoner fra NVE.
  *
