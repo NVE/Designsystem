@@ -15,7 +15,6 @@ export default css`
     align-items: center;
     box-sizing: border-box;
     width: 100%;
-    height: stretch;
     min-height: var(--sizing-card-link-card-height-x-large-min-height);
     padding: var(--spacing-2x-large);
     gap: var(--spacing-medium);
@@ -25,6 +24,18 @@ export default css`
     cursor: pointer;
     text-decoration: none;
     transition: border-color 0.3s ease;
+  }
+
+  .navigation-card:hover {
+    border-color: var(--color-neutrals-border-subtle);
+  }
+
+  .navigation-card:active {
+    border-color: var(--color-neutrals-border-mute);
+  }
+
+  .navigation-card:focus-visible {
+    outline: var(--color-interactive-primary-border-focus) solid 2px;
   }
 
   .navigation-card__content {
@@ -38,11 +49,24 @@ export default css`
     height: var(--sizing-icon-3x-large);
   }
 
-  .navigation-card__title {
+  .navigation-card__label {
     font: var(--typography-heading-small);
     color: var(--color-neutrals-foreground-primary);
     transition: color 0.3s ease;
     margin: 0;
+  }
+
+  .navigation-card:hover .navigation-card__label {
+    color: var(--color-brand-foreground-primary);
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 5%;
+    text-underline-offset: 16%;
+  }
+
+  .navigation-card:active .navigation-card__label {
+    text-decoration-thickness: 10%;
+    text-underline-offset: 16%;
   }
 
   .navigation-card__additional-text {
@@ -73,30 +97,5 @@ export default css`
     margin-left: var(--spacing-x-small);
     margin-right: 0;
     transition: var(--nav-card-arrow-transition-fast);
-  }
-
-  .navigation-card:hover {
-    border-color: var(--color-neutrals-border-subtle);
-  }
-
-  .navigation-card:hover .navigation-card__title {
-    color: var(--color-brand-foreground-primary);
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-thickness: 5%;
-    text-underline-offset: 16%;
-  }
-
-  .navigation-card:active {
-    border-color: var(--color-neutrals-border-mute);
-  }
-
-  .navigation-card:active .navigation-card__title {
-    text-decoration-thickness: 10%;
-    text-underline-offset: 16%;
-  }
-
-  .navigation-card:focus-visible {
-    outline: var(--color-interactive-primary-border-focus) solid 2px;
   }
 `;

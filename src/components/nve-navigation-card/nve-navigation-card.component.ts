@@ -75,7 +75,7 @@ export default class NveNavigationCard extends LitElement implements INveCompone
               class="navigation-card__icon"
             />`
           : nothing}
-        <h2 part="label" class="navigation-card__title">${this.label}</h2>
+        <h2 part="label" class="navigation-card__label">${this.label}</h2>
         ${!this.iconPath && this.additionalText
           ? html`<p part="additional-text" class="navigation-card__additional-text">${this.additionalText}</p>`
           : nothing}

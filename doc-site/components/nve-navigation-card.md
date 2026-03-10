@@ -1,5 +1,6 @@
 ---
 layout: component
+outline: [2, 3]
 ---
 
 <CodeExamplePreview>
@@ -108,7 +109,7 @@ Man kan velge mellom 3 klikk-handlinger ved bruk av `clickAction`-egenskapen. Ha
 
 #### Ekstern
 
-`external` åpner en ekstern side. Automatisk settes `target="_blank"` på `<a>`-elementet. Se anbefalinger for eksterne lenker i seksjonen [Tilgjengelighet](#tilgjengelighet).
+`external` åpner en ekstern side. Automatisk settes `target="_blank"` på `<a>`-elementet.
 
 <CodeExamplePreview>
 
@@ -171,7 +172,7 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 - **Bruk `nve-navigation-card`** for hovednavigasjon på oversikts- eller inngangssider der brukeren skal velge mellom flere hovedtemaer eller seksjoner.
 - **Bruk [`nve-link-card`](/components/nve-link-card)** for sekundære lenker, handlinger, eller når du trenger støtte for eksterne lenker, nedlasting eller e-post.
 - Ikke bruk `nve-navigation-card` for valg, ekspanderbare paneler eller andre interaktive kort – bruk dedikerte komponenter for dette.
-- Komponentet har både minimum og maksimum høyde for konsistent layout.
+- Komponentet har minimumshøyde for konsistent layout, men ingen makshøyde. Kortet kan derfor vokse i høyden etter innhold, men tilleggstekst vises maks på 3 linjer.
 - **Ikon skal ikke kombineres med ekstratekst** (`additionalText`). Hvis `ikonPath` er lagt inn, vises ikke tilleggstekst.
 - **Kun illustrasjonsikoner skal brukes som ikon**. Disse finnes i [NVE Frontify – Illustrasjonsikoner](https://nve.frontify.com/d/n2ujvoktZ3dr/nve-profil#/ikoner-illustrasjoner/illustrasjonsikoner-1/nedlasting). Illustrasjonsikonene illustrerer NVEs virksomhetsområder og er detaljrike. De skal ikke brukes for å indikere navigasjon eller handling, og fungerer dårlig i små størrelser.
 - Bruk alltid komponenten i et grid- eller flex-oppsett for å sikre riktig spacing og responsivitet.
@@ -180,6 +181,5 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 
 - **Tittel (`label`-feltet) rendres som `<h2>`** for å sikre god semantikk og tilgjengelighet. Dette gjør det enklere for brukere med skjermleser å navigere mellom hovedseksjoner på siden. Hvis du har flere navigation-cards på samme side, vil de automatisk utgjøre en oversiktlig seksjonsstruktur.
 - Komponentet rendres som `<a>` hvis det ikke ligger inni en lenke, og som `<div>` hvis det pakkes inn i en `<a>` (for å unngå nestede lenker).
-- Ikon og tilleggstekst skal **ikke** vises samtidig.
 - Ekstratekst trunkeres automatisk etter 3 linjer for å sikre at kortet ikke blir for høyt og at innholdet er lett å skanne.
 - Understrek (text-decoration) på wrapper-`<a>` fjernes av designsystemet ved hjelp av en regel i `global.css` (`a:has(nve-navigation-card) { text-decoration: unset; }`). Dette sikrer at det ikke vises uønsket understrek på lenker som wrapper `nve-navigation-card`, siden webkomponenter bruker Shadow DOM og ikke kan påvirke wrapperens styling direkte.
