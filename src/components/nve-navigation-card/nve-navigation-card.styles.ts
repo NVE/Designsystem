@@ -6,6 +6,8 @@ export default css`
       margin-left 0.3s cubic-bezier(0, 0, 0.2, 1), margin-right 0.3s cubic-bezier(0, 0, 0.2, 1);
     --nav-card-arrow-transition-fast:
       margin-left 0.3s cubic-bezier(0, 0, 0.2, 1), margin-right 0.3s cubic-bezier(0, 0, 0.2, 1);
+    display: flex;
+    height: 100%;
   }
 
   .navigation-card {
