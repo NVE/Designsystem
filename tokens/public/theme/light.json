@@ -179,11 +179,11 @@
         "tertiary": {
           "hover": {
             "$type": "color",
-            "$value": "{color-shades.grey.150}"
+            "$value": "{color-shades.grey.100}"
           },
           "pressed": {
             "$type": "color",
-            "$value": "{color-shades.grey.200}"
+            "$value": "{color-shades.grey.150}"
           }
         },
         "danger": {
