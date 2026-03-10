@@ -80,12 +80,7 @@ export default class NveNavigationCard extends LitElement implements INveCompone
           ? html`<p part="additional-text" class="navigation-card__additional-text">${this.additionalText}</p>`
           : nothing}
       </div>
-      <nve-icon
-        aria-hidden="true"
-        name="${this.getIconName()}"
-        class="navigation-card__arrow"
-        style="--icon-size: 24px;"
-      />
+      <nve-icon aria-hidden="true" name="${this.getIconName()}" class="navigation-card__arrow" />
     `;
   }
 

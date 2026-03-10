@@ -98,4 +98,8 @@ export default css`
     margin-right: 0;
     transition: var(--nav-card-arrow-transition-fast);
   }
+
+  nve-icon {
+    --icon-size: 24px;
+  }
 `;
