@@ -44,6 +44,8 @@ export default css`
     display: flex;
     flex-direction: column;
     gap: var(--spacing-medium);
+    align-items: flex-start;
+    align-self: stretch;
   }
 
   .navigation-card__icon {
