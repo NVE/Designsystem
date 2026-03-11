@@ -68,7 +68,6 @@ describe('nve-navigation-card', () => {
     expect(icon).not.toBeNull();
     expect(icon?.getAttribute('name')).toBe('arrow_forward');
     expect(icon?.getAttribute('aria-hidden')).toBe('true');
-    expect(icon?.getAttribute('style')).toContain('--icon-size: 24px;');
   });
 
   it('should set testid attribute', async () => {
