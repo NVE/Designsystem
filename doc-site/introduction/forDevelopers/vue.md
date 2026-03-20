@@ -29,6 +29,10 @@ export default defineConfig({
 });
 ```
 
+## Import av filer
+
+Les hvordan filene skal importeres [her](./import.md).
+
 ## Stiler
 
 Importer én `.css`-fil for fargetema i `main.ts`. Filene finnes i mappa `nve-designsystem/css/`.
