@@ -336,11 +336,11 @@
   --color-feedback-foreground-error: var(--color-shades-functional-red-700);
   --color-feedback-foreground-warning: var(--color-shades-functional-orange-999);
   --color-feedback-foreground-success: var(--color-shades-functional-green-900);
-  --color-feedback-foreground-on-bg-subtle-neutral: var(--color-shades-functional-neutralgrey-999);
-  --color-feedback-foreground-on-bg-subtle-info: var(--color-shades-functional-blue-999);
-  --color-feedback-foreground-on-bg-subtle-error: var(--color-shades-functional-red-950);
+  --color-feedback-foreground-on-bg-subtle-neutral: var(--color-shades-functional-neutralgrey-800);
+  --color-feedback-foreground-on-bg-subtle-info: var(--color-shades-functional-blue-850);
+  --color-feedback-foreground-on-bg-subtle-error: var(--color-shades-functional-red-850);
   --color-feedback-foreground-on-bg-subtle-warning: var(--color-shades-functional-orange-999);
-  --color-feedback-foreground-on-bg-subtle-success: var(--color-shades-functional-green-999);
+  --color-feedback-foreground-on-bg-subtle-success: var(--color-shades-functional-green-900);
   --color-feedback-foreground-on-bg-emphasized-neutral: var(--color-shades-functional-neutralgrey-000);
   --color-feedback-foreground-on-bg-emphasized-info: var(--color-shades-functional-neutralgrey-000);
   --color-feedback-foreground-on-bg-emphasized-error: var(--color-shades-functional-neutralgrey-000);
@@ -438,20 +438,20 @@
   --color-supplemental-charts-foreground-data-02: var(--color-shades-data-color-a-600);
   --color-supplemental-charts-foreground-data-03: var(--color-shades-data-color-a-800);
   --color-supplemental-charts-foreground-data-04: var(--color-shades-data-color-a-950);
-  --color-supplemental-charts-foreground-data-05: var(--color-shades-data-color-b-900);
-  --color-supplemental-charts-foreground-data-06: var(--color-shades-data-color-b-800);
-  --color-supplemental-charts-foreground-data-07: var(--color-shades-data-color-b-500);
-  --color-supplemental-charts-foreground-data-08: var(--color-shades-data-color-c-600);
-  --color-supplemental-charts-foreground-data-09: var(--color-shades-data-color-c-800);
-  --color-supplemental-charts-foreground-data-10: var(--color-shades-data-color-c-900);
-  --color-supplemental-charts-foreground-data-11: var(--color-shades-data-color-d-900);
-  --color-supplemental-charts-foreground-data-12: var(--color-shades-data-color-d-800);
-  --color-supplemental-charts-foreground-data-13: var(--color-shades-data-color-d-600);
-  --color-supplemental-charts-foreground-data-14: var(--color-shades-data-color-e-300);
-  --color-supplemental-charts-foreground-data-15: var(--color-shades-data-color-e-400);
-  --color-supplemental-charts-foreground-data-16: var(--color-shades-data-color-e-500);
-  --color-supplemental-charts-foreground-data-17: var(--color-shades-data-color-f-800);
-  --color-supplemental-charts-foreground-data-18: var(--color-shades-data-color-g-800);
+  --color-supplemental-charts-foreground-data-05: var(--color-shades-data-color-d-900);
+  --color-supplemental-charts-foreground-data-06: var(--color-shades-data-color-b-500);
+  --color-supplemental-charts-foreground-data-07: var(--color-shades-data-color-e-300);
+  --color-supplemental-charts-foreground-data-08: var(--color-shades-data-color-g-800);
+  --color-supplemental-charts-foreground-data-09: var(--color-shades-data-color-f-800);
+  --color-supplemental-charts-foreground-data-10: var(--color-shades-data-color-e-400);
+  --color-supplemental-charts-foreground-data-11: var(--color-shades-data-color-b-800);
+  --color-supplemental-charts-foreground-data-12: var(--color-shades-data-color-d-600);
+  --color-supplemental-charts-foreground-data-13: var(--color-shades-data-color-c-800);
+  --color-supplemental-charts-foreground-data-14: var(--color-shades-data-color-e-500);
+  --color-supplemental-charts-foreground-data-15: var(--color-shades-data-color-d-800);
+  --color-supplemental-charts-foreground-data-16: var(--color-shades-data-color-c-900);
+  --color-supplemental-charts-foreground-data-17: var(--color-shades-data-color-c-600);
+  --color-supplemental-charts-foreground-data-18: var(--color-shades-data-color-b-900);
  --spacing-none: 0;
   --spacing-20x: 20px;
   --spacing-24x: 24px;
@@ -622,6 +622,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-232x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
+  --sizing-image-x-small: var(--sizing-84x);
   --sizing-image-large: var(--sizing-750x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-212x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-246x);
@@ -676,7 +677,6 @@
   --typography-detailtext-caps-small: var(--font-weight-semibold) var(--font-size-x-small)/var(--line-height-5) var(--font-family-primary-family);
   --typography-label-large: var(--font-weight-semibold) var(--font-size-medium)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-large-light: var(--font-weight-regular) var(--font-size-medium)/var(--line-height-6) var(--font-family-primary-family);
-  --font-size-small: var(--dimension-4-5x); /** 16 px */
   --typography-label-medium: var(--font-weight-semibold) var(--font-size-small)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-medium-light: var(--font-weight-regular) var(--font-size-small)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-small: var(--font-weight-semibold) var(--font-size-x-small)/var(--line-height-6) var(--font-family-primary-family);
@@ -1129,20 +1129,20 @@
   --color-supplemental-charts-foreground-data-02: var(--color-shades-data-color-a-150);
   --color-supplemental-charts-foreground-data-03: var(--color-shades-data-color-a-100);
   --color-supplemental-charts-foreground-data-04: var(--color-shades-data-color-a-000);
-  --color-supplemental-charts-foreground-data-05: var(--color-shades-data-color-b-500);
-  --color-supplemental-charts-foreground-data-06: var(--color-shades-data-color-b-400);
-  --color-supplemental-charts-foreground-data-07: var(--color-shades-data-color-b-200);
-  --color-supplemental-charts-foreground-data-08: var(--color-shades-data-color-c-400);
-  --color-supplemental-charts-foreground-data-09: var(--color-shades-data-color-c-500);
-  --color-supplemental-charts-foreground-data-10: var(--color-shades-data-color-c-600);
-  --color-supplemental-charts-foreground-data-11: var(--color-shades-data-color-d-400);
-  --color-supplemental-charts-foreground-data-12: var(--color-shades-data-color-d-500);
-  --color-supplemental-charts-foreground-data-13: var(--color-shades-data-color-d-600);
-  --color-supplemental-charts-foreground-data-14: var(--color-shades-data-color-e-100);
-  --color-supplemental-charts-foreground-data-15: var(--color-shades-data-color-e-200);
-  --color-supplemental-charts-foreground-data-16: var(--color-shades-data-color-e-300);
-  --color-supplemental-charts-foreground-data-17: var(--color-shades-data-color-f-600);
-  --color-supplemental-charts-foreground-data-18: var(--color-shades-data-color-g-600); }
+  --color-supplemental-charts-foreground-data-05: var(--color-shades-data-color-d-400);
+  --color-supplemental-charts-foreground-data-06: var(--color-shades-data-color-b-200);
+  --color-supplemental-charts-foreground-data-07: var(--color-shades-data-color-e-100);
+  --color-supplemental-charts-foreground-data-08: var(--color-shades-data-color-g-600);
+  --color-supplemental-charts-foreground-data-09: var(--color-shades-data-color-f-600);
+  --color-supplemental-charts-foreground-data-10: var(--color-shades-data-color-e-200);
+  --color-supplemental-charts-foreground-data-11: var(--color-shades-data-color-b-400);
+  --color-supplemental-charts-foreground-data-12: var(--color-shades-data-color-d-600);
+  --color-supplemental-charts-foreground-data-13: var(--color-shades-data-color-c-500);
+  --color-supplemental-charts-foreground-data-14: var(--color-shades-data-color-e-300);
+  --color-supplemental-charts-foreground-data-15: var(--color-shades-data-color-d-500);
+  --color-supplemental-charts-foreground-data-16: var(--color-shades-data-color-c-600);
+  --color-supplemental-charts-foreground-data-17: var(--color-shades-data-color-c-400);
+  --color-supplemental-charts-foreground-data-18: var(--color-shades-data-color-b-500); }
 
 @media (min-width: 1600px) {
 /**
@@ -1315,6 +1315,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-282x);
   --sizing-brand-logo-medium: var(--sizing-88x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
+  --sizing-image-x-small: var(--sizing-84x);
   --sizing-image-large: var(--sizing-1024x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-212x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-246x);
@@ -1507,6 +1508,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-216x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
+  --sizing-image-x-small: var(--sizing-48x);
   --sizing-image-large: var(--sizing-544x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-132x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-200x);
@@ -1699,6 +1701,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-496x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
+  --sizing-image-x-small: var(--sizing-48x);
   --sizing-image-large: var(--sizing-390x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-124x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-180x);
@@ -1891,6 +1894,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-496x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-24x);
+  --sizing-image-x-small: var(--sizing-84x);
   --sizing-image-large: var(--sizing-320x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-120x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-160x);
