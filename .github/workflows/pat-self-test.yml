@@ -16,6 +16,8 @@ permissions:
   contents: read
   issues: read
 
+if: false
+
 jobs:
   test-pat:
     if: false

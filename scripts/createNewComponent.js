@@ -61,6 +61,7 @@ declare global {
 const createDemoFile = () => {
   const demoContent = `---
 layout: component
+outline: [2, 3]
 ---
 
 TODO: Start med et enklest mulig kodeeksempel i html for å kunne vise komponenten.
