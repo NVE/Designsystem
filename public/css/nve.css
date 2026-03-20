@@ -657,9 +657,9 @@
   --typography-subheading-small: var(--font-weight-regular) var(--font-size-large)/var(--line-height-3) var(--font-family-primary-family);
   --typography-lead-large-regular: var(--font-weight-regular) var(--font-size-large)/var(--line-height-4) var(--font-family-primary-family);
   --typography-lead-large-semibold: var(--font-weight-semibold) var(--font-size-large)/var(--line-height-4) var(--font-family-primary-family);
-  --font-size-medium: var(--dimension-5x); /** 18 px */
   --typography-lead-medium-regular: var(--font-weight-regular) var(--font-size-medium)/var(--line-height-5) var(--font-family-primary-family);
   --typography-lead-medium-semibold: var(--font-weight-semibold) var(--font-size-medium)/var(--line-height-5) var(--font-family-primary-family);
+  --font-size-small: var(--dimension-4-5x); /** 16 px */
   --typography-lead-small-regular: var(--font-weight-regular) var(--font-size-small)/var(--line-height-5) var(--font-family-primary-family);
   --typography-lead-small-semibold: var(--font-weight-semibold) var(--font-size-small)/var(--line-height-5) var(--font-family-primary-family);
   --typography-body-large: var(--font-weight-regular) var(--font-size-medium)/var(--line-height-5) var(--font-family-primary-family);
@@ -691,6 +691,7 @@
   --typography-label-x-small: var(--font-weight-semibold) var(--font-size-2x-small)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-x-small-light: var(--font-weight-regular) var(--font-size-2x-small)/var(--line-height-6) var(--font-family-primary-family);
   --font-size-x-small: var(--dimension-4x); /** 14 px */
+  --font-size-medium: var(--dimension-5x); /** 18 px */
   --font-size-large: var(--dimension-6x); /** 20 px */
   --font-size-x-large: var(--dimension-8x); /** 24 px */
   --font-size-2x-large: var(--dimension-10x); /** 32 px */
