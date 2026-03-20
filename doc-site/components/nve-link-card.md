@@ -6,7 +6,7 @@ outline: [2, 3]
 <CodeExamplePreview>
 
 ```html
-<nve-link-card label="Kommuneplan" href="/components/Komponentoversikt"></nve-link-card>
+<nve-link-card label="Komponenoversikt" href="/components/Komponentoversikt"></nve-link-card>
 ```
 
 </CodeExamplePreview>

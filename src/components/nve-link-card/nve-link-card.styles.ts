@@ -5,8 +5,6 @@ export default css`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    box-sizing: border-box;
-    width: 100%;
     padding: var(--spacing-medium) var(--spacing-large);
     gap: var(--spacing-medium);
     border-radius: var(--border-radius-small);
