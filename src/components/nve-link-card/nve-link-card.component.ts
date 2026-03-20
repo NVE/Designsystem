@@ -10,8 +10,13 @@ import '../nve-icon/nve-icon.component';
  * Komponent som brukes til å navigere til interne, eksterne sider, laste ned filer, eller sende e-post.
  * For å bruke komponenten på best og tilgjengelig måte les mer i tilgjengelighet seksjonen.
  *
+ * Ikonet lengst til venstre i kortet kan settes med <slot name="icon"> og kan være hvilket som helst element.
+ * Ikonet til høyre styres av clickAction-propen og vises automatisk.
+ *
  * @csspart link-card Topp-element
  * @csspart label Overskriften
+ * @csspart additional-text Tilleggsbeskrivelse under overskriften
+ * @slot icon Ikon til venstre i kortet (valgfritt)
  */
 @customElement('nve-link-card')
 export default class NveLinkCard extends LitElement implements INveComponent {
@@ -35,8 +40,6 @@ export default class NveLinkCard extends LitElement implements INveComponent {
   /** Lenken som brukes for handlinger som intern/ekstern navigering eller e-post */
   @property() href: string | undefined = undefined;
 
-  /** Brukes for å legge :visited style når lenken kommer fra eksternt rammeverk som f.eks RouterLink i Vue */
-  @property({ type: Boolean }) visited: boolean = false;
   static styles = [styles];
 
   /**
@@ -59,6 +62,7 @@ export default class NveLinkCard extends LitElement implements INveComponent {
 
   private renderContent() {
     return html`
+      <slot name="icon"></slot>
       <div class="link-card__content">
         <div part="label" class="link-card__label">${this.label}</div>
         ${this.additionalText
@@ -81,7 +85,6 @@ export default class NveLinkCard extends LitElement implements INveComponent {
         testId="${ifDefined(this.testId)}"
         class=${classMap({
           'link-card': true,
-          'link-card--visited': this.visited,
           [`link-card--${this.size}`]: true,
           [`link-card--${this.variant}`]: true,
         })}
