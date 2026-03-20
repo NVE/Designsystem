@@ -12,7 +12,7 @@ import 'nve-designsystem/components/nve-component/nve-component.component.js';
 
 Grunnen til at komponenten må importeres på denne måten er at <b>@customElement-dekoratoren</b> kjører customElements.define(...), som registrerer webkomponenten i nettleseren. Dette skjer kun når modulen faktisk blir evaluert.
 
-En <b>side-effekt-import</b> sørger for at komponenten blir registrert, men gir deg ikke nødvendigvis god type-støtte i editoren. Derfor vil du ofte ikke få forslag til tilgjengelige attributter når du bruker komponenten i HTML (for eksempel i React eller Vue).
+En <b>side-effekt-import</b> sørger for at komponenten blir registrert, men gir deg ikke nødvendigvis god type-støtte i editoren. Derfor vil du ofte ikke få forslag til tilgjengelige attributter når du bruker komponenten i HTML (for eksempel i Vue eller React).
 
 For å få tilgang til typen kan du importere den separat:
 
@@ -28,14 +28,14 @@ Alle imports som går via roten av designsystemet, for eksempel:
 import { NveButton, NveAlert } from 'nve-designsystem';
 ```
 
-vil ofte føre til at hele pakken blir importert. Dette kan øke bundle-størrelsen unødvendig dersom du kun bruker noen få komponenter.
+vil ofte føre til at hele nve-designsystem-pakken blir importert. Dette kan øke bundle-størrelsen unødvendig dersom du kun bruker noen få komponenter.
 
 Designsystemet er per nå ca. 0.5 MB og vil sannsynligvis vokse over tid, så det er verdt å vurdere hvordan komponenter importeres.
 
 Du kan velge om du vil importere en komponent der den brukes i koden eller på et globalt nivå (f.eks. i `main.js` eller `index.html`).
 Hvis du bruker mange designsystem-komponenter, anbefaler vi ikke å importere alle globalt, da dette kan føre til lengre lastetid.
 
-Dersom en parent-komponent i applikasjonen importerer en designsystem-komponent, trenger du ikke å importere den igjen i child-komponentet.
+Dersom en parent-komponent i applikasjonen importerer en designsystem-komponent, trenger du ikke å importere den igjen i child-komponenten.
 Web-komponenter blir registrert i nettleseren første gang de importeres. Det betyr at hvis du importerer en komponent flere steder, registreres den bare én gang, og du unngår duplikater.
 
 ## Import av stiler
