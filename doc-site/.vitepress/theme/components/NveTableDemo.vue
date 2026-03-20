@@ -187,61 +187,63 @@ const toggleColumn = (header: TableHeader<Country>) => {
 </script>
 
 <template>
-  <div class="nve-table-demo">
-    <nve-accordion-item variant="secondary" :open="true">
-      <div slot="summary">Slå av og på kolonner</div>
-      <div class="column-toggles">
-        <nve-checkbox
-          v-for="col in tableHeaders"
-          :key="col.key"
-          :checked="!col.hidden"
-          @sl-change="() => toggleColumn(col)"
-        >
-          {{ col.title }}
-        </nve-checkbox>
-      </div>
-    </nve-accordion-item>
-    <NveTable
-      :headers="tableHeaders"
-      :data="countries"
-      striped
-      :page-size="15"
-      :initial-sort="{ field: 'name', direction: 'ASC' }"
-      :filter-function="tableFilter"
-      :item-id="(country: Country) => country.countryCode"
-    >
-      <template #filterbutton>
-        <nve-button variant="ghost" @click="filterOpen = !filterOpen">
-          <nve-icon slot="prefix" name="filter_alt" />
-          Filtrer
-        </nve-button>
-      </template>
-      <template #subheader>
-        <Transition :duration="400" name="filter">
-          <div v-if="filterOpen" class="filter-wrapper">
-            <div class="filter">
-              <nve-checkbox-group
-                :value="selectedContinents"
-                orientation="horizontal"
-                :[`selectedValues`]="selectedContinents"
-                ref="continents-checkbox-group"
-                @input="updateContinents"
-              >
-                <nve-checkbox v-for="cont of allContinents" :key="cont" :value="cont">
-                  {{ cont }}
-                </nve-checkbox>
-              </nve-checkbox-group>
+  <ClientOnly>
+    <div class="nve-table-demo">
+      <nve-accordion-item variant="secondary" :open="true">
+        <div slot="summary">Slå av og på kolonner</div>
+        <div class="column-toggles">
+          <nve-checkbox
+            v-for="col in tableHeaders"
+            :key="col.key"
+            :checked="!col.hidden"
+            @sl-change="() => toggleColumn(col)"
+          >
+            {{ col.title }}
+          </nve-checkbox>
+        </div>
+      </nve-accordion-item>
+      <NveTable
+        :headers="tableHeaders"
+        :data="countries"
+        striped
+        :page-size="15"
+        :initial-sort="{ field: 'name', direction: 'ASC' }"
+        :filter-function="tableFilter"
+        :item-id="(country: Country) => country.countryCode"
+      >
+        <template #filterbutton>
+          <nve-button variant="ghost" @click="filterOpen = !filterOpen">
+            <nve-icon slot="prefix" name="filter_alt" />
+            Filtrer
+          </nve-button>
+        </template>
+        <template #subheader>
+          <Transition :duration="400" name="filter">
+            <div v-if="filterOpen" class="filter-wrapper">
+              <div class="filter">
+                <nve-checkbox-group
+                  :value="selectedContinents"
+                  orientation="horizontal"
+                  :[`selectedValues`]="selectedContinents"
+                  ref="continents-checkbox-group"
+                  @input="updateContinents"
+                >
+                  <nve-checkbox v-for="cont of allContinents" :key="cont" :value="cont">
+                    {{ cont }}
+                  </nve-checkbox>
+                </nve-checkbox-group>
+              </div>
             </div>
-          </div>
-        </Transition>
-      </template>
-      <template #[`item.countryCode`]="row">
-        <span class="country-code">
-          <img :src="`https://hatscripts.github.io/circle-flags/flags/${row.value.toLowerCase()}.svg`" width="32" />
-        </span>
-      </template>
-    </NveTable>
-  </div>
+          </Transition>
+        </template>
+        <template #[`item.countryCode`]="row">
+          <span class="country-code">
+            <img :src="`https://hatscripts.github.io/circle-flags/flags/${row.value.toLowerCase()}.svg`" width="32" />
+          </span>
+        </template>
+      </NveTable>
+    </div>
+  </ClientOnly>
 </template>
 
 <style scoped>

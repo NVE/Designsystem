@@ -59,6 +59,14 @@
       }
     },
     "fixed-spacing": {
+      "2x-small": {
+        "$type": "spacing",
+        "$value": "{dimension.1,5x}"
+      },
+      "x-small": {
+        "$type": "spacing",
+        "$value": "{dimension.2x}"
+      },
       "small": {
         "$type": "spacing",
         "$value": "{dimension.4x}"
@@ -159,6 +167,10 @@
       }
     },
     "image": {
+      "x-small": {
+        "$type": "sizing",
+        "$value": "{sizing.84x}"
+      },
       "large": {
         "$type": "sizing",
         "$value": "{sizing.750x}"

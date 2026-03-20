@@ -877,59 +877,59 @@
           },
           "data-05": {
             "$type": "color",
-            "$value": "{color-shades.data.color-b.500}"
+            "$value": "{color-shades.data.color-d.400}"
           },
           "data-06": {
             "$type": "color",
-            "$value": "{color-shades.data.color-b.400}"
+            "$value": "{color-shades.data.color-b.200}"
           },
           "data-07": {
             "$type": "color",
-            "$value": "{color-shades.data.color-b.200}"
+            "$value": "{color-shades.data.color-e.100}"
           },
           "data-08": {
             "$type": "color",
-            "$value": "{color-shades.data.color-c.400}"
+            "$value": "{color-shades.data.color-g.600}"
           },
           "data-09": {
             "$type": "color",
-            "$value": "{color-shades.data.color-c.500}"
+            "$value": "{color-shades.data.color-f.600}"
           },
           "data-10": {
             "$type": "color",
-            "$value": "{color-shades.data.color-c.600}"
+            "$value": "{color-shades.data.color-e.200}"
           },
           "data-11": {
             "$type": "color",
-            "$value": "{color-shades.data.color-d.400}"
+            "$value": "{color-shades.data.color-b.400}"
           },
           "data-12": {
             "$type": "color",
-            "$value": "{color-shades.data.color-d.500}"
+            "$value": "{color-shades.data.color-d.600}"
           },
           "data-13": {
             "$type": "color",
-            "$value": "{color-shades.data.color-d.600}"
+            "$value": "{color-shades.data.color-c.500}"
           },
           "data-14": {
             "$type": "color",
-            "$value": "{color-shades.data.color-e.100}"
+            "$value": "{color-shades.data.color-e.300}"
           },
           "data-15": {
             "$type": "color",
-            "$value": "{color-shades.data.color-e.200}"
+            "$value": "{color-shades.data.color-d.500}"
           },
           "data-16": {
             "$type": "color",
-            "$value": "{color-shades.data.color-e.300}"
+            "$value": "{color-shades.data.color-c.600}"
           },
           "data-17": {
             "$type": "color",
-            "$value": "{color-shades.data.color-f.600}"
+            "$value": "{color-shades.data.color-c.400}"
           },
           "data-18": {
             "$type": "color",
-            "$value": "{color-shades.data.color-g.600}"
+            "$value": "{color-shades.data.color-b.500}"
           }
         }
       }

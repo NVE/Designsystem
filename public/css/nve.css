@@ -330,11 +330,11 @@
   --color-feedback-foreground-error: var(--color-shades-functional-red-700);
   --color-feedback-foreground-warning: var(--color-shades-functional-orange-999);
   --color-feedback-foreground-success: var(--color-shades-functional-green-900);
-  --color-feedback-foreground-on-bg-subtle-neutral: var(--color-shades-functional-neutralgrey-999);
-  --color-feedback-foreground-on-bg-subtle-info: var(--color-shades-functional-blue-999);
-  --color-feedback-foreground-on-bg-subtle-error: var(--color-shades-functional-red-950);
+  --color-feedback-foreground-on-bg-subtle-neutral: var(--color-shades-functional-neutralgrey-800);
+  --color-feedback-foreground-on-bg-subtle-info: var(--color-shades-functional-blue-850);
+  --color-feedback-foreground-on-bg-subtle-error: var(--color-shades-functional-red-850);
   --color-feedback-foreground-on-bg-subtle-warning: var(--color-shades-functional-orange-999);
-  --color-feedback-foreground-on-bg-subtle-success: var(--color-shades-functional-green-999);
+  --color-feedback-foreground-on-bg-subtle-success: var(--color-shades-functional-green-900);
   --color-feedback-foreground-on-bg-emphasized-neutral: var(--color-shades-functional-neutralgrey-000);
   --color-feedback-foreground-on-bg-emphasized-info: var(--color-shades-functional-neutralgrey-000);
   --color-feedback-foreground-on-bg-emphasized-error: var(--color-shades-functional-neutralgrey-000);
@@ -432,20 +432,20 @@
   --color-supplemental-charts-foreground-data-02: var(--color-shades-data-color-a-600);
   --color-supplemental-charts-foreground-data-03: var(--color-shades-data-color-a-800);
   --color-supplemental-charts-foreground-data-04: var(--color-shades-data-color-a-950);
-  --color-supplemental-charts-foreground-data-05: var(--color-shades-data-color-b-900);
-  --color-supplemental-charts-foreground-data-06: var(--color-shades-data-color-b-800);
-  --color-supplemental-charts-foreground-data-07: var(--color-shades-data-color-b-500);
-  --color-supplemental-charts-foreground-data-08: var(--color-shades-data-color-c-600);
-  --color-supplemental-charts-foreground-data-09: var(--color-shades-data-color-c-800);
-  --color-supplemental-charts-foreground-data-10: var(--color-shades-data-color-c-900);
-  --color-supplemental-charts-foreground-data-11: var(--color-shades-data-color-d-900);
-  --color-supplemental-charts-foreground-data-12: var(--color-shades-data-color-d-800);
-  --color-supplemental-charts-foreground-data-13: var(--color-shades-data-color-d-600);
-  --color-supplemental-charts-foreground-data-14: var(--color-shades-data-color-e-300);
-  --color-supplemental-charts-foreground-data-15: var(--color-shades-data-color-e-400);
-  --color-supplemental-charts-foreground-data-16: var(--color-shades-data-color-e-500);
-  --color-supplemental-charts-foreground-data-17: var(--color-shades-data-color-f-800);
-  --color-supplemental-charts-foreground-data-18: var(--color-shades-data-color-g-800);
+  --color-supplemental-charts-foreground-data-05: var(--color-shades-data-color-d-900);
+  --color-supplemental-charts-foreground-data-06: var(--color-shades-data-color-b-500);
+  --color-supplemental-charts-foreground-data-07: var(--color-shades-data-color-e-300);
+  --color-supplemental-charts-foreground-data-08: var(--color-shades-data-color-g-800);
+  --color-supplemental-charts-foreground-data-09: var(--color-shades-data-color-f-800);
+  --color-supplemental-charts-foreground-data-10: var(--color-shades-data-color-e-400);
+  --color-supplemental-charts-foreground-data-11: var(--color-shades-data-color-b-800);
+  --color-supplemental-charts-foreground-data-12: var(--color-shades-data-color-d-600);
+  --color-supplemental-charts-foreground-data-13: var(--color-shades-data-color-c-800);
+  --color-supplemental-charts-foreground-data-14: var(--color-shades-data-color-e-500);
+  --color-supplemental-charts-foreground-data-15: var(--color-shades-data-color-d-800);
+  --color-supplemental-charts-foreground-data-16: var(--color-shades-data-color-c-900);
+  --color-supplemental-charts-foreground-data-17: var(--color-shades-data-color-c-600);
+  --color-supplemental-charts-foreground-data-18: var(--color-shades-data-color-b-900);
  --spacing-none: 0;
   --spacing-20x: 20px;
   --spacing-24x: 24px;
@@ -530,6 +530,7 @@
   --dimension-025x: 0.0625rem; /** 1px */
   --dimension-05x: 0.125rem; /** 2px */
   --dimension-1x: 0.25rem; /** 4px */
+  --dimension-1-5x: 0.375rem; /** 6px */
   --dimension-2x: 0.5rem; /** 8px */
   --dimension-3x: 0.75rem; /** 12px */
   --dimension-3-5x: 0.875rem; /** 14px */
@@ -592,6 +593,8 @@
   --spacing-content-margin-top: var(--spacing-40x);
   --spacing-content-margin-bottom: var(--spacing-88x);
   --spacing-content-margin-left-right: var(--spacing-48x);
+  --spacing-fixed-spacing-2x-small: var(--dimension-1-5x);
+  --spacing-fixed-spacing-x-small: var(--dimension-2x);
   --spacing-fixed-spacing-small: var(--dimension-4x);
   --spacing-fixed-spacing-medium: var(--dimension-6x);
   --spacing-fixed-spacing-large: var(--dimension-10x);
@@ -613,6 +616,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-232x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
+  --sizing-image-x-small: var(--sizing-84x);
   --sizing-image-large: var(--sizing-750x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-212x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-246x);
@@ -643,6 +647,7 @@
   --typography-lead-large-semibold: var(--font-weight-semibold) var(--font-size-large)/var(--line-height-4) var(--font-family-primary-family);
   --typography-lead-medium-regular: var(--font-weight-regular) var(--font-size-medium)/var(--line-height-5) var(--font-family-primary-family);
   --typography-lead-medium-semibold: var(--font-weight-semibold) var(--font-size-medium)/var(--line-height-5) var(--font-family-primary-family);
+  --font-size-small: var(--dimension-4-5x); /** 16 px */
   --typography-lead-small-regular: var(--font-weight-regular) var(--font-size-small)/var(--line-height-5) var(--font-family-primary-family);
   --typography-lead-small-semibold: var(--font-weight-semibold) var(--font-size-small)/var(--line-height-5) var(--font-family-primary-family);
   --typography-body-large: var(--font-weight-regular) var(--font-size-medium)/var(--line-height-5) var(--font-family-primary-family);
@@ -666,7 +671,6 @@
   --typography-detailtext-caps-small: var(--font-weight-semibold) var(--font-size-x-small)/var(--line-height-5) var(--font-family-primary-family);
   --typography-label-large: var(--font-weight-semibold) var(--font-size-medium)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-large-light: var(--font-weight-regular) var(--font-size-medium)/var(--line-height-6) var(--font-family-primary-family);
-  --font-size-small: var(--dimension-4-5x); /** 16 px */
   --typography-label-medium: var(--font-weight-semibold) var(--font-size-small)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-medium-light: var(--font-weight-regular) var(--font-size-small)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-small: var(--font-weight-semibold) var(--font-size-x-small)/var(--line-height-6) var(--font-family-primary-family);
@@ -770,6 +774,7 @@
   --dimension-025x: 0.0625rem; /** 1px */
   --dimension-05x: 0.125rem; /** 2px */
   --dimension-1x: 0.25rem; /** 4px */
+  --dimension-1-5x: 0.375rem; /** 6px */
   --dimension-2x: 0.5rem; /** 8px */
   --dimension-3x: 0.75rem; /** 12px */
   --dimension-3-5x: 0.875rem; /** 14px */
@@ -850,6 +855,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-282x);
   --sizing-brand-logo-medium: var(--sizing-88x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
+  --sizing-image-x-small: var(--sizing-84x);
   --sizing-image-large: var(--sizing-1024x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-212x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-246x);
@@ -961,6 +967,7 @@
   --dimension-025x: 0.0625rem; /** 1px */
   --dimension-05x: 0.125rem; /** 2px */
   --dimension-1x: 0.25rem; /** 4px */
+  --dimension-1-5x: 0.375rem; /** 6px */
   --dimension-2x: 0.5rem; /** 8px */
   --dimension-3x: 0.75rem; /** 12px */
   --dimension-3-5x: 0.875rem; /** 14px */
@@ -1041,6 +1048,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-216x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
+  --sizing-image-x-small: var(--sizing-48x);
   --sizing-image-large: var(--sizing-544x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-132x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-200x);
@@ -1152,6 +1160,7 @@
   --dimension-025x: 0.0625rem; /** 1px */
   --dimension-05x: 0.125rem; /** 2px */
   --dimension-1x: 0.25rem; /** 4px */
+  --dimension-1-5x: 0.375rem; /** 6px */
   --dimension-2x: 0.5rem; /** 8px */
   --dimension-3x: 0.75rem; /** 12px */
   --dimension-3-5x: 0.875rem; /** 14px */
@@ -1232,6 +1241,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-496x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
+  --sizing-image-x-small: var(--sizing-48x);
   --sizing-image-large: var(--sizing-390x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-124x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-180x);
@@ -1343,6 +1353,7 @@
   --dimension-025x: 0.0625rem; /** 1px */
   --dimension-05x: 0.125rem; /** 2px */
   --dimension-1x: 0.25rem; /** 4px */
+  --dimension-1-5x: 0.375rem; /** 6px */
   --dimension-2x: 0.5rem; /** 8px */
   --dimension-3x: 0.75rem; /** 12px */
   --dimension-3-5x: 0.875rem; /** 14px */
@@ -1423,6 +1434,7 @@
   --sizing-device-content-max-width-x-small: var(--sizing-496x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-24x);
+  --sizing-image-x-small: var(--sizing-84x);
   --sizing-image-large: var(--sizing-320x);
   --sizing-card-link-card-height-x-large-min-height: var(--sizing-120x);
   --sizing-card-link-card-height-x-large-max-height: var(--sizing-160x);

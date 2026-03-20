@@ -5,7 +5,7 @@ layout: component
 <CodeExamplePreview>
 
 ```html
-<nve-icon name="Favorite"></nve-icon>
+<nve-icon name="warning"></nve-icon>
 ```
 
 </CodeExamplePreview>
