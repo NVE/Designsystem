@@ -178,7 +178,7 @@ Som standard vises toast øverst i høyre hjørne. For å vise en alert som toas
   <nve-alert class="alert-toast" variant="success" closable label="Toast" text="Gratulerer! Dette er en toast">
   </nve-alert>
   <nve-button class="show-alert-warning">Vis varsel toast</nve-button>
-  <nve-button class="show-alert-success" variant="neutral">Vis suksess toast</nve-button>
+  <nve-button class="show-alert-success" variant="tertiary">Vis suksess toast</nve-button>
 </div>
 <script>
   // Denne snutten vil åpne alert meldinger når man klikker på knapper.
