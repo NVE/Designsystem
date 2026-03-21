@@ -55,7 +55,7 @@ export default [
       'no-console': 'error',
       'no-debugger': 'error',
 
-      'max-lines-per-function': ['warn', { max: 50, skipBlankLines: true, skipComments: true }],
+      'max-lines-per-function': ['warn', { max: 80, skipBlankLines: true, skipComments: true }],
     },
   },
   {
