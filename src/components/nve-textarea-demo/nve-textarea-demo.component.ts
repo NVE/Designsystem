@@ -1,5 +1,5 @@
-import { html, LitElement, nothing } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { html, LitElement, nothing, PropertyValues } from 'lit';
+import { customElement, property, query } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-textarea-demo.styles';
 import '../nve-icon/nve-icon.component';
@@ -11,18 +11,38 @@ let errorId = 0;
 @customElement('nve-textarea-demo')
 export default class NveTextareaDemo extends LitElement implements INveComponent {
   @property({ type: String }) testId: string | undefined = undefined;
+  /* Native textarea attributes */
+  /** Om minst en sjekkboks er sjekket på */
+  /** Om minst en sjekkboks er sjekket på */
+  @property({ type: String }) autocomplete?: string;
+  @property({ type: Number }) cols?: number;
+  @property({ type: String }) form?: string;
+  @property({ type: Number }) maxLength?: number;
+  @property({ type: Number }) minLength?: number;
+  @property({ type: String }) name?: string;
+  @property({ type: String }) placeholder?: string;
+  /** Om textareafeltet skal være skrivebeskyttet */
+  @property({ type: Boolean, reflect: true }) readonly = false;
   /** Om minst en sjekkboks er sjekket på */
   @property({ type: Boolean, reflect: true }) required = false;
+  @property({ type: Number }) rows?: number;
+  @property({ type: String }) wrap?: string;
+
+  /* Custom textarea attributes */
+  /** Ledetekst */
+  @property({ type: Boolean, reflect: true }) filled: boolean = false;
   /** Ledetekst */
   @property() label?: string;
   /** Feilmelding som vises ved valideringsfeil. Hvis den er satt blir input-felt ugyldig og feil melding vises. Burde ikke brukes hvis man bruker validate-metoden */
-  @property({ type: String, reflect: true }) errorMessage: string | undefined = undefined;
+  @property({ type: String, reflect: true }) errorMessage?: string;
   /** Tekst som vises for å markere at et felt er obligatorisk */
   @property() requiredLabel = '';
   /** Tooltip-tekst for label */
   @property({ type: String }) tooltip = '';
   /** Om inputfeltet skal være deaktivert */
   @property({ type: Boolean, reflect: true }) disabled = false;
+  @query('.textarea') textarea!: HTMLTextAreaElement;
+
   //autofocus kanskje burde ikke brukes?
   static styles = [styles];
   private readonly errorId = `error-textarea-${++errorId}`;
@@ -40,23 +60,31 @@ export default class NveTextareaDemo extends LitElement implements INveComponent
     this.dispatchEvent(event);
   }
 
-  /* Triggers when element value changes and element loses focus */
   private handleChange(e: Event) {
     const target = e.target as HTMLTextAreaElement;
     this.emit('change', target.value);
   }
 
+  //blur is emitted from the nve-textarea, so is focus.
+  //input
+
+  // select is inbuilt textarea event. its not gonna get triggered on the host. it has to be textarea that will emit it
   private handleSelect(e: Event) {
     const target = e.target as HTMLTextAreaElement;
     this.emit('select', target.value);
   }
+  /* Triggers when element value changes and element loses focus 
 
-  private handleBlur() {
-    this.emit('blur');
-  }
+
+ 
 
   private handleFocus() {
     this.emit('focus');
+  }
+    */
+
+  focus(options?: FocusOptions) {
+    this.textarea.focus(options);
   }
 
   /*
@@ -106,6 +134,11 @@ export default class NveTextareaDemo extends LitElement implements INveComponent
   // HUSK AT aria/described by can be combined both helpt text from the label and from under the input
   // HUSK sjekk om textarea og input har samme hover style
   // HUSK instead of a border i think i should maybe use outline or sth that doesnt collide with the layout
+  protected firstUpdated(_changedProperties: PropertyValues): void {
+    if (this.autofocus) {
+      this.focus();
+    }
+  }
   render() {
     return html`
       <!--
@@ -115,7 +148,6 @@ export default class NveTextareaDemo extends LitElement implements INveComponent
         class=${classMap({
           textarea__container: true,
           'textarea__container--error': !!this.errorMessage,
-          'textarea__container--disabled': this.disabled,
         })}
       >
         ${this.label
@@ -134,18 +166,42 @@ export default class NveTextareaDemo extends LitElement implements INveComponent
                 : nothing}
             </label>`
           : nothing}
-        <div class="textarea__control">
+        <div
+          class=${classMap({
+            textarea__control: true,
+            'textarea__control--filled': this.filled,
+            'textarea__control--readonly': this.readonly,
+            'textarea__control--disabled': this.disabled,
+            'textarea__control--error': !!this.errorMessage,
+          })}
+        >
           <textarea
-            class="textarea"
+            part="textarea"
+            class=${classMap({
+              textarea: true,
+            })}
+            autocapitalize=${ifDefined(this.autocapitalize)}
+            autocomplete=${ifDefined(this.autocomplete)}
+            autocorrect=${ifDefined(this.autocorrect)}
+            cols=${ifDefined(this.cols)}
+            form=${ifDefined(this.form)}
+            maxlength=${ifDefined(this.maxLength)}
+            minlength=${ifDefined(this.minLength)}
+            name=${ifDefined(this.name)}
+            placeholder=${ifDefined(this.placeholder)}
+            ?readonly=${this.readonly}
+            ?required=${this.required}
+            rows=${ifDefined(this.rows)}
+            spellcheck=${ifDefined(this.spellcheck)}
+            wrap=${ifDefined(this.wrap)}
             @change=${this.handleChange}
-            @blur=${this.handleBlur}
             ?disabled=${this.disabled}
-            @focus=${this.handleFocus}
             @select=${this.handleSelect}
             aria-describedby=${ifDefined(this.errorMessage ? this.errorId : undefined)}
             aria-invalid=${ifDefined(this.errorMessage ? 'true' : undefined)}
           ></textarea>
           ${this.disabled ? html` <nve-icon name="lock"></nve-icon>` : null}
+          ${this.readonly ? html`<nve-icon name="visibility"></nve-icon>` : nothing}
           ${this.errorMessage ? html` <nve-icon name="error"></nve-icon>` : null}
         </div>
         ${this.errorMessage

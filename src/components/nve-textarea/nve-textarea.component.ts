@@ -45,7 +45,7 @@ export default class NveTextarea extends LitElement implements INveComponent {
   @property() value = '';
 
   /** Feil melding som vises under gruppe hvis validering feiler */
-  @property() errorMessage?: string;
+  @property({ type: String, reflect: true }) errorMessage?: string;
 
   @property() title = '';
 
@@ -83,7 +83,7 @@ export default class NveTextarea extends LitElement implements INveComponent {
   @property() autocapitalize: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters' = 'off';
 
   /** Indikerer om nettleserens autokorrekturfunksjon er på eller av. */
-  @property() autocorrect?: string;
+  //@property() autocorrect?: string;
 
   /** Indikerer om nettleserens autokorrekturfunksjon er på eller av. */
   @property() tooltip?: string;
@@ -224,7 +224,6 @@ export default class NveTextarea extends LitElement implements INveComponent {
     this.toggleAttribute('data-user-invalid', !isValid);
   }
 
-  // eslint-disable-next-line max-lines-per-function
   render() {
     const hasLabelSlot = !!this.querySelector('[slot="label"]');
     return html`
@@ -267,12 +266,8 @@ export default class NveTextarea extends LitElement implements INveComponent {
           Må gjøres sånn fordi vi vil ikke begrense textarea__base brede til fit-content (da textarea kan aldri ta så mye plass som er 
           tilgjengelig i nettleseren og man må alltid sette brede på den manuelt. Nei takk.) -->
           <!-- Foreløpig kan man ha enten 'lock' eller 'error' ikone -->
-          ${this.disabled || this.showErrorMessage
-            ? html`<div class="textarea__icon__container">
-                ${this.disabled ? html`<nve-icon name="lock"></nve-icon>` : null}
-                ${this.showErrorMessage ? html`<nve-icon class="textarea__icon--error" name="error"></nve-icon>` : null}
-              </div>`
-            : nothing}
+
+          ${this.showErrorMessage ? html`<nve-icon class="textarea__icon--error" name="error"></nve-icon>` : null}
         </div>
         <div part="help-text-container" class="textarea__help-text__container">
           <!-- Ikke vis hjelpe tekst mens feil -->

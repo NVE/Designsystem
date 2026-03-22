@@ -26,7 +26,15 @@
     "baseUrl": "./",
     "paths": {
       "@interfaces/*": ["src/interfaces/*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "ts-lit-plugin",
+        "rules": {
+          "no-incompatible-type-binding": "off"
+        }
+      }
+    ]
   },
   "include": ["src"]
 }

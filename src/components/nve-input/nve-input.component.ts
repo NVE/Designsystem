@@ -11,6 +11,7 @@ import { PropertyValues } from 'lit';
  * pill skal ikke brukes.
  * TODO: Feltet blir bredere hvis validering feiler, fordi vi må ha plass til feil-ikonet.
  */
+// @ts-expect-error Shoelace SlInput.autocorrect type is incompatible with DOM typings
 @customElement('nve-input')
 export default class NveInput extends SlInput implements INveComponent {
   /**

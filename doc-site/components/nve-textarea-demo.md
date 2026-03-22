@@ -7,10 +7,23 @@ TODO: Start med et enklest mulig kodeeksempel i html for å kunne vise komponent
 
 ```html
 <nve-textarea-demo label="Some label"></nve-textarea-demo>
+<nve-textarea-demo filled readonly label="Some label"></nve-textarea-demo>
 
-<nve-textarea-demo label="Some label" errorMessage="So wrong"></nve-textarea-demo>
+<nve-textarea-demo id="error" label="Some label"></nve-textarea-demo>
+<nve-button id="button">Toggle error</nve-button>
 
 <nve-textarea-demo label="Some label" disabled></nve-textarea-demo>
+
+<script>
+  const textarea = document.getElementById('error');
+  const button = document.getElementById('button');
+
+  const toggleError = () => {
+    textarea.errorMessage = textarea.errorMessage ? '' : 'error happened';
+  };
+
+  button.addEventListener('click', toggleError);
+</script>
 ```
 
 </CodeExamplePreview>
