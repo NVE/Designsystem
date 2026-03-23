@@ -7,16 +7,23 @@ import { classMap } from 'lit/directives/class-map.js';
 import { html, literal } from 'lit/static-html.js';
 
 /**
- * Knapp-komponenten brukes til å utføre handlinger eller starte hendelser i grensesnittet.
- * Den gir brukerne en tydelig og gjenkjennelig måte å samhandle med systemet på, for eksempel ved å sende inn skjemaer,
+ * Knapp-komponenten brukes til å utføre handlinger eller starte hendelser.
+ * Den gir brukerne en tydelig og gjenkjennelig måte å samhandle med systemet på, for eksempel for å sende inn skjemaer,
  * bekrefte valg eller gå videre til neste steg i en prosess.
  *
- * Knappen er utformet for å være tydelige, konsistente og tilgjengelige, slik at brukere enkelt kan identifisere og bruke
- * viktige handlinger på tvers av ulike enheter og kontekster. For mer informasjon om tilgjengelighet, se seksjonen om tilgjengelighet.
+ * Knappen renderes som et native `<button>`-element når den ikke har en `href`-attributt.
+ * Hvis `href`-attributten er tilstede, renderes den som et `<a>`-element for å opprettholde semantikken for lenker.
+ * Noen valgte knapp-attributer kan ikke brukes når den renderes som en lenke, og omvendt.
+ *
+ * Se seksjonen om tilgjengelighet for mer informasjon.
  * Veiledning om når og hvordan knapper bør brukes finner du i retningslinjene.
  *
  * @slot start - Innhold som vises før hovedinnholdet i knappen, for eksempel et ikon.
  * @slot end - Innhold som vises etter hovedinnholdet i knappen, for eksempel et ikon.
+ *
+ * @event click Simulerer et klikk på native knapp-elementet.
+ * @event focus Simulerer et fokus på native knapp-elementet.
+ * @event blur Simulerer et blur på native knapp-elementet.
  *
  * @csspart base Topp-elementet, enten <button> eller <a>.
  * @csspart label Hoved innholdet i knappen, vanligvis tekst.
@@ -32,9 +39,9 @@ export default class NveButton extends LitElement implements INveComponent {
 
   /** Om knappen skal være rund. Fungerer kun når det ikke finnes noe tekst og bare et ikon vises */
   @property({ type: Boolean }) circle = false;
-  /** Loader tilstanden på knappen */
+  /** Setter knappen i lastemodus, slik at spinner vises */
   @property({ type: Boolean, reflect: true }) loading = false;
-  /** Størrelsen på knappen */
+  /** Størrelse på knappen */
   @property({ type: String }) size: 'small' | 'medium' | 'large' = 'medium';
   /** Varianter av knappen */
   @property({ type: String, reflect: true }) variant: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'danger' =
@@ -45,9 +52,9 @@ export default class NveButton extends LitElement implements INveComponent {
   @property({ type: String }) download?: string;
   /** URL-en som knappen skal navigere til når den klikkes. */
   @property({ type: String }) href?: string;
-  /** Språket for den lenkede ressursen. */
+  /** Språket for den lenkede ressursen. Støttes kun når `href` er tilstede. */
   @property({ type: String }) hreflang?: string;
-  /** Hvordan referereren skal håndteres når lenken følges. */
+  /** Hvordan henviseren skal håndteres når lenken følges. Støttes kun når `href` er tilstede. */
   @property({ type: String }) referrerpolicy?: string;
   /** rel-attributtet for lenken når `href` er tilstede. */
   @property({ type: String }) rel?: string;
@@ -55,29 +62,29 @@ export default class NveButton extends LitElement implements INveComponent {
   @property({ type: String }) target?: '_blank' | '_parent' | '_self' | '_top';
 
   /* Skjema properties */
-  /** ID-en til skjemaet som knappen er tilknyttet. */
+  /** ID-en til skjemaet som knappen er tilknyttet. Støttes ikke av lenkeknapp.*/
   @property({ type: String }) form?: string;
-  /** URL-en som skjemaet skal sendes til når knappen klikkes. */
+  /** URL-en som skjemaet skal sendes til når knappen klikkes. Støttes ikke av lenkeknapp.*/
   @property({ type: String }) formAction?: string;
-  /** Hvordan skjemaet skal kodes når det sendes. */
-  @property({ type: String }) formEnctype?: string;
-  /** HTTP-metoden som skal brukes når skjemaet sendes. */
-  @property({ type: String }) formMethod?: string;
-  /** Om skjemaet skal valideres før sending. */
+  /** Hvordan skjemaet skal kodes når det sendes. Støttes ikke av lenkeknapp.*/
+  @property({ type: String }) formEnctype?: 'application/x-www-form-urlencoded' | 'multipart/form-data' | 'text/plain';
+  /** HTTP-metoden som skal brukes når skjemaet sendes. Støttes ikke av lenkeknapp.*/
+  @property({ type: String }) formMethod?: 'get' | 'post' | 'dialog';
+  /** Om skjemaet ikke skal valideres før sending. Støttes ikke av lenkeknapp.*/
   @property({ type: Boolean }) formNoValidate = false;
-  /** Hvor skjemaet skal åpnes når det sendes. */
-  @property({ type: String }) formTarget?: 'self' | '_blank' | '_parent' | '_top';
-  /** Navnet på knappen når den brukes i et skjema. */
+  /** Hvor skjemaet skal åpnes når det sendes. Støttes ikke av lenkeknapp.*/
+  @property({ type: String }) formTarget?: '_self' | '_blank' | '_parent' | '_top';
+  /** Navnet på knappen når den brukes i et skjema. Støttes ikke av lenkeknapp. */
   @property({ type: String }) name?: string;
 
   /* Native Button properties */
   /** Om knappen skal være i fokus når siden lastes. */
   @property({ type: Boolean, reflect: true }) autofocus = false;
-  /** Om knappen skal være deaktivert. */
+  /** Om knappen skal være deaktivert. Støttes ikke av lenkeknapp.  */
   @property({ type: Boolean, reflect: true }) disabled = false;
-  /** Typen av knappen. */
+  /** Knapp-typen. Støttes ikke av lenkeknapp. */
   @property({ type: String }) type: 'button' | 'submit' | 'reset' = 'button';
-  /** Verdien til knappen. */
+  /** Verdien til knappen. Brukes i skjemaer. Støttes ikke av lenkeknapp. */
   @property({ type: String }) value?: string;
 
   /* Arias */

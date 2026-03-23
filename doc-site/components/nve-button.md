@@ -12,7 +12,7 @@ outline: [2, 3]
 </CodeExamplePreview>
 
 <nve-message-card variant="primary" label="Info" size="compact">
-<p><span class="highlight">nve-button</span> støtter nesten alle egenskaper fra en native HTML-knapp, slik at brukerne får en mest mulig forutsigbar og native-lignende opplevelse – spesielt ved bruk i skjemaer.</p>
+<p><span class="highlight">nve-button</span> støtter nesten alle egenskaper fra en native HTML-knapp.</p>
 
 <p>Det er likevel enkelte attributter som per i dag ikke støttes:</p>
 <ul>
@@ -24,7 +24,7 @@ outline: [2, 3]
 
 <p>Disse er foreløpig ikke implementert fordi de krever en referanse (ID) til et element som skal styres. Når vi bruker Shadow DOM, er det ikke mulig å referere direkte til elementer utenfor komponentens egen shadow root på en robust måte. Den interne knappen i <span class="highlight">nve-button</span> kan derfor ikke på en trygg og enkel måte vite hvilken popover eller hvilket mål den skal styre.</p>
 
-<p>For å få dette til måtte vi ha traversert hele DOM-treet for å finne riktig element basert på ID. Det anses som en lite effektiv tilnærming, og vi har derfor valgt å ikke støtte disse attributtene inntil vi kan tilby en løsning som både er ytelseseffektiv og vedlikeholdbar.</p>
+<p>For å få dette til måtte vi ha traversert hele DOM-treet for å finne riktig element basert på ID. Det virker lite effektivt, og vi har derfor valgt å ikke støtte disse attributtene inntil vi kan tilby en løsning som både er ytelseseffektiv og vedlikeholdbar.</p>
 </nve-message-card>
 
 ## Eksempler
@@ -53,7 +53,7 @@ Bruk <span class="highlight">size</span> for å endre størrelse. <span class="h
 
 ```html
 <nve-button size="large">Large</nve-button>
-<nve-button size="medium">Medium</nve-button>
+<nve-button>Medium</nve-button>
 <nve-button size="small">Small</nve-button>
 ```
 
@@ -109,7 +109,7 @@ Når knappen går inn i en lastetilstand, skjules slot-end-ikonet for å unngå 
 
 ### Kun ikon
 
-Knapper med kun ikon kan brukes ved å sette <span class="highlight">nve-icon</span> i standardsporet.
+Legg <span class="highlight">nve-icon</span> i standardsporet for å få knapper med kun ikon.
 Man kan fortsatt bruke <span class="highlight">loading</span>-attributtet for å vise kun en spinner.
 
 <nve-message-card variant="warning" label="Les om tilgjengelihet i knapper med kun ikon!" size="compact">
@@ -127,7 +127,7 @@ Man kan fortsatt bruke <span class="highlight">loading</span>-attributtet for å
 
 </CodeExamplePreview>
 
-Knapper med bare ikon kan også bruke <span class="highlight">circle</span>-attributtet for å vise en rund knapp.
+Knapp med bare ikon kan også gjøres runde ved å bruk <span class="highlight">circle</span>.
 
 <CodeExamplePreview>
 
@@ -139,15 +139,12 @@ Knapper med bare ikon kan også bruke <span class="highlight">circle</span>-attr
 
 ### Ikon farge
 
-I noen tilfeller må man sette en annen farge på ikonet. Dette kan enkelt gjøres ved å sette:
+Du kan bruke css-variable for å styre farge på ikoner:
 
 - <span class="highlight">--nve-icon-color</span> CSS-egenskapen for
   vanlig farge,
 - <span class="highlight">--nve-icon-color-hover</span> for hover
-- <span class="highlight">--nve-icon-color-pressed</span> for klikket knappen.
-
-Hvis <span class="highlight">--nve-icon-color-hover</span> og <span class="highlight">--nve-icon-color-pressed</span> ikke er spesiferte standard
-variant farger brukes.
+- <span class="highlight">--nve-icon-color-pressed</span> for klikk.
 
 <CodeExamplePreview>
 
@@ -160,12 +157,12 @@ variant farger brukes.
 
 </CodeExamplePreview>
 
-### Lenke knapp
+### Lenkeknapp
 
-Hvis <span class="highlight">href</span>-attributtet er satt, rendres knappen som et <span class="highlight">a</span>-element i stedet for <span class="highlight">button</span>. Dette gjør at komponenten kan oppføre seg som en lenke, samtidig som den beholder det visuelle uttrykket til en knapp. Lenkeknapper kan også ta imot vanlige <span class="highlight">a</span>-attributter som <span class="highlight">download</span>, <span class="highlight">hreflang</span>, <span class="highlight">referrerpolicy</span>, <span class="highlight">rel</span> og <span class="highlight">target</span>.
+Hvis <span class="highlight">href</span>-attributtet er satt, rendres knappen som et <span class="highlight">a</span>-element i stedet for <span class="highlight">button</span>. Dette gjør at komponenten vil oppføre seg som en lenke, samtidig som den beholder det visuelle uttrykket til en knapp. Lenkeknapper kan også ta imot vanlige <span class="highlight">a</span>-attributter som <span class="highlight">download</span>, <span class="highlight">hreflang</span>, <span class="highlight">referrerpolicy</span>, <span class="highlight">rel</span> og <span class="highlight">target</span>.
 
 <nve-message-card variant="warning" label="Viktig!" size="compact">
-<p>Hvis du vil vise en deaktivert lenke knapp, bruk ikke <span class="highlight">disabled</span>. Den skal ikke fungere. Bruk tom <span class="highlight">href</span>-attributtet i stedet.</p>
+<p>Hvis du vil vise en deaktivert lenkeknapp, ikke bruk <span class="highlight">disabled</span>. Det ikke fungere. Bruk tom <span class="highlight">href</span>-attributtet i stedet.</p>
 </nve-message-card>
 
 <CodeExamplePreview>
@@ -183,7 +180,7 @@ Når knappen plasseres i et skjema, kan den brukes til å sende inn skjemaet ved
 Ved å bruke <span class="highlight">form</span>-attributtet trenger ikke knappen å være plassert inne i selve form-elementet for å kunne sende inn skjemaet.
 
 <nve-message-card label="Submit-håndtering i nve-button" size="compact">
-<p>Når <b>nve-button</b> brukes som en submit-knapp, opprettes en native knapp i light DOM for å trigge skjemainnsending korrekt. Dette er nødvendig fordi komponentens interne knapp ligger i Shadow DOM, noe som hindrer nettleserens innebygde skjemelogikk i å automatisk oppdage og koble den til skjemaet. Ved å opprette en usynlig native knapp i light DOM kan komponenten delta riktig i nettleserens innebygde mekanisme for skjemainnsending, slik at hendelser, validering og innsending fungerer som forventet. Light DOM knapp er fjernet med en gang etter den har blitt klikket.</p>
+<p>Når <b>nve-button</b> brukes som en submit-knapp, opprettes en native knapp i light DOM for å trigge skjemainnsending korrekt. Dette er nødvendig fordi komponentens interne knapp ligger i Shadow DOM, noe som hindrer nettleserens innebygde skjemelogikk i å automatisk oppdage og koble den til skjemaet. Ved å opprette en usynlig native knapp i light DOM kan komponenten delta riktig i nettleserens innebygde mekanisme for skjemainnsending, slik at hendelser, validering og innsending fungerer som forventet. Light DOM knapp fjernes med en gang etter den har blitt klikket.</p>
 </nve-message-card>
 
 ## Retningslinjer
@@ -196,9 +193,9 @@ Primærknappen skal alltid være venstrestilt, men når det er i trinnvis eller 
 
 Vi skal holde oss til én primærknapp per side. Hvis det er flere hovedhandlinger kan brukerne bli usikre på hva de skal gjøre.
 
-Når bredden går over til mobil skal knappene alltid gå til full bredde. Dette er for å øke klikkfalte.
+Når bredden går over til mobil skal knappene alltid gå til full bredde. Dette er for å øke klikkflate.
 
-Knapper skal ha gjeldende anbefaling for å gjøre en knapp godt lesbar er å bruke stor forbokstav og små bokstaver på resten av ordene (sentence case).
+Bruk stor forbokstav i knapp-teskten. Resten av bokstavene bør være små.
 
 Størrelsen <span class="highlight">small</span> er tilgjengelig for bruk i tabeller eller interne løsninger. Den bør brukes sparsomt da klikkflaten kan være problematisk, spesielt på mobil.
 
