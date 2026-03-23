@@ -78,7 +78,7 @@
     "custom-element-vuejs-integration": "^1.4.0",
     "custom-elements-manifest": "^2.1.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^10.0.3",
+    "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-lit": "^2.2.1",
     "eslint-plugin-vue": "^10.8.0",
@@ -100,7 +100,7 @@
     "vue-eslint-parser": "^10.1.4"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.57.1"
+    "@rollup/rollup-linux-x64-gnu": "^4.60.0"
   },
   "config": {
     "commitizen": {
