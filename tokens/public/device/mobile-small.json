@@ -288,6 +288,10 @@
         "$type": "boolean",
         "$value": "false"
       },
+      "desktop-tablet-mobile": {
+        "$type": "boolean",
+        "$value": "false"
+      },
       "tablet": {
         "$type": "boolean",
         "$value": "false"
