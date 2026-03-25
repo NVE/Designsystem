@@ -58,6 +58,7 @@ export default defineConfig({
               { text: 'Design', link: '/introduction/forDesigner/design' },
               { text: 'Kom i gang', link: '/introduction/forDesigner/getStarted' },
               { text: 'Bidrag', link: '/introduction/forDesigner/contribution' },
+              { text: 'Commit-meldinger', link: '/introduction/forDesigner/commitMessages' },
             ],
           },
           {
