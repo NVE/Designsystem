@@ -256,5 +256,11 @@
         "$value": "true"
       }
     }
+  },
+  "text": {
+    "brand-name": {
+      "$type": "text",
+      "$value": "Reguleringsmyndigheten for energi"
+    }
   }
 }

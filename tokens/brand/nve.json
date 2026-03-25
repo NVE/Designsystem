@@ -1789,5 +1789,11 @@
         "$value": "true"
       }
     }
+  },
+  "text": {
+    "brand-name": {
+      "$type": "text",
+      "$value": "Norges vassdrags- og energidirektorat"
+    }
   }
 }

@@ -320,5 +320,11 @@
         "$value": "false"
       }
     }
+  },
+  "text": {
+    "brand-name": {
+      "$type": "text",
+      "$value": "Varsom – en tjeneste levert av NVE"
+    }
   }
 }
