@@ -1,6 +1,5 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av npm run add-component */
-
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
