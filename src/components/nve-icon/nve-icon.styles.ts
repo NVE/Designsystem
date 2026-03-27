@@ -16,6 +16,7 @@ export default css`
     --icon-size: var(--font-size-large);
     font-size: var(--icon-size);
     line-height: var(--icon-size);
+    width: fit-content;
   }
 
   :is(img),
