@@ -444,7 +444,7 @@ export default class NveTabGroup extends LitElement implements INveComponent {
                   part="button-backward-base"
                   class="tab-group__nav-button tab-group__nav-button--backward"
                 >
-                  <nve-button @click=${this.scrollNavBackward} variant="text">
+                  <nve-button @click=${this.scrollNavBackward} variant="ghost">
                     <nve-icon name="chevron_backward"></nve-icon>
                   </nve-button>
                 </div>
@@ -459,9 +459,9 @@ export default class NveTabGroup extends LitElement implements INveComponent {
                     'tab-group__nav-button tab-group__nav-button--forward': true,
                   })}
                 >
-                  <nve-button variant="text" @click=${this.scrollNavForward}
-                    ><nve-icon name="chevron_forward"></nve-icon
-                  ></nve-button>
+                  <nve-button variant="ghost" @click=${this.scrollNavForward}>
+                    <nve-icon name="chevron_forward"></nve-icon>
+                  </nve-button>
                 </div>
               `
             : nothing}

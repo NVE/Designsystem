@@ -32,7 +32,7 @@ export default css`
   }
 
   .link-card:focus-visible {
-    outline: var(--color-interactive-primary-border-focus) solid 2px;
+    outline: var(--color-interactive-border-accessibility-focus) solid 2px;
   }
 
   .link-card--small {

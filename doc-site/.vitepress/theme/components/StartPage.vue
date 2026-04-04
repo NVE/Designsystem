@@ -9,17 +9,16 @@
         <li>API-dokumentasjon for hver komponent</li>
       </ul>
       <div class="links-container">
-        <LinkButton URL="/introduction/home" text="Introduksjon" />
-        <LinkButton URL="https://nve.frontify.com/" text="Profil og primitiver" :openInNewTab="true" />
-        <LinkButton URL="/components/Komponentoversikt" text="Komponenter" />
+        <nve-button variant="secondary" href="/introduction/home">Introduksjon</nve-button>
+        <nve-button variant="secondary" href="https://nve.frontify.com/" target="_blank"
+          >Profil og primitiver
+          <nve-icon name="open_in_new" slot="end"></nve-icon>
+        </nve-button>
+        <nve-button variant="secondary" href="/components/Komponentoversikt">Komponenter</nve-button>
       </div>
     </section>
   </div>
 </template>
-
-<script setup>
-import LinkButton from './LinkButton.vue';
-</script>
 
 <style scoped>
 .nve-home {

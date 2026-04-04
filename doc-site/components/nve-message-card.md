@@ -8,7 +8,7 @@ layout: component
 <nve-message-card label="Varsel om nedetid" closable>
   <div slot="subheader">Varsling | 21.11.2023</div>
   <div slot="footer">
-    <nve-button variant="neutral">Les mer</nve-button>
+    <nve-button variant="tertiary">Les mer</nve-button>
   </div>
   I meldingen skal søker beskrive tiltaket, det berørte området og mulige konsekvenser for miljø og samfunn.
 </nve-message-card>
@@ -100,7 +100,7 @@ Du kan bruke `footer`-sporet til å vise f.eks. en knapp.
 <nve-message-card label="Beklager">
   Vi støtter ikke denne funksjonen.
   <div slot="footer">
-    <nve-button variant="neutral">Send klage</nve-button>
+    <nve-button variant="tertiary">Send klage</nve-button>
   </div>
 </nve-message-card>
 ```

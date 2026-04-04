@@ -172,6 +172,6 @@ export default css`
   }
 
   .tag.tag--saturation-emphasized.tag--neutral:has(.tag-close:focus-visible) {
-    outline-color: var(--color-interactive-primary-foreground-border-focus);
+    outline-color: var(--color-interactive-border-accessibility-focus);
   }
 `;
