@@ -30,7 +30,7 @@ export default css`
   }
 
   :host::part(navigation-button):hover {
-    background-color: var(--color-interactive-secondary-background-hover);
+    background-color: var(--color-interactive-background-secondary-hover);
     opacity: 70%;
     transition: 0.3s;
     color: var(--color-neutrals-background-primary);

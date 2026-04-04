@@ -237,7 +237,7 @@ a:has(nve-link-card) {
 
 /* Brukes for å overskrive standard lenke visited styling fra eksterne rammeverker. */
 a:visited {
-  color: var(--color-interactive-links-visited);
+  color: var(--color-interactive-foreground-link-visited);
 }
 
 .highlight {

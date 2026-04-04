@@ -44,7 +44,7 @@ export default css`
     color: var(--color-neutrals-foreground-primary);
   }
   :host::part(close-button):hover {
-    background-color: var(--color-interactive-ghost-background-hover);
+    background-color: var(--color-interactive-background-tertiary-hover);
     border-radius: var(--border-radius-small, 4px);
     transition: background-color 0.3s ease;
   }

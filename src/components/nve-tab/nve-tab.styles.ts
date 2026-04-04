@@ -11,8 +11,8 @@ export default css`
   }
 
   :host(:focus-visible) .tab {
-    outline: 2px solid var(--color-interactive-outlined-border-focus);
-    outline-offset: -12px;
+    outline: 2px solid var(--color-interactive-border-accessibility-focus);
+    outline-offset: -4px;
   }
 
   .tab {
