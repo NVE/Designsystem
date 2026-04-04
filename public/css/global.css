@@ -39,6 +39,19 @@ a:visited {
   gap: 8px;
 }
 
+.field__label__required-text {
+  font: var(--typography-label-small-light);
+  color: var(--color-brand-foreground-secondary);
+}
+
+.field__label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2x-small);
+  font: var(--typography-label-small);
+  color: var(--color-neutrals-foreground-primary);
+}
+
 /*
 focus ring color is the same all over the application.
 we use only border-radius-small size on all shoelace border radius tokens. (--sl-border-radius-large and --sl-border-radius-x-large are 

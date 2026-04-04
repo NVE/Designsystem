@@ -12,8 +12,8 @@ export default class NveOptionDemo extends LitElement implements INveComponent {
   @property({ type: String }) label = '';
   @property({ type: String }) value = '';
   @property({ type: String, attribute: 'aria-selected', reflect: true }) ariaSelected = 'false';
-  @property({ type: String, attribute: 'aria-label', reflect: true }) ariaLabel = this.label;
-  @property({ type: Boolean, reflect: true }) active = false; // is it for keyboard only?
+  @property({ type: Boolean }) selected = false;
+  @property({ type: Boolean, reflect: true }) active = false;
 
   /*
   i wont use selected proeprty as this on will be controlled by value proeprty on the select insted
@@ -30,24 +30,26 @@ export default class NveOptionDemo extends LitElement implements INveComponent {
 
   constructor() {
     super();
+    this.tabIndex = -1;
+    this.setAttribute('role', 'option');
   }
 
   // aria-disabled may change
   connectedCallback() {
     super.connectedCallback();
-    this.setAttribute('role', 'option');
+
     if (this.disabled) {
       this.setAttribute('aria-disabled', 'true');
     }
-    this.ariaLabel = this.label;
+  }
+
+  protected createRenderRoot() {
+    return this;
   }
 
   render() {
     return html`
-      <div
-        class=${classMap({ option: true, 'option--disabled': this.disabled, 'option--active': this.active })}
-        testId=${ifDefined(this.testId)}
-      >
+      <div class=${classMap({ option: true, 'option--disabled': this.disabled })} testId=${ifDefined(this.testId)}>
         ${this.ariaSelected === 'true' ? html`<nve-icon name="check" aria-hidden="true"></nve-icon>` : nothing}
         ${this.label ? this.label : html`<slot></slot>`}
       </div>

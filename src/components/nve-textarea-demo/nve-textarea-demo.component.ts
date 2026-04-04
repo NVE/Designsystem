@@ -13,7 +13,6 @@ export default class NveTextareaDemo extends LitElement implements INveComponent
   @property({ type: String }) testId: string | undefined = undefined;
   /* Native textarea attributes */
   /** Om minst en sjekkboks er sjekket på */
-  /** Om minst en sjekkboks er sjekket på */
   @property({ type: String }) autocomplete?: string;
   @property({ type: Number }) cols?: number;
   @property({ type: String }) form?: string;

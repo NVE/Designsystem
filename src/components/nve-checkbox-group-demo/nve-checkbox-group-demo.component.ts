@@ -25,7 +25,7 @@ export default class NveCheckboxGroupDemo extends LitElement implements INveComp
   /** Tooltip-tekst for label */
   @property({ type: String }) tooltip = '';
   /** Returnerer en tabell av value-attributet til alle sjekkbokser som er valgt. Man kan lagre både primitiver og objekter i selectedValues. */
-  @property({ type: Array }) selectedValues?: (string | null)[];
+  @property({ type: Array }) selectedValues?: (string | null)[]; // consider not doing it
   @queryAssignedElements({ selector: 'nve-checkbox-demo', flatten: true })
   private checkboxes!: NveCheckboxDemo[];
   /** @internal */

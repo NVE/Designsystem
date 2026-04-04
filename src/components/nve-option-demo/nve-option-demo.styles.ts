@@ -1,6 +1,14 @@
 import { css } from 'lit';
 
 export default css`
+  :host(:focus-visible) {
+    outline: none;
+  }
+
+  :host(:focus-visible) .option {
+    background-color: var(--color-neutrals-background-primary-contrast);
+  }
+
   :host([aria-selected='true']) .option {
     background-color: var(--color-neutrals-background-secondary);
   }
