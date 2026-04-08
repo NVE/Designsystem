@@ -6,7 +6,7 @@ outline: [2, 3]
 <CodeExamplePreview>
 
 ```html
-<nve-button aria-label="test" title="test">NVE-knappen</nve-button>
+<nve-button>NVE-knappen</nve-button>
 ```
 
 </CodeExamplePreview>
@@ -26,6 +26,22 @@ outline: [2, 3]
 
 <p>For å få dette til måtte vi ha traversert hele DOM-treet for å finne riktig element basert på ID. Det virker lite effektivt, og vi har derfor valgt å ikke støtte disse attributtene inntil vi kan tilby en løsning som både er ytelseseffektiv og vedlikeholdbar.</p>
 </nve-message-card>
+
+## Retningslinjer
+
+- Vi skal tydelig beskrive handlingene knappene utfører. En knapp kan bare ha en handling, ikke flere.
+
+- Vi skal holde oss til ett ikon per knapp.
+
+- Primærknappen skal alltid være venstrestilt, men når det er i trinnvis eller modal skal primærknapp ligge på høyre side.
+
+- Vi skal holde oss til én primærknapp per side. Hvis det er flere hovedhandlinger kan brukerne bli usikre på hva de skal gjøre.
+
+- Når bredden går over til mobil skal knappene alltid gå til full bredde. Dette er for å øke klikkflate.
+
+- Knappetekst skal alltid begynne med stor forbokstav, etterfulgt av små bokstaver..
+
+- Størrelsen <span class="highlight">small</span> er tilgjengelig for bruk i tabeller eller interne løsninger. Den bør brukes sparsomt da klikkflaten kan være problematisk, spesielt på mobil.
 
 ## Eksempler
 
@@ -112,7 +128,7 @@ Når knappen går inn i en lastetilstand, skjules slot-end-ikonet for å unngå 
 Legg <span class="highlight">nve-icon</span> i standardsporet for å få knapper med kun ikon.
 Man kan fortsatt bruke <span class="highlight">loading</span>-attributtet for å vise kun en spinner.
 
-<nve-message-card variant="warning" label="Les om tilgjengelihet i knapper med kun ikon!" size="compact">
+<nve-message-card variant="warning" label="Les om tilgjengelighet i knapper med kun ikon!" size="compact">
 <p>Knapper med kun ikon trenger et tilgjengelig navn slik at skjermleserbrukere forstår hva knappen gjør. Les mer i <a href="#kun-ikon-knapper">aria-label seksjonen</a>.</p>
 </nve-message-card>
 
@@ -183,22 +199,6 @@ Ved å bruke <span class="highlight">form</span>-attributtet trenger ikke knappe
 <p>Når <b>nve-button</b> brukes som en submit-knapp, opprettes en native knapp i light DOM for å trigge skjemainnsending korrekt. Dette er nødvendig fordi komponentens interne knapp ligger i Shadow DOM, noe som hindrer nettleserens innebygde skjemelogikk i å automatisk oppdage og koble den til skjemaet. Ved å opprette en usynlig native knapp i light DOM kan komponenten delta riktig i nettleserens innebygde mekanisme for skjemainnsending, slik at hendelser, validering og innsending fungerer som forventet. Light DOM knapp fjernes med en gang etter den har blitt klikket.</p>
 </nve-message-card>
 
-## Retningslinjer
-
-Vi skal tydelig beskrive handlingene knappene utfører. En knapp kan bare ha en handling, ikke flere.
-
-Vi skal holde oss til ett ikon per knapp.
-
-Primærknappen skal alltid være venstrestilt, men når det er i trinnvis eller modal skal primærknapp ligge på høyre side.
-
-Vi skal holde oss til én primærknapp per side. Hvis det er flere hovedhandlinger kan brukerne bli usikre på hva de skal gjøre.
-
-Når bredden går over til mobil skal knappene alltid gå til full bredde. Dette er for å øke klikkflate.
-
-Bruk stor forbokstav i knapp-teskten. Resten av bokstavene bør være små.
-
-Størrelsen <span class="highlight">small</span> er tilgjengelig for bruk i tabeller eller interne løsninger. Den bør brukes sparsomt da klikkflaten kan være problematisk, spesielt på mobil.
-
 ## Tilgjengelighet
 
 Alle ARIA-attributter beskrevet under kan brukes direkte på <span class="highlight">nve-button</span> lowercased. Komponentet videresender dem til det underliggende native knappeelementet i Shadow DOM, slik at de tolkes korrekt av skjermlesere.
@@ -227,13 +227,13 @@ Riktig bruk av <span class="highlight">aria-label</span>:
 
 ### Toggle knapp
 
-Ved a legge til <span class="highlight">aria-pressed</span>-attributet gjor man knappen om til en toggle knappen. Les mer om [aria-pressed her](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-pressed).
+Ved a legge til <span class="highlight">aria-pressed</span>-attributet gjør man knappen om til en toggle knapp. Les mer om [aria-pressed her](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-pressed).
 
 ### Knapper som styrer synligheten av innhold
 
 For slike knapper, er <span class="highlight">aria-expanded</span> det viktigste attributtet å inkludere. Det formidler gjeldende tilstand (utvidet eller kollapset) til hjelpemiddelteknologi, slik at skjermleserbrukere kan forstå om ekstra innhold er synlig. Dette er spesielt viktig for komponenter som akkordeoner, nedtrekksmenyer og utvidbare paneler/popovers.
 
-Selv om <span class="highlight">aria-controls</span> også kan brukes for å indikere hvilket element som styres, er det mindre kritisk i praksis. Støtten for <span class="highlight">aria-controls</span> er inkonsekvent på tvers av skjermlesere, og mange utnytter det ikke på en meningsfull måte. I tillegg, i oppsett som bruker Shadow DOM, er det ikke pålitelig å referere til elementer med ID på tvers av grensen, siden ID-er ikke passerer gjennom shadow root. Dette betyr at selv om <span class="highlight">aria-controls</span> er satt, kan det hende det ikke fungerer som forventet.
+Selv om <span class="highlight">aria-controls</span> også kan brukes for å indikere hvilket element som styres, er det mindre kritisk i praksis. Støtten for <span class="highlight">aria-controls</span> er inkonsekvent på tvers av skjermlesere, og mange utnytter det ikke på en meningsfull måte. I oppsett som bruker Shadow DOM, er det ikke pålitelig å referere til elementer med ID på tvers av grensen, siden ID-er ikke passerer gjennom shadow root. Dette betyr at selv om <span class="highlight">aria-controls</span> er satt, kan det hende det ikke fungerer som forventet.
 
 Av den grunn bør <span class="highlight">aria-expanded</span> regnes som det primære og viktigste attributtet for å formidle tilstandsendringer. Det gir tydelig og pålitelig tilbakemelding til brukere av hjelpemiddelteknologi, selv når relasjoner som <span class="highlight">aria-controls</span> ikke kan etableres fullt ut.
 

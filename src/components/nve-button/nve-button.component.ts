@@ -11,8 +11,8 @@ import { html, literal } from 'lit/static-html.js';
  * Den gir brukerne en tydelig og gjenkjennelig måte å samhandle med systemet på, for eksempel for å sende inn skjemaer,
  * bekrefte valg eller gå videre til neste steg i en prosess.
  *
- * Knappen renderes som et native `<button>`-element når den ikke har en `href`-attributt.
- * Hvis `href`-attributten er tilstede, renderes den som et `<a>`-element for å opprettholde semantikken for lenker.
+ * Knappen renderes som et native button-element når den ikke har en href-attributt.
+ * Hvis href-attributtet er tilstede, renderes den som et a-element for å opprettholde semantikken for lenker.
  * Noen valgte knapp-attributer kan ikke brukes når den renderes som en lenke, og omvendt.
  *
  * Se seksjonen om tilgjengelighet for mer informasjon.
@@ -119,7 +119,7 @@ export default class NveButton extends LitElement implements INveComponent {
 
   static styles = [styles];
 
-  /** Finn tilknyttet skjema, enten via [form] eller nærmeste <form>-forfader. */
+  /** Finn tilknyttet skjema, enten via [form] eller nærmeste <form>-forelder. */
   private getForm(): HTMLFormElement | null {
     if (this.form) {
       // Den sjekker hele domen, ikke bare nærmeste form-element.
