@@ -30,7 +30,7 @@ export function getLabel(
   if (!label) return nothing;
 
   return html` <label class="field__label" id="${id}" @click=${onClick}>
-    ${label}
+    <span>${label}</span>
     ${tooltip
       ? html`<nve-tooltip placement="top">
           <div slot="content">${unsafeHTML(tooltip)}</div>

@@ -17,6 +17,8 @@ export default css`
     --_border-color: var(--color-neutrals-border-default);
     --_background-color: var(--color-neutrals-background-primary);
     --_border-color-hover: var(--color-neutrals-foreground-primary);
+    --_options-background-selected: var(--color-neutrals-background-secondary);
+    --_options-background-active: var(--color-neutrals-background-primary-contrast);
   }
 
   .field--disabled {
@@ -85,6 +87,8 @@ export default css`
     --_border-color: var(--color-neutrals-border-subtle);
     --_background-color: var(--color-neutrals-background-primary-contrast,);
     --_border-color-hover: var(--color-neutrals-border-default);
+    --_options-background-selected: var(--color-neutrals-background-primary);
+    --_options-background-active: var(--color-neutrals-background-primary);
   }
 
   .field--readonly {
@@ -191,13 +195,13 @@ export default css`
     opacity: 0.38;
   }
 
-  .combobox__listbox__option--selected {
-    background-color: var(--color-neutrals-background-secondary);
-  }
-
   .combobox__listbox__option--active,
   .combobox__listbox__option:not(.combobox__listbox__option--disabled):hover {
-    background-color: var(--color-neutrals-background-primary-contrast);
+    background-color: var(--_options-background-active);
+  }
+
+  .combobox__listbox__option--selected {
+    background-color: var(--_options-background-selected);
   }
 
   .combobox__value__tag {
@@ -207,7 +211,7 @@ export default css`
     gap: var(--spacing-2x-small, 4px);
     border: none;
     border-radius: var(--border-radius-small, 4px);
-    background: var(--color-neutrals-background-secondary, #e4e5e7);
+    background: var(--_options-background-selected);
     cursor: pointer;
     nve-icon {
       --icon-size: 20px;
