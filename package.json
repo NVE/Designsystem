@@ -93,7 +93,7 @@
     "react-dom": "^19.2.5",
     "semantic-release": "^25.0.3",
     "style-dictionary": "^5.1.1",
-    "typescript": "^6.0.2",
+    "typescript": "^5.9.3",
     "vite": "^8.0.8",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.1.3",
