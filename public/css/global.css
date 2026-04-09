@@ -25,7 +25,7 @@ a:has(nve-navigation-card) {
 
 /* Brukes for å overskrive standard lenke visited styling som ikke er i Shadow-DOMen som f.eks de som skal wrappe <nve-link-card> */
 a:visited {
-  color: var(--color-interactive-links-visited);
+  color: var(--color-interactive-foreground-link-visited);
 }
 
 /* Brukes i nve-alert for å vise toast*/

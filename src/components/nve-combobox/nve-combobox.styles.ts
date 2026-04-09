@@ -5,7 +5,7 @@ export default css`
   :host {
     /* Brukt for å gjøre feltet like høyt som nve-select */
     --input-size-offset: 4px;
-    --input-part-base-border: 1px solid var(--color-interactive-links-default);
+    --input-part-base-border: 1px solid var(--color-interactive-foreground-link-enabled);
   }
 
   :host([disabled]) {
