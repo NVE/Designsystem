@@ -161,6 +161,14 @@
         "$type": "color",
         "$value": "#00070A"
       },
+      "999-040": {
+        "$type": "color",
+        "$value": "rgba(0,7,10,0.4)"
+      },
+      "999-080": {
+        "$type": "color",
+        "$value": "rgba(0,7,10,0.8)"
+      },
       "000": {
         "$type": "color",
         "$value": "#ffffff"
