@@ -31,6 +31,25 @@ En ledetekst kan legges til på to måter. Ved å bruke `label`-egenskapen – e
 
 </CodeExamplePreview>
 
+### Hjelpetekst
+
+En hjelpetekst er en tekst som gjerne presiserer hva man ønsker fylt inn i inndatafeltet, og brukes som et tillegg
+til ledeteksten. Denne hjelpeteksten kan man plassere både over og under inndatafeltet.
+
+<CodeExamplePreview>
+
+```html
+<nve-textarea label="Ledetekst" helpText="En tekst som presiserer hva som skal fylles inn"> </nve-textarea>
+
+<nve-textarea
+  label="Ledetekst"
+  helpText="En tekst som presiserer hva som skal fylles inn, men over inndatafeltet"
+  helpTextPosition="over"
+></nve-textarea>
+```
+
+</CodeExamplePreview>
+
 ### Mørk bakgrunn
 
 Bruk `filled` for mørk bakgrunnsfarge
