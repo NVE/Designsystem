@@ -1,4 +1,4 @@
-# 🎨 Designbeslutninger
+# Beslutninger
 
 Hensikten med denne siden er å dokumentere hvilke større valg vi har gjort for komponentbiblioteket og _hvorfor_ vi har tatt akkurat de valgene.
 Vi skriver også om hvilke alternativer som ble vurdert og hvorfor enkelte alternativer ikke nådde opp.
