@@ -37,6 +37,8 @@
   --color-shades-grey-900: #003147;
   --color-shades-grey-950: #002b3d;
   --color-shades-grey-999: #00070a;
+  --color-shades-grey-999-040: rgba(0, 7, 10, 0.4);
+  --color-shades-grey-999-080: rgba(0, 7, 10, 0.8);
   --color-shades-grey-000: #ffffff;
   --color-shades-grey-050: #eaf6fb;
   --color-shades-data-color-a-100: #98d3ec;
@@ -251,6 +253,7 @@
   --boolean-brand-varsom: true;
   --boolean-brand-rme: false;
   --boolean-brand-nve-rme: false;
+  --text-brand-name: Varsom – en tjeneste levert av NVE, MET og Statens vegvesen;
   --color-brand-background-primary: var(--color-shades-brand-500);
   --color-brand-background-secondary: var(--color-shades-brand-400);
   --color-brand-background-tertiary: var(--color-shades-brand-150);
@@ -270,6 +273,7 @@
   --color-neutrals-background-secondary: var(--color-shades-grey-150);
   --color-neutrals-background-secondary-dim: var(--color-shades-grey-850);
   --color-neutrals-background-tertiary-dim: var(--color-shades-grey-800);
+  --color-neutrals-background-modal-overlay: var(--color-shades-grey-999-040); /** transparent */
   --color-neutrals-foreground-primary: var(--color-shades-grey-999);
   --color-neutrals-foreground-secondary: var(--color-shades-functional-neutralgrey-800);
   --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-600);
@@ -726,6 +730,8 @@
   --color-shades-grey-900: #003147;
   --color-shades-grey-950: #002b3d;
   --color-shades-grey-999: #00070a;
+  --color-shades-grey-999-040: rgba(0, 7, 10, 0.4);
+  --color-shades-grey-999-080: rgba(0, 7, 10, 0.8);
   --color-shades-grey-000: #ffffff;
   --color-shades-grey-050: #eaf6fb;
   --color-shades-data-color-a-100: #98d3ec;
@@ -940,6 +946,7 @@
   --boolean-brand-varsom: true;
   --boolean-brand-rme: false;
   --boolean-brand-nve-rme: false;
+  --text-brand-name: Varsom – en tjeneste levert av NVE, MET og Statens vegvesen;
   --color-brand-background-primary: var(--color-shades-brand-500); /** Primarily used on logo backgrounds */
   --color-brand-background-secondary: var(--color-shades-brand-250);
   --color-brand-background-tertiary: var(--color-shades-brand-800);
@@ -959,10 +966,11 @@
   --color-neutrals-background-secondary: var(--color-shades-grey-700);
   --color-neutrals-background-secondary-dim: var(--color-shades-grey-850);
   --color-neutrals-background-tertiary-dim: var(--color-shades-grey-800);
+  --color-neutrals-background-modal-overlay: var(--color-shades-grey-999-080); /** transparent */
   --color-neutrals-foreground-primary: var(--color-shades-grey-000);
   --color-neutrals-foreground-secondary: var(--color-shades-functional-neutralgrey-200);
   --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-400);
-  --color-neutrals-foreground-faint: var(--color-shades-functional-neutralgrey-800);
+  --color-neutrals-foreground-faint: var(--color-shades-functional-neutralgrey-300);
   --color-neutrals-foreground-inverted: var(--color-shades-functional-neutralgrey-999);
   --color-neutrals-foreground-white: var(--color-shades-functional-neutralgrey-000); /** Fargen forblir hvit i darkmode */
   --color-neutrals-border-default: var(--color-shades-grey-300);
