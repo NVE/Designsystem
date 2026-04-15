@@ -85,7 +85,7 @@ Hvis du bruker Visual Studio Code og starter et nytt prosjekt gjennom `npm run c
 
 ```vue
 <template>
-  <nve-button @Click="count++">Du har trykket på denne NVE-knappen {{ count }} gang(er)</nve-button>
+  <nve-button @click="count++">Du har trykket på denne NVE-knappen {{ count }} gang(er)</nve-button>
 </template>
 <script setup lang="ts">
 import 'nve-designsystem/components/nve-button/nve-button.component.js';
@@ -100,7 +100,7 @@ Under kjører vi denne koden i en sandkasse. Du kan endre koden selv ved å velg
 
 ```
 <template>
-  <nve-button @Click="count++">Du har trykket på denne NVE-knappen {{ count }} gang(er)</nve-button>
+  <nve-button @click="count++">Du har trykket på denne NVE-knappen {{ count }} gang(er)</nve-button>
 </template>
 <script setup lang="ts">
 import 'nve-designsystem/components/nve-button/nve-button.component.js';

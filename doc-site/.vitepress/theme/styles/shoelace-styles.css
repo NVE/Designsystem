@@ -491,7 +491,7 @@ Dette er shoelace tokene som er overskrevet med nye verdier, fra vår designsyst
 */
 
 :root {
-  --sl-focus-ring-color: var(--color-interactive-links-focus);
+  --sl-focus-ring-color: var(--color-interactive-border-accessibility-focus);
   --sl-focus-ring-style: solid;
   --sl-focus-ring-width: 2px;
   --sl-focus-ring-offset: -1px;
@@ -508,15 +508,15 @@ Dette er shoelace tokene som er overskrevet med nye verdier, fra vår designsyst
   --sl-input-color: var(--color-neutrals-foreground-primary, #00131c);
   --sl-input-color-focus: var(--color-neutrals-foreground-primary, #00131c);
   --sl-input-color-hover: var(--color-neutrals-foreground-primary, #00131c);
-  --sl-input-color-disabled: var(--color-interactive-secondary-foreground-disabled, #00131c);
+  --sl-input-color-disabled: var(--color-interactive-foreground-secondary-disabled);
   --sl-input-icon-color: var(--color-neutrals-foreground-primary, #00131c);
   --sl-input-icon-color-hover: var(--color-neutrals-foreground-primary, #00131c);
   --sl-input-icon-color-focus: var(--color-neutrals-foreground-primary, #00131c);
   --sl-input-placeholder-color: var(--sl-color-neutral-500);
-  --sl-input-placeholder-color-disabled: var(--color-interactive-secondary-foreground-disabled, #00131c);
-  --sl-input-focus-ring-color: var(--color-interactive-links-focus);
+  --sl-input-placeholder-color-disabled: var(--color-interactive-foreground-secondary-disabled);
+  --sl-input-focus-ring-color: var(--color-interactive-border-accessibility-focus);
   --sl-input-border-color: var(--color-neutrals-border-default, #878c94);
-  --sl-input-border-color-focus: var(--color-interactive-links-focus);
+  --sl-input-border-color-focus: var(--color-interactive-border-accessibility-focus);
   --sl-input-border-color-hover: var(--color-neutrals-border-subtle, #c8eaf9);
   --sl-input-border-color-disabled: var(--color-neutrals-border-disabled, #878c94);
   --sl-input-focus-ring-offset: -1px;
@@ -528,7 +528,7 @@ Dette er shoelace tokene som er overskrevet med nye verdier, fra vår designsyst
   --sl-input-filled-color: var(--color-neutrals-foreground-primary, #00131c);
   --sl-input-filled-color-hover: var(--color-neutrals-foreground-primary, #00131c);
   --sl-input-filled-color-focus: var(--color-neutrals-foreground-primary, #00131c);
-  --sl-input-filled-color-disabled: var(--color-interactive-secondary-foreground-disabled, #00131c);
+  --sl-input-filled-color-disabled: var(--color-interactive-foreground-secondary-disabled);
 
   --sl-input-font-family: var(--sl-font-sans);
   --sl-input-font-weight: var(--sl-font-weight-normal);

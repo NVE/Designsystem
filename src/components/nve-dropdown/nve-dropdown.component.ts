@@ -15,8 +15,7 @@ export default class NveDropdown extends SlDropdown implements INveComponent {
     super();
   }
   static styles = [SlDropdown.styles, styles];
-  @property({reflect: true, type: String}) testId:string = '';
-
+  @property({ reflect: true, type: String }) testId: string = '';
 
   getMenu() {
     return this.panel.assignedElements({ flatten: true }).find((el) => el.tagName.toLowerCase() === 'nve-menu') as

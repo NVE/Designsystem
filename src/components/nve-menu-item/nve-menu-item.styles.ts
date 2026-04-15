@@ -90,9 +90,9 @@ export default css`
   }
 
   :host(:focus-visible) .menu-item {
-    box-shadow: inset 0 0 0 var(--border-width-strong, 2px) var(--color-interactive-primary-border-focus, #008ffb);
+    box-shadow: inset 0 0 0 var(--border-width-strong, 2px) var(--color-interactive-border-accessibility-focus);
     opacity: var(--border-width-default, 1);
-    color: var(--color-interactive-outlined-foreground-default);
+    color: var(--color-interactive-border-accessibility-focus);
     background-color: transparent;
   }
 `;

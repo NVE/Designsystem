@@ -142,6 +142,11 @@
   text-decoration: unset;
 }
 
+nve-message-card p,
+nve-message-card ul {
+  margin: 0 !important;
+}
+
 .vp-doc div[class*='language-'] {
   margin: 0;
   border-top-left-radius: 0px;
@@ -232,5 +237,15 @@ a:has(nve-link-card) {
 
 /* Brukes for å overskrive standard lenke visited styling fra eksterne rammeverker. */
 a:visited {
-  color: var(--color-interactive-links-visited);
+  color: var(--color-interactive-foreground-link-visited);
+}
+
+.highlight {
+  font-size: 1rem;
+  line-height: 1;
+  display: inline-flex;
+  color: var(--vp-code-color);
+  border-radius: 4px;
+  padding: 3px 6px;
+  background-color: var(--vp-code-bg);
 }

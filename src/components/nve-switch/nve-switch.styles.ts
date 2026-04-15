@@ -85,7 +85,7 @@ export default css`
   }
 
   .switch.switch--focused:has(:focus-visible) .switch__control {
-    outline: 2px solid var(--color-interactive-links-focus);
+    outline: 2px solid var(--color-interactive-border-accessibility-focus);
     outline-offset: 1px;
   }
   .switch:not(.switch--disabled):hover {
@@ -105,7 +105,7 @@ export default css`
 
   .switch--primary {
     &.switch--checked .switch__control {
-      --on-color: var(--color-interactive-primary-border-focus);
+      --on-color: var(--color-interactive-border-accessibility-focus);
       --off-color: var(--color-neutrals-background-secondary);
     }
   }
