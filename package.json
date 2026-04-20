@@ -78,7 +78,7 @@
     "custom-element-vuejs-integration": "^1.4.0",
     "custom-elements-manifest": "^2.1.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^10.2.0",
+    "eslint": "^10.2.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-lit": "^2.2.1",
     "eslint-plugin-vue": "^10.8.0",
@@ -88,19 +88,19 @@
     "husky": "^9.1.7",
     "ora": "^9.3.0",
     "pascal-case": "^4.0.0",
-    "prettier": "^3.8.2",
+    "prettier": "^3.8.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "semantic-release": "^25.0.3",
     "style-dictionary": "^5.1.1",
-    "typescript": "^6.0.2",
-    "vite": "^8.0.8",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.9",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.1.4",
     "vue-eslint-parser": "^10.1.4"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.60.1"
+    "@rollup/rollup-linux-x64-gnu": "^4.60.2"
   },
   "config": {
     "commitizen": {
