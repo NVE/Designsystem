@@ -4,18 +4,48 @@ outline: [2, 3]
 ---
 
 For å legge til alternativer i select-komponenten bruk <span class="highlight">options</span>-attributtet.
-<span class="highlight">Option</span> er en type som krever at hvert alternativ har:
 
-- <span class="highlight">value</span> - kan string, tall, objekt, array og er den faktiske verdien som returneres.
+<span class="highlight">Option</span> er en generisk type der T beskriver typen til <span class="highlight">value</span>. String er standard typen, men du kan også bruke objekter, array, eller tallene. Typen består av:
+
+- <span class="highlight">value</span> - kan være string, tall, objekt, array og er den faktiske verdien som returneres.
 - <span class="highlight">id</span> - er en unik identifikator som brukes internt til referanser, fokus og ARIA-koblinger.
 - <span class="highlight">label</span> - er teksten som vises i nedtrekksmenyen.
 
-Alle valgte alternativer lagres i <span class="highlight">selectedValues</span> som returneres via <span class="highlight">change</span>-hendelsen (les mer [her]()).
+```js
+type Option<T = string> = {
+  id: string;
+  value: T;
+  label: string;
+};
+```
 
-<span class="highlight">Option</span> type kan importeres fra combobox filen:
+Typen kan importeres slik:
 
 ```js
 import type { Option } from 'nve-designsystem/components/nve-select-demo/nve-select-demo.component.js';
+```
+
+Bruk eksempel:
+
+```js
+ const options: Option[] = [
+  {
+   value:"ek",
+   id: "ek",
+   label: "EK"
+  }
+ ]
+
+ const optionsWithObject: Option<{name: string, surname:string}>[] = [
+  {
+   value: {
+    name: "Ola",
+    surname: "Norman"
+   },
+   id: "12345",
+   label: "Ola Norman"
+  }
+ ]
 ```
 
 <br />
@@ -23,6 +53,22 @@ import type { Option } from 'nve-designsystem/components/nve-select-demo/nve-sel
 <nve-message-card variant="primary" label="Info" size="compact">
 <p><b>Options</b>-attributtet fjernes fra DOM-en etter innlasting, og verdien lagres i en intern tilstand i comboboxen. Dette gjøres for å hindre at DOM-en fylles opp med unødvendig data.</p>
 </nve-message-card>
+
+Alle valgte alternativer lagres i et intern <span class="highlight">selectedValues</span>-array som returneres via <span class="highlight">change</span>-hendelsen. Hendelsestype kan importers ved:
+
+```js
+import type { NveSelectChangeDetail } from 'nve-designsystem/components/nve-select-demo/nve-select-demo.component.js';
+```
+
+Den returnerer:
+
+```js
+type NveSelectChangeDetail<T> = {
+  selectedValues: T | T[] | null;
+  changedId: string;
+  action: 'select' | 'deselect';
+}
+```
 
 ## Eksempler
 
@@ -65,9 +111,9 @@ Det er en combobox standard.
 
 </CodeExamplePreview>
 
-### Enkeltvalg og skriftlig input
+### Enkeltvalg og redigerbar input
 
-For a vise en eneltvalg med skriftlig input bruk <span class="highlight">searchable</span>
+For a vise en eneltvalg med redigerbar input bruk <span class="highlight">editable</span>
 
 <nve-message-card variant="primary" label="Tastaturnavigasjon" size="compact">
   <p><b>Tastaturnavigasjon i combobox</b></p>
@@ -81,7 +127,7 @@ For a vise en eneltvalg med skriftlig input bruk <span class="highlight">searcha
 <nve-select-demo
   id="nve-avdeling-1"
   label="Velg en avdeling"
-  searchable
+  editable
   options='[
     { "value":"rme","id": "rme","label": "RME" },
     { "value":"ek","id": "ek","label": "EK" },
@@ -146,9 +192,9 @@ Når du klikker på en tag, fjernes det tilhørende alternativet fra de valgte v
 
 </CodeExamplePreview>
 
-### Flervalg og skriftlig input
+### Flervalg og redigerbar input
 
-Akkurat som i enkeltvag comboboxen kan man skrive inn i input feltet nar man bruker <span class="highlight">searchable</span>-attributtet. Input felt vises etter taggene.
+Akkurat som i enkeltvag comboboxen kan man skrive inn i input feltet nar man bruker <span class="highlight">editable</span>-attributtet. Input felt vises etter taggene.
 
 <CodeExamplePreview>
 
@@ -157,15 +203,14 @@ Akkurat som i enkeltvag comboboxen kan man skrive inn i input feltet nar man bru
   id="nve-avdeling-4"
   label="Velg en avdeling"
   multiple
-  searchable
+  editable
   options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
+    { "value":"rme","id": "rme","label": "RME-test with very long titles" },
+    { "value":"ek","id": "ek","label": "EK-test with very long titles" },
+    { "value":"tb","id": "tb","label": "TB-test with very long titles" },
+    { "value":"h","id": "h","label": "H-test with very long titles" },
     { "value":"ikti","id": "ikti","label": "IKTI" },
     { "value":"sv","id": "sv","label": "SV" },
-    
     { "value":"v","id": "v","label": "V" }
      ]'
 >
@@ -173,11 +218,16 @@ Akkurat som i enkeltvag comboboxen kan man skrive inn i input feltet nar man bru
 ```
 
 </CodeExamplePreview>
+
 ### Ledetekst og tooltip
 
 Bruk <span class="highlight">label</span> for å vise en tydelig ledetekst for feltet. Attributtet er påkrevd – hvert skjemafelt skal ha en ledetekst som skjermlesere kan bruke for å forstå hva feltet gjelder.
 
 Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende informasjon ved ledeteksten. Innholdet kan være ren tekst eller HTML, for eksempel lenker eller formattert hjelpetekst.
+
+<nve-message-card variant="warning" label="Ikke bruke egne ledetekster" size="compact">
+<p>Med web components er det forelopig ikke mulig a koble en ekstern ledetekst (som ikke eksiterer i samme Shadow root som komponent du skal koble den med) i nve-combobox slik at den gir mening fra tilgjengelighets perspektiv. Bruk gjerne label property i stedet.</p>
+</nve-message-card>
 
 <CodeExamplePreview>
 
@@ -186,7 +236,7 @@ Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende inf
   id="nve-avdeling-22"
   label="Velg en avdeling"
   tooltip="Velg avdeling"
-  searchable
+  editable
   options='[
     { "value":"rme","id": "rme","label": "RME" },
     { "value":"ek","id": "ek","label": "EK" },
@@ -202,37 +252,7 @@ Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende inf
 
 </CodeExamplePreview>
 
-Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende informasjon ved ledeteksten. Innholdet kan være ren tekst eller HTML, for eksempel lenker eller formattert hjelpetekst.
-
-### Enkeltvalg og skriftlig input
-
-Bruk <span class="highlight">searchable</span> for å gjøre det mulig å skrive i combobox‑feltet. Det du skriver brukes til å filtrere og finne alternativer i listen.
-
-Når brukeren har valgt en verdi og klikker i input‑feltet igjen, skjules den valgte teksten midlertidig slik at det blir enklere å skrive et nytt søk. Den underliggende verdien endres ikke før brukeren velger et nytt alternativ. Når brukeren tabber ut av feltet eller trykker Escape, vises den valgte verdien igjen.
-
-<CodeExamplePreview>
-
-```html
-<nve-select-demo
-  id="nve-avdeling-2"
-  label="Velg en avdeling"
-  searchable
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
-     ]'
->
-</nve-select-demo>
-```
-
-</CodeExamplePreview>
-
-### Endre list lengde
+### Endre list hoyden
 
 Som standard har listen en maksimal høyde på 220px. Dette kan justeres ved behov ved å bruke CSS‑variabelen <span class="highlight">--listbox-max-height</span> på <span class="highlight">nve-select-demo</span>.
 
@@ -271,8 +291,8 @@ Et klikk på fjern-knappen sender også en <span class="highlight">change</span>
 
 Bruk <span class="highlight">size</span> for å endre størrelsen på combobox‑feltet. Verdien kan være:
 
-- <span class="highlight">medium</span> (standard)
 - <span class="highlight">large</span>
+- <span class="highlight">medium</span> (standard)
 - <span class="highlight">small</span>
 
 <CodeExamplePreview>
@@ -311,8 +331,8 @@ Bruk <span class="highlight">size</span> for å endre størrelsen på combobox�
 
 <nve-select-demo
   id="nve-avdeling-8"
-  size="size"
-  label="Velg en avdeling fra small combobox"
+  size="small"
+  label="Velg en avdeling fra liten combobox"
   options='[
     { "value":"rme","id": "rme","label": "RME" },
     { "value":"ek","id": "ek","label": "EK" },
@@ -364,7 +384,7 @@ Bruk <span class="highlight">helpText</span> for a vise hjelpetekst under combob
 <nve-select-demo
   id="nve-avdeling-10"
   label="Velg en avdeling"
-  helpText="Avdeling velges for a sendes i skjema"
+  helpText="Avdeling velges for å sendes i skjema"
   options='[
     { "value":"rme","id": "rme","label": "RME" },
     { "value":"ek","id": "ek","label": "EK" },
@@ -391,16 +411,7 @@ Bruk attributtet <span class="highlight">disabled</span> for å hindre mulighete
   id="nve-avdeling-11"
   label="Velg en avdeling"
   disabled
-  helpText="Velg kun en verdi"
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
-     ]'
+  options='[{ "value":"rme","id": "rme","label": "RME" }]'
 >
 </nve-select-demo>
 ```
@@ -418,16 +429,7 @@ Bruk <span class="highlight">readonly</span> for å stenge mulighet for å endre
   id="nve-avdeling-12"
   label="Velg en avdeling"
   readonly
-  helpText="Avdeling velges for a sendes i skjema"
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
-     ]'
+  options='[{ "value":"rme","id": "rme","label": "RME" }]'
 >
 </nve-select-demo>
 ```
@@ -493,7 +495,7 @@ Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forkl
 Med flervalg kan du også begrense hvor mange verdier som kan velges ved å bruke <span class="highlight">max</span>. Når grensen er nådd, blir reste av alternativene utilgjengelige (aria-disabled).
 
 <nve-message-card variant="warning" label="Vaer oppmerksom!" size="compact">
-<p>Bruk <span class="highlight">helpText</span> til å informere brukeren om at det kun kan velges et begrenset antall alternativer (for eksempel «Du kan velge maks 2 alternativer»). Da unngår du at brukeren blir forvirret når flere valg blir plutselit deaktiverte.</p>
+<p>Bruk <span class="highlight">helpText</span> til å informere brukeren om at det kun kan velges et begrenset antall alternativer (for eksempel «Du kan velge maks 2 alternativer»). Da unngår du at brukeren blir forvirret når valg blir plutselig deaktivert.</p>
 </nve-message-card>
 
 <CodeExamplePreview>
@@ -567,3 +569,31 @@ Bruk et <span class="highlight">selectedIds</span> string array for a vise forha
 ```
 
 </CodeExamplePreview>
+
+## Tilgjengelighet
+
+Skrive om aria-activedescendant, hvorfor den brukes og hvilke begrensinger den innf;rer (nevne at derfor fjerner vi options og selected values fra DOMen)
+When a descendant of a listbox, grid, or tree popup is focused, DOM focus remains on the combobox and the combobox has aria-activedescendant set to a value that refers to the focused element within the popup.
+DOM Focus is maintained on the combobox and the assistive technology focus is moved within the listbox using aria-activedescendant read more here https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_focus_activedescendant
+since we have to refer ids there is no other way but to include options in the same shadow root as the comboboc itself.
+otherwise id reading wont work.
+
+label component
+
+Navigating the list of options does not set the value of the input. This gives screen reader users,
+who need to navigate among the options to perceive them, the ability to explore options without losing t
+he current value of the input
+The current value is retained if the listbox is closed with Escape or if the user collapses the list by clicking the input.
+
+multi
+we wont use aria-live for now why
+
+multi since tags are not focusable and input is the first focused element in the combobox when multiple is selected values they wouldnt normally be read. therefore we use sr-only div with the list of the selected values (labels) which are
+being read by the screen reader when input focuses. this could potentially be solved with i18n and read only simple messages like 3 items selected.
+
+aria-required when combobox is required
+
+retningslinjer bruk clearbale with multiple
+husk a legge til label
+prov a holde tekst i alternativer korte slik at de passer combobox bredden. lange tekster i alternativer skal kuttesmen
+da ser bruker ikke hele teksten

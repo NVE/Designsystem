@@ -24,11 +24,11 @@ export type Option<T = string> = {
  * Inkluderer de valgte verdiene, ID-en til det endret alternativet
  * og handlingen som ble utført (select eller deselect).
  */
-export interface NveSelectChangeDetail<T> {
+export type NveSelectChangeDetail<T> = {
   selectedValues: T | T[] | null;
   changedId: string;
   action: 'select' | 'deselect';
-}
+};
 
 /**
  * En combobox-komponent lar brukeren velge ett eller flere alternativer fra en liste, eller søke etter alternativer i et tekstfelt.
@@ -91,14 +91,16 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
   @property({ type: String }) removeTagAriaLabel = 'Slett';
   /** Tekst som vises for å markere at et felt er obligatorisk */
   @property({ type: String, reflect: true }) requiredLabel = '';
-  /** Om bruker kan skrive i input felt og søke etter alternativer */
-  @property({ type: Boolean }) searchable = false;
+  /** Om bruker kan redigere verdien i inputfeltet */
+  @property({ type: Boolean }) editable = false;
   /** Initialt valgte ID-er */
-  @property({ type: Array }) selectedIds: string[] = []; // initial selected Ids
+  @property({ type: Array }) selectedIds: string[] = [];
   /** Størrelse på komponenten */
   @property({ type: String, reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
   /** Tooltip-tekst for label */
   @property({ type: String }) tooltip = '';
+  /** Om tags skal brytes til neste linje hvis de ikke får plass. Standard er false og da indikatoren vises. */
+  @property({ type: Boolean }) wrap = false;
 
   /** @internal */
   private readonly componentId = `combobox-${++id}`;
@@ -108,10 +110,12 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
   @query('input[role="combobox"]') comboboxNativeInput!: HTMLInputElement;
   /** Om listboksen er utvidet */
   @state() protected expanded = false;
-  /** Aktivt alternativs ID */
+  /** ID til det aktivert/fokuserte alternativet */
   @state() private activeId = '';
   /** Internt array ID-er for valgte alternativer. Oppdateres basert på selectedIds-prop og når alternativer velges eller fjernes. */
   @state() private _selectedIds: string[] = [];
+  /** ID-er for kollapsede tags i multiselect hvis wrap er false */
+  @state() private collapsedTagIds: string[] = [];
   /** Valgte verdier. Oppdateres når alternativer velges eller fjernes. */
   @state() private selectedValues: T | T[] | null = null;
   /** Søketekst som brukes for å filtrere alternativer i single select */
@@ -120,14 +124,14 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
   @state() private displayLabel = '';
   /** Om maks antall valg er nådd */
   @state() private maxReached = false;
+  /** Antall skjulte tags i multiselect hvis wrap er false */
+  @state() private indicatorCount = 0;
   /** Synlige alternativer i listboksen. Kan filtreres basert på søketekst */
   @state() private visibleOptions: Option<T>[] = [];
   /** Timeout for searchString */
   private searchTimeout?: number;
   /** Internt array for alternativer. Oppdateres basert på options-prop */
   private _options: Option<T>[] = [];
-  //@state() private shouldHideNextTag = false; // Når multiselect er true og det er flere tags enn bredden på input-feltet tillater, skjuler vi neste tag og viser en indikator +x med antall skjulte tags.
-  //private resizeObserver?: ResizeObserver;
 
   constructor() {
     super();
@@ -151,16 +155,6 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
     if (this.autofocus) {
       this.comboboxNativeInput.focus();
     }
-
-    /*
-    kode for eventuelt visning av antall valgte tags
-    const input = this.renderRoot.querySelector('.combobox__value__input') as HTMLInputElement;
-    if (input) {
-      this.resizeObserver = new ResizeObserver(() => {
-        this.getVisibleTagsCount();
-      });
-      this.resizeObserver.observe(input);
-    } */
   }
 
   protected updated(changed: Map<string, unknown>) {
@@ -181,7 +175,7 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
     }
   }
 
-  /** Synkroniserer intern valgt tilstand basert på selectedIds-attributtet. */
+  /** Synkronisere _selectedIds på selectedIds-attributtet. */
   private syncSelectedFromIds() {
     this._selectedIds = [];
 
@@ -220,21 +214,21 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
   /*********** TASTATURINTERAKSJONER *****************/
   /*
   Tastaturinteraksjoner som støttes i combobox:
-  ArrowDown: åpne liste og navigere til den første optionen
-  ArrowUp: åpne liste og navigere til den siste optionen
+  ArrowDown: åpne liste og navigere til det første alternativet
+  ArrowUp: åpne liste og navigere til det siste alternativet
   Escape: lukke liste og beholde valgt verdi, fokus på input
   Enter/Space: når liste er lukket åpne liste
-  Utskrivbare tegn: åpne liste og navigere til første matchende option basert på det som er skrevet
+  Utskrivbare tegn: åpne liste og navigere til det første 'matchende' alternativ basert på det som er skrevet
 
   ArrowLeft/ArrowRight: når multiselect og fokus er i input så naviger mellom tags og input
   Backspace: når multiselect, i tillegg til vanlig backspace funksjonalitet i input, hvis fokus er på en tag/knapp så deselect den og flytt fokus til forrige tag eller input
 
   Tastaturinteraksjoner som støttes i listbox:
-  ArrowDown: navigere til neste option
-  ArrowUp: navigere til forrige option
-  Home: navigere til første option
-  End: navigere til siste option
-  Enter/Space: velge aktiv option
+  ArrowDown: navigere til det neste alternativet
+  ArrowUp: navigere til det forrige alternativet
+  Home: navigere til det første alternativet
+  End: navigere til det siste alternativet
+  Enter/Space: velge aktivt alternativ
   Escape: lukke liste og beholde valgt verdi, fokus på input
   Backspace: fokus input, hvis ikke fokus forrige tag
  */
@@ -287,24 +281,21 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
 
   /**
    * Handterer ArrowUp og ArrowDown for å navigere i listen med alternativer.
-   * Hvis listen ikke er utvidet, åpner den og aktiverer det første eller siste alternativet basert på hvilken pil
+   * Hvis listen ikke er utvidet, åpner den og aktiverer det første eller det siste alternativet basert på hvilken pil
    * som trykkes.
    * @param key - 'up' eller 'down', avhengig av hvilken pil som ble trykket
    */
   private async handleArrowUpAndDown(key: 'up' | 'down') {
     if (!this.visibleOptions.length) return;
 
+    this.comboboxNativeInput.focus();
     if (!this.expanded) {
-      if (this.searchable && !this.multiple) {
+      if (this.editable && !this.multiple) {
         this.updateDisplayLabel('');
       }
 
-      if (this._selectedIds.length && !this.multiple) {
-        this.activeId = this._selectedIds[0];
-      } else if (this._selectedIds.length && this.multiple) {
-        this.activeId = this._selectedIds[this._selectedIds.length - 1];
-      } else {
-        // Hvis ingen er aktive ennå → start fra første eller siste alternativ
+      if (!this._selectedIds.length) {
+        // Hvis ingen er valgt ennå → start fra første eller siste alternativ
         const index = key === 'down' ? 0 : this.visibleOptions.length - 1;
         this.activeId = this.visibleOptions[index].id;
       }
@@ -321,11 +312,14 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
   }
 
   /**
-   * Clearable knapp er ikke støttet av tastatur. Grunnen - den skal vises også når input ikke er fokusert.
+   * Flytter fokus mellom tags og input når man trykker venstre/høyre piltast i multiselect.
+   * Hvis fokus er i input og caret er i starten eller slutten av input, flytt fokus til henholdsvis forrige eller neste
+   * tag. Hvis det ikke er noen tags, gjør ingenting.
    * @param e - KeyboardEvent som utløste handlingen
    * @param key - 'left' eller 'right', avhengig av hvilken pil som ble trykket
    */
   private handleArrowRightOrLeft(e: KeyboardEvent, key: 'left' | 'right') {
+    if (!this._selectedIds.length) return;
     this.closeListbox();
     const target = e.target as HTMLElement;
     if (target === this.comboboxNativeInput) {
@@ -388,7 +382,7 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
     this.comboboxNativeInput.focus();
   }
 
-  private handleBackspace(e: KeyboardEvent) {
+  private async handleBackspace(e: KeyboardEvent) {
     this.closeListbox();
     const focusLastTag = () => {
       const tags = this.renderRoot.querySelectorAll<HTMLButtonElement>('.combobox__value__tag');
@@ -411,7 +405,7 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
     // 2) In listbox: focus input (or last tag if not searchable)
     if (target.getAttribute('role') === 'listbox') {
       e.preventDefault();
-      if (this.searchable) {
+      if (this.editable) {
         this.comboboxNativeInput.focus();
       } else {
         focusLastTag();
@@ -422,18 +416,38 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
     // 3) On a tag: deselect and move to previous tag or input
     if (target.classList.contains('combobox__value__tag')) {
       e.preventDefault();
-      const id = target.id;
+      const id = target.getAttribute('data-option-id');
       if (!id) return;
+
+      const currentIndex = this._selectedIds.findIndex((selectedId) => selectedId === id);
+      const prevId = this._selectedIds[currentIndex - 1];
+      const nextId = this._selectedIds[currentIndex + 1];
 
       // this updates selectedIdsIntern
       this.handleOptionChange(id);
 
       if (this._selectedIds.length) {
-        const lastSelectedId = this._selectedIds[this._selectedIds.length - 1];
-        const lastTag = this.renderRoot.querySelector<HTMLElement>(`.combobox__value__tag[id="${lastSelectedId}"]`);
-        if (lastTag) {
-          lastTag.focus();
-          return;
+        // focus previous tag if it exists, otherwise the first remaining tag
+        // if currentindex is 0 but there is length bigger than 1 we want to focus the next tag
+        await this.updateComplete;
+
+        const prevIdIndex = this._selectedIds.findIndex((selectedId) => selectedId === prevId);
+        const nextIdIndex = this._selectedIds.findIndex((selectedId) => selectedId === nextId);
+
+        let nextTagId: string | undefined;
+        if (prevIdIndex !== -1) {
+          nextTagId = prevId;
+        } else if (nextIdIndex !== -1) {
+          nextTagId = nextId;
+        }
+        if (nextTagId) {
+          const nextTag = this.renderRoot.querySelector<HTMLElement>(
+            `.combobox__value__tag[data-option-id="${nextTagId}"]`
+          );
+          if (nextTag) {
+            nextTag.focus();
+            return;
+          }
         }
       }
 
@@ -441,6 +455,10 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
     }
   }
 
+  /**
+   * Håndterer Home og End-tastene for å navigere til henholdsvis det første eller det siste alternativet i listen.
+   * @param key - 'home' eller 'end', avhengig av hvilken tast som ble trykket
+   */
   private handleHomeOrEnd(key: 'home' | 'end') {
     let option: Option<T> | null = null;
     if (key === 'home') {
@@ -452,7 +470,10 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
     const id = option?.id;
     this.activeId = id ? id : '';
   }
-
+  /**
+   * Håndterer Enter og Space-tastene for å åpne listeboksen eller velge det aktive alternativet.
+   * Hvis listeboksen ikke er utvidet, åpner den og aktiverer det første alternativet.
+   */
   private async handleEnterOrSpace() {
     if (!this.expanded) {
       await this.handleArrowUpAndDown('down');
@@ -464,10 +485,13 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
     }
   }
 
-  //when searchable we filter options and leave only those that starts with the typed letters
+  /**
+   * Navigerer til alternativer basert på tastetrykk.
+   * @param key - Tastetrykket som utløste navigasjonen
+   */
   private async handleTypeahead(key: string) {
     // kun bokstaver og space skal trigge typeahead
-    if (key.length !== 1 || key === ' ' || this.searchable) return;
+    if (key.length !== 1 || key === ' ' || this.editable) return;
 
     this.openListbox();
     // bygger en søkestreng basert på tastetrykkene, og resetter den etter 500ms med inaktivitet
@@ -481,6 +505,47 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
 
     if (id) {
       this.activeId = id;
+    }
+  }
+
+  /**
+   * Håndterer tastaturaktivitet på en tag (Enter/Space).
+   */
+  private handleTagKeydown(e: KeyboardEvent, id: string) {
+    if (this.disabled || this.readonly) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      e.stopPropagation();
+      this.handleOptionChange(id);
+      if (this._selectedIds.length) {
+        const lastSelectedId = this._selectedIds[this._selectedIds.length - 1];
+        const lastTag = this.renderRoot.querySelector<HTMLElement>(
+          `.combobox__value__tag[data-option-id="${lastSelectedId}"]`
+        );
+        if (lastTag) {
+          lastTag.focus();
+          return;
+        }
+      }
+
+      this.comboboxNativeInput.focus();
+    }
+  }
+
+  /**
+   * Håndterer enter eller space-tastetrykk på indikatorikonet.
+   * @param e - KeyboardEvent som utløste handlingen
+   */
+  private handleIndicatorKeydown(e: KeyboardEvent) {
+    if (this.disabled || this.readonly) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      e.stopPropagation();
+      if (this.expanded) {
+        this.closeListbox();
+      } else {
+        this.openListbox();
+      }
     }
   }
 
@@ -504,7 +569,7 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
    */
   private handleClickComboboxControl() {
     if (this.disabled || this.readonly) return;
-    if (this.searchable && !this.multiple) {
+    if (this.editable && !this.multiple) {
       this.updateDisplayLabel('');
     }
     if (!this.expanded) {
@@ -528,24 +593,17 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
   }
 
   /**
-   * Håndterer tastaturaktivitet på en tag (Enter/Space).
+   * Håndterer klikk på indikatorikonet (som viser antall skjulte valg i flervalg). Åpner eller lukker listeboksen
+   * avhengig av gjeldende tilstand.
+   * @param e - MouseEvent som utløste handlingen
    */
-  private handleTagKeydown(e: KeyboardEvent, id: string) {
+  private handleIndicatorClick(e: MouseEvent) {
+    e.stopPropagation();
     if (this.disabled || this.readonly) return;
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      e.stopPropagation();
-      this.handleOptionChange(id);
-      if (this._selectedIds.length) {
-        const lastSelectedId = this._selectedIds[this._selectedIds.length - 1];
-        const lastTag = this.renderRoot.querySelector<HTMLElement>(`.combobox__value__tag[id="${lastSelectedId}"]`);
-        if (lastTag) {
-          lastTag.focus();
-          return;
-        }
-      }
-
-      this.comboboxNativeInput.focus();
+    if (this.expanded) {
+      this.closeListbox();
+    } else {
+      this.openListbox();
     }
   }
 
@@ -561,12 +619,18 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
     this.handleOptionChange(id);
   }
 
+  /**
+   * Håndterer klikk på clearable-knappen for å fjerne alle valgte alternativer.
+   * Tømmer både _selectedIds og selectedValues, og oppdaterer displayLabel til en tom streng.
+   * Clearable knapp er ikke støttet av tastatur. Grunnen - den skal vises også når input ikke er fokusert.
+   * @param e - MouseEvent som utløste handlingen
+   */
   private handleClear(e: MouseEvent) {
     e.stopPropagation();
     if (this.disabled || this.readonly) return;
     this._selectedIds = [];
     this.selectedValues = [];
-    this.activeId = '';
+    this.indicatorCount = 0;
     this.updateDisplayLabel('');
     this.emitClear();
     this.emitChange('', 'deselect');
@@ -635,6 +699,7 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
    * I multiselect vil den tømme input-feltet for å gjøre det klart for videre søk eller valg.
    * Emiter change med enten select eller deselect.
    * @param id - ID-en til et alternativ
+   * @param e - Hendelsen som utløste endringen (valgfritt)
    */
   private handleOptionChange(id: string) {
     //check if option is selected
@@ -649,14 +714,13 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
       this.deselectOption(option);
     }
 
-    if (this.multiple && this.searchable) {
+    if (this.multiple && this.editable) {
       this.updateDisplayLabel('');
     }
     if (!this.multiple) {
       this.updateDisplayLabel(option.label || '');
       this.closeListbox();
     }
-    //this.comboboxNativeInput.focus();
     this.maxReached = this.max ? this._selectedIds.length >= this.max : false;
     this.emitChange(id, isSelected && this.multiple ? 'deselect' : 'select');
   }
@@ -664,20 +728,22 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
   /**
    * Legger til et alternativ i de valgte verdiene og ID-ene.
    * @param option - Alternativet som skal legges til
+   * @param click - Om endringen ble utløst av et klikk (valgfritt)
    */
   private selectOption(option: Option<T>) {
-    // hvis multipe vi må legge til i array, hvis ikke multiselect så skal vi erstatte det som er valgt
     if (this.multiple) {
       const currentValues = Array.isArray(this.selectedValues) ? this.selectedValues : [];
       this.selectedValues = option.value ? [...currentValues, option.value] : currentValues;
 
       this._selectedIds = [...this._selectedIds, option.id];
+      if (!this.wrap) {
+        this.calculateVisibleTags();
+      }
     } else {
       this._selectedIds = [option.id];
       this.selectedValues = option.value;
       this.comboboxNativeInput.focus();
     }
-    this.activeId = option.id; // altid kun det sist valgte alternativet som er aktivt
   }
 
   /**
@@ -691,6 +757,9 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
       : currentValues;
 
     this._selectedIds = this._selectedIds.filter((id) => id !== option.id);
+    if (this.multiple && !this.wrap) {
+      this.calculateVisibleTags();
+    }
   }
 
   /**
@@ -700,7 +769,8 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
   private async openListbox() {
     this.expanded = true;
 
-    // hvis listen er lang og det finnes noen valgte verdier så scroller vi det aktive alternativet inn i view når listen åpnes
+    // hvis listen er lang og det finnes noen valgte verdier så scroller vi det aktive alternativet inn i view når
+    // listen åpnes
     if (this._selectedIds.length) {
       await this.updateComplete;
       this.scrollActiveOptionIntoView();
@@ -716,7 +786,6 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
   private closeListbox() {
     this.expanded = false;
     window.removeEventListener('pointerdown', this.handleOutsidePointerDown, true);
-    this.activeId = '';
     this.emitHide();
   }
 
@@ -728,7 +797,7 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
     const path = event.composedPath();
 
     if (this && !path.includes(this)) {
-      if (this.searchable && !this.multiple) {
+      if (this.editable && !this.multiple) {
         const optionLabel = this._selectedIds[0]
           ? this._options.find((opt) => opt?.id === this._selectedIds[0])?.label || ''
           : '';
@@ -800,7 +869,7 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
    */
   private updateDisplayLabel(text: string) {
     this.displayLabel = text;
-    if (this.searchable) {
+    if (this.editable) {
       this.visibleOptions = this._options
         .filter((o): o is Option<T> => !!o)
         .filter((option) => {
@@ -836,20 +905,65 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
     activeOption.scrollIntoView({ block: 'nearest' });
   }
 
-  /*
-  TODO: om vi skal ta i bruk indikator for antall valgte tags i multiselect.
-  Vi må sjekke bredden på comboboxen når vi legger til nye tags. Hvis bredden på tagsene overstiger 
-  bredden på comboboxen minus 90px, må vi vise en tag med +x og skjule resten av tagsene.
- private getVisibleTagsCount() {
-    if (!this.multiselect) return 0;
-    const input = this.renderRoot.querySelector('.combobox__value__input')?.clientWidth || 0;
-    const tags = this.renderRoot.querySelectorAll('.combobox__value__tag');
-    const tagsWidth = Array.from(tags).reduce((acc, tag) => acc + (tag.clientWidth || 0), 0);
-    //if tags width exceeds the combobox width - 90px the next tag is the indicator and we stuck the
-    //hidden tags in an array in case some previous visible tags gets removed
-    this.shouldHideNextTag = tagsWidth > input / 2;
-  } 
-  */
+  /**
+   * Beregner antall tagger som skal vises, og setter indikator når det ikke er nok plass til flere tagger.
+   */
+  private async calculateVisibleTags() {
+    // Sjekker bredden på value. Den skal være maks bredden for alle taggene og input-feltet.
+    const valueDiv = this.renderRoot.querySelector('.combobox__value') as HTMLElement;
+    if (!valueDiv) return;
+    // Trekker 40px for eventuell indikator-tag. Hvis searchable trekker vi i tillegg 50px for input-feltet og 4px for gap.
+    const valueWidth = valueDiv.clientWidth - 40 - (this.editable ? 50 + 4 : 0);
+
+    // Lager en usynlig div som skal vise alle taggene basert på de valgte id-ene.
+    const invisibleDiv = document.createElement('div');
+    invisibleDiv.style.position = 'absolute';
+    invisibleDiv.style.whiteSpace = 'nowrap';
+    invisibleDiv.style.display = 'flex';
+    invisibleDiv.style.visibility = 'hidden';
+    invisibleDiv.style.gap = '4px';
+    this.renderRoot.appendChild(invisibleDiv);
+
+    let _indicatorCount = 0;
+
+    this.collapsedTagIds = [];
+
+    for (const [index, id] of this._selectedIds.entries()) {
+      // vi gjemmer tagger som ikke får plass, hver gjemt tag øker indikator-count med 1. Hvis indikator allerede er
+      // større enn 0, så legger vi ikke på flere tagger fordi vi vet at de ikke får plass
+      if (_indicatorCount > 0) {
+        this.collapsedTagIds.push(id);
+        _indicatorCount++;
+        continue;
+      }
+      // alle taggene i den usynlige div-en skal ha samme styling som synlige tagene for at målingen skal være korrekt
+      const tag = document.createElement('button');
+      tag.className = 'combobox__value__tag';
+      tag.textContent = this._options.find((opt) => opt?.id === id)?.label || '';
+      const icon = document.createElement('nve-icon');
+      icon.setAttribute('name', 'close');
+      icon.setAttribute('aria-hidden', 'true');
+      tag.appendChild(icon);
+      invisibleDiv.appendChild(tag);
+
+      await this.updateComplete;
+
+      // Øker indikator-count og legger til tag i collapsedTagIds hvis usynlig div er bredere enn value-diven.
+      if (invisibleDiv.clientWidth >= valueWidth) {
+        // Hvis den første taggen er bredere enn hele verdien, setter vi --first-tag-max-width.
+        // Deretter skal teksten bli trunkert med ellipsis.
+        if (index === 0) {
+          this.style.setProperty('--first-tag-max-width', `${valueWidth}px`);
+          continue;
+        }
+        this.collapsedTagIds.push(id);
+        _indicatorCount++;
+      }
+    }
+    // fjerner den usynlige div-en
+    this.renderRoot.removeChild(invisibleDiv);
+    this.indicatorCount = this.collapsedTagIds.length;
+  }
 
   /* 
   - write about aria-activedescendant.
@@ -874,14 +988,20 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
 
 the indicator +2 if more selections we should discuss. should it show as default or shoulw we let select grow at first
 
-
+FIX THE FOCUS TO THE LAST FOCUSED ITEM LIST, DONT OVERWRITE IT TO THE FIRST SELECTED ITEM UNLESS IT WAS
+SELECGTED BEFORE THE LIST WAS CLOSED
 
   */
 
   render() {
     const labelId = `${this.id}-label`;
     const helpTextId = `${this.id}-helptext`;
+    const selectedValuesId = `${this.id}-selected-values`;
+    const describedBy = [this.errorMessage || this.helpText ? helpTextId : '', this.multiple ? selectedValuesId : '']
+      .filter(Boolean)
+      .join(' ');
     return html`
+      <!-- Felt med feilmelding ramme -->
       <div
         part="field"
         class=${classMap({
@@ -893,7 +1013,9 @@ the indicator +2 if more selections we should discuss. should it show as default
         })}
         testId=${ifDefined(this.testId)}
       >
+        <!-- Ledetekst -->
         ${getLabel(labelId, this.label, this.tooltip, this.required, this.requiredLabel, this.handleLabelClick)}
+        <!-- Combobox kontroll -->
         <div
           part="combobox"
           class=${classMap({ combobox: true, 'combobox--expanded': this.expanded })}
@@ -914,28 +1036,53 @@ the indicator +2 if more selections we should discuss. should it show as default
           >
             <div part="value" class="combobox__value">
               ${this.multiple && this._selectedIds.length
-                ? this._selectedIds.map(
-                    (id) =>
-                      html`<button
-                        part="tag"
-                        class="combobox__value__tag"
-                        ?disabled=${this.disabled}
-                        aria-label="${this.removeTagAriaLabel} ${this._options.find((opt) => opt?.id === id)?.label}"
-                        tabindex="-1"
-                        id=${ifDefined(id)}
-                        @click=${(e: MouseEvent) => this.handleClickTag(e, id)}
-                        @keydown=${(e: KeyboardEvent) => this.handleTagKeydown(e, id)}
-                      >
-                        ${this._options.find((opt) => opt?.id === id)?.label}
-                        <nve-icon name="close" aria-hidden="true"></nve-icon>
-                      </button>`
-                  )
+                ? this._selectedIds
+                    .filter((id) => !this.collapsedTagIds.includes(id))
+                    .map(
+                      (id) =>
+                        html`<button
+                          part="tag"
+                          class="combobox__value__tag"
+                          ?disabled=${this.disabled}
+                          aria-label="${this.removeTagAriaLabel} ${this._options.find((opt) => opt?.id === id)?.label}"
+                          tabindex="-1"
+                          data-option-id=${ifDefined(id)}
+                          @click=${(e: MouseEvent) => this.handleClickTag(e, id)}
+                          @keydown=${(e: KeyboardEvent) => this.handleTagKeydown(e, id)}
+                        >
+                          <span>${this._options.find((opt) => opt?.id === id)?.label}</span>
+                          <nve-icon name="close" aria-hidden="true"></nve-icon>
+                        </button>`
+                    )
                 : nothing}
+              ${this.indicatorCount > 0
+                ? html`<button
+                    class="combobox__value__indicator"
+                    ?disabled=${this.disabled}
+                    aria-label=""
+                    tabindex="-1"
+                    @click=${this.handleIndicatorClick}
+                    @keydown=${this.handleIndicatorKeydown}
+                  >
+                    + ${this.indicatorCount}
+                  </button>`
+                : nothing}
+              <div class="sr-only" id=${selectedValuesId}>
+                ${this._options
+                  .filter((opt) => this._selectedIds.includes(opt.id))
+                  .map((opt) => opt.label)
+                  .join(', ')}
+              </div>
               <input
                 part="input"
-                class="combobox__value__input"
+                class="${classMap({
+                  combobox__value__input: true,
+                  'combobox__value__input--searchable': this.editable,
+                  'combobox__value__input--wrap': this.wrap,
+                  'combobox__value__input--multiselect': this.multiple,
+                })}"
                 ?disabled=${this.disabled}
-                ?readonly=${this.readonly || !this.searchable}
+                ?readonly=${this.readonly || !this.editable}
                 aria-controls="${`${this.id}-listbox`}"
                 aria-expanded="${this.expanded}"
                 aria-haspopup="listbox"
@@ -943,7 +1090,7 @@ the indicator +2 if more selections we should discuss. should it show as default
                 name=${ifDefined(this.name || undefined)}
                 form=${ifDefined(this.form)}
                 aria-labelledby="${labelId}"
-                aria-describedby=${ifDefined(this.errorMessage || this.helpText ? `${helpTextId}` : undefined)}
+                aria-describedby=${ifDefined(describedBy || undefined)}
                 aria-activedescendant=${ifDefined(this.activeId)}
                 role="combobox"
                 placeholder=${this.placeholder && !this._selectedIds.length ? this.placeholder : ''}
@@ -951,7 +1098,7 @@ the indicator +2 if more selections we should discuss. should it show as default
                 @input=${this.onInput}
               />
             </div>
-            <!-- Ikoner -->
+            <!-- Ikoner og knapper -->
             ${this.clearable && this._selectedIds.length && !this.readonly && !this.disabled
               ? html`<button
                   part="clear-button"
@@ -1004,8 +1151,8 @@ the indicator +2 if more selections we should discuss. should it show as default
                 })}
               </ul>`
             : nothing}
-          <slot name="custom-listbox"></slot>
         </div>
+        <!-- Hjelpetekst og feilmelding -->
         ${this.errorMessage || this.helpText
           ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>
               ${this.errorMessage || this.helpText}

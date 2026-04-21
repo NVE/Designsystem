@@ -7,6 +7,7 @@ export default css`
 
   :host {
     --listbbox-max-height: 220px;
+    --first-tag-max-width: unset;
   }
 
   .field {
@@ -24,11 +25,13 @@ export default css`
   .field--disabled {
     input,
     .combobox__control,
-    .combobox__value__tag {
+    .combobox__value__tag,
+    .combobox__value__indicator {
       cursor: not-allowed;
     }
     /* Standard disabled knapp har veldig svak font farge, med var opacity 0.35 teksten blir usynlig  */
-    .combobox__value__tag {
+    .combobox__value__tag,
+    .combobox__value__indicator {
       color: var(--color-neutrals-foreground-primary);
     }
     .combobox__control {
@@ -48,6 +51,26 @@ export default css`
     margin: 0;
     color: var(--color-neutrals-foreground-primary, #141414);
     font: var(--typography-detailtext-caption);
+  }
+
+  .field--error {
+    --_border-color: var(--color-feedback-border-emphasized-error);
+    .combobox__control input,
+    .combobox__control nve-icon {
+      color: var(--color-feedback-foreground-error);
+    }
+  }
+
+  .field--filled {
+    --_border-color: var(--color-neutrals-border-subtle);
+    --_background-color: var(--color-neutrals-background-primary-contrast,);
+    --_border-color-hover: var(--color-neutrals-border-default);
+    --_options-background-selected: var(--color-neutrals-background-primary);
+    --_options-background-active: var(--color-neutrals-background-primary);
+  }
+
+  .field--readonly {
+    --_background-color: var(--color-neutrals-background-secondary);
   }
 
   .combobox {
@@ -73,26 +96,6 @@ export default css`
 
   .field:not(.field--disabled):not(.field--readonly) .combobox__control:hover {
     border-color: var(--_border-color-hover);
-  }
-
-  .field--error {
-    --_border-color: var(--color-feedback-border-emphasized-error);
-    .combobox__control input,
-    .combobox__control nve-icon {
-      color: var(--color-feedback-foreground-error);
-    }
-  }
-
-  .field--filled {
-    --_border-color: var(--color-neutrals-border-subtle);
-    --_background-color: var(--color-neutrals-background-primary-contrast,);
-    --_border-color-hover: var(--color-neutrals-border-default);
-    --_options-background-selected: var(--color-neutrals-background-primary);
-    --_options-background-active: var(--color-neutrals-background-primary);
-  }
-
-  .field--readonly {
-    --_background-color: var(--color-neutrals-background-secondary);
   }
 
   .combobox__control--small {
@@ -125,20 +128,38 @@ export default css`
     flex-wrap: wrap;
   }
 
-  .combobox__value input {
+  .combobox__value__input {
     border: none;
     font: var(--typography-body-small);
     color: var(--color-neutrals-foreground-primary);
     flex: 1;
-    min-width: 80px;
     background: transparent;
     &:focus {
       outline: none;
     }
   }
 
-  .icon__error {
-    --icon-size: 20px;
+  /* Når multiselect men ikke skriftlig input, input skjules */
+  .combobox__value__input--multiselect:not(.combobox__value__input--searchable) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+  }
+
+  /* Når multiselect og skriftlig input, men ikke wrap, min-width settes til 0. Den skal justeres programmatisk */
+  .combobox__value__input--searchable.combobox__value__input--multiselect:not(.combobox__value__input--wrap) {
+    min-width: 0;
+  }
+
+  .combobox__value__input--wrap {
+    min-width: 50px;
   }
 
   /* LISTBOX */
@@ -167,12 +188,6 @@ export default css`
 
   .combobox--expanded .combobox__listbox {
     display: flex;
-  }
-
-  .icon__arrow {
-    margin-left: auto;
-    transition: transform 150ms ease-in-out;
-    transform-origin: center;
   }
 
   .combobox--expanded .icon__arrow {
@@ -204,6 +219,7 @@ export default css`
     background-color: var(--_options-background-selected);
   }
 
+  .combobox__value__indicator,
   .combobox__value__tag {
     display: flex;
     font: var(--typography-label-x-small);
@@ -218,9 +234,42 @@ export default css`
     }
   }
 
+  .combobox__value__tag {
+    max-width: var(--first-tag-max-width);
+  }
+
+  .combobox__value__tag span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .combobox__clear-button {
     border: none;
     background: transparent;
     cursor: pointer;
+  }
+
+  .icon__error {
+    --icon-size: 20px;
+  }
+
+  .icon__arrow {
+    margin-left: auto;
+    transition: transform 150ms ease-in-out;
+    transform-origin: center;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
   }
 `;
