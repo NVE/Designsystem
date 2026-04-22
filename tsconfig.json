@@ -23,9 +23,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "baseUrl": "./",
+    "rootDir": "./src",
     "paths": {
-      "@interfaces/*": ["src/interfaces/*"]
+      "@interfaces/*": ["./src/interfaces/*"],
+      "nve-designsystem": ["./src/nve-designsystem"]
     }
   },
   "include": ["src"]

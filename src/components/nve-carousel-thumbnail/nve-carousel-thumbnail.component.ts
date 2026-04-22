@@ -1,8 +1,7 @@
-
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
-import { NveCarousel } from 'src/nve-designsystem';
+import { NveCarousel } from 'nve-designsystem';
 import styles from './nve-carousel-thumbnail.styles';
 
 /**
@@ -11,9 +10,7 @@ import styles from './nve-carousel-thumbnail.styles';
  */
 
 @customElement('nve-carousel-thumbnail')
-
 export default class NveCarouselThumbnail extends LitElement implements INveComponent {
-
   static styles = [styles];
 
   constructor() {
