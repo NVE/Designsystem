@@ -162,6 +162,14 @@
         "$type": "color",
         "$value": "#141414"
       },
+      "999-040": {
+        "$type": "color",
+        "$value": "rgba(20,20,20,0.4)"
+      },
+      "999-080": {
+        "$type": "color",
+        "$value": "rgba(20,20,20,0.8)"
+      },
       "000": {
         "$type": "color",
         "$value": "#ffffff"
@@ -1796,6 +1804,12 @@
         "$type": "boolean",
         "$value": "true"
       }
+    }
+  },
+  "text": {
+    "brand-name": {
+      "$type": "text",
+      "$value": "Norges vassdrags- og energidirektorat"
     }
   }
 }

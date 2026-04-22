@@ -161,6 +161,14 @@
         "$type": "color",
         "$value": "#0D0D0E"
       },
+      "999-040": {
+        "$type": "color",
+        "$value": "rgba(13,13,14,0.4)"
+      },
+      "999-080": {
+        "$type": "color",
+        "$value": "rgba(13,13,14,0.8)"
+      },
       "050": {
         "$type": "color",
         "$value": "#F6F7F9"
@@ -255,6 +263,12 @@
         "$type": "boolean",
         "$value": "true"
       }
+    }
+  },
+  "text": {
+    "brand-name": {
+      "$type": "text",
+      "$value": "Reguleringsmyndigheten for energi"
     }
   }
 }

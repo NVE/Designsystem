@@ -88,6 +88,11 @@
         "tertiary-dim": {
           "$type": "color",
           "$value": "{color-shades.grey.800}"
+        },
+        "modal-overlay": {
+          "$type": "color",
+          "$value": "{color-shades.grey.999-080}",
+          "$description": "transparent"
         }
       },
       "foreground": {
@@ -105,7 +110,7 @@
         },
         "faint": {
           "$type": "color",
-          "$value": "{color-shades.functional.neutralgrey.800}"
+          "$value": "{color-shades.functional.neutralgrey.300}"
         },
         "inverted": {
           "$type": "color",

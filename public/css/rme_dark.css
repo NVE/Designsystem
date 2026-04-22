@@ -43,6 +43,8 @@
   --color-shades-grey-900: #141e29;
   --color-shades-grey-950: #0f1926;
   --color-shades-grey-999: #0d0d0e;
+  --color-shades-grey-999-040: rgba(13, 13, 14, 0.4);
+  --color-shades-grey-999-080: rgba(13, 13, 14, 0.8);
   --color-shades-grey-000: #ffffff;
   --color-shades-grey-050: #f6f7f9;
   --color-shades-data-color-a-100: #b0bbe8;
@@ -257,6 +259,7 @@
   --boolean-brand-varsom: false;
   --boolean-brand-rme: true;
   --boolean-brand-nve-rme: true;
+  --text-brand-name: Reguleringsmyndigheten for energi;
   --color-brand-background-primary: var(--color-shades-brand-500); /** Primarily used on logo backgrounds */
   --color-brand-background-secondary: var(--color-shades-brand-250);
   --color-brand-background-tertiary: var(--color-shades-brand-800);
@@ -276,10 +279,11 @@
   --color-neutrals-background-secondary: var(--color-shades-grey-700);
   --color-neutrals-background-secondary-dim: var(--color-shades-grey-850);
   --color-neutrals-background-tertiary-dim: var(--color-shades-grey-800);
+  --color-neutrals-background-modal-overlay: var(--color-shades-grey-999-080); /** transparent */
   --color-neutrals-foreground-primary: var(--color-shades-grey-000);
   --color-neutrals-foreground-secondary: var(--color-shades-functional-neutralgrey-200);
   --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-400);
-  --color-neutrals-foreground-faint: var(--color-shades-functional-neutralgrey-800);
+  --color-neutrals-foreground-faint: var(--color-shades-functional-neutralgrey-300);
   --color-neutrals-foreground-inverted: var(--color-shades-functional-neutralgrey-999);
   --color-neutrals-foreground-white: var(--color-shades-functional-neutralgrey-000); /** Fargen forblir hvit i darkmode */
   --color-neutrals-border-default: var(--color-shades-grey-300);
