@@ -160,7 +160,7 @@
           },
           "disabled": {
             "$type": "color",
-            "$value": "{color-shades.grey.950}"
+            "$value": "{color-shades.grey.300}"
           }
         },
         "secondary": {
@@ -178,7 +178,7 @@
           },
           "disabled": {
             "$type": "color",
-            "$value": "{color-shades.grey.150}"
+            "$value": "{color-shades.grey.100}"
           }
         },
         "tertiary": {
@@ -206,7 +206,7 @@
           },
           "disabled": {
             "$type": "color",
-            "$value": "{color-shades.functional.red.700}"
+            "$value": "{color-shades.functional.red.150}"
           }
         }
       },
@@ -222,7 +222,7 @@
           },
           "disabled": {
             "$type": "color",
-            "$value": "{color-shades.grey.000}"
+            "$value": "{color-shades.grey.100}"
           }
         },
         "secondary": {
@@ -236,7 +236,7 @@
           },
           "disabled": {
             "$type": "color",
-            "$value": "{color-shades.grey.950}"
+            "$value": "{color-shades.grey.300}"
           }
         },
         "danger": {
@@ -246,7 +246,7 @@
           },
           "disabled": {
             "$type": "color",
-            "$value": "{color-shades.grey.000}"
+            "$value": "{color-shades.functional.red.000}"
           }
         },
         "link": {
@@ -276,7 +276,7 @@
           },
           "disabled": {
             "$type": "color",
-            "$value": "{color-shades.grey.999}"
+            "$value": "{color-shades.grey.300}"
           }
         },
         "secondary": {
@@ -290,7 +290,7 @@
           },
           "disabled": {
             "$type": "color",
-            "$value": "{color-shades.grey.500}"
+            "$value": "{color-shades.grey.150}"
           }
         },
         "accessibility": {
