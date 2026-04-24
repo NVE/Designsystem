@@ -1,6 +1,8 @@
 <PageHeader title="For designere" imagePath="designer"  pageLevel=2></PageHeader>
 
-# Kom igang
+# Kom i gang
+
+Designsystem samler og tilgjengeliggjør verktøy, filer, komponenter og designretningslinjer som brukes av designere og utviklere for å lage gode og konsekvente brukeropplevelser i NVE og Varsoms digitale tjenester.
 
 ## Før du starter
 
@@ -13,7 +15,14 @@ Før du starter å bruke designsystemet, er det flere viktige skritt og forbered
 
 ## Jobb sammen
 
+<nve-message-card size="simple">Det er fastslått at alle nye produkter som utvikles i NVE og Varsom skal bruke og bidra inn mot designsystemet.</nve-message-card>
+
 Alle som er en del av prosjektet bør ha tilgang på Figma-filene. Derfor er det viktig å legge dem til i Teamet. Da kan alle kommentere, se status og hente ut kode. Det er derfor også viktig at du legger ting opp på en ryddig og organisert måte slik at det er mulig for andre å forstå.
+
+### Pass på å gi riktig tilgangsnivå:
+
+- Editor: Kan redigere filene (Kun designere)
+- Viewer: Kan se, hente kode og bruke prototyper (Alle andre)
 
 ## Aktiver Designsystemet i Figma om du ikke finner NVE komponenter
 
@@ -81,9 +90,6 @@ Designsystemet består av grunnleggende stiler og komponenter som brukes for å 
   <img src="../../assets/images/mønstre.png" width="50%">
   <div>
     <h2 class="h2-style">Mønstre</h2>
-    <p>Er en sammensetning av flere komponenter sammen. Dette er mer enn 4-5 komponenter satt sammen for å danne et mer komplekst grensesnittelement.
-
-Dette kan for eksempel være en header/navigasjonsbar eller et “cookies” panel som kommer opp.</p>
-
+    <p>Er en sammensetning av flere komponenter sammen. Dette er mer enn 4-5 komponenter satt sammen for å danne et mer komplekst grensesnittelement. Dette kan for eksempel være en header/navigasjonsbar eller et “cookies” panel som kommer opp.</p>
   </div>
 </div>
