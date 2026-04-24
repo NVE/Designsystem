@@ -1,9 +1,6 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av npm run add-component */
-  
-  
-  
-  
+
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
@@ -31,8 +28,6 @@ export { default as NveLinkCard } from './components/nve-link-card/nve-link-card
 export { default as NveMenu } from './components/nve-menu/nve-menu.component';
 export { default as NveMenuItem } from './components/nve-menu-item/nve-menu-item.component';
 export { default as NveMessageCard } from './components/nve-message-card/nve-message-card.component';
-export { default as NveOption } from './components/nve-option/nve-option.component';
-export { default as NveOptionDemo } from './components/nve-option-demo/nve-option-demo.component';
 export { default as NvePopup } from './components/nve-popup/nve-popup.component';
 export { default as NveRadio } from './components/nve-radio/nve-radio.component';
 export { default as NveRadioButton } from './components/nve-radio-button/nve-radio-button.component';
@@ -40,8 +35,6 @@ export { default as NveRadioDemo } from './components/nve-radio-demo/nve-radio-d
 export { default as NveRadioGroup } from './components/nve-radio-group/nve-radio-group.component';
 export { default as NveRadioGroupDemo } from './components/nve-radio-group-demo/nve-radio-group-demo.component';
 export { default as NveRelativeTime } from './components/nve-relative-time/nve-relative-time.component';
-export { default as NveSelect } from './components/nve-select/nve-select.component';
-export { default as NveSelectDemo } from './components/nve-select-demo/nve-select-demo.component';
 export { default as NveSkeleton } from './components/nve-skeleton/nve-skeleton.component';
 export { default as NveSpinner } from './components/nve-spinner/nve-spinner.component';
 export { default as NveStep } from './components/nve-stepper/nve-step/nve-step.component';
@@ -55,4 +48,3 @@ export { default as NveTextarea } from './components/nve-textarea/nve-textarea.c
 export { default as NveTextareaDemo } from './components/nve-textarea-demo/nve-textarea-demo.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
 export { default as NveWarningLevel } from './components/nve-warning-level/nve-warning-level.component';
-  
