@@ -74,8 +74,10 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
   @property({ type: String, reflect: true }) errorMessage?: string;
   /** Om feltet skal bruke filled variant */
   @property({ type: Boolean }) filled = false;
-  /** Hjelpetekst som vises under feltet */
+  /** Hjelpetekst som vises over feltet */
   @property({ type: String, reflect: true }) helpText = '';
+  /** Hint-tekst som vises under feltet */
+  @property({ type: String, reflect: true }) hintText = '';
   /** Ledetekst */
   @property({ type: String }) label: string = '';
   /** Tekst som vises for å markere at et felt er obligatorisk */
@@ -320,7 +322,6 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
    */
   private handleArrowRightOrLeft(e: KeyboardEvent, key: 'left' | 'right') {
     if (!this._selectedIds.length) return;
-    this.closeListbox();
     const target = e.target as HTMLElement;
     if (target === this.comboboxNativeInput) {
       const input = target as HTMLInputElement;
@@ -335,6 +336,7 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
       if (key === 'right' && !atEnd) return; // la nettleseren flytte caret
 
       e.preventDefault();
+      this.closeListbox();
       if (key === 'left') {
         tags[tags.length - 1]?.focus();
       } else {
@@ -354,12 +356,14 @@ export default class NveSelectDemo<T = string> extends LitElement implements INv
           tags[index + 1].focus();
         } else {
           this.comboboxNativeInput.focus();
+          this.openListbox();
         }
       } else {
         if (index > 0) {
           tags[index - 1].focus();
         } else {
           this.comboboxNativeInput.focus();
+          this.openListbox();
         }
       }
     }
@@ -996,8 +1000,13 @@ SELECGTED BEFORE THE LIST WAS CLOSED
   render() {
     const labelId = `${this.id}-label`;
     const helpTextId = `${this.id}-helptext`;
+    const hintTextId = `${this.id}-hinttext`;
     const selectedValuesId = `${this.id}-selected-values`;
-    const describedBy = [this.errorMessage || this.helpText ? helpTextId : '', this.multiple ? selectedValuesId : '']
+    const describedBy = [
+      helpTextId,
+      this.errorMessage || this.hintText ? hintTextId : '',
+      this.multiple ? selectedValuesId : '',
+    ]
       .filter(Boolean)
       .join(' ');
     return html`
@@ -1015,6 +1024,10 @@ SELECGTED BEFORE THE LIST WAS CLOSED
       >
         <!-- Ledetekst -->
         ${getLabel(labelId, this.label, this.tooltip, this.required, this.requiredLabel, this.handleLabelClick)}
+        <!-- Hjelpetekst -->
+        ${this.helpText
+          ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
+          : nothing}
         <!-- Combobox kontroll -->
         <div
           part="combobox"
@@ -1093,6 +1106,7 @@ SELECGTED BEFORE THE LIST WAS CLOSED
                 aria-describedby=${ifDefined(describedBy || undefined)}
                 aria-activedescendant=${ifDefined(this.activeId)}
                 role="combobox"
+                ?aria-invalid=${this.errorMessage}
                 placeholder=${this.placeholder && !this._selectedIds.length ? this.placeholder : ''}
                 .value=${this.displayLabel}
                 @input=${this.onInput}
@@ -1152,10 +1166,10 @@ SELECGTED BEFORE THE LIST WAS CLOSED
               </ul>`
             : nothing}
         </div>
-        <!-- Hjelpetekst og feilmelding -->
-        ${this.errorMessage || this.helpText
-          ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>
-              ${this.errorMessage || this.helpText}
+        <!-- Hint-tekst og feilmelding -->
+        ${this.errorMessage || this.hintText
+          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>
+              ${this.errorMessage || this.hintText}
             </p>`
           : nothing}
       </div>

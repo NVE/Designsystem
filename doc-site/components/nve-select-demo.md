@@ -79,8 +79,8 @@ Det er en combobox standard.
 <nve-message-card variant="primary" label="Tastaturnavigasjon" size="compact">
 <p><b>Tastaturnavigasjon i combobox</b></p>
 <ul>
-  <li><b>Pil ned</b> – Åpner listeboksen hvis den er lukket, uten å flytte fokus ut av feltet. Setter visuell fokus på første element eller sist valgte element.</li>
-  <li><b>Pil opp</b> – Åpner listeboksen hvis den er lukket, uten å flytte fokus ut av feltet. Setter visuell fokus på siste element eller sist valgte element.</li>
+  <li><b>Pil ned</b> – Åpner listeboksen hvis den er lukket, uten å flytte fokus ut av feltet. Setter visuell fokus på første element eller sist fokusert element.</li>
+  <li><b>Pil opp</b> – Åpner listeboksen hvis den er lukket, uten å flytte fokus ut av feltet. Setter visuell fokus på siste element eller sist fokusert element.</li>
   <li><b>Escape</b> – Lukker listeboksen hvis den er åpen. Beholder gjeldende verdi i feltet.</li>
   <li><b>Enter / Mellomrom</b> – Hvis listeboksen er lukket, åpner den. Hvis et alternativ er aktivt, velger (eller fjerner) det aktive alternativet og lukker listen.</li>
   <li><b>Skrivbare tegn</b> – Åpner listeboksen (hvis lukket) og flytter visuell fokus til første alternativ som matcher det du skriver. Skriver du flere tegn raskt etter hverandre, søker den på hele teksten. Skriver du samme tegn flere ganger, hopper den mellom alternativer som starter med dette tegnet.</li>
@@ -156,8 +156,8 @@ Når du klikker på en tag, fjernes det tilhørende alternativet fra de valgte v
 <nve-message-card variant="primary" label="Tastaturnavigasjon" size="compact">
 <p><b>Tastaturnavigasjon i combobox</b></p>
 <ul>
-  <li><b>Pil ned</b> – Åpner listeboksen hvis den er lukket, uten å flytte fokus ut av feltet. Setter visuell fokus på første element eller sist valgte element.</li>
-  <li><b>Pil opp</b> – Åpner listeboksen hvis den er lukket, uten å flytte fokus ut av feltet. Setter visuell fokus på siste element eller sist valgte element.</li>
+  <li><b>Pil ned</b> – Åpner listeboksen hvis den er lukket, uten å flytte fokus ut av feltet. Setter visuell fokus på første element eller sist fokusert element.</li>
+  <li><b>Pil opp</b> – Åpner listeboksen hvis den er lukket, uten å flytte fokus ut av feltet. Setter visuell fokus på siste element eller sist fokusert element.</li>
   <li><b>Pil venstre</b> – Når listeboksen er åpen og det finnes valgte tags, lukkes listeboksen og fokus flyttes til den siste tag‑knappen i comboboxen. Hvert nye trykk på pil venstre flytter fokus til forrige tag.</li>
   <li><b>Pil høyre</b> – Når fokus står på en tag, flytter pil høyre fokus til neste tag. Hvis fokus står på den siste tag‑knappen, flyttes fokus tilbake til input‑feltet.</li>
   <li><b>Escape</b> – Lukker listeboksen hvis den er åpen. Beholder gjeldende verdi i feltet.</li>
@@ -376,7 +376,7 @@ Bruk <span class="highlight">filled</span> for mørk bakgrunnsfarge
 
 ### Hjelptekst
 
-Bruk <span class="highlight">helpText</span> for a vise hjelpetekst under combobox.
+Bruk <span class="highlight">helpText</span> for a vise hjelpetekst over combobox.
 
 <CodeExamplePreview>
 
@@ -385,6 +385,32 @@ Bruk <span class="highlight">helpText</span> for a vise hjelpetekst under combob
   id="nve-avdeling-10"
   label="Velg en avdeling"
   helpText="Avdeling velges for å sendes i skjema"
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-select-demo>
+```
+
+</CodeExamplePreview>
+
+### Hint-tekst
+
+Bruk <span class="highlight">hintText</span> for a vise hint-tekst under combobox.
+
+<CodeExamplePreview>
+
+```html
+<nve-select-demo
+  id="nve-avdeling-10"
+  label="Velg en avdeling"
+  hintText="Avdeling velges for å sendes i skjema"
   options='[
     { "value":"rme","id": "rme","label": "RME" },
     { "value":"ek","id": "ek","label": "EK" },
@@ -572,13 +598,41 @@ Bruk et <span class="highlight">selectedIds</span> string array for a vise forha
 
 ## Tilgjengelighet
 
+popup has a role of listbox
+
+arrow down or up opens listbox and focuses the last focused element if no then the first/last
+
+When a combobox receives focus, DOM focus is placed on the combobox element.
 Skrive om aria-activedescendant, hvorfor den brukes og hvilke begrensinger den innf;rer (nevne at derfor fjerner vi options og selected values fra DOMen)
+
+- With respect to focus and the selected state, the most important considerations for designers and developers are:
+  The visual focus indicator must always be visible.
+  The selected state must be visually distinct from the focus indicator.
+
 When a descendant of a listbox, grid, or tree popup is focused, DOM focus remains on the combobox and the combobox has aria-activedescendant set to a value that refers to the focused element within the popup.
 DOM Focus is maintained on the combobox and the assistive technology focus is moved within the listbox using aria-activedescendant read more here https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_focus_activedescendant
 since we have to refer ids there is no other way but to include options in the same shadow root as the comboboc itself.
 otherwise id reading wont work.
 
+autocomplete stottes ikke for na
+
+when combobox is focused for the first time and has multiple selections all multiple selections are read. is that a correct appraoch? we dont have any summary message for now, maybe something to consider?
+
 label component
+
+not using aria live on combobox as it will mostly be the required error and it will happen only when bluring or when form is submitted that will remove the focus from combobox anyway
+
+listbox
+
+DOM focus (the active element) is functionally distinct from the selected state. For more details, see
+
+In a single-select listbox, moving focus may optionally unselect the previously selected option and select the newly focused option. This model of selection is known as "selection follows focus" - we dont support it
+
+If the listbox supports selection of more than one option, the element with role listbox has aria-multiselectable set to true.
+
+The selection state of each selectable option is indicated with either aria-selected
+
+aria-disabled on disabled options (currently supported only if max is reached)
 
 Navigating the list of options does not set the value of the input. This gives screen reader users,
 who need to navigate among the options to perceive them, the ability to explore options without losing t
@@ -593,7 +647,13 @@ being read by the screen reader when input focuses. this could potentially be so
 
 aria-required when combobox is required
 
-retningslinjer bruk clearbale with multiple
+## Retningslinjer
+
+bruk clearbale with multiple
 husk a legge til label
 prov a holde tekst i alternativer korte slik at de passer combobox bredden. lange tekster i alternativer skal kuttesmen
 da ser bruker ikke hele teksten
+
+Avoiding very long option names facilitates understandability and perceivability for screen reader users. The entire name of an option is spoken as a single unit of speech when the option is read. When too much information is spoken as the result of a single key press, it is difficult to understand. Long names inhibit perception by increasing the impact of interrupted speech because users typically have to re-read the entire option
+
+Sets of options where each option name starts with the same word or phrase can also significantly degrade usability for keyboard and screen reader users. Scrolling through the list to find a specific option becomes inordinately time consuming for a screen reader user who must listen to that word or phrase repeated before hearing what is unique about each option. For example, if a listbox for choosing a city were to contain options where each city name were preceded by a country name, and if many cities were listed for each country, a screen reader user would have to listen to the country name before hearing each city name. In such a scenario, it would be better to have 2 list boxes, one for country and one for city.
