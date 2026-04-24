@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
-import { NveCarousel } from 'nve-designsystem';
+import NveCarousel from '../nve-carousel/nve-carousel.component.ts';
 import styles from './nve-carousel-thumbnail.styles';
 
 /**
