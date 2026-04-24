@@ -1155,6 +1155,9 @@ SELECGTED BEFORE THE LIST WAS CLOSED
                     role="option"
                     part="option"
                     aria-selected=${this._selectedIds.includes(option.id) ? 'true' : 'false'}
+                    aria-disabled=${this.multiple && !this._selectedIds.includes(option.id) && this.maxReached
+                      ? 'true'
+                      : 'false'}
                     @click=${() => this.handleClickOption(option.id)}
                   >
                     ${this._selectedIds.includes(option.id)

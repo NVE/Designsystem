@@ -215,7 +215,6 @@ export default css`
   }
 
   .combobox__listbox__option--disabled {
-    cursor: not-allowed;
     opacity: 0.38;
   }
 
