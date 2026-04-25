@@ -41,7 +41,7 @@
     "link": "node scripts/npmLink.js",
     "preview": "vite preview",
     "lint": "eslint \"**/*.{js,ts,vue}\"",
-    "manifest": "npx  @custom-elements-manifest/analyzer analyze --outdir dist",
+    "manifest": "node scripts/createCustomManifest.js",
     "tokenbuild": "node transformTokens/transform.js && node scripts/groupDeviceFilesToBrandFiles.js && node scripts/updateCssTokensInDocs.js",
     "postinstall": "cd doc-site && npm install",
     "prepare": "husky",
