@@ -52,14 +52,14 @@ export default [
 
       quotes: ['error', 'double'],
       semi: ['error', 'always'],
-      'no-console': 'error',
+      'no-console': ['error', { allow: ['warn'] }],
       'no-debugger': 'error',
 
       'max-lines-per-function': ['warn', { max: 80, skipBlankLines: true, skipComments: true }],
     },
   },
   {
-    files: ['src/components/**/*.test.ts'],
+    files: ['src/components/**/*.test.ts', 'src/components/**/*.ts'],
     rules: {
       'max-lines-per-function': 'off',
     },
