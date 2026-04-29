@@ -3,19 +3,23 @@ layout: component
 outline: [2, 3]
 ---
 
+<nve-divider></nve-divider>
+
 For å legge til alternativer i select-komponenten bruk <span class="highlight">options</span>-attributtet.
 
-<span class="highlight">Option</span> er en generisk type der T beskriver typen til <span class="highlight">value</span>. <span class="highlight">string</span> er standardtypen, men du kan også bruke array, objekter eller tall. Typen består av:
+<span class="highlight">Option</span> er en generisk type der T beskriver typen til <span class="highlight">value</span>. String er standard typen, men du kan også bruke objekter, array, eller tallene. Typen består av:
 
 - <span class="highlight">value</span> - kan være string, tall, objekt, array og er den faktiske verdien som returneres.
 - <span class="highlight">id</span> - er en unik identifikator som brukes internt til referanser, fokus og ARIA-koblinger.
 - <span class="highlight">label</span> - er teksten som vises i nedtrekksmenyen.
+- <span class="highlight">textLabel</span> - alternativ teksten som vises i inputfeltet.
 
 ```js
 type Option<T = string> = {
   id: string;
   value: T;
   label: string;
+  textLabel?: string;
 };
 ```
 
@@ -25,7 +29,7 @@ Typen kan importeres slik:
 import type { Option } from 'nve-designsystem/components/nve-combobox/nve-combobox.component.js';
 ```
 
-Bruk eksempel:
+Eksempel på bruk:
 
 ```js
  const options: Option[] = [
@@ -54,7 +58,7 @@ Bruk eksempel:
 <p><b>Options</b>-attributtet fjernes fra DOM-en etter innlasting, og verdien lagres i en intern tilstand i comboboxen. Dette gjøres for å hindre at DOM-en fylles opp med unødvendig data.</p>
 </nve-message-card>
 
-Alle valgte alternativer lagres i et intern <span class="highlight">selectedValues</span>-array som returneres via <span class="highlight">change</span>-hendelsen. Hendelsestype kan importeres ved:
+Alle valgte alternativer lagres i et intern <span class="highlight">selectedValues</span>-array som returneres via <span class="highlight">change</span>-hendelsen. Hendelsestype kan importers ved:
 
 ```js
 import type { NveSelectChangeDetail } from 'nve-designsystem/components/nve-combobox/nve-combobox.component.js';
@@ -69,13 +73,6 @@ type NveSelectChangeDetail<T> = {
   action: 'select' | 'deselect';
 }
 ```
-
-## Retningslinjer
-
-- Husk å legge til en tydelig ledetekst på comboboxen
-- Bruk <span class="highlight">clearable</span> sammen med flervalg der det gir mening
-- Forsøk å holde tekst i alternativer kort, slik at de passer innenfor bredden til comboboxen. Å unngå svært lange navn på alternativer forbedrer både forståelighet og oppfattbarhet, spesielt for brukere av skjermleser
-- Unngå sett med alternativer der alle navn starter med samme ord eller frase fordi da må brukeren høre den samme starten gjentatt for hvert alternativ
 
 ## Eksempler
 
@@ -103,8 +100,8 @@ Det er en combobox standard.
 <nve-combobox
   id="nve-avdeling-1"
   label="Velg en avdeling"
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
+  options='[ 
+    { "value":"rme","id": "rme","label": "RME asd asd asd asdojn askldnakljdn ka snd kaksjdh akjsdh akshd kasdhkaj sdh kjashd kashdkjahsdkj ahds kajhsd kajshd kajsdh" },
     { "value":"ek","id": "ek","label": "EK" },
     { "value":"tb","id": "tb","label": "TB" },
     { "value":"h","id": "h","label": "H" },
@@ -120,12 +117,12 @@ Det er en combobox standard.
 
 ### Enkeltvalg og redigerbar input
 
-For å vise en enkeltvalg med redigerbar input bruk <span class="highlight">editable</span>
+For a vise en enkeltvalg med redigerbar input bruk <span class="highlight">editable</span>
 
 <nve-message-card variant="primary" label="Tastaturnavigasjon" size="compact">
   <p><b>Tastaturnavigasjon i combobox</b></p>
   <p>Samme som i <a href="#enkeltvalg">enkeltvalg</a>, bortsett fra hvordan <b>skrivbare tegn</b> håndteres.</p>
-  <p>Skrivbare tegn vises med én gang i input-feltet, og brukes til å filtrere listen slik at kun alternativer som inneholder skrevet tekst vises. I tillegg når man valgte en verdi og så trykker på pil ned, skal visuelt teksten forsvinne slik at hele listen vises igjen. Klikker man tab eller esc skal valgte verdi vises i tekst feltet igjen.</p>
+  <p>Skrivbare tegn vises med én gang i input-feltet, og brukes til å filtrere listen slik at kun alternativer som inneholder skrevet tekst vises. I tillegg når man valgte en verdi og så trykker pa pilen ned, skal visuelt teksten forsvinne slik at hele listen vises igjen. Klikker man tab eller esc skal valgte verdi vises i tekst feltet igjen.</p>
 </nve-message-card>
 
 <CodeExamplePreview>
@@ -201,7 +198,7 @@ Når du klikker på en tag, fjernes det tilhørende alternativet fra de valgte v
 
 ### Flervalg og redigerbar input
 
-Akkurat som i enkeltvalg comboboxen kan man skrive inn i inputfeltet når man bruker <span class="highlight">editable</span>-attributtet. Inputfelt vises etter taggene.
+Akkurat som i enkeltvalg comboboxen kan man skrive inn i input feltet nar man bruker <span class="highlight">editable</span>-attributtet. Input felt vises etter taggene.
 
 <CodeExamplePreview>
 
@@ -233,7 +230,7 @@ Bruk <span class="highlight">label</span> for å vise en tydelig ledetekst for f
 Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende informasjon ved ledeteksten. Innholdet kan være ren tekst eller HTML, for eksempel lenker eller formattert hjelpetekst.
 
 <nve-message-card variant="warning" label="Ikke bruke egne ledetekster" size="compact">
-<p>Med web components er det foreløpig ikke mulig å koble en ekstern ledetekst (som ikke eksisterer i samme Shadow root som komponent du skal koble den med) i nve-combobox slik at den gir mening fra tilgjengelighetsperspektiv. Bruk gjerne label property i stedet.</p>
+<p>Med web components er det foreløpig ikke mulig å koble en ekstern ledetekst (som ikke eksiterer i samme Shadow root som komponent du skal koble den med) i nve-combobox slik at den gir mening fra tilgjengelighets perspektiv. Bruk gjerne label property i stedet.</p>
 </nve-message-card>
 
 <CodeExamplePreview>
@@ -252,6 +249,38 @@ Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende inf
     { "value":"ikti","id": "ikti","label": "IKTI" },
     { "value":"sv","id": "sv","label": "SV" },
     { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Alternativ tekst i inputfeltet
+
+Bruk <span class="highlight">textLabel</span> i options-arrayet for å vise en annen ledetekst i inputfeltet enn den som vises
+i listen (neddtrekksmenyen).
+
+<nve-message-card variant="warning" label="Vær oppmerksom!" size="compact">
+  <p>
+    <b>textLabel</b> bør ha tydelig sammenheng med <b>label</b> i listen.
+    Du kan gjerne bruke en kortere variant i inputfeltet (f.eks. «RME»), men behold samme mening som i nedtrekksmenyen
+    (f.eks. «RME (NVE)»), slik at brukere (inkl. skjermleserbrukere) forstår at det er samme alternativ.
+  </p>
+</nve-message-card>
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-22"
+  label="Velg en avdeling"
+  tooltip="Velg avdeling"
+  editable
+  options='[
+    { "value":"rme","id": "rme","label": "RME (NVE)", "textLabel": "RME"  },
+    { "value":"ek","id": "ek","label": "EK (NVE)", "textLabel": "EK" },
+    { "value":"tb","id": "tb","label": "TB (NVE)", "textLabel": "TB" }
      ]'
 >
 </nve-combobox>
@@ -526,9 +555,9 @@ Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forkl
 
 ### Begrense antall valgbare verdier
 
-Med flervalg kan du også begrense hvor mange verdier som kan velges ved å bruke <span class="highlight">max</span>. Når grensen er nådd, blir resten av alternativene utilgjengelige (aria-disabled).
+Med flervalg kan du også begrense hvor mange verdier som kan velges ved å bruke <span class="highlight">max</span>. Når grensen er nådd, blir reste av alternativene utilgjengelige (aria-disabled).
 
-<nve-message-card variant="warning" label="Vaer oppmerksom!" size="compact">
+<nve-message-card variant="warning" label="Vær oppmerksom!" size="compact">
 <p>Bruk <span class="highlight">helpText</span> til å informere brukeren om at det kun kan velges et begrenset antall alternativer (for eksempel «Du kan velge maks 2 alternativer»). Da unngår du at brukeren blir forvirret når valg plutselig blir deaktivert.</p>
 </nve-message-card>
 
@@ -558,7 +587,7 @@ Med flervalg kan du også begrense hvor mange verdier som kan velges ved å bruk
 
 ### Forhåndsvalgte verdier
 
-Bruk et <span class="highlight">selectedIds</span> string array for å vise forhåndsvalgte verdier. Hvis du skal bruke enkeltvalg skal kun en verdi i arrayet sendes. Om id-er i arrayet ikke stemmer med alternativ sine id-er, skal de ikke vises.
+Bruk et <span class="highlight">selectedIds</span> string array for å vise forhandsvalgte verdier. Hvis du skal bruke enkeltvalg skal kun en verdi i arrayet sendes. Om id-er i arrayet stemmer ikke med alternativ sine id-er skal de ikke vises.
 <br />
 <nve-message-card variant="primary" label="Info" size="compact">
 
@@ -636,7 +665,7 @@ Dette er nødvendig fordi:
 
 Dette er en midlertidig løsning. Med støtte for internasjonalisering (i18n) vil dette erstattes med enklere meldinger, som for eksempel: "3 elementer valgt".
 
-### Clear-knapp
+### Fjerne alle-knapp
 
 Comboboxen kan inneholde en <span class="highlight">clear</span>-knapp plassert etter inputfeltet, som lar brukeren fjerne alle valgte verdier.
 
@@ -645,7 +674,7 @@ Knappen er ikke tilgjengelig via piltaster eller intern tastaturnavigasjon i com
 Dette er et bevisst valg fordi:
 
 - DOM-fokus holdes på inputfeltet for å sikre korrekt oppførsel med <span class="highlight">aria-activedescendant</span>. Flytting av fokus bort fra inputfeltet vil bryte med comboboxens fokusmodell.
-- Å inkludere knappen i piltastnavigasjon ville bryte med forventet navigasjonsmønster og kunne skape forvirring (siden den er plassert etter inputfeltet ulik taggene med valgte verdier).
+- Å inkludere knappen i piltastnavigasjon ville bryte med forventet navigasjonsmønster og kunne skape forvirring (siden den er plassert etter input feltet ulik taggene med valge verdier).
 
 Brukere kan fortsatt tømme input manuelt med tastatur (f.eks. Backspace/Delete) eller med mus.
 

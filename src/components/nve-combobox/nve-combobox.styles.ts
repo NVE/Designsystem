@@ -6,7 +6,7 @@ export default css`
   }
 
   :host {
-    --listbbox-max-height: 220px;
+    --listbox-max-height: 220px;
     --first-tag-max-width: unset;
   }
 
@@ -177,8 +177,8 @@ export default css`
     display: flex;
     gap: 2px;
     overflow-y: auto;
-    max-height: var(--listbbox-max-height);
-    list-decoration: none;
+    max-height: var(--listbox-max-height);
+    list-style: none;
     position-anchor: --combobox-anchor;
     position-area: bottom;
     width: anchor-size();
@@ -218,13 +218,14 @@ export default css`
     opacity: 0.38;
   }
 
-  .combobox__listbox__option--active,
-  .combobox__listbox__option:not(.combobox__listbox__option--disabled):hover {
-    background-color: var(--_options-background-active);
-  }
-
   .combobox__listbox__option--selected {
     background-color: var(--_options-background-selected);
+  }
+
+  .combobox__listbox__option--active,
+  .combobox__listbox__option--selected.combobox__listbox__option--active,
+  .combobox__listbox__option:not(.combobox__listbox__option--disabled):hover {
+    background-color: var(--_options-background-active);
   }
 
   .combobox__value__indicator,
