@@ -72,7 +72,7 @@ Komponenten skalerer automatisk overskrifter på ulike skjermstørrelser. Dette 
 
 Alle overskriftsnivåer har en standard stil som passer i de fleste kontekster. Du kan velge stil og størrelse for hvert nivå etter behov og design, noe som gir fleksibilitet til å tilpasse typografien til ulike seksjoner og innholdstyper.
 
-Se mer detaljer om typografi og heading-hierarki i [introduksjonen til designsystemet](introduction/designelementer/typography.html).
+Se mer detaljer om typografi og heading-hierarki i [introduksjonen til designsystemet](/introduction/designelementer/typography).
 
 ### Hierarki
 
