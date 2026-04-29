@@ -49,7 +49,7 @@ export default class NveParagraph extends LitElement implements INveComponent {
   render() {
     const variantClass = this.size ? `${this.size}` : '';
     return html`
-      <p class="paragraph ${variantClass}" data-testid="${this.testId}">
+      <p class="paragraph ${variantClass}" part="paragraph" data-testid="${this.testId}">
         <slot></slot>
       </p>
     `;
