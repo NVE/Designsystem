@@ -1,210 +1,709 @@
 ---
 layout: component
+outline: [2, 3]
 ---
 
-<CodeExamplePreview>
+<nve-divider></nve-divider>
 
-```html
-<nve-combobox
-  label="Velg ett eller flere dyr"
-  options='[
-        { "label": "Cat", "value": "cat"},
-        { "label": "Dog", "value": "dog" },
-        { "label": "Bird", "value": "bird" },
-        { "label": "Fish", "value": "fish" },
-        { "label": "Rabbit", "value": "rabbit" },
-        { "label": "Horse", "value": "horse" },
-        { "label": "Snake", "value": "snake" },
-        { "label": "Turtle", "value": "turtle" },
-        { "label": "Hamster", "value": "hamster" },
-        { "label": "Frog", "value": "frog" }
-    ]'
-></nve-combobox>
+For å legge til alternativer i select-komponenten bruk <span class="highlight">options</span>-attributtet.
+
+<span class="highlight">Option</span> er en generisk type der T beskriver typen til <span class="highlight">value</span>. String er standard typen, men du kan også bruke objekter, array, eller tallene. Typen består av:
+
+- <span class="highlight">value</span> - kan være string, tall, objekt, array og er den faktiske verdien som returneres.
+- <span class="highlight">id</span> - er en unik identifikator som brukes internt til referanser, fokus og ARIA-koblinger.
+- <span class="highlight">label</span> - er teksten som vises i nedtrekksmenyen.
+- <span class="highlight">textLabel</span> - alternativ teksten som vises i inputfeltet.
+
+```js
+type Option<T = string> = {
+  id: string;
+  value: T;
+  label: string;
+  textLabel?: string;
+};
 ```
 
-</CodeExamplePreview>
+Typen kan importeres slik:
+
+```js
+import type { Option } from 'nve-designsystem/components/nve-combobox/nve-combobox.component.js';
+```
+
+Eksempel på bruk:
+
+```js
+ const options: Option[] = [
+  {
+   value:"ek",
+   id: "ek",
+   label: "EK"
+  }
+ ]
+
+ const optionsWithObject: Option<{name: string, surname:string}>[] = [
+  {
+   value: {
+    name: "Ola",
+    surname: "Norman"
+   },
+   id: "12345",
+   label: "Ola Norman"
+  }
+ ]
+```
+
+<br />
+
+<nve-message-card variant="primary" label="Info" size="compact">
+<p><b>Options</b>-attributtet fjernes fra DOM-en etter innlasting, og verdien lagres i en intern tilstand i comboboxen. Dette gjøres for å hindre at DOM-en fylles opp med unødvendig data.</p>
+</nve-message-card>
+
+Alle valgte alternativer lagres i et intern <span class="highlight">selectedValues</span>-array som returneres via <span class="highlight">change</span>-hendelsen. Hendelsestype kan importers ved:
+
+```js
+import type { NveSelectChangeDetail } from 'nve-designsystem/components/nve-combobox/nve-combobox.component.js';
+```
+
+Den returnerer:
+
+```js
+type NveSelectChangeDetail<T> = {
+  selectedValues: T | T[] | null;
+  changedId: string;
+  action: 'select' | 'deselect';
+}
+```
 
 ## Eksempler
 
-### Begrense antall valgbare verdier
+### Enkeltvalg
 
-Ønsker man at det skal være mulig å bare velge x antall verdier, kan man legge på `max="number"`. I dette tilfellet `1`.
-<CodeExamplePreview>
+Det er en combobox standard.
 
-```html
-  <nve-combobox
-      max="1"
-      options='[{"label":"Hábmer–Hamarøy","value":"1875"},{"label":"Lillestrøm","value":"3205"},{"label":"Lindesnes","value":"4205"},{"label":"Aremark","value":"3124"},{"label":"Hole","value":"3310"},{"label":"Nome","value":"4018"},{"label":"VestreToten","value":"3443"},{"label":"Eigersund","value":"1101"},{"label":"Osterøy","value":"4630"},{"label":"Lyngdal","value":"4225"},{"label":"Stjørdal","value":"5035"},{"label":"Lærdal","value":"4642"},{"label":"Bjerkreim","value":"1114"},{"label":"Raarvikhe–Røyrvik","value":"5043"},{"label":"Marker","value":"3122"},{"label":"Gildeskål","value":"1838"},{"label":"Sunnfjord","value":"4647"},{"label":"Stryn","value":"4651"},{"label":"Storfjord-Omasvuotna-Omasvuono","value":"5538"},{"label":"Øygarden","value":"4626"},{"label":"Måsøy","value":"5618"},{"label":"Hol","value":"3330"},{"label":"Tokke","value":"4034"},{"label":"Heim","value":"5055"},{"label":"Sykkylven","value":"1528"},{"label":"Nord-Fron","value":"3436"},{"label":"Hyllestad","value":"4637"},{"label":"Våler","value":"3114"},{"label":"Luster","value":"4644"},{"label":"Nord-Odal","value":"3414"},{"label":"Dønna","value":"1827"},{"label":"Tingvoll","value":"1560"},{"label":"Sør-Aurdal","value":"3449"},{"label":"Loppa","value":"5614"},{"label":"Gjerdrum","value":"3230"},{"label":"Hadsel","value":"1866"},{"label":"MidtreGauldal","value":"5027"},{"label":"Moss","value":"3103"},{"label":"Høylandet","value":"5046"},{"label":"Engerdal","value":"3425"},{"label":"Stor-Elvdal","value":"3423"},{"label":"Askvoll","value":"4645"},{"label":"Åmot","value":"3422"},{"label":"Ringebu","value":"3439"},{"label":"Hjartdal","value":"4024"},{"label":"Vik","value":"4639"},{"label":"Kvæfjord","value":"5510"},{"label":"Fjord","value":"1578"},{"label":"Jevnaker","value":"3236"},{"label":"Rælingen","value":"3224"},{"label":"Rennebu","value":"5022"},{"label":"Færder","value":"3911"},{"label":"Larvik","value":"3909"},{"label":"Tønsberg","value":"3905"},{"label":"Vestby","value":"3216"},{"label":"Fredrikstad","value":"3107"},{"label":"Notodden","value":"4005"},{"label":"Sør-Odal","value":"3415"},{"label":"Kvinesdal","value":"4227"},{"label":"HerøyiMøreogRomsdal","value":"1515"},{"label":"Sørfold","value":"1845"},{"label":"BøiNordland","value":"1867"},{"label":"Rakkestad","value":"3120"},{"label":"Vang","value":"3454"},{"label":"Hamar","value":"3403"},{"label":"Svalbard","value":"2100"},{"label":"Snåase–Snåsa","value":"5041"},{"label":"Haugesund","value":"1106"},{"label":"Ringerike","value":"3305"},{"label":"Målselv","value":"5524"},{"label":"Vanylven","value":"1511"},{"label":"Hustadvika","value":"1579"},{"label":"Birkenes","value":"4216"},{"label":"Røst","value":"1856"},{"label":"ØystreSlidre","value":"3453"},{"label":"Hvaler","value":"3110"},{"label":"Bindal","value":"1811"},{"label":"Lillehammer","value":"3405"},{"label":"Verdal","value":"5038"},{"label":"Aurland","value":"4641"},{"label":"JanMayen","value":"2211"},{"label":"Gjesdal","value":"1122"},{"label":"Nesbyen","value":"3322"},{"label":"Vega","value":"1815"},{"label":"Porsanger-Porsáŋgu-Porsanki","value":"5622"},{"label":"Trysil","value":"3421"},{"label":"Porsgrunn","value":"4001"},{"label":"Bardu","value":"5520"},{"label":"EvjeogHornnes","value":"4219"},{"label":"Gáivuotna-Kåfjord-Kaivuono","value":"5540"},{"label":"Grimstad","value":"4202"},{"label":"Kviteseid","value":"4028"},{"label":"Folldal","value":"3429"},{"label":"Oppdal","value":"5021"},{"label":"Voss","value":"4621"},{"label":"Grong","value":"5045"},{"label":"Årdal","value":"4643"},{"label":"Suldal","value":"1134"},{"label":"Nannestad","value":"3238"},{"label":"Sunndal","value":"1563"},{"label":"Fitjar","value":"4615"},{"label":"Sogndal","value":"4640"},{"label":"Gjemnes","value":"1557"},{"label":"Etnedal","value":"3450"},{"label":"Gratangen","value":"5516"},{"label":"Kvænangen","value":"5546"},{"label":"Enebakk","value":"3220"},{"label":"Ulstein","value":"1516"},{"label":"Grue","value":"3417"},{"label":"Midt-Telemark","value":"4020"},{"label":"Siljan","value":"4010"},{"label":"Masfjorden","value":"4634"},{"label":"Samnanger","value":"4623"},{"label":"Øyer","value":"3440"},{"label":"Fauske–Fuossko","value":"1841"},{"label":"Vågå","value":"3435"},{"label":"Ås","value":"3218"},{"label":"Lierne","value":"5042"},{"label":"Øksnes","value":"1868"},{"label":"Andøy","value":"1871"},{"label":"Klepp","value":"1120"},{"label":"Surnadal","value":"1566"},{"label":"Salangen","value":"5522"},{"label":"Flakstad","value":"1859"},{"label":"Hurdal","value":"3242"},{"label":"Skjåk","value":"3433"},{"label":"Lebesby","value":"5624"},{"label":"Gol","value":"3324"},{"label":"Melhus","value":"5028"},{"label":"Fyresdal","value":"4032"},{"label":"Flekkefjord","value":"4207"},{"label":"Overhalla","value":"5047"},{"label":"Unjárga-Nesseby","value":"5636"},{"label":"Solund","value":"4636"},{"label":"Tysvær","value":"1146"},{"label":"Seljord","value":"4022"},{"label":"Time","value":"1121"},{"label":"Værøy","value":"1857"},{"label":"SøndreLand","value":"3447"},{"label":"Nærøysund","value":"5060"},{"label":"Sortland–Suortá","value":"1870"},{"label":"Eidfjord","value":"4619"},{"label":"NordreFollo","value":"3207"},{"label":"Steigen","value":"1848"},{"label":"Leirfjord","value":"1822"},{"label":"Vindafjord","value":"1160"},{"label":"Vevelstad","value":"1816"},{"label":"Fjaler","value":"4646"},{"label":"IndreFosen","value":"5054"},{"label":"Gjøvik","value":"3407"},{"label":"Hemnes","value":"1832"},{"label":"Hasvik","value":"5616"},{"label":"Kristiansund","value":"1505"},{"label":"Aukra","value":"1547"},{"label":"Frogn","value":"3214"},{"label":"Sola","value":"1124"},{"label":"Bokn","value":"1145"},{"label":"Stavanger","value":"1103"},{"label":"Hitra","value":"5056"},{"label":"Molde","value":"1506"},{"label":"Hå","value":"1119"},{"label":"Lunner","value":"3234"},{"label":"Giske","value":"1532"},{"label":"ØstreToten","value":"3442"},{"label":"Vaksdal","value":"4628"},{"label":"Sirdal","value":"4228"},{"label":"Bygland","value":"4220"},{"label":"Bykle","value":"4222"},{"label":"Alvdal","value":"3428"},{"label":"Ullensaker","value":"3209"},{"label":"Tynset","value":"3427"},{"label":"Karmøy","value":"1149"},{"label":"Saltdal","value":"1840"},{"label":"Stord","value":"4614"},{"label":"Haram","value":"1580"},{"label":"Holmestrand","value":"3903"},{"label":"Nissedal","value":"4030"},{"label":"Oslo","value":"0301"},{"label":"Rosse–Røros","value":"5025"},{"label":"Eidskog","value":"3416"},{"label":"Frosta","value":"5036"},{"label":"Vennesla","value":"4223"},{"label":"Flatanger","value":"5049"},{"label":"Modalen","value":"4629"},{"label":"Bergen","value":"4601"},{"label":"Ørland","value":"5057"},{"label":"Nes","value":"3228"},{"label":"Nittedal","value":"3232"},{"label":"Gran","value":"3446"},{"label":"Kvam","value":"4622"},{"label":"Utsira","value":"1151"},{"label":"Randaberg","value":"1127"},{"label":"Evenes–Evenášši","value":"1853"},{"label":"Åfjord","value":"5058"},{"label":"Rauma","value":"1539"},{"label":"Askøy","value":"4627"},{"label":"Ringsaker","value":"3411"},{"label":"Rindal","value":"5061"},{"label":"Osen","value":"5020"},{"label":"Nordreisa-Ráisa-Raisi","value":"5544"},{"label":"Vefsn","value":"1824"},{"label":"Rendalen","value":"3424"},{"label":"Arendal","value":"4203"},{"label":"Kongsvinger","value":"3401"},{"label":"Kvinnherad","value":"4617"},{"label":"Skaun","value":"5029"},{"label":"Grane","value":"1825"},{"label":"Austevoll","value":"4625"},{"label":"Ibestad","value":"5514"},{"label":"Meløy","value":"1837"},{"label":"Stad","value":"4649"},{"label":"Levanger","value":"5037"},{"label":"Bømlo","value":"4613"},{"label":"Nordkapp","value":"5620"},{"label":"Fedje","value":"4633"},{"label":"Hemsedal","value":"3326"},{"label":"Båtsfjord","value":"5632"},{"label":"Lurøy","value":"1834"},{"label":"Tvedestrand","value":"4213"},{"label":"Austrheim","value":"4632"},{"label":"Inderøy","value":"5053"},{"label":"Selbu","value":"5032"},{"label":"Risør","value":"4201"},{"label":"Lier","value":"3312"},{"label":"Tysnes","value":"4616"},{"label":"Hareid","value":"1517"},{"label":"Alver","value":"4631"},{"label":"Sel","value":"3437"},{"label":"Drangedal","value":"4016"},{"label":"Sarpsborg","value":"3105"},{"label":"Ålesund","value":"1508"},{"label":"Farsund","value":"4206"},{"label":"Gamvik","value":"5626"},{"label":"Tjeldsund-Dielddanuorri","value":"5512"},{"label":"Tromsø","value":"5501"},{"label":"Smøla","value":"1573"},{"label":"Lyngen","value":"5536"},{"label":"Dovre","value":"3431"},{"label":"Vestnes","value":"1535"},{"label":"Ål","value":"3328"},{"label":"Os","value":"3430"},{"label":"Sveio","value":"4612"},{"label":"Asker","value":"3203"},{"label":"Rødøy","value":"1836"},{"label":"VestreSlidre","value":"3452"},{"label":"Frøya","value":"5014"},{"label":"Høyanger","value":"4638"},{"label":"HerøyiNordland","value":"1818"},{"label":"ØvreEiker","value":"3314"},{"label":"Vinje","value":"4036"},{"label":"Sørreisa","value":"5526"},{"label":"Sømna","value":"1812"},{"label":"Nesna","value":"1828"},{"label":"Namsos–Nåavmesjenjaelmie","value":"5007"},{"label":"Tinn","value":"4026"},{"label":"Råde","value":"3112"},{"label":"Kragerø","value":"4014"},{"label":"Brønnøy","value":"1813"},{"label":"Averøy","value":"1554"},{"label":"Elverum","value":"3420"},{"label":"Gloppen","value":"4650"},{"label":"Vegårshei","value":"4212"},{"label":"Halden","value":"3101"},{"label":"Flesberg","value":"3334"},{"label":"Lund","value":"1112"},{"label":"Bodø","value":"1804"},{"label":"Nesodden","value":"3212"},{"label":"Sokndal","value":"1111"},{"label":"Rollag","value":"3336"},{"label":"Løten","value":"3412"},{"label":"Kinn","value":"4602"},{"label":"Sør-Fron","value":"3438"},{"label":"Krødsherad","value":"3318"},{"label":"Drammen","value":"3301"},{"label":"Vardø","value":"5634"},{"label":"Sør-Varanger","value":"5605"},{"label":"Loabák-Lavangen","value":"5518"},{"label":"Sauda","value":"1135"},{"label":"Bamble","value":"4012"},{"label":"Moskenes","value":"1874"},{"label":"Horten","value":"3901"},{"label":"Deatnu-Tana","value":"5628"},{"label":"Aurskog-Høland","value":"3226"},{"label":"Skien","value":"4003"},{"label":"Dyrøy","value":"5528"},{"label":"Malvik","value":"5031"},{"label":"Bjørnafjorden","value":"4624"},{"label":"Lesja","value":"3432"},{"label":"Guovdageaidnu-Kautokeino","value":"5612"},{"label":"Balsfjord","value":"5532"},{"label":"Kristiansand","value":"4204"},{"label":"Senja","value":"5530"},{"label":"Hjelmeland","value":"1133"},{"label":"Alstahaug","value":"1820"},{"label":"Aarborte–Hattfjelldal","value":"1826"},{"label":"Ullensvang","value":"4618"},{"label":"Gulen","value":"4635"},{"label":"Ulvik","value":"4620"},{"label":"SandeiMøreogRomsdal","value":"1514"},{"label":"Åmli","value":"4217"},{"label":"VåleriInnlandet","value":"3419"},{"label":"Sula","value":"1531"},{"label":"Kvitsøy","value":"1144"},{"label":"Steinkjer","value":"5006"},{"label":"Karlsøy","value":"5534"},{"label":"Lødingen","value":"1851"},{"label":"Leka","value":"5052"},{"label":"Valle","value":"4221"},{"label":"Namsskogan","value":"5044"},{"label":"Tolga","value":"3426"},{"label":"Vadsø","value":"5607"},{"label":"Sigdal","value":"3332"},{"label":"Tydal","value":"5033"},{"label":"Flå","value":"3320"},{"label":"Lørenskog","value":"3222"},{"label":"Kárášjohka-Karasjok","value":"5610"},{"label":"Meråker","value":"5034"},{"label":"Iveland","value":"4218"},{"label":"Hægebostad","value":"4226"},{"label":"Træna","value":"1835"},{"label":"Alta","value":"5601"},{"label":"Gjerstad","value":"4211"},{"label":"Berlevåg","value":"5630"},{"label":"Volda","value":"1577"},{"label":"Aure","value":"1576"},{"label":"Narvik","value":"1806"},{"label":"Sandnes","value":"1108"},{"label":"Strand","value":"1130"},{"label":"NoreogUvdal","value":"3338"},{"label":"Skiptvet","value":"3116"},{"label":"Kongsberg","value":"3303"},{"label":"Gausdal","value":"3441"},{"label":"Nord-Aurdal","value":"3451"},{"label":"Modum","value":"3316"},{"label":"Bremanger","value":"4648"},{"label":"Beiarn","value":"1839"},{"label":"Eidsvoll","value":"3240"},{"label":"NordreLand","value":"3448"},{"label":"Rana","value":"1833"},{"label":"Trondheim–Tråante","value":"5001"},{"label":"Stranda","value":"1525"},{"label":"Lom","value":"3434"},{"label":"Åseral","value":"4224"},{"label":"Vestvågøy","value":"1860"},{"label":"Froland","value":"4214"},{"label":"Sandefjord","value":"3907"},{"label":"Harstad-Hárstták","value":"5503"},{"label":"Orkland","value":"5059"},{"label":"Stange","value":"3413"},{"label":"Bærum","value":"3201"},{"label":"Ørsta","value":"1520"},{"label":"Lillesand","value":"4215"},{"label":"Holtålen","value":"5026"},{"label":"Vågan","value":"1865"},{"label":"Skjervøy","value":"5542"},{"label":"Etne","value":"4611"},{"label":"IndreØstfold","value":"3118"},{"label":"Hammerfest-Hámmerfeasta","value":"5603"},{"label":"Åsnes","value":"3418"}]''
-  ></nve-combobox>
+<nve-message-card variant="primary" label="Tastaturnavigasjon" size="compact">
+<p><b>Tastaturnavigasjon i combobox</b></p>
+<ul>
+  <li><b>Pil ned</b> – Åpner listeboksen hvis den er lukket, uten å flytte fokus ut av feltet. Setter visuell fokus på første element eller sist fokusert element.</li>
+  <li><b>Pil opp</b> – Åpner listeboksen hvis den er lukket, uten å flytte fokus ut av feltet. Setter visuell fokus på siste element eller sist fokusert element.</li>
+  <li><b>Escape</b> – Lukker listeboksen hvis den er åpen. Beholder gjeldende verdi i feltet.</li>
+  <li><b>Enter / Mellomrom</b> – Hvis listeboksen er lukket, åpner den. Hvis et alternativ er aktivt, velger (eller fjerner) det aktive alternativet og lukker listen.</li>
+  <li><b>Skrivbare tegn</b> – Åpner listeboksen (hvis lukket) og flytter visuell fokus til første alternativ som matcher det du skriver. Skriver du flere tegn raskt etter hverandre, søker den på hele teksten. Skriver du samme tegn flere ganger, hopper den mellom alternativer som starter med dette tegnet.</li>
+  <li><b>Home</b> – Åpner listeboksen og flytter visuell fokus til første alternativ.</li>
+  <li><b>End</b> – Åpner listeboksen og flytter visuell fokus til siste alternativ.</li>
+  <li><b>Tab</b> – Lukker listeboksen og flytter fokus videre til neste fokusbare element i skjemaet.</li>
+</ul>
+</nve-message-card>
 
-```
-
-</CodeExamplePreview>
-
-### Disabled
-
-Bruk attributtet `disabled` for å hindre muligheten for å endre verdier.
 <CodeExamplePreview>
 
 ```html
 <nve-combobox
+  id="nve-avdeling-1"
+  label="Velg en avdeling"
+  options='[ 
+    { "value":"rme","id": "rme","label": "RME asd asd asd asdojn askldnakljdn ka snd kaksjdh akjsdh akshd kasdhkaj sdh kjashd kashdkjahsdkj ahds kajhsd kajshd kajsdh" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Enkeltvalg og redigerbar input
+
+For a vise en enkeltvalg med redigerbar input bruk <span class="highlight">editable</span>
+
+<nve-message-card variant="primary" label="Tastaturnavigasjon" size="compact">
+  <p><b>Tastaturnavigasjon i combobox</b></p>
+  <p>Samme som i <a href="#enkeltvalg">enkeltvalg</a>, bortsett fra hvordan <b>skrivbare tegn</b> håndteres.</p>
+  <p>Skrivbare tegn vises med én gang i input-feltet, og brukes til å filtrere listen slik at kun alternativer som inneholder skrevet tekst vises. I tillegg når man valgte en verdi og så trykker pa pilen ned, skal visuelt teksten forsvinne slik at hele listen vises igjen. Klikker man tab eller esc skal valgte verdi vises i tekst feltet igjen.</p>
+</nve-message-card>
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-1"
+  label="Velg en avdeling"
+  editable
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Flervalg
+
+Bruk <span class="highlight">multiple</span> for å kunne velge flere alternativer. Valgte alternativer vises i combobox‑feltet som tags (implementert som button‑elementer).
+
+  <nve-message-card variant="primary" label="aria-label i tag-knapp" size="compact">
+    <p><b>aria-label</b> på tag-knappen er som standard «Slett» + ledeteksten til alternativet som fjernes. Du kan kun overskrive den første delen av teksten (for eksempel «Fjern» i stedet for «Slett»). Selve ledeteksten for alternativet leses alltid opp til slutt. Velg derfor ord som gir mening i sammenheng, og vurder å overskrive teksten dersom du bruker et annet språk enn norsk.</p>
+  </nve-message-card>
+
+Når du klikker på en tag, fjernes det tilhørende alternativet fra de valgte verdiene. Det samme kan gjøres med tastatur når fokus er i combobox‑feltet ved å bruke Backspace. Du kan også bruke venstre og høyre piltast for å navigere mellom tags og fjerne dem med enten Backspace eller Enter.
+
+<nve-message-card variant="primary" label="Tastaturnavigasjon" size="compact">
+<p><b>Tastaturnavigasjon i combobox</b></p>
+<ul>
+  <li><b>Pil ned</b> – Åpner listeboksen hvis den er lukket, uten å flytte fokus ut av feltet. Setter visuell fokus på første element eller sist fokusert element.</li>
+  <li><b>Pil opp</b> – Åpner listeboksen hvis den er lukket, uten å flytte fokus ut av feltet. Setter visuell fokus på siste element eller sist fokusert element.</li>
+  <li><b>Pil venstre</b> – Når listeboksen er åpen og det finnes valgte tags, lukkes listeboksen og fokus flyttes til den siste tag‑knappen i comboboxen. Hvert nye trykk på pil venstre flytter fokus til forrige tag.</li>
+  <li><b>Pil høyre</b> – Når fokus står på en tag, flytter pil høyre fokus til neste tag. Hvis fokus står på den siste tag‑knappen, flyttes fokus tilbake til input‑feltet.</li>
+  <li><b>Escape</b> – Lukker listeboksen hvis den er åpen. Beholder gjeldende verdi i feltet.</li>
+  <li><b>Enter / Mellomrom</b> – Hvis listeboksen er lukket, åpner den. Hvis et alternativ er aktivt, velger (eller fjerner) det aktive alternativet. Tag med valgte verdi i comboboxen vises. Hvis klikket på tag-knappen, slettes den.</li>
+  <li><b>Backspace</b> – Når den trykkes mens fokus står i listen, lukkes listeboksen og fokus flyttes til den siste valgte tag‑knappen. Neste trykk på Backspace sletter taggen og flytter fokus på den neste siste taggen.</li>
+  <li><b>Skrivbare tegn</b> – Åpner listeboksen (hvis lukket) og flytter visuell fokus til første alternativ som matcher det du skriver. Skriver du flere tegn raskt etter hverandre, søker den på hele teksten. Skriver du samme tegn flere ganger, hopper den mellom alternativer som starter med dette tegnet.</li>
+  <li><b>Home</b> – Åpner listeboksen og flytter visuell fokus til første alternativ.</li>
+  <li><b>End</b> – Åpner listeboksen og flytter visuell fokus til siste alternativ.</li>
+  <li><b>Tab</b> – Lukker listeboksen og flytter fokus videre til neste fokusbare element i skjemaet.</li>
+</ul>
+</nve-message-card>
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-3"
+  label="Velg en avdeling"
+  multiple
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Flervalg og redigerbar input
+
+Akkurat som i enkeltvalg comboboxen kan man skrive inn i input feltet nar man bruker <span class="highlight">editable</span>-attributtet. Input felt vises etter taggene.
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-4"
+  label="Velg en avdeling"
+  multiple
+  editable
+  options='[
+    { "value":"rme","id": "rme","label": "RME-test with very long titles" },
+    { "value":"ek","id": "ek","label": "EK-test with very long titles" },
+    { "value":"tb","id": "tb","label": "TB-test with very long titles" },
+    { "value":"h","id": "h","label": "H-test with very long titles" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Ledetekst og tooltip
+
+Bruk <span class="highlight">label</span> for å vise en tydelig ledetekst for feltet. Attributtet er påkrevd – hvert skjemafelt skal ha en ledetekst som skjermlesere kan bruke for å forstå hva feltet gjelder.
+
+Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende informasjon ved ledeteksten. Innholdet kan være ren tekst eller HTML, for eksempel lenker eller formattert hjelpetekst.
+
+<nve-message-card variant="warning" label="Ikke bruke egne ledetekster" size="compact">
+<p>Med web components er det foreløpig ikke mulig å koble en ekstern ledetekst (som ikke eksiterer i samme Shadow root som komponent du skal koble den med) i nve-combobox slik at den gir mening fra tilgjengelighets perspektiv. Bruk gjerne label property i stedet.</p>
+</nve-message-card>
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-22"
+  label="Velg en avdeling"
+  tooltip="Velg avdeling"
+  editable
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Alternativ tekst i inputfeltet
+
+Bruk <span class="highlight">textLabel</span> i options-arrayet for å vise en annen ledetekst i inputfeltet enn den som vises
+i listen (neddtrekksmenyen).
+
+<nve-message-card variant="warning" label="Vær oppmerksom!" size="compact">
+  <p>
+    <b>textLabel</b> bør ha tydelig sammenheng med <b>label</b> i listen.
+    Du kan gjerne bruke en kortere variant i inputfeltet (f.eks. «RME»), men behold samme mening som i nedtrekksmenyen
+    (f.eks. «RME (NVE)»), slik at brukere (inkl. skjermleserbrukere) forstår at det er samme alternativ.
+  </p>
+</nve-message-card>
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-22"
+  label="Velg en avdeling"
+  tooltip="Velg avdeling"
+  editable
+  options='[
+    { "value":"rme","id": "rme","label": "RME (NVE)", "textLabel": "RME"  },
+    { "value":"ek","id": "ek","label": "EK (NVE)", "textLabel": "EK" },
+    { "value":"tb","id": "tb","label": "TB (NVE)", "textLabel": "TB" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Endre list høyden
+
+Som standard har listen en maksimal høyde på 220px. Dette kan justeres ved behov ved å bruke CSS‑variabelen <span class="highlight">--listbox-max-height</span> på <span class="highlight">nve-combobox</span>.
+
+### Fjern alle knapp
+
+Bruk <span class="highlight">clearable</span> for å vise en knapp i combobox‑feltet som fjerner alle valgte verdier (vises etter man har valgt minst en verdi).
+Et klikk på fjern-knappen sender også en <span class="highlight">change</span>-hendelse med et tomt array av verdier.
+
+<nve-message-card variant="warning" label="Obs!" size="compact">
+<p>Fjern‑knappen er ikke fokuserbar med tastatur. Dette er et bevisst valg: i enkeltvalg‑varianten skal det ikke være egne knapper inne i feltet. I flervalg kan brukeren navigere mellom tags med piltaster, men det er ikke forventet at fjern‑knappen skal ha eget tastaturfokus i enkeltvalg.</p>
+</nve-message-card>
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-5"
+  label="Velg en avdeling"
+  clearable
+  multiple
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Størrelse
+
+Bruk <span class="highlight">size</span> for å endre størrelsen på combobox‑feltet. Verdien kan være:
+
+- <span class="highlight">large</span>
+- <span class="highlight">medium</span> (standard)
+- <span class="highlight">small</span>
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-6"
+  size="large"
+  label="Velg en avdeling fra stor combobox"
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+
+<nve-combobox
+  id="nve-avdeling-7"
+  label="Velg en avdeling fra medium combobox"
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+
+<nve-combobox
+  id="nve-avdeling-8"
+  size="small"
+  label="Velg en avdeling fra liten combobox"
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Mørk bakgrunn
+
+Bruk <span class="highlight">filled</span> for mørk bakgrunnsfarge
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-9"
+  label="Velg en avdeling"
+  filled
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Hjelptekst
+
+Bruk <span class="highlight">helpText</span> for å vise hjelpetekst over combobox.
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-10"
+  label="Velg en avdeling"
+  helpText="Avdeling velges for å sendes i skjema"
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Hint-tekst
+
+Bruk <span class="highlight">hintText</span> for å vise hint-tekst under combobox.
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-10"
+  label="Velg en avdeling"
+  hintText="Avdeling velges for å sendes i skjema"
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Deaktivert
+
+Bruk attributtet <span class="highlight">disabled</span> for å hindre muligheten for å endre verdier.
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-11"
+  label="Velg en avdeling"
   disabled
-  label="Velg ett dyr"
-  options='[
-        { "label": "Cat", "value": "cat"},
-        { "label": "Dog", "value": "dog" },
-        { "label": "Bird", "value": "bird" },
-        { "label": "Fish", "value": "fish" },
-        { "label": "Rabbit", "value": "rabbit" },
-        { "label": "Horse", "value": "horse" },
-        { "label": "Snake", "value": "snake" },
-        { "label": "Turtle", "value": "turtle" },
-        { "label": "Hamster", "value": "hamster" },
-        { "label": "Frog", "value": "frog" }
-    ]'
-></nve-combobox>
+  options='[{ "value":"rme","id": "rme","label": "RME" }]'
+>
+</nve-combobox>
 ```
 
 </CodeExamplePreview>
 
-### Forhåndsvalgte verdier
+### Skrivebeskyttet
 
-Bruk `selected` på option-objektet for å forhåndsvelge verdier.
+Bruk <span class="highlight">readonly</span> for å stenge mulighet for å endre innholdet.
+
 <CodeExamplePreview>
 
 ```html
 <nve-combobox
-  options='[
-        { "label": "Cat", "value": "cat", "selected":true},
-        { "label": "Dog", "value": "dog" },
-        { "label": "Bird", "value": "bird" },
-        { "label": "Fish", "value": "fish" },
-        { "label": "Rabbit", "value": "rabbit","selected":true },
-        { "label": "Horse", "value": "horse" },
-        { "label": "Snake", "value": "snake" },
-        { "label": "Turtle", "value": "turtle" },
-        { "label": "Hamster", "value": "hamster" },
-        { "label": "Frog", "value": "frog" }
-    ]'
-></nve-combobox>
-```
-
-</CodeExamplePreview>
-
-### Validering
-
-Bruk attributtet `required` for å gjøre komponenten påkrevd, legg inn en feilmelding i `errorMessage` om du ikke vil ha standard-feilmeldingen.
-Bruk attributtet `requiredlabel` hvis du vil vise noe annet enn \*Obligatorisk.
-Bruk min for å sette minimum valgbare alternativer, i dette eksempelet 2. Bruk max for å sette maks valgbare alternativer, i dette eksempelet 3
-`nve-combobox` må ligge i en `<form>` for at validering skal fungere.
-
-<CodeExamplePreview>
-
-```html
-<form onsubmit="event.preventDefault()">
-  <nve-combobox
-    label="Velg to eller tre dyr"
-    required
-    min="2"
-    max="3"
-    errorMessage="Du må minimum velge 2 og maksimalt 3 dyr"
-    options='[
-        { "label": "Cat", "value": "cat"},
-        { "label": "Dog", "value": "dog" },
-        { "label": "Bird", "value": "bird" },
-        { "label": "Fish", "value": "fish" },
-        { "label": "Rabbit", "value": "rabbit" },
-        { "label": "Horse", "value": "horse" },
-        { "label": "Snake", "value": "snake" },
-        { "label": "Turtle", "value": "turtle" },
-        { "label": "Hamster", "value": "hamster" },
-        { "label": "Frog", "value": "frog" }
-    ]'
-  ></nve-combobox
-  ><br />
-  <nve-button type="submit">Lagre</nve-button>
-</form>
-```
-
-</CodeExamplePreview>
-
-### Hjelpetekst
-
-Bruk attributtet `helpText` for å vise tekst under input feltet
-
-<CodeExamplePreview>
-
-```html
-
-  <nve-combobox
-    label="Velg ett dyr"
-    helpText="Velg ditt favorittdyr"
-    options='[
-        { "label": "Cat", "value": "cat"}
-    ]'
-  ></nve-combobox
-
+  id="nve-avdeling-12"
+  label="Velg en avdeling"
+  readonly
+  options='[{ "value":"rme","id": "rme","label": "RME" }]'
+>
+</nve-combobox>
 ```
 
 </CodeExamplePreview>
 
 ### Placeholder
 
+Bruk <span class="highlight">placeholder</span> for å vise en hjelpetekst i feltet når ingen verdi er valgt. Placeholder‑teksten er kun et visuelt hint til brukeren og blir erstattet så snart brukeren har gjort et valg.
+
 <CodeExamplePreview>
 
 ```html
 <nve-combobox
-  size="medium"
-  label="Velg ett dyr"
-  placeholder="Eksempel med placeholder"
+  id="nve-avdeling-13"
+  label="Velg en avdeling"
+  placeholder="Velg"
   options='[
-        { "label": "Cat", "value": "cat" }
-    ]'
-></nve-combobox>
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
 ```
 
 </CodeExamplePreview>
 
-### Filled
+### Påkrevd
 
-Bruk attributtet `filled` for mørkere bakgrunn
+Bruk <span class="highlight">required</span> for å vise et stjernesymbol på slutten av ledeteksten som markerer at feltet er påkrevd.  
+Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forklarende tekst sammen med stjernen (for eksempel 'obligatorisk'). Dette gir brukerne en bedre forståelse av at feltet er påkrevd, siden ikke alle brukere forstår eller oppfatter stjernesymbolet alene.
 
 <CodeExamplePreview>
 
 ```html
 <nve-combobox
-  filled
-  size="medium"
+  id="nve-avdeling-14"
+  label="Velg en avdeling"
+  required
+  requiredLabel="Obligatorisk"
   options='[
-        { "label": "Cat", "value": "cat" }
-    ]'
-></nve-combobox>
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
 ```
 
 </CodeExamplePreview>
 
-### Forskjellige størrelser
+### Begrense antall valgbare verdier
 
-Bruk attributtet `size` for å endre størrelse mellom `small | medium | large.` `medium` er standard.
+Med flervalg kan du også begrense hvor mange verdier som kan velges ved å bruke <span class="highlight">max</span>. Når grensen er nådd, blir reste av alternativene utilgjengelige (aria-disabled).
+
+<nve-message-card variant="warning" label="Vær oppmerksom!" size="compact">
+<p>Bruk <span class="highlight">helpText</span> til å informere brukeren om at det kun kan velges et begrenset antall alternativer (for eksempel «Du kan velge maks 2 alternativer»). Da unngår du at brukeren blir forvirret når valg plutselig blir deaktivert.</p>
+</nve-message-card>
 
 <CodeExamplePreview>
 
 ```html
 <nve-combobox
-  size="small"
-  label="small"
-  options='[{ "label": "Cat", "value": "cat", "selected" : true }]'
-></nve-combobox>
-<nve-combobox
-  label="medium"
-  size="medium"
-  options='[{ "label": "Cat", "value": "cat", "selected" : true }]'
-></nve-combobox>
-<nve-combobox
-  label="large"
-  size="large"
-  options='[{ "label": "Cat", "value": "cat", "selected" : true }]'
-></nve-combobox>
+  id="nve-avdeling-14"
+  label="Velg en avdeling"
+  multiple
+  max="2"
+  helpText="Du kan velge maks 2 alternativer."
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
 ```
 
 </CodeExamplePreview>
+
+### Forhåndsvalgte verdier
+
+Bruk et <span class="highlight">selectedIds</span> string array for å vise forhandsvalgte verdier. Hvis du skal bruke enkeltvalg skal kun en verdi i arrayet sendes. Om id-er i arrayet stemmer ikke med alternativ sine id-er skal de ikke vises.
+<br />
+<nve-message-card variant="primary" label="Info" size="compact">
+
+<p><b>selectedIds</b>-attributtet fjernes fra DOM-en etter innlasting, og verdien lagres i en intern tilstand i comboboxen. Dette gjøres for å hindre at DOM-en fylles opp med unødvendig data.</p>
+</nve-message-card>
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-14"
+  label="Velg en avdeling"
+  multiple
+  selectedIds='["rme", "tb"]'
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+
+<nve-combobox
+  id="nve-avdeling-14"
+  label="Velg en avdeling"
+  selectedIds='["rme"]'
+  options='[
+    { "value":"rme","id": "rme","label": "RME" },
+    { "value":"ek","id": "ek","label": "EK" },
+    { "value":"tb","id": "tb","label": "TB" },
+    { "value":"h","id": "h","label": "H" },
+    { "value":"ikti","id": "ikti","label": "IKTI" },
+    { "value":"sv","id": "sv","label": "SV" },
+    { "value":"v","id": "v","label": "V" }
+     ]'
+>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+## Tilgjengelighet
+
+Denne combobox-komponenten følger WAI-ARIA-mønstrene for [combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) og [listbox](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/), slik de er definert av W3C.
+
+### Fokusstyring og aria-activedescendant
+
+Når brukeren navigerer mellom valg i popupen (listbox), forblir DOM-fokus på inputfeltet i comboboxen. I stedet for å flytte DOM-fokus, bruker komponenten <span class="highlight">aria-activedescendant</span> ([les mer her](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_focus_activedescendant)) til å referere til det aktive elementet.
+
+Dette innebærer:
+
+- Comboboxen beholder DOM-fokus til enhver tid
+- Hjelpeteknologier oppfatter fokusflyt i listen via <span class="highlight">aria-activedescendant</span>
+- Verdien til <span class="highlight">aria-activedescendant</span> peker alltid til ID-en til det aktive elementet
+
+Siden <span class="highlight">aria-activedescendant</span> er avhengig av ID-referanser, må alle interaktive valg være i samme shadow root som comboboxen (derfor brukes <span class="highlight">options-attributtet</span> i stedet for en dedikert option-komponent). Dette sikrer at relasjoner basert på ID fungerer korrekt for hjelpeteknologier.
+
+### Flervalg
+
+For comboboxer med flervalg:
+
+- Når comboboxen får fokus første gang, blir alle valgte verdier lest opp via <span class="highlight">aria-describedby</span>
+- Valgte verdier rendres i en visuelt skjult container (bruker sr-only css-klassen) som inneholder ledetekstene til de valgte elementene
+- Dette gjør at skjermlesere kan lese opp valgte verdier når inputfeltet får fokus
+
+Dette er nødvendig fordi:
+
+- Valgte “tags” ikke er fokuserbare
+- Inputfeltet er det primære fokuserbare elementet
+- Uten dette ville skjermlesere ikke lese opp tidligere valgte verdier
+
+Dette er en midlertidig løsning. Med støtte for internasjonalisering (i18n) vil dette erstattes med enklere meldinger, som for eksempel: "3 elementer valgt".
+
+### Fjerne alle-knapp
+
+Comboboxen kan inneholde en <span class="highlight">clear</span>-knapp plassert etter inputfeltet, som lar brukeren fjerne alle valgte verdier.
+
+Knappen er ikke tilgjengelig via piltaster eller intern tastaturnavigasjon i comboboxen.
+
+Dette er et bevisst valg fordi:
+
+- DOM-fokus holdes på inputfeltet for å sikre korrekt oppførsel med <span class="highlight">aria-activedescendant</span>. Flytting av fokus bort fra inputfeltet vil bryte med comboboxens fokusmodell.
+- Å inkludere knappen i piltastnavigasjon ville bryte med forventet navigasjonsmønster og kunne skape forvirring (siden den er plassert etter input feltet ulik taggene med valge verdier).
+
+Brukere kan fortsatt tømme input manuelt med tastatur (f.eks. Backspace/Delete) eller med mus.
+
+Dette vurderes som en akseptabel avveining, ettersom funksjonaliteten fortsatt er tilgjengelig via tastatur, selv om den ikke er eksponert som en egen fokusbar kontroll.
+
+### Feilhåndtering
+
+Feilmeldinger annonseres ikke med <span class="highlight">aria-live</span>.
+
+Dette er bevisst fordi:
+
+- Feil oppstår vanligvis ved blur eller innsending av skjema
+- I begge tilfeller flyttes fokus bort fra comboboxen
+- Feilmeldingen vil da bli lest naturlig i dokumentets leserekkefølge
+
+Når errorMessage er satt, får inputfeltet i nve-combobox attributtet <span class="highlight">aria-invalid</span>.
+
+### Begrensning av maks antall valg
+
+Når et definert maksantall valg er nådd i en combobox med flervalg, blir alle øvrige valg utilgjengelige.
+
+Dette gjøres ved å sette <span class="highlight">aria-disabled="true"</span> på alle valg som ikke allerede er valgt.
+
+Brukere kan fortsatt navigere mellom alle valg i listen. Valg som er deaktivert blir annonsert som utilgjengelige av skjermlesere.
+
+### Navigasjon i listen
+
+Navigering i listen oppdaterer ikke verdien i inputfeltet.
+
+Dette gjør det mulig for skjermleserbrukere å utforske tilgjengelige valg uten å miste gjeldende verdi.
+
+Gjeldende verdi beholdes når listen lukkes med Escape eller når brukeren lukker listen ved å interagere med inputfeltet
