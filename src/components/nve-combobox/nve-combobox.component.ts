@@ -12,11 +12,13 @@ let id = 0;
  * Representerer et alternativ i select-komponenten.
  * Den har en unik ID, en generisk verdi og en label som vises i UI.
  * ID-en brukes for å identifisere alternativet internt og i selectedIds.
+ * textLabel vises i input-feltet
  */
 export type Option<T = string> = {
   id: string;
   value: T;
   label: string;
+  textLabel?: string;
 };
 
 /**
@@ -206,7 +208,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
     if (!this.multiple) {
       this._selectedIds = [...this._selectedIds, validOptions[0].id];
       this.selectedValues = validOptions[0].value;
-      this.updateDisplayLabel(validOptions[0].label || '');
+      this.updateDisplayLabel(validOptions[0].textLabel || validOptions[0].label || '');
     } else {
       this._selectedIds = validOptions.map((o) => o.id);
       this.selectedValues = validOptions.map((o) => o.value);
@@ -236,6 +238,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
  */
 
   private handleKeydown(e: KeyboardEvent) {
+    if (this.disabled || this.readonly) return;
     switch (e.key) {
       case 'ArrowDown':
         e.preventDefault();
@@ -270,7 +273,9 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
       case 'Tab':
         if (this.expanded) {
           const optionLabel = this._selectedIds[0]
-            ? this._options.find((opt) => opt?.id === this._selectedIds[0])?.label || ''
+            ? this._options.find((opt) => opt?.id === this._selectedIds[0])?.textLabel ||
+              this._options.find((opt) => opt?.id === this._selectedIds[0])?.label ||
+              ''
             : '';
           this.updateDisplayLabel(optionLabel);
           this.closeListbox();
@@ -378,7 +383,11 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
     // hvis søkbar ønsker vi å tilbakestille visningsetiketten til verdien av det valgte alternativet.
     if (this._selectedIds.length) {
       if (!this.multiple) {
-        this.updateDisplayLabel(this._options.find((opt) => opt?.id === this._selectedIds[0])?.label || '');
+        this.updateDisplayLabel(
+          this._options.find((opt) => opt?.id === this._selectedIds[0])?.textLabel ||
+            this._options.find((opt) => opt?.id === this._selectedIds[0])?.label ||
+            ''
+        );
       }
     } else {
       this.updateDisplayLabel('');
@@ -578,7 +587,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
     }
     if (!this.expanded) {
       this.openListbox();
-    } else {
+    } else if (!this.editable) {
       this.closeListbox();
     }
     // hvis man klikker utenfor nativ input men fortsatt i kontrollen så skal vi fokusere input
@@ -711,6 +720,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
     if (!option) return;
 
     const isSelected = this._selectedIds.includes(id);
+    if (this.maxReached && !isSelected) return;
     if (!isSelected) {
       this.selectOption(option);
     } else {
@@ -722,7 +732,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
       this.updateDisplayLabel('');
     }
     if (!this.multiple) {
-      this.updateDisplayLabel(option.label || '');
+      this.updateDisplayLabel(option.textLabel || option.label || '');
       this.closeListbox();
     }
     this.maxReached = this.max ? this._selectedIds.length >= this.max : false;
@@ -803,7 +813,9 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
     if (this && !path.includes(this)) {
       if (this.editable && !this.multiple) {
         const optionLabel = this._selectedIds[0]
-          ? this._options.find((opt) => opt?.id === this._selectedIds[0])?.label || ''
+          ? this._options.find((opt) => opt?.id === this._selectedIds[0])?.textLabel ||
+            this._options.find((opt) => opt?.id === this._selectedIds[0])?.label ||
+            ''
           : '';
         this.updateDisplayLabel(optionLabel);
       }
@@ -877,7 +889,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
       this.visibleOptions = this._options
         .filter((o): o is Option<T> => !!o)
         .filter((option) => {
-          const optionText = option.label || '';
+          const optionText = option.textLabel || option.label || '';
           return optionText.toLowerCase().includes(text.toLowerCase());
         });
     }
@@ -943,7 +955,10 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
       // alle taggene i den usynlige div-en skal ha samme styling som synlige tagene for at målingen skal være korrekt
       const tag = document.createElement('button');
       tag.className = 'combobox__value__tag';
-      tag.textContent = this._options.find((opt) => opt?.id === id)?.label || '';
+      tag.textContent =
+        this._options.find((opt) => opt?.id === id)?.textLabel ||
+        this._options.find((opt) => opt?.id === id)?.label ||
+        '';
       const icon = document.createElement('nve-icon');
       icon.setAttribute('name', 'close');
       icon.setAttribute('aria-hidden', 'true');
@@ -1029,13 +1044,20 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
                           part="tag"
                           class="combobox__value__tag"
                           ?disabled=${this.disabled}
-                          aria-label="${this.removeTagAriaLabel} ${this._options.find((opt) => opt?.id === id)?.label}"
+                          aria-label="${this.removeTagAriaLabel} ${this._options.find((opt) => opt?.id === id)
+                            ?.textLabel ||
+                          this._options.find((opt) => opt?.id === id)?.label ||
+                          ''}"
                           tabindex="-1"
                           data-option-id=${ifDefined(id)}
                           @click=${(e: MouseEvent) => this.handleClickTag(e, id)}
                           @keydown=${(e: KeyboardEvent) => this.handleTagKeydown(e, id)}
                         >
-                          <span>${this._options.find((opt) => opt?.id === id)?.label}</span>
+                          <span
+                            >${this._options.find((opt) => opt?.id === id)?.textLabel ||
+                            this._options.find((opt) => opt?.id === id)?.label ||
+                            ''}</span
+                          >
                           <nve-icon name="close" aria-hidden="true"></nve-icon>
                         </button>`
                     )
@@ -1055,7 +1077,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
               <div class="sr-only" id=${selectedValuesId}>
                 ${this._options
                   .filter((opt) => this._selectedIds.includes(opt.id))
-                  .map((opt) => opt.label)
+                  .map((opt) => opt.textLabel || opt.label || '')
                   .join(', ')}
               </div>
               <input
