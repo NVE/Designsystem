@@ -16,6 +16,7 @@ export { default as NveDialog } from './components/nve-dialog/nve-dialog.compone
 export { default as NveDivider } from './components/nve-divider/nve-divider.component';
 export { default as NveDrawer } from './components/nve-drawer/nve-drawer.component';
 export { default as NveDropdown } from './components/nve-dropdown/nve-dropdown.component';
+export { default as NveHeading } from './components/nve-heading/nve-heading.component';
 export { default as NveIcon } from './components/nve-icon/nve-icon.component';
 export { default as NveInput } from './components/nve-input/nve-input.component';
 export { default as NveLabel } from './components/nve-label/nve-label.component';
@@ -25,6 +26,7 @@ export { default as NveMenuItem } from './components/nve-menu-item/nve-menu-item
 export { default as NveMessageCard } from './components/nve-message-card/nve-message-card.component';
 export { default as NveNavigationCard } from './components/nve-navigation-card/nve-navigation-card.component';
 export { default as NveOption } from './components/nve-option/nve-option.component';
+export { default as NveParagraph } from './components/nve-paragraph/nve-paragraph.component';
 export { default as NvePopup } from './components/nve-popup/nve-popup.component';
 export { default as NveRadio } from './components/nve-radio/nve-radio.component';
 export { default as NveRadioButton } from './components/nve-radio-button/nve-radio-button.component';
