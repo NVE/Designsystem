@@ -216,23 +216,30 @@ export default css`
   /* Deaktivert */
   .button--disabled {
     cursor: not-allowed;
-    opacity: 0.38;
   }
 
   .button--primary.button--disabled {
     --_button-background: var(--color-interactive-background-primary-disabled);
+    --_button-color: var(--color-interactive-foreground-primary-disabled);
   }
 
   .button--secondary.button--disabled {
     --_button-background: var(--color-interactive-background-secondary-disabled);
+    --_button-color: var(--color-interactive-foreground-secondary-disabled);
   }
 
   .button--tertiary.button--disabled {
     --_button-border-color: var(--color-interactive-border-secondary-disabled);
+    --_button-color: var(--color-interactive-foreground-secondary-disabled);
+  }
+
+  .button--ghost.button--disabled {
+    --_button-color: var(--color-interactive-foreground-secondary-disabled);
   }
 
   .button--danger.button--disabled {
     --_button-background: var(--color-interactive-background-danger-disabled);
+    --_button-color: var(--color-interactive-foreground-danger-disabled);
   }
 
   /* Lastende */
