@@ -83,9 +83,8 @@ export default css`
     margin: 0;
   }
 
-  .dialog__title::before {
-    font-family: 'Material Symbols Sharp';
-    content: var(--title-icon);
+  .dialog__title-icon {
+    flex-shrink: 0;
   }
 
   .dialog__header-actions {
@@ -96,6 +95,13 @@ export default css`
     align-items: center;
     gap: var(--sl-spacing-2x-small, 0.25rem);
     padding: 0 var(--header-spacing);
+  }
+
+  .dialog__header-actions ::slotted(nve-button) {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    font-size: var(--sl-font-size-medium, 1rem);
   }
 
   .dialog__close {

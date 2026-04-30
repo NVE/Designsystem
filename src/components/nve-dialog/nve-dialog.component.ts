@@ -6,21 +6,22 @@ import '../nve-icon/nve-icon.component';
 import styles from './nve-dialog.styles';
 
 /**
- * En dialogboks som bruker native &lt;dialog&gt;-element.
+ * En dialogboks som bruker native dialog-element.
  * Vil du ha ikon foran overskriften, bruk `icon`.
  * Skal det ikke være mulig å trykke utenfor for å lukke dialogen, bruk `disableBackground`.
+ *
+ * Bruker native dialog-API:
+ * - `cancel`-event fra Escape-tasten (kan forhindres med `preventDefault()`)
+ * - `close`-event når dialogen lukkes (fra `dialog.close()`)
+ * - `showModal()` viser dialogen
  *
  * @slot label - teksten som skal vises i overskriften. Eller du kan bruke label-attributtet
  * @slot - hovedinnholdet (body)
  * @slot footer - feltet i bunnen hvor knappene er plassert
  * @slot header-actions - valgfrie handlinger i headeren
  *
- * @event sl-show - Når dialogen åpner
- * @event sl-after-show - Etter dialogen er åpnet og animasjoner er ferdig
- * @event sl-hide - Når dialogen lukkes
- * @event sl-after-hide - Etter dialogen er lukket og animasjoner er ferdig
- * @event {{ source: 'close-button' | 'keyboard' | 'overlay' }} sl-request-close - Når brukeren prøver å lukke dialogen
- * @event sl-initial-focus - Når dialogen er klar for fokus
+ * @event cancel - Når brukeren trykker Escape. Kan forhindres med `preventDefault()`
+ * @event close - Når dialogen lukkes (fra `dialog.close()`)
  *
  * @csspart base - Dialog-elementet
  * @csspart overlay - Overlegget bak dialogen
@@ -81,7 +82,6 @@ export default class NveDialog extends LitElement implements INveComponent {
         this.doClose();
       }
     }
-    this.updateIcon();
   }
 
   /** Viser dialogen. */
@@ -99,21 +99,10 @@ export default class NveDialog extends LitElement implements INveComponent {
   private doOpen() {
     if (!this.dialogEl || this.dialogEl.open) return;
 
-    this.emit('sl-show');
     this.originalTrigger = document.activeElement as HTMLElement;
     this.dialogEl.showModal();
 
-    requestAnimationFrame(() => {
-      const initialFocusEvent = this.emit('sl-initial-focus', { cancelable: true });
-      if (!initialFocusEvent.defaultPrevented) {
-        const autofocusTarget = this.querySelector('[autofocus]') as HTMLElement | null;
-        if (autofocusTarget) {
-          autofocusTarget.focus({ preventScroll: true });
-        }
-      }
-    });
-
-    const panelAnimation = this.panelEl?.animate?.(
+    this.panelEl?.animate?.(
       [
         { opacity: 0, transform: 'scale(0.8)' },
         { opacity: 1, transform: 'scale(1)' },
@@ -126,18 +115,10 @@ export default class NveDialog extends LitElement implements INveComponent {
       easing: 'ease',
       fill: 'forwards',
     });
-
-    if (panelAnimation) {
-      panelAnimation.finished.then(() => this.emit('sl-after-show'));
-    } else {
-      this.emit('sl-after-show');
-    }
   }
 
   private async doClose() {
     if (!this.dialogEl || !this.dialogEl.open) return;
-
-    this.emit('sl-hide');
 
     const panelAnimation = this.panelEl?.animate?.(
       [
@@ -162,62 +143,25 @@ export default class NveDialog extends LitElement implements INveComponent {
     if (typeof this.originalTrigger?.focus === 'function') {
       setTimeout(() => this.originalTrigger!.focus());
     }
-
-    this.emit('sl-after-hide');
   }
 
-  /** Forhindrer native Escape-lukking, håndterer det via requestClose */
+  /** Forhindrer native Escape-lukking slik at vi kan animere før lukking */
   private handleCancel = (event: Event) => {
     event.preventDefault();
-    this.requestClose('keyboard');
+    this.hide();
   };
 
   /** Håndterer klikk på overlegget */
   private handleOverlayClick = () => {
-    this.requestClose('overlay');
-  };
-
-  private requestClose(source: 'close-button' | 'keyboard' | 'overlay') {
-    const event = this.emit('sl-request-close', {
-      cancelable: true,
-      detail: { source },
-    });
-
-    const denied = event.defaultPrevented || (this.disableBackground && source === 'overlay');
-
-    if (denied) {
-      this.panelEl?.animate?.([{ transform: 'scale(1)' }, { transform: 'scale(1.02)' }, { transform: 'scale(1)' }], {
-        duration: 250,
-      });
-      return;
+    if (!this.disableBackground) {
+      this.hide();
     }
-
-    this.hide();
-  }
-
-  private emit(name: string, options?: { cancelable?: boolean; detail?: unknown }): CustomEvent {
-    const event = new CustomEvent(name, {
-      bubbles: true,
-      composed: true,
-      cancelable: options?.cancelable ?? false,
-      detail: options?.detail,
-    });
-    this.dispatchEvent(event);
-    return event;
-  }
+  };
 
   private handleFooterSlotChange = (event: Event) => {
     const slot = event.target as HTMLSlotElement;
     this.hasFooter = slot.assignedNodes({ flatten: true }).length > 0;
   };
-
-  updateIcon() {
-    const titleElement = this.shadowRoot?.querySelector('.dialog__title');
-    if (titleElement instanceof HTMLElement) {
-      const iconContent = this.icon ? `"${this.icon}"` : null;
-      titleElement.style.setProperty('--title-icon', iconContent);
-    }
-  }
 
   private renderHeader() {
     if (this.noHeader) return nothing;
@@ -225,16 +169,12 @@ export default class NveDialog extends LitElement implements INveComponent {
     return html`
       <header part="header" class="dialog__header">
         <h2 part="title" class="dialog__title" id="title">
+          ${this.icon ? html`<nve-icon name=${this.icon} class="dialog__title-icon"></nve-icon>` : nothing}
           <slot name="label"> ${this.label.length > 0 ? this.label : String.fromCharCode(65279)} </slot>
         </h2>
         <div part="header-actions" class="dialog__header-actions">
           <slot name="header-actions"></slot>
-          <button
-            part="close-button"
-            class="dialog__close"
-            aria-label="Lukk"
-            @click=${() => this.requestClose('close-button')}
-          >
+          <button part="close-button" class="dialog__close" aria-label="Lukk" @click=${() => this.hide()}>
             <nve-icon name="close"></nve-icon>
           </button>
         </div>

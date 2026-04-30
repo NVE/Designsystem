@@ -1,4 +1,4 @@
-import { describe, it, expect, afterAll, vi } from 'vitest';
+import { describe, it, expect, afterAll } from 'vitest';
 import { fixture, fixtureCleanup } from '@open-wc/testing';
 import { html } from 'lit';
 import NveDialog from './nve-dialog.component';
@@ -67,51 +67,24 @@ describe('nve-dialog', () => {
     expect(el.open).toBe(false);
   });
 
-  it('emits sl-show when opening', async () => {
-    const el = await fixture<NveDialog>(html`<nve-dialog label="Test"></nve-dialog>`);
-    const handler = vi.fn();
-    el.addEventListener('sl-show', handler);
-    await el.show();
-    await nextFrame();
-    expect(handler).toHaveBeenCalledTimes(1);
-  });
-
-  it('emits sl-hide when closing', async () => {
+  it('closes dialog when close button is clicked', async () => {
     const el = await fixture<NveDialog>(html`<nve-dialog label="Test"></nve-dialog>`);
     await el.show();
     await nextFrame();
-    const handler = vi.fn();
-    el.addEventListener('sl-hide', handler);
-    await el.hide();
-    await new Promise((r) => setTimeout(r, 300));
-    expect(handler).toHaveBeenCalledTimes(1);
-  });
-
-  it('emits sl-request-close when close button is clicked', async () => {
-    const el = await fixture<NveDialog>(html`<nve-dialog label="Test"></nve-dialog>`);
-    await el.show();
-    await nextFrame();
-    const handler = vi.fn();
-    el.addEventListener('sl-request-close', handler);
     const closeButton = el.shadowRoot?.querySelector('.dialog__close') as HTMLElement;
     closeButton?.click();
-    expect(handler).toHaveBeenCalledTimes(1);
-    expect(handler.mock.calls[0][0].detail.source).toBe('close-button');
+    await new Promise((r) => setTimeout(r, 300));
+    expect(el.open).toBe(false);
   });
 
   it('prevents overlay close when disableBackground is set', async () => {
     const el = await fixture<NveDialog>(html`<nve-dialog label="Test" disableBackground></nve-dialog>`);
     await el.show();
     await nextFrame();
-    const handler = vi.fn();
-    el.addEventListener('sl-request-close', handler);
     const overlay = el.shadowRoot?.querySelector('.dialog__overlay') as HTMLElement;
     overlay?.click();
     await nextFrame();
-    // Dialog stays open because disableBackground prevents overlay close
     expect(el.open).toBe(true);
-    // Event was still dispatched
-    expect(handler).toHaveBeenCalledTimes(1);
   });
 
   it('closes on overlay click when disableBackground is not set', async () => {
@@ -144,5 +117,18 @@ describe('nve-dialog', () => {
     const el = await fixture<NveDialog>(html`<nve-dialog no-header label="Hidden label"></nve-dialog>`);
     const dialog = el.shadowRoot?.querySelector('dialog');
     expect(dialog?.getAttribute('aria-label')).toBe('Hidden label');
+  });
+
+  it('renders icon in title when icon property is set', async () => {
+    const el = await fixture<NveDialog>(html`<nve-dialog label="Test" icon="info"></nve-dialog>`);
+    const icon = el.shadowRoot?.querySelector('.dialog__title-icon');
+    expect(icon).toBeTruthy();
+    expect(icon?.getAttribute('name')).toBe('info');
+  });
+
+  it('does not render icon in title when icon property is empty', async () => {
+    const el = await fixture<NveDialog>(html`<nve-dialog label="Test"></nve-dialog>`);
+    const icon = el.shadowRoot?.querySelector('.dialog__title-icon');
+    expect(icon).toBeNull();
   });
 });
