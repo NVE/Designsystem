@@ -59,6 +59,9 @@ export default class NveTextarea extends LitElement implements INveComponent {
   /** Hjelpetekst under textarea */
   @property() helpText = '';
 
+  /** Hint - tekst under inndatafelt */
+  @property() hint = '';
+
   /** Om textarea er deaktivert */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
@@ -84,8 +87,8 @@ export default class NveTextarea extends LitElement implements INveComponent {
   @property() autocapitalize: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters' = 'off';
 
   /** Indikerer om nettleserens autokorrekturfunksjon er på eller av. */
-   // @ts-expect-error - Lit tvinger boolean her, men den er ikke rikitg
-  @property() autocorrect: "on" | "off" = "off";
+  // @ts-expect-error - Lit tvinger boolean her, men den er ikke rikitg
+  @property() autocorrect: 'on' | 'off' = 'off';
 
   /** Indikerer om nettleserens autokorrekturfunksjon er på eller av. */
   @property() tooltip?: string;
@@ -227,7 +230,6 @@ export default class NveTextarea extends LitElement implements INveComponent {
     this.toggleAttribute('data-user-invalid', !isValid);
   }
 
-  // eslint-disable-next-line max-lines-per-function
   render() {
     const hasLabelSlot = !!this.querySelector('[slot="label"]');
     return html`
@@ -242,6 +244,12 @@ export default class NveTextarea extends LitElement implements INveComponent {
                 tooltip=${ifDefined(this.tooltip)}
               ></nve-label>`
             : nothing}
+        ${this.helpText
+          ? html` <div part="help-text-container" class="textarea__help-text__container">
+              <span class="textarea__help-text" aria-hidden=${this.helpText ? 'false' : 'true'}>${this.helpText}</span>
+            </div>`
+          : nothing}
+
         <div part="base" class="textarea__base">
           <textarea
             part="textarea"
@@ -277,12 +285,10 @@ export default class NveTextarea extends LitElement implements INveComponent {
               </div>`
             : nothing}
         </div>
-        <div part="help-text-container" class="textarea__help-text__container">
-          <!-- Ikke vis hjelpe tekst mens feil -->
-          ${!this.showErrorMessage && this.helpText
-            ? html`<span class="textarea__help-text" aria-hidden=${this.helpText ? 'false' : 'true'}
-                >${this.helpText}</span
-              >`
+        <div part="hint-text-container" class="textarea__hint-text__container">
+          <!-- Ikke vis hint dersom feil -->
+          ${!this.showErrorMessage && this.hint
+            ? html`<span class="textarea__hint" aria-hidden=${this.hint ? 'false' : 'true'}>${this.hint}</span>`
             : nothing}
           ${this.showErrorMessage
             ? html`<span class="textarea__help-text textarea__help-text--error">${this.errorMessage}</span>`
