@@ -1,149 +1,39 @@
 ---
 layout: component
+outline: [2, 3]
 ---
 
 <CodeExamplePreview>
 
 ```html
-<nve-radio-group label="Vennligst velg en av disse">
-  <nve-radio value="valg1">1</nve-radio>
-  <nve-radio value="valg2">2</nve-radio>
-  <nve-radio value="valg3">3</nve-radio>
+<nve-radio-group label="Hvilken seksjon er best i IKTI?">
+  <nve-radio value="IUR-1">Kanskje IUR</nve-radio>
+  <nve-radio value="IUR-2">Må være IUR</nve-radio>
+  <nve-radio value="IUR-3">IUR?</nve-radio>
 </nve-radio-group>
 ```
 
 </CodeExamplePreview>
 
-## Eksempler
-
-### Med radioknapper
-
 <CodeExamplePreview>
 
 ```html
-<nve-radio-group label="Vennligst velg en av disse">
-  <nve-radio-button value="valg1">1</nve-radio-button>
-  <nve-radio-button value="valg2">2</nve-radio-button>
-  <nve-radio-button value="valg3">3</nve-radio-button>
+<nve-radio-group label="Test" tooltip="test" value="test3">
+  <nve-radio value="test2" size="large">test 2</nve-radio>
+  <nve-radio value="test3" size="small">test 3</nve-radio>
+  <nve-radio value="test4" disabled size="small">test 4</nve-radio>
 </nve-radio-group>
-```
-
-</CodeExamplePreview>
-
-### Retning
-
-Bruk `orientation` for å velge retning. `vertical` er standard.
-
-<CodeExamplePreview>
-
-```html
-<nve-radio-group label="vertical">
-  <nve-radio value="valg1">1</nve-radio>
-  <nve-radio value="valg2">2</nve-radio>
-</nve-radio-group>
-<br />
-<nve-radio-group label="horizontal" orientation="horizontal">
-  <nve-radio value="valg1">1</nve-radio>
-  <nve-radio value="valg2">2</nve-radio>
-</nve-radio-group>
-```
-
-</CodeExamplePreview>
-
-### Størrelse
-
-Bruk `size` for å sette størrelse. `medium` er standard.
-<CodeExamplePreview>
-
-```html
-<nve-radio-group size="small" label="Vennligst velg en av disse">
-  <nve-radio value="valg1">Valg 1</nve-radio>
-  <nve-radio value="valg2">Valg 2</nve-radio>
-</nve-radio-group>
-<br />
-<nve-radio-group label="Vennligst velg en av disse">
-  <nve-radio value="valg1">Valg 1</nve-radio>
-  <nve-radio value="valg2">Valg 2</nve-radio>
-</nve-radio-group>
-<br />
-<nve-radio-group size="large" label="Vennligst velg en av disse">
-  <nve-radio value="valg1">Valg 1</nve-radio>
-  <nve-radio value="valg2">Valg 2</nve-radio>
-</nve-radio-group>
-```
-
-</CodeExamplePreview>
-
-### Valgt verdi
-
-`value` gir deg valgt radioknapp sin `value`. Klikk på elementet og sjekk konsollet for å se `value`.
-
-<CodeExamplePreview>
-
-```html
-<nve-radio-group label="Vennligst velg 1 eller 2" onclick="console.log('value er ' + value)">
-  <nve-radio value="valg1">1</nve-radio>
-  <nve-radio value="valg2">2</nve-radio>
-</nve-radio-group>
-```
-
-</CodeExamplePreview>
-
-Du kan også sette `value` selv.
-
-<CodeExamplePreview>
-
-```html
-<nve-radio-group label="Her er 2 valgt på forhånd" value="valg2">
-  <nve-radio value="valg1">1</nve-radio>
-  <nve-radio value="valg2">2</nve-radio>
-</nve-radio-group>
-```
-
-</CodeExamplePreview>
-
-### Deaktivering
-
-Bruk `disabled` for deaktivering. Dette gjelder for enkelt-elementer og for hele radiogruppen.
-
-<CodeExamplePreview>
-
-```html
-<nve-radio-group label="Gruppe hvor én knapp er deaktivert">
-  <nve-radio value="valg1" disabled>1</nve-radio>
-  <nve-radio value="valg2">2</nve-radio>
+<nve-radio-group label="test" orientation="horizontal" required requiredvalue="Obligatorisk">
+  <nve-radio value="test2" size="large">test2</nve-radio>
+  <nve-radio value="test3" size="small">test3</nve-radio>
+  <nve-radio value="test3" size="small">test3</nve-radio>
 </nve-radio-group>
 
-<nve-radio-group label="Gruppe som er helt deaktivert" disabled>
-  <nve-radio value="valg1">1</nve-radio>
-  <nve-radio value="valg2">2</nve-radio>
+<nve-radio-group label="test" orientation="vertical" errorMessage="should be better">
+  <nve-radio value="test2" size="large"></nve-radio>
+  <nve-radio value="test3" size="small"></nve-radio>
+  <nve-radio value="test3" size="small"></nve-radio>
 </nve-radio-group>
-```
-
-</CodeExamplePreview>
-
-### Obligatorisk
-
-Bruk `required` for å tvinge bruker til å velge minst ett av valgene i gruppa og legg inn en feilmelding i `errorMessage`.
-Bruk `requiredlabel` hvis du vil vise noe annet enn `*Obligatorisk`. Gruppa må ligge i en `<form>` for at validering skal funke.
-
-<CodeExamplePreview>
-
-```html
-<!-- Bruker preventDefault så ikke sida lastes på nytt når du trykker på knappen -->
-<form onsubmit="event.preventDefault();">
-  <nve-radio-group label="Her må du velge noe" required errorMessage="Du må bestemme deg">
-    <nve-radio value="valg1">1</nve-radio>
-    <nve-radio value="valg2">2</nve-radio>
-  </nve-radio-group>
-
-  <nve-radio-group label="Please choose" required requiredLabel="*Required" errorMessage="Please decide">
-    <nve-radio value="valg1">1</nve-radio>
-    <nve-radio value="valg2">2</nve-radio>
-  </nve-radio-group>
-
-  <nve-button type="submit">Submit</nve-button>
-</form>
 ```
 
 </CodeExamplePreview>

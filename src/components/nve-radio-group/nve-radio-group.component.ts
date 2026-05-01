@@ -1,308 +1,212 @@
-import { customElement, property, state } from 'lit/decorators.js';
-import SlRadio from '@shoelace-style/shoelace/dist/components/radio/radio.js';
-import SlRadioButton from '@shoelace-style/shoelace/dist/components/radio-button/radio-button.js';
-import SlRadioGroup from '@shoelace-style/shoelace/dist/components/radio-group/radio-group.js';
-import NveRadioButton from '../nve-radio-button/nve-radio-button.component';
-import NveRadio from '../nve-radio/nve-radio.component';
+import { html, LitElement, nothing, PropertyValues } from 'lit';
+import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
+import { INveComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-radio-group.styles';
-import { watch } from '../../utils/watch';
-import toggleBooleanAttrOnListOfNodes from '../../utils/updateInvalidProperty';
-import { PropertyValues } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import '../nve-tooltip/nve-tooltip.component';
+import '../nve-icon/nve-icon.component';
+import NveRadio from '../nve-radio/nve-radio.component';
+import { getLabel, labelStyles } from '../../templates/label';
 
-/**
- * Brukes til å gruppere radioknapper som hører sammen. Den kan inneholde både nve-radio og nve-radio-button.
- * Pass på at nve-radio eller nva-radio-button har en value, ellers vil ikke radiogruppa fungere som forventet.
- *
- * @extends SlRadioGroup
- *
- * @dependency NveRadioButton, NveRadio
- *
- * @property {string} orientation = horizontal eller vertical - Om radiogruppen skal vises vannrett eller loddrett
- * @property {boolean} disabled = deaktivere eller aktivere gruppen med radioknapper
- *
- * @slot Standard slot hvor <nve-radio> eller <nve-radio-button> plasseres
- *
- * @example <nve-radio-group horizontal value="1"><nve-radio value="1">Value 1 (checked)</nve-radio></nve-radio-group>
- * @example <nve-radio-group vertical value="1"><nve-radio value="1">Value 1 (checked)</nve-radio></nve-radio-group>
- *
- */
+let id = 0;
 @customElement('nve-radio-group')
-// @ts-expect-error -next-line - overskriving av private metoder i sl-radio-group
-export default class NveRadioGroup extends SlRadioGroup {
-  static styles = [SlRadioGroup.styles, styles];
+export default class NveRadioGroup extends LitElement implements INveComponent {
+  @property({ type: String }) testId: string | undefined = undefined;
+  @property({ type: String }) orientation: 'horizontal' | 'vertical' = 'vertical';
+  @property({ type: String }) label: string | undefined = undefined;
+  @property({ type: String, reflect: true }) value = '';
+  /** Feilmelding som vises ved valideringsfeil. Hvis den er satt blir input-felt ugyldig og feil melding vises. Burde ikke brukes hvis man bruker validate-metoden */
+  @property({ type: String, reflect: true }) errorMessage: string | undefined = undefined;
+  /** Om inputfeltet er obligatorisk */
+  @property({ type: Boolean }) required = false;
+  /** Hjelpetekst som vises over feltet */
+  @property({ type: String, reflect: true }) helpText = '';
+  /** Hint-tekst som vises under feltet */
+  @property({ type: String, reflect: true }) hintText = '';
+  /** Tooltip-tekst for label */
+  @property({ type: String }) tooltip = '';
+  @property({ type: String }) name = '';
+  /** Ekstra tekst som vises for obligatoriske felt. * er en standard og vises alltid */
+  @property({ type: String }) requiredLabel = '';
+  @queryAssignedElements()
+  private radios!: NveRadio[];
+  /** @internal */
+  static styles = [styles, labelStyles];
+
+  private radioGroupName = `nve-radio-group-${id++}`;
+
+  //TODO: show warning in the console if label is not set
+  // add id generation if not set
+  // events kun change, vi trenger ikke input. usikker om vi
+
+  /*
+  FORM QUIRKS
+  - should i call the class of the invalid state with error or invalid? invalid fits aria better, but error fits more the ds semantic
+  - i should rather call error errorMessage maybe?
+  - what do we do with event names?
+  - use span for error message
+  - do we need nve-invalid input when 
+  */
 
   constructor() {
     super();
   }
-  /**
-   * Om radio knapper skal vises horisontalt eller vertikalt
-   */
-  @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
-  /**
-   * Deaktivere alle radioknapper i gruppen
-   */
-  @property({ type: Boolean, reflect: true }) disabled = false;
-  /**
-   * Feilmelding som vises under radiogruppe. Vi har ikke tilgang til SlRadioGroup errorMessage så må overskrive med vår egen
-   */
-  @property({ reflect: true }) errorMessage?: string;
-  /**
-   * Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard.
-   */
-  @property() requiredLabel = '*Obligatorisk';
-  /**
-   * Hjelpevariabel som sjekker om radio gruppe er allerede invalid
-   */
 
-  @property({ reflect: true, type: String }) testId: string = '';
-
-  @state() private alreadyInvalid = false;
-  /**
-   * Ikke mulig å få taket i errorMessage til superklassen (SlRadioGroup), og den trengs for å vise feilmelding under radio gruppe.
-   * Samtidig errorMessage fra SlRadioGroup (som er tom, som deretter gir oss default nettleseren sin melding)
-   * overskriver NveRadioGroup errorMessage prop når sl-input trigges, derfor må vi lagre den i staten når komponenten renderes første gang.
-   */
-  @state() private errorMessageCopy = '';
-
-  /* overvåker og setter disabled på under-radio-elementer når disabled endres */
-
-  private preventInteraction = (event: Event) => {
-    if (this.disabled) {
-      event.stopImmediatePropagation();
-      event.preventDefault();
+  private handleClick(e: Event) {
+    const radio = e.target as NveRadio;
+    if (radio.tagName.toLowerCase() === 'nve-radio' && !radio.disabled) {
+      this.selectRadioWithFocus(radio);
     }
-  };
+  }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.errorMessageCopy = this.errorMessage || '';
+  private handleKeyDown(e: KeyboardEvent) {
+    if (this.radios.length === 0) return;
 
-    this.addEventListener('click', this.preventInteraction, true);
-    this.addEventListener('keydown', this.preventInteraction, true);
-    this.addEventListener('focus', this.preventInteraction, true);
-    this.addEventListener('mousedown', this.preventInteraction, true);
+    const currentIndex = this.radios.findIndex((radio) => radio.contains(document.activeElement));
+    if (currentIndex === -1) return;
 
-    this.addEventListener('sl-invalid', (e) => {
-      // vi vil ikke at nettleseren viser feil meldingen til oss
+    let nextIndex = currentIndex;
+
+    if (e.key === 'Enter' || e.key === ' ') {
+      this.selectRadioWithFocus(this.radios[currentIndex]);
       e.preventDefault();
-      if (!this.alreadyInvalid) {
-        this.makeInvalid();
+    }
+
+    if (this.orientation === 'horizontal') {
+      if (e.key === 'ArrowRight') {
+        nextIndex = this.getNextEnabledIndex(currentIndex, 1);
+        e.preventDefault();
+      } else if (e.key === 'ArrowLeft') {
+        nextIndex = this.getNextEnabledIndex(currentIndex, -1);
+        e.preventDefault();
       }
-    });
-    this.addEventListener('sl-change', this.resetValidation.bind(this));
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-
-    this.removeEventListener('click', this.preventInteraction, true);
-    this.removeEventListener('keydown', this.preventInteraction, true);
-    this.removeEventListener('focus', this.preventInteraction, true);
-    this.removeEventListener('mousedown', this.preventInteraction, true);
-    this.removeEventListener('sl-invalid', this.makeInvalid);
-    this.removeEventListener('sl-change', this.resetValidation);
-  }
-
-  updated(changedProperties: PropertyValues<this>): void {
-    super.updated(changedProperties);
-    if (changedProperties.has('requiredLabel')) {
-      //`"${this.requiredLabel}"` er en rar syntaksen men hvis vi ikke bruker fnytter html skjønner ikke at requiredLabel er en verdi
-      this.style.setProperty('--sl-input-required-content', `"${this.requiredLabel}"`);
-    }
-    if (this.hasAttribute('data-user-invalid') && !this.alreadyInvalid) {
-      this.makeInvalid();
-    }
-    if (!this.hasAttribute('data-invalid') && !this.hasAttribute('data-user-invalid')) {
-      this.resetValidation();
-    }
-  }
-
-  @watch('disabled')
-  handlePropChange(oldValue: unknown, newValue: unknown): void {
-    const radios = this.getAllRadios();
-    const changed = newValue !== oldValue;
-
-    if (!changed) return;
-
-    radios.forEach((radio: HTMLElement & { was_disabled?: boolean; disabled?: boolean }) => {
-      if (radio.was_disabled === undefined) {
-        radio.was_disabled = radio.disabled;
-      } else {
-        if (oldValue === true) {
-          radio.disabled = radio.was_disabled;
-          radio.tabIndex = 0;
-          radio.removeAttribute('aria-disabled');
-          radio.removeAttribute('data-disabled');
-        } else {
-          radio.was_disabled = radio.disabled;
-          radio.disabled = true;
-          radio.tabIndex = -1;
-          radio.setAttribute('aria-disabled', 'true');
-          radio.setAttribute('data-disabled', 'true');
-        }
-      }
-    });
-
-    if (newValue) {
-      this.setAttribute('data-disabled', 'true');
-      this.setAttribute('aria-disabled', 'true');
-      this.tabIndex = -1;
-      this.addEventListener('click', this.preventInteraction, true);
-      this.addEventListener('keydown', this.preventInteraction, true);
-      this.addEventListener('focus', this.preventInteraction, true);
-      this.addEventListener('mousedown', this.preventInteraction, true);
     } else {
-      this.removeAttribute('data-disabled');
-      this.removeAttribute('aria-disabled');
-      this.tabIndex = 0;
-      this.removeEventListener('click', this.preventInteraction, true);
-      this.removeEventListener('keydown', this.preventInteraction, true);
-      this.removeEventListener('focus', this.preventInteraction, true);
-      this.removeEventListener('mousedown', this.preventInteraction, true);
+      if (e.key === 'ArrowDown') {
+        nextIndex = this.getNextEnabledIndex(currentIndex, 1);
+        e.preventDefault();
+      } else if (e.key === 'ArrowUp') {
+        nextIndex = this.getNextEnabledIndex(currentIndex, -1);
+        e.preventDefault();
+      }
+    }
+
+    if (nextIndex !== currentIndex) {
+      this.selectRadioWithFocus(this.radios[nextIndex]);
     }
   }
 
-  private makeInvalid() {
-    if (this.disabled) return;
-    const nveRadios = this.getAllRadios();
-    // toggler 'data-invalid' attribute på alle radio komponenter for å få riktig style
-    toggleBooleanAttrOnListOfNodes(nveRadios, true, 'data-invalid');
-    if (!this.errorMessageCopy) {
-      this.errorMessageCopy = this.validationMessage;
+  private getNextEnabledIndex(fromIndex: number, delta: 1 | -1) {
+    const count = this.radios.length;
+    for (let step = 1; step <= count; step++) {
+      const index = (fromIndex + delta * step + count) % count;
+      if (!this.radios[index].disabled) return index;
     }
-    this.setCustomValidity(this.errorMessageCopy);
-    this.style.setProperty('--radio-group-error-message', `"${this.errorMessageCopy}"`);
+    return -1; // all disabled
   }
 
-  private resetValidation() {
-    if (this.disabled) return;
-    const nveRadios = this.getAllRadios();
-    this.errorMessageCopy = '';
-    // toggler 'invalid' attribute på alle radio komponenter for å få riktig style
-    toggleBooleanAttrOnListOfNodes(nveRadios, false, 'data-invalid');
-    this.setCustomValidity('');
-    this.style.removeProperty('--radio-group-error-message');
-  }
+  private selectRadio(radio: NveRadio) {
+    this.radios.forEach((r) => (r.checked = false));
 
-  /* Overskriver private metoder i sl-radio-group for å kunne bruke nve-radio og nve-radio-button elementer inne i <nve-radio-group></nve-radio-group>*/
-  private getAllRadios = function () {
-    // Lagt til nve-radio og nve-radio-button
-    return [
-      // @ts-expect-error - bruk av this i private metode
-      ...this.querySelectorAll<SlRadio | SlRadioButton | NveRadio | NveRadioButton>(
-        'sl-radio, sl-radio-button, nve-radio, nve-radio-button'
-      ),
-    ];
-  };
-
-  // TODO: Sjekk generert API-dokumentasjon, ser ut som koden blir vist i dokumentasjonen
-  // @ts-expect-error: overskriving av privat metode i superklassen (SlRadioGroup)
-  private handleRadioClick = function (event) {
-    // Lagt til nve-radio og nve-radio-button
-    const target = event.target.closest('sl-radio, sl-radio-button, nve-radio, nve-radio-button');
-    // @ts-expect-error: bruker privat metode i superklassen (getAllRadios)
-    const radios = this.getAllRadios();
-    // @ts-expect-error: tilgang til privat egenskap this.value i superklassen
-    const oldValue = this.value;
-    if (!target || target.disabled) {
-      return;
-    }
-    // lagt til focus på klikk
-    const controls = target.shadowRoot.querySelectorAll("span[part='base']");
-    if (controls.length > 0) {
-      controls[0].focus();
-    }
-    // @ts-expect-error: setter privat egenskap this.value i superklassen
-    this.value = target.value;
-    radios.forEach((radio: { checked: boolean }) => (radio.checked = radio === target));
-    // @ts-expect-error: tilgang til privat metode emit i superklassen
-    if (this.value !== oldValue) {
-      // @ts-expect-error: kaller privat metode emit i superklassen
-      this.emit('sl-change');
-      // @ts-expect-error: kaller privat metode emit i superklassen
-      this.emit('sl-input');
-    }
-  };
-
-  // @ts-expect-error: overskriver og utvider privat metode fra SlRadioGroup
-  private syncRadioElements = async () => {
-    const radios = this.getAllRadios();
-
-    await Promise.all(
-      // Sync the checked state and size
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      radios.map(async (radio: { updateComplete: any; checked: boolean; value: any; size: any }) => {
-        await radio.updateComplete;
-        radio.checked = radio.value === this.value;
-        radio.size = this.size;
+    // Check the selected radio
+    radio.checked = true;
+    this.value = radio.value || '';
+    this.updateTabIndexes();
+    this.dispatchEvent(
+      new CustomEvent('change', {
+        detail: { value: this.value },
+        bubbles: true,
+        composed: true,
       })
     );
+  }
 
-    // lagt til nve-radio-button
-    // @ts-expect-error: bruker privat egenskap hasButtonGroup
-    this.hasButtonGroup = radios.some(
-      (radio: { tagName: string }) =>
-        radio.tagName.toLowerCase() === 'sl-radio-button' || radio.tagName.toLowerCase() === 'nve-radio-button'
-    );
+  private selectRadioWithFocus(radio: NveRadio) {
+    this.selectRadio(radio);
+    radio.focus();
+  }
 
-    if (!radios.some((radio: { checked: boolean }) => radio.checked)) {
-      // @ts-expect-error: bruker privat egenskap hasButtonGroup
-      if (this.hasButtonGroup) {
-        const buttonRadio = radios[0].shadowRoot?.querySelector('button');
+  /**
+   * Setter riktig tabIndex på radio-knappene basert på hvilken som er valgt.
+   * Hvis ingen er valgt, settes tabIndex på den første radio-knappen.
+   * Det gjøres for å sikre at kun én radio-knapp er tabbable i gruppen. Resten skal navigeres med piltastene.
+   */
+  private updateTabIndexes() {
+    const checkedRadio = this.radios.find((radio) => radio.checked);
 
-        if (buttonRadio) {
-          buttonRadio.tabIndex = 0;
-        }
+    this.radios.forEach((radio) => {
+      if (checkedRadio) {
+        // Hvis det finnes en valgt radio knapp, sett tabIndex der
+        radio.tabIndex = radio === checkedRadio ? 0 : -1;
       } else {
-        radios[0].tabIndex = 0;
+        // Hvis ingen er valgt, sett tabIndex på den første radio-knappen
+        radio.tabIndex = radio === this.radios[0] ? 0 : -1;
       }
-    }
+    });
+  }
 
-    // @ts-expect-error: tilgang til privat egenskap hasButtonGroup
-    if (this.hasButtonGroup) {
-      // lagt til nve-button-group
-      const buttonGroup =
-        this.shadowRoot?.querySelector('sl-button-group') || this.shadowRoot?.querySelector('nve-button-group');
+  private handleSlotChange() {
+    this.updateTabIndexes();
 
-      if (buttonGroup) {
-        buttonGroup.disableRole = true;
+    this.radios.forEach((radio) => {
+      radio.name = this.name || this.radioGroupName;
+    });
+    requestAnimationFrame(() => {
+      if (this.value) {
+        const radioToSelect = this.radios.find((radio) => radio.value === this.value);
+
+        if (radioToSelect) {
+          this.selectRadio(radioToSelect);
+        }
       }
-    }
-  };
+    });
+  }
 
-  // @ts-expect-error: utvider privat metode fra superklassen for å støtte egne elementer
-  private syncRadios = function () {
-    if (
-      (customElements.get('sl-radio') && customElements.get('sl-radio-button')) ||
-      // lagt til nve-radio og nve-radio-button
-      (customElements.get('nve-radio') && customElements.get('nve-radio-button'))
-    ) {
-      // @ts-expect-error: kaller privat metode
-      this.syncRadioElements();
-      return;
+  updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (changedProperties.has('errorMessage')) {
+      this.radios.forEach((radio) => {
+        radio.invalid = !!this.errorMessage;
+      });
     }
+  }
 
-    if (customElements.get('sl-radio') || customElements.get('nve-radio')) {
-      // @ts-expect-error: kaller privat metode
-      this.syncRadioElements();
-    } else {
-      // @ts-expect-error: definerer callback for privat metode
-      customElements.whenDefined('sl-radio').then(() => this.syncRadios());
-    }
+  render() {
+    const helpTextId = `${this.radioGroupName}-helptext`;
+    const hintTextId = `${this.radioGroupName}-hinttext`;
 
-    // lagt til nve-radio-button
-    if (customElements.get('sl-radio-button') || customElements.get('nve-radio-button')) {
-      // @ts-expect-error: kaller privat metode
-      this.syncRadioElements();
-    } else {
-      // Rerun this handler when <sl-radio> or <sl-radio-button> is registered
-      // @ts-expect-error: definerer callback for privat metode
-      customElements.whenDefined('sl-radio-button').then(() => this.syncRadios());
-      // lagt til nve-radio-button
-      // @ts-expect-error: definerer callback for privat metode
-      customElements.whenDefined('nve-radio-button').then(() => this.syncRadios());
-    }
-  };
+    return html`
+      <fieldset
+        test-id=${ifDefined(this.testId)}
+        class=${classMap({ field: true, 'field--error': !!this.errorMessage })}
+        @click=${this.handleClick}
+        @keydown=${this.handleKeyDown}
+        aria-invalid=${ifDefined(this.errorMessage ? 'true' : undefined)}
+        .required=${this.required}
+      >
+        <!-- Ledetekst -->
+        ${getLabel(this.radioGroupName, this.label, this.tooltip, this.required, this.requiredLabel, undefined, true)}
+        <!-- Hjelpetekst -->
+        ${this.helpText
+          ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
+          : nothing}
+        <div
+          class=${classMap({
+            'radio-group': true,
+            [`radio-group--${this.orientation}`]: true,
+          })}
+        >
+          <slot @slotchange=${this.handleSlotChange}></slot>
+        </div>
+        <!-- Hint-tekst og feilmelding -->
+        ${this.errorMessage || this.hintText
+          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>
+              ${this.errorMessage || this.hintText}
+            </p>`
+          : nothing}
+      </fieldset>
+    `;
+  }
 }
 
 declare global {
