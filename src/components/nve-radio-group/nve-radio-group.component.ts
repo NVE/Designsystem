@@ -10,6 +10,9 @@ import NveRadio from '../nve-radio/nve-radio.component';
 import { getLabel, labelStyles } from '../../templates/label';
 
 let id = 0;
+/**
+ * En gruppe av nve-radio-knapper. Kun én radioknapp i en gitt gruppe kan være valgt om gangen.
+ */
 @customElement('nve-radio-group')
 export default class NveRadioGroup extends LitElement implements INveComponent {
   @property({ type: String }) testId: string | undefined = undefined;
@@ -26,9 +29,9 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
   @property({ type: String, reflect: true }) hintText = '';
   /** Tooltip-tekst for label */
   @property({ type: String }) tooltip = '';
-  @property({ type: String }) name = '';
   /** Ekstra tekst som vises for obligatoriske felt. * er en standard og vises alltid */
   @property({ type: String }) requiredLabel = '';
+  @property({ type: String }) name = '';
   @queryAssignedElements()
   private radios!: NveRadio[];
   /** @internal */
@@ -46,14 +49,16 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
   - i should rather call error errorMessage maybe?
   - what do we do with event names?
   - use span for error message
-  - do we need nve-invalid input when 
+  - do we need nve-invalid input when
+  
+  TODO add invalid event when adding validation
   */
 
   constructor() {
     super();
   }
 
-  private handleClick(e: Event) {
+  private handleChange(e: Event) {
     const radio = e.target as NveRadio;
     if (radio.tagName.toLowerCase() === 'nve-radio' && !radio.disabled) {
       this.selectRadioWithFocus(radio);
@@ -73,22 +78,12 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
       e.preventDefault();
     }
 
-    if (this.orientation === 'horizontal') {
-      if (e.key === 'ArrowRight') {
-        nextIndex = this.getNextEnabledIndex(currentIndex, 1);
-        e.preventDefault();
-      } else if (e.key === 'ArrowLeft') {
-        nextIndex = this.getNextEnabledIndex(currentIndex, -1);
-        e.preventDefault();
-      }
-    } else {
-      if (e.key === 'ArrowDown') {
-        nextIndex = this.getNextEnabledIndex(currentIndex, 1);
-        e.preventDefault();
-      } else if (e.key === 'ArrowUp') {
-        nextIndex = this.getNextEnabledIndex(currentIndex, -1);
-        e.preventDefault();
-      }
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      nextIndex = this.getNextEnabledIndex(currentIndex, 1);
+      e.preventDefault();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      nextIndex = this.getNextEnabledIndex(currentIndex, -1);
+      e.preventDefault();
     }
 
     if (nextIndex !== currentIndex) {
@@ -149,8 +144,9 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
     this.updateTabIndexes();
 
     this.radios.forEach((radio) => {
-      radio.name = this.name || this.radioGroupName;
+      radio.name = this.radioGroupName;
     });
+
     requestAnimationFrame(() => {
       if (this.value) {
         const radioToSelect = this.radios.find((radio) => radio.value === this.value);
@@ -179,10 +175,11 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
       <fieldset
         test-id=${ifDefined(this.testId)}
         class=${classMap({ field: true, 'field--error': !!this.errorMessage })}
-        @click=${this.handleClick}
+        @radio-select=${this.handleChange}
         @keydown=${this.handleKeyDown}
         aria-invalid=${ifDefined(this.errorMessage ? 'true' : undefined)}
         .required=${this.required}
+        role="radiogroup"
       >
         <!-- Ledetekst -->
         ${getLabel(this.radioGroupName, this.label, this.tooltip, this.required, this.requiredLabel, undefined, true)}

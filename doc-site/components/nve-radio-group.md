@@ -15,6 +15,17 @@ outline: [2, 3]
 
 </CodeExamplePreview>
 
+<nve-message-card variant="primary" label="Hvorfor bruker vi ikke name-attributtet" size="compact">
+
+<p><span class="highlight">nve-radio-group</span> og <span class="highlight">nve-radio</span> bruker ikke <span class="highlight">name</span>-attributtet slik vanlige HTML-radiofelter gjør. Komponenten støtter ikke native <span class="highlight">form submission</span>, så <span class="highlight">name</span> blir ikke brukt til å sende inn en verdi i et skjema.</p>
+
+<p><span class="highlight">name</span> er heller ikke nødvendig for å gruppere radio-knappene. Gruppelogikken styres av <span class="highlight">nve-radio-group</span>, som sørger for at bare ett alternativ kan være valgt om gangen og emitterer valgt verdi via komponentens <span class="highlight">change</span>-hendelse.</p>
+
+<p>For denne komponenten er det derfor <span class="highlight">value</span> på valgt <span class="highlight">nve-radio</span> og <span class="highlight">change</span>-hendelsen fra <span class="highlight">nve-radio-group</span> som brukes for å lese brukerens valg.</p>
+</nve-message-card>
+
+Write about no name because we dont support form submission, and also we dont need it for grouping
+
 <CodeExamplePreview>
 
 ```html
