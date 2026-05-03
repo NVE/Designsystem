@@ -53,8 +53,4 @@ export default css`
     flex-direction: row;
     align-items: center;
   }
-
-  nve-icon {
-    --icon-size: 20px;
-  }
 `;

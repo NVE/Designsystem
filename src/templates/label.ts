@@ -21,11 +21,17 @@ export const labelStyles: CSSResult = css`
   .field__legend {
     float: left;
     font: var(--typography-label-small);
-    line-height: 100%;
     padding-inline: 0;
     display: flex;
     align-items: center;
     gap: var(--spacing-2x-small);
+    .nve-info-icon {
+      transform: translateY(-1px);
+    }
+  }
+
+  .nve-info-icon {
+    --icon-size: 1.25rem;
   }
 `;
 

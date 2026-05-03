@@ -18,3 +18,5 @@ outline: [2, 3]
     Se eksempler og anbefalt bruk der.
   </p>
 </nve-message-card>
+ write about internal state and how it is handled by the group
+ write about all the arias that are being set
