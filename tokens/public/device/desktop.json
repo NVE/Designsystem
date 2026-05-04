@@ -59,6 +59,10 @@
       }
     },
     "fixed-spacing": {
+      "3x-small": {
+        "$type": "spacing",
+        "$value": "{dimension.05x}"
+      },
       "2x-small": {
         "$type": "spacing",
         "$value": "{dimension.1,5x}"
@@ -69,13 +73,17 @@
       },
       "small": {
         "$type": "spacing",
-        "$value": "{dimension.4x}"
+        "$value": "{dimension.2,5x}"
       },
       "medium": {
         "$type": "spacing",
-        "$value": "{dimension.6x}"
+        "$value": "{dimension.4x}"
       },
       "large": {
+        "$type": "spacing",
+        "$value": "{dimension.6x}"
+      },
+      "x-large": {
         "$type": "spacing",
         "$value": "{dimension.10x}"
       }
