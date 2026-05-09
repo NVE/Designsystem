@@ -27,7 +27,6 @@ export { default as NveNavigationCard } from './components/nve-navigation-card/n
 export { default as NveOption } from './components/nve-option/nve-option.component';
 export { default as NvePopup } from './components/nve-popup/nve-popup.component';
 export { default as NveRadio } from './components/nve-radio/nve-radio.component';
-export { default as NveRadioButton } from './components/nve-radio-button/nve-radio-button.component';
 export { default as NveRadioGroup } from './components/nve-radio-group/nve-radio-group.component';
 export { default as NveRelativeTime } from './components/nve-relative-time/nve-relative-time.component';
 export { default as NveSelect } from './components/nve-select/nve-select.component';

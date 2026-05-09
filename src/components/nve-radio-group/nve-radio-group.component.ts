@@ -11,33 +11,39 @@ import { getLabel, labelStyles } from '../../templates/label';
 let id = 0; // for å generere unike id-er. Brukes for å koble label og hint tekster til riktig fieldset via aria-describedby.
 /**
  * En gruppe av nve-radio-knapper. Kun én radioknapp i en gitt gruppe kan være valgt om gangen.
+ *
+ * @event change når en radio-knapp i gruppen blir valgt. Inneholder den valgte verdien.
+ *
+ * @csspart base Hovedcontaineren for radio-gruppen, som er en fieldset.
+ * @csspart help-text Teksten som vises under ledeteksten for å gi ekstra informasjon.
+ * @csspart hint-text Teksten som vises under radio-knappene for å gi ekstra informasjon eller feilmeldinger.
  */
 @customElement('nve-radio-group')
 export default class NveRadioGroup extends LitElement implements INveComponent {
   @property({ type: String }) testId: string | undefined = undefined;
-  /** Størrelse på radio-knappene */
-  @property({ type: String }) size: 'small' | 'medium' | 'large' = 'medium';
-  /** Retning for gruppen av radioknapper */
-  @property({ type: String }) orientation: 'horizontal' | 'vertical' = 'vertical';
-  /** Ledetekst for radio-gruppen */
-  @property({ type: String }) label: string | undefined = undefined;
-  /** Tooltip-tekst for ledetekst */
-  @property({ type: String }) tooltip = '';
-  /** Verdi for den valgte radio-knappen */
-  @property({ type: String, reflect: true }) value = '';
-  /** Feilmelding som vises ved valideringsfeil. Hvis den er satt blir input-felt ugyldig og feil melding vises */
-  @property({ type: String, reflect: true }) errorMessage: string | undefined = undefined;
-  /** Om inputfeltet er obligatorisk */
-  @property({ type: Boolean }) required = false;
-  /** Ekstra tekst som vises for obligatoriske felt. * er en standard og vises alltid */
-  @property({ type: String }) requiredLabel = '';
   /** Om radio-gruppen er deaktivert */
   @property({ type: Boolean }) disabled = false;
+  /** Feilmelding som vises ved valideringsfeil. Hvis den er satt blir input-felt ugyldig og feil melding vises */
+  @property({ type: String, reflect: true }) errorMessage: string | undefined = undefined;
   /** Hjelpetekst som vises over feltet */
   @property({ type: String, reflect: true }) helpText = '';
   /** Hint-tekst som vises under feltet */
   @property({ type: String, reflect: true }) hintText = '';
-  @queryAssignedElements()
+  /** Ledetekst for radio-gruppen */
+  @property({ type: String }) label: string | undefined = undefined;
+  /** Retning for gruppen av radioknapper */
+  @property({ type: String }) orientation: 'horizontal' | 'vertical' = 'vertical';
+  /** Om inputfeltet er obligatorisk */
+  @property({ type: Boolean }) required = false;
+  /** Ekstra tekst som vises for obligatoriske felt. * er en standard og vises alltid */
+  @property({ type: String }) requiredLabel = '';
+  /** Størrelse på radio-knappene */
+  @property({ type: String }) size: 'small' | 'medium' | 'large' = 'medium';
+  /** Tooltip-tekst for ledetekst */
+  @property({ type: String }) tooltip = '';
+  /** Verdi for den valgte radio-knappen */
+  @property({ type: String, reflect: true }) value = '';
+  @queryAssignedElements({ selector: 'nve-radio' })
   private radios!: NveRadio[];
 
   static styles = [styles, labelStyles];
@@ -74,10 +80,10 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
     }
 
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-      nextIndex = this.getNextEnabledIndex(currentIndex, 1);
+      nextIndex = this.getNextEnabledIndex(currentIndex, 1, this.radios);
       e.preventDefault();
     } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-      nextIndex = this.getNextEnabledIndex(currentIndex, -1);
+      nextIndex = this.getNextEnabledIndex(currentIndex, -1, this.radios);
       e.preventDefault();
     }
 
@@ -92,11 +98,11 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
    * @param delta Retningen for navigasjonen. 1 for fremover, -1 for bakover.
    * @returns Indexen til neste tilgjengelige radio-knapp, eller -1 hvis alle er deaktivert.
    */
-  private getNextEnabledIndex(fromIndex: number, delta: 1 | -1) {
-    const count = this.radios.length;
+  private getNextEnabledIndex(fromIndex: number, delta: 1 | -1, radios: NveRadio[]): number {
+    const count = radios.length;
     for (let step = 1; step <= count; step++) {
       const index = (fromIndex + delta * step + count) % count;
-      if (!this.radios[index].disabled) return index;
+      if (!radios[index].disabled) return index;
     }
     return -1; // alle radio-knapper er deaktivert
   }
@@ -151,14 +157,17 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
 
   private handleSlotChange() {
     this.updateTabIndexes();
-
     // Sett interne attributter på radio-knappene
     const checkedRadio = this.radios.find((radio) => radio.checked);
     this.radios.forEach((radio, index) => {
+      // Sett tabIndex basert på hvilken radio-knapp som er valgt, 0 er standard
       radio.tabIndex = radio === checkedRadio || (!checkedRadio && radio === this.radios[0]) ? 0 : -1;
+      // Sett posisjon
       radio.pos = index + 1;
+      // Sett gruppestørrelse
       radio.setsize = this.radios.length;
       if (this.size !== 'medium') {
+        // sett størrelse på radio-knappene
         radio.size = this.size;
       }
     });
@@ -191,7 +200,9 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
     }
     if (changedProperties.has('disabled')) {
       this.radios.forEach((radio) => {
-        radio.disabled = this.disabled;
+        if (!radio.disabled) {
+          radio.disabled = this.disabled;
+        }
       });
     }
   }
@@ -207,19 +218,23 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
     return html`
       <fieldset
         test-id=${ifDefined(this.testId)}
-        class=${classMap({ field: true, 'field--error': !!this.errorMessage })}
+        class=${classMap({
+          field: true,
+          'field--error': !!this.errorMessage,
+        })}
         aria-describedby=${ifDefined(describedBy)}
         @radio-select=${this.handleChange}
         @keydown=${this.handleKeyDown}
         aria-invalid=${ifDefined(this.errorMessage ? 'true' : undefined)}
         .required=${this.required}
         role="radiogroup"
+        part="base"
       >
         <!-- Ledetekst -->
         ${getLabel(this.radioGroupName, this.label, this.tooltip, this.required, this.requiredLabel, undefined, true)}
         <!-- Hjelpetekst -->
         ${this.helpText
-          ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
+          ? html`<p part="help-text" class="field__help-text" id=${helpTextId} part="help-text">${this.helpText}</p>`
           : nothing}
         <div
           class=${classMap({
@@ -231,7 +246,7 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
         </div>
         <!-- Hint-tekst og feilmelding -->
         ${this.errorMessage || this.hintText
-          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>
+          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId} part="hint-text">
               ${this.errorMessage || this.hintText}
             </p>`
           : nothing}

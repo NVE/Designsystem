@@ -32,6 +32,7 @@ export default css`
 
   .radio--large {
     --radio-size: 22px;
+    font: var(--typography-label-small-light);
   }
 
   .radio__circle {
@@ -40,6 +41,7 @@ export default css`
     border: 2px solid var(--_border-color);
     border-radius: 50%;
     box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
   }
 
   .radio__circle::after {
@@ -61,6 +63,10 @@ export default css`
     outline: 2px solid var(--color-interactive-border-accessibility-focus);
   }
 
+  :host(:hover) .radio__circle {
+    box-shadow: 0 0 0 3px var(--color-interactive-border-primary-hover);
+  }
+
   .radio--invalid {
     --_border-color: var(--color-feedback-border-emphasized-error);
   }
@@ -69,5 +75,8 @@ export default css`
     --_border-color: var(--color-interactive-border-primary-disabled);
     --_color: var(--color-interactive-foreground-secondary-disabled);
     cursor: not-allowed;
+  }
+  .radio__label {
+    line-height: 1;
   }
 `;
