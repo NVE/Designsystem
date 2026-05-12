@@ -237,12 +237,12 @@ export default css`
   .combobox__value__tag {
     display: flex;
     font: var(--typography-label-x-small);
-    color: var(--color-interactive-foreground-tertiary-enabled, #60656c);
+    color: var(--color-interactive-foreground-tertiary-enabled);
     align-items: center;
     gap: var(--spacing-2x-small, 4px);
-    border: var(--border-width-default) solid var(--color-interactive-border-tertiary-enabled, #b6b9be);
+    border: var(--border-width-default) solid var(--color-interactive-border-tertiary-enabled);
     border-radius: var(--border-radius-small, 4px);
-    background: var(--color-interactive-background-tertiary-enabled, #efeff1);
+    background: var(--color-interactive-background-tertiary-enabled);
     cursor: pointer;
     nve-icon {
       --icon-size: 20px;
@@ -251,6 +251,14 @@ export default css`
 
   .combobox__value__tag {
     max-width: var(--first-tag-max-width);
+    transition:
+      border 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .field:not(.field--disabled):not(.field--readonly) .combobox__value__tag:hover {
+    border: var(--border-width-default) solid var(--color-interactive-border-tertiary-hover);
+    color: var(--color-interactive-foreground-tertiary-hover);
   }
 
   .combobox__value__tag span {
