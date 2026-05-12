@@ -266,13 +266,6 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ferdig'
   },
   {
-    name: 'nve-radio-button',
-    nodeId: '4229-83173',
-    description: undefined,
-    statusDesign: 'Ikke påbegynt',
-    statusCode: 'Ferdig'
-  },
-  {
     name: 'nve-radio-group',
     nodeId: '4229-83173',
     description: undefined,

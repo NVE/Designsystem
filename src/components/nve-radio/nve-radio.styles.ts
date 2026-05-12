@@ -1,67 +1,82 @@
 import { css } from 'lit';
 
 export default css`
-  /* Vis hover effekt på control-delen */
-  :host(:hover)::part(control) {
-    color: var(--color-neutrals-foreground-subtle);
+  :host {
+    --radio-size: 18px;
+    display: inline-block;
+    outline: none;
   }
 
-  /* Sett "ring" og fjern default blå bakgrunn fra shoelace */
-  :host(:hover)::part(control) {
-    border: solid var(--border-width-strong) var(--color-neutrals-foreground-subtle) !important;
-    background-color: var(color-) !important;
-  }
-
-  :host([data-invalid])::part(control) {
-    color: var(--color-feedback-background-emphasized-error);
-    border-color: var(--color-feedback-background-emphasized-error);
-  }
-
-  /* overstyr opacity på disabled */
-  .radio--disabled {
-    opacity: 0.38;
-  }
-
-  /* overstyr opacity på disabled */
-  .radio--disabled {
-    opacity: 0.38;
-  }
-
-  /* Overstyr styling på control, label og radio */
-  .radio__control {
-    color: var(--color-neutrals-foreground-primary);
-    border: solid var(--border-width-strong) var(--color-neutrals-foreground-primary);
-  }
-
-  .radio__label {
-    display: inline-flex;
-    margin-inline-start: unset; /* 0.5rem; ta bort margin */
-    line-height: var(--toggle-size);
-  }
-
-  .radio--small .radio__label,
-  .radio--medium .radio__label {
-    font: var(--typography-label-x-small-light);
-    line-height: var(--toggle-size);
-    gap: var(--spacing-x-small, 0.5rem); /* sett gap */
+  :host {
+    width: fit-content;
   }
 
   .radio {
     display: flex;
+    align-items: center;
+    gap: var(--spacing-x-small);
+    font: var(--typography-label-x-small-light);
+    line-height: 1;
+    cursor: pointer;
+    --_color: var(--color-interactive-foreground-secondary-enabled);
+    --_border-color: var(--color-neutrals-foreground-primary);
+  }
+
+  .radio--medium {
+    --radio-size: 18px;
+  }
+
+  .radio--small {
+    --radio-size: 14px;
+  }
+
+  .radio--large {
+    --radio-size: 22px;
     font: var(--typography-label-small-light);
-    color: var(--color-neutrals-foreground-primary);
-    background-color: var(--color-neutrals-background-primary);
-    gap: var(--spacing-x-small, 0.5rem); /* sett gap */
   }
 
-  .radio--checked .radio__control {
-    color: var(--color-neutrals-foreground-primary);
-    border-color: var(--color-neutrals-foreground-primary);
-    background-color: var(--color-neutrals-background-primary);
+  .radio__circle {
+    width: var(--radio-size);
+    height: var(--radio-size);
+    border: 2px solid var(--_border-color);
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
   }
 
-  /* overstyr størrelse på check-elementet */
-  sl-icon::part(checked-icon) {
-    transform: scale(1.75);
+  .radio__circle::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: var(--_border-color);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+  }
+
+  .radio--checked .radio__circle::after {
+    transform: scale(0.7);
+  }
+
+  :host(:focus-visible) .radio__circle {
+    outline: 2px solid var(--color-interactive-border-accessibility-focus);
+  }
+
+  .radio:hover:not(.radio--disabled) .radio__circle {
+    box-shadow: 0 0 0 3px var(--color-interactive-border-primary-hover);
+  }
+
+  .radio--invalid {
+    --_border-color: var(--color-feedback-border-emphasized-error);
+  }
+
+  .radio--disabled {
+    --_border-color: var(--color-interactive-border-primary-disabled);
+    --_color: var(--color-interactive-foreground-secondary-disabled);
+    cursor: not-allowed;
+  }
+  .radio__label {
+    line-height: 1;
   }
 `;
