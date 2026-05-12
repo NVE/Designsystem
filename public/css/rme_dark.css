@@ -299,8 +299,10 @@
   --color-interactive-background-secondary-hover: var(--color-shades-grey-600);
   --color-interactive-background-secondary-pressed: var(--color-shades-grey-500);
   --color-interactive-background-secondary-disabled: var(--color-shades-grey-800);
-  --color-interactive-background-tertiary-hover: var(--color-shades-grey-700);
-  --color-interactive-background-tertiary-pressed: var(--color-shades-grey-600);
+  --color-interactive-background-tertiary-enabled: var(--color-shades-grey-700);
+  --color-interactive-background-tertiary-hover: var(--color-shades-grey-600);
+  --color-interactive-background-tertiary-pressed: var(--color-shades-grey-500);
+  --color-interactive-background-tertiary-disabled: var(--color-shades-grey-800);
   --color-interactive-background-danger-enabled: var(--color-shades-functional-red-500);
   --color-interactive-background-danger-hover: var(--color-shades-functional-red-400);
   --color-interactive-background-danger-pressed: var(--color-shades-functional-red-300);
@@ -311,6 +313,9 @@
   --color-interactive-foreground-secondary-enabled: var(--color-shades-grey-000);
   --color-interactive-foreground-secondary-hover: var(--color-shades-grey-000);
   --color-interactive-foreground-secondary-disabled: var(--color-shades-grey-700);
+  --color-interactive-foreground-tertiary-enabled: var(--color-shades-grey-200);
+  --color-interactive-foreground-tertiary-hover: var(--color-shades-grey-050);
+  --color-interactive-foreground-tertiary-disabled: var(--color-shades-grey-700);
   --color-interactive-foreground-danger-enabled: var(--color-shades-grey-000);
   --color-interactive-foreground-danger-disabled: var(--color-shades-functional-red-800);
   --color-interactive-foreground-link-enabled: var(--color-shades-functional-blue-400);
@@ -322,6 +327,9 @@
   --color-interactive-border-secondary-enabled: var(--color-shades-grey-500);
   --color-interactive-border-secondary-hover: var(--color-shades-grey-000);
   --color-interactive-border-secondary-disabled: var(--color-shades-grey-700);
+  --color-interactive-border-tertiary-enabled: var(--color-shades-grey-600);
+  --color-interactive-border-tertiary-hover: var(--color-shades-grey-400);
+  --color-interactive-border-tertiary-disabled: var(--color-shades-grey-700);
   --color-interactive-border-accessibility-focus: var(--color-shades-functional-blue-500);
   --color-feedback-background-default-neutral: var(--color-shades-functional-neutralgrey-800);
   --color-feedback-background-default-info: var(--color-shades-functional-blue-850);

@@ -299,8 +299,10 @@
   --color-interactive-background-secondary-hover: var(--color-shades-grey-200);
   --color-interactive-background-secondary-pressed: var(--color-shades-grey-300);
   --color-interactive-background-secondary-disabled: var(--color-shades-grey-100);
-  --color-interactive-background-tertiary-hover: var(--color-shades-grey-100);
-  --color-interactive-background-tertiary-pressed: var(--color-shades-grey-150);
+  --color-interactive-background-tertiary-enabled: var(--color-shades-grey-100);
+  --color-interactive-background-tertiary-hover: var(--color-shades-grey-150);
+  --color-interactive-background-tertiary-pressed: var(--color-shades-grey-200);
+  --color-interactive-background-tertiary-disabled: var(--color-shades-grey-100);
   --color-interactive-background-danger-enabled: var(--color-shades-functional-red-700);
   --color-interactive-background-danger-hover: var(--color-shades-functional-red-800);
   --color-interactive-background-danger-pressed: var(--color-shades-functional-red-850);
@@ -311,6 +313,9 @@
   --color-interactive-foreground-secondary-enabled: var(--color-shades-grey-950);
   --color-interactive-foreground-secondary-hover: var(--color-shades-grey-950);
   --color-interactive-foreground-secondary-disabled: var(--color-shades-grey-300);
+  --color-interactive-foreground-tertiary-enabled: var(--color-shades-grey-600);
+  --color-interactive-foreground-tertiary-hover: var(--color-shades-grey-950);
+  --color-interactive-foreground-tertiary-disabled: var(--color-shades-grey-300);
   --color-interactive-foreground-danger-enabled: var(--color-shades-grey-000);
   --color-interactive-foreground-danger-disabled: var(--color-shades-functional-red-000);
   --color-interactive-foreground-link-enabled: var(--color-shades-functional-blue-700);
@@ -322,6 +327,9 @@
   --color-interactive-border-secondary-enabled: var(--color-shades-grey-500);
   --color-interactive-border-secondary-hover: var(--color-shades-grey-950);
   --color-interactive-border-secondary-disabled: var(--color-shades-grey-150);
+  --color-interactive-border-tertiary-enabled: var(--color-shades-grey-300);
+  --color-interactive-border-tertiary-hover: var(--color-shades-grey-600);
+  --color-interactive-border-tertiary-disabled: var(--color-shades-grey-150);
   --color-interactive-border-accessibility-focus: var(--color-shades-functional-blue-500);
   --color-feedback-background-default-neutral: var(--color-shades-functional-neutralgrey-150); /** For neutral messages */
   --color-feedback-background-default-info: var(--color-shades-functional-blue-100);
@@ -545,6 +553,7 @@
   --dimension-1x: 0.25rem; /** 4px */
   --dimension-1-5x: 0.375rem; /** 6px */
   --dimension-2x: 0.5rem; /** 8px */
+  --dimension-2-5x: 0.625rem; /** 10px */
   --dimension-3x: 0.75rem; /** 12px */
   --dimension-3-5x: 0.875rem; /** 14px */
   --dimension-4x: 1rem; /** 16px */
@@ -606,11 +615,13 @@
   --spacing-content-margin-top: var(--spacing-40x);
   --spacing-content-margin-bottom: var(--spacing-88x);
   --spacing-content-margin-left-right: var(--spacing-48x);
+  --spacing-fixed-spacing-3x-small: var(--dimension-05x);
   --spacing-fixed-spacing-2x-small: var(--dimension-1-5x);
   --spacing-fixed-spacing-x-small: var(--dimension-2x);
-  --spacing-fixed-spacing-small: var(--dimension-4x);
-  --spacing-fixed-spacing-medium: var(--dimension-6x);
-  --spacing-fixed-spacing-large: var(--dimension-10x);
+  --spacing-fixed-spacing-small: var(--dimension-2-5x);
+  --spacing-fixed-spacing-medium: var(--dimension-4x);
+  --spacing-fixed-spacing-large: var(--dimension-6x);
+  --spacing-fixed-spacing-x-large: var(--dimension-10x);
   --sizing-4x-small: var(--dimension-2x);
   --sizing-3x-small: var(--dimension-4x);
   --sizing-2x-small: var(--dimension-6x);
@@ -789,6 +800,7 @@
   --dimension-1x: 0.25rem; /** 4px */
   --dimension-1-5x: 0.375rem; /** 6px */
   --dimension-2x: 0.5rem; /** 8px */
+  --dimension-2-5x: 0.625rem; /** 10px */
   --dimension-3x: 0.75rem; /** 12px */
   --dimension-3-5x: 0.875rem; /** 14px */
   --dimension-4x: 1rem; /** 16px */
@@ -982,6 +994,7 @@
   --dimension-1x: 0.25rem; /** 4px */
   --dimension-1-5x: 0.375rem; /** 6px */
   --dimension-2x: 0.5rem; /** 8px */
+  --dimension-2-5x: 0.625rem; /** 10px */
   --dimension-3x: 0.75rem; /** 12px */
   --dimension-3-5x: 0.875rem; /** 14px */
   --dimension-4x: 1rem; /** 16px */
@@ -1175,6 +1188,7 @@
   --dimension-1x: 0.25rem; /** 4px */
   --dimension-1-5x: 0.375rem; /** 6px */
   --dimension-2x: 0.5rem; /** 8px */
+  --dimension-2-5x: 0.625rem; /** 10px */
   --dimension-3x: 0.75rem; /** 12px */
   --dimension-3-5x: 0.875rem; /** 14px */
   --dimension-4x: 1rem; /** 16px */
@@ -1368,6 +1382,7 @@
   --dimension-1x: 0.25rem; /** 4px */
   --dimension-1-5x: 0.375rem; /** 6px */
   --dimension-2x: 0.5rem; /** 8px */
+  --dimension-2-5x: 0.625rem; /** 10px */
   --dimension-3x: 0.75rem; /** 12px */
   --dimension-3-5x: 0.875rem; /** 14px */
   --dimension-4x: 1rem; /** 16px */

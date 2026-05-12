@@ -182,13 +182,21 @@
           }
         },
         "tertiary": {
-          "hover": {
+          "enabled": {
             "$type": "color",
             "$value": "{color-shades.grey.100}"
           },
-          "pressed": {
+          "hover": {
             "$type": "color",
             "$value": "{color-shades.grey.150}"
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{color-shades.grey.200}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color-shades.grey.100}"
           }
         },
         "danger": {
@@ -229,6 +237,20 @@
           "enabled": {
             "$type": "color",
             "$value": "{color-shades.grey.950}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color-shades.grey.950}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color-shades.grey.300}"
+          }
+        },
+        "tertiary": {
+          "enabled": {
+            "$type": "color",
+            "$value": "{color-shades.grey.600}"
           },
           "hover": {
             "$type": "color",
@@ -287,6 +309,20 @@
           "hover": {
             "$type": "color",
             "$value": "{color-shades.grey.950}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color-shades.grey.150}"
+          }
+        },
+        "tertiary": {
+          "enabled": {
+            "$type": "color",
+            "$value": "{color-shades.grey.300}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color-shades.grey.600}"
           },
           "disabled": {
             "$type": "color",
