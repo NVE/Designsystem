@@ -80,6 +80,9 @@ describe('nve-radio-group', () => {
       </nve-radio-group>
     `);
 
+    await el.updateComplete;
+    const slot = el.shadowRoot?.querySelector('slot');
+    slot?.dispatchEvent(new Event('slotchange'));
     await waitForSlotWork(el);
 
     const radios: NveRadio[] = Array.from(el.querySelectorAll('nve-radio'));
@@ -99,6 +102,9 @@ describe('nve-radio-group', () => {
       </nve-radio-group>
     `);
 
+    await el.updateComplete;
+    const slot = el.shadowRoot?.querySelector('slot');
+    slot?.dispatchEvent(new Event('slotchange'));
     await waitForSlotWork(el);
 
     const radios: NveRadio[] = Array.from(el.querySelectorAll('nve-radio'));
