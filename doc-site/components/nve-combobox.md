@@ -164,10 +164,6 @@ Når du klikker på en tag, fjernes det tilhørende alternativet fra de valgte v
   id="nve-avdeling-3"
   label="Velg en avdeling"
   multiple
-  filled
-  disabled
-  clearable
-  selectedValues='["rme"]'
   options='[ 
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" },
