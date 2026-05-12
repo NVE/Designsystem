@@ -70,7 +70,7 @@ Du kan importere en komponent i `index.html` slik:
 ></script>
 ```
 
-Skal du bruke komponenter som inneholder ikoner (som f.eks nve-select, nve-checkbox, nve-carousel, nve-menu-item, nve-input) må du også sørge for at du riktig registrerer ikoner i appen din. For eksempel kan du gjøre dette i `index.html` filen:
+Skal du bruke komponenter som inneholder ikoner (som f.eks nve-combobox, nve-checkbox, nve-carousel, nve-menu-item, nve-input) må du også sørge for at du riktig registrerer ikoner i appen din. For eksempel kan du gjøre dette i `index.html` filen:
 
 ```html
 <script>
