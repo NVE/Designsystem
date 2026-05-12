@@ -30,13 +30,12 @@ export default css`
     .combobox__value__indicator {
       cursor: not-allowed;
     }
-    input {
-      color: #b6b9be;
-    }
     /* Standard disabled knapp har veldig svak font farge, med var opacity 0.35 teksten blir usynlig  */
     .combobox__value__tag,
-    .combobox__value__indicator {
-      color: var(--color-interactive-foreground-tertiary-disabled, #b6b9be);
+    .combobox__value__indicator,
+    nve-icon,
+    input {
+      color: var(--color-interactive-foreground-tertiary-disabled);
     }
   }
 
