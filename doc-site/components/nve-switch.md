@@ -26,7 +26,6 @@ Bruk variant for å velge farge, default er standard.
 
 </CodeExamplePreview>
 
-
 ### Med ikoner
 
 <CodeExamplePreview>
@@ -52,8 +51,7 @@ For å sette label foran switchen bruk `label-position="start"`. `end` er defaul
 <CodeExamplePreview>
 
 ```html
-<nve-switch> Slå på </nve-switch>
-<nve-switch label-position="start"> Slå på </nve-switch>
+<nve-switch> Slå på </nve-switch> <nve-switch label-position="start"> Slå på </nve-switch>
 ```
 
 </CodeExamplePreview>
@@ -63,7 +61,7 @@ For å sette label foran switchen bruk `label-position="start"`. `end` er defaul
 <CodeExamplePreview>
 
 ```html
-<nve-switch disabled> </nve-switch>
+<nve-switch disabled checked> </nve-switch>
 ```
 
 </CodeExamplePreview>
