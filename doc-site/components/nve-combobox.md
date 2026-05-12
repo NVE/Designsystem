@@ -5,19 +5,15 @@ outline: [2, 3]
 
 <nve-divider></nve-divider>
 
-For å legge til alternativer i select-komponenten bruk <span class="highlight">options</span>-attributtet.
+For å legge til alternativer i select-komponenten bruk <span class="highlight">options</span>-attributtet. Typen består av:
 
-<span class="highlight">Option</span> er en generisk type der T beskriver typen til <span class="highlight">value</span>. String er standard typen, men du kan også bruke objekter, array, eller tallene. Typen består av:
-
-- <span class="highlight">value</span> - kan være string, tall, objekt, array og er den faktiske verdien som returneres.
-- <span class="highlight">id</span> - er en unik identifikator som brukes internt til referanser, fokus og ARIA-koblinger.
+- <span class="highlight">value</span> - en unik identifikator som brukes internt til referanser, fokus og ARIA-koblinger.
 - <span class="highlight">label</span> - er teksten som vises i nedtrekksmenyen.
 - <span class="highlight">textLabel</span> - alternativ teksten som vises i inputfeltet.
 
 ```js
-type Option<T = string> = {
-  id: string;
-  value: T;
+type Option = {
+  value: string;
   label: string;
   textLabel?: string;
 };
@@ -35,19 +31,7 @@ Eksempel på bruk:
  const options: Option[] = [
   {
    value:"ek",
-   id: "ek",
    label: "EK"
-  }
- ]
-
- const optionsWithObject: Option<{name: string, surname:string}>[] = [
-  {
-   value: {
-    name: "Ola",
-    surname: "Norman"
-   },
-   id: "12345",
-   label: "Ola Norman"
   }
  ]
 ```
@@ -55,10 +39,10 @@ Eksempel på bruk:
 <br />
 
 <nve-message-card variant="primary" label="Info" size="compact">
-<p><b>Options</b>-attributtet fjernes fra DOM-en etter innlasting, og verdien lagres i en intern tilstand i comboboxen. Dette gjøres for å hindre at DOM-en fylles opp med unødvendig data.</p>
+<p><b>options</b>-attributtet fjernes fra DOM-en etter innlasting, og verdien lagres i en intern tilstand i comboboxen. Dette gjøres for å hindre at DOM-en fylles opp med unødvendig data.</p>
 </nve-message-card>
 
-Alle valgte alternativer lagres i et intern <span class="highlight">selectedValues</span>-array som returneres via <span class="highlight">change</span>-hendelsen. Hendelsestype kan importers ved:
+<span class="highlight">change</span> hendelsen trigges når man velger eller fjerner et alternativ. Hendelsestype kan importers ved:
 
 ```js
 import type { NveSelectChangeDetail } from 'nve-designsystem/components/nve-combobox/nve-combobox.component.js';
@@ -68,8 +52,7 @@ Den returnerer:
 
 ```js
 type NveSelectChangeDetail<T> = {
-  selectedValues: T | T[] | null;
-  changedId: string;
+  value: string;
   action: 'select' | 'deselect';
 }
 ```
@@ -101,13 +84,13 @@ Det er en combobox standard.
   id="nve-avdeling-1"
   label="Velg en avdeling"
   options='[ 
-    { "value":"rme","id": "rme","label": "RME asd asd asd asdojn askldnakljdn ka snd kaksjdh akjsdh akshd kasdhkaj sdh kjashd kashdkjahsdkj ahds kajhsd kajshd kajsdh" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -132,14 +115,14 @@ For a vise en enkeltvalg med redigerbar input bruk <span class="highlight">edita
   id="nve-avdeling-1"
   label="Velg en avdeling"
   editable
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -181,14 +164,18 @@ Når du klikker på en tag, fjernes det tilhørende alternativet fra de valgte v
   id="nve-avdeling-3"
   label="Velg en avdeling"
   multiple
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  filled
+  disabled
+  clearable
+  selectedValues='["rme"]'
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -209,13 +196,13 @@ Akkurat som i enkeltvalg comboboxen kan man skrive inn i input feltet nar man br
   multiple
   editable
   options='[
-    { "value":"rme","id": "rme","label": "RME-test with very long titles" },
-    { "value":"ek","id": "ek","label": "EK-test with very long titles" },
-    { "value":"tb","id": "tb","label": "TB-test with very long titles" },
-    { "value":"h","id": "h","label": "H-test with very long titles" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+    { "value":"rme","label": "RME-test with very long titles" },
+    { "value":"ek","label": "EK-test with very long titles" },
+    { "value":"tb","label": "TB-test with very long titles" },
+    { "value":"h","label": "H-test with very long titles" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -241,14 +228,14 @@ Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende inf
   label="Velg en avdeling"
   tooltip="Velg avdeling"
   editable
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -278,9 +265,9 @@ i listen (neddtrekksmenyen).
   tooltip="Velg avdeling"
   editable
   options='[
-    { "value":"rme","id": "rme","label": "RME (NVE)", "textLabel": "RME"  },
-    { "value":"ek","id": "ek","label": "EK (NVE)", "textLabel": "EK" },
-    { "value":"tb","id": "tb","label": "TB (NVE)", "textLabel": "TB" }
+    { "value":"rme","label": "RME (NVE)", "textLabel": "RME"  },
+    { "value":"ek","label": "EK (NVE)", "textLabel": "EK" },
+    { "value":"tb","label": "TB (NVE)", "textLabel": "TB" }
      ]'
 >
 </nve-combobox>
@@ -309,14 +296,14 @@ Et klikk på fjern-knappen sender også en <span class="highlight">change</span>
   label="Velg en avdeling"
   clearable
   multiple
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -339,14 +326,14 @@ Bruk <span class="highlight">size</span> for å endre størrelsen på combobox�
   id="nve-avdeling-6"
   size="large"
   label="Velg en avdeling fra stor combobox"
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -354,14 +341,14 @@ Bruk <span class="highlight">size</span> for å endre størrelsen på combobox�
 <nve-combobox
   id="nve-avdeling-7"
   label="Velg en avdeling fra medium combobox"
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -370,14 +357,14 @@ Bruk <span class="highlight">size</span> for å endre størrelsen på combobox�
   id="nve-avdeling-8"
   size="small"
   label="Velg en avdeling fra liten combobox"
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -396,14 +383,14 @@ Bruk <span class="highlight">filled</span> for mørk bakgrunnsfarge
   id="nve-avdeling-9"
   label="Velg en avdeling"
   filled
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -422,14 +409,14 @@ Bruk <span class="highlight">helpText</span> for å vise hjelpetekst over combob
   id="nve-avdeling-10"
   label="Velg en avdeling"
   helpText="Avdeling velges for å sendes i skjema"
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -448,14 +435,14 @@ Bruk <span class="highlight">hintText</span> for å vise hint-tekst under combob
   id="nve-avdeling-10"
   label="Velg en avdeling"
   hintText="Avdeling velges for å sendes i skjema"
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -470,12 +457,7 @@ Bruk attributtet <span class="highlight">disabled</span> for å hindre mulighete
 <CodeExamplePreview>
 
 ```html
-<nve-combobox
-  id="nve-avdeling-11"
-  label="Velg en avdeling"
-  disabled
-  options='[{ "value":"rme","id": "rme","label": "RME" }]'
->
+<nve-combobox id="nve-avdeling-11" label="Velg en avdeling" disabled options='[{ "value":"rme","label": "RME" }]'>
 </nve-combobox>
 ```
 
@@ -488,12 +470,7 @@ Bruk <span class="highlight">readonly</span> for å stenge mulighet for å endre
 <CodeExamplePreview>
 
 ```html
-<nve-combobox
-  id="nve-avdeling-12"
-  label="Velg en avdeling"
-  readonly
-  options='[{ "value":"rme","id": "rme","label": "RME" }]'
->
+<nve-combobox id="nve-avdeling-12" label="Velg en avdeling" readonly options='[{ "value":"rme","label": "RME" }]'>
 </nve-combobox>
 ```
 
@@ -510,14 +487,14 @@ Bruk <span class="highlight">placeholder</span> for å vise en hjelpetekst i fel
   id="nve-avdeling-13"
   label="Velg en avdeling"
   placeholder="Velg"
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -538,14 +515,14 @@ Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forkl
   label="Velg en avdeling"
   required
   requiredLabel="Obligatorisk"
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -570,14 +547,14 @@ Med flervalg kan du også begrense hvor mange verdier som kan velges ved å bruk
   multiple
   max="2"
   helpText="Du kan velge maks 2 alternativer."
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -602,14 +579,14 @@ Bruk et <span class="highlight">selectedIds</span> string array for å vise forh
   label="Velg en avdeling"
   multiple
   selectedIds='["rme", "tb"]'
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>
@@ -618,14 +595,14 @@ Bruk et <span class="highlight">selectedIds</span> string array for å vise forh
   id="nve-avdeling-14"
   label="Velg en avdeling"
   selectedIds='["rme"]'
-  options='[
-    { "value":"rme","id": "rme","label": "RME" },
-    { "value":"ek","id": "ek","label": "EK" },
-    { "value":"tb","id": "tb","label": "TB" },
-    { "value":"h","id": "h","label": "H" },
-    { "value":"ikti","id": "ikti","label": "IKTI" },
-    { "value":"sv","id": "sv","label": "SV" },
-    { "value":"v","id": "v","label": "V" }
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
      ]'
 >
 </nve-combobox>

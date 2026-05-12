@@ -29,16 +29,16 @@ describe('nve-combobox', () => {
     expect(text).toBe('Help text');
   });
 
-  it('test if selectedIds are removed from the DOM', async () => {
+  it('test if selectedValues are removed from the DOM', async () => {
     const options = [
-      { id: '1', value: '1', label: 'Option 1' },
-      { id: '2', value: '2', label: 'Option 2' },
+      { value: '1', label: 'Option 1' },
+      { value: '2', label: 'Option 2' },
     ];
     const selectedValues = ['1'];
     const el = await fixture<NveCombobox>(
       html`<nve-combobox .options=${options} .selectedValues=${selectedValues}></nve-combobox>`
     );
-    expect(el.hasAttribute('selectedIds')).toBeFalsy();
+    expect(el.hasAttribute('selectedValues')).toBeFalsy();
   });
 
   it('has field--filled when filled attribute is set', async () => {

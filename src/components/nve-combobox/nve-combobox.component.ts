@@ -10,25 +10,22 @@ import { getLabel, labelStyles } from '../../templates/label';
 let id = 0;
 /**
  * Representerer et alternativ i select-komponenten.
- * Den har en unik ID, en generisk verdi og en label som vises i UI.
- * ID-en brukes for å identifisere alternativet internt og i selectedIds.
+ * Den har en unik verdi og en label som vises i UI.
  * textLabel vises i input-feltet
  */
-export type Option<T = string> = {
-  id: string;
-  value: T;
+export type Option = {
+  value: string;
   label: string;
   textLabel?: string;
 };
 
 /**
  * Detaljer som sendes i change-hendelsen når et alternativ velges eller fjernes.
- * Inkluderer de valgte verdiene, ID-en til det endret alternativet
+ * Inkluderer verdien til det endret alternativet
  * og handlingen som ble utført (select eller deselect).
  */
-export type NveSelectChangeDetail<T> = {
-  selectedValues: T | T[] | null;
-  changedId: string;
+export type NveSelectChangeDetail = {
+  value: string;
   action: 'select' | 'deselect';
 };
 
@@ -36,7 +33,7 @@ export type NveSelectChangeDetail<T> = {
  * En combobox-komponent lar brukeren velge ett eller flere alternativer fra en liste, eller søke etter alternativer i et tekstfelt.
  * Den støtter både enkelt- og flervalg.
  *
- * @event change Når et alternativ velges eller fjernes. Hendelsen inkluderer de valgte verdiene i et array, ID-en til det endret alternativet og handlingen som ble utført (select eller deselect).
+ * @event change Når et alternativ velges eller fjernes. Hendelsen inkluderer verdien til det endret alternativet og handlingen som ble utført (select eller deselect).
  * @event nve-show Når listeboksen åpnes
  * @event nve-hide Når listeboksen lukkes
  * @event nve-clear Når alle valgte alternativer fjernes ved å klikke på clearable-knappen
@@ -53,7 +50,7 @@ export type NveSelectChangeDetail<T> = {
  * @csspart help-text Område for hjelpetekst og feilmeldinger under feltet
  */
 @customElement('nve-combobox')
-export default class NveCombobox<T = string> extends LitElement implements INveComponent {
+export default class NveCombobox extends LitElement implements INveComponent {
   @property({ type: String }) testId: string | undefined = undefined;
   // Native select attributer
   /** Om feltet skal være deaktivert */
@@ -85,8 +82,8 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
   /** Tekst som vises for å markere at et felt er obligatorisk */
   /** Maks antall valg i multiselect */
   @property({ type: Number }) max?: number;
-  /** Alternativer som kan velges i select-komponenten. Hver option har en id, en verdi av generisk type T og en label som vises i UI. */
-  @property({ type: Array }) options: Option<T>[] = [];
+  /** Alternativer som kan velges i select-komponenten. Hver option har en verdi og en label som vises i UI. */
+  @property({ type: Array }) options: Option[] = [];
   /** Placeholder-tekst for inputfeltet */
   @property({ type: String }) placeholder = '';
   /** Om feltet skal være skrivebeskyttet */
@@ -97,8 +94,8 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
   @property({ type: String, reflect: true }) requiredLabel = '';
   /** Om bruker kan redigere verdien i inputfeltet */
   @property({ type: Boolean }) editable = false;
-  /** Initialt valgte ID-er */
-  @property({ type: Array }) selectedIds: string[] = [];
+  /** Initialt valgte verdier */
+  @property({ type: Array }) selectedValues: string[] = [];
   /** Størrelse på komponenten */
   @property({ type: String, reflect: true }) size: 'small' | 'medium' | 'large' = 'medium';
   /** Tooltip-tekst for label */
@@ -114,14 +111,12 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
   @query('input[role="combobox"]') comboboxNativeInput!: HTMLInputElement;
   /** Om listboksen er utvidet */
   @state() protected expanded = false;
-  /** ID til det aktivert/fokuserte alternativet */
-  @state() private activeId = '';
-  /** Internt array ID-er for valgte alternativer. Oppdateres basert på selectedIds-prop og når alternativer velges eller fjernes. */
-  @state() private _selectedIds: string[] = [];
+  /** Verdi til det aktivert/fokuserte alternativet */
+  @state() private activeValue = '';
+  /** Internt array verdier for valgte alternativer. Oppdateres basert på selectedValues-prop og når alternativer velges eller fjernes. */
+  @state() private _selectedValues: string[] = [];
   /** ID-er for kollapsede tags i multiselect hvis wrap er false */
   @state() private collapsedTagIds: string[] = [];
-  /** Valgte verdier. Oppdateres når alternativer velges eller fjernes. */
-  @state() private selectedValues: T | T[] | null = null;
   /** Søketekst som brukes for å filtrere alternativer i single select */
   @state() private searchString = '';
   /** Tekst som vises i inputfeltet */
@@ -131,11 +126,11 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
   /** Antall skjulte tags i multiselect hvis wrap er false */
   @state() private indicatorCount = 0;
   /** Synlige alternativer i listboksen. Kan filtreres basert på søketekst */
-  @state() private visibleOptions: Option<T>[] = [];
+  @state() private visibleOptions: Option[] = [];
   /** Timeout for searchString */
   private searchTimeout?: number;
   /** Internt array for alternativer. Oppdateres basert på options-prop */
-  private _options: Option<T>[] = [];
+  private _options: Option[] = [];
 
   constructor() {
     super();
@@ -153,7 +148,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
   firstUpdated() {
     this.id = this.id || this.componentId;
     this.options.forEach((opt, index) => {
-      opt.id = opt.id ? opt.id : `${this.id}-${index}`;
+      opt.value = opt.value ? opt.value : `${this.id}-${index}`;
     });
 
     if (this.autofocus) {
@@ -166,52 +161,49 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
       this._options = this.options;
       // fjern options fra DOM.
       this.removeAttribute('options');
-      this.visibleOptions = this._options.filter((o): o is Option<T> => !!o);
+      this.visibleOptions = this._options.filter((o): o is Option => !!o);
     }
 
-    if (changed.has('selectedIds') && this.selectedIds !== null) {
-      this.syncSelectedFromIds();
-      // fjern selectedIds fra DOM
-      this.removeAttribute('selectedIds');
+    if (changed.has('selectedValues') && this.selectedValues !== null) {
+      this.syncSelectedFromValues();
+      // fjern selectedValues fra DOM
+      this.removeAttribute('selectedValues');
     }
-    if (changed.has('activeId') && this.expanded) {
+    if (changed.has('activeValue') && this.expanded) {
       this.scrollActiveOptionIntoView();
     }
   }
 
-  /** Synkronisere _selectedIds på selectedIds-attributtet. */
-  private syncSelectedFromIds() {
-    this._selectedIds = [];
+  /** Synkronisere _selectedValues på selectedValues-attributtet. */
+  private syncSelectedFromValues() {
+    this._selectedValues = [];
 
-    const ids = this.selectedIds ?? [];
-    if (!ids.length) {
+    const values = this.selectedValues ?? [];
+    if (!values.length) {
       // ingen forhåndsvalgte verdier
-      this.selectedValues = this.multiple ? ([] as unknown as T[]) : null;
       if (!this.multiple) {
         this.updateDisplayLabel('');
       }
       return;
     }
 
-    const validOptions = ids
-      .map((id) => {
-        const option = this._options.find((opt) => opt?.id === id);
+    const validOptions = values
+      .map((value) => {
+        const option = this._options.find((opt) => opt?.value === value);
         if (!option) {
-          console.warn(`nve-combobox: selectedId "${id}" does not match any option.`);
+          console.warn(`nve-combobox: selectedValue "${value}" does not match any option.`);
         }
         return option ?? null;
       })
-      .filter((o): o is Option<T> => !!o);
+      .filter((o): o is Option => !!o);
 
     if (!validOptions.length) return;
 
     if (!this.multiple) {
-      this._selectedIds = [...this._selectedIds, validOptions[0].id];
-      this.selectedValues = validOptions[0].value;
+      this._selectedValues = [...this._selectedValues, validOptions[0].value];
       this.updateDisplayLabel(validOptions[0].textLabel || validOptions[0].label || '');
     } else {
-      this._selectedIds = validOptions.map((o) => o.id);
-      this.selectedValues = validOptions.map((o) => o.value);
+      this._selectedValues = validOptions.map((o) => o.value);
     }
   }
 
@@ -272,9 +264,9 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
         return this.handleBackspace(e);
       case 'Tab':
         if (this.expanded) {
-          const optionLabel = this._selectedIds[0]
-            ? this._options.find((opt) => opt?.id === this._selectedIds[0])?.textLabel ||
-              this._options.find((opt) => opt?.id === this._selectedIds[0])?.label ||
+          const optionLabel = this._selectedValues[0]
+            ? this._options.find((opt) => opt?.value === this._selectedValues[0])?.textLabel ||
+              this._options.find((opt) => opt?.value === this._selectedValues[0])?.label ||
               ''
             : '';
           this.updateDisplayLabel(optionLabel);
@@ -301,20 +293,20 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
         this.updateDisplayLabel('');
       }
 
-      if (!this._selectedIds.length) {
+      if (!this._selectedValues.length) {
         // Hvis ingen er valgt ennå → start fra første eller siste alternativ
         const index = key === 'down' ? 0 : this.visibleOptions.length - 1;
-        this.activeId = this.visibleOptions[index].id;
+        this.activeValue = this.visibleOptions[index].value;
       }
       this.openListbox();
     } else {
       // Flytt til neste eller forrige alternativ (wrap-around)
-      const currentIndex = this.visibleOptions.findIndex((opt) => opt.id === this.activeId);
+      const currentIndex = this.visibleOptions.findIndex((opt) => opt.value === this.activeValue);
       const nextIndex =
         key === 'down'
           ? (currentIndex + 1) % this.visibleOptions.length
           : (currentIndex - 1 + this.visibleOptions.length) % this.visibleOptions.length;
-      this.activeId = this.visibleOptions[nextIndex].id;
+      this.activeValue = this.visibleOptions[nextIndex].value;
     }
   }
 
@@ -326,7 +318,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
    * @param key - 'left' eller 'right', avhengig av hvilken pil som ble trykket
    */
   private handleArrowRightOrLeft(e: KeyboardEvent, key: 'left' | 'right') {
-    if (!this._selectedIds.length) return;
+    if (!this._selectedValues.length) return;
     const target = e.target as HTMLElement;
     if (target === this.comboboxNativeInput) {
       const input = target as HTMLInputElement;
@@ -381,11 +373,11 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
   private handleEscape() {
     this.closeListbox();
     // hvis søkbar ønsker vi å tilbakestille visningsetiketten til verdien av det valgte alternativet.
-    if (this._selectedIds.length) {
+    if (this._selectedValues.length) {
       if (!this.multiple) {
         this.updateDisplayLabel(
-          this._options.find((opt) => opt?.id === this._selectedIds[0])?.textLabel ||
-            this._options.find((opt) => opt?.id === this._selectedIds[0])?.label ||
+          this._options.find((opt) => opt?.value === this._selectedValues[0])?.textLabel ||
+            this._options.find((opt) => opt?.value === this._selectedValues[0])?.label ||
             ''
         );
       }
@@ -408,7 +400,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
     // 1) In input: if empty and there are tags, move to last tag
     if (target === this.comboboxNativeInput) {
       const input = target as HTMLInputElement;
-      if (!input.value && this._selectedIds.length) {
+      if (!input.value && this._selectedValues.length) {
         e.preventDefault(); // avoid doing nothing
         focusLastTag();
       }
@@ -432,20 +424,20 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
       const id = target.getAttribute('data-option-id');
       if (!id) return;
 
-      const currentIndex = this._selectedIds.findIndex((selectedId) => selectedId === id);
-      const prevId = this._selectedIds[currentIndex - 1];
-      const nextId = this._selectedIds[currentIndex + 1];
+      const currentIndex = this._selectedValues.findIndex((selectedValue) => selectedValue === id);
+      const prevId = this._selectedValues[currentIndex - 1];
+      const nextId = this._selectedValues[currentIndex + 1];
 
-      // this updates selectedIdsIntern
+      // this updates selectedValuesIntern
       this.handleOptionChange(id);
 
-      if (this._selectedIds.length) {
+      if (this._selectedValues.length) {
         // focus previous tag if it exists, otherwise the first remaining tag
         // if currentindex is 0 but there is length bigger than 1 we want to focus the next tag
         await this.updateComplete;
 
-        const prevIdIndex = this._selectedIds.findIndex((selectedId) => selectedId === prevId);
-        const nextIdIndex = this._selectedIds.findIndex((selectedId) => selectedId === nextId);
+        const prevIdIndex = this._selectedValues.findIndex((selectedValue) => selectedValue === prevId);
+        const nextIdIndex = this._selectedValues.findIndex((selectedValue) => selectedValue === nextId);
 
         let nextTagId: string | undefined;
         if (prevIdIndex !== -1) {
@@ -473,15 +465,15 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
    * @param key - 'home' eller 'end', avhengig av hvilken tast som ble trykket
    */
   private handleHomeOrEnd(key: 'home' | 'end') {
-    let option: Option<T> | null = null;
+    let option: Option | null = null;
     if (key === 'home') {
       option = this.visibleOptions[0];
     }
     if (key === 'end') {
       option = this.visibleOptions[this.visibleOptions.length - 1];
     }
-    const id = option?.id;
-    this.activeId = id ? id : '';
+    const value = option?.value;
+    this.activeValue = value ? value : '';
   }
   /**
    * Håndterer Enter og Space-tastene for å åpne listeboksen eller velge det aktive alternativet.
@@ -491,8 +483,8 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
     if (!this.expanded) {
       await this.handleArrowUpAndDown('down');
       return;
-    } else if (this.expanded && this.activeId) {
-      this.handleOptionChange(this.activeId);
+    } else if (this.expanded && this.activeValue) {
+      this.handleOptionChange(this.activeValue);
     } else {
       this.closeListbox();
     }
@@ -517,7 +509,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
     const id = this.getIdByLetter(this.searchString);
 
     if (id) {
-      this.activeId = id;
+      this.activeValue = id;
     }
   }
 
@@ -530,10 +522,10 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
       e.preventDefault();
       e.stopPropagation();
       this.handleOptionChange(id);
-      if (this._selectedIds.length) {
-        const lastSelectedId = this._selectedIds[this._selectedIds.length - 1];
+      if (this._selectedValues.length) {
+        const lastSelectedValue = this._selectedValues[this._selectedValues.length - 1];
         const lastTag = this.renderRoot.querySelector<HTMLElement>(
-          `.combobox__value__tag[data-option-id="${lastSelectedId}"]`
+          `.combobox__value__tag[data-option-id="${lastSelectedValue}"]`
         );
         if (lastTag) {
           lastTag.focus();
@@ -622,27 +614,26 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
 
   /**
    * Håndterer klikk på et alternativ.
-   * @param id - ID-en til et alternativ
+   * @param value - Verdien til et alternativ
    */
-  private handleClickOption(id: string) {
-    const isSelected = this._selectedIds.includes(id);
+  private handleClickOption(value: string) {
+    const isSelected = this._selectedValues.includes(value);
     const canClick = !this.maxReached || isSelected;
     if (!canClick) return;
 
-    this.handleOptionChange(id);
+    this.handleOptionChange(value);
   }
 
   /**
    * Håndterer klikk på clearable-knappen for å fjerne alle valgte alternativer.
-   * Tømmer både _selectedIds og selectedValues, og oppdaterer displayLabel til en tom streng.
+   * Tømmer både _selectedValues, og oppdaterer displayLabel til en tom streng.
    * Clearable knapp er ikke støttet av tastatur. Grunnen - den skal vises også når input ikke er fokusert.
    * @param e - MouseEvent som utløste handlingen
    */
   private handleClear(e: MouseEvent) {
     e.stopPropagation();
     if (this.disabled || this.readonly) return;
-    this._selectedIds = [];
-    this.selectedValues = [];
+    this._selectedValues = [];
     this.indicatorCount = 0;
     this.updateDisplayLabel('');
     this.emitClear();
@@ -670,16 +661,15 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
   /**
    * Sender en change-hendelse for et alternativ. Enten når et alternativ velges eller fjernes. Change-hendelse
    * fra nativ input blir ikke sendt videre, i stedet sender vi denne egendefinerte hendelsen som inkluderer mer
-   * relevant informasjon for forbrukeren av komponenten. Hendelsen inkluderer både de valgte verdiene,
-   * ID-en til det endret alternativet og handlingen som ble utført (select eller deselect).
-   * @param id - ID-en til et alternativ
+   * relevant informasjon for forbrukeren av komponenten. Hendelsen inkluderer verdien til det endret alternativet
+   * og handlingen som ble utført (select eller deselect).
+   * @param value - Verdien til et alternativ
    * @param action - Handling som ble utført ('select' eller 'deselect')
    */
-  private emitChange(id: string, action: 'select' | 'deselect') {
-    this.emitEvent<NveSelectChangeDetail<T>>('change', {
-      selectedValues: this.selectedValues,
-      changedId: id,
-      action: action,
+  private emitChange(value: string, action: 'select' | 'deselect') {
+    this.emitEvent<NveSelectChangeDetail>('change', {
+      value,
+      action,
     });
   }
 
@@ -711,15 +701,15 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
    * I single select vil den erstatte teksten i input med det valgte alternativet, og lukke listeboksen.
    * I multiselect vil den tømme input-feltet for å gjøre det klart for videre søk eller valg.
    * Emiter change med enten select eller deselect.
-   * @param id - ID-en til et alternativ
+   * @param value - Verdien til et alternativ
    * @param e - Hendelsen som utløste endringen (valgfritt)
    */
-  private handleOptionChange(id: string) {
+  private handleOptionChange(value: string) {
     //check if option is selected
-    const option = this._options.find((opt) => opt?.id === id);
+    const option = this._options.find((opt) => opt?.value === value);
     if (!option) return;
 
-    const isSelected = this._selectedIds.includes(id);
+    const isSelected = this._selectedValues.includes(value);
     if (this.maxReached && !isSelected) return;
     if (!isSelected) {
       this.selectOption(option);
@@ -735,42 +725,33 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
       this.updateDisplayLabel(option.textLabel || option.label || '');
       this.closeListbox();
     }
-    this.maxReached = this.max ? this._selectedIds.length >= this.max : false;
-    this.emitChange(id, isSelected && this.multiple ? 'deselect' : 'select');
+    this.maxReached = this.max ? this._selectedValues.length >= this.max : false;
+    this.emitChange(value, isSelected && this.multiple ? 'deselect' : 'select');
   }
 
   /**
-   * Legger til et alternativ i de valgte verdiene og ID-ene.
+   * Legger til et alternativ i de valgte verdiene.
    * @param option - Alternativet som skal legges til
    * @param click - Om endringen ble utløst av et klikk (valgfritt)
    */
-  private selectOption(option: Option<T>) {
+  private selectOption(option: Option) {
     if (this.multiple) {
-      const currentValues = Array.isArray(this.selectedValues) ? this.selectedValues : [];
-      this.selectedValues = option.value ? [...currentValues, option.value] : currentValues;
-
-      this._selectedIds = [...this._selectedIds, option.id];
+      this._selectedValues = [...this._selectedValues, option.value];
       if (!this.wrap) {
         this.calculateVisibleTags();
       }
     } else {
-      this._selectedIds = [option.id];
-      this.selectedValues = option.value;
+      this._selectedValues = [option.value];
       this.comboboxNativeInput.focus();
     }
   }
 
   /**
-   * Fjerner et alternativ fra de valgte verdiene og ID-ene. Fungerer kun i multiple
+   * Fjerner et alternativ fra de valgte verdiene. Fungerer kun i multiple
    * @param option - Alternativet som skal fjernes
    */
-  private deselectOption(option: Option<T>) {
-    const currentValues = Array.isArray(this.selectedValues) ? this.selectedValues : [];
-    this.selectedValues = option.value
-      ? (currentValues as T[]).filter((value) => value !== option.value)
-      : currentValues;
-
-    this._selectedIds = this._selectedIds.filter((id) => id !== option.id);
+  private deselectOption(option: Option) {
+    this._selectedValues = this._selectedValues.filter((value) => value !== option.value);
     if (this.multiple && !this.wrap) {
       this.calculateVisibleTags();
     }
@@ -785,7 +766,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
 
     // hvis listen er lang og det finnes noen valgte verdier så scroller vi det aktive alternativet inn i view når
     // listen åpnes
-    if (this._selectedIds.length) {
+    if (this._selectedValues.length) {
       await this.updateComplete;
       this.scrollActiveOptionIntoView();
     }
@@ -812,9 +793,9 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
 
     if (this && !path.includes(this)) {
       if (this.editable && !this.multiple) {
-        const optionLabel = this._selectedIds[0]
-          ? this._options.find((opt) => opt?.id === this._selectedIds[0])?.textLabel ||
-            this._options.find((opt) => opt?.id === this._selectedIds[0])?.label ||
+        const optionLabel = this._selectedValues[0]
+          ? this._options.find((opt) => opt?.value === this._selectedValues[0])?.textLabel ||
+            this._options.find((opt) => opt?.value === this._selectedValues[0])?.label ||
             ''
           : '';
         this.updateDisplayLabel(optionLabel);
@@ -830,7 +811,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
    * @returns ID-en til det neste alternativet som matcher filteret, eller undefined hvis ingen match finnes.
    */
   private getIdByLetter(filter: string): string | undefined {
-    const options = this._options.filter((o): o is Option<T> => !!o);
+    const options = this._options.filter((o): o is Option => !!o);
     if (!options.length) return;
 
     // Hjelpefunksjon for å sjekke om alle bokstavene i filteret er like, f.eks. "aaa" eller "bb"
@@ -841,7 +822,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
     // vi vil at neste trykk på D skal velge Diana, og ikke David.
     // Hvis ingen elementer er aktive, eller det aktive elementet ikke finnes i den filtrerte listen,
     // starter vi fra begynnelsen av listen.
-    const currentIndex = options.findIndex((opt) => opt.id === this.activeId);
+    const currentIndex = options.findIndex((opt) => opt.value === this.activeValue);
     const startIndex = currentIndex >= 0 ? currentIndex + 1 : 0;
 
     // roterer alternativer slik at arrayet starter fra neste element etter det aktive elementet,
@@ -850,13 +831,13 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
 
     // En eksakt match på hele filteret har høyest prioritet, så vi sjekker det først
     const firstMatch = this.filterOptions(orderedOptions, filter)[0];
-    if (firstMatch) return firstMatch.id;
+    if (firstMatch) return firstMatch.value;
 
     // Hvis man har skrevet flere bokstaver og alle er like, f.eks. "aaa", så skal vi ikke søke etter "aaa"
     // men heller "a", fordi bruker vil navigere til neste element som starter på "a".
     if (allSameLetter(filter.split(''))) {
       const matches = this.filterOptions(orderedOptions, filter[0]);
-      if (matches[0]) return matches[0].id;
+      if (matches[0]) return matches[0].value;
     }
 
     // Ingen match
@@ -869,9 +850,9 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
    * @param filter - Søke-teksten som brukes for å filtrere alternativene.
    * @returns En liste av alternativer som matcher søke-teksten.
    */
-  private filterOptions(options: (Option<T> | null)[], filter: string): Option<T>[] {
+  private filterOptions(options: (Option | null)[], filter: string): Option[] {
     return options
-      .filter((o): o is Option<T> => !!o)
+      .filter((o): o is Option => !!o)
       .filter((option) => {
         const optionText = option.label || '';
         return optionText.toLowerCase().startsWith(filter.toLowerCase());
@@ -887,7 +868,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
     this.displayLabel = text;
     if (this.editable) {
       this.visibleOptions = this._options
-        .filter((o): o is Option<T> => !!o)
+        .filter((o): o is Option => !!o)
         .filter((option) => {
           const optionText = option.textLabel || option.label || '';
           return optionText.toLowerCase().includes(text.toLowerCase());
@@ -910,12 +891,12 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
    * Scroll til det aktive alternativet.
    */
   private scrollActiveOptionIntoView() {
-    if (!this.activeId) return;
+    if (!this.activeValue) return;
 
     const listbox = this.renderRoot.querySelector<HTMLElement>('.combobox__listbox');
     if (!listbox) return;
 
-    const activeOption = listbox.querySelector<HTMLElement>(`[role="option"][id="${this.activeId}"]`);
+    const activeOption = listbox.querySelector<HTMLElement>(`[role="option"][id="${this.activeValue}"]`);
     if (!activeOption) return;
 
     activeOption.scrollIntoView({ block: 'nearest' });
@@ -944,11 +925,11 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
 
     this.collapsedTagIds = [];
 
-    for (const [index, id] of this._selectedIds.entries()) {
+    for (const [index, value] of this._selectedValues.entries()) {
       // vi gjemmer tagger som ikke får plass, hver gjemt tag øker indikator-count med 1. Hvis indikator allerede er
       // større enn 0, så legger vi ikke på flere tagger fordi vi vet at de ikke får plass
       if (_indicatorCount > 0) {
-        this.collapsedTagIds.push(id);
+        this.collapsedTagIds.push(value);
         _indicatorCount++;
         continue;
       }
@@ -956,8 +937,8 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
       const tag = document.createElement('button');
       tag.className = 'combobox__value__tag';
       tag.textContent =
-        this._options.find((opt) => opt?.id === id)?.textLabel ||
-        this._options.find((opt) => opt?.id === id)?.label ||
+        this._options.find((opt) => opt?.value === value)?.textLabel ||
+        this._options.find((opt) => opt?.value === value)?.label ||
         '';
       const icon = document.createElement('nve-icon');
       icon.setAttribute('name', 'close');
@@ -975,7 +956,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
           this.style.setProperty('--first-tag-max-width', `${valueWidth}px`);
           continue;
         }
-        this.collapsedTagIds.push(id);
+        this.collapsedTagIds.push(value);
         _indicatorCount++;
       }
     }
@@ -1035,27 +1016,27 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
             })}
           >
             <div part="value" class="combobox__value">
-              ${this.multiple && this._selectedIds.length
-                ? this._selectedIds
-                    .filter((id) => !this.collapsedTagIds.includes(id))
+              ${this.multiple && this._selectedValues.length
+                ? this._selectedValues
+                    .filter((value) => !this.collapsedTagIds.includes(value))
                     .map(
-                      (id) =>
+                      (value) =>
                         html`<button
                           part="tag"
                           class="combobox__value__tag"
                           ?disabled=${this.disabled}
-                          aria-label="${this.removeTagAriaLabel} ${this._options.find((opt) => opt?.id === id)
+                          aria-label="${this.removeTagAriaLabel} ${this._options.find((opt) => opt?.value === value)
                             ?.textLabel ||
-                          this._options.find((opt) => opt?.id === id)?.label ||
+                          this._options.find((opt) => opt?.value === value)?.label ||
                           ''}"
                           tabindex="-1"
-                          data-option-id=${ifDefined(id)}
-                          @click=${(e: MouseEvent) => this.handleClickTag(e, id)}
-                          @keydown=${(e: KeyboardEvent) => this.handleTagKeydown(e, id)}
+                          data-option-id=${ifDefined(value)}
+                          @click=${(e: MouseEvent) => this.handleClickTag(e, value)}
+                          @keydown=${(e: KeyboardEvent) => this.handleTagKeydown(e, value)}
                         >
                           <span
-                            >${this._options.find((opt) => opt?.id === id)?.textLabel ||
-                            this._options.find((opt) => opt?.id === id)?.label ||
+                            >${this._options.find((opt) => opt?.value === value)?.textLabel ||
+                            this._options.find((opt) => opt?.value === value)?.label ||
                             ''}</span
                           >
                           <nve-icon name="close" aria-hidden="true"></nve-icon>
@@ -1076,7 +1057,7 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
                 : nothing}
               <div class="sr-only" id=${selectedValuesId}>
                 ${this._options
-                  .filter((opt) => this._selectedIds.includes(opt.id))
+                  .filter((opt) => this._selectedValues.includes(opt.value))
                   .map((opt) => opt.textLabel || opt.label || '')
                   .join(', ')}
               </div>
@@ -1098,16 +1079,16 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
                 form=${ifDefined(this.form)}
                 aria-labelledby="${labelId}"
                 aria-describedby=${ifDefined(describedBy || undefined)}
-                aria-activedescendant=${ifDefined(this.activeId)}
+                aria-activedescendant=${ifDefined(this.activeValue)}
                 role="combobox"
                 ?aria-invalid=${this.errorMessage}
-                placeholder=${this.placeholder && !this._selectedIds.length ? this.placeholder : ''}
+                placeholder=${this.placeholder && !this._selectedValues.length ? this.placeholder : ''}
                 .value=${this.displayLabel}
                 @input=${this.onInput}
               />
             </div>
             <!-- Ikoner og knapper -->
-            ${this.clearable && this._selectedIds.length && !this.readonly && !this.disabled
+            ${this.clearable && this._selectedValues.length && !this.readonly && !this.disabled
               ? html`<button
                   part="clear-button"
                   tabindex="-1"
@@ -1140,21 +1121,21 @@ export default class NveCombobox<T = string> extends LitElement implements INveC
                   return html`<li
                     class=${classMap({
                       combobox__listbox__option: true,
-                      'combobox__listbox__option--selected': this._selectedIds.includes(option.id),
-                      'combobox__listbox__option--active': option.id === this.activeId,
+                      'combobox__listbox__option--selected': this._selectedValues.includes(option.value),
+                      'combobox__listbox__option--active': option.value === this.activeValue,
                       'combobox__listbox__option--disabled':
-                        this.multiple && !this._selectedIds.includes(option.id) && this.maxReached,
+                        this.multiple && !this._selectedValues.includes(option.value) && this.maxReached,
                     })}
-                    id=${ifDefined(option.id)}
+                    id=${ifDefined(option.value)}
                     role="option"
                     part="option"
-                    aria-selected=${this._selectedIds.includes(option.id) ? 'true' : 'false'}
-                    aria-disabled=${this.multiple && !this._selectedIds.includes(option.id) && this.maxReached
+                    aria-selected=${this._selectedValues.includes(option.value) ? 'true' : 'false'}
+                    aria-disabled=${this.multiple && !this._selectedValues.includes(option.value) && this.maxReached
                       ? 'true'
                       : 'false'}
-                    @click=${() => this.handleClickOption(option.id)}
+                    @click=${() => this.handleClickOption(option.value)}
                   >
-                    ${this._selectedIds.includes(option.id)
+                    ${this._selectedValues.includes(option.value)
                       ? html`<nve-icon name="check" aria-hidden="true"></nve-icon>`
                       : nothing}
                     ${ifDefined(option?.label)}

@@ -18,8 +18,9 @@ export default css`
     --_border-color: var(--color-neutrals-border-default);
     --_background-color: var(--color-neutrals-background-primary);
     --_border-color-hover: var(--color-neutrals-foreground-primary);
-    --_options-background-selected: var(--color-neutrals-background-secondary);
-    --_options-background-active: var(--color-neutrals-background-primary-contrast);
+    --_options-color--selected: var(--color-interactive-foreground-secondary-enabled);
+    --_options-background-selected: var(--color-interactive-background-tertiary-pressed);
+    --_options-background-active: var(--color-interactive-background-tertiary-hover);
   }
 
   .field--disabled {
@@ -74,8 +75,9 @@ export default css`
     --_border-color: var(--color-neutrals-border-subtle);
     --_background-color: var(--color-neutrals-background-primary-contrast,);
     --_border-color-hover: var(--color-neutrals-border-default);
-    --_options-background-selected: var(--color-neutrals-background-secondary);
-    --_options-background-active: var(--color-neutrals-background-primary);
+    --_options-color--selected: var(--color-interactive-foreground-primary-hover);
+    --_options-background-selected: var(--color-interactive-background-primary-pressed);
+    --_options-background-active: var(--color-interactive-background-primary-hover);
   }
 
   .field--readonly {
@@ -93,7 +95,7 @@ export default css`
     display: flex;
     anchor-name: --combobox-anchor;
     align-items: center;
-    font: var(--typography-body-small);
+    font: var(--typography-body-medium);
     color: var(--color-neutrals-foreground-primary);
     border-radius: var(--border-radius-small);
     border-width: var(--border-width-default);
@@ -139,7 +141,7 @@ export default css`
 
   .combobox__value__input {
     border: none;
-    font: var(--typography-body-small);
+    font: var(--typography-body-medium);
     color: var(--color-neutrals-foreground-primary);
     flex: 1;
     background: transparent;
@@ -208,9 +210,11 @@ export default css`
     padding: var(--spacing-x-small);
     gap: var(--spacing-x-small);
     font: var(--typography-body-small);
-    color: var(--color-neutrals-foreground-primary);
+    color: var(--color-interactive-foreground-secondary-enabled);
     border-radius: var(--border-radius-small);
-    transition: background-color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
     cursor: pointer;
   }
 
@@ -220,23 +224,26 @@ export default css`
 
   .combobox__listbox__option--selected {
     background-color: var(--_options-background-selected);
+    color: var(--_options-color--selected);
   }
 
   .combobox__listbox__option--active,
   .combobox__listbox__option--selected.combobox__listbox__option--active,
   .combobox__listbox__option:not(.combobox__listbox__option--disabled):hover {
     background-color: var(--_options-background-active);
+    color: var(--_options-color--selected);
   }
 
   .combobox__value__indicator,
   .combobox__value__tag {
     display: flex;
     font: var(--typography-label-x-small);
+    color: var(--color-interactive-foreground-tertiary-enabled, #60656c);
     align-items: center;
     gap: var(--spacing-2x-small, 4px);
-    border: none;
+    border: var(--border-width-default) solid var(--color-interactive-border-tertiary-enabled, #b6b9be);
     border-radius: var(--border-radius-small, 4px);
-    background: var(--_options-background-selected);
+    background: var(--color-interactive-background-tertiary-enabled, #efeff1);
     cursor: pointer;
     nve-icon {
       --icon-size: 20px;
@@ -257,6 +264,14 @@ export default css`
     border: none;
     background: transparent;
     cursor: pointer;
+    color: var(--color-interactive-foreground-tertiary-enabled, #60656c);
+    transition: color 0.3s ease;
+    nve-icon {
+      --icon-size: 20px;
+    }
+  }
+  .combobox__clear-button:hover {
+    color: var(--color-interactive-foreground-tertiary-hover);
   }
 
   .icon__error {
