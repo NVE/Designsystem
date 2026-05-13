@@ -16,6 +16,15 @@ Source Sans Pro/3 er en «open-source» sans serif skrifttype, laget for å gi g
 
 Typografiske tokens brukes for å opprettholde en ensartet samling av fonter i hele utviklingsprosessen.
 
+#### Typografikomponenter
+
+Designsystemet tilbyr ferdige komponenter for typografi som gjør det enkelt å implementere riktig styling i dine applikasjoner:
+
+- **[nve-heading](/components/nve-heading)** – For overskrifter (h1-h6) med riktig semantikk og typografi
+- **[nve-paragraph](/components/nve-paragraph)** – For avsnitt med ulike typografivarianter (lead, body, body compact)
+
+Disse komponentene sikrer automatisk riktig bruk av typografi-tokens og semantisk HTML, samtidig som de gir fleksibilitet til å overstyre styling ved behov.
+
 #### Typografi i Figma
 
 Fonten heter Source Sans 3 i Figma, og er tilgjenglig uten at du trenger å laste ned eller installere fonten selv.
@@ -47,22 +56,31 @@ I Figma-skisser blir disse font-egenskapene typisk brukt på ulike tekststiler o
 
 ### Header
 
-Header typografi variabler skal vanligvis brukes på html heading-tagene som `<h1>`, `<h2>` osv.
+Header typografi kan brukes gjennom [nve-heading](/components/nve-heading#heading-varianter)-komponenten.
+
 <TypographyTable tableContentType="headings"></TypographyTable>
 
 ### Subheader
+
+Subheader typografi kan brukes gjennom [nve-heading](/components/nve-heading#subheading-varianter)-komponenten.
 
 <TypographyTable tableContentType="subheadings"></TypographyTable>
 
 ### Lead
 
+Lead typografi kan brukes gjennom [nve-paragraph](/components/nve-paragraph#lead-varianter)-komponenten.
+
 <TypographyTable tableContentType="lead"></TypographyTable>
 
 ### Body
 
+Body typografi kan brukes gjennom [nve-paragraph](/components/nve-paragraph#body-varianter)-komponenten.
+
 <TypographyTable tableContentType="body"></TypographyTable>
 
 ### Body compact
+
+Body compact typografi kan brukes gjennom [nve-paragraph](/components/nve-paragraph#body-compact-varianter)-komponenten.
 
 <TypographyTable tableContentType="body-compact"></TypographyTable>
 
