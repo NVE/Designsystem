@@ -1,28 +1,25 @@
 ---
 layout: component
+outline: [2, 3]
 ---
 
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox>Ja, jeg vil!</nve-checkbox>
+<nve-checkbox>Vis dokumenter</nve-checkbox>
 ```
 
+sjekkboks kan bli brukt alene og når brukt i en gruppe, den skal ikke annonsere sit posisjon i listen (f.eks 1 av 3) derfor
+kan det enklest gjøres med input element inn i label element. slik sørger vi at label sjekker eller avsjekker sjekkboksen.
+
+skjekkboks støtter alle native atttributer som value og checked. vi støtter ikke switch siden det er en ny property og
+støttes ikke i alle nettlesere.
+
 </CodeExamplePreview>
+
+## Retningslinjer
 
 ## Eksempler
-
-### Ledetekst
-
-Teksten på høyre side kan legges inni `nve-checkbox`.
-
-<CodeExamplePreview>
-
-```html
-<nve-checkbox>Ledetekst</nve-checkbox>
-```
-
-</CodeExamplePreview>
 
 ### Checked
 
