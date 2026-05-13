@@ -12,14 +12,15 @@ export default css`
   }
 
   .radio {
+    --_color: var(--color-interactive-foreground-secondary-enabled);
+    --_border-color: var(--color-neutrals-foreground-primary);
     display: flex;
     align-items: center;
     gap: var(--spacing-x-small);
     font: var(--typography-label-x-small-light);
     line-height: 1;
     cursor: pointer;
-    --_color: var(--color-interactive-foreground-secondary-enabled);
-    --_border-color: var(--color-neutrals-foreground-primary);
+    color: var(--_color);
   }
 
   .radio--medium {
