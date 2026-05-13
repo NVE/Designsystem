@@ -28,7 +28,7 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
   /** Hjelpetekst som vises over feltet */
   @property({ type: String, reflect: true }) helpText = '';
   /** Hint-tekst som vises under feltet */
-  @property({ type: String, reflect: true }) hintText = '';
+  @property({ type: String, reflect: true }) hint = '';
   /** Ledetekst for radio-gruppen */
   @property({ type: String }) label: string | undefined = undefined;
   /** Retning for gruppen av radioknapper */
@@ -214,7 +214,7 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
     const helpTextId = `${this.radioGroupName}-helptext`;
     const hintTextId = `${this.radioGroupName}-hinttext`;
 
-    const describedBy = [this.helpText ? helpTextId : null, this.errorMessage || this.hintText ? hintTextId : null]
+    const describedBy = [this.helpText ? helpTextId : null, this.errorMessage || this.hint ? hintTextId : null]
       .filter(Boolean)
       .join(' ');
 
@@ -248,10 +248,8 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
           <slot @slotchange=${this.handleSlotChange}></slot>
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${this.errorMessage || this.hintText
-          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>
-              ${this.errorMessage || this.hintText}
-            </p>`
+        ${this.errorMessage || this.hint
+          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.errorMessage || this.hint}</p>`
           : nothing}
       </fieldset>
     `;
