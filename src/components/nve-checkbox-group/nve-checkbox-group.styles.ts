@@ -1,56 +1,61 @@
 import { css } from 'lit';
 
 export default css`
-  :host {
-    --sl-checkbox-required-content: '*Obligatorisk';
+  .field {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    gap: var(--spacing-x-small);
+    min-inline-size: unset;
+    margin-inline: 0;
+    border-width: 0;
+    border-style: none;
+    border-color: none;
+    border-image: none;
+    padding-block: 0;
+    padding-inline: 0;
   }
 
-  fieldset {
-    border: none;
-    padding: unset;
-    margin: unset;
-    gap: var(--spacing-x-small);
+  .field__help-text {
+    margin: 0;
+    margin-top: calc(var(--spacing-2x-small) - var(--spacing-x-small));
+    color: var(--color-neutrals-foreground-subtle);
+    font: var(--typography-detailtext-caption);
+    text-align: start;
+  }
+
+  .field__hint-text {
+    margin: 0;
+    color: var(--color-neutrals-foreground-primary);
+    font: var(--typography-detailtext-caption);
+    text-align: start;
+  }
+
+  .field--error {
+    border-left: var(--border-width-strong) solid var(--color-feedback-border-emphasized-error);
+    padding-left: var(--spacing-x-small);
+    .field__hint-text {
+      color: var(--color-feedback-foreground-error);
+    }
+  }
+
+  .field[aria-invalid='true'] {
+    border-left: var(--border-width-strong) solid var(--color-feedback-border-emphasized-error);
+    padding-left: var(--spacing-x-small);
+  }
+
+  .checkbox-group--vertical {
+    flex-direction: column;
+  }
+
+  .checkbox-group--horizontal {
+    flex-direction: row;
+    align-items: center;
   }
 
   .checkbox-group {
     display: flex;
-    flex-direction: column;
-  }
-
-  .checkbox-group__label {
-    font: var(--typography-label-small);
-    display: flex;
-    gap: var(--spacing-x-small);
-  }
-
-  :host([required]) nve-label::after {
-    content: var(--sl-checkbox-required-content);
-    font: var(--typography-label-x-small-light);
-    margin-left: auto;
-    color: var(--color-feedback-background-emphasized-error);
-  }
-
-  /* shoelace legger til styling når hele gruppa er disabled, så må overskrive den her */
-  :host([disabled]) {
-    opacity: 1 !important;
-    cursor: unset !important;
-  }
-
-  .checkbox-group__checkboxes {
-    display: flex;
     gap: var(--spacing-small);
-  }
-
-  :host([orientation='vertical']) .checkbox-group__checkboxes {
-    flex-direction: column;
-  }
-
-  .checkbox-group__error-message {
-    font: var(--typography-body-x-small);
-    color: var(--color-feedback-background-emphasized-error);
-  }
-
-  nve-label {
-    width: unset;
   }
 `;
