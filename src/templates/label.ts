@@ -9,13 +9,32 @@ export const labelStyles: CSSResult = css`
     display: flex;
     align-items: center;
     gap: var(--spacing-2x-small);
-    font: var(--typography-label-small);
     color: var(--color-neutrals-foreground-primary);
   }
 
   .field__label__required-text {
     font: var(--typography-label-small-light);
     color: var(--color-brand-foreground-secondary);
+  }
+
+  .field__legend {
+    float: left;
+    padding-inline: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2x-small);
+    .nve-info-icon {
+      transform: translateY(-1px);
+    }
+  }
+
+  .field__text {
+    font: var(--typography-label-small);
+    line-height: 1;
+  }
+
+  .nve-info-icon {
+    --icon-size: 1.25rem;
   }
 `;
 
@@ -27,6 +46,7 @@ export const labelStyles: CSSResult = css`
  * @param required - Indikerer om feltet er obligatorisk
  * @param requiredLabel - Valgfri tekst for obligatorisk indikator
  * @param onClick - Valgfri funksjon som kjøres ved klikk på label
+ * @param useLegend - Valgfri flagg for å bruke legend i stedet for label (for fieldset)
  * @returns TemplateResult eller nothing hvis ingen label er gitt
  */
 export function getLabel(
@@ -35,12 +55,13 @@ export function getLabel(
   tooltip?: string,
   required?: boolean,
   requiredLabel?: string,
-  onClick?: (...args: unknown[]) => unknown
+  onClick?: (...args: unknown[]) => unknown,
+  useLegend?: boolean
 ): TemplateResult | typeof nothing {
   if (!label) return nothing;
 
-  return html` <label class="field__label" id="${id}" @click=${onClick}>
-    <span>${label}</span>
+  const content = html`
+    <span class="field__text">${label}</span>
     ${tooltip
       ? html`<nve-tooltip placement="top">
           <div slot="content">${unsafeHTML(tooltip)}</div>
@@ -48,5 +69,9 @@ export function getLabel(
         </nve-tooltip>`
       : nothing}
     ${required ? html`<span class="field__label__required-text"> *${requiredLabel ?? ''} </span>` : nothing}
-  </label>`;
+  `;
+
+  return useLegend
+    ? html`<legend class="field__legend" id="${id}" @click=${onClick}>${content}</legend>`
+    : html`<label class="field__label" id="${id}" @click=${onClick}>${content}</label>`;
 }
