@@ -13,6 +13,7 @@ type NveCheckboxGroupChangeEvent = {
   value: string;
   action: 'select' | 'deselect';
 };
+//beskriv at den skal bruke når man skal bruke flere elementer, hvis bare en så gå og bruk radio gruppen,
 @customElement('nve-checkbox-group')
 export default class NveCheckboxGroup extends LitElement implements INveComponent {
   @property({ type: String }) testId: string | undefined = undefined;
