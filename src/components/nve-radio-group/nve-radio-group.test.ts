@@ -56,9 +56,9 @@ describe('nve-radio-group', () => {
     expect(group?.classList.contains('radio-group--horizontal')).toBe(true);
   });
 
-  it('renders helpText and hintText with the correct classes', async () => {
+  it('renders helpText and hint with the correct classes', async () => {
     const el = await fixture<NveRadioGroup>(html`
-      <nve-radio-group label="Status" helpText="Hjelpetekst" hintText="Hinttekst">
+      <nve-radio-group label="Status" helpText="Hjelpetekst" hint="Hinttekst">
         <nve-radio value="planned">Planlagt</nve-radio>
       </nve-radio-group>
     `);
