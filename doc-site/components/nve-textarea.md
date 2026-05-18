@@ -26,7 +26,7 @@ outline: [2, 3]
       <li><span class="highlight">spellcheck</span></li>
     </ul>
 <br>
-  <p> Komponentens hendelser bobler også ut fra komponenten; vi bruker spesielt:  </p>
+  <p>Komponenten videresender relevante hendelser fra det native <span class="highlight">&lt;textarea&gt;</span>-elementet slik at de kan fanges utenfor komponentens Shadow DOM:</p>
     <ul>
       <li><span class="highlight">change</span>- når verdien endres og feltet mister fokus</li> 
       <li><span class="highlight">select</span>- når brukeren markerer tekst</li> 
@@ -162,7 +162,7 @@ Bruk <span class="highlight">rows</span> for å velge høyde. Standard er to rad
 
 </CodeExamplePreview>
 
-### Resize
+### Endring av størrelse
 
 Om man ikke ønsker at bruker kan endre størrelsen på textarea kan man legge på <span class="highlight">resize: none</span> i css på <span class="highlight">textarea</span>-delen:
 
@@ -197,4 +197,4 @@ Hvis du vil gjøre textarea smalere enn 100%, kan du bruke <span class="highligh
 
 I tillegg brukes aria-describedby for å knytte supplerende tekst til feltet. Når <span class="highlight">helpText</span>, <span class="highlight">hint</span> eller <span class="highlight">errorMessage</span> er satt vil skjermlesere normalt lese dem opp i forbindelse med fokus på feltet (ved bruk av <span class="highlight">aria-describedby</span>).
 
-Ikoner i tekstare er dekorative og ikke ment som ensete informasjonsbærer.
+Ikoner i <span class="highlight">nve-textarea</span> er dekorative og ikke ment som ensete informasjonsbærer.
