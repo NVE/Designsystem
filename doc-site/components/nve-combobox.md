@@ -422,7 +422,7 @@ Bruk <span class="highlight">helpText</span> for å vise hjelpetekst over combob
 
 ### Hint-tekst
 
-Bruk <span class="highlight">hintText</span> for å vise hint-tekst under combobox.
+Bruk <span class="highlight">hint</span> for å vise hint-tekst under combobox.
 
 <CodeExamplePreview>
 
@@ -430,7 +430,7 @@ Bruk <span class="highlight">hintText</span> for å vise hint-tekst under combob
 <nve-combobox
   id="nve-avdeling-10"
   label="Velg en avdeling"
-  hintText="Avdeling velges for å sendes i skjema"
+  hint="Avdeling velges for å sendes i skjema"
   options='[ 
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" },

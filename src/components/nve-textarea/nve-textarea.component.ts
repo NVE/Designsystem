@@ -1,299 +1,198 @@
-import { LitElement, html, nothing } from 'lit';
-import { customElement, property, query, state } from 'lit/decorators.js';
-import styles from './nve-textarea.styles';
-import { ifDefined } from 'lit/directives/if-defined.js';
-import { live } from 'lit/directives/live.js';
-import { classMap } from 'lit/directives/class-map.js';
+import { html, LitElement, nothing, PropertyValues } from 'lit';
+import { customElement, property, query } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
-
+import styles from './nve-textarea.styles';
 import '../nve-icon/nve-icon.component';
-import '../nve-label/nve-label.component';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { getLabel, labelStyles } from '../../templates/label';
+
+let id = 0;
 
 /**
- * Skal brukes til å lage lang tekstfelt. Min høyde er satt opp til --sizing-2x-small. De fleste attributer som brukes på vanlig textarea
- * burde bli støttet her. Hvis det er noe som mangler, bare å legge til.
- * Man kan bruke label og tooltip attributer for å vise label over textarea. Samt med helpText. Trenger ikke noe eksta slots per i dag. Trengs ikke å lage separate slots for det.
- * Siden vi skulle bruke ikoner inn i textarea var det enklere å lage vår egen komponent enn å leke med sl-textarea
+ * Textarea brukes når brukeren skal kunne skrive inn lengre tekst over flere linjer. Komponenten passer godt til
+ * fritekstfelt som beskrivelser, kommentarer, begrunnelser eller meldinger.
+ * Textarea kan også endre størrelse slik at brukeren får bedre plass til lengre innhold.
  *
- * Validering. Siden textarea ikke er shoelace komponent, constraint valdiering skal ikke fungere så bra med andre shoelace komponenter i formen.
- * Shoelace wrapper alle sine form komponenter i en form kontroll som gjør at alle blir validert samtidig når man bruker constraint validering. Det er ikke en default
- * nettlesersen oppførsel. Submit event stopper på den første feil den møter i formen. Per i dag siden vi blander både shoelace komponenter og våre egne
- * våre komponeter skal bli diskriminert i gruppe validering. Derfor anbefales det å bruke custom validering på textarea med setCustomValidation.
- * @dependency nve-icon
- * @dependency nve-label
+ * @event change - når verdien i textarea endres og elementet mister fokus
+ * @event select - når brukeren markerer tekst i textarea
  *
- * Bruker sl-eventer for å være konsistent. Kan bruke våre egne eventer når vi droppper shoelace
- * @event sl-blur - trigges når textarea mister fokus
- * @event sl-change - trigges når textarea endrer verdi
- * @event sl-input - trigges når textarea endrer verdi
- * @event sl-invalid - trigges når textarea er invalid
- *
- * @csspart form-control - hoved komponent sitt container
- * @csspart textarea-label - label og requiredLabel container
- * @csspart base - textarea og ikone container
- * @csspart help-text-container - container for hjelpetekst
- *
+ * @csspart field - wrapper rundt hele textarea-komponenten
+ * @csspart help-text - hjelpetekst som vises over textarea
+ * @csspart textarea - wrapper rundt textarea-elementet og eventuelle ikoner
+ * @csspart textarea__control - selve textarea-elementet
+ * @csspart hint-text - hint-tekst som vises under textarea, eller feilmelding hvis det er en valideringsfeil
  */
-// @ts-expect-error - SlInput has autocorrect as string type but type system expects boolean
 @customElement('nve-textarea')
 export default class NveTextarea extends LitElement implements INveComponent {
-  static styles = [styles];
-
-  /** Navnet på tekstområdet, sendt som et navn/verdi-par med skjemadata */
-  @property() name = '';
-
-  /** Textarea verdi, sendt som et navn/verdi-par med skjemadata */
-  @property() value = '';
-
-  /** Feil melding som vises under gruppe hvis validering feiler */
-  @property() errorMessage?: string;
-
-  @property() title = '';
-
-  /** Viser filled variant */
-  @property({ type: Boolean, reflect: true }) filled = false;
-
-  /** Label tekst */
-  @property() label = '';
-
-  /** Hjelpetekst under textarea */
-  @property() helpText = '';
-
-  /** Hint - tekst under inndatafelt */
-  @property() hint = '';
-
-  /** Om textarea er deaktivert */
+  @property({ type: String }) testId: string | undefined = undefined;
+  /* Native textarea attributes */
+  /** Om autocomplete skal være aktivert */
+  @property({ type: String }) autocomplete?: string;
+  /** Om inputfeltet skal være deaktivert */
   @property({ type: Boolean, reflect: true }) disabled = false;
-
-  /** Om textarea er skrivebeskyttet */
+  /** Maksimalt antall tegn som kan skrives inn */
+  @property({ type: Number }) maxLength?: number;
+  /** Placeholder-tekst som vises når feltet er tomt */
+  @property({ type: String }) placeholder?: string;
+  /** Om textareafeltet skal være skrivebeskyttet */
   @property({ type: Boolean, reflect: true }) readonly = false;
-
-  /** Placeholder tekst */
-  @property() placeholder = '';
-
-  /** Om textarea er obligatorisk */
+  /** Om minst en sjekkboks er sjekket på */
   @property({ type: Boolean, reflect: true }) required = false;
+  /** Antall synlige tekstlinjer i textarea */
+  @property({ type: Number }) rows?: number;
+  /** Verdien i textarea */
+  @property({ type: String }) value?: string;
 
-  /** Tekst som vises for å markere at et felt er obligatorisk. Er satt til "*Obligatorisk" som standard.*/
-  @property() requiredLabel = '*Obligatorisk';
+  /* Custom textarea attributes */
+  /** Om textareafeltet skal ha en mørk bakgrunn */
+  @property({ type: Boolean }) filled: boolean = false;
+  /** Hjelpetekst som vises over feltet */
+  @property({ type: String }) helpText = '';
+  /** Hint-tekst som vises under feltet */
+  @property({ type: String }) hint = '';
+  /** Ledetekst */
+  @property() label?: string;
+  /** Feilmelding som vises ved valideringsfeil. Hvis den er satt blir input-felt ugyldig og feil melding vises.*/
+  @property({ type: String, reflect: true }) errorMessage?: string;
+  /** Tekst som vises for å markere at et felt er obligatorisk */
+  @property() requiredLabel = '';
+  /** Tooltip-tekst for label */
+  @property({ type: String }) tooltip = '';
+  @query('.textarea__control') textarea!: HTMLTextAreaElement;
+  private readonly textareaId = `textarea-${++id}`;
 
-  /** Den minste lengden på inndata som vil bli betraktet som gyldig. */
-  @property({ type: Number }) minlength?: number;
+  static styles = [styles, labelStyles];
 
-  /** Maksimal lengde på inndata som vil bli betraktet som gyldig. */
-  @property({ type: Number }) maxlength?: number;
-
-  /** Kontrollerer om og hvordan tekstinnput automatisk blir gjort stor som det blir skrevet inn av brukeren. */
-  @property() autocapitalize: 'off' | 'none' | 'on' | 'sentences' | 'words' | 'characters' = 'off';
-
-  /** Indikerer om nettleserens autokorrekturfunksjon er på eller av. */
-  // @ts-expect-error - Lit tvinger boolean her, men den er ikke rikitg
-  @property() autocorrect: 'on' | 'off' = 'off';
-
-  /** Indikerer om nettleserens autokorrekturfunksjon er på eller av. */
-  @property() tooltip?: string;
+  protected async firstUpdated(_changedProperties: PropertyValues): Promise<void> {
+    await this.updateComplete;
+    if (this.autofocus) {
+      this.focus();
+    }
+    if (!this.label) {
+      console.warn(
+        'nve-textarea: label is not set. It is recommended to set a label for each component for better accessibility.'
+      );
+    }
+  }
 
   /**
-   * Brukes for å kunne identifisere komponenten i tester
+   * Sender en egendefinert hendelse.
+   * @param name - Navn på hendelsen
+   * @param detail - Detaljer som skal inkluderes i hendelsen
    */
-  @property({ reflect: true, type: String }) testId: string = '';
+  private emitEvent<D>(name: string, detail: D) {
+    this.dispatchEvent(
+      new CustomEvent<D>(name, {
+        detail,
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
+
+  //Blur og focus trenger ikke å støtte her siden de sendes fra host elementet.
 
   /**
-   * Forteller nettleseren hvilken type data som vil bli skrevet inn av brukeren, slik at den kan vise det passende virtuelle
-   * tastaturet på støttede enheter.
+   * Sender en 'change' hendelse når verdien i textarea endres og elementet mister fokus. D
+   * etaljene i hendelsen inneholder den nye verdien.
+   * @param e - Event som utløser endringen
    */
-  @property() inputmode?: 'none' | 'text' | 'decimal' | 'numeric' | 'tel' | 'search' | 'email' | 'url';
+  private handleChange(e: Event) {
+    const target = e.target as HTMLTextAreaElement;
+    this.emitEvent('change', target.value);
+  }
 
-  /** Antall rader med tekst i textarea-taggen.
-   * Browser-default dersom denne ikke er satt er 2 i alle browsere
-   *
-   * Bestemmer initiell høyde på textarea-boksen
-   * (settes slik at antall rader * font-høyde får plass)
+  /**
+   * Sender en 'select' hendelse når brukeren markerer tekst i textarea.
+   * Detaljene i hendelsen inneholder den markerte teksten.
+   * @param e - Event som utløser markeringen
    */
-  @property() rows?: number;
-
-  /** Bestemmer om feilmelding skal vises når validering feiler  */
-  @state() private showErrorMessage = false;
-
-  /** Om bruker starter å skrive noe i textarea */
-  @state() private touched = false;
-
-  /** Hoved input felt i nve-textarea komponentet. Brukes til constraint validering */
-  // @ts-expect-error - Decorator typing issue with Lit query decorator
-  @query('.textarea__control') input!: HTMLTextAreaElement;
-
-  constructor() {
-    super();
-  }
-  private resizeObserver: ResizeObserver | null = null;
-  firstUpdated() {
-    if (this.requiredLabel) {
-      this.style.setProperty('--textarea-required-content', `"${this.requiredLabel}"`);
-    }
-
-    // Sjekker om data-valid når komponenten først lastes
-    if (this.required) {
-      const isValid = this.input.checkValidity();
-      this.toggleAttribute('data-valid', isValid);
-      this.toggleAttribute('data-invalid', !isValid);
-    }
-
-    // for å endre bredde på label container når textarea endrer størrelse, må vi bruke ResizeObserver.
-    // den observerer endringer i størrelse på textarea og endrer bredden på label container + padding
-    const textarea = this.shadowRoot?.querySelector('.textarea__control');
-    const formControlLabel = this.shadowRoot?.querySelector('.textarea__label') as HTMLElement;
-    if (textarea && formControlLabel) {
-      this.resizeObserver = new ResizeObserver((entries) => {
-        for (const entry of entries) {
-          formControlLabel.style.width = `${entry.contentRect.width + 32}px`;
-        }
-      });
-
-      this.resizeObserver.observe(textarea);
-    }
+  private handleSelect(e: Event) {
+    const target = e.target as HTMLTextAreaElement;
+    this.emitEvent('select', target.value);
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    const formElement = this.closest('form');
-    formElement?.addEventListener('submit', this.handleSubmit.bind(this));
+  // @selectionchange ble ikke støttet i mange nettleseren når koden ble skrevet, derfor er det utelatt.
+
+  /**
+   * Fokuserer textarea når label klikkes. Viktig for tilgjenelighet.
+   */
+  private handleLabelClick() {
+    this.focus();
   }
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    const formElement = this.closest('form');
-    formElement?.removeEventListener('submit', this.handleSubmit.bind(this));
-    this.resizeObserver?.disconnect();
-  }
-
-  // kan senere flyttes til utils hvis blir brukt flere steder
-  private emit(eventName: string) {
-    this.dispatchEvent(new CustomEvent(eventName));
-  }
-
-  private handleSubmit(e: SubmitEvent) {
-    e.preventDefault();
-    this.checkValidity();
-  }
-
-  // validerer ikke hvis bruker ikke har tatt på input feltet
-  private handleBlur() {
-    if (this.touched) {
-      this.checkValidity();
-    }
-    this.emit('sl-blur');
-  }
-
-  private handleChange() {
-    this.value = this.input.value;
-    this.emit('sl-change');
-  }
-
-  private handleInput() {
-    this.touched = true;
-    this.value = this.input.value;
-    this.emit('sl-input');
-  }
-
-  /** Sjekker constraint validation og hvis man kjørte setCustomValidity med en melding, checkValidity blir falsk og. Hvis man ikke bruker errorMessage property vil den vise default engelsk tekst istedenfor */
-  private checkValidity() {
-    const isValid = this.input.checkValidity();
-    if (!isValid) {
-      this.makeInvalid();
-    } else {
-      this.resetValidation();
-    }
-  }
-
-  setCustomValidity(message = '') {
-    this.input.setCustomValidity(message);
-    this.checkValidity();
-  }
-
-  private makeInvalid() {
-    this.errorMessage = this.errorMessage || this.input.validationMessage;
-    this.showErrorMessage = true;
-    this.emit('sl-invalid');
-    this.toggleValidationAttributes(false);
-  }
-
-  private resetValidation() {
-    this.showErrorMessage = false;
-    this.toggleValidationAttributes(true);
-  }
-
-  /** Toggler riktig validering attribute for å vise riktig style */
-  private toggleValidationAttributes(isValid: boolean) {
-    this.toggleAttribute('data-valid', isValid);
-    this.toggleAttribute('data-user-valid', isValid);
-    this.toggleAttribute('data-invalid', !isValid);
-    this.toggleAttribute('data-user-invalid', !isValid);
+  /**
+   * Fokuserer textarea-elementet. Kan ta imot valgfri FocusOptions for å spesifisere fokusatferd.
+   * @param options - Valgfri FocusOptions for å spesifisere fokusatferd
+   */
+  focus(options?: FocusOptions) {
+    this.textarea.focus(options);
   }
 
   render() {
-    const hasLabelSlot = !!this.querySelector('[slot="label"]');
-    return html`
-      <div part="form-control" class=${classMap({ 'form-control': true, 'form-control--has-label': this.label })}>
-        ${hasLabelSlot
-          ? html`<slot name="label"></slot>`
-          : this.label
-            ? html`<nve-label
-                id="label"
-                value=${this.label}
-                size="small"
-                tooltip=${ifDefined(this.tooltip)}
-              ></nve-label>`
-            : nothing}
-        ${this.helpText
-          ? html` <div part="help-text-container" class="textarea__help-text__container">
-              <span class="textarea__help-text" aria-hidden=${this.helpText ? 'false' : 'true'}>${this.helpText}</span>
-            </div>`
-          : nothing}
+    const labelId = `${this.id || this.textareaId}`;
+    const helpTextId = `${this.id || this.textareaId}-helptext`;
+    const hintTextId = `${this.id || this.textareaId}-hinttext`;
+    const describedBy = [this.helpText ? helpTextId : '', this.errorMessage || this.hint ? hintTextId : '']
+      .filter(Boolean)
+      .join(' ');
 
-        <div part="base" class="textarea__base">
+    const statusIcon = this.errorMessage ? 'error' : this.disabled ? 'lock' : this.readonly ? 'visibility' : undefined;
+    return html`
+      <div
+        part="field"
+        class=${classMap({
+          field: true,
+          'field--error': !!this.errorMessage,
+          'field--readonly': this.readonly,
+          'field--disabled': this.disabled,
+          'field--filled': this.filled,
+        })}
+      >
+        <!-- Ledetekst -->
+        ${getLabel(labelId, this.label, this.tooltip, this.required, this.requiredLabel, this.handleLabelClick)}
+        <!-- Hjelpetekst -->
+        ${this.helpText
+          ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
+          : nothing}
+        <div
+          part="textarea"
+          class=${classMap({
+            textarea: true,
+          })}
+        >
           <textarea
-            part="textarea"
-            class="textarea__control"
-            title=${this.title /** En tom tittel hindrer nettleserens valideringsverktøy i å vises ved overføring */}
-            name=${ifDefined(this.name)}
-            .value=${live(this.value)}
-            ?disabled=${this.disabled}
+            part="textarea__control"
+            id=${labelId}
+            class=${classMap({
+              textarea__control: true,
+            })}
+            autocapitalize=${ifDefined(this.autocapitalize)}
+            autocomplete=${ifDefined(this.autocomplete)}
+            autocorrect=${ifDefined(this.autocorrect)}
+            maxlength=${ifDefined(this.maxLength)}
+            placeholder=${ifDefined(this.placeholder)}
             ?readonly=${this.readonly}
             ?required=${this.required}
-            placeholder=${ifDefined(this.placeholder)}
-            minlength=${ifDefined(this.minlength)}
-            maxlength=${ifDefined(this.maxlength)}
-            autocapitalize=${ifDefined(this.autocapitalize)}
-            autocorrect=${ifDefined(this.autocorrect)}
-            ?autofocus=${this.autofocus}
-            inputmode=${ifDefined(this.inputmode)}
-            aria-describedby="help-text"
-            rows=${ifDefined(this.rows && this.rows >= 3 ? this.rows : 3)}
+            rows=${this.rows || 2}
+            spellcheck=${ifDefined(this.spellcheck)}
             @change=${this.handleChange}
-            @input=${this.handleInput}
-            @blur=${this.handleBlur}
+            ?disabled=${this.disabled}
+            @select=${this.handleSelect}
+            aria-describedby=${ifDefined(describedBy || undefined)}
+            aria-invalid=${ifDefined(this.errorMessage ? 'true' : undefined)}
+            .value=${this.value || ''}
           ></textarea>
-          <!-- Her kommer litt hokus pokus med å poisjonere ikonen. Det er en ekstra div med posisjon relativt 
-          som skal vises rett etter textarea, og den skal inneholde ikone med position absolute som skal deretter vises inn i textarea.
-          Må gjøres sånn fordi vi vil ikke begrense textarea__base brede til fit-content (da textarea kan aldri ta så mye plass som er 
-          tilgjengelig i nettleseren og man må alltid sette brede på den manuelt. Nei takk.) -->
-          <!-- Foreløpig kan man ha enten 'lock' eller 'error' ikone -->
-          ${this.disabled || this.showErrorMessage
-            ? html`<div class="textarea__icon__container">
-                ${this.disabled ? html`<nve-icon name="lock"></nve-icon>` : null}
-                ${this.showErrorMessage ? html`<nve-icon class="textarea__icon--error" name="error"></nve-icon>` : null}
-              </div>`
+          <!-- Ikoner -->
+          ${statusIcon
+            ? html`<nve-icon class="textarea__control__icon" name=${statusIcon} aria-hidden="true"></nve-icon>`
             : nothing}
         </div>
-        <div part="hint-text-container" class="textarea__hint-text__container">
-          <!-- Ikke vis hint dersom feil -->
-          ${!this.showErrorMessage && this.hint
-            ? html`<span class="textarea__hint" aria-hidden=${this.hint ? 'false' : 'true'}>${this.hint}</span>`
-            : nothing}
-          ${this.showErrorMessage
-            ? html`<span class="textarea__help-text textarea__help-text--error">${this.errorMessage}</span>`
-            : nothing}
-        </div>
+        <!-- Hint-tekst og feilmelding -->
+        ${this.errorMessage || this.hint
+          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.errorMessage || this.hint}</p>`
+          : nothing}
       </div>
     `;
   }

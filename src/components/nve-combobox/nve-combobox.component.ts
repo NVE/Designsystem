@@ -76,7 +76,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   /** Hjelpetekst som vises over feltet */
   @property({ type: String, reflect: true }) helpText = '';
   /** Hint-tekst som vises under feltet */
-  @property({ type: String, reflect: true }) hintText = '';
+  @property({ type: String, reflect: true }) hint = '';
   /** Ledetekst */
   @property({ type: String }) label: string = '';
   /** Tekst som vises for å markere at et felt er obligatorisk */
@@ -972,7 +972,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     const selectedValuesId = `${this.id}-selected-values`;
     const describedBy = [
       helpTextId,
-      this.errorMessage || this.hintText ? hintTextId : '',
+      this.errorMessage || this.hint ? hintTextId : '',
       this.multiple ? selectedValuesId : '',
     ]
       .filter(Boolean)
@@ -1145,10 +1145,8 @@ export default class NveCombobox extends LitElement implements INveComponent {
             : nothing}
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${this.errorMessage || this.hintText
-          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>
-              ${this.errorMessage || this.hintText}
-            </p>`
+        ${this.errorMessage || this.hint
+          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.errorMessage || this.hint}</p>`
           : nothing}
       </div>
     `;

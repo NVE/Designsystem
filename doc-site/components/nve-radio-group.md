@@ -140,15 +140,12 @@ Bruk <span class="highlight">helpText</span> for å vise hjelpetekst over feltet
 
 ### Hint-tekst
 
-Bruk <span class="highlight">hintText</span> for å vise hint-tekst under feltet.
+Bruk <span class="highlight">hint</span> for å vise hint-tekst under feltet.
 
 <CodeExamplePreview>
 
 ```html
-<nve-radio-group
-  label="Hva er status på tiltaket?"
-  hintText="Velg smart. Det finnes ingen vei tilbake fra dårlige valg."
->
+<nve-radio-group label="Hva er status på tiltaket?" hint="Velg smart. Det finnes ingen vei tilbake fra dårlige valg.">
   <nve-radio value="planned">Planlagt</nve-radio>
   <nve-radio value="current">Pågående</nve-radio>
   <nve-radio value="done">Ferdigstilt</nve-radio>
@@ -193,7 +190,7 @@ Bruk <span class="highlight">value</span> for å vise en forhåndsvalgt verdi. V
 
 Radiogruppen er implementert i tråd med [anbefalingene](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) i WAI-ARIA Authoring Practices Guide for radiogrupper, for å støtte tilgjengelig bruk i samsvar med WCAG.
 
-- Siden radiogruppen er bygget med <span class="highlight">fieldset</span> og <span class="highlight">legend</span>, kan den første radioknappen som får fokus ved tab-navigasjon lese opp ledeteksten sammen med eventuell tilleggstekst fra <span class="highlight">helpText</span>, <span class="highlight">hintText</span> og <span class="highlight">errorMessage</span>. Tillegsteksten legges til i <span class="highlight">aria-describedby</span> på <span class="highlight">fieldset</span>. (VoiceOver i Safari på macOS kan slite litt med <span class="highlight">aria-describedby</span> og ikke lese den).
+- Siden radiogruppen er bygget med <span class="highlight">fieldset</span> og <span class="highlight">legend</span>, kan den første radioknappen som får fokus ved tab-navigasjon lese opp ledeteksten sammen med eventuell tilleggstekst fra <span class="highlight">helpText</span>, <span class="highlight">hint</span> og <span class="highlight">errorMessage</span>. Tillegsteksten legges til i <span class="highlight">aria-describedby</span> på <span class="highlight">fieldset</span>. (VoiceOver i Safari på macOS kan slite litt med <span class="highlight">aria-describedby</span> og ikke lese den).
 - <span class="highlight">nve-radio</span> har intern tilstand for <span class="highlight">checked</span>, <span class="highlight">pos</span> og <span class="highlight">setsize</span>, som styres av <span class="highlight">nve-radio-group</span>. Disse brukes til å sette riktige ARIA-attributter (<span class="highlight">aria-checked</span> <span class="highlight">aria-posinset</span>,<span class="highlight">aria-setsize</span>) på radio-knappen.
 - <span class="highlight">aria-posinset</span> og <span class="highlight">aria-setsize</span> brukes for å fortelle brukeren hvor i gruppen den aktuelle radio-knappen ligger, og hvor mange valg som finnes totalt.
 - <span class="highlight">aria-disabled</span> og <span class="highlight">aria-invalid</span> settes på <span class="highlight">nve-radio</span> basert på egenskapene <span class="highlight">disabled</span> og <span class="highlight">invalid</span>.

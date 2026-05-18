@@ -2,115 +2,119 @@ import { css } from 'lit';
 
 export default css`
   :host {
-    display: flex;
-    --textarea-required-content: '*Obligatorisk';
+    --icon: 18px;
+    --textarea-max-width: 100%;
+    --textarea-min-height: calc(var(--spacing-small) * 2 + var(--icon));
+    width: 100%;
   }
 
-  .form-control {
+  .field {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-x-small);
+    box-sizing: border-box;
     width: 100%;
+    --_color: var(--color-neutrals-foreground-primary);
+    --_border-color: var(--color-interactive-border-secondary-enabled);
+    --_background-color: var(--color-neutrals-background-primary);
+    color: var(--_color);
   }
 
-  .textarea__base {
-    display: flex;
+  .field--disabled {
+    --_color: var(--color-interactive-background-primary-disabled);
+    --_background-color: var(--color-interactive-background-secondary-disabled);
+    --_border-color: var(--color-interactive-border-secondary-disabled);
+    .textarea,
+    .textarea__control {
+      cursor: not-allowed;
+    }
+    .textarea nve-icon {
+      color: var(--color-neutrals-foreground-subtle);
+    }
+  }
+
+  .field--readonly {
+    --_color: var(--color-neutrals-foreground-subtle);
+    --_background-color: var(--color-neutrals-background-secondary);
+    --_border-color: transparent;
+  }
+
+  .field--error {
+    border-left: var(--border-width-strong) solid var(--color-feedback-border-emphasized-error);
+    padding-left: var(--spacing-x-small);
+    --_border-color: var(--color-feedback-border-emphasized-error);
+    .field__hint-text,
+    .textarea nve-icon {
+      color: var(--color-feedback-foreground-error);
+    }
+  }
+
+  .field--filled {
+    --_background-color: var(--color-neutrals-background-primary-contrast);
+    --_border-color: var(--color-interactive-border-tertiary-enabled);
+  }
+
+  .field__hint-text {
+    margin: 0;
+    color: var(--color-neutrals-foreground-primary);
+    font: var(--typography-detailtext-caption);
+    text-align: start;
+  }
+
+  .field__help-text {
+    margin: 0;
+    margin-top: calc(var(--spacing-2x-small) - var(--spacing-x-small));
+    color: var(--color-neutrals-foreground-subtle);
+    font: var(--typography-detailtext-caption);
+    text-align: start;
+  }
+
+  /* for å inkludere ikoner i textarea, brukes denne wrappen for å endre størrelsen i textarea. 
+  selve textare__controller får ingen resizing. 
+  */
+  .textarea {
+    position: relative;
+    width: 100%;
+    max-width: var(--textarea-max-width);
+    min-height: var(--textarea-min-height);
+    min-width: var(--textarea-min-height);
+    resize: both;
+    overflow: auto;
+    background: var(--_background-color);
+    border-radius: var(--border-radius-small);
+    border: var(--border-width-default) solid var(--_border-color);
+    transition: border-color 0.3s ease;
+    nve-icon {
+      position: absolute;
+      top: var(--spacing-small);
+      right: var(--spacing-x-small);
+      --icon-size: var(--icon);
+    }
+    &:focus-within {
+      outline: var(--border-width-strong, 2px) solid var(--color-interactive-primary-border-focus, #008ffb);
+    }
+  }
+
+  .field:not(.field--readonly):not(.field--disabled) .textarea:hover {
+    --_border-color: var(--color-interactive-border-secondary-hover);
+  }
+
+  .textarea:focus,
+  .textarea:focus-visible {
+    outline: none;
   }
 
   .textarea__control {
-    font: var(--typography-body-small);
-    box-sizing: border-box;
-    padding: var(--sizing-4x-small);
-    padding-right: var(--sizing-2x-small); /** trenger padding for å vise ikone så at teksten ikke dekker den */
-    border-radius: var(--border-radius-small);
-    border: var(--border-width-default, 1px) solid var(--color-neutrals-border-default);
-    min-height: var(--sizing-2x-small);
-    transition: border var(--transition-time) ease-in-out;
     width: 100%;
-    &:hover:not(:disabled) {
-      border-color: var(--color-neutrals-foreground-primary);
-    }
-
-    &:focus-visible {
-      outline: var(--sl-focus-ring);
-      outline-offset: var(--sl-focus-ring-offset);
-    }
-  }
-
-  :host([data-user-invalid]) .textarea__control {
-    border-color: var(--color-feedback-background-emphasized-error);
-  }
-
-  :host([disabled]) .textarea__control {
-    opacity: 0.38;
-    background: var(--color-neutrals-background-primary-contrast);
-  }
-
-  :host([filled]) .textarea__control {
-    background: var(--color-neutrals-background-primary-contrast);
-    border: var(--border-width-default, 1px) solid var(--color-neutrals-border-subtle);
-
-    &:hover:not(:disabled) {
-      border-color: var(--color-neutrals-border-default);
-    }
-  }
-
-  :host([filled][data-user-invalid]) .textarea__control {
-    border-color: var(--color-feedback-background-emphasized-error);
-  }
-
-  :host([readonly]) .textarea__control {
-    background: var(--color-neutrals-background-secondary);
-    color: var(--color-neutrals-foreground-subtle,);
+    height: 100%;
+    font: var(--typography-body-medium);
+    color: var(--_color);
+    font-size: 1rem;
+    display: block;
+    box-sizing: border-box;
+    background-color: transparent;
     border: none;
-  }
-
-  .textarea__label {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  :host([required]) nve-label::after {
-    content: var(--textarea-required-content);
-    font: var(--typography-label-x-small-light);
-    margin-left: auto;
-    color: var(--color-feedback-background-emphasized-error);
-  }
-
-  .textarea__help-text__container {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .textarea__help-text {
-    font: var(--typography-label-x-small-light);
-    color: var(--sl-input-help-text-color);
-  }
-
-  .textarea__help-text--error {
-    color: var(--color-feedback-background-emphasized-error);
-  }
-
-  .textarea__hint {
-    font: var(--typography-label-x-small-light);
-    color: var(--color-neutrals-foreground-primary);
-  }
-
-  .textarea__icon__container {
-    position: relative; /** trengs for å posisjonere ikonen */
-  }
-
-  .textarea__icon--error {
-    position: absolute;
-    left: -24px;
-    top: 10px;
-    color: var(--color-feedback-background-emphasized-error);
-  }
-
-  nve-label {
-    width: unset;
+    padding: var(--spacing-small);
+    resize: none;
   }
 `;

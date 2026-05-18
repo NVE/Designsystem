@@ -72,6 +72,6 @@ export function getLabel(
   `;
 
   return useLegend
-    ? html`<legend class="field__legend" id="${id}" @click=${onClick}>${content}</legend>`
-    : html`<label class="field__label" id="${id}" @click=${onClick}>${content}</label>`;
+    ? html`<legend class="field__legend" @click=${onClick}>${content}</legend>`
+    : html`<label class="field__label" for="${id}" @click=${onClick}>${content}</label>`;
 }
