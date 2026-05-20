@@ -10,7 +10,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  *
  * @event change Når sjekkboksen blir valgt eller fravalgt. Inneholder den valgte verdien.
  *
- * @csspart base wraper rundt sjekkboksen.
+ * @csspart base wrapper rundt sjekkboksen.
  */
 @customElement('nve-checkbox')
 export default class NveCheckbox extends LitElement implements INveComponent {

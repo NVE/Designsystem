@@ -114,4 +114,12 @@ Når den overordnede sjekkboksen klikkes, skal den enten velge alle eller fjerne
 
 </CodeExamplePreview>
 
-### Accessibility
+## Tilgjengelighet
+
+Når en bruker tabber til sjekkboksen og trykker Space, toggles den valgte tilstanden.
+
+Komponenten bruker et <span class="highlight">&lt;label&gt;</span> -element som wraper både input og tekst, så både det visuelle feltet og teksten er klikkebare.
+
+<span class="highlight">Indeterminate</span>-tilstanden vises visuelt, men Screen readers vil normalt annonsere den som en valgbar tilstand.
+
+<span class="highlight">required</span> er bare tilgjengelig på <a href="./nve-checkbox-group.md">nve-checkbox-group</a>, ikke på individuelle sjekkbokser.

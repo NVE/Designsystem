@@ -6,7 +6,7 @@ outline: [2, 3]
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Hvilker varsler vil du se på?">
+<nve-checkbox-group label="Hvilke varsler vil du se på?">
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
@@ -16,10 +16,10 @@ outline: [2, 3]
 </CodeExamplePreview>
 
 Bruk <span class="highlight">nve-checkbox-group</span> med <a href="./nve-checkbox">nve-checkbox</a> når brukeren skal kunne velge flere alternativer.
-Hvis brukeren bare skal kunne velge ett alternativ, bruk <a href="./nve-radio-group">nve-radio-group</a> i stedet. Med veldi mange
+Hvis brukeren bare skal kunne velge ett alternativ, bruk <a href="./nve-radio-group">nve-radio-group</a> i stedet. Ved mange
 alternativer vurder å bruke <a href="./nve-combobox">nve-combobox</a>.
 
-Hver <span class="highlight">nve-checkbox</span> i gruppen bør ha <span class="highlight">value</span>. Når et valg markeres eller fjernes, trigges <span class="highlight">change</span>-hendelsen, og verdien fra den aktuelle checkboksen returneres i hendelsen sammen med handlingen som er utført (<span class="highlight">select</span> eller <span class="highlight">deselect</span>).
+Hver <span class="highlight">nve-checkbox</span> i gruppen bør ha <span class="highlight">value</span>. Når et valg markeres eller fjernes, trigges <span class="highlight">change</span>-hendelsen, og verdien fra den aktuelle sjekkboksen returneres i hendelsen sammen med handlingen som er utført (<span class="highlight">select</span> eller <span class="highlight">deselect</span>).
 
 Hendelsestype kan importers ved:
 
@@ -55,7 +55,7 @@ Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende inf
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Hvilker varsler vil du se på?" tooltip="Gjelder varslene som vises i kart">
+<nve-checkbox-group label="Hvilke varsler vil du se på?" tooltip="Gjelder varslene som vises i kart">
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
@@ -72,7 +72,7 @@ Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forkl
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Hvilker varsler vil du se på?" required requiredLabel="Obligatorisk">
+<nve-checkbox-group label="Hvilke varsler vil du se på?" required requiredLabel="Obligatorisk">
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
@@ -91,13 +91,13 @@ Bruk <span class="highlight">orientation</span> for å velge retning:
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Hvilker varsler vil du se på (vertical)?">
+<nve-checkbox-group label="Hvilke varsler vil du se på (vertical)?">
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
 </nve-checkbox-group>
 
-<nve-checkbox-group label="Hvilker varsler vil du se på (horizontal)?" orientation="horizontal">
+<nve-checkbox-group label="Hvilke varsler vil du se på (horizontal)?" orientation="horizontal">
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
@@ -117,19 +117,19 @@ Størrelsen kan styres på gruppenivå. Bruk <span class="highlight">size</span>
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Hvilker varsler vil du se på (small)?" size="small">
+<nve-checkbox-group label="Hvilke varsler vil du se på (small)?" size="small">
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
 </nve-checkbox-group>
 
-<nve-checkbox-group label="Hvilker varsler vil du se på (medium)?">
+<nve-checkbox-group label="Hvilke varsler vil du se på (medium)?">
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
 </nve-checkbox-group>
 
-<nve-checkbox-group label="Hvilker varsler vil du se på (large)?" size="large">
+<nve-checkbox-group label="Hvilke varsler vil du se på (large)?" size="large">
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
@@ -138,14 +138,14 @@ Størrelsen kan styres på gruppenivå. Bruk <span class="highlight">size</span>
 
 </CodeExamplePreview>
 
-### Hjelptekst
+### Hjelpetekst
 
 Bruk <span class="highlight">helpText</span> for å vise hjelpetekst over feltet.
 
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Hvilker varsler vil du se på?" helpText="Ditt valg påvirker mange!">
+<nve-checkbox-group label="Hvilke varsler vil du se på?" helpText="Ditt valg påvirker mange!">
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
@@ -162,7 +162,7 @@ Bruk <span class="highlight">hintText</span> for å vise hint-tekst under feltet
 
 ```html
 <nve-checkbox-group
-  label="Hvilker varsler vil du se på?"
+  label="Hvilke varsler vil du se på?"
   hint="Velg smart. Det finnes ingen vei tilbake fra dårlige valg."
 >
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
@@ -188,7 +188,7 @@ Bruk attributtet <span class="highlight">disabled</span> for å hindre at verdie
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Hvilker varsler vil du se på?" disabled>
+<nve-checkbox-group label="Hvilke varsler vil du se på?" disabled>
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
@@ -204,7 +204,7 @@ Bruk <span class="highlight">selectedValues</span>-array for å vise forhåndsva
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Hvilker varsler vil du se på?" selectedValues='["flood", "landslide"]'>
+<nve-checkbox-group label="Hvilke varsler vil du se på?" selectedValues='["flood", "landslide"]'>
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
