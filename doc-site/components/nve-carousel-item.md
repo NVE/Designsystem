@@ -84,10 +84,14 @@ Du kan også legge andre ting enn bilder i `nve-carousel-item`.
     <div>
       <h1>Velg språk / choose language</h1>
       <br />
-      <nve-select label="Språk/language">
-        <nve-option value="valg1">Norsk</nve-option>
-        <nve-option value="valg2">Engelsk</nve-option>
-      </nve-select>
+      <nve-combobox
+        label="Språk/language"
+        options='[
+    { "value":"nb","id": "nb","label": "Norsk" },
+    { "value":"en","id": "en","label": "Engelsk" },
+     ]'
+      >
+      </nve-combobox>
     </div>
   </nve-carousel-item>
   <nve-carousel-item>

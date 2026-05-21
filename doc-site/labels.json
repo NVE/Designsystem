@@ -101,8 +101,8 @@
   {
     "id": 7361073541,
     "node_id": "LA_kwDOKWXiTc8AAAABtsERhQ",
-    "url": "https://api.github.com/repos/NVE/Designsystem/labels/nve-dialog",
-    "name": "nve-dialog",
+    "url": "https://api.github.com/repos/NVE/Designsystem/labels/nve-modal",
+    "name": "nve-modal",
     "color": "DC6E99",
     "default": false,
     "description": ""

@@ -37,6 +37,10 @@ export default class NveIcon extends LitElement {
   @state() private iconLoaded = false;
 
   protected firstUpdated() {
+    if (import.meta.env.MODE === 'test') {
+      this.iconLoaded = true;
+      return;
+    }
     // For å unngå å importere material ikoner i index.html, vi legger til ikoner programmatisk på den første oppdatering
     // hvis material-icons lenke ikke eksisterer allerede.
 

@@ -46,7 +46,7 @@ Label slotten kan også brukes som et attributt på nve-drawer `<nve-drawer labe
     Lorem ipsum dolor sit amet
     <div slot="footer">Her er footer slot'en</div>
   </nve-drawer>
-  <nve-dialog id="dialog" label="Ett eksempel"> <p>Dette er et eksempel</p> </nve-dialog>
+  <nve-modal id="dialog" label="Ett eksempel"> <p>Dette er et eksempel</p> </nve-modal>
 </div>
 <script>
   const drawer = document.querySelector('.drawer-slot');
