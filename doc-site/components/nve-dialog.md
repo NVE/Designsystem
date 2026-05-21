@@ -2,6 +2,8 @@
 layout: component
 ---
 
+Denne komponenten er basert på det native [`<dialog>`-elementet](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) og bruker `showModal()` for å vise dialogen. Det betyr at du får innebygd fokus-felle, Escape-lukking og tilgjengelighet uten ekstra avhengigheter.
+
 <CodeExamplePreview>
 
 ```html
@@ -26,7 +28,7 @@ layout: component
 
 ### Label som eget spor
 
-Du kan legge overskriften inn et eget spor dersom du trenger mer kompleks styling eller struktur. Men merk at den fortsatt legges inn i en &lt;h2&gt;-tag
+Du kan legge overskriften inn et eget spor dersom du trenger mer kompleks styling eller struktur. Men merk at den fortsatt legges inn i en h2-tag
 
 <CodeExamplePreview>
 
