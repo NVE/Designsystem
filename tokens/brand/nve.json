@@ -138,6 +138,10 @@
         "$type": "color",
         "$value": "#60656c"
       },
+      "650": {
+        "$type": "color",
+        "$value": "#54585F"
+      },
       "700": {
         "$type": "color",
         "$value": "#484c51"
