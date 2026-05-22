@@ -6,6 +6,7 @@ import '../nve-icon/nve-icon.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getLabel, labelStyles } from '../../templates/label';
+import { live } from 'lit/directives/live.js';
 
 let id = 0;
 
@@ -42,7 +43,7 @@ export default class NveTextarea extends LitElement implements INveComponent {
   /** Antall synlige tekstlinjer i textarea */
   @property({ type: Number }) rows?: number;
   /** Verdien i textarea */
-  @property({ type: String }) value?: string;
+  @property({ type: String }) value: string = '';
 
   /* Custom textarea attributes */
   /** Om textareafeltet skal ha en mørk bakgrunn */
@@ -59,6 +60,7 @@ export default class NveTextarea extends LitElement implements INveComponent {
   @property() requiredLabel = '';
   /** Tooltip-tekst for label */
   @property({ type: String }) tooltip = '';
+  autocapitalize = 'off';
   @query('.textarea__control') textarea!: HTMLTextAreaElement;
   private readonly textareaId = `textarea-${++id}`;
 
@@ -116,18 +118,39 @@ export default class NveTextarea extends LitElement implements INveComponent {
   // @selectionchange ble ikke støttet i mange nettleseren når koden ble skrevet, derfor er det utelatt.
 
   /**
-   * Fokuserer textarea når label klikkes. Viktig for tilgjenelighet.
-   */
-  private handleLabelClick() {
-    this.focus();
-  }
-
-  /**
    * Fokuserer textarea-elementet. Kan ta imot valgfri FocusOptions for å spesifisere fokusatferd.
    * @param options - Valgfri FocusOptions for å spesifisere fokusatferd
    */
   focus(options?: FocusOptions) {
     this.textarea.focus(options);
+  }
+
+  /** Velger all tekst i textarea-feltet */
+  select() {
+    this.textarea?.select();
+  }
+
+  /** Setter utvalg i textarea-feltet */
+  setSelectionRange(
+    selectionStart: number,
+    selectionEnd: number,
+    selectionDirection: 'forward' | 'backward' | 'none' = 'none'
+  ) {
+    this.textarea.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+  }
+
+  /** Erstatter tekst i textarea-feltet */
+  setRangeText(
+    replacement: string,
+    start?: number,
+    end?: number,
+    selectMode?: 'select' | 'start' | 'end' | 'preserve'
+  ) {
+    const selectionStart = start ?? this.textarea.selectionStart!;
+    const selectionEnd = end ?? this.textarea.selectionEnd!;
+
+    this.textarea.setRangeText(replacement, selectionStart, selectionEnd, selectMode);
+    this.value = this.textarea.value;
   }
 
   render() {
@@ -138,7 +161,7 @@ export default class NveTextarea extends LitElement implements INveComponent {
       .filter(Boolean)
       .join(' ');
 
-    const statusIcon = this.errorMessage ? 'error' : this.disabled ? 'lock' : this.readonly ? 'visibility' : undefined;
+    const statusIcon = this.errorMessage ? 'error' : this.disabled ? 'lock' : this.readonly ? 'edit_off' : undefined;
     return html`
       <div
         part="field"
@@ -151,7 +174,7 @@ export default class NveTextarea extends LitElement implements INveComponent {
         })}
       >
         <!-- Ledetekst -->
-        ${getLabel(labelId, this.label, this.tooltip, this.required, this.requiredLabel, this.handleLabelClick)}
+        ${getLabel(labelId, this.label, this.tooltip, this.required, this.requiredLabel)}
         <!-- Hjelpetekst -->
         ${this.helpText
           ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
@@ -182,7 +205,7 @@ export default class NveTextarea extends LitElement implements INveComponent {
             @select=${this.handleSelect}
             aria-describedby=${ifDefined(describedBy || undefined)}
             aria-invalid=${ifDefined(this.errorMessage ? 'true' : undefined)}
-            .value=${this.value || ''}
+            .value=${live(this.value)}
           ></textarea>
           <!-- Ikoner -->
           ${statusIcon

@@ -79,12 +79,12 @@ describe('nve-textarea', () => {
     expect(textarea?.readOnly).toBe(true);
   });
 
-  it('uses visibility icon when readonly and not disabled/error', async () => {
+  it('uses edit_off icon when readonly and not disabled/error', async () => {
     const el = await fixture<NveTextarea>(html`<nve-textarea label="Beskriv saken" readonly></nve-textarea>`);
     await el.updateComplete;
 
     const icon = el.shadowRoot?.querySelector('nve-icon');
-    expect(icon?.getAttribute('name')).toBe('visibility');
+    expect(icon?.getAttribute('name')).toBe('edit_off');
   });
 
   it('uses lock icon when disabled and not readonly/error', async () => {
