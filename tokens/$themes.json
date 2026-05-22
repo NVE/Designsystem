@@ -357,7 +357,8 @@
       "color-shades.additional.teal.950": "S:dbfb5d1cc9d9e952bf9a96ba8f3c9fa89a1de291,",
       "color-shades.additional.teal.999": "S:415d3a30ee8c8a788d4ade678d44fb95c37ec699,",
       "color-shades.additional.teal.000": "S:21bf3075200a17903a59aca52dfe922ff6888eca,",
-      "color-shades.additional.teal.050": "S:3f9c656b1fbb3c2100e1ff074d349bea8c007e54,"
+      "color-shades.additional.teal.050": "S:3f9c656b1fbb3c2100e1ff074d349bea8c007e54,",
+      "color-shades.grey.650": "S:35778f771fe3a6cf3c80a0e5988ea3a50245cbf0,"
     },
     "selectedTokenSets": {
       "brand/nve": "enabled"
