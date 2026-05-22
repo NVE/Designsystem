@@ -166,7 +166,7 @@ export default class NveInput extends LitElement implements INveComponent {
     this.input.focus(options);
   }
 
-  /** Velger all tekst i input-feltet */
+  /** Velger tekst i input-feltet */
   select() {
     this.input?.select();
   }
