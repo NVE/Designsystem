@@ -2,102 +2,156 @@ import { css } from 'lit';
 
 export default css`
   :host {
-    /* Overstyring av shoelace-token-verdier */
-
-    --sl-input-border-width: var(--border-width-default);
-
-    --sl-spacing-3x-small: var(--spacing-2x-small);
-    --sl-input-spacing-small: var(--spacing-x-small);
-    --sl-input-spacing-medium: var(--spacing-x-small);
-    --sl-input-spacing-large: var(--spacing-x-small);
-
-    /** den burde vises alltid når requiredlabel er ikke tom. ikke kun når required prop er med  */
-    --sl-input-required-content: '*Obligatorisk';
-    --sl-input-required-content-offset: -2px;
-    --sl-input-required-content-color: var(--color-brand-foreground-tertiary);
-  }
-  :host::part(input) {
-    font: var(--typography-body-small);
-    border-radius: var(--border-radius-small);
+    --icon: 18px;
+    width: 100%;
   }
 
-  :host::part(base) {
-    transition: border var(--transition-time) ease-in-out;
-  }
-
-  .input--standard:hover:not(.input--disabled) {
-    border-color: var(--color-neutrals-foreground-primary);
-  }
-
-  .input--filled:hover:not(.input--disabled) {
-    border-color: var(--color-neutrals-border-default);
-  }
-
-  :host::after {
-    content: var(--nve-input-error-message);
-    font: var(--typography-detailtext-caption);
-    color: var(--color-feedback-background-emphasized-error);
-  }
-
-  :host([required]) .form-control--has-label .form-control__label::after,
-  :host([requiredLabel])::part(form-control-label)::after {
-    content: var(--sl-input-required-content);
-    font: var(--typography-label-x-small-light);
-    color: var(--color-feedback-background-emphasized-error);
-    padding-left: var(--spacing-2x-small);
-  }
-
-  .input--filled {
-    border: var(--border-width-default) solid var(--color-neutrals-background-secondary);
-  }
-
-  /* Justering av skriftstørrelse og hjørner for andre størrelser av tekstfeltet */
-  .input--small {
-    font: var(--typography-body-x-small);
-  }
-  .input--large {
-    border-radius: var(--border-radius-large);
-    font: var(--typography-body-large);
-  }
-
-  .form-control--has-label .form-control__label {
-    font: var(--typography-label-small);
-    align-items: center;
-    margin-bottom: var(--spacing-x-small);
-  }
-
-  /* Riktig fokus-markering også i filled-modus */
-  .input--standard.input--focused:not(.input--disabled) {
-    outline: var(--sl-focus-ring);
-    outline-offset: var(--sl-focus-ring-offset);
-    box-shadow: unset;
-  }
-
-  /* Annen bakgrunnsfarge og ingen ramme når skrivebeskyttet */
-  :host([readonly])::part(base),
-  :host([readonly]) .input.input--medium.input--standard {
-    border-color: transparent !important;
-    background: var(--color-neutrals-background-secondary);
-  }
-
-  :host([readonly]) .input--standard.input--focused:not(.input--disabled) {
-    outline: var(--color-neutrals-background-secondary);
-  }
-
-  /* Gir rød ramme ved valideringsfeil  */
-  :host([data-user-invalid]:not([noValidation]))::part(base) {
-    border-color: var(--color-feedback-background-emphasized-error);
-  }
-
-  /* Formaterer "*Obligatorisk" over input-felt når required er satt */
-  .form-control--has-label .form-control__label {
+  .field {
     display: flex;
-    align-items: center;
-    gap: var(--spacing-2x-small);
-    margin-inline-start: unset;
+    flex-direction: column;
+    gap: var(--spacing-x-small);
+    box-sizing: border-box;
+    width: 100%;
+    --_color: var(--color-neutrals-foreground-primary);
+    --_border-color: var(--color-interactive-border-secondary-enabled);
+    --_background-color: var(--color-neutrals-background-primary);
+    color: var(--_color);
   }
 
-  :host::part(clear-button) {
-    font-size: var(--font-size-medium);
+  .field--disabled {
+    --_color: var(--color-interactive-background-primary-disabled);
+    --_background-color: var(--color-interactive-background-secondary-disabled);
+    --_border-color: var(--color-interactive-border-secondary-disabled);
+    .input,
+    .input__control {
+      cursor: not-allowed;
+    }
+    .input nve-icon {
+      color: var(--color-neutrals-foreground-subtle);
+    }
+  }
+
+  .field--readonly {
+    --_color: var(--color-neutrals-foreground-subtle);
+    --_background-color: var(--color-neutrals-background-secondary);
+    --_border-color: transparent;
+  }
+
+  .field--error {
+    border-left: var(--border-width-strong) solid var(--color-feedback-border-emphasized-error);
+    padding-left: var(--spacing-x-small);
+    --_border-color: var(--color-feedback-border-emphasized-error);
+    .field__hint-text,
+    .input__control,
+    .input nve-icon {
+      color: var(--color-feedback-foreground-error);
+    }
+    .field__hint-text {
+      width: fit-content;
+      padding: var(--spacing-2x-small, 4px) var(--spacing-fixed-spacing-2x-small, 6px);
+      border-radius: var(--border-radius-small, 4px);
+      background: var(--color-feedback-background-subtle-error, #ffebee);
+    }
+  }
+
+  .field--filled {
+    --_background-color: var(--color-neutrals-background-primary-contrast);
+    --_border-color: var(--color-interactive-border-tertiary-enabled);
+  }
+
+  .field__hint-text {
+    margin: 0;
+    color: var(--color-neutrals-foreground-primary);
+    font: var(--typography-detailtext-caption);
+    text-align: start;
+  }
+
+  .field__help-text {
+    margin: 0;
+    margin-top: calc(var(--spacing-2x-small) - var(--spacing-x-small));
+    color: var(--color-neutrals-foreground-subtle);
+    font: var(--typography-detailtext-caption);
+    text-align: start;
+  }
+
+  /* for å inkludere ikoner i input, brukes denne wrappen */
+  .input {
+    position: relative;
+    width: 100%;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    overflow: auto;
+    box-sizing: border-box;
+    background: var(--_background-color);
+    border-radius: var(--border-radius-small);
+    border: var(--border-width-default) solid var(--_border-color);
+    transition: border-color 0.3s ease;
+    nve-icon {
+      --icon-size: var(--icon);
+    }
+    &:focus-within {
+      outline: var(--border-width-strong, 2px) solid var(--color-interactive-primary-border-focus, #008ffb);
+    }
+  }
+
+  .field:not(.field--readonly):not(.field--disabled) .input:hover {
+    --_border-color: var(--color-interactive-border-secondary-hover);
+  }
+
+  .input__control:focus,
+  .input__control:focus-visible {
+    outline: none;
+  }
+
+  .input__control {
+    font: var(--typography-body-medium);
+    flex: 1;
+    color: var(--_color);
+    font-size: 1rem;
+    background-color: transparent;
+    border: none;
+    height: var(--sizing-fixed-sizing-large);
+    padding-block: 0;
+  }
+
+  .input--medium {
+    padding-inline: var(--spacing-x-small) var(--spacing-small);
+    .input__control {
+      height: var(--sizing-fixed-sizing-large);
+    }
+  }
+
+  .input--small {
+    padding-inline: var(--spacing-fixed-spacing-2x-small) var(--spacing-x-small);
+    .input__control {
+      height: var(--sizing-fixed-sizing-medium);
+    }
+  }
+
+  .input--large {
+    padding-inline: var(--spacing-small) var(--spacing-medium);
+    .input__control {
+      height: var(--sizing-fixed-sizing-x-large);
+    }
+  }
+
+  .input__clear-button {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    color: var(--color-interactive-foreground-tertiary-enabled, #60656c);
+    transition: color 0.3s ease;
+    nve-icon {
+      --icon-size: 20px;
+    }
+  }
+  .input__clear-button:hover {
+    color: var(--color-interactive-foreground-tertiary-hover);
+  }
+
+  ::slotted([slot='start']) {
+    --icon-size: var(--font-size-medium);
   }
 `;
