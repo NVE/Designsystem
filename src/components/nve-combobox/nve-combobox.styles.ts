@@ -267,7 +267,7 @@ export default css`
     white-space: nowrap;
   }
 
-  /* flyt til felles, input bruker det samme */
+  /* flytt til felles, input bruker det samme */
   .combobox__clear-button {
     border: none;
     background: transparent;

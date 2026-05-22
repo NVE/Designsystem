@@ -2,7 +2,7 @@ import { css } from 'lit';
 
 export default css`
   :host {
-    --icon: 18px;
+    --_icon-size: var(--font-size-medium);
     width: 100%;
   }
 
@@ -88,7 +88,7 @@ export default css`
     border: var(--border-width-default) solid var(--_border-color);
     transition: border-color 0.3s ease;
     nve-icon {
-      --icon-size: var(--icon);
+      --icon-size: var(--_icon-size);
     }
     &:focus-within {
       outline: var(--border-width-strong, 2px) solid var(--color-interactive-primary-border-focus, #008ffb);
@@ -144,7 +144,7 @@ export default css`
     color: var(--color-interactive-foreground-tertiary-enabled, #60656c);
     transition: color 0.3s ease;
     nve-icon {
-      --icon-size: 20px;
+      --icon-size: var(--_icon-size);
     }
   }
   .input__clear-button:hover {

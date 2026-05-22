@@ -69,7 +69,7 @@ outline: [2, 3]
     </ul>
   <br>
   <p>
-    Noen viktige hendelser fra det interne <span class="highlight">&lt;input&gt;</span>-elementet går ikke automatisk gjennom komponentens Shadow DOM.
+    Noen viktige hendelser fra det interne <span class="highlight">&lt;input&gt;</span>-elementet er at det ikke automatisk går i gjennom komponentens Shadow DOM.
     Derfor videresender komponenten disse hendelsene programmatisk, slik at de kan fanges utenfor komponenten.
   </p>
   <ul>
