@@ -197,4 +197,4 @@ Hvis du vil gjøre textarea smalere enn 100%, kan du bruke <span class="highligh
 
 I tillegg brukes aria-describedby for å knytte supplerende tekst til feltet. Når <span class="highlight">helpText</span>, <span class="highlight">hint</span> eller <span class="highlight">errorMessage</span> er satt vil skjermlesere normalt lese dem opp i forbindelse med fokus på feltet (ved bruk av <span class="highlight">aria-describedby</span>).
 
-Ikoner i <span class="highlight">nve-textarea</span> er dekorative og ikke ment som ensete informasjonsbærer.
+Ikoner i <span class="highlight">nve-textarea</span> er dekorative og ikke ment som eneste informasjonsbærer. Skjermlesere informerer brukere når tekstfeltet er skrivebeskyttet, men ikke når det er deaktivert.
