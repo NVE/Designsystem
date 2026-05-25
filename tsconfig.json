@@ -26,6 +26,8 @@
     "rootDir": "./src",
     "paths": {
       "@interfaces/*": ["./src/interfaces/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@validation/*": ["./src/validation/*"],
       "nve-designsystem": ["./src/nve-designsystem"]
     }
   },

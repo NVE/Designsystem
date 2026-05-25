@@ -8,6 +8,7 @@ export default css`
   :host {
     --listbox-max-height: 220px;
     --first-tag-max-width: unset;
+    width: 100%;
   }
 
   .field {
@@ -40,32 +41,8 @@ export default css`
   }
 
   .field--error {
-    border-left: var(--border-width-strong) solid var(--color-feedback-border-emphasized-error);
-    padding-left: var(--spacing-x-small);
-    .field__hint-text {
-      color: var(--color-feedback-foreground-error);
-    }
-  }
-
-  .field__hint-text {
-    margin: 0;
-    color: var(--color-neutrals-foreground-primary);
-    font: var(--typography-detailtext-caption);
-    text-align: start;
-  }
-
-  .field__help-text {
-    margin: 0;
-    margin-top: calc(var(--spacing-2x-small) - var(--spacing-x-small));
-    color: var(--color-neutrals-foreground-subtle);
-    font: var(--typography-detailtext-caption);
-    text-align: start;
-  }
-
-  .field--error {
-    --_border-color: var(--color-feedback-border-emphasized-error);
     .combobox__control input,
-    .combobox__control nve-icon {
+    .combobox__control > nve-icon {
       color: var(--color-feedback-foreground-error);
     }
   }
@@ -237,6 +214,7 @@ export default css`
   .combobox__value__tag {
     display: flex;
     font: var(--typography-label-x-small);
+    line-height: 1;
     color: var(--color-interactive-foreground-tertiary-enabled);
     align-items: center;
     gap: var(--spacing-2x-small, 4px);
@@ -246,6 +224,7 @@ export default css`
     cursor: pointer;
     nve-icon {
       --icon-size: 20px;
+      color: var(--color-interactive-foreground-tertiary-enabled);
     }
   }
 

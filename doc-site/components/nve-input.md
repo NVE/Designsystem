@@ -316,6 +316,80 @@ Bruk <span class="highlight">start</span>-sporet for å legge til et ikon.
 
 </CodeExamplePreview>
 
+## Validering
+
+For mer informasjon om hvordan <span class="highlight">nve-input</span> og andre skjemakomponenter valideres, se <a href="../introduction/forDevelopers/validation">siden om validering</a>.
+
+### Intern validering
+
+Intern validering gjør det mulig å validere verdien i <span class="highlight">nve-input</span> ved hjelp av valideringsregler.
+
+Valideringsreglene kjøres når du kaller <span class="highlight">validateForm()</span> i skjemaets <span class="highlight">submit</span>-handler.
+
+Du kan importere metoden slik:
+
+```ts
+import { validateForm } from 'nve-designsystem/validation/validateForm.js';
+```
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form">
+  <nve-input id="name-input" label="Saksbehandlers navn"></nve-input>
+  <nve-input id="saksnummer" label="Saksnummer"></nve-input>
+
+  <nve-button type="submit">Send inn</nve-button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form');
+  const nameInput = document.querySelector('#name-input');
+  const saksNummerInput = document.querySelector('#saksnummer');
+
+  nameInput.validationRules = [
+    () => !!saksNummerInput.value || 'Saksnummer er påkrevd',
+    (value) => rules.required(value) || 'Feltet er påkrevd',
+    (value) => value.length >= 3 || 'Minimum 3 bokstaver',
+    (value) => value.length <= 20 || 'Maksimum 20 bokstaver',
+    (value) => value.startsWith('s') || 'Må starte med s',
+  ];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    validateForm(event);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+### External validation
+
+Bruker du eksternal validering system, kan du fortsatt sette feil status på input ved bruk av <span class="highlight">errorMessage</span>.
+
+<CodeExamplePreview>
+
+```html
+<form>
+  <nve-input label="Beskriv saken" errorMessage="Feltet er påkrevd"></nve-input>
+</form>
+```
+
+</CodeExamplePreview>
+
+Du kan fjerne feil status ved å sette <span class="highlight">errorMessage</span> tilbake til en tom string.
+
+<CodeExamplePreview>
+
+```html
+<form>
+  <nve-input label="Beskriv saken" errorMessage=""></nve-input>
+</form>
+```
+
+</CodeExamplePreview>
+
 ## Tilgjengelighet
 
 <span class="highlight">nve-input</span> er bygget på et native <span class="highlight">&lt;input&gt;</span> og bruker en tilknyttet <a href="#ledetekst-og-tooltip">ledetekst</a>. Når feltet får fokus vil skjermlesere lese opp ledeteksten, slik at brukeren forstår hva som skal fylles inn.

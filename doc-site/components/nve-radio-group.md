@@ -186,6 +186,92 @@ Bruk <span class="highlight">value</span> for å vise en forhåndsvalgt verdi. V
 
 </CodeExamplePreview>
 
+## Validering
+
+For mer informasjon om hvordan <span class="highlight">nve-radio-group</span> og andre skjemakomponenter valideres, se <a href="../introduction/forDevelopers/validation">siden om validering</a>.
+
+### Intern validering
+
+Intern validering gjør det mulig å validere verdien i <span class="highlight">nve-radio-group</span> ved hjelp av valideringsregler.
+
+Valideringsreglene kjøres når du kaller <span class="highlight">validateForm()</span> i skjemaets <span class="highlight">submit</span>-handler.
+
+Du kan importere metoden slik:
+
+```ts
+import { validateForm } from 'nve-designsystem/validation/validateForm.js';
+```
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form" class="form">
+  <nve-radio-group id="rdgr" label="Hva er status på tiltaket?">
+    <nve-radio value="planned">Planlagt</nve-radio>
+    <nve-radio value="current">Pågående</nve-radio>
+    <nve-radio value="done">Ferdigstilt</nve-radio>
+  </nve-radio-group>
+
+  <nve-button type="submit">Send inn</nve-button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form');
+  const rdgr = document.querySelector('#rdgr');
+
+  rdgr.validationRules = [(value) => rules.required(value) || 'Feltet er påkrevd'];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    validateForm(event);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+### Ekstern validering
+
+Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand ved hjelp av <span class="highlight">errorMessage</span>.
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form" class="form">
+  <nve-radio-group id="rdgr" label="Hva er status på tiltaket?" errorMessage="Feltet er påkrevd">
+    <nve-radio value="planned">Planlagt</nve-radio>
+    <nve-radio value="current">Pågående</nve-radio>
+    <nve-radio value="done">Ferdigstilt</nve-radio>
+  </nve-radio-group>
+
+  <nve-button type="submit">Send inn</nve-button>
+</form>
+```
+
+</CodeExamplePreview>
+
+Du kan fjerne feiltilstanden ved å sette <span class="highlight">errorMessage</span> til en tom streng.
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form" class="form">
+  <nve-radio-group id="rdgr" label="Hva er status på tiltaket?" errorMessage="">
+    <nve-radio value="planned">Planlagt</nve-radio>
+    <nve-radio value="current">Pågående</nve-radio>
+    <nve-radio value="done">Ferdigstilt</nve-radio>
+  </nve-radio-group>
+
+  <nve-button type="submit">Send inn</nve-button>
+</form>
+```
+
+</CodeExamplePreview>>
+
+```
+
+</CodeExamplePreview>
+
 ## Tilgjengelighet
 
 Radiogruppen er implementert i tråd med [anbefalingene](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) i WAI-ARIA Authoring Practices Guide for radiogrupper, for å støtte tilgjengelig bruk i samsvar med WCAG.
@@ -194,3 +280,4 @@ Radiogruppen er implementert i tråd med [anbefalingene](https://www.w3.org/WAI/
 - <span class="highlight">nve-radio</span> har intern tilstand for <span class="highlight">checked</span>, <span class="highlight">pos</span> og <span class="highlight">setsize</span>, som styres av <span class="highlight">nve-radio-group</span>. Disse brukes til å sette riktige ARIA-attributter (<span class="highlight">aria-checked</span> <span class="highlight">aria-posinset</span>,<span class="highlight">aria-setsize</span>) på radio-knappen.
 - <span class="highlight">aria-posinset</span> og <span class="highlight">aria-setsize</span> brukes for å fortelle brukeren hvor i gruppen den aktuelle radio-knappen ligger, og hvor mange valg som finnes totalt.
 - <span class="highlight">aria-disabled</span> og <span class="highlight">aria-invalid</span> settes på <span class="highlight">nve-radio</span> basert på egenskapene <span class="highlight">disabled</span> og <span class="highlight">invalid</span>.
+```

@@ -1,12 +1,14 @@
 import { html, LitElement, nothing, PropertyValues } from 'lit';
-import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
-import { INveComponent } from '@interfaces/NveComponent.interface';
+import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
+import { FormValidationComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-radio-group.styles';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '../nve-tooltip/nve-tooltip.component';
+import formField from '@styles/formField';
 import NveRadio from '../nve-radio/nve-radio.component';
 import { getLabel, labelStyles } from '../../templates/label';
+import type { ValidationRule } from '@validation/validateForm';
 
 let id = 0; // for å generere unike id-er. Brukes for å koble label og hint tekster til riktig fieldset via aria-describedby.
 /**
@@ -17,14 +19,15 @@ let id = 0; // for å generere unike id-er. Brukes for å koble label og hint te
  * @csspart base Hovedcontaineren for radio-gruppen, som er en fieldset.
  * @csspart help-text Teksten som vises under ledeteksten for å gi ekstra informasjon.
  * @csspart hint-text Teksten som vises under radio-knappene for å gi ekstra informasjon eller feilmeldinger.
+ * @csspart error-text Teksten som vises under radio-knappene for å vise feilmeldinger.
  */
 @customElement('nve-radio-group')
-export default class NveRadioGroup extends LitElement implements INveComponent {
+export default class NveRadioGroup extends LitElement implements FormValidationComponent {
   @property({ type: String }) testId: string | undefined = undefined;
   /** Om radio-gruppen er deaktivert */
   @property({ type: Boolean }) disabled = false;
   /** Feilmelding som vises ved valideringsfeil. Hvis den er satt blir input-felt ugyldig og feil melding vises */
-  @property({ type: String, reflect: true }) errorMessage: string | undefined = undefined;
+  @property({ type: String, reflect: true }) errorMessage = '';
   /** Hjelpetekst som vises over feltet */
   @property({ type: String, reflect: true }) helpText = '';
   /** Hint-tekst som vises under feltet */
@@ -42,14 +45,15 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
   /** Tooltip-tekst for ledetekst */
   @property({ type: String }) tooltip = '';
   /** Verdi for den valgte radio-knappen */
-  @property({ type: String, reflect: true }) value = ''; // this will be one time situation. it wont reflect the selected value all the time rather base on the change event
+  @property({ type: String, reflect: true }) value = '';
+  @property({ attribute: false }) validationRules: Array<ValidationRule> = [];
   @queryAssignedElements({ selector: 'nve-radio' })
   private radios!: NveRadio[];
+  @state() internalValidationMessage = '';
 
-  static styles = [styles, labelStyles];
+  static styles = [styles, labelStyles, formField];
 
   private radioGroupName = `nve-radio-group-${id++}`;
-  /* TODO add invalid event when adding validation */
 
   /**
    * Håndterer endring av valgt radio-knapp.
@@ -60,6 +64,7 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
     if (radio.tagName.toLowerCase() === 'nve-radio' && !radio.disabled) {
       this.selectRadioWithFocus(radio);
     }
+    this.internalValidationMessage = '';
   }
 
   /**
@@ -196,10 +201,8 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    if (changedProperties.has('errorMessage')) {
-      this.radios.forEach((radio) => {
-        radio.invalid = !!this.errorMessage;
-      });
+    if (changedProperties.has('errorMessage') || changedProperties.has('internalValidationMessage')) {
+      this.radios.forEach((r) => (r.invalid = !!this.activeErrorMessage));
     }
     if (changedProperties.has('disabled')) {
       this.radios.forEach((radio) => {
@@ -210,11 +213,40 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
     }
   }
 
+  validate() {
+    for (const rule of this.validationRules) {
+      const result = rule(this.value);
+
+      if (result !== true) {
+        if (typeof result !== 'string' || result.trim() === '') {
+          console.warn(
+            'Validation rule failed without returning an error message. Ensure you added error message to the rule.'
+          );
+        }
+        this.internalValidationMessage =
+          typeof result === 'string' && result.trim() !== '' ? result : 'The value is invalid.';
+        return false;
+      }
+    }
+
+    this.internalValidationMessage = '';
+    return true;
+  }
+
+  private get activeErrorMessage() {
+    return this.errorMessage || this.internalValidationMessage;
+  }
+
   render() {
     const helpTextId = `${this.radioGroupName}-helptext`;
     const hintTextId = `${this.radioGroupName}-hinttext`;
+    const errorTextId = `${this.radioGroupName}-errortext`;
 
-    const describedBy = [this.helpText ? helpTextId : null, this.errorMessage || this.hint ? hintTextId : null]
+    const describedBy = [
+      this.helpText ? helpTextId : null,
+      this.activeErrorMessage ? errorTextId : null,
+      this.hint ? hintTextId : null,
+    ]
       .filter(Boolean)
       .join(' ');
 
@@ -223,12 +255,12 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
         test-id=${ifDefined(this.testId)}
         class=${classMap({
           field: true,
-          'field--error': !!this.errorMessage,
+          'field--error': !!this.activeErrorMessage,
         })}
         aria-describedby=${ifDefined(describedBy)}
         @radio-select=${this.handleChange}
         @keydown=${this.handleKeyDown}
-        aria-invalid=${ifDefined(this.errorMessage ? 'true' : undefined)}
+        aria-invalid=${ifDefined(this.activeErrorMessage ? 'true' : undefined)}
         aria-required=${ifDefined(this.required ? 'true' : undefined)}
         role="radiogroup"
         part="base"
@@ -248,9 +280,13 @@ export default class NveRadioGroup extends LitElement implements INveComponent {
           <slot @slotchange=${this.handleSlotChange}></slot>
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${this.errorMessage || this.hint
-          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.errorMessage || this.hint}</p>`
+        ${!this.activeErrorMessage && this.hint
+          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.hint}</p>`
           : nothing}
+
+        <p aria-live="assertive" aria-atomic="true" part="error-text" class="field__hint-text" id=${errorTextId}>
+          ${this.activeErrorMessage ?? ''}
+        </p>
       </fieldset>
     `;
   }

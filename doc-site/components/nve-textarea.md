@@ -191,6 +191,76 @@ Hvis du vil gjøre textarea smalere enn 100%, kan du bruke <span class="highligh
 
 </CodeExamplePreview>
 
+## Validering
+
+For mer informasjon om hvordan <span class="highlight">nve-textarea</span> og andre skjemakomponenter valideres, se <a href="../introduction/forDevelopers/validation">siden om validering</a>.
+
+### Intern validering
+
+Intern validering gjør det mulig å validere verdien i <span class="highlight">nve-textarea</span> ved hjelp av valideringsregler. Du kan for eksempel kontrollere om feltet er tomt, for kort eller ikke følger et ønsket format.
+
+Valideringsreglene kjøres når du kaller <span class="highlight">validateForm()</span> i skjemaets <span class="highlight">submit</span>-handler.
+
+Du kan importere metoden slik:
+
+```ts
+import { validateForm } from 'nve-designsystem/validation/validateForm.js';
+```
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form" class="form">
+  <nve-textarea id="txt" label="Beskriv saken"></nve-textarea>
+  <nve-button type="submit">Send inn</nve-button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form');
+  const txt = document.querySelector('#txt');
+  txt.validationRules = [
+    (value) => rules.required(value) || 'Felt er påkrevd',
+    (value) => value.length >= 3 || 'Minimum 3 bokstaver',
+    (value) => value.length <= 20 || 'Maximum 20 bokstaver',
+    (value) => value.startsWith('s') || 'Må starte med s',
+  ];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const isValid = validateForm(event);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+### Ekstern validering
+
+Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand ved hjelp av <span class="highlight">errorMessage</span>.
+
+<CodeExamplePreview>
+
+```html
+<form>
+  <nve-textarea label="Beskriv saken" errorMessage="Feltet er påkrevd"></nve-textarea>
+</form>
+```
+
+</CodeExamplePreview>
+
+Du kan fjerne feiltilstanden ved å sette <span class="highlight">errorMessage</span> til en tom streng.
+
+<CodeExamplePreview>
+
+```html
+<form>
+  <nve-textarea label="Beskriv saken" errorMessage=""></nve-textarea>
+</form>
+```
+
+</CodeExamplePreview>
+
 ## Tilgjengelighet
 
 <span class="highlight">nve-textarea</span> er bygget på et native <span class="highlight">&lt;textarea&gt;</span> og bruker en tilknyttet <a href="#ledetekst-og-tooltip">ledetekst</a>. Når feltet får fokus vil skjermlesere lese opp ledeteksten, slik at brukeren forstår hva som skal fylles inn.

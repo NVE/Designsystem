@@ -72,4 +72,52 @@ describe('nve-combobox', () => {
 
     expect(text).toBe('Label text');
   });
+
+  describe('validate method', () => {
+    it('returns true when no validation rules are set', async () => {
+      const options = [
+        { value: '1', label: 'Option 1' },
+        { value: '2', label: 'Option 2' },
+      ];
+      const el = await fixture<NveCombobox>(html`<nve-combobox .options=${options}></nve-combobox>`);
+      const isValid = el.validate();
+      expect(isValid).toBe(true);
+      expect(el.internalValidationMessage).toBe('');
+    });
+
+    it('returns false and sets internalValidationMessage when a validation rule fails', async () => {
+      const options = [
+        { value: '1', label: 'Option 1' },
+        { value: '2', label: 'Option 2' },
+      ];
+      const el = await fixture<NveCombobox>(
+        html`<nve-combobox
+          .options=${options}
+          .validationRules=${[(value: string[]) => value.length > 0 || 'Feltet kan ikke være tomt']}
+        ></nve-combobox>`
+      );
+
+      const isValid = el.validate();
+      expect(isValid).toBe(false);
+      expect(el.internalValidationMessage).toBe('Feltet kan ikke være tomt');
+    });
+
+    it('returns true and clears internalValidationMessage when all validation rules pass', async () => {
+      const options = [
+        { value: '1', label: 'Option 1' },
+        { value: '2', label: 'Option 2' },
+      ];
+      const el = await fixture<NveCombobox>(
+        html`<nve-combobox
+          .options=${options}
+          .selectedValues=${['1']}
+          .validationRules=${[(value: string[]) => value.length > 0 || 'Feltet kan ikke være tomt']}
+        ></nve-combobox>`
+      );
+
+      const isValid = el.validate();
+      expect(isValid).toBe(true);
+      expect(el.internalValidationMessage).toBe('');
+    });
+  });
 });

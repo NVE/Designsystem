@@ -160,4 +160,41 @@ describe('nve-textarea', () => {
     await el.updateComplete;
     expect(input?.value).toBe('0');
   });
+
+  describe('validate method', () => {
+    it('returns true when no validation rules are set', async () => {
+      const el = await fixture<NveInput>(html`<nve-input label="Saksbehandlers navn"></nve-input>`);
+      const isValid = el.validate();
+      expect(isValid).toBe(true);
+      expect(el.internalValidationMessage).toBe('');
+    });
+
+    it('returns false and sets internalValidationMessage when a validation rule fails', async () => {
+      const el = await fixture<NveInput>(html`
+        <nve-input
+          label="Saksbehandlers navn"
+          .validationRules=${[(value: string) => (value.trim() === '' ? 'Feltet kan ikke være tomt' : true)]}
+        ></nve-input>
+      `);
+
+      el.value = '';
+      const isValid = el.validate();
+      expect(isValid).toBe(false);
+      expect(el.internalValidationMessage).toBe('Feltet kan ikke være tomt');
+    });
+
+    it('returns true and clears internalValidationMessage when all validation rules pass', async () => {
+      const el = await fixture<NveInput>(html`
+        <nve-input
+          label="Saksbehandlers navn"
+          .validationRules=${[(value: string) => (value.trim() === '' ? 'Feltet kan ikke være tomt' : true)]}
+        ></nve-input>
+      `);
+
+      el.value = 'Valid value';
+      const isValid = el.validate();
+      expect(isValid).toBe(true);
+      expect(el.internalValidationMessage).toBe('');
+    });
+  });
 });

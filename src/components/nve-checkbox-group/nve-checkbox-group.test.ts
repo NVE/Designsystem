@@ -118,4 +118,51 @@ describe('nve-checkbox-group', () => {
     expect(submitSpy).toHaveBeenCalledTimes(1);
     expect(selectedValue).toBe('flood');
   });
+
+  describe('validate method', () => {
+    it('returns true when no validation rules are set', async () => {
+      const el = await fixture<NveCheckboxGroup>(
+        html` <nve-checkbox-group label="Status" value="current">
+          <nve-checkbox value="planned">Planlagt</nve-checkbox>
+          <nve-checkbox value="current">Pågående</nve-checkbox>
+        </nve-checkbox-group>`
+      );
+      const isValid = el.validate();
+      expect(isValid).toBe(true);
+      expect(el.internalValidationMessage).toBe('');
+    });
+
+    it('returns false and sets internalValidationMessage when a validation rule fails', async () => {
+      const el = await fixture<NveCheckboxGroup>(html`
+        <nve-checkbox-group
+          label="Status"
+          .validationRules=${[(value: string) => value.length > 0 || 'Feltet kan ikke være tomt']}
+        >
+          <nve-checkbox value="planned">Planlagt</nve-checkbox>
+          <nve-checkbox value="current">Pågående</nve-checkbox>
+        </nve-checkbox-group>
+      `);
+
+      const isValid = el.validate();
+      expect(isValid).toBe(false);
+      expect(el.internalValidationMessage).toBe('Feltet kan ikke være tomt');
+    });
+
+    it('returns true and clears internalValidationMessage when all validation rules pass', async () => {
+      const el = await fixture<NveCheckboxGroup>(html`
+        <nve-checkbox-group
+          label="Status"
+          .validationRules=${[(value: string[]) => value.length > 0 || 'Feltet kan ikke være tomt']}
+        >
+          <nve-checkbox value="planned">Planlagt</nve-checkbox>
+          <nve-checkbox value="current">Pågående</nve-checkbox>
+        </nve-checkbox-group>
+      `);
+
+      el._selectedValues = ['planned'];
+      const isValid = el.validate();
+      expect(isValid).toBe(true);
+      expect(el.internalValidationMessage).toBe('');
+    });
+  });
 });

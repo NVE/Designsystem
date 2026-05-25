@@ -145,4 +145,41 @@ describe('nve-textarea', () => {
     const event = await eventPromise;
     expect(event.detail).toBe('Ny verdi');
   });
+
+  describe('validate method', () => {
+    it('returns true when no validation rules are set', async () => {
+      const el = await fixture<NveTextarea>(html`<nve-textarea label="Beskriv saken"></nve-textarea>`);
+      const isValid = el.validate();
+      expect(isValid).toBe(true);
+      expect(el.internalValidationMessage).toBe('');
+    });
+
+    it('returns false and sets internalValidationMessage when a validation rule fails', async () => {
+      const el = await fixture<NveTextarea>(html`
+        <nve-textarea
+          label="Beskriv saken"
+          .validationRules=${[(value: string) => (value.trim() === '' ? 'Feltet kan ikke være tomt' : true)]}
+        ></nve-textarea>
+      `);
+
+      el.value = '';
+      const isValid = el.validate();
+      expect(isValid).toBe(false);
+      expect(el.internalValidationMessage).toBe('Feltet kan ikke være tomt');
+    });
+
+    it('returns true and clears internalValidationMessage when all validation rules pass', async () => {
+      const el = await fixture<NveTextarea>(html`
+        <nve-textarea
+          label="Beskriv saken"
+          .validationRules=${[(value: string) => (value.trim() === '' ? 'Feltet kan ikke være tomt' : true)]}
+        ></nve-textarea>
+      `);
+
+      el.value = 'Valid value';
+      const isValid = el.validate();
+      expect(isValid).toBe(true);
+      expect(el.internalValidationMessage).toBe('');
+    });
+  });
 });

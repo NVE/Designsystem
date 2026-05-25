@@ -538,7 +538,7 @@ Med flervalg kan du også begrense hvor mange verdier som kan velges ved å bruk
 
 ```html
 <nve-combobox
-  id="nve-avdeling-14"
+  id="nve-avdeling-15"
   label="Velg en avdeling"
   multiple
   max="2"
@@ -571,7 +571,7 @@ Bruk et <span class="highlight">selectedIds</span> string array for å vise forh
 
 ```html
 <nve-combobox
-  id="nve-avdeling-14"
+  id="nve-avdeling-16"
   label="Velg en avdeling"
   multiple
   selectedIds='["rme", "tb"]'
@@ -588,7 +588,7 @@ Bruk et <span class="highlight">selectedIds</span> string array for å vise forh
 </nve-combobox>
 
 <nve-combobox
-  id="nve-avdeling-14"
+  id="nve-avdeling-17"
   label="Velg en avdeling"
   selectedIds='["rme"]'
   options='[ 
@@ -602,6 +602,99 @@ Bruk et <span class="highlight">selectedIds</span> string array for å vise forh
      ]'
 >
 </nve-combobox>
+```
+
+</CodeExamplePreview>
+
+## Validering
+
+For mer informasjon om hvordan <span class="highlight">nve-combobox</span> og andre skjemakomponenter valideres, se <a href="../introduction/forDevelopers/validation">siden om validering</a>.
+
+### Intern validering
+
+Intern validering gjør det mulig å validere verdien i <span class="highlight">nve-combobox</span> ved hjelp av valideringsregler.
+
+Verdien er en tabell med de valgte verdiene.
+
+Valideringsreglene kjøres når du kaller <span class="highlight">validateForm()</span> i skjemaets <span class="highlight">submit</span>-handler.
+
+Du kan importere metoden slik:
+
+```ts
+import { validateForm } from 'nve-designsystem/validation/validateForm.js';
+```
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form" class="form">
+  <nve-combobox
+    id="cb"
+    label="Velg en avdeling"
+    selectedIds='["rme"]'
+    options='[
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" }
+    ]'
+  >
+  </nve-combobox>
+
+  <nve-button type="submit">Send inn</nve-button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form');
+  const cb = document.querySelector('#cb');
+
+  cb.validationRules = [(value) => value.length > 0 || 'Feltet er påkrevd'];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    validateForm(event);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+### Ekstern validering
+
+Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand ved hjelp av <span class="highlight">errorMessage</span>.
+
+<CodeExamplePreview>
+
+```html
+<form>
+  <nve-combobox
+    id="cb"
+    label="Velg en avdeling"
+    options='[
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" }
+    ]'
+    errorMessage="Feltet er påkrevd"
+  ></nve-combobox>
+</form>
+```
+
+</CodeExamplePreview>
+
+Du kan fjerne feiltilstanden ved å sette <span class="highlight">errorMessage</span> til en tom streng.
+
+<CodeExamplePreview>
+
+```html
+<form>
+  <nve-combobox
+    id="cb"
+    label="Velg en avdeling"
+    options='[
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" }
+    ]'
+    errorMessage=""
+  ></nve-combobox>
+</form>
 ```
 
 </CodeExamplePreview>

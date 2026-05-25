@@ -213,6 +213,89 @@ Bruk <span class="highlight">selectedValues</span>-array for å vise forhåndsva
 
 </CodeExamplePreview>
 
+## Validering
+
+For mer informasjon om hvordan <span class="highlight">nve-checkbox-group</span> og andre skjemakomponenter valideres, se <a href="../introduction/forDevelopers/validation">siden om validering</a>.
+
+### Intern validering
+
+Intern validering gjør det mulig å validere verdien i <span class="highlight">nve-checkbox-group</span> ved hjelp av valideringsregler.
+
+Verdien er et array med de valgte avkrysningsboksene.
+
+Valideringsreglene kjøres når du kaller <span class="highlight">validateForm()</span> i skjemaets <span class="highlight">submit</span>-handler.
+
+Du kan importere metoden slik:
+
+```ts
+import { validateForm } from 'nve-designsystem/validation/validateForm.js';
+```
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form" class="form">
+  <nve-checkbox-group id="chgr" label="Hvilke varsler vil du se på?">
+    <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+    <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
+    <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
+  </nve-checkbox-group>
+
+  <nve-button type="submit">Send inn</nve-button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form');
+  const chgr = document.querySelector('#chgr');
+
+  chgr.validationRules = [
+    (value) => rules.required(value) || 'Du må velge minst én',
+    (value) => value.length >= 2 || 'Minimum 2 valg',
+  ];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    validateForm(event);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+### Ekstern validering
+
+Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand ved hjelp av <span class="highlight">errorMessage</span>.
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form" class="form">
+  <nve-checkbox-group label="Hvilke varsler vil du se på?" errorMessage="Du må velge minst én.">
+    <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+    <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
+    <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
+  </nve-checkbox-group>
+</form>
+```
+
+</CodeExamplePreview>
+
+Du kan fjerne feiltilstanden ved å sette <span class="highlight">errorMessage</span> til en tom streng.
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form" class="form">
+  <nve-checkbox-group label="Hvilke varsler vil du se på?" errorMessage="">
+    <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+    <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
+    <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
+  </nve-checkbox-group>
+</form>
+```
+
+</CodeExamplePreview>
+
 ## Tilgjengelighet
 
 <span class="highlight">nve-checkbox-group</span> bruker en tilknyttet <a href="#ledetekst-og-tooltip">ledetekst</a>. Når feltet får fokus vil skjermlesere lese opp ledeteksten, slik at brukeren forstår hva som skal fylles inn.

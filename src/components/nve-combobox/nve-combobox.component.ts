@@ -1,11 +1,13 @@
 import { html, LitElement, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { INveComponent } from '@interfaces/NveComponent.interface';
+import { FormValidationComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-combobox.styles';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '../nve-icon/nve-icon.component';
 import { classMap } from 'lit/directives/class-map.js';
 import { getLabel, labelStyles } from '../../templates/label';
+import formField from '@styles/formField';
+import type { ValidationRule } from '@validation/validateForm';
 
 let id = 0;
 /**
@@ -48,9 +50,11 @@ export type NveSelectChangeDetail = {
  * @csspart listbox Containeren som viser listen over tilgjengelige alternativer
  * @csspart option Enkelt alternativ i listen
  * @csspart help-text Område for hjelpetekst og feilmeldinger under feltet
+ * @csspart hint-text Område for hint-tekst eller feilmelding under feltet
+ * @csspart error-text Område for feilmelding under feltet
  */
 @customElement('nve-combobox')
-export default class NveCombobox extends LitElement implements INveComponent {
+export default class NveCombobox extends LitElement implements FormValidationComponent {
   @property({ type: String }) testId: string | undefined = undefined;
   // Native select attributer
   /** Om feltet skal være deaktivert */
@@ -70,7 +74,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   /** Om alle valgte alternativer kan fjernes */
   @property({ type: Boolean }) clearable = false;
   /** Feilmelding som vises ved valideringsfeil. Hvis den er satt blir felt ugyldig og feil melding vises. */
-  @property({ type: String, reflect: true }) errorMessage?: string;
+  @property({ type: String, reflect: true }) errorMessage = '';
   /** Om feltet skal bruke filled variant */
   @property({ type: Boolean }) filled = false;
   /** Hjelpetekst som vises over feltet */
@@ -102,11 +106,12 @@ export default class NveCombobox extends LitElement implements INveComponent {
   @property({ type: String }) tooltip = '';
   /** Om tags skal brytes til neste linje hvis de ikke får plass. Standard er false og da indikatoren vises. */
   @property({ type: Boolean }) wrap = false;
+  @property({ attribute: false }) validationRules: Array<ValidationRule> = [];
 
   /** @internal */
   private readonly componentId = `combobox-${++id}`;
   /** @internal */
-  static styles = [styles, labelStyles];
+  static styles = [styles, labelStyles, formField];
 
   @query('input[role="combobox"]') comboboxNativeInput!: HTMLInputElement;
   /** Om listboksen er utvidet */
@@ -127,6 +132,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   @state() private indicatorCount = 0;
   /** Synlige alternativer i listboksen. Kan filtreres basert på søketekst */
   @state() private visibleOptions: Option[] = [];
+  @state() internalValidationMessage = '';
   /** Timeout for searchString */
   private searchTimeout?: number;
   /** Internt array for alternativer. Oppdateres basert på options-prop */
@@ -172,6 +178,11 @@ export default class NveCombobox extends LitElement implements INveComponent {
     if (changed.has('activeValue') && this.expanded) {
       this.scrollActiveOptionIntoView();
     }
+  }
+
+  /** Setter fokus på inputfeltet i combobox */
+  focus() {
+    this.comboboxNativeInput.focus();
   }
 
   /** Synkronisere _selectedValues på selectedValues-attributtet. */
@@ -287,7 +298,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
   private async handleArrowUpAndDown(key: 'up' | 'down') {
     if (!this.visibleOptions.length) return;
 
-    this.comboboxNativeInput.focus();
+    this.focus();
     if (!this.expanded) {
       if (this.editable && !this.multiple) {
         this.updateDisplayLabel('');
@@ -352,14 +363,14 @@ export default class NveCombobox extends LitElement implements INveComponent {
         if (index < tags.length - 1) {
           tags[index + 1].focus();
         } else {
-          this.comboboxNativeInput.focus();
+          this.focus();
           this.openListbox();
         }
       } else {
         if (index > 0) {
           tags[index - 1].focus();
         } else {
-          this.comboboxNativeInput.focus();
+          this.focus();
           this.openListbox();
         }
       }
@@ -384,7 +395,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     } else {
       this.updateDisplayLabel('');
     }
-    this.comboboxNativeInput.focus();
+    this.focus();
   }
 
   private async handleBackspace(e: KeyboardEvent) {
@@ -411,7 +422,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     if (target.getAttribute('role') === 'listbox') {
       e.preventDefault();
       if (this.editable) {
-        this.comboboxNativeInput.focus();
+        this.focus();
       } else {
         focusLastTag();
       }
@@ -456,7 +467,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
         }
       }
 
-      this.comboboxNativeInput.focus();
+      this.focus();
     }
   }
 
@@ -533,7 +544,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
         }
       }
 
-      this.comboboxNativeInput.focus();
+      this.focus();
     }
   }
 
@@ -584,7 +595,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     }
     // hvis man klikker utenfor nativ input men fortsatt i kontrollen så skal vi fokusere input
     // både når den åpner eller lukkes
-    this.comboboxNativeInput.focus();
+    this.focus();
   }
 
   /**
@@ -638,7 +649,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     this.updateDisplayLabel('');
     this.emitClear();
     this.emitChange('', 'deselect');
-    this.comboboxNativeInput.focus();
+    this.focus();
   }
 
   /*********** HENDELSER *****************/
@@ -727,6 +738,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
     }
     this.maxReached = this.max ? this._selectedValues.length >= this.max : false;
     this.emitChange(value, isSelected && this.multiple ? 'deselect' : 'select');
+    this.internalValidationMessage = '';
   }
 
   /**
@@ -742,7 +754,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
       }
     } else {
       this._selectedValues = [option.value];
-      this.comboboxNativeInput.focus();
+      this.focus();
     }
   }
 
@@ -965,14 +977,40 @@ export default class NveCombobox extends LitElement implements INveComponent {
     this.indicatorCount = this.collapsedTagIds.length;
   }
 
+  validate() {
+    for (const rule of this.validationRules) {
+      const result = rule(this._selectedValues);
+
+      if (result !== true) {
+        if (typeof result !== 'string' || result.trim() === '') {
+          console.warn(
+            'Validation rule failed without returning an error message. Ensure you added error message to the rule.'
+          );
+        }
+        this.internalValidationMessage =
+          typeof result === 'string' && result.trim() !== '' ? result : 'The value is invalid.';
+        return false;
+      }
+    }
+
+    this.internalValidationMessage = '';
+    return true;
+  }
+
+  private get activeErrorMessage() {
+    return this.errorMessage || this.internalValidationMessage;
+  }
+
   render() {
     const labelId = `${this.id}-label`;
     const helpTextId = `${this.id}-helptext`;
     const hintTextId = `${this.id}-hinttext`;
+    const errorTextId = `${this.id}-errortext`;
     const selectedValuesId = `${this.id}-selected-values`;
     const describedBy = [
       helpTextId,
-      this.errorMessage || this.hint ? hintTextId : '',
+      this.activeErrorMessage ? errorTextId : '',
+      this.hint ? hintTextId : '',
       this.multiple ? selectedValuesId : '',
     ]
       .filter(Boolean)
@@ -983,7 +1021,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
         part="field"
         class=${classMap({
           field: true,
-          'field--error': !!this.errorMessage,
+          'field--error': !!this.activeErrorMessage,
           'field--readonly': this.readonly,
           'field--disabled': this.disabled,
           'field--filled': this.filled,
@@ -1081,7 +1119,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
                 aria-describedby=${ifDefined(describedBy || undefined)}
                 aria-activedescendant=${ifDefined(this.activeValue)}
                 role="combobox"
-                ?aria-invalid=${this.errorMessage}
+                aria-invalid=${ifDefined(this.activeErrorMessage ? 'true' : undefined)}
                 placeholder=${this.placeholder && !this._selectedValues.length ? this.placeholder : ''}
                 .value=${this.displayLabel}
                 @input=${this.onInput}
@@ -1103,7 +1141,7 @@ export default class NveCombobox extends LitElement implements INveComponent {
               : html`<nve-icon class="icon__arrow" name="keyboard_arrow_down" aria-hidden="true"></nve-icon>`}
             ${this.disabled ? html`<nve-icon name="lock" aria-hidden="true"></nve-icon>` : nothing}
             ${this.readonly ? html`<nve-icon name="visibility" aria-hidden="true"></nve-icon>` : nothing}
-            ${!!this.errorMessage
+            ${!!this.activeErrorMessage
               ? html`<nve-icon class="icon__error" name="error" aria-hidden="true"></nve-icon>`
               : nothing}
           </div>
@@ -1145,9 +1183,13 @@ export default class NveCombobox extends LitElement implements INveComponent {
             : nothing}
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${this.errorMessage || this.hint
-          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.errorMessage || this.hint}</p>`
+        ${!this.activeErrorMessage && this.hint
+          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.hint}</p>`
           : nothing}
+
+        <p aria-live="assertive" aria-atomic="true" part="error-text" class="field__hint-text" id=${errorTextId}>
+          ${this.activeErrorMessage ?? ''}
+        </p>
       </div>
     `;
   }

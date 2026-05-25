@@ -134,4 +134,54 @@ describe('nve-radio-group', () => {
     expect(radios[0].getAttribute('aria-checked')).toBe('false');
     expect(radios[1].getAttribute('aria-checked')).toBe('true');
   });
+
+  describe('validate method', () => {
+    it('returns true when no validation rules are set', async () => {
+      const el = await fixture<NveRadioGroup>(
+        html` <nve-radio-group label="Status" value="current">
+          <nve-radio value="planned">Planlagt</nve-radio>
+          <nve-radio value="current">Pågående</nve-radio>
+        </nve-radio-group>`
+      );
+      const isValid = el.validate();
+      expect(isValid).toBe(true);
+      expect(el.internalValidationMessage).toBe('');
+    });
+
+    it('returns false and sets internalValidationMessage when a validation rule fails', async () => {
+      const el = await fixture<NveRadioGroup>(html`
+        <nve-radio-group
+          label="Status"
+          value="current"
+          .validationRules=${[(value: string) => (value.trim() === '' ? 'Feltet kan ikke være tomt' : true)]}
+        >
+          <nve-radio value="planned">Planlagt</nve-radio>
+          <nve-radio value="current">Pågående</nve-radio>
+        </nve-radio-group>
+      `);
+
+      el.value = '';
+      const isValid = el.validate();
+      expect(isValid).toBe(false);
+      expect(el.internalValidationMessage).toBe('Feltet kan ikke være tomt');
+    });
+
+    it('returns true and clears internalValidationMessage when all validation rules pass', async () => {
+      const el = await fixture<NveRadioGroup>(html`
+        <nve-radio-group
+          label="Status"
+          value="current"
+          .validationRules=${[(value: string) => (value.trim() === '' ? 'Feltet kan ikke være tomt' : true)]}
+        >
+          <nve-radio value="planned">Planlagt</nve-radio>
+          <nve-radio value="current">Pågående</nve-radio>
+        </nve-radio-group>
+      `);
+
+      el.value = 'Valid value';
+      const isValid = el.validate();
+      expect(isValid).toBe(true);
+      expect(el.internalValidationMessage).toBe('');
+    });
+  });
 });
