@@ -213,6 +213,76 @@ Bruk <span class="highlight">selectedValues</span>-array for å vise forhåndsva
 
 </CodeExamplePreview>
 
+<CodeExamplePreview>
+
+```html
+<form id="test-form">
+  <nve-checkbox-group id="ch" label="Hvilke varsler vil du se på?" selectedValues='["flood", "landslide"]'>
+    <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+    <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
+    <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
+  </nve-checkbox-group>
+
+  <button type="submit">Send inn</button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form');
+  const checkboxGr = document.querySelector('#ch');
+  checkboxGr.validationRules = [window.rules.max(1, 'too many')];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const isValid = window.validateForm(form);
+    console.log('validateForm called, result:', isValid);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form2">
+  <nve-checkbox-group id="ch2" label="Hvilke varsler vil du se på?" selectedValues='["flood", "landslide"]'>
+    <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+    <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
+    <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
+  </nve-checkbox-group>
+
+  <button type="submit">Send inn</button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form2');
+  const checkboxGr = document.querySelector('#ch2');
+  checkboxGr.validationRulesQuasar = [(value) => value.length > 0 || 'Field is required'];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const isValid = window.validateFormQuasar(form);
+    console.log('validateForm called, result:', isValid);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+<CodeExamplePreview>
+
+```html
+<nve-checkbox-group label="Hvilke varsler vil du se på?" errorMessage="error">
+  <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+  <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
+  <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
+</nve-checkbox-group>
+```
+
+</CodeExamplePreview>
+
 ## Tilgjengelighet
 
 <span class="highlight">nve-checkbox-group</span> bruker en tilknyttet <a href="#ledetekst-og-tooltip">ledetekst</a>. Når feltet får fokus vil skjermlesere lese opp ledeteksten, slik at brukeren forstår hva som skal fylles inn.

@@ -23,6 +23,7 @@
     "./dist/vscode.css-custom-data.json": "./vscode.css-custom-data.json",
     "./components/*": "./components/*",
     "./registerIcons/*": "./registerIcons/*",
+    "./validation/*": "./validation/*",
     "./css/*": "./css/*",
     "./fonts/*": "./fonts/*"
   },

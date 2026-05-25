@@ -316,6 +316,45 @@ Bruk <span class="highlight">start</span>-sporet for å legge til et ikon.
 
 </CodeExamplePreview>
 
+<CodeExamplePreview>
+
+```html
+<form id="test-form">
+  <nve-input id="name-input" label="Saksbehandlers navn"></nve-input>
+  <nve-input label="Saksnummer"></nve-input>
+
+  <button type="submit">Send inn</button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form');
+  const nameInput = document.querySelector('#name-input');
+  nameInput.validationRulesQuasar = [
+    (value) => value.trim() !== '' || 'Field is required',
+    (value) => value.length >= 3 || 'Minimum 3 characters',
+    (value) => value.length <= 20 || 'Maximum 20 characters',
+    (value) => value.startsWith('s') || 'Must start with s',
+  ];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const isValid = window.validateFormQuasar(form);
+    console.log('validateForm called, result:', isValid);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+<CodeExamplePreview>
+
+```html
+<nve-input label="Saksbehandlers navn" errorMessage="error"> </nve-input>
+```
+
+</CodeExamplePreview>
+
 ## Tilgjengelighet
 
 <span class="highlight">nve-input</span> er bygget på et native <span class="highlight">&lt;input&gt;</span> og bruker en tilknyttet <a href="#ledetekst-og-tooltip">ledetekst</a>. Når feltet får fokus vil skjermlesere lese opp ledeteksten, slik at brukeren forstår hva som skal fylles inn.

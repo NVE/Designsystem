@@ -22,6 +22,7 @@ export const labelStyles: CSSResult = css`
     padding-inline: 0;
     display: flex;
     align-items: center;
+    color: var(--color-neutrals-foreground-primary);
     gap: var(--spacing-2x-small);
     .nve-info-icon {
       transform: translateY(-1px);

@@ -606,6 +606,47 @@ Bruk et <span class="highlight">selectedIds</span> string array for å vise forh
 
 </CodeExamplePreview>
 
+<CodeExamplePreview>
+
+```html
+<form id="test-form">
+  <nve-combobox
+    id="nve-avde"
+    label="Velg en avdeling"
+    selectedIds='["rme"]'
+    options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
+     ]'
+  >
+  </nve-combobox>
+
+  <button type="submit">Send inn</button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form');
+
+  customElements.whenDefined('nve-combobox').then(() => {
+    const combo = document.querySelector('#nve-avde');
+    combo.validationRules = [window.rules.maxLength(0, 'oops')];
+
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const isValid = window.validateForm(form);
+      console.log('validateForm called, result:', isValid);
+    });
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
 ## Tilgjengelighet
 
 Denne combobox-komponenten følger WAI-ARIA-mønstrene for [combobox](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/) og [listbox](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/), slik de er definert av W3C.

@@ -1,12 +1,14 @@
 import { customElement, property, query, state } from 'lit/decorators.js';
 import styles from './nve-input.styles';
-import { INveComponent } from '@interfaces/NveComponent.interface';
+import { INveFormComponent } from '@interfaces/NveComponent.interface';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { html, LitElement, nothing, PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { getLabel, labelStyles } from '../../templates/label';
+import fieldStyles from '@styles/formField.ts';
 import '../nve-icon/nve-icon.component';
 import { live } from 'lit/directives/live.js';
+import { ValidationRuleWithHelpers, ValidationRuleSimple } from '../../validation/validateForm';
 
 let id = 0;
 /**
@@ -26,7 +28,7 @@ let id = 0;
  * @csspart show-password-button - knapp for å vise/ skjule passord i password-type input
  */
 @customElement('nve-input')
-export default class NveInput extends LitElement implements INveComponent {
+export default class NveInput extends LitElement implements INveFormComponent {
   @property({ type: String }) testId: string | undefined = undefined;
   /* Native input attributer */
   /** Om autocomplete skal være aktivert */
@@ -72,26 +74,27 @@ export default class NveInput extends LitElement implements INveComponent {
   /** Om inputfeltet skal ha en mørk bakgrunn */
   @property({ type: Boolean }) filled: boolean = false;
   /** Hjelpetekst som vises over feltet */
-  @property({ type: String }) helpText = '';
+  @property({ type: String }) helpText?: string;
   /** Hint-tekst som vises under feltet */
-  @property({ type: String }) hint = '';
+  @property({ type: String }) hint?: string;
   /** Ledetekst */
-  @property() label?: string;
+  @property() label: string = '';
   /** Tekst som vises for å markere at et felt er obligatorisk */
-  @property() requiredLabel = '';
+  @property() requiredLabel: string = '';
   /** Størrelse på inputfeltet */
   @property({ type: String }) size: 'small' | 'medium' | 'large' = 'medium';
   /** Tooltip-tekst for label */
-  @property({ type: String }) tooltip = '';
+  @property({ type: String }) tooltip: string = '';
   /** Om inputfeltet skal ha en knapp for å tømme verdien. Vises kun for tekst type. */
   @property({ type: Boolean }) clearable = false;
-
+  @property({ attribute: false }) validationRulesWithHelpers: Array<ValidationRuleWithHelpers<string>> = [];
+  @property({ attribute: false }) validationRulesSimple: Array<ValidationRuleSimple> = [];
   @query('.input__control') input!: HTMLInputElement;
   @state() showPassword = false;
-  autocapitalize = 'off';
+  @state() validationMessage = '';
   private readonly inputId = `input-${++id}`;
 
-  static styles = [styles, labelStyles];
+  static styles = [styles, labelStyles, fieldStyles];
 
   protected async firstUpdated(_changedProperties: PropertyValues): Promise<void> {
     await this.updateComplete;
@@ -104,6 +107,36 @@ export default class NveInput extends LitElement implements INveComponent {
       );
     }
   }
+
+  /*
+validation stuff
+- should i have nve-form that handles validation?
+-if not then i still want to run global validation method
+-what abput the form with steps?
+-when validateForm returns isvalid, invalidfields and maybe firstinvalid field to focus it?
+- one with rules.
+- one completely quasar like func || errorMessage
+- one with types?
+- should we then reset validation on input/blur per field2?
+- should we show one, first error at a time or all errors per field
+- should errorMessage take precedence over validationMessage when given?
+- should we add option to validate on blur too from the start?
+- could i have a submit button component that triggers validation on click and then emits submit event if valid? (or is it an unnecessary component)
+
+
+-what if i create a quasar with tuple like 'required' || message
+but then id have to have array inside the array validationRules={[
+  ['required', 'Required'],
+  ['minLength', 3, 'Minimum 3 characters'],
+]}
+that might be troublesome? 
+
+for presentation
+show simple (quasar)
+show with helpers
+
+show focus the first invalid
+*/
 
   /**
    * Sender en egendefinert hendelse.
@@ -220,23 +253,61 @@ export default class NveInput extends LitElement implements INveComponent {
     this.value = this.input.value;
   }
 
+  validateWithHelpers() {
+    for (const rule of this.validationRulesWithHelpers) {
+      const result = rule(this.value, this);
+
+      if (result !== true) {
+        this.validationMessage = result;
+        return false;
+      }
+    }
+
+    this.validationMessage = '';
+    return true;
+  }
+
+  validateSimple() {
+    for (const rule of this.validationRulesSimple) {
+      const result = rule(this.value);
+
+      if (result !== true) {
+        this.validationMessage = result;
+        return false;
+      }
+    }
+
+    this.validationMessage = '';
+    return true;
+  }
+
+  private get activeErrorMessage() {
+    return this.errorMessage || this.validationMessage;
+  }
+
   // vi lar pilknappene for number input være, ingen design endringer.
   render() {
     const labelId = `${this.id || this.inputId}`;
     const helpTextId = `${this.id || this.inputId}-helptext`;
     const hintTextId = `${this.id || this.inputId}-hinttext`;
-    const describedBy = [this.helpText ? helpTextId : '', this.errorMessage || this.hint ? hintTextId : '']
+    const describedBy = [this.helpText ? helpTextId : '', this.activeErrorMessage ? hintTextId : '']
       .filter(Boolean)
       .join(' ');
     const type = this.type === 'password' && this.showPassword ? 'text' : this.type;
 
-    const statusIcon = this.errorMessage ? 'error' : this.disabled ? 'lock' : this.readonly ? 'edit_off' : undefined;
+    const statusIcon = this.activeErrorMessage
+      ? 'error'
+      : this.disabled
+        ? 'lock'
+        : this.readonly
+          ? 'edit_off'
+          : undefined;
     return html`
       <div
         part="field"
         class=${classMap({
           field: true,
-          'field--error': !!this.errorMessage,
+          'field--error': !!this.activeErrorMessage,
           'field--readonly': this.readonly,
           'field--disabled': this.disabled,
           'field--filled': this.filled,
@@ -262,7 +333,7 @@ export default class NveInput extends LitElement implements INveComponent {
             class=${classMap({
               input__control: true,
             })}
-            autocapitalize=${ifDefined(this.autocapitalize)}
+            autocapitalize=${ifDefined(this.autocapitalize?.trim() ? this.autocapitalize : 'off')}
             autocomplete=${ifDefined(this.autocomplete)}
             autocorrect=${ifDefined(this.autocorrect)}
             ?disabled=${this.disabled}
@@ -281,7 +352,7 @@ export default class NveInput extends LitElement implements INveComponent {
             @input=${this.handleInput}
             @select=${this.handleSelect}
             aria-describedby=${ifDefined(describedBy || undefined)}
-            aria-invalid=${ifDefined(this.errorMessage ? 'true' : undefined)}
+            aria-invalid=${ifDefined(this.activeErrorMessage ? 'true' : undefined)}
           />
           <!-- Ikoner og knapper -->
           ${this.clearable && this.value
@@ -309,8 +380,10 @@ export default class NveInput extends LitElement implements INveComponent {
             : nothing}
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${this.errorMessage || this.hint
-          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.errorMessage || this.hint}</p>`
+        ${this.activeErrorMessage || this.hint
+          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>
+              ${this.activeErrorMessage || this.hint}
+            </p>`
           : nothing}
       </div>
     `;

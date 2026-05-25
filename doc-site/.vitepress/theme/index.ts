@@ -21,7 +21,8 @@ import TypographyTable from './components/TypographyTable.vue';
 import { cssTokenState } from './cssTokenState';
 import { useCurrentTheme, Theme } from './composables/useCurrentTheme';
 import NveTableDemo from './components/NveTableDemo.vue';
-
+import { validateForm, rules, validateFormQuasar } from '../../../src/validation/validateForm';
+export { validateForm, validateFormQuasar, rules };
 export default {
   extends: DefaultTheme,
   Layout: () => {
@@ -66,8 +67,15 @@ export default {
     }
     return h(DefaultTheme.Layout, null, {});
   },
+
   async enhanceApp({ app }) {
     if (!import.meta.env.SSR) {
+      if (typeof window !== 'undefined') {
+        (window as typeof window & { validateForm: typeof validateForm }).validateForm = validateForm;
+        (window as typeof window & { rules: typeof rules }).rules = rules;
+        (window as typeof window & { validateFormQuasar: typeof validateFormQuasar }).validateFormQuasar =
+          validateFormQuasar;
+      }
       // siden VitePress bygges via SSR, vi må sikre at våre web komponenter lastes ned i nettleseren bare
       // derfor importerer vi alle komponenter når miljø ikke er SSR
       const components = import.meta.glob('../../../src/components/*/*.component.ts');

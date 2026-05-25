@@ -94,4 +94,12 @@ export default defineConfig({
       },
     },
   },
+  vite: {
+    resolve: {
+      alias: {
+        '@interfaces': path.resolve(__dirname, '../../src/interfaces'),
+        '@styles': path.resolve(__dirname, '../../src/styles'),
+      },
+    },
+  },
 });

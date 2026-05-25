@@ -186,6 +186,80 @@ Bruk <span class="highlight">value</span> for å vise en forhåndsvalgt verdi. V
 
 </CodeExamplePreview>
 
+<CodeExamplePreview>
+
+```html
+<form id="test-form-radio1">
+  <nve-radio-group id="radio1" label="Hva er status på tiltaket?">
+    <nve-radio value="planned">Planlagt</nve-radio>
+    <nve-radio value="current">Pågående</nve-radio>
+    <nve-radio value="done">Ferdigstilt</nve-radio>
+  </nve-radio-group>
+
+  <button type="submit">Send inn</button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form-radio1');
+  const radioGr = document.querySelector('#radio1');
+  radioGr.validationRules = [window.rules.required('Select sth')];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const isValid = window.validateForm(form);
+    console.log('validateForm called, result:', isValid);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form-radio2">
+  <nve-radio-group id="radio2" label="Hva er status på tiltaket?">
+    <nve-radio value="planned">Planlagt</nve-radio>
+    <nve-radio value="current">Pågående</nve-radio>
+    <nve-radio value="done">Ferdigstilt</nve-radio>
+  </nve-radio-group>
+
+  <button type="submit">Send inn</button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form-radio2');
+  const radioGr = document.querySelector('#radio2');
+  radioGr.validationRulesQuasar = [(value) => value.length > 0 || 'Field is required'];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const isValid = window.validateFormQuasar(form);
+    console.log('validateForm called, result:', isValid);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form-radio2">
+  <nve-radio-group id="radio2" label="Hva er status på tiltaket?" errorMessage="error">
+    <nve-radio value="planned">Planlagt</nve-radio>
+    <nve-radio value="current">Pågående</nve-radio>
+    <nve-radio value="done">Ferdigstilt</nve-radio>
+  </nve-radio-group>
+
+  <button type="submit">Send inn</button>
+</form>
+```
+
+</CodeExamplePreview>
+
 ## Tilgjengelighet
 
 Radiogruppen er implementert i tråd med [anbefalingene](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) i WAI-ARIA Authoring Practices Guide for radiogrupper, for å støtte tilgjengelig bruk i samsvar med WCAG.

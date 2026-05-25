@@ -1,12 +1,14 @@
 import { html, LitElement, nothing, PropertyValues } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
-import { INveComponent } from '@interfaces/NveComponent.interface';
+import { customElement, property, query, state } from 'lit/decorators.js';
+import { INveFormComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-textarea.styles';
 import '../nve-icon/nve-icon.component';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getLabel, labelStyles } from '../../templates/label';
+import formField from '@styles/formField';
 import { live } from 'lit/directives/live.js';
+import { ValidationRuleWithHelpers, ValidationRuleSimple } from '../../validation/validateForm';
 
 let id = 0;
 
@@ -25,7 +27,7 @@ let id = 0;
  * @csspart hint-text - hint-tekst som vises under textarea, eller feilmelding hvis det er en valideringsfeil
  */
 @customElement('nve-textarea')
-export default class NveTextarea extends LitElement implements INveComponent {
+export default class NveTextarea extends LitElement implements INveFormComponent {
   @property({ type: String }) testId: string | undefined = undefined;
   /* Native textarea attributes */
   /** Om autocomplete skal være aktivert */
@@ -49,9 +51,9 @@ export default class NveTextarea extends LitElement implements INveComponent {
   /** Om textareafeltet skal ha en mørk bakgrunn */
   @property({ type: Boolean }) filled: boolean = false;
   /** Hjelpetekst som vises over feltet */
-  @property({ type: String }) helpText = '';
+  @property({ type: String }) helpText?: string;
   /** Hint-tekst som vises under feltet */
-  @property({ type: String }) hint = '';
+  @property({ type: String }) hint?: string;
   /** Ledetekst */
   @property() label?: string;
   /** Feilmelding som vises ved valideringsfeil. Hvis den er satt blir input-felt ugyldig og feil melding vises.*/
@@ -60,11 +62,13 @@ export default class NveTextarea extends LitElement implements INveComponent {
   @property() requiredLabel = '';
   /** Tooltip-tekst for label */
   @property({ type: String }) tooltip = '';
-  autocapitalize = 'off';
+  @property({ attribute: false }) validationRulesWithHelpers: Array<ValidationRuleWithHelpers<string>> = [];
+  @property({ attribute: false }) validationRulesSimple: Array<ValidationRuleSimple> = [];
   @query('.textarea__control') textarea!: HTMLTextAreaElement;
+  @state() validationMessage = '';
   private readonly textareaId = `textarea-${++id}`;
 
-  static styles = [styles, labelStyles];
+  static styles = [styles, labelStyles, formField];
 
   protected async firstUpdated(_changedProperties: PropertyValues): Promise<void> {
     await this.updateComplete;
@@ -115,6 +119,11 @@ export default class NveTextarea extends LitElement implements INveComponent {
     this.emitEvent('select', target.value);
   }
 
+  private handleInput(e: Event) {
+    const target = e.target as HTMLInputElement;
+    this.value = target.value;
+  }
+
   // @selectionchange ble ikke støttet i mange nettleseren når koden ble skrevet, derfor er det utelatt.
 
   /**
@@ -153,21 +162,59 @@ export default class NveTextarea extends LitElement implements INveComponent {
     this.value = this.textarea.value;
   }
 
+  validateWithHelpers() {
+    for (const rule of this.validationRulesWithHelpers) {
+      const result = rule(this.value, this);
+
+      if (result !== true) {
+        this.validationMessage = result;
+        return false;
+      }
+    }
+
+    this.validationMessage = '';
+    return true;
+  }
+
+  validateSimple() {
+    for (const rule of this.validationRulesSimple) {
+      const result = rule(this.value);
+
+      if (result !== true) {
+        this.validationMessage = result;
+        return false;
+      }
+    }
+
+    this.validationMessage = '';
+    return true;
+  }
+
+  private get activeErrorMessage() {
+    return this.errorMessage || this.validationMessage;
+  }
+
   render() {
     const labelId = `${this.id || this.textareaId}`;
     const helpTextId = `${this.id || this.textareaId}-helptext`;
     const hintTextId = `${this.id || this.textareaId}-hinttext`;
-    const describedBy = [this.helpText ? helpTextId : '', this.errorMessage || this.hint ? hintTextId : '']
+    const describedBy = [this.helpText ? helpTextId : '', this.activeErrorMessage ? hintTextId : '']
       .filter(Boolean)
       .join(' ');
 
-    const statusIcon = this.errorMessage ? 'error' : this.disabled ? 'lock' : this.readonly ? 'edit_off' : undefined;
+    const statusIcon = this.activeErrorMessage
+      ? 'error'
+      : this.disabled
+        ? 'lock'
+        : this.readonly
+          ? 'edit_off'
+          : undefined;
     return html`
       <div
         part="field"
         class=${classMap({
           field: true,
-          'field--error': !!this.errorMessage,
+          'field--error': !!this.activeErrorMessage,
           'field--readonly': this.readonly,
           'field--disabled': this.disabled,
           'field--filled': this.filled,
@@ -191,7 +238,7 @@ export default class NveTextarea extends LitElement implements INveComponent {
             class=${classMap({
               textarea__control: true,
             })}
-            autocapitalize=${ifDefined(this.autocapitalize)}
+            autocapitalize=${ifDefined(this.autocapitalize?.trim() ? this.autocapitalize : 'off')}
             autocomplete=${ifDefined(this.autocomplete)}
             autocorrect=${ifDefined(this.autocorrect)}
             maxlength=${ifDefined(this.maxLength)}
@@ -201,10 +248,11 @@ export default class NveTextarea extends LitElement implements INveComponent {
             rows=${this.rows || 2}
             spellcheck=${ifDefined(this.spellcheck)}
             @change=${this.handleChange}
+            @input=${this.handleInput}
             ?disabled=${this.disabled}
             @select=${this.handleSelect}
             aria-describedby=${ifDefined(describedBy || undefined)}
-            aria-invalid=${ifDefined(this.errorMessage ? 'true' : undefined)}
+            aria-invalid=${ifDefined(this.activeErrorMessage ? 'true' : undefined)}
             .value=${live(this.value)}
           ></textarea>
           <!-- Ikoner -->
@@ -213,8 +261,10 @@ export default class NveTextarea extends LitElement implements INveComponent {
             : nothing}
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${this.errorMessage || this.hint
-          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.errorMessage || this.hint}</p>`
+        ${this.activeErrorMessage || this.hint
+          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>
+              ${this.activeErrorMessage || this.hint}
+            </p>`
           : nothing}
       </div>
     `;

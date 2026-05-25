@@ -191,6 +191,73 @@ Hvis du vil gjøre textarea smalere enn 100%, kan du bruke <span class="highligh
 
 </CodeExamplePreview>
 
+<CodeExamplePreview>
+
+```html
+<form id="test-form1">
+  <nve-textarea id="txt1" label="Beskriv saken"></nve-textarea>
+
+  <button type="submit">Send inn</button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form1');
+  const nameInput = document.querySelector('#txt1');
+  nameInput.validationRules = [window.rules.maxLength(1, 'too many')];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const isValid = window.validateForm(form);
+    console.log('validateForm called, result:', isValid);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form">
+  <nve-textarea id="txt" label="Beskriv saken"></nve-textarea>
+
+  <button type="submit">Send inn</button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form');
+  const nameInput = document.querySelector('#txt');
+  nameInput.validationRulesQuasar = [
+    (value) => value.trim() !== '' || 'Field is required',
+    (value) => value.length >= 3 || 'Minimum 3 characters',
+    (value) => value.length <= 20 || 'Maximum 20 characters',
+    (value) => value.startsWith('s') || 'Must start with s',
+  ];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const isValid = window.validateFormQuasar(form);
+    console.log('validateForm called, result:', isValid);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+<CodeExamplePreview>
+
+```html
+<form>
+  <nve-textarea label="Beskriv saken" errorMessage="error"></nve-textarea>
+
+  <button type="submit">Send inn</button>
+</form>
+```
+
+</CodeExamplePreview>
+
 ## Tilgjengelighet
 
 <span class="highlight">nve-textarea</span> er bygget på et native <span class="highlight">&lt;textarea&gt;</span> og bruker en tilknyttet <a href="#ledetekst-og-tooltip">ledetekst</a>. Når feltet får fokus vil skjermlesere lese opp ledeteksten, slik at brukeren forstår hva som skal fylles inn.

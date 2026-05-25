@@ -46,7 +46,10 @@ export default defineConfig(({ mode }) => {
         exclude: excludedPaths,
       }),
       alias({
-        entries: [{ find: '@interfaces', replacement: resolve(__dirname, 'src/interfaces') }],
+        entries: [
+          { find: '@interfaces', replacement: resolve(__dirname, 'src/interfaces') },
+          { find: '@styles', replacement: resolve(__dirname, 'src/styles') },
+        ],
       }) as Plugin,
       replaceImportAfterBuild(),
     ],
