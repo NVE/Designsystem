@@ -6,6 +6,8 @@ I designsystemet bruker vi **Conventional Commits** for å holde endringer ryddi
 
 Når commit-meldingene ikke følger denne standarden, må utviklere manuelt endre dem før PR-en kan merges. For å unngå dette ber vi designere følge retningslinjene under.
 
+<nve-message-card label="Merk" size="compact">Breaking changes skal vurderes av en utvikler.</nve-message-card>
+
 ### Format
 
 Slik skriver du commit-meldingene:
@@ -27,10 +29,10 @@ type(scope): kort beskrivelse på norsk
 feat(tokens): legge til tokens for bakgrunnsfarger
 ```
 
-**Merk**: Breaking changes skal vurderes av en utvikler.
+Gjerne se dokumentasjon under [Contributing](https://github.com/NVE/Designsystem?tab=contributing-ov-file#-conventional-commits) i GitHub også.
 
 ## Hvorfor er dette viktig?
 
 Når man endrer token-verdier må vi også oppdatere CSS-filene. I dag skjer det automatisk i PR-en. Hvis conventional commit er korrekt brukt, kan vi publisere designsystem-pakken umiddelbart med oppdatert CSS, slik at endringene raskt når produksjon.
 
-Hvis conventional commit mangler eller har feil syntaks, vil publisering feile, og en utvikler må redigere commit-meldingen manuelt. Dette skaper unødvendig ekstraarbeid og forsinker leveransen.
+Hvis en conventional commit mangler eller har feil syntaks, vil bygg og publisering feile. En utvikler må da rette commit-meldingen manuelt, noe som gir ekstraarbeid og forsinker leveransen.

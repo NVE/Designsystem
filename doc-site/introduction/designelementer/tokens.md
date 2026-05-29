@@ -1,12 +1,10 @@
 <PageHeader title="Tokens" imagePath="tokens" pageLevel=1></PageHeader>
 
-### Designelementer
+# Designelementer
 
-For å kunne jobbe med designsystemet er det noen par designelementer du burde gjøre deg kjent med. Tokens er elementer du måte komme til å forholde deg til fremover.
+For å jobbe med designsystemet bør du gjøre deg kjent med noen sentrale designelementer. Tokens er et av disse elementene du vil forholde deg til fremover.
 
-<hr>
-
-# Design tokens
+## Design tokens
 
 Design tokens er en samling av "designegenskaper", som farger, typografi, luft og andre primitiver. Disse tokensene fungerer som byggeklosser for designsystemet, og gir en effektiv måte å organisere og implementere designbeslutninger på tvers av ulike plattformer og enheter. Ved å bruke design tokens kan designere og utviklere opprettholde en enhetlig visuell identitet mens de forenkler samarbeidet og tilpasningen til ulike deler av et prosjekt.
 
@@ -16,7 +14,7 @@ I NVE er design tokens en samling av standardiserte verdier som styrer utseendet
 
 Samlet sett gir design tokens en strukturert tilnærming til designsystemet hos NVE, noe som gir en mer effektiv, konsistent og samarbeidsvennlig designprosess.
 
-#### Bruk av tokens
+## Bruk av tokens
 
 Designsystemet har en tokenstruktur som brukes både i for deisgnere og kode.
 
@@ -28,26 +26,26 @@ TODO: Bruke tokens som utvikler
 
 <img src="../../assets/images/tokens2.png" width="auto">
 
-#### Rå-verdier
+### Rå-verdier
 
 Dataen knyttet til token-navnet. Dette er ikke tokens men endelig verdier (for eksempel: RGB-farger eller pikselverdier).
 
-#### Global tokens (base-tokens)
+### Global tokens (base-tokens)
 
 Global tokens (base-tokens)
 En token brukt på tvers av designsystemet. Dette er det motsatte av en komponentspesifikk token.
 
-#### Alias tokens
+### Alias tokens
 
 Alias tokens
 En token som refererer til en annen token, i stedet for å referere til en hardkodet verdi.
 
-#### Component specific tokens
+### Component specific tokens
 
 Component specific tokens
 En token brukt for en bestemt komponent.
 
-#### Private tokens
+### Private tokens
 
 Private tokens
 Tokenene i denne nivået lagrer vi ekstra rå verdiene vi ikke bruker og bygger oss en bank med verdier som kan brukes for videre ekspansjon og endringer.
