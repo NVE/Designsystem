@@ -35,4 +35,4 @@ Gjerne se dokumentasjon under [Contributing](https://github.com/NVE/Designsystem
 
 Når man endrer token-verdier må vi også oppdatere CSS-filene. I dag skjer det automatisk i PR-en. Hvis conventional commit er korrekt brukt, kan vi publisere designsystem-pakken umiddelbart med oppdatert CSS, slik at endringene raskt når produksjon.
 
-Hvis en conventional commit mangler eller har feil syntaks, vil bygg og publisering feile. En utvikler må da rette commit-meldingen manuelt, noe som gir ekstraarbeid og forsinker leveransen.
+Hvis en commit-melding mangler eller har feil syntaks, vil bygg og publisering feile. En utvikler må da rette commit-meldingen manuelt, noe som gir ekstraarbeid og forsinker leveransen.

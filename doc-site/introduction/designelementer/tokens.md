@@ -2,21 +2,17 @@
 
 # Designelementer
 
-For å jobbe med designsystemet bør du gjøre deg kjent med noen sentrale designelementer. Tokens er et av disse elementene du vil forholde deg til fremover.
+For å jobbe med designsystemet bør du gjøre deg kjent med noen sentrale designelementer.
 
 ## Design tokens
 
-Design tokens er en samling av "designegenskaper", som farger, typografi, luft og andre primitiver. Disse tokensene fungerer som byggeklosser for designsystemet, og gir en effektiv måte å organisere og implementere designbeslutninger på tvers av ulike plattformer og enheter. Ved å bruke design tokens kan designere og utviklere opprettholde en enhetlig visuell identitet mens de forenkler samarbeidet og tilpasningen til ulike deler av et prosjekt.
+I NVE er design tokens en samling av standardiserte verdier som styrer utseendet og funksjonaliteten til elementene i vårt designsystem. Disse tokens dekker alt fra farger og typografi til avstander og formstørrelser. De lar oss tilpasse utseendet basert på våre merkevarefarger og visuelle stil, samtidig som de gir fleksibilitet til å oppdatere og vedlikeholde design effektivt. Dette gjør det mulig å tilpasse designet til ulike teknologier og verktøy, mens vi sikrer en konsistent og sømløs brukeropplevelse.
 
 <img src="../../assets/images/tokens.png" width="auto">
 
-I NVE er design tokens en samling av standardiserte verdier som styrer utseendet og funksjonaliteten til elementene i vårt designsystem. Disse tokens dekker alt fra farger og typografi til avstander og formstørrelser. De lar oss tilpasse utseendet basert på våre merkevarefarger og visuelle stil, samtidig som de gir fleksibilitet til å oppdatere og vedlikeholde design effektivt. Dette gjør det mulig å tilpasse designet til ulike teknologier og verktøy, mens vi sikrer en konsistent og sømløs brukeropplevelse.
-
-Samlet sett gir design tokens en strukturert tilnærming til designsystemet hos NVE, noe som gir en mer effektiv, konsistent og samarbeidsvennlig designprosess.
-
 ## Bruk av tokens
 
-Designsystemet har en tokenstruktur som brukes både i for deisgnere og kode.
+Designsystemet har en tokenstruktur som brukes både i designverktøy og programkode.
 
 For designere som jobber i Figma er det gjennom Figma sine "Variabler" du kan sette token på det du lager. Disse har helt lik struktur og navnkonvensjon som Token studio. Token studio er en plugin for Figma, som vi bruker for å holde oversikt og koble design verdier til tokens, som omskrives og publiseres opp til GitHub.
 

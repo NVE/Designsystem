@@ -3,7 +3,7 @@
     <section>
       <div>
         <h1 class="nve-hero-title">NVE Designsystem</h1>
-        <p class="nve-hero-text">Velkommen til brukerveiledninga for NVEs designsystem:</p>
+        <p class="nve-hero-text">Velkommen til brukerveiledningen for NVEs designsystem:</p>
       </div>
       <ul>
         <li>Hva designsystemet består av og enkelte retningslinjer</li>

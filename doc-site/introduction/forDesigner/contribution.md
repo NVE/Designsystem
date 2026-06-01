@@ -68,7 +68,7 @@ Hvis du trenger å gjøre endringer på eksisterende komponenter eller bygge nye
 
 - **Endringen er enkel, og andre team har lignende behov**
 
-  Teamet ditt kan foreslå endringen i designsystemet, hvor ansvarlige vurderer om det er verdt å investere tid og ressurser i videre utvikling. Dette gjøres ved å opprette en branch.
+  Teamet ditt kan foreslå endringen i designsystemet ved å opprette en sak, hvor ansvarlige vurderer om det er verdt å investere tid og ressurser i videre utvikling.
 
 - **Endringen er kompleks, eller det skal bygges en ny komponent**
 
