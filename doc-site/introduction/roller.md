@@ -10,8 +10,6 @@ Vi bruker GitHub, FUX-forum og DevOps for å sikre et godt samarbeid mellom utvi
 
 Denne personen skal følge opp teamet og utviklingsprosessen og har siste ord i prioriteringsrunder. Generelt er en produkteeier ansvarlig for å sikre at produktet støtter organisasjonens designbehov. Dette krever et tett samarbeid med desigere og utviklere, og prioritere inn designsystemoppgaver inn i en print ved behov.
 
-designsystemet fungerer effektivt og støtter organisasjonens designbehov. Dette krever tett samarbeid med designteamet og andre interessenter, samt kontinuerlig oppdatering og vedlikehold av designsystemet.
-
 ## Merkevareansvarlig
 
 En merkevareansvarlig i et designsystem spiller en sentral rolle i å sikre at designsystemet er i tråd med og støtter organisasjonens merkevareidentitet og strategi.
