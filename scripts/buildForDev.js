@@ -15,7 +15,7 @@ import process from 'process';
 if (!fs.existsSync('./dist')) {
   const execPromise = util.promisify(exec);
   await nextTask('Building app', () => {
-    return execPromise('npm run build');
+    return execPromise('pnpm run build');
   });
   console.log(`${chalk.green('✔')} Application built successfully`);
 } else {

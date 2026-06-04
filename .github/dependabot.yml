@@ -1,6 +1,6 @@
 version: 2
 updates:
-  - package-ecosystem: 'npm'
+  - package-ecosystem: 'pnpm'
     directory: '/'
     schedule:
       interval: 'daily'
@@ -10,7 +10,7 @@ updates:
 
     commit-message:
       prefix: 'chore'
-      include: 'scope' 
+      include: 'scope'
 
     groups:
       security-updates:
@@ -30,7 +30,7 @@ updates:
       - 'amish1188'
       - 'NVEJoel'
       - 'tomapedersen'
-      
+
     ignore:
-      - dependency-name: "style-dictionary"
-        versions: ["*"]
+      - dependency-name: 'style-dictionary'
+        versions: ['*']

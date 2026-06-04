@@ -18,9 +18,9 @@ Dette prosjektet inneholder to applikasjoner:
 - I rot-mappa ligger selve komponentbiblioteket med nve-komponentene
 - I mappa `doc-site` ligger test-applikasjonen som viser brukerveiledninga for biblioteket. Teknisk beskrivelse av denne ligger i egen [readme](doc-site/README.md)
 
-Kjør `npm install` og `npm run dev` for å starte test-applikasjonen.
+Kjør `pnpm install` og `pnpm run dev` for å starte test-applikasjonen.
 
-Dersom applikasjonen ikke er bygget på forhånd, vil npm run dev automatisk sørge for at den bygges og at dist-mappen opprettes.
+Dersom applikasjonen ikke er bygget på forhånd, vil pnpm run dev automatisk sørge for at den bygges og at dist-mappen opprettes.
 
 Vi bygger applikasjonen før kjøring for å sikre at den importerer custom-elements.json og nve-designsystem.css fra dist. Siden begge filer ganske statiske man trenger ikke å å bygge
 appen på nytt hver gang man gjør noen endringer i component filen. Disse to filene kunne vært plassert i src, men vi

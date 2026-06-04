@@ -25,7 +25,7 @@ Hvis du ønsker å bidra med kode til NVE Designsystem, følger vi en strukturer
 
 Vi skiller API + funksjonalitet, styling og test/dokumentasjon i hver sine filer.
 
-Du kan lage skall til en ny komponent ved å kjøre `npm run add-component {navn på komponent}`. Scriptet oppretter riktige filer for deg.
+Du kan lage skall til en ny komponent ved å kjøre `pnpm run add-component {navn på komponent}`. Scriptet oppretter riktige filer for deg.
 
 Du kan også lage filene manuelt. Følg mønsteret i eksemplet nedenfor:
 
@@ -189,7 +189,7 @@ Det er flere måter å sikre at du følger **Conventional Commits**-standarden:
 1. Commitizen: Du kan bruke Commitizen direkte i terminalen for å lage commits i riktig format. Bruke denne kommandoen for å lage en commit:
 
 ```script
-npx cz
+pnpm exec cz
 ```
 
 2. VS Code-utvidelse: Hvis du bruker Visual Studio Code, kan du installere utvidelsen [VS Code Conventional Commits](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits) for å sikre at commit-meldinger følger standarden. Etter at du har installert tillegget, kan du klikke på den runde sirkelen til høyre for Source Control for att gjøre en commit.
@@ -220,10 +220,10 @@ it('has correct primary variant class', async () => {
 
 `fixture` fra @open-wc/testing brukes for å opprette komponenten med attributter. Det er ofte lurt å finne hoveddelen i shadowRoot for å kunne teste endringer som CSS-klasser eller hendelser. For mer informasjon om testsyntaks, se gjerne Vitest-[dokumentasjonen](https://vitest.dev/guide/). Du kan også hente inspirasjon fra eksisterende tester i prosjektet.
 
-For å teste lokalt kjør gjerne `npm run test:ui` - den skal åpne en fane i nettleseren med alle tester.
+For å teste lokalt kjør gjerne `pnpm run test:ui` - den skal åpne en fane i nettleseren med alle tester.
 I pipelinen brukes det kun `vitest` siden vi ikke skal bruke nettleseren. Den kan du også bruke lokalt hvis du ikke ønsker en testrapport i nettleseren.
 
-For å debugge i VS Code åpne vanlig `JavaScript Debug Terminal` og kjør `npm run test`. Les mer [her](https://vitest.dev/guide/debugging.html#debugging)
+For å debugge i VS Code åpne vanlig `JavaScript Debug Terminal` og kjør `pnpm run test`. Les mer [her](https://vitest.dev/guide/debugging.html#debugging)
 
 ## 📚 Dokumentasjon
 
@@ -234,7 +234,7 @@ For å debugge i VS Code åpne vanlig `JavaScript Debug Terminal` og kjør `npm 
 Alle komponenter dokumenteres med JsDoc-tags i koden. Alt som er tilgjengelig for de som bruker komponentene skal dokumenteres, dvs. alle public klasser, interfaces, properties/attributter, metoder, events, slots, css-parts og css-properties.
 [Her er noen tips](https://custom-elements-manifest.open-wc.org/analyzer/getting-started/#documenting-your-components).
 
-Når du kjører opp test/dokumentasjons-applikasjonen, blir koden scannet og metadata + JsDoc lagret i `custom-elements.json`. Du kan også generere fila manuelt med `npm run manifest`. Dokumentasjons-applikasjonen bruker denne fila.
+Når du kjører opp test/dokumentasjons-applikasjonen, blir koden scannet og metadata + JsDoc lagret i `custom-elements.json`. Du kan også generere fila manuelt med `pnpm run manifest`. Dokumentasjons-applikasjonen bruker denne fila.
 
 Skriv litt øverst i `.component.ts`-fila om hva komponenten skal brukes til. Om det er Shoelace-properties som ikke skal brukes fordi dette ikke passer med designsystemet, må du dokumentere det her.
 
@@ -302,27 +302,27 @@ Du kan også lage egne markdown-filer for spesielle tema, slik vi har gjort unde
 
 ## 🚀 Publisering til npm
 
-Publisering til npm skjer ved hjelp av Github actions. Når man pusher til `main` (ved å fullføre en pull request), starter det en jobb som oppdaterer versjonsnummer og publiserer npm-pakka. Jobben er spesifisert i filen .github/workflows/npm-publish.yml.
+Publisering til pnpm skjer ved hjelp av Github actions. Når man pusher til `main` (ved å fullføre en pull request), starter det en jobb som oppdaterer versjonsnummer og publiserer pnpm-pakka. Jobben er spesifisert i filen .github/workflows/publish-npm.yml.
 
 ## 🧪 Test pakke lokalt
 
 Før man lager en PR eller er det lurt å teste pakke lokalt. Vi har to måter å gjøre dette på:
 
-### Med `npm run pack` (uten reloading)
+### Med `pnpm run pack` (uten reloading)
 
-1. Kjør `npm run build` (du kan også kjøre `npm run build:dev` om du ønsker å få tilgang til sourcemaps)
-2. Kjør `npm run pack`. `<nve-designsystem-x.y.z.tgz` blir generert i mappa `dist`
+1. Kjør `pnpm run build` (du kan også kjøre `pnpm run build:dev` om du ønsker å få tilgang til sourcemaps)
+2. Kjør `pnpm run pack`. `<nve-designsystem-x.y.z.tgz` blir generert i mappa `dist`
 3. Åpne et annet prosjekt hvor du kan teste pakka
-4. Kjør `npm  i` `<nve-designsystem-x.y.z.tgz med full sti>`
+4. Kjør `pnpm add` `<nve-designsystem-x.y.z.tgz med full sti>`
 5. Importer komponent i prosjektet og sjekk om alt fungerer som det skal
 
-### Med `npm run link` (med reloading)
+### Med `pnpm run link` (med reloading)
 
-1. Kjør `npm run link`
+1. Kjør `pnpm run link`
    Dette starter chokidar som følger med på endringer i ./src mappen og bygger prosjektet ved en endring.
-   Etter at prosjektet har bygget ferdig første gang kjører den npm link på dist mappen til bygget.
+   Etter at prosjektet har bygget ferdig første gang kjører den `pnpm link --global` på dist-mappen til bygget.
 
-2) Åpne et annet prosjekt som benytter seg av NVE-DS og kjør `npm link nve-designsystem`
+2) Åpne et annet prosjekt som benytter seg av NVE-DS og kjør `pnpm link --global nve-designsystem`
 
 3) Start prosjektet ditt, og se om en endring i DS fører til endring i din klient.
 
@@ -341,11 +341,11 @@ Før man lager en PR eller er det lurt å teste pakke lokalt. Vi har to måter �
 ```
 
 - Nyttige kommandoer
-  - `npm unlink -g` nve-designsystem (fjerner npm link for NVE-DS globalt)
-  - `npm prefix -g` viser deg hvor mappen som alle `npm link` 'lenkede' pakker er
-  - `npm ls nve-designsystem` viser deg dependency treet og kan foreksempel være sjekk hvis du mistenker at prosjektet ikke har blitt lenket riktig.
+  - `pnpm unlink --global nve-designsystem` fjerner global linking for NVE-DS.
+  - `pnpm root --global` viser deg hvor globalt linkede pakker ligger.
+  - `pnpm why nve-designsystem` viser deg dependency-treet og kan være nyttig hvis du mistenker at prosjektet ikke har blitt lenket riktig.
 - Annet
-  - Du vil kunne se et ikon i node_moduels på mappen som har blitt lenket med npm link nve-designsystem. Her kan du forksempel også se om filen(e) du har endret i DS har blitt reflektert inn i ditt prosjekt.
+  - Du vil kunne se et ikon i node_modules på mappen som har blitt lenket med `pnpm link --global nve-designsystem`. Her kan du også se om filen(e) du har endret i DS har blitt reflektert inn i prosjektet ditt.
 
 ### Test-app for pull requests
 
@@ -363,7 +363,7 @@ I slike tilfeller må vi slette appene manuelt i Azure-portalen. Appene ligger i
 ## 🏗️ Bygge globale css-filer
 
 Når vi har nye design-tokens eller endringer i tokens må vi generere globale css-filer på nytt.
-Kjør følgende kommando: `npm run tokenbuild`.
+Kjør følgende kommando: `pnpm run tokenbuild`.
 
 ## ❔Hvorfor er det slik?
 

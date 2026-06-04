@@ -20,16 +20,22 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
 
+      - name: Klargjør pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.5.1
+
       - name: Klargjør Node.js-miljø
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: '24.x'
+          cache: 'pnpm'
 
       - name: Installer avhengigheter
-        run: npm install
+        run: pnpm ci
 
       - name: Bygg tokens
-        run: npm run tokenbuild
+        run: pnpm run tokenbuild
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"

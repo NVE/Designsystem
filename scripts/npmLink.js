@@ -12,8 +12,10 @@ import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
 import util from 'util';
+import process from 'process';
 
 const execPromise = util.promisify(exec);
+const packageManagerCommand = process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm';
 
 const distPath = path.resolve('./dist');
 const sourcePath = './package.json';
@@ -51,10 +53,14 @@ const runBuild = async () => {
   isBuilding = true;
   buildCancelled = false;
 
-  currentBuildProcess = spawn('npx', ['vite', 'build', '--outDir', 'dist', '--emptyOutDir=false'], {
-    stdio: ['inherit', 'pipe', 'pipe'],
-    shell: true,
-  });
+  currentBuildProcess = spawn(
+    packageManagerCommand,
+    ['exec', 'vite', 'build', '--outDir', 'dist', '--emptyOutDir=false'],
+    {
+      stdio: ['inherit', 'pipe', 'pipe'],
+      shell: false,
+    }
+  );
 
   currentBuildProcess.stdout.on('data', async (data) => {
     const output = data.toString();
@@ -78,20 +84,20 @@ const runBuild = async () => {
 
       if (!hasLinked) {
         try {
-          spawn('npm', ['link'], { cwd: './dist', stdio: 'inherit', shell: true });
-          console.log(chalk.cyan('\n🔗 npm link was successful \n'));
+          spawn(packageManagerCommand, ['link', '--global'], { cwd: './dist', stdio: 'inherit', shell: false });
+          console.log(chalk.cyan('\n🔗 pnpm link --global was successful \n'));
           hasLinked = true;
         } catch (error) {
-          console.error(chalk.red('✘ Failed to run npm link on ./dist ' + error));
+          console.error(chalk.red('✘ Failed to run pnpm link --global on ./dist ' + error));
         }
       }
       if (!hasCreatedCustomElementsManifest) {
         try {
-          execPromise('npm run manifest');
+          execPromise('pnpm run manifest');
           console.log(chalk.green('\n📃 custom-elements-manifest was successfully written to ./dist \n'));
           hasCreatedCustomElementsManifest = true;
         } catch (error) {
-          console.error(chalk.red('✘ Failed to run npm manifest ' + error));
+          console.error(chalk.red('✘ Failed to run pnpm manifest ' + error));
         }
       }
     }
