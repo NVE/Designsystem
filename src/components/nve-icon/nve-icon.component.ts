@@ -4,13 +4,12 @@ import styles from './nve-icon.styles';
 import FontFaceObserver from 'fontfaceobserver';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { offlineIcons } from './offline-icons';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-
 
 /**
  * Et ikon.
- * Vi bruker ikoner fra Material Symbols, men det er også mulig å bruke ikoner fra eget repo. 
+ * Vi bruker ikoner fra Material Symbols, men det er også mulig å bruke ikoner fra eget repo.
  * Vi anbefaler å bruke Material-ikonene.
  * Strektykkelsen skal være 400, uavhengig av ikonets størrelse, og kun stilene Sharp og Outlined skal brukes.
  * Fill-stilen bør unngås, da den fyller hele ikonet med farge i stedet for å bruke kun konturer
@@ -40,12 +39,12 @@ export default class NveIcon extends LitElement {
   protected firstUpdated() {
     // For å unngå å importere material ikoner i index.html, vi legger til ikoner programmatisk på den første oppdatering
     // hvis material-icons lenke ikke eksisterer allerede.
-    
+
     if (this.src) return; // vi trenger ikke laste material icons hvis vi bruker lokale ikoner
-    
+
     const offlineIcon = offlineIcons[this.name];
     if (offlineIcon) return; // vi trenger heller ikke laste material icons hvis vi bruker offline-ikoner
-    
+
     if (!document.getElementById(`material-icons-${this.library.toLowerCase()}`)) {
       const link = document.createElement('link');
       link.id = `material-icons-${this.library.toLowerCase()}`;
