@@ -29,10 +29,8 @@ jobs:
           submodules: true
           lfs: false
 
-      - name: Klargjør Node.js-miljø
+      - name: Klargjør pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 11.5.1
 
       - name: Klargjør Node.js-miljø
         uses: actions/setup-node@v4
