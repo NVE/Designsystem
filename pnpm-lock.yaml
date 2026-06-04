@@ -57,6 +57,9 @@ importers:
       '@wc-toolkit/cem-inheritance':
         specifier: ^1.2.2
         version: 1.2.2
+      chalk:
+        specifier: ^5.6.2
+        version: 5.6.2
       chokidar:
         specifier: ^5.0.0
         version: 5.0.0

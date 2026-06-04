@@ -1,7 +1,6 @@
 import { INveComponent } from '@interfaces/NveComponent.interface';
 import { html, LitElement, TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { ChangeEvent } from 'react';
 
 /**
  * Komponent for å sette .darkmode-klasse på root.
@@ -24,8 +23,9 @@ export default class NveDarkmodeSwitch extends LitElement implements INveCompone
 
   localStorageVariable = 'preferdarkmode';
 
-  private toggleDarkmode(event: ChangeEvent<HTMLInputElement>) {
-    this.darkmode = !!event.target.checked;
+  private toggleDarkmode(event: Event) {
+    const input = event.target as HTMLInputElement | null;
+    this.darkmode = !!input?.checked;
     localStorage.setItem(this.localStorageVariable, this.darkmode.toString());
     if (this.darkmode) {
       document.documentElement.classList.add(this.darkmodeclass);
