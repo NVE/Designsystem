@@ -16,7 +16,6 @@ import LinkButton from './components/LinkButton.vue';
 import PageHeader from './components/PageHeader.vue';
 import ComponentOverview from './components/ComponentOverview.vue';
 import ThemeSelect from './components/ThemeSelect.vue';
-import ColorList from './components/ColorList.vue';
 import TypographyTable from './components/TypographyTable.vue';
 import { cssTokenState } from './cssTokenState';
 import { useCurrentTheme, Theme } from './composables/useCurrentTheme';
@@ -97,7 +96,6 @@ export default {
     app.component('PageHeader', PageHeader);
     app.component('ComponentOverview', ComponentOverview);
     app.component('ThemeSelect', ThemeSelect);
-    app.component('ColorList', ColorList);
     app.component('TypographyTable', TypographyTable);
     app.component('NveTableDemo', NveTableDemo);
 
