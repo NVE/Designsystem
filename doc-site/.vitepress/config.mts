@@ -52,8 +52,27 @@ export default defineConfig({
         text: 'Introduksjon',
         items: [
           { text: 'Om designsystemet', link: '/introduction/home' },
-          { text: 'Universell Utforming', link: '/introduction/universellUtforming' },
+          { text: 'Roller', link: '/introduction/roller' },
           {
+            text: 'For utviklere',
+            items: [
+              { text: 'Kom i gang', link: '/introduction/forDevelopers/development' },
+              { text: 'Bruk i Vue', link: '/introduction/forDevelopers/vue' },
+              { text: 'Importering av filer', link: '/introduction/forDevelopers/import' },
+              { text: 'Validering', link: '/introduction/forDevelopers/validation' },
+              { text: 'Vue-komponentbibliotek', link: '/introduction/forDevelopers/vueLibrary' },
+            ],
+          },
+          {
+            text: 'For designere',
+            items: [
+              { text: 'Kom i gang', link: '/introduction/forDesigner/getStarted' },
+              { text: 'Bruk i Figma', link: '/introduction/forDesigner/figma' },
+              { text: 'Bidrag', link: '/introduction/forDesigner/contribution' },
+              { text: 'Commit-meldinger', link: '/introduction/forDesigner/commitMessages' },
+            ],
+          },
+                    {
             text: 'Designelementer',
             items: [
               { text: 'Tokens', link: '/introduction/designelementer/tokens' },
@@ -64,25 +83,7 @@ export default defineConfig({
               { text: 'Animasjoner', link: '/introduction/designelementer/animasjoner' },
             ],
           },
-          {
-            text: 'For designere',
-            items: [
-              { text: 'Design', link: '/introduction/forDesigner/design' },
-              { text: 'Kom i gang', link: '/introduction/forDesigner/getStarted' },
-              { text: 'Bidrag', link: '/introduction/forDesigner/contribution' },
-              { text: 'Commit-meldinger', link: '/introduction/forDesigner/commitMessages' },
-            ],
-          },
-          {
-            text: 'For utviklere',
-            items: [
-              { text: 'Kom i gang', link: '/introduction/forDevelopers/development' },
-              { text: 'Importering av filer', link: '/introduction/forDevelopers/import' },
-              { text: 'Bruk i Vue', link: '/introduction/forDevelopers/vue' },
-              { text: 'Validering', link: '/introduction/forDevelopers/validation' },
-              { text: 'Vue-komponentbibliotek', link: '/introduction/forDevelopers/vueLibrary' },
-            ],
-          },
+          { text: 'Universell Utforming', link: '/introduction/universellUtforming' },
         ],
       },
       { text: 'Komponenter', items: componentsLinks },

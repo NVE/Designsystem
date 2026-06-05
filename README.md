@@ -16,7 +16,7 @@ De fleste komponentene bygger på [Shoelace](https://shoelace.style/), men er ti
 Dette prosjektet inneholder to applikasjoner:
 
 - I rot-mappa ligger selve komponentbiblioteket med nve-komponentene
-- I mappa `doc-site` ligger test-applikasjonen som viser brukerveiledninga for biblioteket. Teknisk beskrivelse av denne ligger i egen [readme](doc-site/README.md)
+- I mappa `doc-site` ligger test-applikasjonen som viser brukerveiledningen for biblioteket. Teknisk beskrivelse av denne ligger i egen [readme](doc-site/README.md)
 
 Kjør `npm install` og `npm run dev` for å starte test-applikasjonen.
 
@@ -28,7 +28,7 @@ unngår det – særlig for shoelace.css – fordi filen da måtte blitt manuelt
 
 Ved å importere shoelace.css direkte i main.ts, sørger Vite for korrekt bundling. Dette eliminerer behovet for å endre @import-referanser i global.css og gir dist-mappen som eneste source of truth.
 
-Applikasjonen er selve brukerveiledninga for komponentbiblioteket, så her ligger api-dokumentasjon, beskrivelse av funksjonalitet og ikke minst kodeeksempler.
+Applikasjonen er selve brukerveiledningen for komponentbiblioteket, så her ligger api-dokumentasjon, beskrivelse av funksjonalitet og ikke minst kodeeksempler.
 
 ## Versjonslogg
 

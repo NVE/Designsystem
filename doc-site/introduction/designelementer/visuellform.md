@@ -1,6 +1,6 @@
 <PageHeader title="Visuell form" imagePath="Visuell form" pageLevel=1></PageHeader>
 
-Her finner du designsystemet retningslinjer for border width, border radius og skygger.
+Her finner du designsystemets retningslinjer for border-width, border-radius og skygger.
 
 ## Border width
 
@@ -29,6 +29,3 @@ Skygge brukes til å få et element til å skille seg ut fra overflaten for å s
  <img src="../../assets/images/skygger.png" width="auto" >
 
 Du kan bruke to nivåer med skygge: Soft og Hard. Soft brukes på overlappende elementer når bakgrunnen er nedtonet og hovedsaklig består av lyse og nøytrale farger. Hard brukes på overlappende elementer når bakgrunnen er støyete og består av mange ulike farger, som f.eks. over et kart eller et bilde.
-
-**Les om fler designelementer på**
-<LinkButton URL="https://nve.frontify.com/" text="Profil og primitiver" :openInNewTab="true"/>

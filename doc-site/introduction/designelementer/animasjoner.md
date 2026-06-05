@@ -30,13 +30,4 @@ Komponenter fra deisgnsystemet er allerede ferdig animert i forskjellige states.
 
 All animasjon skal settes som enten; dissolve, eller smart animate (Ease in & out) + duration (100ms, 300ms eller 600ms).
 
-<nve-alert open>
-  <nve-icon slot="icon" name="info"></nve-icon>
-    Det skal ikke være animasjon når du bytter side. Det skal settes som Instant.
-
-</nve-alert>
-
-<hr>
-
-**Les om fler designelementer på**
-<nve-button variant="neutral" href="https://nve.frontify.com/document/397706#/introduksjon/designsystem"><nve-icon name="open_in_new" slot="suffix"></nve-icon>Profil og primitiver</nve-button>
+<nve-message-card label="Merk" size="compact">Det skal ikke være animasjon når du bytter side. Det skal settes som Instant.</nve-message-card>
