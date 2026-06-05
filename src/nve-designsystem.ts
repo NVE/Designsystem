@@ -5,6 +5,7 @@ export { default as NveAccordionItem } from './components/nve-accordion-item/nve
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
 export { default as NveBadge } from './components/nve-badge/nve-badge.component';
 export { default as BoxLayout } from './components/box-layout/box-layout.component';
+export { default as ClusterLayout } from './components/cluster-layout/cluster-layout.component';
 export { default as GridLayout } from './components/grid-layout/grid-layout.component';
 export { default as StackLayout } from './components/stack-layout/stack-layout.component';
 export { default as NveButton } from './components/nve-button/nve-button.component';

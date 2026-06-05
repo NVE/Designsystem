@@ -12,7 +12,6 @@ Du slipper å skrive egen CSS for vanlige oppsett, og avstander hentes fra desig
 Bruk layout-komponentene når du vil:
 
 - Stable elementer vertikalt med konsistent mellomrom (`stack-layout`)
-- Sentrere innhold horisontalt (`center-layout`)
 - Gruppere elementer horisontalt med automatisk linjebryting (`cluster-layout`)
 - Bygge to-kolonne-oppsett med en fast sidespalte (`sidebar-layout`)
 - Lage et responsivt rutenett (`grid-layout` / `columnist-layout`)

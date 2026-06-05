@@ -11,13 +11,13 @@ I de aller fleste tilfeller skal du bruke `size`. `size` er knyttet direkte til 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<box-layout size="small" style="background: var(--color-feedback-background-subtle-neutral)">
+<box-layout size="small" background="neutral-subtle">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
 </box-layout>
-<box-layout style="background: var(--color-feedback-background-subtle-neutral)">
+<box-layout background="neutral-subtle">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
 </box-layout>
-<box-layout size="large" style="background: var(--color-feedback-background-subtle-neutral)">
+<box-layout size="large" background="neutral-subtle">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
 </box-layout>
 ```
@@ -31,13 +31,13 @@ I de aller fleste tilfeller skal du bruke `size`. `size` er knyttet direkte til 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<box-layout padding="0.25rem" style="background: var(--color-feedback-background-subtle-neutral)">
+<box-layout padding="0.25rem" background="neutral-subtle">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
 </box-layout>
-<box-layout padding="1rem" style="background: var(--color-feedback-background-subtle-neutral)">
+<box-layout padding="1rem" background="neutral-subtle">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
 </box-layout>
-<box-layout padding="3rem" style="background: var(--color-feedback-background-subtle-neutral)">
+<box-layout padding="3rem" background="neutral-subtle">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
 </box-layout>
 ```
@@ -46,6 +46,34 @@ I de aller fleste tilfeller skal du bruke `size`. `size` er knyttet direkte til 
 
 <nve-message-card size="compact" variant="warning" label="Tips">Bruk size i stedet når du jobber med designsystemets avstander. Padding er ment for unntakstilfeller der du må ha en helt spesifikk og ikke-tokenbasert verdi.</nve-message-card>
 
+## Bakgrunn
+
+`background` setter en tokenbasert bakgrunnsfarge på boksen. Verdiene mapper til feedback-fargene i designsystemet.
+
+<CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
+
+```html
+<box-layout background="neutral">
+  <nve-paragraph>neutral</nve-paragraph>
+</box-layout>
+<box-layout background="info">
+  <nve-paragraph>info</nve-paragraph>
+</box-layout>
+<box-layout background="success">
+  <nve-paragraph>success</nve-paragraph>
+</box-layout>
+<box-layout background="warning">
+  <nve-paragraph>warning</nve-paragraph>
+</box-layout>
+<box-layout background="error">
+  <nve-paragraph>error</nve-paragraph>
+</box-layout>
+```
+
+</CodeExamplePreview>
+
+<nve-message-card size="compact" variant="info" >Trenger du en farge som ikke finnes blant tokenene, kan du fortsatt sette bakgrunn via style-attributtet. Foretrekk likevel background-propen for konsistens.</nve-message-card>
+
 ## Nøsting
 
 Bokser kan nøstes for å bygge opp et hierarki av padding.
@@ -53,8 +81,8 @@ Bokser kan nøstes for å bygge opp et hierarki av padding.
 <CodeExamplePreview>
 
 ```html
-<box-layout size="large" style="background: var(--color-feedback-background-subtle-neutral)">
-  <box-layout size="small" style="background: var(--color-feedback-background-default-info)">
+<box-layout size="large" background="neutral-subtle">
+  <box-layout size="small" background="info">
     <div style="padding: 0.75rem; background: var(--color-feedback-background-subtle-neutral)"></div>
   </box-layout>
 </box-layout>
@@ -69,7 +97,7 @@ En boks med konsistent padding rundt en tekst.
 <CodeExamplePreview>
 
 ```html
-<box-layout style="background: var(--color-feedback-background-default-info)">
+<box-layout background="info">
   <nve-paragraph>Innhold med jevn padding rundt.</nve-paragraph>
 </box-layout>
 ```
@@ -81,7 +109,7 @@ Samme innhold uten `box-layout` hvor teksten ligger helt inntil kanten.
 <CodeExamplePreview>
 
 ```html
-<div style="background: var(--color-feedback-background-default-info)"">
+<div style="background: var(--color-feedback-background-default-info)">
   <nve-paragraph>Innhold med null padding rundt.</nve-paragraph>
 </div>
 ```
@@ -90,7 +118,8 @@ Samme innhold uten `box-layout` hvor teksten ligger helt inntil kanten.
 
 ## Egenskaper
 
-| Egenskap  | Type            | Standard | Beskrivelse                                                                               |
-| --------- | --------------- | -------- | ----------------------------------------------------------------------------------------- |
-| `size`    | `BoxLayoutSize` | `medium` | Tokenbasert padding. Mapper til `--spacing-<verdi>`. Autoutfylling i editoren.            |
-| `padding` | `string`        | –        | Eksakt CSS-lengde (`"12px"`, `"1.25rem"`). Skal **ikke** brukes for tokens – bruk `size`. |
+| Egenskap     | Type                                                                                                                                                                | Standard | Beskrivelse                                                                               |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------- |
+| `size`       | `'none' \| '2x-small' \| 'x-small' \| 'small' \| 'medium' \| 'large' \| 'x-large' \| '2x-large' \| '3x-large' \| '4x-large' \| '5x-large'`                          | `medium` | Tokenbasert padding. Mapper til `--spacing-<verdi>`. Autoutfylling i editoren.            |
+| `padding`    | `string`                                                                                                                                                            | –        | Eksakt CSS-lengde (`"12px"`, `"1.25rem"`). Skal **ikke** brukes for tokens – bruk `size`. |
+| `background` | `'none' \| 'neutral' \| 'neutral-subtle' \| 'info' \| 'info-subtle' \| 'success' \| 'success-subtle' \| 'warning' \| 'warning-subtle' \| 'error' \| 'error-subtle'` | `none`   | Tokenbasert bakgrunnsfarge. Mapper til `--color-feedback-background-*`.                   |

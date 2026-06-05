@@ -16,7 +16,7 @@ I de aller fleste tilfeller skal du bruke `size`. `size` er knyttet direkte til 
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
 </stack-layout>
-<stack-layout size="medium" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
+<stack-layout style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
@@ -168,7 +168,7 @@ Med `stack-layout` får du konsistent avstand fra et token, uten egen CSS.
 <CodeExamplePreview>
 
 ```html
-<stack-layout size="medium">
+<stack-layout>
   <nve-input label="Navn"></nve-input>
   <nve-input label="E-post" type="email"></nve-input>
   <nve-textarea label="Melding"></nve-textarea>
@@ -195,9 +195,9 @@ Uten `stack-layout` klistrer elementene seg sammen og må styles individuelt for
 
 ## Egenskaper
 
-| Egenskap  | Type                               | Standard     | Beskrivelse                                                                               |
-| --------- | ---------------------------------- | ------------ | ----------------------------------------------------------------------------------------- |
-| `size`    | `StackLayoutSize`                  | –            | Tokenbasert mellomrom. Mapper til `--spacing-<verdi>`. Autoutfylling i editoren.          |
-| `gap`     | `string`                           | –            | Eksakt CSS-lengde (`"12px"`, `"1.25rem"`). Skal **ikke** brukes for tokens – bruk `size`. |
-| `space`   | `string`                           | –            | Alias for `gap` med samme regler.                                                         |
-| `justify` | `string` (`justify-content`-verdi) | `flex-start` | Fordeling langs den vertikale aksen.                                                      |
+| Egenskap  | Type                                                                                                                                       | Standard     | Beskrivelse                                                                               |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | ----------------------------------------------------------------------------------------- |
+| `size`    | `'none' \| '2x-small' \| 'x-small' \| 'small' \| 'medium' \| 'large' \| 'x-large' \| '2x-large' \| '3x-large' \| '4x-large' \| '5x-large'` | –            | Tokenbasert mellomrom. Mapper til `--spacing-<verdi>`. Autoutfylling i editoren.          |
+| `gap`     | `string`                                                                                                                                   | –            | Eksakt CSS-lengde (`"12px"`, `"1.25rem"`). Skal **ikke** brukes for tokens – bruk `size`. |
+| `space`   | `string`                                                                                                                                   | –            | Alias for `gap` med samme regler.                                                         |
+| `justify` | `string` (`justify-content`-verdi)                                                                                                         | `flex-start` | Fordeling langs den vertikale aksen.                                                      |

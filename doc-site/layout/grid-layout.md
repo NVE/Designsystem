@@ -131,10 +131,29 @@ I de aller fleste tilfeller skal du bruke `size` for mellomrom. `size` er knytte
 
 <nve-message-card size="compact" variant="warning" label="Tips">Bruk size i stedet når du jobber med designsystemets avstander. Gap er ment for unntakstilfeller der du må ha en helt spesifikk og ikke-tokenbasert verdi.</nve-message-card>
 
+## Eksempel på bruk
+
+Et responsivt rutenett med navigasjonskort som tilpasser antall kolonner etter tilgjengelig plass.
+
+<CodeExamplePreview>
+
+```html
+<grid-layout size="small">
+  <nve-link-card href="#" label="Flom og skred" size="small"></nve-link-card>
+  <nve-link-card href="#" label="Vassdrag og miljø" size="small"></nve-link-card>
+  <nve-link-card href="#" label="Energi" size="small"></nve-link-card>
+  <nve-link-card href="#" label="Klima" size="small"></nve-link-card>
+  <nve-link-card href="#" label="Konsesjon" size="small"></nve-link-card>
+  <nve-link-card href="#" label="Tilsyn" size="small"></nve-link-card>
+</grid-layout>
+```
+
+</CodeExamplePreview>
+
 ## Egenskaper
 
-| Egenskap | Type             | Standard | Beskrivelse                                                                               |
-| -------- | ---------------- | -------- | ----------------------------------------------------------------------------------------- |
-| `min`    | `string`         | `250px`  | Minste kolonnebredde før rutenettet bryter til ny linje.                                  |
-| `size`   | `GridLayoutSize` | `medium` | Tokenbasert mellomrom. Mapper til `--spacing-<verdi>`. Autoutfylling i editoren.          |
-| `gap`    | `string`         | –        | Eksakt CSS-lengde (`"12px"`, `"1.25rem"`). Skal **ikke** brukes for tokens – bruk `size`. |
+| Egenskap | Type                                                                                                                                       | Standard | Beskrivelse                                                                               |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ----------------------------------------------------------------------------------------- |
+| `min`    | `string`                                                                                                                                   | `250px`  | Minste kolonnebredde før rutenettet bryter til ny linje.                                  |
+| `size`   | `'none' \| '2x-small' \| 'x-small' \| 'small' \| 'medium' \| 'large' \| 'x-large' \| '2x-large' \| '3x-large' \| '4x-large' \| '5x-large'` | `medium` | Tokenbasert mellomrom. Mapper til `--spacing-<verdi>`. Autoutfylling i editoren.          |
+| `gap`    | `string`                                                                                                                                   | –        | Eksakt CSS-lengde (`"12px"`, `"1.25rem"`). Skal **ikke** brukes for tokens – bruk `size`. |
