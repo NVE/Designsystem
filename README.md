@@ -62,8 +62,6 @@ pnpm --version
 
 Når dette er gjort, kan du starte prosjektet med `pnpm install` og `pnpm run dev`.
 
-Kjør `pnpm install` og `pnpm run dev` for å starte test-applikasjonen.
-
 Dersom applikasjonen ikke er bygget på forhånd, vil pnpm run dev automatisk sørge for at den bygges og at dist-mappen opprettes.
 
 Vi bygger applikasjonen før kjøring for å sikre at den importerer custom-elements.json og nve-designsystem.css fra dist. Siden begge filer ganske statiske man trenger ikke å å bygge
