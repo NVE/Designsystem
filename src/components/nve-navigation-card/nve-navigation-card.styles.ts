@@ -43,6 +43,7 @@ export default css`
   .navigation-card__content {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: var(--spacing-medium);
     align-items: flex-start;
     align-self: stretch;

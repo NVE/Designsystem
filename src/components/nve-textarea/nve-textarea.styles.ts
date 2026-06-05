@@ -94,6 +94,11 @@ export default css`
     color: var(--color-feedback-background-emphasized-error);
   }
 
+  .textarea__hint {
+    font: var(--typography-label-x-small-light);
+    color: var(--color-neutrals-foreground-primary);
+  }
+
   .textarea__icon__container {
     position: relative; /** trengs for å posisjonere ikonen */
   }

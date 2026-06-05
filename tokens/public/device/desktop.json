@@ -59,6 +59,10 @@
       }
     },
     "fixed-spacing": {
+      "3x-small": {
+        "$type": "spacing",
+        "$value": "{dimension.05x}"
+      },
       "2x-small": {
         "$type": "spacing",
         "$value": "{dimension.1,5x}"
@@ -69,13 +73,17 @@
       },
       "small": {
         "$type": "spacing",
-        "$value": "{dimension.4x}"
+        "$value": "{dimension.2,5x}"
       },
       "medium": {
         "$type": "spacing",
-        "$value": "{dimension.6x}"
+        "$value": "{dimension.4x}"
       },
       "large": {
+        "$type": "spacing",
+        "$value": "{dimension.6x}"
+      },
+      "x-large": {
         "$type": "spacing",
         "$value": "{dimension.10x}"
       }
@@ -156,7 +164,7 @@
       "logo": {
         "medium": {
           "$type": "sizing",
-          "$value": "{sizing.64x}"
+          "$value": "{sizing.84x}"
         }
       },
       "illustration": {
@@ -195,49 +203,63 @@
     "icon": {
       "3x-large": {
         "$extensions": {
-          "com.figma.scopes": ["WIDTH_HEIGHT"]
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
         },
         "$type": "sizing",
         "$value": "{sizing.70x}"
       },
       "2x-large": {
         "$extensions": {
-          "com.figma.scopes": ["WIDTH_HEIGHT"]
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
         },
         "$type": "sizing",
         "$value": "{sizing.56x}"
       },
       "x-large": {
         "$extensions": {
-          "com.figma.scopes": ["WIDTH_HEIGHT"]
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
         },
         "$type": "sizing",
         "$value": "{sizing.48x}"
       },
       "large": {
         "$extensions": {
-          "com.figma.scopes": ["WIDTH_HEIGHT"]
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
         },
         "$type": "sizing",
         "$value": "{sizing.40x}"
       },
       "medium": {
         "$extensions": {
-          "com.figma.scopes": ["WIDTH_HEIGHT"]
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
         },
         "$type": "sizing",
         "$value": "{sizing.32x}"
       },
       "small": {
         "$extensions": {
-          "com.figma.scopes": ["WIDTH_HEIGHT"]
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
         },
         "$type": "sizing",
         "$value": "{sizing.24x}"
       },
       "x-small": {
         "$extensions": {
-          "com.figma.scopes": ["WIDTH_HEIGHT"]
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
         },
         "$type": "sizing",
         "$value": "{sizing.20x}"
@@ -917,6 +939,10 @@
         "$value": "true"
       },
       "desktop-tablet": {
+        "$type": "boolean",
+        "$value": "true"
+      },
+      "desktop-tablet-mobile": {
         "$type": "boolean",
         "$value": "true"
       },

@@ -11,8 +11,8 @@ on:
 
   pull_request:
     types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+    # Ingen branches-filter her => PRs mot alle branches får preview-miljø.
+    # Produksjonsdeploy skjer fortsatt kun på push til main (se over).
 
 jobs:
   build_and_deploy_job:

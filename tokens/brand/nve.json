@@ -162,6 +162,14 @@
         "$type": "color",
         "$value": "#141414"
       },
+      "999-040": {
+        "$type": "color",
+        "$value": "rgba(20,20,20,0.4)"
+      },
+      "999-080": {
+        "$type": "color",
+        "$value": "rgba(20,20,20,0.8)"
+      },
       "000": {
         "$type": "color",
         "$value": "#ffffff"
@@ -992,6 +1000,11 @@
       "$value": "0.5rem",
       "$description": "8px"
     },
+    "2,5x": {
+      "$type": "dimension",
+      "$value": "0.625rem",
+      "$description": "10px"
+    },
     "3x": {
       "$type": "dimension",
       "$value": "0.75rem",
@@ -1796,6 +1809,12 @@
         "$type": "boolean",
         "$value": "true"
       }
+    }
+  },
+  "text": {
+    "brand-name": {
+      "$type": "text",
+      "$value": "Norges vassdrags- og energidirektorat"
     }
   }
 }
