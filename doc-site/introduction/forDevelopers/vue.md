@@ -2,7 +2,7 @@
 
 # Bruk av designsystemet i Vue 3
 
-## Installer designsystem-pakka
+## Installer designsystem-pakken
 
 ```sh
 pnpm i nve-designsystem
