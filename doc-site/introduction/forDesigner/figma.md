@@ -6,11 +6,11 @@
 
 For å kunne bruke designsystemet må du aktivere denne i Figma. Alle komponentnavn har “NVE-” foran komponentnavnet. Hvis du ikke finner dette må du følge disse trinnene.
 
-1. Trykk deg inn på library ikonet i en arbeidsfil <nve-icon name="import_contacts" style="display: inline; padding-left:8px;"></nve-icon>
+1. Trykk deg inn på library ikonet i en arbeidsfil <nve-icon name="import_contacts" style="display: inline; padding-left:8px; vertical-align: -4px;"></nve-icon>
 
 2. Der skal designsystem-filene ligge. Den er delt i 6 deler. Fil 01, 02 og 03 er grunnleggende og må aktiveres før bruk.
 
-<img src="../../assets/images/get-started-1.png" width="auto">
+<img src="../../assets/images/get-started-1.png" width="690">
 
 ## Struktur i Figma
 
