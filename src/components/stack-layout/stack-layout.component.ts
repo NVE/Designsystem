@@ -6,10 +6,10 @@ import { LitElement, html } from 'lit';
  * Stabler barn-elementer vertikalt med konsistent mellomrom.
  * Basert på Stack-primitiven fra Every Layout.
  *
- * Bruk fortrinnsvis `size` (mapper til spacing-tokens i designsystemet).
+ * Bruk `size` (mapper til spacing-tokens i designsystemet).
  * Bruk kun `gap`/`space` når en eksakt, ikke-tokenbasert verdi er nødvendig.
  *
- * @property {string} gap - Eksakt CSS-lengde, f.eks. "12px" eller "1.25rem". Skal IKKE brukes for token-verdier – bruk `size` til det.
+ * @property {string} gap - Eksakt CSS-lengde, f.eks. "12px" eller "1.25rem". Skal ikke brukes for token-verdier, bruk heller `size`.
  * @property {string} space - Alias for gap. Brukes hvis gap ikke er satt.
  * @property {Size} size - Forhåndsdefinert tokenbasert størrelse.
  * @property {string} justify - justify-content-verdi. Standard: flex-start.
