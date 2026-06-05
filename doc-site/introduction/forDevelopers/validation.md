@@ -2,17 +2,17 @@
 
 # Validering av input
 
-<nve-message-card label="Tips">
-  Komponentene du skal validere må ligge inni en &lt;form&gt;, fordi validering utføres når submit-eventet fyres av.
-</nve-message-card>
-
-Vi tilbyr en forenklet variant av Shoelace sin måte å validere input på. Du bør lese om [hvordan Shoelace gjør det](https://shoelace.style/getting-started/form-controls).
+Per nå tilbyr vi en forenklet variant av Shoelace sin måte å validere input på. Du bør lese om [hvordan Shoelace gjør det](https://shoelace.style/getting-started/form-controls). Det jobbes nå med å utvikle egne input komponenter som er rene web komponenter. Her vil det komme en egen metode for validering.
 
 Alle komponentene som kan brukes til å samle inn data har støtte for validering av input.
 
 Både sjekkbokser og radioknapper må ligge i en gruppe for å kunne valideres.
 
 Det finnes to måter å validere på, [Constraint Validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation) og manuell validering.
+
+<nve-message-card label="Tips" size="compact">
+  Komponentene du skal validere må ligge inni en &lt;form&gt;, fordi validering utføres når submit-eventet fyres av.
+</nve-message-card>
 
 ## Constraint Validation
 

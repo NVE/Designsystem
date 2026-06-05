@@ -6,13 +6,13 @@ outline: [2, 3]
 
 Typografi er et av de sterkeste virkemidlene vi har for å lage visuelle hierarkier. For å sikre et konsekvent visuelt uttrykk på alle våre tjenester definerer designsystemet satte stiler på font-størrelse, font-vekt og linjeavstand. Vi bruker skrifttypen Source Sans i all kommunikasjon.
 
-#### Source Sans
+### Source Sans
 
 <img src="../../assets/images/typo.png" width="auto">
 
 Source Sans Pro/3 er en «open-source» sans serif skrifttype, laget for å gi god lesbarhet på digitale produkter. I designsystemet bruker vi kun vektene Regular og Semibold, med tilhørende italics-versjoner.
 
-#### Typografiske tokens
+### Typografiske tokens
 
 Typografiske tokens brukes for å opprettholde en ensartet samling av fonter i hele utviklingsprosessen.
 
@@ -25,11 +25,11 @@ Designsystemet tilbyr ferdige komponenter for typografi som gjør det enkelt å 
 
 Disse komponentene sikrer automatisk riktig bruk av typografi-tokens og semantisk HTML, samtidig som de gir fleksibilitet til å overstyre styling ved behov.
 
-#### Typografi i Figma
+### Typografi i Figma
 
 Fonten heter Source Sans 3 i Figma, og er tilgjenglig uten at du trenger å laste ned eller installere fonten selv.
 
-#### Har du ikke fonten på maskinen?
+### Har du ikke fonten på maskinen?
 
 Fonten heter Source Sans 3 i Google Fonts. Der kan du finne informasjon om hvordan fonten skal legges inn i kode på digitale produkter, og laste ned font-filer du kan installere på din maskin [her.](https://fonts.google.com/specimen/Source+Sans+3)
 
@@ -54,7 +54,7 @@ Basert på fontstørrelsevariablene har vi laget fontvariabler for bestemte form
 
 I Figma-skisser blir disse font-egenskapene typisk brukt på ulike tekststiler og komponenter. For eksempel, header-stiler blir definert ved å bruke --heading- variabler, noe som sikrer en sammenhengende og standardisert tilnærming til typografi på tvers av design-systemet.
 
-### Header
+## Header
 
 Header typografi kan brukes gjennom [nve-heading](/components/nve-heading#heading-varianter)-komponenten.
 
@@ -63,7 +63,6 @@ Header typografi kan brukes gjennom [nve-heading](/components/nve-heading#headin
 ### Subheader
 
 Subheader typografi kan brukes gjennom [nve-heading](/components/nve-heading#subheading-varianter)-komponenten.
-
 <TypographyTable tableContentType="subheadings"></TypographyTable>
 
 ### Lead
@@ -84,10 +83,10 @@ Body compact typografi kan brukes gjennom [nve-paragraph](/components/nve-paragr
 
 <TypographyTable tableContentType="body-compact"></TypographyTable>
 
-### Detail text
+## Detail text
 
 <TypographyTable tableContentType="detail-text"></TypographyTable>
 
-### Label
+## Label
 
 <TypographyTable tableContentType="label"></TypographyTable>

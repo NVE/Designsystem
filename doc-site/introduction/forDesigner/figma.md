@@ -1,10 +1,16 @@
 <PageHeader title="For designere" imagePath="designer"  pageLevel=2></PageHeader>
 
-Designsystem samler og tilgjengeliggjør verktøy, filer, komponenter og designretningslinjer som brukes av designere og utviklere for å lage gode og konsekvente brukeropplevelser i NVEs digitale tjenester.
+# Bruk av designsystemet i Figma
 
-## Hva betyr det for deg som designer?
+## Aktiver Designsystemet i Figma om du ikke finner NVE komponenter
 
-Designere skal i størst mulig grad bruke komponentene og mønstrene i designsystemet når de designer nye tjenester for NVE. Dette sørger for at alle tjenestene gir en konsekvent og god brukeropplevelse. Alle bestanddelene i designsystemet er koblet opp med felles tokenverdier (f.eks. farger, avstander og fonter), og det gjør det også enkelt å gjøre justeringer på et overordnet nivå som påvirker alle komponenter og mønstre.
+For å kunne bruke designsystemet må du aktivere denne i Figma. Alle komponentnavn har “NVE-” foran komponentnavnet. Hvis du ikke finner dette må du følge disse trinnene.
+
+1. Trykk deg inn på library ikonet i en arbeidsfil <nve-icon name="import_contacts" style="display: inline; padding-left:8px; vertical-align: -4px;"></nve-icon>
+
+2. Der skal designsystem-filene ligge. Den er delt i 6 deler. Fil 01, 02 og 03 er grunnleggende og må aktiveres før bruk.
+
+<img src="../../assets/images/get-started-1.png" width="690">
 
 ## Struktur i Figma
 
@@ -88,3 +94,16 @@ Under kan du se en oversikt over alle filer som gjør opp designsystemet i Figma
     <LinkButton URL="https://nve.frontify.com/" text="Åpne i Figma" :openInNewTab="true"/>
   </div>
 </div>
+
+## Bytte tema, brands og skjermstørrelse
+
+Designsystemet er satt opp på en måte at du bruker samme komponent men kan overskrive med NVE eller Varsom som brand. Samme gjelder om du ønsker å implementere dark eller lightmode i løsningen.
+Du kan enkelt sette themes ved å bare bruke variabler og komponenter fra designsystemet.
+
+Theme - Kan du bytte mellom dark og light-mode.  
+Brand - Bytter du mellom NVE og Varsom sitt design.  
+Device - Kan du bytte mellom forskjellige skjermstørrelser. Da vil innholdet justere seg i forhold til hvilken flate du jobber på.
+
+<img src="../../assets/images/get-started-2.png" width="auto">
+
+<nve-message-card label="Tips" size="compact">For at dette skal fungere sømløst må du huske på å bruke variablene som er fastsatt - ikke løse designverdier. Da vil ikke alt av innholdet endres i forhold til hva slags variabler/tokens du bruker.</nve-message-card>
