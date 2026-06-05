@@ -5,7 +5,7 @@
 ## Installer designsystem-pakken
 
 ```sh
-npm i nve-designsystem
+pnpm i nve-designsystem
 ```
 
 ## Fortell Vue at komponentene våre er web-komponenter
@@ -73,7 +73,7 @@ registerIconLibrary('system', {
 
 ## Eslint-regler og Visual Studio Code
 
-Hvis du bruker Visual Studio Code og starter et nytt prosjekt gjennom `npm run create vue@latest` og bruker standard eslint-regler, kan du få feil og automatisk retting. For å unngå dette, legg til følgende i din `eslint.config`:
+Hvis du bruker Visual Studio Code og starter et nytt prosjekt gjennom `pnpm create vue@latest` og bruker standard eslint-regler, kan du få feil og automatisk retting. For å unngå dette, legg til følgende i din `eslint.config`:
 
 ```json
 "vue/no-deprecated-slot-attribute": "off",

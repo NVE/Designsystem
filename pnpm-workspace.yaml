@@ -1,0 +1,29 @@
+packages:
+  - 'doc-site'
+
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  rs-module-lexer: false
+  vue-demi: true
+
+engineStrict: true
+minimumReleaseAge: 10080 # 7 days in minutes
+minimumReleaseAgeExclude:
+  - husky
+  - '@rollup/pluginutils@5.3.0'
+  - '@rollup/rollup-linux-x64-gnu@4.60.4'
+  - '@vitest/expect@4.1.8'
+  - '@vitest/mocker@4.1.8'
+  - '@vitest/pretty-format@4.1.8'
+  - '@vitest/runner@4.1.8'
+  - '@vitest/snapshot@4.1.8'
+  - '@vitest/spy@4.1.8'
+  - '@vitest/utils@4.1.8'
+  - tinyglobby@0.2.17
+  - unplugin-dts@1.0.2
+  - vite-plugin-dts@5.0.2
+  - vite@8.0.16
+  - vitest@4.1.8
+verifyDepsBeforeRun: false
+virtualStoreDir: .pnpm

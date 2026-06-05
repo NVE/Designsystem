@@ -1,5 +1,5 @@
 echo "🎨 Formatting code..."
-npm run lint || {
+pnpm run lint || {
   echo "❌ Formatting failed. Commit aborted."
   echo "ℹ️  To skip this check, run: git commit --no-verify"
   exit 1

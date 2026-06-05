@@ -8,7 +8,7 @@ Vue-komponentbiblioteket utvider designsystemet med funksjonalitet som er for av
 Biblioteket kan installeres og brukes i alle Vue 3-prosjekter:
 
 ```bash
-npm install @nve-org/vue-components
+pnpm add @nve-org/vue-components
 ```
 
 ## Dokumentasjon og demo
