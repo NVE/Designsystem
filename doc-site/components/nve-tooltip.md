@@ -122,6 +122,28 @@ Du kan også bruke ulike `trigger` for å si når tooltip skal åpnes
 
 </CodeExamplePreview >
 
+### Programmatisk styring
+
+Tooltipen kan styres programmatisk med metodene `show()`, `hide()` og `toggle()`.
+
+- Bruk `trigger="manual"` hvis åpen/lukket tilstand skal styres utenfra.
+- Komponenten sender eventene `show` og `hide` når tilstanden endres.
+
+```html
+<nve-tooltip id="min-tooltip" trigger="manual" content="Styrt utenfra">
+  <nve-button>Vis tooltip</nve-button>
+</nve-tooltip>
+
+<script>
+  const tooltip = document.getElementById('min-tooltip');
+
+  tooltip.show();
+  tooltip.addEventListener('hide', () => {
+    console.log('Tooltip ble skjult');
+  });
+</script>
+```
+
 ### Innhold i tooltip
 
 Du kan bruke `content`-slotten dersom du vil ha mer enn enkel tekst i tooltip. Innholdet kan være HTML og bør være kort og lett å lese. Tooltipen må ikke inneholde interaktive elementer som knapper, lenker eller liknende.
