@@ -25,7 +25,15 @@ Designsystemet tilbyr ferdige komponenter for typografi som gjør det enkelt å 
 
 Disse komponentene sikrer automatisk riktig bruk av typografi-tokens og semantisk HTML, samtidig som de gir fleksibilitet til å overstyre styling ved behov.
 
+<<<<<<< HEAD
+
 ### Typografi i Figma
+
+=======
+
+#### Typografi i Figma
+
+> > > > > > > c74e005 (fix(nve-tooltip): Erstatter Shoelace-tooltip med egen tooltip basert på anchor api (#904))
 
 Fonten heter Source Sans 3 i Figma, og er tilgjenglig uten at du trenger å laste ned eller installere fonten selv.
 
