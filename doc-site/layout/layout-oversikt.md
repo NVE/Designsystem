@@ -13,11 +13,8 @@ Bruk layout-komponentene når du vil:
 
 - Stable elementer vertikalt med konsistent mellomrom (`stack-layout`)
 - Gruppere elementer horisontalt med automatisk linjebryting (`cluster-layout`)
-- Bygge to-kolonne-oppsett med en fast sidespalte (`sidebar-layout`)
-- Lage et responsivt rutenett (`grid-layout` / `columnist-layout`)
-- Pakke inn innhold med maks-bredde og sentrering (`wrapper-layout`)
+- Lage et responsivt rutenett (`grid-layout`)
 - Gi et element definert padding og bakgrunn (`box-layout`)
-- Fylle tilgjengelig høyde med et fremhevet midtelement (`cover-layout`)
 
 ## Prinsipper
 
