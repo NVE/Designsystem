@@ -3,7 +3,9 @@ import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
 import '../nve-icon/nve-icon.component';
+import '../nve-button/nve-button.component';
 import styles from './nve-dialog.styles';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * En dialogboks som bruker native dialog-element.
@@ -41,122 +43,91 @@ import styles from './nve-dialog.styles';
 @customElement('nve-dialog')
 export default class NveDialog extends LitElement implements INveComponent {
   @property({ reflect: true }) testId: string | undefined = undefined;
-  /** Ikonet som skal vises */
-  @property({ type: String, reflect: true }) icon = '';
-  /** Hvis denne er satt, kan man ikke trykke utenfor dialogen for å lukke den. */
-  @property({ type: Boolean, reflect: true }) disableBackground = false;
-  /** Om dialogen er åpen. Kan settes som attributt eller via show()/hide(). */
-  @property({ type: Boolean, reflect: true }) open = false;
   /** Teksten i overskriften */
-  @property({ reflect: true }) label = '';
-  /** Skjuler headeren. Sørg for at label fortsatt er satt for tilgjengelighet. */
-  @property({ attribute: 'no-header', type: Boolean, reflect: true }) noHeader = false;
-
+  @property({ type: String }) label = '';
+  @property({ type: String }) closedBy?: 'any' | 'none' | 'closerequest' = undefined; // this is not supported yet, but we can add it later if needed. requestclose is the standard
   @query('dialog') private dialogEl!: HTMLDialogElement;
-  @query('.dialog__panel') private panelEl!: HTMLElement;
-  @query('.dialog__overlay') private overlayEl!: HTMLElement;
 
   @state() private hasFooter = false;
 
-  private originalTrigger: HTMLElement | null = null;
+  //private originalTrigger: HTMLElement | null = null; // trenger ikke det, dialog fikser det selv
+
+  /* 
+  TODOS:
+  - use close nve-button ghost instead of a custom
+  - fikse layout
+  - mangler scroll lock styling 
+  - vurdere a bruke closedby (any, none, closerequest) closerequest is standard
+  - ikon skal vaere slot
+  - check if autofocus will work on the buttons
+  - test height with tons of text (scrolling)
+
+  returnvalue could be interesting
+
+  read more about requestclose
+
+  evenct cancel and close
+
+
+  write that this is not possible 
+  Modal dialogs using invoker commands
+Modal dialogs can be declaratively opened and closed using the Invoker Commands API HTML attributes commandfor and command, which can be set on <button> elements.
+The command attribute sets the particular command that is to be sent when the <button> element is clicked, while commandfor sets the id of the target dialog. The commands that can be sent for dialogs are "show-modal", "close", and "request-close".
+
+also this
+Non-modal dialogs can be declaratively opened, closed, and toggled using the Popover API HTML attributes popovertarget and popovertargetaction, which can be defined on <button> and <input> elements.
+
+and this one 
+There are numerous ways to close a dialog:
+Submitting the form within the <dialog> element with method="dialog" set on the <form> element (see the Using the dialog open attribute example).
+
+The autofocus attribute should be added to the element the user is expected to interact with immediately upon opening a modal dialog. If no other element involves more immediate interaction, it is recommended to add autofocus to the close button inside the dialog, or the dialog itself if the user is expected to click/activate it to dismiss.
+
+Do not add the tabindex property to the <dialog> element as it is not interactive and does not receive focus. The dialog's contents, including the close button contained in the dialog, can receive focus and be interactive.
+  */
 
   firstUpdated() {
-    if (this.open) {
-      this.doOpen();
+    if (!this.label) {
+      console.warn(
+        'Accessibility warning: nve-dialog should have a label for screen readers. Set the label attribute or add a slot="label".'
+      );
     }
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
     if (this.dialogEl?.open) {
       this.dialogEl.close();
     }
+    super.disconnectedCallback();
   }
 
-  updated(changedProperties: Map<PropertyKey, unknown>) {
-    super.updated(changedProperties);
-    if (changedProperties.has('open') && changedProperties.get('open') !== undefined) {
-      if (this.open) {
-        this.doOpen();
-      } else {
-        this.doClose();
-      }
-    }
-  }
+  // vi skal ikke bruke disse metodene, de skal kalles pa selve dialogen for a vaere native akkurat na er de ikke det
+  /** Viser dialogen.
+   * The show() method of the HTMLDialogElement interface displays the dialog as a non-modal dialog.
 
-  /** Viser dialogen. */
+A non-modal dialog is one where users can interact with content outside/behind the open dialog.
+   * 
+   * 
+   */
   async show() {
-    if (this.open) return;
-    this.open = true;
+    this.dialogEl.showModal();
   }
 
   /** Skjuler dialogen. */
   async hide() {
-    if (!this.open) return;
-    this.open = false;
-  }
-
-  private doOpen() {
-    if (!this.dialogEl || this.dialogEl.open) return;
-
-    this.originalTrigger = document.activeElement as HTMLElement;
-    this.dialogEl.showModal();
-
-    this.panelEl?.animate?.(
-      [
-        { opacity: 0, transform: 'scale(0.8)' },
-        { opacity: 1, transform: 'scale(1)' },
-      ],
-      { duration: 250, easing: 'ease', fill: 'forwards' }
-    );
-
-    this.overlayEl?.animate?.([{ opacity: 0 }, { opacity: 1 }], {
-      duration: 250,
-      easing: 'ease',
-      fill: 'forwards',
-    });
+    this.doClose();
   }
 
   private async doClose() {
     if (!this.dialogEl || !this.dialogEl.open) return;
 
-    const panelAnimation = this.panelEl?.animate?.(
-      [
-        { opacity: 1, transform: 'scale(1)' },
-        { opacity: 0, transform: 'scale(0.8)' },
-      ],
-      { duration: 250, easing: 'ease', fill: 'forwards' }
-    );
+    this.dialogEl.classList.add('dialog--closing');
 
-    this.overlayEl?.animate?.([{ opacity: 1 }, { opacity: 0 }], {
-      duration: 250,
-      easing: 'ease',
-      fill: 'forwards',
-    });
+    await new Promise((resolve) => setTimeout(resolve, 250));
 
-    if (panelAnimation) {
-      await panelAnimation.finished;
-    }
-
+    this.dialogEl.classList.remove('dialog--closing');
     this.dialogEl.close();
-
-    if (typeof this.originalTrigger?.focus === 'function') {
-      setTimeout(() => this.originalTrigger!.focus());
-    }
   }
-
-  /** Forhindrer native Escape-lukking slik at vi kan animere før lukking */
-  private handleCancel = (event: Event) => {
-    event.preventDefault();
-    this.hide();
-  };
-
-  /** Håndterer klikk på overlegget */
-  private handleOverlayClick = () => {
-    if (!this.disableBackground) {
-      this.hide();
-    }
-  };
 
   private handleFooterSlotChange = (event: Event) => {
     const slot = event.target as HTMLSlotElement;
@@ -164,24 +135,24 @@ export default class NveDialog extends LitElement implements INveComponent {
   };
 
   private renderHeader() {
-    if (this.noHeader) return nothing;
-
     return html`
       <header part="header" class="dialog__header">
-        <h2 part="title" class="dialog__title" id="title">
-          ${this.icon ? html`<nve-icon name=${this.icon} class="dialog__title-icon"></nve-icon>` : nothing}
-          <slot name="label"> ${this.label.length > 0 ? this.label : String.fromCharCode(65279)} </slot>
-        </h2>
+        <!-- Ikon skal være slot -->
+        <slot name="start-header-icon"></slot>
+        ${this.label.length > 0 ? html`<h2 part="title" id="title" class="dialog__title">${this.label}</h2>` : nothing}
         <div part="header-actions" class="dialog__header-actions">
-          <slot name="header-actions"></slot>
-          <button part="close-button" class="dialog__close" aria-label="Lukk" @click=${() => this.hide()}>
+          <slot name="end-header-icon"></slot>
+          <nve-button variant="ghost" @click=${this.hide} part="close-button" aria-label="Close dialog">
             <nve-icon name="close"></nve-icon>
-          </button>
+          </nve-button>
         </div>
       </header>
     `;
   }
 
+  /* 
+  If a dialog contains the final step in a process that is not easily reversible, such as deleting data or completing a financial transaction, it may be advisable to set focus on the least destructive action, especially if undoing the action is difficult or impossible. The Alert Dialog Pattern is often employed in such circumstances.
+  */
   render() {
     return html`
       <dialog
@@ -190,16 +161,13 @@ export default class NveDialog extends LitElement implements INveComponent {
           dialog: true,
           'dialog--has-footer': this.hasFooter,
         })}
-        aria-label=${this.noHeader ? this.label : nothing}
-        aria-labelledby=${!this.noHeader ? 'title' : nothing}
-        @cancel=${this.handleCancel}
+        closedby=${ifDefined(this.closedBy)}
+        aria-labelledby="title"
       >
-        <div part="overlay" class="dialog__overlay" @click=${this.handleOverlayClick} tabindex="-1"></div>
-
-        <div part="panel" class="dialog__panel" tabindex="-1">
+        <div part="panel" class="dialog__panel">
           ${this.renderHeader()}
 
-          <div part="body" class="dialog__body" tabindex="-1">
+          <div part="body" class="dialog__body">
             <slot></slot>
           </div>
 
