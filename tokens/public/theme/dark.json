@@ -606,11 +606,11 @@
           },
           "level4": {
             "$type": "color",
-            "$value": "{color-shades.functional.red.500}"
+            "$value": "{color-shades.functional.danger.400}"
           },
           "level5": {
             "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.950}"
+            "$value": "{color-shades.functional.danger.900}"
           }
         },
         "mute": {
@@ -628,11 +628,11 @@
           },
           "level4": {
             "$type": "color",
-            "$value": "{color-shades.functional.red.050}"
+            "$value": "{color-shades.functional.danger.050}"
           },
           "level5": {
             "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.200}"
+            "$value": "{color-shades.functional.danger.200}"
           }
         },
         "subtle": {
@@ -650,11 +650,11 @@
           },
           "level4": {
             "$type": "color",
-            "$value": "{color-shades.functional.red.000}"
+            "$value": "{color-shades.functional.danger.000}"
           },
           "level5": {
             "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.150}"
+            "$value": "{color-shades.functional.danger.200}"
           }
         }
       },

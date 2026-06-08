@@ -460,6 +460,40 @@
           "$value": "#ffd8de"
         }
       },
+      "danger": {
+        "200": {
+          "$type": "color",
+          "$value": "#FF8F8F"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#FF3333"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#E50000"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#B20000"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#800000"
+        },
+        "999": {
+          "$type": "color",
+          "$value": "#4D0000"
+        },
+        "050": {
+          "$type": "color",
+          "$value": "#FFD6D6"
+        },
+        "000": {
+          "$type": "color",
+          "$value": "#FFEBEB"
+        }
+      },
       "orange": {
         "100": {
           "$type": "color",
