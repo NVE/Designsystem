@@ -29,7 +29,7 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
   },
   {
     name: 'nve-aspect-rose',
-    nodeId: 'TODO',
+    nodeId: undefined,
     description: undefined,
     statusDesign: 'Ferdig',
     statusCode: 'Ferdig'

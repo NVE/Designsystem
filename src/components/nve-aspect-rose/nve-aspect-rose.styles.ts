@@ -13,14 +13,12 @@ export default css`
   }
 
   .circle-outline {
-    stroke: #c6c6c5;
+    stroke: var(--aspect-rose-outline-color, #c6c6c5);
   }
-
-  .sector--affected {
-    fill: #d21523;
+  .sector-affected {
+    fill: var(--aspect-rose-affected-color, #d21523);
   }
-
-  .sector--unaffected {
-    fill: #e3e3e3;
+  .sector-unaffected {
+    fill: var(--aspect-rose-unaffected-color, #e3e3e3);
   }
 `;
