@@ -1,8 +1,10 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av pnpm run add-component */
+
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
+export { default as NveAspectRose } from './components/nve-aspect-rose/nve-aspect-rose.component';
 export { default as NveBadge } from './components/nve-badge/nve-badge.component';
 export { default as NveButton } from './components/nve-button/nve-button.component';
 export { default as NveCarousel } from './components/nve-carousel/nve-carousel.component';
