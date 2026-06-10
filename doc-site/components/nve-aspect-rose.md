@@ -15,7 +15,7 @@ outline: [2, 3]
 
 ### Utsatte himmelretninger
 
-Bruk `value` for å sette hvilke himmelretninger som er eksponert.
+Bruk `value` for å sette hvilke himmelretninger som er utsatt (farlige).
 <CodeExamplePreview>
 
 ```html
