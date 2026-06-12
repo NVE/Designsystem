@@ -145,8 +145,14 @@ Til sammenligning, samme knapper i en vanlig `<div>` uten `nve-cluster`. Det er 
 
 ## Egenskaper
 
-| Egenskap  | Type                                                                                                                                       | Standard     | Beskrivelse                                                                      |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | -------------------------------------------------------------------------------- |
-| `gap`     | `'none' \| '2x-small' \| 'x-small' \| 'small' \| 'medium' \| 'large' \| 'x-large' \| '2x-large' \| '3x-large' \| '4x-large' \| '5x-large'` | `medium`     | Tokenbasert mellomrom. Mapper til `--spacing-<verdi>`. Autoutfylling i editoren. |
-| `justify` | `string`                                                                                                                                   | `flex-start` | `justify-content`-verdi.                                                         |
-| `align`   | `string`                                                                                                                                   | `center`     | `align-items`-verdi.                                                             |
+| Egenskap         | Type            | Standard     | Beskrivelse                                                                               |
+| ---------------- | --------------- | ------------ | ----------------------------------------------------------------------------------------- |
+| `gap`            | `SpacingToken`  | `medium`     | Tokenbasert mellomrom mellom barn-elementer.                                              |
+| `justify`        | `LayoutJustify` | `flex-start` | Horisontal fordeling av barn-elementer. Gyldige verdier er CSS `justify-content`-verdier. |
+| `align`          | `ClusterAlign`  | `center`     | Vertikal justering av barn-elementer. Gyldige verdier er CSS `align-items`-verdier.       |
+| `padding`        | `SpacingToken`  | —            | Tokenbasert padding på alle sider.                                                        |
+| `padding-block`  | `SpacingToken`  | —            | Overstyrer `padding` i blokk-retning (topp/bunn).                                         |
+| `padding-inline` | `SpacingToken`  | —            | Overstyrer `padding` i inline-retning (venstre/høyre).                                    |
+| `margin`         | `SpacingToken`  | —            | Tokenbasert margin på alle sider.                                                         |
+| `margin-block`   | `SpacingToken`  | —            | Overstyrer `margin` i blokk-retning (topp/bunn).                                          |
+| `margin-inline`  | `SpacingToken`  | —            | Overstyrer `margin` i inline-retning (venstre/høyre).                                     |

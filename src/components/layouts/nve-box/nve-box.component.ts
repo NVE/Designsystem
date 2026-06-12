@@ -15,12 +15,20 @@ import { NveLayoutBase, SpacingToken } from '../nve-layout-base';
  */
 export type BoxLayoutPadding = SpacingToken;
 
+export type BoxBackground =
+  | '--color-neutrals-background-canvas'
+  | '--color-neutrals-background-primary'
+  | '--color-neutrals-background-primary-contrast'
+  | '--color-neutrals-background-secondary'
+  | '--color-neutrals-background-secondary-dim'
+  | '--color-neutrals-background-tertiary-dim';
+
 @customElement('nve-box')
 export default class NveBox extends NveLayoutBase {
   static styles = [styles];
 
   /** Tokenbasert bakgrunnsfarge. */
-  @property({ type: String, reflect: true }) background?: string;
+  @property({ type: String, reflect: true }) background?: BoxBackground;
 
   override updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);

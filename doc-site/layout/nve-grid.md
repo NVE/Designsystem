@@ -46,11 +46,7 @@ I de aller fleste tilfeller skal du bruke `gap` for mellomrom. `gap` er knyttet 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<nve-grid
-  gap="small"
-  min="80px"
-  style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem"
->
+<nve-grid gap="small" min="80px" style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem">
   <div
     style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
   ></div>
@@ -78,11 +74,7 @@ I de aller fleste tilfeller skal du bruke `gap` for mellomrom. `gap` er knyttet 
     style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
   ></div>
 </nve-grid>
-<nve-grid
-  gap="large"
-  min="80px"
-  style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem"
->
+<nve-grid gap="large" min="80px" style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem">
   <div
     style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
   ></div>
@@ -121,7 +113,13 @@ Et responsivt rutenett med navigasjonskort som tilpasser antall kolonner etter t
 
 ## Egenskaper
 
-| Egenskap | Type                                                                                                                                       | Standard | Beskrivelse                                                                      |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------- |
-| `min`    | `string`                                                                                                                                   | `250px`  | Minste kolonnebredde før rutenettet bryter til ny linje.                         |
-| `gap`    | `'none' \| '2x-small' \| 'x-small' \| 'small' \| 'medium' \| 'large' \| 'x-large' \| '2x-large' \| '3x-large' \| '4x-large' \| '5x-large'` | `medium` | Tokenbasert mellomrom. Mapper til `--spacing-<verdi>`. Autoutfylling i editoren. |
+| Egenskap         | Type           | Standard | Beskrivelse                                                                             |
+| ---------------- | -------------- | -------- | --------------------------------------------------------------------------------------- |
+| `min`            | `string`       | `250px`  | Minste kolonnebredde før rutenettet bryter til ny linje (f.eks. `250px` eller `16rem`). |
+| `gap`            | `SpacingToken` | `medium` | Tokenbasert mellomrom mellom kolonner og rader.                                         |
+| `padding`        | `SpacingToken` | —        | Tokenbasert padding på alle sider.                                                      |
+| `padding-block`  | `SpacingToken` | —        | Overstyrer `padding` i blokk-retning (topp/bunn).                                       |
+| `padding-inline` | `SpacingToken` | —        | Overstyrer `padding` i inline-retning (venstre/høyre).                                  |
+| `margin`         | `SpacingToken` | —        | Tokenbasert margin på alle sider.                                                       |
+| `margin-block`   | `SpacingToken` | —        | Overstyrer `margin` i blokk-retning (topp/bunn).                                        |
+| `margin-inline`  | `SpacingToken` | —        | Overstyrer `margin` i inline-retning (venstre/høyre).                                   |

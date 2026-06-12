@@ -151,7 +151,13 @@ Uten `nve-stack` klistrer elementene seg sammen og må styles individuelt for å
 
 ## Egenskaper
 
-| Egenskap  | Type                                                                                                                                       | Standard     | Beskrivelse                                                                      |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | -------------------------------------------------------------------------------- |
-| `gap`     | `'none' \| '2x-small' \| 'x-small' \| 'small' \| 'medium' \| 'large' \| 'x-large' \| '2x-large' \| '3x-large' \| '4x-large' \| '5x-large'` | `medium`     | Tokenbasert mellomrom. Mapper til `--spacing-<verdi>`. Autoutfylling i editoren. |
-| `justify` | `string` (`justify-content`-verdi)                                                                                                         | `flex-start` | Fordeling langs den vertikale aksen.                                             |
+| Egenskap         | Type            | Standard     | Beskrivelse                                                                            |
+| ---------------- | --------------- | ------------ | -------------------------------------------------------------------------------------- |
+| `gap`            | `SpacingToken`  | `medium`     | Tokenbasert mellomrom mellom barn-elementer.                                           |
+| `justify`        | `LayoutJustify` | `flex-start` | Fordeling langs den vertikale aksen. Gyldige verdier er CSS `justify-content`-verdier. |
+| `padding`        | `SpacingToken`  | —            | Tokenbasert padding på alle sider.                                                     |
+| `padding-block`  | `SpacingToken`  | —            | Overstyrer `padding` i blokk-retning (topp/bunn).                                      |
+| `padding-inline` | `SpacingToken`  | —            | Overstyrer `padding` i inline-retning (venstre/høyre).                                 |
+| `margin`         | `SpacingToken`  | —            | Tokenbasert margin på alle sider.                                                      |
+| `margin-block`   | `SpacingToken`  | —            | Overstyrer `margin` i blokk-retning (topp/bunn).                                       |
+| `margin-inline`  | `SpacingToken`  | —            | Overstyrer `margin` i inline-retning (venstre/høyre).                                  |

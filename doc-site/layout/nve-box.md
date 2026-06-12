@@ -11,14 +11,14 @@ I de aller fleste tilfeller skal du bruke `padding`. `padding` er knyttet direkt
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<nve-box padding="small" background="--color-feedback-background-subtle-neutral">
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <div style="padding: 0.75rem; background: var(--color-neutrals-background-secondary)"></div>
 </nve-box>
-<nve-box background="--color-feedback-background-subtle-neutral">
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+<nve-box background="--color-neutrals-background-canvas">
+  <div style="padding: 0.75rem; background: var(--color-neutrals-background-secondary)"></div>
 </nve-box>
-<nve-box padding="large" background="--color-feedback-background-subtle-neutral">
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+<nve-box padding="large" background="--color-neutrals-background-canvas">
+  <div style="padding: 0.75rem; background: var(--color-neutrals-background-secondary)"></div>
 </nve-box>
 ```
 
@@ -26,19 +26,28 @@ I de aller fleste tilfeller skal du bruke `padding`. `padding` er knyttet direkt
 
 ## Bakgrunn
 
-`background` setter en tokenbasert bakgrunnsfarge på boksen.
+`background` setter en tokenbasert bakgrunnsfarge på boksen. Gyldige verdier kommer fra neutrals background-tokensene.
 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<nve-box background="--color-brand-background-primary">
-  <nve-paragraph></nve-paragraph>
+<nve-box background="--color-neutrals-background-canvas">
+  <nve-paragraph>canvas</nve-paragraph>
+</nve-box>
+<nve-box background="--color-neutrals-background-primary">
+  <nve-paragraph>primary</nve-paragraph>
+</nve-box>
+<nve-box background="--color-neutrals-background-primary-contrast">
+  <nve-paragraph>primary-contrast</nve-paragraph>
 </nve-box>
 <nve-box background="--color-neutrals-background-secondary">
-  <nve-paragraph></nve-paragraph>
+  <nve-paragraph>secondary</nve-paragraph>
 </nve-box>
-<nve-box background="--color-brand-background-quaternary">
-  <nve-paragraph></nve-paragraph>
+<nve-box background="--color-neutrals-background-secondary-dim">
+  <nve-paragraph style="color: var(--color-neutrals-foreground-inverted)">secondary-dim</nve-paragraph>
+</nve-box>
+<nve-box background="--color-neutrals-background-tertiary-dim">
+  <nve-paragraph style="color: var(--color-neutrals-foreground-inverted)">tertiary-dim</nve-paragraph>
 </nve-box>
 ```
 
@@ -51,9 +60,9 @@ Bokser kan nøstes for å bygge opp et hierarki av padding.
 <CodeExamplePreview>
 
 ```html
-<nve-box padding="large" background="--color-feedback-background-subtle-neutral">
-  <nve-box padding="small" background="--color-feedback-background-default-info">
-    <div style="padding: 0.75rem; background: var(--color-feedback-background-subtle-neutral)"></div>
+<nve-box padding="large" background="--color-neutrals-background-canvas">
+  <nve-box padding="small" background="--color-neutrals-background-secondary">
+    <div style="padding: 0.75rem; background: var(--color-neutrals-background-canvas)"></div>
   </nve-box>
 </nve-box>
 ```
@@ -67,7 +76,7 @@ En boks med konsistent padding rundt en tekst.
 <CodeExamplePreview>
 
 ```html
-<nve-box background="--color-feedback-background-default-info">
+<nve-box background="--color-neutrals-background-secondary">
   <nve-paragraph>Innhold med jevn padding rundt.</nve-paragraph>
 </nve-box>
 ```
@@ -79,7 +88,7 @@ Samme innhold uten `nve-box` hvor teksten ligger helt inntil kanten.
 <CodeExamplePreview>
 
 ```html
-<div style="background: var(--color-feedback-background-default-info)">
+<div style="background: var(--color-neutrals-background-secondary)">
   <nve-paragraph>Innhold med null padding rundt.</nve-paragraph>
 </div>
 ```
@@ -88,7 +97,12 @@ Samme innhold uten `nve-box` hvor teksten ligger helt inntil kanten.
 
 ## Egenskaper
 
-| Egenskap     | Type                                                                                                                                       | Standard | Beskrivelse                                         |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | -------- | --------------------------------------------------- |
-| `padding`    | `'none' \| '2x-small' \| 'x-small' \| 'small' \| 'medium' \| 'large' \| 'x-large' \| '2x-large' \| '3x-large' \| '4x-large' \| '5x-large'` | `medium` | Tokenbasert padding. Mapper til `--spacing-<verdi>` |
-| `background` | Eksempel: `--color-brand-background-primary`                                                                                               | `none`   | Tokenbasert bakgrunnsfarge.                         |
+| Egenskap         | Type            | Standard | Beskrivelse                                                                              |
+| ---------------- | --------------- | -------- | ---------------------------------------------------------------------------------------- |
+| `background`     | `BoxBackground` | —        | Tokenbasert bakgrunnsfarge. Gyldige verdier er `--color-neutrals-background-*`-tokenene. |
+| `padding`        | `SpacingToken`  | `medium` | Tokenbasert padding på alle sider. Visuell standard er `medium` via CSS.                 |
+| `padding-block`  | `SpacingToken`  | —        | Overstyrer `padding` i blokk-retning (topp/bunn).                                        |
+| `padding-inline` | `SpacingToken`  | —        | Overstyrer `padding` i inline-retning (venstre/høyre).                                   |
+| `margin`         | `SpacingToken`  | —        | Tokenbasert margin på alle sider.                                                        |
+| `margin-block`   | `SpacingToken`  | —        | Overstyrer `margin` i blokk-retning (topp/bunn).                                         |
+| `margin-inline`  | `SpacingToken`  | —        | Overstyrer `margin` i inline-retning (venstre/høyre).                                    |

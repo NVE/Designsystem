@@ -5,7 +5,7 @@ export { default as NveAccordionItem } from './components/nve-accordion-item/nve
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
 export { default as NveBadge } from './components/nve-badge/nve-badge.component';
 export { NveLayoutBase, type SpacingToken, type LayoutJustify } from './components/layouts/nve-layout-base';
-export { default as NveBox } from './components/layouts/nve-box/nve-box.component';
+export { default as NveBox, type BoxBackground } from './components/layouts/nve-box/nve-box.component';
 export {
   default as NveCluster,
   type ClusterLayoutGap,
