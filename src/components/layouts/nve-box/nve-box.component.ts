@@ -8,12 +8,10 @@ import { NveLayoutBase, SpacingToken } from '../nve-layout-base';
  * Basert på Box-primitiven fra Every Layout.
  *
  * Arver padding/margin-props fra NveLayoutBase.
- * Bakgrunnsfarge styres av `background` og tar hele token-stien etter `--color-`.
- * Eks: `background="--color-feedback-background-default-info"` → `var(--color-feedback-background-default-info)`
- * Eks: `background="--color-brand-background-primary"` → `var(--color-brand-background-primary)`
+ * Bakgrunnsfarge styres av `background`.
  *
  * @property {SpacingToken} padding - Tokenbasert padding (arvet). Standard: medium.
- * @property {string} background - Tokenbasert bakgrunnsfarge. Tar token-stien etter `--color-`.
+ * @property {string} background - Tokenbasert bakgrunnsfarge.
  */
 export type BoxLayoutPadding = SpacingToken;
 
@@ -21,7 +19,7 @@ export type BoxLayoutPadding = SpacingToken;
 export default class NveBox extends NveLayoutBase {
   static styles = [styles];
 
-  /** Tokenbasert bakgrunnsfarge. Skriv hele CSS-variabelnavnet, f.eks. `--color-feedback-background-default-info`. */
+  /** Tokenbasert bakgrunnsfarge. */
   @property({ type: String, reflect: true }) background?: string;
 
   override updated(changedProperties: PropertyValues) {

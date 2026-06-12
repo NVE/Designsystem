@@ -18,6 +18,18 @@ export type SpacingToken =
   | '4x-large'
   | '5x-large';
 
+export type LayoutJustify =
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'start'
+  | 'end'
+  | 'left'
+  | 'right';
+
 /**
  * Basisklasse for alle layout-komponenter.
  * Gir felles props for padding og margin låst til spacing-tokenene i designsystemet.

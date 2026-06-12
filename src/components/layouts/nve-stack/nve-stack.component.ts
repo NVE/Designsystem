@@ -1,7 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-stack.styles';
 import { html, PropertyValues } from 'lit';
-import { NveLayoutBase, SpacingToken } from '../nve-layout-base';
+import { NveLayoutBase, SpacingToken, LayoutJustify } from '../nve-layout-base';
 
 /**
  * Stabler barn-elementer vertikalt med konsistent mellomrom.
@@ -23,7 +23,7 @@ export default class NveStack extends NveLayoutBase {
   @property({ type: String, reflect: true }) gap?: StackLayoutGap;
 
   /** justify-content på flex-containeren. Standard: flex-start. */
-  @property({ type: String, reflect: true }) justify: string = 'flex-start';
+  @property({ type: String, reflect: true }) justify: LayoutJustify = 'flex-start';
 
   override updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);

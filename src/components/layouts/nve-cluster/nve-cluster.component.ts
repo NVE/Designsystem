@@ -1,7 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-cluster.styles';
 import { html, PropertyValues } from 'lit';
-import { NveLayoutBase, SpacingToken } from '../nve-layout-base';
+import { NveLayoutBase, SpacingToken, LayoutJustify } from '../nve-layout-base';
 
 /**
  * Grupperer barn-elementer horisontalt med automatisk linjebryting.
@@ -11,10 +11,11 @@ import { NveLayoutBase, SpacingToken } from '../nve-layout-base';
  * Arver padding/margin-props fra NveLayoutBase.
  *
  * @property {ClusterLayoutGap} gap - Forhåndsdefinert tokenbasert mellomrom.
- * @property {string} justify - justify-content-verdi. Standard: flex-start.
- * @property {string} align - align-items-verdi. Standard: center.
+ * @property {LayoutJustify} justify - justify-content-verdi. Standard: flex-start.
+ * @property {ClusterAlign} align - align-items-verdi. Standard: center.
  */
 export type ClusterLayoutGap = SpacingToken;
+export type ClusterAlign = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | 'start' | 'end';
 
 @customElement('nve-cluster')
 export default class NveCluster extends NveLayoutBase {
@@ -24,10 +25,10 @@ export default class NveCluster extends NveLayoutBase {
   @property({ type: String, reflect: true }) gap?: ClusterLayoutGap;
 
   /** justify-content på flex-containeren. Standard: flex-start. */
-  @property({ type: String, reflect: true }) justify: string = 'flex-start';
+  @property({ type: String, reflect: true }) justify: LayoutJustify = 'flex-start';
 
   /** align-items på flex-containeren. Standard: center. */
-  @property({ type: String, reflect: true }) align: string = 'center';
+  @property({ type: String, reflect: true }) align: ClusterAlign = 'center';
 
   override updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
