@@ -12,7 +12,7 @@
         },
         "tertiary": {
           "$type": "color",
-          "$value": "{color-shades.brand.150}"
+          "$value": "{color-shades.accent.000}"
         },
         "quaternary": {
           "$type": "color",
@@ -26,8 +26,7 @@
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.accent.700}",
-          "$description": "was 500"
+          "$value": "{color-shades.accent.700}"
         },
         "primary-on-bg": {
           "$type": "color",
@@ -472,72 +471,6 @@
               "$type": "color",
               "$value": "{color-shades.functional.neutralgrey.000}"
             }
-          }
-        },
-        "default": {
-          "neutral": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          },
-          "info": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          },
-          "error": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          },
-          "warning": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          },
-          "success": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          }
-        },
-        "subtle": {
-          "neutral": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          },
-          "info": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          },
-          "error": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          },
-          "warning": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          },
-          "success": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          }
-        },
-        "emphasized": {
-          "neutral": {
-            "$type": "color",
-            "$value": "{color-shades.grey.000}"
-          },
-          "info": {
-            "$type": "color",
-            "$value": "{color-shades.grey.000}"
-          },
-          "error": {
-            "$type": "color",
-            "$value": "{color-shades.grey.000}"
-          },
-          "warning": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          },
-          "success": {
-            "$type": "color",
-            "$value": "{color-shades.grey.000}"
           }
         }
       },
