@@ -6,7 +6,7 @@ outline: [2, 3]
 <CodeExamplePreview>
 
 ```html
-<nve-exposed-height height1="1000" variant="1"></nve-exposed-height>
+<nve-exposed-height variant="1" height1="1000"></nve-exposed-height>
 ```
 
 </CodeExamplePreview>
@@ -47,7 +47,8 @@ Her er noen eksempler på feil bruk:
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, auto)">
 
 ```html
-<nve-exposed-height></nve-exposed-height> <nve-exposed-height variant="2" height2="1000"></nve-exposed-height>
+<nve-exposed-height></nve-exposed-height>
+<nve-exposed-height variant="2" height2="1000"></nve-exposed-height>
 <p>variant 1 og 2 mangler height1</p>
 <nve-exposed-height variant="3" height1="1000"></nve-exposed-height>
 <nve-exposed-height variant="4" height1="1000"></nve-exposed-height>
