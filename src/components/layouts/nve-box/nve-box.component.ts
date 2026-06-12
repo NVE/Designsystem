@@ -1,52 +1,42 @@
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-box.styles';
-import { LitElement, html } from 'lit';
+import { html, PropertyValues } from 'lit';
+import { NveLayoutBase, SpacingToken } from '../nve-layout-base';
 
 /**
- * Pakker innhold i en boks med padding.
+ * Pakker innhold i en boks med padding og bakgrunnsfarge.
  * Basert på Box-primitiven fra Every Layout.
  *
- * Padding styres av `padding` og er låst til spacing-tokenene i designsystemet.
- * Bakgrunnsfarge styres av `background` og er låst til feedback-fargetokenene.
+ * Arver padding/margin-props fra NveLayoutBase.
+ * Bakgrunnsfarge styres av `background` og tar hele token-stien etter `--color-`.
+ * Eks: `background="--color-feedback-background-default-info"` → `var(--color-feedback-background-default-info)`
+ * Eks: `background="--color-brand-background-primary"` → `var(--color-brand-background-primary)`
  *
- * @property {BoxLayoutPadding} padding - Forhåndsdefinert tokenbasert padding.
- * @property {BoxLayoutBackground} background - Forhåndsdefinert tokenbasert bakgrunnsfarge.
+ * @property {SpacingToken} padding - Tokenbasert padding (arvet). Standard: medium.
+ * @property {string} background - Tokenbasert bakgrunnsfarge. Tar token-stien etter `--color-`.
  */
-export type BoxLayoutPadding =
-  | 'none'
-  | '2x-small'
-  | 'x-small'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'x-large'
-  | '2x-large'
-  | '3x-large'
-  | '4x-large'
-  | '5x-large';
-
-export type BoxLayoutBackground =
-  | 'none'
-  | 'neutral'
-  | 'neutral-subtle'
-  | 'info'
-  | 'info-subtle'
-  | 'success'
-  | 'success-subtle'
-  | 'warning'
-  | 'warning-subtle'
-  | 'error'
-  | 'error-subtle';
+export type BoxLayoutPadding = SpacingToken;
 
 @customElement('nve-box')
-export default class NveBox extends LitElement {
+export default class NveBox extends NveLayoutBase {
   static styles = [styles];
 
-  /** Forhåndsdefinert tokenbasert padding. Mapper til `--spacing-<verdi>`. */
-  @property({ type: String, reflect: true }) padding?: BoxLayoutPadding;
+  /** Tokenbasert bakgrunnsfarge. Skriv hele CSS-variabelnavnet, f.eks. `--color-feedback-background-default-info`. */
+  @property({ type: String, reflect: true }) background?: string;
 
-  /** Forhåndsdefinert tokenbasert bakgrunnsfarge. Mapper til `--color-feedback-background-*`. */
-  @property({ type: String, reflect: true }) background?: BoxLayoutBackground;
+  override updated(changedProperties: PropertyValues) {
+    super.updated(changedProperties);
+    if (
+      changedProperties.has('background') &&
+      (changedProperties.get('background') !== undefined || this.background !== undefined)
+    ) {
+      if (this.background !== undefined) {
+        this.style.setProperty('background', `var(${this.background})`);
+      } else {
+        this.style.removeProperty('background');
+      }
+    }
+  }
 
   render() {
     return html`<slot></slot>`;

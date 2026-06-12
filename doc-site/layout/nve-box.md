@@ -11,13 +11,13 @@ I de aller fleste tilfeller skal du bruke `padding`. `padding` er knyttet direkt
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<nve-box padding="small" background="neutral-subtle">
+<nve-box padding="small" background="--color-feedback-background-subtle-neutral">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
 </nve-box>
-<nve-box background="neutral-subtle">
+<nve-box background="--color-feedback-background-subtle-neutral">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
 </nve-box>
-<nve-box padding="large" background="neutral-subtle">
+<nve-box padding="large" background="--color-feedback-background-subtle-neutral">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
 </nve-box>
 ```
@@ -26,25 +26,19 @@ I de aller fleste tilfeller skal du bruke `padding`. `padding` er knyttet direkt
 
 ## Bakgrunn
 
-`background` setter en tokenbasert bakgrunnsfarge på boksen. Verdiene mapper til feedback-fargene i designsystemet.
+`background` setter en tokenbasert bakgrunnsfarge på boksen.
 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<nve-box background="neutral">
-  <nve-paragraph>neutral</nve-paragraph>
+<nve-box background="--color-brand-background-primary">
+  <nve-paragraph></nve-paragraph>
 </nve-box>
-<nve-box background="info">
-  <nve-paragraph>info</nve-paragraph>
+<nve-box background="--color-neutrals-background-secondary">
+  <nve-paragraph></nve-paragraph>
 </nve-box>
-<nve-box background="success">
-  <nve-paragraph>success</nve-paragraph>
-</nve-box>
-<nve-box background="warning">
-  <nve-paragraph>warning</nve-paragraph>
-</nve-box>
-<nve-box background="error">
-  <nve-paragraph>error</nve-paragraph>
+<nve-box background="--color-brand-background-quaternary">
+  <nve-paragraph></nve-paragraph>
 </nve-box>
 ```
 
@@ -57,8 +51,8 @@ Bokser kan nøstes for å bygge opp et hierarki av padding.
 <CodeExamplePreview>
 
 ```html
-<nve-box padding="large" background="neutral-subtle">
-  <nve-box padding="small" background="info">
+<nve-box padding="large" background="--color-feedback-background-subtle-neutral">
+  <nve-box padding="small" background="--color-feedback-background-default-info">
     <div style="padding: 0.75rem; background: var(--color-feedback-background-subtle-neutral)"></div>
   </nve-box>
 </nve-box>
@@ -73,7 +67,7 @@ En boks med konsistent padding rundt en tekst.
 <CodeExamplePreview>
 
 ```html
-<nve-box background="info">
+<nve-box background="--color-feedback-background-default-info">
   <nve-paragraph>Innhold med jevn padding rundt.</nve-paragraph>
 </nve-box>
 ```
@@ -94,7 +88,7 @@ Samme innhold uten `nve-box` hvor teksten ligger helt inntil kanten.
 
 ## Egenskaper
 
-| Egenskap     | Type                                                                                                                                                                | Standard | Beskrivelse                                                                    |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------ |
-| `padding`    | `'none' \| '2x-small' \| 'x-small' \| 'small' \| 'medium' \| 'large' \| 'x-large' \| '2x-large' \| '3x-large' \| '4x-large' \| '5x-large'`                          | `medium` | Tokenbasert padding. Mapper til `--spacing-<verdi>`. Autoutfylling i editoren. |
-| `background` | `'none' \| 'neutral' \| 'neutral-subtle' \| 'info' \| 'info-subtle' \| 'success' \| 'success-subtle' \| 'warning' \| 'warning-subtle' \| 'error' \| 'error-subtle'` | `none`   | Tokenbasert bakgrunnsfarge. Mapper til `--color-feedback-background-*`.        |
+| Egenskap     | Type                                                                                                                                       | Standard | Beskrivelse                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------ | -------- | --------------------------------------------------- |
+| `padding`    | `'none' \| '2x-small' \| 'x-small' \| 'small' \| 'medium' \| 'large' \| 'x-large' \| '2x-large' \| '3x-large' \| '4x-large' \| '5x-large'` | `medium` | Tokenbasert padding. Mapper til `--spacing-<verdi>` |
+| `background` | Eksempel: `--color-brand-background-primary`                                                                                               | `none`   | Tokenbasert bakgrunnsfarge.                         |

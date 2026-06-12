@@ -27,7 +27,7 @@ Layout-komponentene er laget for å kombineres. Et kontaktskjema er et typisk ek
 <CodeExamplePreview>
 
 ```html
-<nve-box padding="large" background="neutral">
+<nve-box padding="large" background="--color-feedback-background-subtle-neutral">
   <nve-stack>
     <nve-heading level="3">Kontakt oss</nve-heading>
     <p>Fyll ut skjemaet, så tar vi kontakt så raskt vi kan.</p>
