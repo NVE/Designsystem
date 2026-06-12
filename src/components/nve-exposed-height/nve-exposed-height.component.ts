@@ -30,12 +30,16 @@ export default class NveExposedHeight extends LitElement implements INveComponen
   /** Andre høydeverdi i meter (for variant 3 og 4) */
   @property({ type: Number }) height2: number = 0;
 
-  /** Språk for aria-label: 'no' for norsk, 'en' for engelsk. Norsk er standard. */
-  @property({ type: String }) lang: 'no' | 'en' = 'no';
+  /** Språk for aria-label. Blir satt til engelsk om lang starter på 'en'. Standard er norsk. */
+  @property({ type: String }) lang: string = 'no';
 
   @property({ type: String }) testId: string | undefined = undefined;
 
   static styles = [styles];
+
+  private isEnglish() {
+    return this.lang.toLowerCase().startsWith('en');
+  }
 
   // grafikk for fjellet
   private createMountainPath(variant: 1 | 2 | 3 | 4): MountainPaths {
@@ -191,10 +195,10 @@ export default class NveExposedHeight extends LitElement implements INveComponen
   }
 
   private getAriaLabel(): string {
-    const prefix = this.lang === 'en' ? 'Exposed height' : 'Utsatt høyde';
-    const between = this.lang === 'en' ? 'Between' : 'Mellom';
-    const and = this.lang === 'en' ? 'and' : 'og';
-    const meter = this.lang === 'en' ? 'meters' : 'meter';
+    const prefix = this.isEnglish() ? 'Exposed height' : 'Utsatt høyde';
+    const between = this.isEnglish() ? 'Between' : 'Mellom';
+    const and = this.isEnglish() ? 'and' : 'og';
+    const meter = this.isEnglish() ? 'meters' : 'meter';
 
     switch (this.variant) {
       case 1:

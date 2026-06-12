@@ -59,7 +59,7 @@ describe('nve-exposed-height', () => {
 
   it('has correct aria-label for variant 1 in English', async () => {
     const el = await fixture<NveExposedHeight>(
-      html`<nve-exposed-height variant="1" height1="1000" lang="en"></nve-exposed-height>`
+      html`<nve-exposed-height variant="1" height1="1000" lang="en-GB"></nve-exposed-height>`
     );
     const svg = el.shadowRoot?.querySelector('svg');
     expect(svg?.getAttribute('aria-label')).toBe('Exposed height: Over 1000 meters');

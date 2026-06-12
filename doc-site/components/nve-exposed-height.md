@@ -73,7 +73,7 @@ Endre bredden med CSS-variabelen `--exposed-height-width`. Standard bredde er 15
 
 ### Språk
 
-Bruk `lang="en"` for å vise aria-label på engelsk. Norsk er standard.
+Sett `lang` til noe som starter på 'en' for å vise aria-label på engelsk. Norsk er standard.
 
 <CodeExamplePreview containerGridTemplateColumns="repeat(5, auto)">
 
@@ -81,8 +81,8 @@ Bruk `lang="en"` for å vise aria-label på engelsk. Norsk er standard.
 en:
 <nve-exposed-height lang="en" variant="1" height1="1000"></nve-exposed-height>
 <nve-exposed-height lang="en" variant="2" height1="1000"></nve-exposed-height>
-<nve-exposed-height lang="en" variant="3" height1="800" height2="1200"></nve-exposed-height>
-<nve-exposed-height lang="en" variant="4" height1="800" height2="1200"></nve-exposed-height>
+<nve-exposed-height lang="en-GB" variant="3" height1="800" height2="1200"></nve-exposed-height>
+<nve-exposed-height lang="en-US" variant="4" height1="800" height2="1200"></nve-exposed-height>
 
 no:
 <nve-exposed-height variant="1" height1="1000"></nve-exposed-height>
