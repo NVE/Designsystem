@@ -3,10 +3,6 @@ layout: component
 outline: [2, 3]
 ---
 
-# Utsatt høyde
-
-Viser utsatt høyde for et skredproblem. Komponenten bruker et fjellsymbol med piler og høydetekst for å indikere hvilke høyder som er utsatt.
-
 <CodeExamplePreview>
 
 ```html
@@ -15,9 +11,7 @@ Viser utsatt høyde for et skredproblem. Komponenten bruker et fjellsymbol med p
 
 </CodeExamplePreview>
 
-Komponenten er skalerbar og standard høyde er 90px. Du kan endre størrelsen med CSS-variabelen `--exposed-height-size`.
-
-## Eksempler
+## Eksempler på bruk
 
 ### Varianter
 
@@ -29,8 +23,11 @@ Bruk `variant` for å angi om skredproblemet gjelder:
 4. mellom to høyder
 
 Variant 1 er standard.
-For variant 1 og 2 må du sende inn `height1`.
-For variant 3 og 4 må du sende inn både `height1` og `height2`.
+I tillegg må du angi høyde:
+
+- For variant 1 og 2 må du sende inn `height1`.
+- For variant 3 og 4 må du sende inn både `height1` og `height2`.
+  Komponenten finner selv ut om `height1` eller `height2` er høyest.
 
 <CodeExamplePreview containerGridTemplateColumns="repeat(4, auto)">
 
@@ -47,26 +44,27 @@ For variant 3 og 4 må du sende inn både `height1` og `height2`.
 
 Her er noen eksempler på feil bruk:
 
-<CodeExamplePreview containerGridTemplateColumns="repeat(2, auto)">
+<CodeExamplePreview containerGridTemplateColumns="repeat(3, auto)">
 
 ```html
-<nve-exposed-height></nve-exposed-height> utsatt høyde blir over 0m om variant og height1 ikke angis
-<nve-exposed-height variant="2" height2="1000"></nve-exposed-height> variant 2 mangler height1
-<nve-exposed-height variant="3" height1="1000"></nve-exposed-height> variant 3 må ha både height 1 og height2
-<nve-exposed-height variant="4" height1="1000"></nve-exposed-height> variant 4 må ha både height 1 og height2
+<nve-exposed-height></nve-exposed-height> <nve-exposed-height variant="2" height2="1000"></nve-exposed-height> variant 1
+og 2 mangler height1
+<nve-exposed-height variant="3" height1="1000"></nve-exposed-height>
+<nve-exposed-height variant="4" height1="1000"></nve-exposed-height> variant 3 og 4 må ha både height 1 og height2
 ```
 
 </CodeExamplePreview>
 
 ### Størrelse
 
-Endre høyden med CSS-variabelen `--exposed-height-size`. Standard høyde er 90px.
+Endre bredden med CSS-variabelen `--exposed-height-width`. Standard bredde er 150px.
 
 <CodeExamplePreview>
 
 ```html
-<nve-exposed-height variant="1" height1="1000" style="--exposed-height-size: 120px;"></nve-exposed-height> 120px høyde
-<nve-exposed-height variant="1" height1="1000"></nve-exposed-height>90px høyde
+<nve-exposed-height variant="1" height1="1000" style="--exposed-height-width: 100px;"></nve-exposed-height>
+<nve-exposed-height variant="1" height1="1000"></nve-exposed-height>
+<nve-exposed-height variant="1" height1="1000" style="--exposed-height-width: 200px;"></nve-exposed-height>
 ```
 
 </CodeExamplePreview>
@@ -78,13 +76,13 @@ Bruk `lang="en"` for å vise aria-label på engelsk. Norsk er standard.
 <CodeExamplePreview containerGridTemplateColumns="repeat(5, auto)">
 
 ```html
-Engelsk:
+en:
 <nve-exposed-height lang="en" variant="1" height1="1000"></nve-exposed-height>
 <nve-exposed-height lang="en" variant="2" height1="1000"></nve-exposed-height>
 <nve-exposed-height lang="en" variant="3" height1="800" height2="1200"></nve-exposed-height>
 <nve-exposed-height lang="en" variant="4" height1="800" height2="1200"></nve-exposed-height>
 
-Norsk:
+no:
 <nve-exposed-height variant="1" height1="1000"></nve-exposed-height>
 <nve-exposed-height variant="2" height1="1000"></nve-exposed-height>
 <nve-exposed-height variant="3" height1="800" height2="1200"></nve-exposed-height>

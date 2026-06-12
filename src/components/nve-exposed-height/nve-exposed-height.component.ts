@@ -13,10 +13,11 @@ interface MountainPaths {
 }
 
 /**
- * Visualiserer utsatt høyde for skredproblemer.
- * Viser et fjellsymbol med piler og høydeindikasjon.
+ * Visualisering av utsatt høyde for et skredproblem.
+ * Viser et fjell med fargelegging av utsatt høyde i tillegg til piler og høydegrenser.
  * @cssproperty --exposed-height-affected-color - Farge på utsatte høyde. Standard er #d21523.
  * @cssproperty --exposed-height-unaffected-color - Farge på ikke-utsatt høyde. Standard er #e3e3e3.
+ * @cssproperty --exposed-height-width - Bredde på hele komponenten. Standard er 150px.
  */
 @customElement('nve-exposed-height')
 export default class NveExposedHeight extends LitElement implements INveComponent {
@@ -36,6 +37,7 @@ export default class NveExposedHeight extends LitElement implements INveComponen
 
   static styles = [styles];
 
+  // grafikk for fjellet
   private createMountainPath(variant: 1 | 2 | 3 | 4): MountainPaths {
     // Variant 1 og 2 bruker samme geometri
     const twoPartMountain = {
@@ -83,10 +85,18 @@ export default class NveExposedHeight extends LitElement implements INveComponen
     // Fill 3 og 4 trenger en y-offset på -6 for å vises riktig
     const mountainYOffset = this.variant === 3 || this.variant === 4 ? -6 : 0;
 
+    const isThreePart = this.variant === 3 || this.variant === 4;
+    const vbY = isThreePart ? -6 : -2;
+    const vbH = isThreePart ? 48 : 46;
+
     return html`
       <svg
         class="exposed-height"
-        viewBox="-2 -8 100 62"
+        viewBox="-2 ${vbY} 120 ${vbH}"
+        width="120"
+        height="${vbH}"
+        width="150"
+        height="62"
         preserveAspectRatio="xMidYMid meet"
         role="img"
         aria-label="${this.getAriaLabel()}"
@@ -121,22 +131,22 @@ export default class NveExposedHeight extends LitElement implements INveComponen
       1: {
         groupHeight: 28,
         arrows: [{ y: 0, rotation: 0 }],
-        texts: [{ y: 26, text: `${this.height1}m`, xOffset: 5.96, centered: true }], // Sentrert på pil
+        texts: [{ y: 30, text: `${this.height1}m`, xOffset: 5.96, centered: true }], // Sentrert på pil
       },
       2: {
         groupHeight: 28,
         arrows: [{ y: 12, rotation: 180 }],
-        texts: [{ y: 5, text: `${this.height1}m`, xOffset: 5.96, centered: true }], // Sentrert på pil
+        texts: [{ y: 8, text: `${this.height1}m`, xOffset: 5.96, centered: true }], // Sentrert på pil
       },
       3: {
-        groupHeight: 48,
+        groupHeight: 38,
         arrows: [
           { y: 0, rotation: 0 },
-          { y: 30, rotation: 180 },
+          { y: 22, rotation: 180 },
         ],
         texts: [
-          { y: 20, text: `${this.maxHeight}m`, xOffset: 18, centered: false }, // Til høyre for pilene
-          { y: 38, text: `${this.minHeight}m`, xOffset: 18, centered: false },
+          { y: 16, text: `${this.maxHeight}m`, xOffset: 16, centered: false }, // was y=20 → now baseline = shaft bottom of up-arrow
+          { y: 30, text: `${this.minHeight}m`, xOffset: 16, centered: false }, // was y=38
         ],
       },
       4: {
@@ -145,14 +155,14 @@ export default class NveExposedHeight extends LitElement implements INveComponen
           { y: 0, rotation: 180 },
           { y: 24, rotation: 0 },
         ],
-        texts: [{ y: 20, text: `${this.minHeight}-${this.maxHeight}m`, xOffset: 6, centered: false }], // Venstrejustert
+        texts: [{ y: 22, text: `${this.minHeight}-${this.maxHeight}m`, xOffset: 12, centered: false }], // Venstrejustert
       },
     };
 
     const { groupHeight, arrows, texts } = config[this.variant];
 
     return svg`
-      <g transform="translate(50, ${centerY - groupHeight / 2})">
+      <g transform="translate(55, ${centerY - groupHeight / 2})">
         ${arrows.map((arrow) => this.renderArrow(arrow.y, arrow.rotation))}
         ${texts.map((text) => this.renderText(text.y, text.text, text.xOffset, text.centered))}
       </g>

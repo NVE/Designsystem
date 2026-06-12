@@ -3,12 +3,12 @@ import { css } from 'lit';
 export default css`
   :host {
     display: inline-block;
-    height: var(--exposed-height-size, 90px);
+    width: var(--exposed-height-width, 150px);
   }
 
   .exposed-height {
     width: 100%;
-    height: 100%;
+    height: auto; /* auto = maintains aspect ratio from intrinsic width/height */
   }
 
   .mountain-danger {
@@ -28,7 +28,7 @@ export default css`
   .height-label {
     font-family: 'Source Sans 3', sans-serif;
     font-weight: var(--font-weight-regular);
-    font-size: 0.7rem;
+    font-size: 0.67rem;
   }
 
   .height-label.centered {
