@@ -46,3 +46,9 @@ Layout-komponentene er laget for å kombineres. Et kontaktskjema er et typisk ek
 ```
 
 </CodeExamplePreview>
+
+<img src="../../assets/images/layout-visualisering.png" width="690" alt="Visualisering av layoutkomponentene (Grid, Stack, Cluster og Box) i Designsystemet.">
+
+## Felles spacing-props
+
+Alle layout-komponenter arver `padding`, `margin`, `padding-block`, `padding-inline`, `margin-block` og `margin-inline` fra en basis layoutklasse. Verdiene er låst til spacing-tokenene i designsystemet.
