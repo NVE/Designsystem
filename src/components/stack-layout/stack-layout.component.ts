@@ -6,15 +6,12 @@ import { LitElement, html } from 'lit';
  * Stabler barn-elementer vertikalt med konsistent mellomrom.
  * Basert på Stack-primitiven fra Every Layout.
  *
- * Bruk `size` (mapper til spacing-tokens i designsystemet).
- * Bruk kun `gap`/`space` når en eksakt, ikke-tokenbasert verdi er nødvendig.
+ * Mellomrommet styres av `gap` og er låst til spacing-tokenene i designsystemet.
  *
- * @property {string} gap - Eksakt CSS-lengde, f.eks. "12px" eller "1.25rem". Skal ikke brukes for token-verdier, bruk heller `size`.
- * @property {string} space - Alias for gap. Brukes hvis gap ikke er satt.
- * @property {Size} size - Forhåndsdefinert tokenbasert størrelse.
+ * @property {StackLayoutGap} gap - Forhåndsdefinert tokenbasert mellomrom.
  * @property {string} justify - justify-content-verdi. Standard: flex-start.
  */
-export type StackLayoutSize =
+export type StackLayoutGap =
   | 'none'
   | '2x-small'
   | 'x-small'
@@ -31,21 +28,13 @@ export type StackLayoutSize =
 export default class StackLayout extends LitElement {
   static styles = [styles];
 
-  /** Eksakt CSS-lengde, f.eks. "12px" eller "1.25rem". Skal IKKE brukes for token-verdier – bruk `size` til det. */
-  @property({ type: String, reflect: true }) gap?: string;
-
-  /** Alias for gap – brukes hvis gap ikke er satt. */
-  @property({ type: String, reflect: true }) space?: string;
-
-  /** Forhåndsdefinert tokenbasert størrelse. Mapper til `--spacing-<verdi>`. */
-  @property({ type: String, reflect: true }) size?: StackLayoutSize;
+  /** Forhåndsdefinert tokenbasert mellomrom. Mapper til `--spacing-<verdi>`. */
+  @property({ type: String, reflect: true }) gap?: StackLayoutGap;
 
   /** justify-content på flex-containeren. Standard: flex-start. */
   @property({ type: String, reflect: true }) justify: string = 'flex-start';
 
   updated() {
-    const spacing = this.gap ?? this.space;
-    if (spacing !== undefined) this.style.setProperty('--_stack-gap', spacing);
     this.style.setProperty('--_stack-justify', this.justify);
   }
 

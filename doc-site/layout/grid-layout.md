@@ -2,7 +2,7 @@
 
 `grid-layout` lager et responsivt rutenett som automatisk bryter til nye linjer basert på en minste kolonnebredde.
 
-I de aller fleste tilfeller skal du bruke `size` for mellomrom. `size` er knyttet direkte til spacing-tokenene i designsystemet og sikrer at avstandene er konsistente på tvers av sider og komponenter.
+I de aller fleste tilfeller skal du bruke `gap` for mellomrom. `gap` er knyttet direkte til spacing-tokenene i designsystemet og sikrer at avstandene er konsistente på tvers av sider og komponenter.
 
 ## Minste kolonnebredde
 
@@ -39,15 +39,15 @@ I de aller fleste tilfeller skal du bruke `size` for mellomrom. `size` er knytte
 
 </CodeExamplePreview>
 
-## Størrelse
+## Mellomrom
 
-`size` setter mellomrommet mellom rutene ved bruk av et spacing-token. Hvis `size` ikke er satt, brukes `medium` som standard.
+`gap` setter mellomrommet mellom rutene ved bruk av et spacing-token. Hvis `gap` ikke er satt, brukes `medium` som standard.
 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
 <grid-layout
-  size="small"
+  gap="small"
   min="80px"
   style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem"
 >
@@ -79,7 +79,7 @@ I de aller fleste tilfeller skal du bruke `size` for mellomrom. `size` er knytte
   ></div>
 </grid-layout>
 <grid-layout
-  size="large"
+  gap="large"
   min="80px"
   style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem"
 >
@@ -100,37 +100,6 @@ I de aller fleste tilfeller skal du bruke `size` for mellomrom. `size` er knytte
 
 </CodeExamplePreview>
 
-## Mellomrom
-
-`gap` setter mellomrommet som en eksakt CSS-verdi. Brukes kun når du trenger en verdi som ikke finnes blant tokenene.
-
-<CodeExamplePreview>
-
-```html
-<grid-layout
-  gap="0.25rem"
-  min="120px"
-  style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem"
->
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-</grid-layout>
-```
-
-</CodeExamplePreview>
-
-<nve-message-card size="compact" variant="warning" label="Tips">Bruk size i stedet når du jobber med designsystemets avstander. Gap er ment for unntakstilfeller der du må ha en helt spesifikk og ikke-tokenbasert verdi.</nve-message-card>
-
 ## Eksempel på bruk
 
 Et responsivt rutenett med navigasjonskort som tilpasser antall kolonner etter tilgjengelig plass.
@@ -138,7 +107,7 @@ Et responsivt rutenett med navigasjonskort som tilpasser antall kolonner etter t
 <CodeExamplePreview>
 
 ```html
-<grid-layout size="small">
+<grid-layout gap="small">
   <nve-link-card href="#" label="Flom og skred" size="small"></nve-link-card>
   <nve-link-card href="#" label="Vassdrag og miljø" size="small"></nve-link-card>
   <nve-link-card href="#" label="Energi" size="small"></nve-link-card>
@@ -152,8 +121,7 @@ Et responsivt rutenett med navigasjonskort som tilpasser antall kolonner etter t
 
 ## Egenskaper
 
-| Egenskap | Type                                                                                                                                       | Standard | Beskrivelse                                                                               |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ----------------------------------------------------------------------------------------- |
-| `min`    | `string`                                                                                                                                   | `250px`  | Minste kolonnebredde før rutenettet bryter til ny linje.                                  |
-| `size`   | `'none' \| '2x-small' \| 'x-small' \| 'small' \| 'medium' \| 'large' \| 'x-large' \| '2x-large' \| '3x-large' \| '4x-large' \| '5x-large'` | `medium` | Tokenbasert mellomrom. Mapper til `--spacing-<verdi>`. Autoutfylling i editoren.          |
-| `gap`    | `string`                                                                                                                                   | –        | Eksakt CSS-lengde (`"12px"`, `"1.25rem"`). Skal **ikke** brukes for tokens – bruk `size`. |
+| Egenskap | Type                                                                                                                                       | Standard | Beskrivelse                                                                      |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------- |
+| `min`    | `string`                                                                                                                                   | `250px`  | Minste kolonnebredde før rutenettet bryter til ny linje.                         |
+| `gap`    | `'none' \| '2x-small' \| 'x-small' \| 'small' \| 'medium' \| 'large' \| 'x-large' \| '2x-large' \| '3x-large' \| '4x-large' \| '5x-large'` | `medium` | Tokenbasert mellomrom. Mapper til `--spacing-<verdi>`. Autoutfylling i editoren. |

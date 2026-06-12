@@ -3,75 +3,75 @@ import { css } from 'lit';
 export default css`
   :host {
     display: block;
-    padding: var(--_box-padding, var(--spacing-medium));
-    background: var(--_box-background, transparent);
+    padding: var(--spacing-medium);
+    background: transparent;
   }
 
-  :host([size='none']) {
-    --_box-padding: var(--spacing-none);
+  :host([padding='none']) {
+    padding: var(--spacing-none);
   }
-  :host([size='2x-small']) {
-    --_box-padding: var(--spacing-2x-small);
+  :host([padding='2x-small']) {
+    padding: var(--spacing-2x-small);
   }
-  :host([size='x-small']) {
-    --_box-padding: var(--spacing-x-small);
+  :host([padding='x-small']) {
+    padding: var(--spacing-x-small);
   }
-  :host([size='small']) {
-    --_box-padding: var(--spacing-small);
+  :host([padding='small']) {
+    padding: var(--spacing-small);
   }
-  :host([size='medium']) {
-    --_box-padding: var(--spacing-medium);
+  :host([padding='medium']) {
+    padding: var(--spacing-medium);
   }
-  :host([size='large']) {
-    --_box-padding: var(--spacing-large);
+  :host([padding='large']) {
+    padding: var(--spacing-large);
   }
-  :host([size='x-large']) {
-    --_box-padding: var(--spacing-x-large);
+  :host([padding='x-large']) {
+    padding: var(--spacing-x-large);
   }
-  :host([size='2x-large']) {
-    --_box-padding: var(--spacing-2x-large);
+  :host([padding='2x-large']) {
+    padding: var(--spacing-2x-large);
   }
-  :host([size='3x-large']) {
-    --_box-padding: var(--spacing-3x-large);
+  :host([padding='3x-large']) {
+    padding: var(--spacing-3x-large);
   }
-  :host([size='4x-large']) {
-    --_box-padding: var(--spacing-4x-large);
+  :host([padding='4x-large']) {
+    padding: var(--spacing-4x-large);
   }
-  :host([size='5x-large']) {
-    --_box-padding: var(--spacing-5x-large);
+  :host([padding='5x-large']) {
+    padding: var(--spacing-5x-large);
   }
 
   :host([background='none']) {
-    --_box-background: transparent;
+    background: transparent;
   }
   :host([background='neutral']) {
-    --_box-background: var(--color-feedback-background-default-neutral);
+    background: var(--color-feedback-background-default-neutral);
   }
   :host([background='neutral-subtle']) {
-    --_box-background: var(--color-feedback-background-subtle-neutral);
+    background: var(--color-feedback-background-subtle-neutral);
   }
   :host([background='info']) {
-    --_box-background: var(--color-feedback-background-default-info);
+    background: var(--color-feedback-background-default-info);
   }
   :host([background='info-subtle']) {
-    --_box-background: var(--color-feedback-background-subtle-info);
+    background: var(--color-feedback-background-subtle-info);
   }
   :host([background='success']) {
-    --_box-background: var(--color-feedback-background-default-success);
+    background: var(--color-feedback-background-default-success);
   }
   :host([background='success-subtle']) {
-    --_box-background: var(--color-feedback-background-subtle-success);
+    background: var(--color-feedback-background-subtle-success);
   }
   :host([background='warning']) {
-    --_box-background: var(--color-feedback-background-default-warning);
+    background: var(--color-feedback-background-default-warning);
   }
   :host([background='warning-subtle']) {
-    --_box-background: var(--color-feedback-background-subtle-warning);
+    background: var(--color-feedback-background-subtle-warning);
   }
   :host([background='error']) {
-    --_box-background: var(--color-feedback-background-default-error);
+    background: var(--color-feedback-background-default-error);
   }
   :host([background='error-subtle']) {
-    --_box-background: var(--color-feedback-background-subtle-error);
+    background: var(--color-feedback-background-subtle-error);
   }
 `;

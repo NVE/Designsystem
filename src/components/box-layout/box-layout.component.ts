@@ -6,14 +6,13 @@ import { LitElement, html } from 'lit';
  * Pakker innhold i en boks med padding.
  * Basert på Box-primitiven fra Every Layout.
  *
- * Bruk fortrinnsvis `size` (mapper til spacing-tokens i designsystemet).
- * Bruk kun `padding` når en eksakt, ikke-tokenbasert verdi er nødvendig.
+ * Padding styres av `padding` og er låst til spacing-tokenene i designsystemet.
+ * Bakgrunnsfarge styres av `background` og er låst til feedback-fargetokenene.
  *
- * @property {string} padding - Eksakt CSS-lengde, f.eks. "12px" eller "1.25rem". Skal ikke brukes for token-verdier, bruk heller `size`.
- * @property {Size} size - Forhåndsdefinert tokenbasert størrelse.
+ * @property {BoxLayoutPadding} padding - Forhåndsdefinert tokenbasert padding.
  * @property {BoxLayoutBackground} background - Forhåndsdefinert tokenbasert bakgrunnsfarge.
  */
-export type BoxLayoutSize =
+export type BoxLayoutPadding =
   | 'none'
   | '2x-small'
   | 'x-small'
@@ -43,18 +42,11 @@ export type BoxLayoutBackground =
 export default class BoxLayout extends LitElement {
   static styles = [styles];
 
-  /** Eksakt CSS-lengde, f.eks. "12px" eller "1.25rem". Skal IKKE brukes for token-verdier – bruk `size` til det. */
-  @property({ type: String, reflect: true }) padding?: string;
-
   /** Forhåndsdefinert tokenbasert padding. Mapper til `--spacing-<verdi>`. */
-  @property({ type: String, reflect: true }) size?: BoxLayoutSize;
+  @property({ type: String, reflect: true }) padding?: BoxLayoutPadding;
 
   /** Forhåndsdefinert tokenbasert bakgrunnsfarge. Mapper til `--color-feedback-background-*`. */
   @property({ type: String, reflect: true }) background?: BoxLayoutBackground;
-
-  updated() {
-    if (this.padding !== undefined) this.style.setProperty('--_box-padding', this.padding);
-  }
 
   render() {
     return html`<slot></slot>`;
