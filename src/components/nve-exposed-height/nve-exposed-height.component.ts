@@ -93,13 +93,10 @@ export default class NveExposedHeight extends LitElement implements INveComponen
       <svg
         class="exposed-height"
         viewBox="-2 ${vbY} 120 ${vbH}"
-        width="120"
-        height="${vbH}"
-        width="150"
-        height="62"
         preserveAspectRatio="xMidYMid meet"
         role="img"
         aria-label="${this.getAriaLabel()}"
+        testid=${this.testId}
       >
         <g transform="translate(0, ${mountainYOffset})">${this.renderMountain(paths)}</g>
         ${this.renderArrowsAndLabels()}

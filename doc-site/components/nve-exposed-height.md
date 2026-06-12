@@ -47,10 +47,11 @@ Her er noen eksempler på feil bruk:
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, auto)">
 
 ```html
-<nve-exposed-height></nve-exposed-height> <nve-exposed-height variant="2" height2="1000"></nve-exposed-height> variant 1
-og 2 mangler height1
+<nve-exposed-height></nve-exposed-height> <nve-exposed-height variant="2" height2="1000"></nve-exposed-height>
+<p>variant 1 og 2 mangler height1</p>
 <nve-exposed-height variant="3" height1="1000"></nve-exposed-height>
-<nve-exposed-height variant="4" height1="1000"></nve-exposed-height> variant 3 og 4 må ha både height 1 og height2
+<nve-exposed-height variant="4" height1="1000"></nve-exposed-height>
+<p>variant 3 og 4 må ha både height 1 og height2</p>
 ```
 
 </CodeExamplePreview>
@@ -99,7 +100,7 @@ Bruk css-variablene `--exposed-height-affected-color` og `--exposed-height-unaff
 
 ```html
 <nve-exposed-height style="--exposed-height-affected-color: orange;--exposed-height-unaffected-color: lightgreen" variant="1" height1="1000" >
-</nve-aspect-rose>
+</nve-exposed-height
 ```
 
 </CodeExamplePreview>
