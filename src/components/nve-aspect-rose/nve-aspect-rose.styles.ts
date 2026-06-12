@@ -10,6 +10,7 @@ export default css`
   text {
     font-family: 'Source Sans 3', sans-serif;
     font-weight: var(--font-weight-regular);
+    font-size: 0.67rem;
   }
 
   .circle-outline {

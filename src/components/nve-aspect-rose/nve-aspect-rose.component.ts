@@ -84,7 +84,7 @@ export default class NveAspectRose extends LitElement implements INveComponent {
           ({ cx, cy, label }) => svg`
             <g>
               <circle cx=${cx} cy=${cy} r="7.2" stroke-width="1" stroke="var(--aspect-rose-outline-color, #c6c6c5)" fill="#fff"></circle>
-              <text x=${cx} y=${cy} dy="3.168" font-size="7.92" text-anchor="middle" fill="#6a7a7b">${label}</text>
+              <text x=${cx} y=${cy} dy="3.168" text-anchor="middle" fill="#6a7a7b">${label}</text>
             </g>
           `
         )}
