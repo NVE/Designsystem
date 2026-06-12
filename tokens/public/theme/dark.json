@@ -9,11 +9,11 @@
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.brand.250}"
+          "$value": "{color-shades.brand.400}"
         },
         "tertiary": {
           "$type": "color",
-          "$value": "{color-shades.brand.800}"
+          "$value": "{color-shades.accent.000}"
         },
         "quaternary": {
           "$type": "color",
@@ -27,8 +27,7 @@
         },
         "secondary": {
           "$type": "color",
-          "$value": "{color-shades.accent.300}",
-          "$description": "was 300"
+          "$value": "{color-shades.accent.300}"
         },
         "primary-on-bg": {
           "$type": "color",
@@ -36,7 +35,7 @@
         },
         "secondary-on-bg": {
           "$type": "color",
-          "$value": "{color-shades.brand.000}"
+          "$value": "{color-shades.brand.999}"
         },
         "tertiary-on-bg": {
           "$type": "color",
@@ -54,8 +53,7 @@
         },
         "tertiary": {
           "$type": "color",
-          "$value": "{color-shades.brand.300}",
-          "$description": "was 300"
+          "$value": "{color-shades.brand.300}"
         },
         "emphasized": {
           "$type": "color",
@@ -137,7 +135,7 @@
         },
         "subtle": {
           "$type": "color",
-          "$value": "{color-shades.grey.700}"
+          "$value": "{color-shades.grey.650}"
         },
         "disabled": {
           "$type": "color",
@@ -246,7 +244,7 @@
           },
           "disabled": {
             "$type": "color",
-            "$value": "{color-shades.grey.700}"
+            "$value": "{color-shades.grey.650}"
           }
         },
         "tertiary": {
@@ -473,72 +471,6 @@
               "$type": "color",
               "$value": "{color-shades.functional.neutralgrey.000}"
             }
-          }
-        },
-        "default": {
-          "neutral": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
-          },
-          "info": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
-          },
-          "error": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
-          },
-          "warning": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
-          },
-          "success": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
-          }
-        },
-        "subtle": {
-          "neutral": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
-          },
-          "info": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
-          },
-          "error": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
-          },
-          "warning": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
-          },
-          "success": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
-          }
-        },
-        "emphasized": {
-          "neutral": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          },
-          "info": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
-          },
-          "error": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
-          },
-          "warning": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.999}"
-          },
-          "success": {
-            "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.000}"
           }
         }
       },
