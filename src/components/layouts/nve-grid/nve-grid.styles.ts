@@ -6,7 +6,7 @@ export default [
   css`
     :host {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(var(--_grid-min, 250px), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(var(--_grid-min, 250px), 100%), 1fr));
       gap: var(--spacing-medium);
     }
   `,
