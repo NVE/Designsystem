@@ -1,6 +1,6 @@
-# grid-layout
+# nve-grid
 
-`grid-layout` lager et responsivt rutenett som automatisk bryter til nye linjer basert på en minste kolonnebredde.
+`nve-grid` lager et responsivt rutenett som automatisk bryter til nye linjer basert på en minste kolonnebredde.
 
 I de aller fleste tilfeller skal du bruke `gap` for mellomrom. `gap` er knyttet direkte til spacing-tokenene i designsystemet og sikrer at avstandene er konsistente på tvers av sider og komponenter.
 
@@ -14,7 +14,7 @@ I de aller fleste tilfeller skal du bruke `gap` for mellomrom. `gap` er knyttet 
 
 ```html
 <div style="resize: horizontal; overflow: auto; max-width: 100%; min-width: 150px">
-  <grid-layout min="120px" style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem">
+  <nve-grid min="120px" style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem">
     <div
       style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
     ></div>
@@ -33,7 +33,7 @@ I de aller fleste tilfeller skal du bruke `gap` for mellomrom. `gap` er knyttet 
     <div
       style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
     ></div>
-  </grid-layout>
+  </nve-grid>
 </div>
 ```
 
@@ -46,7 +46,7 @@ I de aller fleste tilfeller skal du bruke `gap` for mellomrom. `gap` er knyttet 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<grid-layout
+<nve-grid
   gap="small"
   min="80px"
   style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem"
@@ -63,8 +63,8 @@ I de aller fleste tilfeller skal du bruke `gap` for mellomrom. `gap` er knyttet 
   <div
     style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
   ></div>
-</grid-layout>
-<grid-layout min="80px" style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem">
+</nve-grid>
+<nve-grid min="80px" style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem">
   <div
     style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
   ></div>
@@ -77,8 +77,8 @@ I de aller fleste tilfeller skal du bruke `gap` for mellomrom. `gap` er knyttet 
   <div
     style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
   ></div>
-</grid-layout>
-<grid-layout
+</nve-grid>
+<nve-grid
   gap="large"
   min="80px"
   style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem"
@@ -95,7 +95,7 @@ I de aller fleste tilfeller skal du bruke `gap` for mellomrom. `gap` er knyttet 
   <div
     style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
   ></div>
-</grid-layout>
+</nve-grid>
 ```
 
 </CodeExamplePreview>
@@ -107,14 +107,14 @@ Et responsivt rutenett med navigasjonskort som tilpasser antall kolonner etter t
 <CodeExamplePreview>
 
 ```html
-<grid-layout gap="small">
+<nve-grid gap="small">
   <nve-link-card href="#" label="Flom og skred" size="small"></nve-link-card>
   <nve-link-card href="#" label="Vassdrag og miljø" size="small"></nve-link-card>
   <nve-link-card href="#" label="Energi" size="small"></nve-link-card>
   <nve-link-card href="#" label="Klima" size="small"></nve-link-card>
   <nve-link-card href="#" label="Konsesjon" size="small"></nve-link-card>
   <nve-link-card href="#" label="Tilsyn" size="small"></nve-link-card>
-</grid-layout>
+</nve-grid>
 ```
 
 </CodeExamplePreview>

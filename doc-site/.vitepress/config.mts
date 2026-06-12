@@ -72,7 +72,7 @@ export default defineConfig({
               { text: 'Commit-meldinger', link: '/introduction/forDesigner/commitMessages' },
             ],
           },
-                    {
+          {
             text: 'Designelementer',
             items: [
               { text: 'Tokens', link: '/introduction/designelementer/tokens' },

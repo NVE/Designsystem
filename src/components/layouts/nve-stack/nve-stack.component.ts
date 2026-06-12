@@ -1,18 +1,17 @@
 import { customElement, property } from 'lit/decorators.js';
-import styles from './cluster-layout.styles';
+import styles from './nve-stack.styles';
 import { LitElement, html } from 'lit';
 
 /**
- * Grupperer barn-elementer horisontalt med automatisk linjebryting.
- * Basert på Cluster-primitiven fra Every Layout.
+ * Stabler barn-elementer vertikalt med konsistent mellomrom.
+ * Basert på Stack-primitiven fra Every Layout.
  *
  * Mellomrommet styres av `gap` og er låst til spacing-tokenene i designsystemet.
  *
- * @property {ClusterLayoutGap} gap - Forhåndsdefinert tokenbasert mellomrom.
+ * @property {StackLayoutGap} gap - Forhåndsdefinert tokenbasert mellomrom.
  * @property {string} justify - justify-content-verdi. Standard: flex-start.
- * @property {string} align - align-items-verdi. Standard: center.
  */
-export type ClusterLayoutGap =
+export type StackLayoutGap =
   | 'none'
   | '2x-small'
   | 'x-small'
@@ -25,22 +24,18 @@ export type ClusterLayoutGap =
   | '4x-large'
   | '5x-large';
 
-@customElement('cluster-layout')
-export default class ClusterLayout extends LitElement {
+@customElement('nve-stack')
+export default class NveStack extends LitElement {
   static styles = [styles];
 
   /** Forhåndsdefinert tokenbasert mellomrom. Mapper til `--spacing-<verdi>`. */
-  @property({ type: String, reflect: true }) gap?: ClusterLayoutGap;
+  @property({ type: String, reflect: true }) gap?: StackLayoutGap;
 
   /** justify-content på flex-containeren. Standard: flex-start. */
   @property({ type: String, reflect: true }) justify: string = 'flex-start';
 
-  /** align-items på flex-containeren. Standard: center. */
-  @property({ type: String, reflect: true }) align: string = 'center';
-
   updated() {
-    this.style.setProperty('--_cluster-justify', this.justify);
-    this.style.setProperty('--_cluster-align', this.align);
+    this.style.setProperty('--_stack-justify', this.justify);
   }
 
   render() {
@@ -50,6 +45,6 @@ export default class ClusterLayout extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'cluster-layout': ClusterLayout;
+    'nve-stack': NveStack;
   }
 }

@@ -1,5 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
-import styles from './grid-layout.styles';
+import styles from './nve-grid.styles';
 import { LitElement, html } from 'lit';
 
 /**
@@ -24,8 +24,8 @@ export type GridLayoutGap =
   | '4x-large'
   | '5x-large';
 
-@customElement('grid-layout')
-export default class GridLayout extends LitElement {
+@customElement('nve-grid')
+export default class NveGrid extends LitElement {
   static styles = [styles];
 
   /** Minste kolonnebredde. Bestemmer når rutenettet bryter til ny linje. Standard: 250px. */
@@ -45,6 +45,6 @@ export default class GridLayout extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'grid-layout': GridLayout;
+    'nve-grid': NveGrid;
   }
 }

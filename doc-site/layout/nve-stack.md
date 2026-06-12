@@ -1,6 +1,6 @@
-# stack-layout
+# nve-stack
 
-`stack-layout` stabler barn-elementer vertikalt med mellomrom.
+`nve-stack` stabler barn-elementer vertikalt med mellomrom.
 
 I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til spacing-tokenene i designsystemet og er det som sikrer at avstandene er konsistente på tvers av sider og komponenter.
 
@@ -11,21 +11,21 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<stack-layout gap="small" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
+<nve-stack gap="small" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</stack-layout>
-<stack-layout style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
+</nve-stack>
+<nve-stack style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</stack-layout>
-<stack-layout gap="large" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
+</nve-stack>
+<nve-stack gap="large" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</stack-layout>
+</nve-stack>
 ```
 
 </CodeExamplePreview>
@@ -37,7 +37,7 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)">
 
 ```html
-<stack-layout
+<nve-stack
   justify="flex-start"
   gap="small"
   style="height: 220px; padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
@@ -45,8 +45,8 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</stack-layout>
-<stack-layout
+</nve-stack>
+<nve-stack
   justify="center"
   gap="small"
   style="height: 220px; padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
@@ -54,8 +54,8 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</stack-layout>
-<stack-layout
+</nve-stack>
+<nve-stack
   justify="flex-end"
   gap="small"
   style="height: 220px; padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
@@ -63,8 +63,8 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</stack-layout>
-<stack-layout
+</nve-stack>
+<nve-stack
   justify="space-between"
   gap="small"
   style="height: 220px; padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
@@ -72,8 +72,8 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</stack-layout>
-<stack-layout
+</nve-stack>
+<nve-stack
   justify="space-around"
   gap="small"
   style="height: 220px; padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
@@ -81,8 +81,8 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</stack-layout>
-<stack-layout
+</nve-stack>
+<nve-stack
   justify="space-evenly"
   gap="small"
   style="height: 220px; padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
@@ -90,7 +90,7 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</stack-layout>
+</nve-stack>
 ```
 
 </CodeExamplePreview>
@@ -102,39 +102,39 @@ Stacks kan nøstes for å bygge opp et hierarki av avstander.
 <CodeExamplePreview>
 
 ```html
-<stack-layout gap="large" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
-  <stack-layout gap="small" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
+<nve-stack gap="large" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
+  <nve-stack gap="small" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
     <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
     <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
     <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  </stack-layout>
-  <stack-layout gap="small" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
+  </nve-stack>
+  <nve-stack gap="small" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
     <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
     <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  </stack-layout>
-</stack-layout>
+  </nve-stack>
+</nve-stack>
 ```
 
 </CodeExamplePreview>
 
 ## Eksempel på bruk
 
-Med `stack-layout` får du konsistent avstand fra et token, uten egen CSS.
+Med `nve-stack` får du konsistent avstand fra et token, uten egen CSS.
 
 <CodeExamplePreview>
 
 ```html
-<stack-layout>
+<nve-stack>
   <nve-input label="Navn"></nve-input>
   <nve-input label="E-post" type="email"></nve-input>
   <nve-textarea label="Melding"></nve-textarea>
   <nve-button variant="primary">Send inn</nve-button>
-</stack-layout>
+</nve-stack>
 ```
 
 </CodeExamplePreview>
 
-Uten `stack-layout` klistrer elementene seg sammen og må styles individuelt for å få luft mellom seg.
+Uten `nve-stack` klistrer elementene seg sammen og må styles individuelt for å få luft mellom seg.
 
 <CodeExamplePreview>
 

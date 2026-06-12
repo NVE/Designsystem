@@ -11,10 +11,10 @@ Du slipper å skrive egen CSS for vanlige oppsett, og avstander hentes fra desig
 
 Bruk layout-komponentene når du vil:
 
-- Stable elementer vertikalt med konsistent mellomrom (`stack-layout`)
-- Gruppere elementer horisontalt med automatisk linjebryting (`cluster-layout`)
-- Lage et responsivt rutenett (`grid-layout`)
-- Gi et element definert padding og bakgrunn (`box-layout`)
+- Stable elementer vertikalt med konsistent mellomrom (`nve-stack`)
+- Gruppere elementer horisontalt med automatisk linjebryting (`nve-cluster`)
+- Lage et responsivt rutenett (`nve-grid`)
+- Gi et element definert padding og bakgrunn (`nve-box`)
 
 ## Prinsipper
 
@@ -22,27 +22,27 @@ Layout-komponentene har ingen farger, fonter eller annen visuell stil, de styrer
 
 ## Eksempel på bruk
 
-Layout-komponentene er laget for å kombineres. Et kontaktskjema er et typisk eksempel som bruker alle fire: `box-layout` gir kortet ramme og padding, `stack-layout` stabler feltene vertikalt, `grid-layout` legger fornavn og etternavn ved siden av hverandre og bryter til en kolonne på smale skjermer. `cluster-layout` plasserer knappene nederst.
+Layout-komponentene er laget for å kombineres. Et kontaktskjema er et typisk eksempel som bruker alle fire: `nve-box` gir kortet ramme og padding, `nve-stack` stabler feltene vertikalt, `nve-grid` legger fornavn og etternavn ved siden av hverandre og bryter til en kolonne på smale skjermer. `nve-cluster` plasserer knappene nederst.
 
 <CodeExamplePreview>
 
 ```html
-<box-layout padding="large" background="neutral">
-  <stack-layout>
+<nve-box padding="large" background="neutral">
+  <nve-stack>
     <nve-heading level="3">Kontakt oss</nve-heading>
     <p>Fyll ut skjemaet, så tar vi kontakt så raskt vi kan.</p>
-    <grid-layout gap="small" min="220px">
+    <nve-grid gap="small" min="220px">
       <nve-input label="Fornavn"></nve-input>
       <nve-input label="Etternavn"></nve-input>
-    </grid-layout>
+    </nve-grid>
     <nve-input label="E-post" type="email"></nve-input>
     <nve-textarea label="Melding"></nve-textarea>
-    <cluster-layout gap="small" justify="flex-end">
-      <nve-button>Avbryt</nve-button>
+    <nve-cluster gap="small" justify="flex-end">
+      <nve-button variant="ghost">Avbryt</nve-button>
       <nve-button variant="primary">Send</nve-button>
-    </cluster-layout>
-  </stack-layout>
-</box-layout>
+    </nve-cluster>
+  </nve-stack>
+</nve-box>
 ```
 
 </CodeExamplePreview>

@@ -1,6 +1,6 @@
-# box-layout
+# nve-box
 
-`box-layout` pakker innhold i en boks med konsistent padding.
+`nve-box` pakker innhold i en boks med konsistent padding.
 
 I de aller fleste tilfeller skal du bruke `padding`. `padding` er knyttet direkte til spacing-tokenene i designsystemet og sikrer at paddingen er konsistent på tvers av sider og komponenter.
 
@@ -11,15 +11,15 @@ I de aller fleste tilfeller skal du bruke `padding`. `padding` er knyttet direkt
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<box-layout padding="small" background="neutral-subtle">
+<nve-box padding="small" background="neutral-subtle">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</box-layout>
-<box-layout background="neutral-subtle">
+</nve-box>
+<nve-box background="neutral-subtle">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</box-layout>
-<box-layout padding="large" background="neutral-subtle">
+</nve-box>
+<nve-box padding="large" background="neutral-subtle">
   <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</box-layout>
+</nve-box>
 ```
 
 </CodeExamplePreview>
@@ -31,26 +31,24 @@ I de aller fleste tilfeller skal du bruke `padding`. `padding` er knyttet direkt
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<box-layout background="neutral">
+<nve-box background="neutral">
   <nve-paragraph>neutral</nve-paragraph>
-</box-layout>
-<box-layout background="info">
+</nve-box>
+<nve-box background="info">
   <nve-paragraph>info</nve-paragraph>
-</box-layout>
-<box-layout background="success">
+</nve-box>
+<nve-box background="success">
   <nve-paragraph>success</nve-paragraph>
-</box-layout>
-<box-layout background="warning">
+</nve-box>
+<nve-box background="warning">
   <nve-paragraph>warning</nve-paragraph>
-</box-layout>
-<box-layout background="error">
+</nve-box>
+<nve-box background="error">
   <nve-paragraph>error</nve-paragraph>
-</box-layout>
+</nve-box>
 ```
 
 </CodeExamplePreview>
-
-<nve-message-card size="compact" variant="info" >Trenger du en farge som ikke finnes blant tokenene, kan du fortsatt sette bakgrunn via style-attributtet. Foretrekk likevel background-propen for konsistens.</nve-message-card>
 
 ## Nøsting
 
@@ -59,11 +57,11 @@ Bokser kan nøstes for å bygge opp et hierarki av padding.
 <CodeExamplePreview>
 
 ```html
-<box-layout padding="large" background="neutral-subtle">
-  <box-layout padding="small" background="info">
+<nve-box padding="large" background="neutral-subtle">
+  <nve-box padding="small" background="info">
     <div style="padding: 0.75rem; background: var(--color-feedback-background-subtle-neutral)"></div>
-  </box-layout>
-</box-layout>
+  </nve-box>
+</nve-box>
 ```
 
 </CodeExamplePreview>
@@ -75,14 +73,14 @@ En boks med konsistent padding rundt en tekst.
 <CodeExamplePreview>
 
 ```html
-<box-layout background="info">
+<nve-box background="info">
   <nve-paragraph>Innhold med jevn padding rundt.</nve-paragraph>
-</box-layout>
+</nve-box>
 ```
 
 </CodeExamplePreview>
 
-Samme innhold uten `box-layout` hvor teksten ligger helt inntil kanten.
+Samme innhold uten `nve-box` hvor teksten ligger helt inntil kanten.
 
 <CodeExamplePreview>
 

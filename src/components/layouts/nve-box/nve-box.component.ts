@@ -1,5 +1,5 @@
 import { customElement, property } from 'lit/decorators.js';
-import styles from './box-layout.styles';
+import styles from './nve-box.styles';
 import { LitElement, html } from 'lit';
 
 /**
@@ -38,8 +38,8 @@ export type BoxLayoutBackground =
   | 'error'
   | 'error-subtle';
 
-@customElement('box-layout')
-export default class BoxLayout extends LitElement {
+@customElement('nve-box')
+export default class NveBox extends LitElement {
   static styles = [styles];
 
   /** Forhåndsdefinert tokenbasert padding. Mapper til `--spacing-<verdi>`. */
@@ -55,6 +55,6 @@ export default class BoxLayout extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'box-layout': BoxLayout;
+    'nve-box': NveBox;
   }
 }

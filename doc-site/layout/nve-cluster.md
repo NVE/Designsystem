@@ -1,6 +1,6 @@
-# cluster-layout
+# nve-cluster
 
-`cluster-layout` grupperer barn-elementer horisontalt med konsistent mellomrom og automatisk linjebryting. Brukes typisk for knappegrupper, tag-lister og navigasjon.
+`nve-cluster` grupperer barn-elementer horisontalt med konsistent mellomrom og automatisk linjebryting. Brukes typisk for knappegrupper, tag-lister og navigasjon.
 
 I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til spacing-tokenene i designsystemet og sikrer at avstandene er konsistente på tvers av sider og komponenter.
 
@@ -11,21 +11,21 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
 <CodeExamplePreview>
 
 ```html
-<cluster-layout gap="x-small" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
+<nve-cluster gap="x-small" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</cluster-layout>
-<cluster-layout style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
+</nve-cluster>
+<nve-cluster style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</cluster-layout>
-<cluster-layout gap="large" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
+</nve-cluster>
+<nve-cluster gap="large" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</cluster-layout>
+</nve-cluster>
 ```
 
 </CodeExamplePreview>
@@ -37,38 +37,38 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
 <CodeExamplePreview>
 
 ```html
-<cluster-layout
+<nve-cluster
   justify="flex-start"
   gap="small"
   style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
 >
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</cluster-layout>
-<cluster-layout
+</nve-cluster>
+<nve-cluster
   justify="center"
   gap="small"
   style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
 >
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</cluster-layout>
-<cluster-layout
+</nve-cluster>
+<nve-cluster
   justify="flex-end"
   gap="small"
   style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
 >
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</cluster-layout>
-<cluster-layout
+</nve-cluster>
+<nve-cluster
   justify="space-between"
   gap="small"
   style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
 >
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</cluster-layout>
+</nve-cluster>
 ```
 
 </CodeExamplePreview>
@@ -80,7 +80,7 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<cluster-layout
+<nve-cluster
   align="flex-start"
   gap="small"
   style="width: fit-content; padding: 1rem; background: var(--color-feedback-background-subtle-neutral)"
@@ -88,8 +88,8 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
   <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 100px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
-</cluster-layout>
-<cluster-layout
+</nve-cluster>
+<nve-cluster
   align="center"
   gap="small"
   style="width: fit-content; padding: 1rem; background: var(--color-feedback-background-subtle-neutral)"
@@ -97,8 +97,8 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
   <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 100px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
-</cluster-layout>
-<cluster-layout
+</nve-cluster>
+<nve-cluster
   align="flex-end"
   gap="small"
   style="width: fit-content; padding: 1rem; background: var(--color-feedback-background-subtle-neutral)"
@@ -106,7 +106,7 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
   <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 100px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
   <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
-</cluster-layout>
+</nve-cluster>
 ```
 
 </CodeExamplePreview>
@@ -119,17 +119,17 @@ En knapperad som automatisk bryter til ny linje på smalere skjermer.
 
 ```html
 <div style="width: 200px">
-  <cluster-layout gap="small">
+  <nve-cluster gap="small">
     <nve-button variant="primary">Lagre</nve-button>
     <nve-button variant="secondary">Forhåndsvis</nve-button>
     <nve-button variant="tertiary">Avbryt</nve-button>
-  </cluster-layout>
+  </nve-cluster>
 </div>
 ```
 
 </CodeExamplePreview>
 
-Til sammenligning, samme knapper i en vanlig `<div>` uten `cluster-layout`. Det er ingen mellomrom mellom knappene, og når de bryter til ny linje, klistrer de seg sammen.
+Til sammenligning, samme knapper i en vanlig `<div>` uten `nve-cluster`. Det er ingen mellomrom mellom knappene, og når de bryter til ny linje, klistrer de seg sammen.
 
 <CodeExamplePreview>
 
