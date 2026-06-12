@@ -83,7 +83,7 @@ describe('nve-aspect-rose', () => {
   });
 
   it('shows english direction labels when lang is en', async () => {
-    const el = await fixture<NveAspectRose>(html`<nve-aspect-rose lang="en"></nve-aspect-rose>`);
+    const el = await fixture<NveAspectRose>(html`<nve-aspect-rose lang="en-GB"></nve-aspect-rose>`);
     const texts = el.shadowRoot?.querySelectorAll('text');
     const labels = Array.from(texts ?? []).map((t) => t.textContent);
     expect(labels).toContain('N');
@@ -101,13 +101,13 @@ describe('nve-aspect-rose', () => {
   it('uses default norwegian label when no label is set', async () => {
     const el = await fixture<NveAspectRose>(html`<nve-aspect-rose></nve-aspect-rose>`);
     const svg = el.shadowRoot?.querySelector('svg');
-    expect(svg?.getAttribute('aria-label')).toBe('Eksponerte sektorer');
+    expect(svg?.getAttribute('aria-label')).toBe('Utsatte sektorer');
   });
 
   it('uses default norwegian label when no label is set even if lang is set to something else', async () => {
     const el = await fixture<NveAspectRose>(html`<nve-aspect-rose lang="fr"></nve-aspect-rose>`);
     const svg = el.shadowRoot?.querySelector('svg');
-    expect(svg?.getAttribute('aria-label')).toBe('Eksponerte sektorer');
+    expect(svg?.getAttribute('aria-label')).toBe('Utsatte sektorer');
   });
 
   it('uses default english label when lang is en and no label is set', async () => {

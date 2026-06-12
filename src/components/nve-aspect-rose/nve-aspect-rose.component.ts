@@ -23,30 +23,34 @@ export default class NveAspectRose extends LitElement implements INveComponent {
    */
   @property({ type: String }) value: string = '00000000';
 
-  /** Språk for himmelretningene. 'no' for norsk, 'en' for engelsk. */
-  @property({ type: String }) lang: 'no' | 'en' = 'no';
+  /** Språk for himmelretningene. Blir satt til engelsk om lang starter på 'en'. Standard er norsk. */
+  @property({ type: String }) lang: string = 'no';
 
   /**
    * Tilgjengelig tittel.
    * Vises som aria-label på SVG-elementet og som <title> i SVG.
-   * Standardverdi avhenger av språket: 'Eksponerte sektorer' for norsk, 'Affected aspects' for engelsk.
+   * Standardverdi avhenger av språket: 'Utsatte sektorer' for norsk, 'Affected aspects' for engelsk.
    * Du kan overstyre denne teksten.
    */
   @property({ type: String }) label: string | undefined = undefined;
 
   static styles = [styles];
 
+  private isEnglish() {
+    return this.lang.toLowerCase().startsWith('en');
+  }
+
   private get effectiveLabel() {
-    return this.label ?? (this.lang === 'en' ? 'Affected aspects' : 'Eksponerte sektorer');
+    return this.label ?? (this.isEnglish() ? 'Affected aspects' : 'Utsatte sektorer');
   }
 
   // Etiketter for de fire himmelretningene. Brukes til å plassere sirklene og teksten inni dem.
   private get directions() {
     return [
       { cx: 45, cy: 9, label: 'N' },
-      { cx: 81, cy: 45, label: this.lang === 'en' ? 'E' : 'Ø' },
+      { cx: 81, cy: 45, label: this.isEnglish() ? 'E' : 'Ø' },
       { cx: 45, cy: 81, label: 'S' },
-      { cx: 9, cy: 45, label: this.lang === 'en' ? 'W' : 'V' },
+      { cx: 9, cy: 45, label: this.isEnglish() ? 'W' : 'V' },
     ];
   }
 

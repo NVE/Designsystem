@@ -15,14 +15,21 @@ outline: [2, 3]
 
 ### Utsatte himmelretninger
 
-Bruk `value` for å sette hvilke himmelretninger som er utsatt (farlige).
-<CodeExamplePreview>
+Bruk `value` for å sette hvilke himmelretninger som er utsatt (farlige). `value` må være en tekst på 8 sifre som bare består av 0 og 1
+Første siffer angir nordlig sektor og går deretter med klokka.
+<CodeExamplePreview containerGridTemplateColumns="repeat(2, auto)">
 
 ```html
-<nve-aspect-rose></nve-aspect-rose> Ingen <nve-aspect-rose value="10000000"> </nve-aspect-rose> Kun nord
-<nve-aspect-rose value="00111100"></nve-aspect-rose> øst, sør-øst, sør og sør-vest
-<nve-aspect-rose value="11111111"></nve-aspect-rose> Alle <nve-aspect-rose value="1111111"></nve-aspect-rose> Verdien
-blir ignorert hvis vi ikke har eksakt 8 sifre
+<nve-aspect-rose></nve-aspect-rose>
+<p>Ingen</p>
+<nve-aspect-rose value="10000000"> </nve-aspect-rose>
+<p>Kun nord</p>
+<nve-aspect-rose value="00111100"></nve-aspect-rose>
+<p>øst, sør-øst, sør og sør-vest</p>
+<nve-aspect-rose value="11111111"></nve-aspect-rose>
+<p>Alle</p>
+<nve-aspect-rose value="1111111"></nve-aspect-rose>
+<p>Verdien blir ignorert hvis vi ikke har eksakt 8 sifre</p>
 ```
 
 </CodeExamplePreview>
@@ -43,12 +50,16 @@ Bruk css-variabelen `--aspect-rose-size` for å endre bredde og høyde. 90px er 
 
 ### Språk
 
-Bruk `lang` for å angi språk for kompassretningene. `no` (norsk) er standard. Kun norsk og engelsk støttes.
-<CodeExamplePreview>
+Bruk `lang` for å angi språk for kompassretningene. Kun norsk og engelsk støttes, og norsk er standard. Sett `lang` til noe som starter på 'en' for å få engelsk språk.
+<CodeExamplePreview containerGridTemplateColumns="repeat(2, auto)">
 
 ```html
-<nve-aspect-rose value="00111110"></nve-aspect-rose> Norsk
-<nve-aspect-rose lang="en" value="00111110"></nve-aspect-rose> Engelsk
+<nve-aspect-rose value="00111110"></nve-aspect-rose>
+<p>Norsk</p>
+<nve-aspect-rose lang="en" value="00111110"></nve-aspect-rose>
+<p>Engelsk</p>
+<nve-aspect-rose lang="en-GB" value="00111110"></nve-aspect-rose>
+<p>Også engelsk</p>
 ```
 
 </CodeExamplePreview>
@@ -57,7 +68,7 @@ Bruk `lang` for å angi språk for kompassretningene. `no` (norsk) er standard. 
 
 Bruk `label` for å overstyre standard-tekstene for aria-label og svg title.
 
-<CodeExamplePreview>
+<CodeExamplePreview >
 
 ```html
 Hold muspeker over for å se label.<br />
