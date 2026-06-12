@@ -47,7 +47,7 @@ Layout-komponentene er laget for å kombineres. Et kontaktskjema er et typisk ek
 
 </CodeExamplePreview>
 
-<img src="../../assets/images/layout-visualisering.png" width="690" alt="Visualisering av layoutkomponentene (Grid, Stack, Cluster og Box) i Designsystemet.">
+<img src="../assets/images/layout-visualisering.png" width="690" alt="Visualisering av layoutkomponentene (Grid, Stack, Cluster og Box) i Designsystemet.">
 
 ## Felles spacing-props
 
