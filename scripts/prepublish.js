@@ -39,4 +39,6 @@ sourceObj.devDependencies = {};
 fs.writeFileSync('./dist/package.json', Buffer.from(JSON.stringify(sourceObj, null, 2), 'utf-8'));
 fs.copyFileSync('./.npmignore', './dist/.npmignore');
 
-await nextTask('Publishing the package', () => execPromise(`cd dist && pnpm ${command}`));
+await nextTask('Publishing the package', () =>
+  execPromise(`cd dist && pnpm ${command === 'publish' ? 'publish --no-git-checks' : command}`)
+);
