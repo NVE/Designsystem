@@ -87,7 +87,7 @@
     "eslint-plugin-vue": "^10.9.2",
     "fs-extra": "^11.3.5",
     "glob": "^13.0.6",
-    "happy-dom": "^20.10.1",
+    "happy-dom": "^20.10.2",
     "husky": "^9.1.7",
     "ora": "^9.4.0",
     "pascal-case": "^4.0.0",
