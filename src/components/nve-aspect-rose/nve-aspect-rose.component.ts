@@ -7,6 +7,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 /**
  * Viser utsatte himmelretninger som en kompassrose.
  * Rosen er delt opp i 8 sektorer. Utsatte sektorer vises i rødt.
+ * Er laget for å vise hvilke himmelretninger et skredproblem gjelder for, men kan selvfølgelig også brukes til andre ting.
  * @cssproperty --aspect-rose-size - Høyde og bredde på komponenten. 90px er standard.
  * @cssproperty --aspect-rose-outline-color - Farge på sirkelens omriss. Standard er #c6c6c5.
  * @cssproperty --aspect-rose-affected-color - Farge på utsatte sektorer. Standard er #d21523.
