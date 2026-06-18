@@ -10,6 +10,7 @@ export default css`
     width: clamp(300px, 50vw, 700px);
     transform: scale(0.8);
     opacity: 0;
+    outline: none;
   }
 
   dialog[open] {

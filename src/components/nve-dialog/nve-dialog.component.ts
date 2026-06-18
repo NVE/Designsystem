@@ -62,7 +62,8 @@ export default class NveDialog extends LitElement implements INveComponent {
   - check if autofocus will work on the buttons
   - test height with tons of text (scrolling)
 
-  returnvalue could be interesting
+  returnvalue we wont support it casue it requires a lot of custom logic, and is just simpler for developers
+  to write logic directly there in the code where they use dialog
 
   read more about requestclose
 
@@ -100,7 +101,6 @@ Do not add the tabindex property to the <dialog> element as it is not interactiv
     }
     super.disconnectedCallback();
   }
-
   // vi skal ikke bruke disse metodene, de skal kalles pa selve dialogen for a vaere native akkurat na er de ikke det
   /** Viser dialogen.
    * The show() method of the HTMLDialogElement interface displays the dialog as a non-modal dialog.
@@ -114,7 +114,7 @@ A non-modal dialog is one where users can interact with content outside/behind t
   }
 
   /** Skjuler dialogen. */
-  async hide() {
+  async close() {
     this.doClose();
   }
 
@@ -134,15 +134,21 @@ A non-modal dialog is one where users can interact with content outside/behind t
     this.hasFooter = slot.assignedNodes({ flatten: true }).length > 0;
   };
 
+  private handleCancel = (event: Event) => {
+    console.log('Dialog cancel event triggered');
+    event.preventDefault(); // Forhindre at dialogen lukkes
+    this.doClose();
+  };
+
   private renderHeader() {
     return html`
       <header part="header" class="dialog__header">
         <!-- Ikon skal være slot -->
-        <slot name="start-header-icon"></slot>
+        <slot name="start-icon"></slot>
         ${this.label.length > 0 ? html`<h2 part="title" id="title" class="dialog__title">${this.label}</h2>` : nothing}
         <div part="header-actions" class="dialog__header-actions">
-          <slot name="end-header-icon"></slot>
-          <nve-button variant="ghost" @click=${this.hide} part="close-button" aria-label="Close dialog">
+          <slot name="end-icon"></slot>
+          <nve-button variant="ghost" @click=${this.close} part="close-button" aria-label="Close dialog">
             <nve-icon name="close"></nve-icon>
           </nve-button>
         </div>
@@ -163,6 +169,7 @@ A non-modal dialog is one where users can interact with content outside/behind t
         })}
         closedby=${ifDefined(this.closedBy)}
         aria-labelledby="title"
+        @cancel=${this.handleCancel}
       >
         <div part="panel" class="dialog__panel">
           ${this.renderHeader()}

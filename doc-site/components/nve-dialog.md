@@ -21,7 +21,10 @@ Denne komponenten er basert på det native [`<dialog>`-elementet](https://develo
 
 ```html
 <nve-button onclick="this.nextElementSibling.show()" class="open-dialog">Vis dialogen</nve-button>
-<nve-dialog label="Overskrift" icon="info"> Innhold </nve-dialog>
+<nve-dialog label="Overskrift">
+  <nve-icon name="info" slot="start-icon"></nve-icon>
+  Innhold
+</nve-dialog>
 ```
 
 </CodeExamplePreview>
