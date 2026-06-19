@@ -134,7 +134,7 @@
       "logo": {
         "medium": {
           "$type": "sizing",
-          "$value": "{sizing.64x}"
+          "$value": "{sizing.72x}"
         }
       },
       "illustration": {

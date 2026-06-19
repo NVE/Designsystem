@@ -1600,6 +1600,14 @@
       "$type": "sizing",
       "$value": "70px"
     },
+    "72x": {
+      "$type": "sizing",
+      "$value": "72px"
+    },
+    "80x": {
+      "$type": "sizing",
+      "$value": "80px"
+    },
     "84x": {
       "$type": "sizing",
       "$value": "84px"
