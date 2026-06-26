@@ -2,11 +2,24 @@
 
 `nve-box` pakker innhold i en boks med konsistent padding.
 
-I de aller fleste tilfeller skal du bruke `padding`. `padding` er knyttet direkte til spacing-tokenene i designsystemet og sikrer at paddingen er konsistent på tvers av sider og komponenter.
+`padding` er knyttet direkte til spacing-tokenene i designsystemet og sikrer at paddingen er konsistent på tvers av sider og komponenter.
+
+## Import
+
+Layout-komponentene ligger et nivå under de andre komponentene. For å bruke disse kan du følge stien med `/layout` etterfulgt av komponentet du vil bruke. Eksempel:
+
+```javascript
+import 'nve-designsystem/components/layouts/nve-box/nve-box.component.js';
+```
 
 ## Padding
 
 `padding` setter padding rundt innholdet ved bruk av et spacing-token. Hvis `padding` ikke er satt, brukes `medium` som standard.
+
+### Gyldige spacing-verdier
+
+Følgende verdier er gyldige for `padding`:
+`none`, `2x-small`, `x-small`, `small`, `medium` (default), `large`, `x-large`, `2x-large`, `3x-large`, `4x-large` og `5x-large`.
 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
@@ -27,6 +40,10 @@ I de aller fleste tilfeller skal du bruke `padding`. `padding` er knyttet direkt
 ## Bakgrunn
 
 `background` setter en tokenbasert bakgrunnsfarge på boksen. Gyldige verdier kommer fra neutrals background-tokensene.
+
+### Gyldige bakgrunnsverdier
+
+Følgende verdier er gyldige for `background`: `--color-neutrals-background-canvas`, `--color-neutrals-background-primary`, `--color-neutrals-background-primary-contrast`, `--color-neutrals-background-secondary`, `--color-neutrals-background-secondary-dim` og `--color-neutrals-background-tertiary-dim`.
 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 

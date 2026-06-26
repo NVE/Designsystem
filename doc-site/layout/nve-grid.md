@@ -2,7 +2,15 @@
 
 `nve-grid` lager et responsivt rutenett som automatisk bryter til nye linjer basert på en minste kolonnebredde.
 
-I de aller fleste tilfeller skal du bruke `gap` for mellomrom. `gap` er knyttet direkte til spacing-tokenene i designsystemet og sikrer at avstandene er konsistente på tvers av sider og komponenter.
+`gap` er knyttet direkte til spacing-tokenene i designsystemet og sikrer at avstandene er konsistente på tvers av sider og komponenter.
+
+## Import
+
+Layout-komponentene ligger et nivå under de andre komponentene. For å bruke disse kan du følge stien med `/layout` etterfulgt av komponentet du vil bruke. Eksempel:
+
+```javascript
+import 'nve-designsystem/components/layouts/nve-grid/nve-grid.component.js';
+```
 
 ## Minste kolonnebredde
 
@@ -43,6 +51,10 @@ I de aller fleste tilfeller skal du bruke `gap` for mellomrom. `gap` er knyttet 
 
 `gap` setter mellomrommet mellom rutene ved bruk av et spacing-token. Hvis `gap` ikke er satt, brukes `medium` som standard.
 
+### Gyldige spacing-verdier
+
+Følgende verdier er gyldige for `gap`:
+`none`, `2x-small`, `x-small`, `small`, `medium` (default), `large`, `x-large`, `2x-large`, `3x-large`, `4x-large` og `5x-large`.
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html

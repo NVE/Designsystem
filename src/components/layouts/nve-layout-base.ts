@@ -31,6 +31,45 @@ export type LayoutJustify =
   | 'right';
 
 /**
+ * Validerer at en verdi er en gyldig spacing-token.
+ */
+export function isValidSpacingToken(value: unknown): value is SpacingToken {
+  const validTokens: SpacingToken[] = [
+    'none',
+    '2x-small',
+    'x-small',
+    'small',
+    'medium',
+    'large',
+    'x-large',
+    '2x-large',
+    '3x-large',
+    '4x-large',
+    '5x-large',
+  ];
+  return validTokens.includes(value as SpacingToken);
+}
+
+/**
+ * Validerer at en verdi er en gyldig justify-verdi.
+ */
+export function isValidLayoutJustify(value: unknown): value is LayoutJustify {
+  const validJustify: LayoutJustify[] = [
+    'flex-start',
+    'flex-end',
+    'center',
+    'space-between',
+    'space-around',
+    'space-evenly',
+    'start',
+    'end',
+    'left',
+    'right',
+  ];
+  return validJustify.includes(value as LayoutJustify);
+}
+
+/**
  * Basisklasse for alle layout-komponenter.
  * Gir felles props for padding og margin låst til spacing-tokenene i designsystemet.
  *
@@ -57,6 +96,14 @@ export class NveLayoutBase extends LitElement {
   /** Tokenbasert margin i inline-retning (venstre og høyre). Overstyrer `margin` i inline-retning. */
   @property({ type: String, reflect: true, attribute: 'margin-inline' }) marginInline?: SpacingToken;
 
+  private _warnInvalidSpacingProp(propName: string, value: unknown) {
+    const tagName = this.tagName.toLowerCase();
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[${tagName}] Ugyldig verdi for '${propName}': "${value}". Verdien ignoreres. Gyldige verdier er: none, 2x-small, x-small, small, medium, large, x-large, 2x-large, 3x-large, 4x-large, 5x-large.`
+    );
+  }
+
   private _applySpacingProp(cssProp: string, value?: SpacingToken) {
     if (value !== undefined) {
       this.style.setProperty(cssProp, `var(--spacing-${value})`);
@@ -73,11 +120,26 @@ export class NveLayoutBase extends LitElement {
       changedProperties.has(key) &&
       (changedProperties.get(key) !== undefined || (this as Record<string, unknown>)[key] !== undefined);
 
-    if (changed('padding')) this._applySpacingProp('padding', this.padding);
-    if (changed('margin')) this._applySpacingProp('margin', this.margin);
-    if (changed('paddingBlock')) this._applySpacingProp('padding-block', this.paddingBlock);
-    if (changed('paddingInline')) this._applySpacingProp('padding-inline', this.paddingInline);
-    if (changed('marginBlock')) this._applySpacingProp('margin-block', this.marginBlock);
-    if (changed('marginInline')) this._applySpacingProp('margin-inline', this.marginInline);
+    const getSpacingValue = (key: keyof NveLayoutBase): SpacingToken | undefined => {
+      const value = this[key] as unknown;
+      if (value === undefined) {
+        return undefined;
+      }
+
+      if (!isValidSpacingToken(value)) {
+        this._warnInvalidSpacingProp(key, value);
+        (this as Record<string, unknown>)[key] = undefined;
+        return undefined;
+      }
+
+      return value;
+    };
+
+    if (changed('padding')) this._applySpacingProp('padding', getSpacingValue('padding'));
+    if (changed('margin')) this._applySpacingProp('margin', getSpacingValue('margin'));
+    if (changed('paddingBlock')) this._applySpacingProp('padding-block', getSpacingValue('paddingBlock'));
+    if (changed('paddingInline')) this._applySpacingProp('padding-inline', getSpacingValue('paddingInline'));
+    if (changed('marginBlock')) this._applySpacingProp('margin-block', getSpacingValue('marginBlock'));
+    if (changed('marginInline')) this._applySpacingProp('margin-inline', getSpacingValue('marginInline'));
   }
 }

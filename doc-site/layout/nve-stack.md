@@ -2,11 +2,24 @@
 
 `nve-stack` stabler barn-elementer vertikalt med mellomrom.
 
-I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til spacing-tokenene i designsystemet og er det som sikrer at avstandene er konsistente på tvers av sider og komponenter.
+`gap` er knyttet direkte til spacing-tokenene i designsystemet og er det som sikrer at avstandene er konsistente på tvers av sider og komponenter.
+
+## Import
+
+Layout-komponentene ligger et nivå under de andre komponentene. For å bruke disse kan du følge stien med `/layout` etterfulgt av komponentet du vil bruke. Eksempel:
+
+```javascript
+import 'nve-designsystem/components/layouts/nve-stack/nve-stack.component.js';
+```
 
 ## Mellomrom
 
 `gap` setter avstanden mellom barn-elementene ved bruk av et spacing-token.
+
+### Gyldige spacing-verdier
+
+Følgende verdier er gyldige for `gap`:
+`none`, `2x-small`, `x-small`, `small`, `medium` (default), `large`, `x-large`, `2x-large`, `3x-large`, `4x-large` og `5x-large`.
 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
@@ -33,6 +46,10 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
 ## Justering
 
 `justify` styrer hvordan barn-elementene fordeles vertikalt. Tilsvarer CSS-egenskapen `justify-content`.
+
+### Gyldige justering-verdier
+
+Følgende verdier er gyldige for `justify`: `flex-start` (default), `flex-end`, `center`, `space-between`, `space-around`, `space-evenly`, `start`, `end`, `left` og `right`.
 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)">
 

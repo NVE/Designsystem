@@ -2,11 +2,24 @@
 
 `nve-cluster` grupperer barn-elementer horisontalt med konsistent mellomrom og automatisk linjebryting. Brukes typisk for knappegrupper, tag-lister og navigasjon.
 
-I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til spacing-tokenene i designsystemet og sikrer at avstandene er konsistente på tvers av sider og komponenter.
+`gap` er knyttet direkte til spacing-tokenene i designsystemet og sikrer at avstandene er konsistente på tvers av sider og komponenter.
+
+## Import
+
+Layout-komponentene ligger et nivå under de andre komponentene. For å bruke disse kan du følge stien med `/layout` etterfulgt av komponentet du vil bruke. Eksempel:
+
+```javascript
+import 'nve-designsystem/components/layouts/nve-cluster/nve-cluster.component.js';
+```
 
 ## Mellomrom
 
 `gap` setter avstanden mellom barn-elementene ved bruk av et spacing-token. Hvis `gap` ikke er satt, brukes `medium` som standard.
+
+### Gyldige spacing-verdier
+
+Følgende verdier er gyldige for `gap`:
+`none`, `2x-small`, `x-small`, `small`, `medium` (default), `large`, `x-large`, `2x-large`, `3x-large`, `4x-large` og `5x-large`.
 
 <CodeExamplePreview>
 
@@ -33,6 +46,10 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
 ## Justering
 
 `justify` styrer hvordan barn-elementene fordeles horisontalt. Tilsvarer CSS-egenskapen `justify-content`.
+
+### Gyldige justering-verdier
+
+Følgende verdier er gyldige for `justify`: `flex-start` (default), `flex-end`, `center`, `space-between`, `space-around`, `space-evenly`, `start`, `end`, `left` og `right`.
 
 <CodeExamplePreview>
 
@@ -76,6 +93,10 @@ I de aller fleste tilfeller skal du bruke `gap`. `gap` er knyttet direkte til sp
 ## Vertikal justering
 
 `align` styrer hvordan barn-elementene plasseres vertikalt når de har ulik høyde. Tilsvarer CSS-egenskapen `align-items`. Standard er `center`.
+
+### Gyldige vertikal justering-verdier
+
+Følgende verdier er gyldige for `align`: `flex-start`, `flex-end`, `center` (default), `baseline`, `stretch`, `start` og `end`.
 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 

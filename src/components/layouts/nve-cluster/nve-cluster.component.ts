@@ -1,7 +1,13 @@
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-cluster.styles';
 import { html, PropertyValues } from 'lit';
-import { NveLayoutBase, SpacingToken, LayoutJustify } from '../nve-layout-base';
+import {
+  NveLayoutBase,
+  SpacingToken,
+  LayoutJustify,
+  isValidSpacingToken,
+  isValidLayoutJustify,
+} from '../nve-layout-base';
 
 /**
  * Grupperer barn-elementer horisontalt med automatisk linjebryting.
@@ -16,6 +22,14 @@ import { NveLayoutBase, SpacingToken, LayoutJustify } from '../nve-layout-base';
  */
 export type ClusterLayoutGap = SpacingToken;
 export type ClusterAlign = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | 'start' | 'end';
+
+/**
+ * Validerer at en verdi er en gyldig align-verdi.
+ */
+function isValidClusterAlign(value: unknown): value is ClusterAlign {
+  const validAlign: ClusterAlign[] = ['flex-start', 'flex-end', 'center', 'baseline', 'stretch', 'start', 'end'];
+  return validAlign.includes(value as ClusterAlign);
+}
 
 @customElement('nve-cluster')
 export default class NveCluster extends NveLayoutBase {
@@ -32,8 +46,53 @@ export default class NveCluster extends NveLayoutBase {
 
   override updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
-    this.style.setProperty('--_cluster-justify', this.justify);
-    this.style.setProperty('--_cluster-align', this.align);
+
+    // Valider gap. Ugyldige verdier ignoreres.
+    if (changedProperties.has('gap')) {
+      if (this.gap !== undefined && !isValidSpacingToken(this.gap)) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          `[nve-cluster] Ugyldig verdi for 'gap': "${this.gap}". Verdien ignoreres. Gyldige verdier er: none, 2x-small, x-small, small, medium, large, x-large, 2x-large, 3x-large, 4x-large, 5x-large.`
+        );
+        this.gap = undefined;
+      }
+    }
+
+    // Valider justify. Ugyldige verdier ignoreres.
+    let justifyValue: LayoutJustify | undefined = this.justify;
+    if (changedProperties.has('justify')) {
+      if (this.justify !== undefined && !isValidLayoutJustify(this.justify)) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          `[nve-cluster] Ugyldig verdi for 'justify': "${this.justify}". Verdien ignoreres. Gyldige verdier er: flex-start, flex-end, center, space-between, space-around, space-evenly, start, end, left, right.`
+        );
+        justifyValue = undefined;
+      }
+    }
+
+    // Valider align. Ugyldige verdier ignoreres.
+    let alignValue: ClusterAlign | undefined = this.align;
+    if (changedProperties.has('align')) {
+      if (this.align !== undefined && !isValidClusterAlign(this.align)) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          `[nve-cluster] Ugyldig verdi for 'align': "${this.align}". Verdien ignoreres. Gyldige verdier er: flex-start, flex-end, center, baseline, stretch, start, end.`
+        );
+        alignValue = undefined;
+      }
+    }
+
+    if (justifyValue !== undefined) {
+      this.style.setProperty('--_cluster-justify', justifyValue);
+    } else {
+      this.style.removeProperty('--_cluster-justify');
+    }
+
+    if (alignValue !== undefined) {
+      this.style.setProperty('--_cluster-align', alignValue);
+    } else {
+      this.style.removeProperty('--_cluster-align');
+    }
   }
 
   render() {
