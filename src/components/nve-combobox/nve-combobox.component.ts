@@ -2,7 +2,7 @@ import { INveComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-combobox.styles';
 import { html, LitElement } from 'lit';
 import { ref, createRef } from 'lit/directives/ref.js';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { customElement, property, state } from 'lit/decorators.js';
 import '../nve-popup/nve-popup.component';
 import '../nve-input/nve-input.component';

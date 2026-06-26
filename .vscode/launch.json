@@ -15,7 +15,7 @@
       "type": "node",
       "request": "launch",
       "name": "Debug Tests",
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "pnpm",
       "runtimeArgs": ["run", "test"],
       "console": "integratedTerminal"
     }

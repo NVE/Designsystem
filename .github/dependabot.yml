@@ -4,13 +4,15 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
 
     versioning-strategy: increase
 
     commit-message:
       prefix: 'chore'
-      include: 'scope' 
+      include: 'scope'
 
     groups:
       security-updates:
@@ -30,7 +32,7 @@ updates:
       - 'amish1188'
       - 'NVEJoel'
       - 'tomapedersen'
-      
+
     ignore:
-      - dependency-name: "style-dictionary"
-        versions: ["*"]
+      - dependency-name: 'style-dictionary'
+        versions: ['*']

@@ -18,9 +18,51 @@ Dette prosjektet inneholder to applikasjoner:
 - I rot-mappa ligger selve komponentbiblioteket med nve-komponentene
 - I mappa `doc-site` ligger test-applikasjonen som viser brukerveiledningen for biblioteket. Teknisk beskrivelse av denne ligger i egen [readme](doc-site/README.md)
 
-Kjør `npm install` og `npm run dev` for å starte test-applikasjonen.
+### Bytte fra npm til pnpm
 
-Dersom applikasjonen ikke er bygget på forhånd, vil npm run dev automatisk sørge for at den bygges og at dist-mappen opprettes.
+Repoet bruker nå `pnpm` som package manager. Hvis du har jobbet i prosjektet tidligere med `npm`, bør du rydde opp før du installerer på nytt.
+
+1. Slett `node_modules`
+2. Slett eventuelle `package-lock.json`
+3. Sjekk hvilken `node`-versjon og hvilken `packageManager` repoet krever i `package.json`
+4. Sørg for at du bruker riktig Node-versjon
+5. Aktiver riktig `pnpm`-versjon via Corepack
+6. Kjør `pnpm install`
+
+Sjekk først verdiene i `package.json`:
+
+```json
+{
+  "engines": {
+    "node": "^24.16.0"
+  },
+  "packageManager": "pnpm@11.5.1+..."
+}
+```
+
+Det er disse verdiene som gjelder dersom versjonene endres senere.
+
+Du kan aktivere `pnpm` slik:
+
+```bash
+corepack enable
+corepack use pnpm@<versjon-fra-packageManager>
+pnpm --version
+```
+
+Hvis du også må bytte Node-versjon først, kan du gjøre det med `nvm` og deretter aktivere `pnpm`:
+
+```bash
+nvm install <node-versjon-fra-engines.node>
+nvm use <node-versjon-fra-engines.node>
+corepack enable
+corepack use pnpm@<versjon-fra-packageManager>
+pnpm --version
+```
+
+Når dette er gjort, kan du starte prosjektet med `pnpm install` og `pnpm run dev`.
+
+Dersom applikasjonen ikke er bygget på forhånd, vil pnpm run dev automatisk sørge for at den bygges og at dist-mappen opprettes.
 
 Vi bygger applikasjonen før kjøring for å sikre at den importerer custom-elements.json og nve-designsystem.css fra dist. Siden begge filer ganske statiske man trenger ikke å å bygge
 appen på nytt hver gang man gjør noen endringer i component filen. Disse to filene kunne vært plassert i src, men vi

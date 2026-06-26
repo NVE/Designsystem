@@ -1,8 +1,10 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
-/** Denne filen blir genererert av npm run add-component */
+/** Denne filen blir genererert av pnpm run add-component */
+
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
+export { default as NveAspectRose } from './components/nve-aspect-rose/nve-aspect-rose.component';
 export { default as NveBadge } from './components/nve-badge/nve-badge.component';
 export { NveLayoutBase, type SpacingToken, type LayoutJustify } from './components/layouts/nve-layout-base';
 export { default as NveBox, type BoxBackground } from './components/layouts/nve-box/nve-box.component';
@@ -25,6 +27,7 @@ export { default as NveDialog } from './components/nve-dialog/nve-dialog.compone
 export { default as NveDivider } from './components/nve-divider/nve-divider.component';
 export { default as NveDrawer } from './components/nve-drawer/nve-drawer.component';
 export { default as NveDropdown } from './components/nve-dropdown/nve-dropdown.component';
+export { default as NveExposedHeight } from './components/nve-exposed-height/nve-exposed-height.component';
 export { default as NveHeading } from './components/nve-heading/nve-heading.component';
 export { default as NveIcon } from './components/nve-icon/nve-icon.component';
 export { default as NveInput } from './components/nve-input/nve-input.component';

@@ -28,6 +28,13 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ferdig'
   },
   {
+    name: 'nve-aspect-rose',
+    nodeId: undefined,
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
+  },
+  {
     name: 'nve-attachments',
     nodeId: '647-192139',
     description: 'Viser liste over opplastede vedlegg',
@@ -165,6 +172,13 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     nodeId: '1976-5493',
     description: undefined,
     statusDesign: 'Skal revideres',
+    statusCode: 'Ferdig'
+  },
+  {
+    name: 'nve-exposed-height',
+    nodeId: undefined,
+    description: undefined,
+    statusDesign: undefined,
     statusCode: 'Ferdig'
   },
   {
