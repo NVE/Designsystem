@@ -12,7 +12,6 @@ export { default as NveCheckbox } from './components/nve-checkbox/nve-checkbox.c
 export { default as NveCheckboxGroup } from './components/nve-checkbox-group/nve-checkbox-group.component';
 export { default as NveCombobox } from './components/nve-combobox/nve-combobox.component';
 export { default as NveDarkmodeSwitch } from './components/nve-darkmode-switch/nve-darkmode-switch.component';
-export { default as NveDialog } from './components/nve-dialog/nve-dialog.component';
 export { default as NveDivider } from './components/nve-divider/nve-divider.component';
 export { default as NveDrawer } from './components/nve-drawer/nve-drawer.component';
 export { default as NveDropdown } from './components/nve-dropdown/nve-dropdown.component';
@@ -24,6 +23,7 @@ export { default as NveLinkCard } from './components/nve-link-card/nve-link-card
 export { default as NveMenu } from './components/nve-menu/nve-menu.component';
 export { default as NveMenuItem } from './components/nve-menu-item/nve-menu-item.component';
 export { default as NveMessageCard } from './components/nve-message-card/nve-message-card.component';
+export { default as NveModal } from './components/nve-modal/nve-modal.component';
 export { default as NveNavigationCard } from './components/nve-navigation-card/nve-navigation-card.component';
 export { default as NveOption } from './components/nve-option/nve-option.component';
 export { default as NveParagraph } from './components/nve-paragraph/nve-paragraph.component';
