@@ -28,25 +28,18 @@ Dataen knyttet til token-navnet. Dette er ikke tokens men endelig verdier (for e
 
 ### Global tokens (base-tokens)
 
-Global tokens (base-tokens)
 En token brukt på tvers av designsystemet. Dette er det motsatte av en komponentspesifikk token.
 
 ### Alias tokens
 
-Alias tokens
 En token som refererer til en annen token, i stedet for å referere til en hardkodet verdi.
 
 ### Component specific tokens
 
-Component specific tokens
 En token brukt for en bestemt komponent.
 
 ### Private tokens
 
-Private tokens
 Tokenene i denne nivået lagrer vi ekstra rå verdiene vi ikke bruker og bygger oss en bank med verdier som kan brukes for videre ekspansjon og endringer.
 
 <hr>
-
-**Les om fler designelementer på**
-<LinkButton URL="https://nve.frontify.com/" text="Profil og primitiver" :openInNewTab="true"/>
