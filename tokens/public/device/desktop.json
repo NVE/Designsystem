@@ -263,6 +263,16 @@
         },
         "$type": "sizing",
         "$value": "{sizing.20x}"
+      },
+      "2x-small": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ],
+          "com.figma.hiddenFromPublishing": false
+        },
+        "$type": "sizing",
+        "$value": "{sizing.18x}"
       }
     },
     "fixed-sizing": {
