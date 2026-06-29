@@ -282,6 +282,10 @@
             "$type": "color",
             "$value": "{color-shades.accent.200}"
           },
+          "pressed": {
+            "$type": "color",
+            "$value": "{color-shades.accent.300}"
+          },
           "visited": {
             "$type": "color",
             "$value": "{color-shades.functional.neutralgrey.200}"
