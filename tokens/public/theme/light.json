@@ -274,15 +274,15 @@
         "link": {
           "enabled": {
             "$type": "color",
-            "$value": "{color-shades.functional.blue.700}"
+            "$value": "{color-shades.grey.999}"
           },
           "hover": {
             "$type": "color",
-            "$value": "{color-shades.functional.blue.950}"
+            "$value": "{color-shades.accent.500}"
           },
           "visited": {
             "$type": "color",
-            "$value": "{color-shades.grey.600}"
+            "$value": "{color-shades.functional.neutralgrey.600}"
           }
         }
       },
