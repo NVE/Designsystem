@@ -60,7 +60,7 @@ export default defineConfig({
               { text: 'Commit-meldinger', link: '/introduction/forDesigner/commitMessages' },
             ],
           },
-                    {
+          {
             text: 'Designelementer',
             items: [
               { text: 'Tokens', link: '/introduction/designelementer/tokens' },
@@ -71,6 +71,7 @@ export default defineConfig({
               { text: 'Animasjoner', link: '/introduction/designelementer/animasjoner' },
             ],
           },
+          { text: 'Profil og primitiver', link: '/introduction/profilOgPrimitiver' },
           { text: 'Universell Utforming', link: '/introduction/universellUtforming' },
         ],
       },
