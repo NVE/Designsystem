@@ -2,14 +2,16 @@ import { LitElement, html, nothing } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
-import '../nve-icon/nve-icon.component';
 import '../nve-button/nve-button.component';
 import styles from './nve-modal.styles';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-let openModalCount = 0;
-let scrollY = 0;
+let openModalCount = 0; // Teller hvor mange modaler som er åpne. Hvis det er mer enn 0, skal vi låse scrollingen på siden.
+let scrollY = 0; // Lagrer den opprinnelige scrollposisjonen på siden før vi låser scrollingen. Når modalen lukkes, skal vi rulle tilbake til denne posisjonen.
 
+/**
+ * Låser siden for scrolling når en modal er åpen.
+ */
 function lockPageScroll() {
   if (openModalCount++ > 0) return;
 
@@ -22,6 +24,9 @@ function lockPageScroll() {
   document.body.style.width = '100%';
 }
 
+/**
+ * Låser opp siden for scrolling når alle modaler er lukket.
+ */
 function unlockPageScroll() {
   if (--openModalCount > 0) return;
 
@@ -35,17 +40,16 @@ function unlockPageScroll() {
 }
 
 /**
- * En dialogboks som bruker native dialog-element.
- * Vil du ha ikon foran overskriften, bruk `icon`.
- * Skal det ikke være mulig å trykke utenfor for å lukke dialogen, bruk `disableBackground`.
+ * En modal dialog for å vise viktig innhold eller handlinger som krever brukerens oppmerksomhet.
+ * Kan brukes til bekreftelser, skjemaer, ekstra informasjon eller andre oppgaver som skal løses
+ * før brukeren går videre.
  *
- * Bruker native dialog-API:
- * - `cancel`-event fra Escape-tasten (kan forhindres med `preventDefault()`)
- * - `close`-event når dialogen lukkes (fra `dialog.close()`)
- * - `showModal()` viser dialogen
+ * Komponenten bruker det native `<dialog>`-elementet med `showModal()`, låser siden mens den er åpen
+ * og viser et backdrop bak innholdet.
  *
- * @slot label - teksten som skal vises i overskriften. Eller du kan bruke label-attributtet
  * @slot - hovedinnholdet (body)
+ * @slot end-icon - ikon etter overskriften
+ * @slot start-icon - ikon foran overskriften
  * @slot footer - feltet i bunnen hvor knappene er plassert
  * @slot header-actions - valgfrie handlinger i headeren
  *
@@ -53,7 +57,7 @@ function unlockPageScroll() {
  * @event close - Når dialogen lukkes (fra `dialog.close()`)
  *
  * @csspart base - Dialog-elementet
- * @csspart overlay - Overlegget bak dialogen
+ * @csspart overlay - Overlegget bak dialogen - den skal ikke styles
  * @csspart panel - Dialogens panel
  * @csspart header - Headeren
  * @csspart title - Tittelen
@@ -62,22 +66,34 @@ function unlockPageScroll() {
  * @csspart body - Innhold
  * @csspart footer - Footer
  *
- * @cssproperty --width - Bredden på dialogen
- * @cssproperty --header-spacing - Padding for headeren
- * @cssproperty --body-spacing - Padding for innholdet
- * @cssproperty --footer-spacing - Padding for footeren
- *
- * add deps
+ * @dependency nve-button
  */
 @customElement('nve-modal')
 export default class NveModal extends LitElement implements INveComponent {
-  @property({ reflect: true }) testId: string | undefined = undefined;
-  /** Teksten i overskriften */
-  @property({ type: String }) label = '';
-  @property({ type: String }) closedBy?: 'any' | 'none' | 'closerequest' = undefined; // this is not supported yet, but we can add it later if needed. requestclose is the standard
-  @query('dialog') private dialogEl!: HTMLDialogElement;
-
+  @property({ type: String }) testId: string | undefined = undefined;
+  /** Teksten i overskriften. Den er påkrevd */
+  @property({ type: String }) label: string = '';
+  /** Bestemmer hvordan modalen kan lukkes. Standard er 'closerequest' som er satt opp når modalen åpnes */
+  @property({ type: String }) closedBy?: 'any' | 'none' | 'closerequest' = undefined;
+  /** Sett størrelse på kortet */
+  @property({ type: String }) size: 'default' | 'compact' = 'default';
+  @query('.modal') private dialogEl!: HTMLDialogElement;
+  /** Om dialogen har en footer */
   @state() private hasFooter = false;
+
+  static styles = styles;
+
+  @state() private _open = false;
+
+  /** Om modalen er åpen. Kun lesbar. */
+  get open(): boolean {
+    return this._open;
+  }
+
+  private setOpenState(isOpen: boolean) {
+    this._open = isOpen;
+    this.toggleAttribute('open', isOpen);
+  }
 
   //private originalTrigger: HTMLElement | null = null; // trenger ikke det, dialog fikser det selv
 
@@ -133,13 +149,13 @@ and then click the tab, it doesnt focus the first button but the first focusbale
 all the browser buttons first 
 
 events:
-cancel
-close
+cancel - done both esc and click on the backdrop call it
+close - done
 
 mthods:
-showModal,
-close,
-requestclose
+showModal, -done
+close, -done
+requestclose - done
 
 properties:
 only closedby native is supported
@@ -147,8 +163,11 @@ open is not supported as its not recommended to be used by html specification ht
 returnValue is not supported. devs have to use close programatically in their apps anyway to close the dialog, so this doesnt need to be supported.
 
 TEST
-multiple modals opened
-scroll lock
+multiple modals opened - works
+scroll lock - works
+autofocus - works
+
+write about moving focus otuside the modal but not within the page, tabbing happens in the browser and its buttons, those cant be blocked!
 */
 
   firstUpdated() {
@@ -165,17 +184,28 @@ scroll lock
     }
     super.disconnectedCallback();
   }
-  // vi skal ikke bruke disse metodene, de skal kalles pa selve dialogen for a vaere native akkurat na er de ikke det
-  /** Viser dialogen.
-   * The show() method of the HTMLDialogElement interface displays the dialog as a non-modal dialog.
-
-A non-modal dialog is one where users can interact with content outside/behind the open dialog.
-   * 
-   * 
-   */
-  async open() {
+  /** Viser dialogen */
+  async show() {
     this.dialogEl.showModal();
+    this.setOpenState(true);
     lockPageScroll();
+    await this.focusAutofocusTarget();
+  }
+
+  private async focusAutofocusTarget() {
+    await this.updateComplete;
+
+    await new Promise<void>((resolve) => {
+      requestAnimationFrame(() => resolve());
+    });
+
+    const autofocusTarget = this.querySelector<HTMLElement>('[autofocus]');
+    console.log('autofocusTarget', autofocusTarget);
+    if (!autofocusTarget) {
+      return;
+    }
+
+    autofocusTarget.focus();
   }
 
   /** Skjuler dialogen. */
@@ -183,38 +213,53 @@ A non-modal dialog is one where users can interact with content outside/behind t
     this.closeWithAnimation();
   }
 
+  /** Sender en forespørsel om å lukke dialogen.
+   * Emitter cancel-eventet for å indikere at lukking er forespurt og close-eventet når dialogen faktisk lukkes. */
+  async requestClose() {
+    this.dialogEl.requestClose();
+  }
+
+  /** Lukker dialogen med en animasjon. */
   private async closeWithAnimation() {
     if (!this.dialogEl || !this.dialogEl.open) return;
 
-    this.dialogEl.classList.add('dialog--closing');
+    this.dialogEl.classList.add('modal--closing');
 
     await new Promise((resolve) => setTimeout(resolve, 250));
 
-    this.dialogEl.classList.remove('dialog--closing');
+    this.dialogEl.classList.remove('modal--closing');
     this.dialogEl.close();
+    this.setOpenState(false);
     unlockPageScroll();
   }
 
+  /** Håndterer endringer i footer-slotten for å oppdatere hasFooter-tilstanden. */
   private handleFooterSlotChange = (event: Event) => {
     const slot = event.target as HTMLSlotElement;
     this.hasFooter = slot.assignedNodes({ flatten: true }).length > 0;
   };
 
+  /** Håndterer cancel-eventet fra dialogen. Emitter cancel-eventet videre for å indikere at lukking er forespurt. */
   private handleCancel = (event: Event) => {
-    console.log('cancel event fired');
     event.preventDefault(); // Forhindre at dialogen lukkes
     this.closeWithAnimation();
+    this.dispatchEvent(new CustomEvent('cancel', { bubbles: true, composed: true }));
+  };
+
+  /** Håndterer close-eventet fra dialogen. Emitter close-eventet videre for å indikere at dialogen faktisk er lukket. */
+  private handleClose = () => {
+    this.setOpenState(false);
+    this.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
   };
 
   private renderHeader() {
     return html`
-      <header part="header" class="dialog__header">
-        <!-- Ikon skal være slot -->
+      <header part="header" class="modal__header">
         <slot name="start-icon"></slot>
-        ${this.label.length > 0 ? html`<h2 part="title" id="title" class="dialog__title">${this.label}</h2>` : nothing}
-        <div part="header-actions" class="dialog__header-actions">
+        ${this.label.length > 0 ? html`<h2 part="title" id="title" class="modal__title">${this.label}</h2>` : nothing}
+        <div part="header-actions" class="modal__header-actions">
           <slot name="end-icon"></slot>
-          <nve-button variant="ghost" @click=${this.close} part="close-button" aria-label="Close dialog">
+          <nve-button variant="ghost" @click=${this.close} part="close-button" aria-label="Lukk modalen">
             <nve-icon name="close"></nve-icon>
           </nve-button>
         </div>
@@ -230,32 +275,35 @@ A non-modal dialog is one where users can interact with content outside/behind t
       <dialog
         part="base"
         class=${classMap({
-          dialog: true,
-          'dialog--has-footer': this.hasFooter,
+          modal: true,
+          'modal--has-footer': this.hasFooter,
         })}
         closedby=${ifDefined(this.closedBy)}
         aria-labelledby="title"
         @cancel=${this.handleCancel}
-        @close=${() => {
-          console.log('close event fired');
-        }}
+        @close=${this.handleClose}
       >
-        <div part="panel" class="dialog__panel">
+        <div
+          part="panel"
+          class=${classMap({
+            modal__panel: true,
+            'modal__panel--default': this.size === 'default',
+            'modal__panel--compact': this.size === 'compact',
+          })}
+        >
           ${this.renderHeader()}
 
-          <div part="body" class="dialog__body">
+          <div part="body" class="modal__body">
             <slot></slot>
           </div>
 
-          <footer part="footer" class="dialog__footer">
+          <footer part="footer" class="modal__footer">
             <slot name="footer" @slotchange=${this.handleFooterSlotChange}></slot>
           </footer>
         </div>
       </dialog>
     `;
   }
-
-  static styles = styles;
 }
 
 declare global {

@@ -1,4 +1,4 @@
-/*import { describe, it, expect, afterAll } from 'vitest';
+import { describe, it, expect, afterAll } from 'vitest';
 import { fixture, fixtureCleanup } from '@open-wc/testing';
 import { html } from 'lit';
 import NveModal from './nve-modal.component';
@@ -10,16 +10,7 @@ if (!customElements.get('nve-modal')) {
 const nextFrame = () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
 
 describe('nve-modal', () => {
- afterAll(() => fixtureCleanup());
-
-  it('has correct default properties', async () => {
-    const el = await fixture<NveModal>(html`<nve-modal></nve-modal>`);
-    expect(el.open).toBe(false);
-    expect(el.label).toBe('');
-    expect(el.icon).toBe('');
-    expect(el.disableBackground).toBe(false);
-    expect(el.noHeader).toBe(false);
-  });
+  afterAll(() => fixtureCleanup());
 
   it('renders a native dialog element', async () => {
     const el = await fixture<NveModal>(html`<nve-modal label="Test"></nve-modal>`);
@@ -28,28 +19,13 @@ describe('nve-modal', () => {
   });
 
   it('renders header with label', async () => {
-    const el = await fixture<NveModal>(html`<nve-dialog label="Overskrift"></nve-dialog>`);
-    const title = el.shadowRoot?.querySelector('.dialog__title');
+    const el = await fixture<NveModal>(html`<nve-modal label="Overskrift"></nve-modal>`);
+    const title = el.shadowRoot?.querySelector('.modal__title');
     expect(title?.textContent?.trim()).toBe('Overskrift');
   });
 
-  it('hides header when no-header is set', async () => {
-    const el = await fixture<NveModal>(html`<nve-dialog no-header label="Hidden"></nve-dialog>`);
-    const header = el.shadowRoot?.querySelector('.dialog__header');
-    expect(header).toBeNull();
-  });
-
-  it('renders close button with nve-icon', async () => {
-    const el = await fixture<NveModal>(html`<nve-dialog label="Test"></nve-dialog>`);
-    const closeButton = el.shadowRoot?.querySelector('.dialog__close');
-    expect(closeButton).toBeTruthy();
-    const icon = closeButton?.querySelector('nve-icon');
-    expect(icon).toBeTruthy();
-    expect(icon?.getAttribute('name')).toBe('close');
-  });
-
-  it('opens dialog via show() method', async () => {
-    const el = await fixture<NveModal>(html`<nve-dialog label="Test"></nve-dialog>`);
+  it('sets property open when show() is called', async () => {
+    const el = await fixture<NveModal>(html`<nve-modal label="Test"></nve-modal>`);
     await el.show();
     await nextFrame();
     expect(el.open).toBe(true);
@@ -57,78 +33,57 @@ describe('nve-modal', () => {
     expect(dialog?.open).toBe(true);
   });
 
-  it('closes dialog via hide() method', async () => {
-    const el = await fixture<NveModal>(html`<nve-dialog label="Test"></nve-dialog>`);
+  it('sets property open to false when close() is called', async () => {
+    const el = await fixture<NveModal>(html`<nve-modal label="Test"></nve-modal>`);
     await el.show();
     await nextFrame();
-    await el.hide();
+    await el.close();
     // Wait for close animation
     await new Promise((r) => setTimeout(r, 300));
     expect(el.open).toBe(false);
   });
 
-  it('closes dialog when close button is clicked', async () => {
-    const el = await fixture<NveModal>(html`<nve-dialog label="Test"></nve-dialog>`);
+  it('closes modal when close button is clicked', async () => {
+    const el = await fixture<NveModal>(html`<nve-modal label="Test"></nve-modal>`);
     await el.show();
     await nextFrame();
-    const closeButton = el.shadowRoot?.querySelector('.dialog__close') as HTMLElement;
+    const closeButton = el.shadowRoot?.querySelector('[part="close-button"]') as HTMLElement;
     closeButton?.click();
-    await new Promise((r) => setTimeout(r, 300));
-    expect(el.open).toBe(false);
-  });
-
-  it('prevents overlay close when disableBackground is set', async () => {
-    const el = await fixture<NveModal>(html`<nve-dialog label="Test" disableBackground></nve-dialog>`);
-    await el.show();
-    await nextFrame();
-    const overlay = el.shadowRoot?.querySelector('.dialog__overlay') as HTMLElement;
-    overlay?.click();
-    await nextFrame();
-    expect(el.open).toBe(true);
-  });
-
-  it('closes on overlay click when disableBackground is not set', async () => {
-    const el = await fixture<NveModal>(html`<nve-dialog label="Test"></nve-dialog>`);
-    await el.show();
-    await nextFrame();
-    const overlay = el.shadowRoot?.querySelector('.dialog__overlay') as HTMLElement;
-    overlay?.click();
+    // Wait for close animation
     await new Promise((r) => setTimeout(r, 300));
     expect(el.open).toBe(false);
   });
 
   it('renders slotted footer content', async () => {
     const el = await fixture<NveModal>(html`
-      <nve-dialog label="Test">
+      <nve-modal label="Test">
         <div slot="footer">Footer content</div>
-      </nve-dialog>
+      </nve-modal>
     `);
-    const footer = el.shadowRoot?.querySelector('.dialog__footer');
+    const footer = el.shadowRoot?.querySelector('.modal__footer');
     expect(footer).toBeTruthy();
   });
 
-  it('sets aria-labelledby when header is visible', async () => {
-    const el = await fixture<NveModal>(html`<nve-dialog label="Test"></nve-dialog>`);
+  it('sets aria-labelledby', async () => {
+    const el = await fixture<NveModal>(html`<nve-modal label="Test"></nve-modal>`);
     const dialog = el.shadowRoot?.querySelector('dialog');
     expect(dialog?.getAttribute('aria-labelledby')).toBe('title');
   });
 
-  it('sets aria-label when no-header is used', async () => {
-    const el = await fixture<NveModal>(html`<nve-dialog no-header label="Hidden label"></nve-dialog>`);
-    const dialog = el.shadowRoot?.querySelector('dialog');
-    expect(dialog?.getAttribute('aria-label')).toBe('Hidden label');
-  });
+  it('dispatches close event when close() is called', async () => {
+    const el = await fixture<NveModal>(html`<nve-modal label="Test"></nve-modal>`);
+    await el.show();
+    await nextFrame();
 
-  it('renders icon in title when icon property is set', async () => {
-    const el = await fixture<NveModal>(html`<nve-dialog label="Test" icon="info"></nve-dialog>`);
-    const icon = el.shadowRoot?.querySelector('.dialog__title-icon');
-    expect(icon).toBeTruthy();
-    expect(icon?.getAttribute('name')).toBe('info');
-  });
+    const closeEventPromise = new Promise<Event>((resolve) => {
+      el.addEventListener('close', resolve, { once: true });
+    });
 
-  it('does not render icon in title when icon property is empty', async () => {
-    const el = await fixture<NveModal>(html`<nve-dialog label="Test"></nve-dialog>`);
-    const icon = el.shadowRoot?.querySelector('.dialog__title-icon');
-    expect(icon).toBeNull();
+    await el.close();
+
+    const closeEvent = await closeEventPromise;
+
+    expect(closeEvent).toBeTruthy();
+    expect(el.open).toBe(false);
   });
-});*/
+});
