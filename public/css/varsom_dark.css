@@ -327,9 +327,10 @@
   --color-interactive-foreground-tertiary-disabled: var(--color-shades-grey-700);
   --color-interactive-foreground-danger-enabled: var(--color-shades-grey-000);
   --color-interactive-foreground-danger-disabled: var(--color-shades-functional-red-800);
-  --color-interactive-foreground-link-enabled: var(--color-shades-functional-blue-400);
-  --color-interactive-foreground-link-hover: var(--color-shades-functional-blue-200);
-  --color-interactive-foreground-link-visited: var(--color-shades-grey-200);
+  --color-interactive-foreground-link-enabled: var(--color-shades-grey-000);
+  --color-interactive-foreground-link-hover: var(--color-shades-accent-200);
+  --color-interactive-foreground-link-pressed: var(--color-shades-accent-300);
+  --color-interactive-foreground-link-visited: var(--color-shades-functional-neutralgrey-200);
   --color-interactive-border-primary-enabled: var(--color-shades-grey-000);
   --color-interactive-border-primary-hover: var(--color-shades-functional-neutralgrey-100-050);
   --color-interactive-border-primary-disabled: var(--color-shades-grey-700);
