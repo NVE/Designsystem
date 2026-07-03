@@ -52,13 +52,13 @@ outline: [2, 3]
     innholdet som er satt til <span class="highlight">inert</span>.
   </p>
 
-  <p>Følgende native dialog-attributter støttes:</p>
+  <p><b>Følgende native dialog-attributter støttes:</b></p>
 
   <ul>
     <li><span class="highlight">closedBy</span></li>
   </ul>
 
-  <p>Følgende native dialog-attributter støttes ikke:</p>
+  <p><b>Følgende native dialog-attributter støttes ikke:</b></p>
 
   <ul>
     <li>
@@ -71,7 +71,7 @@ outline: [2, 3]
      og våre bruksområder for dialoger har ikke behov for denne funksjonaliteten.</li>
   </ul>
 
-  <p>Følgende native dialog-metoder støttes:</p>
+  <p><b>Følgende native dialog-metoder støttes:</b></p>
 
   <ul>
     <li>
@@ -88,7 +88,7 @@ outline: [2, 3]
 
   </ul>
 
-  <p>Følgende native dialog-hendelser støttes:</p>
+  <p><b>Følgende native dialog-hendelser støttes:</b></p>
 
   <ul>
     <li>
@@ -129,7 +129,7 @@ Man kan velge mellom <span class="highlight">default</span> (som er standard og 
 <CodeExamplePreview>
 
 ```html
-<nve-button onclick="this.nextElementSibling.show()">Vis kompakt modalen</nve-button>
+<nve-button onclick="this.nextElementSibling.show()">Vis kompakt modal</nve-button>
 <nve-modal label="Overskrift" size="compact"> Dette er en modal dialog. </nve-modal>
 ```
 
@@ -181,7 +181,7 @@ Det er egne spor for å legge innhold i bunnen av modalen.
   facilisis nisi. Phasellus eget faucibus mauris, in tincidunt mi. Curabitur urna tortor, semper vel facilisis vel,
   aliquam a risus. Praesent eu sapien ornare, ultrices neque id, tincidunt metus.
   <div slot="footer">
-    <nve-button variant="primary" onclick="this.parentElement.parentElement.hide()">Ok</nve-button>
+    <nve-button variant="primary" onclick="this.parentElement.parentElement.close()">Ok</nve-button>
     <nve-button disabled>Slett alt</nve-button>
   </div>
 </nve-modal>
@@ -189,7 +189,7 @@ Det er egne spor for å legge innhold i bunnen av modalen.
 
 </CodeExamplePreview>
 
-### Autofokus et interaktiv element i modalen
+### Autofokus på et interaktivt element i modalen
 
 Som standard settes fokus på det første fokuserbare elementet i modalen når den åpnes. I de fleste tilfeller vil dette være lukkeknappen.
 
@@ -205,7 +205,7 @@ Noen ganger kan det være mer hensiktsmessig å sette fokus på et annet element
   facilisis nisi. Phasellus eget faucibus mauris, in tincidunt mi. Curabitur urna tortor, semper vel facilisis vel,
   aliquam a risus. Praesent eu sapien ornare, ultrices neque id, tincidunt metus.
   <div slot="footer">
-    <nve-button variant="primary" autofocus onclick="this.parentElement.parentElement.hide()">Ok</nve-button>
+    <nve-button variant="primary" autofocus onclick="this.parentElement.parentElement.close()">Ok</nve-button>
   </div>
 </nve-modal>
 ```
@@ -234,7 +234,7 @@ Det samme gjelder hvis innholdet er så langt at starten av modalen kan forsvinn
 
 Hvis modalen brukes til en handling som er vanskelig å angre, som sletting av data eller bekreftelse av en viktig handling, kan det være lurt å sette fokus på det minst destruktive valget først, for eksempel en avbryt-knapp. Hvis modalen derimot bare gir ekstra informasjon eller lar brukeren gå videre i en prosess, kan det være mer hensiktsmessig å sette fokus på handlingen som oftest brukes, som en «OK»- eller «Fortsett»-knapp.
 
-Når modalen lukkes, returneres fokus som til elementet som åpnet den.
+Når modalen lukkes, returneres fokus til elementet som åpnet den.
 
 [Du kan lese mer her](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/#:~:text=Closes%20the%20dialog.-,Note,-When%20a%20dialog).
 

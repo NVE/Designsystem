@@ -44,27 +44,27 @@ function unlockPageScroll() {
  * Kan brukes til bekreftelser, skjemaer, ekstra informasjon eller andre oppgaver som skal løses
  * før brukeren går videre.
  *
- * Komponenten bruker det native `<dialog>`-elementet med `showModal()`, låser siden mens den er åpen
+ * Komponenten bruker det native dialog-elementet med showModal(), låser siden mens den er åpen
  * og viser et backdrop bak innholdet.
  *
- * @slot - hovedinnholdet (body)
- * @slot end-icon - ikon etter overskriften
- * @slot start-icon - ikon foran overskriften
- * @slot footer - feltet i bunnen hvor knappene er plassert
- * @slot header-actions - valgfrie handlinger i headeren
+ * @slot  hovedinnholdet (body)
+ * @slot end-icon  ikon etter overskriften
+ * @slot start-icon  ikon foran overskriften
+ * @slot footer  feltet i bunnen hvor knappene er plassert
+ * @slot header-actions  valgfrie handlinger i headeren
  *
- * @event cancel - Når brukeren trykker Escape. Kan forhindres med `preventDefault()`
- * @event close - Når dialogen lukkes (fra `dialog.close()`)
+ * @event cancel  Når brukeren trykker Escape. Kan forhindres med `preventDefault()`
+ * @event close  Når dialogen lukkes (fra `dialog.close()`)
  *
- * @csspart base - Dialog-elementet
- * @csspart overlay - Overlegget bak dialogen - den skal ikke styles
- * @csspart panel - Dialogens panel
- * @csspart header - Headeren
- * @csspart title - Tittelen
- * @csspart header-actions - Header handlinger
- * @csspart close-button - Lukk-knappen
- * @csspart body - Innhold
- * @csspart footer - Footer
+ * @csspart base  Dialog-elementet
+ * @csspart overlay  Overlegget bak dialogen - den skal ikke styles
+ * @csspart panel  Dialogens panel
+ * @csspart header  Headeren
+ * @csspart title  Tittelen
+ * @csspart header-actions  Header handlinger
+ * @csspart close-button  Lukk-knappen
+ * @csspart body  Innhold
+ * @csspart footer  Footer
  *
  * @dependency nve-button
  */
