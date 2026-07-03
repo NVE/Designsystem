@@ -52,7 +52,7 @@ export default [
 
       quotes: ['error', 'double'],
       semi: ['error', 'always'],
-      'no-console': 'error',
+      'no-console': ['error', { allow: ['warn', 'error'] }],
       'no-debugger': 'error',
 
       'max-lines-per-function': ['warn', { max: 80, skipBlankLines: true, skipComments: true }],
