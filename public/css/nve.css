@@ -360,6 +360,7 @@
   --color-feedback-foreground-error: var(--color-shades-functional-red-700);
   --color-feedback-foreground-warning: var(--color-shades-functional-orange-999);
   --color-feedback-foreground-success: var(--color-shades-functional-green-900);
+  --color-feedback-foreground-danger: var(--color-shades-functional-danger-600);
   --color-feedback-foreground-on-bg-subtle-neutral: var(--color-shades-functional-neutralgrey-800);
   --color-feedback-foreground-on-bg-subtle-info: var(--color-shades-functional-blue-850);
   --color-feedback-foreground-on-bg-subtle-error: var(--color-shades-functional-red-850);
