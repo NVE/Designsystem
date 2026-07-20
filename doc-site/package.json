@@ -11,11 +11,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@octokit/request": "^10.0.10",
+    "@octokit/request": "^10.0.11",
     "vitepress": "^1.6.4"
   },
   "dependencies": {
-    "@nve-org/vue-components": "^2.0.0"
+    "@nve-org/vue-components": "^2.1.0"
   },
   "overrides": {
     "esbuild": ">=0.25.0"
