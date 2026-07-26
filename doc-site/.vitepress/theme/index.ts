@@ -70,6 +70,7 @@ export default {
   async enhanceApp({ app }) {
     if (!import.meta.env.SSR) {
       if (typeof window !== 'undefined') {
+        // eksponere validateForm og rules til window for å kunne bruke dem i sandbox
         (window as typeof window & { validateForm: typeof validateForm }).validateForm = validateForm;
         (window as typeof window & { rules: typeof rules }).rules = rules;
       }

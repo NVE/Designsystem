@@ -38,8 +38,8 @@ export interface FormValidationComponent extends LitElement, INveComponent {
 
 <b>To typer validering støttes:</b>
 
-- <a class="highlight no-visited" href="#internal-validation">intern</a> – brukes når valideringslogikk ikke leveres utenfra.
-- <a class="highlight no-visited" href="#external-validation">ekstern</a> – brukes når valideringslogikk leveres av eksterne biblioteker eller en server.
+- <a class="highlight no-visited" href="#intern-validering">intern</a> – brukes når valideringslogikk ikke leveres utenfra.
+- <a class="highlight no-visited" href="#ekstern-validering">ekstern</a> – brukes når valideringslogikk leveres av eksterne biblioteker eller en server.
 
 <nve-message-card variant="warning" label="Obs!" size="compact">
 <p>Når både en ekstern feil og en internt generert valideringsfeil er til stede, prioriteres den eksterne feilmeldingen.</p>
@@ -237,7 +237,7 @@ Feilmeldingen eksponeres også som en <span class="highlight">live region</span>
 
 ### Fokushåndtering
 
-Inntil en egen komponent for oppsummering av valideringsfeil er tilgjengelig, anbefales det å flytte fokus til det første ugyldige skjemafeltet når <a class="highlight no-visited" href="#validating-the-form">validateForm()</a> returnerer et ugyldig resultat.
+Inntil en egen komponent for oppsummering av valideringsfeil er tilgjengelig, anbefales det å flytte fokus til det første ugyldige skjemafeltet når <a class="highlight no-visited" href="#validere-skjemaet">validateForm()</a> returnerer et ugyldig resultat.
 
 Det returnerte objektet inneholder <span class="highlight">firstInvalidField</span>, som kan brukes til dette formålet. Dette gjør det enklere for brukere av tastatur og skjermleser å finne den første feilen raskt, uten å måtte lete seg gjennom skjemaet manuelt.
 

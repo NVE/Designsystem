@@ -231,6 +231,7 @@ a:has(nve-link-card) {
   text-decoration: unset;
 }
 
+/* Brukes for å beholde fontfarge på besøkte lenker */
 a.no-visited:visited {
   color: var(--vp-c-brand-1);
 }
