@@ -138,10 +138,6 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
-.vp-doc a {
-  text-decoration: unset;
-}
-
 nve-message-card p,
 nve-message-card ul {
   margin: 0 !important;
@@ -235,6 +231,11 @@ a:has(nve-link-card) {
   text-decoration: unset;
 }
 
+/* Brukes for å beholde fontfarge på besøkte lenker */
+a.no-visited:visited {
+  color: var(--vp-c-brand-1);
+}
+
 /* Brukes for å overskrive standard lenke visited styling fra eksterne rammeverker. */
 a:visited {
   color: var(--color-interactive-foreground-link-visited);
@@ -248,4 +249,11 @@ a:visited {
   border-radius: 4px;
   padding: 3px 6px;
   background-color: var(--vp-code-bg);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-x-small);
+  justify-content: flex-start;
 }

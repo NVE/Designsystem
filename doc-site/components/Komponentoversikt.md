@@ -238,13 +238,6 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ferdig'
   },
   {
-    name: 'nve-option',
-    nodeId: undefined,
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
     name: 'nve-navbar',
     nodeId: '203-17',
     description: undefined,
@@ -287,13 +280,6 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ferdig'
   },
   {
-    name: 'nve-radio-button',
-    nodeId: '4229-83173',
-    description: undefined,
-    statusDesign: 'Ikke påbegynt',
-    statusCode: 'Ferdig'
-  },
-  {
     name: 'nve-radio-group',
     nodeId: '4229-83173',
     description: undefined,
@@ -320,13 +306,6 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     description: undefined,
     statusDesign: 'Skal revideres',
     statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-select',
-    nodeId: '4229-82274',
-    description: 'Dropdown-list / rullgardin',
-    statusDesign: 'Ferdig',
-    statusCode: 'Trenger kvalitetssjekk'
   },
   {
     name: 'nve-skeleton',
