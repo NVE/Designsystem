@@ -69,7 +69,7 @@ export default {
     if (!import.meta.env.SSR) {
       // siden VitePress bygges via SSR, vi må sikre at våre web komponenter lastes ned i nettleseren bare
       // derfor importerer vi alle komponenter når miljø ikke er SSR
-      const components = import.meta.glob('../../../src/components/*/*.component.ts');
+      const components = import.meta.glob('../../../src/components/**/*.component.ts');
 
       // Lese inn nve_theme.css for å hente ut css variabler
       const styles = import.meta.glob('./styles/nve_theme.css', { query: '?raw', import: 'default' });
