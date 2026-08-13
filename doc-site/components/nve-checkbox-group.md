@@ -50,12 +50,32 @@ type NveCheckboxGroupChangeEvent<T> = {
 
 Bruk <span class="highlight">label</span> for å vise en tydelig ledetekst for feltet. Attributtet er påkrevd – hvert skjemafelt skal ha en ledetekst som skjermlesere kan bruke for å forstå hva feltet gjelder.
 
-Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende informasjon ved ledeteksten. Innholdet kan være ren tekst eller HTML, for eksempel lenker eller formattert hjelpetekst.
+<CodeExamplePreview>
+
+```html
+<nve-checkbox-group label="Hvilke varsler vil du se på?">
+  <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+  <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
+  <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
+</nve-checkbox-group>
+```
+
+</CodeExamplePreview>
+
+### Toggletip
+
+Bruk sporet <span class="highlight">label-toggletip</span> for å vise en toggletip ved siden av ledeteksten.
+Sporet er beregnet for en <a href="../components/nve-toggletip" class="highlight">nve-toggletip</a>-komponent.
+
+Husk å legge til <span class="highlight">aria-label</span> på <span class="highlight">nve-toggletip</span>.
 
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Hvilke varsler vil du se på?" tooltip="Gjelder varslene som vises i kart">
+<nve-checkbox-group label="Hvilke varsler vil du se på?">
+  <nve-toggletip slot="label-toggletip" aria-label="Les mer om filtrering">
+    <span>Ekstra info her.</span>
+  </nve-toggletip>
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>

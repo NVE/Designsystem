@@ -6,7 +6,7 @@ outline: [2, 3]
 <CodeExamplePreview>
 
 ```html
-<nve-button>NVE-knappen</nve-button>
+<nve-button aria-label="test">NVE-knappen</nve-button>
 ```
 
 </CodeExamplePreview>

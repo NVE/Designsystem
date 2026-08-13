@@ -219,7 +219,7 @@ export default class NveTextarea extends LitElement implements FormValidationCom
         })}
       >
         <!-- Ledetekst -->
-        ${getLabel(labelId, this.label, this.tooltip, this.required, this.requiredLabel)}
+        ${getLabel(labelId, this.label, this.required, this.requiredLabel, html`<slot name="label-toggletip"></slot>`)}
         <!-- Hjelpetekst -->
         ${this.helpText
           ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`

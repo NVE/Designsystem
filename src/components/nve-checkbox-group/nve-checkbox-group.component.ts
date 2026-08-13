@@ -182,7 +182,15 @@ export default class NveCheckboxGroup extends LitElement implements FormValidati
         part="base"
       >
         <!-- Ledetekst -->
-        ${getLabel(this.checkboxGroupId, this.label, this.tooltip, this.required, this.requiredLabel, undefined, true)}
+        ${getLabel(
+          this.checkboxGroupId,
+          this.label,
+          this.required,
+          this.requiredLabel,
+          html`<slot name="label-toggletip"></slot>`,
+          undefined,
+          true
+        )}
         <!-- Hjelpetekst -->
         ${this.helpText
           ? html`<p part="help-text" class="field__help-text" id=${helpTextId} part="help-text">${this.helpText}</p>`

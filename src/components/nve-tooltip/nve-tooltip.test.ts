@@ -7,6 +7,12 @@ if (!customElements.get('nve-tooltip')) {
   customElements.define('nve-tooltip', NveTooltip);
 }
 
+async function waitForSlotWork(el: NveTooltip) {
+  await el.updateComplete;
+  await new Promise((resolve) => requestAnimationFrame(() => resolve(undefined)));
+  await el.updateComplete;
+}
+
 describe('nve-tooltip', () => {
   afterAll(() => {
     fixtureCleanup();
@@ -14,83 +20,111 @@ describe('nve-tooltip', () => {
 
   it('has the documented default properties', async () => {
     const el = await fixture<NveTooltip>(html`<nve-tooltip></nve-tooltip>`);
-
-    expect(el.open).toBe(false);
-    expect(el.trigger).toBe('hover focus');
-    expect(el.placement).toBe('top');
     expect(el.variant).toBe('neutral');
-    expect(el.saturation).toBe('emphasized');
+    expect(el.saturation).toBe('default');
   });
 
-  it('renders plain text content and connects aria-describedby to the trigger element', async () => {
-    const el = await fixture<NveTooltip>(html`
-      <nve-tooltip content="Hjelpetekst">
-        <button type="button">Info</button>
-      </nve-tooltip>
-    `);
-
-    await el.show();
-
-    const trigger = el.querySelector('button');
-    const body = el.shadowRoot?.querySelector('.tooltip__body');
-
-    expect(body?.textContent?.trim()).toBe('Hjelpetekst');
-    expect(trigger?.getAttribute('aria-describedby')).toBeTruthy();
+  it('has correct neutral variant class', async () => {
+    const el = await fixture<NveTooltip>(html`<nve-tooltip variant="neutral"></nve-tooltip>`);
+    const tooltip = el.shadowRoot?.querySelector('div[part="tooltip"]');
+    expect(tooltip?.classList.contains('feedback--neutral')).toBe(true);
   });
 
-  it('supports HTML content through the content slot', async () => {
-    const el = await fixture<NveTooltip>(html`
-      <nve-tooltip open trigger="manual">
-        <ul slot="content">
-          <li>item1</li>
-        </ul>
-        <button type="button">Info</button>
-      </nve-tooltip>
-    `);
-
-    const contentSlot = el.shadowRoot?.querySelector('slot[name="content"]') as HTMLSlotElement | null;
-    const [assignedContent] = contentSlot?.assignedElements({ flatten: true }) ?? [];
-
-    expect(assignedContent?.tagName.toLowerCase()).toBe('ul');
-    expect(assignedContent?.querySelector('li')?.textContent?.trim()).toBe('item1');
+  it('has correct success variant class', async () => {
+    const el = await fixture<NveTooltip>(html`<nve-tooltip variant="success"></nve-tooltip>`);
+    const tooltip = el.shadowRoot?.querySelector('div[part="tooltip"]');
+    expect(tooltip?.classList.contains('feedback--success')).toBe(true);
   });
 
-  it('toggles open and closed when trigger is click', async () => {
-    const el = await fixture<NveTooltip>(html`
-      <nve-tooltip trigger="click" content="Klikk">
-        <button type="button">Info</button>
-      </nve-tooltip>
-    `);
+  it('has correct error variant class', async () => {
+    const el = await fixture<NveTooltip>(html`<nve-tooltip variant="error"></nve-tooltip>`);
+    const tooltip = el.shadowRoot?.querySelector('div[part="tooltip"]');
+    expect(tooltip?.classList.contains('feedback--error')).toBe(true);
+  });
 
-    const trigger = el.querySelector('button');
-    trigger?.click();
+  it('has correct info variant class', async () => {
+    const el = await fixture<NveTooltip>(html`<nve-tooltip variant="info"></nve-tooltip>`);
+    const tooltip = el.shadowRoot?.querySelector('div[part="tooltip"]');
+    expect(tooltip?.classList.contains('feedback--info')).toBe(true);
+  });
+
+  it('has correct warning variant class', async () => {
+    const el = await fixture<NveTooltip>(html`<nve-tooltip variant="warning"></nve-tooltip>`);
+    const tooltip = el.shadowRoot?.querySelector('div[part="tooltip"]');
+    expect(tooltip?.classList.contains('feedback--warning')).toBe(true);
+  });
+
+  it('sets title on the link', async () => {
+    const el = await fixture<NveTooltip>(
+      html`<nve-tooltip variant="warning" content="This is link"><a class="link" href="#">Link</a></nve-tooltip>`
+    );
     await el.updateComplete;
+    const slot = el.shadowRoot?.querySelector('slot');
+    slot?.dispatchEvent(new Event('slotchange'));
+    await waitForSlotWork(el);
 
-    expect(el.open).toBe(true);
-
-    trigger?.click();
-    await el.updateComplete;
-
-    expect(el.open).toBe(false);
+    const link = el.querySelector('a.link');
+    expect(link?.getAttribute('title')).toBe('This is link');
   });
 
-  it('dispatches show and hide when shown and hidden programmatically', async () => {
+  it('sets aria-label on the link', async () => {
+    const el = await fixture<NveTooltip>(
+      html`<nve-tooltip variant="warning" content="This is link"><a class="link" href="#"></a></nve-tooltip>`
+    );
+    await el.updateComplete;
+    const slot = el.shadowRoot?.querySelector('slot');
+    slot?.dispatchEvent(new Event('slotchange'));
+    await waitForSlotWork(el);
+
+    const link = el.querySelector('a.link');
+    expect(link?.getAttribute('aria-label')).toBe('This is link');
+  });
+
+  it('sets title on the button', async () => {
+    const el = await fixture<NveTooltip>(
+      html`<nve-tooltip variant="warning" content="This is button"><button class="button">Button</button></nve-tooltip>`
+    );
+    await el.updateComplete;
+    const slot = el.shadowRoot?.querySelector('slot');
+    slot?.dispatchEvent(new Event('slotchange'));
+    await waitForSlotWork(el);
+
+    const button = el.querySelector('button.button');
+    expect(button?.getAttribute('title')).toBe('This is button');
+  });
+
+  it('sets aria-label on the button', async () => {
+    const el = await fixture<NveTooltip>(
+      html`<nve-tooltip variant="warning" content="This is button"><button class="button"></button></nve-tooltip>`
+    );
+    await el.updateComplete;
+    const slot = el.shadowRoot?.querySelector('slot');
+    slot?.dispatchEvent(new Event('slotchange'));
+    await waitForSlotWork(el);
+
+    const button = el.querySelector('button.button');
+    expect(button?.getAttribute('aria-label')).toBe('This is button');
+  });
+
+  it('calls showPopover when the trigger receives focus', async () => {
     const el = await fixture<NveTooltip>(html`
-      <nve-tooltip content="Visning">
-        <button type="button">Info</button>
+      <nve-tooltip content="Tooltip content">
+        <button>Trigger</button>
       </nve-tooltip>
     `);
 
-    const showSpy = vi.fn();
-    const hideSpy = vi.fn();
+    const tooltip = el.shadowRoot!.querySelector('.tooltip') as HTMLDivElement;
 
-    el.addEventListener('show', showSpy);
-    el.addEventListener('hide', hideSpy);
+    await el.updateComplete;
+    const slot = el.shadowRoot?.querySelector('slot');
+    slot?.dispatchEvent(new Event('slotchange'));
+    await waitForSlotWork(el);
 
-    await el.show();
-    await el.hide();
+    const trigger = el.querySelector('button')!;
+    tooltip.showPopover = vi.fn();
 
-    expect(showSpy).toHaveBeenCalledTimes(1);
-    expect(hideSpy).toHaveBeenCalledTimes(1);
+    trigger.focus();
+
+    expect(tooltip.showPopover).toHaveBeenCalledOnce();
   });
 });

@@ -31,15 +31,32 @@ outline: [2, 3]
 
 Bruk <span class="highlight">label</span> for å vise en tydelig ledetekst for feltet. Attributtet er påkrevd – hvert skjemafelt skal ha en ledetekst som skjermlesere kan bruke for å forstå hva feltet gjelder.
 
-Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende informasjon ved ledeteksten. Innholdet kan være ren tekst eller HTML, for eksempel lenker eller formattert hjelpetekst.
+<CodeExamplePreview>
+
+```html
+<nve-radio-group label="Hva er status på tiltaket?">
+  <nve-radio value="planned">Planlagt</nve-radio>
+  <nve-radio value="current">Pågående</nve-radio>
+  <nve-radio value="done">Ferdigstilt</nve-radio>
+</nve-radio-group>
+```
+
+</CodeExamplePreview>
+
+### Toggletip
+
+Bruk sporet <span class="highlight">label-toggletip</span> for å vise en toggletip ved siden av ledeteksten.
+Sporet er beregnet for en <a href="../components/nve-toggletip" class="highlight">nve-toggletip</a>-komponent.
+
+Husk å legge til <span class="highlight">aria-label</span> på <span class="highlight">nve-toggletip</span>.
 
 <CodeExamplePreview>
 
 ```html
-<nve-radio-group
-  label="Hva er status på tiltaket?"
-  tooltip="Et tiltak er arbeidet eller inngrepet du søker om eller rapporterer om."
->
+<nve-radio-group label="Hva er status på tiltaket?">
+  <nve-toggletip slot="label-toggletip" aria-label="Les mer om tiltaket">
+    <span>Ekstra info her.</span>
+  </nve-toggletip>
   <nve-radio value="planned">Planlagt</nve-radio>
   <nve-radio value="current">Pågående</nve-radio>
   <nve-radio value="done">Ferdigstilt</nve-radio>

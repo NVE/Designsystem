@@ -206,11 +206,9 @@ Akkurat som i enkeltvalg comboboxen kan man skrive inn i input feltet nar man br
 
 </CodeExamplePreview>
 
-### Ledetekst og tooltip
+### Ledetekst
 
 Bruk <span class="highlight">label</span> for å vise en tydelig ledetekst for feltet. Attributtet er påkrevd – hvert skjemafelt skal ha en ledetekst som skjermlesere kan bruke for å forstå hva feltet gjelder.
-
-Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende informasjon ved ledeteksten. Innholdet kan være ren tekst eller HTML, for eksempel lenker eller formattert hjelpetekst.
 
 <nve-message-card variant="warning" label="Ikke bruke egne ledetekster" size="compact">
 <p>Med web components er det foreløpig ikke mulig å koble en ekstern ledetekst (som ikke eksiterer i samme Shadow root som komponent du skal koble den med) i nve-combobox slik at den gir mening fra tilgjengelighets perspektiv. Bruk gjerne label property i stedet.</p>
@@ -222,7 +220,6 @@ Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende inf
 <nve-combobox
   id="nve-avdeling-22"
   label="Velg en avdeling"
-  tooltip="Velg avdeling"
   editable
   options='[ 
     { "value":"rme","label": "RME" },
@@ -234,6 +231,38 @@ Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende inf
     { "value":"v","label": "V" }
      ]'
 >
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Toggletip
+
+Bruk sporet <span class="highlight">label-toggletip</span> for å vise en toggletip ved siden av ledeteksten.
+Sporet er beregnet for en <a href="../components/nve-toggletip" class="highlight">nve-toggletip</a>-komponent.
+
+Husk å legge til <span class="highlight">aria-label</span> på <span class="highlight">nve-toggletip</span>.
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-22"
+  label="Velg en avdeling"
+  editable
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
+     ]'
+>
+  <nve-toggletip slot="label-toggletip" aria-label="Les mer om avdelinger">
+    <span>Ekstra info her.</span>
+  </nve-toggletip>
 </nve-combobox>
 ```
 

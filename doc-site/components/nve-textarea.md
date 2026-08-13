@@ -53,16 +53,33 @@ outline: [2, 3]
 
 ## Eksempler
 
-### Ledetekst og tooltip
+### Ledetekst
 
 Bruk <span class="highlight">label</span> for å vise en tydelig ledetekst for feltet. Attributtet er påkrevd – hvert skjemafelt skal ha en ledetekst som skjermlesere kan bruke for å forstå hva feltet gjelder.
-
-Bruk i tillegg <span class="highlight">tooltip</span> for å vise utfyllende informasjon ved ledeteksten. Innholdet kan være ren tekst eller HTML, for eksempel lenker eller formattert hjelpetekst.
 
 <CodeExamplePreview>
 
 ```html
-<nve-textarea label="Beskriv saken" tooltip="Skriv hva saken gjelder."> </nve-textarea>
+<nve-textarea label="Beskriv saken"> </nve-textarea>
+```
+
+</CodeExamplePreview>
+
+### Toggletip
+
+Bruk sporet <span class="highlight">label-toggletip</span> for å vise en toggletip ved siden av ledeteksten.
+Sporet er beregnet for en <a href="../components/nve-toggletip" class="highlight">nve-toggletip</a>-komponent.
+
+Husk å legge til <span class="highlight">aria-label</span> på <span class="highlight">nve-toggletip</span>.
+
+<CodeExamplePreview>
+
+```html
+<nve-textarea label="Beskriv saken">
+  <nve-toggletip slot="label-toggletip" aria-label="Les mer info om hvordan saken kan beskrives.">
+    <span>Ekstra info her.</span>
+  </nve-toggletip>
+</nve-textarea>
 ```
 
 </CodeExamplePreview>

@@ -112,11 +112,11 @@ export default class NveButton extends LitElement implements INveComponent {
   @property({ type: String, attribute: 'aria-pressed' }) ariaPressed: 'true' | 'false' | 'mixed' | null = null;
 
   @state() private hasIconOrImgOnly = false;
+  @state() private hasText = false;
   /**
    * @internal
    */
   @query('.button') button!: HTMLButtonElement | HTMLLinkElement;
-
   static styles = [styles];
 
   /** Finn tilknyttet skjema, enten via [form] eller nærmeste <form>-forelder. */
@@ -183,20 +183,18 @@ export default class NveButton extends LitElement implements INveComponent {
     const slot = event.target as HTMLSlotElement;
     const nodes = slot.assignedNodes({ flatten: true });
 
-    const hasText = nodes.some((node) => node.nodeType === Node.TEXT_NODE && node.textContent?.trim());
+    const hasText = nodes.some((node) => node.nodeType === Node.TEXT_NODE && node.textContent?.trim() !== '');
+
+    this.hasText = hasText;
 
     if (hasText) {
+      this.hasIconOrImgOnly = false;
       return;
     }
 
-    const elements = nodes.filter((n) => n.nodeType === Node.ELEMENT_NODE) as HTMLElement[];
+    const elements = nodes.filter((node): node is HTMLElement => node.nodeType === Node.ELEMENT_NODE);
 
-    if (elements.length === 1) {
-      this.hasIconOrImgOnly = elements.some((el) => {
-        const tag = el.tagName.toLowerCase();
-        return tag === 'img' || tag === 'nve-icon';
-      });
-    }
+    this.hasIconOrImgOnly = elements.length === 1 && ['img', 'nve-icon'].includes(elements[0].tagName.toLowerCase());
   }
 
   /** Simulerer et klikk på knappen. */
@@ -218,32 +216,81 @@ export default class NveButton extends LitElement implements INveComponent {
     return !!this.href;
   }
 
-  // Vi ønsker at ARIA‑attributter kun skal ligge på den native knappen, ikke på host.
-  private forwardAriaAttributes(el: HTMLElement) {
-    for (const name of this.getAttributeNames()) {
-      if (name.startsWith('aria-')) {
-        const value = this.getAttribute(name);
-        if (value !== null) {
-          el.setAttribute(name, value);
-          this.removeAttribute(name);
-        }
-      }
-    }
-  }
-
   constructor() {
     super();
-  }
-
-  updated() {
-    if (this.button) {
-      this.forwardAriaAttributes(this.button);
-    }
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
     if (this.autofocus) {
       this.focus();
+    }
+    for (const name of NveButton.ariaAttributes) {
+      if (this.hasAttribute(name)) {
+        this.forwardAriaAttribute(name, this.getAttribute(name));
+      }
+    }
+  }
+
+  protected updated(_changedProperties: PropertyValues): void {
+    if (_changedProperties.has('hasText') && this.hasText && this.button.ariaLabel) {
+      this.forwardAriaAttribute('title', this.button.ariaLabel);
+      this.forwardAriaAttribute('aria-label', null);
+    }
+  }
+
+  private static readonly ariaAttributes = [
+    'aria-label',
+    'aria-expanded',
+    'aria-controls',
+    'aria-haspopup',
+    'aria-pressed',
+  ];
+
+  static get observedAttributes() {
+    return [...super.observedAttributes, ...this.ariaAttributes];
+  }
+  private forwardingAria = false;
+
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    const isAriaAttribute = NveButton.ariaAttributes.includes(name as (typeof NveButton.ariaAttributes)[number]);
+
+    /*
+     * Do not pass internally removed ARIA attributes to Lit.
+     */
+    if (isAriaAttribute && this.forwardingAria) {
+      return;
+    }
+
+    /*
+     * These attributes are handled manually rather than as Lit properties.
+     */
+    if (isAriaAttribute) {
+      if (oldValue !== newValue && this.button) {
+        this.forwardAriaAttribute(name, newValue);
+      }
+
+      return;
+    }
+    super.attributeChangedCallback(name, oldValue, newValue);
+  }
+
+  private forwardAriaAttribute(name: string, value: string | null) {
+    if (!this.button) {
+      return;
+    }
+
+    if (value === null) {
+      this.button.removeAttribute(name);
+      return;
+    }
+    this.button.setAttribute(name, value);
+
+    this.forwardingAria = true;
+
+    try {
+      this.removeAttribute(name);
+    } finally {
+      this.forwardingAria = false;
     }
   }
 

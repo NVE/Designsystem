@@ -266,7 +266,15 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
         part="base"
       >
         <!-- Ledetekst -->
-        ${getLabel(this.radioGroupName, this.label, this.tooltip, this.required, this.requiredLabel, undefined, true)}
+        ${getLabel(
+          this.radioGroupName,
+          this.label,
+          this.required,
+          this.requiredLabel,
+          html`<slot name="label-toggletip"></slot>`,
+          undefined,
+          true
+        )}
         <!-- Hjelpetekst -->
         ${this.helpText
           ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`

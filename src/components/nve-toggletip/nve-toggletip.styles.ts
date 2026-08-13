@@ -2,15 +2,34 @@ import { css } from 'lit';
 
 export default css`
   :host {
-    --offset: 8px;
+    --offset: 4px;
+    width: fit-content;
+    height: fit-content;
   }
 
-  .tooltip__trigger {
-    anchor-name: --nve-tooltip-anchor;
+  .toggletip__trigger {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    width: 1.875rem;
+    height: 1.875rem;
+    anchor-name: --nve-toggletip-anchor;
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .tooltip {
+  nve-icon {
+    --icon-size: 1.25rem;
+    transition: color 0.3s;
+  }
+
+  .toggletip__trigger:hover nve-icon {
+    color: var(--color-interactive-background-primary-hover);
+  }
+
+  .toggletip {
     --inset-inline-start: 50%;
     box-sizing: border-box;
     padding: var(--spacing-2x-small) var(--spacing-x-small);
@@ -29,32 +48,19 @@ export default css`
       transform 0.3s,
       overlay 0.3s allow-discrete,
       display 0.3s allow-discrete;
-    p {
-      margin: 0;
-    }
   }
 
   @supports (position-area: top) {
-    .tooltip__anchor-features {
+    .toggletip__anchor-features {
       position-area: top;
-      position-anchor: --nve-tooltip-anchor;
+      position-anchor: --nve-toggletip-anchor;
       position-try-fallbacks: flip-block, flip-inline;
       justify-self: anchor-center;
       container-type: anchored;
     }
   }
 
-  /* 
-  stottes ikke enda overalt
-  @container anchored(fallback: flip-block) {
-    .tooltip::after {
-      inset-block-start: -5px;
-      inset-block-end: auto;
-    }
-  }
-    */
-
-  .tooltip::after {
+  .toggletip::after {
     content: '';
     position: absolute;
     inline-size: 8px;
@@ -72,7 +78,7 @@ export default css`
     transform: translateX(-50%) rotate(45deg);
   }
 
-  .tooltip[data-below]::after {
+  .toggletip[data-below]::after {
     inset-block-start: -5px;
     inset-block-end: auto;
     border-right: none;
@@ -81,12 +87,12 @@ export default css`
     border-top: inherit;
   }
 
-  .tooltip:popover-open {
+  .toggletip:popover-open {
     opacity: 1;
   }
 
   @starting-style {
-    .tooltip:popover-open {
+    .toggletip:popover-open {
       opacity: 0;
     }
   }

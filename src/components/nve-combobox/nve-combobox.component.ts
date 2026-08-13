@@ -1029,7 +1029,14 @@ export default class NveCombobox extends LitElement implements FormValidationCom
         testId=${ifDefined(this.testId)}
       >
         <!-- Ledetekst -->
-        ${getLabel(labelId, this.label, this.tooltip, this.required, this.requiredLabel, this.handleLabelClick)}
+        ${getLabel(
+          labelId,
+          this.label,
+          this.required,
+          this.requiredLabel,
+          html`<slot name="label-toggletip"></slot>`,
+          this.handleLabelClick
+        )}
         <!-- Hjelpetekst -->
         ${this.helpText
           ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
