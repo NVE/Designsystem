@@ -33,7 +33,7 @@ export default css`
     --inset-inline-start: 50%;
     box-sizing: border-box;
     padding: var(--spacing-2x-small) var(--spacing-x-small);
-    font: var(--label-small-light);
+    font: var(--typography-label-small-light);
     border-radius: var(--border-radius-small);
     position: fixed;
     overflow: visible;

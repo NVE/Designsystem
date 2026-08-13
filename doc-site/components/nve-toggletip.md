@@ -24,7 +24,7 @@ outline: [2, 3]
 - <b>Bruk verktøytips når innholdet beskriver kontrollen.</b> Dersom innholdet kun forklarer funksjonen til knappen eller lenken, bør du bruke <a href="../components/nve-tooltip" class="highlight">nve-tooltip</a> i stedet.
 - <b>Hold innholdet kort og relevant.</b> Selv om toggletipen kan inneholde rikere innhold, bør den være enkel å lese og fokusere på én oppgave eller ett tema.
 
-## Eskempler
+## Eksempler
 
 ### Innhold
 

@@ -41,12 +41,12 @@ export default class NveTooltip extends LitElement {
     super();
     this.addEventListener('mouseenter', this.showTooltip);
     this.addEventListener('mouseleave', this.hideTooltip);
+    this.addEventListener('focusin', this.showTooltip);
+    this.addEventListener('focusout', this.hideTooltip);
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.triggerSlot.removeEventListener('focus', this.showTooltip);
-    this.triggerSlot.removeEventListener('blur', this.hideTooltip);
     if (this.hideTimeout) {
       clearTimeout(this.hideTimeout);
     }
@@ -108,24 +108,16 @@ export default class NveTooltip extends LitElement {
 
     if (!trigger) return;
 
-    trigger.addEventListener('focus', () => {
-      this.showTooltip();
-    });
-
-    trigger.addEventListener('blur', () => {
-      this.hideTooltip();
-    });
-
     // Tooltipen må gi triggeren et tilgjengelig navn dersom den ikke har synlig tekst.
     // Har triggeren allerede et tekstlig innhold, brukes title i stedet for aria-label slik at
     // den synlige teksten fortsatt er det tilgjengelige navnet.
 
     // nve-button håndterer selv title når den har synlig tekst.
-    if (trigger?.tagName.toLowerCase() === 'nve-button') {
+    if (trigger.tagName.toLowerCase() === 'nve-button') {
       trigger.setAttribute('aria-label', this.content);
     }
 
-    if (trigger?.tagName.toLowerCase() === 'button') {
+    if (trigger.tagName.toLowerCase() === 'button') {
       if (trigger.textContent.trim() === '') {
         trigger.setAttribute('aria-label', this.content);
       } else {
@@ -133,7 +125,7 @@ export default class NveTooltip extends LitElement {
       }
     }
 
-    if (trigger?.tagName.toLowerCase() === 'a') {
+    if (trigger.tagName.toLowerCase() === 'a') {
       if (trigger.textContent.trim() === '') {
         trigger.setAttribute('aria-label', this.content);
       } else {

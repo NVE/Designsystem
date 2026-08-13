@@ -28,7 +28,7 @@ export default class NveToggletip extends LitElement implements INveComponent {
   @query('.toggletip') private toggletip!: HTMLDivElement;
   @query('.toggletip__trigger') private trigger!: HTMLButtonElement;
 
-  private supportsAnchorPositioning = CSS.supports('position-area: top');
+  private supportsAnchorPositioning = typeof CSS !== 'undefined' && CSS.supports('position-area: top');
 
   static styles = [styles, feedbackStyles];
 
