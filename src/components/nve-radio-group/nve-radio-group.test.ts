@@ -81,7 +81,7 @@ describe('nve-radio-group', () => {
     `);
 
     await el.updateComplete;
-    const slot = el.shadowRoot?.querySelector('slot');
+    const slot = el.shadowRoot?.querySelector('slot:not([name])');
     slot?.dispatchEvent(new Event('slotchange'));
     await waitForSlotWork(el);
 
@@ -103,7 +103,7 @@ describe('nve-radio-group', () => {
     `);
 
     await el.updateComplete;
-    const slot = el.shadowRoot?.querySelector('slot');
+    const slot = el.shadowRoot?.querySelector('slot:not([name])');
     slot?.dispatchEvent(new Event('slotchange'));
     await waitForSlotWork(el);
 
@@ -126,7 +126,7 @@ describe('nve-radio-group', () => {
     `);
 
     await el.updateComplete;
-    const slot = el.shadowRoot?.querySelector('slot');
+    const slot = el.shadowRoot?.querySelector('slot:not([name])');
     slot?.dispatchEvent(new Event('slotchange'));
     await waitForSlotWork(el);
 

@@ -45,11 +45,8 @@ export default class NveTooltip extends LitElement {
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-    const [trigger] = this.triggerSlot.assignedElements({
-      flatten: true,
-    });
-    trigger.removeEventListener('focus', this.showTooltip);
-    trigger.removeEventListener('blur', this.hideTooltip);
+    this.triggerSlot.removeEventListener('focus', this.showTooltip);
+    this.triggerSlot.removeEventListener('blur', this.hideTooltip);
     if (this.hideTimeout) {
       clearTimeout(this.hideTimeout);
     }
