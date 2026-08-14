@@ -3,6 +3,7 @@ import { css } from 'lit';
 export default css`
   :host {
     --offset: 8px;
+    width: fit-content;
   }
 
   .tooltip__trigger {

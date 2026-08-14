@@ -27,7 +27,7 @@ outline: [2, 3]
 
 ## Eksempler
 
-### Ledetekst og tooltip
+### Ledetekst
 
 Bruk <span class="highlight">label</span> for å vise en tydelig ledetekst for feltet. Attributtet er påkrevd – hvert skjemafelt skal ha en ledetekst som skjermlesere kan bruke for å forstå hva feltet gjelder.
 
