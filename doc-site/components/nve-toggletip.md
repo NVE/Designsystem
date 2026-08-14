@@ -67,15 +67,15 @@ Velg et ikon som tydelig signaliserer at komponenten åpner utfyllende informasj
 
 ```html
 <nve-toggletip>
-  <p>Dette er toggletip med standard ikon.</p>
+  <span>Dette er toggletip med standard ikon.</span>
 </nve-toggletip>
 
 <nve-toggletip iconName="info_i">
-  <p>Dette er toggletip med et annet ikon.</p>
+  <span>Dette er toggletip med et annet ikon.</span>
 </nve-toggletip>
 
 <nve-toggletip iconName="help">
-  <p>Dette er toggletip med et annet ikon.</p>
+  <span>Dette er toggletip med et annet ikon.</span>
 </nve-toggletip>
 ```
 
