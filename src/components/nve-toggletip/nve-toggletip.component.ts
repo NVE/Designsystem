@@ -22,7 +22,7 @@ export default class NveToggletip extends LitElement implements INveComponent {
   /** Variant, bestemmer fargen på tag */
   @property({ type: String }) variant: 'neutral' | 'success' | 'info' | 'warning' | 'error' = 'neutral';
   /** Saturation - Hvor mettet fargen på tooltip er */
-  @property({ type: String }) saturation: 'emphasized' | 'subtle' | 'default' = 'default';
+  @property({ type: String }) saturation: 'emphasized' | 'subtle' | 'default' = 'emphasized';
 
   @state() private isOpen = false;
   @query('.toggletip') private toggletip!: HTMLDivElement;

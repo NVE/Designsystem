@@ -22,7 +22,7 @@ export default class NveTooltip extends LitElement {
   /** Variant, bestemmer fargen på tag */
   @property({ type: String }) variant: 'neutral' | 'success' | 'info' | 'warning' | 'error' = 'neutral';
   /** Saturation - Hvor mettet fargen på tooltip er */
-  @property({ type: String }) saturation: 'emphasized' | 'subtle' | 'default' = 'default';
+  @property({ type: String }) saturation: 'emphasized' | 'subtle' | 'default' = 'emphasized';
 
   @query('.tooltip') tooltip!: HTMLDivElement;
   @query('slot')
@@ -109,28 +109,16 @@ export default class NveTooltip extends LitElement {
     if (!trigger) return;
 
     // Tooltipen må gi triggeren et tilgjengelig navn dersom den ikke har synlig tekst.
-    // Har triggeren allerede et tekstlig innhold, brukes title i stedet for aria-label slik at
-    // den synlige teksten fortsatt er det tilgjengelige navnet.
+    // Har triggeren allerede et tekstlig innhold, slar vi den sammen med aria-label.
 
     // nve-button håndterer selv title når den har synlig tekst.
     if (trigger.tagName.toLowerCase() === 'nve-button') {
       trigger.setAttribute('aria-label', this.content);
     }
+    const triggerText = trigger.textContent?.trim() || '';
 
-    if (trigger.tagName.toLowerCase() === 'button') {
-      if (trigger.textContent.trim() === '') {
-        trigger.setAttribute('aria-label', this.content);
-      } else {
-        trigger.setAttribute('title', this.content);
-      }
-    }
-
-    if (trigger.tagName.toLowerCase() === 'a') {
-      if (trigger.textContent.trim() === '') {
-        trigger.setAttribute('aria-label', this.content);
-      } else {
-        trigger.setAttribute('title', this.content);
-      }
+    if (trigger.tagName.toLowerCase() === 'button' || trigger.tagName.toLowerCase() === 'a') {
+      trigger.setAttribute('aria-label', triggerText ? `${triggerText}. ${this.content}` : this.content);
     }
   }
 

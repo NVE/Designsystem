@@ -21,7 +21,7 @@ describe('nve-tooltip', () => {
   it('has the documented default properties', async () => {
     const el = await fixture<NveTooltip>(html`<nve-tooltip></nve-tooltip>`);
     expect(el.variant).toBe('neutral');
-    expect(el.saturation).toBe('default');
+    expect(el.saturation).toBe('emphasized');
   });
 
   it('has correct neutral variant class', async () => {
@@ -64,7 +64,7 @@ describe('nve-tooltip', () => {
     await waitForSlotWork(el);
 
     const link = el.querySelector('a.link');
-    expect(link?.getAttribute('title')).toBe('This is link');
+    expect(link?.getAttribute('aria-label')).toBe('Link. This is link');
   });
 
   it('sets aria-label on the link', async () => {
@@ -90,7 +90,7 @@ describe('nve-tooltip', () => {
     await waitForSlotWork(el);
 
     const button = el.querySelector('button.button');
-    expect(button?.getAttribute('title')).toBe('This is button');
+    expect(button?.getAttribute('aria-label')).toBe('Button. This is button');
   });
 
   it('sets aria-label on the button', async () => {

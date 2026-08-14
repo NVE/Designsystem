@@ -113,6 +113,29 @@ export default class NveButton extends LitElement implements INveComponent {
 
   @state() private hasIconOrImgOnly = false;
   @state() private hasText = false;
+  /** Synlig tekst som er lest ut fra label-slottet og brukes når tilgjengelig navn skal bygges opp. */
+  private visibleLabelText = '';
+
+  /** Ekstra aria-label mottatt på host-elementet før den kombineres med synlig knappetekst. */
+  private forwardedAriaLabel: string | null = null;
+
+  /** ARIA-attributter som håndteres manuelt og videresendes til den native knappen. */
+  private static readonly ariaAttributes = [
+    'aria-label',
+    'aria-expanded',
+    'aria-controls',
+    'aria-haspopup',
+    'aria-pressed',
+  ];
+
+  /** Utvider observerte attributter slik at manuelt håndterte ARIA-attributter fanges opp i attributeChangedCallback. */
+  static get observedAttributes() {
+    return [...super.observedAttributes, ...this.ariaAttributes];
+  }
+
+  /** Hindrer at internt fjernede attributter behandles som eksterne endringer når de tas bort fra host-elementet. */
+  private forwardingAria = false;
+
   /**
    * @internal
    */
@@ -179,22 +202,55 @@ export default class NveButton extends LitElement implements INveComponent {
     }
   }
 
+  /**
+   * Håndterer endringer i label-slottet.
+   * Leser ut synlig tekst fra knappens innhold, oppdaterer intern tilstand for tekst eller ikon-only,
+   * og synkroniserer aria-label på den native knappen.
+   */
   private handleDefaultSlotChange(event: Event) {
     const slot = event.target as HTMLSlotElement;
     const nodes = slot.assignedNodes({ flatten: true });
 
-    const hasText = nodes.some((node) => node.nodeType === Node.TEXT_NODE && node.textContent?.trim() !== '');
+    const visibleText = nodes
+      .map((node) => node.textContent ?? '')
+      .join(' ')
+      .replace(/\s+/g, ' ')
+      .trim();
 
-    this.hasText = hasText;
+    this.visibleLabelText = visibleText;
+    this.hasText = visibleText.length > 0;
 
-    if (hasText) {
+    if (this.hasText) {
       this.hasIconOrImgOnly = false;
+    } else {
+      const elements = nodes.filter((node): node is HTMLElement => node.nodeType === Node.ELEMENT_NODE);
+      this.hasIconOrImgOnly = elements.length === 1 && ['img', 'nve-icon'].includes(elements[0].tagName.toLowerCase());
+    }
+
+    this.syncAriaLabel();
+  }
+
+  /**
+   * Synkroniserer aria-label på den native knappen.
+   * Hvis knappen har synlig tekst og en ekstra aria-label er satt på hosten,
+   * kombineres de til ett tilgjengelig navn. Hvis det ikke finnes noen ekstra aria-label,
+   * fjernes aria-label fra den native knappen.
+   */
+  private syncAriaLabel() {
+    if (!this.button) {
       return;
     }
 
-    const elements = nodes.filter((node): node is HTMLElement => node.nodeType === Node.ELEMENT_NODE);
+    const extraLabel = this.forwardedAriaLabel?.trim() ?? '';
+    const visibleText = this.visibleLabelText.trim();
 
-    this.hasIconOrImgOnly = elements.length === 1 && ['img', 'nve-icon'].includes(elements[0].tagName.toLowerCase());
+    if (!extraLabel) {
+      this.button.removeAttribute('aria-label');
+      return;
+    }
+
+    const finalLabel = visibleText ? `${visibleText}. ${extraLabel}` : extraLabel;
+    this.button.setAttribute('aria-label', finalLabel);
   }
 
   /** Simulerer et klikk på knappen. */
@@ -238,19 +294,10 @@ export default class NveButton extends LitElement implements INveComponent {
     }
   }
 
-  private static readonly ariaAttributes = [
-    'aria-label',
-    'aria-expanded',
-    'aria-controls',
-    'aria-haspopup',
-    'aria-pressed',
-  ];
-
-  static get observedAttributes() {
-    return [...super.observedAttributes, ...this.ariaAttributes];
-  }
-  private forwardingAria = false;
-
+  /**
+   * Fanger opp manuelt håndterte ARIA-attributter på host-elementet og videresender dem til
+   * den native knappen. aria-label behandles separat slik at det kan kombineres med synlig knappetekst.
+   */
   attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
     const isAriaAttribute = NveButton.ariaAttributes.includes(name as (typeof NveButton.ariaAttributes)[number]);
 
@@ -274,8 +321,35 @@ export default class NveButton extends LitElement implements INveComponent {
     super.attributeChangedCallback(name, oldValue, newValue);
   }
 
+  /**
+   * Videresender et ARIA-attributt fra host-elementet til den native knappen.
+   * For aria-label lagres verdien internt og kombineres senere med synlig knappetekst.
+   * Andre ARIA-attributter settes direkte på den native knappen og fjernes fra hosten.
+   */
   private forwardAriaAttribute(name: string, value: string | null) {
     if (!this.button) {
+      return;
+    }
+
+    if (name === 'aria-label') {
+      this.forwardedAriaLabel = value;
+
+      this.forwardingAria = true;
+      try {
+        if (value === null) {
+          this.removeAttribute(name);
+        } else {
+          this.syncAriaLabel();
+          this.removeAttribute(name);
+        }
+      } finally {
+        this.forwardingAria = false;
+      }
+
+      if (value === null) {
+        this.syncAriaLabel();
+      }
+
       return;
     }
 
@@ -283,10 +357,10 @@ export default class NveButton extends LitElement implements INveComponent {
       this.button.removeAttribute(name);
       return;
     }
+
     this.button.setAttribute(name, value);
 
     this.forwardingAria = true;
-
     try {
       this.removeAttribute(name);
     } finally {

@@ -21,7 +21,7 @@ describe('nve-toggletip', () => {
   it('has the documented default properties', async () => {
     const el = await fixture<NveToggletip>(html`<nve-toggletip></nve-toggletip>`);
     expect(el.variant).toBe('neutral');
-    expect(el.saturation).toBe('default');
+    expect(el.saturation).toBe('emphasized');
     expect(el.iconName).toBe('info');
   });
 
