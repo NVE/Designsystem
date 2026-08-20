@@ -148,7 +148,7 @@ Knapp med bare ikon kan også gjøres runde ved å bruk <span class="highlight">
 <CodeExamplePreview>
 
 ```html
-<nve-button circle><nve-icon name="more_vert"></nve-button>
+<nve-button circle><nve-icon name="more_vert"></nve-icon></nve-button>
 ```
 
 </CodeExamplePreview>

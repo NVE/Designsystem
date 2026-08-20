@@ -46,14 +46,18 @@ export default defineConfig(({ mode }) => {
         exclude: excludedPaths,
       }),
       alias({
-        entries: [{ find: '@interfaces', replacement: resolve(__dirname, 'src/interfaces') }],
+        entries: [
+          { find: '@interfaces', replacement: resolve(__dirname, 'src/interfaces') },
+          { find: '@validation', replacement: resolve(__dirname, 'src/validation') },
+          { find: '@styles', replacement: resolve(__dirname, 'src/styles') },
+        ],
       }) as Plugin,
       replaceImportAfterBuild(),
     ],
     test: {
       globals: true,
       environment: 'happy-dom',
-      include: ['src/components/*/*.test.ts'],
+      include: ['src/components/*/*.test.ts', 'src/validation/*.test.ts'],
     },
     build: {
       sourcemap: mode === 'development' ? true : false,

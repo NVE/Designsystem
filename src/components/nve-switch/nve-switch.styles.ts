@@ -30,7 +30,13 @@ export default css`
   }
 
   .switch.switch--disabled .switch__control {
-    opacity: 0.38;
+    --thumb-color: var(--color-interactive-foreground-secondary-disabled);
+    --on-color: var(--color-interactive-background-primary-disabled);
+    --off-color: var(--color-interactive-background-secondary-disabled);
+  }
+
+  .switch.switch--disabled.switch--checked .switch__control {
+    --thumb-color: var(--color-interactive-background-secondary-disabled);
   }
 
   .switch--checked .switch__control {

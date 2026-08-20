@@ -139,10 +139,10 @@ export default css`
 
     background-color: var(--color-feedback-background-emphasized-warning);
     .alert__icon {
-      color: var(--color-feedback-foreground-emphasized-warning) !important;
+      color: var(--color-feedback-foreground-on-bg-emphasized-warning) !important;
     }
     .alert__button {
-      stroke: var(--color-feedback-foreground-emphasized-warning) !important;
+      stroke: var(--color-feedback-foreground-on-bg-emphasized-warning) !important;
     }
     .alert__button:hover {
       background: var(--color-feedback-background-subtle-warning);

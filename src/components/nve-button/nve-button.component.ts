@@ -112,11 +112,34 @@ export default class NveButton extends LitElement implements INveComponent {
   @property({ type: String, attribute: 'aria-pressed' }) ariaPressed: 'true' | 'false' | 'mixed' | null = null;
 
   @state() private hasIconOrImgOnly = false;
+  @state() private hasText = false;
+  /** Synlig tekst som er lest ut fra label-slottet og brukes når tilgjengelig navn skal bygges opp. */
+  private visibleLabelText = '';
+
+  /** Ekstra aria-label mottatt på host-elementet før den kombineres med synlig knappetekst. */
+  private forwardedAriaLabel: string | null = null;
+
+  /** ARIA-attributter som håndteres manuelt og videresendes til den native knappen. */
+  private static readonly ariaAttributes = [
+    'aria-label',
+    'aria-expanded',
+    'aria-controls',
+    'aria-haspopup',
+    'aria-pressed',
+  ];
+
+  /** Utvider observerte attributter slik at manuelt håndterte ARIA-attributter fanges opp i attributeChangedCallback. */
+  static get observedAttributes() {
+    return [...super.observedAttributes, ...this.ariaAttributes];
+  }
+
+  /** Hindrer at internt fjernede attributter behandles som eksterne endringer når de tas bort fra host-elementet. */
+  private forwardingAria = false;
+
   /**
    * @internal
    */
   @query('.button') button!: HTMLButtonElement | HTMLLinkElement;
-
   static styles = [styles];
 
   /** Finn tilknyttet skjema, enten via [form] eller nærmeste <form>-forelder. */
@@ -179,24 +202,55 @@ export default class NveButton extends LitElement implements INveComponent {
     }
   }
 
+  /**
+   * Håndterer endringer i label-slottet.
+   * Leser ut synlig tekst fra knappens innhold, oppdaterer intern tilstand for tekst eller ikon-only,
+   * og synkroniserer aria-label på den native knappen.
+   */
   private handleDefaultSlotChange(event: Event) {
     const slot = event.target as HTMLSlotElement;
     const nodes = slot.assignedNodes({ flatten: true });
 
-    const hasText = nodes.some((node) => node.nodeType === Node.TEXT_NODE && node.textContent?.trim());
+    const visibleText = nodes
+      .map((node) => node.textContent ?? '')
+      .join(' ')
+      .replace(/\s+/g, ' ')
+      .trim();
 
-    if (hasText) {
+    this.visibleLabelText = visibleText;
+    this.hasText = visibleText.length > 0;
+
+    if (this.hasText) {
+      this.hasIconOrImgOnly = false;
+    } else {
+      const elements = nodes.filter((node): node is HTMLElement => node.nodeType === Node.ELEMENT_NODE);
+      this.hasIconOrImgOnly = elements.length === 1 && ['img', 'nve-icon'].includes(elements[0].tagName.toLowerCase());
+    }
+
+    this.syncAriaLabel();
+  }
+
+  /**
+   * Synkroniserer aria-label på den native knappen.
+   * Hvis knappen har synlig tekst og en ekstra aria-label er satt på hosten,
+   * kombineres de til ett tilgjengelig navn. Hvis det ikke finnes noen ekstra aria-label,
+   * fjernes aria-label fra den native knappen.
+   */
+  private syncAriaLabel() {
+    if (!this.button) {
       return;
     }
 
-    const elements = nodes.filter((n) => n.nodeType === Node.ELEMENT_NODE) as HTMLElement[];
+    const extraLabel = this.forwardedAriaLabel?.trim() ?? '';
+    const visibleText = this.visibleLabelText.trim();
 
-    if (elements.length === 1) {
-      this.hasIconOrImgOnly = elements.some((el) => {
-        const tag = el.tagName.toLowerCase();
-        return tag === 'img' || tag === 'nve-icon';
-      });
+    if (!extraLabel) {
+      this.button.removeAttribute('aria-label');
+      return;
     }
+
+    const finalLabel = visibleText ? `${visibleText}. ${extraLabel}` : extraLabel;
+    this.button.setAttribute('aria-label', finalLabel);
   }
 
   /** Simulerer et klikk på knappen. */
@@ -218,84 +272,153 @@ export default class NveButton extends LitElement implements INveComponent {
     return !!this.href;
   }
 
-  // Vi ønsker at ARIA‑attributter kun skal ligge på den native knappen, ikke på host.
-  private forwardAriaAttributes(el: HTMLElement) {
-    for (const name of this.getAttributeNames()) {
-      if (name.startsWith('aria-')) {
-        const value = this.getAttribute(name);
-        if (value !== null) {
-          el.setAttribute(name, value);
-          this.removeAttribute(name);
-        }
-      }
-    }
-  }
-
   constructor() {
     super();
-  }
-
-  updated() {
-    if (this.button) {
-      this.forwardAriaAttributes(this.button);
-    }
   }
 
   protected firstUpdated(_changedProperties: PropertyValues): void {
     if (this.autofocus) {
       this.focus();
     }
+    for (const name of NveButton.ariaAttributes) {
+      if (this.hasAttribute(name)) {
+        this.forwardAriaAttribute(name, this.getAttribute(name));
+      }
+    }
+  }
+
+  protected updated(_changedProperties: PropertyValues): void {
+    if (_changedProperties.has('hasText') && this.hasText && this.button.ariaLabel) {
+      this.forwardAriaAttribute('title', this.button.ariaLabel); //TODO dette ma fikses
+      this.forwardAriaAttribute('aria-label', null);
+    }
+  }
+
+  /**
+   * Fanger opp manuelt håndterte ARIA-attributter på host-elementet og videresender dem til
+   * den native knappen. aria-label behandles separat slik at det kan kombineres med synlig knappetekst.
+   */
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    const isAriaAttribute = NveButton.ariaAttributes.includes(name as (typeof NveButton.ariaAttributes)[number]);
+
+    /*
+     * Do not pass internally removed ARIA attributes to Lit.
+     */
+    if (isAriaAttribute && this.forwardingAria) {
+      return;
+    }
+
+    /*
+     * These attributes are handled manually rather than as Lit properties.
+     */
+    if (isAriaAttribute) {
+      if (oldValue !== newValue && this.button) {
+        this.forwardAriaAttribute(name, newValue);
+      }
+
+      return;
+    }
+    super.attributeChangedCallback(name, oldValue, newValue);
+  }
+
+  /**
+   * Videresender et ARIA-attributt fra host-elementet til den native knappen.
+   * For aria-label lagres verdien internt og kombineres senere med synlig knappetekst.
+   * Andre ARIA-attributter settes direkte på den native knappen og fjernes fra hosten.
+   */
+  private forwardAriaAttribute(name: string, value: string | null) {
+    if (!this.button) {
+      return;
+    }
+
+    if (name === 'aria-label') {
+      this.forwardedAriaLabel = value;
+
+      this.forwardingAria = true;
+      try {
+        if (value === null) {
+          this.removeAttribute(name);
+        } else {
+          this.syncAriaLabel();
+          this.removeAttribute(name);
+        }
+      } finally {
+        this.forwardingAria = false;
+      }
+
+      if (value === null) {
+        this.syncAriaLabel();
+      }
+
+      return;
+    }
+
+    if (value === null) {
+      this.button.removeAttribute(name);
+      return;
+    }
+
+    this.button.setAttribute(name, value);
+
+    this.forwardingAria = true;
+    try {
+      this.removeAttribute(name);
+    } finally {
+      this.forwardingAria = false;
+    }
   }
 
   render() {
     const isLink = this.isLink();
     const tag = isLink ? literal`a` : literal`button`;
+    const hideLabel = this.loading && this.hasIconOrImgOnly;
     return html`
-      <${tag}
-        part="base"
-        @click=${this.handleClick}
-        class=${classMap({
-          button: true,
-          'button--small': this.size === 'small',
-          'button--medium': this.size === 'medium',
-          'button--large': this.size === 'large',
-          'button--primary': this.variant === 'primary',
-          'button--secondary': this.variant === 'secondary',
-          'button--tertiary': this.variant === 'tertiary',
-          'button--ghost': this.variant === 'ghost',
-          'button--danger': this.variant === 'danger',
-          'button--loading': this.loading,
-          'button--icon-only': this.hasIconOrImgOnly,
-          'button--circle': this.circle && this.hasIconOrImgOnly,
-          'button--disabled': this.disabled,
-        })}
-        ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
-        type=${ifDefined(isLink ? undefined : this.type)}
-        name=${ifDefined(isLink ? undefined : this.name)}
-        value=${ifDefined(isLink ? undefined : this.value)}
-        href=${ifDefined(isLink ? this.href : undefined)}
-        target=${ifDefined(isLink ? this.target : undefined)}
-        download=${ifDefined(isLink ? this.download : undefined)}
-        testid=${ifDefined(this.testId)}
-        form=${ifDefined(!isLink ? this.form : undefined)}
-        formaction=${ifDefined(!isLink ? this.formAction : undefined)}
-        formenctype=${ifDefined(!isLink ? this.formEnctype : undefined)}
-        formtarget=${ifDefined(!isLink ? this.formTarget : undefined)}
-        rel=${ifDefined(isLink && this.rel ? this.rel : undefined)}
-        aria-disabled=${ifDefined(isLink && this.disabled ? 'true' : undefined)}
-        tabindex=${ifDefined(isLink && this.disabled ? '-1' : undefined)}
-      >
-        <slot part="start" name="start"></slot>
+    <${tag}
+      part="base"
+      @click=${this.handleClick}
+      class=${classMap({
+        button: true,
+        'button--small': this.size === 'small',
+        'button--medium': this.size === 'medium',
+        'button--large': this.size === 'large',
+        'button--primary': this.variant === 'primary',
+        'button--secondary': this.variant === 'secondary',
+        'button--tertiary': this.variant === 'tertiary',
+        'button--ghost': this.variant === 'ghost',
+        'button--danger': this.variant === 'danger',
+        'button--loading': this.loading,
+        'button--icon-only': this.hasIconOrImgOnly,
+        'button--circle': this.circle && this.hasIconOrImgOnly,
+        'button--disabled': this.disabled,
+      })}
+      ?disabled=${ifDefined(isLink ? undefined : this.disabled)}
+      type=${ifDefined(isLink ? undefined : this.type)}
+      name=${ifDefined(isLink ? undefined : this.name)}
+      value=${ifDefined(isLink ? undefined : this.value)}
+      href=${ifDefined(isLink ? this.href : undefined)}
+      target=${ifDefined(isLink ? this.target : undefined)}
+      download=${ifDefined(isLink ? this.download : undefined)}
+      testid=${ifDefined(this.testId)}
+      form=${ifDefined(!isLink ? this.form : undefined)}
+      formaction=${ifDefined(!isLink ? this.formAction : undefined)}
+      formenctype=${ifDefined(!isLink ? this.formEnctype : undefined)}
+      formtarget=${ifDefined(!isLink ? this.formTarget : undefined)}
+      rel=${ifDefined(isLink && this.rel ? this.rel : undefined)}
+      aria-disabled=${ifDefined(isLink && this.disabled ? 'true' : undefined)}
+      tabindex=${ifDefined(isLink && this.disabled ? '-1' : undefined)}
+    >
+      <slot part="start" name="start"></slot>
 
-        ${
-          this.loading && this.hasIconOrImgOnly
-            ? nothing
-            : html`<slot part="label" @slotchange=${this.handleDefaultSlotChange}> </slot>`
-        }
-        ${this.loading ? html`<div part="spinner" class="button__spinner"></div>` : nothing}
-        ${!this.loading ? html`<slot part="end" name="end"></slot>` : nothing}
-      </${tag}>
-    `;
+      <slot
+        part="label"
+        @slotchange=${this.handleDefaultSlotChange}
+        style=${ifDefined(hideLabel ? 'display: none;' : undefined)}
+      ></slot>
+
+      ${this.loading ? html`<div part="spinner" class="button__spinner"></div>` : nothing}
+      ${!this.loading ? html`<slot part="end" name="end"></slot>` : nothing}
+    </${tag}>
+  `;
   }
 }
 
