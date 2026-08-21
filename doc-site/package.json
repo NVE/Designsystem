@@ -15,7 +15,7 @@
     "vitepress": "^1.6.4"
   },
   "dependencies": {
-    "@nve-org/vue-components": "^2.1.0"
+    "@nve-org/vue-components": "^2.1.1"
   },
   "overrides": {
     "esbuild": ">=0.25.0"
