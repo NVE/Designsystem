@@ -1624,15 +1624,6 @@
         "color": "e4e669",
         "default": true,
         "description": "This doesn't seem right"
-      },
-      {
-        "id": 7361073541,
-        "node_id": "LA_kwDOKWXiTc8AAAABtsERhQ",
-        "url": "https://api.github.com/repos/NVE/Designsystem/labels/nve-dialog",
-        "name": "nve-dialog",
-        "color": "DC6E99",
-        "default": false,
-        "description": ""
       }
     ],
     "state": "open",

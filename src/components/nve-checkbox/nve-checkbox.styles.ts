@@ -1,54 +1,135 @@
 import { css } from 'lit';
 
 export default css`
-  .error {
-    border-color: var(--color-feedback-background-emphasized-error) !important;
-  }
-  .error-hover {
-    &:hover {
-    }
-  }
-
-  :host::part(control) {
-    border: var(--border-width-strong) solid var(--color-neutrals-foreground-primary);
-    border-radius: var(--border-radius-small);
-    width: 1.1rem;
-    height: 1.1rem;
-    transition: all var(--transition-time) ease-in;
-  }
-
-  :host::part(control control--checked),
-  :host::part(control control--indeterminate) {
-    background: var(--color-neutrals-foreground-primary) !important;
-    border-color: var(--color-neutrals-foreground-primary) !important;
-  }
-
-  :host([data-invalid])::part(control) {
-    border-color: var(--color-feedback-border-emphasized-error);
-  }
-  :host([data-invalid])::part(control control--checked),
-  :host([data-user-invalid])::part(control control--indeterminate) {
-    background: var(--color-feedback-background-emphasized-error);
-  }
-
-  :host(:not([disabled]):hover)::part(control) {
-    border-color: var(--color-neutrals-foreground-subtle) !important;
-  }
-
-  sl-icon {
-    --sl-color-neutral-0: var(--color-neutrals-background-primary);
-    color: var(--color-neutrals-background-primary);
-  }
-
-  :host(:hover)::part(control control--checked),
-  :host(:hover)::part(control control--indeterminate) {
-    background: var(--color-neutrals-foreground-subtle, #006b99);
+  :host {
+    --size: 1rem;
+    --_checked-background-color: var(--color-interactive-background-primary-enabled);
+    --_border-color: var(--color-interactive-border-primary-enabled);
+    --_hover-color: var(--color-interactive-background-primary-hover);
+    --_font: var(--typography-label-x-small-light);
   }
 
   .checkbox {
+    cursor: pointer;
+    box-sizing: border-box;
+    display: flex;
+    width: fit-content;
+    font: var(--_font);
+    line-height: 1;
+    color: var(--color-neutrals-foreground-primary);
+    margin-inline: 0;
+    gap: var(--spacing-x-small);
     align-items: center;
+    line-height: var(--size);
+    position: relative;
   }
-  .checkbox__label {
-    font: var(--typography-label-x-small-light);
+
+  /* Vi gjemmer checkbox input siden vi lager vår egen med ::before */
+  .checkbox input[type='checkbox'] {
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  /* Sjekkboks custom styling */
+  .checkbox::before {
+    content: '';
+    box-sizing: border-box;
+    width: var(--size);
+    height: var(--size);
+    border: var(--border-width-strong) solid var(--_border-color);
+    border-radius: calc(var(--size) * 0.25);
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .checkbox:hover:not(.checkbox--disabled)::before {
+    box-shadow: 0 0 0 3px var(--color-interactive-border-primary-hover);
+  }
+
+  /* Sjekket styling */
+  .checkbox:has(input[type='checkbox']:checked)::before {
+    background-color: var(--_checked-background-color);
+  }
+
+  .checkbox:has(input[type='checkbox']:checked):hover:not(.checkbox--disabled)::before {
+    background-color: var(--_hover-color);
+  }
+
+  .checkbox:has(input[type='checkbox']:checked):hover:not(.checkbox--disabled) {
+    --_border-color: var(--_hover-color);
+  }
+
+  /* Sjekkmark er 10x8 i figma. For a sikre skallerbarhet nar font storrelsen endres kalulerer vi med 
+  rem og med 0.625 som tilsvarer 10px og 0.5 som tilsvarer 8px */
+  .checkbox__checkmark {
+    position: absolute;
+    width: 0.625rem;
+    height: 0.5rem;
+    display: none;
+    left: calc((var(--size) - 0.625rem) / 2);
+  }
+
+  /* Indeterminate er 8x2 i figma. For a sikre skallerbarhet nar font storrelsen endres kalulerer vi med 
+  rem og med 0.5 som tilsvarer 8px og 0.125 som tilsvarer 2px */
+  .checkbox__indeterminate {
+    position: absolute;
+    width: 0.5rem;
+    height: 0.125rem;
+    display: none;
+    left: calc((var(--size) - 0.5rem) / 2);
+  }
+
+  .checkbox__checkmark path,
+  .checkbox__indeterminate path {
+    fill: var(--color-interactive-foreground-primary-enabled);
+  }
+
+  .checkbox:has(input[type='checkbox']:checked) .checkbox__checkmark,
+  .checkbox:has(input[type='checkbox']:indeterminate) .checkbox__indeterminate {
+    display: block;
+  }
+
+  .checkbox:has(input[type='checkbox']:checked)::before,
+  .checkbox:has(input[type='checkbox']:indeterminate)::before {
+    background-color: var(--_checked-background-color);
+  }
+
+  /* Størrelser */
+  /* 16px */
+  .checkbox--small {
+    --size: 1rem;
+  }
+
+  /* 18px */
+  .checkbox--medium {
+    --size: 1.125rem;
+  }
+
+  /* 20x */
+  .checkbox--large {
+    --size: 1.25rem;
+    --_font: var(--typography-label-small-light);
+  }
+
+  .checkbox--invalid {
+    --_checked-background-color: var(--color-feedback-background-emphasized-error);
+    --_border-color: var(--color-feedback-border-emphasized-error);
+  }
+
+  .checkbox--disabled {
+    --_checked-background-color: var(--color-interactive-background-primary-disabled);
+    --_border-color: var(--color-interactive-border-primary-disabled);
+  }
+
+  .checkbox--disabled,
+  .checkbox--disabled input[type='checkbox'] {
+    cursor: not-allowed;
+  }
+
+  .checkbox:has(input[type='checkbox']:focus-visible)::before {
+    outline: 2px solid var(--color-interactive-border-accessibility-focus);
   }
 `;
