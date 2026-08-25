@@ -451,6 +451,10 @@
           "$type": "color",
           "$value": "{color-shades.functional.green.900}"
         },
+        "danger": {
+          "$type": "color",
+          "$value": "{color-shades.functional.danger.600}"
+        },
         "on-bg": {
           "subtle": {
             "neutral": {
