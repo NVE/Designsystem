@@ -1,4 +1,4 @@
-import { html, LitElement, PropertyValues, nothing } from 'lit';
+import { html, LitElement, PropertyValues } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { FormValidationComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-checkbox.styles';
@@ -142,17 +142,15 @@ export default class NveCheckbox extends LitElement implements FormValidationCom
           <slot></slot>
         </label>
         <!-- feilmelding -->
-        ${this.activeErrorMessage
-          ? html` <p
-              aria-live="assertive"
-              aria-atomic="true"
-              part="error-text"
-              class="field__hint-text"
-              id=${errorTextId}
-            >
-              ${this.activeErrorMessage}
-            </p>`
-          : nothing}
+        <p
+          aria-live="assertive"
+          aria-atomic="true"
+          part="error-text"
+          class=${classMap({ 'field__hint-text': true, 'field__hint-text--error': !!this.activeErrorMessage })}
+          id=${errorTextId}
+        >
+          ${this.activeErrorMessage}
+        </p>
       </div>
     `;
   }

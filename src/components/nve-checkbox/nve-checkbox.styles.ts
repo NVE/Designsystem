@@ -140,4 +140,7 @@ export default css`
   .checkbox:has(input[type='checkbox']:focus-visible)::before {
     outline: 2px solid var(--color-interactive-border-accessibility-focus);
   }
+  .field__hint-text:not(.field__hint-text--error) {
+    display: none;
+  }
 `;
