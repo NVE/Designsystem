@@ -140,7 +140,9 @@ Valideringsreglene kjøres når du kaller <span class="highlight">validateForm()
 
 Du kan importere metoden slik:
 
+```ts
 import { validateForm, rules } from 'nve-designsystem/validation/validateForm.js';
+```
 
 <CodeExamplePreview>
 

@@ -7,6 +7,8 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { ValidationRule } from '@validation/validateForm';
 
+let id = 0;
+
 /**
  * Lar brukeren toggle mellom to tilstander, valgt og ikke valgt. Sjekkbokser kan brukes alene eller i grupper.
  *
@@ -36,6 +38,8 @@ export default class NveCheckbox extends LitElement implements FormValidationCom
   @property({ attribute: false }) validationRules: Array<ValidationRule> = [];
   @state() internalValidationMessage = '';
   @property({ type: String, reflect: true }) errorMessage = '';
+
+  private readonly checkboxId = `checkbox-${++id}`;
 
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
@@ -96,7 +100,7 @@ export default class NveCheckbox extends LitElement implements FormValidationCom
   // sjekkboks kan bli brukt alene og når brukt i en gruppe, den skal ikke annonsere posisjonen sin i en liste (f.eks 1 av 3) som radio og derfor
   // kan det enklest gjøres med input element inn i label element.
   render() {
-    const errorTextId = `${this.id}-errortext`;
+    const errorTextId = `${this.checkboxId}-errortext`;
     return html`
       <div
         part="wrapper"
