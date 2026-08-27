@@ -8,6 +8,13 @@ export default css`
     --_hover-color: var(--color-interactive-background-primary-hover);
     --_font: var(--typography-label-x-small-light);
   }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-x-small);
+    padding: 0;
+    margin: 0;
+  }
 
   .checkbox {
     cursor: pointer;
@@ -114,7 +121,8 @@ export default css`
     --_font: var(--typography-label-small-light);
   }
 
-  .checkbox--invalid {
+  .checkbox--invalid,
+  .field--error {
     --_checked-background-color: var(--color-feedback-background-emphasized-error);
     --_border-color: var(--color-feedback-border-emphasized-error);
   }
@@ -131,5 +139,8 @@ export default css`
 
   .checkbox:has(input[type='checkbox']:focus-visible)::before {
     outline: 2px solid var(--color-interactive-border-accessibility-focus);
+  }
+  .field__hint-text:not(.field__hint-text--error) {
+    display: none;
   }
 `;

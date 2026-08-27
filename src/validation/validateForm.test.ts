@@ -17,6 +17,21 @@ describe('rules', () => {
     expect(result).toBe(true);
   });
 
+  it('should return false for required rule when value is null', () => {
+    const result = rules.required(null);
+    expect(result).toBe(false);
+  });
+
+  it('should return false for required rule when value is an empty string', () => {
+    const result = rules.required('');
+    expect(result).toBe(false);
+  });
+
+  it('should return true when the value is true', () => {
+    const result = rules.required(true);
+    expect(result).toBe(true);
+  });
+
   it('should return false for minLength rule when value is shorter than specified length', () => {
     const result = rules.minLength(5, 'abc');
     expect(result).toBe(false);

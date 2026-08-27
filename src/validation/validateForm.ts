@@ -4,6 +4,7 @@ const NVE_VALIDATABLE_SELECTOR = [
   'nve-input',
   'nve-textarea',
   'nve-radio-group',
+  'nve-checkbox',
   'nve-checkbox-group',
   'nve-combobox',
 ].join(',');
@@ -69,6 +70,9 @@ export const rules = {
 
     if (typeof value === 'string') {
       return value.trim() !== '';
+    }
+    if (typeof value === 'boolean') {
+      return value;
     }
 
     if (Array.isArray(value)) {

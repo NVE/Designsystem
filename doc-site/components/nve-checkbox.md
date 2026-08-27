@@ -123,3 +123,60 @@ Komponenten bruker et <span class="highlight">&lt;label&gt;</span> -element som 
 <span class="highlight">Indeterminate</span>-tilstanden vises visuelt, men Screen readers vil normalt annonsere den som en valgbar tilstand.
 
 <span class="highlight">required</span> er bare tilgjengelig på <a href="./nve-checkbox-group.md">nve-checkbox-group</a>, ikke på individuelle sjekkbokser.
+
+## Validering
+
+For mer informasjon om hvordan <span class="highlight">nve-checkbox</span> og andre skjemakomponenter valideres, se <a href="../introduction/forDevelopers/validation">siden om validering</a>.
+
+### Intern validering
+
+Intern validering gjør det mulig å validere verdien i <span class="highlight">nve-checkbox</span> ved hjelp av valideringsregler.
+
+Dersom komponenten er i en <a href="./nve-checkbox-group.md">nve-checkbox-group</a> så skal du heller bruke denne sin validering.
+
+Verdien er en boolean som tilsvarer <span class="highlight">checked</span>-status på komponenten
+
+Valideringsreglene kjøres når du kaller <span class="highlight">validateForm()</span> i skjemaets <span class="highlight">submit</span>-handler.
+
+Du kan importere metoden slik:
+
+```ts
+import { validateForm, rules } from 'nve-designsystem/validation/validateForm.js';
+```
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form" class="form">
+  <nve-checkbox id="chkbox" value="accept">Aksepter vilkår</nve-checkbox>
+  <nve-button type="submit">Send inn</nve-button>
+</form>
+
+<script type="module">
+  const form = document.querySelector('#test-form');
+  const chkbox = document.querySelector('#chkbox');
+
+  chkbox.validationRules = [(checked) => rules.required(checked) || 'Du må akseptere'];
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    validateForm(event);
+  });
+</script>
+```
+
+</CodeExamplePreview>
+
+### Ekstern validering
+
+Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand ved hjelp av <span class="highlight">errorMessage</span>.
+
+<CodeExamplePreview>
+
+```html
+<form id="test-form" class="form">
+  <nve-checkbox value="flood" errorMessage="Du må akseptere">Aksepter vilkår</nve-checkbox>
+</form>
+```
+
+</CodeExamplePreview>
