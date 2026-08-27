@@ -101,7 +101,7 @@ export default class NveCheckbox extends LitElement implements FormValidationCom
       <div
         part="wrapper"
         class=${classMap({ field: true, 'field--error': !!this.activeErrorMessage })}
-        data-testid=${ifDefined(this.testId)}
+        test-id=${ifDefined(this.testId)}
       >
         <label
           part="base"
@@ -120,6 +120,9 @@ export default class NveCheckbox extends LitElement implements FormValidationCom
             name="option"
             ?disabled=${this.disabled}
             aria-invalid=${ifDefined(this.activeErrorMessage ? 'true' : undefined)}
+            aria-errormessage=${ifDefined(this.activeErrorMessage ? errorTextId : undefined)}
+            aria-describedby=${ifDefined(this.activeErrorMessage ? errorTextId : undefined)}
+            aria-checked=${this.indeterminate ? 'mixed' : this.checked ? 'true' : 'false'}
             @change=${this.handleChange}
           />
           <svg class="checkbox__checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 8" fill="none">

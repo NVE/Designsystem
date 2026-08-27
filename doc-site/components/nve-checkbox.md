@@ -147,19 +147,16 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
 <CodeExamplePreview>
 
 ```html
-  <form id="test-form" class="form">
-    <nve-checkbox id="chkbox" value="accept">Aksepter vilkår</nve-checkbox>
-    <nve-button type="submit">Send inn</nve-button>
-  </form>
+<form id="test-form" class="form">
+  <nve-checkbox id="chkbox" value="accept">Aksepter vilkår</nve-checkbox>
+  <nve-button type="submit">Send inn</nve-button>
 </form>
 
 <script type="module">
   const form = document.querySelector('#test-form');
   const chkbox = document.querySelector('#chkbox');
 
-  chkbox.validationRules = [
-    (checked) => rules.required(checked) || 'Du må akseptere',
-  ];
+  chkbox.validationRules = [(checked) => rules.required(checked) || 'Du må akseptere'];
 
   form?.addEventListener('submit', (event) => {
     event.preventDefault();
