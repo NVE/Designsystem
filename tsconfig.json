@@ -28,6 +28,7 @@
       "@interfaces/*": ["./src/interfaces/*"],
       "@styles/*": ["./src/styles/*"],
       "@validation/*": ["./src/validation/*"],
+      "@shared/*": ["./src/shared/*"],
       "nve-designsystem": ["./src/nve-designsystem"]
     }
   },

@@ -37,6 +37,7 @@ export default class NveRadio extends LitElement implements INveComponent {
   connectedCallback() {
     super.connectedCallback();
     this.setAttribute('role', 'radio');
+    this.addEventListener('click', this.handleClick);
   }
 
   updated(changedProperties: PropertyValues) {
@@ -44,14 +45,27 @@ export default class NveRadio extends LitElement implements INveComponent {
       this.setAttribute('aria-checked', String(this.checked));
     }
     if (changedProperties.has('disabled')) {
-      this.setAttribute('aria-disabled', String(this.disabled));
+      this.toggleAttribute('aria-disabled', this.disabled);
     }
+
     if (changedProperties.has('invalid')) {
-      this.setAttribute('aria-invalid', String(this.invalid));
+      this.toggleAttribute('aria-invalid', this.invalid);
     }
-    if (changedProperties.has('pos') || changedProperties.has('setsize')) {
-      this.setAttribute('aria-posinset', String(this.pos));
-      this.setAttribute('aria-setsize', String(this.setsize));
+
+    if (changedProperties.has('pos')) {
+      if (this.pos !== null) {
+        this.setAttribute('aria-posinset', String(this.pos));
+      } else {
+        this.removeAttribute('aria-posinset');
+      }
+    }
+
+    if (changedProperties.has('setsize')) {
+      if (this.setsize !== null) {
+        this.setAttribute('aria-setsize', String(this.setsize));
+      } else {
+        this.removeAttribute('aria-setsize');
+      }
     }
   }
 
@@ -91,12 +105,17 @@ export default class NveRadio extends LitElement implements INveComponent {
           'radio--disabled': this.disabled,
           'radio--invalid': this.invalid,
         })}
-        @click=${this.handleClick}
         part="base"
       >
         <span class="radio__circle" aria-hidden="true"></span>
         <span class="radio__label" part="label"><slot></slot></span>
       </span>
     `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'nve-radio': NveRadio;
   }
 }

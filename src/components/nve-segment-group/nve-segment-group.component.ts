@@ -1,30 +1,30 @@
 import { html, LitElement, nothing, PropertyValues } from 'lit';
 import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
 import { FormValidationComponent } from '@interfaces/NveComponent.interface';
-import styles from './nve-radio-group.styles';
-import { classMap } from 'lit/directives/class-map.js';
+import styles from './nve-segment-group.styles';
+import { NveSegment } from 'nve-designsystem';
+import { ValidationRule } from '@validation/validateForm';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import '../nve-tooltip/nve-tooltip.component';
-import formField from '@styles/formField';
-import NveRadio from '../nve-radio/nve-radio.component';
+import { classMap } from 'lit/directives/class-map.js';
 import { getLabel, labelStyles } from '../../templates/label';
-import type { ValidationRule } from '@validation/validateForm';
+import formField from '@styles/formField';
 import { IRadioControl } from '@interfaces/radiocontrol';
 import { handleRadioControlKeyDown, selectRadioControl, selectRadioControlWithFocus } from '@shared/radiocontrol';
 
 let id = 0; // for å generere unike id-er. Brukes for å koble label og hint tekster til riktig fieldset via aria-describedby.
+
 /**
- * En gruppe av nve-radio-knapper. Kun én radioknapp i en gitt gruppe kan være valgt om gangen.
+ * En gruppe av nve-segment-knapper. Fungerer som en radio-gruppe. Kun én segment-knapp i en gitt gruppe kan være valgt om gangen.
  *
- * @event change når en radio-knapp i gruppen blir valgt. Inneholder den valgte verdien.
+ * @event change når en segment-knapp i gruppen blir valgt. Inneholder den valgte verdien.
  *
- * @csspart base Hovedcontaineren for radio-gruppen, som er en fieldset.
+ * @csspart base Hovedcontaineren for segment-gruppen, som er en fieldset.
  * @csspart help-text Teksten som vises under ledeteksten for å gi ekstra informasjon.
- * @csspart hint-text Teksten som vises under radio-knappene for å gi ekstra informasjon eller feilmeldinger.
- * @csspart error-text Teksten som vises under radio-knappene for å vise feilmeldinger.
+ * @csspart hint-text Teksten som vises under segment-knappene for å gi ekstra informasjon eller feilmeldinger.
+ * @csspart error-text Teksten som vises under segment-knappene for å vise feilmeldinger.
  */
-@customElement('nve-radio-group')
-export default class NveRadioGroup extends LitElement implements FormValidationComponent {
+@customElement('nve-segment-group')
+export default class NveSegmentGroup extends LitElement implements FormValidationComponent {
   @property({ type: String }) testId: string | undefined = undefined;
   /** Om radio-gruppen er deaktivert */
   @property({ type: Boolean }) disabled = false;
@@ -36,11 +36,11 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
   @property({ type: String, reflect: true }) hint?: string = undefined;
   /** Ledetekst for radio-gruppen */
   @property({ type: String }) label: string | undefined = undefined;
-  /** Retning for gruppen av radioknapper */
-  @property({ type: String }) orientation: 'horizontal' | 'vertical' = 'vertical';
+  /** Om segment skal ha pill-stil */
+  @property({ type: Boolean }) pill = false;
   /** Om inputfeltet er obligatorisk */
   @property({ type: Boolean }) required = false;
-  /** Ekstra tekst som vises for obligatoriske felt. * er en standard og vises alltid */
+  /** Ekstra teks, t som vises for obligatoriske felt. * er en standard og vises alltid */
   @property({ type: String }) requiredLabel?: string = undefined;
   /** Størrelse på radio-knappene */
   @property({ type: String }) size: 'small' | 'medium' | 'large' = 'medium';
@@ -49,26 +49,25 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
   /** Verdi for den valgte radio-knappen */
   @property({ type: String, reflect: true }) value?: string = undefined;
   @property({ attribute: false }) validationRules: Array<ValidationRule> = [];
-  @queryAssignedElements({ selector: 'nve-radio' })
-  private radios!: NveRadio[];
+  @queryAssignedElements({ selector: 'nve-segment' })
+  private segments!: NveSegment[];
   @state() internalValidationMessage = '';
 
   static styles = [styles, labelStyles, formField];
 
-  private radioGroupName = `nve-radio-group-${id++}`;
-
+  private segmentGroupName = `nve-segment-group-${id++}`;
   /**
-   * Håndterer endring av valgt radio-knapp.
-   * @param e Event som utløses når en radio-knapp endres.
+   * Håndterer endring av valgt segment-knapp.
+   * @param e Event som utløses når en segment-knapp endres.
    */
   private handleChange(e: Event) {
     const radioControl = e.target as IRadioControl;
 
-    if (radioControl.tagName.toLowerCase() !== 'nve-radio' || radioControl.disabled) {
+    if (radioControl.tagName.toLowerCase() !== 'nve-segment' || radioControl.disabled) {
       return;
     }
 
-    selectRadioControlWithFocus(radioControl, this.radios);
+    selectRadioControlWithFocus(radioControl, this.segments);
     this.value = radioControl.value;
     this.internalValidationMessage = '';
 
@@ -82,11 +81,11 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
   }
 
   /**
-   * Håndterer tastetrykk for navigasjon mellom radio-knapper.
+   * Håndterer tastetrykk for navigasjon mellom segment-knapper.
    * @param e Event som utløses når en tast trykkes ned.
    */
   private handleKeyDown(e: KeyboardEvent) {
-    const selected = handleRadioControlKeyDown(e, this.radios, this.disabled);
+    const selected = handleRadioControlKeyDown(e, this.segments, this.disabled);
 
     if (!selected) return;
 
@@ -103,23 +102,24 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
   }
 
   private handleSlotChange() {
-    // Sett interne attributter på radio-knappene
-    const checkedRadio = this.radios.find((radio) => radio.checked);
-    this.radios.forEach((radio, index) => {
+    // Sett interne attributter på segment-knappene
+    const checkedSegment = this.segments.find((segment) => segment.checked);
+    this.segments.forEach((segment, index) => {
       if (!this.disabled) {
-        // Sett tabIndex basert på hvilken radio-knapp som er valgt, 0 er standard
-        radio.tabIndex = radio === checkedRadio || (!checkedRadio && radio === this.radios[0]) ? 0 : -1;
+        // Sett tabIndex basert på hvilken segment-knapp som er valgt, 0 er standard
+        segment.tabIndex = segment === checkedSegment || (!checkedSegment && segment === this.segments[0]) ? 0 : -1;
       }
+      segment.pill = this.pill;
       // Sett posisjon
-      radio.pos = index + 1;
+      segment.pos = index + 1;
       // Sett gruppestørrelse
-      radio.setsize = this.radios.length;
+      segment.setsize = this.segments.length;
       if (this.size !== 'medium') {
-        // sett størrelse på radio-knappene
-        radio.size = this.size;
+        // sett størrelse på segment-knappene
+        segment.size = this.size;
       }
-      if (this.value && radio.value === this.value) {
-        selectRadioControl(radio, this.radios);
+      if (this.value && segment.value === this.value) {
+        selectRadioControl(segment, this.segments);
       }
     });
   }
@@ -127,7 +127,7 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
   firstUpdated() {
     if (!this.label) {
       console.warn(
-        'nve-radio-group: label is not set. It is recommended to set a label for each component for better accessibility.'
+        'nve-segment-group: label is not set. It is recommended to set a label for each component for better accessibility.'
       );
     }
   }
@@ -135,10 +135,10 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
     if (changedProperties.has('errorMessage') || changedProperties.has('internalValidationMessage')) {
-      this.radios.forEach((r) => (r.invalid = !!this.activeErrorMessage));
+      this.segments.forEach((r) => (r.invalid = !!this.activeErrorMessage));
     }
     if (changedProperties.has('disabled')) {
-      this.radios.forEach((radio) => {
+      this.segments.forEach((radio) => {
         if (!radio.disabled) {
           radio.disabled = this.disabled;
         }
@@ -171,9 +171,9 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
   }
 
   render() {
-    const helpTextId = `${this.radioGroupName}-helptext`;
-    const hintTextId = `${this.radioGroupName}-hinttext`;
-    const errorTextId = `${this.radioGroupName}-errortext`;
+    const helpTextId = `${this.segmentGroupName}-helptext`;
+    const hintTextId = `${this.segmentGroupName}-hinttext`;
+    const errorTextId = `${this.segmentGroupName}-errortext`;
 
     const describedBy = [
       this.helpText ? helpTextId : null,
@@ -191,7 +191,7 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
           'field--error': !!this.activeErrorMessage,
         })}
         aria-describedby=${ifDefined(describedBy)}
-        @radio-select=${this.handleChange}
+        @segment-select=${this.handleChange}
         @keydown=${this.handleKeyDown}
         aria-invalid=${ifDefined(this.activeErrorMessage ? 'true' : undefined)}
         aria-required=${ifDefined(this.required ? 'true' : undefined)}
@@ -200,7 +200,7 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
       >
         <!-- Ledetekst -->
         ${getLabel(
-          this.radioGroupName,
+          this.segmentGroupName,
           this.label,
           this.required,
           this.requiredLabel,
@@ -214,12 +214,7 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
             ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
             : nothing
         }
-        <div
-          class=${classMap({
-            'radio-group': true,
-            [`radio-group--${this.orientation}`]: true,
-          })}
-        >
+        <div class="segment-group">
           <slot @slotchange=${this.handleSlotChange}></slot>
         </div>
         <!-- Hint-tekst og feilmelding -->
@@ -239,6 +234,6 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
 
 declare global {
   interface HTMLElementTagNameMap {
-    'nve-radio-group': NveRadioGroup;
+    'nve-segment-group': NveSegmentGroup;
   }
 }

@@ -1,5 +1,7 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av pnpm run add-component */
+  
+  
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
@@ -32,6 +34,8 @@ export { default as NvePopup } from './components/nve-popup/nve-popup.component'
 export { default as NveRadio } from './components/nve-radio/nve-radio.component';
 export { default as NveRadioGroup } from './components/nve-radio-group/nve-radio-group.component';
 export { default as NveRelativeTime } from './components/nve-relative-time/nve-relative-time.component';
+export { default as NveSegment } from './components/nve-segment/nve-segment.component';
+export { default as NveSegmentGroup } from './components/nve-segment-group/nve-segment-group.component';
 export { default as NveSkeleton } from './components/nve-skeleton/nve-skeleton.component';
 export { default as NveSpinner } from './components/nve-spinner/nve-spinner.component';
 export { default as NveStep } from './components/nve-stepper/nve-step/nve-step.component';

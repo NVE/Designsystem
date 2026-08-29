@@ -20,7 +20,7 @@ outline: [2, 3]
 </CodeExamplePreview>
 
 <nve-message-card variant="primary" label="Info" size="compact">
- <p><span class="highlight">nve-radio</span> er ikke bygget med native <span class="highlight">input</span> og <span class="highlight">label</span>. Det er et bevisst valg for å kunne legge <span class="highlight">role="radio"</span> direkte på host-elementet og styre tilgjengeligheten mer presist med <span class="highlight">aria-setsize</span>, <span class="highlight">aria-posinset</span> og <span class="highlight">aria-checked</span>. Les mer i <a href="./nve-radio-group.md#tilgjengelighet">tilgjengelighet</a> seksjonen i nve-radio-group.</p>
+ <p><span class="highlight">nve-radio</span> er ikke bygget med native <span class="highlight">input</span> og <span class="highlight">label</span>. Det er et bevisst valg for å kunne legge <span class="highlight">role="radio"</span> direkte på host-elementet og styre tilgjengeligheten mer presist med <span class="highlight">aria-setsize</span>, <span class="highlight">aria-posinset</span> og <span class="highlight">aria-checked</span>. Les mer i <a href="./nve-radio-group#tilgjengelighet">tilgjengelighet</a> seksjonen i nve-radio-group.</p>
 
 <p>
   <span class="highlight">nve-radio</span> har interne tilstander for <span class="highlight">size</span> og

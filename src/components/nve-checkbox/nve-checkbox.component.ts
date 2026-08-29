@@ -37,7 +37,7 @@ export default class NveCheckbox extends LitElement implements FormValidationCom
 
   @property({ attribute: false }) validationRules: Array<ValidationRule> = [];
   @state() internalValidationMessage = '';
-  @property({ type: String, reflect: true }) errorMessage = '';
+  @property({ type: String, reflect: true }) errorMessage: string | undefined = undefined;
 
   private readonly checkboxId = `checkbox-${++id}`;
 
