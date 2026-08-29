@@ -25,6 +25,23 @@ outline: [2, 3]
 <p>For denne komponenten er det derfor <span class="highlight">value</span> på valgt <span class="highlight">nve-segment</span> og <span class="highlight">change</span>-hendelsen fra <span class="highlight">nve-segment-group</span> som brukes for å lese brukerens valg.</p>
 </nve-message-card>
 
+## Retningslinjer
+
+<span class="highlight">nve-segment-group</span> brukes når brukeren skal velge ett alternativ fra en liten gruppe gjensidig utelukkende valg.
+
+Komponenten fungerer semantisk som en radiogruppe og passer godt til for eksempel visningsmodus, periode eller andre innstillinger der kun ett alternativ kan være aktivt om gangen.
+
+Bruk <span class="highlight">nve-segment-group</span> når:
+
+- det finnes et lite antall alternativer
+- kun ett alternativ kan være valgt om gangen
+- alternativene har omtrent samme betydning og viktighet
+- alle alternativene bør være synlige samtidig
+
+<span class="highlight">nve-segment-group</span> skal ikke brukes som faner. Segmenter representerer et valg av verdi, mens faner brukes til å navigere mellom ulike innholdsområder. Bruk en egen <a href="./nve-tab">tab-komponent</a> når valget styrer hvilket innholdspanel som vises.
+
+Unngå segmentgruppen dersom det finnes mange alternativer eller alternativene inneholder mye tekst. I slike tilfeller vil en vanlig radiogruppe ofte være enklere å lese og bruke.
+
 ## Eksempler
 
 ### Ledetekst
@@ -171,7 +188,7 @@ Bruk attributtet <span class="highlight">disabled</span> for å hindre at verdie
 
 <nve-message-card variant="warning" label="Viktig!" size="compact">
 <p><b>Disabled</b> bør brukes med måte, ettersom deaktiverte kontroller kan være vanskelige for noen brukere å forstå 
-eller oppdage, særlig for dem som bruker hjelpemiddelteknologi. Når det er mulig, bør man vurdere å la knappen være aktiv 
+eller oppdage, særlig for dem som bruker hjelpemiddelteknologi. Når det er mulig, bør man vurdere å la kontrolleren være aktiv 
 og heller gi tydelig veiledning eller valideringsmeldinger som forklarer hva som må gjøres før handlingen kan fullføres.</p>
 </nve-message-card>
 
@@ -187,7 +204,7 @@ og heller gi tydelig veiledning eller valideringsmeldinger som forklarer hva som
 
 </CodeExamplePreview>
 
-### Forhåndsvalgte verdier
+### Forhåndsvalgt verdi
 
 Bruk <span class="highlight">value</span> for å vise en forhåndsvalgt verdi. Verdien må samsvare med <span class="highlight">value</span>-attributtet til en av <span class="highlight">nve-segment</span>-komponentene i gruppen.
 
