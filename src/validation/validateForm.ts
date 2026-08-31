@@ -7,6 +7,7 @@ const NVE_VALIDATABLE_SELECTOR = [
   'nve-checkbox',
   'nve-checkbox-group',
   'nve-combobox',
+  'nve-segment-group',
 ].join(',');
 
 /**

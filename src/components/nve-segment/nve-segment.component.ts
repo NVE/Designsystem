@@ -1,35 +1,39 @@
 import { html, LitElement, PropertyValues } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { INveComponent } from '@interfaces/NveComponent.interface';
-import styles from './nve-radio.styles';
-import { classMap } from 'lit/directives/class-map.js';
+import styles from './nve-segment.styles';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { IRadioControl } from '@interfaces/radiocontrol';
 
 /**
- * En enkel radio som skal brukes i nve-radio-group.
+ * En enkel segment som skal brukes i nve-segment-group. Segment er bygget på
+ * radio-knapp prinsippet. Segment kan ha en start- og end-slot for å legge til ikoner eller andre elementer.
  *
- * @event radio-select Når radio-knappen blir valgt. Inneholder den valgte verdien.
+ * @event segment-select Når segment-knappen blir valgt. Inneholder den valgte verdien.
  *
- * @csspart base Hovedcontaineren for radio-knappen, som er en span.
- * @csspart label Innholdet i radio-knappen, vanligvis tekst.
+ * @csspart base Hovedcontaineren for segment-knappen, som er en span.
+ * @csspart label Innholdet i segment-knappen, vanligvis tekst.
  */
-@customElement('nve-radio')
-export default class NveRadio extends LitElement implements INveComponent {
+@customElement('nve-segment')
+export default class NveSegment extends LitElement implements INveComponent, IRadioControl {
   @property({ type: String }) testId: string | undefined = undefined;
-  /** Verdi for radio-knappen. Skal samsvare med value i nve-radio-group for at knappen skal være valgt. */
+  /** Verdi for segment-knappen. Skal samsvare med value i nve-segment-group for at knappen skal være valgt. */
   @property({ type: String }) value = '';
-  /** Om radio-knappen er deaktivert */
+  /** Om segment-knappen er deaktivert */
   @property({ type: Boolean, reflect: true }) disabled = false;
-  /** Om radio-knappen er ugyldig */
-  @property({ type: Boolean, reflect: true }) invalid = false;
+  /** Om segment-knappen skal ha pill-stil */
+  @property({ type: Boolean, reflect: true }) pill = false;
+  /** Om segment-knappen er ugyldig */
+  @property({ type: Boolean, reflect: true }) invalid = false; //TODO: vurder om vi trenger det
 
-  /** Størrelse på radio-knappen */
+  /** Størrelse på segment-knappen */
   @state() size = 'medium';
-  /** Om radio-knappen er valgt */
+  /** Om segment-knappen er valgt */
   @state() checked = false;
-  /** Posisjonen til radio-knappen i gruppen */
+  /** Posisjonen til segment-knappen i gruppen */
   @state() pos: number | null = null;
-  /** Størrelsen på gruppen av radio-knapper */
+  /** Størrelsen på gruppen av segment-knapper */
   @state() setsize: number | null = null;
 
   static styles = [styles];
@@ -75,15 +79,15 @@ export default class NveRadio extends LitElement implements INveComponent {
   }
 
   /**
-   * Håndterer klikk på radio-knappen. Hvis knappen ikke er deaktivert, sender den en 'radio-select' event
-   * med den valgte verdien. Event sendes for intern kontroll i nve-radio-group, og skal ikke håndteres direkte av
-   * brukere av nve-radio. For å håndtere endring av valgt radio-knapp, bruk 'change' eventen på nve-radio-group.
+   * Håndterer klikk på segment-knappen. Hvis knappen ikke er deaktivert, sender den en 'segment-select' event
+   * med den valgte verdien. Event sendes for intern kontroll i nve-segment-group, og skal ikke håndteres direkte av
+   * brukere av nve-segment. For å håndtere endring av valgt segment-knapp, bruk 'change' eventen på nve-segment-group.
    */
   private handleClick() {
     if (this.disabled) return;
 
     this.dispatchEvent(
-      new CustomEvent('radio-select', {
+      new CustomEvent('segment-select', {
         bubbles: true,
         composed: true,
         detail: { value: this.value },
@@ -91,29 +95,23 @@ export default class NveRadio extends LitElement implements INveComponent {
     );
   }
 
-  /**
-   * Gir fokus til radio-knappen.
-   * @param options Valgfri fokusinnstillinger.
-   */
-  focus(options?: FocusOptions) {
-    super.focus(options);
-  }
-
   render() {
     return html`
       <span
         test-id=${ifDefined(this.testId)}
         class=${classMap({
-          radio: true,
-          [`radio--${this.size}`]: true,
-          'radio--checked': this.checked,
-          'radio--disabled': this.disabled,
-          'radio--invalid': this.invalid,
+          segment: true,
+          [`segment--${this.size}`]: true,
+          'segment--checked': this.checked,
+          'segment--disabled': this.disabled,
+          'segment--invalid': this.invalid,
+          'segment--pill': this.pill,
         })}
         part="base"
       >
-        <span class="radio__circle" aria-hidden="true"></span>
-        <span class="radio__label" part="label"><slot></slot></span>
+        <slot name="start"> </slot>
+        <span class="segment__label" part="label"><slot></slot></span>
+        <slot name="end"> </slot>
       </span>
     `;
   }
@@ -121,6 +119,6 @@ export default class NveRadio extends LitElement implements INveComponent {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'nve-radio': NveRadio;
+    'nve-segment': NveSegment;
   }
 }

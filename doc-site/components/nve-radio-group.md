@@ -283,10 +283,6 @@ Du kan fjerne feiltilstanden ved å sette <span class="highlight">errorMessage</
 </form>
 ```
 
-</CodeExamplePreview>>
-
-```
-
 </CodeExamplePreview>
 
 ## Tilgjengelighet
@@ -297,4 +293,3 @@ Radiogruppen er implementert i tråd med [anbefalingene](https://www.w3.org/WAI/
 - <span class="highlight">nve-radio</span> har intern tilstand for <span class="highlight">checked</span>, <span class="highlight">pos</span> og <span class="highlight">setsize</span>, som styres av <span class="highlight">nve-radio-group</span>. Disse brukes til å sette riktige ARIA-attributter (<span class="highlight">aria-checked</span> <span class="highlight">aria-posinset</span>,<span class="highlight">aria-setsize</span>) på radio-knappen.
 - <span class="highlight">aria-posinset</span> og <span class="highlight">aria-setsize</span> brukes for å fortelle brukeren hvor i gruppen den aktuelle radio-knappen ligger, og hvor mange valg som finnes totalt.
 - <span class="highlight">aria-disabled</span> og <span class="highlight">aria-invalid</span> settes på <span class="highlight">nve-radio</span> basert på egenskapene <span class="highlight">disabled</span> og <span class="highlight">invalid</span>.
-```

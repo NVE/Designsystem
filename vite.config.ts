@@ -50,6 +50,7 @@ export default defineConfig(({ mode }) => {
           { find: '@interfaces', replacement: resolve(__dirname, 'src/interfaces') },
           { find: '@validation', replacement: resolve(__dirname, 'src/validation') },
           { find: '@styles', replacement: resolve(__dirname, 'src/styles') },
+          { find: '@shared', replacement: resolve(__dirname, 'src/shared') },
         ],
       }) as Plugin,
       replaceImportAfterBuild(),

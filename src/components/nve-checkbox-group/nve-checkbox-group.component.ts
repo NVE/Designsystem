@@ -34,7 +34,7 @@ export default class NveCheckboxGroup extends LitElement implements FormValidati
   /** Om sjekkboks-gruppen er deaktivert */
   @property({ type: Boolean }) disabled = false;
   /** Feilmelding som vises ved valideringsfeil. Hvis den er satt blir input-felt ugyldig og feil melding vises.*/
-  @property({ type: String, reflect: true }) errorMessage = '';
+  @property({ type: String, reflect: true }) errorMessage: string | undefined = undefined;
   /** Hjelpetekst som vises over feltet */
   @property({ type: String, reflect: true }) helpText?: string = undefined;
   /** Hint-tekst som vises under feltet */
@@ -192,9 +192,11 @@ export default class NveCheckboxGroup extends LitElement implements FormValidati
           true
         )}
         <!-- Hjelpetekst -->
-        ${this.helpText
-          ? html`<p part="help-text" class="field__help-text" id=${helpTextId} part="help-text">${this.helpText}</p>`
-          : nothing}
+        ${
+          this.helpText
+            ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
+            : nothing
+        }
         <div
           part="checkbox-group"
           class=${classMap({
@@ -205,10 +207,11 @@ export default class NveCheckboxGroup extends LitElement implements FormValidati
           <slot @slotchange=${this.handleSlotChange}></slot>
         </div>
         <!-- Hint-tekst og feilmelding -->
-        <!-- Hint-tekst og feilmelding -->
-        ${!this.activeErrorMessage && this.hint
-          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.hint}</p>`
-          : nothing}
+        ${
+          !this.activeErrorMessage && this.hint
+            ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.hint}</p>`
+            : nothing
+        }
 
         <p aria-live="assertive" aria-atomic="true" part="error-text" class="field__hint-text" id=${errorTextId}>
           ${this.activeErrorMessage ?? ''}

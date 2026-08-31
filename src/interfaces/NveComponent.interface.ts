@@ -22,6 +22,6 @@ export interface INveComponent {
 export interface FormValidationComponent extends LitElement, INveComponent {
   validate(): boolean;
   validationRules: Array<ValidationRule>;
-  errorMessage: string;
+  errorMessage: string | undefined;
   internalValidationMessage: string;
 }

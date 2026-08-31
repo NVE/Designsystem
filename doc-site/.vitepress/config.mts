@@ -101,6 +101,8 @@ export default defineConfig({
       alias: {
         '@interfaces': path.resolve(__dirname, '../../src/interfaces'),
         '@styles': path.resolve(__dirname, '../../src/styles'),
+        '@validation': path.resolve(__dirname, '../../src/validation'),
+        '@shared': path.resolve(__dirname, '../../src/shared'),
       },
     },
   },
