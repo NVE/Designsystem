@@ -107,7 +107,7 @@ Bruk <span class="highlight">helpText</span> for å vise hjelpetekst over feltet
 
 ```html
 <nve-segment-group size="small" label="Hvilken gjenstand bruker du mest på jobb?" helpText="Ditt valg påvirker mange!">
-  <nve-segment value="computer"><nve-icon slot="start" name="computer"></nve-icon>Datamaskin</nve-segment>
+  <nve-segment value="computer">Datamaskin</nve-segment>
   <nve-segment value="mobile">Mobil</nve-segment>
   <nve-segment value="traditional">Papir og blyant</nve-segment>
 </nve-segment-group>
@@ -310,7 +310,3 @@ Segmentgruppen er implementert i tråd med [anbefalingene](https://www.w3.org/WA
 - <span class="highlight">nve-segment</span> har intern tilstand for <span class="highlight">checked</span>, <span class="highlight">pos</span> og <span class="highlight">setsize</span>, som styres av <span class="highlight">nve-segment-group</span>. Disse brukes til å sette riktige ARIA-attributter (<span class="highlight">aria-checked</span> <span class="highlight">aria-posinset</span>,<span class="highlight">aria-setsize</span>) på segment-knappen.
 - <span class="highlight">aria-posinset</span> og <span class="highlight">aria-setsize</span> brukes for å fortelle brukeren hvor i gruppen den aktuelle segment-knappen ligger, og hvor mange valg som finnes totalt.
 - <span class="highlight">aria-disabled</span> og <span class="highlight">aria-invalid</span> settes på <span class="highlight">nve-segment</span> basert på egenskapene <span class="highlight">disabled</span> og <span class="highlight">invalid</span>.
-
-slooooots
-
-remove errormessage hint and helptext if not defined

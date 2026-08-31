@@ -40,7 +40,7 @@ export default class NveSegmentGroup extends LitElement implements FormValidatio
   @property({ type: Boolean }) pill = false;
   /** Om inputfeltet er obligatorisk */
   @property({ type: Boolean }) required = false;
-  /** Ekstra teks, t som vises for obligatoriske felt. * er en standard og vises alltid */
+  /** Ekstra tekst som vises for obligatoriske felt. * er en standard og vises alltid */
   @property({ type: String }) requiredLabel?: string = undefined;
   /** Størrelse på radio-knappene */
   @property({ type: String }) size: 'small' | 'medium' | 'large' = 'medium';
