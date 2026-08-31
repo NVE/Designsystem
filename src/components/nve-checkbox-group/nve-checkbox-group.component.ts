@@ -194,7 +194,7 @@ export default class NveCheckboxGroup extends LitElement implements FormValidati
         <!-- Hjelpetekst -->
         ${
           this.helpText
-            ? html`<p part="help-text" class="field__help-text" id=${helpTextId} part="help-text">${this.helpText}</p>`
+            ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
             : nothing
         }
         <div
@@ -206,7 +206,6 @@ export default class NveCheckboxGroup extends LitElement implements FormValidati
         >
           <slot @slotchange=${this.handleSlotChange}></slot>
         </div>
-        <!-- Hint-tekst og feilmelding -->
         <!-- Hint-tekst og feilmelding -->
         ${
           !this.activeErrorMessage && this.hint

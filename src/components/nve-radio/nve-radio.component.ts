@@ -40,6 +40,11 @@ export default class NveRadio extends LitElement implements INveComponent {
     this.addEventListener('click', this.handleClick);
   }
 
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.removeEventListener('click', this.handleClick);
+  }
+
   updated(changedProperties: PropertyValues) {
     if (changedProperties.has('checked')) {
       this.setAttribute('aria-checked', String(this.checked));

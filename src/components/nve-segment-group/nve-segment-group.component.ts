@@ -2,7 +2,7 @@ import { html, LitElement, nothing, PropertyValues } from 'lit';
 import { customElement, property, queryAssignedElements, state } from 'lit/decorators.js';
 import { FormValidationComponent } from '@interfaces/NveComponent.interface';
 import styles from './nve-segment-group.styles';
-import { NveSegment } from 'nve-designsystem';
+import type NveSegment from '../nve-segment/nve-segment.component';
 import { ValidationRule } from '@validation/validateForm';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -139,9 +139,7 @@ export default class NveSegmentGroup extends LitElement implements FormValidatio
     }
     if (changedProperties.has('disabled')) {
       this.segments.forEach((radio) => {
-        if (!radio.disabled) {
-          radio.disabled = this.disabled;
-        }
+        radio.disabled = this.disabled;
       });
     }
   }

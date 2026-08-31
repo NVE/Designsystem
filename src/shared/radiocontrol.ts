@@ -18,26 +18,20 @@ export function selectRadioControl(radioControl: IRadioControl, radioControls: I
     radio.checked = radio === radioControl;
   });
 
-  updateTabIndexes(radioControl, radioControls);
+  updateTabIndexes(radioControls);
 }
 
 /**
  * Setter riktig tabIndex på radio-knappene basert på hvilken som er valgt.
- * Hvis ingen er valgt, settes tabIndex på den første radio-knappen.
+ * Hvis ingen er valgt, settes tabIndex på den første aktiverte radio-knappen.
  * Det gjøres for å sikre at kun én radio-knapp er tabbable i gruppen. Resten skal navigeres med piltastene.
  */
-function updateTabIndexes(radioControl: IRadioControl, radioControls: IRadioControl[]) {
-  if (radioControl.disabled) return;
-  const checkedRadioControl = radioControls.find((radio) => radio.checked);
-
+function updateTabIndexes(radioControls: IRadioControl[]) {
+  const checkedEnabled = radioControls.find((radio) => radio.checked && !radio.disabled);
+  const firstEnabled = radioControls.find((radio) => !radio.disabled);
+  const tabbable = checkedEnabled ?? firstEnabled;
   radioControls.forEach((radio) => {
-    if (checkedRadioControl) {
-      // Hvis det finnes en valgt radio knapp, sett tabIndex der
-      radio.tabIndex = radio === checkedRadioControl ? 0 : -1;
-    } else {
-      // Hvis ingen er valgt, sett tabIndex på den første radio-knappen
-      radio.tabIndex = radio === radioControls[0] ? 0 : -1;
-    }
+    radio.tabIndex = tabbable && radio === tabbable ? 0 : -1;
   });
 }
 

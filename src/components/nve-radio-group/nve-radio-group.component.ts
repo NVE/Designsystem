@@ -139,9 +139,7 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
     }
     if (changedProperties.has('disabled')) {
       this.radios.forEach((radio) => {
-        if (!radio.disabled) {
-          radio.disabled = this.disabled;
-        }
+        radio.disabled = this.disabled;
       });
     }
   }
