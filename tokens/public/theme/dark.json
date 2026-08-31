@@ -410,7 +410,7 @@
         "emphasized": {
           "neutral": {
             "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.150}"
+            "$value": "{color-shades.functional.neutralgrey.300}"
           },
           "info": {
             "$type": "color",
