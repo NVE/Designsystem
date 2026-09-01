@@ -172,6 +172,10 @@
             "$type": "color",
             "$value": "{color-shades.grey.600}"
           },
+          "hover-transparent": {
+            "$type": "color",
+            "$value": "{color-shades.functional.neutralgrey.800-060}"
+          },
           "pressed": {
             "$type": "color",
             "$value": "{color-shades.grey.500}"
@@ -259,6 +263,18 @@
           "disabled": {
             "$type": "color",
             "$value": "{color-shades.grey.700}"
+          }
+        },
+        "static": {
+          "white": {
+            "$type": "color",
+            "$value": "{color-shades.grey.000}",
+            "$description": "Fargen forblir hvit i darkmode"
+          },
+          "black": {
+            "$type": "color",
+            "$value": "{color-shades.grey.950}",
+            "$description": "Fargen forblir svart i darkmode"
           }
         },
         "danger": {
