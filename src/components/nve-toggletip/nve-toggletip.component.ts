@@ -59,6 +59,15 @@ export default class NveToggletip extends LitElement implements INveComponent {
   }
 
   /**
+   * Dersom popover lukkes ved at brukeren klikker utenfor, vil toggle eventet bli trigget.
+   * Vi må da oppdatere isOpen state. ToggleEvent har newState og oldState som er enten
+   * "open" eller "closed", så vi kan bruke dette til å oppdatere isOpen state.
+   */
+  private handlePopoverToggle(event: ToggleEvent) {
+    this.isOpen = event.newState === 'open';
+  }
+
+  /**
    * Plaserer pilen i tooltipen slik at den peker mot midten av trigger-elementet.
    * Pilen plassering er ikke rekalkulert ved endring av skjermstørrelse (noe som gjor at tooltipen flyttes), men kun
    * når tooltipen vises. Grunnen er a unnga a skrive kode som kanskje gir oss lite verdi. Tooltip vil mest sannsynglivis forsvinne mens bruker endrer
@@ -185,6 +194,7 @@ export default class NveToggletip extends LitElement implements INveComponent {
         })}
         part="content"
         popover="auto"
+        @toggle=${this.handlePopoverToggle}
       >
         <slot></slot>
       </div>
