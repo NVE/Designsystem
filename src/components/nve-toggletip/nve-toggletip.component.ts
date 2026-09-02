@@ -42,20 +42,21 @@ export default class NveToggletip extends LitElement implements INveComponent {
     }
   }
 
-  toggle() {
-    if (this.isOpen) {
-      this.toggletip.hidePopover();
-      this.isOpen = false;
-    } else {
-      this.toggletip.showPopover();
+  /**
+   * Håndterer endring av state for popoveret.
+   * Når popoveret åpnes, posisjoneres pilen slik at den peker mot midten av trigger-elementet.
+   * @param event ToggleEvent
+   */
+  private handlePopoverToggleStateChange(event: ToggleEvent) {
+    if (event.newState === 'open') {
       requestAnimationFrame(() => {
         if (!this.supportsAnchorPositioning) {
           this.positionTooltipFallback();
         }
         this.positionArrow();
       });
-      this.isOpen = true;
     }
+    this.isOpen = event.newState === 'open';
   }
 
   /**
@@ -160,7 +161,8 @@ export default class NveToggletip extends LitElement implements INveComponent {
   render() {
     return html`
       <button
-        @click=${this.toggle}
+        popovertarget="toggletip-content"
+        popovertargetaction="toggle"
         class="toggletip__trigger"
         part="trigger"
         aria-expanded=${this.isOpen}
@@ -185,6 +187,7 @@ export default class NveToggletip extends LitElement implements INveComponent {
         })}
         part="content"
         popover="auto"
+        @toggle=${this.handlePopoverToggleStateChange}
       >
         <slot></slot>
       </div>
