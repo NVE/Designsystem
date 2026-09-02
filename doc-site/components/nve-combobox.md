@@ -589,11 +589,11 @@ Med flervalg kan du også begrense hvor mange verdier som kan velges ved å bruk
 
 ### Forhåndsvalgte verdier
 
-Bruk et <span class="highlight">selectedIds</span> string array for å vise forhandsvalgte verdier. Hvis du skal bruke enkeltvalg skal kun en verdi i arrayet sendes. Om id-er i arrayet stemmer ikke med alternativ sine id-er skal de ikke vises.
+Bruk et <span class="highlight">selectedValues</span> string array for å vise forhandsvalgte verdier. Hvis du skal bruke enkeltvalg skal kun en verdi i arrayet sendes. Om id-er i arrayet stemmer ikke med alternativ sine id-er skal de ikke vises.
 <br />
 <nve-message-card variant="primary" label="Info" size="compact">
 
-<p><b>selectedIds</b>-attributtet fjernes fra DOM-en etter innlasting, og verdien lagres i en intern tilstand i comboboxen. Dette gjøres for å hindre at DOM-en fylles opp med unødvendig data.</p>
+<p><b>selectedValues</b>-attributtet fjernes fra DOM-en etter innlasting, og verdien lagres i en intern tilstand i comboboxen. Dette gjøres for å hindre at DOM-en fylles opp med unødvendig data.</p>
 </nve-message-card>
 
 <CodeExamplePreview>
@@ -603,7 +603,7 @@ Bruk et <span class="highlight">selectedIds</span> string array for å vise forh
   id="nve-avdeling-16"
   label="Velg en avdeling"
   multiple
-  selectedIds='["rme", "tb"]'
+  selectedValues='["rme", "tb"]'
   options='[ 
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" },
@@ -619,7 +619,7 @@ Bruk et <span class="highlight">selectedIds</span> string array for å vise forh
 <nve-combobox
   id="nve-avdeling-17"
   label="Velg en avdeling"
-  selectedIds='["rme"]'
+  selectedValues='["rme"]'
   options='[ 
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" },
@@ -660,7 +660,7 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
   <nve-combobox
     id="cb"
     label="Velg en avdeling"
-    selectedIds='["rme"]'
+    selectedValues='["rme"]'
     options='[
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" }
