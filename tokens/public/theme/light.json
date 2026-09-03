@@ -1076,7 +1076,7 @@
           "y": "{sizing.shadow.position-y.small}",
           "blur": "{sizing.shadow.blur.small}",
           "spread": "{sizing.shadow.spread.x-small}",
-          "color": "{color.shadows.x-high-emphasis}",
+          "color": "{color.shadows.high-emphasis}",
           "type": "dropShadow"
         }
       ]
