@@ -759,37 +759,37 @@
         }
       },
       "shadow": {
-        "x-low-emphasis": {
+        "000": {
           "$type": "color",
           "$value": "rgba(0,0,0,0)",
           "$description": "0%"
         },
-        "low-emphasis": {
+        "001": {
           "$type": "color",
           "$value": "rgba(0,0,0,0.01)",
           "$description": "1%"
         },
-        "medium-emphasis": {
+        "002": {
           "$type": "color",
           "$value": "rgba(0,0,0,0.02)",
           "$description": "2%"
         },
-        "high-emphasis": {
+        "003": {
           "$type": "color",
           "$value": "rgba(0,0,0,0.03)",
           "$description": "3%"
         },
-        "x-high-emphasis": {
+        "004": {
           "$type": "color",
           "$value": "rgba(0,0,0,0.04)",
           "$description": "4%"
         },
-        "2x-high-emphasis": {
+        "005": {
           "$type": "color",
           "$value": "rgba(0,0,0,0.05)",
           "$description": "5%"
         },
-        "3x-high-emphasis": {
+        "006": {
           "$type": "color",
           "$value": "rgba(0,0,0,0.06)",
           "$description": "6%"
