@@ -938,27 +938,27 @@
     "shadows": {
       "x-low-emphasis": {
         "$type": "color",
-        "$value": "rgba(0,0,0,0)",
+        "$value": "{color-shades.functional.shadow.000}",
         "$description": "0%"
       },
       "low-emphasis": {
         "$type": "color",
-        "$value": "rgba(0,0,0,0.03)",
+        "$value": "{color-shades.functional.shadow.003}",
         "$description": "3%"
       },
       "medium-emphasis": {
         "$type": "color",
-        "$value": "rgba(0,0,0,0.04)",
+        "$value": "{color-shades.functional.shadow.004}",
         "$description": "4%"
       },
       "high-emphasis": {
         "$type": "color",
-        "$value": "rgba(0,0,0,0.05)",
+        "$value": "{color-shades.functional.shadow.005}",
         "$description": "5%"
       },
       "x-high-emphasis": {
         "$type": "color",
-        "$value": "rgba(0,0,0,0.06)",
+        "$value": "{color-shades.functional.shadow.006}",
         "$description": "6%"
       }
     }
