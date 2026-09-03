@@ -961,7 +961,7 @@
         },
         {
           "x": "{sizing.shadow.position-x.medium}",
-          "y": "{sizing.shadow.position-y.5x-large}",
+          "y": "{sizing.shadow.position-y.2x-large}",
           "blur": "{sizing.shadow.blur.2x-large}",
           "spread": "{sizing.shadow.spread.x-small}",
           "color": "{color-shades.functional.shadow.medium-emphasis}",
