@@ -11,7 +11,6 @@ export default css`
   .field {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-x-small);
     box-sizing: border-box;
     width: 100%;
     --_color: var(--color-neutrals-foreground-primary);
@@ -60,6 +59,7 @@ export default css`
     min-height: var(--textarea-min-height);
     min-width: var(--textarea-min-height);
     resize: both;
+    margin-top: var(--spacing-x-small);
     overflow: auto;
     background: var(--_background-color);
     border-radius: var(--border-radius-small);

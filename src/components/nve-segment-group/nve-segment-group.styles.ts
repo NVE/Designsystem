@@ -6,7 +6,6 @@ export default css`
     flex-direction: column;
     padding: 0;
     margin: 0;
-    gap: var(--spacing-x-small);
     min-inline-size: unset;
     margin-inline: 0;
     border-width: 0;
@@ -19,5 +18,6 @@ export default css`
   .segment-group {
     display: flex;
     align-items: center;
+    margin-top: var(--spacing-x-small);
   }
 `;

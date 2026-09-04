@@ -209,11 +209,29 @@ export default class NveCheckboxGroup extends LitElement implements FormValidati
         <!-- Hint-tekst og feilmelding -->
         ${
           !this.activeErrorMessage && this.hint
-            ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.hint}</p>`
+            ? html`<p
+                part="hint-text"
+                class=${classMap({
+                  'field__hint-text': true,
+                  'field__hint-text--show': !!this.hint,
+                })}
+                id=${hintTextId}
+              >
+                ${this.hint}
+              </p>`
             : nothing
         }
 
-        <p aria-live="assertive" aria-atomic="true" part="error-text" class="field__hint-text" id=${errorTextId}>
+        <p
+          aria-live="assertive"
+          aria-atomic="true"
+          part="error-text"
+          class=${classMap({
+            'field__hint-text': true,
+            'field__hint-text--show': !!this.activeErrorMessage,
+          })}
+          id=${errorTextId}
+        >
           ${this.activeErrorMessage ?? ''}
         </p>
       </fieldset>

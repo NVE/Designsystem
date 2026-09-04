@@ -7,6 +7,7 @@ export default css`
     color: var(--color-neutrals-foreground-subtle);
     font: var(--typography-detailtext-caption);
     text-align: start;
+    margin-top: var(--spacing-2x-small);
   }
 
   .field__hint-text {
@@ -14,6 +15,10 @@ export default css`
     color: var(--color-neutrals-foreground-primary);
     font: var(--typography-detailtext-caption);
     text-align: start;
+  }
+
+  .field__hint-text--show {
+    margin-top: var(--spacing-x-small);
   }
 
   .field--error {

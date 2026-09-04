@@ -108,36 +108,6 @@ export default class NveInput extends LitElement implements FormValidationCompon
     }
   }
 
-  /*
-validation stuff
-- should i have nve-form that handles validation?
--if not then i still want to run global validation method
--what abput the form with steps?
--when validateForm returns isvalid, invalidfields and maybe firstinvalid field to focus it?
-- one with rules.
-- one completely quasar like func || errorMessage
-- one with types?
-- should we then reset validation on input/blur per field2?
-- should we show one, first error at a time or all errors per field
-- should errorMessage take precedence over validationMessage when given?
-- should we add option to validate on blur too from the start?
-- could i have a submit button component that triggers validation on click and then emits submit event if valid? (or is it an unnecessary component)
-
-
--what if i create a quasar with tuple like 'required' || message
-but then id have to have array inside the array validationRules={[
-  ['required', 'Required'],
-  ['minLength', 3, 'Minimum 3 characters'],
-]}
-that might be troublesome? 
-
-for presentation
-show simple (quasar)
-show with helpers
-
-show focus the first invalid
-*/
-
   /**
    * Sender en egendefinert hendelse.
    * @param name - Navn på hendelsen
@@ -313,9 +283,11 @@ show focus the first invalid
         <!-- Ledetekst -->
         ${getLabel(labelId, this.label, this.required, this.requiredLabel, html`<slot name="label-toggletip"></slot>`)}
         <!-- Hjelpetekst -->
-        ${this.helpText
-          ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-          : nothing}
+        ${
+          this.helpText
+            ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
+            : nothing
+        }
         <div
           part="input"
           class=${classMap({
@@ -351,37 +323,64 @@ show focus the first invalid
             aria-describedby=${ifDefined(describedBy || undefined)}
             aria-invalid=${ifDefined(this.activeErrorMessage ? 'true' : undefined)}
           />
+          <slot name="end"></slot>
           <!-- Ikoner og knapper -->
-          ${this.clearable && this.value
-            ? html`<button part="clear-button" tabindex="-1" @click=${this.handleClear} class="input__clear-button">
-                <nve-icon name="cancel" aria-hidden="true"></nve-icon>
-              </button>`
-            : nothing}
-          ${this.type === 'password'
-            ? html`<button
-                part="show-password-button"
-                tabindex="-1"
-                @click=${this.togglePasswordVisibility}
-                class="input__clear-button"
-              >
-                <nve-icon name=${this.showPassword ? 'visibility_off' : 'visibility'} aria-hidden="true"></nve-icon>
-              </button>`
-            : nothing}
-          ${statusIcon
-            ? html`<nve-icon
-                class="input__control__icon"
-                part="status-icon"
-                name=${statusIcon}
-                aria-hidden="true"
-              ></nve-icon>`
-            : nothing}
+          ${
+            this.clearable && this.value
+              ? html`<button part="clear-button" tabindex="-1" @click=${this.handleClear} class="input__clear-button">
+                  <nve-icon name="cancel" aria-hidden="true"></nve-icon>
+                </button>`
+              : nothing
+          }
+          ${
+            this.type === 'password'
+              ? html`<button
+                  part="show-password-button"
+                  tabindex="-1"
+                  @click=${this.togglePasswordVisibility}
+                  class="input__clear-button"
+                >
+                  <nve-icon name=${this.showPassword ? 'visibility_off' : 'visibility'} aria-hidden="true"></nve-icon>
+                </button>`
+              : nothing
+          }
+          ${
+            statusIcon
+              ? html`<nve-icon
+                  class="input__control__icon"
+                  part="status-icon"
+                  name=${statusIcon}
+                  aria-hidden="true"
+                ></nve-icon>`
+              : nothing
+          }
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${!this.activeErrorMessage && this.hint
-          ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.hint}</p>`
-          : nothing}
+        ${
+          !this.activeErrorMessage && this.hint
+            ? html`<p
+                part="hint-text"
+                class=${classMap({
+                  'field__hint-text': true,
+                  'field__hint-text--show': !!this.hint,
+                })}
+                id=${hintTextId}
+              >
+                ${this.hint}
+              </p>`
+            : nothing
+        }
 
-        <p aria-live="assertive" aria-atomic="true" part="error-text" class="field__hint-text" id=${errorTextId}>
+        <p
+          aria-live="assertive"
+          aria-atomic="true"
+          part="error-text"
+          class=${classMap({
+            'field__hint-text': true,
+            'field__hint-text--show': !!this.activeErrorMessage,
+          })}
+          id=${errorTextId}
+        >
           ${this.activeErrorMessage ?? ''}
         </p>
       </div>

@@ -18,16 +18,18 @@ let id = 0;
 export type Option = {
   value: string;
   label: string;
+  disabled?: boolean;
   textLabel?: string;
 };
 
 /**
  * Detaljer som sendes i change-hendelsen når et alternativ velges eller fjernes.
- * Inkluderer verdien til det endret alternativet
+ * Inkluderer verdien til det endret alternativet, alle valgte verdier,
  * og handlingen som ble utført (select eller deselect).
  */
 export type NveSelectChangeDetail = {
   value: string;
+  selectedValues: string[];
   action: 'select' | 'deselect';
 };
 
@@ -117,9 +119,9 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   /** Om listboksen er utvidet */
   @state() protected expanded = false;
   /** Verdi til det aktivert/fokuserte alternativet */
-  @state() private activeValue = '';
+  @state() private activeValue: Option | null = null;
   /** Internt array verdier for valgte alternativer. Oppdateres basert på selectedValues-prop og når alternativer velges eller fjernes. */
-  @state() private _selectedValues: string[] = [];
+
   /** ID-er for kollapsede tags i multiselect hvis wrap er false */
   @state() private collapsedTagIds: string[] = [];
   /** Søketekst som brukes for å filtrere alternativer i single select */
@@ -136,7 +138,6 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   /** Timeout for searchString */
   private searchTimeout?: number;
   /** Internt array for alternativer. Oppdateres basert på options-prop */
-  private _options: Option[] = [];
 
   constructor() {
     super();
@@ -162,19 +163,60 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     }
   }
 
-  protected updated(changed: Map<string, unknown>) {
+  private removingOptionsAttribute = false;
+  private removingSelectedValuesAttribute = false;
+
+  attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null) {
+    if (name === 'options' && this.removingOptionsAttribute) {
+      return;
+    }
+
+    if (name === 'selectedvalues' && this.removingSelectedValuesAttribute) {
+      return;
+    }
+
+    super.attributeChangedCallback(name, oldValue, newValue);
+  }
+
+  protected willUpdate(changed: Map<string, unknown>) {
     if (changed.has('options') && this.options !== null) {
-      this._options = this.options;
-      // fjern options fra DOM.
-      this.removeAttribute('options');
-      this.visibleOptions = this._options.filter((o): o is Option => !!o);
+      //this.options = this.options;
+      this.visibleOptions = this.options.filter((o): o is Option => !!o);
     }
 
     if (changed.has('selectedValues') && this.selectedValues !== null) {
       this.syncSelectedFromValues();
-      // fjern selectedValues fra DOM
-      this.removeAttribute('selectedValues');
     }
+  }
+
+  /**
+   * Flytten for å fjerne attributer options og selectedvalues:
+   * options-attributtet kommer inn → Lit konverterer det til this.options → 
+   * komponenten oppdateres → du fjerner DOM-attributtet → attributeChangedCallback() 
+   * fanger opp at attributtet fjernes → Lit får aldri med seg fjerningen → this.options beholder den eksisterende array-verdien.
+
+   */
+  protected updated(changed: Map<string, unknown>) {
+    if (changed.has('options') && this.hasAttribute('options')) {
+      this.removingOptionsAttribute = true;
+
+      try {
+        this.removeAttribute('options');
+      } finally {
+        this.removingOptionsAttribute = false;
+      }
+    }
+
+    if (changed.has('selectedValues') && this.hasAttribute('selectedvalues')) {
+      this.removingSelectedValuesAttribute = true;
+
+      try {
+        this.removeAttribute('selectedvalues');
+      } finally {
+        this.removingSelectedValuesAttribute = false;
+      }
+    }
+
     if (changed.has('activeValue') && this.expanded) {
       this.scrollActiveOptionIntoView();
     }
@@ -187,7 +229,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
 
   /** Synkronisere _selectedValues på selectedValues-attributtet. */
   private syncSelectedFromValues() {
-    this._selectedValues = [];
+    //this.selectedValues = [];
 
     const values = this.selectedValues ?? [];
     if (!values.length) {
@@ -200,7 +242,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
 
     const validOptions = values
       .map((value) => {
-        const option = this._options.find((opt) => opt?.value === value);
+        const option = this.options.find((opt) => opt?.value === value);
         if (!option) {
           console.warn(`nve-combobox: selectedValue "${value}" does not match any option.`);
         }
@@ -211,10 +253,10 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     if (!validOptions.length) return;
 
     if (!this.multiple) {
-      this._selectedValues = [...this._selectedValues, validOptions[0].value];
+      this.selectedValues = [...this.selectedValues, validOptions[0].value];
       this.updateDisplayLabel(validOptions[0].textLabel || validOptions[0].label || '');
     } else {
-      this._selectedValues = validOptions.map((o) => o.value);
+      this.selectedValues = validOptions.map((o) => o.value);
     }
   }
 
@@ -275,9 +317,9 @@ export default class NveCombobox extends LitElement implements FormValidationCom
         return this.handleBackspace(e);
       case 'Tab':
         if (this.expanded) {
-          const optionLabel = this._selectedValues[0]
-            ? this._options.find((opt) => opt?.value === this._selectedValues[0])?.textLabel ||
-              this._options.find((opt) => opt?.value === this._selectedValues[0])?.label ||
+          const optionLabel = this.selectedValues[0]
+            ? this.options.find((opt) => opt?.value === this.selectedValues[0])?.textLabel ||
+              this.options.find((opt) => opt?.value === this.selectedValues[0])?.label ||
               ''
             : '';
           this.updateDisplayLabel(optionLabel);
@@ -304,20 +346,20 @@ export default class NveCombobox extends LitElement implements FormValidationCom
         this.updateDisplayLabel('');
       }
 
-      if (!this._selectedValues.length) {
+      if (!this.selectedValues.length) {
         // Hvis ingen er valgt ennå → start fra første eller siste alternativ
         const index = key === 'down' ? 0 : this.visibleOptions.length - 1;
-        this.activeValue = this.visibleOptions[index].value;
+        this.activeValue = this.visibleOptions[index];
       }
       this.openListbox();
     } else {
       // Flytt til neste eller forrige alternativ (wrap-around)
-      const currentIndex = this.visibleOptions.findIndex((opt) => opt.value === this.activeValue);
+      const currentIndex = this.visibleOptions.findIndex((opt) => opt.value === this.activeValue?.value);
       const nextIndex =
         key === 'down'
           ? (currentIndex + 1) % this.visibleOptions.length
           : (currentIndex - 1 + this.visibleOptions.length) % this.visibleOptions.length;
-      this.activeValue = this.visibleOptions[nextIndex].value;
+      this.activeValue = this.visibleOptions[nextIndex];
     }
   }
 
@@ -329,7 +371,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
    * @param key - 'left' eller 'right', avhengig av hvilken pil som ble trykket
    */
   private handleArrowRightOrLeft(e: KeyboardEvent, key: 'left' | 'right') {
-    if (!this._selectedValues.length) return;
+    if (!this.selectedValues.length) return;
     const target = e.target as HTMLElement;
     if (target === this.comboboxNativeInput) {
       const input = target as HTMLInputElement;
@@ -384,11 +426,11 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   private handleEscape() {
     this.closeListbox();
     // hvis søkbar ønsker vi å tilbakestille visningsetiketten til verdien av det valgte alternativet.
-    if (this._selectedValues.length) {
+    if (this.selectedValues.length) {
       if (!this.multiple) {
         this.updateDisplayLabel(
-          this._options.find((opt) => opt?.value === this._selectedValues[0])?.textLabel ||
-            this._options.find((opt) => opt?.value === this._selectedValues[0])?.label ||
+          this.options.find((opt) => opt?.value === this.selectedValues[0])?.textLabel ||
+            this.options.find((opt) => opt?.value === this.selectedValues[0])?.label ||
             ''
         );
       }
@@ -411,7 +453,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     // 1) In input: if empty and there are tags, move to last tag
     if (target === this.comboboxNativeInput) {
       const input = target as HTMLInputElement;
-      if (!input.value && this._selectedValues.length) {
+      if (!input.value && this.selectedValues.length) {
         e.preventDefault(); // avoid doing nothing
         focusLastTag();
       }
@@ -435,20 +477,20 @@ export default class NveCombobox extends LitElement implements FormValidationCom
       const id = target.getAttribute('data-option-id');
       if (!id) return;
 
-      const currentIndex = this._selectedValues.findIndex((selectedValue) => selectedValue === id);
-      const prevId = this._selectedValues[currentIndex - 1];
-      const nextId = this._selectedValues[currentIndex + 1];
+      const currentIndex = this.selectedValues.findIndex((selectedValue) => selectedValue === id);
+      const prevId = this.selectedValues[currentIndex - 1];
+      const nextId = this.selectedValues[currentIndex + 1];
 
       // this updates selectedValuesIntern
       this.handleOptionChange(id);
 
-      if (this._selectedValues.length) {
+      if (this.selectedValues.length) {
         // focus previous tag if it exists, otherwise the first remaining tag
         // if currentindex is 0 but there is length bigger than 1 we want to focus the next tag
         await this.updateComplete;
 
-        const prevIdIndex = this._selectedValues.findIndex((selectedValue) => selectedValue === prevId);
-        const nextIdIndex = this._selectedValues.findIndex((selectedValue) => selectedValue === nextId);
+        const prevIdIndex = this.selectedValues.findIndex((selectedValue) => selectedValue === prevId);
+        const nextIdIndex = this.selectedValues.findIndex((selectedValue) => selectedValue === nextId);
 
         let nextTagId: string | undefined;
         if (prevIdIndex !== -1) {
@@ -484,7 +526,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
       option = this.visibleOptions[this.visibleOptions.length - 1];
     }
     const value = option?.value;
-    this.activeValue = value ? value : '';
+    this.activeValue = value ? this.visibleOptions.find((opt) => opt.value === value) || null : null;
   }
   /**
    * Håndterer Enter og Space-tastene for å åpne listeboksen eller velge det aktive alternativet.
@@ -494,8 +536,10 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     if (!this.expanded) {
       await this.handleArrowUpAndDown('down');
       return;
-    } else if (this.expanded && this.activeValue) {
-      this.handleOptionChange(this.activeValue);
+    } else if (this.activeValue?.disabled) {
+      return;
+    } else if (this.expanded && this.activeValue?.value) {
+      this.handleOptionChange(this.activeValue.value);
     } else {
       this.closeListbox();
     }
@@ -520,7 +564,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     const id = this.getIdByLetter(this.searchString);
 
     if (id) {
-      this.activeValue = id;
+      this.activeValue = this.visibleOptions.find((opt) => opt.value === id) || null;
     }
   }
 
@@ -533,8 +577,8 @@ export default class NveCombobox extends LitElement implements FormValidationCom
       e.preventDefault();
       e.stopPropagation();
       this.handleOptionChange(id);
-      if (this._selectedValues.length) {
-        const lastSelectedValue = this._selectedValues[this._selectedValues.length - 1];
+      if (this.selectedValues.length) {
+        const lastSelectedValue = this.selectedValues[this.selectedValues.length - 1];
         const lastTag = this.renderRoot.querySelector<HTMLElement>(
           `.combobox__value__tag[data-option-id="${lastSelectedValue}"]`
         );
@@ -628,7 +672,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
    * @param value - Verdien til et alternativ
    */
   private handleClickOption(value: string) {
-    const isSelected = this._selectedValues.includes(value);
+    const isSelected = this.selectedValues.includes(value);
     const canClick = !this.maxReached || isSelected;
     if (!canClick) return;
 
@@ -644,7 +688,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   private handleClear(e: MouseEvent) {
     e.stopPropagation();
     if (this.disabled || this.readonly) return;
-    this._selectedValues = [];
+    this.selectedValues = [];
     this.indicatorCount = 0;
     this.updateDisplayLabel('');
     this.emitClear();
@@ -680,6 +724,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   private emitChange(value: string, action: 'select' | 'deselect') {
     this.emitEvent<NveSelectChangeDetail>('change', {
       value,
+      selectedValues: [...this.selectedValues],
       action,
     });
   }
@@ -717,10 +762,10 @@ export default class NveCombobox extends LitElement implements FormValidationCom
    */
   private handleOptionChange(value: string) {
     //check if option is selected
-    const option = this._options.find((opt) => opt?.value === value);
+    const option = this.options.find((opt) => opt?.value === value);
     if (!option) return;
 
-    const isSelected = this._selectedValues.includes(value);
+    const isSelected = this.selectedValues.includes(value);
     if (this.maxReached && !isSelected) return;
     if (!isSelected) {
       this.selectOption(option);
@@ -736,7 +781,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
       this.updateDisplayLabel(option.textLabel || option.label || '');
       this.closeListbox();
     }
-    this.maxReached = this.max ? this._selectedValues.length >= this.max : false;
+    this.maxReached = this.max ? this.selectedValues.length >= this.max : false;
     this.emitChange(value, isSelected && this.multiple ? 'deselect' : 'select');
     this.internalValidationMessage = '';
   }
@@ -748,12 +793,12 @@ export default class NveCombobox extends LitElement implements FormValidationCom
    */
   private selectOption(option: Option) {
     if (this.multiple) {
-      this._selectedValues = [...this._selectedValues, option.value];
+      this.selectedValues = [...this.selectedValues, option.value];
       if (!this.wrap) {
         this.calculateVisibleTags();
       }
     } else {
-      this._selectedValues = [option.value];
+      this.selectedValues = [option.value];
       this.focus();
     }
   }
@@ -763,7 +808,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
    * @param option - Alternativet som skal fjernes
    */
   private deselectOption(option: Option) {
-    this._selectedValues = this._selectedValues.filter((value) => value !== option.value);
+    this.selectedValues = this.selectedValues.filter((value) => value !== option.value);
     if (this.multiple && !this.wrap) {
       this.calculateVisibleTags();
     }
@@ -778,7 +823,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
 
     // hvis listen er lang og det finnes noen valgte verdier så scroller vi det aktive alternativet inn i view når
     // listen åpnes
-    if (this._selectedValues.length) {
+    if (this.selectedValues.length) {
       await this.updateComplete;
       this.scrollActiveOptionIntoView();
     }
@@ -805,9 +850,9 @@ export default class NveCombobox extends LitElement implements FormValidationCom
 
     if (this && !path.includes(this)) {
       if (this.editable && !this.multiple) {
-        const optionLabel = this._selectedValues[0]
-          ? this._options.find((opt) => opt?.value === this._selectedValues[0])?.textLabel ||
-            this._options.find((opt) => opt?.value === this._selectedValues[0])?.label ||
+        const optionLabel = this.selectedValues[0]
+          ? this.options.find((opt) => opt?.value === this.selectedValues[0])?.textLabel ||
+            this.options.find((opt) => opt?.value === this.selectedValues[0])?.label ||
             ''
           : '';
         this.updateDisplayLabel(optionLabel);
@@ -823,7 +868,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
    * @returns ID-en til det neste alternativet som matcher filteret, eller undefined hvis ingen match finnes.
    */
   private getIdByLetter(filter: string): string | undefined {
-    const options = this._options.filter((o): o is Option => !!o);
+    const options = this.options.filter((o): o is Option => !!o);
     if (!options.length) return;
 
     // Hjelpefunksjon for å sjekke om alle bokstavene i filteret er like, f.eks. "aaa" eller "bb"
@@ -834,7 +879,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     // vi vil at neste trykk på D skal velge Diana, og ikke David.
     // Hvis ingen elementer er aktive, eller det aktive elementet ikke finnes i den filtrerte listen,
     // starter vi fra begynnelsen av listen.
-    const currentIndex = options.findIndex((opt) => opt.value === this.activeValue);
+    const currentIndex = options.findIndex((opt) => opt.value === this.activeValue?.value);
     const startIndex = currentIndex >= 0 ? currentIndex + 1 : 0;
 
     // roterer alternativer slik at arrayet starter fra neste element etter det aktive elementet,
@@ -879,7 +924,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   private updateDisplayLabel(text: string) {
     this.displayLabel = text;
     if (this.editable) {
-      this.visibleOptions = this._options
+      this.visibleOptions = this.options
         .filter((o): o is Option => !!o)
         .filter((option) => {
           const optionText = option.textLabel || option.label || '';
@@ -903,12 +948,12 @@ export default class NveCombobox extends LitElement implements FormValidationCom
    * Scroll til det aktive alternativet.
    */
   private scrollActiveOptionIntoView() {
-    if (!this.activeValue) return;
+    if (!this.activeValue?.value) return;
 
     const listbox = this.renderRoot.querySelector<HTMLElement>('.combobox__listbox');
     if (!listbox) return;
 
-    const activeOption = listbox.querySelector<HTMLElement>(`[role="option"][id="${this.activeValue}"]`);
+    const activeOption = listbox.querySelector<HTMLElement>(`[role="option"][id="${this.activeValue?.value}"]`);
     if (!activeOption) return;
 
     activeOption.scrollIntoView({ block: 'nearest' });
@@ -937,7 +982,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
 
     this.collapsedTagIds = [];
 
-    for (const [index, value] of this._selectedValues.entries()) {
+    for (const [index, value] of this.selectedValues.entries()) {
       // vi gjemmer tagger som ikke får plass, hver gjemt tag øker indikator-count med 1. Hvis indikator allerede er
       // større enn 0, så legger vi ikke på flere tagger fordi vi vet at de ikke får plass
       if (_indicatorCount > 0) {
@@ -949,8 +994,8 @@ export default class NveCombobox extends LitElement implements FormValidationCom
       const tag = document.createElement('button');
       tag.className = 'combobox__value__tag';
       tag.textContent =
-        this._options.find((opt) => opt?.value === value)?.textLabel ||
-        this._options.find((opt) => opt?.value === value)?.label ||
+        this.options.find((opt) => opt?.value === value)?.textLabel ||
+        this.options.find((opt) => opt?.value === value)?.label ||
         '';
       const icon = document.createElement('nve-icon');
       icon.setAttribute('name', 'close');
@@ -979,7 +1024,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
 
   validate() {
     for (const rule of this.validationRules) {
-      const result = rule(this._selectedValues);
+      const result = rule(this.selectedValues);
 
       if (result !== true) {
         if (typeof result !== 'string' || result.trim() === '') {
@@ -1064,8 +1109,8 @@ export default class NveCombobox extends LitElement implements FormValidationCom
           >
             <div part="value" class="combobox__value">
               ${
-                this.multiple && this._selectedValues.length
-                  ? this._selectedValues
+                this.multiple && this.selectedValues.length
+                  ? this.selectedValues
                       .filter((value) => !this.collapsedTagIds.includes(value))
                       .map(
                         (value) =>
@@ -1074,8 +1119,8 @@ export default class NveCombobox extends LitElement implements FormValidationCom
                             class="combobox__value__tag"
                             ?disabled=${this.disabled}
                             aria-label="${this.removeTagAriaLabel} ${
-                              this._options.find((opt) => opt?.value === value)?.textLabel ||
-                              this._options.find((opt) => opt?.value === value)?.label ||
+                              this.options.find((opt) => opt?.value === value)?.textLabel ||
+                              this.options.find((opt) => opt?.value === value)?.label ||
                               ''
                             }"
                             tabindex="-1"
@@ -1085,8 +1130,8 @@ export default class NveCombobox extends LitElement implements FormValidationCom
                           >
                             <span
                               >${
-                                this._options.find((opt) => opt?.value === value)?.textLabel ||
-                                this._options.find((opt) => opt?.value === value)?.label ||
+                                this.options.find((opt) => opt?.value === value)?.textLabel ||
+                                this.options.find((opt) => opt?.value === value)?.label ||
                                 ''
                               }</span
                             >
@@ -1110,8 +1155,8 @@ export default class NveCombobox extends LitElement implements FormValidationCom
                   : nothing
               }
               <div class="sr-only" id=${selectedValuesId}>
-                ${this._options
-                  .filter((opt) => this._selectedValues.includes(opt.value))
+                ${this.options
+                  .filter((opt) => this.selectedValues.includes(opt.value))
                   .map((opt) => opt.textLabel || opt.label || '')
                   .join(', ')}
               </div>
@@ -1133,17 +1178,17 @@ export default class NveCombobox extends LitElement implements FormValidationCom
                 form=${ifDefined(this.form)}
                 aria-labelledby="${labelId}"
                 aria-describedby=${ifDefined(describedBy || undefined)}
-                aria-activedescendant=${ifDefined(this.activeValue)}
+                aria-activedescendant=${ifDefined(this.activeValue?.value)}
                 role="combobox"
                 aria-invalid=${ifDefined(this.activeErrorMessage ? 'true' : undefined)}
-                placeholder=${this.placeholder && !this._selectedValues.length ? this.placeholder : ''}
+                placeholder=${this.placeholder && !this.selectedValues.length ? this.placeholder : ''}
                 .value=${this.displayLabel}
                 @input=${this.onInput}
               />
             </div>
             <!-- Ikoner og knapper -->
             ${
-              this.clearable && this._selectedValues.length && !this.readonly && !this.disabled
+              this.clearable && this.selectedValues.length && !this.readonly && !this.disabled
                 ? html`<button
                     part="clear-button"
                     tabindex="-1"
@@ -1179,27 +1224,25 @@ export default class NveCombobox extends LitElement implements FormValidationCom
                   tabindex="-1"
                 >
                   ${this.visibleOptions.map((option) => {
+                    const isDisabled =
+                      option.disabled ||
+                      (this.multiple && !this.selectedValues.includes(option.value) && this.maxReached);
                     return html`<li
                       class=${classMap({
                         combobox__listbox__option: true,
-                        'combobox__listbox__option--selected': this._selectedValues.includes(option.value),
-                        'combobox__listbox__option--active': option.value === this.activeValue,
-                        'combobox__listbox__option--disabled':
-                          this.multiple && !this._selectedValues.includes(option.value) && this.maxReached,
+                        'combobox__listbox__option--selected': this.selectedValues.includes(option.value),
+                        'combobox__listbox__option--active': option.value === this.activeValue?.value,
+                        'combobox__listbox__option--disabled': isDisabled,
                       })}
                       id=${ifDefined(option.value)}
                       role="option"
                       part="option"
-                      aria-selected=${this._selectedValues.includes(option.value) ? 'true' : 'false'}
-                      aria-disabled=${
-                        this.multiple && !this._selectedValues.includes(option.value) && this.maxReached
-                          ? 'true'
-                          : 'false'
-                      }
-                      @click=${() => this.handleClickOption(option.value)}
+                      aria-selected=${this.selectedValues.includes(option.value) ? 'true' : 'false'}
+                      aria-disabled=${isDisabled ? 'true' : 'false'}
+                      @click=${() => !isDisabled && this.handleClickOption(option.value)}
                     >
                       ${
-                        this._selectedValues.includes(option.value)
+                        this.selectedValues.includes(option.value)
                           ? html`<nve-icon name="check" aria-hidden="true"></nve-icon>`
                           : nothing
                       }
@@ -1213,11 +1256,29 @@ export default class NveCombobox extends LitElement implements FormValidationCom
         <!-- Hint-tekst og feilmelding -->
         ${
           !this.activeErrorMessage && this.hint
-            ? html`<p part="hint-text" class="field__hint-text" id=${hintTextId}>${this.hint}</p>`
+            ? html`<p
+                part="hint-text"
+                class=${classMap({
+                  'field__hint-text': true,
+                  'field__hint-text--show': !!this.hint,
+                })}
+                id=${hintTextId}
+              >
+                ${this.hint}
+              </p>`
             : nothing
         }
 
-        <p aria-live="assertive" aria-atomic="true" part="error-text" class="field__hint-text" id=${errorTextId}>
+        <p
+          aria-live="assertive"
+          aria-atomic="true"
+          part="error-text"
+          class=${classMap({
+            'field__hint-text': true,
+            'field__hint-text--show': !!this.activeErrorMessage,
+          })}
+          id=${errorTextId}
+        >
           ${this.activeErrorMessage ?? ''}
         </p>
       </div>
