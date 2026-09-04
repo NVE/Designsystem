@@ -183,6 +183,7 @@
   --color-shades-functional-neutralgrey-000: #ffffff;
   --color-shades-functional-neutralgrey-100-050: rgba(238, 239, 241, 0.5);
   --color-shades-functional-neutralgrey-600-050: rgba(96, 101, 108, 0.5);
+  --color-shades-functional-neutralgrey-800-060: rgba(60, 63, 68, 0.6);
   --color-shades-functional-neutralgrey-050: #f7f7f8;
   --color-shades-functional-shadow-000: rgba(0, 0, 0, 0); /** 0% */
   --color-shades-functional-shadow-001: rgba(0, 0, 0, 0.01); /** 1% */
@@ -309,6 +310,7 @@
   --color-interactive-background-primary-disabled: var(--color-shades-grey-300);
   --color-interactive-background-secondary-enabled: var(--color-shades-grey-150);
   --color-interactive-background-secondary-hover: var(--color-shades-grey-200);
+  --color-interactive-background-secondary-hover-transparent: var(--color-shades-functional-neutralgrey-100-050);
   --color-interactive-background-secondary-pressed: var(--color-shades-grey-300);
   --color-interactive-background-secondary-disabled: var(--color-shades-grey-100);
   --color-interactive-background-tertiary-enabled: var(--color-shades-grey-100);
@@ -328,6 +330,8 @@
   --color-interactive-foreground-tertiary-enabled: var(--color-shades-grey-600);
   --color-interactive-foreground-tertiary-hover: var(--color-shades-grey-950);
   --color-interactive-foreground-tertiary-disabled: var(--color-shades-grey-300);
+  --color-interactive-foreground-static-white: var(--color-shades-grey-000); /** Fargen forblir hvit i darkmode */
+  --color-interactive-foreground-static-black: var(--color-shades-grey-950); /** Fargen forblir svart i darkmode */
   --color-interactive-foreground-danger-enabled: var(--color-shades-grey-000);
   --color-interactive-foreground-danger-disabled: var(--color-shades-functional-red-000);
   --color-interactive-foreground-link-primary-enabled: var(--color-shades-grey-999);
