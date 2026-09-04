@@ -8,14 +8,17 @@ export default css`
   :host {
     --listbox-max-height: 220px;
     --first-tag-max-width: unset;
+    --_button-tag-padding: var(--spacing-2x-small, 4px) var(--spacing-2x-small, 4px) var(--spacing-2x-small, 4px)
+      var(--spacing-x-small, 8px);
     width: 100%;
+    --_button-tag-icon-size: 1.25rem;
+    --_button-tag-font: var(--typography-body-compact-x-small-compact);
   }
 
   .field {
     display: flex;
     border: none;
     flex-direction: column;
-    gap: var(--spacing-x-small);
     --_border-color: var(--color-neutrals-border-default);
     --_background-color: var(--color-neutrals-background-primary);
     --_border-color-hover: var(--color-neutrals-foreground-primary);
@@ -61,6 +64,7 @@ export default css`
   }
 
   .combobox {
+    margin-top: var(--spacing-x-small);
     border-radius: var(--border-radius-small);
     &:focus-within {
       outline: var(--border-width-strong, 2px) solid var(--color-interactive-primary-border-focus, #008ffb);
@@ -86,22 +90,23 @@ export default css`
   }
 
   .combobox__control--small {
-    padding: var(--spacing-2x-small) var(--spacing-x-small);
-    nve-icon {
-      --icon-size: 20px;
-    }
+    padding-inline: var(--spacing-2x-small) var(--spacing-fixed-spacing-2x-small);
+    height: var(--sizing-fixed-sizing-medium);
+    --_button-tag-padding: var(--spacing-2x-small) var(--spacing-2x-small) var(--spacing-2x-small)
+      var(--spacing-x-small);
+    --_button-tag-icon-size: 1rem;
   }
 
   .combobox__control--medium {
-    padding: var(--spacing-x-small) var(--spacing-medium);
-  }
-
-  .combobox__control--medium.combobox__control--multiselect {
-    padding: var(--spacing-x-small);
+    padding-inline: var(--spacing-2x-small) var(--spacing-fixed-spacing-x-small);
+    height: var(--sizing-fixed-sizing-large);
   }
 
   .combobox__control--large {
-    padding: var(--spacing-small) var(--spacing-medium);
+    padding-inline: var(--spacing-fixed-spacing-2x-small) var(--spacing-small);
+    height: var(--sizing-fixed-sizing-x-large);
+    --_button-tag-padding: var(--spacing-x-small) var(--spacing-2x-small) var(--spacing-x-small) var(--spacing-x-small);
+    --_button-tag-font: var(--typography-body-compact-small-compact);
   }
 
   .combobox__control--large.combobox__control--multiselect {
@@ -127,7 +132,9 @@ export default css`
   }
 
   /* Når multiselect men ikke skriftlig input, input skjules */
-  .combobox__value__input--multiselect:not(.combobox__value__input--searchable) {
+  .combobox__value__input--multiselect:not(.combobox__value__input--searchable):not(
+      .combobox__value__input--multiselect-empty
+    ) {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -188,9 +195,6 @@ export default css`
     font: var(--typography-body-small);
     color: var(--color-interactive-foreground-secondary-enabled);
     border-radius: var(--border-radius-small);
-    transition:
-      background-color 0.3s ease,
-      color 0.3s ease;
     cursor: pointer;
   }
 
@@ -213,8 +217,9 @@ export default css`
   .combobox__value__indicator,
   .combobox__value__tag {
     display: flex;
-    font: var(--typography-label-x-small);
+    font: var(--_button-tag-font);
     line-height: 1;
+    padding: var(--_button-tag-padding);
     color: var(--color-interactive-foreground-tertiary-enabled);
     align-items: center;
     gap: var(--spacing-2x-small, 4px);
@@ -223,7 +228,7 @@ export default css`
     background: var(--color-interactive-background-tertiary-enabled);
     cursor: pointer;
     nve-icon {
-      --icon-size: 20px;
+      --icon-size: var(--_button-tag-icon-size);
       color: var(--color-interactive-foreground-tertiary-enabled);
     }
   }

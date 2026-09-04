@@ -9,7 +9,6 @@ export default css`
   .field {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-x-small);
     box-sizing: border-box;
     width: 100%;
     --_color: var(--color-neutrals-foreground-primary);
@@ -54,6 +53,7 @@ export default css`
     position: relative;
     width: 100%;
     display: flex;
+    margin-top: var(--spacing-x-small);
     gap: 4px;
     align-items: center;
     overflow: auto;
@@ -126,7 +126,8 @@ export default css`
     color: var(--color-interactive-foreground-tertiary-hover);
   }
 
-  ::slotted([slot='start']) {
+  ::slotted([slot='start']),
+  ::slotted([slot='end']) {
     --icon-size: var(--font-size-medium);
   }
 `;

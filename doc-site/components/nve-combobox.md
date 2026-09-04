@@ -9,12 +9,14 @@ For å legge til alternativer i select-komponenten bruk <span class="highlight">
 
 - <span class="highlight">value</span> - en unik identifikator som brukes internt til referanser, fokus og ARIA-koblinger.
 - <span class="highlight">label</span> - er teksten som vises i nedtrekksmenyen.
+- <span class="highlight">disabled</span> - om alternativ er deaktivert.
 - <span class="highlight">textLabel</span> - alternativ teksten som vises i inputfeltet.
 
 ```js
 type Option = {
   value: string;
   label: string;
+  disabled?: boolean;
   textLabel?: string;
 };
 ```
@@ -50,10 +52,15 @@ import type { NveSelectChangeDetail } from 'nve-designsystem/components/nve-comb
 
 Den returnerer:
 
+- <span class="highlight">value</span> - identifikator av et alternativ som endres.
+- <span class="highlight">action</span> – angir om alternativet velges eller velges bort.
+- <span class="highlight">selectedValues</span> - alle verdiene som er valgt.
+
 ```js
 type NveSelectChangeDetail<T> = {
   value: string;
   action: 'select' | 'deselect';
+  selectedValues: string[];
 }
 ```
 
@@ -81,12 +88,12 @@ Det er en combobox standard.
 
 ```html
 <nve-combobox
-  id="nve-avdeling-1"
+  id="nve-avdeling-0"
   label="Velg en avdeling"
   options='[ 
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" },
-    { "value":"tb","label": "TB" },
+    { "value":"c","label": "C", "disabled": true },
     { "value":"h","label": "H" },
     { "value":"ikti","label": "IKTI" },
     { "value":"sv","label": "SV" },
@@ -163,11 +170,12 @@ Når du klikker på en tag, fjernes det tilhørende alternativet fra de valgte v
 <nve-combobox
   id="nve-avdeling-3"
   label="Velg en avdeling"
+  size="large"
   multiple
   options='[ 
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" },
-    { "value":"tb","label": "TB" },
+    { "value":"tb","label": "TB", "disabled": true },
     { "value":"h","label": "H" },
     { "value":"ikti","label": "IKTI" },
     { "value":"sv","label": "SV" },
@@ -475,14 +483,33 @@ Bruk <span class="highlight">hint</span> for å vise hint-tekst under combobox.
 
 </CodeExamplePreview>
 
-### Deaktivert
+### Deaktiverte felt
 
-Bruk attributtet <span class="highlight">disabled</span> for å hindre muligheten for å endre verdier.
+Bruk attributtet <span class="highlight">disabled</span> for å deaktivere combobox.
 
 <CodeExamplePreview>
 
 ```html
 <nve-combobox id="nve-avdeling-11" label="Velg en avdeling" disabled options='[{ "value":"rme","label": "RME" }]'>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+### Deaktiverte alternativer
+
+For å vise et bestemt alternativ som deaktivert, må du sette <span class="highlight">disabled: true</span> på alternativet i <span class="highlight">options</span>-arrayet.
+
+Deaktiverte alternativer kan fortsatt få fokus, slik at brukere kan oppfatte at alternativet finnes. De har <span class="highlight">aria-disabled: true</span> og kan ikke aktiveres.
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox
+  id="nve-avdeling-111"
+  label="Velg en avdeling"
+  options='[{ "value":"rme","label": "RME"}, { "value":"h","label": "H", "disabled": true }]'
+>
 </nve-combobox>
 ```
 

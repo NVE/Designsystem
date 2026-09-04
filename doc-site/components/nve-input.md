@@ -319,15 +319,22 @@ Bruk <span class="highlight">value</span> for å vise forhåndsutfylt verdi.
 
 </CodeExamplePreview>
 
-### Start-spor
+### Start og end-spor
 
-Bruk <span class="highlight">start</span>-sporet for å legge til et ikon.
+Bruk <span class="highlight">start</span>-sporet for å plassere innhold, for eksempel et ikon, før inputfeltet. <span class="highlight">end</span>-sporet brukes til å plassere innhold etter inputfeltet.
+
+<nve-message-card variant="warning" label="Vær oppmerksom ved bruk av sporene!" size="compact">
+<p>Innhold i disse sporene skal som hovedregel ikke formidle informasjon som kun er tilgjengelig visuelt. Dersom innholdet inneholder viktig informasjon som brukeren trenger for å forstå eller fylle ut feltet, må den samme informasjonen også gjøres tilgjengelig for skjermleserbrukere, for eksempel gjennom hjelpetekst eller hinttekst.</p>
+</nve-message-card>
 
 <CodeExamplePreview>
 
 ```html
 <nve-input label="Saksbehandlers navn">
   <nve-icon slot="start" name="cases"></nve-icon>
+</nve-input>
+<nve-input label="Saksbehandlers navn">
+  <nve-icon slot="end" name="cases"></nve-icon>
 </nve-input>
 ```
 

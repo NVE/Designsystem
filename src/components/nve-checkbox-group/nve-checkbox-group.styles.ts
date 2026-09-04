@@ -6,7 +6,6 @@ export default css`
     flex-direction: column;
     padding: 0;
     margin: 0;
-    gap: var(--spacing-x-small);
     min-inline-size: unset;
     margin-inline: 0;
     border-width: 0;
@@ -19,6 +18,7 @@ export default css`
 
   .checkbox-group {
     display: flex;
+    margin-top: var(--spacing-x-small);
     gap: var(--spacing-small);
   }
 
