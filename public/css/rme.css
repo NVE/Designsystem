@@ -185,6 +185,13 @@
   --color-shades-functional-neutralgrey-600-050: rgba(96, 101, 108, 0.5);
   --color-shades-functional-neutralgrey-800-060: rgba(60, 63, 68, 0.6);
   --color-shades-functional-neutralgrey-050: #f7f7f8;
+  --color-shades-functional-shadow-000: rgba(0, 0, 0, 0); /** 0% */
+  --color-shades-functional-shadow-001: rgba(0, 0, 0, 0.01); /** 1% */
+  --color-shades-functional-shadow-002: rgba(0, 0, 0, 0.02); /** 2% */
+  --color-shades-functional-shadow-003: rgba(0, 0, 0, 0.03); /** 3% */
+  --color-shades-functional-shadow-004: rgba(0, 0, 0, 0.04); /** 4% */
+  --color-shades-functional-shadow-005: rgba(0, 0, 0, 0.05); /** 5% */
+  --color-shades-functional-shadow-006: rgba(0, 0, 0, 0.06); /** 6% */
   --color-shades-additional-lime-100: #eaf4da;
   --color-shades-additional-lime-150: #dfeec8;
   --color-shades-additional-lime-200: #d4e9b6;
@@ -261,11 +268,6 @@
   --text-decoration-underline: underline;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
-  --box-shadow-none: 0 0 0 0 rgba(0,0,0,0);
-  --box-shadow-soft: -59px 104px 33px 0 rgba(0,0,0,0.00), -38px 67px 31px 0 rgba(0,0,0,0.00), -21px 37px 26px 0 rgba(0,0,0,0.01), -9px 17px 19px 0 rgba(0,0,0,0.02), -2px 4px 11px 0 rgba(0,0,0,0.03);
-  --box-shadow-hard: -45px 80px 26px 0 rgba(0,0,0,0.00), -29px 51px 23px 0 rgba(0,0,0,0.01), -16px 29px 20px 0 rgba(0,0,0,0.02), -7px 13px 15px 0 rgba(0,0,0,0.03), -2px 3px 8px 0 rgba(0,0,0,0.04);
-  --box-shadow-header: 0 4px 032px 0 rgba(0,0,0,0.02);
-  --box-shadow-dropdown: 0 54px 15px 0 rgba(0,0,0,0.00), 0 35px 14px 0 rgba(0,0,0,0.00), 0 19px 12px 0 rgba(0,0,0,0.02), 0 9px 9px 0 rgba(0,0,0,0.03), 0 2px 5px 0 rgba(0,0,0,0.03);
   --boolean-brand-nve: false;
   --boolean-brand-varsom: false;
   --boolean-brand-rme: true;
@@ -472,6 +474,16 @@
   --color-supplemental-charts-foreground-data-16: var(--color-shades-data-color-c-900);
   --color-supplemental-charts-foreground-data-17: var(--color-shades-data-color-c-600);
   --color-supplemental-charts-foreground-data-18: var(--color-shades-data-color-b-900);
+  --color-shadows-x-low-emphasis: var(--color-shades-functional-shadow-000); /** 0% */
+  --color-shadows-low-emphasis: var(--color-shades-functional-shadow-001); /** 1% */
+  --color-shadows-medium-emphasis: var(--color-shades-functional-shadow-002); /** 2% */
+  --color-shadows-high-emphasis: var(--color-shades-functional-shadow-003); /** 3% */
+  --color-shadows-x-high-emphasis: var(--color-shades-functional-shadow-004); /** 4% */
+  --box-shadow-none: var(--sizing-shadow-blur-x-small) var(--sizing-shadow-spread-x-small) var(--sizing-shadow-position-x-x-small) var(--sizing-shadow-position-y-x-small) var(--color-shadows-x-low-emphasis);
+  --box-shadow-soft: -var(--sizing-shadow-blur-3x-large) 4var(--sizing-shadow-spread-x-small) 2var(--sizing-shadow-position-y-medium) var(--sizing-shadow-spread-x-small) var(--color-shadows-low-emphasis), var(--sizing-shadow-position-x-medium) var(--sizing-shadow-position-y-2x-large) var(--sizing-shadow-blur-2x-large) var(--sizing-shadow-spread-x-small) var(--color-shadows-medium-emphasis), var(--sizing-shadow-position-x-small) 4px var(--sizing-shadow-blur-large) 0px var(--color-shadows-high-emphasis);
+  --box-shadow-hard: -var(--sizing-shadow-blur-3x-large) var(--sizing-shadow-position-y-6x-large) 2var(--sizing-shadow-position-y-medium) var(--sizing-shadow-spread-x-small) var(--color-shadows-low-emphasis), var(--sizing-shadow-position-x-large) var(--sizing-shadow-position-y-4x-large) var(--sizing-shadow-blur-2x-large) var(--sizing-shadow-spread-x-small) var(--color-shadows-medium-emphasis), var(--sizing-shadow-position-x-medium) var(--sizing-shadow-position-y-x-large) var(--sizing-shadow-blur-x-large) var(--sizing-shadow-spread-x-small) var(--color-shadows-high-emphasis), var(--sizing-shadow-position-x-small) 4px var(--sizing-shadow-blur-medium) var(--sizing-shadow-spread-x-small) var(--color-shadows-x-high-emphasis);
+  --box-shadow-header: var(--sizing-shadow-spread-x-small) var(--sizing-shadow-position-y-medium) var(--sizing-shadow-blur-4x-large) var(--sizing-shadow-position-x-x-small) var(--color-shadows-medium-emphasis);
+  --box-shadow-dropdown: var(--sizing-shadow-spread-x-small) 2var(--sizing-shadow-position-x-x-small) var(--sizing-shadow-blur-large) var(--sizing-shadow-spread-x-small) var(--color-shadows-medium-emphasis), var(--sizing-shadow-position-x-x-small) var(--sizing-shadow-blur-medium) var(--sizing-shadow-position-y-large) var(--sizing-shadow-spread-x-small) var(--color-shadows-high-emphasis), var(--sizing-shadow-position-x-x-small) var(--sizing-shadow-position-y-small) var(--sizing-shadow-blur-small) 0px var(--color-shadows-high-emphasis);
  --spacing-none: 0;
   --spacing-20x: 20px;
   --spacing-24x: 24px;
@@ -555,6 +567,30 @@
   --sizing-2440x: 2440px;
   --sizing-2560x: 2560px;
   --sizing-9999x: 9999px;
+  --sizing-shadow-position-x-x-small: 0px;
+  --sizing-shadow-position-x-small: -2px;
+  --sizing-shadow-position-x-medium: -8px;
+  --sizing-shadow-position-x-large: -16px;
+  --sizing-shadow-position-x-x-large: -24px;
+  --sizing-shadow-position-y-x-small: 0px;
+  --sizing-shadow-position-y-small: 2px;
+  --sizing-shadow-position-y-medium: 4px;
+  --sizing-shadow-position-y-large: 8px;
+  --sizing-shadow-position-y-x-large: 12px;
+  --sizing-shadow-position-y-2x-large: 16px;
+  --sizing-shadow-position-y-3x-large: 20px;
+  --sizing-shadow-position-y-4x-large: 32px;
+  --sizing-shadow-position-y-5x-large: 40px;
+  --sizing-shadow-position-y-6x-large: 48px;
+  --sizing-shadow-blur-x-small: 0px;
+  --sizing-shadow-blur-small: 6px;
+  --sizing-shadow-blur-medium: 8px;
+  --sizing-shadow-blur-large: 12px;
+  --sizing-shadow-blur-x-large: 16px;
+  --sizing-shadow-blur-2x-large: 20px;
+  --sizing-shadow-blur-3x-large: 24px;
+  --sizing-shadow-blur-4x-large: 32px;
+  --sizing-shadow-spread-x-small: 0px;
   --dimension-025x: 0.0625rem; /** 1px */
   --dimension-05x: 0.125rem; /** 2px */
   --dimension-1x: 0.25rem; /** 4px */
@@ -805,6 +841,30 @@
   --sizing-2440x: 2440px;
   --sizing-2560x: 2560px;
   --sizing-9999x: 9999px;
+  --sizing-shadow-position-x-x-small: 0px;
+  --sizing-shadow-position-x-small: -2px;
+  --sizing-shadow-position-x-medium: -8px;
+  --sizing-shadow-position-x-large: -16px;
+  --sizing-shadow-position-x-x-large: -24px;
+  --sizing-shadow-position-y-x-small: 0px;
+  --sizing-shadow-position-y-small: 2px;
+  --sizing-shadow-position-y-medium: 4px;
+  --sizing-shadow-position-y-large: 8px;
+  --sizing-shadow-position-y-x-large: 12px;
+  --sizing-shadow-position-y-2x-large: 16px;
+  --sizing-shadow-position-y-3x-large: 20px;
+  --sizing-shadow-position-y-4x-large: 32px;
+  --sizing-shadow-position-y-5x-large: 40px;
+  --sizing-shadow-position-y-6x-large: 48px;
+  --sizing-shadow-blur-x-small: 0px;
+  --sizing-shadow-blur-small: 6px;
+  --sizing-shadow-blur-medium: 8px;
+  --sizing-shadow-blur-large: 12px;
+  --sizing-shadow-blur-x-large: 16px;
+  --sizing-shadow-blur-2x-large: 20px;
+  --sizing-shadow-blur-3x-large: 24px;
+  --sizing-shadow-blur-4x-large: 32px;
+  --sizing-shadow-spread-x-small: 0px;
   --dimension-025x: 0.0625rem; /** 1px */
   --dimension-05x: 0.125rem; /** 2px */
   --dimension-1x: 0.25rem; /** 4px */
@@ -1002,6 +1062,30 @@
   --sizing-2440x: 2440px;
   --sizing-2560x: 2560px;
   --sizing-9999x: 9999px;
+  --sizing-shadow-position-x-x-small: 0px;
+  --sizing-shadow-position-x-small: -2px;
+  --sizing-shadow-position-x-medium: -8px;
+  --sizing-shadow-position-x-large: -16px;
+  --sizing-shadow-position-x-x-large: -24px;
+  --sizing-shadow-position-y-x-small: 0px;
+  --sizing-shadow-position-y-small: 2px;
+  --sizing-shadow-position-y-medium: 4px;
+  --sizing-shadow-position-y-large: 8px;
+  --sizing-shadow-position-y-x-large: 12px;
+  --sizing-shadow-position-y-2x-large: 16px;
+  --sizing-shadow-position-y-3x-large: 20px;
+  --sizing-shadow-position-y-4x-large: 32px;
+  --sizing-shadow-position-y-5x-large: 40px;
+  --sizing-shadow-position-y-6x-large: 48px;
+  --sizing-shadow-blur-x-small: 0px;
+  --sizing-shadow-blur-small: 6px;
+  --sizing-shadow-blur-medium: 8px;
+  --sizing-shadow-blur-large: 12px;
+  --sizing-shadow-blur-x-large: 16px;
+  --sizing-shadow-blur-2x-large: 20px;
+  --sizing-shadow-blur-3x-large: 24px;
+  --sizing-shadow-blur-4x-large: 32px;
+  --sizing-shadow-spread-x-small: 0px;
   --dimension-025x: 0.0625rem; /** 1px */
   --dimension-05x: 0.125rem; /** 2px */
   --dimension-1x: 0.25rem; /** 4px */
@@ -1199,6 +1283,30 @@
   --sizing-2440x: 2440px;
   --sizing-2560x: 2560px;
   --sizing-9999x: 9999px;
+  --sizing-shadow-position-x-x-small: 0px;
+  --sizing-shadow-position-x-small: -2px;
+  --sizing-shadow-position-x-medium: -8px;
+  --sizing-shadow-position-x-large: -16px;
+  --sizing-shadow-position-x-x-large: -24px;
+  --sizing-shadow-position-y-x-small: 0px;
+  --sizing-shadow-position-y-small: 2px;
+  --sizing-shadow-position-y-medium: 4px;
+  --sizing-shadow-position-y-large: 8px;
+  --sizing-shadow-position-y-x-large: 12px;
+  --sizing-shadow-position-y-2x-large: 16px;
+  --sizing-shadow-position-y-3x-large: 20px;
+  --sizing-shadow-position-y-4x-large: 32px;
+  --sizing-shadow-position-y-5x-large: 40px;
+  --sizing-shadow-position-y-6x-large: 48px;
+  --sizing-shadow-blur-x-small: 0px;
+  --sizing-shadow-blur-small: 6px;
+  --sizing-shadow-blur-medium: 8px;
+  --sizing-shadow-blur-large: 12px;
+  --sizing-shadow-blur-x-large: 16px;
+  --sizing-shadow-blur-2x-large: 20px;
+  --sizing-shadow-blur-3x-large: 24px;
+  --sizing-shadow-blur-4x-large: 32px;
+  --sizing-shadow-spread-x-small: 0px;
   --dimension-025x: 0.0625rem; /** 1px */
   --dimension-05x: 0.125rem; /** 2px */
   --dimension-1x: 0.25rem; /** 4px */
@@ -1396,6 +1504,30 @@
   --sizing-2440x: 2440px;
   --sizing-2560x: 2560px;
   --sizing-9999x: 9999px;
+  --sizing-shadow-position-x-x-small: 0px;
+  --sizing-shadow-position-x-small: -2px;
+  --sizing-shadow-position-x-medium: -8px;
+  --sizing-shadow-position-x-large: -16px;
+  --sizing-shadow-position-x-x-large: -24px;
+  --sizing-shadow-position-y-x-small: 0px;
+  --sizing-shadow-position-y-small: 2px;
+  --sizing-shadow-position-y-medium: 4px;
+  --sizing-shadow-position-y-large: 8px;
+  --sizing-shadow-position-y-x-large: 12px;
+  --sizing-shadow-position-y-2x-large: 16px;
+  --sizing-shadow-position-y-3x-large: 20px;
+  --sizing-shadow-position-y-4x-large: 32px;
+  --sizing-shadow-position-y-5x-large: 40px;
+  --sizing-shadow-position-y-6x-large: 48px;
+  --sizing-shadow-blur-x-small: 0px;
+  --sizing-shadow-blur-small: 6px;
+  --sizing-shadow-blur-medium: 8px;
+  --sizing-shadow-blur-large: 12px;
+  --sizing-shadow-blur-x-large: 16px;
+  --sizing-shadow-blur-2x-large: 20px;
+  --sizing-shadow-blur-3x-large: 24px;
+  --sizing-shadow-blur-4x-large: 32px;
+  --sizing-shadow-spread-x-small: 0px;
   --dimension-025x: 0.0625rem; /** 1px */
   --dimension-05x: 0.125rem; /** 2px */
   --dimension-1x: 0.25rem; /** 4px */
