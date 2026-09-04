@@ -483,7 +483,7 @@ Bruk <span class="highlight">hint</span> for å vise hint-tekst under combobox.
 
 </CodeExamplePreview>
 
-### Deaktivert felt
+### Deaktiverte felt
 
 Bruk attributtet <span class="highlight">disabled</span> for å deaktivere combobox.
 
