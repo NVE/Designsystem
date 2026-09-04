@@ -1167,6 +1167,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
                   'combobox__value__input--searchable': this.editable,
                   'combobox__value__input--wrap': this.wrap,
                   'combobox__value__input--multiselect': this.multiple,
+                  'combobox__value__input--multiselect-empty': this.multiple && this.selectedValues.length === 0,
                 })}"
                 ?disabled=${this.disabled}
                 ?readonly=${this.readonly || !this.editable}
@@ -1181,7 +1182,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
                 aria-activedescendant=${ifDefined(this.activeValue?.value)}
                 role="combobox"
                 aria-invalid=${ifDefined(this.activeErrorMessage ? 'true' : undefined)}
-                placeholder=${this.placeholder && !this.selectedValues.length ? this.placeholder : ''}
+                placeholder=${ifDefined(this.placeholder && this.selectedValues.length === 0 ? this.placeholder : undefined)}
                 .value=${this.displayLabel}
                 @input=${this.onInput}
               />

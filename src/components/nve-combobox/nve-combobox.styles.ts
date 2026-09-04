@@ -132,7 +132,9 @@ export default css`
   }
 
   /* Når multiselect men ikke skriftlig input, input skjules */
-  .combobox__value__input--multiselect:not(.combobox__value__input--searchable) {
+  .combobox__value__input--multiselect:not(.combobox__value__input--searchable):not(
+      .combobox__value__input--multiselect-empty
+    ) {
     position: absolute;
     width: 1px;
     height: 1px;
