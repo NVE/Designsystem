@@ -116,6 +116,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   static styles = [styles, labelStyles, formField];
 
   @query('input[role="combobox"]') comboboxNativeInput!: HTMLInputElement;
+  @query('div[part="control"]') control!: HTMLDivElement;
   /** Om listboksen er utvidet */
   @state() protected expanded = false;
   /** Verdi til det aktivert/fokuserte alternativet */
@@ -257,6 +258,10 @@ export default class NveCombobox extends LitElement implements FormValidationCom
       this.updateDisplayLabel(validOptions[0].textLabel || validOptions[0].label || '');
     } else {
       this.selectedValues = validOptions.map((o) => o.value);
+    }
+    if (this.multiple && !this.wrap) {
+      // .combobox__value finnes ikke i DOM før første render er ferdig
+      this.updateComplete.then(() => this.calculateVisibleTags());
     }
   }
 
@@ -972,11 +977,13 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     // Lager en usynlig div som skal vise alle taggene basert på de valgte id-ene.
     const invisibleDiv = document.createElement('div');
     invisibleDiv.style.position = 'absolute';
-    invisibleDiv.style.whiteSpace = 'nowrap';
+    invisibleDiv.style.width = 'max-content';
     invisibleDiv.style.display = 'flex';
-    invisibleDiv.style.visibility = 'hidden';
+    invisibleDiv.style.flexWrap = 'nowrap';
+
+    invisibleDiv.style.pointerEvents = 'none';
     invisibleDiv.style.gap = '4px';
-    this.renderRoot.appendChild(invisibleDiv);
+    this.control.appendChild(invisibleDiv);
 
     let _indicatorCount = 0;
 
@@ -1018,7 +1025,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
       }
     }
     // fjerner den usynlige div-en
-    this.renderRoot.removeChild(invisibleDiv);
+    this.control.removeChild(invisibleDiv);
     this.indicatorCount = this.collapsedTagIds.length;
   }
 

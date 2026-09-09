@@ -171,15 +171,30 @@ Når du klikker på en tag, fjernes det tilhørende alternativet fra de valgte v
   id="nve-avdeling-3"
   label="Velg en avdeling"
   size="large"
+  selectedValues='["rme", "ek", "tb", "h", "h1", "h2", "sv", "sv1", "sv2", "rme1", "rme2", "tb1"]'
   multiple
   options='[ 
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" },
-    { "value":"tb","label": "TB", "disabled": true },
+    { "value":"tb","label": "TB" },
     { "value":"h","label": "H" },
     { "value":"ikti","label": "IKTI" },
     { "value":"sv","label": "SV" },
-    { "value":"v","label": "V" }
+    { "value":"v","label": "V" },
+       { "value":"rme1","label": "RME" },
+    { "value":"e1k","label": "EK" },
+    { "value":"tb1","label": "TB" },
+    { "value":"h1","label": "H" },
+    { "value":"ikti1","label": "IKTI" },
+    { "value":"sv1","label": "SV" },
+    { "value":"v1","label": "V" },
+    { "value":"rme2","label": "RME" },
+    { "value":"ek2","label": "EK" },
+    { "value":"tb2","label": "TB" },
+    { "value":"h2","label": "H" },
+    { "value":"ikti2","label": "IKTI" },
+    { "value":"sv2","label": "SV" },
+    { "value":"v2","label": "V" }
      ]'
 >
 </nve-combobox>
