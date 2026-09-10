@@ -175,7 +175,7 @@ Når du klikker på en tag, fjernes det tilhørende alternativet fra de valgte v
   options='[ 
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" },
-    { "value":"tb","label": "TB", "disabled": true },
+    { "value":"tb","label": "TB" },
     { "value":"h","label": "H" },
     { "value":"ikti","label": "IKTI" },
     { "value":"sv","label": "SV" },

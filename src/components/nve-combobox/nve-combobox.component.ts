@@ -116,6 +116,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   static styles = [styles, labelStyles, formField];
 
   @query('input[role="combobox"]') comboboxNativeInput!: HTMLInputElement;
+  @query('div[part="control"]') control!: HTMLDivElement;
   /** Om listboksen er utvidet */
   @state() protected expanded = false;
   /** Verdi til det aktivert/fokuserte alternativet */
@@ -184,8 +185,16 @@ export default class NveCombobox extends LitElement implements FormValidationCom
       this.visibleOptions = this.options.filter((o): o is Option => !!o);
     }
 
-    if (changed.has('selectedValues') && this.selectedValues !== null) {
+    if (!this.hasUpdated && changed.has('selectedValues') && this.selectedValues !== null) {
       this.syncSelectedFromValues();
+    }
+
+    if (changed.has('selectedValues') && this.multiple && !this.wrap) {
+      // .combobox__value finnes ikke i DOM før render er ferdig
+      this.updateComplete.then(async () => {
+        await Promise.all([document.fonts.ready, customElements.whenDefined('nve-icon')]);
+        this.calculateVisibleTags();
+      });
     }
   }
 
@@ -794,9 +803,6 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   private selectOption(option: Option) {
     if (this.multiple) {
       this.selectedValues = [...this.selectedValues, option.value];
-      if (!this.wrap) {
-        this.calculateVisibleTags();
-      }
     } else {
       this.selectedValues = [option.value];
       this.focus();
@@ -810,7 +816,6 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   private deselectOption(option: Option) {
     this.selectedValues = this.selectedValues.filter((value) => value !== option.value);
     if (this.multiple && !this.wrap) {
-      this.calculateVisibleTags();
     }
   }
 
@@ -972,11 +977,13 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     // Lager en usynlig div som skal vise alle taggene basert på de valgte id-ene.
     const invisibleDiv = document.createElement('div');
     invisibleDiv.style.position = 'absolute';
-    invisibleDiv.style.whiteSpace = 'nowrap';
+    invisibleDiv.style.width = 'max-content';
     invisibleDiv.style.display = 'flex';
-    invisibleDiv.style.visibility = 'hidden';
+    invisibleDiv.style.flexWrap = 'nowrap';
+
+    invisibleDiv.style.pointerEvents = 'none';
     invisibleDiv.style.gap = '4px';
-    this.renderRoot.appendChild(invisibleDiv);
+    this.control.appendChild(invisibleDiv);
 
     let _indicatorCount = 0;
 
@@ -1018,7 +1025,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
       }
     }
     // fjerner den usynlige div-en
-    this.renderRoot.removeChild(invisibleDiv);
+    this.control.removeChild(invisibleDiv);
     this.indicatorCount = this.collapsedTagIds.length;
   }
 
