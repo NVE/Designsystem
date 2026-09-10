@@ -185,8 +185,16 @@ export default class NveCombobox extends LitElement implements FormValidationCom
       this.visibleOptions = this.options.filter((o): o is Option => !!o);
     }
 
-    if (changed.has('selectedValues') && this.selectedValues !== null) {
+    if (!this.hasUpdated && changed.has('selectedValues') && this.selectedValues !== null) {
       this.syncSelectedFromValues();
+    }
+
+    if (changed.has('selectedValues') && this.multiple && !this.wrap) {
+      // .combobox__value finnes ikke i DOM før render er ferdig
+      this.updateComplete.then(async () => {
+        await Promise.all([document.fonts.ready, customElements.whenDefined('nve-icon')]);
+        this.calculateVisibleTags();
+      });
     }
   }
 
@@ -258,10 +266,6 @@ export default class NveCombobox extends LitElement implements FormValidationCom
       this.updateDisplayLabel(validOptions[0].textLabel || validOptions[0].label || '');
     } else {
       this.selectedValues = validOptions.map((o) => o.value);
-    }
-    if (this.multiple && !this.wrap) {
-      // .combobox__value finnes ikke i DOM før første render er ferdig
-      this.updateComplete.then(() => this.calculateVisibleTags());
     }
   }
 
@@ -799,9 +803,6 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   private selectOption(option: Option) {
     if (this.multiple) {
       this.selectedValues = [...this.selectedValues, option.value];
-      if (!this.wrap) {
-        this.calculateVisibleTags();
-      }
     } else {
       this.selectedValues = [option.value];
       this.focus();
@@ -815,7 +816,6 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   private deselectOption(option: Option) {
     this.selectedValues = this.selectedValues.filter((value) => value !== option.value);
     if (this.multiple && !this.wrap) {
-      this.calculateVisibleTags();
     }
   }
 
