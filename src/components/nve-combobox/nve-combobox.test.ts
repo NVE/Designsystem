@@ -48,17 +48,17 @@ describe('nve-combobox', () => {
 
   it('has combobox__control--medium when default size is set', async () => {
     const el = await fixture<NveCombobox>(html`<nve-combobox></nve-combobox>`);
-    expect(el?.shadowRoot?.querySelector('.combobox__control--medium')).toBeTruthy();
+    expect(el?.shadowRoot?.querySelector('.combobox--medium')).toBeTruthy();
   });
 
   it('has combobox__control--small when small size is set', async () => {
     const el = await fixture<NveCombobox>(html`<nve-combobox size="small"></nve-combobox>`);
-    expect(el?.shadowRoot?.querySelector('.combobox__control--small')).toBeTruthy();
+    expect(el?.shadowRoot?.querySelector('.combobox--small')).toBeTruthy();
   });
 
   it('has combobox__control--large when large size is set', async () => {
     const el = await fixture<NveCombobox>(html`<nve-combobox size="large"></nve-combobox>`);
-    expect(el?.shadowRoot?.querySelector('.combobox__control--large')).toBeTruthy();
+    expect(el?.shadowRoot?.querySelector('.combobox--large')).toBeTruthy();
   });
 
   it('has field--error when errorMessage attribute is set', async () => {

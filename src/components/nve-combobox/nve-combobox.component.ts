@@ -117,6 +117,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
 
   @query('input[role="combobox"]') comboboxNativeInput!: HTMLInputElement;
   @query('div[part="control"]') control!: HTMLDivElement;
+  @query('div[part="value"]') valueDiv!: HTMLDivElement;
   /** Om listboksen er utvidet */
   @state() protected expanded = false;
   /** Verdi til det aktivert/fokuserte alternativet */
@@ -138,6 +139,8 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   @state() internalValidationMessage = '';
   /** Timeout for searchString */
   private searchTimeout?: number;
+  @state()
+  private hideValue = true;
   /** Internt array for alternativer. Oppdateres basert på options-prop */
 
   constructor() {
@@ -153,7 +156,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     }
   }
 
-  firstUpdated() {
+  async firstUpdated() {
     this.id = this.id || this.componentId;
     this.options.forEach((opt, index) => {
       opt.value = opt.value ? opt.value : `${this.id}-${index}`;
@@ -162,6 +165,43 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     if (this.autofocus) {
       this.comboboxNativeInput.focus();
     }
+    if (this.multiple && !this.wrap) {
+      //compare width of the value vs width of the control.
+      await this.updateComplete;
+
+      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+
+      const paddingL = parseFloat(getComputedStyle(this.control).paddingLeft);
+      const paddingR = parseFloat(getComputedStyle(this.control).paddingRight);
+      const allowedWdith =
+        this.control.clientWidth -
+        (this.size === 'large' ? 40 : 30) -
+        24 -
+        paddingL -
+        paddingR -
+        (this.editable ? 50 : 0);
+      const gap = parseFloat(getComputedStyle(this.valueDiv).gap) || 0;
+      const tagsWithIds = Array.from(this.renderRoot.querySelectorAll<HTMLElement>('.combobox__value__tag')).map(
+        (tag) => ({
+          id: tag.dataset.optionId,
+          width: tag.getBoundingClientRect().width,
+        })
+      );
+      let tagTotalWidth =
+        tagsWithIds.reduce((acc, tag) => acc + tag.width, 0) + Math.max(tagsWithIds.length - 1, 0) * gap;
+
+      while (tagTotalWidth > allowedWdith) {
+        const tagToRemove = tagsWithIds[tagsWithIds.length - 1];
+        if (!tagToRemove.id) {
+          break;
+        }
+        this.collapsedTagIds.push(tagToRemove.id);
+        tagTotalWidth -= tagToRemove.width;
+        this.indicatorCount++;
+        tagsWithIds.pop();
+      }
+    }
+    this.hideValue = false;
   }
 
   private removingOptionsAttribute = false;
@@ -187,14 +227,6 @@ export default class NveCombobox extends LitElement implements FormValidationCom
 
     if (!this.hasUpdated && changed.has('selectedValues') && this.selectedValues !== null) {
       this.syncSelectedFromValues();
-    }
-
-    if (changed.has('selectedValues') && this.multiple && !this.wrap) {
-      // .combobox__value finnes ikke i DOM før render er ferdig
-      this.updateComplete.then(async () => {
-        await Promise.all([document.fonts.ready, customElements.whenDefined('nve-icon')]);
-        this.calculateVisibleTags();
-      });
     }
   }
 
@@ -803,6 +835,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   private selectOption(option: Option) {
     if (this.multiple) {
       this.selectedValues = [...this.selectedValues, option.value];
+      this.calculateVisibleTags();
     } else {
       this.selectedValues = [option.value];
       this.focus();
@@ -816,6 +849,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   private deselectOption(option: Option) {
     this.selectedValues = this.selectedValues.filter((value) => value !== option.value);
     if (this.multiple && !this.wrap) {
+      this.calculateVisibleTags();
     }
   }
 
@@ -1098,7 +1132,15 @@ export default class NveCombobox extends LitElement implements FormValidationCom
         <!-- Combobox kontroll -->
         <div
           part="combobox"
-          class=${classMap({ combobox: true, 'combobox--expanded': this.expanded })}
+          class=${classMap({
+            combobox: true,
+            'combobox--medium': this.size === 'medium',
+            'combobox--small': this.size === 'small',
+            'combobox--large': this.size === 'large',
+            'combobox--wrap': this.wrap,
+            'combobox--multiselect': this.multiple,
+            'combobox--expanded': this.expanded,
+          })}
           @keydown=${this.handleKeydown}
         >
           <div
@@ -1106,15 +1148,12 @@ export default class NveCombobox extends LitElement implements FormValidationCom
             @click=${this.handleClickComboboxControl}
             class=${classMap({
               combobox__control: true,
-              'combobox__control--medium': this.size === 'medium',
-              'combobox__control--small': this.size === 'small',
-              'combobox__control--large': this.size === 'large',
-              'combobox__control--multiselect': this.multiple,
+
               'combobox__control--readonly': this.readonly,
               'combobox__control--filled': this.filled,
             })}
           >
-            <div part="value" class="combobox__value">
+            <div part="value" class=${classMap({ combobox__value: true, 'combobox__value--hidden': this.hideValue })}>
               ${
                 this.multiple && this.selectedValues.length
                   ? this.selectedValues
