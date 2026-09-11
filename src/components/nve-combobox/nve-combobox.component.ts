@@ -117,6 +117,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
 
   @query('input[role="combobox"]') comboboxNativeInput!: HTMLInputElement;
   @query('div[part="control"]') control!: HTMLDivElement;
+  @query('div[part="value"]') valueDiv!: HTMLDivElement;
   /** Om listboksen er utvidet */
   @state() protected expanded = false;
   /** Verdi til det aktivert/fokuserte alternativet */
@@ -138,6 +139,8 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   @state() internalValidationMessage = '';
   /** Timeout for searchString */
   private searchTimeout?: number;
+  @state()
+  private hideValue = true;
   /** Internt array for alternativer. Oppdateres basert på options-prop */
 
   constructor() {
@@ -153,7 +156,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     }
   }
 
-  firstUpdated() {
+  async firstUpdated() {
     this.id = this.id || this.componentId;
     this.options.forEach((opt, index) => {
       opt.value = opt.value ? opt.value : `${this.id}-${index}`;
@@ -162,6 +165,43 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     if (this.autofocus) {
       this.comboboxNativeInput.focus();
     }
+    if (this.multiple && !this.wrap) {
+      //compare width of the value vs width of the control.
+      await this.updateComplete;
+
+      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+
+      const paddingL = parseFloat(getComputedStyle(this.control).paddingLeft);
+      const paddingR = parseFloat(getComputedStyle(this.control).paddingRight);
+      const allowedWdith =
+        this.control.clientWidth -
+        (this.size === 'large' ? 40 : 30) -
+        24 -
+        paddingL -
+        paddingR -
+        (this.editable ? 50 : 0);
+      const gap = parseFloat(getComputedStyle(this.valueDiv).gap) || 0;
+      const tagsWithIds = Array.from(this.renderRoot.querySelectorAll<HTMLElement>('.combobox__value__tag')).map(
+        (tag) => ({
+          id: tag.dataset.optionId,
+          width: tag.getBoundingClientRect().width,
+        })
+      );
+      let tagTotalWidth =
+        tagsWithIds.reduce((acc, tag) => acc + tag.width, 0) + Math.max(tagsWithIds.length - 1, 0) * gap;
+
+      while (tagTotalWidth > allowedWdith) {
+        const tagToRemove = tagsWithIds[tagsWithIds.length - 1];
+        if (!tagToRemove.id) {
+          break;
+        }
+        this.collapsedTagIds.push(tagToRemove.id);
+        tagTotalWidth -= tagToRemove.width;
+        this.indicatorCount++;
+        tagsWithIds.pop();
+      }
+    }
+    this.hideValue = false;
   }
 
   private removingOptionsAttribute = false;
@@ -187,14 +227,6 @@ export default class NveCombobox extends LitElement implements FormValidationCom
 
     if (!this.hasUpdated && changed.has('selectedValues') && this.selectedValues !== null) {
       this.syncSelectedFromValues();
-    }
-
-    if (changed.has('selectedValues') && this.multiple && !this.wrap) {
-      // .combobox__value finnes ikke i DOM før render er ferdig
-      this.updateComplete.then(async () => {
-        await Promise.all([document.fonts.ready, customElements.whenDefined('nve-icon')]);
-        this.calculateVisibleTags();
-      });
     }
   }
 
@@ -803,6 +835,9 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   private selectOption(option: Option) {
     if (this.multiple) {
       this.selectedValues = [...this.selectedValues, option.value];
+      if (!this.wrap) {
+        this.calculateVisibleTags();
+      }
     } else {
       this.selectedValues = [option.value];
       this.focus();
@@ -816,6 +851,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   private deselectOption(option: Option) {
     this.selectedValues = this.selectedValues.filter((value) => value !== option.value);
     if (this.multiple && !this.wrap) {
+      this.calculateVisibleTags();
     }
   }
 
@@ -1090,15 +1126,21 @@ export default class NveCombobox extends LitElement implements FormValidationCom
           this.handleLabelClick
         )}
         <!-- Hjelpetekst -->
-        ${
-          this.helpText
-            ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-            : nothing
-        }
+        ${this.helpText
+          ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
+          : nothing}
         <!-- Combobox kontroll -->
         <div
           part="combobox"
-          class=${classMap({ combobox: true, 'combobox--expanded': this.expanded })}
+          class=${classMap({
+            combobox: true,
+            'combobox--medium': this.size === 'medium',
+            'combobox--small': this.size === 'small',
+            'combobox--large': this.size === 'large',
+            'combobox--wrap': this.wrap,
+            'combobox--multiselect': this.multiple,
+            'combobox--expanded': this.expanded,
+          })}
           @keydown=${this.handleKeydown}
         >
           <div
@@ -1106,61 +1148,51 @@ export default class NveCombobox extends LitElement implements FormValidationCom
             @click=${this.handleClickComboboxControl}
             class=${classMap({
               combobox__control: true,
-              'combobox__control--medium': this.size === 'medium',
-              'combobox__control--small': this.size === 'small',
-              'combobox__control--large': this.size === 'large',
-              'combobox__control--multiselect': this.multiple,
+
               'combobox__control--readonly': this.readonly,
               'combobox__control--filled': this.filled,
             })}
           >
-            <div part="value" class="combobox__value">
-              ${
-                this.multiple && this.selectedValues.length
-                  ? this.selectedValues
-                      .filter((value) => !this.collapsedTagIds.includes(value))
-                      .map(
-                        (value) =>
-                          html`<button
-                            part="tag"
-                            class="combobox__value__tag"
-                            ?disabled=${this.disabled}
-                            aria-label="${this.removeTagAriaLabel} ${
-                              this.options.find((opt) => opt?.value === value)?.textLabel ||
-                              this.options.find((opt) => opt?.value === value)?.label ||
-                              ''
-                            }"
-                            tabindex="-1"
-                            data-option-id=${ifDefined(value)}
-                            @click=${(e: MouseEvent) => this.handleClickTag(e, value)}
-                            @keydown=${(e: KeyboardEvent) => this.handleTagKeydown(e, value)}
+            <div part="value" class=${classMap({ combobox__value: true, 'combobox__value--hidden': this.hideValue })}>
+              ${this.multiple && this.selectedValues.length
+                ? this.selectedValues
+                    .filter((value) => !this.collapsedTagIds.includes(value))
+                    .map(
+                      (value) =>
+                        html`<button
+                          part="tag"
+                          class="combobox__value__tag"
+                          ?disabled=${this.disabled}
+                          aria-label="${this.removeTagAriaLabel} ${this.options.find((opt) => opt?.value === value)
+                            ?.textLabel ||
+                          this.options.find((opt) => opt?.value === value)?.label ||
+                          ''}"
+                          tabindex="-1"
+                          data-option-id=${ifDefined(value)}
+                          @click=${(e: MouseEvent) => this.handleClickTag(e, value)}
+                          @keydown=${(e: KeyboardEvent) => this.handleTagKeydown(e, value)}
+                        >
+                          <span
+                            >${this.options.find((opt) => opt?.value === value)?.textLabel ||
+                            this.options.find((opt) => opt?.value === value)?.label ||
+                            ''}</span
                           >
-                            <span
-                              >${
-                                this.options.find((opt) => opt?.value === value)?.textLabel ||
-                                this.options.find((opt) => opt?.value === value)?.label ||
-                                ''
-                              }</span
-                            >
-                            <nve-icon name="close" aria-hidden="true"></nve-icon>
-                          </button>`
-                      )
-                  : nothing
-              }
-              ${
-                this.indicatorCount > 0
-                  ? html`<button
-                      class="combobox__value__indicator"
-                      ?disabled=${this.disabled}
-                      aria-label=""
-                      tabindex="-1"
-                      @click=${this.handleIndicatorClick}
-                      @keydown=${this.handleIndicatorKeydown}
-                    >
-                      + ${this.indicatorCount}
-                    </button>`
-                  : nothing
-              }
+                          <nve-icon name="close" aria-hidden="true"></nve-icon>
+                        </button>`
+                    )
+                : nothing}
+              ${this.indicatorCount > 0
+                ? html`<button
+                    class="combobox__value__indicator"
+                    ?disabled=${this.disabled}
+                    aria-label=""
+                    tabindex="-1"
+                    @click=${this.handleIndicatorClick}
+                    @keydown=${this.handleIndicatorKeydown}
+                  >
+                    + ${this.indicatorCount}
+                  </button>`
+                : nothing}
               <div class="sr-only" id=${selectedValuesId}>
                 ${this.options
                   .filter((opt) => this.selectedValues.includes(opt.value))
@@ -1189,93 +1221,83 @@ export default class NveCombobox extends LitElement implements FormValidationCom
                 aria-activedescendant=${ifDefined(this.activeValue?.value)}
                 role="combobox"
                 aria-invalid=${ifDefined(this.activeErrorMessage ? 'true' : undefined)}
-                placeholder=${ifDefined(this.placeholder && this.selectedValues.length === 0 ? this.placeholder : undefined)}
+                placeholder=${ifDefined(
+                  this.placeholder && this.selectedValues.length === 0 ? this.placeholder : undefined
+                )}
                 .value=${this.displayLabel}
                 @input=${this.onInput}
               />
             </div>
             <!-- Ikoner og knapper -->
-            ${
-              this.clearable && this.selectedValues.length && !this.readonly && !this.disabled
-                ? html`<button
-                    part="clear-button"
-                    tabindex="-1"
-                    @click=${(e: MouseEvent) => this.handleClear(e)}
-                    class="combobox__clear-button"
-                  >
-                    <nve-icon name="cancel" aria-hidden="true"></nve-icon>
-                  </button>`
-                : nothing
-            }
-            ${
-              this.disabled || this.readonly
-                ? nothing
-                : html`<nve-icon class="icon__arrow" name="keyboard_arrow_down" aria-hidden="true"></nve-icon>`
-            }
+            ${this.clearable && this.selectedValues.length && !this.readonly && !this.disabled
+              ? html`<button
+                  part="clear-button"
+                  tabindex="-1"
+                  @click=${(e: MouseEvent) => this.handleClear(e)}
+                  class="combobox__clear-button"
+                >
+                  <nve-icon name="cancel" aria-hidden="true"></nve-icon>
+                </button>`
+              : nothing}
+            ${this.disabled || this.readonly
+              ? nothing
+              : html`<nve-icon class="icon__arrow" name="keyboard_arrow_down" aria-hidden="true"></nve-icon>`}
             ${this.disabled ? html`<nve-icon name="lock" aria-hidden="true"></nve-icon>` : nothing}
             ${this.readonly ? html`<nve-icon name="visibility" aria-hidden="true"></nve-icon>` : nothing}
-            ${
-              !!this.activeErrorMessage
-                ? html`<nve-icon class="icon__error" name="error" aria-hidden="true"></nve-icon>`
-                : nothing
-            }
+            ${!!this.activeErrorMessage
+              ? html`<nve-icon class="icon__error" name="error" aria-hidden="true"></nve-icon>`
+              : nothing}
           </div>
           <!-- Listbox -->
-          ${
-            this.expanded && this.visibleOptions.length
-              ? html`<ul
-                  part="listbox"
-                  class=${classMap({ combobox__listbox: true })}
-                  role="listbox"
-                  id=${`${this.id}-listbox`}
-                  aria-multiselectable=${this.multiple ? 'true' : 'false'}
-                  tabindex="-1"
-                >
-                  ${this.visibleOptions.map((option) => {
-                    const isDisabled =
-                      option.disabled ||
-                      (this.multiple && !this.selectedValues.includes(option.value) && this.maxReached);
-                    return html`<li
-                      class=${classMap({
-                        combobox__listbox__option: true,
-                        'combobox__listbox__option--selected': this.selectedValues.includes(option.value),
-                        'combobox__listbox__option--active': option.value === this.activeValue?.value,
-                        'combobox__listbox__option--disabled': isDisabled,
-                      })}
-                      id=${ifDefined(option.value)}
-                      role="option"
-                      part="option"
-                      aria-selected=${this.selectedValues.includes(option.value) ? 'true' : 'false'}
-                      aria-disabled=${isDisabled ? 'true' : 'false'}
-                      @click=${() => !isDisabled && this.handleClickOption(option.value)}
-                    >
-                      ${
-                        this.selectedValues.includes(option.value)
-                          ? html`<nve-icon name="check" aria-hidden="true"></nve-icon>`
-                          : nothing
-                      }
-                      ${ifDefined(option?.label)}
-                    </li>`;
-                  })}
-                </ul>`
-              : nothing
-          }
+          ${this.expanded && this.visibleOptions.length
+            ? html`<ul
+                part="listbox"
+                class=${classMap({ combobox__listbox: true })}
+                role="listbox"
+                id=${`${this.id}-listbox`}
+                aria-multiselectable=${this.multiple ? 'true' : 'false'}
+                tabindex="-1"
+              >
+                ${this.visibleOptions.map((option) => {
+                  const isDisabled =
+                    option.disabled ||
+                    (this.multiple && !this.selectedValues.includes(option.value) && this.maxReached);
+                  return html`<li
+                    class=${classMap({
+                      combobox__listbox__option: true,
+                      'combobox__listbox__option--selected': this.selectedValues.includes(option.value),
+                      'combobox__listbox__option--active': option.value === this.activeValue?.value,
+                      'combobox__listbox__option--disabled': isDisabled,
+                    })}
+                    id=${ifDefined(option.value)}
+                    role="option"
+                    part="option"
+                    aria-selected=${this.selectedValues.includes(option.value) ? 'true' : 'false'}
+                    aria-disabled=${isDisabled ? 'true' : 'false'}
+                    @click=${() => !isDisabled && this.handleClickOption(option.value)}
+                  >
+                    ${this.selectedValues.includes(option.value)
+                      ? html`<nve-icon name="check" aria-hidden="true"></nve-icon>`
+                      : nothing}
+                    ${ifDefined(option?.label)}
+                  </li>`;
+                })}
+              </ul>`
+            : nothing}
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${
-          !this.activeErrorMessage && this.hint
-            ? html`<p
-                part="hint-text"
-                class=${classMap({
-                  'field__hint-text': true,
-                  'field__hint-text--show': !!this.hint,
-                })}
-                id=${hintTextId}
-              >
-                ${this.hint}
-              </p>`
-            : nothing
-        }
+        ${!this.activeErrorMessage && this.hint
+          ? html`<p
+              part="hint-text"
+              class=${classMap({
+                'field__hint-text': true,
+                'field__hint-text--show': !!this.hint,
+              })}
+              id=${hintTextId}
+            >
+              ${this.hint}
+            </p>`
+          : nothing}
 
         <p
           aria-live="assertive"
