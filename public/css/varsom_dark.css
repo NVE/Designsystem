@@ -270,7 +270,7 @@
   --boolean-brand-varsom: true;
   --boolean-brand-rme: false;
   --boolean-brand-nve-rme: false;
-  --text-brand-name: Varsom – en tjeneste levert av NVE, MET og Statens vegvesen;
+  --text-brand-name: Varsom;
   --color-brand-background-primary: var(--color-shades-brand-500); /** Primarily used on logo backgrounds */
   --color-brand-background-secondary: var(--color-shades-brand-400);
   --color-brand-background-tertiary: var(--color-shades-accent-000);
