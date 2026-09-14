@@ -336,7 +336,7 @@
   "text": {
     "brand-name": {
       "$type": "text",
-      "$value": "Varsom – en tjeneste levert av NVE, MET og Statens vegvesen"
+      "$value": "Varsom"
     }
   }
 }
