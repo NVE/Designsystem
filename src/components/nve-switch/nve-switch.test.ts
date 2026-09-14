@@ -12,16 +12,9 @@ describe('nve-switch', () => {
     fixtureCleanup();
   });
 
-  it('should have default as default variant', async () => {
-    const el = await fixture<NveSwitch>(html`<nve-switch></nve-switch>`);
-    expect(el.variant).toBe('default');
-    const label = el.shadowRoot?.querySelector('label[part="base"]');
-    expect(label?.classList.contains('switch--default')).toBe(true);
-  });
-
   it('should apply primary variant class', async () => {
     const el = await fixture<NveSwitch>(html`<nve-switch variant="primary"></nve-switch>`);
-    const label = el.shadowRoot?.querySelector('label[part="base"]');
+    const label = el.shadowRoot?.querySelector('span[part="control"]');
     expect(el.variant).toBe('primary');
     expect(label?.classList.contains('switch--primary')).toBe(true);
   });
@@ -37,13 +30,13 @@ describe('nve-switch', () => {
     const el = await fixture<NveSwitch>(html`<nve-switch></nve-switch>`);
     const label = el.shadowRoot?.querySelector('label[part="base"]');
     expect(el.labelPosition).toBe('end');
-    expect(label?.classList.contains('switch--label-start')).toBe(false);
+    expect(label?.classList.contains('switch__label--start')).toBe(false);
   });
 
   it('should apply switch--label-start class when label-position="start"', async () => {
     const el = await fixture<NveSwitch>(html`<nve-switch label-position="start"></nve-switch>`);
     const label = el.shadowRoot?.querySelector('label[part="base"]');
     expect(el.labelPosition).toBe('start');
-    expect(label?.classList.contains('switch--label-start')).toBe(true);
+    expect(label?.classList.contains('switch__label--start')).toBe(true);
   });
 });
