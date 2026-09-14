@@ -313,6 +313,10 @@
       "mobile": {
         "$type": "boolean",
         "$value": "true"
+      },
+      "mobile-small": {
+        "$type": "boolean",
+        "$value": "false"
       }
     }
   }
