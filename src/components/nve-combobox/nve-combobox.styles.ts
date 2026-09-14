@@ -157,7 +157,7 @@ export default css`
 
   .combobox__value__input {
     border: none;
-    font: var(--typography-body-medium);
+    font: var(--typography-body-small);
     color: var(--color-neutrals-foreground-primary);
     flex: 1;
     background: transparent;
