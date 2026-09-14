@@ -700,16 +700,16 @@
   --typography-label-medium-light: var(--font-weight-regular) var(--font-size-small)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-small: var(--font-weight-semibold) var(--font-size-x-small)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-small-light: var(--font-weight-regular) var(--font-size-x-small)/var(--line-height-6) var(--font-family-primary-family);
-  --font-size-2x-small: var(--dimension-3-5x); /** 12 px */
+  --font-size-2x-small: var(--dimension-3-5x); /** 14 px */
   --typography-label-x-small: var(--font-weight-semibold) var(--font-size-2x-small)/var(--line-height-6) var(--font-family-primary-family);
   --typography-label-x-small-light: var(--font-weight-regular) var(--font-size-2x-small)/var(--line-height-6) var(--font-family-primary-family);
-  --font-size-x-small: var(--dimension-4x); /** 14 px */
-  --font-size-small: var(--dimension-4-5x); /** 16 px */
-  --font-size-medium: var(--dimension-5x); /** 18 px */
-  --font-size-large: var(--dimension-6x); /** 20 px */
-  --font-size-x-large: var(--dimension-8x); /** 24 px */
-  --font-size-2x-large: var(--dimension-10x); /** 32 px */
-  --font-size-3x-large: var(--dimension-12x); /** 40 px */ }
+  --font-size-x-small: var(--dimension-4x); /** 16 px */
+  --font-size-small: var(--dimension-4-5x); /** 18 px */
+  --font-size-medium: var(--dimension-5x); /** 20 px */
+  --font-size-large: var(--dimension-6x); /** 24 px */
+  --font-size-x-large: var(--dimension-8x); /** 32 px */
+  --font-size-2x-large: var(--dimension-10x); /** 40 px */
+  --font-size-3x-large: var(--dimension-12x); /** 48 px */ }
 :root.rme_darkmode { --color-shades-brand-100: #cfd6fc;
   --color-shades-brand-150: #bbc5f1;
   --color-shades-brand-200: #a0ace4;
@@ -1365,14 +1365,14 @@
   --sizing-icon-small: var(--sizing-24x);
   --sizing-icon-x-small: var(--sizing-20x);
   --sizing-icon-2x-small: var(--sizing-18x);
-  --font-size-2x-small: var(--dimension-3-5x); /** 12 px */
-  --font-size-x-small: var(--dimension-4x); /** 14 px */
-  --font-size-small: var(--dimension-4-5x); /** 16 px */
-  --font-size-medium: var(--dimension-5x); /** 18 px */
-  --font-size-large: var(--dimension-6x); /** 20 px */
-  --font-size-x-large: var(--dimension-8x); /** 24 px */
-  --font-size-2x-large: var(--dimension-10x); /** 32 px */
-  --font-size-3x-large: var(--dimension-12x); /** 40 px */
+  --font-size-2x-small: var(--dimension-3-5x); /** 14 px */
+  --font-size-x-small: var(--dimension-4x); /** 16 px */
+  --font-size-small: var(--dimension-4-5x); /** 18 px */
+  --font-size-medium: var(--dimension-5x); /** 20 px */
+  --font-size-large: var(--dimension-6x); /** 24 px */
+  --font-size-x-large: var(--dimension-8x); /** 32 px */
+  --font-size-2x-large: var(--dimension-10x); /** 40 px */
+  --font-size-3x-large: var(--dimension-12x); /** 48 px */
 }
 
 }
@@ -1567,9 +1567,9 @@
   --font-size-small: var(--dimension-4x); /** 16 px */
   --font-size-medium: var(--dimension-4-5x); /** 18 px */
   --font-size-large: var(--dimension-5x); /** 20 px */
-  --font-size-x-large: var(--dimension-7x); /** 24 px */
-  --font-size-2x-large: var(--dimension-9x); /** 32 px */
-  --font-size-3x-large: var(--dimension-11x); /** 40 px */
+  --font-size-x-large: var(--dimension-7x); /** 28 px */
+  --font-size-2x-large: var(--dimension-9x); /** 36 px */
+  --font-size-3x-large: var(--dimension-11x); /** 44 px */
 }
 
 }
@@ -1764,9 +1764,9 @@
   --font-size-small: var(--dimension-4x); /** 16 px */
   --font-size-medium: var(--dimension-4-5x); /** 18 px */
   --font-size-large: var(--dimension-5x); /** 20 px */
-  --font-size-x-large: var(--dimension-7x); /** 24 px */
+  --font-size-x-large: var(--dimension-7x); /** 28 px */
   --font-size-2x-large: var(--dimension-8x); /** 32 px */
-  --font-size-3x-large: var(--dimension-9x); /** 40 px */
+  --font-size-3x-large: var(--dimension-9x); /** 36 px */
 }
 
 }
@@ -1962,7 +1962,7 @@
   --font-size-medium: var(--dimension-4-5x); /** 18 px */
   --font-size-large: var(--dimension-5x); /** 20 px */
   --font-size-x-large: var(--dimension-6x); /** 24 px */
-  --font-size-2x-large: var(--dimension-7x); /** 32 px */
+  --font-size-2x-large: var(--dimension-7x); /** 28 px */
   --font-size-3x-large: var(--dimension-8x); /** 32 px */
 }
 
