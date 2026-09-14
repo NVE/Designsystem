@@ -275,7 +275,7 @@
     "x-large": {
       "$type": "fontSizes",
       "$value": "{dimension.7x}",
-      "$description": "24 px"
+      "$description": "28 px"
     },
     "2x-large": {
       "$type": "fontSizes",
@@ -285,7 +285,7 @@
     "3x-large": {
       "$type": "fontSizes",
       "$value": "{dimension.9x}",
-      "$description": "40 px"
+      "$description": "36 px"
     }
   },
   "boolean": {
