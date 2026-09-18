@@ -250,42 +250,42 @@
     "2x-small": {
       "$type": "fontSizes",
       "$value": "{dimension.3,5x}",
-      "$description": "12 px"
+      "$description": "14 px"
     },
     "x-small": {
       "$type": "fontSizes",
       "$value": "{dimension.4x}",
-      "$description": "14 px"
+      "$description": "16 px"
     },
     "small": {
       "$type": "fontSizes",
       "$value": "{dimension.4,5x}",
-      "$description": "16 px"
+      "$description": "18 px"
     },
     "medium": {
       "$type": "fontSizes",
       "$value": "{dimension.5x}",
-      "$description": "18 px"
+      "$description": "20 px"
     },
     "large": {
       "$type": "fontSizes",
       "$value": "{dimension.6x}",
-      "$description": "20 px"
+      "$description": "24 px"
     },
     "x-large": {
       "$type": "fontSizes",
       "$value": "{dimension.8x}",
-      "$description": "24 px"
+      "$description": "32 px"
     },
     "2x-large": {
       "$type": "fontSizes",
       "$value": "{dimension.10x}",
-      "$description": "32 px"
+      "$description": "40 px"
     },
     "3x-large": {
       "$type": "fontSizes",
       "$value": "{dimension.12x}",
-      "$description": "40 px"
+      "$description": "48 px"
     }
   }
 }
