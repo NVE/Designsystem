@@ -287,13 +287,6 @@ export default class NveButton extends LitElement implements INveComponent {
     }
   }
 
-  protected updated(_changedProperties: PropertyValues): void {
-    if (_changedProperties.has('hasText') && this.hasText && this.button.ariaLabel) {
-      this.forwardAriaAttribute('title', this.button.ariaLabel); //TODO dette ma fikses
-      this.forwardAriaAttribute('aria-label', null);
-    }
-  }
-
   /**
    * Fanger opp manuelt håndterte ARIA-attributter på host-elementet og videresender dem til
    * den native knappen. aria-label behandles separat slik at det kan kombineres med synlig knappetekst.
