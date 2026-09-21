@@ -147,8 +147,16 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     super();
   }
 
+  private resizeObserver?: ResizeObserver;
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.resizeObserver?.disconnect();
+  }
+
   connectedCallback() {
     super.connectedCallback();
+
     if (!this.label) {
       console.warn(
         'nve-combobox: label is not set. It is recommended to set a label for each component for better accessibility.'
@@ -165,41 +173,49 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     if (this.autofocus) {
       this.comboboxNativeInput.focus();
     }
-    if (this.multiple && !this.wrap) {
-      //compare width of the value vs width of the control.
-      await this.updateComplete;
 
-      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+    if (this.multiple && !this.wrap && this.selectedValues.length > 0) {
+      //bruker resizeObserver for å sørge at når combobox vises i komponenter som opprinelig har display:none
+      //som faner, tabber, drawers, den skal fortsatt kalkulere riktig bredde for tagger.
+      this.resizeObserver = new ResizeObserver(async (entries) => {
+        const entry = entries[0];
+        const width = entry.contentRect.width;
+        if (width === 0) return;
 
-      const paddingL = parseFloat(getComputedStyle(this.control).paddingLeft);
-      const paddingR = parseFloat(getComputedStyle(this.control).paddingRight);
-      const allowedWdith =
-        this.control.clientWidth -
-        (this.size === 'large' ? 40 : 30) -
-        24 -
-        paddingL -
-        paddingR -
-        (this.editable ? 50 : 0);
-      const gap = parseFloat(getComputedStyle(this.valueDiv).gap) || 0;
-      const tagsWithIds = Array.from(this.renderRoot.querySelectorAll<HTMLElement>('.combobox__value__tag')).map(
-        (tag) => ({
-          id: tag.dataset.optionId,
-          width: tag.getBoundingClientRect().width,
-        })
-      );
-      let tagTotalWidth =
-        tagsWithIds.reduce((acc, tag) => acc + tag.width, 0) + Math.max(tagsWithIds.length - 1, 0) * gap;
+        //compare width of the value vs width of the control.
+        await this.updateComplete;
 
-      while (tagTotalWidth > allowedWdith) {
-        const tagToRemove = tagsWithIds[tagsWithIds.length - 1];
-        if (!tagToRemove.id) {
-          break;
+        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+        const paddingL = parseFloat(getComputedStyle(this.control).paddingLeft);
+        const paddingR = parseFloat(getComputedStyle(this.control).paddingRight);
+        const allowedWdith =
+          this.control.clientWidth -
+          (this.size === 'large' ? 40 : 30) -
+          24 -
+          paddingL -
+          paddingR -
+          (this.editable ? 50 : 0);
+        const gap = parseFloat(getComputedStyle(this.valueDiv).gap) || 0;
+        const tagsWithIds = Array.from(this.renderRoot.querySelectorAll<HTMLElement>('.combobox__value__tag')).map(
+          (tag) => ({
+            id: tag.dataset.optionId,
+            width: tag.getBoundingClientRect().width,
+          })
+        );
+        let tagTotalWidth =
+          tagsWithIds.reduce((acc, tag) => acc + tag.width, 0) + Math.max(tagsWithIds.length - 1, 0) * gap;
+        while (tagTotalWidth > allowedWdith) {
+          const tagToRemove = tagsWithIds[tagsWithIds.length - 1];
+          if (!tagToRemove.id) {
+            break;
+          }
+          this.collapsedTagIds.push(tagToRemove.id);
+          tagTotalWidth -= tagToRemove.width;
+          this.indicatorCount++;
+          tagsWithIds.pop();
         }
-        this.collapsedTagIds.push(tagToRemove.id);
-        tagTotalWidth -= tagToRemove.width;
-        this.indicatorCount++;
-        tagsWithIds.pop();
-      }
+      });
+      this.resizeObserver?.observe(this.control);
     }
     this.hideValue = false;
   }
