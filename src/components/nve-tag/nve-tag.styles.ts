@@ -12,6 +12,8 @@ export default css`
     width: fit-content;
     white-space: nowrap;
     line-height: 1;
+    text-box-edge: ex alphabetic;
+    text-box-trim: trim-both;
   }
 
   :host([variant='neutral'][saturation='emphasized']) {
@@ -123,12 +125,12 @@ export default css`
     font: var(--typography-label-x-small);
     display: flex;
     align-items: center;
+    line-height: 1;
   }
 
   :host::part(extra) {
     font: var(--typography-label-x-small-light);
-    display: flex;
-    align-items: center;
+    line-height: 1;
   }
 
   ::slotted(nve-icon) {
