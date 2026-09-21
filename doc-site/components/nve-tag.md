@@ -20,10 +20,10 @@ Du kan også bruket sporet "extra"
 <CodeExamplePreview>
 
 ```html
-<nve-tag extra-text="Ekstra tekst"> Se her! </nve-tag>
+<nve-tag extra-text="Ekstra tekst">Se her!</nve-tag>
 <nve-tag>
   <span>Se her!</span>
-  <span slot="extra" style="color: red;">Ekstra tekst</span>
+  <span slot="extra" style="color: red;">Ekstra tekst. Dette er en del ekstra tekst for å teste.</span>
 </nve-tag>
 ```
 
@@ -53,6 +53,9 @@ Sporet "prefix" kan brukes for å legge inn et ikon foran teksten
   <nve-icon slot="prefix" library="Sharp" name="error" />
 </nve-tag>
 
+<nve-tag size="medium" extra-text="Ekstra tekst">
+  Se her!
+  <nve-icon slot="prefix" library="Sharp" name="error" />
 </nve-tag>
 ```
 
