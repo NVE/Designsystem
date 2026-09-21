@@ -133,10 +133,6 @@ export default css`
     line-height: 1;
   }
 
-  :host::part(extra):empty {
-    display: none;
-  }
-
   ::slotted(nve-icon) {
     font-size: var(--font-size-medium);
     line-height: 1;
