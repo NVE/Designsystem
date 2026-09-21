@@ -216,8 +216,8 @@ export default class NveCombobox extends LitElement implements FormValidationCom
         }
       });
       this.resizeObserver?.observe(this.control);
-      this.hideValue = false;
     }
+    this.hideValue = false;
   }
 
   private removingOptionsAttribute = false;
