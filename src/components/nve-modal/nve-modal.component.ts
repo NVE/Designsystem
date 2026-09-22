@@ -96,14 +96,6 @@ export default class NveModal extends LitElement implements INveComponent {
     this.toggleAttribute('open', isOpen);
   }
 
-  firstUpdated() {
-    if (!this.label) {
-      console.warn(
-        'Accessibility warning: nve-modal should have a label for screen readers. Set the label attribute or add a slot="label".'
-      );
-    }
-  }
-
   disconnectedCallback() {
     if (this.dialogEl?.open) {
       this.dialogEl.close();
