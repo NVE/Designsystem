@@ -124,14 +124,6 @@ export default class NveSegmentGroup extends LitElement implements FormValidatio
     });
   }
 
-  firstUpdated() {
-    if (!this.label) {
-      console.warn(
-        'nve-segment-group: label is not set. It is recommended to set a label for each component for better accessibility.'
-      );
-    }
-  }
-
   updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
     if (changedProperties.has('errorMessage') || changedProperties.has('internalValidationMessage')) {
@@ -207,29 +199,25 @@ export default class NveSegmentGroup extends LitElement implements FormValidatio
           true
         )}
         <!-- Hjelpetekst -->
-        ${
-          this.helpText
-            ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-            : nothing
-        }
+        ${this.helpText
+          ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
+          : nothing}
         <div class="segment-group">
           <slot @slotchange=${this.handleSlotChange}></slot>
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${
-          !this.activeErrorMessage && this.hint
-            ? html`<p
-                part="hint-text"
-                class=${classMap({
-                  'field__hint-text': true,
-                  'field__hint-text--show': !!this.hint,
-                })}
-                id=${hintTextId}
-              >
-                ${this.hint}
-              </p>`
-            : nothing
-        }
+        ${!this.activeErrorMessage && this.hint
+          ? html`<p
+              part="hint-text"
+              class=${classMap({
+                'field__hint-text': true,
+                'field__hint-text--show': !!this.hint,
+              })}
+              id=${hintTextId}
+            >
+              ${this.hint}
+            </p>`
+          : nothing}
 
         <p
           aria-live="assertive"

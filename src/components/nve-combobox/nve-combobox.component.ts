@@ -156,12 +156,6 @@ export default class NveCombobox extends LitElement implements FormValidationCom
 
   connectedCallback() {
     super.connectedCallback();
-
-    if (!this.label) {
-      console.warn(
-        'nve-combobox: label is not set. It is recommended to set a label for each component for better accessibility.'
-      );
-    }
   }
 
   async firstUpdated() {
@@ -175,47 +169,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     }
 
     if (this.multiple && !this.wrap && this.selectedValues.length > 0) {
-      //bruker resizeObserver for å sørge at når combobox vises i komponenter som opprinelig har display:none
-      //som faner, tabber, drawers, den skal fortsatt kalkulere riktig bredde for tagger.
-      this.resizeObserver = new ResizeObserver(async (entries) => {
-        const entry = entries[0];
-        const width = entry.contentRect.width;
-        if (width === 0) return;
-
-        //compare width of the value vs width of the control.
-        await this.updateComplete;
-
-        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
-        const paddingL = parseFloat(getComputedStyle(this.control).paddingLeft);
-        const paddingR = parseFloat(getComputedStyle(this.control).paddingRight);
-        const allowedWdith =
-          this.control.clientWidth -
-          (this.size === 'large' ? 40 : 30) -
-          24 -
-          paddingL -
-          paddingR -
-          (this.editable ? 50 : 0);
-        const gap = parseFloat(getComputedStyle(this.valueDiv).gap) || 0;
-        const tagsWithIds = Array.from(this.renderRoot.querySelectorAll<HTMLElement>('.combobox__value__tag')).map(
-          (tag) => ({
-            id: tag.dataset.optionId,
-            width: tag.getBoundingClientRect().width,
-          })
-        );
-        let tagTotalWidth =
-          tagsWithIds.reduce((acc, tag) => acc + tag.width, 0) + Math.max(tagsWithIds.length - 1, 0) * gap;
-        while (tagTotalWidth > allowedWdith) {
-          const tagToRemove = tagsWithIds[tagsWithIds.length - 1];
-          if (!tagToRemove.id) {
-            break;
-          }
-          this.collapsedTagIds.push(tagToRemove.id);
-          tagTotalWidth -= tagToRemove.width;
-          this.indicatorCount++;
-          tagsWithIds.pop();
-        }
-      });
-      this.resizeObserver?.observe(this.control);
+      this.setupTagOverflowObserver();
     }
     this.hideValue = false;
   }
@@ -272,6 +226,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
       } finally {
         this.removingSelectedValuesAttribute = false;
       }
+      this.calculateVisibleTags();
     }
 
     if (changed.has('activeValue') && this.expanded) {
@@ -1016,10 +971,29 @@ export default class NveCombobox extends LitElement implements FormValidationCom
     activeOption.scrollIntoView({ block: 'nearest' });
   }
 
+  private setupTagOverflowObserver() {
+    if (!this.multiple || this.wrap || this.selectedValues.length === 0) return;
+
+    this.resizeObserver?.disconnect();
+    this.resizeObserver = new ResizeObserver(() => {
+      this.calculateVisibleTags();
+    });
+
+    this.resizeObserver.observe(this.control);
+  }
+
   /**
    * Beregner antall tagger som skal vises, og setter indikator når det ikke er nok plass til flere tagger.
    */
   private async calculateVisibleTags() {
+    if (!this.multiple || this.wrap) return;
+
+    await this.updateComplete;
+    await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+
+    this.collapsedTagIds = [];
+    this.indicatorCount = 0;
+
     // Sjekker bredden på value. Den skal være maks bredden for alle taggene og input-feltet.
     const valueDiv = this.renderRoot.querySelector('.combobox__value') as HTMLElement;
     if (!valueDiv) return;
