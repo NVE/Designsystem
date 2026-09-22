@@ -17,7 +17,7 @@ let id = 0;
  *
  * @event change - når verdien i input endres og elementet mister fokus
  * @event select - når brukeren markerer tekst i input
- * @event clear - når verdien i inputfeltet fjernes
+ * @event nve-clear - når verdien i inputfeltet fjernes
  *
  * @csspart field - wrapper rundt hele input-komponenten
  * @csspart help-text - hjelpetekst som vises over input
