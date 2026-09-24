@@ -81,6 +81,7 @@ export default class NveIcon extends LitElement {
 
     if (!this.src && this.iconLoaded) {
       return html`<span
+        aria-hidden="true"
         part="icon"
         class=${classMap({
           'material-outlined': this.library === 'Outlined',
