@@ -41,6 +41,13 @@ export default css`
     input {
       color: var(--color-interactive-foreground-tertiary-disabled);
     }
+    .combobox__value__tag {
+      border-color: var(--color-interactive-border-tertiary-disabled);
+      background: var(--color-interactive-background-tertiary-disabled);
+      > nve-icon {
+        color: var(--color-interactive-foreground-tertiary-disabled);
+      }
+    }
   }
 
   .combobox__value--hidden {

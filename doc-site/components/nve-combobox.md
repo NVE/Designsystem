@@ -492,6 +492,31 @@ Bruk attributtet <span class="highlight">disabled</span> for å deaktivere combo
 ```html
 <nve-combobox id="nve-avdeling-11" label="Velg en avdeling" disabled options='[{ "value":"rme","label": "RME" }]'>
 </nve-combobox>
+
+<nve-combobox
+  id="nve-avdeling-11_01"
+  label="Velg en avdeling"
+  multiple
+  disabled
+  selectedValues='["rme", "tb"]'
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" }
+  ]'
+>
+</nve-combobox>
+
+<nve-combobox
+  id="nve-avdeling-11_02"
+  label="Velg en avdeling"
+  selectedValues='["rme"]'
+  disabled
+  options='[ 
+    { "value":"rme","label": "RME" }
+  ]'
+>
+</nve-combobox>
 ```
 
 </CodeExamplePreview>
@@ -523,6 +548,31 @@ Bruk <span class="highlight">readonly</span> for å stenge mulighet for å endre
 
 ```html
 <nve-combobox id="nve-avdeling-12" label="Velg en avdeling" readonly options='[{ "value":"rme","label": "RME" }]'>
+</nve-combobox>
+
+<nve-combobox
+  id="nve-avdeling-12_01"
+  label="Velg en avdeling"
+  multiple
+  readonly
+  selectedValues='["rme", "tb"]'
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" }
+  ]'
+>
+</nve-combobox>
+
+<nve-combobox
+  id="nve-avdeling-12_02"
+  label="Velg en avdeling"
+  selectedValues='["rme"]'
+  readonly
+  options='[ 
+    { "value":"rme","label": "RME" }
+  ]'
+>
 </nve-combobox>
 ```
 
