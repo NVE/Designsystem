@@ -3,9 +3,11 @@ import { css } from 'lit';
 export default css`
   :host {
     --nav-card-arrow-transition:
-      margin-left 0.3s cubic-bezier(0, 0, 0.2, 1), margin-right 0.3s cubic-bezier(0, 0, 0.2, 1);
+      margin-left var(--transition-time) cubic-bezier(0, 0, 0.2, 1),
+      margin-right var(--transition-time) cubic-bezier(0, 0, 0.2, 1);
     --nav-card-arrow-transition-fast:
-      margin-left 0.3s cubic-bezier(0, 0, 0.2, 1), margin-right 0.3s cubic-bezier(0, 0, 0.2, 1);
+      margin-left var(--transition-time) cubic-bezier(0, 0, 0.2, 1),
+      margin-right var(--transition-time) cubic-bezier(0, 0, 0.2, 1);
     display: flex;
     height: 100%;
   }
@@ -26,8 +28,8 @@ export default css`
     cursor: pointer;
     text-decoration: none;
     transition:
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
+      border-color var(--transition-time) ease,
+      box-shadow var(--transition-time) ease;
   }
 
   .navigation-card:hover {
@@ -65,7 +67,7 @@ export default css`
     min-width: 0;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    transition: color 0.3s ease;
+    transition: color var(--transition-time) ease;
     margin: 0;
   }
 

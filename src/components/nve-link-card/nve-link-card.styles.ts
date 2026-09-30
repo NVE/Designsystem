@@ -13,9 +13,9 @@ export default css`
     cursor: pointer;
     text-decoration: none;
     transition:
-      background 0.3s ease,
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
+      background var(--transition-time) ease,
+      border-color var(--transition-time) ease,
+      box-shadow var(--transition-time) ease;
   }
 
   /* Setter farge på <a> for å sikre riktig lenkefarge uansett rammeverk eller browser */
@@ -80,9 +80,9 @@ export default css`
     overflow-wrap: break-word;
     word-wrap: break-word;
     transition:
-      color 0.3s ease,
-      text-decoration-thickness 0.3s,
-      text-underline-offset 0.3s;
+      color var(--transition-time) ease,
+      text-decoration-thickness var(--transition-time),
+      text-underline-offset var(--transition-time);
   }
 
   .link-card:hover .link-card__label {
