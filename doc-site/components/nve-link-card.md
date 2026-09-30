@@ -32,9 +32,9 @@ Bruk `size` for å endre størrelse. `medium` er standard.
 <CodeExamplePreview>
 
 ```html
-<nve-link-card label="Kommuneplan" variant="contrast" size="small"></nve-link-card>
-<nve-link-card label="Kommuneplan" variant="contrast" size="medium"></nve-link-card>
-<nve-link-card label="Kommuneplan" variant="contrast" size="large"></nve-link-card>
+<nve-link-card label="Kommuneplan" additionalText="Ekstra tekst" variant="contrast" size="small"></nve-link-card>
+<nve-link-card label="Kommuneplan" additionalText="Ekstra tekst" variant="contrast" size="medium"></nve-link-card>
+<nve-link-card label="Kommuneplan" additionalText="Ekstra tekst" variant="contrast" size="large"></nve-link-card>
 ```
 
 </CodeExamplePreview>
@@ -50,6 +50,22 @@ Du kan legge til en ekstra tekst under hovedlenkens overskrift ved å bruke `add
 
 ```html
 <nve-link-card label="Overskrift" additionalText="Ekstra tekst"></nve-link-card>
+```
+
+</CodeExamplePreview>
+
+## Lang tekst
+
+Kortet håndterer veldig lange ord ved å bryte dem slik at innholdet ikke flyter ut av kortet. `additionalText` vises fortsatt på én linje og avkortes med `...`.
+
+<CodeExamplePreview>
+
+```html
+<nve-link-card
+  label="Supercalifragilisticexpialidocioussuperlangtordsomikkeharmellomrom"
+  additionalText="EnveldiglangtilleggstekstsomheltsikkerikkefårplasspåénlinjeogderformåavkortesEnveldiglangtilleggstekstsomheltsikkerikkefårplasspåénlinjeogderformåavkortes"
+  variant="contrast"
+></nve-link-card>
 ```
 
 </CodeExamplePreview>
@@ -195,6 +211,30 @@ Bruk av nve-link-card i React:
     clickAction="internal"
   >
 </Link>
+```
+
+### Fokusmarkering ved wrapping i egen lenke
+
+Når `nve-link-card` pakkes inn i en lenke fra rammeverket (`RouterLink`, `Link` osv.), rendres kortet som et `<div>` og det er den ytre `<a>`-en som mottar tastaturfokus. Kortet kan da ikke tegne sin egen fokusmarkering, så du må legge den på den wrappende lenken selv.
+
+Sett en egen klasse på den wrappende lenken og bruk samme verdier som komponenten for et konsistent uttrykk:
+
+```jsx
+<Link to="/components/Komponentoversikt" className="link-card-wrapper">
+  <nve-link-card label="Gå til komponentoversikt" variant="contrast" clickAction="internal"></nve-link-card>
+</Link>
+```
+
+```css
+.link-card-wrapper {
+  border-radius: var(--border-radius-small);
+  transition: box-shadow 0.3s ease;
+}
+
+.link-card-wrapper:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--border-width-strong) var(--color-interactive-border-accessibility-focus);
+}
 ```
 
 ## Tilgjengelighet
