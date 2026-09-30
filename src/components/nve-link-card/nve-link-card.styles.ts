@@ -14,7 +14,8 @@ export default css`
     text-decoration: none;
     transition:
       background 0.3s ease,
-      border-color 0.3s ease;
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   /* Setter farge på <a> for å sikre riktig lenkefarge uansett rammeverk eller browser */
@@ -31,8 +32,10 @@ export default css`
     border-color: var(--color-neutrals-border-mute);
   }
 
-  .link-card:focus-visible {
-    outline: var(--color-interactive-border-accessibility-focus) solid 2px;
+  .link-card:focus-visible,
+  .link-card--focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 var(--border-width-strong) var(--color-interactive-border-accessibility-focus);
   }
 
   .link-card--small {
@@ -68,11 +71,14 @@ export default css`
     flex-direction: column;
     justify-content: center;
     flex: 1;
+    min-width: 0;
   }
 
   .link-card__label {
     font: var(--typography-heading-x-small);
     color: var(--color-neutrals-foreground-primary);
+    overflow-wrap: break-word;
+    word-wrap: break-word;
     transition:
       color 0.3s ease,
       text-decoration-thickness 0.3s,

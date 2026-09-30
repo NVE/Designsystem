@@ -25,7 +25,9 @@ export default css`
     background: var(--color-neutrals-background-primary);
     cursor: pointer;
     text-decoration: none;
-    transition: border-color 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .navigation-card:hover {
@@ -37,7 +39,8 @@ export default css`
   }
 
   .navigation-card:focus-visible {
-    outline: var(--color-interactive-border-accessibility-focus) solid 2px;
+    outline: none;
+    box-shadow: 0 0 0 var(--border-width-strong) var(--color-interactive-border-accessibility-focus);
   }
 
   .navigation-card__content {
@@ -47,6 +50,7 @@ export default css`
     gap: var(--spacing-medium);
     align-items: flex-start;
     align-self: stretch;
+    min-width: 0;
   }
 
   .navigation-card__icon {
@@ -57,6 +61,10 @@ export default css`
   .navigation-card__label {
     font: var(--typography-heading-small);
     color: var(--color-neutrals-foreground-primary);
+    align-self: stretch;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
     transition: color 0.3s ease;
     margin: 0;
   }
