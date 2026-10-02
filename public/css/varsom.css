@@ -534,6 +534,7 @@
   --sizing-286x: 286px;
   --sizing-320x: 320px;
   --sizing-342x: 342px;
+  --sizing-348x: 348px;
   --sizing-366x: 366px;
   --sizing-389x: 389px;
   --sizing-390x: 390px;
@@ -543,6 +544,7 @@
   --sizing-480x: 480px;
   --sizing-496x: 496px;
   --sizing-520x: 520px;
+  --sizing-540x: 540px;
   --sizing-544x: 544px;
   --sizing-572x: 572px;
   --sizing-588x: 588px;
@@ -684,9 +686,8 @@
   --sizing-brand-logo-medium: var(--sizing-84x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
   --sizing-image-x-small: var(--sizing-84x);
+  --sizing-image-small: var(--sizing-540x);
   --sizing-image-large: var(--sizing-750x);
-  --sizing-card-link-card-height-x-large-min-height: var(--sizing-212x);
-  --sizing-card-link-card-height-x-large-max-height: var(--sizing-246x);
   --sizing-icon-3x-large: var(--sizing-70x);
   --sizing-icon-2x-large: var(--sizing-56x);
   --sizing-icon-x-large: var(--sizing-48x);
@@ -808,6 +809,7 @@
   --sizing-286x: 286px;
   --sizing-320x: 320px;
   --sizing-342x: 342px;
+  --sizing-348x: 348px;
   --sizing-366x: 366px;
   --sizing-389x: 389px;
   --sizing-390x: 390px;
@@ -817,6 +819,7 @@
   --sizing-480x: 480px;
   --sizing-496x: 496px;
   --sizing-520x: 520px;
+  --sizing-540x: 540px;
   --sizing-544x: 544px;
   --sizing-572x: 572px;
   --sizing-588x: 588px;
@@ -951,9 +954,8 @@
   --sizing-brand-logo-medium: var(--sizing-88x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
   --sizing-image-x-small: var(--sizing-84x);
+  --sizing-image-small: var(--sizing-540x);
   --sizing-image-large: var(--sizing-1024x);
-  --sizing-card-link-card-height-x-large-min-height: var(--sizing-212x);
-  --sizing-card-link-card-height-x-large-max-height: var(--sizing-246x);
   --sizing-icon-3x-large: var(--sizing-70x);
   --sizing-icon-2x-large: var(--sizing-56x);
   --sizing-icon-x-large: var(--sizing-48x);
@@ -1029,6 +1031,7 @@
   --sizing-286x: 286px;
   --sizing-320x: 320px;
   --sizing-342x: 342px;
+  --sizing-348x: 348px;
   --sizing-366x: 366px;
   --sizing-389x: 389px;
   --sizing-390x: 390px;
@@ -1038,6 +1041,7 @@
   --sizing-480x: 480px;
   --sizing-496x: 496px;
   --sizing-520x: 520px;
+  --sizing-540x: 540px;
   --sizing-544x: 544px;
   --sizing-572x: 572px;
   --sizing-588x: 588px;
@@ -1172,9 +1176,8 @@
   --sizing-brand-logo-medium: var(--sizing-80x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
   --sizing-image-x-small: var(--sizing-48x);
+  --sizing-image-small: var(--sizing-540x);
   --sizing-image-large: var(--sizing-544x);
-  --sizing-card-link-card-height-x-large-min-height: var(--sizing-132x);
-  --sizing-card-link-card-height-x-large-max-height: var(--sizing-200x);
   --sizing-icon-3x-large: var(--sizing-56x);
   --sizing-icon-2x-large: var(--sizing-48x);
   --sizing-icon-x-large: var(--sizing-44x);
@@ -1250,6 +1253,7 @@
   --sizing-286x: 286px;
   --sizing-320x: 320px;
   --sizing-342x: 342px;
+  --sizing-348x: 348px;
   --sizing-366x: 366px;
   --sizing-389x: 389px;
   --sizing-390x: 390px;
@@ -1259,6 +1263,7 @@
   --sizing-480x: 480px;
   --sizing-496x: 496px;
   --sizing-520x: 520px;
+  --sizing-540x: 540px;
   --sizing-544x: 544px;
   --sizing-572x: 572px;
   --sizing-588x: 588px;
@@ -1393,9 +1398,8 @@
   --sizing-brand-logo-medium: var(--sizing-72x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
   --sizing-image-x-small: var(--sizing-48x);
+  --sizing-image-small: var(--sizing-348x);
   --sizing-image-large: var(--sizing-390x);
-  --sizing-card-link-card-height-x-large-min-height: var(--sizing-124x);
-  --sizing-card-link-card-height-x-large-max-height: var(--sizing-180x);
   --sizing-icon-3x-large: var(--sizing-48x);
   --sizing-icon-2x-large: var(--sizing-40x);
   --sizing-icon-x-large: var(--sizing-36x);
@@ -1471,6 +1475,7 @@
   --sizing-286x: 286px;
   --sizing-320x: 320px;
   --sizing-342x: 342px;
+  --sizing-348x: 348px;
   --sizing-366x: 366px;
   --sizing-389x: 389px;
   --sizing-390x: 390px;
@@ -1480,6 +1485,7 @@
   --sizing-480x: 480px;
   --sizing-496x: 496px;
   --sizing-520x: 520px;
+  --sizing-540x: 540px;
   --sizing-544x: 544px;
   --sizing-572x: 572px;
   --sizing-588x: 588px;
@@ -1614,9 +1620,8 @@
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-24x);
   --sizing-image-x-small: var(--sizing-84x);
+  --sizing-image-small: var(--sizing-348x);
   --sizing-image-large: var(--sizing-320x);
-  --sizing-card-link-card-height-x-large-min-height: var(--sizing-120x);
-  --sizing-card-link-card-height-x-large-max-height: var(--sizing-160x);
   --sizing-icon-3x-large: var(--sizing-48x);
   --sizing-icon-2x-large: var(--sizing-40x);
   --sizing-icon-x-large: var(--sizing-36x);

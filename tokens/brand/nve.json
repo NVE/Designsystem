@@ -1590,6 +1590,10 @@
       "$type": "sizing",
       "$value": "342px"
     },
+    "348x": {
+      "$type": "sizing",
+      "$value": "348px"
+    },
     "366x": {
       "$type": "sizing",
       "$value": "366px"
@@ -1625,6 +1629,10 @@
     "520x": {
       "$type": "sizing",
       "$value": "520px"
+    },
+    "540x": {
+      "$type": "sizing",
+      "$value": "540px"
     },
     "544x": {
       "$type": "sizing",
