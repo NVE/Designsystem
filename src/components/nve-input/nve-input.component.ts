@@ -17,6 +17,7 @@ let id = 0;
  *
  * @event change - når verdien i input endres og elementet mister fokus
  * @event select - når brukeren markerer tekst i input
+ * @event nve-clear - når verdien i inputfeltet fjernes
  *
  * @csspart field - wrapper rundt hele input-komponenten
  * @csspart help-text - hjelpetekst som vises over input
@@ -101,11 +102,6 @@ export default class NveInput extends LitElement implements FormValidationCompon
     if (this.autofocus) {
       this.focus();
     }
-    if (!this.label) {
-      console.warn(
-        'nve-input: label is not set. It is recommended to set a label for each component for better accessibility.'
-      );
-    }
   }
 
   /**
@@ -128,6 +124,13 @@ export default class NveInput extends LitElement implements FormValidationCompon
   }
 
   /**
+   * Sender en nve-clear-hendelse når verdien fjernes.
+   */
+  private emitClear() {
+    this.emitEvent('nve-clear', {});
+  }
+
+  /**
    * Sender en 'change' hendelse når verdien i input endres og elementet mister fokus.
    * Detaljene i hendelsen inneholder den nye verdien.
    * @param e - Event som utløser endringen
@@ -147,6 +150,7 @@ export default class NveInput extends LitElement implements FormValidationCompon
   private handleClear(e: MouseEvent) {
     e.preventDefault();
     this.value = '';
+    this.emitClear();
     this.emitEvent('change', '', { composed: false });
     this.input.focus();
   }
@@ -283,11 +287,9 @@ export default class NveInput extends LitElement implements FormValidationCompon
         <!-- Ledetekst -->
         ${getLabel(labelId, this.label, this.required, this.requiredLabel, html`<slot name="label-toggletip"></slot>`)}
         <!-- Hjelpetekst -->
-        ${
-          this.helpText
-            ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-            : nothing
-        }
+        ${this.helpText
+          ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
+          : nothing}
         <div
           part="input"
           class=${classMap({
@@ -325,51 +327,43 @@ export default class NveInput extends LitElement implements FormValidationCompon
           />
           <slot name="end"></slot>
           <!-- Ikoner og knapper -->
-          ${
-            this.clearable && this.value
-              ? html`<button part="clear-button" tabindex="-1" @click=${this.handleClear} class="input__clear-button">
-                  <nve-icon name="cancel" aria-hidden="true"></nve-icon>
-                </button>`
-              : nothing
-          }
-          ${
-            this.type === 'password'
-              ? html`<button
-                  part="show-password-button"
-                  tabindex="-1"
-                  @click=${this.togglePasswordVisibility}
-                  class="input__clear-button"
-                >
-                  <nve-icon name=${this.showPassword ? 'visibility_off' : 'visibility'} aria-hidden="true"></nve-icon>
-                </button>`
-              : nothing
-          }
-          ${
-            statusIcon
-              ? html`<nve-icon
-                  class="input__control__icon"
-                  part="status-icon"
-                  name=${statusIcon}
-                  aria-hidden="true"
-                ></nve-icon>`
-              : nothing
-          }
+          ${this.clearable && this.value
+            ? html`<button part="clear-button" tabindex="-1" @click=${this.handleClear} class="input__clear-button">
+                <nve-icon name="cancel" aria-hidden="true"></nve-icon>
+              </button>`
+            : nothing}
+          ${this.type === 'password'
+            ? html`<button
+                part="show-password-button"
+                tabindex="-1"
+                @click=${this.togglePasswordVisibility}
+                class="input__clear-button"
+              >
+                <nve-icon name=${this.showPassword ? 'visibility_off' : 'visibility'} aria-hidden="true"></nve-icon>
+              </button>`
+            : nothing}
+          ${statusIcon
+            ? html`<nve-icon
+                class="input__control__icon"
+                part="status-icon"
+                name=${statusIcon}
+                aria-hidden="true"
+              ></nve-icon>`
+            : nothing}
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${
-          !this.activeErrorMessage && this.hint
-            ? html`<p
-                part="hint-text"
-                class=${classMap({
-                  'field__hint-text': true,
-                  'field__hint-text--show': !!this.hint,
-                })}
-                id=${hintTextId}
-              >
-                ${this.hint}
-              </p>`
-            : nothing
-        }
+        ${!this.activeErrorMessage && this.hint
+          ? html`<p
+              part="hint-text"
+              class=${classMap({
+                'field__hint-text': true,
+                'field__hint-text--show': !!this.hint,
+              })}
+              id=${hintTextId}
+            >
+              ${this.hint}
+            </p>`
+          : nothing}
 
         <p
           aria-live="assertive"
