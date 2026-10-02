@@ -115,6 +115,24 @@ Bruk <span class="highlight">helpText</span> for å vise hjelpetekst over feltet
 
 </CodeExamplePreview>
 
+Hvis hjelpeteksten skal inneholde mer enn vanlig tekst, for eksempel en lenke, kan du bruke <span class="highlight">helpText</span>-sporet.
+
+Du kan ikke bruke <span class="highlight">helpText</span>-attributtet og <span class="highlight">helpText</span>-sporet samtidig. Hvis begge er angitt, prioriteres attributtet.
+
+Hvis hjelpeteksten eller hintet inneholder en lenke, bør lenketeksten beskrive hva brukeren finner når lenken åpnes. Unngå generelle tekster som "Les mer". Da gir lenken mening også når den leses opp sammen med gruppens ledetekst, eller navigeres til separat med skjermleser.
+
+<CodeExamplePreview>
+
+```html
+<nve-segment-group label="Hvilken gjenstand bruker du mest på jobb?">
+  <p slot="helpText">Se <a href="#">hvordan du velger riktig arbeidsutstyr</a></p>
+  <nve-segment value="computer">Datamaskin</nve-segment>
+  <nve-segment value="mobile">Mobil</nve-segment>
+</nve-segment-group>
+```
+
+</CodeExamplePreview>
+
 ### Hint-tekst
 
 Bruk <span class="highlight">hint</span> for å vise hint-tekst under feltet.
@@ -129,6 +147,24 @@ Bruk <span class="highlight">hint</span> for å vise hint-tekst under feltet.
   <nve-segment value="computer">Datamaskin</nve-segment>
   <nve-segment value="mobile">Mobil</nve-segment>
   <nve-segment value="traditional">Papir og blyant</nve-segment>
+</nve-segment-group>
+```
+
+</CodeExamplePreview>
+
+Hvis hintteksten skal inneholde mer enn vanlig tekst, for eksempel en lenke, kan du bruke <span class="highlight">hintText</span>-sporet.
+
+Du kan ikke bruke <span class="highlight">hint</span>-attributtet og <span class="highlight">hintText</span>-sporet samtidig. Hvis begge er angitt, prioriteres attributtet.
+
+Hvis hjelpeteksten eller hintet inneholder en lenke, bør lenketeksten beskrive hva brukeren finner når lenken åpnes. Unngå generelle tekster som "Les mer". Da gir lenken mening også når den leses opp sammen med gruppens ledetekst, eller navigeres til separat med skjermleser.
+
+<CodeExamplePreview>
+
+```html
+<nve-segment-group label="Hvilken gjenstand bruker du mest på jobb?">
+  <p slot="hintText">Les om <a href="#">hvilket utstyr som passer til ulike oppgaver</a></p>
+  <nve-segment value="computer">Datamaskin</nve-segment>
+  <nve-segment value="mobile">Mobil</nve-segment>
 </nve-segment-group>
 ```
 

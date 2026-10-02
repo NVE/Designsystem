@@ -29,6 +29,44 @@ describe('nve-combobox', () => {
     expect(text).toBe('Help text');
   });
 
+  it('renders content assigned to the helpText and hintText slots', async () => {
+    const el = await fixture<NveCombobox>(html`
+      <nve-combobox id="slot-test" label="Avdeling" .options=${[{ value: 'rme', label: 'RME' }]}>
+        <p slot="helpText">Se <a href="#">veiledningen</a></p>
+        <p slot="hintText">Velg avdelingen din</p>
+      </nve-combobox>
+    `);
+
+    const helpTextSlot = el.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="helpText"]');
+    const hintTextSlot = el.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="hintText"]');
+
+    expect(helpTextSlot?.assignedElements()[0]?.textContent?.trim()).toBe('Se veiledningen');
+    expect(hintTextSlot?.assignedElements()[0]?.textContent?.trim()).toBe('Velg avdelingen din');
+  });
+
+  it('renders helpText and hint attributes instead of their slots when both are provided', async () => {
+    const el = await fixture<NveCombobox>(html`
+      <nve-combobox
+        id="slot-precedence-test"
+        label="Avdeling"
+        helpText="Hjelpetekst fra attributtet"
+        hint="Hint fra attributtet"
+        .options=${[{ value: 'rme', label: 'RME' }]}
+      >
+        <p slot="helpText">Hjelpetekst fra sporet</p>
+        <p slot="hintText">Hinttekst fra sporet</p>
+      </nve-combobox>
+    `);
+
+    const renderedHelpText = el.shadowRoot?.querySelector('[part="help-text"]');
+    const renderedHintText = el.shadowRoot?.querySelector('[part="hint-text"]');
+
+    expect(renderedHelpText?.textContent?.trim()).toBe('Hjelpetekst fra attributtet');
+    expect(renderedHintText?.textContent?.trim()).toBe('Hint fra attributtet');
+    expect(el.shadowRoot?.querySelector('slot[name="helpText"]')).toBeNull();
+    expect(el.shadowRoot?.querySelector('slot[name="hintText"]')).toBeNull();
+  });
+
   it('test if selectedValues are removed from the DOM', async () => {
     const options = [
       { value: '1', label: 'Option 1' },
