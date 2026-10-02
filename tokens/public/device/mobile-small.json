@@ -280,7 +280,7 @@
     "2x-large": {
       "$type": "fontSizes",
       "$value": "{dimension.7x}",
-      "$description": "32 px"
+      "$description": "28 px"
     },
     "3x-large": {
       "$type": "fontSizes",
