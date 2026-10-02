@@ -506,6 +506,22 @@ Bruk <span class="highlight">helpText</span> for å vise hjelpetekst over combob
 
 </CodeExamplePreview>
 
+Hvis hjelpeteksten skal inneholde mer enn vanlig tekst, for eksempel en lenke, kan du bruke <span class="highlight">helpText</span>-sporet.
+
+Du kan ikke bruke <span class="highlight">helpText</span>-attributtet og <span class="highlight">helpText</span>-sporet samtidig. Hvis begge er angitt, prioriteres attributtet.
+
+Hvis hjelpeteksten eller hintet inneholder en lenke, bør lenketeksten beskrive hva brukeren finner når lenken åpnes. Unngå generelle tekster som «Les mer». Da gir lenken mening også når den leses opp sammen med comboboxens ledetekst, eller navigeres til separat med skjermleser.
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox id="nve-avdeling-helptext-slot" label="Velg en avdeling" options='[{ "value":"rme", "label":"RME" }]'>
+  <p slot="helpText">Se <a href="#">hvilken avdeling som behandler saken din</a></p>
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
 ### Hint-tekst
 
 Bruk <span class="highlight">hint</span> for å vise hint-tekst under combobox.
@@ -527,6 +543,22 @@ Bruk <span class="highlight">hint</span> for å vise hint-tekst under combobox.
     { "value":"v","label": "V" }
      ]'
 >
+</nve-combobox>
+```
+
+</CodeExamplePreview>
+
+Hvis hintteksten skal inneholde mer enn vanlig tekst, for eksempel en lenke, kan du bruke <span class="highlight">hintText</span>-sporet.
+
+Du kan ikke bruke <span class="highlight">hint</span>-attributtet og <span class="highlight">hintText</span>-sporet samtidig. Hvis begge er angitt, prioriteres attributtet.
+
+Hvis hjelpeteksten eller hintet inneholder en lenke, bør lenketeksten beskrive hva brukeren finner når lenken åpnes. Unngå generelle tekster som «Les mer». Da gir lenken mening også når den leses opp sammen med comboboxens ledetekst, eller navigeres til separat med skjermleser.
+
+<CodeExamplePreview>
+
+```html
+<nve-combobox id="nve-avdeling-hint-slot" label="Velg en avdeling" options='[{ "value":"rme", "label":"RME" }]'>
+  <p slot="hintText">Les om <a href="#">hvilke avdelinger du kan velge</a></p>
 </nve-combobox>
 ```
 

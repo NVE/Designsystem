@@ -211,6 +211,22 @@ Bruk <span class="highlight">helpText</span> for å vise en tekst som nærmere b
 
 </CodeExamplePreview>
 
+Hvis hjelpeteksten skal inneholde mer enn vanlig tekst, for eksempel en lenke, kan du bruke <span class="highlight">helpText</span>-sporet.
+
+Du kan ikke bruke <span class="highlight">helpText</span>-attributtet og <span class="highlight">helpText</span>-sporet samtidig. Hvis begge er angitt, prioriteres attributtet.
+
+Se <a href="#tilgjengelighet">tilgjengelighet</a> for informasjon om hvordan hjelpeteksten med en lenke bør struktureres.
+
+<CodeExamplePreview>
+
+```html
+<nve-input label="Saksbehandlers navn">
+  <p slot="helpText">Se <a href="#">hva saksbehandler er</a> på nve.no</p>
+</nve-input>
+```
+
+</CodeExamplePreview>
+
 ### Hint
 
 Bruk <span class="highlight">hint</span> for å vise en kortfattet tekst, som kan brukes for å gi eksempler på inndata. Hintet legges under tekstfeltet.
@@ -219,6 +235,22 @@ Bruk <span class="highlight">hint</span> for å vise en kortfattet tekst, som ka
 
 ```html
 <nve-input label="Saksbehandlers navn" hint="Du må jo kjenne hen..."> </nve-input>
+```
+
+</CodeExamplePreview>
+
+Hvis hintteksten skal inneholde mer enn vanlig tekst, for eksempel en lenke, kan du bruke <span class="highlight">hintText</span>-sporet.
+
+Du kan ikke bruke <span class="highlight">hint</span>-attributtet og <span class="highlight">hintText</span>-sporet samtidig. Hvis begge er angitt, prioriteres attributtet.
+
+Se <a href="#tilgjengelighet">tilgjengelighet</a> for informasjon om hvordan hint med en lenke bør struktureres.
+
+<CodeExamplePreview>
+
+```html
+<nve-input label="Saksbehandlers navn">
+  <p slot="hintText">Se <a href="#">hva saksbehandler er</a> på nve.no</p>
+</nve-input>
 ```
 
 </CodeExamplePreview>
@@ -238,7 +270,7 @@ Bruk attributtet <span class="highlight">disabled</span> for å hindre at bruker
 <CodeExamplePreview>
 
 ```html
-<nve-input label="Saksbehandlers navn" disabled></nve-input>
+<nve-input label="Saksbehandlers navn" disabled> </nve-input>
 ```
 
 </CodeExamplePreview>
@@ -453,6 +485,9 @@ Du kan fjerne feil status ved å sette <span class="highlight">errorMessage</spa
 <span class="highlight">nve-input</span> er bygget på et native <span class="highlight">&lt;input&gt;</span> og bruker en tilknyttet <a href="#ledetekst-og-tooltip">ledetekst</a>. Når feltet får fokus vil skjermlesere lese opp ledeteksten, slik at brukeren forstår hva som skal fylles inn.
 
 I tillegg brukes aria-describedby for å knytte supplerende tekst til feltet. Når <span class="highlight">helpText</span>, <span class="highlight">hint</span> eller <span class="highlight">errorMessage</span> er satt vil skjermlesere normalt lese dem opp i forbindelse med fokus på feltet (ved bruk av <span class="highlight">aria-describedby</span>).
+Skriv om tekster i sporene da
+
+Hvis hjelpeteksten eller hintet inneholder en lenke, bør lenketeksten beskrive hva brukeren finner når lenken åpnes. Unngå generelle tekster som "Les mer". Skriv for eksempel "Les om hvilke opplysninger du trenger for å fylle ut saksnummeret". Da gir lenken mening også når den leses opp sammen med feltets ledetekst, eller navigeres til separat med skjermleser.
 
 Ikoner som vises når <span class="highlight">disabled</span> eller <span class="highlight">readonly</span> attributene brukes er dekorative og ikke ment som eneste informasjonsbærer. Skjermlesere informerer brukere når tekstfeltet er skrivebeskyttet, men ikke når det er deaktivert.
 

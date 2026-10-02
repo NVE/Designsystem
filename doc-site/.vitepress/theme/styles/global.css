@@ -17,6 +17,11 @@ a {
   color: var(--color-neutrals-foreground-primary, #0d0d0e);
 }
 
+[slot='helpText'] a,
+[slot='hintText'] a {
+  color: var(--color-interactive-foreground-link-primary-enabled);
+}
+
 /* Brukes for å fjerne standard linje i <a>  som ikke er i Shadow-DOMen som f.eks de som skal wrappe <nve-link-card> */
 a:has(nve-link-card) {
   text-decoration: unset;

@@ -23,6 +23,11 @@ a:has(nve-navigation-card) {
   text-decoration: unset;
 }
 
+[slot='helpText'] a,
+[slot='hintText'] a {
+  color: var(--color-interactive-foreground-link-primary-enabled);
+}
+
 /* Brukes for å overskrive standard lenke visited styling som ikke er i Shadow-DOMen som f.eks de som skal wrappe <nve-link-card> */
 a:visited {
   color: var(--color-interactive-foreground-link-info-visited);

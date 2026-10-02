@@ -19,6 +19,8 @@ type NveCheckboxGroupChangeEvent = {
  * En gruppe med sjekkbokser som lar brukeren velge flere alternativer.
  *
  * @slot - Her plasseres nve-checkbox elementer som skal være en del av gruppen.
+ * @slot helpText - viser hjelpetekst over inputfeltet
+ * @slot hintText - viser hint-tekst under inputfeltet
  *
  * @event change - når en sjekkboks i gruppen endres, sender ut en event med informasjon om hvilken verdi som ble endret og om den ble valgt eller fjernet.
  *
@@ -159,13 +161,15 @@ export default class NveCheckboxGroup extends LitElement implements FormValidati
 
   render() {
     const helpTextId = `${this.checkboxGroupId}-helptext`;
+    const helpTextSlotId = `${helpTextId}-slot`;
     const hintTextId = `${this.checkboxGroupId}-hinttext`;
+    const hintTextSlotId = `${hintTextId}-slot`;
     const errorTextId = `${this.checkboxGroupId}-errortext`;
 
     const describedBy = [
-      this.helpText ? helpTextId : null,
+      this.helpText ? helpTextId : helpTextSlotId,
       this.activeErrorMessage ? errorTextId : null,
-      this.hint ? hintTextId : null,
+      !this.activeErrorMessage ? (this.hint ? hintTextId : hintTextSlotId) : null,
     ]
       .filter(Boolean)
       .join(' ');
@@ -196,7 +200,7 @@ export default class NveCheckboxGroup extends LitElement implements FormValidati
         ${
           this.helpText
             ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-            : nothing
+            : html`<slot class="field__help-text" name="helpText" id=${helpTextSlotId}></slot>`
         }
         <div
           part="checkbox-group"
@@ -220,6 +224,11 @@ export default class NveCheckboxGroup extends LitElement implements FormValidati
               >
                 ${this.hint}
               </p>`
+            : nothing
+        }
+        ${
+          !this.activeErrorMessage && !this.hint
+            ? html`<slot class="field__hint-text" name="hintText" id=${hintTextSlotId}></slot>`
             : nothing
         }
 

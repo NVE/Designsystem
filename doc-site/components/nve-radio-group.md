@@ -193,6 +193,24 @@ Bruk <span class="highlight">helpText</span> for å vise hjelpetekst over feltet
 
 </CodeExamplePreview>
 
+Hvis hjelpeteksten skal inneholde mer enn vanlig tekst, for eksempel en lenke, kan du bruke <span class="highlight">helpText</span>-sporet.
+
+Du kan ikke bruke <span class="highlight">helpText</span>-attributtet og <span class="highlight">helpText</span>-sporet samtidig. Hvis begge er angitt, prioriteres attributtet.
+
+Se <a href="#tilgjengelighet">tilgjengelighet</a> for informasjon om hvordan hjelpeteksten med en lenke bør struktureres.
+
+<CodeExamplePreview>
+
+```html
+<nve-radio-group label="Hva er status på tiltaket?">
+  <p slot="helpText">Se <a href="#">hvordan statusene brukes</a></p>
+  <nve-radio value="planned">Planlagt</nve-radio>
+  <nve-radio value="current">Pågående</nve-radio>
+</nve-radio-group>
+```
+
+</CodeExamplePreview>
+
 ### Hint-tekst
 
 Bruk <span class="highlight">hint</span> for å vise hint-tekst under feltet.
@@ -204,6 +222,24 @@ Bruk <span class="highlight">hint</span> for å vise hint-tekst under feltet.
   <nve-radio value="planned">Planlagt</nve-radio>
   <nve-radio value="current">Pågående</nve-radio>
   <nve-radio value="done">Ferdigstilt</nve-radio>
+</nve-radio-group>
+```
+
+</CodeExamplePreview>
+
+Hvis hintteksten skal inneholde mer enn vanlig tekst, for eksempel en lenke, kan du bruke <span class="highlight">hintText</span>-sporet.
+
+Du kan ikke bruke <span class="highlight">hint</span>-attributtet og <span class="highlight">hintText</span>-sporet samtidig. Hvis begge er angitt, prioriteres attributtet.
+
+Hvis hjelpeteksten eller hintet inneholder en lenke, bør lenketeksten beskrive hva brukeren finner når lenken åpnes. Unngå generelle tekster som "Les mer". Da gir lenken mening også når den leses opp sammen med gruppens ledetekst, eller navigeres til separat med skjermleser.
+
+<CodeExamplePreview>
+
+```html
+<nve-radio-group label="Hva er status på tiltaket?">
+  <p slot="hintText">Les om <a href="#">hva de ulike statusene betyr</a></p>
+  <nve-radio value="planned">Planlagt</nve-radio>
+  <nve-radio value="current">Pågående</nve-radio>
 </nve-radio-group>
 ```
 

@@ -15,6 +15,9 @@ let id = 0;
  * Input brukes i et skjema når brukeren skal skrive inn kort tekst eller enkel informasjon i én linje.
  * Feltet støtter flere typer og kan brukes både for fritekst og strukturert inndata som tall, dato og tid.
  *
+ * @slot helpText - viser hjelpetekst over inputfeltet
+ * @slot hintText - viser hint-tekst under inputfeltet
+ *
  * @event change - når verdien i input endres og elementet mister fokus
  * @event select - når brukeren markerer tekst i input
  * @event nve-clear - når verdien i inputfeltet fjernes
@@ -256,12 +259,14 @@ export default class NveInput extends LitElement implements FormValidationCompon
   render() {
     const labelId = `${this.id || this.inputId}`;
     const helpTextId = `${this.id || this.inputId}-helptext`;
+    const helpTextSlotId = `${helpTextId}-slot`;
     const hintTextId = `${this.id || this.inputId}-hinttext`;
+    const hintTextSlotId = `${hintTextId}-slot`;
     const errorTextId = `${this.id || this.inputId}-errortext`;
     const describedBy = [
-      this.helpText ? helpTextId : '',
+      this.helpText ? helpTextId : helpTextSlotId,
       this.activeErrorMessage ? errorTextId : '',
-      this.hint ? hintTextId : '',
+      !this.activeErrorMessage ? (this.hint ? hintTextId : hintTextSlotId) : '',
     ]
       .filter(Boolean)
       .join(' ');
@@ -291,8 +296,9 @@ export default class NveInput extends LitElement implements FormValidationCompon
         ${
           this.helpText
             ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-            : nothing
+            : html`<slot class="field__help-text" name="helpText" id=${helpTextSlotId}></slot>`
         }
+
         <div
           part="input"
           class=${classMap({
@@ -351,12 +357,7 @@ export default class NveInput extends LitElement implements FormValidationCompon
           }
           ${
             statusIcon
-              ? html`<nve-icon
-                  class="icon__size"
-                  part="status-icon"
-                  name=${statusIcon}
-                  aria-hidden="true"
-                ></nve-icon>`
+              ? html`<nve-icon class="icon__size" part="status-icon" name=${statusIcon} aria-hidden="true"></nve-icon>`
               : nothing
           }
         </div>
@@ -373,6 +374,11 @@ export default class NveInput extends LitElement implements FormValidationCompon
               >
                 ${this.hint}
               </p>`
+            : nothing
+        }
+        ${
+          !this.activeErrorMessage && !this.hint
+            ? html`<slot class="field__hint-text" name="hintText" id=${hintTextSlotId}></slot>`
             : nothing
         }
 

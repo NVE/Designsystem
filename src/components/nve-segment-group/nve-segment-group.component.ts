@@ -16,6 +16,9 @@ let id = 0; // for å generere unike id-er. Brukes for å koble label og hint te
 /**
  * En gruppe av nve-segment-knapper. Fungerer som en radio-gruppe. Kun én segment-knapp i en gitt gruppe kan være valgt om gangen.
  *
+ * @slot helpText - viser hjelpetekst over inputfeltet
+ * @slot hintText - viser hint-tekst under inputfeltet
+ *
  * @event change når en segment-knapp i gruppen blir valgt. Inneholder den valgte verdien.
  *
  * @csspart base Hovedcontaineren for segment-gruppen, som er en fieldset.
@@ -164,13 +167,15 @@ export default class NveSegmentGroup extends LitElement implements FormValidatio
 
   render() {
     const helpTextId = `${this.segmentGroupName}-helptext`;
+    const helpTextSlotId = `${helpTextId}-slot`;
     const hintTextId = `${this.segmentGroupName}-hinttext`;
+    const hintTextSlotId = `${hintTextId}-slot`;
     const errorTextId = `${this.segmentGroupName}-errortext`;
 
     const describedBy = [
-      this.helpText ? helpTextId : null,
+      this.helpText ? helpTextId : helpTextSlotId,
       this.activeErrorMessage ? errorTextId : null,
-      this.hint ? hintTextId : null,
+      !this.activeErrorMessage ? (this.hint ? hintTextId : hintTextSlotId) : null,
     ]
       .filter(Boolean)
       .join(' ');
@@ -204,9 +209,9 @@ export default class NveSegmentGroup extends LitElement implements FormValidatio
         ${
           this.helpText
             ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-            : nothing
+            : html`<slot class="field__help-text" name="helpText" id=${helpTextSlotId}></slot>`
         }
-        <div part="segment-group" class="segment-group">
+        <div class="segment-group">
           <slot @slotchange=${this.handleSlotChange}></slot>
         </div>
         <!-- Hint-tekst og feilmelding -->
@@ -222,6 +227,11 @@ export default class NveSegmentGroup extends LitElement implements FormValidatio
               >
                 ${this.hint}
               </p>`
+            : nothing
+        }
+        ${
+          !this.activeErrorMessage && !this.hint
+            ? html`<slot class="field__hint-text" name="hintText" id=${hintTextSlotId}></slot>`
             : nothing
         }
 

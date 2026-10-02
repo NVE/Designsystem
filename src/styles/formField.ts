@@ -10,11 +10,21 @@ export default css`
     margin-top: var(--spacing-2x-small);
   }
 
+  .field__help-text::slotted(p) {
+    margin: 0 !important;
+    margin-top: var(--spacing-2x-small) !important;
+    line-height: inherit !important;
+  }
+
   .field__hint-text {
     margin: 0;
     color: var(--color-neutrals-foreground-primary);
     font: var(--typography-detailtext-caption);
     text-align: start;
+  }
+
+  .field__hint-text::slotted(p) {
+    margin: 0 !important;
   }
 
   .field__hint-text--show {

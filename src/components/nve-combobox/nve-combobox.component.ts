@@ -37,6 +37,9 @@ export type NveSelectChangeDetail = {
  * En combobox-komponent lar brukeren velge ett eller flere alternativer fra en liste, eller søke etter alternativer i et tekstfelt.
  * Den støtter både enkelt- og flervalg.
  *
+ * @slot helpText - viser hjelpetekst over inputfeltet
+ * @slot hintText - viser hint-tekst under inputfeltet
+ *
  * @event change Når et alternativ velges eller fjernes. Hendelsen inkluderer verdien til det endret alternativet og handlingen som ble utført (select eller deselect).
  * @event nve-show Når listeboksen åpnes
  * @event nve-hide Når listeboksen lukkes
@@ -1083,13 +1086,15 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   render() {
     const labelId = `${this.id}-label`;
     const helpTextId = `${this.id}-helptext`;
+    const helpTextSlotId = `${helpTextId}-slot`;
     const hintTextId = `${this.id}-hinttext`;
+    const hintTextSlotId = `${hintTextId}-slot`;
     const errorTextId = `${this.id}-errortext`;
     const selectedValuesId = `${this.id}-selected-values`;
     const describedBy = [
-      helpTextId,
+      this.helpText ? helpTextId : helpTextSlotId,
       this.activeErrorMessage ? errorTextId : '',
-      this.hint ? hintTextId : '',
+      !this.activeErrorMessage ? (this.hint ? hintTextId : hintTextSlotId) : '',
       this.multiple ? selectedValuesId : '',
     ]
       .filter(Boolean)
@@ -1120,7 +1125,7 @@ export default class NveCombobox extends LitElement implements FormValidationCom
         ${
           this.helpText
             ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-            : nothing
+            : html`<slot class="field__help-text" name="helpText" id=${helpTextSlotId}></slot>`
         }
         <!-- Combobox kontroll -->
         <div
@@ -1247,13 +1252,16 @@ export default class NveCombobox extends LitElement implements FormValidationCom
                 : html`<nve-icon class="icon__arrow" name="keyboard_arrow_down" aria-hidden="true"></nve-icon>`
             }
             ${this.disabled ? html`<nve-icon class="icon__size" name="lock" aria-hidden="true"></nve-icon>` : nothing}
-
-            ${this.readonly
-              ? html`<nve-icon class="icon__size" name="edit_off" aria-hidden="true"></nve-icon>`
-              : nothing}
-            ${!!this.activeErrorMessage
-              ? html`<nve-icon class="icon__size" name="error" aria-hidden="true"></nve-icon>`
-              : nothing}
+            ${
+              this.readonly
+                ? html`<nve-icon class="icon__size" name="edit_off" aria-hidden="true"></nve-icon>`
+                : nothing
+            }
+            ${
+              !!this.activeErrorMessage
+                ? html`<nve-icon class="icon__size" name="error" aria-hidden="true"></nve-icon>`
+                : nothing
+            }
           </div>
           <!-- Listbox -->
           ${
@@ -1311,6 +1319,13 @@ export default class NveCombobox extends LitElement implements FormValidationCom
               </p>`
             : nothing
         }
+        <<<<<<< HEAD =======
+        ${
+          !this.activeErrorMessage && !this.hint
+            ? html`<slot class="field__hint-text" name="hintText" id=${hintTextSlotId}></slot>`
+            : nothing
+        }
+        >>>>>>> 96c436c (feat(nve-input): hint og hjelp kan inneholde lenker na)
 
         <p
           aria-live="assertive"
