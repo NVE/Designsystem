@@ -36,6 +36,18 @@ Tittel vises alltid øverst i kortet, og under ikon dersom ikon er lagt inn med 
 
 </CodeExamplePreview>
 
+### Lang tittel
+
+Kortet håndterer veldig lange ord i tittelen ved å bryte dem slik at innholdet ikke flyter ut av kortet.
+
+<CodeExamplePreview>
+
+```html
+<nve-navigation-card href="#" label="Supercalifragilisticexpialidocioussuperlangtordsomikkeharmellomrom" />
+```
+
+</CodeExamplePreview>
+
 ### Med tilleggstekst
 
 Du kan legge til en ekstra tekst under hovedlenkens overskrift ved å bruke `additionalText`-egenskapen. Både overskriften og den tilhørende teksten blir lest opp av skjermlesere, så sørg for at teksten er kortfattet og lett å forstå.
@@ -167,6 +179,30 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
     additionalText="Tekst her skal ikke kombineres med ikon"
   />
 </Link>
+```
+
+### Fokusmarkering ved wrapping i egen lenke
+
+Når `nve-navigation-card` pakkes inn i en lenke fra rammeverket (`RouterLink`, `Link` osv.), rendres kortet som et `<div>` og det er den ytre `<a>`-en som mottar tastaturfokus. Kortet kan da ikke tegne sin egen fokusmarkering, så du må legge den på den wrappende lenken selv.
+
+Sett en egen klasse på den wrappende lenken og bruk samme verdier som komponenten for et konsistent uttrykk:
+
+```jsx
+<Link to="/components/Komponentoversikt" className="navigation-card-wrapper">
+  <nve-navigation-card href="#" label="Om hydrologisk avdeling" />
+</Link>
+```
+
+```css
+.navigation-card-wrapper {
+  border-radius: var(--border-radius-small);
+  transition: box-shadow 0.3s ease;
+}
+
+.navigation-card-wrapper:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--border-width-strong) var(--color-interactive-border-accessibility-focus);
+}
 ```
 
 ## Retningslinjer
