@@ -121,6 +121,22 @@ Bruk <span class="highlight">helpText</span> for å vise en tekst som nærmere b
 
 </CodeExamplePreview>
 
+Hvis hjelpeteksten skal inneholde mer enn vanlig tekst, for eksempel en lenke, kan du bruke <span class="highlight">helpText</span>-sporet.
+
+Du kan ikke bruke <span class="highlight">helpText</span>-attributtet og <span class="highlight">helpText</span>-sporet samtidig. Hvis begge er angitt, prioriteres attributtet.
+
+Se <a href="#tilgjengelighet">tilgjengelighet</a> for informasjon om hvordan hjelpeteksten med en lenke bør struktureres.
+
+<CodeExamplePreview>
+
+```html
+<nve-textarea label="Beskriv saken">
+  <p slot="helpText">Se <a href="#">hva som bør være med i beskrivelsen</a></p>
+</nve-textarea>
+```
+
+</CodeExamplePreview>
+
 ### Hint
 
 Bruk <span class="highlight">hint</span> for å vise en kortfattet tekst, som kan brukes for å gi eksempler på inndata. Hintet legges under inndatafeltet.
@@ -129,6 +145,22 @@ Bruk <span class="highlight">hint</span> for å vise en kortfattet tekst, som ka
 
 ```html
 <nve-textarea label="Fugler i Norge" hint="Hint: Dompap, tiur, fossekall"> </nve-textarea>
+```
+
+</CodeExamplePreview>
+
+Hvis hintteksten skal inneholde mer enn vanlig tekst, for eksempel en lenke, kan du bruke <span class="highlight">hintText</span>-sporet.
+
+Du kan ikke bruke <span class="highlight">hint</span>-attributtet og <span class="highlight">hintText</span>-sporet samtidig. Hvis begge er angitt, prioriteres attributtet.
+
+Se <a href="#tilgjengelighet">tilgjengelighet</a> for informasjon om hvordan hint med en lenke bør struktureres.
+
+<CodeExamplePreview>
+
+```html
+<nve-textarea label="Fugler i Norge">
+  <p slot="hintText">Les om <a href="#">fuglearter som finnes i Norge</a></p>
+</nve-textarea>
 ```
 
 </CodeExamplePreview>
@@ -283,5 +315,7 @@ Du kan fjerne feiltilstanden ved å sette <span class="highlight">errorMessage</
 <span class="highlight">nve-textarea</span> er bygget på et native <span class="highlight">&lt;textarea&gt;</span> og bruker en tilknyttet <a href="#ledetekst-og-tooltip">ledetekst</a>. Når feltet får fokus vil skjermlesere lese opp ledeteksten, slik at brukeren forstår hva som skal fylles inn.
 
 I tillegg brukes aria-describedby for å knytte supplerende tekst til feltet. Når <span class="highlight">helpText</span>, <span class="highlight">hint</span> eller <span class="highlight">errorMessage</span> er satt vil skjermlesere normalt lese dem opp i forbindelse med fokus på feltet (ved bruk av <span class="highlight">aria-describedby</span>).
+
+Hvis hjelpeteksten eller hintet inneholder en lenke, bør lenketeksten beskrive hva brukeren finner når lenken åpnes. Unngå generelle tekster som "Les mer". Skriv for eksempel "Les om hvilke opplysninger du trenger for å fylle ut beskrivelsen". Da gir lenken mening også når den leses opp sammen med feltets ledetekst, eller navigeres til separat med skjermleser.
 
 Ikoner i <span class="highlight">nve-textarea</span> er dekorative og ikke ment som eneste informasjonsbærer. Skjermlesere informerer brukere når tekstfeltet er skrivebeskyttet, men ikke når det er deaktivert.

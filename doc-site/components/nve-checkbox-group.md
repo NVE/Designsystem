@@ -174,6 +174,24 @@ Bruk <span class="highlight">helpText</span> for å vise hjelpetekst over feltet
 
 </CodeExamplePreview>
 
+Hvis hjelpeteksten skal inneholde mer enn vanlig tekst, for eksempel en lenke, kan du bruke <span class="highlight">helpText</span>-sporet.
+
+Du kan ikke bruke <span class="highlight">helpText</span>-attributtet og <span class="highlight">helpText</span>-sporet samtidig. Hvis begge er angitt, prioriteres attributtet.
+
+Se <a href="#tilgjengelighet">tilgjengelighet</a> for informasjon om hvordan hjelpeteksten med en lenke bør struktureres.
+
+<CodeExamplePreview>
+
+```html
+<nve-checkbox-group label="Hvilke varsler vil du se på?">
+  <p slot="helpText">Se <a href="#">hvilke varsler som er tilgjengelige</a></p>
+  <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+  <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
+</nve-checkbox-group>
+```
+
+</CodeExamplePreview>
+
 ### Hint
 
 Bruk <span class="highlight">hintText</span> for å vise hint-tekst under feltet.
@@ -188,6 +206,24 @@ Bruk <span class="highlight">hintText</span> for å vise hint-tekst under feltet
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
+</nve-checkbox-group>
+```
+
+</CodeExamplePreview>
+
+Hvis hintteksten skal inneholde mer enn vanlig tekst, for eksempel en lenke, kan du bruke <span class="highlight">hintText</span>-sporet.
+
+Du kan ikke bruke <span class="highlight">hint</span>-attributtet og <span class="highlight">hintText</span>-sporet samtidig. Hvis begge er angitt, prioriteres attributtet.
+
+Se <a href="#tilgjengelighet">tilgjengelighet</a> for informasjon om hvordan hint med en lenke bør struktureres.
+
+<CodeExamplePreview>
+
+```html
+<nve-checkbox-group label="Hvilke varsler vil du se på?">
+  <p slot="hintText">Les om <a href="#">hva de ulike varslene betyr</a></p>
+  <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+  <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
 </nve-checkbox-group>
 ```
 
@@ -321,5 +357,7 @@ Du kan fjerne feiltilstanden ved å sette <span class="highlight">errorMessage</
 <span class="highlight">nve-checkbox-group</span> bruker en tilknyttet <a href="#ledetekst-og-tooltip">ledetekst</a>. Når feltet får fokus vil skjermlesere lese opp ledeteksten, slik at brukeren forstår hva som skal fylles inn.
 
 I tillegg brukes <span class="highlight">aria-describedby</span> for å knytte supplerende tekst til feltet. Når <span class="highlight">helpText</span>, <span class="highlight">hint</span> eller <span class="highlight">errorMessage</span> er satt vil skjermlesere normalt lese dem opp i forbindelse med fokus på feltet. (VoiceOver i Safari på macOS kan slite litt med aria-describedby og ikke lese den).
+
+Hvis hjelpeteksten eller hintet inneholder en lenke, bør lenketeksten beskrive hva brukeren finner når lenken åpnes. Unngå generelle tekster som "Les mer". Da gir lenken mening også når den leses opp sammen med gruppens ledetekst, eller navigeres til separat med skjermleser.
 
 Brukere kan navigere gjennom sjekkboksene i gruppen ved å trykke <span class="highlight">Tab</span> for å fokusere hver sjekkboks. Når en sjekkboks har fokus, brukes <span class="highlight">Space</span>-tasten til å velge eller fjerne valget.
