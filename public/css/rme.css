@@ -550,6 +550,7 @@
   --sizing-588x: 588px;
   --sizing-600x: 600px;
   --sizing-700x: 700px;
+  --sizing-740x: 740px;
   --sizing-750x: 750px;
   --sizing-763x: 763px;
   --sizing-764x: 764px;
@@ -825,6 +826,7 @@
   --sizing-588x: 588px;
   --sizing-600x: 600px;
   --sizing-700x: 700px;
+  --sizing-740x: 740px;
   --sizing-750x: 750px;
   --sizing-763x: 763px;
   --sizing-764x: 764px;
@@ -955,7 +957,7 @@
   --sizing-brand-illustration-medium: var(--sizing-40x);
   --sizing-image-x-small: var(--sizing-84x);
   --sizing-image-small: var(--sizing-540x);
-  --sizing-image-large: var(--sizing-1024x);
+  --sizing-image-large: var(--sizing-750x);
   --sizing-icon-3x-large: var(--sizing-70x);
   --sizing-icon-2x-large: var(--sizing-56x);
   --sizing-icon-x-large: var(--sizing-48x);
@@ -1047,6 +1049,7 @@
   --sizing-588x: 588px;
   --sizing-600x: 600px;
   --sizing-700x: 700px;
+  --sizing-740x: 740px;
   --sizing-750x: 750px;
   --sizing-763x: 763px;
   --sizing-764x: 764px;
@@ -1269,6 +1272,7 @@
   --sizing-588x: 588px;
   --sizing-600x: 600px;
   --sizing-700x: 700px;
+  --sizing-740x: 740px;
   --sizing-750x: 750px;
   --sizing-763x: 763px;
   --sizing-764x: 764px;
@@ -1491,6 +1495,7 @@
   --sizing-588x: 588px;
   --sizing-600x: 600px;
   --sizing-700x: 700px;
+  --sizing-740x: 740px;
   --sizing-750x: 750px;
   --sizing-763x: 763px;
   --sizing-764x: 764px;
