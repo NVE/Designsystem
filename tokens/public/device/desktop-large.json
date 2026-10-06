@@ -155,7 +155,7 @@
       },
       "large": {
         "$type": "sizing",
-        "$value": "{sizing.1024x}"
+        "$value": "{sizing.750x}"
       }
     },
     "icon": {
