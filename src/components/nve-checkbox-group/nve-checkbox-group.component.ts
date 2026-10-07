@@ -23,6 +23,7 @@ type NveCheckboxGroupChangeEvent = {
  * @event change - når en sjekkboks i gruppen endres, sender ut en event med informasjon om hvilken verdi som ble endret og om den ble valgt eller fjernet.
  *
  * @csspart base - fieldset elementet som omslutter hele gruppen
+ * @csspart label - label elementet som viser ledeteksten for gruppen
  * @csspart checkbox-group - div elementet som omslutter slottet med sjekkboksene
  * @csspart help-text - p elementet som viser hjelpetekst, hvis satt
  * @csspart hint-text - p elementet som viser hint-tekst eller feilmelding, hvis satt

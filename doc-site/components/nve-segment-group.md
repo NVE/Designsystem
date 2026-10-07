@@ -60,6 +60,44 @@ Bruk <span class="highlight">label</span> for å vise en tydelig ledetekst for f
 
 </CodeExamplePreview>
 
+### Skjult ledetekst
+
+Vi anbefaler å alltid vise ledeteksten. Hvis den i enkelte tilfeller må skjules av hensyn til utformingen, kan du bruke CSS til å skjule den visuelt. Ledeteksten er fortsatt tilgjengelig i DOM-en og kan leses av skjermlesere.
+
+Bruk <span class="highlight">::part(label)</span> for å skjule ledeteksten.
+
+Det kan også være nødvendig å sette <span class="highlight">margin-top: 0</span> på <span class="highlight">::part(segment-group)</span> for å fjerne avstanden over feltet.
+
+<CodeExamplePreview>
+
+```html
+<nve-segment-group class="hideLabel" label="Hvilken gjenstand bruker du mest på jobb?">
+  <nve-segment value="computer">Datamaskin</nve-segment>
+  <nve-segment value="mobile">Mobil</nve-segment>
+  <nve-segment value="traditional">Papir og blyant</nve-segment>
+</nve-segment-group>
+
+<style>
+  .hideLabel::part(label) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .hideLabel::part(segment-group) {
+    margin-top: 0;
+  }
+</style>
+```
+
+</CodeExamplePreview>
+
 ### Toggletip
 
 Bruk sporet <span class="highlight">label-toggletip</span> for å vise en toggletip ved siden av ledeteksten.
