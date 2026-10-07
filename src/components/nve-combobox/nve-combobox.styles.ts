@@ -21,6 +21,7 @@ export default css`
     flex-direction: column;
     --_border-color: var(--color-neutrals-border-default);
     --_background-color: var(--color-neutrals-background-primary);
+    --_color: var(--color-neutrals-foreground-primary);
     --_border-color-hover: var(--color-neutrals-foreground-primary);
     --_options-color--selected: var(--color-interactive-foreground-secondary-enabled);
     --_options-background-selected: var(--color-interactive-background-tertiary-pressed);
@@ -73,7 +74,9 @@ export default css`
   }
 
   .field--readonly {
+    --_color: var(--color-neutrals-foreground-subtle, #60656c);
     --_background-color: var(--color-neutrals-background-secondary);
+    --_border-color: transparent;
   }
 
   .combobox {
@@ -89,7 +92,7 @@ export default css`
     anchor-name: --combobox-anchor;
     align-items: center;
     font: var(--typography-body-medium);
-    color: var(--color-neutrals-foreground-primary);
+    color: var(--_color);
     border-radius: var(--border-radius-small);
     border-width: var(--border-width-default);
     border-style: solid;
@@ -166,7 +169,7 @@ export default css`
   .combobox__value__input {
     border: none;
     font: var(--typography-body-small);
-    color: var(--color-neutrals-foreground-primary);
+    color: var(--_color);
     flex: 1;
     background: transparent;
     &:focus {
@@ -302,15 +305,15 @@ export default css`
     color: var(--color-interactive-foreground-tertiary-enabled, #60656c);
     transition: color 0.3s ease;
     nve-icon {
-      --icon-size: 20px;
+      --icon-size: var(--font-size-medium);
     }
   }
   .combobox__clear-button:hover {
     color: var(--color-interactive-foreground-tertiary-hover);
   }
 
-  .icon__error {
-    --icon-size: 20px;
+  .icon__size {
+    --icon-size: var(--font-size-medium);
   }
 
   .icon__arrow {

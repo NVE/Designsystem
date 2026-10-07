@@ -31,7 +31,7 @@ export default css`
   }
 
   .field--readonly {
-    --_color: var(--color-neutrals-foreground-subtle);
+    --_color: var(--color-neutrals-foreground-subtle, #60656c);
     --_background-color: var(--color-neutrals-background-secondary);
     --_border-color: transparent;
   }
@@ -124,6 +124,10 @@ export default css`
   }
   .input__clear-button:hover {
     color: var(--color-interactive-foreground-tertiary-hover);
+  }
+
+  .icon__size {
+    --icon-size: var(--font-size-medium);
   }
 
   ::slotted([slot='start']),
