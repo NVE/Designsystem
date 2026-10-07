@@ -344,7 +344,7 @@ export default class NveInput extends LitElement implements FormValidationCompon
             : nothing}
           ${statusIcon
             ? html`<nve-icon
-                class="input__control__icon"
+                class="icon__size"
                 part="status-icon"
                 name=${statusIcon}
                 aria-hidden="true"

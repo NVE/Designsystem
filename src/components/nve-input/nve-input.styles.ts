@@ -126,6 +126,10 @@ export default css`
     color: var(--color-interactive-foreground-tertiary-hover);
   }
 
+  .icon__size {
+    --icon-size: var(--font-size-medium);
+  }
+
   ::slotted([slot='start']),
   ::slotted([slot='end']) {
     --icon-size: var(--font-size-medium);

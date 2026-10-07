@@ -305,18 +305,14 @@ export default css`
     color: var(--color-interactive-foreground-tertiary-enabled, #60656c);
     transition: color 0.3s ease;
     nve-icon {
-      --icon-size: 20px;
+      --icon-size: var(--font-size-medium);
     }
   }
   .combobox__clear-button:hover {
     color: var(--color-interactive-foreground-tertiary-hover);
   }
 
-  .icon__error {
-    --icon-size: 20px;
-  }
-
-  .icon__readonly {
+  .icon__size {
     --icon-size: var(--font-size-medium);
   }
 
