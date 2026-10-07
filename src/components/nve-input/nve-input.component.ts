@@ -20,6 +20,7 @@ let id = 0;
  * @event nve-clear - når verdien i inputfeltet fjernes
  *
  * @csspart field - wrapper rundt hele input-komponenten
+ * @csspart label - ledetekst for inputfeltet
  * @csspart help-text - hjelpetekst som vises over input
  * @csspart input - wrapper rundt input-elementet og eventuelle ikoner
  * @csspart input__control - selve input-elementet
@@ -287,9 +288,11 @@ export default class NveInput extends LitElement implements FormValidationCompon
         <!-- Ledetekst -->
         ${getLabel(labelId, this.label, this.required, this.requiredLabel, html`<slot name="label-toggletip"></slot>`)}
         <!-- Hjelpetekst -->
-        ${this.helpText
-          ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-          : nothing}
+        ${
+          this.helpText
+            ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
+            : nothing
+        }
         <div
           part="input"
           class=${classMap({
@@ -327,43 +330,51 @@ export default class NveInput extends LitElement implements FormValidationCompon
           />
           <slot name="end"></slot>
           <!-- Ikoner og knapper -->
-          ${this.clearable && this.value
-            ? html`<button part="clear-button" tabindex="-1" @click=${this.handleClear} class="input__clear-button">
-                <nve-icon name="cancel" aria-hidden="true"></nve-icon>
-              </button>`
-            : nothing}
-          ${this.type === 'password'
-            ? html`<button
-                part="show-password-button"
-                tabindex="-1"
-                @click=${this.togglePasswordVisibility}
-                class="input__clear-button"
-              >
-                <nve-icon name=${this.showPassword ? 'visibility_off' : 'visibility'} aria-hidden="true"></nve-icon>
-              </button>`
-            : nothing}
-          ${statusIcon
-            ? html`<nve-icon
-                class="input__control__icon"
-                part="status-icon"
-                name=${statusIcon}
-                aria-hidden="true"
-              ></nve-icon>`
-            : nothing}
+          ${
+            this.clearable && this.value
+              ? html`<button part="clear-button" tabindex="-1" @click=${this.handleClear} class="input__clear-button">
+                  <nve-icon name="cancel" aria-hidden="true"></nve-icon>
+                </button>`
+              : nothing
+          }
+          ${
+            this.type === 'password'
+              ? html`<button
+                  part="show-password-button"
+                  tabindex="-1"
+                  @click=${this.togglePasswordVisibility}
+                  class="input__clear-button"
+                >
+                  <nve-icon name=${this.showPassword ? 'visibility_off' : 'visibility'} aria-hidden="true"></nve-icon>
+                </button>`
+              : nothing
+          }
+          ${
+            statusIcon
+              ? html`<nve-icon
+                  class="input__control__icon"
+                  part="status-icon"
+                  name=${statusIcon}
+                  aria-hidden="true"
+                ></nve-icon>`
+              : nothing
+          }
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${!this.activeErrorMessage && this.hint
-          ? html`<p
-              part="hint-text"
-              class=${classMap({
-                'field__hint-text': true,
-                'field__hint-text--show': !!this.hint,
-              })}
-              id=${hintTextId}
-            >
-              ${this.hint}
-            </p>`
-          : nothing}
+        ${
+          !this.activeErrorMessage && this.hint
+            ? html`<p
+                part="hint-text"
+                class=${classMap({
+                  'field__hint-text': true,
+                  'field__hint-text--show': !!this.hint,
+                })}
+                id=${hintTextId}
+              >
+                ${this.hint}
+              </p>`
+            : nothing
+        }
 
         <p
           aria-live="assertive"

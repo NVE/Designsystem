@@ -19,6 +19,8 @@ let id = 0; // for å generere unike id-er. Brukes for å koble label og hint te
  * @event change når en radio-knapp i gruppen blir valgt. Inneholder den valgte verdien.
  *
  * @csspart base Hovedcontaineren for radio-gruppen, som er en fieldset.
+ * @csspart label Label-elementet som viser ledeteksten for gruppen.
+ * @csspart radio-group Containeren som holder alle radio-knappene.
  * @csspart help-text Teksten som vises under ledeteksten for å gi ekstra informasjon.
  * @csspart hint-text Teksten som vises under radio-knappene for å gi ekstra informasjon eller feilmeldinger.
  * @csspart error-text Teksten som vises under radio-knappene for å vise feilmeldinger.
@@ -199,10 +201,13 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
           true
         )}
         <!-- Hjelpetekst -->
-        ${this.helpText
-          ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-          : nothing}
+        ${
+          this.helpText
+            ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
+            : nothing
+        }
         <div
+          part="radio-group"
           class=${classMap({
             'radio-group': true,
             [`radio-group--${this.orientation}`]: true,
@@ -211,18 +216,20 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
           <slot @slotchange=${this.handleSlotChange}></slot>
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${!this.activeErrorMessage && this.hint
-          ? html`<p
-              part="hint-text"
-              class=${classMap({
-                'field__hint-text': true,
-                'field__hint-text--show': !!this.hint,
-              })}
-              id=${hintTextId}
-            >
-              ${this.hint}
-            </p>`
-          : nothing}
+        ${
+          !this.activeErrorMessage && this.hint
+            ? html`<p
+                part="hint-text"
+                class=${classMap({
+                  'field__hint-text': true,
+                  'field__hint-text--show': !!this.hint,
+                })}
+                id=${hintTextId}
+              >
+                ${this.hint}
+              </p>`
+            : nothing
+        }
 
         <p
           aria-live="assertive"
