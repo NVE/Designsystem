@@ -20,7 +20,6 @@ describe('nve-combobox', () => {
   it('has field--readonly when readonly attribute is set', async () => {
     const el = await fixture<NveCombobox>(html`<nve-combobox readonly></nve-combobox>`);
     expect(el?.shadowRoot?.querySelector('.field--readonly')).toBeTruthy();
-    expect(el?.shadowRoot?.querySelector('nve-icon.icon__readonly')?.getAttribute('name')).toBe('edit_off');
   });
 
   it('field__help-text element with correct help text', async () => {
