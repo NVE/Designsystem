@@ -3,7 +3,7 @@ import { css } from 'lit';
 export default css`
   :host {
     --size: 1rem;
-    --_border-width: var(--border-width-strong);
+    --border-width: var(--border-width-strong);
     --_checked-background-color: var(--color-interactive-background-primary-enabled);
     --_border-color: var(--color-interactive-border-primary-enabled);
     --_hover-color: var(--color-interactive-background-primary-hover);
@@ -45,7 +45,7 @@ export default css`
     box-sizing: border-box;
     width: var(--size);
     height: var(--size);
-    border: var(--_border-width) solid var(--_border-color);
+    border: var(--border-width) solid var(--_border-color);
     border-radius: calc(var(--size) * 0.25);
     transition:
       background-color 0.3s ease,
