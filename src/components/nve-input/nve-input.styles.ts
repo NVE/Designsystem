@@ -31,7 +31,7 @@ export default css`
   }
 
   .field--readonly {
-    --_color: var(--color-neutrals-foreground-subtle);
+    --_color: var(--color-neutrals-foreground-subtle, #60656c);
     --_background-color: var(--color-neutrals-background-secondary);
     --_border-color: transparent;
   }

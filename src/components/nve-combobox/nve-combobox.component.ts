@@ -1233,7 +1233,9 @@ export default class NveCombobox extends LitElement implements FormValidationCom
               ? nothing
               : html`<nve-icon class="icon__arrow" name="keyboard_arrow_down" aria-hidden="true"></nve-icon>`}
             ${this.disabled ? html`<nve-icon name="lock" aria-hidden="true"></nve-icon>` : nothing}
-            ${this.readonly ? html`<nve-icon name="visibility" aria-hidden="true"></nve-icon>` : nothing}
+            ${this.readonly
+              ? html`<nve-icon class="icon__readonly" name="edit_off" aria-hidden="true"></nve-icon>`
+              : nothing}
             ${!!this.activeErrorMessage
               ? html`<nve-icon class="icon__error" name="error" aria-hidden="true"></nve-icon>`
               : nothing}
