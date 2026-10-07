@@ -68,6 +68,6 @@ export function getLabel(
   `;
 
   return useLegend
-    ? html`<legend class="field__legend">${content}</legend>`
-    : html`<label class="field__label" for="${id}">${content}</label>`;
+    ? html`<legend part="label" class="field__legend">${content}</legend>`
+    : html`<label part="label" class="field__label" for="${id}">${content}</label>`;
 }

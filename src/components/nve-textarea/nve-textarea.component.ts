@@ -21,6 +21,7 @@ let id = 0;
  * @event select - når brukeren markerer tekst i textarea
  *
  * @csspart field - wrapper rundt hele textarea-komponenten
+ * @csspart label - label elementet som viser ledeteksten for textarea
  * @csspart help-text - hjelpetekst som vises over textarea
  * @csspart textarea - wrapper rundt textarea-elementet og eventuelle ikoner
  * @csspart textarea__control - selve textarea-elementet
@@ -216,9 +217,11 @@ export default class NveTextarea extends LitElement implements FormValidationCom
         <!-- Ledetekst -->
         ${getLabel(labelId, this.label, this.required, this.requiredLabel, html`<slot name="label-toggletip"></slot>`)}
         <!-- Hjelpetekst -->
-        ${this.helpText
-          ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-          : nothing}
+        ${
+          this.helpText
+            ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
+            : nothing
+        }
         <div
           part="textarea"
           class=${classMap({
@@ -249,23 +252,27 @@ export default class NveTextarea extends LitElement implements FormValidationCom
             .value=${live(this.value)}
           ></textarea>
           <!-- Ikoner -->
-          ${statusIcon
-            ? html`<nve-icon class="textarea__control__icon" name=${statusIcon} aria-hidden="true"></nve-icon>`
-            : nothing}
+          ${
+            statusIcon
+              ? html`<nve-icon class="textarea__control__icon" name=${statusIcon} aria-hidden="true"></nve-icon>`
+              : nothing
+          }
         </div>
         <!-- Hint-tekst og feilmelding -->
-        ${!this.activeErrorMessage && this.hint
-          ? html`<p
-              part="hint-text"
-              class=${classMap({
-                'field__hint-text': true,
-                'field__hint-text--show': !!this.hint,
-              })}
-              id=${hintTextId}
-            >
-              ${this.hint}
-            </p>`
-          : nothing}
+        ${
+          !this.activeErrorMessage && this.hint
+            ? html`<p
+                part="hint-text"
+                class=${classMap({
+                  'field__hint-text': true,
+                  'field__hint-text--show': !!this.hint,
+                })}
+                id=${hintTextId}
+              >
+                ${this.hint}
+              </p>`
+            : nothing
+        }
 
         <p
           aria-live="assertive"
