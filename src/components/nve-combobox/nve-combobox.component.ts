@@ -1229,22 +1229,6 @@ export default class NveCombobox extends LitElement implements FormValidationCom
               />
             </div>
             <!-- Ikoner og knapper -->
-<<<<<<< HEAD
-            ${this.clearable && this.selectedValues.length && !this.readonly && !this.disabled
-              ? html`<button
-                  part="clear-button"
-                  tabindex="-1"
-                  @click=${(e: MouseEvent) => this.handleClear(e)}
-                  class="combobox__clear-button"
-                >
-                  <nve-icon name="cancel" aria-hidden="true"></nve-icon>
-                </button>`
-              : nothing}
-            ${this.disabled || this.readonly
-              ? nothing
-              : html`<nve-icon class="icon__arrow" name="keyboard_arrow_down" aria-hidden="true"></nve-icon>`}
-            ${this.disabled ? html`<nve-icon class="icon__size" name="lock"  aria-hidden="true"></nve-icon>` : nothing}
-=======
             ${
               this.clearable && this.selectedValues.length && !this.readonly && !this.disabled
                 ? html`<button
@@ -1262,8 +1246,8 @@ export default class NveCombobox extends LitElement implements FormValidationCom
                 ? nothing
                 : html`<nve-icon class="icon__arrow" name="keyboard_arrow_down" aria-hidden="true"></nve-icon>`
             }
-            ${this.disabled ? html`<nve-icon name="lock" aria-hidden="true"></nve-icon>` : nothing}
->>>>>>> b21c93bb6f9f4190255a4437419ffad92747020b
+            ${this.disabled ? html`<nve-icon class="icon__size" name="lock" aria-hidden="true"></nve-icon>` : nothing}
+
             ${this.readonly
               ? html`<nve-icon class="icon__size" name="edit_off" aria-hidden="true"></nve-icon>`
               : nothing}
