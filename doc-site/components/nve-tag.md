@@ -14,7 +14,7 @@ layout: component
 
 ### Med ekstra tekst
 
-Bruk attributten "extra-text" for å legge til ekstra tekst. Denne er slankere.
+Bruk `extra-text` for å legge til ekstra tekst. Denne er slankere.
 Du kan også bruket sporet "extra"
 
 <CodeExamplePreview>
@@ -31,29 +31,29 @@ Du kan også bruket sporet "extra"
 
 ### Størrelse
 
-Attributten "size" brukes for å sette størrelse på tag. Velg mellom small og medium (medium er default)
+Bruk `size` for å sette størrelsen. Velg mellom small og medium. Medium er standard.
 
 <CodeExamplePreview>
 
 ```html
-<nve-tag size="medium"> Se her! </nve-tag> <nve-tag size="small"> Se her! </nve-tag>
+<nve-tag> Se her! </nve-tag> <nve-tag size="small"> Se her! </nve-tag>
 ```
 
 </CodeExamplePreview>
 
 ### Ikon
 
-Sporet "prefix" kan brukes for å legge inn et ikon foran teksten
+Bruk sporet "prefix" for å legge inn et ikon foran teksten
 
 <CodeExamplePreview>
 
 ```html
-<nve-tag size="medium">
+<nve-tag>
   Se her!
   <nve-icon slot="prefix" library="Sharp" name="error" />
 </nve-tag>
 
-<nve-tag size="medium" extra-text="Ekstra tekst">
+<nve-tag extra-text="Ekstra tekst">
   Se her!
   <nve-icon slot="prefix" library="Sharp" name="error" />
 </nve-tag>
@@ -61,12 +61,12 @@ Sporet "prefix" kan brukes for å legge inn et ikon foran teksten
 
 </CodeExamplePreview>
 
-Du kan også bruke attributten "dot" for å legge inn en prikk istedenfor ikon
+Du kan også bruke `dot` for å legge inn en prikk i stedet for ikon
 
 <CodeExamplePreview>
 
 ```html
-<nve-tag size="medium" dot> Se her! </nve-tag>
+<nve-tag dot> Se her! </nve-tag>
 ```
 
 </CodeExamplePreview>
@@ -75,8 +75,8 @@ Du kan også bruke attributten "dot" for å legge inn en prikk istedenfor ikon
 
 Disse attributtene brukes for å sette farge på tag
 
-- Variant kan være neutral, info, success, warning, error; neutral er standard
-- Saturation kan være emphasized, subtle, default; default er standard
+- `variant` kan være neutral, info, success, warning, error; neutral er standard
+- `saturation` kan være emphasized, subtle, default; default er standard
 
 <CodeExamplePreview>
 
@@ -153,10 +153,10 @@ Disse attributtene brukes for å sette farge på tag
 
 ### Tag med lukk-knapp
 
-Attributten closeable brukes for å si at tag skal ha en "Lukk"-knapp
+Bruk `closeable` for å si at tag skal ha en "Lukk"-knapp
 
 - Ved klikk så sendes event "nve-close"
-- Send også med "close-aria-label" dersom aria-label ikke skal være "Lukk"
+- Send også med `close-aria-label` dersom aria-label ikke skal være "Lukk"
 
 <CodeExamplePreview>
 
