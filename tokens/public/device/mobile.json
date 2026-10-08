@@ -149,25 +149,13 @@
         "$type": "sizing",
         "$value": "{sizing.48x}"
       },
+      "small": {
+        "$type": "sizing",
+        "$value": "{sizing.348x}"
+      },
       "large": {
         "$type": "sizing",
         "$value": "{sizing.390x}"
-      }
-    },
-    "card": {
-      "link-card": {
-        "height": {
-          "x-large": {
-            "min-height": {
-              "$type": "sizing",
-              "$value": "{sizing.124x}"
-            },
-            "max-height": {
-              "$type": "sizing",
-              "$value": "{sizing.180x}"
-            }
-          }
-        }
       }
     },
     "icon": {

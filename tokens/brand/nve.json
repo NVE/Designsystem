@@ -1566,6 +1566,10 @@
       "$type": "sizing",
       "$value": "232px"
     },
+    "240x": {
+      "$type": "sizing",
+      "$value": "240px"
+    },
     "246x": {
       "$type": "sizing",
       "$value": "246px"
@@ -1589,6 +1593,14 @@
     "342x": {
       "$type": "sizing",
       "$value": "342px"
+    },
+    "348x": {
+      "$type": "sizing",
+      "$value": "348px"
+    },
+    "360x": {
+      "$type": "sizing",
+      "$value": "360px"
     },
     "366x": {
       "$type": "sizing",
@@ -1626,6 +1638,10 @@
       "$type": "sizing",
       "$value": "520px"
     },
+    "540x": {
+      "$type": "sizing",
+      "$value": "540px"
+    },
     "544x": {
       "$type": "sizing",
       "$value": "544px"
@@ -1641,6 +1657,10 @@
     "600x": {
       "$type": "sizing",
       "$value": "600px"
+    },
+    "612x": {
+      "$type": "sizing",
+      "$value": "612px"
     },
     "700x": {
       "$type": "sizing",
