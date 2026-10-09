@@ -1319,13 +1319,11 @@ export default class NveCombobox extends LitElement implements FormValidationCom
               </p>`
             : nothing
         }
-        <<<<<<< HEAD =======
         ${
           !this.activeErrorMessage && !this.hint
             ? html`<slot class="field__hint-text" name="hintText" id=${hintTextSlotId}></slot>`
             : nothing
         }
-        >>>>>>> 96c436c (feat(nve-input): hint og hjelp kan inneholde lenker na)
 
         <p
           aria-live="assertive"
