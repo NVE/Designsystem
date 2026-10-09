@@ -485,7 +485,6 @@ Du kan fjerne feil status ved å sette <span class="highlight">errorMessage</spa
 <span class="highlight">nve-input</span> er bygget på et native <span class="highlight">&lt;input&gt;</span> og bruker en tilknyttet <a href="#ledetekst-og-tooltip">ledetekst</a>. Når feltet får fokus vil skjermlesere lese opp ledeteksten, slik at brukeren forstår hva som skal fylles inn.
 
 I tillegg brukes aria-describedby for å knytte supplerende tekst til feltet. Når <span class="highlight">helpText</span>, <span class="highlight">hint</span> eller <span class="highlight">errorMessage</span> er satt vil skjermlesere normalt lese dem opp i forbindelse med fokus på feltet (ved bruk av <span class="highlight">aria-describedby</span>).
-Skriv om tekster i sporene da
 
 Hvis hjelpeteksten eller hintet inneholder en lenke, bør lenketeksten beskrive hva brukeren finner når lenken åpnes. Unngå generelle tekster som "Les mer". Skriv for eksempel "Les om hvilke opplysninger du trenger for å fylle ut saksnummeret". Da gir lenken mening også når den leses opp sammen med feltets ledetekst, eller navigeres til separat med skjermleser.
 

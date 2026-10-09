@@ -211,7 +211,7 @@ export default class NveSegmentGroup extends LitElement implements FormValidatio
             ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
             : html`<slot class="field__help-text" name="helpText" id=${helpTextSlotId}></slot>`
         }
-        <div class="segment-group">
+        <div part="segment-group" class="segment-group">
           <slot @slotchange=${this.handleSlotChange}></slot>
         </div>
         <!-- Hint-tekst og feilmelding -->
