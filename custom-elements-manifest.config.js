@@ -35,7 +35,7 @@ const cemInheritancePluginOptions = {
 };
 
 export default {
-  globs: ['src/components/**/*.component.ts'],
+  globs: ['src/components/**/*.component.ts', 'src/components/layouts/nve-layout-base.ts'],
   exclude: ['**/*.styles.ts', '**/*.test.ts'],
   dependencies: true,
   plugins: [
