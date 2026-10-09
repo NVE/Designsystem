@@ -72,6 +72,40 @@ describe('nve-radio-group', () => {
     expect(hintText?.textContent?.trim()).toBe('Hinttekst');
   });
 
+  it('renders content assigned to the helpText and hintText slots', async () => {
+    const el = await fixture<NveRadioGroup>(html`
+      <nve-radio-group label="Status">
+        <p slot="helpText">Se <a href="#">veiledningen</a></p>
+        <p slot="hintText">Velg status for tiltaket</p>
+        <nve-radio value="planned">Planlagt</nve-radio>
+      </nve-radio-group>
+    `);
+
+    const helpTextSlot = el.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="helpText"]');
+    const hintTextSlot = el.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="hintText"]');
+
+    expect(helpTextSlot?.assignedElements()[0]?.textContent?.trim()).toBe('Se veiledningen');
+    expect(hintTextSlot?.assignedElements()[0]?.textContent?.trim()).toBe('Velg status for tiltaket');
+  });
+
+  it('renders helpText and hint attributes instead of their slots when both are provided', async () => {
+    const el = await fixture<NveRadioGroup>(html`
+      <nve-radio-group label="Status" helpText="Hjelpetekst fra attributtet" hint="Hint fra attributtet">
+        <p slot="helpText">Hjelpetekst fra sporet</p>
+        <p slot="hintText">Hinttekst fra sporet</p>
+        <nve-radio value="planned">Planlagt</nve-radio>
+      </nve-radio-group>
+    `);
+
+    const renderedHelpText = el.shadowRoot?.querySelector('[part="help-text"]');
+    const renderedHintText = el.shadowRoot?.querySelector('[part="hint-text"]');
+
+    expect(renderedHelpText?.textContent?.trim()).toBe('Hjelpetekst fra attributtet');
+    expect(renderedHintText?.textContent?.trim()).toBe('Hint fra attributtet');
+    expect(el.shadowRoot?.querySelector('slot[name="helpText"]')).toBeNull();
+    expect(el.shadowRoot?.querySelector('slot[name="hintText"]')).toBeNull();
+  });
+
   it('propagates disabled to child radios that are not already disabled', async () => {
     const el = await fixture<NveRadioGroup>(html`
       <nve-radio-group label="Status" disabled>

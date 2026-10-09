@@ -43,6 +43,38 @@ describe('nve-textarea', () => {
     expect(hintText?.textContent?.trim()).toBe('Hinttekst');
   });
 
+  it('renders content assigned to the helpText and hintText slots', async () => {
+    const el = await fixture<NveTextarea>(html`
+      <nve-textarea label="Beskriv saken">
+        <p slot="helpText">Se <a href="#">veiledningen</a></p>
+        <p slot="hintText">Skriv inn en kort beskrivelse</p>
+      </nve-textarea>
+    `);
+
+    const helpTextSlot = el.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="helpText"]');
+    const hintTextSlot = el.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="hintText"]');
+
+    expect(helpTextSlot?.assignedElements()[0]?.textContent?.trim()).toBe('Se veiledningen');
+    expect(hintTextSlot?.assignedElements()[0]?.textContent?.trim()).toBe('Skriv inn en kort beskrivelse');
+  });
+
+  it('renders helpText and hint attributes instead of their slots when both are provided', async () => {
+    const el = await fixture<NveTextarea>(html`
+      <nve-textarea label="Beskriv saken" helpText="Hjelpetekst fra attributtet" hint="Hint fra attributtet">
+        <p slot="helpText">Hjelpetekst fra sporet</p>
+        <p slot="hintText">Hinttekst fra sporet</p>
+      </nve-textarea>
+    `);
+
+    const renderedHelpText = el.shadowRoot?.querySelector('[part="help-text"]');
+    const renderedHintText = el.shadowRoot?.querySelector('[part="hint-text"]');
+
+    expect(renderedHelpText?.textContent?.trim()).toBe('Hjelpetekst fra attributtet');
+    expect(renderedHintText?.textContent?.trim()).toBe('Hint fra attributtet');
+    expect(el.shadowRoot?.querySelector('slot[name="helpText"]')).toBeNull();
+    expect(el.shadowRoot?.querySelector('slot[name="hintText"]')).toBeNull();
+  });
+
   it('applies error state class, aria-invalid, and shows errorMessage in hint text', async () => {
     const el = await fixture<NveTextarea>(html`
       <nve-textarea label="Beskriv saken" hint="Hinttekst" errorMessage="Dette er en feil"></nve-textarea>

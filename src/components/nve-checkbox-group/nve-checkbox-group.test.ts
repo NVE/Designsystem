@@ -40,6 +40,40 @@ describe('nve-checkbox-group', () => {
     expect(text).toBe('Help text');
   });
 
+  it('renders content assigned to the helpText and hintText slots', async () => {
+    const el = await fixture<NveCheckboxGroup>(html`
+      <nve-checkbox-group label="Varsler">
+        <p slot="helpText">Se <a href="#">veiledningen</a></p>
+        <p slot="hintText">Velg varslene du ønsker</p>
+        <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+      </nve-checkbox-group>
+    `);
+
+    const helpTextSlot = el.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="helpText"]');
+    const hintTextSlot = el.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="hintText"]');
+
+    expect(helpTextSlot?.assignedElements()[0]?.textContent?.trim()).toBe('Se veiledningen');
+    expect(hintTextSlot?.assignedElements()[0]?.textContent?.trim()).toBe('Velg varslene du ønsker');
+  });
+
+  it('renders helpText and hint attributes instead of their slots when both are provided', async () => {
+    const el = await fixture<NveCheckboxGroup>(html`
+      <nve-checkbox-group label="Varsler" helpText="Hjelpetekst fra attributtet" hint="Hint fra attributtet">
+        <p slot="helpText">Hjelpetekst fra sporet</p>
+        <p slot="hintText">Hinttekst fra sporet</p>
+        <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+      </nve-checkbox-group>
+    `);
+
+    const renderedHelpText = el.shadowRoot?.querySelector('[part="help-text"]');
+    const renderedHintText = el.shadowRoot?.querySelector('[part="hint-text"]');
+
+    expect(renderedHelpText?.textContent?.trim()).toBe('Hjelpetekst fra attributtet');
+    expect(renderedHintText?.textContent?.trim()).toBe('Hint fra attributtet');
+    expect(el.shadowRoot?.querySelector('slot[name="helpText"]')).toBeNull();
+    expect(el.shadowRoot?.querySelector('slot[name="hintText"]')).toBeNull();
+  });
+
   it('horizontal layout', async () => {
     const el = await fixture<NveCheckboxGroup>(
       html`<nve-checkbox-group orientation="horizontal"></nve-checkbox-group>`

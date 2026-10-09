@@ -17,6 +17,9 @@ let id = 0;
  * fritekstfelt som beskrivelser, kommentarer, begrunnelser eller meldinger.
  * Textarea kan også endre størrelse slik at brukeren får bedre plass til lengre innhold.
  *
+ * @slot helpText - viser hjelpetekst over inputfeltet
+ * @slot hintText - viser hint-tekst under inputfeltet
+ *
  * @event change - når verdien i textarea endres og elementet mister fokus
  * @event select - når brukeren markerer tekst i textarea
  *
@@ -186,12 +189,14 @@ export default class NveTextarea extends LitElement implements FormValidationCom
   render() {
     const labelId = `${this.id || this.textareaId}`;
     const helpTextId = `${this.id || this.textareaId}-helptext`;
+    const helpTextSlotId = `${helpTextId}-slot`;
     const hintTextId = `${this.id || this.textareaId}-hinttext`;
+    const hintTextSlotId = `${hintTextId}-slot`;
     const errorTextId = `${this.id || this.textareaId}-errortext`;
     const describedBy = [
-      this.helpText ? helpTextId : '',
+      this.helpText ? helpTextId : helpTextSlotId,
       this.activeErrorMessage ? errorTextId : '',
-      this.hint ? hintTextId : '',
+      !this.activeErrorMessage ? (this.hint ? hintTextId : hintTextSlotId) : '',
     ]
       .filter(Boolean)
       .join(' ');
@@ -220,7 +225,7 @@ export default class NveTextarea extends LitElement implements FormValidationCom
         ${
           this.helpText
             ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-            : nothing
+            : html`<slot class="field__help-text" name="helpText" id=${helpTextSlotId}></slot>`
         }
         <div
           part="textarea"
@@ -271,6 +276,11 @@ export default class NveTextarea extends LitElement implements FormValidationCom
               >
                 ${this.hint}
               </p>`
+            : nothing
+        }
+        ${
+          !this.activeErrorMessage && !this.hint
+            ? html`<slot class="field__hint-text" name="hintText" id=${hintTextSlotId}></slot>`
             : nothing
         }
 

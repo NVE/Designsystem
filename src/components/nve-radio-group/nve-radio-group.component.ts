@@ -16,6 +16,9 @@ let id = 0; // for å generere unike id-er. Brukes for å koble label og hint te
 /**
  * En gruppe av nve-radio-knapper. Kun én radioknapp i en gitt gruppe kan være valgt om gangen.
  *
+ * @slot helpText - viser hjelpetekst over inputfeltet
+ * @slot hintText - viser hint-tekst under inputfeltet
+ *
  * @event change når en radio-knapp i gruppen blir valgt. Inneholder den valgte verdien.
  *
  * @csspart base Hovedcontaineren for radio-gruppen, som er en fieldset.
@@ -164,13 +167,15 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
 
   render() {
     const helpTextId = `${this.radioGroupName}-helptext`;
+    const helpTextSlotId = `${helpTextId}-slot`;
     const hintTextId = `${this.radioGroupName}-hinttext`;
+    const hintTextSlotId = `${hintTextId}-slot`;
     const errorTextId = `${this.radioGroupName}-errortext`;
 
     const describedBy = [
-      this.helpText ? helpTextId : null,
+      this.helpText ? helpTextId : helpTextSlotId,
       this.activeErrorMessage ? errorTextId : null,
-      this.hint ? hintTextId : null,
+      !this.activeErrorMessage ? (this.hint ? hintTextId : hintTextSlotId) : null,
     ]
       .filter(Boolean)
       .join(' ');
@@ -204,7 +209,7 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
         ${
           this.helpText
             ? html`<p part="help-text" class="field__help-text" id=${helpTextId}>${this.helpText}</p>`
-            : nothing
+            : html`<slot class="field__help-text" name="helpText" id=${helpTextSlotId}></slot>`
         }
         <div
           part="radio-group"
@@ -228,6 +233,11 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
               >
                 ${this.hint}
               </p>`
+            : nothing
+        }
+        ${
+          !this.activeErrorMessage && !this.hint
+            ? html`<slot class="field__hint-text" name="hintText" id=${hintTextSlotId}></slot>`
             : nothing
         }
 
