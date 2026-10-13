@@ -36,6 +36,18 @@ Tittel vises alltid øverst i kortet, og under ikon dersom ikon er lagt inn med 
 
 </CodeExamplePreview>
 
+### Lang tittel
+
+Kortet håndterer veldig lange ord i tittelen ved å bryte dem slik at innholdet ikke flyter ut av kortet.
+
+<CodeExamplePreview>
+
+```html
+<nve-navigation-card href="#" label="Supercalifragilisticexpialidocioussuperlangtordsomikkeharmellomrom" />
+```
+
+</CodeExamplePreview>
+
 ### Med tilleggstekst
 
 Du kan legge til en ekstra tekst under hovedlenkens overskrift ved å bruke `additionalText`-egenskapen. Både overskriften og den tilhørende teksten blir lest opp av skjermlesere, så sørg for at teksten er kortfattet og lett å forstå.
@@ -140,10 +152,9 @@ Man kan velge mellom 3 klikk-handlinger ved bruk av `clickAction`-egenskapen. Ha
 
 ## Bruk med klient-side routing i SPA-applikasjoner
 
-Når man benytter klientside-routing, for eksempel med `routerLink` (Vue) eller `Link` (React), genereres et eget `<a>`-element av rammeverket.  
-I disse tilfellene blir `nve-navigation-card` pakket inn i en `<a>`. For å unngå ugyldig HTML-struktur med `<a>`-elementer inni hverandre, sjekker `nve-navigation-card` derfor om dets direkte forelder er et `<a>`. Hvis dette er tilfelle, rendres kortet som et `<div>` i stedet for et `<a>`.
+Når man benytter klientside-routing, for eksempel med `routerLink` (Vue) eller `Link` (React), genereres et eget `<a>`-element av rammeverket. I disse tilfellene blir `nve-navigation-card` pakket inn i en `<a>`. For å unngå ugyldig HTML-struktur med `<a>`-elementer inni hverandre, sjekker `nve-navigation-card` derfor om dets direkte forelder er et `<a>`. Hvis dette er tilfelle, rendres kortet som et `<div>` i stedet for et `<a>`.
 
-På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-card`, samtidig som man unngår semantiske og tekniske problemer med nestede lenker.
+På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-card`, samtidig som man unngår semantiske og tekniske problemer med nestede lenker. Når kortet pakkes inn i en ytre lenke, håndteres fokusmarkeringen og border-radius av `global.css`.
 
 **Eksempel i Vue:**
 
@@ -185,4 +196,4 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 - **Tittel (`label`-feltet) rendres som `<h2>`** for å sikre god semantikk og tilgjengelighet. Dette gjør det enklere for brukere med skjermleser å navigere mellom hovedseksjoner på siden. Hvis du har flere navigation-cards på samme side, vil de automatisk utgjøre en oversiktlig seksjonsstruktur.
 - Komponentet rendres som `<a>` hvis det ikke ligger inni en lenke, og som `<div>` hvis det pakkes inn i en `<a>` (for å unngå nestede lenker).
 - Ekstratekst trunkeres automatisk etter 3 linjer for å sikre at kortet ikke blir for høyt og at innholdet er lett å skanne.
-- Understrek (text-decoration) på wrapper-`<a>` fjernes av designsystemet ved hjelp av en regel i `global.css` (`a:has(nve-navigation-card) { text-decoration: unset; }`). Dette sikrer at det ikke vises uønsket understrek på lenker som wrapper `nve-navigation-card`, siden webkomponenter bruker Shadow DOM og ikke kan påvirke wrapperens styling direkte.
+- Understrek (text-decoration) på wrapper-`<a>` fjernes av designsystemet ved hjelp av en regel i `global.css` (`a:has(nve-navigation-card) { text-decoration: unset; }`). Fokusringen og border-radius på wrapperen håndteres også globalt, slik at lenker som wrapper `nve-navigation-card` og `nve-link-card` får et konsistent uttrykk uten egen klasse.
