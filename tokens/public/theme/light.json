@@ -544,7 +544,7 @@
         "emphasized": {
           "neutral": {
             "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.600}"
+            "$value": "{color-shades.functional.neutralgrey.800}"
           },
           "info": {
             "$type": "color",

@@ -148,7 +148,7 @@
         },
         "max-width-medium": {
           "$type": "sizing",
-          "$value": "{sizing.1000x}"
+          "$value": "{sizing.1200x}"
         },
         "max-width-small": {
           "$type": "sizing",

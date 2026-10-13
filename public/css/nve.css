@@ -388,7 +388,7 @@
   --color-feedback-border-subtle-error: var(--color-shades-functional-red-200);
   --color-feedback-border-subtle-warning: var(--color-shades-functional-yellow-700);
   --color-feedback-border-subtle-success: var(--color-shades-functional-green-600);
-  --color-feedback-border-emphasized-neutral: var(--color-shades-functional-neutralgrey-600);
+  --color-feedback-border-emphasized-neutral: var(--color-shades-functional-neutralgrey-800);
   --color-feedback-border-emphasized-info: var(--color-shades-functional-blue-800);
   --color-feedback-border-emphasized-error: var(--color-shades-functional-red-800);
   --color-feedback-border-emphasized-warning: var(--color-shades-functional-yellow-900);
@@ -678,7 +678,7 @@
   --sizing-device-page-max-width: var(--sizing-1599x);
   --sizing-device-content-max-width-x-large: var(--sizing-2560x);
   --sizing-device-content-max-width-large: var(--sizing-1800x);
-  --sizing-device-content-max-width-medium: var(--sizing-1000x);
+  --sizing-device-content-max-width-medium: var(--sizing-1200x);
   --sizing-device-content-max-width-small: var(--sizing-572x);
   --sizing-device-content-max-width-x-small: var(--sizing-232x);
   --sizing-brand-logo-medium: var(--sizing-84x);

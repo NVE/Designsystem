@@ -108,7 +108,7 @@
         },
         "faint": {
           "$type": "color",
-          "$value": "{color-shades.functional.neutralgrey.300}"
+          "$value": "{color-shades.functional.neutralgrey.600}"
         },
         "inverted": {
           "$type": "color",
@@ -544,7 +544,7 @@
         "emphasized": {
           "neutral": {
             "$type": "color",
-            "$value": "{color-shades.functional.neutralgrey.600}"
+            "$value": "{color-shades.functional.neutralgrey.200}"
           },
           "info": {
             "$type": "color",

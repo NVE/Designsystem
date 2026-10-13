@@ -296,7 +296,7 @@
   --color-neutrals-foreground-primary: var(--color-shades-grey-000);
   --color-neutrals-foreground-secondary: var(--color-shades-functional-neutralgrey-200);
   --color-neutrals-foreground-subtle: var(--color-shades-functional-neutralgrey-400);
-  --color-neutrals-foreground-faint: var(--color-shades-functional-neutralgrey-300);
+  --color-neutrals-foreground-faint: var(--color-shades-functional-neutralgrey-600);
   --color-neutrals-foreground-inverted: var(--color-shades-functional-neutralgrey-999);
   --color-neutrals-foreground-white: var(--color-shades-functional-neutralgrey-000); /** Fargen forblir hvit i darkmode */
   --color-neutrals-border-default: var(--color-shades-grey-300);
@@ -388,7 +388,7 @@
   --color-feedback-border-subtle-error: var(--color-shades-functional-red-500);
   --color-feedback-border-subtle-warning: var(--color-shades-functional-yellow-300);
   --color-feedback-border-subtle-success: var(--color-shades-functional-green-800);
-  --color-feedback-border-emphasized-neutral: var(--color-shades-functional-neutralgrey-600);
+  --color-feedback-border-emphasized-neutral: var(--color-shades-functional-neutralgrey-200);
   --color-feedback-border-emphasized-info: var(--color-shades-functional-blue-700);
   --color-feedback-border-emphasized-error: var(--color-shades-functional-red-400);
   --color-feedback-border-emphasized-warning: var(--color-shades-functional-yellow-700);
