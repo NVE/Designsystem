@@ -152,10 +152,9 @@ Man kan velge mellom 3 klikk-handlinger ved bruk av `clickAction`-egenskapen. Ha
 
 ## Bruk med klient-side routing i SPA-applikasjoner
 
-Når man benytter klientside-routing, for eksempel med `routerLink` (Vue) eller `Link` (React), genereres et eget `<a>`-element av rammeverket.  
-I disse tilfellene blir `nve-navigation-card` pakket inn i en `<a>`. For å unngå ugyldig HTML-struktur med `<a>`-elementer inni hverandre, sjekker `nve-navigation-card` derfor om dets direkte forelder er et `<a>`. Hvis dette er tilfelle, rendres kortet som et `<div>` i stedet for et `<a>`.
+Når man benytter klientside-routing, for eksempel med `routerLink` (Vue) eller `Link` (React), genereres et eget `<a>`-element av rammeverket. I disse tilfellene blir `nve-navigation-card` pakket inn i en `<a>`. For å unngå ugyldig HTML-struktur med `<a>`-elementer inni hverandre, sjekker `nve-navigation-card` derfor om dets direkte forelder er et `<a>`. Hvis dette er tilfelle, rendres kortet som et `<div>` i stedet for et `<a>`.
 
-På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-card`, samtidig som man unngår semantiske og tekniske problemer med nestede lenker.
+På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-card`, samtidig som man unngår semantiske og tekniske problemer med nestede lenker. Når kortet pakkes inn i en ytre lenke, håndteres fokusmarkeringen og border-radius av `global.css`.
 
 **Eksempel i Vue:**
 
@@ -181,30 +180,6 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 </Link>
 ```
 
-### Fokusmarkering ved wrapping i egen lenke
-
-Når `nve-navigation-card` pakkes inn i en lenke fra rammeverket (`RouterLink`, `Link` osv.), rendres kortet som et `<div>` og det er den ytre `<a>`-en som mottar tastaturfokus. Kortet kan da ikke tegne sin egen fokusmarkering, så du må legge den på den wrappende lenken selv.
-
-Sett en egen klasse på den wrappende lenken og bruk samme verdier som komponenten for et konsistent uttrykk:
-
-```jsx
-<Link to="/components/Komponentoversikt" className="navigation-card-wrapper">
-  <nve-navigation-card href="#" label="Om hydrologisk avdeling" />
-</Link>
-```
-
-```css
-.navigation-card-wrapper {
-  border-radius: var(--border-radius-small);
-  transition: box-shadow 0.3s ease;
-}
-
-.navigation-card-wrapper:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 var(--border-width-strong) var(--color-interactive-border-accessibility-focus);
-}
-```
-
 ## Retningslinjer
 
 - **Bruk `nve-navigation-card`** for hovednavigasjon på oversikts- eller inngangssider der brukeren skal velge mellom flere hovedtemaer eller seksjoner.
@@ -221,4 +196,4 @@ Sett en egen klasse på den wrappende lenken og bruk samme verdier som komponent
 - **Tittel (`label`-feltet) rendres som `<h2>`** for å sikre god semantikk og tilgjengelighet. Dette gjør det enklere for brukere med skjermleser å navigere mellom hovedseksjoner på siden. Hvis du har flere navigation-cards på samme side, vil de automatisk utgjøre en oversiktlig seksjonsstruktur.
 - Komponentet rendres som `<a>` hvis det ikke ligger inni en lenke, og som `<div>` hvis det pakkes inn i en `<a>` (for å unngå nestede lenker).
 - Ekstratekst trunkeres automatisk etter 3 linjer for å sikre at kortet ikke blir for høyt og at innholdet er lett å skanne.
-- Understrek (text-decoration) på wrapper-`<a>` fjernes av designsystemet ved hjelp av en regel i `global.css` (`a:has(nve-navigation-card) { text-decoration: unset; }`). Dette sikrer at det ikke vises uønsket understrek på lenker som wrapper `nve-navigation-card`, siden webkomponenter bruker Shadow DOM og ikke kan påvirke wrapperens styling direkte.
+- Understrek (text-decoration) på wrapper-`<a>` fjernes av designsystemet ved hjelp av en regel i `global.css` (`a:has(nve-navigation-card) { text-decoration: unset; }`). Fokusringen og border-radius på wrapperen håndteres også globalt, slik at lenker som wrapper `nve-navigation-card` og `nve-link-card` får et konsistent uttrykk uten egen klasse.

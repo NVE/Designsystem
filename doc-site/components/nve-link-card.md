@@ -186,7 +186,7 @@ Du kan legge til et ikon helt til venstre i kortet ved å bruke slot med `slot="
 
 Når man benytter klientside-routing, for eksempel med `routerLink`, genereres et eget `<a>`-element av rammeverket. I disse tilfellene blir `nve-link-card` pakket inn i en `<a>`. For å unngå ugyldig HTML-struktur med `<a>`-elementer inni hverandre, sjekker `nve-link-card` derfor om dets direkte forelder er et `<a>`. Hvis dette er tilfelle, rendres kortet som et `<div>` i stedet for et `<a>`.
 
-På denne måten beholdes mest funksjonalitet og styling fra `nve-link-card`, samtidig som man unngår semantiske og tekniske problemer med nestede lenker.
+På denne måten beholdes mest funksjonalitet og styling fra `nve-link-card`, samtidig som man unngår semantiske og tekniske problemer med nestede lenker. Når kortet pakkes inn i en ytre lenke, håndteres fokusmarkeringen og border-radius av `global.css`.
 
 Bruk av nve-link-card i Vue:
 
@@ -211,30 +211,6 @@ Bruk av nve-link-card i React:
     clickAction="internal"
   >
 </Link>
-```
-
-### Fokusmarkering ved wrapping i egen lenke
-
-Når `nve-link-card` pakkes inn i en lenke fra rammeverket (`RouterLink`, `Link` osv.), rendres kortet som et `<div>` og det er den ytre `<a>`-en som mottar tastaturfokus. Kortet kan da ikke tegne sin egen fokusmarkering, så du må legge den på den wrappende lenken selv.
-
-Sett en egen klasse på den wrappende lenken og bruk samme verdier som komponenten for et konsistent uttrykk:
-
-```jsx
-<Link to="/components/Komponentoversikt" className="link-card-wrapper">
-  <nve-link-card label="Gå til komponentoversikt" variant="contrast" clickAction="internal"></nve-link-card>
-</Link>
-```
-
-```css
-.link-card-wrapper {
-  border-radius: var(--border-radius-small);
-  transition: box-shadow 0.3s ease;
-}
-
-.link-card-wrapper:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 var(--border-width-strong) var(--color-interactive-border-accessibility-focus);
-}
 ```
 
 ## Tilgjengelighet
