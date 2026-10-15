@@ -147,9 +147,13 @@
     "image": {
       "x-small": {
         "$type": "sizing",
-        "$value": "{sizing.48x}"
+        "$value": "{sizing.64x}"
       },
       "small": {
+        "$type": "sizing",
+        "$value": "{sizing.120x}"
+      },
+      "medium": {
         "$type": "sizing",
         "$value": "{sizing.540x}"
       },

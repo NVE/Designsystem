@@ -151,6 +151,10 @@
       },
       "small": {
         "$type": "sizing",
+        "$value": "{sizing.144x}"
+      },
+      "medium": {
+        "$type": "sizing",
         "$value": "{sizing.540x}"
       },
       "large": {
