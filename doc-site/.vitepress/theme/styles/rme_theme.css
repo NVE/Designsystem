@@ -514,6 +514,7 @@
   --sizing-124x: 124px;
   --sizing-132x: 132px;
   --sizing-136x: 136px;
+  --sizing-144x: 144px;
   --sizing-160x: 160px;
   --sizing-180x: 180px;
   --sizing-200x: 200px;
@@ -683,7 +684,8 @@
   --sizing-brand-logo-medium: var(--sizing-84x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
   --sizing-image-x-small: var(--sizing-84x);
-  --sizing-image-small: var(--sizing-540x);
+  --sizing-image-small: var(--sizing-144x);
+  --sizing-image-medium: var(--sizing-540x);
   --sizing-image-large: var(--sizing-750x);
   --sizing-icon-3x-large: var(--sizing-70x);
   --sizing-icon-2x-large: var(--sizing-56x);
@@ -1273,6 +1275,7 @@
   --sizing-124x: 124px;
   --sizing-132x: 132px;
   --sizing-136x: 136px;
+  --sizing-144x: 144px;
   --sizing-160x: 160px;
   --sizing-180x: 180px;
   --sizing-200x: 200px;
@@ -1435,7 +1438,8 @@
   --sizing-brand-logo-medium: var(--sizing-88x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
   --sizing-image-x-small: var(--sizing-84x);
-  --sizing-image-small: var(--sizing-540x);
+  --sizing-image-small: var(--sizing-144x);
+  --sizing-image-medium: var(--sizing-540x);
   --sizing-image-large: var(--sizing-1024x);
   --sizing-icon-3x-large: var(--sizing-70x);
   --sizing-icon-2x-large: var(--sizing-56x);
@@ -1498,6 +1502,7 @@
   --sizing-124x: 124px;
   --sizing-132x: 132px;
   --sizing-136x: 136px;
+  --sizing-144x: 144px;
   --sizing-160x: 160px;
   --sizing-180x: 180px;
   --sizing-200x: 200px;
@@ -1659,8 +1664,9 @@
   --sizing-device-content-max-width-x-small: var(--sizing-216x);
   --sizing-brand-logo-medium: var(--sizing-80x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
-  --sizing-image-x-small: var(--sizing-48x);
-  --sizing-image-small: var(--sizing-540x);
+  --sizing-image-x-small: var(--sizing-64x);
+  --sizing-image-small: var(--sizing-120x);
+  --sizing-image-medium: var(--sizing-540x);
   --sizing-image-large: var(--sizing-544x);
   --sizing-icon-3x-large: var(--sizing-56x);
   --sizing-icon-2x-large: var(--sizing-48x);
@@ -1723,6 +1729,7 @@
   --sizing-124x: 124px;
   --sizing-132x: 132px;
   --sizing-136x: 136px;
+  --sizing-144x: 144px;
   --sizing-160x: 160px;
   --sizing-180x: 180px;
   --sizing-200x: 200px;
@@ -1884,8 +1891,9 @@
   --sizing-device-content-max-width-x-small: var(--sizing-496x);
   --sizing-brand-logo-medium: var(--sizing-72x);
   --sizing-brand-illustration-medium: var(--sizing-40x);
-  --sizing-image-x-small: var(--sizing-48x);
-  --sizing-image-small: var(--sizing-348x);
+  --sizing-image-x-small: var(--sizing-56x);
+  --sizing-image-small: var(--sizing-112x);
+  --sizing-image-medium: var(--sizing-348x);
   --sizing-image-large: var(--sizing-390x);
   --sizing-icon-3x-large: var(--sizing-48x);
   --sizing-icon-2x-large: var(--sizing-40x);
@@ -1948,6 +1956,7 @@
   --sizing-124x: 124px;
   --sizing-132x: 132px;
   --sizing-136x: 136px;
+  --sizing-144x: 144px;
   --sizing-160x: 160px;
   --sizing-180x: 180px;
   --sizing-200x: 200px;
@@ -2109,8 +2118,9 @@
   --sizing-device-content-max-width-x-small: var(--sizing-496x);
   --sizing-brand-logo-medium: var(--sizing-64x);
   --sizing-brand-illustration-medium: var(--sizing-24x);
-  --sizing-image-x-small: var(--sizing-84x);
-  --sizing-image-small: var(--sizing-348x);
+  --sizing-image-x-small: var(--sizing-48x);
+  --sizing-image-small: var(--sizing-108x);
+  --sizing-image-medium: var(--sizing-348x);
   --sizing-image-large: var(--sizing-320x);
   --sizing-icon-3x-large: var(--sizing-48x);
   --sizing-icon-2x-large: var(--sizing-40x);
