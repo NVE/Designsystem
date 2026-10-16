@@ -12,6 +12,18 @@ Layout-komponentene ligger et nivå under de andre komponentene. For å bruke di
 import 'nve-designsystem/components/layouts/nve-cluster/nve-cluster.component.js';
 ```
 
+## Native element
+
+Bruk `as` for å velge det native HTML-elementet som omslutter innholdet.
+
+```html
+<nve-cluster as="nav" aria-label="Hovedmeny"> ... </nve-cluster>
+```
+
+`as` endrer elementet inne i komponentens shadow DOM. Selve custom-elementet (nve-cluster) forblir i sidens DOM. `role-` og `aria-`-attributter på layout-komponenten videresendes til det valgte native elementet. Standard er `div`.
+
+Gyldige verdier for `as` er `div`, `section`, `article`, `aside`, `nav`, `main`, `header`, `footer`, `form` og `ul`.
+
 ## Mellomrom
 
 `gap` setter avstanden mellom barn-elementene ved bruk av et spacing-token. Hvis `gap` ikke er satt, brukes `medium` som standard.
@@ -166,14 +178,15 @@ Til sammenligning, samme knapper i en vanlig `<div>` uten `nve-cluster`. Det er 
 
 ## Egenskaper
 
-| Egenskap         | Type            | Standard     | Beskrivelse                                                                               |
-| ---------------- | --------------- | ------------ | ----------------------------------------------------------------------------------------- |
-| `gap`            | `SpacingToken`  | `medium`     | Tokenbasert mellomrom mellom barn-elementer.                                              |
-| `justify`        | `LayoutJustify` | `flex-start` | Horisontal fordeling av barn-elementer. Gyldige verdier er CSS `justify-content`-verdier. |
-| `align`          | `ClusterAlign`  | `center`     | Vertikal justering av barn-elementer. Gyldige verdier er CSS `align-items`-verdier.       |
-| `padding`        | `SpacingToken`  | —            | Tokenbasert padding på alle sider.                                                        |
-| `padding-block`  | `SpacingToken`  | —            | Overstyrer `padding` i blokk-retning (topp/bunn).                                         |
-| `padding-inline` | `SpacingToken`  | —            | Overstyrer `padding` i inline-retning (venstre/høyre).                                    |
-| `margin`         | `SpacingToken`  | —            | Tokenbasert margin på alle sider.                                                         |
-| `margin-block`   | `SpacingToken`  | —            | Overstyrer `margin` i blokk-retning (topp/bunn).                                          |
-| `margin-inline`  | `SpacingToken`  | —            | Overstyrer `margin` i inline-retning (venstre/høyre).                                     |
+| Egenskap         | Type               | Standard     | Beskrivelse                                                                               |
+| ---------------- | ------------------ | ------------ | ----------------------------------------------------------------------------------------- |
+| `as`             | `LayoutElementTag` | `div`        | Native HTML-element som omslutter innholdet, for eksempel `nav`.                          |
+| `gap`            | `SpacingToken`     | `medium`     | Tokenbasert mellomrom mellom barn-elementer.                                              |
+| `justify`        | `LayoutJustify`    | `flex-start` | Horisontal fordeling av barn-elementer. Gyldige verdier er CSS `justify-content`-verdier. |
+| `align`          | `ClusterAlign`     | `center`     | Vertikal justering av barn-elementer. Gyldige verdier er CSS `align-items`-verdier.       |
+| `padding`        | `SpacingToken`     | —            | Tokenbasert padding på alle sider.                                                        |
+| `padding-block`  | `SpacingToken`     | —            | Overstyrer `padding` i blokk-retning (topp/bunn).                                         |
+| `padding-inline` | `SpacingToken`     | —            | Overstyrer `padding` i inline-retning (venstre/høyre).                                    |
+| `margin`         | `SpacingToken`     | —            | Tokenbasert margin på alle sider.                                                         |
+| `margin-block`   | `SpacingToken`     | —            | Overstyrer `margin` i blokk-retning (topp/bunn).                                          |
+| `margin-inline`  | `SpacingToken`     | —            | Overstyrer `margin` i inline-retning (venstre/høyre).                                     |

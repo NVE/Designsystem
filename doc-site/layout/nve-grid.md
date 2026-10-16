@@ -12,6 +12,18 @@ Layout-komponentene ligger et nivå under de andre komponentene. For å bruke di
 import 'nve-designsystem/components/layouts/nve-grid/nve-grid.component.js';
 ```
 
+## Native element
+
+Bruk `as` for å velge det native HTML-elementet som omslutter innholdet.
+
+```html
+<nve-grid as="section" aria-label="Temaer"> ... </nve-grid>
+```
+
+`as` endrer elementet inne i komponentens shadow DOM. Selve custom-elementet (nve-grid) forblir i sidens DOM. `role-` og `aria-`-attributter på layout-komponenten videresendes til det valgte native elementet. Standard er `div`.
+
+Gyldige verdier for `as` er `div`, `section`, `article`, `aside`, `nav`, `main`, `header`, `footer`, `form` og `ul`.
+
 ## Minste kolonnebredde
 
 `min` bestemmer hvor smal en kolonne kan bli før rutenettet bryter til ny linje. Standard er `250px`.
@@ -125,13 +137,14 @@ Et responsivt rutenett med navigasjonskort som tilpasser antall kolonner etter t
 
 ## Egenskaper
 
-| Egenskap         | Type           | Standard | Beskrivelse                                                                             |
-| ---------------- | -------------- | -------- | --------------------------------------------------------------------------------------- |
-| `min`            | `string`       | `250px`  | Minste kolonnebredde før rutenettet bryter til ny linje (f.eks. `250px` eller `16rem`). |
-| `gap`            | `SpacingToken` | `medium` | Tokenbasert mellomrom mellom kolonner og rader.                                         |
-| `padding`        | `SpacingToken` | —        | Tokenbasert padding på alle sider.                                                      |
-| `padding-block`  | `SpacingToken` | —        | Overstyrer `padding` i blokk-retning (topp/bunn).                                       |
-| `padding-inline` | `SpacingToken` | —        | Overstyrer `padding` i inline-retning (venstre/høyre).                                  |
-| `margin`         | `SpacingToken` | —        | Tokenbasert margin på alle sider.                                                       |
-| `margin-block`   | `SpacingToken` | —        | Overstyrer `margin` i blokk-retning (topp/bunn).                                        |
-| `margin-inline`  | `SpacingToken` | —        | Overstyrer `margin` i inline-retning (venstre/høyre).                                   |
+| Egenskap         | Type               | Standard | Beskrivelse                                                                             |
+| ---------------- | ------------------ | -------- | --------------------------------------------------------------------------------------- |
+| `as`             | `LayoutElementTag` | `div`    | Native HTML-element som omslutter innholdet, for eksempel `section`.                    |
+| `min`            | `string`           | `250px`  | Minste kolonnebredde før rutenettet bryter til ny linje (f.eks. `250px` eller `16rem`). |
+| `gap`            | `SpacingToken`     | `medium` | Tokenbasert mellomrom mellom kolonner og rader.                                         |
+| `padding`        | `SpacingToken`     | —        | Tokenbasert padding på alle sider.                                                      |
+| `padding-block`  | `SpacingToken`     | —        | Overstyrer `padding` i blokk-retning (topp/bunn).                                       |
+| `padding-inline` | `SpacingToken`     | —        | Overstyrer `padding` i inline-retning (venstre/høyre).                                  |
+| `margin`         | `SpacingToken`     | —        | Tokenbasert margin på alle sider.                                                       |
+| `margin-block`   | `SpacingToken`     | —        | Overstyrer `margin` i blokk-retning (topp/bunn).                                        |
+| `margin-inline`  | `SpacingToken`     | —        | Overstyrer `margin` i inline-retning (venstre/høyre).                                   |

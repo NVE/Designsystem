@@ -18,7 +18,17 @@ Bruk layout-komponentene når du vil:
 
 ## Prinsipper
 
-Layout-komponentene har ingen farger, fonter eller annen visuell stil, de styrer kun struktur og plassering. De er ment å kombineres, og bryr seg ikke om hva som ligger inni dem.
+Layout-komponentene har ingen farger, fonter eller annen visuell stil, de styrer kun struktur og plassering. De er ment for å kombineres, og bryr seg ikke om hva som ligger inni dem.
+
+Alle layout-komponentene støtter `as` for å velge hvilket native HTML-element som omslutter innholdet:
+
+```html
+<nve-stack as="section" aria-label="Kontaktinformasjon"> ... </nve-stack>
+```
+
+`as` endrer elementet inne i komponentens shadow DOM. Selve custom-elementet (`nve-stack`) forblir i sidens DOM. `role`- og `aria-*`-attributter på layout-komponenten videresendes til det valgte native elementet. Standard er `div`.
+
+Gyldige verdier for `as` er `div`, `section`, `article`, `aside`, `nav`, `main`, `header`, `footer`, `form` og `ul`.
 
 ## Eksempel på bruk
 

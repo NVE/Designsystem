@@ -12,6 +12,20 @@ Layout-komponentene ligger et nivå under de andre komponentene. For å bruke di
 import 'nve-designsystem/components/layouts/nve-box/nve-box.component.js';
 ```
 
+## Native element
+
+Bruk `as` for å velge det native HTML-elementet som omslutter innholdet.
+
+```html
+<nve-box as="section" aria-label="Viktig informasjon">
+  <nve-paragraph>Innhold med jevn padding rundt.</nve-paragraph>
+</nve-box>
+```
+
+`as` endrer elementet inne i komponentens shadow DOM. Selve custom-elementet (nve-box) forblir i sidens DOM. `role-` og `aria-`-attributter på layout-komponenten videresendes til det valgte native elementet. Standard er `div`.
+
+Gyldige verdier for `as` er `div`, `section`, `article`, `aside`, `nav`, `main`, `header`, `footer`, `form` og `ul`.
+
 ## Padding
 
 `padding` setter padding rundt innholdet ved bruk av et spacing-token. Hvis `padding` ikke er satt, brukes `medium` som standard.
@@ -114,12 +128,13 @@ Samme innhold uten `nve-box` hvor teksten ligger helt inntil kanten.
 
 ## Egenskaper
 
-| Egenskap         | Type            | Standard | Beskrivelse                                                                              |
-| ---------------- | --------------- | -------- | ---------------------------------------------------------------------------------------- |
-| `background`     | `BoxBackground` | —        | Tokenbasert bakgrunnsfarge. Gyldige verdier er `--color-neutrals-background-*`-tokenene. |
-| `padding`        | `SpacingToken`  | `medium` | Tokenbasert padding på alle sider. Visuell standard er `medium` via CSS.                 |
-| `padding-block`  | `SpacingToken`  | —        | Overstyrer `padding` i blokk-retning (topp/bunn).                                        |
-| `padding-inline` | `SpacingToken`  | —        | Overstyrer `padding` i inline-retning (venstre/høyre).                                   |
-| `margin`         | `SpacingToken`  | —        | Tokenbasert margin på alle sider.                                                        |
-| `margin-block`   | `SpacingToken`  | —        | Overstyrer `margin` i blokk-retning (topp/bunn).                                         |
-| `margin-inline`  | `SpacingToken`  | —        | Overstyrer `margin` i inline-retning (venstre/høyre).                                    |
+| Egenskap         | Type               | Standard | Beskrivelse                                                                              |
+| ---------------- | ------------------ | -------- | ---------------------------------------------------------------------------------------- |
+| `as`             | `LayoutElementTag` | `div`    | Native HTML-element som omslutter innholdet, for eksempel `section`.                     |
+| `background`     | `BoxBackground`    | —        | Tokenbasert bakgrunnsfarge. Gyldige verdier er `--color-neutrals-background-*`-tokenene. |
+| `padding`        | `SpacingToken`     | `medium` | Tokenbasert padding på alle sider. Visuell standard er `medium` via CSS.                 |
+| `padding-block`  | `SpacingToken`     | —        | Overstyrer `padding` i blokk-retning (topp/bunn).                                        |
+| `padding-inline` | `SpacingToken`     | —        | Overstyrer `padding` i inline-retning (venstre/høyre).                                   |
+| `margin`         | `SpacingToken`     | —        | Tokenbasert margin på alle sider.                                                        |
+| `margin-block`   | `SpacingToken`     | —        | Overstyrer `margin` i blokk-retning (topp/bunn).                                         |
+| `margin-inline`  | `SpacingToken`     | —        | Overstyrer `margin` i inline-retning (venstre/høyre).                                    |

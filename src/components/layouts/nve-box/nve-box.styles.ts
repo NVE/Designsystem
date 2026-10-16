@@ -6,4 +6,8 @@ export default css`
     padding: var(--spacing-medium);
     background: transparent;
   }
+
+  .layout {
+    display: block;
+  }
 `;

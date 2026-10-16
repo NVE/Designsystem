@@ -5,6 +5,10 @@ export default [
   gapStyles,
   css`
     :host {
+      display: block;
+    }
+
+    .layout {
       display: flex;
       flex-direction: column;
       gap: var(--spacing-medium);

@@ -1,5 +1,25 @@
 import { LitElement, PropertyValues } from 'lit';
 import { property } from 'lit/decorators.js';
+import { html as staticHtml, unsafeStatic } from 'lit/static-html.js';
+
+const layoutElementTags = [
+  'div',
+  'section',
+  'article',
+  'aside',
+  'nav',
+  'main',
+  'header',
+  'footer',
+  'form',
+  'ul',
+] as const;
+
+export type LayoutElementTag = (typeof layoutElementTags)[number];
+
+function isValidLayoutElementTag(value: unknown): value is LayoutElementTag {
+  return layoutElementTags.includes(value as LayoutElementTag);
+}
 
 /**
  * Felles spacing-tokens brukt av alle layout-komponenter.
@@ -78,6 +98,9 @@ export function isValidLayoutJustify(value: unknown): value is LayoutJustify {
  * Samme prinsipp gjelder for `margin`.
  */
 export class NveLayoutBase extends LitElement {
+  /** HTML-element som omslutter innholdet i slot-en inne i komponentens shadow DOM. */
+  @property({ type: String, reflect: true }) as: LayoutElementTag = 'div';
+
   /** Tokenbasert padding på alle sider. */
   @property({ type: String, reflect: true }) padding?: SpacingToken;
 
@@ -112,8 +135,56 @@ export class NveLayoutBase extends LitElement {
     }
   }
 
+  private _attributeObserver?: MutationObserver;
+
+  override connectedCallback() {
+    super.connectedCallback();
+    this._attributeObserver = new MutationObserver((records) => {
+      if (records.some(({ attributeName }) => attributeName === 'role' || attributeName?.startsWith('aria-'))) {
+        this._syncSemanticAttributes();
+      }
+    });
+    this._attributeObserver.observe(this, { attributes: true });
+  }
+
+  override disconnectedCallback() {
+    this._attributeObserver?.disconnect();
+    this._attributeObserver = undefined;
+    super.disconnectedCallback();
+  }
+
+  protected renderLayout() {
+    const tag = isValidLayoutElementTag(this.as) ? this.as : 'div';
+    return staticHtml`<${unsafeStatic(tag)} class="layout"><slot></slot></${unsafeStatic(tag)}>`;
+  }
+
+  private _syncSemanticAttributes() {
+    const layoutElement = this.shadowRoot?.querySelector('.layout');
+    if (!layoutElement) return;
+
+    for (const attribute of [...layoutElement.attributes]) {
+      if (attribute.name === 'role' || attribute.name.startsWith('aria-')) {
+        layoutElement.removeAttribute(attribute.name);
+      }
+    }
+
+    for (const attribute of [...this.attributes]) {
+      if (attribute.name === 'role' || attribute.name.startsWith('aria-')) {
+        layoutElement.setAttribute(attribute.name, attribute.value);
+      }
+    }
+  }
+
   protected override updated(changedProperties: PropertyValues) {
     super.updated(changedProperties);
+    this._syncSemanticAttributes();
+
+    if (changedProperties.has('as') && !isValidLayoutElementTag(this.as)) {
+      // eslint-disable-next-line no-console
+      console.warn(`[${this.tagName.toLowerCase()}] Invalid 'as' value: "${this.as}". Falling back to "div".`);
+      this.as = 'div';
+    }
+
     // Sjekk om prop faktisk har endret seg fra en satt verdi, slik at vi ikke fjerner
     // inline-stiler brukeren har satt via style-attributtet ved første render.
     const changed = (key: string) =>

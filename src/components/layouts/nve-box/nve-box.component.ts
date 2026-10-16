@@ -1,6 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-box.styles';
-import { html, PropertyValues } from 'lit';
+import { PropertyValues } from 'lit';
 import { NveLayoutBase, SpacingToken } from '../nve-layout-base';
 
 /**
@@ -70,7 +70,7 @@ export default class NveBox extends NveLayoutBase {
   }
 
   render() {
-    return html`<slot></slot>`;
+    return this.renderLayout();
   }
 }
 

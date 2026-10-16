@@ -1,6 +1,6 @@
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-grid.styles';
-import { html, PropertyValues } from 'lit';
+import { PropertyValues } from 'lit';
 import { NveLayoutBase, SpacingToken, isValidSpacingToken } from '../nve-layout-base';
 
 /**
@@ -43,7 +43,7 @@ export default class NveGrid extends NveLayoutBase {
   }
 
   render() {
-    return html`<slot></slot>`;
+    return this.renderLayout();
   }
 }
 
