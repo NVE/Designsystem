@@ -29,6 +29,20 @@ describe('nve-textarea', () => {
     expect(label?.getAttribute('for')).toBe(input?.id);
   });
 
+  it('replaces tag text without adding tags', async () => {
+    const el = await fixture<NveInput>(html`
+      <nve-input label="Label" required optional requiredLabel="Required" optionalLabel="Optional"></nve-input>
+    `);
+
+    expect(el.shadowRoot?.querySelectorAll('.field__label__validation')).toHaveLength(1);
+    expect(el.shadowRoot?.querySelector('.field__label__validation--required')?.textContent?.trim()).toBe('Required');
+
+    el.required = false;
+    await el.updateComplete;
+    expect(el.shadowRoot?.querySelectorAll('.field__label__validation')).toHaveLength(1);
+    expect(el.shadowRoot?.querySelector('.field__label__validation--optional')?.textContent?.trim()).toBe('Optional');
+  });
+
   it('renders required and optional label tags', async () => {
     const required = await fixture<NveInput>(html`<nve-input label="Label" required></nve-input>`);
     const optional = await fixture<NveInput>(html`<nve-input label="Label" optional></nve-input>`);
@@ -39,6 +53,21 @@ describe('nve-textarea', () => {
     expect(optional.shadowRoot?.querySelector('.field__label__validation--optional')?.textContent?.trim()).toBe(
       'Valgfritt'
     );
+  });
+
+  it('hides the required tag without changing required validation', async () => {
+    const el = await fixture<NveInput>(html`<nve-input label="Label" required hideRequiredTag></nve-input>`);
+
+    expect(el.hideRequiredTag).toBe(true);
+    expect(el.required).toBe(true);
+    expect(el.shadowRoot?.querySelector<HTMLInputElement>('input')?.required).toBe(true);
+    expect(el.shadowRoot?.querySelector<HTMLInputElement>('input')?.checkValidity()).toBe(false);
+    expect(el.shadowRoot?.querySelector('.field__label__validation--required')).toBeNull();
+
+    el.hideRequiredTag = false;
+    await el.updateComplete;
+
+    expect(el.shadowRoot?.querySelector('.field__label__validation--required')).not.toBeNull();
   });
 
   it('renders helpText and hint text when provided', async () => {

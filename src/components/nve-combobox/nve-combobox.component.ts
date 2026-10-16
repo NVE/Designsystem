@@ -104,6 +104,10 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   @property({ type: String }) removeTagAriaLabel = 'Slett';
   /** Tekst som vises for å markere at et felt er obligatorisk */
   @property({ type: String, reflect: true }) requiredLabel?: string = undefined;
+  /** Tekst som vises i merket for valgfrie felt */
+  @property({ type: String, reflect: true }) optionalLabel?: string = undefined;
+  /** Om merket for obligatoriske felt skal skjules */
+  @property({ type: Boolean }) hideRequiredTag = false;
   /** Om bruker kan redigere verdien i inputfeltet */
   @property({ type: Boolean }) editable = false;
   /** Initialt valgte verdier */
@@ -1119,11 +1123,15 @@ export default class NveCombobox extends LitElement implements FormValidationCom
           labelId,
           this.label,
           this.required,
-          this.requiredLabel,
           html`<slot name="label-toggletip"></slot>`,
           this.handleLabelClick,
           undefined,
-          { optional: this.optional, validationTags: true }
+          {
+            optional: this.optional,
+            hideRequiredTag: this.hideRequiredTag,
+            requiredLabel: this.requiredLabel,
+            optionalLabel: this.optionalLabel,
+          }
         )}
         <!-- Hjelpetekst -->
         ${

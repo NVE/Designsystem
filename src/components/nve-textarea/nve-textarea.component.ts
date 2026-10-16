@@ -67,6 +67,8 @@ export default class NveTextarea extends LitElement implements FormValidationCom
   @property({ type: String, reflect: true }) errorMessage = '';
   /** Tekst som vises for å markere at et felt er obligatorisk */
   @property() requiredLabel = '';
+  @property() optionalLabel = '';
+  @property({ type: Boolean }) hideRequiredTag = false;
   /** Tooltip-tekst for label */
   @property({ type: String }) tooltip = '';
   @property({ attribute: false }) validationRules: Array<ValidationRule> = [];
@@ -222,9 +224,11 @@ export default class NveTextarea extends LitElement implements FormValidationCom
         })}
       >
         <!-- Ledetekst -->
-        ${getLabel(labelId, this.label, this.required, this.requiredLabel, html`<slot name="label-toggletip"></slot>`, undefined, undefined, {
+        ${getLabel(labelId, this.label, this.required, html`<slot name="label-toggletip"></slot>`, undefined, undefined, {
           optional: this.optional,
-          validationTags: true,
+          hideRequiredTag: this.hideRequiredTag,
+          requiredLabel: this.requiredLabel,
+          optionalLabel: this.optionalLabel,
         })}
         <!-- Hjelpetekst -->
         ${

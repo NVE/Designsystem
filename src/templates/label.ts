@@ -58,7 +58,6 @@ export const labelStyles: CSSResult = css`
  * @param id - ID for label-elementet
  * @param label - Tekst for label
  * @param required - Indikerer om feltet er obligatorisk
- * @param requiredLabel - Valgfri tekst for obligatorisk indikator
  * @param labelToggletip - Valgfri TemplateResult/slot for tooltip som vises ved hover over label
  * @param onClick - Valgfri funksjon som kjøres ved klikk på label
  * @param useLegend - Valgfri flagg for å bruke legend i stedet for label (for fieldset)
@@ -69,21 +68,25 @@ export function getLabel(
   id: string,
   label?: string,
   required?: boolean,
-  requiredLabel?: string,
   labelToggletip?: TemplateResult,
   onClick?: (...args: unknown[]) => unknown,
   useLegend?: boolean,
-  options?: { optional?: boolean; validationTags?: boolean }
+  options?: {
+    optional?: boolean;
+    hideRequiredTag?: boolean;
+    requiredLabel?: string;
+    optionalLabel?: string;
+  }
 ): TemplateResult | typeof nothing {
   if (!label) return nothing;
 
-  const validationTag = options?.validationTags
-    ? required
-      ? html`<span class="field__label__validation field__label__validation--required">${requiredLabel || 'Må fylles ut'}</span>`
-      : options.optional
-        ? html`<span class="field__label__validation field__label__validation--optional">Valgfritt</span>`
-        : nothing
-    : nothing;
+  const validationTag = required
+    ? options?.hideRequiredTag
+      ? nothing
+      : html`<span class="field__label__validation field__label__validation--required">${options?.requiredLabel || 'Må fylles ut'}</span>`
+    : options?.optional
+      ? html`<span class="field__label__validation field__label__validation--optional">${options.optionalLabel || 'Valgfritt'}</span>`
+      : nothing;
 
   const content = html`
     <span class="field__text" @click=${onClick}>${label}</span>

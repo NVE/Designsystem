@@ -124,6 +124,10 @@ Husk å legge til <span class="highlight">aria-label</span> på <span class="hig
 
 Bruk <span class="highlight">required</span> for å vise merket «Må fylles ut». Bruk <span class="highlight">optional</span> for å vise merket «Valgfritt». Teksten i required-merket kan overstyres med <span class="highlight">requiredLabel</span>.
 
+Bruk <span class="highlight">hideRequiredTag</span> sammen med <span class="highlight">required</span> for å skjule required-merket uten å endre at feltet er obligatorisk.
+
+Attributtene <span class="highlight">requiredLabel</span> og <span class="highlight">optionalLabel</span> erstatter teksten i henholdsvis required-merket og optional-merket, uten å legge til et nytt merke. Standardtekstene er «Må fylles ut» og «Valgfritt». Bruk dem sammen med henholdsvis <span class="highlight">required</span> og <span class="highlight">optional</span>.
+
 <CodeExamplePreview>
 
 ```html

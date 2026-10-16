@@ -89,6 +89,8 @@ export default class NveInput extends LitElement implements FormValidationCompon
   @property() label: string = '';
   /** Tekst som vises for å markere at et felt er obligatorisk */
   @property() requiredLabel: string = '';
+  @property() optionalLabel: string = '';
+  @property({ type: Boolean }) hideRequiredTag = false;
   /** Størrelse på inputfeltet */
   @property({ type: String }) size: 'small' | 'medium' | 'large' = 'medium';
   /** Tooltip-tekst for label */
@@ -293,9 +295,11 @@ export default class NveInput extends LitElement implements FormValidationCompon
         })}
       >
         <!-- Ledetekst -->
-        ${getLabel(labelId, this.label, this.required, this.requiredLabel, html`<slot name="label-toggletip"></slot>`, undefined, undefined, {
+        ${getLabel(labelId, this.label, this.required, html`<slot name="label-toggletip"></slot>`, undefined, undefined, {
           optional: this.optional,
-          validationTags: true,
+          hideRequiredTag: this.hideRequiredTag,
+          requiredLabel: this.requiredLabel,
+          optionalLabel: this.optionalLabel,
         })}
         <!-- Hjelpetekst -->
         ${
