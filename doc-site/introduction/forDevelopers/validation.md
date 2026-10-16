@@ -45,15 +45,15 @@ I henhold til <a href="https://www.uutilsynet.no/veiledning/skjema/38" target="_
 Dersom enkelte felt er valgfrie, skal disse merkes tydelig som valgfrie. Hvis flertallet av feltene er valgfrie, skal de obligatoriske feltene i stedet merkes særskilt.
 
 <div class="horizontal">
-<nve-input required Label="Dette feltet må fylles ut"></nve-input>
-<nve-input optional Label="Dette feltet er valgfritt"></nve-input>
+<nve-input required label="Dette feltet må fylles ut"></nve-input>
+<nve-input optional label="Dette feltet er valgfritt"></nve-input>
 </div>
 
 <br>
 
-```ts
-<nve-input required Label="Dette feltet må fylles ut"></nve-input>
-<nve-input optional Label="Dette feltet er valgfritt"></nve-input>
+```html
+<nve-input required label="Dette feltet må fylles ut"></nve-input>
+<nve-input optional label="Dette feltet er valgfritt"></nve-input>
 ```
 
 ### To typer validering støttes
