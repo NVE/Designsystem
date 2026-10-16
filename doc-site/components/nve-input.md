@@ -186,18 +186,25 @@ Husk å legge til <span class="highlight">aria-label</span> på <span class="hig
 
 </CodeExamplePreview>
 
-### Påkrevd
+### Påkrevd og Valgfritt
 
-Bruk <span class="highlight">required</span> for å vise et stjernesymbol på slutten av ledeteksten som markerer at feltet er påkrevd.  
-Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forklarende tekst sammen med stjernen (for eksempel 'obligatorisk'). Dette gir brukerne en bedre forståelse av at feltet er påkrevd, siden ikke alle brukere forstår eller oppfatter stjernesymbolet alene.
+Det er ikke nødvendig å merke feltene som obligatoriske dersom flertallet av feltene er påkrevd. Brukeren må imidlertid informeres om dette før vedkommende begynner å fylle ut skjemaet. Dersom enkelte felt er valgfrie, skal disse merkes tydelig som valgfrie. Tilsvarende gjelder dersom flertallet av feltene er valgfrie – da skal de obligatoriske feltene merkes særskilt.
+
+Bruk <span class="highlight">required</span> for å sette feltet til obligatorisk, og bruk <span class="highlight">hideRequiredTag</span> for å skjule merket «Må fylles ut» uten å endre at feltet er obligatorisk.
+
+Bruk <span class="highlight">optional</span> for å vise merket «Valgfritt».
 
 <CodeExamplePreview>
 
 ```html
-<nve-input label="Saksbehandlers navn" required requiredLabel="Obligatorisk"> </nve-input>
+<nve-input label="Saksbehandlers navn" required></nve-input>
+
+<nve-input label="E-postadresse" optional></nve-input>
 ```
 
 </CodeExamplePreview>
+
+Ved annet språk, kan attributtene <span class="highlight">requiredLabel</span> og <span class="highlight">optionalLabel</span> tas i bruk. De erstatter teksten i henholdsvis required-merket og optional-merket, uten å legge til et nytt merke. Brukes sammen med <span class="highlight">required</span> og <span class="highlight">optional</span> attributtene. Standardtekstene er «Må fylles ut» og «Valgfritt» og skal ikke endres etter retningslinjene.
 
 ### Hjelpetekst
 
@@ -426,7 +433,7 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
 
 ```html
 <form id="test-form">
-  <nve-input id="name-input" label="Saksbehandlers navn"></nve-input>
+  <nve-input id="name-input" label="Saksbehandlers navn" required></nve-input>
   <nve-input id="saksnummer" label="Saksnummer"></nve-input>
 
   <nve-button type="submit">Send inn</nve-button>
@@ -454,7 +461,7 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
 
 </CodeExamplePreview>
 
-### External validation
+### Ekstern validation
 
 Bruker du eksternal validering system, kan du fortsatt sette feil status på input ved bruk av <span class="highlight">errorMessage</span>.
 
@@ -462,7 +469,7 @@ Bruker du eksternal validering system, kan du fortsatt sette feil status på inp
 
 ```html
 <form>
-  <nve-input label="Beskriv saken" errorMessage="Feltet er påkrevd"></nve-input>
+  <nve-input label="Beskriv saken" required errorMessage="Feltet er påkrevd"></nve-input>
 </form>
 ```
 

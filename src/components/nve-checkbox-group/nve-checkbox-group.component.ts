@@ -48,8 +48,14 @@ export default class NveCheckboxGroup extends LitElement implements FormValidati
   @property({ type: String, reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
   /** Om minst en sjekkboks er sjekket på */
   @property({ type: Boolean, reflect: true }) required = false;
-  /** Tekst som vises for å markere at et felt er obligatorisk */
+  /** Om avkrysningsgruppen er valgfri */
+  @property({ type: Boolean, reflect: true }) optional = false;
+  /** Tekst som vises i merket for obligatoriske felt */
   @property() requiredLabel?: string = undefined;
+  /** Tekst som vises i merket for valgfrie felt */
+  @property() optionalLabel?: string = undefined;
+  /** Om merket for obligatoriske felt skal skjules */
+  @property({ type: Boolean }) hideRequiredTag = false;
   /** Initialt valgte verdier */
   @property({ type: Array }) selectedValues: string[] = [];
   /** Størrelse på sjekkboksene */
@@ -191,10 +197,15 @@ export default class NveCheckboxGroup extends LitElement implements FormValidati
           this.checkboxGroupId,
           this.label,
           this.required,
-          this.requiredLabel,
           html`<slot name="label-toggletip"></slot>`,
           undefined,
-          true
+          true,
+          {
+            optional: this.optional,
+            hideRequiredTag: this.hideRequiredTag,
+            requiredLabel: this.requiredLabel,
+            optionalLabel: this.optionalLabel,
+          }
         )}
         <!-- Hjelpetekst -->
         ${

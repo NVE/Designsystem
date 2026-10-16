@@ -12,9 +12,23 @@ export const labelStyles: CSSResult = css`
     color: var(--color-neutrals-foreground-primary);
   }
 
-  .field__label__required-text {
-    font: var(--typography-label-small-light);
-    color: var(--color-brand-foreground-secondary);
+  .field__label__validation {
+    font-family: var(--font-family-primary-family, "Source Sans 3");
+    font-size: var(--font-size-2x-small, 14px);
+    color: var(--color-feedback-foreground-on-bg-subtle-neutral, #3C3F44);
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--sizing-fixed-sizing-x-small, 20px);
+    padding: 0 var(--spacing-2x-small, 4px);
+    border-radius: var(--border-radius-small);
+  }
+
+  .field__label__validation--required {
+    background: var(--color-feedback-background-subtle-warning);
+  }
+
+  .field__label__validation--optional {
+    background: var(--color-feedback-background-subtle-info);
   }
 
   .field__legend {
@@ -44,30 +58,43 @@ export const labelStyles: CSSResult = css`
  * @param id - ID for label-elementet
  * @param label - Tekst for label
  * @param required - Indikerer om feltet er obligatorisk
- * @param requiredLabel - Valgfri tekst for obligatorisk indikator
  * @param labelToggletip - Valgfri TemplateResult/slot for tooltip som vises ved hover over label
  * @param onClick - Valgfri funksjon som kjøres ved klikk på label
  * @param useLegend - Valgfri flagg for å bruke legend i stedet for label (for fieldset)
+ * @param options - Valg for alternative ledetekstmerker
  * @returns TemplateResult eller nothing hvis ingen label er gitt
  */
 export function getLabel(
   id: string,
   label?: string,
   required?: boolean,
-  requiredLabel?: string,
   labelToggletip?: TemplateResult,
   onClick?: (...args: unknown[]) => unknown,
-  useLegend?: boolean
+  useLegend?: boolean,
+  options?: {
+    optional?: boolean;
+    hideRequiredTag?: boolean;
+    requiredLabel?: string;
+    optionalLabel?: string;
+  }
 ): TemplateResult | typeof nothing {
   if (!label) return nothing;
+
+  const validationTag = required
+    ? options?.hideRequiredTag
+      ? nothing
+      : html`<span class="field__label__validation field__label__validation--required" aria-hidden="true">${options?.requiredLabel || 'Må fylles ut'}</span>`
+    : options?.optional
+      ? html`<span class="field__label__validation field__label__validation--optional" aria-hidden="true">${options.optionalLabel || 'Valgfritt'}</span>`
+      : nothing;
 
   const content = html`
     <span class="field__text" @click=${onClick}>${label}</span>
     ${labelToggletip ?? nothing}
-    ${required ? html`<span class="field__label__required-text"> *${requiredLabel ?? ''} </span>` : nothing}
+    ${validationTag}
   `;
 
   return useLegend
     ? html`<legend part="label" class="field__legend">${content}</legend>`
-    : html`<label part="label" class="field__label" for="${id}">${content}</label>`;
+    : html`<label part="label" class="field__label" id="${id}">${content}</label>`;
 }

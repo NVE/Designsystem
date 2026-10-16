@@ -257,3 +257,8 @@ a:visited {
   gap: var(--spacing-x-small);
   justify-content: flex-start;
 }
+
+.horizontal {
+  display: flex;
+  gap: var(--spacing-medium);
+}

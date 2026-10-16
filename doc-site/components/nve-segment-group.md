@@ -122,13 +122,24 @@ Husk å legge til <span class="highlight">aria-label</span> på <span class="hig
 
 ### Påkrevd
 
-Bruk <span class="highlight">required</span> for å vise et stjernesymbol på slutten av ledeteksten som markerer at feltet er påkrevd.  
-Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forklarende tekst sammen med stjernen (for eksempel 'obligatorisk'). Dette gir brukerne en bedre forståelse av at feltet er påkrevd, siden ikke alle brukere forstår eller oppfatter stjernesymbolet alene.
+Bruk <span class="highlight">required</span> for å vise merket «Må fylles ut». Bruk <span class="highlight">optional</span> for å vise merket «Valgfritt». Teksten i required-merket kan overstyres med <span class="highlight">requiredLabel</span>.
+
+Bruk <span class="highlight">hideRequiredTag</span> sammen med <span class="highlight">required</span> for å skjule required-merket uten å endre at feltet er obligatorisk.
+
+Attributtene <span class="highlight">requiredLabel</span> og <span class="highlight">optionalLabel</span> erstatter teksten i henholdsvis required-merket og optional-merket, uten å legge til et nytt merke. Standardtekstene er «Må fylles ut» og «Valgfritt». Bruk dem sammen med henholdsvis <span class="highlight">required</span> og <span class="highlight">optional</span>.
 
 <CodeExamplePreview>
 
 ```html
-<nve-segment-group label="Hvilken gjenstand bruker du mest på jobb?" required requiredLabel="Obligatorisk">
+<nve-segment-group label="Hvilken gjenstand bruker du mest på jobb?" required>
+  <nve-segment value="computer">Datamaskin</nve-segment>
+  <nve-segment value="mobile">Mobil</nve-segment>
+  <nve-segment value="traditional">Papir og blyant</nve-segment>
+</nve-segment-group>
+```
+
+```html
+<nve-segment-group label="Hvilken gjenstand bruker du mest på jobb?" optional>
   <nve-segment value="computer">Datamaskin</nve-segment>
   <nve-segment value="mobile">Mobil</nve-segment>
   <nve-segment value="traditional">Papir og blyant</nve-segment>
@@ -314,7 +325,7 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
 
 ```html
 <form id="test-form" class="form">
-  <nve-segment-group id="sgr" label="Hvilken gjenstand bruker du mest på jobb?">
+  <nve-segment-group id="sgr" required label="Hvilken gjenstand bruker du mest på jobb?">
     <nve-segment value="computer">Datamaskin</nve-segment>
     <nve-segment value="mobile">Mobil</nve-segment>
     <nve-segment value="traditional">Papir og blyant</nve-segment>
@@ -346,7 +357,7 @@ Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand
 
 ```html
 <form id="test-form" class="form">
-  <nve-segment-group label="Hvilken gjenstand bruker du mest på jobb?" errorMessage="Feltet er påkrevd">
+  <nve-segment-group required label="Hvilken gjenstand bruker du mest på jobb?" errorMessage="Feltet er påkrevd">
     <nve-segment value="computer">Datamaskin</nve-segment>
     <nve-segment value="mobile">Mobil</nve-segment>
     <nve-segment value="traditional">Papir og blyant</nve-segment>
