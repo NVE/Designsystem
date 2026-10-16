@@ -133,15 +133,16 @@ Bruk <span class="highlight">optional</span> for å vise merket «Valgfritt».
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Vil du skru på varslinger?" required>
-  <nve-checkbox value="ja">Ja</nve-checkbox>
-  <nve-checkbox value="nei">Nei</nve-checkbox>
+<nve-checkbox-group label="Hvilke varsler vil du se mer på?" requried>
+  <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+  <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
+  <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
 </nve-checkbox-group>
 
-<nve-checkbox-group label="Hvilke kategorier vil du bli varslet om?" optional>
-  <nve-checkbox value="flood">Flom</nve-checkbox>
-  <nve-checkbox value="landslide">Jordskred</nve-checkbox>
-  <nve-checkbox value="rain">Regn</nve-checkbox>
+<nve-checkbox-group label="Hvordan ønsker du å motta varsler?" optional>
+  <nve-checkbox value="epost">E-post</nve-checkbox>
+  <nve-checkbox value="sms">SMS</nve-checkbox>
+  <nve-checkbox value="push">Pushvarsler</nve-checkbox>
 </nve-checkbox-group>
 ```
 
