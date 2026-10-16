@@ -685,10 +685,11 @@ Bruk <span class="highlight">placeholder</span> for å vise en hjelpetekst i fel
 
 </CodeExamplePreview>
 
-### Påkrevd
+### Påkrevd og Valgfritt
 
-Bruk <span class="highlight">required</span> for å vise et stjernesymbol på slutten av ledeteksten som markerer at feltet er påkrevd.  
-Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forklarende tekst sammen med stjernen (for eksempel 'obligatorisk'). Dette gir brukerne en bedre forståelse av at feltet er påkrevd, siden ikke alle brukere forstår eller oppfatter stjernesymbolet alene.
+Det er ikke nødvendig å merke feltene som obligatoriske dersom flertallet av feltene er påkrevd. Brukeren må imidlertid informeres om dette før vedkommende begynner å fylle ut skjemaet. Dersom enkelte felt er valgfrie, skal disse merkes tydelig som valgfrie. Tilsvarende gjelder dersom flertallet av feltene er valgfrie – da skal de obligatoriske feltene merkes særskilt.
+
+Bruk <span class="highlight">required</span> for å vise merket «Må fylles ut». Bruk <span class="highlight">optional</span> for å vise merket «Valgfritt».
 
 <CodeExamplePreview>
 
@@ -697,7 +698,6 @@ Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forkl
   id="nve-avdeling-14"
   label="Velg en avdeling"
   required
-  requiredLabel="Obligatorisk"
   options='[ 
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" },

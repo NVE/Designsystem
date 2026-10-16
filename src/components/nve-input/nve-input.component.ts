@@ -55,6 +55,8 @@ export default class NveInput extends LitElement implements FormValidationCompon
   @property({ type: Boolean, reflect: true }) readonly = false;
   /** Om inputfeltet er obligatorisk */
   @property({ type: Boolean, reflect: true }) required = false;
+  /** Om inputfeltet er valgfritt */
+  @property({ type: Boolean, reflect: true }) optional = false;
   /** Stegverdi for inputfeltet */
   @property({ type: Number }) step?: number;
   /** Inputtype for feltet */
@@ -291,7 +293,10 @@ export default class NveInput extends LitElement implements FormValidationCompon
         })}
       >
         <!-- Ledetekst -->
-        ${getLabel(labelId, this.label, this.required, this.requiredLabel, html`<slot name="label-toggletip"></slot>`)}
+        ${getLabel(labelId, this.label, this.required, this.requiredLabel, html`<slot name="label-toggletip"></slot>`, undefined, undefined, {
+          optional: this.optional,
+          validationTags: true,
+        })}
         <!-- Hjelpetekst -->
         ${
           this.helpText

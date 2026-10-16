@@ -19,6 +19,26 @@ describe('nve-checkbox-group', () => {
     fixtureCleanup();
   });
 
+  it('renders required and optional label tags', async () => {
+    const required = await fixture<NveCheckboxGroup>(html`
+      <nve-checkbox-group label="Varsler" required>
+        <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+      </nve-checkbox-group>
+    `);
+    const optional = await fixture<NveCheckboxGroup>(html`
+      <nve-checkbox-group label="Varsler" optional>
+        <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+      </nve-checkbox-group>
+    `);
+
+    expect(required.shadowRoot?.querySelector('.field__label__validation--required')?.textContent?.trim()).toBe(
+      'Må fylles ut'
+    );
+    expect(optional.shadowRoot?.querySelector('.field__label__validation--optional')?.textContent?.trim()).toBe(
+      'Valgfritt'
+    );
+  });
+
   it('has field--disabled when disabled attribute is set', async () => {
     const el = await fixture<NveCheckboxGroup>(
       html`<nve-checkbox-group disabled>

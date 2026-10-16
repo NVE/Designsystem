@@ -45,7 +45,9 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
   @property({ type: String }) orientation: 'horizontal' | 'vertical' = 'vertical';
   /** Om inputfeltet er obligatorisk */
   @property({ type: Boolean }) required = false;
-  /** Ekstra tekst som vises for obligatoriske felt. * er en standard og vises alltid */
+  /** Om radio-gruppen er valgfri */
+  @property({ type: Boolean, reflect: true }) optional = false;
+  /** Tekst som vises i merket for obligatoriske felt */
   @property({ type: String }) requiredLabel?: string = undefined;
   /** Størrelse på radio-knappene */
   @property({ type: String }) size: 'small' | 'medium' | 'large' = 'medium';
@@ -203,7 +205,8 @@ export default class NveRadioGroup extends LitElement implements FormValidationC
           this.requiredLabel,
           html`<slot name="label-toggletip"></slot>`,
           undefined,
-          true
+          true,
+          { optional: this.optional, validationTags: true }
         )}
         <!-- Hjelpetekst -->
         ${

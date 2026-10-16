@@ -75,6 +75,8 @@ export default class NveCombobox extends LitElement implements FormValidationCom
   @property({ type: String }) name?: string;
   /** Om feltet er obligatorisk */
   @property({ type: Boolean, reflect: true }) required = false;
+  /** Om feltet er valgfritt */
+  @property({ type: Boolean, reflect: true }) optional = false;
 
   // Custom select attributer
   /** Om alle valgte alternativer kan fjernes */
@@ -1119,7 +1121,9 @@ export default class NveCombobox extends LitElement implements FormValidationCom
           this.required,
           this.requiredLabel,
           html`<slot name="label-toggletip"></slot>`,
-          this.handleLabelClick
+          this.handleLabelClick,
+          undefined,
+          { optional: this.optional, validationTags: true }
         )}
         <!-- Hjelpetekst -->
         ${

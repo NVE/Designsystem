@@ -47,6 +47,8 @@ export default class NveTextarea extends LitElement implements FormValidationCom
   @property({ type: Boolean, reflect: true }) readonly = false;
   /** Om minst en sjekkboks er sjekket på */
   @property({ type: Boolean, reflect: true }) required = false;
+  /** Om textareafeltet er valgfritt */
+  @property({ type: Boolean, reflect: true }) optional = false;
   /** Antall synlige tekstlinjer i textarea */
   @property({ type: Number }) rows?: number;
   /** Verdien i textarea */
@@ -220,7 +222,10 @@ export default class NveTextarea extends LitElement implements FormValidationCom
         })}
       >
         <!-- Ledetekst -->
-        ${getLabel(labelId, this.label, this.required, this.requiredLabel, html`<slot name="label-toggletip"></slot>`)}
+        ${getLabel(labelId, this.label, this.required, this.requiredLabel, html`<slot name="label-toggletip"></slot>`, undefined, undefined, {
+          optional: this.optional,
+          validationTags: true,
+        })}
         <!-- Hjelpetekst -->
         ${
           this.helpText

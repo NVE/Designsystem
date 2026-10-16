@@ -111,6 +111,18 @@ describe('nve-combobox', () => {
     expect(text).toBe('Label text');
   });
 
+  it('renders required and optional label tags', async () => {
+    const required = await fixture<NveCombobox>(html`<nve-combobox label="Label" required></nve-combobox>`);
+    const optional = await fixture<NveCombobox>(html`<nve-combobox label="Label" optional></nve-combobox>`);
+
+    expect(required.shadowRoot?.querySelector('.field__label__validation--required')?.textContent?.trim()).toBe(
+      'Må fylles ut'
+    );
+    expect(optional.shadowRoot?.querySelector('.field__label__validation--optional')?.textContent?.trim()).toBe(
+      'Valgfritt'
+    );
+  });
+
   describe('validate method', () => {
     it('returns true when no validation rules are set', async () => {
       const options = [

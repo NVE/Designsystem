@@ -122,15 +122,24 @@ Husk å legge til <span class="highlight">aria-label</span> på <span class="hig
 
 </CodeExamplePreview>
 
-### Påkrevd
+### Påkrevd og Valgfritt
 
-Bruk <span class="highlight">required</span> for å vise et stjernesymbol på slutten av ledeteksten som markerer at feltet er påkrevd.  
-Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forklarende tekst sammen med stjernen (for eksempel 'obligatorisk'). Dette gir brukerne en bedre forståelse av at feltet er påkrevd, siden ikke alle brukere forstår eller oppfatter stjernesymbolet alene.
+Det er ikke nødvendig å merke feltene som obligatoriske dersom flertallet av feltene er påkrevd. Brukeren må imidlertid informeres om dette før vedkommende begynner å fylle ut skjemaet. Dersom enkelte felt er valgfrie, skal disse merkes tydelig som valgfrie. Tilsvarende gjelder dersom flertallet av feltene er valgfrie – da skal de obligatoriske feltene merkes særskilt.
+
+Bruk <span class="highlight">required</span> for å vise merket «Må fylles ut». Bruk <span class="highlight">optional</span> for å vise merket «Valgfritt». Teksten i required-merket kan overstyres med <span class="highlight">requiredLabel</span>.
 
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Hvilke varsler vil du se på?" required requiredLabel="Obligatorisk">
+<nve-checkbox-group label="Hvilke varsler vil du se på?" required>
+  <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
+  <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
+  <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
+</nve-checkbox-group>
+```
+
+```html
+<nve-checkbox-group label="Hvilke varsler vil du se på?" optional>
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>

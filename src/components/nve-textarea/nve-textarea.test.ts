@@ -30,6 +30,18 @@ describe('nve-textarea', () => {
     expect(label?.getAttribute('for')).toBe(textarea?.id);
   });
 
+  it('renders required and optional label tags', async () => {
+    const required = await fixture<NveTextarea>(html`<nve-textarea label="Label" required></nve-textarea>`);
+    const optional = await fixture<NveTextarea>(html`<nve-textarea label="Label" optional></nve-textarea>`);
+
+    expect(required.shadowRoot?.querySelector('.field__label__validation--required')?.textContent?.trim()).toBe(
+      'Må fylles ut'
+    );
+    expect(optional.shadowRoot?.querySelector('.field__label__validation--optional')?.textContent?.trim()).toBe(
+      'Valgfritt'
+    );
+  });
+
   it('renders helpText and hint text when provided', async () => {
     const el = await fixture<NveTextarea>(html`
       <nve-textarea label="Beskriv saken" helpText="Hjelpetekst" hint="Hinttekst"></nve-textarea>
