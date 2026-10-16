@@ -76,6 +76,14 @@ export default defineConfig({
         ],
       },
       { text: 'Komponenter', items: componentsLinks },
+      {
+        text: 'Mønstre',
+        items: [
+          { text: 'Oversikt', link: '/patterns/' },
+          { text: 'Validering', link: '/patterns/validering' },
+          { text: '404 / Error / Låst sider', link: '/patterns/feilsider' },
+        ],
+      },
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/NVE/Designsystem', ariaLabel: 'Link til kildekoden i Github' },
