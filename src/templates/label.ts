@@ -18,7 +18,7 @@ export const labelStyles: CSSResult = css`
     color: var(--color-feedback-foreground-on-bg-subtle-neutral, #3C3F44);
     display: inline-flex;
     align-items: center;
-    height: var(--sizing-fixed-sizing-x-small, 20px);
+    min-height: var(--sizing-fixed-sizing-x-small, 20px);
     padding: 0 var(--spacing-2x-small, 4px);
     border-radius: var(--border-radius-small);
   }
