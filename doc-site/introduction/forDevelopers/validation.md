@@ -6,6 +6,8 @@ outline: [2, 3]
 
 # Skjemavalidering
 
+### Komponenter
+
 NVE sine skjemakomponenter har innebygd støtte for regelbasert validering og ekstern feilhåndtering.
 Alle støttede komponenter kan valideres når de brukes i et skjema.
 
@@ -36,7 +38,25 @@ export interface FormValidationComponent extends LitElement, INveComponent {
 - <span class="highlight">errorMessage</span> – tekst som brukes ved ekstern validering. Dersom den er satt, settes komponenten i feiltilstand.
 - <span class="highlight">internalValidationMessage</span> – tekst som brukes ved intern validering. Dersom den er satt, settes komponenten i feiltilstand.
 
-<b>To typer validering støttes:</b>
+### Valideringstags
+
+Etter retningslinjer fra <a href="https://www.uutilsynet.no/veiledning/skjema/38" target="_blank_">UU Tilsynet</a> er det ikke nødvendig å merke feltene som obligatoriske dersom flertallet av feltene er påkrevd. Brukeren må imidlertid informeres om dette før vedkommende begynner å fylle ut skjemaet.
+
+Dersom enkelte felt er valgfrie, skal disse merkes tydelig som valgfrie. Tilsvarende gjelder dersom flertallet av feltene er valgfrie – da skal de obligatoriske feltene merkes særskilt.
+
+<div class="horizontal">
+<nve-input required Label="Dette feltet må fylles ut"></nve-input>
+<nve-input optional Label="Dette feltet er valgfritt"></nve-input>
+</div>
+
+<br>
+
+```ts
+<nve-input required Label="Dette feltet må fylles ut"></nve-input>
+<nve-input optional Label="Dette feltet er valgfritt"></nve-input>
+```
+
+### To typer validering støttes
 
 - <a class="highlight no-visited" href="#intern-validering">intern</a> – brukes når valideringslogikk ikke leveres utenfra.
 - <a class="highlight no-visited" href="#ekstern-validering">ekstern</a> – brukes når valideringslogikk leveres av eksterne biblioteker eller en server.

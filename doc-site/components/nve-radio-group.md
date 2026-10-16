@@ -117,9 +117,7 @@ Bruk <span class="highlight">required</span> for å vise merket «Må fylles ut�
   <nve-radio value="current">Pågående</nve-radio>
   <nve-radio value="done">Ferdigstilt</nve-radio>
 </nve-radio-group>
-```
 
-```html
 <nve-radio-group label="Hva er status på tiltaket?" optional>
   <nve-radio value="planned">Planlagt</nve-radio>
   <nve-radio value="current">Pågående</nve-radio>
@@ -306,7 +304,7 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
 
 ```html
 <form id="test-form" class="form">
-  <nve-radio-group id="rdgr" label="Hva er status på tiltaket?">
+  <nve-radio-group id="rdgr" required label="Hva er status på tiltaket?">
     <nve-radio value="planned">Planlagt</nve-radio>
     <nve-radio value="current">Pågående</nve-radio>
     <nve-radio value="done">Ferdigstilt</nve-radio>
@@ -338,7 +336,7 @@ Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand
 
 ```html
 <form id="test-form" class="form">
-  <nve-radio-group id="rdgr" label="Hva er status på tiltaket?" errorMessage="Feltet er påkrevd">
+  <nve-radio-group id="rdgr" required label="Hva er status på tiltaket?" errorMessage="Feltet er påkrevd">
     <nve-radio value="planned">Planlagt</nve-radio>
     <nve-radio value="current">Pågående</nve-radio>
     <nve-radio value="done">Ferdigstilt</nve-radio>

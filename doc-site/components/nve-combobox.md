@@ -709,6 +709,22 @@ Bruk <span class="highlight">required</span> for å vise merket «Må fylles ut�
      ]'
 >
 </nve-combobox>
+
+<nve-combobox
+  id="nve-avdeling-14"
+  label="Velg en avdeling"
+  optional
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
+     ]'
+>
+</nve-combobox>
 ```
 
 </CodeExamplePreview>
@@ -855,6 +871,7 @@ Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand
   <nve-combobox
     id="cb"
     label="Velg en avdeling"
+    required
     options='[
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" }

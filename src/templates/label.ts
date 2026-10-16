@@ -12,11 +12,6 @@ export const labelStyles: CSSResult = css`
     color: var(--color-neutrals-foreground-primary);
   }
 
-  .field__label__required-text {
-    font: var(--typography-label-small-light);
-    color: var(--color-brand-foreground-secondary);
-  }
-
   .field__label__validation {
     font-family: var(--font-family-primary-family, "Source Sans 3");
     font-size: var(--font-size-2x-small, 14px);

@@ -28,8 +28,8 @@ outline: [2, 3]
 <br>
   <p>Komponenten videresender relevante hendelser fra det native <span class="highlight">&lt;textarea&gt;</span>-elementet slik at de kan fanges utenfor komponentens Shadow DOM:</p>
     <ul>
-      <li><span class="highlight">change</span>- når verdien endres og feltet mister fokus</li> 
-      <li><span class="highlight">select</span>- når brukeren markerer tekst</li> 
+      <li><span class="highlight">change</span>- når verdien endres og feltet mister fokus</li>
+      <li><span class="highlight">select</span>- når brukeren markerer tekst</li>
     </ul>
     <p><span class="highlight">selectionchange</span> støttes ikke foreløpig siden den ikke er fullstøttet i mange nettlesere.</p>
 <br>
@@ -296,7 +296,7 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
 
 ```html
 <form id="test-form" class="form">
-  <nve-textarea id="txt" label="Beskriv saken"></nve-textarea>
+  <nve-textarea id="txt" required label="Beskriv saken"></nve-textarea>
   <nve-button type="submit">Send inn</nve-button>
 </form>
 

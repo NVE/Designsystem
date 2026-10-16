@@ -136,9 +136,7 @@ Bruk <span class="highlight">required</span> for å vise merket «Må fylles ut�
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
 </nve-checkbox-group>
-```
 
-```html
 <nve-checkbox-group label="Hvilke varsler vil du se på?" optional>
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
@@ -338,7 +336,7 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
 
 ```html
 <form id="test-form" class="form">
-  <nve-checkbox-group id="chgr" label="Hvilke varsler vil du se på?">
+  <nve-checkbox-group id="chgr" required label="Hvilke varsler vil du se på?">
     <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
     <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
     <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
@@ -373,7 +371,7 @@ Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand
 
 ```html
 <form id="test-form" class="form">
-  <nve-checkbox-group label="Hvilke varsler vil du se på?" errorMessage="Du må velge minst én.">
+  <nve-checkbox-group label="Hvilke varsler vil du se på?" required errorMessage="Du må velge minst én.">
     <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
     <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
     <nve-checkbox value="rain">Regnvarsel</nve-checkbox>

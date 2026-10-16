@@ -195,7 +195,9 @@ Bruk <span class="highlight">required</span> for å vise merket «Må fylles ut�
 <CodeExamplePreview>
 
 ```html
-<nve-input label="Saksbehandlers navn" required></nve-input> <nve-input label="E-postadresse" optional></nve-input>
+<nve-input label="Saksbehandlers navn" required></nve-input>
+
+<nve-input label="E-postadresse" optional></nve-input>
 ```
 
 </CodeExamplePreview>
@@ -427,7 +429,7 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
 
 ```html
 <form id="test-form">
-  <nve-input id="name-input" label="Saksbehandlers navn"></nve-input>
+  <nve-input id="name-input" label="Saksbehandlers navn" required></nve-input>
   <nve-input id="saksnummer" label="Saksnummer"></nve-input>
 
   <nve-button type="submit">Send inn</nve-button>
@@ -455,7 +457,7 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
 
 </CodeExamplePreview>
 
-### External validation
+### Ekstern validation
 
 Bruker du eksternal validering system, kan du fortsatt sette feil status på input ved bruk av <span class="highlight">errorMessage</span>.
 
@@ -463,7 +465,7 @@ Bruker du eksternal validering system, kan du fortsatt sette feil status på inp
 
 ```html
 <form>
-  <nve-input label="Beskriv saken" errorMessage="Feltet er påkrevd"></nve-input>
+  <nve-input label="Beskriv saken" required errorMessage="Feltet er påkrevd"></nve-input>
 </form>
 ```
 
