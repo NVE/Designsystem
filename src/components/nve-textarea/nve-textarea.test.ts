@@ -27,7 +27,7 @@ describe('nve-textarea', () => {
     expect(label).not.toBeNull();
     expect(textarea).not.toBeNull();
     expect(textarea?.id).toBeTruthy();
-    expect(label?.getAttribute('for')).toBe(textarea?.id);
+    expect(label?.getAttribute('id')).toBe(textarea?.id);
   });
 
   it('hides only the required tag and responds to property changes', async () => {

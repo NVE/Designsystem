@@ -26,7 +26,7 @@ describe('nve-textarea', () => {
     expect(label).not.toBeNull();
     expect(input).not.toBeNull();
     expect(input?.id).toBeTruthy();
-    expect(label?.getAttribute('for')).toBe(input?.id);
+    expect(label?.getAttribute('id')).toBe(input?.id);
   });
 
   it('replaces tag text without adding tags', async () => {

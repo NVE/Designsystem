@@ -133,7 +133,7 @@ Bruk <span class="highlight">optional</span> for å vise merket «Valgfritt».
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Hvilke varsler vil du se mer på?" requried>
+<nve-checkbox-group label="Hvilke varsler vil du se på?" requried>
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
