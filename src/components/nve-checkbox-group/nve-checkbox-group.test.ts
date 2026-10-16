@@ -64,6 +64,8 @@ describe('nve-checkbox-group', () => {
       </nve-checkbox-group>
     `);
 
+    expect(required.shadowRoot?.querySelector('.field__label__validation--required')?.getAttribute('aria-hidden')).toBe('true');
+    expect(optional.shadowRoot?.querySelector('.field__label__validation--optional')?.getAttribute('aria-hidden')).toBe('true');
     expect(required.shadowRoot?.querySelector('.field__label__validation--required')?.textContent?.trim()).toBe(
       'Må fylles ut'
     );

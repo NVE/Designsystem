@@ -83,9 +83,9 @@ export function getLabel(
   const validationTag = required
     ? options?.hideRequiredTag
       ? nothing
-      : html`<span class="field__label__validation field__label__validation--required">${options?.requiredLabel || 'Må fylles ut'}</span>`
+      : html`<span class="field__label__validation field__label__validation--required" aria-hidden="true">${options?.requiredLabel || 'Må fylles ut'}</span>`
     : options?.optional
-      ? html`<span class="field__label__validation field__label__validation--optional">${options.optionalLabel || 'Valgfritt'}</span>`
+      ? html`<span class="field__label__validation field__label__validation--optional" aria-hidden="true">${options.optionalLabel || 'Valgfritt'}</span>`
       : nothing;
 
   const content = html`
@@ -96,5 +96,5 @@ export function getLabel(
 
   return useLegend
     ? html`<legend part="label" class="field__legend">${content}</legend>`
-    : html`<label part="label" class="field__label" for="${id}">${content}</label>`;
+    : html`<label part="label" class="field__label" id="${id}">${content}</label>`;
 }

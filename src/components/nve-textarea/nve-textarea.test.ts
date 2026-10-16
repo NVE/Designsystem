@@ -67,6 +67,8 @@ describe('nve-textarea', () => {
     const required = await fixture<NveTextarea>(html`<nve-textarea label="Label" required></nve-textarea>`);
     const optional = await fixture<NveTextarea>(html`<nve-textarea label="Label" optional></nve-textarea>`);
 
+    expect(required.shadowRoot?.querySelector('.field__label__validation--required')?.getAttribute('aria-hidden')).toBe('true');
+    expect(optional.shadowRoot?.querySelector('.field__label__validation--optional')?.getAttribute('aria-hidden')).toBe('true');
     expect(required.shadowRoot?.querySelector('.field__label__validation--required')?.textContent?.trim()).toBe(
       'Må fylles ut'
     );

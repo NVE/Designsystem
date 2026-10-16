@@ -40,9 +40,9 @@ export interface FormValidationComponent extends LitElement, INveComponent {
 
 ### Valideringstags
 
-Etter retningslinjer fra <a href="https://www.uutilsynet.no/veiledning/skjema/38" target="_blank_">UU Tilsynet</a> er det ikke nødvendig å merke feltene som obligatoriske dersom flertallet av feltene er påkrevd. Brukeren må imidlertid informeres om dette før vedkommende begynner å fylle ut skjemaet.
+I henhold til <a href="https://www.uutilsynet.no/veiledning/skjema/38" target="_blank_">retningslinjene</a> fra UU-tilsynet skal obligatoriske felt ha <span class="highlight">required</span>-attributtet, men det er ikke nødvendig å synliggjøre dette dersom flertallet av feltene er obligatoriske. Brukeren må da informeres om at feltene er obligatoriske før utfyllingen starter.
 
-Dersom enkelte felt er valgfrie, skal disse merkes tydelig som valgfrie. Tilsvarende gjelder dersom flertallet av feltene er valgfrie – da skal de obligatoriske feltene merkes særskilt.
+Dersom enkelte felt er valgfrie, skal disse merkes tydelig som valgfrie. Hvis flertallet av feltene er valgfrie, skal de obligatoriske feltene i stedet merkes særskilt.
 
 <div class="horizontal">
 <nve-input required Label="Dette feltet må fylles ut"></nve-input>

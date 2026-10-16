@@ -148,6 +148,8 @@ describe('nve-combobox', () => {
     const required = await fixture<NveCombobox>(html`<nve-combobox label="Label" required></nve-combobox>`);
     const optional = await fixture<NveCombobox>(html`<nve-combobox label="Label" optional></nve-combobox>`);
 
+    expect(required.shadowRoot?.querySelector('.field__label__validation--required')?.getAttribute('aria-hidden')).toBe('true');
+    expect(optional.shadowRoot?.querySelector('.field__label__validation--optional')?.getAttribute('aria-hidden')).toBe('true');
     expect(required.shadowRoot?.querySelector('.field__label__validation--required')?.textContent?.trim()).toBe(
       'Må fylles ut'
     );
