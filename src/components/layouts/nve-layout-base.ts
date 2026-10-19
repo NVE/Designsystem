@@ -11,7 +11,6 @@ const layoutElementTags = [
   'main',
   'header',
   'footer',
-  'form',
   'ul',
 ] as const;
 
@@ -140,7 +139,7 @@ export class NveLayoutBase extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     this._attributeObserver = new MutationObserver((records) => {
-      if (records.some(({ attributeName }) => attributeName === 'role' || attributeName?.startsWith('aria-'))) {
+      if (records.some(({ attributeName }) => attributeName === 'role')) {
         this._syncSemanticAttributes();
       }
     });
@@ -160,17 +159,11 @@ export class NveLayoutBase extends LitElement {
 
   private _syncSemanticAttributes() {
     const layoutElement = this.shadowRoot?.querySelector('.layout');
-    if (!layoutElement) return;
-
-    for (const attribute of [...layoutElement.attributes]) {
-      if (attribute.name === 'role' || attribute.name.startsWith('aria-')) {
-        layoutElement.removeAttribute(attribute.name);
-      }
-    }
-
-    for (const attribute of [...this.attributes]) {
-      if (attribute.name === 'role' || attribute.name.startsWith('aria-')) {
-        layoutElement.setAttribute(attribute.name, attribute.value);
+    if (layoutElement) {
+      if (this.hasAttribute('role')) {
+        layoutElement.setAttribute('role', 'presentation');
+      } else {
+        layoutElement.removeAttribute('role');
       }
     }
   }
@@ -206,11 +199,30 @@ export class NveLayoutBase extends LitElement {
       return value;
     };
 
-    if (changed('padding')) this._applySpacingProp('padding', getSpacingValue('padding'));
-    if (changed('margin')) this._applySpacingProp('margin', getSpacingValue('margin'));
-    if (changed('paddingBlock')) this._applySpacingProp('padding-block', getSpacingValue('paddingBlock'));
-    if (changed('paddingInline')) this._applySpacingProp('padding-inline', getSpacingValue('paddingInline'));
-    if (changed('marginBlock')) this._applySpacingProp('margin-block', getSpacingValue('marginBlock'));
-    if (changed('marginInline')) this._applySpacingProp('margin-inline', getSpacingValue('marginInline'));
+    if (changed('padding')) {
+      this._applySpacingProp('padding', getSpacingValue('padding'));
+      if (this.paddingBlock !== undefined || changed('paddingBlock')) {
+        this._applySpacingProp('padding-block', getSpacingValue('paddingBlock'));
+      }
+      if (this.paddingInline !== undefined || changed('paddingInline')) {
+        this._applySpacingProp('padding-inline', getSpacingValue('paddingInline'));
+      }
+    } else {
+      if (changed('paddingBlock')) this._applySpacingProp('padding-block', getSpacingValue('paddingBlock'));
+      if (changed('paddingInline')) this._applySpacingProp('padding-inline', getSpacingValue('paddingInline'));
+    }
+
+    if (changed('margin')) {
+      this._applySpacingProp('margin', getSpacingValue('margin'));
+      if (this.marginBlock !== undefined || changed('marginBlock')) {
+        this._applySpacingProp('margin-block', getSpacingValue('marginBlock'));
+      }
+      if (this.marginInline !== undefined || changed('marginInline')) {
+        this._applySpacingProp('margin-inline', getSpacingValue('marginInline'));
+      }
+    } else {
+      if (changed('marginBlock')) this._applySpacingProp('margin-block', getSpacingValue('marginBlock'));
+      if (changed('marginInline')) this._applySpacingProp('margin-inline', getSpacingValue('marginInline'));
+    }
   }
 }

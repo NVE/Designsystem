@@ -26,9 +26,24 @@ Alle layout-komponentene støtter `as` for å velge hvilket native HTML-element 
 <nve-stack as="section" aria-label="Kontaktinformasjon"> ... </nve-stack>
 ```
 
-`as` endrer elementet inne i komponentens shadow DOM. Selve custom-elementet (`nve-stack`) forblir i sidens DOM. `role`- og `aria-*`-attributter på layout-komponenten videresendes til det valgte native elementet. Standard er `div`.
+`as` velger HTML-elementet rundt innholdet inne i komponentens shadow DOM. Selve `<nve-stack>` ligger fortsatt i sidens DOM. Uten en eksplisitt `role` kommer semantikken fra HTML-elementet du valgte med `as`. Vil du gi komponenten en rolle eller et tilgjengelig navn/en beskrivelse, setter du `role` og relevante `aria-*`-attributter på `<nve-stack>`. Da er komponenten det semantiske elementet, og det indre elementet blir presentasjonelt. ARIA-referanser som `aria-labelledby` blir på komponenten og kan derfor peke på elementer i sidens DOM.
 
-Gyldige verdier for `as` er `div`, `section`, `article`, `aside`, `nav`, `main`, `header`, `footer`, `form` og `ul`.
+Gyldige verdier for `as` er `div`, `section`, `article`, `aside`, `nav`, `main`, `header`, `footer` og `ul`.
+
+### Skjemaer
+
+Ikke bruk `as="form"`. Layout-komponenten rendrer det valgte elementet inne i en shadow DOM, mens skjemakontrollene som legges inn via slot, fortsatt er i sidens DOM. Nettleseren knytter derfor ikke kontrollene til skjemaet inne i komponenten, og vanlig skjemavalidering og innsending vil ikke fungere som forventet.
+
+Plasser i stedet layout-komponenten inni et vanlig `<form>`-element:
+
+```html
+<form>
+  <nve-stack>
+    <nve-input label="E-post" type="email"></nve-input>
+    <nve-button type="submit">Send</nve-button>
+  </nve-stack>
+</form>
+```
 
 ## Eksempel på bruk
 

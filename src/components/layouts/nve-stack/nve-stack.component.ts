@@ -46,15 +46,16 @@ export default class NveStack extends NveLayoutBase {
     }
 
     // Valider justify. Ugyldige verdier ignoreres.
-    let justifyValue: LayoutJustify | undefined = this.justify;
-    if (changedProperties.has('justify')) {
-      if (this.justify !== undefined && !isValidLayoutJustify(this.justify)) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          `[nve-stack] Ugyldig verdi for 'justify': "${this.justify}". Verdien ignoreres. Gyldige verdier er: flex-start, flex-end, center, space-between, space-around, space-evenly, start, end, left, right.`
-        );
-        justifyValue = undefined;
-      }
+    const justifyValue: LayoutJustify | undefined = isValidLayoutJustify(this.justify) ? this.justify : undefined;
+    if (
+      changedProperties.has('justify') &&
+      this.justify !== undefined &&
+      !isValidLayoutJustify(this.justify)
+    ) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[nve-stack] Ugyldig verdi for 'justify': "${this.justify}". Verdien ignoreres. Gyldige verdier er: flex-start, flex-end, center, space-between, space-around, space-evenly, start, end, left, right.`
+      );
     }
 
     if (justifyValue !== undefined) {

@@ -12,6 +12,7 @@ export default [
       display: flex;
       flex-direction: column;
       gap: var(--spacing-medium);
+      height: 100%;
       justify-content: var(--_stack-justify, flex-start);
     }
   `,

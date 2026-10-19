@@ -59,27 +59,29 @@ export default class NveCluster extends NveLayoutBase {
     }
 
     // Valider justify. Ugyldige verdier ignoreres.
-    let justifyValue: LayoutJustify | undefined = this.justify;
-    if (changedProperties.has('justify')) {
-      if (this.justify !== undefined && !isValidLayoutJustify(this.justify)) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          `[nve-cluster] Ugyldig verdi for 'justify': "${this.justify}". Verdien ignoreres. Gyldige verdier er: flex-start, flex-end, center, space-between, space-around, space-evenly, start, end, left, right.`
-        );
-        justifyValue = undefined;
-      }
+    const justifyValue: LayoutJustify | undefined = isValidLayoutJustify(this.justify) ? this.justify : undefined;
+    if (
+      changedProperties.has('justify') &&
+      this.justify !== undefined &&
+      !isValidLayoutJustify(this.justify)
+    ) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[nve-cluster] Ugyldig verdi for 'justify': "${this.justify}". Verdien ignoreres. Gyldige verdier er: flex-start, flex-end, center, space-between, space-around, space-evenly, start, end, left, right.`
+      );
     }
 
     // Valider align. Ugyldige verdier ignoreres.
-    let alignValue: ClusterAlign | undefined = this.align;
-    if (changedProperties.has('align')) {
-      if (this.align !== undefined && !isValidClusterAlign(this.align)) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          `[nve-cluster] Ugyldig verdi for 'align': "${this.align}". Verdien ignoreres. Gyldige verdier er: flex-start, flex-end, center, baseline, stretch, start, end.`
-        );
-        alignValue = undefined;
-      }
+    const alignValue: ClusterAlign | undefined = isValidClusterAlign(this.align) ? this.align : undefined;
+    if (
+      changedProperties.has('align') &&
+      this.align !== undefined &&
+      !isValidClusterAlign(this.align)
+    ) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[nve-cluster] Ugyldig verdi for 'align': "${this.align}". Verdien ignoreres. Gyldige verdier er: flex-start, flex-end, center, baseline, stretch, start, end.`
+      );
     }
 
     if (justifyValue !== undefined) {

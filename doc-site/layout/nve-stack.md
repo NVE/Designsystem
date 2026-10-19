@@ -23,9 +23,9 @@ Bruk `as` for å velge det native HTML-elementet som omslutter innholdet.
 </nve-stack>
 ```
 
-`as` endrer elementet inne i komponentens shadow DOM. Selve custom-elementet (nve-stack) forblir i sidens DOM. `role-` og `aria-`-attributter på layout-komponenten videresendes til det valgte native elementet. Standard er `div`.
+`as` velger HTML-elementet rundt innholdet inne i komponentens shadow DOM. Selve `<nve-stack>` ligger fortsatt i sidens DOM. Uten en eksplisitt `role` kommer semantikken fra HTML-elementet du valgte med `as`. Vil du gi komponenten en rolle eller et tilgjengelig navn/en beskrivelse, setter du `role` og relevante `aria-*`-attributter på `<nve-stack>`. Da er komponenten det semantiske elementet, og det indre elementet blir presentasjonelt. ARIA-referanser som `aria-labelledby` blir på komponenten og kan derfor peke på elementer i sidens DOM.
 
-Gyldige verdier for `as` er `div`, `section`, `article`, `aside`, `nav`, `main`, `header`, `footer`, `form` og `ul`.
+Gyldige verdier for `as` er `div`, `section`, `article`, `aside`, `nav`, `main`, `header`, `footer` og `ul`.
 
 ## Mellomrom
 
