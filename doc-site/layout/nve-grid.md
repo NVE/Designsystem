@@ -17,10 +17,8 @@ import 'nve-designsystem/components/layouts/nve-grid/nve-grid.component.js';
 Bruk `as` for å velge det native HTML-elementet som omslutter innholdet.
 
 ```html
-<nve-grid as="section" aria-label="Temaer"> ... </nve-grid>
+<nve-grid as="section" role="region" aria-label="Temaer"> ... </nve-grid>
 ```
-
-`as` velger HTML-elementet rundt innholdet inne i komponentens shadow DOM. Selve `<nve-grid>` ligger fortsatt i sidens DOM. Uten en eksplisitt `role` kommer semantikken fra HTML-elementet du valgte med `as`. Vil du gi komponenten en rolle eller et tilgjengelig navn/en beskrivelse, setter du `role` og relevante `aria-*`-attributter på `<nve-grid>`. Da er komponenten det semantiske elementet, og det indre elementet blir presentasjonelt. ARIA-referanser som `aria-labelledby` blir på komponenten og kan derfor peke på elementer i sidens DOM.
 
 Gyldige verdier for `as` er `div`, `section`, `article`, `aside`, `nav`, `main`, `header`, `footer` og `ul`.
 

@@ -139,7 +139,14 @@ export class NveLayoutBase extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     this._attributeObserver = new MutationObserver((records) => {
-      if (records.some(({ attributeName }) => attributeName === 'role')) {
+      if (
+        records.some(
+          ({ attributeName }) =>
+            attributeName === 'role' ||
+            attributeName === 'aria-label' ||
+            attributeName === 'aria-description'
+        )
+      ) {
         this._syncSemanticAttributes();
       }
     });
@@ -159,11 +166,22 @@ export class NveLayoutBase extends LitElement {
 
   private _syncSemanticAttributes() {
     const layoutElement = this.shadowRoot?.querySelector('.layout');
-    if (layoutElement) {
-      if (this.hasAttribute('role')) {
-        layoutElement.setAttribute('role', 'presentation');
+    if (!layoutElement) return;
+
+    if (this.hasAttribute('role')) {
+      layoutElement.setAttribute('role', 'presentation');
+      layoutElement.removeAttribute('aria-label');
+      layoutElement.removeAttribute('aria-description');
+      return;
+    }
+
+    layoutElement.removeAttribute('role');
+    for (const attribute of ['aria-label', 'aria-description']) {
+      const value = this.getAttribute(attribute);
+      if (value === null) {
+        layoutElement.removeAttribute(attribute);
       } else {
-        layoutElement.removeAttribute('role');
+        layoutElement.setAttribute(attribute, value);
       }
     }
   }

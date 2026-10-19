@@ -1,5 +1,5 @@
 import { afterAll, describe, expect, it, vi } from 'vitest';
-import { fixture, fixtureCleanup } from '@open-wc/testing';
+import { expect as expectA11y, fixture, fixtureCleanup } from '@open-wc/testing';
 import { html } from 'lit';
 import NveBox from './nve-box/nve-box.component';
 import NveCluster from './nve-cluster/nve-cluster.component';
@@ -28,30 +28,30 @@ describe('layout components', () => {
     expect(box.shadowRoot?.querySelector('.layout')?.localName).toBe('aside');
   });
 
-  it('uses native semantics when no explicit role is provided', async () => {
+  it.each([
+    ['nav', 'Main menu'],
+    ['section', 'Contact details'],
+  ])('applies the accessible name to native %s without an explicit role', async (tag, name) => {
     const stack = await fixture<NveStack>(
-      html`<nve-stack as="nav" aria-label="Contact details">Content</nve-stack>`
+      html`<nve-stack as=${tag} aria-label=${name}>Content</nve-stack>`
     );
-
     const layout = stack.shadowRoot?.querySelector('.layout');
-    expect(stack.getAttribute('aria-label')).toBe('Contact details');
-    expect(stack.hasAttribute('role')).toBe(false);
-    expect(layout?.hasAttribute('aria-label')).toBe(false);
-    expect(layout?.hasAttribute('role')).toBe(false);
 
-    stack.setAttribute('aria-label', 'Updated details');
-    await new Promise((resolve) => setTimeout(resolve, 0));
-    expect(stack.getAttribute('aria-label')).toBe('Updated details');
+    expect(layout?.localName).toBe(tag);
+    expect(layout?.getAttribute('aria-label')).toBe(name);
     expect(stack.hasAttribute('role')).toBe(false);
+    expect(layout?.hasAttribute('role')).toBe(false);
+    await expectA11y(layout).to.be.accessible();
   });
 
-  it('keeps explicit roles on the host instead of duplicating them internally', async () => {
+  it('keeps an explicit landmark role and its accessible name on the same host', async () => {
     const stack = await fixture<NveStack>(
       html`<nve-stack as="nav" role="navigation" aria-label="Main menu">Content</nve-stack>`
     );
     const layout = stack.shadowRoot?.querySelector('.layout');
 
     expect(stack.getAttribute('role')).toBe('navigation');
+    expect(stack.getAttribute('aria-label')).toBe('Main menu');
     expect(layout?.getAttribute('role')).toBe('presentation');
     expect(layout?.hasAttribute('aria-label')).toBe(false);
   });
@@ -82,6 +82,20 @@ describe('layout components', () => {
     await new Promise((resolve) => setTimeout(resolve, 0));
 
     expect(layout?.hasAttribute('role')).toBe(false);
+    expect(layout?.getAttribute('aria-label')).toBe('Main menu');
+  });
+
+  it('updates the native accessible name when aria-label changes', async () => {
+    const stack = await fixture<NveStack>(
+      html`<nve-stack as="nav" aria-label="Main menu">Content</nve-stack>`
+    );
+    const layout = stack.shadowRoot?.querySelector('.layout');
+
+    expect(layout?.getAttribute('aria-label')).toBe('Main menu');
+    stack.setAttribute('aria-label', 'Primary navigation');
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    expect(layout?.getAttribute('aria-label')).toBe('Primary navigation');
   });
 
   it('revalidates rejected stack justification values after unrelated updates', async () => {

@@ -17,13 +17,11 @@ import 'nve-designsystem/components/layouts/nve-stack/nve-stack.component.js';
 Bruk `as` for å velge det native HTML-elementet som omslutter innholdet.
 
 ```html
-<nve-stack as="section" aria-label="Kontaktinformasjon">
+<nve-stack as="section" role="region" aria-label="Kontaktinformasjon">
   <nve-heading level="2">Kontakt oss</nve-heading>
   <nve-paragraph>Ta kontakt med oss.</nve-paragraph>
 </nve-stack>
 ```
-
-`as` velger HTML-elementet rundt innholdet inne i komponentens shadow DOM. Selve `<nve-stack>` ligger fortsatt i sidens DOM. Uten en eksplisitt `role` kommer semantikken fra HTML-elementet du valgte med `as`. Vil du gi komponenten en rolle eller et tilgjengelig navn/en beskrivelse, setter du `role` og relevante `aria-*`-attributter på `<nve-stack>`. Da er komponenten det semantiske elementet, og det indre elementet blir presentasjonelt. ARIA-referanser som `aria-labelledby` blir på komponenten og kan derfor peke på elementer i sidens DOM.
 
 Gyldige verdier for `as` er `div`, `section`, `article`, `aside`, `nav`, `main`, `header`, `footer` og `ul`.
 
