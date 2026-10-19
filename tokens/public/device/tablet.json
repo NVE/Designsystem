@@ -155,11 +155,11 @@
       },
       "medium": {
         "$type": "sizing",
-        "$value": "{sizing.540x}"
+        "$value": "{sizing.364x}"
       },
       "large": {
         "$type": "sizing",
-        "$value": "{sizing.544x}"
+        "$value": "{sizing.540x}"
       }
     },
     "icon": {

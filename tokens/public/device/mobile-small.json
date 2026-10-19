@@ -155,7 +155,7 @@
       },
       "medium": {
         "$type": "sizing",
-        "$value": "{sizing.348x}"
+        "$value": "{sizing.200x}"
       },
       "large": {
         "$type": "sizing",

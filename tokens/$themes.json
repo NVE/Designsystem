@@ -793,7 +793,12 @@
       "sizing.shadow.blur.2x-large": "f28b40b047d2612eafc72dd456697d5d0aa2b46d",
       "sizing.shadow.blur.3x-large": "890e42979ec29096cb6323bc0a09b93e5ee42c52",
       "sizing.shadow.blur.4x-large": "240dbc466217719b3522220374f04e794532c2f5",
-      "sizing.shadow.spread.x-small": "9f47b5b38011f47a88d7de72b57945104c4d2580"
+      "sizing.shadow.spread.x-small": "9f47b5b38011f47a88d7de72b57945104c4d2580",
+      "sizing.352x": "27cd5407340ae12fbbab9ff6f9789ae1ceb18cd6",
+      "sizing.364x": "eb326ef3f3854ca1e8d221adac5f61127e31622f",
+      "sizing.500x": "2eba7e091df3f71ea9bcd9f764466dd8b8ffd772",
+      "sizing.580x": "6beb05803df1a9427f79c2e8429200a6eec97efa",
+      "sizing.740x": "05fd7a2419b320dd112e1fe7773f0d2fd17287f7"
     },
     "group": "Brand"
   },
@@ -1235,7 +1240,12 @@
       "sizing.shadow.blur.2x-large": "f28b40b047d2612eafc72dd456697d5d0aa2b46d",
       "sizing.shadow.blur.3x-large": "890e42979ec29096cb6323bc0a09b93e5ee42c52",
       "sizing.shadow.blur.4x-large": "240dbc466217719b3522220374f04e794532c2f5",
-      "sizing.shadow.spread.x-small": "9f47b5b38011f47a88d7de72b57945104c4d2580"
+      "sizing.shadow.spread.x-small": "9f47b5b38011f47a88d7de72b57945104c4d2580",
+      "sizing.352x": "27cd5407340ae12fbbab9ff6f9789ae1ceb18cd6",
+      "sizing.364x": "eb326ef3f3854ca1e8d221adac5f61127e31622f",
+      "sizing.500x": "2eba7e091df3f71ea9bcd9f764466dd8b8ffd772",
+      "sizing.580x": "6beb05803df1a9427f79c2e8429200a6eec97efa",
+      "sizing.740x": "05fd7a2419b320dd112e1fe7773f0d2fd17287f7"
     },
     "group": "Brand"
   },
@@ -1873,7 +1883,12 @@
       "sizing.shadow.blur.2x-large": "f28b40b047d2612eafc72dd456697d5d0aa2b46d",
       "sizing.shadow.blur.3x-large": "890e42979ec29096cb6323bc0a09b93e5ee42c52",
       "sizing.shadow.blur.4x-large": "240dbc466217719b3522220374f04e794532c2f5",
-      "sizing.shadow.spread.x-small": "9f47b5b38011f47a88d7de72b57945104c4d2580"
+      "sizing.shadow.spread.x-small": "9f47b5b38011f47a88d7de72b57945104c4d2580",
+      "sizing.352x": "27cd5407340ae12fbbab9ff6f9789ae1ceb18cd6",
+      "sizing.364x": "eb326ef3f3854ca1e8d221adac5f61127e31622f",
+      "sizing.500x": "2eba7e091df3f71ea9bcd9f764466dd8b8ffd772",
+      "sizing.580x": "6beb05803df1a9427f79c2e8429200a6eec97efa",
+      "sizing.740x": "05fd7a2419b320dd112e1fe7773f0d2fd17287f7"
     },
     "group": "Brand"
   },
