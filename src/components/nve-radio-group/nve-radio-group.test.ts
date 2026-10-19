@@ -28,6 +28,61 @@ describe('nve-radio-group', () => {
     expect(document.body.contains(el)).toBe(true);
   });
 
+  it('hides only the required tag and responds to property changes', async () => {
+    const el = await fixture<NveRadioGroup>(html`
+      <nve-radio-group label="Label" required optional hideRequiredTag requiredLabel="Custom"></nve-radio-group>
+    `);
+
+    expect(el.hideRequiredTag).toBe(true);
+    expect(el.required).toBe(true);
+    expect(el.shadowRoot?.querySelector('.field__label__validation')).toBeNull();
+
+    el.hideRequiredTag = false;
+    await el.updateComplete;
+    expect(el.shadowRoot?.querySelector('.field__label__validation--required')?.textContent?.trim()).toBe('Custom');
+
+    el.hideRequiredTag = true;
+    el.required = false;
+    await el.updateComplete;
+    expect(el.shadowRoot?.querySelector('.field__label__validation--optional')).not.toBeNull();
+  });
+
+  it('replaces tag text without adding tags', async () => {
+    const el = await fixture<NveRadioGroup>(html`
+      <nve-radio-group label="Label" required optional requiredLabel="Required" optionalLabel="Optional"></nve-radio-group>
+    `);
+
+    expect(el.shadowRoot?.querySelectorAll('.field__label__validation')).toHaveLength(1);
+    expect(el.shadowRoot?.querySelector('.field__label__validation--required')?.textContent?.trim()).toBe('Required');
+
+    el.required = false;
+    await el.updateComplete;
+    expect(el.shadowRoot?.querySelectorAll('.field__label__validation')).toHaveLength(1);
+    expect(el.shadowRoot?.querySelector('.field__label__validation--optional')?.textContent?.trim()).toBe('Optional');
+  });
+
+  it('renders required and optional label tags', async () => {
+    const required = await fixture<NveRadioGroup>(html`
+      <nve-radio-group label="Status" required>
+        <nve-radio value="current">Pågående</nve-radio>
+      </nve-radio-group>
+    `);
+    const optional = await fixture<NveRadioGroup>(html`
+      <nve-radio-group label="Status" optional>
+        <nve-radio value="current">Pågående</nve-radio>
+      </nve-radio-group>
+    `);
+
+    expect(required.shadowRoot?.querySelector('.field__label__validation--required')?.getAttribute('aria-hidden')).toBe('true');
+    expect(optional.shadowRoot?.querySelector('.field__label__validation--optional')?.getAttribute('aria-hidden')).toBe('true');
+    expect(required.shadowRoot?.querySelector('.field__label__validation--required')?.textContent?.trim()).toBe(
+      'Må fylles ut'
+    );
+    expect(optional.shadowRoot?.querySelector('.field__label__validation--optional')?.textContent?.trim()).toBe(
+      'Valgfritt'
+    );
+  });
+
   it('renders the default field and vertical group classes', async () => {
     const el = await fixture<NveRadioGroup>(html`
       <nve-radio-group label="Status">

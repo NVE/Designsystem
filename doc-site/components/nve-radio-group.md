@@ -103,15 +103,22 @@ Husk å legge til <span class="highlight">aria-label</span> på <span class="hig
 
 </CodeExamplePreview>
 
-### Påkrevd
+### Påkrevd og Valgfritt
 
-Bruk <span class="highlight">required</span> for å vise et stjernesymbol på slutten av ledeteksten som markerer at feltet er påkrevd.  
-Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forklarende tekst sammen med stjernen (for eksempel 'obligatorisk'). Dette gir brukerne en bedre forståelse av at feltet er påkrevd, siden ikke alle brukere forstår eller oppfatter stjernesymbolet alene.
+Alle obligatoriske felt skal ha attributtet <span class="highlight">required</span>, uavhengig av visuell merking. Dersom flertallet av feltene er obligatoriske, informer brukeren om dette før utfylling, og merk valgfrie felt med «Valgfritt». Dersom flertallet er valgfrie, merk obligatoriske felt med «Må fylles ut».
+
+Bruk <span class="highlight">hideRequiredTag</span> for å skjule den visuelle merkingen uten å endre feltets obligatoriske status, og <span class="highlight">optional</span> for å merke valgfrie felt med «Valgfritt».
 
 <CodeExamplePreview>
 
 ```html
-<nve-radio-group label="Hva er status på tiltaket?" required requiredLabel="Obligatorisk">
+<nve-radio-group label="Hva er status på tiltaket?" required>
+  <nve-radio value="planned">Planlagt</nve-radio>
+  <nve-radio value="current">Pågående</nve-radio>
+  <nve-radio value="done">Ferdigstilt</nve-radio>
+</nve-radio-group>
+
+<nve-radio-group label="Hva er status på tiltaket?" optional>
   <nve-radio value="planned">Planlagt</nve-radio>
   <nve-radio value="current">Pågående</nve-radio>
   <nve-radio value="done">Ferdigstilt</nve-radio>
@@ -119,6 +126,8 @@ Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forkl
 ```
 
 </CodeExamplePreview>
+
+Standardtekstene er «Må fylles ut» og «Valgfritt» og skal ikke endres. Ved behov for andre språk kan attributtene <span class="highlight">requiredLabel</span> og <span class="highlight">optionalLabel</span> tas i bruk. De erstatter teksten i henholdsvis required-merket og optional-merket, uten å legge til et nytt merke. Brukes sammen med <span class="highlight">required</span> og <span class="highlight">optional</span> attributtene.
 
 ### Retning
 
@@ -297,7 +306,7 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
 
 ```html
 <form id="test-form" class="form">
-  <nve-radio-group id="rdgr" label="Hva er status på tiltaket?">
+  <nve-radio-group id="rdgr" required label="Hva er status på tiltaket?">
     <nve-radio value="planned">Planlagt</nve-radio>
     <nve-radio value="current">Pågående</nve-radio>
     <nve-radio value="done">Ferdigstilt</nve-radio>
@@ -329,7 +338,7 @@ Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand
 
 ```html
 <form id="test-form" class="form">
-  <nve-radio-group id="rdgr" label="Hva er status på tiltaket?" errorMessage="Feltet er påkrevd">
+  <nve-radio-group id="rdgr" required label="Hva er status på tiltaket?" errorMessage="Feltet er påkrevd">
     <nve-radio value="planned">Planlagt</nve-radio>
     <nve-radio value="current">Pågående</nve-radio>
     <nve-radio value="done">Ferdigstilt</nve-radio>

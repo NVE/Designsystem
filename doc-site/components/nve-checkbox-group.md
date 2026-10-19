@@ -122,22 +122,31 @@ Husk å legge til <span class="highlight">aria-label</span> på <span class="hig
 
 </CodeExamplePreview>
 
-### Påkrevd
+### Påkrevd og Valgfritt
 
-Bruk <span class="highlight">required</span> for å vise et stjernesymbol på slutten av ledeteksten som markerer at feltet er påkrevd.  
-Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forklarende tekst sammen med stjernen (for eksempel 'obligatorisk'). Dette gir brukerne en bedre forståelse av at feltet er påkrevd, siden ikke alle brukere forstår eller oppfatter stjernesymbolet alene.
+Alle obligatoriske felt skal ha attributtet <span class="highlight">required</span>, uavhengig av visuell merking. Dersom flertallet av feltene er obligatoriske, informer brukeren om dette før utfylling, og merk valgfrie felt med «Valgfritt». Dersom flertallet er valgfrie, merk obligatoriske felt med «Må fylles ut».
+
+Bruk <span class="highlight">hideRequiredTag</span> for å skjule den visuelle merkingen uten å endre feltets obligatoriske status, og <span class="highlight">optional</span> for å merke valgfrie felt med «Valgfritt».
 
 <CodeExamplePreview>
 
 ```html
-<nve-checkbox-group label="Hvilke varsler vil du se på?" required requiredLabel="Obligatorisk">
+<nve-checkbox-group label="Hvilke varsler vil du se på?" required>
   <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
   <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
   <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
 </nve-checkbox-group>
+
+<nve-checkbox-group label="Hvordan ønsker du å motta varsler?" optional>
+  <nve-checkbox value="epost">E-post</nve-checkbox>
+  <nve-checkbox value="sms">SMS</nve-checkbox>
+  <nve-checkbox value="push">Pushvarsler</nve-checkbox>
+</nve-checkbox-group>
 ```
 
 </CodeExamplePreview>
+
+Standardtekstene er «Må fylles ut» og «Valgfritt» og skal ikke endres. Ved behov for andre språk kan attributtene <span class="highlight">requiredLabel</span> og <span class="highlight">optionalLabel</span> tas i bruk. De erstatter teksten i henholdsvis required-merket og optional-merket, uten å legge til et nytt merke. Brukes sammen med <span class="highlight">required</span> og <span class="highlight">optional</span> attributtene.
 
 ### Retning
 
@@ -329,7 +338,7 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
 
 ```html
 <form id="test-form" class="form">
-  <nve-checkbox-group id="chgr" label="Hvilke varsler vil du se på?">
+  <nve-checkbox-group id="chgr" required label="Hvilke varsler vil du se på?">
     <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
     <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
     <nve-checkbox value="rain">Regnvarsel</nve-checkbox>
@@ -364,7 +373,7 @@ Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand
 
 ```html
 <form id="test-form" class="form">
-  <nve-checkbox-group label="Hvilke varsler vil du se på?" errorMessage="Du må velge minst én.">
+  <nve-checkbox-group label="Hvilke varsler vil du se på?" required errorMessage="Du må velge minst én.">
     <nve-checkbox value="flood">Flomvarsel</nve-checkbox>
     <nve-checkbox value="landslide">Jordskredvarsel</nve-checkbox>
     <nve-checkbox value="rain">Regnvarsel</nve-checkbox>

@@ -685,10 +685,11 @@ Bruk <span class="highlight">placeholder</span> for å vise en hjelpetekst i fel
 
 </CodeExamplePreview>
 
-### Påkrevd
+### Påkrevd og Valgfritt
 
-Bruk <span class="highlight">required</span> for å vise et stjernesymbol på slutten av ledeteksten som markerer at feltet er påkrevd.  
-Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forklarende tekst sammen med stjernen (for eksempel 'obligatorisk'). Dette gir brukerne en bedre forståelse av at feltet er påkrevd, siden ikke alle brukere forstår eller oppfatter stjernesymbolet alene.
+Alle obligatoriske felt skal ha attributtet <span class="highlight">required</span>, uavhengig av visuell merking. Dersom flertallet av feltene er obligatoriske, informer brukeren om dette før utfylling, og merk valgfrie felt med «Valgfritt». Dersom flertallet er valgfrie, merk obligatoriske felt med «Må fylles ut».
+
+Bruk <span class="highlight">hideRequiredTag</span> for å skjule den visuelle merkingen uten å endre feltets obligatoriske status, og <span class="highlight">optional</span> for å merke valgfrie felt med «Valgfritt».
 
 <CodeExamplePreview>
 
@@ -697,7 +698,22 @@ Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forkl
   id="nve-avdeling-14"
   label="Velg en avdeling"
   required
-  requiredLabel="Obligatorisk"
+  options='[ 
+    { "value":"rme","label": "RME" },
+    { "value":"ek","label": "EK" },
+    { "value":"tb","label": "TB" },
+    { "value":"h","label": "H" },
+    { "value":"ikti","label": "IKTI" },
+    { "value":"sv","label": "SV" },
+    { "value":"v","label": "V" }
+     ]'
+>
+</nve-combobox>
+
+<nve-combobox
+  id="nve-avdeling-14"
+  label="Velg en avdeling"
+  optional
   options='[ 
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" },
@@ -712,6 +728,8 @@ Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forkl
 ```
 
 </CodeExamplePreview>
+
+Standardtekstene er «Må fylles ut» og «Valgfritt» og skal ikke endres. Ved behov for andre språk kan attributtene <span class="highlight">requiredLabel</span> og <span class="highlight">optionalLabel</span> tas i bruk. De erstatter teksten i henholdsvis required-merket og optional-merket, uten å legge til et nytt merke. Brukes sammen med <span class="highlight">required</span> og <span class="highlight">optional</span> attributtene.
 
 ### Begrense antall valgbare verdier
 
@@ -855,6 +873,7 @@ Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand
   <nve-combobox
     id="cb"
     label="Velg en avdeling"
+    required
     options='[
     { "value":"rme","label": "RME" },
     { "value":"ek","label": "EK" }

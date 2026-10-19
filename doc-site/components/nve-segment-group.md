@@ -120,15 +120,24 @@ Husk å legge til <span class="highlight">aria-label</span> på <span class="hig
 
 </CodeExamplePreview>
 
-### Påkrevd
+### Påkrevd og valgfritt
 
-Bruk <span class="highlight">required</span> for å vise et stjernesymbol på slutten av ledeteksten som markerer at feltet er påkrevd.  
-Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forklarende tekst sammen med stjernen (for eksempel 'obligatorisk'). Dette gir brukerne en bedre forståelse av at feltet er påkrevd, siden ikke alle brukere forstår eller oppfatter stjernesymbolet alene.
+Alle obligatoriske felt skal ha attributtet <span class="highlight">required</span>, uavhengig av visuell merking. Dersom flertallet av feltene er obligatoriske, informer brukeren om dette før utfylling, og merk valgfrie felt med «Valgfritt». Dersom flertallet er valgfrie, merk obligatoriske felt med «Må fylles ut».
+
+Bruk <span class="highlight">hideRequiredTag</span> for å skjule den visuelle merkingen uten å endre feltets obligatoriske status, og <span class="highlight">optional</span> for å merke valgfrie felt med «Valgfritt».
 
 <CodeExamplePreview>
 
 ```html
-<nve-segment-group label="Hvilken gjenstand bruker du mest på jobb?" required requiredLabel="Obligatorisk">
+<nve-segment-group label="Hvilken gjenstand bruker du mest på jobb?" required>
+  <nve-segment value="computer">Datamaskin</nve-segment>
+  <nve-segment value="mobile">Mobil</nve-segment>
+  <nve-segment value="traditional">Papir og blyant</nve-segment>
+</nve-segment-group>
+```
+
+```html
+<nve-segment-group label="Hvilken gjenstand bruker du mest på jobb?" optional>
   <nve-segment value="computer">Datamaskin</nve-segment>
   <nve-segment value="mobile">Mobil</nve-segment>
   <nve-segment value="traditional">Papir og blyant</nve-segment>
@@ -136,6 +145,8 @@ Bruk i tillegg <span class="highlight">requiredLabel</span> for å vise en forkl
 ```
 
 </CodeExamplePreview>
+
+Standardtekstene er «Må fylles ut» og «Valgfritt» og skal ikke endres. Ved behov for andre språk kan attributtene <span class="highlight">requiredLabel</span> og <span class="highlight">optionalLabel</span> tas i bruk. De erstatter teksten i henholdsvis required-merket og optional-merket, uten å legge til et nytt merke. Brukes sammen med <span class="highlight">required</span> og <span class="highlight">optional</span> attributtene.
 
 ### Hjelptekst
 
@@ -314,7 +325,7 @@ import { validateForm } from 'nve-designsystem/validation/validateForm.js';
 
 ```html
 <form id="test-form" class="form">
-  <nve-segment-group id="sgr" label="Hvilken gjenstand bruker du mest på jobb?">
+  <nve-segment-group id="sgr" required label="Hvilken gjenstand bruker du mest på jobb?">
     <nve-segment value="computer">Datamaskin</nve-segment>
     <nve-segment value="mobile">Mobil</nve-segment>
     <nve-segment value="traditional">Papir og blyant</nve-segment>
@@ -346,7 +357,7 @@ Bruker du et eksternt valideringssystem, kan du sette komponenten i feiltilstand
 
 ```html
 <form id="test-form" class="form">
-  <nve-segment-group label="Hvilken gjenstand bruker du mest på jobb?" errorMessage="Feltet er påkrevd">
+  <nve-segment-group required label="Hvilken gjenstand bruker du mest på jobb?" errorMessage="Feltet er påkrevd">
     <nve-segment value="computer">Datamaskin</nve-segment>
     <nve-segment value="mobile">Mobil</nve-segment>
     <nve-segment value="traditional">Papir og blyant</nve-segment>
