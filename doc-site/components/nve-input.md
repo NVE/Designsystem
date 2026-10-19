@@ -188,11 +188,9 @@ Husk å legge til <span class="highlight">aria-label</span> på <span class="hig
 
 ### Påkrevd og Valgfritt
 
-Det er ikke nødvendig å merke feltene som obligatoriske dersom flertallet av feltene er påkrevd. Brukeren må imidlertid informeres om dette før vedkommende begynner å fylle ut skjemaet. Dersom enkelte felt er valgfrie, skal disse merkes tydelig som valgfrie. Tilsvarende gjelder dersom flertallet av feltene er valgfrie – da skal de obligatoriske feltene merkes særskilt.
+Alle obligatoriske felt skal ha attributtet <span class="highlight">required</span>, uavhengig av visuell merking. Dersom flertallet av feltene er obligatoriske, informer brukeren om dette før utfylling, og merk valgfrie felt med «Valgfritt». Dersom flertallet er valgfrie, merk obligatoriske felt med «Må fylles ut».
 
-Bruk <span class="highlight">required</span> for å sette feltet til obligatorisk, og bruk <span class="highlight">hideRequiredTag</span> for å skjule merket «Må fylles ut» uten å endre at feltet er obligatorisk.
-
-Bruk <span class="highlight">optional</span> for å vise merket «Valgfritt».
+Bruk <span class="highlight">hideRequiredTag</span> for å skjule den visuelle merkingen uten å endre feltets obligatoriske status, og <span class="highlight">optional</span> for å merke valgfrie felt med «Valgfritt».
 
 <CodeExamplePreview>
 
