@@ -135,7 +135,7 @@ Bruk <span class="highlight">optional</span> for å vise merket «Valgfritt».
 
 </CodeExamplePreview>
 
-Ved annet språk, kan attributtene <span class="highlight">requiredLabel</span> og <span class="highlight">optionalLabel</span> tas i bruk. De erstatter teksten i henholdsvis required-merket og optional-merket, uten å legge til et nytt merke. Brukes sammen med <span class="highlight">required</span> og <span class="highlight">optional</span> attributtene. Standardtekstene er «Må fylles ut» og «Valgfritt» og skal ikke endres etter retningslinjene.
+Standardtekstene er «Må fylles ut» og «Valgfritt» og skal ikke endres. Ved behov for andre språk kan attributtene <span class="highlight">requiredLabel</span> og <span class="highlight">optionalLabel</span> tas i bruk. De erstatter teksten i henholdsvis required-merket og optional-merket, uten å legge til et nytt merke. Brukes sammen med <span class="highlight">required</span> og <span class="highlight">optional</span> attributtene.
 
 ### Mørk bakgrunn
 

@@ -120,7 +120,7 @@ Husk å legge til <span class="highlight">aria-label</span> på <span class="hig
 
 </CodeExamplePreview>
 
-### Påkrevd
+### Påkrevd og valgfritt
 
 Bruk <span class="highlight">required</span> for å vise merket «Må fylles ut». Bruk <span class="highlight">optional</span> for å vise merket «Valgfritt». Teksten i required-merket kan overstyres med <span class="highlight">requiredLabel</span>.
 
@@ -147,6 +147,8 @@ Attributtene <span class="highlight">requiredLabel</span> og <span class="highli
 ```
 
 </CodeExamplePreview>
+
+Standardtekstene er «Må fylles ut» og «Valgfritt» og skal ikke endres. Ved behov for andre språk kan attributtene <span class="highlight">requiredLabel</span> og <span class="highlight">optionalLabel</span> tas i bruk. De erstatter teksten i henholdsvis required-merket og optional-merket, uten å legge til et nytt merke. Brukes sammen med <span class="highlight">required</span> og <span class="highlight">optional</span> attributtene.
 
 ### Hjelptekst
 
