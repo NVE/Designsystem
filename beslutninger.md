@@ -5,6 +5,18 @@ Vi skriver også om hvilke alternativer som ble vurdert og hvorfor enkelte alter
 
 Vi sorterer valgene etter tidspunkt for når de ble gjort, med de siste valgene øverst.
 
+## Layout-komponenter (juni 2026)
+
+Layout-komponentene (`nve-stack`, `nve-cluster`, `nve-grid`, `nve-box`) er strukturelle byggeklosser basert på prinsippene fra [Every Layout](https://every-layout.dev/).
+
+Fordelen med layout-komponenter er at man slipper å gjenta den samme layout CSS-en overalt i applikasjonen. Vanlige oppsett som vertikal stabling, horisontal gruppering og rutenett løses med en tag.
+
+En av ulempene med layout-komponenter er at de legger til et ekstra lag i DOM-en, og at man må sette seg inn i Every Layout for å bruke dem riktig.
+
+Komponentene for layout brukes frivillig, og er kun ment som et hjelpeverktøy for de som vil bruke dem. Trenger man egendefinert CSS eller andre verdier enn spacing tokens fra Designsystemet, kan man ikke bruke disse komponentene og må definere egen CSS.
+
+Hovedformålet med disse er å gjøre applikasjonene responsive og forbedre utvikleropplevelsen.
+
 ## Versjonering på pakkenivå fremfor komponentnivå (desember 2025)
 
 Versjonering på komponentnivå ville tillatt team å oppdatere kun de komponentene de trenger uten å måtte ta inn hele pakken. Dette kan virke attraktivt, men skaper flere utfordringer enn fordeler.

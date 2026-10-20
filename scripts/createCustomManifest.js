@@ -2,7 +2,7 @@
  * Genererer dist/custom-elements.json ved å analysere alle *.component.ts-filer
  * ved hjelp av TypeScript-kompilator-API-et. Erstatter @custom-elements-manifest/analyzer.
  *
- * Kjør: node scripts/generateManifest.js
+ * Kjør: node scripts/createCustomManifest.js
  */
 import ts from 'typescript';
 import fs from 'fs';
@@ -13,20 +13,50 @@ const COMPONENTS_DIR = path.resolve('src/components');
 const OUT_FILE = path.resolve('dist/custom-elements.json');
 
 /**
- * Henter alle komponentfiler i `src/components.component.ts`.
- *
- * Forventer at mappenavnet er lik filnavnet, f.eks.
- * `src/components/nve-button/nve-button.component.ts`.
+ * Henter alle komponentfiler under `src/components`.
  *
  * @returns {string[]} Absolutte filstier til alle eksisterende `*.component.ts`-filer.
  */
 function getComponentFiles() {
-  return fs.readdirSync(COMPONENTS_DIR).flatMap((name) => {
-    const dir = path.join(COMPONENTS_DIR, name);
-    if (!fs.statSync(dir).isDirectory()) return [];
-    const file = path.join(dir, `${name}.component.ts`);
-    return fs.existsSync(file) ? [file] : [];
-  });
+  const files = [];
+  const visit = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const entryPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        visit(entryPath);
+      } else if (entry.isFile() && entry.name.endsWith('.component.ts')) {
+        files.push(entryPath);
+      }
+    }
+  };
+  visit(COMPONENTS_DIR);
+  return files;
+}
+
+function getClassIndex() {
+  const classes = new Map();
+  const visit = (dir) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const entryPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        visit(entryPath);
+      } else if (entry.isFile() && entry.name.endsWith('.ts') && !entry.name.endsWith('.d.ts')) {
+        const sourceFile = ts.createSourceFile(
+          entryPath,
+          fs.readFileSync(entryPath, 'utf8'),
+          ts.ScriptTarget.Latest,
+          true
+        );
+        ts.forEachChild(sourceFile, (node) => {
+          if (ts.isClassDeclaration(node) && node.name) {
+            classes.set(node.name.text, { node, sourceFile });
+          }
+        });
+      }
+    }
+  };
+  visit(path.resolve('src'));
+  return classes;
 }
 
 /**
@@ -118,7 +148,7 @@ function findPropertyDecorator(member) {
  * @returns {{ members: Array<Record<string, any>>, attributes: Array<Record<string, any>> }}
  * Normaliserte lister som brukes i manifestet.
  */
-function extractClassMembers(classNode, sourceFile) {
+function extractOwnClassMembers(classNode, sourceFile) {
   const members = [];
   const attributes = [];
 
@@ -183,6 +213,28 @@ function extractClassMembers(classNode, sourceFile) {
   return { members, attributes };
 }
 
+function extractClassMembers(classNode, sourceFile, classIndex, visited = new Set()) {
+  const className = classNode.name?.text;
+  if (className) visited.add(className);
+  const own = extractOwnClassMembers(classNode, sourceFile);
+  const heritage = classNode.heritageClauses?.find((h) => h.token === ts.SyntaxKind.ExtendsKeyword);
+  const superclassName = heritage?.types[0]?.expression?.getText(sourceFile) ?? '';
+  const superclass = classIndex.get(superclassName);
+
+  if (!superclass || visited.has(superclassName)) return own;
+
+  const inherited = extractClassMembers(superclass.node, superclass.sourceFile, classIndex, visited);
+  const mergeByName = (inheritedItems, ownItems) => {
+    const items = new Map(inheritedItems.map((item) => [item.name, item]));
+    for (const item of ownItems) items.set(item.name, item);
+    return [...items.values()];
+  };
+  return {
+    members: mergeByName(inherited.members, own.members),
+    attributes: mergeByName(inherited.attributes, own.attributes),
+  };
+}
+
 /**
  * Parser én komponentfil og returnerer et manifest-modul-objekt for den.
  *
@@ -193,7 +245,7 @@ function extractClassMembers(classNode, sourceFile) {
  * @returns {{ modulePath: string, declaration: Record<string, any> } | null}
  * Et normalisert resultat, eller `null` dersom filen ikke inneholder en komponent.
  */
-function parseComponentFile(filePath) {
+function parseComponentFile(filePath, classIndex) {
   const sourceText = fs.readFileSync(filePath, 'utf8');
   const sourceFile = ts.createSourceFile(filePath, sourceText, ts.ScriptTarget.Latest, true);
   let result = null;
@@ -225,13 +277,14 @@ function parseComponentFile(filePath) {
       .filter((t) => t.tag === 'csspart')
       .map((t) => ({ name: t.name ?? '', description: t.description ?? '' }));
 
-    const { members, attributes } = extractClassMembers(node, sourceFile);
+    const { members, attributes } = extractClassMembers(node, sourceFile, classIndex);
 
     const heritage = node.heritageClauses?.find((h) => h.token === ts.SyntaxKind.ExtendsKeyword);
     const superclassName = heritage?.types[0]?.expression?.getText(sourceFile) ?? '';
 
-    const componentPath = `components/${tagName}/${tagName}.js`;
-    const relativeSrcPath = path.relative(path.resolve('.'), filePath).replace(/\\/g, '/');
+    const componentDirectory = path.relative(COMPONENTS_DIR, path.dirname(filePath)).replace(/\\/g, '/');
+    const componentFile = path.basename(filePath).replace(/\.ts$/, '.js');
+    const componentPath = `components/${componentDirectory ? `${componentDirectory}/` : ''}${componentFile}`;
 
     result = {
       modulePath: componentPath,
@@ -251,7 +304,7 @@ function parseComponentFile(filePath) {
         tagName,
         customElement: true,
         jsDoc: rawJsDoc ?? '',
-        modulePath: relativeSrcPath,
+        modulePath: componentPath,
       },
     };
   });
@@ -260,10 +313,11 @@ function parseComponentFile(filePath) {
 }
 
 const files = getComponentFiles();
+const classIndex = getClassIndex();
 const modules = [];
 
 for (const file of files) {
-  const parsed = parseComponentFile(file);
+  const parsed = parseComponentFile(file, classIndex);
   if (!parsed) continue;
   modules.push({
     kind: 'javascript-module',
