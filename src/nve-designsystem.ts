@@ -8,11 +8,7 @@ export { default as NveAspectRose } from './components/nve-aspect-rose/nve-aspec
 export { default as NveBadge } from './components/nve-badge/nve-badge.component';
 export { NveLayoutBase, type SpacingToken, type LayoutJustify } from './components/layouts/nve-layout-base';
 export { default as NveBox, type BoxBackground } from './components/layouts/nve-box/nve-box.component';
-export {
-  default as NveCluster,
-  type ClusterLayoutGap,
-  type ClusterAlign,
-} from './components/layouts/nve-cluster/nve-cluster.component';
+export { default as NveCluster, type ClusterLayoutGap, type ClusterAlign } from './components/layouts/nve-cluster/nve-cluster.component';
 export { default as NveGrid } from './components/layouts/nve-grid/nve-grid.component';
 export { default as NveStack } from './components/layouts/nve-stack/nve-stack.component';
 export { default as NveButton } from './components/nve-button/nve-button.component';
