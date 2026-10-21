@@ -1,3 +1,3 @@
 # Mønstre
 
-Mønstre er sammensatte løsninger som løser vanlige brukersituasjoner. De bidrar til en konsistent brukerflyt på tvers av applikasjoner og nettsider.
+Her finner du en samling av maler og mønstre som brukes på tvers av NVEs tjenester.

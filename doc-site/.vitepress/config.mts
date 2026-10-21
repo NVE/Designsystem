@@ -19,6 +19,10 @@ const figmaIcon = {
 export default defineConfig({
   lang: 'nb-NO',
   title: 'NVE Designsystem',
+  rewrites: {
+    'patterns/index.md': 'moenster/index.md',
+    'patterns/validering.md': 'moenster/validering.md',
+  },
   head: [['link', { rel: 'icon', href: '/assets/nve-logo.svg' }]],
   themeConfig: {
     docFooter: {
@@ -79,9 +83,8 @@ export default defineConfig({
       {
         text: 'Mønstre',
         items: [
-          { text: 'Oversikt', link: '/patterns/' },
-          { text: 'Validering', link: '/patterns/validering' },
-          { text: '404 / Error / Låst sider', link: '/patterns/feilsider' },
+          { text: 'Oversikt', link: '/moenster/' },
+          { text: 'Validering', link: '/moenster/validering' },
         ],
       },
     ],
