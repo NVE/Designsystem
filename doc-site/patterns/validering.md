@@ -23,13 +23,17 @@ Hvis de fleste feltene er obligatoriske, kan du opplyse øverst i skjemaet om at
 
 Som hovedregel skal vi bare spørre brukeren om informasjon vi absolutt trenger, og unngå valgfrie felt.
 
-<nve-message-card size="simple" label="Alle felt må fylles ut, unntatt felt som er markert som valgfrie">
-
-</nve-message-card>
+<div style="display: flex; flex-direction: column; gap: 1rem;">
+  <nve-message-card size="simple" label="Alle felt må fylles ut, unntatt felt som er markert som valgfrie">
+  </nve-message-card>
+  <nve-input label="Saksbehandlers navn" optional></nve-input>
+</div>
 
 ### Når bare ett felt er obligatorisk
 
 Hvis det bare er ett obligatorisk felt, kan det merkes med «Må fylles ut».
+
+<nve-input label="Saksbehandlers navn" required></nve-input>
 
 ## Feil og validering
 
@@ -61,11 +65,11 @@ Vis feil tydelig når brukeren fyller ut skjemaet eller prøver å sende det inn
 </style>
 
 <div class="validation-examples">
-  <nve-message-card variant="success" saturation="emphasized" label="Gjør">
+  <nve-message-card variant="success"  label="Gjør">
     <p>Beskriv hva som er feil, og hvordan brukeren kan rette det.</p>
     <nve-input label="E-postadresse" errorMessage="Skriv inn en e-postadresse, for eksempel navn@eksempel.no."></nve-input>
   </nve-message-card>
-  <nve-message-card variant="danger" saturation="emphasized" label="Unngå">
+  <nve-message-card variant="danger" label="Unngå">
     <p>Ikke vis generelle feilmeldinger uten å forklare hva brukeren skal gjøre.</p>
     <nve-input label="E-postadresse" errorMessage="Ugyldig verdi."></nve-input>
   </nve-message-card>
@@ -73,7 +77,7 @@ Vis feil tydelig når brukeren fyller ut skjemaet eller prøver å sende det inn
 
 ### Oppsummering av feilmeldinger
 
-Vurder fra prosjekt til prosjekt om det er behov for en oppsummeringskomponent. Oppsummeringen kan gjelde én eller flere feil.
+Vurder fra prosjekt til prosjekt om det er behov for et oppsummeringskomponent. Oppsummeringen kan gjelde én eller flere feil.
 
 <nve-message-card variant="danger" label="Du må rette opp følgende feil før du kan gå videre">
   <ul>
