@@ -51,7 +51,7 @@ export default defineConfig({
               { text: 'Kom i gang', link: '/introduction/forDevelopers/development' },
               { text: 'Bruk i Vue', link: '/introduction/forDevelopers/vue' },
               { text: 'Importering av filer', link: '/introduction/forDevelopers/import' },
-              { text: 'Validering', link: '/introduction/forDevelopers/validation' },
+              { text: 'Skjemavalidering', link: '/introduction/forDevelopers/validation' },
               { text: 'Vue-komponentbibliotek', link: '/introduction/forDevelopers/vueLibrary' },
             ],
           },
@@ -79,7 +79,6 @@ export default defineConfig({
           { text: 'Universell Utforming', link: '/introduction/universellUtforming' },
         ],
       },
-      { text: 'Komponenter', items: componentsLinks },
       {
         text: 'Mønstre',
         items: [
@@ -87,6 +86,7 @@ export default defineConfig({
           { text: 'Validering', link: '/moenster/validering' },
         ],
       },
+      { text: 'Komponenter', items: componentsLinks },
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/NVE/Designsystem', ariaLabel: 'Link til kildekoden i Github' },
