@@ -77,7 +77,7 @@ Vis feil tydelig når brukeren fyller ut skjemaet eller prøver å sende det inn
 
 ### Oppsummering av feilmeldinger
 
-Vurder fra prosjekt til prosjekt om det er behov for et oppsummeringskomponent. Oppsummeringen kan gjelde én eller flere feil.
+Vurder fra prosjekt til prosjekt om det er behov for en oppsummeringskomponent. Oppsummeringen kan gjelde én eller flere feil.
 
 <nve-message-card variant="danger" label="Du må rette opp følgende feil før du kan gå videre">
   <ul>
