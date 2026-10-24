@@ -179,25 +179,17 @@
         "$type": "sizing",
         "$value": "{sizing.84x}"
       },
+      "small": {
+        "$type": "sizing",
+        "$value": "{sizing.144x}"
+      },
+      "medium": {
+        "$type": "sizing",
+        "$value": "{sizing.500x}"
+      },
       "large": {
         "$type": "sizing",
-        "$value": "{sizing.750x}"
-      }
-    },
-    "card": {
-      "link-card": {
-        "height": {
-          "x-large": {
-            "min-height": {
-              "$type": "sizing",
-              "$value": "{sizing.212x}"
-            },
-            "max-height": {
-              "$type": "sizing",
-              "$value": "{sizing.246x}"
-            }
-          }
-        }
+        "$value": "{sizing.580x}"
       }
     },
     "icon": {

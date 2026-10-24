@@ -1534,6 +1534,10 @@
       "$type": "sizing",
       "$value": "136px"
     },
+    "144x": {
+      "$type": "sizing",
+      "$value": "144px"
+    },
     "160x": {
       "$type": "sizing",
       "$value": "160px"
@@ -1566,6 +1570,10 @@
       "$type": "sizing",
       "$value": "232px"
     },
+    "240x": {
+      "$type": "sizing",
+      "$value": "240px"
+    },
     "246x": {
       "$type": "sizing",
       "$value": "246px"
@@ -1589,6 +1597,22 @@
     "342x": {
       "$type": "sizing",
       "$value": "342px"
+    },
+    "348x": {
+      "$type": "sizing",
+      "$value": "348px"
+    },
+    "352x": {
+      "$type": "sizing",
+      "$value": "352px"
+    },
+    "360x": {
+      "$type": "sizing",
+      "$value": "360px"
+    },
+    "364x": {
+      "$type": "sizing",
+      "$value": "364px"
     },
     "366x": {
       "$type": "sizing",
@@ -1622,9 +1646,17 @@
       "$type": "sizing",
       "$value": "496px"
     },
+    "500x": {
+      "$type": "sizing",
+      "$value": "500px"
+    },
     "520x": {
       "$type": "sizing",
       "$value": "520px"
+    },
+    "540x": {
+      "$type": "sizing",
+      "$value": "540px"
     },
     "544x": {
       "$type": "sizing",
@@ -1634,6 +1666,10 @@
       "$type": "sizing",
       "$value": "572px"
     },
+    "580x": {
+      "$type": "sizing",
+      "$value": "580px"
+    },
     "588x": {
       "$type": "sizing",
       "$value": "588px"
@@ -1642,9 +1678,17 @@
       "$type": "sizing",
       "$value": "600px"
     },
+    "612x": {
+      "$type": "sizing",
+      "$value": "612px"
+    },
     "700x": {
       "$type": "sizing",
       "$value": "700px"
+    },
+    "740x": {
+      "$type": "sizing",
+      "$value": "740px"
     },
     "750x": {
       "$type": "sizing",
