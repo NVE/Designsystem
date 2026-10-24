@@ -1,10 +1,7 @@
 name: Bygg tokens ved PR-endringer
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-    paths:
-      - 'tokens/**'
+  workflow_dispatch:
 
 permissions:
   contents: write
