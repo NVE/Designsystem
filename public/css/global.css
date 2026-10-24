@@ -28,6 +28,19 @@ a:has(nve-navigation-card) {
   color: var(--color-interactive-foreground-link-primary-enabled);
 }
 
+/* Brukes for å gi wrapper-lenker rundt <nve-link-card> og <nve-navigation-card> samme visuelle uttrykk som komponentene */
+a:has(> nve-link-card),
+a:has(> nve-navigation-card) {
+  border-radius: var(--border-radius-small);
+  transition: box-shadow var(--transition-time) ease;
+}
+
+a:has(> nve-link-card):focus-visible,
+a:has(> nve-navigation-card):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--border-width-strong) var(--color-interactive-border-accessibility-focus);
+}
+
 /* Brukes for å overskrive standard lenke visited styling som ikke er i Shadow-DOMen som f.eks de som skal wrappe <nve-link-card> */
 a:visited {
   color: var(--color-interactive-foreground-link-info-visited);

@@ -32,9 +32,9 @@ Bruk `size` for å endre størrelse. `medium` er standard.
 <CodeExamplePreview>
 
 ```html
-<nve-link-card label="Kommuneplan" variant="contrast" size="small"></nve-link-card>
-<nve-link-card label="Kommuneplan" variant="contrast" size="medium"></nve-link-card>
-<nve-link-card label="Kommuneplan" variant="contrast" size="large"></nve-link-card>
+<nve-link-card label="Kommuneplan" additionalText="Ekstra tekst" variant="contrast" size="small"></nve-link-card>
+<nve-link-card label="Kommuneplan" additionalText="Ekstra tekst" variant="contrast" size="medium"></nve-link-card>
+<nve-link-card label="Kommuneplan" additionalText="Ekstra tekst" variant="contrast" size="large"></nve-link-card>
 ```
 
 </CodeExamplePreview>
@@ -50,6 +50,22 @@ Du kan legge til en ekstra tekst under hovedlenkens overskrift ved å bruke `add
 
 ```html
 <nve-link-card label="Overskrift" additionalText="Ekstra tekst"></nve-link-card>
+```
+
+</CodeExamplePreview>
+
+## Lang tekst
+
+Kortet håndterer veldig lange ord ved å bryte dem slik at innholdet ikke flyter ut av kortet. `additionalText` vises fortsatt på én linje og avkortes med `...`.
+
+<CodeExamplePreview>
+
+```html
+<nve-link-card
+  label="Supercalifragilisticexpialidocioussuperlangtordsomikkeharmellomrom"
+  additionalText="EnveldiglangtilleggstekstsomheltsikkerikkefårplasspåénlinjeogderformåavkortesEnveldiglangtilleggstekstsomheltsikkerikkefårplasspåénlinjeogderformåavkortes"
+  variant="contrast"
+></nve-link-card>
 ```
 
 </CodeExamplePreview>
@@ -170,7 +186,7 @@ Du kan legge til et ikon helt til venstre i kortet ved å bruke slot med `slot="
 
 Når man benytter klientside-routing, for eksempel med `routerLink`, genereres et eget `<a>`-element av rammeverket. I disse tilfellene blir `nve-link-card` pakket inn i en `<a>`. For å unngå ugyldig HTML-struktur med `<a>`-elementer inni hverandre, sjekker `nve-link-card` derfor om dets direkte forelder er et `<a>`. Hvis dette er tilfelle, rendres kortet som et `<div>` i stedet for et `<a>`.
 
-På denne måten beholdes mest funksjonalitet og styling fra `nve-link-card`, samtidig som man unngår semantiske og tekniske problemer med nestede lenker.
+På denne måten beholdes mest funksjonalitet og styling fra `nve-link-card`, samtidig som man unngår semantiske og tekniske problemer med nestede lenker. Når kortet pakkes inn i en ytre lenke, håndteres fokusmarkeringen og border-radius av `global.css`.
 
 Bruk av nve-link-card i Vue:
 
