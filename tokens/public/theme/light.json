@@ -80,11 +80,13 @@
         },
         "secondary-dim": {
           "$type": "color",
-          "$value": "{color-shades.grey.850}"
+          "$value": "{color-shades.grey.850}",
+          "$description": "Denne fargen skal KUN brukes i veldig spesielle tilfeller. Brukes hovedsaklig til å fremheve viktige ting."
         },
         "tertiary-dim": {
           "$type": "color",
-          "$value": "{color-shades.grey.800}"
+          "$value": "{color-shades.grey.800}",
+          "$description": "Denne fargen skal KUN brukes i veldig spesielle tilfeller. Brukes hovedsaklig til å fremheve viktige ting."
         },
         "modal-overlay": {
           "$type": "color",
