@@ -257,6 +257,11 @@
         "$type": "sizing",
         "$value": "{sizing.48x}",
         "$description": "Brukes på height på alle interaktive elementer"
+      },
+      "x-large": {
+        "$type": "sizing",
+        "$value": "{sizing.56x}",
+        "$description": "Brukes på height på alle interaktive elementer"
       }
     }
   },
