@@ -11,11 +11,22 @@ Bestem hvilke opplysninger skjemaet faktisk trenger, og gjør det tydelig for br
 
 ### Når alle feltene er obligatoriske
 
-Hvis alle feltene på en side må fylles ut, kan du informere tydelig øverst i skjemaet om at alle feltene er obligatoriske. Da trenger du ikke å markere hvert enkelt felt.
+Hvis alle feltene på en side må fylles ut, kan du informere tydelig øverst i skjemaet om at alle feltene er obligatoriske. Da trenger du ikke å markere hvert enkelt felt visuelt. Hvert obligatoriske felt må likevel ha `required`-attributtet, slik at det også formidles programmatisk at feltet må fylles ut, i tråd med WCAG.
 
 <nve-message-card size="simple" label="Alle felt må fylles ut">
 
 </nve-message-card>
+
+<br />
+
+<nve-input label="Navn" required></nve-input>
+
+<br />
+
+```html
+<nve-message-card size="simple" label="Alle felt må fylles ut"></nve-message-card>
+<nve-input label="Navn" required></nve-input>
+```
 
 ### Når skjemaet har både obligatoriske og valgfrie felt
 
@@ -29,11 +40,27 @@ Som hovedregel skal vi bare spørre brukeren om informasjon vi absolutt trenger,
   <nve-input label="Saksbehandlers navn" optional></nve-input>
 </div>
 
+<br />
+
+```html
+<nve-message-card
+  size="simple"
+  label="Alle felt må fylles ut, unntatt felt som er markert som valgfrie"
+></nve-message-card>
+<nve-input label="Saksbehandlers navn" optional></nve-input>
+```
+
 ### Når bare ett felt er obligatorisk
 
 Hvis det bare er ett obligatorisk felt, kan det merkes med «Må fylles ut».
 
 <nve-input label="Saksbehandlers navn" required></nve-input>
+
+<br />
+
+```html
+<nve-input label="Saksbehandlers navn" required></nve-input>
+```
 
 ## Feil og validering
 
@@ -86,6 +113,18 @@ Vurder fra prosjekt til prosjekt om det er behov for en oppsummeringskomponent. 
     <li>Du må velge fylke.</li>
   </ul>
 </nve-message-card>
+
+<br />
+
+```html
+<nve-message-card variant="danger" label="Du må rette opp følgende feil før du kan gå videre">
+  <ul>
+    <li>Telefonnummer må fylles ut.</li>
+    <li>Du må velge om anlegget har gyldig konsesjon.</li>
+    <li>Du må velge fylke.</li>
+  </ul>
+</nve-message-card>
+```
 
 Hvis brukeren prøver å gå videre uten å ha fylt ut alt, eller har gjort feil, kan oppsummeringen vises rett over **Neste**- eller **Send inn**-knappen. I noen tilfeller er det bedre å vise oppsummeringen øverst på siden, for eksempel når:
 
