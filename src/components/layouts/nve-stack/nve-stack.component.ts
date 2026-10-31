@@ -5,6 +5,8 @@ import {
   NveLayoutBase,
   SpacingToken,
   LayoutJustify,
+  spacingTokens,
+  layoutJustifyValues,
   isValidSpacingToken,
   isValidLayoutJustify,
 } from '../nve-layout-base';
@@ -39,7 +41,7 @@ export default class NveStack extends NveLayoutBase {
       if (this.gap !== undefined && !isValidSpacingToken(this.gap)) {
         // eslint-disable-next-line no-console
         console.warn(
-          `[nve-stack] Ugyldig verdi for 'gap': "${this.gap}". Verdien ignoreres. Gyldige verdier er: none, 2x-small, x-small, small, medium, large, x-large, 2x-large, 3x-large, 4x-large, 5x-large.`
+          `[nve-stack] Ugyldig verdi for 'gap': "${this.gap}". Verdien ignoreres. Gyldige verdier er: ${spacingTokens.join(', ')}.`
         );
         this.gap = undefined;
       }
@@ -54,7 +56,7 @@ export default class NveStack extends NveLayoutBase {
     ) {
       // eslint-disable-next-line no-console
       console.warn(
-        `[nve-stack] Ugyldig verdi for 'justify': "${this.justify}". Verdien ignoreres. Gyldige verdier er: flex-start, flex-end, center, space-between, space-around, space-evenly, start, end, left, right.`
+        `[nve-stack] Ugyldig verdi for 'justify': "${this.justify}". Verdien ignoreres. Gyldige verdier er: ${layoutJustifyValues.join(', ')}.`
       );
     }
 

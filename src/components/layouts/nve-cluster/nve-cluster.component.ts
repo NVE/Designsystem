@@ -5,6 +5,8 @@ import {
   NveLayoutBase,
   SpacingToken,
   LayoutJustify,
+  spacingTokens,
+  layoutJustifyValues,
   isValidSpacingToken,
   isValidLayoutJustify,
 } from '../nve-layout-base';
@@ -21,14 +23,14 @@ import {
  * @property {ClusterAlign} align - align-items-verdi. Standard: center.
  */
 export type ClusterLayoutGap = SpacingToken;
-export type ClusterAlign = 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | 'start' | 'end';
+const validAlignValues = ['flex-start', 'flex-end', 'center', 'baseline', 'stretch', 'start', 'end'] as const;
+export type ClusterAlign = (typeof validAlignValues)[number];
 
 /**
  * Validerer at en verdi er en gyldig align-verdi.
  */
 function isValidClusterAlign(value: unknown): value is ClusterAlign {
-  const validAlign: ClusterAlign[] = ['flex-start', 'flex-end', 'center', 'baseline', 'stretch', 'start', 'end'];
-  return validAlign.includes(value as ClusterAlign);
+  return typeof value === 'string' && (validAlignValues as readonly string[]).includes(value);
 }
 
 @customElement('nve-cluster')
@@ -52,7 +54,7 @@ export default class NveCluster extends NveLayoutBase {
       if (this.gap !== undefined && !isValidSpacingToken(this.gap)) {
         // eslint-disable-next-line no-console
         console.warn(
-          `[nve-cluster] Ugyldig verdi for 'gap': "${this.gap}". Verdien ignoreres. Gyldige verdier er: none, 2x-small, x-small, small, medium, large, x-large, 2x-large, 3x-large, 4x-large, 5x-large.`
+          `[nve-cluster] Ugyldig verdi for 'gap': "${this.gap}". Verdien ignoreres. Gyldige verdier er: ${spacingTokens.join(', ')}.`
         );
         this.gap = undefined;
       }
@@ -67,7 +69,7 @@ export default class NveCluster extends NveLayoutBase {
     ) {
       // eslint-disable-next-line no-console
       console.warn(
-        `[nve-cluster] Ugyldig verdi for 'justify': "${this.justify}". Verdien ignoreres. Gyldige verdier er: flex-start, flex-end, center, space-between, space-around, space-evenly, start, end, left, right.`
+        `[nve-cluster] Ugyldig verdi for 'justify': "${this.justify}". Verdien ignoreres. Gyldige verdier er: ${layoutJustifyValues.join(', ')}.`
       );
     }
 
@@ -80,7 +82,7 @@ export default class NveCluster extends NveLayoutBase {
     ) {
       // eslint-disable-next-line no-console
       console.warn(
-        `[nve-cluster] Ugyldig verdi for 'align': "${this.align}". Verdien ignoreres. Gyldige verdier er: flex-start, flex-end, center, baseline, stretch, start, end.`
+        `[nve-cluster] Ugyldig verdi for 'align': "${this.align}". Verdien ignoreres. Gyldige verdier er: ${validAlignValues.join(', ')}.`
       );
     }
 

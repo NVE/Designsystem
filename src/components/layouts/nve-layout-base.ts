@@ -17,75 +17,56 @@ const layoutElementTags = [
 export type LayoutElementTag = (typeof layoutElementTags)[number];
 
 function isValidLayoutElementTag(value: unknown): value is LayoutElementTag {
-  return layoutElementTags.includes(value as LayoutElementTag);
+  return typeof value === 'string' && (layoutElementTags as readonly string[]).includes(value);
 }
 
 /**
  * Felles spacing-tokens brukt av alle layout-komponenter.
  * Mapper direkte til `--spacing-<verdi>` i designsystemet.
  */
-export type SpacingToken =
-  | 'none'
-  | '2x-small'
-  | 'x-small'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'x-large'
-  | '2x-large'
-  | '3x-large'
-  | '4x-large'
-  | '5x-large';
+export const spacingTokens = [
+  'none',
+  '2x-small',
+  'x-small',
+  'small',
+  'medium',
+  'large',
+  'x-large',
+  '2x-large',
+  '3x-large',
+  '4x-large',
+  '5x-large',
+] as const;
 
-export type LayoutJustify =
-  | 'flex-start'
-  | 'flex-end'
-  | 'center'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
-  | 'start'
-  | 'end'
-  | 'left'
-  | 'right';
+export type SpacingToken = (typeof spacingTokens)[number];
+
+export const layoutJustifyValues = [
+  'flex-start',
+  'flex-end',
+  'center',
+  'space-between',
+  'space-around',
+  'space-evenly',
+  'start',
+  'end',
+  'left',
+  'right',
+] as const;
+
+export type LayoutJustify = (typeof layoutJustifyValues)[number];
 
 /**
  * Validerer at en verdi er en gyldig spacing-token.
  */
 export function isValidSpacingToken(value: unknown): value is SpacingToken {
-  const validTokens: SpacingToken[] = [
-    'none',
-    '2x-small',
-    'x-small',
-    'small',
-    'medium',
-    'large',
-    'x-large',
-    '2x-large',
-    '3x-large',
-    '4x-large',
-    '5x-large',
-  ];
-  return validTokens.includes(value as SpacingToken);
+  return typeof value === 'string' && (spacingTokens as readonly string[]).includes(value);
 }
 
 /**
  * Validerer at en verdi er en gyldig justify-verdi.
  */
 export function isValidLayoutJustify(value: unknown): value is LayoutJustify {
-  const validJustify: LayoutJustify[] = [
-    'flex-start',
-    'flex-end',
-    'center',
-    'space-between',
-    'space-around',
-    'space-evenly',
-    'start',
-    'end',
-    'left',
-    'right',
-  ];
-  return validJustify.includes(value as LayoutJustify);
+  return typeof value === 'string' && (layoutJustifyValues as readonly string[]).includes(value);
 }
 
 /**
@@ -122,7 +103,7 @@ export class NveLayoutBase extends LitElement {
     const tagName = this.tagName.toLowerCase();
     // eslint-disable-next-line no-console
     console.warn(
-      `[${tagName}] Ugyldig verdi for '${propName}': "${value}". Verdien ignoreres. Gyldige verdier er: none, 2x-small, x-small, small, medium, large, x-large, 2x-large, 3x-large, 4x-large, 5x-large.`
+      `[${tagName}] Ugyldig verdi for '${propName}': "${value}". Verdien ignoreres. Gyldige verdier er: ${spacingTokens.join(', ')}.`
     );
   }
 

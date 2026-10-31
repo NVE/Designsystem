@@ -37,21 +37,27 @@ Følgende verdier er gyldige for `gap`:
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<nve-stack gap="small" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</nve-stack>
-<nve-stack style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</nve-stack>
-<nve-stack gap="large" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</nve-stack>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-stack gap="small">
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+  </nve-stack>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-stack>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+  </nve-stack>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-stack gap="large">
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+  </nve-stack>
+</nve-box>
 ```
 
 </CodeExamplePreview>
@@ -67,60 +73,48 @@ Følgende verdier er gyldige for `justify`: `flex-start` (default), `flex-end`, 
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)">
 
 ```html
-<nve-stack
-  justify="flex-start"
-  gap="small"
-  style="height: 220px; padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</nve-stack>
-<nve-stack
-  justify="center"
-  gap="small"
-  style="height: 220px; padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</nve-stack>
-<nve-stack
-  justify="flex-end"
-  gap="small"
-  style="height: 220px; padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</nve-stack>
-<nve-stack
-  justify="space-between"
-  gap="small"
-  style="height: 220px; padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</nve-stack>
-<nve-stack
-  justify="space-around"
-  gap="small"
-  style="height: 220px; padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</nve-stack>
-<nve-stack
-  justify="space-evenly"
-  gap="small"
-  style="height: 220px; padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-</nve-stack>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-stack justify="flex-start" gap="small" style="height: 220px">
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+  </nve-stack>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-stack justify="center" gap="small" style="height: 220px">
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+  </nve-stack>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-stack justify="flex-end" gap="small" style="height: 220px">
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+  </nve-stack>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-stack justify="space-between" gap="small" style="height: 220px">
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+  </nve-stack>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-stack justify="space-around" gap="small" style="height: 220px">
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+  </nve-stack>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-stack justify="space-evenly" gap="small" style="height: 220px">
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+  </nve-stack>
+</nve-box>
 ```
 
 </CodeExamplePreview>
@@ -132,17 +126,23 @@ Stacks kan nøstes for å bygge opp et hierarki av avstander.
 <CodeExamplePreview>
 
 ```html
-<nve-stack gap="large" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
-  <nve-stack gap="small" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
-    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-stack gap="large">
+    <nve-box padding="small" background="--color-neutrals-background-tertiary-dim">
+      <nve-stack gap="small">
+        <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+        <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+        <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+      </nve-stack>
+    </nve-box>
+    <nve-box padding="small" background="--color-neutrals-background-tertiary-dim">
+      <nve-stack gap="small">
+        <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+        <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
+      </nve-stack>
+    </nve-box>
   </nve-stack>
-  <nve-stack gap="small" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
-    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-    <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
-  </nve-stack>
-</nve-stack>
+</nve-box>
 ```
 
 </CodeExamplePreview>

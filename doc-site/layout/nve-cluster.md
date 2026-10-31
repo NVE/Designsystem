@@ -34,21 +34,27 @@ Følgende verdier er gyldige for `gap`:
 <CodeExamplePreview>
 
 ```html
-<nve-cluster gap="x-small" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</nve-cluster>
-<nve-cluster style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</nve-cluster>
-<nve-cluster gap="large" style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)">
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</nve-cluster>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-cluster gap="x-small">
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+  </nve-cluster>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-cluster>
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+  </nve-cluster>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-cluster gap="large">
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+  </nve-cluster>
+</nve-box>
 ```
 
 </CodeExamplePreview>
@@ -64,38 +70,30 @@ Følgende verdier er gyldige for `justify`: `flex-start` (default), `flex-end`, 
 <CodeExamplePreview>
 
 ```html
-<nve-cluster
-  justify="flex-start"
-  gap="small"
-  style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</nve-cluster>
-<nve-cluster
-  justify="center"
-  gap="small"
-  style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</nve-cluster>
-<nve-cluster
-  justify="flex-end"
-  gap="small"
-  style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</nve-cluster>
-<nve-cluster
-  justify="space-between"
-  gap="small"
-  style="padding: 0.5rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
-</nve-cluster>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-cluster justify="flex-start" gap="small">
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+  </nve-cluster>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-cluster justify="center" gap="small">
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+  </nve-cluster>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-cluster justify="flex-end" gap="small">
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+  </nve-cluster>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-cluster justify="space-between" gap="small">
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 80px; background: var(--color-feedback-background-default-info)"></div>
+  </nve-cluster>
+</nve-box>
 ```
 
 </CodeExamplePreview>
@@ -111,33 +109,27 @@ Følgende verdier er gyldige for `align`: `flex-start`, `flex-end`, `center` (de
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<nve-cluster
-  align="flex-start"
-  gap="small"
-  style="width: fit-content; padding: 1rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 100px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
-</nve-cluster>
-<nve-cluster
-  align="center"
-  gap="small"
-  style="width: fit-content; padding: 1rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 100px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
-</nve-cluster>
-<nve-cluster
-  align="flex-end"
-  gap="small"
-  style="width: fit-content; padding: 1rem; background: var(--color-feedback-background-subtle-neutral)"
->
-  <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 100px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
-  <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
-</nve-cluster>
+<nve-box padding="large" background="--color-neutrals-background-canvas" style="width: fit-content">
+  <nve-cluster align="flex-start" gap="small">
+    <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 100px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
+  </nve-cluster>
+</nve-box>
+<nve-box padding="large" background="--color-neutrals-background-canvas" style="width: fit-content">
+  <nve-cluster align="center" gap="small">
+    <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 100px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
+  </nve-cluster>
+</nve-box>
+<nve-box padding="large" background="--color-neutrals-background-canvas" style="width: fit-content">
+  <nve-cluster align="flex-end" gap="small">
+    <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 100px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
+    <div style="height: 44px; width: 44px; background: var(--color-feedback-background-default-info)"></div>
+  </nve-cluster>
+</nve-box>
 ```
 
 </CodeExamplePreview>

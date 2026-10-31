@@ -1,7 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import styles from './nve-grid.styles';
 import { PropertyValues } from 'lit';
-import { NveLayoutBase, SpacingToken, isValidSpacingToken } from '../nve-layout-base';
+import { NveLayoutBase, SpacingToken, spacingTokens, isValidSpacingToken } from '../nve-layout-base';
 
 /**
  * Et responsivt rutenett som automatisk bryter til nye linjer basert på en minste kolonnebredde.
@@ -33,7 +33,7 @@ export default class NveGrid extends NveLayoutBase {
       if (this.gap !== undefined && !isValidSpacingToken(this.gap)) {
         // eslint-disable-next-line no-console
         console.warn(
-          `[nve-grid] Ugyldig verdi for 'gap': "${this.gap}". Verdien ignoreres. Gyldige verdier er: none, 2x-small, x-small, small, medium, large, x-large, 2x-large, 3x-large, 4x-large, 5x-large.`
+          `[nve-grid] Ugyldig verdi for 'gap': "${this.gap}". Verdien ignoreres. Gyldige verdier er: ${spacingTokens.join(', ')}.`
         );
         this.gap = undefined;
       }

@@ -32,26 +32,28 @@ Gyldige verdier for `as` er `div`, `section`, `article`, `aside`, `nav`, `main`,
 
 ```html
 <div style="resize: horizontal; overflow: auto; max-width: 100%; min-width: 150px">
-  <nve-grid min="120px" style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem">
-    <div
-      style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-    ></div>
-    <div
-      style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-    ></div>
-    <div
-      style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-    ></div>
-    <div
-      style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-    ></div>
-    <div
-      style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-    ></div>
-    <div
-      style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-    ></div>
-  </nve-grid>
+  <nve-box padding="small" background="--color-neutrals-background-canvas">
+    <nve-grid min="120px">
+      <div
+        style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+      ></div>
+      <div
+        style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+      ></div>
+      <div
+        style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+      ></div>
+      <div
+        style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+      ></div>
+      <div
+        style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+      ></div>
+      <div
+        style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+      ></div>
+    </nve-grid>
+  </nve-box>
 </div>
 ```
 
@@ -68,48 +70,54 @@ Følgende verdier er gyldige for `gap`:
 <CodeExamplePreview containerGridTemplateColumns="repeat(3, 1fr)" containerItemsAlign="start">
 
 ```html
-<nve-grid gap="small" min="80px" style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem">
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-</nve-grid>
-<nve-grid min="80px" style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem">
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-</nve-grid>
-<nve-grid gap="large" min="80px" style="background: var(--color-feedback-background-subtle-neutral); padding: 0.5rem">
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-  <div
-    style="min-height: 80px; background: var(--color-feedback-background-default-info); border: 4px solid var(--color-feedback-background-subtle-neutral)"
-  ></div>
-</nve-grid>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-grid gap="small" min="64px">
+    <div
+      style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+    ></div>
+    <div
+      style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+    ></div>
+    <div
+      style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+    ></div>
+    <div
+      style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+    ></div>
+  </nve-grid>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-grid min="64px">
+    <div
+      style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+    ></div>
+    <div
+      style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+    ></div>
+    <div
+      style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+    ></div>
+    <div
+      style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+    ></div>
+  </nve-grid>
+</nve-box>
+<nve-box padding="small" background="--color-neutrals-background-canvas">
+  <nve-grid gap="large" min="64px">
+    <div
+      style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+    ></div>
+    <div
+      style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+    ></div>
+    <div
+      style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+    ></div>
+    <div
+      style="min-height: 80px; background: var(--color-feedback-background-default-info)"
+    ></div>
+  </nve-grid>
+</nve-box>
 ```
 
 </CodeExamplePreview>

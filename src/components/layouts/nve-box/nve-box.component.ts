@@ -15,27 +15,22 @@ import { NveLayoutBase, SpacingToken } from '../nve-layout-base';
  */
 export type BoxLayoutPadding = SpacingToken;
 
-export type BoxBackground =
-  | '--color-neutrals-background-canvas'
-  | '--color-neutrals-background-primary'
-  | '--color-neutrals-background-primary-contrast'
-  | '--color-neutrals-background-secondary'
-  | '--color-neutrals-background-secondary-dim'
-  | '--color-neutrals-background-tertiary-dim';
+const validBackgrounds = [
+  '--color-neutrals-background-canvas',
+  '--color-neutrals-background-primary',
+  '--color-neutrals-background-primary-contrast',
+  '--color-neutrals-background-secondary',
+  '--color-neutrals-background-secondary-dim',
+  '--color-neutrals-background-tertiary-dim',
+] as const;
+
+export type BoxBackground = (typeof validBackgrounds)[number];
 
 /**
  * Validerer at en verdi er en gyldig background-verdi.
  */
 function isValidBoxBackground(value: unknown): value is BoxBackground {
-  const validBackgrounds: BoxBackground[] = [
-    '--color-neutrals-background-canvas',
-    '--color-neutrals-background-primary',
-    '--color-neutrals-background-primary-contrast',
-    '--color-neutrals-background-secondary',
-    '--color-neutrals-background-secondary-dim',
-    '--color-neutrals-background-tertiary-dim',
-  ];
-  return validBackgrounds.includes(value as BoxBackground);
+  return typeof value === 'string' && (validBackgrounds as readonly string[]).includes(value);
 }
 
 @customElement('nve-box')
@@ -56,7 +51,7 @@ export default class NveBox extends NveLayoutBase {
       if (this.background !== undefined && !isValidBoxBackground(this.background)) {
         // eslint-disable-next-line no-console
         console.warn(
-          `[nve-box] Ugyldig verdi for 'background': "${this.background}". Bakgrunnsfargen fjernes. Gyldige verdier er: --color-neutrals-background-canvas, --color-neutrals-background-primary, --color-neutrals-background-primary-contrast, --color-neutrals-background-secondary, --color-neutrals-background-secondary-dim, --color-neutrals-background-tertiary-dim.`
+          `[nve-box] Ugyldig verdi for 'background': "${this.background}". Bakgrunnsfargen fjernes. Gyldige verdier er: ${validBackgrounds.join(', ')}.`
         );
         this.background = undefined;
       }
