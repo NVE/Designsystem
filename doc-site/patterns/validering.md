@@ -19,13 +19,13 @@ Hvis alle feltene på en side må fylles ut, kan du informere tydelig øverst i 
 
 <br />
 
-<nve-input label="Navn" required></nve-input>
+<nve-input label="Navn" required hideRequiredTag></nve-input>
 
 <br />
 
 ```html
 <nve-message-card size="simple" label="Alle felt må fylles ut"></nve-message-card>
-<nve-input label="Navn" required></nve-input>
+<nve-input label="Navn" required hideRequiredTag></nve-input>
 ```
 
 ### Når skjemaet har både obligatoriske og valgfrie felt
