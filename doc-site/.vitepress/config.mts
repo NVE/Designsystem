@@ -47,7 +47,7 @@ export default defineConfig({
               { text: 'Kom i gang', link: '/introduction/forDevelopers/development' },
               { text: 'Bruk i Vue', link: '/introduction/forDevelopers/vue' },
               { text: 'Importering av filer', link: '/introduction/forDevelopers/import' },
-              { text: 'Validering', link: '/introduction/forDevelopers/validation' },
+              { text: 'Skjemavalidering', link: '/introduction/forDevelopers/validation' },
               { text: 'Vue-komponentbibliotek', link: '/introduction/forDevelopers/vueLibrary' },
             ],
           },
@@ -73,6 +73,13 @@ export default defineConfig({
           },
           { text: 'Profil og primitiver', link: '/introduction/profilOgPrimitiver' },
           { text: 'Universell Utforming', link: '/introduction/universellUtforming' },
+        ],
+      },
+      {
+        text: 'Mønstre',
+        items: [
+          { text: 'Oversikt', link: '/patterns/' },
+          { text: 'Validering', link: '/patterns/validering' },
         ],
       },
       { text: 'Komponenter', items: componentsLinks },
