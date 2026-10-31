@@ -128,14 +128,14 @@ Stacks kan nøstes for å bygge opp et hierarki av avstander.
 ```html
 <nve-box padding="small" background="--color-neutrals-background-canvas">
   <nve-stack gap="large">
-    <nve-box padding="small" background="--color-neutrals-background-tertiary-dim">
+    <nve-box padding="small" background="--color-neutrals-background-primary-contrast">
       <nve-stack gap="small">
         <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
         <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
         <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
       </nve-stack>
     </nve-box>
-    <nve-box padding="small" background="--color-neutrals-background-tertiary-dim">
+    <nve-box padding="small" background="--color-neutrals-background-primary-contrast">
       <nve-stack gap="small">
         <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
         <div style="padding: 0.75rem; background: var(--color-feedback-background-default-info)"></div>
