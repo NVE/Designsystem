@@ -116,8 +116,17 @@ const getAllModulesByName = (name: string): Array<Module> => {
 };
 
 const getComponentName = (module: Module): string | undefined => {
-  const name = module.path.split('/').pop()?.replace('.js', '')?.replace('.component.ts', '');
-  return name;
+  const declaration = module.declarations?.find((item) => item.kind === 'class') as
+    | CustomElementDeclaration
+    | undefined;
+  if (declaration?.tagName) return declaration.tagName;
+
+  return module.path
+    .split('/')
+    .pop()
+    ?.replace(/\.component\.js$/, '')
+    .replace(/\.component\.ts$/, '')
+    .replace(/\.js$/, '');
 };
 
 // Henter navn på alle komponentene ved oppstart
