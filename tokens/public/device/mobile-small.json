@@ -108,25 +108,25 @@
         }
       },
       "content": {
-        "max-width-x-large": {
+        "max-width-x-small": {
           "$type": "sizing",
-          "$value": "{sizing.2560x}"
-        },
-        "max-width-large": {
-          "$type": "sizing",
-          "$value": "{sizing.1800x}"
-        },
-        "max-width-medium": {
-          "$type": "sizing",
-          "$value": "{sizing.366x}"
+          "$value": "{sizing.496x}"
         },
         "max-width-small": {
           "$type": "sizing",
           "$value": "{sizing.496x}"
         },
-        "max-width-x-small": {
+        "max-width-medium": {
           "$type": "sizing",
-          "$value": "{sizing.496x}"
+          "$value": "{sizing.366x}"
+        },
+        "max-width-large": {
+          "$type": "sizing",
+          "$value": "{sizing.1800x}"
+        },
+        "max-width-x-large": {
+          "$type": "sizing",
+          "$value": "{sizing.2560x}"
         }
       }
     },
@@ -235,6 +235,33 @@
         },
         "$type": "sizing",
         "$value": "{sizing.18x}"
+      }
+    },
+    "interactive": {
+      "x-small": {
+        "$type": "sizing",
+        "$value": "{sizing.32x}",
+        "$description": "Brukes på height på alle interaktive elementer"
+      },
+      "small": {
+        "$type": "sizing",
+        "$value": "{sizing.32x}",
+        "$description": "Brukes på height på alle interaktive elementer"
+      },
+      "medium": {
+        "$type": "sizing",
+        "$value": "{sizing.40x}",
+        "$description": "Brukes på height på alle interaktive elementer"
+      },
+      "large": {
+        "$type": "sizing",
+        "$value": "{sizing.48x}",
+        "$description": "Brukes på height på alle interaktive elementer"
+      },
+      "x-large": {
+        "$type": "sizing",
+        "$value": "{sizing.56x}",
+        "$description": "Brukes på height på alle interaktive elementer"
       }
     }
   },

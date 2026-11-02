@@ -108,25 +108,25 @@
         }
       },
       "content": {
-        "max-width-x-large": {
+        "max-width-x-small": {
           "$type": "sizing",
-          "$value": "{sizing.2560x}"
-        },
-        "max-width-large": {
-          "$type": "sizing",
-          "$value": "{sizing.1800x}"
-        },
-        "max-width-medium": {
-          "$type": "sizing",
-          "$value": "{sizing.600x}"
+          "$value": "{sizing.496x}"
         },
         "max-width-small": {
           "$type": "sizing",
           "$value": "{sizing.496x}"
         },
-        "max-width-x-small": {
+        "max-width-medium": {
           "$type": "sizing",
-          "$value": "{sizing.496x}"
+          "$value": "{sizing.600x}"
+        },
+        "max-width-large": {
+          "$type": "sizing",
+          "$value": "{sizing.1800x}"
+        },
+        "max-width-x-large": {
+          "$type": "sizing",
+          "$value": "{sizing.2560x}"
         }
       }
     },
@@ -163,59 +163,15 @@
       }
     },
     "icon": {
-      "3x-large": {
+      "2x-small": {
         "$extensions": {
           "com.figma.scopes": [
             "WIDTH_HEIGHT"
-          ]
+          ],
+          "com.figma.hiddenFromPublishing": false
         },
         "$type": "sizing",
-        "$value": "{sizing.48x}"
-      },
-      "2x-large": {
-        "$extensions": {
-          "com.figma.scopes": [
-            "WIDTH_HEIGHT"
-          ]
-        },
-        "$type": "sizing",
-        "$value": "{sizing.40x}"
-      },
-      "x-large": {
-        "$extensions": {
-          "com.figma.scopes": [
-            "WIDTH_HEIGHT"
-          ]
-        },
-        "$type": "sizing",
-        "$value": "{sizing.36x}"
-      },
-      "large": {
-        "$extensions": {
-          "com.figma.scopes": [
-            "WIDTH_HEIGHT"
-          ]
-        },
-        "$type": "sizing",
-        "$value": "{sizing.32x}"
-      },
-      "medium": {
-        "$extensions": {
-          "com.figma.scopes": [
-            "WIDTH_HEIGHT"
-          ]
-        },
-        "$type": "sizing",
-        "$value": "{sizing.28x}"
-      },
-      "small": {
-        "$extensions": {
-          "com.figma.scopes": [
-            "WIDTH_HEIGHT"
-          ]
-        },
-        "$type": "sizing",
-        "$value": "{sizing.24x}"
+        "$value": "{sizing.18x}"
       },
       "x-small": {
         "$extensions": {
@@ -226,15 +182,86 @@
         "$type": "sizing",
         "$value": "{sizing.20x}"
       },
-      "2x-small": {
+      "small": {
         "$extensions": {
           "com.figma.scopes": [
             "WIDTH_HEIGHT"
-          ],
-          "com.figma.hiddenFromPublishing": false
+          ]
         },
         "$type": "sizing",
-        "$value": "{sizing.18x}"
+        "$value": "{sizing.24x}"
+      },
+      "medium": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.28x}"
+      },
+      "large": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.32x}"
+      },
+      "x-large": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.36x}"
+      },
+      "2x-large": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.40x}"
+      },
+      "3x-large": {
+        "$extensions": {
+          "com.figma.scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        },
+        "$type": "sizing",
+        "$value": "{sizing.48x}"
+      }
+    },
+    "interactive": {
+      "x-small": {
+        "$type": "sizing",
+        "$value": "{sizing.32x}",
+        "$description": "Brukes på height på alle interaktive elementer"
+      },
+      "small": {
+        "$type": "sizing",
+        "$value": "{sizing.32x}",
+        "$description": "Brukes på height på alle interaktive elementer"
+      },
+      "medium": {
+        "$type": "sizing",
+        "$value": "{sizing.40x}",
+        "$description": "Brukes på height på alle interaktive elementer"
+      },
+      "large": {
+        "$type": "sizing",
+        "$value": "{sizing.48x}",
+        "$description": "Brukes på height på alle interaktive elementer"
+      },
+      "x-large": {
+        "$type": "sizing",
+        "$value": "{sizing.56x}",
+        "$description": "Brukes på height på alle interaktive elementer"
       }
     }
   },
