@@ -308,6 +308,13 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ikke påbegynt'
   },
   {
+    name: 'nve-segmented-level-indicator',
+    nodeId: '5629-35537',
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
+  },
+  {
     name: 'nve-skeleton',
     nodeId: '4229-83175',
     description: undefined,

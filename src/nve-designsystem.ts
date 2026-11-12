@@ -2,28 +2,28 @@
 /** Denne filen blir genererert av pnpm run add-component */
   
   
+  
+export { NveLayoutBase, type SpacingToken, type LayoutJustify } from './components/layouts/nve-layout-base';
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
 export { default as NveAspectRose } from './components/nve-aspect-rose/nve-aspect-rose.component';
 export { default as NveBadge } from './components/nve-badge/nve-badge.component';
-export { NveLayoutBase, type SpacingToken, type LayoutJustify } from './components/layouts/nve-layout-base';
 export { default as NveBox, type BoxBackground } from './components/layouts/nve-box/nve-box.component';
-export { default as NveCluster, type ClusterLayoutGap, type ClusterAlign } from './components/layouts/nve-cluster/nve-cluster.component';
-export { default as NveGrid } from './components/layouts/nve-grid/nve-grid.component';
-export { default as NveStack } from './components/layouts/nve-stack/nve-stack.component';
 export { default as NveButton } from './components/nve-button/nve-button.component';
 export { default as NveCarousel } from './components/nve-carousel/nve-carousel.component';
 export { default as NveCarouselItem } from './components/nve-carousel-item/nve-carousel-item.component';
 export { default as NveCarouselThumbnail } from './components/nve-carousel-thumbnail/nve-carousel-thumbnail.component';
 export { default as NveCheckbox } from './components/nve-checkbox/nve-checkbox.component';
 export { default as NveCheckboxGroup } from './components/nve-checkbox-group/nve-checkbox-group.component';
+export { default as NveCluster, type ClusterLayoutGap, type ClusterAlign } from './components/layouts/nve-cluster/nve-cluster.component';
 export { default as NveCombobox } from './components/nve-combobox/nve-combobox.component';
 export { default as NveDarkmodeSwitch } from './components/nve-darkmode-switch/nve-darkmode-switch.component';
 export { default as NveDivider } from './components/nve-divider/nve-divider.component';
 export { default as NveDrawer } from './components/nve-drawer/nve-drawer.component';
 export { default as NveDropdown } from './components/nve-dropdown/nve-dropdown.component';
 export { default as NveExposedHeight } from './components/nve-exposed-height/nve-exposed-height.component';
+export { default as NveGrid } from './components/layouts/nve-grid/nve-grid.component';
 export { default as NveHeading } from './components/nve-heading/nve-heading.component';
 export { default as NveIcon } from './components/nve-icon/nve-icon.component';
 export { default as NveInput } from './components/nve-input/nve-input.component';
@@ -41,8 +41,10 @@ export { default as NveRadioGroup } from './components/nve-radio-group/nve-radio
 export { default as NveRelativeTime } from './components/nve-relative-time/nve-relative-time.component';
 export { default as NveSegment } from './components/nve-segment/nve-segment.component';
 export { default as NveSegmentGroup } from './components/nve-segment-group/nve-segment-group.component';
+export { default as NveSegmentedLevelIndicator } from './components/nve-segmented-level-indicator/nve-segmented-level-indicator.component';
 export { default as NveSkeleton } from './components/nve-skeleton/nve-skeleton.component';
 export { default as NveSpinner } from './components/nve-spinner/nve-spinner.component';
+export { default as NveStack } from './components/layouts/nve-stack/nve-stack.component';
 export { default as NveStep } from './components/nve-stepper/nve-step/nve-step.component';
 export { default as NveStepper } from './components/nve-stepper/nve-stepper.component';
 export { default as NveSwitch } from './components/nve-switch/nve-switch.component';
