@@ -66,7 +66,7 @@ Du kan legge til en ekstra tekst under hovedlenkens overskrift ved å bruke `add
 
 ### Med lang tilleggstekst
 
-Tilleggstekst vises maksimalt på 3 linjer. Dersom teksten er lengre, kuttes den av med `...`.
+Tilleggstekst trunkeres ikke, og kortet vokser i høyden etter innholdet.
 
 <CodeExamplePreview>
 
@@ -82,7 +82,7 @@ Tilleggstekst vises maksimalt på 3 linjer. Dersom teksten er lengre, kuttes den
 
 ### Med ikon fra ikon-fil
 
-Ikonsettet som skal brukes er de som hos NVE kalles [Illustrasjonsikoner](https://nve.frontify.com/d/n2ujvoktZ3dr/nve-profil#/ikoner-illustrasjoner/illustrasjonsikoner-1). Ikon skal **ikke** kombineres med ekstratekst (`additionalText`). Dersom både `additionalText` og `iconPath` er brukt, vil ikonet vises og `additionalText` skjules.
+Ikonsettet som skal brukes er de som hos NVE kalles [Illustrasjonsikoner](https://nve.frontify.com/d/n2ujvoktZ3dr/nve-profil#/ikoner-illustrasjoner/illustrasjonsikoner-1). Ikon kan kombineres med ekstratekst (`additionalText`), se neste eksempel.
 
 <CodeExamplePreview>
 
@@ -94,6 +94,24 @@ Ikonsettet som skal brukes er de som hos NVE kalles [Illustrasjonsikoner](https:
 >
 </nve-navigation-card>
 <nve-navigation-card href="#" label="Fakta om flom og farer" iconPath="/assets/nve-illustrasjoner-ikon-flom.png">
+</nve-navigation-card>
+```
+
+</CodeExamplePreview>
+
+### Med ikon og tilleggstekst
+
+Ikon og tilleggstekst kan brukes sammen. Ikonet vises øverst, deretter tittel og tilleggstekst.
+
+<CodeExamplePreview>
+
+```html
+<nve-navigation-card
+  href="#"
+  label="Fakta om vannets kretsløp"
+  additionalText="Vannets kretsløp beskriver hvordan vann beveger seg mellom hav, atmosfære og land."
+  iconPath="/assets/nve-illustrasjoner-ikon-vannkraft.png"
+>
 </nve-navigation-card>
 ```
 
@@ -163,7 +181,7 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
   <nve-navigation-card
     href="#"
     label="Om hydrologisk avdeling"
-    additionalText="Tekst her skal ikke kombineres med ikon"
+    additionalText="Tilleggstekst her"
   />
 </RouterLink>
 ```
@@ -172,11 +190,7 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 
 ```jsx
 <Link to="/components/Komponentoversikt">
-  <nve-navigation-card
-    href="#"
-    label="Om hydrologisk avdeling"
-    additionalText="Tekst her skal ikke kombineres med ikon"
-  />
+  <nve-navigation-card href="#" label="Om hydrologisk avdeling" additionalText="Tilleggstekst her" />
 </Link>
 ```
 
@@ -185,8 +199,7 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 - **Bruk `nve-navigation-card`** for hovednavigasjon på oversikts- eller inngangssider der brukeren skal velge mellom flere hovedtemaer eller seksjoner.
 - **Bruk [`nve-link-card`](/components/nve-link-card)** for sekundære lenker, handlinger, eller når du trenger støtte for eksterne lenker, nedlasting eller e-post.
 - Ikke bruk `nve-navigation-card` for valg, ekspanderbare paneler eller andre interaktive kort – bruk dedikerte komponenter for dette.
-- Komponentet har minimumshøyde for konsistent layout, men ingen makshøyde. Kortet kan derfor vokse i høyden etter innhold, men tilleggstekst vises maks på 3 linjer.
-- **Ikon skal ikke kombineres med ekstratekst** (`additionalText`). Hvis `ikonPath` er lagt inn, vises ikke tilleggstekst.
+- Komponentet har minimumshøyde for konsistent layout, men ingen makshøyde. Kortet kan derfor vokse i høyden etter innhold, og tilleggstekst trunkeres ikke.
 - **Kun illustrasjonsikoner skal brukes som ikon**. Disse finnes i [NVE Frontify – Illustrasjonsikoner](https://nve.frontify.com/d/n2ujvoktZ3dr/nve-profil#/ikoner-illustrasjoner/illustrasjonsikoner-1/nedlasting). Illustrasjonsikonene illustrerer NVEs virksomhetsområder og er detaljrike. De skal ikke brukes for å indikere navigasjon eller handling, og fungerer dårlig i små størrelser.
 - **`label` skal alltid være meningsfull og gi mening alene**, uten å være avhengig av omkringliggende kontekst. Skjermlesere kan presentere alle lenker på siden i en liste, og da må hver lenketekst være forståelig på egen hånd.
 - Bruk alltid komponenten i et grid- eller flex-oppsett for å sikre riktig spacing og responsivitet.
@@ -195,5 +208,4 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 
 - **Tittel (`label`-feltet) rendres som `<h2>`** for å sikre god semantikk og tilgjengelighet. Dette gjør det enklere for brukere med skjermleser å navigere mellom hovedseksjoner på siden. Hvis du har flere navigation-cards på samme side, vil de automatisk utgjøre en oversiktlig seksjonsstruktur.
 - Komponentet rendres som `<a>` hvis det ikke ligger inni en lenke, og som `<div>` hvis det pakkes inn i en `<a>` (for å unngå nestede lenker).
-- Ekstratekst trunkeres automatisk etter 3 linjer for å sikre at kortet ikke blir for høyt og at innholdet er lett å skanne.
 - Understrek (text-decoration) på wrapper-`<a>` fjernes av designsystemet ved hjelp av en regel i `global.css` (`a:has(nve-navigation-card) { text-decoration: unset; }`). Fokusringen og border-radius på wrapperen håndteres også globalt, slik at lenker som wrapper `nve-navigation-card` og `nve-link-card` får et konsistent uttrykk uten egen klasse.

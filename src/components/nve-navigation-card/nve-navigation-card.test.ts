@@ -33,9 +33,9 @@ describe('nve-navigation-card', () => {
     expect(p?.textContent).toContain('Ekstra tekst');
   });
 
-  it('should render icon when iconPath is set and hide additionalText', async () => {
+  it('should render both icon and additionalText when both are set', async () => {
     const el = await fixture<NveNavigationCard>(
-      html`<nve-navigation-card label="Tittel" iconPath="test.svg" additionalText="Skjules"></nve-navigation-card>`
+      html`<nve-navigation-card label="Tittel" iconPath="test.svg" additionalText="Vises"></nve-navigation-card>`
     );
     const img = el.shadowRoot?.querySelector('img[part="leading-icon"]');
     const p = el.shadowRoot?.querySelector('p[part="additional-text"]');
@@ -43,7 +43,7 @@ describe('nve-navigation-card', () => {
     expect(img?.getAttribute('src')).toBe('test.svg');
     expect(img?.getAttribute('aria-hidden')).toBe('true');
     expect(img?.getAttribute('alt')).toBe('');
-    expect(p).toBeNull();
+    expect(p).not.toBeNull();
   });
 
   it('should render as <a> when not wrapped in link', async () => {

@@ -87,11 +87,7 @@ export default css`
   .navigation-card__additional-text {
     font: var(--typography-body-compact-medium-compact);
     color: var(--color-neutrals-foreground-subtle);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
+    overflow-wrap: break-word;
     margin: 0;
   }
 

@@ -8,7 +8,7 @@ import '../nve-icon/nve-icon.component';
 /**
  * Denne komponenten er ment å brukes som hovednavigasjon på sider, for eksempel transportside (i motsetning til `nve-link-card`, som er mindre og brukes der navigasjonen ikke er hovedfokus).
  *
- * Komponenten brukes i grid-oppsett, har minimum høyde, og støtter enten dekorativt ikon (angis via path) eller tilleggstekst (maks 3 linjer, trunkeres automatisk) – aldri begge samtidig.
+ * Komponenten brukes i grid-oppsett, har minimum høyde, og støtter dekorativt ikon (angis via path) og/eller tilleggstekst. Tilleggstekst trunkeres ikke.
  *
  * Ikon angis med `iconPath`-prop og rendres automatisk med aria-hidden. Bruk kun illustrasjonsikoner fra NVE.
  *
@@ -32,7 +32,7 @@ export default class NveNavigationCard extends LitElement implements INveCompone
    */
   @property({ type: String }) href = '';
 
-  /** Ekstratekst som vises under tittelen (maks 3 linjer, trunkeres) */
+  /** Ekstratekst som vises under tittelen */
   @property({ type: String }) additionalText: string | undefined = undefined;
 
   /** Definerer hva som skjer når kortet klikkes: 'internal' (intern lenke), 'download' (nedlasting), 'external' (ekstern lenke) */
@@ -66,19 +66,23 @@ export default class NveNavigationCard extends LitElement implements INveCompone
   private renderContent() {
     return html`
       <div part="content" class="navigation-card__content">
-        ${this.iconPath
-          ? html`<img
-              part="leading-icon"
-              src="${this.iconPath}"
-              alt=""
-              aria-hidden="true"
-              class="navigation-card__icon"
-            />`
-          : nothing}
+        ${
+          this.iconPath
+            ? html`<img
+                part="leading-icon"
+                src="${this.iconPath}"
+                alt=""
+                aria-hidden="true"
+                class="navigation-card__icon"
+              />`
+            : nothing
+        }
         <h2 part="label" class="navigation-card__label">${this.label}</h2>
-        ${!this.iconPath && this.additionalText
-          ? html`<p part="additional-text" class="navigation-card__additional-text">${this.additionalText}</p>`
-          : nothing}
+        ${
+          this.additionalText
+            ? html`<p part="additional-text" class="navigation-card__additional-text">${this.additionalText}</p>`
+            : nothing
+        }
       </div>
       <nve-icon aria-hidden="true" name="${this.getIconName()}" class="navigation-card__arrow" />
     `;
