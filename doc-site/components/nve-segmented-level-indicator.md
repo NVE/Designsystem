@@ -16,33 +16,6 @@ outline: [2, 3]
 
 ## Eksempler
 
-### Nivå
-
-Bruk `value` for å sette nivå. 0 er standard.
-
-<CodeExamplePreview>
-
-```html
-<nve-segmented-level-indicator></nve-segmented-level-indicator>
-<nve-segmented-level-indicator value="1"></nve-segmented-level-indicator>
-<nve-segmented-level-indicator value="2"></nve-segmented-level-indicator>
-```
-
-</CodeExamplePreview>
-
-`value` må være heltall over eller lik 0 for å bli tatt hensyn til. Andre verdier gir standard-verdien i stedet.
-
-<CodeExamplePreview>
-
-```html
-<nve-segmented-level-indicator value="3.14"></nve-segmented-level-indicator>
-<nve-segmented-level-indicator value="-1"></nve-segmented-level-indicator>
-<nve-segmented-level-indicator value=""></nve-segmented-level-indicator>
-<nve-segmented-level-indicator value="fullt"></nve-segmented-level-indicator>
-```
-
-</CodeExamplePreview>
-
 ### Skala
 
 Bruk `scale` for bestemme hvor mange segmenter vi skal ha. 5 er standard.
@@ -66,6 +39,34 @@ Bruk `scale` for bestemme hvor mange segmenter vi skal ha. 5 er standard.
 <nve-segmented-level-indicator scale="-1"></nve-segmented-level-indicator>
 <nve-segmented-level-indicator scale=""></nve-segmented-level-indicator>
 <nve-segmented-level-indicator scale="funker ikke"></nve-segmented-level-indicator>
+```
+
+</CodeExamplePreview>
+
+### Nivå
+
+Bruk `value` for å sette nivå. 0 er standard.
+
+<CodeExamplePreview>
+
+```html
+<nve-segmented-level-indicator></nve-segmented-level-indicator>
+<nve-segmented-level-indicator value="1"></nve-segmented-level-indicator>
+<nve-segmented-level-indicator value="2"></nve-segmented-level-indicator>
+```
+
+</CodeExamplePreview>
+
+`value` må være heltall over eller lik 0 og ikke høyere enn `scale` for å bli tatt hensyn til. Andre verdier gir standard-verdien i stedet.
+
+<CodeExamplePreview>
+
+```html
+<nve-segmented-level-indicator value="3.14"></nve-segmented-level-indicator>
+<nve-segmented-level-indicator value="-1"></nve-segmented-level-indicator>
+<nve-segmented-level-indicator value=""></nve-segmented-level-indicator>
+<nve-segmented-level-indicator value="fullt"></nve-segmented-level-indicator>
+<nve-segmented-level-indicator value="6"></nve-segmented-level-indicator>
 ```
 
 </CodeExamplePreview>
@@ -112,6 +113,18 @@ Engelsk, gir aria-label "0 of 5"
 
 <nve-segmented-level-indicator lang="en-GB"></nve-segmented-level-indicator>
 Også engelsk
+```
+
+</CodeExamplePreview>
+
+### Farge
+
+Bruk css-property `--segment-fill-color` for å velge en annen fyllfarge enn rød.
+<CodeExamplePreview>
+
+```html
+<nve-segmented-level-indicator value="4" style="--segment-fill-color: blue;"></nve-segmented-level-indicator>
+<nve-segmented-level-indicator value="4"></nve-segmented-level-indicator>
 ```
 
 </CodeExamplePreview>

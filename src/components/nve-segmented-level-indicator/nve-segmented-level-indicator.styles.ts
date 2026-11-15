@@ -22,8 +22,8 @@ export default css`
 
   /** Fylte firkanter angir nivået */
   .segment.filled {
-    border-color: var(--color-feedback-foreground-danger);
-    background: var(--color-feedback-foreground-danger);
+    border-color: var(--segment-fill-color, var(--color-feedback-foreground-danger));
+    background: var(--segment-fill-color, var(--color-feedback-foreground-danger));
   }
 
   /** Alle firkantene stables ved siden av hverandre */

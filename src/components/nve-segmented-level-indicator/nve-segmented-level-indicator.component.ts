@@ -15,16 +15,17 @@ const DEFAULT_SCALE = 5;
  * @csspart segments Segmentene
  * @csspart segment Hvert enkelt segment
  * @csspart label Teksten under segmentene
+ * @cssproperty --segment-fill-color Fargen som brukes for fylte segmenter
  */
 @customElement('nve-segmented-level-indicator')
 export default class NveSegmentedLevelIndicator extends LitElement implements INveComponent {
   /** Bruk denne til å identifisere komponenten i tester */
   @property({ type: String, reflect: true }) testId: string | undefined = undefined;
 
-  /** Hvor mange segmenter vi skal fargelegge */
+  /** Hvor mange segmenter vi skal fargelegge. Standard er 0 */
   @property({ type: Number, reflect: true }) value = DEFAULT_VALUE;
 
-  /** Hvor mange segmenter vi skal vise */
+  /** Hvor mange segmenter vi skal vise. Standard er 5 */
   @property({ type: Number, reflect: true }) scale = DEFAULT_SCALE;
 
   /** Tekst som vises under segmentene */
@@ -43,7 +44,9 @@ export default class NveSegmentedLevelIndicator extends LitElement implements IN
   }
 
   private get currentValue(): number {
-    return Number.isInteger(this.value) && this.value >= 0 ? this.value : DEFAULT_VALUE;
+    return Number.isInteger(this.value) && this.value >= 0 && this.value <= this.currentScale
+      ? this.value
+      : DEFAULT_VALUE;
   }
 
   private get currentScale(): number {
