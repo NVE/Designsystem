@@ -1,13 +1,12 @@
 /** Alle komponenter som er tilgjengelige, i alfabetisk rekkefølge. */
 /** Denne filen blir genererert av pnpm run add-component */
-  
-  
-  
+
 export { NveLayoutBase, type SpacingToken, type LayoutJustify } from './components/layouts/nve-layout-base';
 export { default as NveAccordion } from './components/nve-accordion/nve-accordion.component';
 export { default as NveAccordionItem } from './components/nve-accordion-item/nve-accordion-item.component';
 export { default as NveAlert } from './components/nve-alert/nve-alert.component';
 export { default as NveAspectRose } from './components/nve-aspect-rose/nve-aspect-rose.component';
+export { default as NveAvalancheProblemRiskIndicator } from './components/nve-avalanche-problem-risk-indicator/nve-avalanche-problem-risk-indicator.component';
 export { default as NveBadge } from './components/nve-badge/nve-badge.component';
 export { default as NveBox, type BoxBackground } from './components/layouts/nve-box/nve-box.component';
 export { default as NveButton } from './components/nve-button/nve-button.component';
@@ -16,7 +15,11 @@ export { default as NveCarouselItem } from './components/nve-carousel-item/nve-c
 export { default as NveCarouselThumbnail } from './components/nve-carousel-thumbnail/nve-carousel-thumbnail.component';
 export { default as NveCheckbox } from './components/nve-checkbox/nve-checkbox.component';
 export { default as NveCheckboxGroup } from './components/nve-checkbox-group/nve-checkbox-group.component';
-export { default as NveCluster, type ClusterLayoutGap, type ClusterAlign } from './components/layouts/nve-cluster/nve-cluster.component';
+export {
+  default as NveCluster,
+  type ClusterLayoutGap,
+  type ClusterAlign,
+} from './components/layouts/nve-cluster/nve-cluster.component';
 export { default as NveCombobox } from './components/nve-combobox/nve-combobox.component';
 export { default as NveDarkmodeSwitch } from './components/nve-darkmode-switch/nve-darkmode-switch.component';
 export { default as NveDivider } from './components/nve-divider/nve-divider.component';
@@ -56,4 +59,3 @@ export { default as NveTextarea } from './components/nve-textarea/nve-textarea.c
 export { default as NveToggletip } from './components/nve-toggletip/nve-toggletip.component';
 export { default as NveTooltip } from './components/nve-tooltip/nve-tooltip.component';
 export { default as NveWarningLevel } from './components/nve-warning-level/nve-warning-level.component';
-  

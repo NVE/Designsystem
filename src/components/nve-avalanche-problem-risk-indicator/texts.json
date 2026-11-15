@@ -1,0 +1,171 @@
+[
+  {
+    "category": "destructiveSize",
+    "id": "1",
+    "level": 1,
+    "label": {
+      "no": "Snøskred blir stort sett små",
+      "en": "Avalanches are generally small"
+    },
+    "description": {
+      "no": "Liten fare for å bli begravd (fare for utglidning). Skredet stopper i henget. Volum: < 100 m3",
+      "en": "Low risk of burial (risk of being knocked off balance and carried). The avalanche stops on the slope. Volume: < 100 m³"
+    }
+  },
+  {
+    "category": "destructiveSize",
+    "id": "2",
+    "level": 2,
+    "label": {
+      "no": "Snøskred kan bli store nok til å begrave en person",
+      "en": "Avalanches can be large enough to bury a person"
+    },
+    "description": {
+      "no": "Kan begrave, skade eller drepe en person. Skredet stopper i bunn av henget. Volum: < 1000 m3",
+      "en": "Can bury, injure, or kill a person. The avalanche reaches the bottom of the slope. Volume: < 1,000 m³"
+    }
+  },
+  {
+    "category": "destructiveSize",
+    "id": "3",
+    "level": 3,
+    "label": {
+      "no": "Snøskred kan bli store nok til å begrave en bil",
+      "en": "Avalanches can be large enough to bury a car"
+    },
+    "description": {
+      "no": "Kan begrave og ødelegge biler, skade lastebiler, mindre bygninger og skog. Skredet kan gå ut av henget og opp til 50 m inn i slakt terreng (betydelig slakere enn 30 grader). Volum: < 10.000 m3",
+      "en": "Can bury and destroy cars, damage trucks, small buildings, and forest. The avalanche may run beyond the slope and up to 50 m into gentle terrain (significantly less steep than 30 degrees). Volume: < 10,000 m³"
+    }
+  },
+  {
+    "category": "destructiveSize",
+    "id": "4",
+    "level": 4,
+    "label": {
+      "no": "Snøskred kan bli store nok til å ødelegge flere bygninger",
+      "en": "Avalanches can be large enough to destroy several buildings"
+    },
+    "description": {
+      "no": "Kan begrave og ødelegge tog og store lastebiler, flere bygninger og skogsområder. Skredet kan gå over slakere terreng (betydelig under 30 grader) over avstander over 50 m og nå frem helt til dalbunnen. Volum: < 100.000 m3",
+      "en": "Can bury and destroy trains and large trucks, several buildings, and forested areas. The avalanche may travel across gentle terrain (significantly less steep than 30 degrees) for distances greater than 50 m and reach the valley floor. Volume: < 100,000 m³"
+    }
+  },
+  {
+    "category": "destructiveSize",
+    "id": "5",
+    "level": 5,
+    "label": {
+      "no": "Snøskred kan bli store nok til å ødelegge landskap og gjøre katastrofal skade",
+      "en": "Avalanches can be large enough to destroy landscapes and cause catastrophic damage"
+    },
+    "description": {
+      "no": "Kan ødelegge landskapet. Katastrofal skade mulig. Når frem til dalbunnen. Største kjente snøskred. Volum: > 100.000 m3",
+      "en": "Can destroy parts of the landscape. Catastrophic damage is possible. Reaches the valley floor. These are the largest avalanches known. Volume: > 100,000 m³"
+    }
+  },
+  {
+    "category": "triggerSensitivity",
+    "id": "1",
+    "level": 1,
+    "label": {
+      "no": "Svært vanskelig å løse ut snøskred",
+      "en": "Very difficult to trigger an avalanche"
+    },
+    "description": {
+      "no": "Det skal veldig mye til for å løse ut snøskred.",
+      "en": "It takes a lot to trigger an avalanche."
+    }
+  },
+  {
+    "category": "triggerSensitivity",
+    "id": "2",
+    "level": 2,
+    "label": {
+      "no": "Mulig å løse ut snøskred",
+      "en": "Possible to trigger an avalanche"
+    },
+    "description": {
+      "no": "De fleste steder må det en del til før et snøskred løsner, men det er mulig. Skred kan utløses for eksempel av snøskutere, grupper som går tett samlet eller personer som hopper på snødekket. Skred kan også løsne når skavler faller ned og treffer snøen.",
+      "en": "In most places, it takes quite a bit to trigger an avalanche, but it is possible. Avalanches may be triggered by, for example, snowmobiles, groups of people travelling close together, or people jumping on the snowpack. Avalanches may also be released when cornices collapse and impact the snow surface."
+    }
+  },
+  {
+    "category": "triggerSensitivity",
+    "id": "3",
+    "level": 3,
+    "label": {
+      "no": "Lett å løse ut snøskred",
+      "en": "Easy to trigger an avalanche"
+    },
+    "description": {
+      "no": "En enkelt person kan utløse skred. Noen ganger kan skredet løsne på avstand, men det er mindre vanlig.",
+      "en": "A single person can trigger an avalanche. Sometimes an avalanche may be triggered from a distance, but this is less common."
+    }
+  },
+  {
+    "category": "triggerSensitivity",
+    "id": "4",
+    "level": 4,
+    "label": {
+      "no": "Svært lett å løse ut snøskred",
+      "en": "Very easy to trigger an avalanche"
+    },
+    "description": {
+      "no": "Det er stor sannsynlighet for at én person kan utløse skred i skredterreng. Du må også forvente at skred kan løsne på avstand.",
+      "en": "There is a high probability that a single person can trigger an avalanche in avalanche terrain. Remote triggering, where an avalanche releases some distance away from the person, should also be expected."
+    }
+  },
+  {
+    "category": "triggerSensitivity",
+    "id": "5",
+    "level": 4,
+    "label": {
+      "no": "Snøskred kan løsne av seg selv",
+      "en": "Avalanches can release naturally"
+    },
+    "description": {
+      "no": "Skred kan løsne av seg selv (kalles ofte naturlig utløst). Det kan skje når snø, regn eller vind gjør at det samler seg mer vekt over et svakt lag i snødekket. Skred kan også løsne når varmere vær svekker snødekket.",
+      "en": "Avalanches can release naturally, without being triggered by a person. This can happen when snowfall, rain, or wind increase the weight on top of a weak layer in the snowpack. Avalanches may also release when warmer weather weakens the snowpack."
+    }
+  },
+  {
+    "category": "propagation",
+    "id": "1",
+    "level": 1,
+    "label": {
+      "no": "Få steder i terrenget",
+      "en": "At a few locations in the terrain"
+    },
+    "description": {
+      "no": "Skredproblemet finnes bare noen få steder i terrenget. Det er vanskelig å oppdage, og du får sjelden tydelige tegn på at det er til stede.",
+      "en": "This avalanche problem exists in only a few locations in the terrain. It is difficult to identify, and you will rarely see clear signs that it is present."
+    }
+  },
+  {
+    "category": "propagation",
+    "id": "2",
+    "level": 2,
+    "label": {
+      "no": "Noen steder i terrenget",
+      "en": "Some locations in the terrain"
+    },
+    "description": {
+      "no": "Skredproblemet finnes flere steder i terrenget, men ikke overalt. Det er ofte mulig å peke ut hvilke områder som er mest utsatt hvis du vet hvor du skal lete. Du kan finne tegn på at problemet er til stede, men de er ikke alltid lette å få øye på.",
+      "en": "This avalanche problem is found in several locations in the terrain, but not everywhere. It is often possible to identify the areas that are most affected if you know where to look. You may find signs that the problem is present, but they are not always easy to spot."
+    }
+  },
+  {
+    "category": "propagation",
+    "id": "3",
+    "level": 3,
+    "label": {
+      "no": "Mange steder i terrenget",
+      "en": "Many locations in the terrain"
+    },
+    "description": {
+      "no": "Skredproblemet finnes mange steder i terrenget. Det er gjerne lett å finne tegn på at problemet er til stede, for eksempel kan du se ferske skred, sprekker i snøen eller høre drønn når du går på snøen.",
+      "en": "This avalanche problem is found in many places in the terrain. It is often easy to find signs that the problem is present. For example, you may see recent avalanches, cracks in the snow, or hear collapsing sounds (\"whumpfs\") when travelling on the snow."
+    }
+  }
+]
