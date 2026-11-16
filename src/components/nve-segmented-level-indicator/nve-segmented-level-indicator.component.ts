@@ -35,13 +35,9 @@ export default class NveSegmentedLevelIndicator extends LitElement implements IN
   @property({ type: String, reflect: true }) lang = 'no';
 
   /** Alternativ tekst som brukes av skjermlesere */
-  accessibleLabel = this.ariaLabel || this.label || `${this.value} av ${this.scale}`;
+  @property({ type: String, attribute: 'aria-label' }) ariaLabel: string | null = null;
 
   static styles = [styles];
-
-  static get observedAttributes() {
-    return [...super.observedAttributes, 'aria-label'];
-  }
 
   private get currentValue(): number {
     return Number.isInteger(this.value) && this.value >= 0 && this.value <= this.currentScale
@@ -58,7 +54,7 @@ export default class NveSegmentedLevelIndicator extends LitElement implements IN
   }
 
   render() {
-    const accessibleLabel = this.ariaLabel || this.label || `${this.value} ${this.of} ${this.scale}`;
+    const accessibleLabel = this.ariaLabel || this.label || `${this.currentValue} ${this.of} ${this.currentScale}`;
 
     return html`<div
       class="container"

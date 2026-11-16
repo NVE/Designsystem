@@ -158,6 +158,40 @@ describe('nve-segmented-level-indicator', () => {
     expect(base?.getAttribute('aria-label')).toBe('Ganske mye');
   });
 
+  it('oppdaterer aria-label på det indre elementet når attributtet endres', async () => {
+    const el = await fixture<NveSegmentedLevelIndicator>(
+      html`<nve-segmented-level-indicator value="2" aria-label="Første"></nve-segmented-level-indicator>`
+    );
+    const base = () => el.shadowRoot?.querySelector('div[part="base"]');
+    expect(base()?.getAttribute('aria-label')).toBe('Første');
+
+    el.setAttribute('aria-label', 'Andre');
+    await el.updateComplete;
+    expect(base()?.getAttribute('aria-label')).toBe('Andre');
+
+    el.removeAttribute('aria-label');
+    await el.updateComplete;
+    expect(base()?.getAttribute('aria-label')).toBe('2 av 5');
+  });
+
+  it('bruker validert verdi i aria-label når value er større enn scale', async () => {
+    const el = await fixture<NveSegmentedLevelIndicator>(
+      html`<nve-segmented-level-indicator value="6"></nve-segmented-level-indicator>`
+    );
+    const base = el.shadowRoot?.querySelector('div[part="base"]');
+    expect(el.shadowRoot?.querySelectorAll('.segment.filled').length).toBe(0);
+    expect(base?.getAttribute('aria-label')).toBe('0 av 5');
+  });
+
+  it('bruker validert skala i aria-label når scale er ugyldig', async () => {
+    const el = await fixture<NveSegmentedLevelIndicator>(
+      html`<nve-segmented-level-indicator value="2" scale="0"></nve-segmented-level-indicator>`
+    );
+    const base = el.shadowRoot?.querySelector('div[part="base"]');
+    expect(el.shadowRoot?.querySelectorAll('.segment').length).toBe(5);
+    expect(base?.getAttribute('aria-label')).toBe('2 av 5');
+  });
+
   it('falls back to default scale 5 when scale is "0"', async () => {
     const el = await fixture<NveSegmentedLevelIndicator>(
       html`<nve-segmented-level-indicator scale="0"></nve-segmented-level-indicator>`
