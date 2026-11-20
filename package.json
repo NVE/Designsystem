@@ -102,7 +102,7 @@
     "vue-eslint-parser": "^10.4.2"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.68.2"
+    "@rollup/rollup-linux-x64-gnu": "^4.68.3"
   },
   "config": {
     "commitizen": {

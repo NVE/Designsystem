@@ -158,8 +158,8 @@ importers:
         version: 10.4.2(eslint@10.14.0(jiti@2.6.1))
     optionalDependencies:
       '@rollup/rollup-linux-x64-gnu':
-        specifier: ^4.68.2
-        version: 4.68.2
+        specifier: ^4.68.3
+        version: 4.68.3
 
   doc-site:
     dependencies:
@@ -1086,8 +1086,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@rolldown/pluginutils@1.1.0':
-    resolution: {integrity: sha512-K+NU2HDCEem4sClgHH4ZZXwdJeNFkJo+hRk479DIwdIviAPN2hFJH1KHHwg8CxHQXvi0M5XY4deTXINfIiSG6w==}
+  '@rolldown/pluginutils@1.1.1':
+    resolution: {integrity: sha512-glFIJDvLNDtJhT9qrMFWLPbvS+skxgt4L0K8Ei2YtnhPysAJnsI7nyxSJxKj4ADeKX0OLjC4ntRkwpLOoS3rwA==}
 
   '@rollup/plugin-alias@6.0.1':
     resolution: {integrity: sha512-08wjv2HEuyxIuriLELnksoX+so83XnJ5E4hbVeCHkWlwOcaRQaHYxpUTAplnZjrlh/l5mZgvH1itNC9kcTfTTA==}
@@ -1209,8 +1209,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@rollup/rollup-linux-x64-gnu@4.68.2':
-    resolution: {integrity: sha512-3Btp4Lca/WzsmbaKu9Lh9d/XwyRDIegd/5khRBusHGw/Ll6SoF5Shn63OrjPdkLcpNi2PGDApXzNmxriRxGYjA==}
+  '@rollup/rollup-linux-x64-gnu@4.68.3':
+    resolution: {integrity: sha512-pfn4Zd9Ic3lEaSwW3GsQhTIDd7929C+eiEkOutsSCT2IHD6rDLblwmMQkgeGOso0oDo9Jk/ERtFdtFr9ElLs+g==}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
@@ -6075,7 +6075,7 @@ snapshots:
   '@rolldown/binding-win32-x64-msvc@1.2.19':
     optional: true
 
-  '@rolldown/pluginutils@1.1.0': {}
+  '@rolldown/pluginutils@1.1.1': {}
 
   '@rollup/plugin-alias@6.0.1(rollup@4.60.4)':
     optionalDependencies:
@@ -6143,7 +6143,7 @@ snapshots:
   '@rollup/rollup-linux-x64-gnu@4.60.4':
     optional: true
 
-  '@rollup/rollup-linux-x64-gnu@4.68.2':
+  '@rollup/rollup-linux-x64-gnu@4.68.3':
     optional: true
 
   '@rollup/rollup-linux-x64-musl@4.60.4':
@@ -8942,7 +8942,7 @@ snapshots:
       fontfaceobserver: 2.3.0
       lit: 3.3.3
     optionalDependencies:
-      '@rollup/rollup-linux-x64-gnu': 4.68.2
+      '@rollup/rollup-linux-x64-gnu': 4.68.3
     transitivePeerDependencies:
       - '@floating-ui/utils'
       - '@types/react'
@@ -9396,7 +9396,7 @@ snapshots:
   rolldown@1.2.19:
     dependencies:
       '@oxc-project/types': 0.156.0
-      '@rolldown/pluginutils': 1.1.0
+      '@rolldown/pluginutils': 1.1.1
     optionalDependencies:
       '@rolldown/binding-android-arm-eabi': 1.2.19
       '@rolldown/binding-android-arm64': 1.2.19
