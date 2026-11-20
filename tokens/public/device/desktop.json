@@ -59,9 +59,13 @@
       }
     },
     "fixed-spacing": {
-      "3x-small": {
+      "4x-small": {
         "$type": "spacing",
         "$value": "{dimension.05x}"
+      },
+      "3x-small": {
+        "$type": "spacing",
+        "$value": "{dimension.1x}"
       },
       "2x-small": {
         "$type": "spacing",
