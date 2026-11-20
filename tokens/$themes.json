@@ -2803,7 +2803,7 @@
       "boolean.device.tablet-mobile": "55fff311064ab4693923a2809c5f89f4bb2f06f9",
       "boolean.device.mobile": "475a4ca565edcce9f863fc68ec8d8cd17d5964f9",
       "boolean.device.mobile-small": "9e0ea878dbbdd8cc5701b2d0492f9c44900ebefc",
-      "spacing.fixed-spacing.3x-small": "f367fe28c906542f85b9ab2385d06a30fab49e26",
+      "spacing.fixed-spacing.3x-small": "cd3b376e332fe8e509ce0f9b0991494f276191c2",
       "spacing.fixed-spacing.2x-small": "8378744df4af049609fa7ca05a4b71afce5ca38f",
       "spacing.fixed-spacing.x-small": "5167075cef3aad596c205fc2806ff2e57e524e36",
       "spacing.fixed-spacing.small": "2828580ca6e08c90ac4a89404a5e0d12bb6b870b",
@@ -2817,7 +2817,12 @@
       "sizing.fixed-sizing.large": "d181b13484bee88a4c3bbf785e1caa5e96a2bc77",
       "sizing.fixed-sizing.x-large": "94da23267f15dce2a2dafa56cb34f9b2a0a01e60",
       "sizing.fixed-sizing.2x-large": "af8713223ab2b8cfd820a64675ceeef93c670372",
-      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9"
+      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9",
+      "sizing.interactive.x-small": "1bb5e4d21a4db393a8cc0d1733acee7820cab69c",
+      "sizing.interactive.small": "ac49389c4544cf0958af5f71a8c50d1608c14b51",
+      "sizing.interactive.medium": "7bb1b39cc450a2e33454361ce2ea23df6b07dc20",
+      "sizing.interactive.large": "e90846f6e29ece67a53768ac2f42fd606c731e69",
+      "sizing.interactive.x-large": "aa19923333e68c6bc2eb831da7abb7ec354ddf6b"
     },
     "group": "Device"
   },
@@ -2973,7 +2978,7 @@
       "boolean.device.tablet-mobile": "55fff311064ab4693923a2809c5f89f4bb2f06f9",
       "boolean.device.mobile": "475a4ca565edcce9f863fc68ec8d8cd17d5964f9",
       "boolean.device.mobile-small": "9e0ea878dbbdd8cc5701b2d0492f9c44900ebefc",
-      "spacing.fixed-spacing.3x-small": "f367fe28c906542f85b9ab2385d06a30fab49e26",
+      "spacing.fixed-spacing.3x-small": "cd3b376e332fe8e509ce0f9b0991494f276191c2",
       "spacing.fixed-spacing.2x-small": "8378744df4af049609fa7ca05a4b71afce5ca38f",
       "spacing.fixed-spacing.x-small": "5167075cef3aad596c205fc2806ff2e57e524e36",
       "spacing.fixed-spacing.small": "2828580ca6e08c90ac4a89404a5e0d12bb6b870b",
@@ -2987,7 +2992,12 @@
       "sizing.fixed-sizing.large": "d181b13484bee88a4c3bbf785e1caa5e96a2bc77",
       "sizing.fixed-sizing.x-large": "94da23267f15dce2a2dafa56cb34f9b2a0a01e60",
       "sizing.fixed-sizing.2x-large": "af8713223ab2b8cfd820a64675ceeef93c670372",
-      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9"
+      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9",
+      "sizing.interactive.x-small": "1bb5e4d21a4db393a8cc0d1733acee7820cab69c",
+      "sizing.interactive.small": "ac49389c4544cf0958af5f71a8c50d1608c14b51",
+      "sizing.interactive.medium": "7bb1b39cc450a2e33454361ce2ea23df6b07dc20",
+      "sizing.interactive.large": "e90846f6e29ece67a53768ac2f42fd606c731e69",
+      "sizing.interactive.x-large": "aa19923333e68c6bc2eb831da7abb7ec354ddf6b"
     },
     "group": "Device"
   },
@@ -3141,7 +3151,7 @@
       "boolean.device.tablet-mobile": "55fff311064ab4693923a2809c5f89f4bb2f06f9",
       "boolean.device.mobile": "475a4ca565edcce9f863fc68ec8d8cd17d5964f9",
       "boolean.device.mobile-small": "9e0ea878dbbdd8cc5701b2d0492f9c44900ebefc",
-      "spacing.fixed-spacing.3x-small": "f367fe28c906542f85b9ab2385d06a30fab49e26",
+      "spacing.fixed-spacing.3x-small": "cd3b376e332fe8e509ce0f9b0991494f276191c2",
       "spacing.fixed-spacing.2x-small": "8378744df4af049609fa7ca05a4b71afce5ca38f",
       "spacing.fixed-spacing.x-small": "5167075cef3aad596c205fc2806ff2e57e524e36",
       "spacing.fixed-spacing.small": "2828580ca6e08c90ac4a89404a5e0d12bb6b870b",
@@ -3155,7 +3165,12 @@
       "sizing.fixed-sizing.large": "d181b13484bee88a4c3bbf785e1caa5e96a2bc77",
       "sizing.fixed-sizing.x-large": "94da23267f15dce2a2dafa56cb34f9b2a0a01e60",
       "sizing.fixed-sizing.2x-large": "af8713223ab2b8cfd820a64675ceeef93c670372",
-      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9"
+      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9",
+      "sizing.interactive.x-small": "1bb5e4d21a4db393a8cc0d1733acee7820cab69c",
+      "sizing.interactive.small": "ac49389c4544cf0958af5f71a8c50d1608c14b51",
+      "sizing.interactive.medium": "7bb1b39cc450a2e33454361ce2ea23df6b07dc20",
+      "sizing.interactive.large": "e90846f6e29ece67a53768ac2f42fd606c731e69",
+      "sizing.interactive.x-large": "aa19923333e68c6bc2eb831da7abb7ec354ddf6b"
     },
     "$figmaCollectionId": "VariableCollectionId:1972:338",
     "$figmaModeId": "1972:14",
@@ -3273,7 +3288,7 @@
       "boolean.device.tablet-mobile": "55fff311064ab4693923a2809c5f89f4bb2f06f9",
       "boolean.device.mobile": "475a4ca565edcce9f863fc68ec8d8cd17d5964f9",
       "boolean.device.mobile-small": "9e0ea878dbbdd8cc5701b2d0492f9c44900ebefc",
-      "spacing.fixed-spacing.3x-small": "f367fe28c906542f85b9ab2385d06a30fab49e26",
+      "spacing.fixed-spacing.3x-small": "cd3b376e332fe8e509ce0f9b0991494f276191c2",
       "spacing.fixed-spacing.2x-small": "8378744df4af049609fa7ca05a4b71afce5ca38f",
       "spacing.fixed-spacing.x-small": "5167075cef3aad596c205fc2806ff2e57e524e36",
       "spacing.fixed-spacing.small": "2828580ca6e08c90ac4a89404a5e0d12bb6b870b",
@@ -3287,7 +3302,12 @@
       "sizing.fixed-sizing.large": "d181b13484bee88a4c3bbf785e1caa5e96a2bc77",
       "sizing.fixed-sizing.x-large": "94da23267f15dce2a2dafa56cb34f9b2a0a01e60",
       "sizing.fixed-sizing.2x-large": "af8713223ab2b8cfd820a64675ceeef93c670372",
-      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9"
+      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9",
+      "sizing.interactive.x-small": "1bb5e4d21a4db393a8cc0d1733acee7820cab69c",
+      "sizing.interactive.small": "ac49389c4544cf0958af5f71a8c50d1608c14b51",
+      "sizing.interactive.medium": "7bb1b39cc450a2e33454361ce2ea23df6b07dc20",
+      "sizing.interactive.large": "e90846f6e29ece67a53768ac2f42fd606c731e69",
+      "sizing.interactive.x-large": "aa19923333e68c6bc2eb831da7abb7ec354ddf6b"
     },
     "group": "Device"
   },
@@ -3403,7 +3423,7 @@
       "boolean.device.tablet-mobile": "55fff311064ab4693923a2809c5f89f4bb2f06f9",
       "boolean.device.mobile": "475a4ca565edcce9f863fc68ec8d8cd17d5964f9",
       "boolean.device.mobile-small": "9e0ea878dbbdd8cc5701b2d0492f9c44900ebefc",
-      "spacing.fixed-spacing.3x-small": "f367fe28c906542f85b9ab2385d06a30fab49e26",
+      "spacing.fixed-spacing.3x-small": "cd3b376e332fe8e509ce0f9b0991494f276191c2",
       "spacing.fixed-spacing.2x-small": "8378744df4af049609fa7ca05a4b71afce5ca38f",
       "spacing.fixed-spacing.x-small": "5167075cef3aad596c205fc2806ff2e57e524e36",
       "spacing.fixed-spacing.small": "2828580ca6e08c90ac4a89404a5e0d12bb6b870b",
@@ -3417,7 +3437,12 @@
       "sizing.fixed-sizing.large": "d181b13484bee88a4c3bbf785e1caa5e96a2bc77",
       "sizing.fixed-sizing.x-large": "94da23267f15dce2a2dafa56cb34f9b2a0a01e60",
       "sizing.fixed-sizing.2x-large": "af8713223ab2b8cfd820a64675ceeef93c670372",
-      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9"
+      "sizing.fixed-sizing.3x-large": "a00b75e5552d46193d42722dd4a0ff0c5506edc9",
+      "sizing.interactive.x-small": "1bb5e4d21a4db393a8cc0d1733acee7820cab69c",
+      "sizing.interactive.small": "ac49389c4544cf0958af5f71a8c50d1608c14b51",
+      "sizing.interactive.medium": "7bb1b39cc450a2e33454361ce2ea23df6b07dc20",
+      "sizing.interactive.large": "e90846f6e29ece67a53768ac2f42fd606c731e69",
+      "sizing.interactive.x-large": "aa19923333e68c6bc2eb831da7abb7ec354ddf6b"
     },
     "group": "Device"
   }
