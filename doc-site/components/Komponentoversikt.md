@@ -1,409 +1,56 @@
-<PageHeader title="Oversikt over komponenter" imagePath="developer" pageLevel=1></PageHeader>
+<PageHeader title="Komponenter" imagePath="developer" pageLevel=1></PageHeader>
 
-<!--
-Lista over komponenter er sortert alfabetisk på navn.
-nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en til aktuell side når du ser på komponenten i Figma.
--->
+Oversikten over komponentene i designsystemet finner du på denne siden og i listen til venstre. De fleste er generiske og brukes på tvers av prosjekter, mens noen er spesialutviklet for Varsom.
 
-<ComponentOverview :componentStatuses="[
-  {
-   name: 'nve-accordion',
-    nodeId: '2341-77166',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-   name: 'nve-accordion-item',
-    nodeId: '2341-77166',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-alert',
-    nodeId: '4229-7',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-aspect-rose',
-    nodeId: undefined,
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-attachments',
-    nodeId: '647-192139',
-    description: 'Viser liste over opplastede vedlegg',
-    statusDesign: 'Skal revideres',
-    statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-attachment-upload',
-    nodeId: '4295-142731',
-    description: 'For å laste opp vedlegg',
-    statusDesign: 'Skal revideres',
-    statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-avatar',
-    nodeId: '111-27',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-badge',
-    nodeId: '1187-139727',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-breadcrumb',
-    nodeId: '839-135756',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-button',
-    nodeId: '111-30',
-    description: undefined,
-    statusDesign: 'Under arbeid',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-card',
-    nodeId: '376-26356',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-darkmode-switch',
-    nodeId: '4229-83176',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-carousel',
-    nodeId: '480-49356',
-    description: 'Bildekarusell',
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-checkbox',
-    nodeId: '4229-100252',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-checkbox-group',
-    nodeId: '4229-100252',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-calendar',
-    nodeId: '5831-20450',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-carousel-item',
-    nodeId: undefined,
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-    {
-    name: 'nve-carousel-thumbnail',
-    nodeId: undefined,
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-combobox',
-    nodeId: '4277-125162',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-comment',
-    nodeId: '3077-45608',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-modal',
-    nodeId: undefined,
-    description: undefined,
-    statusDesign: undefined,
-    statusCode: 'Ferdig'
-  },
-    {
-    name: 'nve-divider',
-    nodeId: undefined,
-    description: undefined,
-    statusDesign:  'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-dropdown',
-    nodeId: '3077-54191',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-    {
-    name: 'nve-drawer',
-    nodeId: '1976-5493',
-    description: undefined,
-    statusDesign: 'Skal revideres',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-exposed-height',
-    nodeId: undefined,
-    description: undefined,
-    statusDesign: undefined,
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-icon',
-    nodeId: undefined,
-    description: undefined,
-    statusDesign: undefined,
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-input',
-    nodeId: '111-33',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-label',
-    nodeId: '5288-119197',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-link-card',
-    nodeId: '3684-156320',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-map',
-    nodeId: '2341-75038',
-    description: undefined,
-    statusDesign: 'Ikke påbegynt',
-    statusCode: 'Vil ikke bli bygget'
-  },
-  {
-   name: 'nve-menu',
-    nodeId: '3077-54191',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-    {
-   name: 'nve-menu-item',
-    nodeId: undefined,
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-   name: 'nve-message-card',
-    nodeId: '8239-2704',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-navbar',
-    nodeId: '203-17',
-    description: undefined,
-    statusDesign: 'Ikke påbegynt',
-    statusCode: 'Vil ikke bli bygget'
-  },
-  {
-    name: 'nve-pagination',
-    nodeId: '951-139793',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Vil ikke bli bygget'
-  },
-  {
-    name: 'nve-popup',
-    nodeId: undefined,
-    description: undefined,
-    statusDesign: undefined,
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-progress-bar',
-    nodeId: '3087-96526',
-    description: undefined,
-    statusDesign: 'Ikke påbegynt',
-    statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-progress-ring',
-    nodeId: '8238-83643',
-    description: undefined,
-    statusDesign: 'Ikke påbegynt',
-    statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-radio',
-    nodeId: '4229-83173',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-radio-group',
-    nodeId: '4229-83173',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-range-slider',
-    nodeId: '3087-105692',
-    description: undefined,
-    statusDesign: 'Under arbeid',
-    statusCode: 'Ikke påbegynt'
-  },
-    {
-    name: 'nve-relative-time',
-    nodeId: undefined,
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-search',
-    nodeId: '951-140533',
-    description: undefined,
-    statusDesign: 'Skal revideres',
-    statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-skeleton',
-    nodeId: '4229-83175',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-spinner',
-    nodeId: undefined,
-    description: undefined,
-    statusDesign: undefined,
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-stepper',
-    nodeId: '1784-78028',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Under arbeid'
-  },
-  {
-    name: 'nve-switch',
-    nodeId: '4229-83176',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-table',
-    nodeId: '111-35',
-    description: 'undefined',
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-tab-group',
-    nodeId: '383-21541',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-tab',
-    nodeId: '383-21541',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-tab-panel',
-    nodeId: '383-21541',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-tag',
-    nodeId: '839-137560',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-textarea',
-    nodeId: '4229-98016',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-textarea-with-formatting',
-    nodeId: '8238-83510',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ikke påbegynt'
-  },
-  {
-    name: 'nve-tooltip',
-    nodeId: '1239-131317',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig'
-  },
-  {
-    name: 'nve-tree',
-    nodeId: '3769-59546',
-    description: undefined,
-    statusDesign: 'Under arbeid',
-    statusCode: 'Ikke påbegynt'
-  },
-   {
-    name: 'nve-warning-level',
-    nodeId: '1797-4798',
-    description: undefined,
-    statusDesign: 'Ferdig',
-    statusCode: 'Ferdig',
-    pattern: true
-  }
-]" />
+<a href="https://www.figma.com/design/0eXhyUrUF7fWi1VaphfpEu/04---%E2%9D%96-Komponenter?m=dev" target="_blank">Du finner komponentene i Figma her.</a>
+
+<script setup>
+import { computed } from 'vue';
+import { useData, withBase } from 'vitepress';
+
+const { theme } = useData();
+const components = computed(() => {
+	const sidebar = theme.value.sidebar;
+	if (!Array.isArray(sidebar)) return [];
+
+	const section = sidebar.find((item) => item.text === 'Komponenter');
+	return (section?.items ?? [])
+		.filter((item) => item.link?.startsWith('/components/nve-'))
+		.slice()
+		.sort((first, second) => first.text.localeCompare(second.text, 'nb'));
+});
+</script>
+
+<div class="component-overview-container">
+	<div class="component-overview-grid">
+		<nve-link-card
+			v-for="component in components"
+			:key="component.link"
+			:label="component.text"
+			:href="withBase(`${component.link}.html`)"
+      variant="contrast"
+    	></nve-link-card>
+    </div>
+
+</div>
+
+<style scoped>
+.component-overview-container {
+	container-type: inline-size;
+	margin-top: var(--spacing-large, 1.5rem);
+}
+
+.component-overview-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--spacing-small, 0.75rem);
+	row-gap: var(--spacing-large, 1.5rem);
+}
+
+
+@container (max-width: 400px) {
+	.component-overview-grid {
+		grid-template-columns: 1fr;
+	}
+}
+</style>
