@@ -159,7 +159,7 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 **Eksempel i Vue:**
 
 ```vue
-<RouterLink to="components/Komponentoversikt">
+<RouterLink to="components/introduction/home">
   <nve-navigation-card
     href="#"
     label="Om hydrologisk avdeling"
@@ -171,7 +171,7 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-navigation-car
 **Eksempel i React:**
 
 ```jsx
-<Link to="/components/Komponentoversikt">
+<Link to="/components/introduction/home">
   <nve-navigation-card
     href="#"
     label="Om hydrologisk avdeling"

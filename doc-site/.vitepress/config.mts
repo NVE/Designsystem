@@ -42,7 +42,6 @@ export default defineConfig({
     },
     nav: [
       { text: 'Introduksjon', link: '/introduction/home' },
-      { text: 'Komponenter', link: `/components/Komponentoversikt.html` },
       { text: 'Layout', link: '/layout/layout-oversikt' },
       { component: 'ThemeSelect' },
     ],
