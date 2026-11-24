@@ -6,7 +6,7 @@ outline: [2, 3]
 <CodeExamplePreview>
 
 ```html
-<nve-link-card label="Introduksjon" href="introduction/home"></nve-link-card>
+<nve-link-card label="Komponenoversikt" href="/components/Komponentoversikt"></nve-link-card>
 ```
 
 </CodeExamplePreview>
@@ -191,9 +191,9 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-link-card`, sa
 Bruk av nve-link-card i Vue:
 
 ```vue
-<RouterLink to="introduction/home">
+<RouterLink to="components/Komponentoversikt">
   <nve-link-card
-    label="Gå til introduksjon"
+    label="Gå til komponentoversikt"
     variant="contrast"
     clickAction="internal"
   >
@@ -204,9 +204,9 @@ Bruk av nve-link-card i Vue:
 Bruk av nve-link-card i React:
 
 ```jsx
-<Link to="/introduction/home">
+<Link to="/components/Komponentoversikt">
   <nve-link-card
-    label="Gå til introduksjon"
+    label="Gå til komponentoversikt"
     variant="contrast"
     clickAction="internal"
   >
