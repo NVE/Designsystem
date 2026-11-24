@@ -39,7 +39,7 @@
         },
         "tertiary-on-bg": {
           "$type": "color",
-          "$value": "{color-shades.accent.400}"
+          "$value": "{color-shades.accent.250}"
         }
       },
       "border": {
@@ -57,7 +57,7 @@
         },
         "emphasized": {
           "$type": "color",
-          "$value": "{color-shades.accent.400}"
+          "$value": "{color-shades.accent.300}"
         }
       }
     },
