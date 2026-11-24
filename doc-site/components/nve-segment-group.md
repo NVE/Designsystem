@@ -134,9 +134,7 @@ Bruk <span class="highlight">hideRequiredTag</span> for å skjule den visuelle m
   <nve-segment value="mobile">Mobil</nve-segment>
   <nve-segment value="traditional">Papir og blyant</nve-segment>
 </nve-segment-group>
-```
 
-```html
 <nve-segment-group label="Hvilken gjenstand bruker du mest på jobb?" optional>
   <nve-segment value="computer">Datamaskin</nve-segment>
   <nve-segment value="mobile">Mobil</nve-segment>
