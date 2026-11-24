@@ -11,15 +11,14 @@
         <li>API-dokumentasjon for hver komponent</li>
       </ul>
       <div class="links-container">
-        <nve-button variant="secondary" href="/introduction/home">Introduksjon</nve-button>
+        <nve-button variant="secondary" href="/introduction/home">Gå til designsystemet</nve-button>
         <nve-button
           variant="secondary"
           href="https://nve.frontify.com/d/n2ujvoktZ3dr/nve-profil#/introduksjon/profilmanual"
           target="_blank"
-          >Profil og primitiver
+          >Profilmanual
           <nve-icon name="open_in_new" slot="end"></nve-icon>
         </nve-button>
-        <nve-button variant="secondary" href="/components/Komponentoversikt">Komponenter</nve-button>
       </div>
     </section>
   </div>

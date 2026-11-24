@@ -6,7 +6,7 @@ outline: [2, 3]
 <CodeExamplePreview>
 
 ```html
-<nve-link-card label="Komponenoversikt" href="/components/Komponentoversikt"></nve-link-card>
+<nve-link-card label="Introduksjon" href="introduction/home"></nve-link-card>
 ```
 
 </CodeExamplePreview>
@@ -62,7 +62,7 @@ Kortet håndterer veldig lange ord ved å bryte dem slik at innholdet ikke flyte
 
 ```html
 <nve-link-card
-  label="Supercalifragilisticexpialidocioussuperlangtordsomikkeharmellomrom"
+  label="Enveldiglangtilleggstekstsomheltsikkerikkefårplasspåénlinjeogderformåavkortes"
   additionalText="EnveldiglangtilleggstekstsomheltsikkerikkefårplasspåénlinjeogderformåavkortesEnveldiglangtilleggstekstsomheltsikkerikkefårplasspåénlinjeogderformåavkortes"
   variant="contrast"
 ></nve-link-card>
@@ -191,9 +191,9 @@ På denne måten beholdes mest funksjonalitet og styling fra `nve-link-card`, sa
 Bruk av nve-link-card i Vue:
 
 ```vue
-<RouterLink to="components/Komponentoversikt">
+<RouterLink to="introduction/home">
   <nve-link-card
-    label="Gå til komponentoversikt"
+    label="Gå til introduksjon"
     variant="contrast"
     clickAction="internal"
   >
@@ -204,9 +204,9 @@ Bruk av nve-link-card i Vue:
 Bruk av nve-link-card i React:
 
 ```jsx
-<Link to="/components/Komponentoversikt">
+<Link to="/introduction/home">
   <nve-link-card
-    label="Gå til komponentoversikt"
+    label="Gå til introduksjon"
     variant="contrast"
     clickAction="internal"
   >
