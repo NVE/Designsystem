@@ -105,6 +105,7 @@ export default css`
 
   .message-card--primary {
     background-color: var(--color-feedback-background-subtle-info);
+    color: var(--color-feedback-foreground-on-bg-subtle-info);
     .message-card__close-btn:hover {
       background-color: var(--button-hover);
     }
