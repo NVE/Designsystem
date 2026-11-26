@@ -49,6 +49,13 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     statusCode: 'Ikke påbegynt'
   },
   {
+    name: 'nve-avalanche-problem-risk-indicator',
+    nodeId: '20020-3267',
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
+  },
+  {
     name: 'nve-avatar',
     nodeId: '111-27',
     description: undefined,
@@ -306,6 +313,13 @@ nodeId er ID til komponent-sida i Figma. Den ligger som en parameter i URL'en ti
     description: undefined,
     statusDesign: 'Skal revideres',
     statusCode: 'Ikke påbegynt'
+  },
+  {
+    name: 'nve-segmented-level-indicator',
+    nodeId: '5629-35537',
+    description: undefined,
+    statusDesign: 'Ferdig',
+    statusCode: 'Ferdig'
   },
   {
     name: 'nve-skeleton',
