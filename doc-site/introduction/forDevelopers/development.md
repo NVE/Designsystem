@@ -22,6 +22,6 @@ Designsystemet utvikles på dugnad og etter behov. Vi vil gjerne ha bidrag fra d
 
 ## Rapportere feil
 
-Finner du feil i dokumentasjon eller et komponenter, start med å sjekke [komponentoversikten](https://designsystem.nve.no/components/Komponentoversikt.html) for å se om feilen allerede er registrert. Hvis ikke, [registrer en sak i Github](https://github.com/NVE/Designsystem/issues).
+Finner du feil i dokumentasjon eller et komponenter [registrer en sak i Github](https://github.com/NVE/Designsystem/issues).
 
 Du kan gjerne tildele saken til deg selv dersom du vil fikse problemet med en gang. Gi også gjerne beskjed i [FUX-forum i Teams](https://teams.microsoft.com/l/channel/19%3A3vNPKWAB1NfvK_GxsEsNWj04elWJ8WrylwsoZF9KaOY1%40thread.tacv2/FUX%20Forum?groupId=ec755ca5-8bfc-4a59-b502-d9721ef8eda4&tenantId=bc8d840d-60c9-410b-b4fb-11b86806780c&ngc=true&allowXTenantAccess=true), slik at andre vet at det jobbes med saken, og for å stille spørsmål hvis noe er uklart.

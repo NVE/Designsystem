@@ -62,7 +62,7 @@ Kortet håndterer veldig lange ord ved å bryte dem slik at innholdet ikke flyte
 
 ```html
 <nve-link-card
-  label="Supercalifragilisticexpialidocioussuperlangtordsomikkeharmellomrom"
+  label="Enveldiglangtilleggstekstsomheltsikkerikkefårplasspåénlinjeogderformåavkortes"
   additionalText="EnveldiglangtilleggstekstsomheltsikkerikkefårplasspåénlinjeogderformåavkortesEnveldiglangtilleggstekstsomheltsikkerikkefårplasspåénlinjeogderformåavkortes"
   variant="contrast"
 ></nve-link-card>
